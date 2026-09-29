@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "LK"
   ],
-  "attemptedAt": "2026-09-26T17:28:22.093Z",
+  "attemptedAt": "2026-09-29T20:33:00.696Z",
   "requests": [
     {
       "url": "https://www.bookpublishers.lk/",
       "status": 200,
       "contentType": "text/html",
       "bytes": 46846,
-      "sha256": "7cc0edccb5788856289ccb22e1b4cf231893eab193af72519733571910fe9d54",
-      "accessedAt": "2026-09-26T17:28:22.861Z"
+      "sha256": "0729834abb6880ea60928a6223b7cba15f8c8a54ec0d7d3dc536d0bb4cb10759",
+      "accessedAt": "2026-09-29T20:33:02.264Z"
     }
   ],
   "status": "blocked",
@@ -27,7 +27,7 @@
     "contentType": "text/plain",
     "bytes": 706,
     "sha256": "9f567e8788a7c9d35308c072cbdbfaa53677f36b86bf602b939c64fac7e6db49",
-    "accessedAt": "2026-09-26T17:28:22.355Z",
+    "accessedAt": "2026-09-29T20:33:01.679Z",
     "disallowed": [
       "/cgi-bin/"
     ]

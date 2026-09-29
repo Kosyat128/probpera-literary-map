@@ -8,7 +8,7 @@
   "coverageCountryCodes": [
     "NP"
   ],
-  "attemptedAt": "2026-09-26T17:31:50.517Z",
+  "attemptedAt": "2026-09-29T20:34:10.931Z",
   "requests": [],
   "status": "blocked",
   "reason": "external_redirect:https://www.nepalliteraturefestival.org",
@@ -18,7 +18,7 @@
     "contentType": "text/plain",
     "bytes": 24,
     "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
-    "accessedAt": "2026-09-26T17:31:52.466Z",
+    "accessedAt": "2026-09-29T20:34:12.868Z",
     "disallowed": []
   }
 }

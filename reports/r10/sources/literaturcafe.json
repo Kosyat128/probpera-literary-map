@@ -1,0 +1,884 @@
+{
+  "sourceId": "literaturcafe",
+  "name": "literaturcafe.de",
+  "entryUrl": "https://www.literaturcafe.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:34.931Z",
+  "requests": [
+    {
+      "url": "https://www.literaturcafe.de/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 491252,
+      "sha256": "fce87ff76d19b80084491a4be4175aa177655950330fcd703aebafd17d320de4",
+      "accessedAt": "2026-09-29T20:39:35.877Z"
+    },
+    {
+      "url": "https://www.literaturcafe.de/feed/podcast/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 501915,
+      "sha256": "a1385108e05678ed7aeaccaeae0f96210c4f880abc16ae1fa3e6265030f44a9f",
+      "accessedAt": "2026-09-29T20:39:37.696Z"
+    },
+    {
+      "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-3-buchtipps-vor-dem-doppeljubilaeum-kavouras-piekar-und-sebauer/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 472102,
+      "sha256": "64e47da7a51d2ca3f7ba15a9dbacf11c05e83b38609ac9fe5a36048a90ca058b",
+      "accessedAt": "2026-09-29T20:39:37.933Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.literaturcafe.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 289,
+    "sha256": "645644dba4abb0f12c044a20ad3af2428ab0d23cf25795c2dc7a19c59cb99d3e",
+    "accessedAt": "2026-09-29T20:39:35.381Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/kommentar-abos-verwalten/",
+      "/schreibwettbewerbe/",
+      "/?show=slide",
+      "/amazon/",
+      "/wp-content/uploads/selge_edgar*.jpg"
+    ]
+  },
+  "endpoint": {
+    "id": "literaturcafe",
+    "name": "literaturcafe.de",
+    "url": "https://www.literaturcafe.de/feed/podcast/",
+    "format": "rss",
+    "language": "de",
+    "region": "global",
+    "sourceFamilyId": "literaturcafe",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.literaturcafe.de"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.literaturcafe.de/bachmannpreis-podcast-2026-3-buchtipps-vor-dem-doppeljubilaeum-kavouras-piekar-und-sebauer/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:37.971Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 30,
+  "literaryCandidateCount": 30,
+  "sample": {
+    "sourceId": "literaturcafe",
+    "source": {
+      "name": "literaturcafe.de",
+      "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-3-buchtipps-vor-dem-doppeljubilaeum-kavouras-piekar-und-sebauer/",
+      "language": "de"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Bachmannpreis-Podcast 2026: 3 Buchtipps vor dem Doppeljubiläum: Kavouras, Piekar und Sebauer",
+    "publishedAt": "2026-06-22T14:49:30.000Z",
+    "description": "Darunter ein Roman, der erst begeistert und dann ratlos zurücklässt. Als Besonderheit gibt es die Folge auch als Video bei YouTube. Ab 24. Juni 2026: Bachmannpreis-Podcast direkt aus Klagenfurt – Live vor Publikum Der Bachmannpreis-Podcast 2026 meldet sich an den kommenden Tagen wieder täglich direkt vom Wörthersee. Die erste Folge aus Klagenfurt erscheint voraussichtlich am 24. Juni 2026. Aufgen…",
+    "discoveredAt": "2026-09-29T20:39:37.704Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-3-buchtipps-vor-dem-doppeljubilaeum-kavouras-piekar-und-sebauer/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 472102,
+      "sha256": "64e47da7a51d2ca3f7ba15a9dbacf11c05e83b38609ac9fe5a36048a90ca058b",
+      "accessedAt": "2026-09-29T20:39:37.933Z",
+      "headline": "Bachmannpreis-Podcast 2026: 3 Buchtipps vor dem Doppeljubiläum: Kavouras, Piekar und Sebauer",
+      "excerpt": "StartseiteBachmannpreis 2026Bachmannpreis-Podcast 2026: 3 Buchtipps vor dem Doppeljubiläum: Kavouras, Piekar und Sebauer Bachmannpreis 2026Podcast des literaturcafe.de Bachmannpreis-Podcast 2026: 3 Buchtipps vor dem Doppeljubiläum: Kavouras, Piekar und Sebauer 22.06.2026 2 Min. 0 3 Buchtipps vor dem Bachmann-Preis 2026. Screenshot aus dem Video-Podcast. Das Gurkerlmützerl wurde von der KI aufgeset",
+      "publishedDates": [
+        {
+          "value": "2026-06-22T14:49:30+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-06-22T14:49:30+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-3-buchtipps-vor-dem-doppeljubilaeum-kavouras-piekar-und-sebauer/",
+      "language": "de",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:37.971Z",
+  "foundItems": [
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-3-buchtipps-vor-dem-doppeljubilaeum-kavouras-piekar-und-sebauer/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2026: 3 Buchtipps vor dem Doppeljubiläum: Kavouras, Piekar und Sebauer",
+      "publishedAt": "2026-06-22T14:49:30.000Z",
+      "description": "Darunter ein Roman, der erst begeistert und dann ratlos zurücklässt. Als Besonderheit gibt es die Folge auch als Video bei YouTube. Ab 24. Juni 2026: Bachmannpreis-Podcast direkt aus Klagenfurt – Live vor Publikum Der Bachmannpreis-Podcast 2026 meldet sich an den kommenden Tagen wieder täglich direkt vom Wörthersee. Die erste Folge aus Klagenfurt erscheint voraussichtlich am 24. Juni 2026. Aufgen…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/zwei-klagenfurter-reden-zur-literatur-die-bachmannpreis-eroeffnung-2025-im-podcast/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zwei Klagenfurter Reden zur Literatur - Die Bachmannpreis-Eröffnung 2025 im Podcast",
+      "publishedAt": "2025-06-25T23:23:22.000Z",
+      "description": "Nava Ebrahimi hielt die offizielle Klagenfurter Rede zur Literatur – doch die bessere Rede hielt an diesem Abend jemand anders. Am Mittwochabend, 25. Juni 2025, wurde der Bachmannpreis eröffnet oder vielmehr die 49. Tage der deutschsprachigen Literatur, wie der Literaturwettbewerb offiziell heißt. Traditionell ein Abend mit viel Reden von Honoratioren und Sponsoren, bevor das Buffet eröffnet wird…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-das-fazit-lena-schaette-gewinnt-das-jubilaeumsjahr-doppelt/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2026: Das Fazit – Lena Schätte gewinnt das Jubiläumsjahr doppelt",
+      "publishedAt": "2026-06-28T15:38:20.000Z",
+      "description": "Sie sprechen u. a. mit der zur beliebtesten Jurorin gewählten Brigitte Schwens-Harrant und ziehen ein Fazit der 50. Tage der deutschsprachigen Literatur in Klagenfurt. Es ist die letzte Folge des Bachmannpreis-Podcasts 2026 – danach wird dieser Podcast wieder zum Podcast des literaturcafe.de. Wolfgang Tischer und Bozena Badura sitzen bei sommerheißen 36 Grad im Garten des ORF, dem Ingeborg-Bachma…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-der-3-lesetag-mit-knut-cordsen/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2026: der 3. Lesetag mit Knut Cordsen",
+      "publishedAt": "2026-06-27T21:14:28.000Z",
+      "description": "Außerdem ist Favoritin Lena Schätte zu hören und Klaus Kastberger blickt zurück auf 13 Jahre in der Jury. Ein letztes Mal live vor Publikum am Lendhafen: Bozena Badura und Wolfgang Tischer besprechen mit ihrem Gast, dem Literaturkritiker Knut Cordsen, den dritten Lesetag der 50. Tage der deutschsprachigen Literatur. Am Samstag standen noch vier Texte auf dem Programm. Knut Cordsen ist Literaturkr…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-blick-auf-den-2-lesetag-mit-daniela-strigl/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2026: Blick auf den 2. Lesetag mit Daniela Strigl",
+      "publishedAt": "2026-06-26T20:19:18.000Z",
+      "description": "Wieder live vor Publikum am Lendhafen: Bozena Badura und Wolfgang Tischer besprechen mit der Literaturwissenschaftlerin und Literaturkritikerin Daniela Strigl, den zweiten Lesetag der 50. Tage der deutschsprachigen Literatur. Fünf weitere Texte wurden gelesen und von der Jury diskutiert. Am Samstag werden dann die letzten vier folgen. Daniela Strigl lehrt an der Universität Wien und war von 2003 …",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-verweigerung-am-ersten-lesetag-und-ein-gespraech-mit-helga-schubert/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2026: Verweigerung am ersten Lesetag und ein Gespräch mit Helga Schubert",
+      "publishedAt": "2026-06-25T21:37:37.000Z",
+      "description": "Live vor Publikum am Lendhafen: Bozena Badura und Wolfgang Tischer besprechen mit ihrem Gast, der Literaturagentin Astrid Poppenhusen, den ersten Lesetag der 50. Tage der deutschsprachigen Literatur. Fünf Texte wurden gelesen, fünf Texte wurden von der Jury diskutiert – und ein kleiner Eklat sorgte für Gesprächsstoff. Vor der Besprechung des ersten Lesetages gibt Astrid Poppenhusen Einblicke in d…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2026-komprimierung-des-eroeffnungsabends/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2026: Komprimierung des Eröffnungsabends",
+      "publishedAt": "2026-06-24T22:19:19.000Z",
+      "description": "Bachmannpreis-Podcast 2026: Komprimierung des Eröffnungsabends",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/stuttgarter-bucherrunde-2025/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Stuttgarter Bücherrunde 2025 als Podcast: Am Schluss erfrischend uneinig",
+      "publishedAt": "2025-11-22T20:06:55.000Z",
+      "description": "Mareike Winter von der Buchhandlung Taube in Waiblingen, Kristoffer Mauch von der Buchhandlung Back in Weinsberg, Fleur Hummel von der Stadtbibliothek Reutlingen und Michael Steffel von der Stadtbibliothek Aalen tauschten sich über die von ihnen ausgesuchten Bücher aus. Wolfgang Tischer vom literaturcafe.de moderierte den Abend und zog sich diesmal bewusst aus der Diskussion zurück, um - wie in d…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2025-blick-auf-preisverleihung-und-gewinner/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2025: Blick auf Preisverleihung und Gewinner",
+      "publishedAt": "2025-06-29T13:50:11.000Z",
+      "description": "Die Preisträger:innen 2025 Bachmannpreis: Natascha Gangl (AT) - »DA STA« Deutschlandfunkpreis: Boris Schumatsky (DE) - »Kindheitsbenzin« Kelag-Preis: Nora Osagiobare (CH) - »Daughter Issues« 3sat-Preis: Almut Tina Schmidt (DE) - »FAST EINE GESCHICHTE« BKS-Publikumspreis: Natascha Gangl (AT) - »DA STA« Carinthischer Sommer: Tara Meister (AT) - »Wagashu oder« Alle Details zu den Gewinnern finden Si…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2025-kritischer-blick-am-dritten-lesetag/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2025: Kritischer Blick am dritten Lesetag",
+      "publishedAt": "2025-06-28T23:02:51.000Z",
+      "description": "Außerdem gibt es die Prognose auf die Gewinnertexte und einen kritischen Blick auf die Jury. Alle 14 Texte bei den 49. Tagen der deutschsprachigen Literatur sind gelesen. Am letzten und dritten Lesetag gab es nochmals vier Texte zu hören. Abends um 18:30 Uhr fanden sich am Lendhafen dann wieder zahlreiche Menschen ein, um zu hören, wie Bozena Badura, Wolfgang Tischer mit ihrem Gast Céline Burget …",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2025-bachmann-haus-und-hausaufgaben-am-zweiten-lesetag/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2025: Bachmann-Haus und Hausaufgaben am zweiten Lesetag",
+      "publishedAt": "2025-06-27T22:51:59.000Z",
+      "description": "Warum kennt die Jury Horvath und Kafka, aber nicht Jule Lobo und Sophie Passmann? Außerdem: Ein Gespräch mit Heinz Bachmann (86) und Isolde Moser (97) über ihre Schwester Ingeborg. Bachmann-Haus-Kuratorin Katharina Herzmansky (Foto: Tischer) Nach zwei Jahren Umbau und Renovierung wurde heute, am 27. Juni 2025 das Elternhaus der Schriftstellerin als Ingeborg-Bachmann-Haus mit einem Straßenfest erö…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/bachmannpreis-podcast-2025-mangelhafte-textverteidigung-am-ersten-lesetag/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bachmannpreis-Podcast 2025: Mangelhafte Textverteidigung am ersten Lesetag",
+      "publishedAt": "2025-06-26T22:44:09.000Z",
+      "description": "Agierte die Jury zu fehlerfixiert? Die ersten fünf Texte wurden gelesen, die ersten fünf Texte wurden von der Jury diskutiert. Abends um 18:30 Uhr fanden sich am Lendhafen zahlreiche Menschen ein, um zu hören, wie Bozena Badura, Wolfgang Tischer und der erste Gast Thomas Zirnbauer den ersten Lesetag und die Leistung der Jury bewerten. Thomas Zirnbauer, zuständig für die Pressearbeit im Bereich Li…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/vorschau-folge-2025-bachmannpreis-podcast-mit-bachmann-haus/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vorschau-Folge 2025: Bachmannpreis-Podcast mit Bachmann-Haus",
+      "publishedAt": "2025-06-22T04:01:50.000Z",
+      "description": "Ende Juni verwandelt sich der Podcast des literaturcafe.de wieder in den täglichen Bachmannpreis-Podcast.",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/christine-westermann-ueber-das-lesen-das-buecherempfehlen-und-das-literarische-quartett/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Christine Westermann über das Lesen, das Bücherempfehlen und das Literarische Quartett",
+      "publishedAt": "2026-06-03T05:51:54.000Z",
+      "description": "Und würde sie jetzt, wo es im Literarischen Quartett einen runden Tisch gibt, noch einmal dorthin zurückkehren wollen? Lesen in der ehemaligen Waffenfabrik Oberndorf, eine kleine Stadt im Neckartal nahe Rottweil und überregional eher dadurch bekannt, dass hier Rüstungsunternehmen wie Heckler & Koch und Mauser (jetzt Rheinmetall) ihren Sitz haben. Mauser fertigte die Waffen früher im sogenannten S…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/diskussion-verlage-und-kuenstliche-intelligenz/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Diskussion: Schreibt das Buch bald die KI? - Wie Verlage mit künstlicher Intelligenz umgehen",
+      "publishedAt": "2025-11-29T10:06:22.000Z",
+      "description": "Die Diskussion zeigte, dass auch Verlage längst KI einsetzten. Dabei geht es jedoch nicht um die Inhalte der Bücher. Vielmehr wird KI dort eingesetzt, wo repetitive und wenig fordernde Arbeiten zu erledigen sind, wie beispielsweise bei der Erfassung von Metadaten und bei internen Prozessen. Wie läuft in den Verlagen der Prozess der Implementierung? Und wo liegen die Grenzen für den KI-Einsatz? Di…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/lilly-lucas-gespraech-mit-der-bestsellerautorin-und-booktok-autorin-des-jahres/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lilly Lucas - Gespräch mit der Bestsellerautorin und BookTok Autorin des Jahres",
+      "publishedAt": "2025-10-22T07:17:19.000Z",
+      "description": "Zwei Tage später erhielt die Autorin bei der Community-Abstimmung den TikTok Book Award als »BookTok Autorin des Jahres 2025« – herzlichen Glückwunsch! Hören Sie das ganze Gespräch mit Lilly Lucas im Podcast und erfahren Sie mehr über ihre Erfolgsgeschichte. Lilly Lucas über das Schreiben, Hawaii und ihre Bücher Wolfgang Tischer vom literaturcafe.de traf Lilly Lucas am Messe-Donnerstag auf der Fr…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/ki-experte-christoph-heilig-warum-ki-modelle-unsinn-mit-literatur-verwechseln/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "KI-Experte Christoph Heilig: Warum Künstliche Intelligenz Unsinn mit Literatur verwechselt",
+      "publishedAt": "2025-08-31T07:29:35.000Z",
+      "description": "OpenAI versprach mit ChatGPT-5 den »bisher fähigsten Schreibpartner«. Doch der Münchner KI-Forscher Christoph Heilig zeigt: Das Modell produziert literarischen Nonsens – und lobt sich dafür auch noch selbst.",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/der-salzpfad-skandal-im-podcast-wenn-wahrheit-und-buch-aufeinanderprallen/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Der Salzpfad-Skandal im Podcast: Wenn Wahrheit und Buch aufeinanderprallen",
+      "publishedAt": "2025-07-25T12:23:04.000Z",
+      "description": "Vorwürfe pünktlich zum Filmstart »Der Salzpfad« von Raynor Winn ist ein millionenfach verkaufter Bestseller und längst zum Phänomen geworden. Die Geschichte des Ehepaars, das nach dem Verlust ihres Hauses und einer schweren Krankheitsdiagnose den 1014 Kilometer langen Southwest Coast Path wandert, bewegte Leser weltweit. Mit Gillian Anderson und Jason Isaacs kommt die Verfilmung nun in die Kinos.…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/podcast-markus-orths-ueber-die-enthusiasten-und-warum-er-die-ki-meidet/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Podcast: Markus Orths über »Die Enthusiasten« und warum er die KI meidet",
+      "publishedAt": "2026-08-10T12:55:27.000Z",
+      "description": "Markus Orths: Der Bachmannpreis vor 18 Jahren Eine Verbindung zum Bachmannpreis gibt es in dieser regulären literaturcafe.de-Podcast-Folge dann doch noch: Markus Orths hat in Klagenfurt im Jahre 2008 gelesen. Er präsentierte der Jury einen Auszug aus seinem später erschienenen Roman »Das Zimmermädchen« und belegte den zweiten Platz, seinerzeit der »Telekom-Austria-Preis«. Eingeladen hatte ihn dam…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/parshad-esmaeili-papa-weg-mama-muede-ich-laut/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Parshad Esmaeili über »Papa weg. Mama müde. Ich laut. – Monolog einer Alleinerzogenen«",
+      "publishedAt": "2026-05-05T04:49:04.000Z",
+      "description": "Ein Gespräch über Familie, Frankfurt, das wahre Leben und das Leben als »Internetpersönlichkeit«. Wer Parshad Esmaeili nicht kennt und ihren Namen googelt, dem weißt sie die Suchmaschine als »Internetpersönlichkeit« aus. Früher wahrscheinlich ein Synonym für »meine Eltern verstehen nicht, wie ich in diesem Internet mein Geld verdiene«. Dabei ist Parshad Esmaeili einiges mehr: Stand-up-Comedienne,…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/schreiben-ueber-trauer-barbara-pachl-eberhart-ueber-vier-minus-drei/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Schreiben über Trauer: Barbara Pachl-Eberhart über »Vier minus drei«",
+      "publishedAt": "2026-04-17T14:47:09.000Z",
+      "description": "2008 verlor Barbara Pachl-Eberhart bei einem Verkehrsunfall an einem unbeschrankten Bahnübergang ihren Mann und ihre beiden Kinder. 2010 erschien ihr Buch »Vier minus drei«, in dem sie schilderte, wie sie dieses schreckliche Unglück verarbeitete und wieder zurück ins Leben fand. Sie habe, so sagt sie im Gespräch mit Wolfgang Tischer vom literaturcafe.de, damals das Buch geschrieben, das sie verge…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/ich-erzaehle-von-meinen-beinen-ein-gespraech-mit-cornelia-travnicek/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "»Ich erzähle von meinen Beinen« - Ein Gespräch mit Cornelia Travnicek",
+      "publishedAt": "2026-04-13T08:29:28.000Z",
+      "description": "Walburga, genannt Walli, ist Mitte 40, Mutter, berufstätig – und denkt an alles. Irgendwann sogar daran, wie man geht. Das Buch kreist um Mental Load, Neurodivergenz und eine ADHS-Diagnose, die Wallis Tochter bekommt und die die Mutter mehr beschäftigt, als ihr lieb ist. Warum ADHS bei Frauen oft unentdeckt bleibt, was die ungewöhnliche Typografie des Romans leistet, wie Cornelia Travnicek ein Bu…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/sebastian-fitzek-annika-strauss-ueber-den-horror-thriller-rem/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Schreiben mit Sebastian Fitzek: Annika Strauss über den Horror-Thriller REM",
+      "publishedAt": "2026-03-31T04:42:16.000Z",
+      "description": "Wolfgang Tischer hat sich im Podcast des literaturcafe.de ausführlich mit Annika Strauss über »REM« unterhalten. Sebastian Fitzek feiert in diesem Jahr sein 20-jähriges Autoren-Jubiläum. Doch bei seinem aktuellen Horror-Thriller »REM« steht sein Name nur an zweiter Stelle. Geschrieben hat er den Roman gemeinsam mit Annika Strauss. Und sofort nach Erscheinen landete der Horror-Thriller auf Platz 1…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/norbert-gstrein-ueber-seinen-roman-im-ersten-licht/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Norbert Gstrein über seinen Roman »Im ersten Licht«",
+      "publishedAt": "2026-03-25T13:29:36.000Z",
+      "description": "Wolfgang Tischer hat sich für den Podcast des literaturcafe.de mit Norbert Gstrein über die Entstehung des Werkes und die ambivalente Hauptfigur Adrian Reiter unterhalten. »Im ersten Licht«, erschienen im Hanser Verlag, gehörte zu den fünf nominierten Romanen für den Preis der Leipziger Buchmesse 2026 und das Gespräch entstand kurz vor der Preisverleihung. Im Interview auf der Messe erzählt Norbe…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/podcast-hannah-haeffner-ueber-ihren-roman-die-riesinnen/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Podcast: Hannah Häffner über ihren Roman »Die Riesinnen«",
+      "publishedAt": "2026-03-09T05:43:21.000Z",
+      "description": "Für den Podcast des literaturcafe.de sprach Wolfgang Tischer mit Hannah Häffner über die Entstehung des Romans. Obwohl gelegentlich zu lesen, ist »Die Riesinnen« kein Debüt-Roman. Begonnen hat Hannah Häffner mit Krimis, die an der Nord- und Ostsee spielten. Doch irgendwann, so Hannah Häffner im Podcast-Gespräch, habe sie gemerkt, dass sie viele Geschichten im Kopf habe, die im Krimi-Genre einfach…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/podcast-michael-koehlmeier-ueber-das-schreiben-und-die-verdorbenen/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Podcast: Michael Köhlmeier über das Schreiben und »Die Verdorbenen«",
+      "publishedAt": "2025-09-15T04:44:59.000Z",
+      "description": "Ein Gespräch am märchenhaften Ort Im September 2025 traf Wolfgang Tischer den österreichischen Autor Michael Köhlmeier im Schwarzwald anlässlich der 10. Literaturtage Nordschwarzwald. Diese hochkarätige Veranstaltung findet alle zwei Jahre in Baiersbronn, Dornstetten und Freudenstadt statt und lockt mit einem besonderen Ambiente - Lesungen in Hütten am Waldrand und Museen. Kuratiert von Walle Sei…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/jens-wawrczeck-ueber-psycho-und-die-kunst-des-sprechens/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jens Wawrczeck über »Psycho« und die Kunst des Sprechens",
+      "publishedAt": "2025-05-07T04:17:12.000Z",
+      "description": "Jens Wawrczeck (Peter Shaw aus »Die drei ???«) hat »Psycho« eingelesen. Es ist der Roman, der von Alfred Hitchcock kongenial verfilmt wurde. Man denke nur an die legendäre Dusch-Szene. Im Podcast des literaturcafe.de spricht Jens Wawrczeck übers Sprechen, sein Projekt »Verfilmt von Alfred Hitchcock«, und er gibt Tipps, wie Autorinnen und Autoren ihre Texte besser vorlesen. Jens Wawrczeck ist eine…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/self-publishing-im-wandel-ein-gespraech-mit-thorsten-simon-von-bod/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Self-Publishing im Wandel: Ein Gespräch mit Thorsten Simon von BoD",
+      "publishedAt": "2025-04-28T05:41:43.000Z",
+      "description": "Die Anfänge von BoD Das Podcast-Gespräch wurde auf der Leipziger Buchmesse 2025 aufgezeichnet und bietet einen Einblick in die Welt des Self-Publishing und die Rolle von BoD. Die Idee zu BoD (Books on Demand) entstand bereits in den 1990er-Jahren im Hause des Buchgroßhändlers Libri, inspiriert von der neuen Digitaldrucktechnologie, dem sogenannten Print-on-Demand (PoD). Wie Simon erläutert, war d…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/ursula-poznanski-ueber-ihre-thriller-die-burg-und-teufels-tanz/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ursula Poznanski über ihre Thriller »Die Burg« und »Teufels Tanz«",
+      "publishedAt": "2025-04-17T08:26:41.000Z",
+      "description": "Ursula Poznanski zeigte sich als begeisterte Besucherin der Leipziger Buchmesse. Sie genieße die Atmosphäre, und schätzt den Austausch mit Kollegen und Lesern. Als Leserin sei sie an vielem interessiert und sie lese quer durch verschiedene Genres. Sie lese natürlich auch mit der Perspektive der Autorin, die das »Handwerkszeug« anderer Autoren analysiere. Escape Room: Entkomme der KI Zunächst ging…",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturcafe",
+      "source": {
+        "name": "literaturcafe.de",
+        "url": "https://www.literaturcafe.de/happy-end-und-herstellung-anna-savas-ueber-ihren-roman-beneath-broken-skies/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Happy End und Herstellung: Anna Savas über ihren Roman »Beneath Broken Skies«",
+      "publishedAt": "2025-04-11T14:42:53.000Z",
+      "description": "Happy End und Herstellung: Anna Savas über ihren Roman »Beneath Broken Skies«",
+      "discoveredAt": "2026-09-29T20:39:37.704Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a1385108e05678ed7aeaccaeae0f96210c4f880abc16ae1fa3e6265030f44a9f"
+}

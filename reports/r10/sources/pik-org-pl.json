@@ -8,47 +8,87 @@
   "coverageCountryCodes": [
     "PL"
   ],
-  "attemptedAt": "2026-09-26T17:28:51.816Z",
+  "attemptedAt": "2026-09-29T20:33:31.226Z",
   "requests": [
     {
       "url": "https://pik.org.pl/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 179428,
-      "sha256": "e86521d5ec6783e8b904c554ea19bab46e673d02789353ddac0d8ad8aeb4cfca",
-      "accessedAt": "2026-09-26T17:28:55.428Z"
+      "bytes": 179418,
+      "sha256": "b71685ab5c1be78b790d4a7bad72ad4a3e977a9d393f213148420eb00479fbe9",
+      "accessedAt": "2026-09-29T20:33:33.923Z"
     },
     {
       "url": "https://pik.org.pl/feed/",
       "status": 200,
       "contentType": "application/rss+xml; charset=UTF-8",
-      "bytes": 54980,
-      "sha256": "4141b266dc143e5a54d167aee37c78799d596643029e5949bbf54b11670d7375",
-      "accessedAt": "2026-09-26T17:28:56.463Z"
+      "bytes": 52923,
+      "sha256": "7c3a4ce7eea065d82b91bd9e2d95f420b47b2e36da7cb1c078e6531cfbd44438",
+      "accessedAt": "2026-09-29T20:33:34.858Z"
     },
     {
       "url": "https://pik.org.pl/2026/09/10/stoisko-malych-wydawcow-29-mtk/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 152978,
-      "sha256": "5ab2bf89b140e9e6d569861b22560d8439f4be6e51b67dbf832cd3821b5941e5",
-      "accessedAt": "2026-09-26T17:28:57.506Z"
+      "bytes": 152982,
+      "sha256": "a2e0db97a77e96000a24aef4f039d053436beccb996d0ad56a07e443536b8779",
+      "accessedAt": "2026-09-29T20:33:35.674Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/09/29/mkidn-o-umowach-licencyjnych-niewylacznych-jako-mozliwej-formie-nabywania-praw-do-utworow-artystycznych/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 153802,
+      "sha256": "7200e20fbc8d0957783715530289af40604d6e4c8a0645391a041a992266a79d",
+      "accessedAt": "2026-09-29T20:33:36.621Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/09/29/poznanska-noc-ksiegarn-juz-9-pazdziernika/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 154853,
+      "sha256": "a00651a8c34224c2926c424270e383245a6d450b2af98b6d6544151ab3ae7f1c",
+      "accessedAt": "2026-09-29T20:33:37.471Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/09/28/nocksiegarni/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 154321,
+      "sha256": "366419abf8954d758e09a67a548a7816d81af1b9859fed4436a6eaf9f4b30942",
+      "accessedAt": "2026-09-29T20:33:38.262Z"
     },
     {
       "url": "https://pik.org.pl/2026/09/22/rola-i-znaczenie-wydawcow-nagranie-debaty/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 152524,
-      "sha256": "2a94b9d588068984e6792560a66611a5778deb042f0ff50cce886a17c3799e1f",
-      "accessedAt": "2026-09-26T17:28:58.975Z"
+      "bytes": 152528,
+      "sha256": "dc3f826dd6d6067115ce3dca19e4b640ecd2d1027b5e684bb79468e7366f1c9c",
+      "accessedAt": "2026-09-29T20:33:39.049Z"
     },
     {
       "url": "https://pik.org.pl/2026/09/21/ustawa-o-ochronie-rynku-ksiazki-formalnie-w-procedurze-legislaycjnej/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 154186,
-      "sha256": "834cba2af6d463b6ab4957dc7a607c559e478f30ea06587c36bda0cb0cba91b8",
-      "accessedAt": "2026-09-26T17:29:00.011Z"
+      "bytes": 154190,
+      "sha256": "d8aa58c3b33b37219cdb37eeb716cdc5d4d37142a2c4c60d226d751e059479a2",
+      "accessedAt": "2026-09-29T20:33:39.939Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/09/16/webinarium-fep-intergraf-na-temat-ppwr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 152066,
+      "sha256": "752bef06391d69eed43dfa825d8cc4c03794f42103307874e2468675ddf77f6b",
+      "accessedAt": "2026-09-29T20:33:40.683Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/09/15/baza-wiedzy-pik-nota-fep/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 153445,
+      "sha256": "86b535e3072e3b0cb3f4308e2069f474b495927a02572a0bfae41b346ea09072",
+      "accessedAt": "2026-09-29T20:33:41.474Z"
     }
   ],
   "status": "blocked",
@@ -59,7 +99,7 @@
     "contentType": "text/plain; charset=utf-8",
     "bytes": 111,
     "sha256": "5a60c86da41f505bd09303d9155a94aa58953ee1de9ad40b29f8c92d4b171161",
-    "accessedAt": "2026-09-26T17:28:54.079Z",
+    "accessedAt": "2026-09-29T20:33:32.553Z",
     "disallowed": [
       "/wp-admin/"
     ]

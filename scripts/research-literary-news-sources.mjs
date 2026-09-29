@@ -13,7 +13,7 @@ export function safeAddress(ip) {
   }
   return isIP(ip) === 6 && !/^(?:\:\:|fc|fd|fe[89ab]|ff)/i.test(ip);
 }
-export async function boundedFetch(input, { timeout = 12000, maxBytes = 2 * 1024 * 1024, allowedHosts } = {}) {
+export async function boundedFetch(input, { timeout = 12000, maxBytes = 2 * 1024 * 1024, allowedHosts, encoding: pinnedEncoding, includeBytes = false } = {}) {
   let url = new URL(input);
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeout);
@@ -42,11 +42,13 @@ export async function boundedFetch(input, { timeout = 12000, maxBytes = 2 * 1024
         parts.push(Buffer.from(chunk));
       }
       const bytes = Buffer.concat(parts);
-      const encoding = /charset\s*=\s*["']?([^;\s"']+)/i.exec(contentType)?.[1] || 'utf-8';
+      if (pinnedEncoding && !['utf-8', 'windows-1252'].includes(pinnedEncoding)) throw new Error('unsupported_encoding');
+      const encoding = pinnedEncoding || /charset\s*=\s*["']?([^;\s"']+)/i.exec(contentType)?.[1] || 'utf-8';
       let text;
       try { text = new TextDecoder(encoding).decode(bytes); } catch { text = bytes.toString('utf8'); }
       if (/just a moment\.\.\.|checking your browser|verify you are human|captcha-container/i.test(text.slice(0, 120000))) throw new Error('challenge_document');
-      return { url: url.href, status: response.status, contentType, bytes: size, sha256: sha(bytes), text, accessedAt: new Date().toISOString() };
+      return { url: url.href, status: response.status, contentType, bytes: size, sha256: sha(bytes), text,
+        ...(includeBytes ? { rawBytes: bytes } : {}), accessedAt: new Date().toISOString() };
     }
     throw new Error('too_many_redirects');
   } finally { clearTimeout(timer); }

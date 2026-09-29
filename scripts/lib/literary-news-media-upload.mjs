@@ -4,16 +4,9 @@ import { isIP } from "node:net";
 import { isPublicNewsAddress } from "./literary-news-safe-fetch.mjs";
 import { NEWS_MEDIA_LIMITS } from "./literary-news-media.mjs";
 
-/** Provider upload hosts are independent from editorial source/download hosts.
- * Unknown VK host profiles fail closed; redirects never inherit this permission.
- */
-export function checkedVkNewsUploadUrl(input) {
-  let url; try { url = new URL(input); } catch { throw new Error("vk_upload_host_unapproved"); }
-  if (url.protocol !== "https:" || url.username || url.password || url.hash || (url.port && url.port !== "443")
-    || !/^pu\d*\.(?:vk\.com|vkuserphoto\.ru|userapi\.com)$/.test(url.hostname)
-    || !/^\/[a-zA-Z0-9_./-]+$/.test(url.pathname)) throw new Error("vk_upload_host_unapproved");
-  return url;
-}
+import { checkedVkNewsUploadUrl } from "./literary-news-media-upload-policy.mjs";
+export { checkedVkNewsUploadUrl } from "./literary-news-media-upload-policy.mjs";
+
 export function createPinnedVkNewsUpload({ lookupImpl = lookup, requestImpl = request } = {}) {
   return async (input, form, { signal: externalSignal } = {}) => {
     const url = checkedVkNewsUploadUrl(input);

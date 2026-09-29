@@ -8,39 +8,87 @@
   "coverageCountryCodes": [
     "IT"
   ],
-  "attemptedAt": "2026-09-26T17:27:57.117Z",
+  "attemptedAt": "2026-09-29T20:32:40.362Z",
   "requests": [
     {
       "url": "https://www.aie.it/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 158622,
-      "sha256": "1fce6a06825e25fa9356b0ebafe3f7684a843d35d4bb96437d3a4ed1b8f6e5f4",
-      "accessedAt": "2026-09-26T17:21:34.223Z"
+      "bytes": 156592,
+      "sha256": "c5192bc957ee217aafe4765a555b324484325ef1ec6b09e63cb66b18a775e622",
+      "accessedAt": "2026-09-29T20:32:42.074Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/News.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 155136,
+      "sha256": "dab587b9ee58e17ee74e36340dc78c5fb49d94dcda7349ed635990215cdc7fc1",
+      "accessedAt": "2026-09-29T20:32:42.794Z"
     },
     {
       "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/LibroinParlamento.aspx",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 93104,
-      "sha256": "0446caefb4c9f3b950b15a546bf0cae67b40d69919f9dbfb5fca6366a9fa5aa8",
-      "accessedAt": "2026-09-26T17:27:58.027Z"
+      "sha256": "25412d69d3c3da24235433dd3b174f4474407640b4c95bbd08b6340b1d16d618",
+      "accessedAt": "2026-09-29T20:32:43.097Z"
     },
     {
       "url": "https://www.aie.it/Cosafacciamo/Fieredellibro.aspx",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 242405,
-      "sha256": "99e8f5e7e7e1f28deef94bd2f38efdd7555befbacb3be95f45c8064072fc64b8",
-      "accessedAt": "2026-09-26T17:27:58.609Z"
+      "sha256": "b40ed4d55ef8a86e464b10b72c552c356169971d1969ecc942e3c2383df37a87",
+      "accessedAt": "2026-09-29T20:32:43.531Z"
     },
     {
       "url": "https://www.aie.it/Cosafacciamo/Studiericerche/Videopresentazionideidati.aspx",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 148015,
-      "sha256": "4fb57dc689108e64e0408c00f0cc630a58e88fa3656924b5b9fb0febcde420b1",
-      "accessedAt": "2026-09-26T17:27:59.085Z"
+      "sha256": "4d1f5fc58c1ef16b45574c7a9f96463cae3d06f84062d36a56430bb892215a0b",
+      "accessedAt": "2026-09-29T20:32:43.946Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/Rassegnastampa.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91941,
+      "sha256": "92248513f5985125a3966d3c693ac776559cb45717a66264f21740f17ca30774",
+      "accessedAt": "2026-09-29T20:32:44.149Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/EmergenzaCovid-19.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 152017,
+      "sha256": "9c87a54abd144f12a324fc28aac3458324203de26fb4eb09725adb6643f5edf3",
+      "accessedAt": "2026-09-29T20:32:44.500Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/GiornaledellaLibreria.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91615,
+      "sha256": "fe937e682945958ef8c7ccad714f5710bea7dd8f9437b594c1f5a6cf7ba4683b",
+      "accessedAt": "2026-09-29T20:32:45.054Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/AIEeuniversit%C3%A0.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 137744,
+      "sha256": "cf16a27ea77a2190b0008966695e290373dd80493244e3a3b0da68204b065ffc",
+      "accessedAt": "2026-09-29T20:32:45.464Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEperleaziende.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 87052,
+      "sha256": "c7a0f059e477130a23645dd406848cca1a687a138649a5341cd2c4f18a310a5e",
+      "accessedAt": "2026-09-29T20:32:45.638Z"
     }
   ],
   "status": "blocked",
@@ -49,9 +97,5 @@
     "url": "https://www.aie.it/robots.txt",
     "error": "http_406",
     "disallowed": []
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:21:32.598Z",
-    "sourceDocumentSha256": "1fce6a06825e25fa9356b0ebafe3f7684a843d35d4bb96437d3a4ed1b8f6e5f4"
   }
 }

@@ -1,0 +1,21 @@
+{
+  "batchId": "current-news-photo-supply-20260929",
+  "checkedAt": "2026-09-29T20:49:48.366Z",
+  "action": "additive_merge",
+  "written": true,
+  "beforeCount": 254,
+  "afterCount": 258,
+  "beforeSha256": "356d08571abae40d1b197833a5e6d9ef0013df4d466db6a334116ab0d130585f",
+  "afterRecordSha256": "7a80f1478ea2c24b508a5e5a343f5b62d7ec35c44aef29dbe300812b6f47e9c5",
+  "addedOrRemoved": [
+    "tolstoy-ivan-ilyich-brazil-amazon-report-20260929",
+    "rumpus-min-jin-lee-october-book-club-20260929",
+    "arrigo-boito-ballatella-bilingual-publication-20260929",
+    "sukhovo-kobylin-basinsky-literary-essay-20260928"
+  ],
+  "unchanged": [],
+  "held": [],
+  "firstPublicationCount": 0,
+  "currentlyPublicNew": 0,
+  "publication": "not_deployed"
+}

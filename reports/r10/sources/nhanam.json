@@ -8,39 +8,79 @@
   "coverageCountryCodes": [
     "VN"
   ],
-  "attemptedAt": "2026-09-26T17:31:43.326Z",
+  "attemptedAt": "2026-09-29T20:34:04.468Z",
   "requests": [
     {
       "url": "https://nhanam.vn/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 315310,
-      "sha256": "6902fb851a89da01e374659eb3e987ba5e759a7921b0da325bacb95b21fd57d3",
-      "accessedAt": "2026-09-26T17:31:46.219Z"
+      "bytes": 316182,
+      "sha256": "a3a915adf9c258629c06b2e197bb619fbf886ae1edec80b2567b91ae5564f516",
+      "accessedAt": "2026-09-29T20:34:06.717Z"
     },
     {
       "url": "https://nhanam.vn/mba-bang-hinh-tron-goi-hai-nam-kien-thuc-quan-tri-kinh-doanh-qua-truc-quan-sinh-dong-tb-2026",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 218605,
-      "sha256": "29f7c6e96cc4e260525cc29d9f53c5ae11c5ae28efcc0e574074f5eb5cd9d7f8",
-      "accessedAt": "2026-09-26T17:31:47.202Z"
+      "bytes": 218705,
+      "sha256": "0dce974c726bfc1224a098af061023d1e7e4d55ab2acaad1c74a94e0d8661f50",
+      "accessedAt": "2026-09-29T20:34:07.744Z"
     },
     {
       "url": "https://nhanam.vn/hoi-sach-nha-nam-chao-thu-2026",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 189980,
-      "sha256": "5b9d9d998c2c84625de6195d4df4f5f66c77c2ccfed9ac69c8e392995bfabb8b",
-      "accessedAt": "2026-09-26T17:31:47.808Z"
+      "bytes": 190106,
+      "sha256": "efbc16c143f000cd98972fdd1697b60e9948aa38b3d2bcc98534fd3428b21245",
+      "accessedAt": "2026-09-29T20:34:08.046Z"
     },
     {
       "url": "https://nhanam.vn/copy-of-dam-bi-ghet-tb-142-000",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 333243,
-      "sha256": "750fbc0e58ee50ac1197e832052a9f0d9a3b96a875d42c13c41ce02f5cf94ce5",
-      "accessedAt": "2026-09-26T17:31:49.055Z"
+      "bytes": 330418,
+      "sha256": "61b2d8cde28c107e04bb7a0479b6da747b4f5a5ceec13ec7df2395ceec95417d",
+      "accessedAt": "2026-09-29T20:34:08.965Z"
+    },
+    {
+      "url": "https://nhanam.vn/sach-moi-xuat-ban",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 242114,
+      "sha256": "606ec0e60ee86722df59b78bc8553e244564126295ff8d53afa222a458c4dcf1",
+      "accessedAt": "2026-09-29T20:34:09.647Z"
+    },
+    {
+      "url": "https://nhanam.vn/sach-sap-xuat-ban",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 165831,
+      "sha256": "05c554bf1d6020baba2e54d3c8825f34d3577146463cce7d1eb043403d3bd768",
+      "accessedAt": "2026-09-29T20:34:10.208Z"
+    },
+    {
+      "url": "https://nhanam.vn/sach-chu-de-dong-duong",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 249718,
+      "sha256": "b90551f86cf447e6ed92a07b8028eb1c3234c0d6a906fcd3c82d5820d8467787",
+      "accessedAt": "2026-09-29T20:34:10.506Z"
+    },
+    {
+      "url": "https://nhanam.vn/nhac-but-len-trong-dem-co-don",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 188722,
+      "sha256": "0b739617c980b2b706185e860305e47019ab426c7f7c7932d74b6ecbea69c73f",
+      "accessedAt": "2026-09-29T20:34:11.558Z"
+    },
+    {
+      "url": "https://nhanam.vn/tiem-giat-la-nua-dem",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 188456,
+      "sha256": "6b651075eeb18fa274d9792eec4fe1e14e555208d29aca41438ad72e50c9b637",
+      "accessedAt": "2026-09-29T20:34:12.401Z"
     }
   ],
   "status": "blocked",
@@ -51,7 +91,7 @@
     "contentType": "text/plain; charset=utf-8",
     "bytes": 1393,
     "sha256": "e9fcdd07673ed56c25cabe81192307161568e4afa83b891211505aff9176095f",
-    "accessedAt": "2026-09-26T17:31:45.329Z",
+    "accessedAt": "2026-09-29T20:34:05.910Z",
     "disallowed": [
       "/admin",
       "/cart",

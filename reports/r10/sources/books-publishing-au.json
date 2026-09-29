@@ -1,0 +1,881 @@
+{
+  "sourceId": "books-publishing-au",
+  "name": "Books+Publishing",
+  "entryUrl": "https://www.booksandpublishing.com.au/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:31.514Z",
+  "requests": [
+    {
+      "url": "https://www.booksandpublishing.com.au/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 105285,
+      "sha256": "6c896d32e729395e53f6d7665d868ecb74e77d2deb9c6606a0b4f5e6bd657404",
+      "accessedAt": "2026-09-29T20:39:35.917Z"
+    },
+    {
+      "url": "https://www.booksandpublishing.com.au/category/news/local-news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 123480,
+      "sha256": "f8dde33faaf900094435c5e343b9756ab93dc99894a07d2d9d1ac1038e4e876e",
+      "accessedAt": "2026-09-29T20:39:37.350Z"
+    },
+    {
+      "url": "https://www.booksandpublishing.com.au/articles/2026/09/28/341315/panz-book-design-awards-2026-winners/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 80351,
+      "sha256": "6a2068253809482b256a114f989d7676e0d6a7b27db2bcb5e850f73e88582f8b",
+      "accessedAt": "2026-09-29T20:39:38.583Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.booksandpublishing.com.au/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 267,
+    "sha256": "6c71676672277dee0e008d5f95c786fb57ae68d7faee1e799e5d0a7d60be7f67",
+    "accessedAt": "2026-09-29T20:39:32.841Z",
+    "disallowed": [
+      "/cgi-bin/",
+      "/feed/",
+      "/trackback/",
+      "/wp-admin/",
+      "/wp-includes/",
+      "/xmlrpc.php",
+      "/wp-login.php",
+      "/wp-sitemap.xml",
+      "/login/",
+      "/newsletter/",
+      "/reviews/"
+    ]
+  },
+  "feedAttemptError": "robots_disallowed",
+  "endpoint": {
+    "id": "books-publishing-au",
+    "name": "Books+Publishing",
+    "url": "https://www.booksandpublishing.com.au/category/news/local-news/",
+    "format": "html",
+    "language": "en-AU",
+    "region": "global",
+    "sourceFamilyId": "books-publishing-au",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.booksandpublishing.com.au"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/newsletter\\/[^/]+\\/?$|^\\/articles\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.booksandpublishing.com.au/articles/2026/09/28/341315/panz-book-design-awards-2026-winners/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:38.588Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 30,
+  "literaryCandidateCount": 30,
+  "sample": {
+    "sourceId": "books-publishing-au",
+    "source": {
+      "name": "Books+Publishing",
+      "url": "https://www.booksandpublishing.com.au/articles/2026/09/28/341315/panz-book-design-awards-2026-winners/",
+      "language": "en-AU"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "PANZ Book Design Awards 2026 winners announced",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:37.388Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.booksandpublishing.com.au/articles/2026/09/28/341315/panz-book-design-awards-2026-winners/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 80351,
+      "sha256": "6a2068253809482b256a114f989d7676e0d6a7b27db2bcb5e850f73e88582f8b",
+      "accessedAt": "2026-09-29T20:39:38.583Z",
+      "headline": "PANZ Book Design Awards 2026 winners announced",
+      "excerpt": "PANZ Book Design Awards 2026 winners announced Monday, 28 September 2026 Books+Publishing @booksandpublishing The winners of the 2026 PANZ Book Design Awards have been announced by the Publishers Association of New Zealand Te Rau o Tākupu (PANZ). Chosen... Please log in or subscribe to access all of Books+Publishing's premium content. Subscribe Purchase a subscription to access Books+Publishing‘s ",
+      "publishedDates": [],
+      "canonical": "https://www.booksandpublishing.com.au/articles/2026/09/28/341315/panz-book-design-awards-2026-winners/",
+      "language": "en-AU",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:38.588Z",
+  "foundItems": [
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/28/341315/panz-book-design-awards-2026-winners/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PANZ Book Design Awards 2026 winners announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/24/341177/australian-fiction-prize-2026-longlist-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Australian Fiction Prize 2026 longlist announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/24/341188/nt-literary-awards-2026-winners-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NT Literary Awards 2026 winners announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/24/341190/clever-men-wins-2026-nt-history-book-award/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Clever Men” wins 2026 NT History Book Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/24/341178/nt-book-awards-2026-winners-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NT Book Awards 2026 winners announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/23/341018/ara-historical-novel-prize-2026-shortlists-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ARA Historical Novel Prize 2026 shortlists announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/22/340874/kyd-poetry-prize-2026-shortlist-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "KYD Poetry Prize 2026 shortlist announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/29/341453/unsw-press-bragg-prize-for-science-writing-2026-shortlist-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UNSW Press Bragg Prize for Science Writing 2026 shortlist announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/29/341439/new-owners-for-university-book-shop-dunedin/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New owners for University Book Shop Dunedin",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/29/341422/australian-component-added-to-himalayan-literature-festival/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Australian component added to Himalayan Literature Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/28/341311/ned-kelly-awards-2026-winners-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ned Kelly Awards 2026 winners announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/28/341318/nakata-brophy-prize-2026-winners-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nakata Brophy Prize 2026 winners announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/23/341061/global-book-crawl-dates-new-passport-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Global Book Crawl dates, new “passport” announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/23/341062/inaugural-melbourne-kids-book-fest-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Inaugural Melbourne Kids Book Fest announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/28/341321/hellen-to-retire-at-au-nobilo-appointed-commissioning-editor/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jenny Hellen to retire at A&U, Rachel Nobilo appointed commissioning editor",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/24/341223/penguin-random-house-acquires-alice-bishop-debut-novel-soft-bite/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Penguin Random House acquires Alice Bishop debut novel “Soft Bite”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/23/341022/walker-books-acquires-debut-middle-grade-fantasy-trilogy-by-natalie-precians/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Walker Books acquires debut middle-grade fantasy trilogy by Natalie Precians",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/22/340966/aotearoa-colation-of-books-calls-for-targeted-support-year-of-reading/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aotearoa Coalition of Books calls for targeted support, Year of Reading",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/22/340962/2026-creative-australia-fellowships-announced/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 Creative Australia Fellowships announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/21/340837/qbd-to-open-new-ryde-store/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "QBD to open new Ryde store",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/21/340839/picador-uk-acquires-evie-wyld-crime-fiction-the-hollow-ground/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Picador UK acquires Evie Wyld crime fiction “The Hollow Ground”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/29/341426/ewf-reports-25-increase-in-attendance/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EWF reports 25% increase in attendance",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/29/341412/pan-macmillan-acquires-dylin-hardcastles-the-ashes/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pan Macmillan acquires Dylin Hardcastle’s “The Ashes”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/29/341407/allen-unwin-acquire-kate-mortons-christabel/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Allen & Unwin acquires Kate Morton’s “Christabel”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/24/341210/simon-schuster-acquires-nicholas-george-chapmans-the-bara-knife-gun-club/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Simon & Schuster acquires Nicholas George Chapman’s “The Bara Knife & Gun Club”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/23/341074/writers-victoria-among-arts-organisations-to-endorse-dont-break-our-arts-campaign/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers Victoria among arts organisations to endorse “Don’t Break Our Arts” campaign",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/22/340984/au-acquires-my-mothers-secret-by-sandra-hogan/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A&U acquires “My Mother’s Secret” by Sandra Hogan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/21/340827/charlotte-guests-the-kookaburra-sold-in-eight-international-territories/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Charlotte Guest’s “The Kookaburra” pre-empted in eight international territories",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/21/340835/stalins-wine-cellar-optioned-for-screen/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Stalin’s Wine Cellar” optioned for screen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-publishing-au",
+      "source": {
+        "name": "Books+Publishing",
+        "url": "https://www.booksandpublishing.com.au/articles/2026/09/21/340859/industry-bodies-criticise-governments-opt-out-ai-proposals/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Industry bodies criticise government’s “opt-out” AI proposals",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:37.388Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f8dde33faaf900094435c5e343b9756ab93dc99894a07d2d9d1ac1038e4e876e"
+}

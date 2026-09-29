@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   reconcile:
-    if: github.ref == 'refs/heads/main' && vars.LITERARY_NEWS_RUNTIME_ENABLED == 'true'
+    if: github.ref == 'refs/heads/main' && vars.LITERARY_NEWS_RUNTIME_ENABLED == 'true' && vars.LITERARY_NEWS_NATIVE_DELIVERY_ENABLED != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -24,6 +24,13 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Restore exact reviewed photo bytes
+        uses: actions/cache@v5
+        with:
+          path: .tmp/news-social-media
+          key: literary-news-jpeg-${{ runner.os }}-${{ hashFiles('data/news/social-media-assets.json', 'scripts/lib/literary-news-media*.mjs', 'package-lock.json') }}-${{ github.run_id }}
+          restore-keys: |
+            literary-news-jpeg-${{ runner.os }}-${{ hashFiles('data/news/social-media-assets.json', 'scripts/lib/literary-news-media*.mjs', 'package-lock.json') }}-
       - name: Record complete public admissions
         run: node scripts/publish-literary-news.mjs --capture
         env:

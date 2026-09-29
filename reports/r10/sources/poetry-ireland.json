@@ -1,0 +1,137 @@
+{
+  "sourceId": "poetry-ireland",
+  "name": "Poetry Ireland",
+  "entryUrl": "https://www.poetryireland.ie/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:42:39.867Z",
+  "requests": [
+    {
+      "url": "https://www.poetryireland.ie/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 52099,
+      "sha256": "fd8a8f298fc0eb5ee7132fa4bb83a920ac36a95dd866a9f446864e2b563271f7",
+      "accessedAt": "2026-09-29T20:42:40.783Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 50380,
+      "sha256": "830144f573aa609bfb6628f1aa855c2a1009d985e76a713b7b62b7590f8d6293",
+      "accessedAt": "2026-09-29T20:42:41.203Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/ireland-chair-poetry-pamphlet-series-call-submissions",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32488,
+      "sha256": "9778fdbf55c8716b3f2cc6c2ce6f6f39089edd8b6816633985ea573a83981812",
+      "accessedAt": "2026-09-29T20:42:41.516Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-connacht-poetry-slam",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31935,
+      "sha256": "c560f882897b111c7b6cd018ea8466713e5eaa6f7edb7caab29bf1e7917d9b7a",
+      "accessedAt": "2026-09-29T20:42:41.843Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-munster-poetry-slam",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31766,
+      "sha256": "881d658b06e9109a41f5ef90b62e58277b4419f948438dae0a75f91214dd37b9",
+      "accessedAt": "2026-09-29T20:42:42.128Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-poetry-lobby-october",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30622,
+      "sha256": "ffc6b810d9b4ea3df1fe5679457255b3c7b1a6200a0232c1bc9c2791ab8b4659",
+      "accessedAt": "2026-09-29T20:42:42.421Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-september-poetry-barrow",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30767,
+      "sha256": "51909b37a6353ccfd482cef443e78ee9da661f8a86b05f9a3a7ed4e20d14ee73",
+      "accessedAt": "2026-09-29T20:42:42.748Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-writing-workshop-shorelines-festival",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31530,
+      "sha256": "b2dcbeaf36ed7fdbda04319947227a72464ef89e67c53964e2d8651ba717d3a8",
+      "accessedAt": "2026-09-29T20:42:43.036Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-salute-highlanes-poet-leeanne-quinn-conversation-writer-belinda",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32241,
+      "sha256": "d981a02f5731e839cb8ed8ef8a42d27a29219d55cf3655fce0b575335b210fa9",
+      "accessedAt": "2026-09-29T20:42:43.327Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/contentious-spaces-rosaleen-mcdonagh-conversation-katherine-odonnell",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32779,
+      "sha256": "b34fa32aae89eb05f0ae4d4b3dbe0b4f9ef9a39341ff212cd33f458a50d8c7ad",
+      "accessedAt": "2026-09-29T20:42:43.599Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.poetryireland.ie/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2157,
+    "sha256": "b1fa75e688b358790589c3b9e59025a76ad5c51b8b108f1d1f31a119f8b5b78e",
+    "accessedAt": "2026-09-29T20:42:40.451Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.md",
+      "/composer/Metapackage/README.txt",
+      "/composer/Plugin/ProjectMessage/README.md",
+      "/composer/Plugin/Scaffold/README.md",
+      "/composer/Plugin/VendorHardening/README.txt",
+      "/composer/Template/README.txt",
+      "/modules/README.txt",
+      "/sites/README.txt",
+      "/themes/README.txt",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/search?",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/search?",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed"
+    ]
+  }
+}

@@ -100,6 +100,45 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
     }
     expect(store.compareAppend).not.toHaveBeenCalled();
   });
+  it("records the first accepted create once and preserves it across next-day corrections", async () => {
+    const { store, key } = await setup();
+    const send = vi.fn(async () => accepted);
+    await dispatchNewsJob({ store, key, transport: { send }, now: () => now });
+    expect((await store.read(key)).state).toMatchObject({
+      firstAcknowledgedAt: now.toISOString(), acknowledgedAt: now.toISOString(),
+    });
+    const nextDay = new Date("2026-09-27T12:00:00Z");
+    const updated = { ...item, summary: { ...item.summary, ru: "Уточнённый факт из первоисточника." } };
+    const revisedFeed = await buildPublishedNewsFeed({ records: [updated], withdrawals: [], current: nextDay,
+      release: "a".repeat(40), state: pendingNewsSourceState(), timeZone: "Europe/Moscow" });
+    await reconcileNewsSnapshot(store, revisedFeed, destinations, nextDay);
+    const edit = vi.fn(async ({ remoteId }) => { expect(remoteId).toBe("17"); return accepted; });
+    await dispatchNewsJob({ store, key, transport: { send: edit }, now: () => nextDay });
+    expect((await store.read(key)).state).toMatchObject({
+      firstAcknowledgedAt: now.toISOString(), acknowledgedAt: nextDay.toISOString(), status: "sent_current",
+    });
+    expect(send).toHaveBeenCalledTimes(1); expect(edit).toHaveBeenCalledTimes(1);
+  });
+  it("keeps an older remote ID's original publication date unknown when accepting an edit", async () => {
+    const { store, key } = await setup();
+    const original = (await store.read(key)).state;
+    await store.seed(key, { ...original, status: "correction_pending", remoteId: "17",
+      acknowledgedAt: "2026-09-25T09:00:00Z" });
+    const send = vi.fn(async ({ remoteId }) => { expect(remoteId).toBe("17"); return accepted; });
+    await dispatchNewsJob({ store, key, transport: { send }, now: () => now });
+    expect((await store.read(key)).state).toMatchObject({
+      firstAcknowledgedAt: null, acknowledgedAt: now.toISOString(), status: "sent_current",
+    });
+    expect(send).toHaveBeenCalledTimes(1);
+  });
+  it("does not stamp a first publication for a rejected create", async () => {
+    const { store, key } = await setup();
+    await dispatchNewsJob({ store, key,
+      transport: { send: async () => ({ kind: "blocked", code: "request_rejected" }) }, now: () => now });
+    const state = (await store.read(key)).state;
+    expect(state.firstAcknowledgedAt).toBeUndefined(); expect(state.acknowledgedAt).toBeUndefined();
+    expect(state.remoteId).toBeFalsy();
+  });
   it("two simultaneous runners produce one external call and keep an active claim inflight", async () => {
     const { store, key } = await setup(); let release;
     const gate = new Promise((resolve) => { release = resolve; });

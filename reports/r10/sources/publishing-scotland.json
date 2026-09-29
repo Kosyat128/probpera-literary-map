@@ -1,0 +1,387 @@
+{
+  "sourceId": "publishing-scotland",
+  "name": "Publishing Scotland",
+  "entryUrl": "https://www.publishingscotland.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:23.426Z",
+  "requests": [
+    {
+      "url": "https://www.publishingscotland.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 220495,
+      "sha256": "003fa0e7e6acb0262e93fbe908a377f8102eb20f99ec33f1fad44b129ac9c6c7",
+      "accessedAt": "2026-09-29T20:39:24.275Z"
+    },
+    {
+      "url": "https://www.publishingscotland.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 52775,
+      "sha256": "15006bc40752afc9717fa5941fcb633031c94058f7c520784d13e87ef5e15b98",
+      "accessedAt": "2026-09-29T20:39:24.439Z"
+    },
+    {
+      "url": "https://www.publishingscotland.org/2026/09/the-gaelic-literature-awards-2026-winners-announced/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 164895,
+      "sha256": "3ba4dc6b07e9a2d97e7acd0a8180293da78afd8f18564e8a424acb22c4f86e1f",
+      "accessedAt": "2026-09-29T20:39:24.633Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.publishingscotland.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1063,
+    "sha256": "793ee0d84c1ee704b843eab8b3318f92cb3b0ea79f74a1a661b40300b4f46076",
+    "accessedAt": "2026-09-29T20:39:24.125Z",
+    "disallowed": [
+      "/*.pdf$",
+      "/?s=",
+      "/search/",
+      "/wp-admin/",
+      "/wp-includes/"
+    ]
+  },
+  "endpoint": {
+    "id": "publishing-scotland",
+    "name": "Publishing Scotland",
+    "url": "https://www.publishingscotland.org/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "publishing-scotland",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.publishingscotland.org"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.publishingscotland.org/2026/09/the-gaelic-literature-awards-2026-winners-announced/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:24.642Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "publishing-scotland",
+    "source": {
+      "name": "Publishing Scotland",
+      "url": "https://www.publishingscotland.org/2026/09/the-gaelic-literature-awards-2026-winners-announced/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "The Gaelic Literature Awards 2026 Winners",
+    "publishedAt": "2026-09-18T12:40:49.000Z",
+    "description": "Chaidh luchd-buannachaidh nan Duaisean Litreachais 2026 ainmeachadh aig cuirm ann an Cottiers Theatre, Glaschu, air Dimàirt 15 Sultain 2026. Chaidh duaisean a bhuileachadh ann an còig roinnean airson leabhraichean a […] The post The Gaelic Literature Awards 2026 Winners appeared first on Publishing Scotland.",
+    "discoveredAt": "2026-09-29T20:39:24.441Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.publishingscotland.org/2026/09/the-gaelic-literature-awards-2026-winners-announced/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 164895,
+      "sha256": "3ba4dc6b07e9a2d97e7acd0a8180293da78afd8f18564e8a424acb22c4f86e1f",
+      "accessedAt": "2026-09-29T20:39:24.633Z",
+      "headline": "The Gaelic Literature Awards 2026 Winners",
+      "excerpt": "NEWS The Gaelic Literature Awards 2026 Winners Posted in Awards and Prizes, News, on September 18, 2026 Chaidh luchd-buannachaidh nan Duaisean Litreachais 2026 ainmeachadh aig cuirm ann an Cottiers Theatre, Glaschu, air Dimàirt 15 Sultain 2026. Chaidh duaisean a bhuileachadh ann an còig roinnean airson leabhraichean a bha foillsichte eadar 1 Cèitean 2025 agus 30 Gilbean 2026, agus cuideachd airson",
+      "publishedDates": [
+        {
+          "value": "2026-09-18T12:40:49+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-18T12:40:49+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-18T12:40:49+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.publishingscotland.org/2026/09/the-gaelic-literature-awards-2026-winners-announced/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:24.642Z",
+  "foundItems": [
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/09/the-gaelic-literature-awards-2026-winners-announced/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Gaelic Literature Awards 2026 Winners",
+      "publishedAt": "2026-09-18T12:40:49.000Z",
+      "description": "Chaidh luchd-buannachaidh nan Duaisean Litreachais 2026 ainmeachadh aig cuirm ann an Cottiers Theatre, Glaschu, air Dimàirt 15 Sultain 2026. Chaidh duaisean a bhuileachadh ann an còig roinnean airson leabhraichean a […] The post The Gaelic Literature Awards 2026 Winners appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/06/submissions-open-now-for-the-saltires-scotlands-national-book-awards-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Submissions open now for The Saltires: Scotland’s National Book Awards 2026",
+      "publishedAt": "2026-06-24T10:33:43.000Z",
+      "description": "Submissions are open for trade fiction, non-fiction and poetry titles. Deadline for entries is midnight on Sunday 5 July 2026. The post Submissions open now for The Saltires: Scotland’s National Book Awards 2026 appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/06/book-carbon-calculator-for-publishers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Green Book Alliance launches Book Carbon Calculator for Publishers",
+      "publishedAt": "2026-06-17T17:05:50.000Z",
+      "description": "The Green Book Alliance has launched a new book carbon calculator for publishers. Publishing Scotland is one of the sponsors and we are pleased that this tool, which was originally […] The post Green Book Alliance launches Book Carbon Calculator for Publishers appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/06/floris-books-fidan-meikle-wins-2026-jhalak-childrens-young-adult-prize/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Floris Books’ Fidan Meikle wins 2026 Jhalak Children’s & Young Adult Prize",
+      "publishedAt": "2026-06-12T11:32:07.000Z",
+      "description": "Fidan Meikle has been named the winner of the 2026 Jhalak Children’s & Young Adult Prize for her middle-grade novel, My Name is Samim, published by the Edinburgh-based publisher Floris Books. The winners of the […] The post Floris Books’ Fidan Meikle wins 2026 Jhalak Children’s & Young Adult Prize appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/06/stories-start-here-new-report-show-impact-of-literature-in-edinburgh/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘Stories Start Here’ new report shows impact of literature in Edinburgh",
+      "publishedAt": "2026-06-25T15:50:34.000Z",
+      "description": "Edinburgh UNESCO City of Literature release new report 'Assessing the cultural, social and economic impact of literature: a study of Edinburgh'. The post ‘Stories Start Here’ new report shows impact of literature in Edinburgh appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/07/progress-under-pressure-new-report-shows-threat-to-creative-economy-is-sustainability/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘Progress under pressure’ new report shows threat to creative economy is sustainability",
+      "publishedAt": "2026-07-22T15:35:44.000Z",
+      "description": "Yesterday, Creative Access released their 2026 Thrive Report ‘Progress under pressure’. The findings in this year’s report suggest the challenge facing the creative economy is one of sustainability. Who gets […] The post ‘Progress under pressure’ new report shows threat to creative economy is sustainability appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/06/404-ink-announces-recipients-of-their-bursary-initiative-ahead-of-closure/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "404 Ink announces recipients of their bursary initiative ahead of closure",
+      "publishedAt": "2026-06-26T09:20:20.000Z",
+      "description": "Independent publisher 404 Ink has announced the recipients of their eponymous bursary, launched as their final project prior to closure in July. The initiative sought to use the attention of […] The post 404 Ink announces recipients of their bursary initiative ahead of closure appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/09/publishing-scotlands-sustainability-resources-provide-a-free-springboard-for-action/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishing Scotland’s sustainability resources provide a free springboard for action",
+      "publishedAt": "2026-09-28T14:17:38.000Z",
+      "description": "We have launched our Sustainability Roadmap as part of an industry-leading initiative to make a comprehensive package of sustainability tools, guidance and training for publishers freely available to all in the industry. The post Publishing Scotland’s sustainability resources provide a free springboard for action appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/08/publishing-scotland-to-welcome-ten-international-publishers-as-part-of-annual-fellowship/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishing Scotland to welcome ten international publishers as part of annual Fellowship",
+      "publishedAt": "2026-08-17T10:18:01.000Z",
+      "description": "Publishing professionals from ten countries across the globe are visiting Scotland this August as guests of Publishing Scotland’s International Fellowship Programme created to foster creative and commercial relationships between the […] The post Publishing Scotland to welcome ten international publishers as part of annual Fellowship appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-scotland",
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/08/404-ink-in-the-skinny/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "404 Ink article in The Skinny",
+      "publishedAt": "2026-08-13T08:25:52.000Z",
+      "description": "404 Ink have been featured in The Skinny in an article ‘Loud and Proud: Celebrating ten years of 404 Ink’. The article explores Laura Jones-Rivera and Heather McDaid’s context in […] The post 404 Ink article in The Skinny appeared first on Publishing Scotland.",
+      "discoveredAt": "2026-09-29T20:39:24.441Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "15006bc40752afc9717fa5941fcb633031c94058f7c520784d13e87ef5e15b98"
+}

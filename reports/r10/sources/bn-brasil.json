@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "BR"
   ],
-  "attemptedAt": "2026-09-26T17:29:42.308Z",
+  "attemptedAt": "2026-09-29T20:33:59.659Z",
   "requests": [
     {
       "url": "https://www.gov.br/bn/pt-br/central-de-conteudos/noticias",
       "status": 200,
       "contentType": "text/html;charset=utf-8",
-      "bytes": 161122,
-      "sha256": "555a872e6ba2ab495f0515566b1ec33afe5b7e913800ddf03ccb6cb0640e9209",
-      "accessedAt": "2026-09-26T17:29:45.974Z"
+      "bytes": 164847,
+      "sha256": "0672f924b1d22a998a920f51bbfba7bed73aa024cf525c40546e371054bce800",
+      "accessedAt": "2026-09-29T20:34:01.100Z"
     }
   ],
   "status": "blocked",
@@ -27,7 +27,7 @@
     "contentType": "text/plain; charset=utf-8",
     "bytes": 2102,
     "sha256": "665417a8e7d2184fe1effefd6a242111682a9e59e94c4aa8af17e9c5487a090a",
-    "accessedAt": "2026-09-26T17:29:43.900Z",
+    "accessedAt": "2026-09-29T20:34:00.538Z",
     "disallowed": [
       "/economia/pt-br/internet/*",
       "/*sendto_form$",

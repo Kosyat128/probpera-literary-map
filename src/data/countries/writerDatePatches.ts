@@ -2,7 +2,7 @@ import type { Country, WriterDateEvidence, WriterProfile } from "./types";
 import { parseWriterDate } from "../../utils/writerDates";
 import generated from "./generated/writerDatePatches.r10.json";
 import supplemental from "./generated/writerDatePatches.r10-supplemental.json";
-import identityRegistry from "./generated/curatedWriterQids.generated.json";
+import { calendarWriterQid } from "./calendarWriterIdentities";
 
 export type WriterDatePatch = {
   id: string;
@@ -59,8 +59,7 @@ export function applyWriterDatePatches(
       seen.add(key);
       let writer = original;
       for (const patch of items) {
-        const identity = (identityRegistry.writers as Record<string, { wikidataId: string }>)[key];
-        if (identity?.wikidataId !== patch.evidence.wikidataId) {
+        if (calendarWriterQid(writer, key) !== patch.evidence.wikidataId) {
           conflicts.push({ patchId: patch.id, reason: "writer-identity-conflict" });
           continue;
         }
@@ -80,7 +79,10 @@ export function applyWriterDatePatches(
           parseWriterDate(value || undefined)?.precision !== "day" ||
           patch.evidence.value !== value || patch.evidence.precision !== "day" ||
           patch.evidence.calendarModel !== "http://www.wikidata.org/entity/Q1985727" ||
-          !patch.evidence.claimIds.length
+          !patch.evidence.claimIds.length ||
+          (patch.evidence.method === "referenced-julian-claim-with-institutional-gregorian-source" &&
+            (patch.evidence.originalCalendarModel !== "http://www.wikidata.org/entity/Q1985786" ||
+              !patch.evidence.supportingSources?.length))
         )) {
           conflicts.push({ patchId: patch.id, reason: "invalid-date-evidence" });
           continue;

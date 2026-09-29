@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "DE"
   ],
-  "attemptedAt": "2026-09-26T17:29:41.581Z",
+  "attemptedAt": "2026-09-29T20:33:58.076Z",
   "requests": [
     {
       "url": "https://www.literaturhaus.de/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 7209,
-      "sha256": "6fd65bd9afb95fbf705d198d0ab9f9195909f9c273ce31edbd92c9c965b597df",
-      "accessedAt": "2026-09-26T17:29:42.303Z"
+      "sha256": "cc6b5f414a67f0577ff69cd551c52e607de8aca5df4167cc8b1f27811f2e9702",
+      "accessedAt": "2026-09-29T20:33:58.632Z"
     }
   ],
   "status": "blocked",

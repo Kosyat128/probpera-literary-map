@@ -127,13 +127,54 @@ export function summarizeNewsRuntime(read: Awaited<ReturnType<typeof readLatestN
     destinations: destinationRows, posts };
 }
 
+/** Hydrate only the exact latest IDs selected by the bounded head scan.
+ * Appended states cannot change this snapshot; mutations still use its CAS ID. */
+async function readNewsRuntimePayloads(heads: Awaited<ReturnType<typeof readLatestNewsRuntime>>,
+  fetchIds: (ids: string[]) => Promise<{ data: unknown[] | null; error: unknown }>) {
+  const rows: Row[] = [];
+  let bytesRead = 0, invalidRows = heads.invalidRows;
+  for (let offset = 0; offset < heads.rows.length; offset += 250) {
+    const batch = heads.rows.slice(offset, offset + 250), expected = new Map(batch.map(row => [row.id, row.key]));
+    let result;
+    try { result = await fetchIds(batch.map(row => row.id)); }
+    catch { return { ...heads, rows, invalidRows, complete: false, readError: true }; }
+    if (result.error || !Array.isArray(result.data))
+      return { ...heads, rows, invalidRows, complete: false, readError: true };
+    const loaded = new Map<string, Row>(), seen = new Set<string>();
+    for (const raw of result.data) {
+      const value = object(raw), id = typeof value.id === "number" && Number.isSafeInteger(value.id) ? String(value.id) : value.id;
+      if (typeof id !== "string" || !expected.has(id) || seen.has(id)) { invalidRows++; continue; }
+      seen.add(id);
+      if (value.entity_id !== expected.get(id) || !value.metadata || Array.isArray(value.metadata) || typeof value.metadata !== "object") {
+        invalidRows++; continue;
+      }
+      bytesRead += new TextEncoder().encode(JSON.stringify(value.metadata)).byteLength;
+      if (bytesRead > MAX_BYTES) return { ...heads, rows, invalidRows, complete: false };
+      loaded.set(id, { id, key: expected.get(id)!, state: object(value.metadata) });
+    }
+    for (const row of batch) {
+      const payload = loaded.get(row.id);
+      if (payload) rows.push(payload);
+      else if (!seen.has(row.id)) invalidRows++;
+    }
+  }
+  return { ...heads, rows, invalidRows, complete: heads.complete && invalidRows === 0 };
+}
+
 /** The caller must have passed requireStaff; this uses session RLS and performs SELECT only. */
 export async function loadLiteraryNewsRuntimeOverview(client: Pick<SupabaseClient, "from"> | null) {
   if (!client) return summarizeNewsRuntime({ rows: [], complete: false, readError: false, rowsRead: 0, invalidRows: 0 }, false);
-  const read = await readLatestNewsRuntime(async (cursor, limit) => {
-    let query = client.from("admin_audit_log").select("id,entity_id,metadata").eq("entity_type", "literary_news_runtime").order("id", { ascending: false }).limit(limit);
+  // Historical replay rows carry large prepared text/media evidence. Scan only
+  // their IDs and keys, then fetch metadata once per latest durable state.
+  const heads = await readLatestNewsRuntime(async (cursor, limit) => {
+    let query = client.from("admin_audit_log").select("id,entity_id").eq("entity_type", "literary_news_runtime").order("id", { ascending: false }).limit(limit);
     if (cursor) query = query.lt("id", cursor);
     const { data, error } = await query;
+    return { data: Array.isArray(data) ? data.map(row => ({ ...object(row), metadata: {} })) : null, error };
+  });
+  const read = await readNewsRuntimePayloads(heads, async ids => {
+    const { data, error } = await client.from("admin_audit_log").select("id,entity_id,metadata")
+      .eq("entity_type", "literary_news_runtime").in("id", ids);
     return { data, error };
   });
   return summarizeNewsRuntime(read);

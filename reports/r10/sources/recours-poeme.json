@@ -1,0 +1,403 @@
+{
+  "sourceId": "recours-poeme",
+  "name": "Recours au Poème",
+  "entryUrl": "https://www.recoursaupoeme.fr/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:44.774Z",
+  "requests": [
+    {
+      "url": "https://www.recoursaupoeme.fr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 251249,
+      "sha256": "ec01c11fecf59ae3b704523e375df4cdd2a55bdb4c80cbc71b0381f2ccc2e8d8",
+      "accessedAt": "2026-09-29T20:39:45.349Z"
+    },
+    {
+      "url": "https://www.recoursaupoeme.fr/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 12282,
+      "sha256": "f10b743e94cad895542ff979ecf561f7a0c0a6ad73ce7c45270bf1b25ff44257",
+      "accessedAt": "2026-09-29T20:39:45.823Z"
+    },
+    {
+      "url": "https://www.recoursaupoeme.fr/lestran-2026-une-revue-internationale-pour-partager-lesprit-du-haiku/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 158524,
+      "sha256": "a1c2eef6b121011d09752a7ef827661136e2977644c1537ba31486626fd3f0e7",
+      "accessedAt": "2026-09-29T20:39:46.020Z"
+    },
+    {
+      "url": "https://www.recoursaupoeme.fr/lotir-le-ciel-a-9-rien-du-pire-disabelle-levesque-ou-lexperience-du-vol-arriere-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 191526,
+      "sha256": "335a97d9830b18dd7786ebd2e316a09db902fc8d27abae3934bb2b3f30fa3b23",
+      "accessedAt": "2026-09-29T20:39:46.152Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.recoursaupoeme.fr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 471,
+    "sha256": "0fe5c745546c76471ae5c41caeede4f3e6bf08a51c87aaf8bc6fd22b0ad11eb9",
+    "accessedAt": "2026-09-29T20:39:45.181Z",
+    "disallowed": [
+      "/calendar/action~posterboard/",
+      "/calendar/action~agenda/",
+      "/calendar/action~oneday/",
+      "/calendar/action~month/",
+      "/calendar/action~week/",
+      "/calendar/action~stream/",
+      "/calendar/action~undefined/",
+      "/calendar/action~http:/",
+      "/calendar/action~default/",
+      "/calendar/action~poster/",
+      "/calendar/action~*/",
+      "/*controller=ai1ec_exporter_controller*",
+      "/*/action~*/"
+    ]
+  },
+  "endpoint": {
+    "id": "recours-poeme",
+    "name": "Recours au Poème",
+    "url": "https://www.recoursaupoeme.fr/feed/",
+    "format": "rss",
+    "language": "fr-FR",
+    "region": "global",
+    "sourceFamilyId": "recours-poeme",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.recoursaupoeme.fr"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.recoursaupoeme.fr/lotir-le-ciel-a-9-rien-du-pire-disabelle-levesque-ou-lexperience-du-vol-arriere-2/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:46.174Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "recours-poeme",
+    "source": {
+      "name": "Recours au Poème",
+      "url": "https://www.recoursaupoeme.fr/lotir-le-ciel-a-9-rien-du-pire-disabelle-levesque-ou-lexperience-du-vol-arriere-2/",
+      "language": "fr-FR"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Lotir le ciel à 9 : Rien du pire d’Isabelle Lévesque ou l’expérience du vol arrière",
+    "publishedAt": "2026-09-11T11:05:09.000Z",
+    "description": "Ce qu’explore singulièrement Isabelle Lévesque, autant que le paysage des Andelys, c’est le signe. Elle a la passion du signe enclos dans le paysage de ses origines, qu’elle interroge de livre en livre. Plus que ne l’affirmait Jean-Pierre Richard1 dans son essai Poésie et profondeur, Isabelle Lévesque « enfonce » doublement le monde et l’être, car [...] L’article Lotir le ciel à 9 : <em>Rien du p…",
+    "discoveredAt": "2026-09-29T20:39:45.824Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.recoursaupoeme.fr/lotir-le-ciel-a-9-rien-du-pire-disabelle-levesque-ou-lexperience-du-vol-arriere-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 191526,
+      "sha256": "335a97d9830b18dd7786ebd2e316a09db902fc8d27abae3934bb2b3f30fa3b23",
+      "accessedAt": "2026-09-29T20:39:46.152Z",
+      "headline": "Lotir le ciel à 9 : Rien du pire d’Isabelle Lévesque ou l’expérience du vol arrière",
+      "excerpt": "Lotir le ciel à 9 : Rien du pire d’Isabelle Lévesque ou l’expérience du vol arrière Par Sabine Zuberek|2026-09-11T13:05:09+02:00 11 septembre 2026|Catégories : Essais & Chroniques, Isabelle Lévesque| Ce qu’explore sin­gulière­ment Isabelle Lévesque, autant que le paysage des Andelys, c’est le signe. Elle a la pas­sion du signe enc­los dans le paysage de ses orig­ines, qu’elle inter­roge de livre e",
+      "publishedDates": [
+        {
+          "value": "2026-09-11T11:05:09+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-11T11:05:09+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-11T11:05:09+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.recoursaupoeme.fr/lotir-le-ciel-a-9-rien-du-pire-disabelle-levesque-ou-lexperience-du-vol-arriere-2/",
+      "language": "fr-FR",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:46.174Z",
+  "foundItems": [
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/lestran-2026-une-revue-internationale-pour-partager-lesprit-du-haiku/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’estran 2026. Une revue internationale pour partager l’esprit du haïku",
+      "publishedAt": "2026-09-06T06:31:22.000Z",
+      "description": "Animée par une équipe éditoriale composée de Gilles Fabre, Danièle Duteil et Jean Antonini – tous trois des références dans le domaine du haïku - la revue L’Estran paraît une fois par an. Le quatrième numéro de cette revue, proche de l’Association Francophone de haïku (AFH), vient de paraître. L’édition [...] L’article <em>L’estran</em> 2026. Une revue internationale pour partager l’esprit du haï…",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/lotir-le-ciel-a-9-rien-du-pire-disabelle-levesque-ou-lexperience-du-vol-arriere-2/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lotir le ciel à 9 : Rien du pire d’Isabelle Lévesque ou l’expérience du vol arrière",
+      "publishedAt": "2026-09-11T11:05:09.000Z",
+      "description": "Ce qu’explore singulièrement Isabelle Lévesque, autant que le paysage des Andelys, c’est le signe. Elle a la passion du signe enclos dans le paysage de ses origines, qu’elle interroge de livre en livre. Plus que ne l’affirmait Jean-Pierre Richard1 dans son essai Poésie et profondeur, Isabelle Lévesque « enfonce » doublement le monde et l’être, car [...] L’article Lotir le ciel à 9 : <em>Rien du p…",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/beatrice-bonhomme-loeil-eclabousse/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Béatrice Bonhomme, L’Œil éclaboussé",
+      "publishedAt": "2026-09-09T13:13:57.000Z",
+      "description": "L'Œil éclaboussé, de Béatrice Bonhomme, paraît en septembre aux éditions de l'Étoile des limites. Ce poème-récit est adapté à l'écran dans un film réalisé par Stello Bonhomme, sur une musique d'Arnaud Combe. Le texte retrace ce qui est arrivé à l'autrice lorsqu'elle était enfant. Il décrit ce qui nous arrive à toutes et à [...] L’article Béatrice Bonhomme, <em>L’Œil éclaboussé</em> est apparu en …",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/dimitris-p-kraniotis-moins-un-et-autres-poemes/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dimitris P. Kraniotis, Moins un et autres poèmes",
+      "publishedAt": "2026-09-06T06:33:24.000Z",
+      "description": "Τraduction en français du grec par Marie-Laure Coulmin Koutsaftis Moins un J’ai tiré la Terre Pour nous recouvrir Des fois qu’on porterait ce soir Sans armes et sans verser le sang Les mots que nous crachions hier Comme des noyaux Mais ne me réponds pas à la hâte Attends [...] L’article Dimitris P. Kraniotis, <em>Moins un</em> et autres poèmes est apparu en premier sur Recours au poème.",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/jean-pierre-simeon-un-non-pour-un-oui/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jean-Pierre Siméon, Un non pour un oui",
+      "publishedAt": "2026-09-06T06:31:05.000Z",
+      "description": "Un titre qui intrigue, improbable, dirait-on dans cette œuvre axée sur un absolu de l’amour. Un non comme point de départ pourtant, comme défi à relever, incessamment, car un constat de ce que parle et crie si souvent la culture contemporaine ? Et qui conclurait qu’‘il faut souvent beaucoup de non pour affermir un oui’ [...] L’article Jean-Pierre Siméon, <em>Un non pour un oui</em> est apparu en …",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/el-housseine-khaouti-reordonner-le-vent/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El Housseine Khaouti, Réordonner le vent",
+      "publishedAt": "2026-09-06T06:30:38.000Z",
+      "description": "Réordonner le vent Je n’ai nul commerce avec les ombres. Je suis celui qui embrase ses secrets comme des saisons d’éclairs, et bâtit ses balcons au rythme des tempêtes. Je regarde vers un lendemain qui ne demande aucune permission au rêve, qui ne négocie jamais avec le temps brisé sa propre liberté. Près [...] L’article El Housseine Khaouti, <em>Réordonner le vent</em> est apparu en premier sur R…",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/osiris-revue-de-poesie/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Osiris, revue de poésie",
+      "publishedAt": "2026-09-06T06:30:19.000Z",
+      "description": "Osiris est une revue internationale de poésie qui a franchi le seuil des cent numéros, en 2025. Elle est née en Amérique en 1972, et s’est immédiatement distinguée en publiant des auteurs issus de divers horizons linguistiques. Comme le souligne Françoise Hàn « (…) en l’an 2000 (…) Osiris avait publié des textes de plus [...] L’article <em>Osiris</em>, revue de poésie est apparu en premier sur Re…",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/giuliano-ladolfi-des-tenebres-a-la-lumiere-le-monde-recree-de-marie/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Giuliano Ladolfi, Des ténèbres à la lumière : le monde recréé de Marie",
+      "publishedAt": "2026-09-06T06:30:08.000Z",
+      "description": "Giuliano Ladolfi et la nouvelle école lyrique Qu’est-ce qu’une école en arts ? Un groupe de gens qui se connaissent s’apprécient, partagent une conception commune de leur art et mettent en commun leurs forces pour la défendre et se faire connaître, même si chacun conserve sa sensibilité particulière et poursuit sa propre stratégie dans [...] L’article Giuliano Ladolfi, <em>Des ténèbres à la lumiè…",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/chronique-du-veilleur-65-jean-yves-lacoste/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chronique du veilleur (65) : Jean-Yves Lacoste",
+      "publishedAt": "2026-09-06T06:29:47.000Z",
+      "description": "Jean-Yves Lacoste est un philosophe et un théologien . Son Dictionnaire critique de théologie fait autorité. Il est aussi prêtre et poète. La parole poétique lui semble seule convenir, à certains moments, pour appréhender le mystère. C’est ainsi qu’il a écrit des poèmes entre 1985 et 1987 en Allemagne, [...] L’article Chronique du veilleur (65) : Jean-Yves Lacoste est apparu en premier sur Recour…",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "recours-poeme",
+      "source": {
+        "name": "Recours au Poème",
+        "url": "https://www.recoursaupoeme.fr/xavier-bordes-sur-le-sentier-des-cinq-montagnes-poesie/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Xavier Bordes, Sur le sentier des Cinq Montagnes — Poésie",
+      "publishedAt": "2026-09-06T06:29:17.000Z",
+      "description": "Tu écris comme on tire à l’arc. La flèche sait la cible mieux que toi, pourquoi t’en préoccuper ? Xavier Bordes, poète émérite, prix Max Jacob en 1999 (Comme un bruit de source), nous livre, la huitantaine venue, un recueil en prose poétique inspiré par la sagesse orientale et/mais non sans [...] L’article Xavier Bordes, <em>Sur le sentier des Cinq Montagnes — Poésie</em> est apparu en premier su…",
+      "discoveredAt": "2026-09-29T20:39:45.824Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f10b743e94cad895542ff979ecf561f7a0c0a6ad73ce7c45270bf1b25ff44257"
+}

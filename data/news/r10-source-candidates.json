@@ -864,7 +864,7 @@
         "method": "official_directory_link",
         "observedAt": "2026-09-26T17:42:04.853Z"
       },
-      "status": "blocked",
+      "status": "runtime_verified",
       "countryEvidence": {
         "method": "official_organisation_identity",
         "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -874,9 +874,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:33.955Z",
-        "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "attemptedAt": "2026-09-27T14:10:02.008Z",
+        "lastSuccessAt": "2026-09-27T14:10:04.549Z",
+        "reason": null,
         "report": "reports/r10/sources/fil-guadalajara.json"
       }
     },
@@ -1051,7 +1051,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:41.166Z",
+        "attemptedAt": "2026-09-29T20:32:34.234Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/intelekti-ge.json"
@@ -1086,7 +1086,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:42.111Z",
+        "attemptedAt": "2026-09-29T20:32:34.238Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/hoeplieditore-it.json"
@@ -1121,9 +1121,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:42.330Z",
+        "attemptedAt": "2026-09-29T20:32:34.238Z",
         "lastSuccessAt": null,
-        "reason": "runtime_parser_no_literary_item",
+        "reason": "private_destination",
         "report": "reports/r10/sources/acenaventures-wordpress-com.json"
       }
     },
@@ -1156,9 +1156,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:42.916Z",
+        "attemptedAt": "2026-09-29T20:32:34.239Z",
         "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/gummerus-fi.json"
       }
     },
@@ -1191,7 +1191,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:43.164Z",
+        "attemptedAt": "2026-09-29T20:32:34.657Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/unswpress-com.json"
@@ -1226,7 +1226,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:43.869Z",
+        "attemptedAt": "2026-09-29T20:32:35.143Z",
         "lastSuccessAt": null,
         "reason": "http_403",
         "report": "reports/r10/sources/penguinrandomhousegrupoeditorial-com.json"
@@ -1362,7 +1362,7 @@
         "url": "https://internationalpublishers.org/about/",
         "organisation": "ANEL",
         "statement": "Organisation country is distinct from the country of each covered event.",
-        "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers \u2013 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
+        "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers – 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
         "status": "organisation_country"
       },
       "probe": {
@@ -1543,7 +1543,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:49.786Z",
+        "attemptedAt": "2026-09-29T20:32:35.262Z",
         "lastSuccessAt": null,
         "reason": "http_403",
         "report": "reports/r10/sources/portoeditora-com.json"
@@ -1578,7 +1578,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:50.187Z",
+        "attemptedAt": "2026-09-29T20:32:35.540Z",
         "lastSuccessAt": null,
         "reason": "external_redirect:https://www.sagepub.com",
         "report": "reports/r10/sources/group-sagepub-com.json"
@@ -1613,7 +1613,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:50.982Z",
+        "attemptedAt": "2026-09-29T20:32:35.599Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/jbpa-or-jp.json"
@@ -1648,7 +1648,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:51.445Z",
+        "attemptedAt": "2026-09-29T20:32:35.843Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/bildungsmedien-de.json"
@@ -1683,9 +1683,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:52.674Z",
+        "attemptedAt": "2026-09-29T20:32:36.214Z",
         "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/boersenverein-de.json"
       }
     },
@@ -1823,7 +1823,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:54.252Z",
+        "attemptedAt": "2026-09-29T20:32:37.736Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/afrilivres-net.json"
@@ -1858,7 +1858,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:54.633Z",
+        "attemptedAt": "2026-09-29T20:32:38.080Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/arab-pa-org.json"
@@ -1928,7 +1928,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:55.654Z",
+        "attemptedAt": "2026-09-29T20:32:38.265Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/eepg-org.json"
@@ -1963,7 +1963,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:55.828Z",
+        "attemptedAt": "2026-09-29T20:32:38.997Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/gieditores-org.json"
@@ -2033,7 +2033,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:56.764Z",
+        "attemptedAt": "2026-09-29T20:32:39.762Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/fibut-is.json"
@@ -2103,7 +2103,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:57.117Z",
+        "attemptedAt": "2026-09-29T20:32:40.362Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/aie-it.json"
@@ -2138,7 +2138,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:59.096Z",
+        "attemptedAt": "2026-09-29T20:32:40.375Z",
         "lastSuccessAt": null,
         "reason": "This operation was aborted",
         "report": "reports/r10/sources/dkagencies-com.json"
@@ -2173,7 +2173,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:27:59.406Z",
+        "attemptedAt": "2026-09-29T20:32:42.750Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/lojagirassolbrasil-com-br.json"
@@ -2204,11 +2204,11 @@
         "url": "https://internationalpublishers.org/about/",
         "organisation": "Cámara Argentina del LibroAv. Belgrano",
         "statement": "Organisation country is distinct from the country of each covered event.",
-        "excerpt": "Cámara Argentina del LibroAv. Belgrano 1580 \u2013 Piso 4°C1093AAQ Buenos AiresArgentinawww.editores.org.ar",
+        "excerpt": "Cámara Argentina del LibroAv. Belgrano 1580 – Piso 4°C1093AAQ Buenos AiresArgentinawww.editores.org.ar",
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:00.251Z",
+        "attemptedAt": "2026-09-29T20:32:44.523Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/editores-org-ar.json"
@@ -2239,7 +2239,7 @@
         "url": "https://internationalpublishers.org/about/",
         "organisation": "Association Nationale des Editeurs de Livres",
         "statement": "Organisation country is distinct from the country of each covered event.",
-        "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers \u2013 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
+        "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers – 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
         "status": "organisation_country"
       },
       "probe": {
@@ -2274,7 +2274,7 @@
         "url": "https://internationalpublishers.org/about/",
         "organisation": "Association Nationale des Editeurs de Livres",
         "statement": "Organisation country is distinct from the country of each covered event.",
-        "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers \u2013 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
+        "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers – 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
         "status": "organisation_country"
       },
       "probe": {
@@ -2313,7 +2313,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:05.012Z",
+        "attemptedAt": "2026-09-29T20:32:45.644Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/cpl-org-pe.json"
@@ -2383,7 +2383,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:07.534Z",
+        "attemptedAt": "2026-09-29T20:32:53.052Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/cavelibro-org.json"
@@ -2488,7 +2488,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:09.168Z",
+        "attemptedAt": "2026-09-29T20:32:53.392Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/bookindustryja-com.json"
@@ -2523,7 +2523,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:09.556Z",
+        "attemptedAt": "2026-09-29T20:32:53.408Z",
         "lastSuccessAt": null,
         "reason": "http_403",
         "report": "reports/r10/sources/as-editeurs-org.json"
@@ -2554,11 +2554,11 @@
         "url": "https://internationalpublishers.org/about/",
         "organisation": "Cámara Nacional de la Industria EditorialHolanda No.",
         "statement": "Organisation country is distinct from the country of each covered event.",
-        "excerpt": "Cámara Nacional de la Industria EditorialHolanda No.13Col. San Diego \u2013 ChurubuscoCP 04120Delegación Coyoacán- México D.F.Mexicowww.caniem.com",
+        "excerpt": "Cámara Nacional de la Industria EditorialHolanda No.13Col. San Diego – ChurubuscoCP 04120Delegación Coyoacán- México D.F.Mexicowww.caniem.com",
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:10.216Z",
+        "attemptedAt": "2026-09-29T20:32:53.768Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/caniem-com.json"
@@ -2593,9 +2593,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:11.965Z",
+        "attemptedAt": "2026-09-29T20:32:54.616Z",
         "lastSuccessAt": null,
-        "reason": "runtime_parser_no_literary_item",
+        "reason": "no_literary_article_links",
         "report": "reports/r10/sources/publishers-asn-au.json"
       }
     },
@@ -2688,7 +2688,7 @@
         "method": "official_directory_link",
         "observedAt": "2026-09-26T17:42:04.857Z"
       },
-      "status": "blocked",
+      "status": "editorial_profile_held",
       "countryEvidence": {
         "method": "official_membership_directory",
         "url": "https://internationalpublishers.org/about/",
@@ -2698,9 +2698,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:15.262Z",
+        "attemptedAt": "2026-09-29T20:32:57.202Z",
         "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "reason": "Directory domain now exposes pigeon-trading articles; publishing organisation and literary relevance are not verified.",
         "report": "reports/r10/sources/pepa-com-ph.json"
       }
     },
@@ -2768,7 +2768,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:22.093Z",
+        "attemptedAt": "2026-09-29T20:33:00.696Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/bookpublishers-lk.json"
@@ -2803,7 +2803,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:22.871Z",
+        "attemptedAt": "2026-09-29T20:33:02.284Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/fiponline-org.json"
@@ -2908,9 +2908,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:25.631Z",
+        "attemptedAt": "2026-09-29T20:33:06.324Z",
         "lastSuccessAt": null,
-        "reason": "no_literary_article_links",
+        "reason": "fetch failed",
         "report": "reports/r10/sources/bapus-org.json"
       }
     },
@@ -2943,9 +2943,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:26.087Z",
+        "attemptedAt": "2026-09-29T20:33:06.904Z",
         "lastSuccessAt": null,
-        "reason": "runtime_parser_no_literary_item",
+        "reason": "no_literary_article_links",
         "report": "reports/r10/sources/forlaggare-se.json"
       }
     },
@@ -3015,7 +3015,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:27.425Z",
+        "attemptedAt": "2026-09-29T20:33:10.528Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/forleggerforeningen-no.json"
@@ -3050,7 +3050,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:28.931Z",
+        "attemptedAt": "2026-09-29T20:33:10.747Z",
         "lastSuccessAt": null,
         "reason": "http_500",
         "report": "reports/r10/sources/upba-org-ua.json"
@@ -3085,7 +3085,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:31.841Z",
+        "attemptedAt": "2026-09-29T20:33:11.249Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/unionjp-com.json"
@@ -3116,11 +3116,11 @@
         "url": "https://internationalpublishers.org/about/",
         "organisation": "Emirates Publishers AssociationPO Box",
         "statement": "Organisation country is distinct from the country of each covered event.",
-        "excerpt": "Emirates Publishers AssociationPO Box 5424Shj Al Qasba \u2013 Block D 1st FloorSharjahUnited Arab Emirateswww.epa.org.ae",
+        "excerpt": "Emirates Publishers AssociationPO Box 5424Shj Al Qasba – Block D 1st FloorSharjahUnited Arab Emirateswww.epa.org.ae",
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:32.112Z",
+        "attemptedAt": "2026-09-29T20:33:12.127Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/epa-org-ae.json"
@@ -3145,7 +3145,7 @@
         "method": "official_directory_link",
         "observedAt": "2026-09-26T17:42:04.857Z"
       },
-      "status": "blocked",
+      "status": "runtime_verified",
       "countryEvidence": {
         "method": "official_membership_directory",
         "url": "https://internationalpublishers.org/about/",
@@ -3155,9 +3155,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:32.734Z",
-        "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "attemptedAt": "2026-09-27T14:07:14.683Z",
+        "lastSuccessAt": "2026-09-27T14:07:15.822Z",
+        "reason": null,
         "report": "reports/r10/sources/publishingireland-com.json"
       }
     },
@@ -3225,7 +3225,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:34.963Z",
+        "attemptedAt": "2026-09-29T20:33:12.377Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/asdel-ch.json"
@@ -3260,7 +3260,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:36.823Z",
+        "attemptedAt": "2026-09-29T20:33:13.731Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/swissbooks-ch.json"
@@ -3295,7 +3295,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:37.490Z",
+        "attemptedAt": "2026-09-29T20:33:14.187Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/gzs-si.json"
@@ -3330,7 +3330,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:37.497Z",
+        "attemptedAt": "2026-09-29T20:33:14.359Z",
         "lastSuccessAt": null,
         "reason": "http_500",
         "report": "reports/r10/sources/uik-ba.json"
@@ -3365,7 +3365,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:37.590Z",
+        "attemptedAt": "2026-09-29T20:33:14.961Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/mkke-hu.json"
@@ -3400,7 +3400,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:37.821Z",
+        "attemptedAt": "2026-09-29T20:33:15.369Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/enelvi-org.json"
@@ -3505,7 +3505,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:39.868Z",
+        "attemptedAt": "2026-09-29T20:33:16.756Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/publishsa-co-za.json"
@@ -3575,7 +3575,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:41.254Z",
+        "attemptedAt": "2026-09-29T20:33:21.251Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/publishersunionlb-com.json"
@@ -3610,7 +3610,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:42.618Z",
+        "attemptedAt": "2026-09-29T20:33:23.116Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/tbpai-co-il.json"
@@ -3645,7 +3645,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:43.769Z",
+        "attemptedAt": "2026-09-29T20:33:26.680Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/capali-com-pa.json"
@@ -3680,9 +3680,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:44.775Z",
+        "attemptedAt": "2026-09-29T20:33:27.906Z",
         "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/singaporebookpublishers-sg.json"
       }
     },
@@ -3750,7 +3750,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:45.999Z",
+        "attemptedAt": "2026-09-29T20:33:28.721Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/kpa21-or-kr.json"
@@ -3855,7 +3855,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:49.416Z",
+        "attemptedAt": "2026-09-29T20:33:30.500Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/boek-be.json"
@@ -3890,7 +3890,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:49.745Z",
+        "attemptedAt": "2026-09-29T20:33:30.868Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/mediafederatie-nl.json"
@@ -3960,7 +3960,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:51.495Z",
+        "attemptedAt": "2026-09-29T20:33:30.929Z",
         "lastSuccessAt": null,
         "reason": "http_403",
         "report": "reports/r10/sources/libroscr-com.json"
@@ -3995,7 +3995,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:51.816Z",
+        "attemptedAt": "2026-09-29T20:33:31.226Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/pik-org-pl.json"
@@ -4030,7 +4030,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:57.142Z",
+        "attemptedAt": "2026-09-29T20:33:32.927Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/bksh-al.json"
@@ -4065,7 +4065,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:57.597Z",
+        "attemptedAt": "2026-09-29T20:33:33.701Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/nla-am.json"
@@ -4135,7 +4135,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:28:59.791Z",
+        "attemptedAt": "2026-09-29T20:33:34.065Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/millikitabxana-az.json"
@@ -4160,7 +4160,7 @@
         "method": "official_directory_link",
         "observedAt": "2026-09-26T17:42:04.858Z"
       },
-      "status": "blocked",
+      "status": "runtime_verified",
       "countryEvidence": {
         "method": "official_national_library_directory",
         "url": "https://www.cenl.org/library/koninklijke-bibliotheek-van-belgie-bibliotheque-royale-de-belgique/",
@@ -4170,9 +4170,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:00.030Z",
-        "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "attemptedAt": "2026-09-27T14:07:16.557Z",
+        "lastSuccessAt": "2026-09-27T14:07:20.608Z",
+        "reason": null,
         "report": "reports/r10/sources/kbr-be.json"
       }
     },
@@ -4195,7 +4195,7 @@
         "method": "official_directory_link",
         "observedAt": "2026-09-26T17:42:04.858Z"
       },
-      "status": "blocked",
+      "status": "runtime_verified",
       "countryEvidence": {
         "method": "official_national_library_directory",
         "url": "https://www.cenl.org/library/nacionalna-i-univerzitetska-biblioteka/",
@@ -4205,9 +4205,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:01.461Z",
-        "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "attemptedAt": "2026-09-29T20:33:38.458Z",
+        "lastSuccessAt": "2026-09-29T20:33:40.592Z",
+        "reason": null,
         "report": "reports/r10/sources/nub-ba.json"
       }
     },
@@ -4275,7 +4275,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:03.047Z",
+        "attemptedAt": "2026-09-29T20:33:40.594Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/nsk-hr.json"
@@ -4450,7 +4450,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:06.171Z",
+        "attemptedAt": "2026-09-29T20:33:41.483Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/kansalliskirjasto-fi.json"
@@ -4485,7 +4485,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:06.325Z",
+        "attemptedAt": "2026-09-29T20:33:42.177Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/nplg-gov-ge.json"
@@ -4520,7 +4520,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:07.646Z",
+        "attemptedAt": "2026-09-29T20:33:42.625Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/dnb-de.json"
@@ -4555,7 +4555,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:07.742Z",
+        "attemptedAt": "2026-09-29T20:33:43.793Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/nlg-gr.json"
@@ -4621,11 +4621,11 @@
         "url": "https://www.cenl.org/library/national-university-library-of-iceland/",
         "organisation": "National and University Library of Iceland",
         "statement": "Organisation country is distinct from the country of each covered event.",
-        "excerpt": "Landsbókasafn Íslands \u2013 Háskólabókasafn / National and University Library of Iceland",
+        "excerpt": "Landsbókasafn Íslands – Háskólabókasafn / National and University Library of Iceland",
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:08.509Z",
+        "attemptedAt": "2026-09-29T20:33:44.461Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/landsbokasafn-is.json"
@@ -4695,7 +4695,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:09.172Z",
+        "attemptedAt": "2026-09-29T20:33:44.967Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/bncf-firenze-sbn-it.json"
@@ -4730,9 +4730,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:09.367Z",
+        "attemptedAt": "2026-09-29T20:33:45.036Z",
         "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "reason": "fetch failed",
         "report": "reports/r10/sources/bncrm-beniculturali-it.json"
       }
     },
@@ -4767,7 +4767,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:09.961Z",
+        "attemptedAt": "2026-09-29T20:33:45.502Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/lnb-lv.json"
@@ -4880,7 +4880,7 @@
     },
     {
       "id": "maltalibraries-gov-mt",
-      "name": "Malta Libraries \u2013 The National Library of Malta",
+      "name": "Malta Libraries – The National Library of Malta",
       "entryUrl": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
       "sourceClass": "library",
       "sourceFamilyId": "maltalibraries-gov-mt",
@@ -4901,13 +4901,13 @@
       "countryEvidence": {
         "method": "official_national_library_directory",
         "url": "https://www.cenl.org/library/malta-libraries-the-national-library-of-malta/",
-        "organisation": "Malta Libraries \u2013 The National Library of Malta",
+        "organisation": "Malta Libraries – The National Library of Malta",
         "statement": "Organisation country is distinct from the country of each covered event.",
-        "excerpt": "Bibljoteka Nazzjonali ta’ Malta / Malta Libraries \u2013 The National Library of Malta",
+        "excerpt": "Bibljoteka Nazzjonali ta’ Malta / Malta Libraries – The National Library of Malta",
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:12.040Z",
+        "attemptedAt": "2026-09-29T20:33:47.540Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/maltalibraries-gov-mt.json"
@@ -5012,7 +5012,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:13.192Z",
+        "attemptedAt": "2026-09-29T20:33:48.826Z",
         "lastSuccessAt": null,
         "reason": "http_403",
         "report": "reports/r10/sources/kb-nl.json"
@@ -5117,7 +5117,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:13.799Z",
+        "attemptedAt": "2026-09-29T20:33:49.052Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/bnportugal-gov-pt.json"
@@ -5257,7 +5257,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:16.384Z",
+        "attemptedAt": "2026-09-29T20:33:49.387Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/nuk-uni-lj-si.json"
@@ -5292,9 +5292,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:16.878Z",
+        "attemptedAt": "2026-09-29T20:33:49.838Z",
         "lastSuccessAt": null,
-        "reason": "http_403",
+        "reason": "detail_not_verified",
         "report": "reports/r10/sources/bne-es.json"
       }
     },
@@ -5362,7 +5362,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:17.693Z",
+        "attemptedAt": "2026-09-29T20:33:50.231Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/nb-admin-ch.json"
@@ -5397,7 +5397,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:18.029Z",
+        "attemptedAt": "2026-09-29T20:33:51.415Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/mkutup-gov-tr.json"
@@ -5502,7 +5502,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:19.519Z",
+        "attemptedAt": "2026-09-29T20:33:52.503Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/library-wales.json"
@@ -5642,7 +5642,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:21.812Z",
+        "attemptedAt": "2026-09-29T20:33:52.687Z",
         "lastSuccessAt": null,
         "reason": "http_404",
         "report": "reports/r10/sources/euskalpen-eus.json"
@@ -5877,7 +5877,7 @@
         "method": "official_directory_link",
         "observedAt": "2026-09-26T17:42:04.859Z"
       },
-      "status": "blocked",
+      "status": "runtime_verified",
       "countryEvidence": {
         "method": "official_PEN_centre_directory",
         "url": "https://pen.org/the-pen-world/",
@@ -5887,9 +5887,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:28.807Z",
-        "lastSuccessAt": null,
-        "reason": "runtime_parser_no_literary_item",
+        "attemptedAt": "2026-09-29T20:33:53.427Z",
+        "lastSuccessAt": "2026-09-29T20:33:55.876Z",
+        "reason": null,
         "report": "reports/r10/sources/englishpen-org.json"
       }
     },
@@ -5922,7 +5922,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:29.652Z",
+        "attemptedAt": "2026-09-29T20:33:53.737Z",
         "lastSuccessAt": null,
         "reason": "http_404",
         "report": "reports/r10/sources/pengalicia-gal.json"
@@ -6097,7 +6097,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:33.138Z",
+        "attemptedAt": "2026-09-29T20:33:55.255Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/philippinepen-ph.json"
@@ -6309,7 +6309,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:37.054Z",
+        "attemptedAt": "2026-09-29T20:33:55.880Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/pensweden-org.json"
@@ -6344,7 +6344,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:37.118Z",
+        "attemptedAt": "2026-09-29T20:33:56.340Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/pen-dschweiz-ch.json"
@@ -6589,7 +6589,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:40.367Z",
+        "attemptedAt": "2026-09-29T20:33:57.199Z",
         "lastSuccessAt": null,
         "reason": "challenge_document",
         "report": "reports/r10/sources/eksmo.json"
@@ -6659,7 +6659,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:40.425Z",
+        "attemptedAt": "2026-09-29T20:33:57.281Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/litres.json"
@@ -6729,7 +6729,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:40.808Z",
+        "attemptedAt": "2026-09-29T20:41:39.699Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/nlo.json"
@@ -6799,7 +6799,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:41.581Z",
+        "attemptedAt": "2026-09-29T20:33:57.714Z",
         "lastSuccessAt": null,
         "reason": "http_403",
         "report": "reports/r10/sources/edinburgh.json"
@@ -6834,7 +6834,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:41.581Z",
+        "attemptedAt": "2026-09-29T20:33:58.076Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/literaturhaus.json"
@@ -6904,7 +6904,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:42.101Z",
+        "attemptedAt": "2026-09-29T20:33:58.636Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/bn-argentina.json"
@@ -6939,7 +6939,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:42.308Z",
+        "attemptedAt": "2026-09-29T20:33:59.659Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/bn-brasil.json"
@@ -7044,7 +7044,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:46.377Z",
+        "attemptedAt": "2026-09-29T20:34:01.487Z",
         "lastSuccessAt": null,
         "reason": "http_403",
         "report": "reports/r10/sources/bn-colombia.json"
@@ -7148,9 +7148,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:47.738Z",
+        "attemptedAt": "2026-09-29T20:34:01.804Z",
         "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "reason": "private_destination",
         "report": "reports/r10/sources/huza-press.json"
       }
     },
@@ -7218,7 +7218,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:48.524Z",
+        "attemptedAt": "2026-09-29T20:34:01.911Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/sahitya-akademi.json"
@@ -7243,7 +7243,7 @@
         "method": "official_website_found_in_web_search",
         "observedAt": "2026-09-26T17:42:04.860Z"
       },
-      "status": "blocked",
+      "status": "editorial_profile_held",
       "countryEvidence": {
         "method": "official_organisation_identity",
         "url": "https://www.ltikorea.or.kr/kr/board/press/boardList.do",
@@ -7253,9 +7253,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:49.658Z",
+        "attemptedAt": "2026-09-29T20:34:02.057Z",
         "lastSuccessAt": null,
-        "reason": "This operation was aborted",
+        "reason": "Probe detail headline is the site logo and excerpt is navigation; an exact press-article selector and stable identity are required.",
         "report": "reports/r10/sources/lti-korea.json"
       }
     },
@@ -7384,7 +7384,7 @@
         "method": "official_website_found_in_web_search",
         "observedAt": "2026-09-26T17:42:04.860Z"
       },
-      "status": "blocked",
+      "status": "runtime_verified",
       "countryEvidence": {
         "method": "official_organisation_identity",
         "url": "https://doeklitmag.com/",
@@ -7394,9 +7394,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:29:56.346Z",
-        "lastSuccessAt": null,
-        "reason": "This operation was aborted",
+        "attemptedAt": "2026-09-29T20:34:02.326Z",
+        "lastSuccessAt": "2026-09-29T20:34:06.614Z",
+        "reason": null,
         "report": "reports/r10/sources/doek.json"
       }
     },
@@ -7429,7 +7429,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:43.321Z",
+        "attemptedAt": "2026-09-29T20:34:03.593Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/karachi-literature-festival.json"
@@ -7534,7 +7534,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:43.326Z",
+        "attemptedAt": "2026-09-29T20:34:04.468Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/nhanam.json"
@@ -7569,7 +7569,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:44.687Z",
+        "attemptedAt": "2026-09-29T20:34:06.616Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/qatar-national-library.json"
@@ -7604,7 +7604,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:45.206Z",
+        "attemptedAt": "2026-09-29T20:34:08.833Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/abu-dhabi-arabic-centre.json"
@@ -7709,7 +7709,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:49.098Z",
+        "attemptedAt": "2026-09-29T20:34:08.872Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/jaipur-literature-festival.json"
@@ -7744,7 +7744,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:49.668Z",
+        "attemptedAt": "2026-09-29T20:34:10.894Z",
         "lastSuccessAt": null,
         "reason": "http_503",
         "report": "reports/r10/sources/dhaka-lit-fest.json"
@@ -7779,7 +7779,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:50.517Z",
+        "attemptedAt": "2026-09-29T20:34:10.931Z",
         "lastSuccessAt": null,
         "reason": "external_redirect:https://www.nepalliteraturefestival.org",
         "report": "reports/r10/sources/nepal-literature-festival.json"
@@ -7979,7 +7979,7 @@
         "method": "named_official_organisation_entry_requires_live_identity_check",
         "observedAt": "2026-09-26T17:42:04.860Z"
       },
-      "status": "blocked",
+      "status": "editorial_profile_held",
       "countryEvidence": {
         "method": "official_organisation_identity",
         "url": "https://rosman.ru/",
@@ -7989,9 +7989,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:54.474Z",
+        "attemptedAt": "2026-09-29T20:34:12.228Z",
         "lastSuccessAt": null,
-        "reason": "detail_not_verified",
+        "reason": "Selected sample is a toy launch without an evidenced book relation; needs a book-only news profile.",
         "report": "reports/r10/sources/rosman.json"
       }
     },
@@ -8024,7 +8024,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:54.625Z",
+        "attemptedAt": "2026-09-29T20:34:12.398Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/azbooka.json"
@@ -8059,9 +8059,9 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:55.783Z",
+        "attemptedAt": "2026-09-29T20:34:12.417Z",
         "lastSuccessAt": null,
-        "reason": "This operation was aborted",
+        "reason": "detail_not_verified",
         "report": "reports/r10/sources/alpina.json"
       }
     },
@@ -8094,7 +8094,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:56.429Z",
+        "attemptedAt": "2026-09-29T20:34:13.200Z",
         "lastSuccessAt": null,
         "reason": "no_literary_article_links",
         "report": "reports/r10/sources/mif.json"
@@ -8164,7 +8164,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:31:57.547Z",
+        "attemptedAt": "2026-09-29T20:34:13.211Z",
         "lastSuccessAt": null,
         "reason": "detail_not_verified",
         "report": "reports/r10/sources/individuum.json"
@@ -8409,7 +8409,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:32:06.243Z",
+        "attemptedAt": "2026-09-29T20:34:13.727Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/premio-strega.json"
@@ -8479,7 +8479,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:32:08.481Z",
+        "attemptedAt": "2026-09-29T20:34:13.822Z",
         "lastSuccessAt": null,
         "reason": "fetch failed",
         "report": "reports/r10/sources/leya.json"
@@ -8514,7 +8514,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:32:08.624Z",
+        "attemptedAt": "2026-09-29T20:34:14.699Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/companhia-das-letras.json"
@@ -8619,7 +8619,7 @@
         "status": "organisation_country"
       },
       "probe": {
-        "attemptedAt": "2026-09-26T17:32:10.081Z",
+        "attemptedAt": "2026-09-29T20:34:14.978Z",
         "lastSuccessAt": null,
         "reason": "runtime_parser_no_literary_item",
         "report": "reports/r10/sources/fondo-cultura-economica.json"
@@ -8763,6 +8763,1742 @@
         "lastSuccessAt": "2026-09-26T17:32:14.719Z",
         "reason": null,
         "report": "reports/r10/sources/commonwealth-foundation.json"
+      }
+    },
+    {
+      "id": "reactor",
+      "name": "Reactor",
+      "entryUrl": "https://reactormag.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "reactor",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://reactormag.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://reactormag.com/",
+        "organisation": "Reactor",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Reactor",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:15.836Z",
+        "lastSuccessAt": null,
+        "reason": "http_403",
+        "report": "reports/r10/sources/reactor.json"
+      }
+    },
+    {
+      "id": "book-riot",
+      "name": "Book Riot",
+      "entryUrl": "https://bookriot.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "book-riot",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://bookriot.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "editorial_profile_held",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://bookriot.com/",
+        "organisation": "Book Riot",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Book Riot",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:15.841Z",
+        "lastSuccessAt": null,
+        "reason": "Selected sample is an affiliate shopping/deal promotion; a real literary news representative is required before profile admission.",
+        "report": "reports/r10/sources/book-riot.json"
+      }
+    },
+    {
+      "id": "the-rumpus",
+      "name": "The Rumpus",
+      "entryUrl": "https://therumpus.net/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "the-rumpus",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://therumpus.net/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://therumpus.net/",
+        "organisation": "The Rumpus",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "The Rumpus",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:15.842Z",
+        "lastSuccessAt": "2026-09-29T20:39:18.543Z",
+        "reason": null,
+        "report": "reports/r10/sources/the-rumpus.json"
+      }
+    },
+    {
+      "id": "the-millions",
+      "name": "The Millions",
+      "entryUrl": "https://themillions.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "the-millions",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://themillions.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://themillions.com/",
+        "organisation": "The Millions",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "The Millions",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:15.842Z",
+        "lastSuccessAt": null,
+        "reason": "runtime_parser_no_literary_item",
+        "report": "reports/r10/sources/the-millions.json"
+      }
+    },
+    {
+      "id": "los-angeles-review-books",
+      "name": "Los Angeles Review of Books",
+      "entryUrl": "https://lareviewofbooks.org/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "los-angeles-review-books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://lareviewofbooks.org/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "editorial_profile_held",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://lareviewofbooks.org/",
+        "organisation": "Los Angeles Review of Books",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Los Angeles Review of Books",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:16.480Z",
+        "lastSuccessAt": null,
+        "reason": "Selected sample is a climate/travel essay without a demonstrated book news relation; needs a literature-specific profile.",
+        "report": "reports/r10/sources/los-angeles-review-books.json"
+      }
+    },
+    {
+      "id": "paris-review",
+      "name": "The Paris Review",
+      "entryUrl": "https://www.theparisreview.org/blog/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "paris-review",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.theparisreview.org/blog/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.theparisreview.org/blog/",
+        "organisation": "The Paris Review",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "The Paris Review",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:16.789Z",
+        "lastSuccessAt": null,
+        "reason": "http_403",
+        "report": "reports/r10/sources/paris-review.json"
+      }
+    },
+    {
+      "id": "ploughshares",
+      "name": "Ploughshares",
+      "entryUrl": "https://pshares.org/blog/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "ploughshares",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://pshares.org/blog/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://pshares.org/blog/",
+        "organisation": "Ploughshares",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Ploughshares",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:17.198Z",
+        "lastSuccessAt": "2026-09-29T20:39:18.612Z",
+        "reason": null,
+        "report": "reports/r10/sources/ploughshares.json"
+      }
+    },
+    {
+      "id": "kenyon-review",
+      "name": "The Kenyon Review",
+      "entryUrl": "https://kenyonreview.org/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "kenyon-review",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://kenyonreview.org/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://kenyonreview.org/",
+        "organisation": "The Kenyon Review",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "The Kenyon Review",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:17.629Z",
+        "lastSuccessAt": "2026-09-29T20:39:19.185Z",
+        "reason": null,
+        "report": "reports/r10/sources/kenyon-review.json"
+      }
+    },
+    {
+      "id": "chicago-review-books",
+      "name": "Chicago Review of Books",
+      "entryUrl": "https://chireviewofbooks.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "chicago-review-books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://chireviewofbooks.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://chireviewofbooks.com/",
+        "organisation": "Chicago Review of Books",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Chicago Review of Books",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:18.551Z",
+        "lastSuccessAt": null,
+        "reason": "private_destination",
+        "report": "reports/r10/sources/chicago-review-books.json"
+      }
+    },
+    {
+      "id": "bookpage",
+      "name": "BookPage",
+      "entryUrl": "https://www.bookpage.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "bookpage",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.bookpage.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.bookpage.com/",
+        "organisation": "BookPage",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "BookPage",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:18.634Z",
+        "lastSuccessAt": null,
+        "reason": "http_403",
+        "report": "reports/r10/sources/bookpage.json"
+      }
+    },
+    {
+      "id": "national-book-review",
+      "name": "The National Book Review",
+      "entryUrl": "https://www.thenationalbookreview.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "national-book-review",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.thenationalbookreview.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.thenationalbookreview.com/",
+        "organisation": "The National Book Review",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "The National Book Review",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:41:39.703Z",
+        "lastSuccessAt": "2026-09-29T20:41:40.793Z",
+        "reason": null,
+        "report": "reports/r10/sources/national-book-review.json"
+      }
+    },
+    {
+      "id": "five-books",
+      "name": "Five Books",
+      "entryUrl": "https://fivebooks.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "five-books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://fivebooks.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "editorial_profile_held",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://fivebooks.com/",
+        "organisation": "Five Books",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Five Books",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:19.186Z",
+        "lastSuccessAt": null,
+        "reason": "Selected sample is a year/category book-list landing page rather than a separately identified article.",
+        "report": "reports/r10/sources/five-books.json"
+      }
+    },
+    {
+      "id": "granta",
+      "name": "Granta",
+      "entryUrl": "https://granta.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "granta",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://granta.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://granta.com/",
+        "organisation": "Granta",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Granta",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:41:39.704Z",
+        "lastSuccessAt": null,
+        "reason": "detail_not_verified",
+        "report": "reports/r10/sources/granta.json"
+      }
+    },
+    {
+      "id": "writers-mosaic",
+      "name": "WritersMosaic",
+      "entryUrl": "https://writersmosaic.org.uk/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "writers-mosaic",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://writersmosaic.org.uk/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://writersmosaic.org.uk/",
+        "organisation": "WritersMosaic",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "WritersMosaic",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:20.074Z",
+        "lastSuccessAt": "2026-09-29T20:39:28.368Z",
+        "reason": null,
+        "report": "reports/r10/sources/writers-mosaic.json"
+      }
+    },
+    {
+      "id": "books-ireland",
+      "name": "Books Ireland",
+      "entryUrl": "https://booksirelandmagazine.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "books-ireland",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://booksirelandmagazine.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://booksirelandmagazine.com/",
+        "organisation": "Books Ireland",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Books Ireland",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:23.425Z",
+        "lastSuccessAt": "2026-09-29T20:39:25.579Z",
+        "reason": null,
+        "report": "reports/r10/sources/books-ireland.json"
+      }
+    },
+    {
+      "id": "publishing-scotland",
+      "name": "Publishing Scotland",
+      "entryUrl": "https://www.publishingscotland.org/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "publishing-scotland",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.publishingscotland.org/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.publishingscotland.org/",
+        "organisation": "Publishing Scotland",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Publishing Scotland",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:23.426Z",
+        "lastSuccessAt": "2026-09-29T20:39:24.642Z",
+        "reason": null,
+        "report": "reports/r10/sources/publishing-scotland.json"
+      }
+    },
+    {
+      "id": "scottish-book-trust",
+      "name": "Scottish Book Trust",
+      "entryUrl": "https://www.scottishbooktrust.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "scottish-book-trust",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.scottishbooktrust.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.scottishbooktrust.com/",
+        "organisation": "Scottish Book Trust",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Scottish Book Trust",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:24.645Z",
+        "lastSuccessAt": "2026-09-29T20:39:27.169Z",
+        "reason": null,
+        "report": "reports/r10/sources/scottish-book-trust.json"
+      }
+    },
+    {
+      "id": "new-writing-north",
+      "name": "New Writing North",
+      "entryUrl": "https://newwritingnorth.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "new-writing-north",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://newwritingnorth.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://newwritingnorth.com/",
+        "organisation": "New Writing North",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "New Writing North",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:25.581Z",
+        "lastSuccessAt": "2026-09-29T20:39:26.927Z",
+        "reason": null,
+        "report": "reports/r10/sources/new-writing-north.json"
+      }
+    },
+    {
+      "id": "national-centre-writing",
+      "name": "National Centre for Writing",
+      "entryUrl": "https://nationalcentreforwriting.org.uk/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "national-centre-writing",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://nationalcentreforwriting.org.uk/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://nationalcentreforwriting.org.uk/",
+        "organisation": "National Centre for Writing",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "National Centre for Writing",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:26.929Z",
+        "lastSuccessAt": "2026-09-29T20:39:28.971Z",
+        "reason": null,
+        "report": "reports/r10/sources/national-centre-writing.json"
+      }
+    },
+    {
+      "id": "literature-wales",
+      "name": "Literature Wales",
+      "entryUrl": "https://www.literaturewales.org/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "literature-wales",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.literaturewales.org/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.literaturewales.org/",
+        "organisation": "Literature Wales",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Literature Wales",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:27.173Z",
+        "lastSuccessAt": "2026-09-29T20:39:29.952Z",
+        "reason": null,
+        "report": "reports/r10/sources/literature-wales.json"
+      }
+    },
+    {
+      "id": "books-from-scotland",
+      "name": "Books from Scotland",
+      "entryUrl": "https://booksfromscotland.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "books-from-scotland",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://booksfromscotland.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://booksfromscotland.com/",
+        "organisation": "Books from Scotland",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Books from Scotland",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:41:39.704Z",
+        "lastSuccessAt": "2026-09-29T20:41:40.557Z",
+        "reason": null,
+        "report": "reports/r10/sources/books-from-scotland.json"
+      }
+    },
+    {
+      "id": "gorky-media",
+      "name": "Горький",
+      "entryUrl": "https://gorky.media/",
+      "languageHint": "ru",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "gorky-media",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://gorky.media/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://gorky.media/",
+        "organisation": "Горький",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Горький",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:41:40.560Z",
+        "lastSuccessAt": null,
+        "reason": "detail_not_verified",
+        "report": "reports/r10/sources/gorky-media.json"
+      }
+    },
+    {
+      "id": "prochtenie",
+      "name": "Прочтение",
+      "entryUrl": "https://prochtenie.org/",
+      "languageHint": "ru",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "prochtenie",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://prochtenie.org/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://prochtenie.org/",
+        "organisation": "Прочтение",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Прочтение",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:28.974Z",
+        "lastSuccessAt": "2026-09-29T20:39:30.207Z",
+        "reason": null,
+        "report": "reports/r10/sources/prochtenie.json"
+      }
+    },
+    {
+      "id": "literaturnaya-gazeta",
+      "name": "Литературная газета",
+      "entryUrl": "https://lgz.ru/",
+      "languageHint": "ru",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "literaturnaya-gazeta",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://lgz.ru/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://lgz.ru/",
+        "organisation": "Литературная газета",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Литературная газета",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:29.352Z",
+        "lastSuccessAt": "2026-09-29T20:39:31.496Z",
+        "reason": null,
+        "report": "reports/r10/sources/literaturnaya-gazeta.json"
+      }
+    },
+    {
+      "id": "literaturnaya-rossiya",
+      "name": "Литературная Россия",
+      "entryUrl": "https://litrossia.ru/",
+      "languageHint": "ru",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "literaturnaya-rossiya",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://litrossia.ru/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://litrossia.ru/",
+        "organisation": "Литературная Россия",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Литературная Россия",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:29.953Z",
+        "lastSuccessAt": "2026-09-29T20:39:31.388Z",
+        "reason": null,
+        "report": "reports/r10/sources/literaturnaya-rossiya.json"
+      }
+    },
+    {
+      "id": "polka-academy",
+      "name": "Полка",
+      "entryUrl": "https://polka.academy/",
+      "languageHint": "ru",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "polka-academy",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://polka.academy/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://polka.academy/",
+        "organisation": "Полка",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Полка",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:41:40.796Z",
+        "lastSuccessAt": null,
+        "reason": "detail_not_verified",
+        "report": "reports/r10/sources/polka-academy.json"
+      }
+    },
+    {
+      "id": "sydney-review-books",
+      "name": "Sydney Review of Books",
+      "entryUrl": "https://sydneyreviewofbooks.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "sydney-review-books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://sydneyreviewofbooks.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://sydneyreviewofbooks.com/",
+        "organisation": "Sydney Review of Books",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Sydney Review of Books",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:30.213Z",
+        "lastSuccessAt": null,
+        "reason": "runtime_parser_no_literary_item",
+        "report": "reports/r10/sources/sydney-review-books.json"
+      }
+    },
+    {
+      "id": "australian-book-review",
+      "name": "Australian Book Review",
+      "entryUrl": "https://www.australianbookreview.com.au/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "australian-book-review",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.australianbookreview.com.au/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.australianbookreview.com.au/",
+        "organisation": "Australian Book Review",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Australian Book Review",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:31.391Z",
+        "lastSuccessAt": null,
+        "reason": "runtime_parser_no_literary_item",
+        "report": "reports/r10/sources/australian-book-review.json"
+      }
+    },
+    {
+      "id": "books-publishing-au",
+      "name": "Books+Publishing",
+      "entryUrl": "https://www.booksandpublishing.com.au/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "books-publishing-au",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.booksandpublishing.com.au/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.booksandpublishing.com.au/",
+        "organisation": "Books+Publishing",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Books+Publishing",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:31.514Z",
+        "lastSuccessAt": "2026-09-29T20:39:38.588Z",
+        "reason": null,
+        "report": "reports/r10/sources/books-publishing-au.json"
+      }
+    },
+    {
+      "id": "literaturkritik",
+      "name": "literaturkritik.de",
+      "entryUrl": "https://literaturkritik.de/",
+      "languageHint": "de",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "literaturkritik",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://literaturkritik.de/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "editorial_profile_held",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://literaturkritik.de/",
+        "organisation": "literaturkritik.de",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "literaturkritik.de",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:32.154Z",
+        "lastSuccessAt": null,
+        "reason": "Selected sample is a book/catalogue contents page with no demonstrated literary news article identity.",
+        "report": "reports/r10/sources/literaturkritik.json"
+      }
+    },
+    {
+      "id": "buchmarkt",
+      "name": "BuchMarkt",
+      "entryUrl": "https://buchmarkt.de/",
+      "languageHint": "de",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "buchmarkt",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://buchmarkt.de/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://buchmarkt.de/",
+        "organisation": "BuchMarkt",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "BuchMarkt",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:41:41.721Z",
+        "lastSuccessAt": "2026-09-29T20:41:42.627Z",
+        "reason": null,
+        "report": "reports/r10/sources/buchmarkt.json"
+      }
+    },
+    {
+      "id": "literaturcafe",
+      "name": "literaturcafe.de",
+      "entryUrl": "https://www.literaturcafe.de/",
+      "languageHint": "de",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "literaturcafe",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.literaturcafe.de/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.literaturcafe.de/",
+        "organisation": "literaturcafe.de",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "literaturcafe.de",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:34.931Z",
+        "lastSuccessAt": "2026-09-29T20:39:37.971Z",
+        "reason": null,
+        "report": "reports/r10/sources/literaturcafe.json"
+      }
+    },
+    {
+      "id": "boersenblatt",
+      "name": "Börsenblatt",
+      "entryUrl": "https://www.boersenblatt.net/",
+      "languageHint": "de",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "boersenblatt",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.boersenblatt.net/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.boersenblatt.net/",
+        "organisation": "Börsenblatt",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Börsenblatt",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:34.940Z",
+        "lastSuccessAt": "2026-09-29T20:39:36.943Z",
+        "reason": null,
+        "report": "reports/r10/sources/boersenblatt.json"
+      }
+    },
+    {
+      "id": "buchkultur",
+      "name": "Buchkultur",
+      "entryUrl": "https://www.buchkultur.net/",
+      "languageHint": "de",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "buchkultur",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.buchkultur.net/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.buchkultur.net/",
+        "organisation": "Buchkultur",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Buchkultur",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:36.933Z",
+        "lastSuccessAt": "2026-09-29T20:39:42.306Z",
+        "reason": null,
+        "report": "reports/r10/sources/buchkultur.json"
+      }
+    },
+    {
+      "id": "litprom",
+      "name": "Litprom",
+      "entryUrl": "https://www.litprom.de/",
+      "languageHint": "de",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "litprom",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.litprom.de/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.litprom.de/",
+        "organisation": "Litprom",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Litprom",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:36.944Z",
+        "lastSuccessAt": null,
+        "reason": "no_literary_article_links",
+        "report": "reports/r10/sources/litprom.json"
+      }
+    },
+    {
+      "id": "literaturhaus-at",
+      "name": "Literaturhaus Wien",
+      "entryUrl": "https://www.literaturhaus.at/",
+      "languageHint": "de",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "literaturhaus-at",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.literaturhaus.at/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.literaturhaus.at/",
+        "organisation": "Literaturhaus Wien",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Literaturhaus Wien",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:37.979Z",
+        "lastSuccessAt": null,
+        "reason": "fetch failed",
+        "report": "reports/r10/sources/literaturhaus-at.json"
+      }
+    },
+    {
+      "id": "minima-moralia",
+      "name": "minima&moralia",
+      "entryUrl": "https://www.minimaetmoralia.it/",
+      "languageHint": "it",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "minima-moralia",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.minimaetmoralia.it/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.minimaetmoralia.it/",
+        "organisation": "minima&moralia",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "minima&moralia",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:38.178Z",
+        "lastSuccessAt": "2026-09-29T20:39:42.544Z",
+        "reason": null,
+        "report": "reports/r10/sources/minima-moralia.json"
+      }
+    },
+    {
+      "id": "doppiozero",
+      "name": "Doppiozero",
+      "entryUrl": "https://www.doppiozero.com/",
+      "languageHint": "it",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "doppiozero",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.doppiozero.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "editorial_profile_held",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.doppiozero.com/",
+        "organisation": "Doppiozero",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Doppiozero",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:38.590Z",
+        "lastSuccessAt": null,
+        "reason": "Selected sample is a mathematics/AI essay and the extracted headline is a loading placeholder; literary news relevance is not verified.",
+        "report": "reports/r10/sources/doppiozero.json"
+      }
+    },
+    {
+      "id": "sololibri",
+      "name": "SoloLibri",
+      "entryUrl": "https://www.sololibri.net/",
+      "languageHint": "it",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "sololibri",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.sololibri.net/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.sololibri.net/",
+        "organisation": "SoloLibri",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "SoloLibri",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:39.332Z",
+        "lastSuccessAt": "2026-09-29T20:39:41.470Z",
+        "reason": null,
+        "report": "reports/r10/sources/sololibri.json"
+      }
+    },
+    {
+      "id": "letture-org",
+      "name": "Letture.org",
+      "entryUrl": "https://www.letture.org/",
+      "languageHint": "it",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "letture-org",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.letture.org/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.letture.org/",
+        "organisation": "Letture.org",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Letture.org",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:39.916Z",
+        "lastSuccessAt": "2026-09-29T20:39:42.953Z",
+        "reason": null,
+        "report": "reports/r10/sources/letture-org.json"
+      }
+    },
+    {
+      "id": "zenda-libros",
+      "name": "Zenda",
+      "entryUrl": "https://www.zendalibros.com/",
+      "languageHint": "es",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "zenda-libros",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.zendalibros.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.zendalibros.com/",
+        "organisation": "Zenda",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Zenda",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:41.472Z",
+        "lastSuccessAt": "2026-09-29T20:39:43.943Z",
+        "reason": null,
+        "report": "reports/r10/sources/zenda-libros.json"
+      }
+    },
+    {
+      "id": "librerantes",
+      "name": "Librerantes",
+      "entryUrl": "https://www.librerantes.com/",
+      "languageHint": "es",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "librerantes",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.librerantes.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.librerantes.com/",
+        "organisation": "Librerantes",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Librerantes",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:42.314Z",
+        "lastSuccessAt": null,
+        "reason": "getaddrinfo ENOTFOUND www.librerantes.com",
+        "report": "reports/r10/sources/librerantes.json"
+      }
+    },
+    {
+      "id": "estandarte",
+      "name": "Estandarte",
+      "entryUrl": "https://www.estandarte.com/",
+      "languageHint": "es",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "estandarte",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.estandarte.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.estandarte.com/",
+        "organisation": "Estandarte",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Estandarte",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:42.548Z",
+        "lastSuccessAt": "2026-09-29T20:39:44.102Z",
+        "reason": null,
+        "report": "reports/r10/sources/estandarte.json"
+      }
+    },
+    {
+      "id": "placer-lectura",
+      "name": "El Placer de la Lectura",
+      "entryUrl": "https://elplacerdelalectura.com/",
+      "languageHint": "es",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "placer-lectura",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://elplacerdelalectura.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://elplacerdelalectura.com/",
+        "organisation": "El Placer de la Lectura",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "El Placer de la Lectura",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:42.955Z",
+        "lastSuccessAt": "2026-09-29T20:39:44.772Z",
+        "reason": null,
+        "report": "reports/r10/sources/placer-lectura.json"
+      }
+    },
+    {
+      "id": "en-attendant-nadeau",
+      "name": "En attendant Nadeau",
+      "entryUrl": "https://www.en-attendant-nadeau.fr/",
+      "languageHint": "fr",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "en-attendant-nadeau",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.en-attendant-nadeau.fr/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.en-attendant-nadeau.fr/",
+        "organisation": "En attendant Nadeau",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "En attendant Nadeau",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:43.946Z",
+        "lastSuccessAt": "2026-09-29T20:39:48.791Z",
+        "reason": null,
+        "report": "reports/r10/sources/en-attendant-nadeau.json"
+      }
+    },
+    {
+      "id": "diacritik",
+      "name": "Diacritik",
+      "entryUrl": "https://diacritik.com/",
+      "languageHint": "fr",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "diacritik",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://diacritik.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://diacritik.com/",
+        "organisation": "Diacritik",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Diacritik",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:44.104Z",
+        "lastSuccessAt": null,
+        "reason": "private_destination",
+        "report": "reports/r10/sources/diacritik.json"
+      }
+    },
+    {
+      "id": "le-litteraire",
+      "name": "Le Litteraire",
+      "entryUrl": "https://www.lelitteraire.com/",
+      "languageHint": "fr",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "le-litteraire",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.lelitteraire.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.lelitteraire.com/",
+        "organisation": "Le Litteraire",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Le Litteraire",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:44.354Z",
+        "lastSuccessAt": "2026-09-29T20:39:45.773Z",
+        "reason": null,
+        "report": "reports/r10/sources/le-litteraire.json"
+      }
+    },
+    {
+      "id": "recours-poeme",
+      "name": "Recours au Poème",
+      "entryUrl": "https://www.recoursaupoeme.fr/",
+      "languageHint": "fr",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "recours-poeme",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.recoursaupoeme.fr/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.recoursaupoeme.fr/",
+        "organisation": "Recours au Poème",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Recours au Poème",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:44.774Z",
+        "lastSuccessAt": "2026-09-29T20:39:46.174Z",
+        "reason": null,
+        "report": "reports/r10/sources/recours-poeme.json"
+      }
+    },
+    {
+      "id": "literandra",
+      "name": "Literandra",
+      "entryUrl": "https://literandra.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "literandra",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://literandra.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://literandra.com/",
+        "organisation": "Literandra",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Literandra",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:45.775Z",
+        "lastSuccessAt": null,
+        "reason": "fetch failed",
+        "report": "reports/r10/sources/literandra.json"
+      }
+    },
+    {
+      "id": "afrocritik",
+      "name": "Afrocritik",
+      "entryUrl": "https://www.afrocritik.com/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "afrocritik",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.afrocritik.com/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "editorial_profile_held",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.afrocritik.com/",
+        "organisation": "Afrocritik",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Afrocritik",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:46.176Z",
+        "lastSuccessAt": null,
+        "reason": "Selected sample is a film festival screening without an evidenced book/adaptation relation; needs a literary-only news profile.",
+        "report": "reports/r10/sources/afrocritik.json"
+      }
+    },
+    {
+      "id": "open-book-festival",
+      "name": "Open Book Festival",
+      "entryUrl": "https://openbookfestival.co.za/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "open-book-festival",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://openbookfestival.co.za/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://openbookfestival.co.za/",
+        "organisation": "Open Book Festival",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Open Book Festival",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:48.800Z",
+        "lastSuccessAt": null,
+        "reason": "fetch failed",
+        "report": "reports/r10/sources/open-book-festival.json"
+      }
+    },
+    {
+      "id": "short-story-day-africa",
+      "name": "Short Story Day Africa",
+      "entryUrl": "https://shortstorydayafrica.org/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "short-story-day-africa",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://shortstorydayafrica.org/",
+        "note": "Country is not inferred from language or a name. Runtime availability, actual article identity and literary scope require recorded live parser/detail evidence."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://shortstorydayafrica.org/",
+        "organisation": "Short Story Day Africa",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Short Story Day Africa",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:39:52.927Z",
+        "lastSuccessAt": "2026-09-29T20:39:56.638Z",
+        "reason": null,
+        "report": "reports/r10/sources/short-story-day-africa.json"
+      }
+    },
+    {
+      "id": "poets-writers",
+      "name": "Poets & Writers",
+      "entryUrl": "https://www.pw.org/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "poets-writers",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.pw.org/",
+        "note": "Country is not inferred. Actual literary article and parser evidence are required before promotion."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.pw.org/",
+        "organisation": "Poets & Writers",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Poets & Writers",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:42:39.862Z",
+        "lastSuccessAt": "2026-09-29T20:42:42.287Z",
+        "reason": null,
+        "report": "reports/r10/sources/poets-writers.json"
+      }
+    },
+    {
+      "id": "poetry-society-uk",
+      "name": "The Poetry Society",
+      "entryUrl": "https://poetrysociety.org.uk/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "poetry-society-uk",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://poetrysociety.org.uk/",
+        "note": "Country is not inferred. Actual literary article and parser evidence are required before promotion."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://poetrysociety.org.uk/",
+        "organisation": "The Poetry Society",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "The Poetry Society",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:42:39.866Z",
+        "lastSuccessAt": null,
+        "reason": "http_403",
+        "report": "reports/r10/sources/poetry-society-uk.json"
+      }
+    },
+    {
+      "id": "poetry-ireland",
+      "name": "Poetry Ireland",
+      "entryUrl": "https://www.poetryireland.ie/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "poetry-ireland",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://www.poetryireland.ie/",
+        "note": "Country is not inferred. Actual literary article and parser evidence are required before promotion."
+      },
+      "status": "blocked",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.poetryireland.ie/",
+        "organisation": "Poetry Ireland",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Poetry Ireland",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:42:39.867Z",
+        "lastSuccessAt": null,
+        "reason": "detail_not_verified",
+        "report": "reports/r10/sources/poetry-ireland.json"
+      }
+    },
+    {
+      "id": "poets-org",
+      "name": "Academy of American Poets",
+      "entryUrl": "https://poets.org/",
+      "languageHint": "en",
+      "region": "global",
+      "sourceClass": "literary-news",
+      "sourceFamilyId": "poets-org",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "discovery": {
+        "method": "official_literary_publication_identity",
+        "url": "https://poets.org/",
+        "note": "Country is not inferred. Actual literary article and parser evidence are required before promotion."
+      },
+      "status": "runtime_verified",
+      "countryEvidence": {
+        "method": "official_organisation_identity",
+        "url": "https://poets.org/",
+        "organisation": "Academy of American Poets",
+        "statement": "Organisation country is distinct from the country of each covered event.",
+        "excerpt": "Academy of American Poets",
+        "status": "organisation_country"
+      },
+      "probe": {
+        "attemptedAt": "2026-09-29T20:42:39.867Z",
+        "lastSuccessAt": "2026-09-29T20:42:42.295Z",
+        "reason": null,
+        "report": "reports/r10/sources/poets-org.json"
       }
     }
   ]

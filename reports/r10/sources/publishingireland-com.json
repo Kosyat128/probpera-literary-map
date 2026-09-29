@@ -8,54 +8,484 @@
   "coverageCountryCodes": [
     "IE"
   ],
-  "attemptedAt": "2026-09-26T17:28:32.734Z",
+  "attemptedAt": "2026-09-27T14:07:14.683Z",
   "requests": [
     {
       "url": "https://www.publishingireland.com/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 127370,
-      "sha256": "981fe4c31112c4d31781748d689144df77562e84da16c7a32bdc61f31d88aed2",
-      "accessedAt": "2026-09-26T17:22:15.182Z"
+      "sha256": "228718b2f8163ac178759132a9ec6e95946ffb900ad391312acfe28c45484755",
+      "accessedAt": "2026-09-27T14:07:15.477Z"
     },
     {
-      "url": "https://www.publishingireland.com/publication_category/contemporary-poetry/",
+      "url": "https://www.publishingireland.com/news/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 79714,
-      "sha256": "36f193f35fec88983547ce6fca913ad85754dd38fe5adf698adb3ee39ffd3fa1",
-      "accessedAt": "2026-09-26T17:28:34.503Z"
+      "bytes": 79978,
+      "sha256": "624a1c000651cf0359d99424f6bbb54759202cc6d0cdec7893f8171aa5e16728",
+      "accessedAt": "2026-09-27T14:07:15.645Z"
     },
     {
-      "url": "https://www.publishingireland.com/publication_category/historical-fiction/",
+      "url": "https://www.publishingireland.com/little-beetle-press-launches-new-international-literary-and-creative-festival/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 79184,
-      "sha256": "0162a572f79be2b27422d5950e7ce7cb8d176d399b5a63dfe979a22ae8106923",
-      "accessedAt": "2026-09-26T17:28:34.722Z"
-    },
-    {
-      "url": "https://www.publishingireland.com/publication_category/literary-journal/",
-      "status": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "bytes": 79766,
-      "sha256": "9fb95db4c79e96ac57b7541930f11cf542011b7a4e5c09afb9b961990aeba564",
-      "accessedAt": "2026-09-26T17:28:34.957Z"
+      "bytes": 79979,
+      "sha256": "e5f2e47f149071593bb8ffbcd593d76e48c238ed12af880dfbcb0f230ded40a9",
+      "accessedAt": "2026-09-27T14:07:15.818Z"
     }
   ],
-  "status": "blocked",
-  "reason": "detail_not_verified",
+  "status": "runtime_verified",
+  "reason": null,
   "robots": {
     "url": "https://www.publishingireland.com/robots.txt",
     "status": 200,
     "contentType": "text/plain; charset=utf-8",
     "bytes": 183,
     "sha256": "86a1a0c4dadcc75071a6c57ac735f6ff5229fe6d8824c50befe1c1de6b4399b6",
-    "accessedAt": "2026-09-26T17:28:33.761Z",
+    "accessedAt": "2026-09-27T14:07:15.141Z",
     "disallowed": []
   },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:14.484Z",
-    "sourceDocumentSha256": "981fe4c31112c4d31781748d689144df77562e84da16c7a32bdc61f31d88aed2"
-  }
+  "endpoint": {
+    "id": "publishingireland-com",
+    "name": "Irish Book Publishers’ Association",
+    "url": "https://www.publishingireland.com/news/",
+    "format": "html",
+    "language": "en-GB",
+    "region": "europe",
+    "sourceFamilyId": "publishingireland-com",
+    "countryCodes": [
+      "IE"
+    ],
+    "coverageCountryCodes": [
+      "IE"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.publishingireland.com"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/publication_category\\/[^/]+\\/?$|^\\/\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.publishingireland.com/little-beetle-press-launches-new-international-literary-and-creative-festival/"
+    ],
+    "verifiedAt": "2026-09-27T14:07:15.822Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-27. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 15,
+  "literaryCandidateCount": 14,
+  "sample": {
+    "sourceId": "publishingireland-com",
+    "source": {
+      "name": "Irish Book Publishers’ Association",
+      "url": "https://www.publishingireland.com/little-beetle-press-launches-new-international-literary-and-creative-festival/",
+      "language": "en-GB"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Little Beetle Press launches new international literary and creative festival",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-27T14:07:15.672Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.publishingireland.com/little-beetle-press-launches-new-international-literary-and-creative-festival/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 79979,
+      "sha256": "e5f2e47f149071593bb8ffbcd593d76e48c238ed12af880dfbcb0f230ded40a9",
+      "accessedAt": "2026-09-27T14:07:15.818Z",
+      "headline": "Little Beetle Press launches new international literary and creative festival",
+      "excerpt": "Little Beetle Press launches new international literary and creative festival Publishing Ireland > News > Little Beetle Press launches new international literary and creative festival Longford-based publisher Little Beetle Press launches international literary and creative festival, set to take place in November 2026. The Binding is a new international literary and creative festival taking place i",
+      "publishedDates": [
+        {
+          "value": "2026-07-14T12:30:57+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-07-14T12:30:57+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-07-14T12:30:57+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.publishingireland.com/little-beetle-press-launches-new-international-literary-and-creative-festival/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-27T14:07:15.822Z",
+  "foundItems": [
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/little-beetle-press-launches-new-international-literary-and-creative-festival/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Little Beetle Press launches new international literary and creative festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/little-island-agree-2-book-deal-with-bestselling-author-katriona-osullivan/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Little Island agree 2-book deal with bestselling author Katriona O’Sullivan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/poetry-ireland-offers-bilingual-programme-to-early-career-poets/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poetry Ireland offers bilingual programme to early career poets",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/publication_category/literary-journal/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Journal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/little-island-marks-irelands-eu-presidency-with-title-launch/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Little Island marks Ireland’s EU Presidency with title launch",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/irish-book-week-17th-to-24th-of-october/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Irish Book Week – 17th to 24th of October",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/little-island-acquire-baby-picture-book-by-deirdre-sullivan/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Little Island acquire baby picture book by Deirdre Sullivan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/annual-irish-publishers-conference/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishers Conference",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/published-in-ireland/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Published in Ireland",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/publications/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "All Publications »",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/take-the-equity-diversity-and-inclusion-survey-now/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Take the Equity, Diversity and Inclusion survey now!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/obrien-press-to-host-pitching-event-for-culture-night/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "O’Brien Press to host pitching event for Culture Night",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/accessibility-statement/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Accessibility Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "source": {
+        "name": "Irish Book Publishers’ Association",
+        "url": "https://www.publishingireland.com/charter-for-inclusion/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Charter for Inclusion",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:15.672Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "624a1c000651cf0359d99424f6bbb54759202cc6d0cdec7893f8171aa5e16728"
 }

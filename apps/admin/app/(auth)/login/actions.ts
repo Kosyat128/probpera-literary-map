@@ -4,6 +4,7 @@ import { redirect, withAdminBasePath } from "@/lib/navigation";
 import { z } from "zod";
 
 import { adminEnv } from "@/lib/env";
+import { authServiceError, guardedAuthRequest, logAuthFailure } from "@/lib/auth-service-error";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const loginSchema = z.object({
@@ -30,9 +31,10 @@ export async function loginAction(formData: FormData) {
     redirect(loginUrl("Подключение к базе ещё не настроено."));
   }
 
-  const { error } = await supabase.auth.signInWithPassword(parsed.data);
+  const { error } = await guardedAuthRequest(() => supabase.auth.signInWithPassword(parsed.data));
   if (error) {
-    redirect(loginUrl("Неверная почта или пароль."));
+    logAuthFailure("sign_in", error);
+    redirect(loginUrl(authServiceError(error) || "Неверная почта или пароль."));
   }
 
   redirect(withAdminBasePath("/dashboard"));
@@ -49,9 +51,13 @@ export async function resetPasswordAction(formData: FormData) {
     redirect(loginUrl("Подключение к базе ещё не настроено."));
   }
 
-  await supabase.auth.resetPasswordForEmail(email.data, {
+  const { error } = await guardedAuthRequest(() => supabase.auth.resetPasswordForEmail(email.data, {
     redirectTo: `${adminEnv.adminSiteUrl}/auth/callback?next=${encodeURIComponent("/reset-password")}`,
-  });
+  }));
+  if (error) {
+    logAuthFailure("password_recovery", error);
+    redirect(loginUrl(authServiceError(error) || "Не удалось отправить письмо восстановления. Повторите попытку позже."));
+  }
   redirect(
     loginUrl(
       "Если адрес зарегистрирован, на него отправлена ссылка восстановления.",

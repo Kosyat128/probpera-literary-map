@@ -6,7 +6,8 @@ import { cmsCoreFieldMarker } from "../cms/directEditBridge";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import BrandArrowIcon from "./BrandArrowIcon";
 import CountryFlagIcon from "./CountryFlagIcon";
-import curatedWriterQids from "../data/countries/generated/curatedWriterQids.generated.json";
+import { calendarWriterQid } from "../data/countries/calendarWriterIdentities";
+import { applyCalendarWriterDatePatches, calendarWriterDatePatches, type WriterDatePatch } from "../data/countries/calendarWriterDatePatches";
 import { parseWriterDate, type WriterDatePrecision } from "../utils/writerDates";
 
 type Props = {
@@ -56,18 +57,18 @@ function writerName(
 }
 
 export function calendarWriterIdentity(writer: Writer, countryId = "") {
-  const registry = curatedWriterQids.writers as Record<string, { wikidataId: string }>;
-  const qid = registry[`${countryId}:${writer.id}`]?.wikidataId;
+  const qid = calendarWriterQid(writer, `${countryId}:${writer.id}`);
   return qid ? `wikidata:${qid}` : `writer:${countryId}:${writer.id}`;
 }
 
 export function selectCalendarEvents(
   countries: Country[],
   language: "ru" | "en" = "ru",
-  translate: (value: string) => string = value => value
+  translate: (value: string) => string = value => value,
+  patches: readonly WriterDatePatch[] = calendarWriterDatePatches
 ): CalendarEvent[] {
   const groups = new Map<string, CalendarEvent[]>();
-  for (const country of countries) for (const writer of country.writers) {
+  for (const country of applyCalendarWriterDatePatches(countries, patches).countries) for (const writer of country.writers) {
     for (const [field, kind, label] of [
       ["birthDate", "birth", "День рождения"],
       ["deathDate", "memory", "День памяти"],

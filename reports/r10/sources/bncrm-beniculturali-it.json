@@ -8,50 +8,13 @@
   "coverageCountryCodes": [
     "IT"
   ],
-  "attemptedAt": "2026-09-26T17:29:09.367Z",
-  "requests": [
-    {
-      "url": "https://www.bncrm.beniculturali.it/",
-      "status": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "bytes": 62261,
-      "sha256": "c6f7e27bf350a17e40748683f387b83c2069d275d2ef21cbb2a0073dd7ba9416",
-      "accessedAt": "2026-09-26T17:23:00.379Z"
-    },
-    {
-      "url": "https://www.bncrm.beniculturali.it/it/1451/una-biblioteca-un-libro",
-      "status": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "bytes": 33599,
-      "sha256": "dea4a2ea14a54702dc285300b78b9b490b9788bbe23e8e39260ca20fb561b1a4",
-      "accessedAt": "2026-09-26T17:29:10.958Z"
-    },
-    {
-      "url": "https://www.bncrm.beniculturali.it/it/832/progetto-googlebooks",
-      "status": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "bytes": 37851,
-      "sha256": "d611bb1d863f4d72253f607ec41d7b838783a77306d786ea73a14ef9187bde78",
-      "accessedAt": "2026-09-26T17:29:11.341Z"
-    },
-    {
-      "url": "https://www.bncrm.beniculturali.it/it/32/biblioteca-digitale",
-      "status": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "bytes": 44672,
-      "sha256": "8367f9aa3b2f6709b009a70128f54f32b12df1882efe4aae512fd615e654d985",
-      "accessedAt": "2026-09-26T17:29:11.721Z"
-    }
-  ],
+  "attemptedAt": "2026-09-29T20:33:45.036Z",
+  "requests": [],
   "status": "blocked",
-  "reason": "detail_not_verified",
+  "reason": "fetch failed",
   "robots": {
     "url": "https://www.bncrm.beniculturali.it/robots.txt",
-    "error": "http_404",
+    "error": "This operation was aborted",
     "disallowed": []
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:59.332Z",
-    "sourceDocumentSha256": "c6f7e27bf350a17e40748683f387b83c2069d275d2ef21cbb2a0073dd7ba9416"
   }
 }

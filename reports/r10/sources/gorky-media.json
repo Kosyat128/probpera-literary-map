@@ -1,0 +1,93 @@
+{
+  "sourceId": "gorky-media",
+  "name": "Горький",
+  "entryUrl": "https://gorky.media/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:41:40.560Z",
+  "requests": [
+    {
+      "url": "https://gorky.media/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 62347,
+      "sha256": "d8f80af1d28e4f58db0717fcfe786652a2f91e804ffb1607139e1710297dab06",
+      "accessedAt": "2026-09-29T20:41:40.974Z"
+    },
+    {
+      "url": "https://gorky.media/reviews/tsirkumlatorii-stalin-knigi-nedeli",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 70107,
+      "sha256": "73796c556954cea5fb6b91944e174cfff8c515d8040a039515c8572bffeb8b5e",
+      "accessedAt": "2026-09-29T20:41:41.139Z"
+    },
+    {
+      "url": "https://gorky.media/context/romanticheskii-egoist",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 80416,
+      "sha256": "b98965299f455bba9b8519887deed38757ebd9571fd5c15fbe16e4c45af14242",
+      "accessedAt": "2026-09-29T20:41:41.316Z"
+    },
+    {
+      "url": "https://gorky.media/fragments/zont-i-shveinaya-mashinka",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 62646,
+      "sha256": "145d90ee69e9406dac9496d3cd27a9549dbadc114192b24e619922af801d9940",
+      "accessedAt": "2026-09-29T20:41:41.503Z"
+    },
+    {
+      "url": "https://gorky.media/reviews/pismo-nesushchestvuyushchemu-drugu",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 64282,
+      "sha256": "6c53df3af9b461b339f9048d3936d503c49140507121305ac569e549b0d719c2",
+      "accessedAt": "2026-09-29T20:41:41.652Z"
+    },
+    {
+      "url": "https://gorky.media/reviews/martirolog-zalozhnikov-vremeni",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 62551,
+      "sha256": "2f7159702f0acaf739da7486e264419ed293599172932dc96dc07aef4b2b48f9",
+      "accessedAt": "2026-09-29T20:41:41.810Z"
+    },
+    {
+      "url": "https://gorky.media/reviews/gesamtkunstwerk-grois",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 65737,
+      "sha256": "e9c46a52b54dcdfc8403f9261d2f54fbff77b0048a72d039d3e73997cdbfa968",
+      "accessedAt": "2026-09-29T20:41:41.974Z"
+    },
+    {
+      "url": "https://gorky.media/context/snesti-steny-vybrosit-instrumenty-v-krapivu",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 81062,
+      "sha256": "31cca949ead238e50486baa0c02fa1b30c3e47fc11b084e36e3a26c6f8528f2e",
+      "accessedAt": "2026-09-29T20:41:42.129Z"
+    },
+    {
+      "url": "https://gorky.media/fragments/nenavidet-ameriku-pravilno",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 70281,
+      "sha256": "3f261e627a91417f290a25f33c03c1013f80dbede326129607be020dc082483c",
+      "accessedAt": "2026-09-29T20:41:42.250Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://gorky.media/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 24,
+    "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "accessedAt": "2026-09-29T20:41:40.841Z",
+    "disallowed": []
+  }
+}

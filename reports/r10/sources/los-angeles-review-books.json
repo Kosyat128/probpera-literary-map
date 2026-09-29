@@ -1,0 +1,1270 @@
+{
+  "sourceId": "los-angeles-review-books",
+  "name": "Los Angeles Review of Books",
+  "entryUrl": "https://lareviewofbooks.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:16.480Z",
+  "requests": [
+    {
+      "url": "https://lareviewofbooks.org/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 395356,
+      "sha256": "0f906a73f63c92b95ffb030e294dfe29400e817221a0d4ecc75821fd11c48e23",
+      "accessedAt": "2026-09-29T20:39:17.282Z"
+    },
+    {
+      "url": "https://lareviewofbooks.org/article/jennifer-lunden-european-heat-wave-2026-climate-change/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 203829,
+      "sha256": "8eb0a2aa7848952eff743fad52f912391bbb88363c3aebad1fcd095f79bf8686",
+      "accessedAt": "2026-09-29T20:39:17.616Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Selected sample is a climate/travel essay without a demonstrated book news relation; needs a literature-specific profile.",
+  "robots": {
+    "url": "https://lareviewofbooks.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1014,
+    "sha256": "9f3aa3d812e0373aabb4f8046b985466c2e85bbf48e6ab9b6dded4786dda0d6f",
+    "accessedAt": "2026-09-29T20:39:16.879Z",
+    "disallowed": [
+      "/login/",
+      "/api/",
+      "/search?"
+    ]
+  },
+  "endpoint": {
+    "id": "los-angeles-review-books",
+    "name": "Los Angeles Review of Books",
+    "url": "https://lareviewofbooks.org/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "los-angeles-review-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://lareviewofbooks.org"
+    ],
+    "linkPattern": "^\\/article\\/[^/]+\\/?$|^\\/contributor\\/[^/]+\\/?$|^\\/artist\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://lareviewofbooks.org/article/jennifer-lunden-european-heat-wave-2026-climate-change/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:17.626Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 46,
+  "literaryCandidateCount": 46,
+  "sample": {
+    "sourceId": "los-angeles-review-books",
+    "source": {
+      "name": "Los Angeles Review of Books",
+      "url": "https://lareviewofbooks.org/article/jennifer-lunden-european-heat-wave-2026-climate-change/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Greetings from the Inferno",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:17.373Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://lareviewofbooks.org/article/jennifer-lunden-european-heat-wave-2026-climate-change/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 203829,
+      "sha256": "8eb0a2aa7848952eff743fad52f912391bbb88363c3aebad1fcd095f79bf8686",
+      "accessedAt": "2026-09-29T20:39:17.616Z",
+      "headline": "Greetings from the Inferno",
+      "excerpt": "Greetings from the InfernoPostcards from an American in an increasingly hotter France.By Jennifer LundenSeptember 27, 2026EnvironmentMemoir & EssayPoliticsDid you know LARB is a reader-supported nonprofit?LARB publishes daily without a paywall as part of our mission to make rigorous, incisive, and engaging writing on every aspect of literature, culture, and the arts freely accessible to the public",
+      "publishedDates": [
+        {
+          "value": "2026-09-27T12:30:00.000Z",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://lareviewofbooks.org/article/jennifer-lunden-european-heat-wave-2026-climate-change/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:17.626Z",
+  "foundItems": [
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/jennifer-lunden-european-heat-wave-2026-climate-change/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Greetings from the Inferno",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/m-keith-booker/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "M. Keith Booker",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/fady-joudah-exhibit-g-poems-essays-photographs-gaza/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I Was a Child, and They Ate My Heart",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/christian-wessels/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Christian Wessels",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/artist/silke-otto-knapp-at-regen-projects/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Silke Otto-Knapp at Regen Projects",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/hernan-diaz-ply-postapocalypse-capitalism-trilogy-utopia-novel/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Slow Apocalypse of Capitalist Decay",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/joan-of-arc-jake-rose-gender-voices-devotion/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Locked in the Drawer of Devotion",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/alma-katsu-incarnate-beauty-horror-social-media-image/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Another Means to Torment",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/xavier-aldana-reyes/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Xavier Aldana Reyes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/jennifer-lunden/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jennifer Lunden",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/camp-saints-jean-raspail-great-replacement-legacies-eugenics/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Demographic Fears and Far-Right Fantasies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/alexandra-minna-stern/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alexandra Minna Stern",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/larb-radio-hour/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LARB Radio Hour",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/mesha-maren-reissues-women-publishing-conglomerates-independent-presses/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "No Reason to Hide It",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/ken-liu-excerpt-art-copying-first-encounters-ai/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Art of Copying",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/end-oak-street-social-dinosaur-popular-imagination-prehistoric/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "We Tell Ourselves Dinosaur Stories in Order to Live",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/alison-laurence/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alison Laurence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/elvira-navarro-blood-is-dripping-courtyard-uncanny-stories/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Impression of Living in a Ruin",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/late-fame-kent-jones-willem-dafoe-poetry-manhattan/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Free Verse, Late Fame",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/shintaro-kago-brain-damage-manga-erotic-grotesque-nonsense/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Such Sights to Show You",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/emma-cline-switzy-alzheimers-assisted-suicide-business-class/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobody, Falling Through the Darkness",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/virginia-woolf-uncollected-letters-paul-delaney-modernism-correspondence/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "She Wrote Me a Letter",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/data-empire-roopika-risam-information-organize-control-dominate/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Empire of Information",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/lorraine-daston/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lorraine Daston",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/anti-zionism-benjamin-moser-israel-palestine-nationalist-history/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Snow Globe Palimpsest",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/anton-chekhovs-antidotes-prescriptions-age-unrest-yuri-corrigan/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Humanism of Bad News",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/raymond-de-luca/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Raymond De Luca",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/amy-fusselman-cloud-six-afterlife-absurd-caring-parenthood/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Discount Heaven",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/china-mieville-new-weird-science-fiction-lovecraft-spy/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Decolonizing the Dead",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/roger-luckhurst/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Roger Luckhurst",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/joan-vollmer-she-was-wild-grass-katie-bennett/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Life Without a Paper Trail",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/psychoanalysis-therapy-freud-cbt-desire-depression-affective-neuroscience/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Therapy Used to Be Hot",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/cockroach-party-india-student-protests-narendra-modi-hindutva/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Please Tell Your Boyfriend to Resign",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/zara-zaheer-chowdhary/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zara Zaheer Chowdhary",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/harold-bloom-letters-man-who-read-everything-influence/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lord Knows What I Am",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/david-thomson-sudden-flicker-light-film-history-revisionist/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Have Moviegoers Been Suckered?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/transcendence-for-beginners-biography-philosophy-spinoza-clare-carlisle/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Revelatory Life",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/microcollege-movement-liberal-arts-deep-springs-sheldon-jackson/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "An Alternative Future for Struggling Colleges",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/joel-a-schlosser/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Joel A. Schlosser",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/tommaso-bardelli/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tommaso Bardelli",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/perrin-roosevelt-ireland-thirsty-science-poking-the-squid/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sex Reeducation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/screenwriters-hollywood-mergers-paramount-warner-oracle-artificial-intelligence/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Free Work Isn’t Free",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/alessandro-camon/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alessandro Camon",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/eugenics-nihilism-law-order-politics-race-george-floyd/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eugenics and the Nihilism of Law-and-Order Politics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/article/andy-weir-project-hail-mary-jules-verne-science/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lone Geniuses in Political Worlds",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "los-angeles-review-books",
+      "source": {
+        "name": "Los Angeles Review of Books",
+        "url": "https://lareviewofbooks.org/contributor/anastasia-klimchynskaya/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anastasia Klimchynskaya",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.373Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "0f906a73f63c92b95ffb030e294dfe29400e817221a0d4ecc75821fd11c48e23",
+  "technicalProbeStatus": "runtime_verified"
+}

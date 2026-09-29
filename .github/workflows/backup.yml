@@ -2,11 +2,18 @@ name: Encrypted Supabase backup
 
 on:
   workflow_dispatch:
+    inputs:
+      full_storage:
+        description: Create a full Storage copy instead of reusing the verified archive (uses egress)
+        type: boolean
+        default: false
+        required: false
   schedule:
     - cron: "20 2 * * *"
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: supabase-backup
@@ -55,6 +62,31 @@ jobs:
             echo "::error::BACKUP_ENCRYPTION_KEY must contain at least 32 characters."
             exit 1
           fi
+
+      - name: Reuse verified bytes from the last encrypted backup
+        if: github.event_name != 'workflow_dispatch' || inputs.full_storage != true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
+        run: |
+          umask 077
+          previous_run="$(gh run list --workflow backup.yml --branch main --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')"
+          if [[ -z "$previous_run" ]]; then
+            echo "No previous verified backup; creating the initial full copy."
+            exit 0
+          fi
+          mkdir -p backup-reuse/artifacts backup-reuse/restored
+          gh run download "$previous_run" --pattern 'probpera-backup-*' --dir backup-reuse/artifacts
+          mapfile -t archives < <(find backup-reuse/artifacts -type f -name 'probpera-backup-*.tar.gz.enc')
+          [[ ${#archives[@]} == 1 ]] || { echo "::error::Previous encrypted backup is missing or ambiguous."; exit 1; }
+          archive="${archives[0]}"
+          (cd "$(dirname "$archive")" && sha256sum --check "$(basename "$archive").sha256")
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 \
+            -in "$archive" -out backup-reuse/verified.tar.gz -pass env:BACKUP_ENCRYPTION_KEY
+          tar -xzf backup-reuse/verified.tar.gz -C backup-reuse/restored -- backup/storage
+          node scripts/verify-supabase-storage-backup.mjs backup-reuse/restored/backup/storage
+          echo "BACKUP_REUSE_STORAGE_DIR=$GITHUB_WORKSPACE/backup-reuse/restored/backup/storage" >> "$GITHUB_ENV"
 
       - name: Create database and storage backup
         env:
@@ -153,4 +185,5 @@ jobs:
         run: |
           rm -rf backup
           rm -rf verify-storage
+          rm -rf backup-reuse
           rm -f backup.tar.gz verify.tar.gz verify.dump verify-auth-user-ids.seed

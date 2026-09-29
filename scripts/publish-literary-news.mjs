@@ -130,7 +130,10 @@ export async function runLiteraryNews({ args = process.argv.slice(2), env = proc
     snapshotId: feed.snapshot.id, inspectedJobs: rows.length,
     deliveredThisRun: outcomes.filter((row) => row.status === "sent_current").length });
   const counts = {};
-  for (const row of await store.list("post:")) counts[row.state.status] = (counts[row.state.status] || 0) + 1;
+  // Capture performs no dispatch after the already-fresh rows snapshot.
+  // Send reloads receipts/corrections once before reporting delivery counts.
+  const countedRows = mode === "--send" ? await store.list("post:") : rows;
+  for (const row of countedRows) counts[row.state.status] = (counts[row.state.status] || 0) + 1;
   return { mode, reconciliation, mediaPreparation, mediaDiscovery, mediaRetryDeferrals, photoJobsAwaitingBytes:due.filter(job=>job.prepared?.media&&!readyAssets.has(job.prepared.media.assetId)).length,
     totalDurableExpectations: Object.values(counts).reduce((a, b) => a + b, 0), counts, outcomes };
 }

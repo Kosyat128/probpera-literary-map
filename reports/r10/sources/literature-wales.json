@@ -1,0 +1,695 @@
+{
+  "sourceId": "literature-wales",
+  "name": "Literature Wales",
+  "entryUrl": "https://www.literaturewales.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:27.173Z",
+  "requests": [
+    {
+      "url": "https://www.literaturewales.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 63096,
+      "sha256": "bcf51086b6a5e1a90041cfd6f839aa40247a452e3ff271b4cd8937d296f7dd72",
+      "accessedAt": "2026-09-29T20:39:28.820Z"
+    },
+    {
+      "url": "https://www.literaturewales.org/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 55387,
+      "sha256": "8c44bb4722a734643bc0633322d6bd4ce18fdcd64546556e2903a2e37c625ba1",
+      "accessedAt": "2026-09-29T20:39:29.407Z"
+    },
+    {
+      "url": "https://www.literaturewales.org/lw-news/applications-for-wales-book-of-the-year-2027-now-open/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 51715,
+      "sha256": "09cffaec0c9a0fef14bf049f9b358362d5d28e8db8fffa304f1912bbb001d133",
+      "accessedAt": "2026-09-29T20:39:29.947Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.literaturewales.org/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "literature-wales",
+    "name": "Literature Wales",
+    "url": "https://www.literaturewales.org/news/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "literature-wales",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.literaturewales.org"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/what\\x2dcan\\x2dliterature\\x2dwales\\x2ddo\\x2dfor\\x2dyou\\/[^/]+\\/?$|^\\/our\\x2dprojects\\/[^/]+\\/?$|^\\/lw\\x2dnews\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.literaturewales.org/lw-news/applications-for-wales-book-of-the-year-2027-now-open/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:29.952Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 24,
+  "literaryCandidateCount": 23,
+  "sample": {
+    "sourceId": "literature-wales",
+    "source": {
+      "name": "Literature Wales",
+      "url": "https://www.literaturewales.org/lw-news/applications-for-wales-book-of-the-year-2027-now-open/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Submissions for Wales Book of the Year 2027 Now Open",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:29.438Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.literaturewales.org/lw-news/applications-for-wales-book-of-the-year-2027-now-open/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 51715,
+      "sha256": "09cffaec0c9a0fef14bf049f9b358362d5d28e8db8fffa304f1912bbb001d133",
+      "accessedAt": "2026-09-29T20:39:29.947Z",
+      "headline": "Submissions for Wales Book of the Year 2027 Now Open",
+      "excerpt": "Submissions for Wales Book of the Year 2027 Now Open Published Wed 16 Sep 2026 - By Literature Wales The submission window is now open for Wales Book of the Year 2027, an annual celebration of outstanding literature from Wales across many genres in both English and Welsh. In both languages, there are four categories – Poetry, Fiction, Creative Non-fiction and Children & Young People, with one of t",
+      "publishedDates": [
+        {
+          "value": "2026-09-16T13:03:46+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "http://www.literaturewales.org/lw-news/applications-for-wales-book-of-the-year-2027-now-open/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:29.952Z",
+  "foundItems": [
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/lw-news/applications-for-wales-book-of-the-year-2027-now-open/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Submissions for Wales Book of the Year 2027 Now Open",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/lw-news/a-room-above-a-shop-by-anthony-shapland-is-wales-book-of-the-year-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Room Above a Shop by Anthony Shapland is Wales Book of the Year 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/lw-news/applications-open-for-sgwennun-well-writing-well-2026-27/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Applications Open for Sgwennu’n Well | Writing Well 2026-27",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/lw-news/poems-from-the-everyday-a-new-opportunity-for-emerging-poets/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poems from the Everyday: A new opportunity for emerging poets",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/strategic-plan-homepage/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Strategic Plan 2022-2027",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/what-can-literature-wales-do-for-you/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What can Literature Wales do for you?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/what-can-literature-wales-do-for-you/i-organise-literary-events/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I organise literary events",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/what-can-literature-wales-do-for-you/i-love-literature/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I Love Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/our-projects/representing-wales/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Representing Wales",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/our-projects/wales-book-year/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wales Book of the Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/our-projects/national-poet-wales/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Poet of Wales",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/what-can-literature-wales-do-for-you/im-starting-to-write-i-want-to-write/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I’m starting to write / I want to write",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/what-can-literature-wales-do-for-you/i-am-a-child-young-person/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I am a Child / Young Person",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/your-projects/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I want to hear more about your projects",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/our-projects/poems-from-the-everyday/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poems from the Everyday",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/our-projects/ty-newydd/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tŷ Newydd Writing Centre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/our-projects/bardd-plant-cymru/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bardd Plant Cymru",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/our-projects/childrens-laureate-wales/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Children’s Laureate Wales",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/writers-of-wales/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers of Wales Directory",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/our-projects/inspiring-communities-fund/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Inspiring Communities Fund",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/lw-news/ty-newydd-secures-essential-grant-for-restoration-works/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tŷ Newydd Secures Essential Grant for Restoration Works",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/lw-news/virtual-programme-for-writer-development-in-wales/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Virtual Programme for Writer Development in Wales",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-wales",
+      "source": {
+        "name": "Literature Wales",
+        "url": "https://www.literaturewales.org/lw-news/llyfrau-lliwgar-lgbtq-writers-retreat-applications-open/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Llyfrau Lliwgar LGBTQ+ Writers Retreat: Applications Open",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:29.438Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8c44bb4722a734643bc0633322d6bd4ce18fdcd64546556e2903a2e37c625ba1"
+}

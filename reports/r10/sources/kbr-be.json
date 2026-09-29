@@ -8,7 +8,7 @@
   "coverageCountryCodes": [
     "BE"
   ],
-  "attemptedAt": "2026-09-26T17:29:00.030Z",
+  "attemptedAt": "2026-09-27T14:07:16.557Z",
   "requests": [
     {
       "url": "https://www.kbr.be/en/",
@@ -16,49 +16,1087 @@
       "contentType": "text/html; charset=UTF-8",
       "bytes": 219833,
       "sha256": "76b0c4a8a5c4ae7fe0bc317c92093b586bf8f42dead4d42ce83f8db0541f816a",
-      "accessedAt": "2026-09-26T17:22:51.654Z"
+      "accessedAt": "2026-09-27T14:07:18.624Z"
     },
     {
-      "url": "https://www.kbr.be/en/agenda/self-guided-workshop-writing-with-a-quill-painting-with-pigments-7/2026-09-26/",
+      "url": "https://www.kbr.be/en/news/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 196710,
-      "sha256": "fa87852192ecd5eadcf84b742117dd5fbd70d531993404cd1acb8f58f587c61a",
-      "accessedAt": "2026-09-26T17:29:01.084Z"
+      "bytes": 230081,
+      "sha256": "d03e23780013428220fa775f8cfbd17a4ad730e3af17f25b87e5cc2b37f233c2",
+      "accessedAt": "2026-09-27T14:07:18.827Z"
     },
     {
-      "url": "https://www.kbr.be/en/agenda/in-the-footsteps-of-bart-van-loo-in-the-kbr-museum/",
+      "url": "https://www.kbr.be/en/news/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 194005,
-      "sha256": "8c30202513af0c07c52517372443770288c0d04d79aee11a458d2ca59bea381c",
-      "accessedAt": "2026-09-26T17:29:01.261Z"
+      "bytes": 230081,
+      "sha256": "d03e23780013428220fa775f8cfbd17a4ad730e3af17f25b87e5cc2b37f233c2",
+      "accessedAt": "2026-09-27T14:07:19.021Z"
     },
     {
-      "url": "https://www.kbr.be/en/agenda/yoga-sound-in-the-nassau-chapel/",
+      "url": "https://www.kbr.be/en/reopening-kbr-museum-may-23-2025/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 190814,
-      "sha256": "d1dedacaf770ff0fba620ff17387f6054a7d4699fe9f8c0347cf0d553c7e36d7",
-      "accessedAt": "2026-09-26T17:29:01.436Z"
+      "bytes": 203318,
+      "sha256": "6dbe8f5d86520975e54041a568e0fd77f14340c16847d404b1b3ad840147a97e",
+      "accessedAt": "2026-09-27T14:07:20.598Z"
     }
   ],
-  "status": "blocked",
-  "reason": "detail_not_verified",
+  "status": "runtime_verified",
+  "reason": null,
   "robots": {
     "url": "https://www.kbr.be/robots.txt",
     "status": 200,
     "contentType": "text/plain; charset=utf-8",
     "bytes": 205,
     "sha256": "895a1f4f7be716897bfc3ce11fa3e582977d02f5c678ba16c12e4fbddc01bbfd",
-    "accessedAt": "2026-09-26T17:29:00.584Z",
+    "accessedAt": "2026-09-27T14:07:16.944Z",
     "disallowed": [
       "/wp-json/",
       "/?rest_route="
     ]
   },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:49.458Z",
-    "sourceDocumentSha256": "76b0c4a8a5c4ae7fe0bc317c92093b586bf8f42dead4d42ce83f8db0541f816a"
-  }
+  "endpoint": {
+    "id": "kbr-be",
+    "name": "Royal Library of Belgium",
+    "url": "https://www.kbr.be/en/news/",
+    "format": "html",
+    "language": "en-US",
+    "region": "europe",
+    "sourceFamilyId": "kbr-be",
+    "countryCodes": [
+      "BE"
+    ],
+    "coverageCountryCodes": [
+      "BE"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.kbr.be"
+    ],
+    "linkPattern": "^\\/en\\/collections\\/[^/]+\\/?$|^\\/en\\/agenda\\/[^/]+\\/?$|^\\/en\\/agenda\\/self\\x2dguided\\x2dworkshop\\x2dwriting\\x2dwith\\x2da\\x2dquill\\x2dpainting\\x2dwith\\x2dpigments\\x2d7\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/en\\/locatie\\/[^/]+\\/?$|^\\/en\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.kbr.be/en/reopening-kbr-museum-may-23-2025/"
+    ],
+    "verifiedAt": "2026-09-27T14:07:20.608Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-27. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 38,
+  "literaryCandidateCount": 38,
+  "sample": {
+    "sourceId": "kbr-be",
+    "source": {
+      "name": "Royal Library of Belgium",
+      "url": "https://www.kbr.be/en/reopening-kbr-museum-may-23-2025/",
+      "language": "en-US"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Continue reading \"Reopening of the KBR Museum on May 23, 2025\" →",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-27T14:07:18.883Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.kbr.be/en/reopening-kbr-museum-may-23-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 203318,
+      "sha256": "6dbe8f5d86520975e54041a568e0fd77f14340c16847d404b1b3ad840147a97e",
+      "accessedAt": "2026-09-27T14:07:20.598Z",
+      "headline": "Reopening of the KBR Museum on May 23, 2025 • KBR",
+      "excerpt": "New musical experience At the KBR Museum, visitors are immersed in the fascinating cultural, artistic, and intellectual life of our regions from the 14th to the 16th century. In addition to the often beautifully illuminated manuscripts from the library of the Burgundian dukes, KBR showcases a regularly changing selection of manuscripts, prints, paintings, sculptures, and objects from its rich heri",
+      "publishedDates": [
+        {
+          "value": "2025-01-23T13:18:06+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2025-01-23T13:18:06+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2025-01-23T13:18:06+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.kbr.be/en/reopening-kbr-museum-may-23-2025/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-27T14:07:20.608Z",
+  "foundItems": [
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/news/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Skip to main content",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/reopening-kbr-museum-may-23-2025/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Reopening of the KBR Museum on May 23, 2025\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/kbr-and-google-books-partnership/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"KBR and Google Books formalize their partnership and will digitize more than 100,000 books in three years\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/kbr-acquiert-un-carnet-de-croquis-rare-de-fernand-khnopff/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"KBR acquires a rare sketchbook by Fernand Khnopff\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/kbr-launches-new-and-major-project-to-digitise-belgian-daily-press/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"KBR launches new and major project to digitise Belgian daily press\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/illustrated-japanese-books-of-the-17th-19th-centuries-hans-de-winiwarter-fund-catalogue-online/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Illustrated Japanese books of the 17th-19th centuries: Hans de Winiwarter Fund catalogue online\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/e-resource-histoire-idees-et-critique-litteraire/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Introducing a new electronic resource: Histoire des Idées et Critique Littéraire\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/livy/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Livy between manuscript and printed book\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/plan-your-visit/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Plan Your Visit",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/heatwave-protect-yourself-from-the-heat/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Heatwave : protect yourself from the heat\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/kbr-publishes-acquisition-registers-of-the-print-room-online/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"KBR publishes acquisition registers of the Print Room online\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/the-great-atlas-by-ferraris-the-google-maps-of-the-18th-century/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"The great atlas by Ferraris, the Google Maps of the 18th Century\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/two-unknown-works-by-johann-sebastian-bach-discovered-at-kbr/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Two unknown works by Johann Sebastian Bach discovered at KBR\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/the-library-of-the-dukes-of-burgundy-centuries-old-splendor-now-digitally-accessible/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"The Library of the Dukes of Burgundy: Centuries-old splendor now digitally accessible\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/strengthening-knowledge-exchange-kbr-welcomes-colleagues-from-the-national-library-of-latvia/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Strengthening Knowledge Exchange: KBR Welcomes Colleagues from the National Library of Latvia\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/het-navez-project-a-sandbox-for-intrens/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"The Navez Project : a sandbox for interns\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/51472/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"The Gulf of Mexico. Today’s politics and yesterday’s maps\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/from-one-to-many-voices-the-rise-of-polyphony/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"From one to many voices: the rise of polyphony\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/opening-weekend-kbr-museum/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Opening weekend KBR museum\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/de-prinses-van-cleves/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"The Princess Of Cleves\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/the-belgian-bibliography-150-years-of-preserving-belgian-publishing/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"The Belgian Bibliography: 150 years of preserving Belgian publishing \" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/the-belgicapress-portal-of-kbr-now-includes-newspapers-from-the-german-speaking-community/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"The BelgicaPress portal of KBR now includes newspapers from the German-speaking Community.\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/kbr-welcomes-showpieces-from-the-royal-conservatories-library/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"KBR welcomes showpieces from the Royal Conservatories library\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/electronic-resources-international-current-events-in-one-click-with-global-newsstream/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Electronic resources: international current events in one click with Global Newsstream\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/geological-journey-through-the-cartographic-collections-of-the-kbr-from-the-19th-century-to-the-first-world-war/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Geological journey through the cartographic collections of the KBR: from the 19th century to the First World War\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/exceptional-drawing-by-leon-spilliaert-entrusted-to-kbr/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Exceptional drawing by Léon Spilliaert entrusted to KBR\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/electronic-resources-migration-from-artstor-to-jstor/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Electronic resources: migration from ARTSTOR to JSTOR\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/kbr-showpieces-tell-the-story-of-belgium/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"KBR showpieces tell the story of Belgium\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/how-and-why-does-kbr-work-with-digital-humanities-5-projects-to-know-more/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"How and why does KBR work with Digital Humanities? 5 projects to know more\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/score-of-ouverture-sur-des-themes-datala-by-eugene-ysaye-discovered-at-bozar-and-preserved-in-the-kbr/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Score of “Ouverture sur des thèmes d’Atala” by Eugène Ysaÿe discovered at Bozar and preserved in the KBR\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/sound-recordings-prints-and-tickets-in-the-public-domain/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Sound recordings, prints and tickets in the public domain\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/kbr-and-the-royal-museums-of-fine-arts-of-belgium-have-acquired-two-of-james-ensors-unpublished-drawings/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"KBR and the Royal Museums of Fine Arts of Belgium have acquired two of James Ensor’s unpublished drawings\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/open-access-week-kbr-supports-open-access/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Open Access Week: KBR supports Open Access\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/score-poeme-nocturne-by-eugene-ysaye-on-loan-to-the-royal-library-of-belgium/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Score ‘Poème nocturne’ by Eugène Ysaÿe on loan to the Royal Library of Belgium\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/access-to-information-at-the-heart-of-development-a-selection-of-e-resources/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Access to information at the heart of development: a selection of e-resources\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/top-10-unusual-and-bizarre-pieces-from-the-kbr-collection/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"Top 10: unusual and bizarre pieces from the KBR collection\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/rijmbijbel/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"The “Rijmbijbel” of Jacob van Maerlant\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kbr-be",
+      "source": {
+        "name": "Royal Library of Belgium",
+        "url": "https://www.kbr.be/en/manuscript-johannes-de-altre/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Continue reading \"The manuscript of Johannes de Altre: a varied collection of knowledge\" →",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:07:18.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "d03e23780013428220fa775f8cfbd17a4ad730e3af17f25b87e5cc2b37f233c2"
 }

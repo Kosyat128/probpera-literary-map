@@ -1,0 +1,16 @@
+{
+  "sourceId": "poetry-society-uk",
+  "name": "The Poetry Society",
+  "entryUrl": "https://poetrysociety.org.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:42:39.866Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://poetrysociety.org.uk/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

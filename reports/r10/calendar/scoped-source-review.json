@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-29T20:15:49.134Z",
+  "scope": "Existing article-author identity corroborated by official publisher/university/author sources. Exact days from pinned independently referenced Wikidata statements; official identity pages do not necessarily state the day.",
+  "ready": [
+    {
+      "writerKey": "usa:george_saunders",
+      "wikidataId": "Q1251926",
+      "expectedNames": [
+        "Джордж Сондерс",
+        "Джордж Сондерс"
+      ],
+      "sourceUrl": "https://artsandsciences.syracuse.edu/people/faculty/saunders-george/",
+      "checkedAt": "2026-09-29T20:15:50.243Z",
+      "sourceDocumentSha256": "34a5610a03e21b9f33ab7389da87a70f0d7aa581544c8b514389cfecc3d41538",
+      "identityFinding": "George Saunders; Lincoln in the Bardo",
+      "fields": [
+        {
+          "field": "birthDate",
+          "expectedOld": null,
+          "expectedEvidence": null,
+          "proposedValue": "1958-12-02",
+          "claimIds": [
+            "Q1251926$C5AE5E49-4955-48E3-9493-65D999A24555"
+          ]
+        }
+      ]
+    },
+    {
+      "writerKey": "usa:dan_brown",
+      "wikidataId": "Q7345",
+      "expectedNames": [
+        "Дэн Браун",
+        "Дэн Браун"
+      ],
+      "sourceUrl": "https://danbrown.com/about/",
+      "checkedAt": "2026-09-29T20:15:49.501Z",
+      "sourceDocumentSha256": "858c1fa1a28a101abc93d16a620d38bde5e6e388e0bf4f6f9cffd7955120f683",
+      "identityFinding": "Dan Brown; Da Vinci Code",
+      "fields": [
+        {
+          "field": "birthDate",
+          "expectedOld": null,
+          "expectedEvidence": null,
+          "proposedValue": "1964-06-22",
+          "claimIds": [
+            "q7345$774CC35E-FEE6-456F-A14C-52A8BDAEBC73"
+          ]
+        }
+      ]
+    },
+    {
+      "writerKey": "usa:andy_weir",
+      "wikidataId": "Q18590295",
+      "expectedNames": [
+        "Энди Вейр",
+        "Энди Вейр"
+      ],
+      "sourceUrl": "https://andyweirauthor.com/",
+      "checkedAt": "2026-09-29T20:15:49.545Z",
+      "sourceDocumentSha256": "b143b4b201a03d41cd94ce07c3d1dc6c3041820b0ea0f9b7c517b6ff4a584552",
+      "identityFinding": "Andy Weir; Martian",
+      "fields": [
+        {
+          "field": "birthDate",
+          "expectedOld": null,
+          "expectedEvidence": null,
+          "proposedValue": "1972-06-16",
+          "claimIds": [
+            "Q18590295$2448BDAE-18C7-4780-90CF-B773725A32F0"
+          ]
+        }
+      ]
+    },
+    {
+      "writerKey": "usa:n_k_jemisin",
+      "wikidataId": "Q2427544",
+      "expectedNames": [
+        "Н. К. Джемисин",
+        "Нора Кейта Джемисин"
+      ],
+      "sourceUrl": "https://nebulas.sfwa.org/grand-masters/n-k-jemisin/",
+      "checkedAt": "2026-09-29T20:15:50.671Z",
+      "sourceDocumentSha256": "501e4570d4ba1eb539770bed63e9114cb269515d70b239f8a81ccc56f44fabda",
+      "identityFinding": "N. K. Jemisin; Nora Keita",
+      "fields": [
+        {
+          "field": "birthDate",
+          "expectedOld": null,
+          "expectedEvidence": null,
+          "proposedValue": "1972-09-19",
+          "claimIds": [
+            "Q2427544$C6597242-1FD6-42B0-8C71-6AE1C5E0443C"
+          ]
+        }
+      ]
+    },
+    {
+      "writerKey": "england:ronald_delderfield",
+      "wikidataId": "Q438569",
+      "expectedNames": [
+        "Рональд Делдерфилд",
+        "Рональд Делдерфилд"
+      ],
+      "sourceUrl": "https://www.bdcmuseum.org.uk/explore/item/97450/",
+      "checkedAt": "2026-09-29T20:15:50.773Z",
+      "sourceDocumentSha256": "9fe4b4f4293548e8dd78c6d6d691bd5c1fb9926c3bb978a167e71221046639e3",
+      "identityFinding": "R. F. Delderfield; Ben Gunn",
+      "fields": [
+        {
+          "field": "birthDate",
+          "expectedOld": null,
+          "expectedEvidence": null,
+          "proposedValue": "1912-02-12",
+          "claimIds": [
+            "q438569$5C1BB3AC-64A9-4827-B74B-F58612109FC8"
+          ]
+        },
+        {
+          "field": "deathDate",
+          "expectedOld": null,
+          "expectedEvidence": null,
+          "proposedValue": "1972-06-24",
+          "claimIds": [
+            "q438569$0AD995F5-9630-45CB-BB5C-0B5D61192129"
+          ]
+        }
+      ]
+    }
+  ],
+  "held": [
+    {
+      "writerKey": "usa:ransom_riggs",
+      "wikidataId": "Q7293486",
+      "sourceUrl": "https://www.simonandschuster.com/books/Miss-Peregrines-Home-for-Peculiar-Children/Ransom-Riggs/Miss-Peregrines-Peculiar-Children/9781594744761",
+      "reason": "http_403"
+    },
+    {
+      "writerKey": "england:celia_rees",
+      "wikidataId": "Q448421",
+      "sourceUrl": "https://www.bloomsbury.com/uk/pirates-9781526632302/",
+      "reason": "http_403"
+    }
+  ],
+  "limitations": [
+    "Calendar mappings are isolated from the main biography/book identity registry.",
+    "No death inferred for living writers.",
+    "No publication-anniversary model exists in the current calendar."
+  ]
+}

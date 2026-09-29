@@ -1,10 +1,11 @@
 import { load } from "cheerio";
 import { createHash } from "node:crypto";
 import manualRegistry from "../../data/news/social-media-assets.json" with { type: "json" };
+import newsLimits from "../../data/news/contract.json" with { type: "json" };
 import { fetchPinnedNewsSource } from "./literary-news-safe-fetch.mjs";
 import { matchNewsMediaSubjects, extractNewsMediaSubjectSearchCandidates } from "./literary-news-media-subjects.mjs";
 import { newsSemanticRevision } from "./literary-news-social.mjs";
-import { checkedNewsMediaAsset, normalizeNewsMedia, cacheNormalizedNewsMedia, mediaByteHash, NEWS_MEDIA_LIMITS } from "./literary-news-media.mjs";
+import { checkedNewsMediaAsset, normalizeNewsMedia, cacheNormalizedNewsMedia, mediaByteHash, NEWS_MEDIA_LIMITS, NEWS_MEDIA_DISCOVERY_POLICY, NEWS_MEDIA_CC_LICENSES } from "./literary-news-media.mjs";
 
 export const NEWS_MEDIA_DISCOVERY_LIMITS = Object.freeze({ news: 8, requests: 24, metadataBytes: 524288,
   negativeDays: 14, rightsDays: 30 });
@@ -30,11 +31,12 @@ async function responseBytes(response, max) {
 }
 function acceptedLicense(meta) {
   const short = plain(meta.LicenseShortName?.value), usage = plain(meta.UsageTerms?.value);
-  if (/\b(?:NC|ND|SA)\b/i.test(`${short} ${usage}`)) fail("media_discovery_license_unsupported");
+  if (/\b(?:NC|ND)\b/i.test(`${short} ${usage}`)) fail("media_discovery_license_unsupported");
   if (/^public domain$/i.test(short) && /^false$/i.test(plain(meta.Copyrighted?.value))) return "public-domain";
   const licenseUrl = plain(meta.LicenseUrl?.value).replace(/^http:/, "https:").replace(/\/$/, "");
   if (/^CC0(?: 1\.0)?$/i.test(short) && licenseUrl === "https://creativecommons.org/publicdomain/zero/1.0") return "CC0";
-  if (/^CC BY 4\.0$/i.test(short) && licenseUrl === "https://creativecommons.org/licenses/by/4.0") return "CC-BY-4.0";
+  for (const [license, profile] of Object.entries(NEWS_MEDIA_CC_LICENSES))
+    if (short.toLowerCase() === profile.name.toLowerCase() && licenseUrl === profile.url.replace(/\/$/, '')) return license;
   fail("media_discovery_license_unsupported");
 }
 const claimValues = (claims, property) => {
@@ -50,7 +52,7 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
   now = new Date(), fetchImpl = fetchPinnedNewsSource, matchSubjects = matchNewsMediaSubjects,
   searchCandidates = extractNewsMediaSubjectSearchCandidates,
   maxNews = NEWS_MEDIA_DISCOVERY_LIMITS.news } = {}) {
-  if (!Array.isArray(items) || items.length > 5000 || !Array.isArray(registry?.assets)
+  if (!Array.isArray(items) || items.length > newsLimits.maxItems || !Array.isArray(registry?.assets)
     || registry.assets.length > NEWS_MEDIA_LIMITS.registryAssets || !Number.isSafeInteger(maxNews) || maxNews < 0 || maxNews > 8)
     fail("media_discovery_input_invalid");
   const cached = new Map();
@@ -102,6 +104,7 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
     return{...qualified[0],entityUrl:url,entityResponse:response};
   };
   const admitCached = (state, item) => {
+    if (state?.reason === 'media_discovery_license_unsupported' && state.discoveryPolicy !== NEWS_MEDIA_DISCOVERY_POLICY) return false;
     if (state?.schemaVersion !== 1 || state.newsId !== item.id || !["approved", "held", "pending"].includes(state.status)
       || !Number.isFinite(Date.parse(state.checkedAt)) || Date.parse(state.checkedAt) > now.getTime()
       || !Number.isFinite(Date.parse(state.nextCheckAt)) || Date.parse(state.nextCheckAt) <= now.getTime()) return false;
@@ -134,7 +137,7 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
       resolutions[item.id] = { status: "pending", reason: "media_discovery_budget" }; report.pending++; continue;
     }
     report.inspected++;
-    let state = { schemaVersion: 1, newsId: item.id, semanticRevision, status: "held", checkedAt: now.toISOString(),
+    let state = { schemaVersion: 1, discoveryPolicy: NEWS_MEDIA_DISCOVERY_POLICY, newsId: item.id, semanticRevision, status: "held", checkedAt: now.toISOString(),
       nextCheckAt: new Date(now.getTime() + 14 * 86400000).toISOString(), reason: null };
     try {
       const subjects = matchSubjects(item);
@@ -173,11 +176,20 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
         || image.mime?.split(";")[0].trim().toLowerCase() !== info.mime) fail("media_commons_bytes_changed");
       const normalized = await normalizeNewsMedia(image.bytes, image.mime);
       const evidenceUrl = `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(images[0])}`;
+      const materialTitle = plain(meta.ObjectName?.value || images[0]);
+      const materialUrl = Number.isSafeInteger(pages[0].pageid) && pages[0].pageid > 0
+        ? `https://commons.wikimedia.org/?curid=${pages[0].pageid}` : evidenceUrl;
+      const copyrightNotice = plain(meta.Copyright?.value || `© ${author}`);
+      const licenseNotices = [plain(meta.Attribution?.value), plain(meta.Disclaimer?.value)].filter(Boolean).join(' ');
       const validUntil = new Date(now.getTime() + 30 * 86400000).toISOString();
       const asset = { id: `auto-${semanticRevision.slice(0,32)}`, status: "approved", newsIds: [item.id], sourceUrl,
         sourceSha256: mediaByteHash(image.bytes), subject: "portrait",
         entityEvidence: `Portrait of ${subject.name} (${subject.qid}), exact reviewed name in ${subject.matchedField}; Wikidata P18 ${fileTitle}. This is a portrait, not a photograph of the news event.`,
-        author, rightsholder: author, credit: `Портрет: ${subject.name}. ${author}. Wikimedia Commons.`, license,
+        author, rightsholder: author, credit: NEWS_MEDIA_CC_LICENSES[license]
+          ? `Архивный портрет: ${subject.name}. «${materialTitle}». ${copyrightNotice}. ${licenseNotices} Wikimedia Commons: ${materialUrl}.`
+          : `Портрет: ${subject.name}. ${author}. Wikimedia Commons.`, license,
+        ...(NEWS_MEDIA_CC_LICENSES[license] ? { materialTitle, materialUrl, copyrightNotice,
+          derivativeLicense: license, additionalRestrictions: false } : {}),
         licenseEvidenceUrl: evidenceUrl, licenseEvidenceSha256: mediaByteHash(commonsResponse.bytes), checkMethod: "license-page",
         checkedAt: now.toISOString(), validUntil, transformations: { resize: true, metadataRemoval: true, reencode: true, crop: false },
         permissions: destinations.map(d => ({ platform: d.platform, destinationId: d.id, publish: true, providerProcessing: true, evidenceUrl })),

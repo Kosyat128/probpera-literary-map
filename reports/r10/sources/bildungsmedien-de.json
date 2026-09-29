@@ -8,23 +8,23 @@
   "coverageCountryCodes": [
     "DE"
   ],
-  "attemptedAt": "2026-09-26T17:27:51.445Z",
+  "attemptedAt": "2026-09-29T20:32:35.843Z",
   "requests": [
     {
       "url": "https://bildungsmedien.de/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 80694,
-      "sha256": "65e5c4327af3c590f5c4991cee6207a6bd41669ca6be20b7f289cbb16924cfa8",
-      "accessedAt": "2026-09-26T17:27:52.526Z"
+      "sha256": "4d76c29797e0ecd31d4dd929e8434efa56305ce99c4f0b5bc589f1e6edd3efc2",
+      "accessedAt": "2026-09-29T20:32:37.426Z"
     },
     {
       "url": "https://bildungsmedien.de/presse",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 70872,
-      "sha256": "2458da4e4dcb14b98666da5b8caa15828ba81cfc0ee74900ae3b5b0921984c39",
-      "accessedAt": "2026-09-26T17:27:53.439Z"
+      "sha256": "c63a77d7d536b6bcb1a5ba4fc80cdc0d5ca95589f549160f663c8ee7f70965ef",
+      "accessedAt": "2026-09-29T20:32:38.055Z"
     }
   ],
   "status": "blocked",
@@ -35,7 +35,7 @@
     "contentType": "text/plain",
     "bytes": 859,
     "sha256": "01893b3b4d3d91551049967a8f7681130860126058ef13ce9a5913692b99b1de",
-    "accessedAt": "2026-09-26T17:27:51.732Z",
+    "accessedAt": "2026-09-29T20:32:36.129Z",
     "disallowed": [
       "/administrator/",
       "/bin/",

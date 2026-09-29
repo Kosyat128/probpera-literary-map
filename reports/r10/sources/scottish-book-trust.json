@@ -1,0 +1,424 @@
+{
+  "sourceId": "scottish-book-trust",
+  "name": "Scottish Book Trust",
+  "entryUrl": "https://www.scottishbooktrust.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:24.645Z",
+  "requests": [
+    {
+      "url": "https://www.scottishbooktrust.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 423653,
+      "sha256": "c22b192704f792941dbe95d5db301f1cdd0f613c4e532c7acd18e39a7cf15449",
+      "accessedAt": "2026-09-29T20:39:25.343Z"
+    },
+    {
+      "url": "https://www.scottishbooktrust.com/about/latest-news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 397506,
+      "sha256": "d4651d5951f2daa5a72910098c22cce65c069ea60aca6681fd5a0c3c5d3b94be",
+      "accessedAt": "2026-09-29T20:39:25.757Z"
+    },
+    {
+      "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-august-2026-young-writers/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 383969,
+      "sha256": "f65d37fafb1ab1394c49800b4e46603f4601cb3d14d3088122e8877ebe0a1da1",
+      "accessedAt": "2026-09-29T20:39:27.156Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.scottishbooktrust.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 2757,
+    "sha256": "cb0314df832f7c64e9735520b9eccde60064d70d913c9813a597cab29d4ba521",
+    "accessedAt": "2026-09-29T20:39:25.094Z",
+    "disallowed": []
+  },
+  "feedAttemptError": "http_403",
+  "endpoint": {
+    "id": "scottish-book-trust",
+    "name": "Scottish Book Trust",
+    "url": "https://www.scottishbooktrust.com/about/latest-news/",
+    "format": "html",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "scottish-book-trust",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.scottishbooktrust.com"
+    ],
+    "linkPattern": "^\\/\\/[^/]+\\/?$|^\\/how\\x2dwe\\x2dhelp\\/[^/]+\\/?$|^\\/training\\x2dand\\x2dopportunities\\/[^/]+\\/?$|^\\/resources\\x2dand\\x2darticles\\/[^/]+\\/?$|^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.scottishbooktrust.com/news/50-word-fiction-winners-august-2026-young-writers/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:27.169Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 12,
+  "literaryCandidateCount": 12,
+  "sample": {
+    "sourceId": "scottish-book-trust",
+    "source": {
+      "name": "Scottish Book Trust",
+      "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-august-2026-young-writers/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "9 Sep, 2026 50 Word Fiction Winners August 2026 – Young Writers In August, we asked for 50 word fiction stories featuring sailing. Read our winning entries. Read more",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:25.820Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-august-2026-young-writers/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 383969,
+      "sha256": "f65d37fafb1ab1394c49800b4e46603f4601cb3d14d3088122e8877ebe0a1da1",
+      "accessedAt": "2026-09-29T20:39:27.156Z",
+      "headline": "50 Word Fiction Winners August 2026 – young writers",
+      "excerpt": "Home About Latest news 50 Word Fiction Winners August 2026 – young writers 50 Word Fiction Winners August 2026 – young writers For August, we asked for 50 word fiction stories featuring sailing. Congratulations to the winners of our competition. Read their stories. Young writers (12–18) winner Jessie Whitehead, age 12 The lily pad floats through the pond, creating ripples. Frog pounces like a jack",
+      "publishedDates": [
+        {
+          "value": "2026-09-09T11:52:52",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-august-2026-young-writers/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:27.169Z",
+  "foundItems": [
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-august-2026-young-writers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "9 Sep, 2026 50 Word Fiction Winners August 2026 – Young Writers In August, we asked for 50 word fiction stories featuring sailing. Read our winning entries. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-august-2026-adult-writers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "9 Sep, 2026 50 Word Fiction Winners August 2026 – Adult Writers In August, we asked for 50 word fiction stories featuring sailing. Read our winning entries. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-july-2026-adult-writers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "15 Aug, 2026 50 Word Fiction Winners July 2026 – Adult Writers In July, we asked for stories featuring an ice cream. Read our winning entries. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-july-2026-young-writers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "15 Aug, 2026 50 Word Fiction Winners July 2026 – Young Writers In July, we asked for stories featuring an ice cream. Read our winning entries. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-june-2026-adult-writers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "10 Jul, 2026 50 Word Fiction Winners June 2026 – Adult Writers In June, we asked for stories featuring a rainbow. Read our winning entries. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-june-2026-young-writers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "10 Jul, 2026 50 Word Fiction Winners June 2026 – Young Writers In June, we asked for stories featuring a rainbow. Read our winning entries. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-may-2026-adult-writers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "23 Jun, 2026 50 Word Fiction Winners May 2026 – Adult Writers In May, we asked for stories featuring a computer. Read our winning entries. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/50-word-fiction-winners-may-2026-young-writers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "23 Jun, 2026 50 Word Fiction Winners May 2026 – Young Writers In May, we asked for stories featuring a computer. Read our winning entries. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/young-scots-writer-o-the-year-2026-winners/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "21 Sep, 2026 Young Scots Writer o the Year 2026 winners Congratulations to Innes Ingram, our Young Scots Writer o the Year 2026, and to all of our shortlisted writers. Read their work below. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/inclusive-stories-tour-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "1 Jul, 2026 Inclusive Stories Tour 2026 Thank you to everyone who has taken part in the Inclusive Stories Tour! Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/scottish-readers-are-embracing-book-clubs-with-a-twist/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "15 Sep, 2026 Scottish readers are embracing book clubs with a twist Scottish readers are embracing book clubs with a twist, according to new research from our Readers of Scotland project, which aims to uncover the habits and likes of Scottish readers. Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottish-book-trust",
+      "source": {
+        "name": "Scottish Book Trust",
+        "url": "https://www.scottishbooktrust.com/news/harriet-tyce-and-the-hebridean-baker-help-launch-scotlands-stories/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "16 Sep, 2026 Harriet Tyce and the Hebridean Baker help launch Scotland’s Stories Would you like the chance for your writing to appear in a book alongside The Traitors star Harriet Tyce and the Hebridean Baker? Read more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:25.820Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "d4651d5951f2daa5a72910098c22cce65c069ea60aca6681fd5a0c3c5d3b94be"
+}

@@ -346,8 +346,9 @@ export type WriterDateEvidence = {
   sourceUrl: string;
   retrievedAt: string;
   snapshotSha256: string;
-  method: "referenced-wikidata-statement";
-  supportingSources?: Array<{ sourceUrl: string; checkedAt: string; finding: string }>;
+  method: "referenced-wikidata-statement" | "referenced-julian-claim-with-institutional-gregorian-source";
+  originalCalendarModel?: "http://www.wikidata.org/entity/Q1985786";
+  supportingSources?: Array<{ sourceUrl: string; checkedAt: string; finding: string; sourceDocumentSha256?: string }>;
 };
 
 export type WriterProfile = {

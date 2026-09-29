@@ -8,23 +8,23 @@
   "coverageCountryCodes": [
     "GB"
   ],
-  "attemptedAt": "2026-09-26T17:29:19.519Z",
+  "attemptedAt": "2026-09-29T20:33:52.503Z",
   "requests": [
     {
       "url": "https://www.library.wales/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 72739,
-      "sha256": "9cf332b29d957b47b5e0fec4769aa66e2c46777b60701de73d2c954f9159ab04",
-      "accessedAt": "2026-09-26T17:29:20.498Z"
+      "bytes": 72089,
+      "sha256": "6206c5b2407f1eb5d4d7fa05427ab1e12af25efb4b507e2529b6b7d19e0cad06",
+      "accessedAt": "2026-09-29T20:33:53.197Z"
     },
     {
-      "url": "https://www.library.wales/about-nlw/about-us/corporate-structure/rss",
+      "url": "https://www.library.wales/news",
       "status": 200,
-      "contentType": "application/xml; charset=UTF-8",
-      "bytes": 319,
-      "sha256": "ddd5267e936476142e0635de64784b738049bb8d18110a428cbe1917fcb6b3e8",
-      "accessedAt": "2026-09-26T17:29:20.667Z"
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 75471,
+      "sha256": "d3968052fe4eff399427c5af67d1008a70e5350c92f2532ff4612c4d41466caa",
+      "accessedAt": "2026-09-29T20:33:53.687Z"
     }
   ],
   "status": "blocked",
@@ -35,7 +35,7 @@
     "contentType": "text/plain; charset=utf-8",
     "bytes": 76,
     "sha256": "06c29dee5321122db93ec38c432fe9671d9493dd4c84ef172900fce689f38e56",
-    "accessedAt": "2026-09-26T17:29:20.193Z",
+    "accessedAt": "2026-09-29T20:33:53.044Z",
     "disallowed": []
   }
 }

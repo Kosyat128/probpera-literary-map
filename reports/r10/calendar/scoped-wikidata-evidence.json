@@ -1,0 +1,2237 @@
+{
+  "version": 1,
+  "retrievedAt": "2026-09-29T20:15:49.134Z",
+  "requestUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=info%7Clabels%7Cdescriptions%7Caliases%7Cclaims&languages=ru%7Cen&ids=Q1251926%7CQ7345%7CQ18590295%7CQ2427544%7CQ7293486%7CQ448421%7CQ438569",
+  "responseSha256": "9c212ae5109eeee87165d56dad26ef5074e81b84897449f8f1538b10c59f4a0f",
+  "entities": [
+    {
+      "qid": "Q1251926",
+      "lastrevid": 2549812951,
+      "modified": "2026-09-26T22:39:56Z",
+      "labels": {
+        "en": "George Saunders",
+        "ru": "Джордж Сондерс"
+      },
+      "aliases": {
+        "ru": [
+          "Сондерс, Джордж"
+        ]
+      },
+      "descriptions": {
+        "en": "American writer (born 1958)",
+        "ru": "Американский писатель, эссеист и сценарист, лауреат Букеровской премии 2017 года"
+      },
+      "human": true,
+      "claims": {
+        "P569": [
+          {
+            "claimId": "Q1251926$C5AE5E49-4955-48E3-9493-65D999A24555",
+            "rank": "normal",
+            "referenced": true,
+            "referenceCount": 9,
+            "time": "+1958-12-02T00:00:00Z",
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "precision": 11,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "references": [
+              {
+                "hash": "ffa6d327419643c0191d8cd12cdfb51bd6b3d3b4",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 36578,
+                          "id": "Q36578"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "39372fcfc87c4e7d3306f51a554a7178e7057147",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2014-05-05T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "0bdd716cd257ed0cb60630c501b72ec8fd14f9d4",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "871891c242389d06b23bf809fdc0301df1ed9c77",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2629164,
+                          "id": "Q2629164"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1233": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1233",
+                      "hash": "f9e9f5fb78fa08e3ebd810a9359b0dd8f852551d",
+                      "datavalue": {
+                        "value": "19354",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "74c664545729bbe3e2b6db4bfa3d58ebdeb8e9f0",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2019-01-19T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1233",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "66e99746c22c6bbeaf923f8cd4d7c9a3173da5b2",
+                "snaks": {
+                  "P1065": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1065",
+                      "hash": "2212c1cf9df66107d45dfe5cae9c6f05d7c4a8ad",
+                      "datavalue": {
+                        "value": "https://web.archive.org/web/20170323050029/http://jeugdliteratuur.org/auteurs/george-saunders",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P1065"
+                ]
+              },
+              {
+                "hash": "a8b8cab1014c7956f8c8d833e5bc99f976ca60aa",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "85f38548b219245e3f613c704218efd0595de8da",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 13219454,
+                          "id": "Q13219454"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P244": [
+                    {
+                      "snaktype": "value",
+                      "property": "P244",
+                      "hash": "f67108b821effd48c76f433e39ece468bc811f93",
+                      "datavalue": {
+                        "value": "n95046060",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "74c664545729bbe3e2b6db4bfa3d58ebdeb8e9f0",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2019-01-19T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P244",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "11acec8ba02d14b702854e11993a013be6ff0c72",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "50df20a23e75dd9ef9588dce4799bc977e8e5b71",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 5099499,
+                          "id": "Q5099499"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P5357": [
+                    {
+                      "snaktype": "value",
+                      "property": "P5357",
+                      "hash": "38678fd26078485ca2eca38c2e3ceea821c3e758",
+                      "datavalue": {
+                        "value": "saunders_george",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "74c664545729bbe3e2b6db4bfa3d58ebdeb8e9f0",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2019-01-19T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P5357",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "c1a904bb006baa939787394ea9d4ce4d18a745ad",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "155e1a7322c5a7febad55feba5ba4c3a2656b1c4",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2877812,
+                          "id": "Q2877812"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P3630": [
+                    {
+                      "snaktype": "value",
+                      "property": "P3630",
+                      "hash": "8150813492826bab447f21710020401f3b574b6e",
+                      "datavalue": {
+                        "value": "129041",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "74c664545729bbe3e2b6db4bfa3d58ebdeb8e9f0",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2019-01-19T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P3630",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "4c3f94a6e6a8e403d64b91d20ad8e74ae81741e2",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "e2a81dbf2f7dd02b332d6358ef65f622f82e8cc3",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 237227,
+                          "id": "Q237227"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P5019": [
+                    {
+                      "snaktype": "value",
+                      "property": "P5019",
+                      "hash": "3ab59a9e11811d5049c2f0ea8d8ccfe7d14d01be",
+                      "datavalue": {
+                        "value": "george-saunders",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "5f66174826a419283dfd6d8344301e0f3a677513",
+                      "datavalue": {
+                        "value": "George Saunders",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P5019",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "34cdad36e87926d83d116a1e4359ec3d0e6713f7",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "1276fef541b741cec556020ad14ea6b2287a1aae",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 23023088,
+                          "id": "Q23023088"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P2191": [
+                    {
+                      "snaktype": "value",
+                      "property": "P2191",
+                      "hash": "a1643275ae21a9888815412d2f14955ce399ccb4",
+                      "datavalue": {
+                        "value": "21106",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "5f66174826a419283dfd6d8344301e0f3a677513",
+                      "datavalue": {
+                        "value": "George Saunders",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P2191",
+                  "P1810"
+                ]
+              },
+              {
+                "hash": "049d616bc53e8d7262825418642382fcc3dc781f",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "055f82ef73ce123450780d681359ac6e9077e315",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 107343683,
+                          "id": "Q107343683"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1284": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1284",
+                      "hash": "31f35a3c54852afaef0d94dc65b3f3777559cf54",
+                      "datavalue": {
+                        "value": "00000029956",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "5f66174826a419283dfd6d8344301e0f3a677513",
+                      "datavalue": {
+                        "value": "George Saunders",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1284",
+                  "P813",
+                  "P1810"
+                ]
+              }
+            ],
+            "qualifiers": {}
+          }
+        ],
+        "P570": []
+      }
+    },
+    {
+      "qid": "Q7345",
+      "lastrevid": 2550920936,
+      "modified": "2026-09-29T16:23:22Z",
+      "labels": {
+        "en": "Dan Brown",
+        "ru": "Дэн Браун"
+      },
+      "aliases": {
+        "ru": [
+          "Браун, Дэн",
+          "Браун Дэн"
+        ],
+        "en": [
+          "Daniel Gerhard Brown",
+          "Dan Gerhard Brown"
+        ]
+      },
+      "descriptions": {
+        "en": "American novelist (born 1964)",
+        "ru": "американский писатель, журналист, музыкант (род. 1964)"
+      },
+      "human": true,
+      "claims": {
+        "P569": [
+          {
+            "claimId": "q7345$774CC35E-FEE6-456F-A14C-52A8BDAEBC73",
+            "rank": "normal",
+            "referenced": true,
+            "referenceCount": 9,
+            "time": "+1964-06-22T00:00:00Z",
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "precision": 11,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "references": [
+              {
+                "hash": "abc9457dcf728dd069b8ed5b2e1a86035cf2b679",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 36578,
+                          "id": "Q36578"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "7805df7373a5e95763e019b855686d24acee918e",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2014-04-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "7b915b8fd5b97aed60b5c7eae74c6bb958dea9ee",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "f98ec89708e8eab9511c049702ef59df0721d652",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 29861311,
+                          "id": "Q29861311"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P3430": [
+                    {
+                      "snaktype": "value",
+                      "property": "P3430",
+                      "hash": "53fa59bb4cebf62e3ad10e9f6676c71d0ba318fa",
+                      "datavalue": {
+                        "value": "w6s21ttq",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "3772cc4b8d7b09f8232182a72cb197846c92f29d",
+                      "datavalue": {
+                        "value": "Dan Brown",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P3430",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "0cd68c1411898d9f70f05136a69b117baa0ba843",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "871891c242389d06b23bf809fdc0301df1ed9c77",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2629164,
+                          "id": "Q2629164"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1233": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1233",
+                      "hash": "d4d78534ee9cc9f3991047dde454282e7459f1a1",
+                      "datavalue": {
+                        "value": "36596",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "3772cc4b8d7b09f8232182a72cb197846c92f29d",
+                      "datavalue": {
+                        "value": "Dan Brown",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1233",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "b513a3eaeb579b8bb109ad03c9db8b83c2516b18",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "d1d1b10a05a8f3fc5d26bb4aeb6849617ad81fc7",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 5375741,
+                          "id": "Q5375741"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "a62f08bb419bdf98b9602156cb1161cc5f361fdf",
+                      "datavalue": {
+                        "value": "biography/Dan-Brown",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "3772cc4b8d7b09f8232182a72cb197846c92f29d",
+                      "datavalue": {
+                        "value": "Dan Brown",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "8aa81736275d1809440a3bd53643d58674d4000d",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "c34208b35b041d6758e6b68814cd263cacdabb10",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 504063,
+                          "id": "Q504063"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1953": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1953",
+                      "hash": "c7525851bef90d188fb9eaf4a21058f31688a1af",
+                      "datavalue": {
+                        "value": "431563",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "b5f2c7846ca1549ebf7592b94f9256d484ac5e1b",
+                      "datavalue": {
+                        "value": "Dan Brown (3)",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1953",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "2fa7374245915a0e6fc68862bcab6b4dd3dfd000",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "e2a81dbf2f7dd02b332d6358ef65f622f82e8cc3",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 237227,
+                          "id": "Q237227"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P5019": [
+                    {
+                      "snaktype": "value",
+                      "property": "P5019",
+                      "hash": "6276852310b9d36487c2099b4e4993409d0a7cf6",
+                      "datavalue": {
+                        "value": "brown-dan",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "3772cc4b8d7b09f8232182a72cb197846c92f29d",
+                      "datavalue": {
+                        "value": "Dan Brown",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P5019",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "6f4823e1fa873545fc583066078bad7a54426bc4",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "1276fef541b741cec556020ad14ea6b2287a1aae",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 23023088,
+                          "id": "Q23023088"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P2191": [
+                    {
+                      "snaktype": "value",
+                      "property": "P2191",
+                      "hash": "8fdedf2987c390c544a5da6591117dec21e09a00",
+                      "datavalue": {
+                        "value": "24439",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "3772cc4b8d7b09f8232182a72cb197846c92f29d",
+                      "datavalue": {
+                        "value": "Dan Brown",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P2191",
+                  "P1810"
+                ]
+              },
+              {
+                "hash": "83caa317deb5fb63913134c780a83852813c71c2",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "155e1a7322c5a7febad55feba5ba4c3a2656b1c4",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2877812,
+                          "id": "Q2877812"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P3630": [
+                    {
+                      "snaktype": "value",
+                      "property": "P3630",
+                      "hash": "1401c6f66259cec675e4ec006780c33328146844",
+                      "datavalue": {
+                        "value": "4394",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "3772cc4b8d7b09f8232182a72cb197846c92f29d",
+                      "datavalue": {
+                        "value": "Dan Brown",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P3630",
+                  "P1810"
+                ]
+              },
+              {
+                "hash": "0a6dba6332e96bd986c2388ebc3d50356ebeb00c",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "055f82ef73ce123450780d681359ac6e9077e315",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 107343683,
+                          "id": "Q107343683"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1284": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1284",
+                      "hash": "29be7e0b6e5600b0ffbd08d86b4e26bfb2363d32",
+                      "datavalue": {
+                        "value": "00000025259",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "3772cc4b8d7b09f8232182a72cb197846c92f29d",
+                      "datavalue": {
+                        "value": "Dan Brown",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1284",
+                  "P813",
+                  "P1810"
+                ]
+              }
+            ],
+            "qualifiers": {}
+          }
+        ],
+        "P570": []
+      }
+    },
+    {
+      "qid": "Q18590295",
+      "lastrevid": 2546517593,
+      "modified": "2026-09-16T05:48:15Z",
+      "labels": {
+        "ru": "Энди Вейер",
+        "en": "Andy Weir"
+      },
+      "aliases": {
+        "ru": [
+          "Уир, Энди",
+          "Вейер, Энди",
+          "Энди Уир"
+        ],
+        "en": [
+          "Jack Sharp",
+          "Andrew Taylor Weir"
+        ]
+      },
+      "descriptions": {
+        "en": "American writer (born 1972)",
+        "ru": "американский писатель-фантаст (род. 1972)"
+      },
+      "human": true,
+      "claims": {
+        "P569": [
+          {
+            "claimId": "Q18590295$2448BDAE-18C7-4780-90CF-B773725A32F0",
+            "rank": "normal",
+            "referenced": true,
+            "referenceCount": 1,
+            "time": "+1972-06-16T00:00:00Z",
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "precision": 11,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "references": [
+              {
+                "hash": "07fbb186c938fd620e2dbe60fb37dd9e190cedac",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "871891c242389d06b23bf809fdc0301df1ed9c77",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2629164,
+                          "id": "Q2629164"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1233": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1233",
+                      "hash": "c3c4993bbc04ae979021c5fe612e821dad17d58d",
+                      "datavalue": {
+                        "value": "198846",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "d56bcbb96fe7421ed0a46b445a264d341534e275",
+                      "datavalue": {
+                        "value": "Andy Weir",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1233",
+                  "P1810",
+                  "P813"
+                ]
+              }
+            ],
+            "qualifiers": {}
+          }
+        ],
+        "P570": []
+      }
+    },
+    {
+      "qid": "Q2427544",
+      "lastrevid": 2546105568,
+      "modified": "2026-09-15T08:45:03Z",
+      "labels": {
+        "ru": "Нора Джемисин",
+        "en": "N. K. Jemisin"
+      },
+      "aliases": {
+        "ru": [
+          "Джемисин, Нора"
+        ]
+      },
+      "descriptions": {
+        "en": "American science fiction and fantasy writer"
+      },
+      "human": true,
+      "claims": {
+        "P569": [
+          {
+            "claimId": "Q2427544$C6597242-1FD6-42B0-8C71-6AE1C5E0443C",
+            "rank": "normal",
+            "referenced": true,
+            "referenceCount": 3,
+            "time": "+1972-09-19T00:00:00Z",
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "precision": 11,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "references": [
+              {
+                "hash": "c456dc5cd2117249948c288206ff3f8b1bf574f0",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e17507043402fe54ae6c4d65cc51f46cec987de9",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 8449,
+                          "id": "Q8449"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              },
+              {
+                "hash": "f73d305df517690dea1dff650d2d3d5c83108697",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "871891c242389d06b23bf809fdc0301df1ed9c77",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2629164,
+                          "id": "Q2629164"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1233": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1233",
+                      "hash": "f39d1df4f41ea0c65c727e5fa62544a96ff9a6b0",
+                      "datavalue": {
+                        "value": "111330",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "3beec0de98390b69f1433ad9963da505c80d46a5",
+                      "datavalue": {
+                        "value": "N. K. Jemisin",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1233",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "fd0789b6dbcb95420685332988f59abad267df9d",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "155e1a7322c5a7febad55feba5ba4c3a2656b1c4",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2877812,
+                          "id": "Q2877812"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P3630": [
+                    {
+                      "snaktype": "value",
+                      "property": "P3630",
+                      "hash": "91e79c2412704423529c33b36305f0c80fc05cc4",
+                      "datavalue": {
+                        "value": "185976",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "3beec0de98390b69f1433ad9963da505c80d46a5",
+                      "datavalue": {
+                        "value": "N. K. Jemisin",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P3630",
+                  "P1810"
+                ]
+              }
+            ],
+            "qualifiers": {}
+          }
+        ],
+        "P570": []
+      }
+    },
+    {
+      "qid": "Q7293486",
+      "lastrevid": 2533038683,
+      "modified": "2026-08-19T05:14:00Z",
+      "labels": {
+        "en": "Ransom Riggs",
+        "ru": "Ренсом Риггз"
+      },
+      "aliases": {},
+      "descriptions": {
+        "en": "American writer and filmmaker"
+      },
+      "human": true,
+      "claims": {
+        "P569": [
+          {
+            "claimId": "Q7293486$4F3CA898-976D-4F75-9657-0AEAFBFCB369",
+            "rank": "normal",
+            "referenced": true,
+            "referenceCount": 3,
+            "time": "+1979-02-03T00:00:00Z",
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "precision": 11,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "references": [
+              {
+                "hash": "8f9b15e64f9f4ec1347609d5e9a189bc54f9448e",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "871891c242389d06b23bf809fdc0301df1ed9c77",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2629164,
+                          "id": "Q2629164"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1233": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1233",
+                      "hash": "831fa742ce47989a8af71484dedcfbcd5db71452",
+                      "datavalue": {
+                        "value": "155528",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "36b968aaa82fc48579875b6c1fad4ae3d16d949c",
+                      "datavalue": {
+                        "value": "Ransom Riggs",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1233",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "bd5a03dae2c6b28fd27f5e2a1c3654961ff995bd",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "9d66409d3d04632fc69413ea86abf094f92fae88",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 3343389,
+                          "id": "Q3343389"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P5570": [
+                    {
+                      "snaktype": "value",
+                      "property": "P5570",
+                      "hash": "7f98e58b88192981536b309c757046fc71d5845a",
+                      "datavalue": {
+                        "value": "2147193253",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "faeda400f67bbf9db97199b21f189beb8099e08d",
+                      "datavalue": {
+                        "value": "Ransom RIGGS",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P5570",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "a2f936302d6c34ace2e14a51ddf209950a83b47f",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "155e1a7322c5a7febad55feba5ba4c3a2656b1c4",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2877812,
+                          "id": "Q2877812"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P3630": [
+                    {
+                      "snaktype": "value",
+                      "property": "P3630",
+                      "hash": "ec9ab21b0fd7fac820dc6fa1ffaa6d475736442f",
+                      "datavalue": {
+                        "value": "150885",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "36b968aaa82fc48579875b6c1fad4ae3d16d949c",
+                      "datavalue": {
+                        "value": "Ransom Riggs",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P3630",
+                  "P1810"
+                ]
+              }
+            ],
+            "qualifiers": {}
+          }
+        ],
+        "P570": []
+      }
+    },
+    {
+      "qid": "Q448421",
+      "lastrevid": 2536137027,
+      "modified": "2026-08-25T09:17:49Z",
+      "labels": {
+        "en": "Celia Rees"
+      },
+      "aliases": {},
+      "descriptions": {
+        "en": "English author"
+      },
+      "human": true,
+      "claims": {
+        "P569": [
+          {
+            "claimId": "Q448421$1030A15C-3448-474C-A3F6-BCA257E568C5",
+            "rank": "normal",
+            "referenced": true,
+            "referenceCount": 4,
+            "time": "+1949-06-17T00:00:00Z",
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "precision": 11,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "references": [
+              {
+                "hash": "3a1182c129c2d78bb655158a782aded968002ab0",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 36578,
+                          "id": "Q36578"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P227": [
+                    {
+                      "snaktype": "value",
+                      "property": "P227",
+                      "hash": "94ff7aac8d509e17ed4df692ff1aaaa097a6f852",
+                      "datavalue": {
+                        "value": "123839246",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "c507cf3b0f6015d6deb25b84295154633fc0a7ab",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2015-10-15T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P227",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "ee820a208a800a022e21079db8ed1c12097cee76",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "871891c242389d06b23bf809fdc0301df1ed9c77",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2629164,
+                          "id": "Q2629164"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1233": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1233",
+                      "hash": "4106c2661dba6728c04ba993a442f5a9dd39c429",
+                      "datavalue": {
+                        "value": "3503",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "75705a0dd199b280afebc3069f5a063ca6c0b0a0",
+                      "datavalue": {
+                        "value": "Celia Rees",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1233",
+                  "P1810",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "17cd53efab6b6daec5251eb1299324bc74472358",
+                "snaks": {
+                  "P1065": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1065",
+                      "hash": "4a8ee391e9f919bc89882521a4793fe141980e61",
+                      "datavalue": {
+                        "value": "https://web.archive.org/web/20170323065253/http://jeugdliteratuur.org/auteurs/celia-rees",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "db13b357fe24e21be901999ca3f77592bde26d4d",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 71973531,
+                          "id": "Q71973531"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P1065",
+                  "P248"
+                ]
+              },
+              {
+                "hash": "7e981ba42309dba7abfc9c31813c1ebc2760b191",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "9d66409d3d04632fc69413ea86abf094f92fae88",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 3343389,
+                          "id": "Q3343389"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P5570": [
+                    {
+                      "snaktype": "value",
+                      "property": "P5570",
+                      "hash": "1fe984c3d29c4cb50fe397442340b20d32c16397",
+                      "datavalue": {
+                        "value": "2147196307",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "013205fab1bf76e597dd986d40c0a5a611e3f4f9",
+                      "datavalue": {
+                        "value": "Celia REES",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P5570",
+                  "P1810",
+                  "P813"
+                ]
+              }
+            ],
+            "qualifiers": {}
+          }
+        ],
+        "P570": []
+      }
+    },
+    {
+      "qid": "Q438569",
+      "lastrevid": 2530344748,
+      "modified": "2026-08-12T09:14:05Z",
+      "labels": {
+        "ru": "Рональд Фредерик Делдерфилд",
+        "en": "R. F. Delderfield"
+      },
+      "aliases": {
+        "ru": [
+          "Рональд Фредерик Делдерфилд",
+          "Делдерфилд, Рональд Фредерик"
+        ],
+        "en": [
+          "Ronald Frederick Delderfield"
+        ]
+      },
+      "descriptions": {
+        "en": "British writer (1912–1972)"
+      },
+      "human": true,
+      "claims": {
+        "P569": [
+          {
+            "claimId": "q438569$5C1BB3AC-64A9-4827-B74B-F58612109FC8",
+            "rank": "normal",
+            "referenced": true,
+            "referenceCount": 2,
+            "time": "+1912-02-12T00:00:00Z",
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "precision": 11,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "references": [
+              {
+                "hash": "0d15938d496f6667ea2032551973316c72774d9f",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "def9f19d84b65167a2a17ce38364d264c16127fc",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 19938912,
+                          "id": "Q19938912"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P268": [
+                    {
+                      "snaktype": "value",
+                      "property": "P268",
+                      "hash": "f073a03a62590dbb3caca474159774c19c7eea6c",
+                      "datavalue": {
+                        "value": "121966357",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "d6162a1716489623c6e595e448b17f8dca4fb2e8",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2015-10-10T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P268",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "22c4d2e655690a941b1d56b7aefd8bfc5d62d896",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "f98ec89708e8eab9511c049702ef59df0721d652",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 29861311,
+                          "id": "Q29861311"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P3430": [
+                    {
+                      "snaktype": "value",
+                      "property": "P3430",
+                      "hash": "1fd2eb3f7f178a2817ae3308e432a1ace44a0c5d",
+                      "datavalue": {
+                        "value": "w6fj4gxs",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "64b108b41a5c5f67084cc51ff7603af631e48180",
+                      "datavalue": {
+                        "value": "R. F. Delderfield",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P3430",
+                  "P1810",
+                  "P813"
+                ]
+              }
+            ],
+            "qualifiers": {}
+          }
+        ],
+        "P570": [
+          {
+            "claimId": "q438569$0AD995F5-9630-45CB-BB5C-0B5D61192129",
+            "rank": "normal",
+            "referenced": true,
+            "referenceCount": 2,
+            "time": "+1972-06-24T00:00:00Z",
+            "timezone": 0,
+            "before": 0,
+            "after": 0,
+            "precision": 11,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "references": [
+              {
+                "hash": "0d15938d496f6667ea2032551973316c72774d9f",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "def9f19d84b65167a2a17ce38364d264c16127fc",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 19938912,
+                          "id": "Q19938912"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P268": [
+                    {
+                      "snaktype": "value",
+                      "property": "P268",
+                      "hash": "f073a03a62590dbb3caca474159774c19c7eea6c",
+                      "datavalue": {
+                        "value": "121966357",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "d6162a1716489623c6e595e448b17f8dca4fb2e8",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2015-10-10T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P268",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "22c4d2e655690a941b1d56b7aefd8bfc5d62d896",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "f98ec89708e8eab9511c049702ef59df0721d652",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 29861311,
+                          "id": "Q29861311"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P3430": [
+                    {
+                      "snaktype": "value",
+                      "property": "P3430",
+                      "hash": "1fd2eb3f7f178a2817ae3308e432a1ace44a0c5d",
+                      "datavalue": {
+                        "value": "w6fj4gxs",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1810": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1810",
+                      "hash": "64b108b41a5c5f67084cc51ff7603af631e48180",
+                      "datavalue": {
+                        "value": "R. F. Delderfield",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "e5f60ab0b03700bb883efce38f8022d023bc49fb",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2017-10-09T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P3430",
+                  "P1810",
+                  "P813"
+                ]
+              }
+            ],
+            "qualifiers": {}
+          }
+        ]
+      }
+    }
+  ]
+}

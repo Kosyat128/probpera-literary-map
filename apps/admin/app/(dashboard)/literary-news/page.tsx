@@ -31,7 +31,7 @@ export default async function LiteraryNewsQueuePage({ searchParams }: {
     <header className="page-heading"><div>
       <span className="eyebrow">Мировая литература</span>
       <h1>Литературная сводка</h1>
-      <p>Найденные материалы ожидают редакционной проверки. Они не подтверждены и не попадают в публичную ленту автоматически.</p>
+      <p>Проверенные автоматической системой новости появляются на сайте. В Telegram отправляются карточки с подтверждёнными правами на фото; остальные ждут изображения. Здесь остаются материалы, которым нужна редакционная проверка.</p>
     </div></header>
 
     {params.delivery_saved === "1" && <p className="form-message" role="status">Решение записано. Это подтверждение изменения журнала, а не доставки в канал.</p>}
@@ -39,13 +39,14 @@ export default async function LiteraryNewsQueuePage({ searchParams }: {
     <LiteraryNewsDeliveryOverview snapshot={runtime} page={params.delivery_page} query={params} canManage={session.role === "owner" || session.role === "admin"} />
 
     <section className="panel" aria-labelledby="news-review-workflow">
-      <h2 id="news-review-workflow">Подготовка к публикации</h2>
+      <h2 id="news-review-workflow">Материалы для ручной проверки</h2>
+      <p>Автоматическая система проверяет первоисточник и дату, готовит русскую и английскую карточки и отдельно проверяет факты и перевод. Неоднозначные материалы остаются в этой очереди.</p>
       <ol>
         <li>Откройте первоисточник, подтвердите событие, его дату и категорию. Дата обнаружения и дата публикации материала не заменяют дату события.</li>
         <li>Подготовьте собственные краткие заголовок и описание на русском и английском; сохраните ссылку на подтверждающий источник.</li>
         <li>Добавьте проверенную карточку в <code>data/news/reviewed.json</code> и отправьте изменение на проверку в защищённую ветку <code>main</code>. <a href="https://github.com/Kosyat128/probpera-literary-map/blob/main/data/news/reviewed.json" target="_blank" rel="noopener noreferrer">Открыть проверенную подборку на GitHub ↗</a>. Отзыв или исправление опубликованной карточки проходит тем же путём.</li>
       </ol>
-      <p className="catalog-summary">Эта страница показывает очередь для чтения. Статус <code>held</code> означает, что редакционная проверка ещё не завершена.</p>
+      <p className="catalog-summary">Эта страница показывает оставшиеся материалы для ручной проверки. Статус <code>held</code> означает, что редакционная проверка ещё не завершена.</p>
     </section>
 
     <section className="panel" aria-labelledby="news-queue-title">

@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "BR"
   ],
-  "attemptedAt": "2026-09-26T17:32:08.624Z",
+  "attemptedAt": "2026-09-29T20:34:14.699Z",
   "requests": [
     {
       "url": "https://www.companhiadasletras.com.br/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 88508,
-      "sha256": "138132479eebf12d10badb008469313941ce51b4d7e57fc6a167746d0b3a5343",
-      "accessedAt": "2026-09-26T17:32:09.995Z"
+      "sha256": "5c192f027d79e571481c83e3f776cefd09b371f8d557840351dba6e306f962af",
+      "accessedAt": "2026-09-29T20:34:16.078Z"
     }
   ],
   "status": "blocked",
@@ -27,7 +27,7 @@
     "contentType": "text/plain; charset=UTF-8",
     "bytes": 140,
     "sha256": "e882b8c2dd06694c55aa6520a06a9d1e5d0274a6f590ed5589ccee77c25fafd6",
-    "accessedAt": "2026-09-26T17:32:09.874Z",
+    "accessedAt": "2026-09-29T20:34:16.002Z",
     "disallowed": [
       "/checkout/",
       "/account/",

@@ -8,47 +8,87 @@
   "coverageCountryCodes": [
     "PE"
   ],
-  "attemptedAt": "2026-09-26T17:28:05.012Z",
+  "attemptedAt": "2026-09-29T20:32:45.644Z",
   "requests": [
     {
       "url": "https://cpl.org.pe/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 288734,
-      "sha256": "eb42f422c0ccf30f6161133b9305f152f50414b72eac2aa0d4077c0feee65eac",
-      "accessedAt": "2026-09-26T17:28:07.029Z"
+      "sha256": "ea0afcf71adc40bb7feddf1c08b3e5416fd781a1cc667b0f058a4f5f1ac843e3",
+      "accessedAt": "2026-09-29T20:32:47.906Z"
     },
     {
       "url": "https://cpl.org.pe/category/noticias/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 275130,
-      "sha256": "bd929d69f6fcf5a72e5920a655bf62c2636d3cf7a45e9729a1fe4fbcf71badc5",
-      "accessedAt": "2026-09-26T17:28:07.610Z"
+      "bytes": 275112,
+      "sha256": "f782f022a25083df8225e0bee3b0965459c76cef76220dfe160e8f549521cbd5",
+      "accessedAt": "2026-09-29T20:32:48.362Z"
     },
     {
       "url": "https://cpl.org.pe/la-comision-de-editoriales-independientes-de-la-camara-peruana-del-libro-organiza-irrumpe-2026-la-feria-que-reescribe-la-cultura-editorial-del-pais/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 276682,
-      "sha256": "9da65dee2a6f46c77590722476752805bdd566aa510a33c245e821c856bac08e",
-      "accessedAt": "2026-09-26T17:28:07.838Z"
+      "bytes": 276685,
+      "sha256": "e7443d84938cac78a39d5dca65cd19d096217a5300d7c75cc8266702fc1de66a",
+      "accessedAt": "2026-09-29T20:32:49.013Z"
     },
     {
       "url": "https://cpl.org.pe/la-camara-peruana-del-libro-invita-al-encuentro-de-jovenes-lectores-2026/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 271486,
-      "sha256": "f16eb86ff313fbda3489359d4f8b8e96f129710ceb4892858268cedd78644bcd",
-      "accessedAt": "2026-09-26T17:28:08.033Z"
+      "sha256": "2d24195950db2e5e8eb029bda0e3e48d75361d9863e8b55e41c0f92ddc26a13b",
+      "accessedAt": "2026-09-29T20:32:49.683Z"
     },
     {
       "url": "https://cpl.org.pe/la-camara-peruana-del-libro-presenta-a-su-nuevo-consejo-directivo-para-el-periodo-2026-2027/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 273394,
-      "sha256": "1c4c6131219be6a226ba627d9a8e33d9699654e1309476c46b67cd49451736c2",
-      "accessedAt": "2026-09-26T17:28:09.045Z"
+      "sha256": "cb7bfae838d0c1747f84a1941b13d82c505ea01680ca6c5ece4b714a7d77176c",
+      "accessedAt": "2026-09-29T20:32:50.446Z"
+    },
+    {
+      "url": "https://cpl.org.pe/segunda-edicion-del-foro-internacional-de-redes-editoriales-fire-2026-reunira-a-especialistas-en-arequipa/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 276780,
+      "sha256": "6ab18845771e638b9c26ec708063a5d48d09393afc278dbd938efecc1d62b8aa",
+      "accessedAt": "2026-09-29T20:32:50.615Z"
+    },
+    {
+      "url": "https://cpl.org.pe/irrumpe-2026-la-feria-amplia-sus-espacios-y-se-traslada-a-la-plaza-tupac-amaru-en-el-distrito-de-magdalena-del-mar/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 278085,
+      "sha256": "62d4ef922bd7a6b6abeae52049f7d72dbdebbb355baf8f4ad0bf37889527bb17",
+      "accessedAt": "2026-09-29T20:32:51.299Z"
+    },
+    {
+      "url": "https://cpl.org.pe/peru-en-la-50-fil-buenos-aires-2026-ampliacion-de-postulaciones/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 271752,
+      "sha256": "7b2e5916aadc447a692b1c11857959f9683f4df78dd928fae1869a0ba8213d50",
+      "accessedAt": "2026-09-29T20:32:52.001Z"
+    },
+    {
+      "url": "https://cpl.org.pe/camara-peruana-del-libro-recibe-reconocimiento-por-sus-80-anos-fomentando-la-lectura-en-el-pais/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 273267,
+      "sha256": "0987658a258aafa075ea21275918269ba0a98f69a77d8a327a8d7d670713e9b5",
+      "accessedAt": "2026-09-29T20:32:52.690Z"
+    },
+    {
+      "url": "https://cpl.org.pe/feria-internacional-del-libro-de-lima-cumple-30-anos-cambia-de-sede-y-evoluciona-para-brindar-mas-fil-lima-para-mas-peruanos/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 275097,
+      "sha256": "6ca4a5f016e3e0a061df94542ab8a9a43cc19ebd9ec8722914c805e1cb85a206",
+      "accessedAt": "2026-09-29T20:32:53.381Z"
     }
   ],
   "status": "blocked",
@@ -59,7 +99,7 @@
     "contentType": "text/plain",
     "bytes": 23,
     "sha256": "eaeaa8d3511d1622227d89707d995b8b1f0902f5b86fdbe58882d1cef260d4d7",
-    "accessedAt": "2026-09-26T17:28:05.485Z",
+    "accessedAt": "2026-09-29T20:32:46.588Z",
     "disallowed": []
   }
 }

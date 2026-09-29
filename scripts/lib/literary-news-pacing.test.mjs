@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { NEWS_DELIVERY_INTERVAL_SECONDS, newsDeliveryPacingKey, reserveNewsDeliverySlot } from "./literary-news-pacing.mjs";
+import { NEWS_DELIVERY_INTERVAL_SECONDS, NEWS_DAILY_TARGET, newsDeliveryPacingKey, reserveNewsDeliverySlot } from "./literary-news-pacing.mjs";
 
 const destination = { platform: "telegram", id: "-1002791579809" };
 const start = new Date("2026-09-27T00:00:00Z");
@@ -59,7 +59,8 @@ describe("durable per-destination create pacing", () => {
   });
   it("fails closed on corrupt or cross-destination persisted timing", async () => {
     for (const patch of [{ nextDueAt: "bad" }, { intervalSeconds: 1 }, { destinationId: "-42" },
-      { nextDueAt: "2026-09-27T00:01:00Z" }, { schemaVersion: 2 }]) {
+      { nextDueAt: "2026-09-27T00:01:00Z" }, { schemaVersion: 3 }, { reservations: 99 },
+      { day: '2026-09-28' }, { dailyLimit: 100 }]) {
       const store = client(); await reserveNewsDeliverySlot(options(store));
       Object.assign(store.journal.rows[0].state, patch);
       expect(await reserveNewsDeliverySlot(options(store, { now: new Date("2026-10-01") })))
@@ -83,5 +84,31 @@ describe("durable per-destination create pacing", () => {
   it("a backwards runner clock cannot bypass a recorded future slot", async () => {
     const store = client(); await reserveNewsDeliverySlot(options(store));
     expect((await reserveNewsDeliverySlot(options(store, { now: new Date("2026-09-26T23:00:00Z") }))).applied).toBe(false);
+  });
+  it('caps a destination at fifteen attempts per Moscow day across restarts, without catch-up credits', async () => {
+    const store = client();
+    for (let index = 0; index < NEWS_DAILY_TARGET.maximum; index++) {
+      const restarted = client(store.journal);
+      expect((await reserveNewsDeliverySlot(options(restarted, {
+        now: new Date(start.getTime() + index * 1800000), attemptId: `daily-${index}`,
+      }))).applied).toBe(true);
+    }
+    expect(await reserveNewsDeliverySlot(options(client(store.journal), {
+      now: new Date('2026-09-27T12:00:00Z'), attemptId: 'sixteenth',
+    }))).toMatchObject({ applied: false, reason: 'pacing_daily_limit', nextDueAt: '2026-09-27T21:00:00.000Z' });
+    expect((await reserveNewsDeliverySlot(options(client(store.journal), {
+      now: new Date('2026-09-27T21:00:00Z'), attemptId: 'new-moscow-day',
+    }))).applied).toBe(true);
+    expect(store.journal.rows.at(-1).state).toMatchObject({ day: '2026-09-28', reservations: 1 });
+  });
+  it('upgrades a valid persisted v1 slot without bypassing its remaining interval', async () => {
+    const store = client(); await reserveNewsDeliverySlot(options(store));
+    const legacy = store.journal.rows[0].state;
+    legacy.schemaVersion = 1; delete legacy.day; delete legacy.reservations; delete legacy.dailyLimit; delete legacy.timeZone;
+    expect(await reserveNewsDeliverySlot(options(store))).toMatchObject({ applied: false, reason: 'pacing_not_due' });
+    expect((await reserveNewsDeliverySlot(options(store, {
+      now: new Date(start.getTime() + 1800000), attemptId: 'upgrade',
+    }))).applied).toBe(true);
+    expect(store.journal.rows.at(-1).state).toMatchObject({ schemaVersion: 2, reservations: 2 });
   });
 });

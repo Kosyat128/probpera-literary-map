@@ -13,6 +13,7 @@ export function newsDiscoveryParserVersion(source) {
   const regexp = (pattern) => pattern ? [pattern.source, pattern.flags] : null;
   const profile = {
     format: source.format || "html", linkPattern: regexp(source.linkPattern),
+    encoding: source.encoding || 'utf-8',
     keywordPattern: regexp(source.keywordPattern), linkSelector: source.linkSelector || "a[href]",
     articleContainer: source.articleContainer || null, titleSelector: source.titleSelector || null,
     articleOrigins: [...(source.articleOrigins || [])].sort(),
@@ -54,7 +55,7 @@ function nextPage(document, source, currentPage) {
   return { nextPageUrl: urls[0] };
 }
 
-async function readBoundedDocument(response, limit, format) {
+async function readBoundedDocument(response, limit, format, encoding = 'utf-8') {
   const declaredBytes = Number(response.headers.get("content-length"));
   if (Number.isFinite(declaredBytes) && declaredBytes > limit) throw failure("response_too_large");
   const contentType = response.headers.get("content-type");
@@ -82,7 +83,7 @@ async function readBoundedDocument(response, limit, format) {
   } finally {
     reader.releaseLock();
   }
-  return Buffer.concat(chunks).toString("utf8");
+  return new TextDecoder(encoding).decode(Buffer.concat(chunks));
 }
 
 function plainText(value, limit) {
@@ -225,6 +226,7 @@ export function createNewsService({
         || !source.linkSelector.trim() || source.linkSelector.length > 500))
       || (source.refreshIntervalSeconds !== undefined && (!Number.isSafeInteger(source.refreshIntervalSeconds)
         || source.refreshIntervalSeconds <= 0 || source.refreshIntervalSeconds > 86400))
+      || (source.encoding !== undefined && !['utf-8', 'windows-1252'].includes(source.encoding))
       || (source.region !== undefined && !REGIONS.has(source.region))
       || (source.topics !== undefined && (!Array.isArray(source.topics) || source.topics.some((topic) => !CATEGORIES.has(topic))))
       || ((source.articleContainer !== undefined || source.titleSelector !== undefined) && (
@@ -339,7 +341,7 @@ export function createNewsService({
             const actual = canonicalUrl(response.url);
             if (!actual || actual.origin !== source.origin || (source.pagination && actual.href !== currentPage)) throw failure("unexpected_response_origin");
           }
-          const document = await readBoundedDocument(response, maxResponseBytes, source.format);
+          const document = await readBoundedDocument(response, maxResponseBytes, source.format, source.encoding);
           const found = discover(document, { ...source, url: currentPage }, now().toISOString());
           if (!found.length) throw failure("no_article_links");
           return { candidates: found, schedule: { ...schedule, paginationError: null,

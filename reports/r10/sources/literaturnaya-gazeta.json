@@ -1,0 +1,995 @@
+{
+  "sourceId": "literaturnaya-gazeta",
+  "name": "Литературная газета",
+  "entryUrl": "https://lgz.ru/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:29.352Z",
+  "requests": [
+    {
+      "url": "https://lgz.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 123502,
+      "sha256": "d041671cc895d908e4fdc562baacf0261972e19ec08e2b7e315ef0b0999b30c0",
+      "accessedAt": "2026-09-29T20:39:30.890Z"
+    },
+    {
+      "url": "https://lgz.ru/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 109617,
+      "sha256": "918dbf780c62d1bcb8b5aee8f2eab4c108665361bd0d39f21572426b10ce67b9",
+      "accessedAt": "2026-09-29T20:39:31.076Z"
+    },
+    {
+      "url": "https://lgz.ru/news/premiya-solzheniczyna-u-otroshenko/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 70222,
+      "sha256": "0393f2a6b55996a67436bc0c68e31ee8f48c85ac680201a31f9c3a63a2226aac",
+      "accessedAt": "2026-09-29T20:39:31.492Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://lgz.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 104,
+    "sha256": "88b6d925ca9e2f347d68926c8da80d954ad9cde635e8596bd0d0778d80fb4c33",
+    "accessedAt": "2026-09-29T20:39:29.866Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "literaturnaya-gazeta",
+    "name": "Литературная газета",
+    "url": "https://lgz.ru/news/",
+    "format": "html",
+    "language": "ru",
+    "region": "global",
+    "sourceFamilyId": "literaturnaya-gazeta",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://lgz.ru"
+    ],
+    "linkPattern": "^\\/literature\\/[^/]+\\/?$|^\\/sp1\\/[^/]+\\/?$|^\\/contest\\/[^/]+\\/?$|^\\/news\\/.+|^\\/\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://lgz.ru/news/premiya-solzheniczyna-u-otroshenko/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:31.496Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 35,
+  "literaryCandidateCount": 35,
+  "sample": {
+    "sourceId": "literaturnaya-gazeta",
+    "source": {
+      "name": "Литературная газета",
+      "url": "https://lgz.ru/news/premiya-solzheniczyna-u-otroshenko/",
+      "language": "ru"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Премия Солженицына – у Отрошенко",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:31.116Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://lgz.ru/news/premiya-solzheniczyna-u-otroshenko/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 70222,
+      "sha256": "0393f2a6b55996a67436bc0c68e31ee8f48c85ac680201a31f9c3a63a2226aac",
+      "accessedAt": "2026-09-29T20:39:31.492Z",
+      "headline": "Премия Солженицына – у Отрошенко",
+      "excerpt": "Главная Новости 29 сентября 2026 г. Премия Солженицына – у Отрошенко Награждение прошло в столичном Доме русского зарубежья 29 сентября 2026 Литературной премией Александра Солженицына наградили писателя Владислава Отрошенко. Награждение прошло уже в двадцать пятый раз и по традиции — в столичном Доме русского зарубежья. Победителя определили члены жюри премии — Наталия Солженицына, Борис Любимов,",
+      "publishedDates": [],
+      "canonical": "https://lgz.ru/news/premiya-solzheniczyna-u-otroshenko/",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:31.496Z",
+  "foundItems": [
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/premiya-solzheniczyna-u-otroshenko/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Премия Солженицына – у Отрошенко",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/blizitsya-literaturnyj-diktant/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Близится «Литературный диктант»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/otkryli-pamyatnik-gazdanovu/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Открыли памятник Газданову",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/puteshestvie-v-izumrudnyj-gorod/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Путешествие в Изумрудный город",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/podderzhivaya-molodye-talanty/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Поддерживая молодые таланты",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/petergof-podruzhilsya-s-gazpromom/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Петергоф» подружился с «Газпромом»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/putin-odobril-dushu-rossii/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Путин одобрил «Душу России»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/iskander-sobiraet-iskusnyh/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Искандер собирает искусных",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/predannost-i-predatelstvo/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Преданность и предательство",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/kultura-universalnyj-instrument/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Культура – универсальный инструмент»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/bulgakov-s-muzykoj-2/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Булгаков с музыкой",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/ne-prosto-katalog/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Не просто каталог",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/bolee-90-sobytij/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Более 90 событий",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/czvetaevskaya-osen/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Цветаевская осень",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/obedinennye-kultury-obshhie-czennosti/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объединенные культуры – общие ценности",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/russkij-s-kitajczem-bratya-navek-3/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Русский с китайцем – братья навек",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/blizitsya-eko-moskva/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Близится «Эко-Москва»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/partitura-blizitsya-k-finalu/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Партитура» близится к финалу",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/zherdyola-v-fedorovskoj-biblioteke/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Жердёла» в Федоровской библиотеке",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/yura-borisov-voplotit-obraz-lavra/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Юра Борисов воплотит образ Лавра",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/vpered-v-proshloe/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Вперед в прошлое",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/knizhniki-peredvizhniki-v-spb/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Книжники-передвижники» в СПб",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/rasshiryaya-geografiyu/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Расширяя географию",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/novaya-tatarskaya-pesa/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Новая татарская пьеса",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/neizvestnyj-uells/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Неизвестный Уэллс",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/ya-poslal-tebe-berestu/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Я послал тебе бересту...»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/sostoyatsya-russkie-chteniya/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Состоятся Русские чтения",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/vspomnyat-leonida-kuravleva/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Вспомнят Леонида Куравлева",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/raznaya-optika-i-temy/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Разная оптика и темы",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/sejlemskie-vedmy-na-ulicze-prohodchikov/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "\"Сейлемские ведьмы\" на улице Проходчиков",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/bokovskaya-osen-sostoyalas/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Боковская осень» состоялась",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/chto-nas-svyazyvaet/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Что нас связывает?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/russkie-tajny-fausta/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Русские тайны Фауста",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/vyshel-dnevnik-pianistki/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Вышел «Дневник пианистки»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-gazeta",
+      "source": {
+        "name": "Литературная газета",
+        "url": "https://lgz.ru/news/190-let-sereznaya-data/",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "мы отметили 190-летний юбилей",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "918dbf780c62d1bcb8b5aee8f2eab4c108665361bd0d39f21572426b10ce67b9"
+}

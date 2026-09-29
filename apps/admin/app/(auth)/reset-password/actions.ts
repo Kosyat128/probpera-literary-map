@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import { redirect, withAdminBasePath } from "@/lib/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { authServiceError, guardedAuthRequest, logAuthFailure } from "@/lib/auth-service-error";
 
 const passwordSchema = z
   .object({
@@ -35,8 +36,12 @@ export async function updatePasswordAction(formData: FormData) {
     redirect(resetUrl("Подключение к базе данных не настроено."));
   }
 
-  const { data: userData } = await supabase.auth.getUser();
-  if (!userData.user) {
+  const userResult = await guardedAuthRequest(() => supabase.auth.getUser());
+  if (userResult.error && authServiceError(userResult.error)) {
+    logAuthFailure("recovery_session", userResult.error);
+    redirect(resetUrl(authServiceError(userResult.error)!));
+  }
+  if (!("data" in userResult) || !userResult.data.user) {
     redirect(
       `${withAdminBasePath("/login")}?error=${encodeURIComponent(
         "Сессия восстановления истекла. Запросите новую ссылку."
@@ -44,14 +49,15 @@ export async function updatePasswordAction(formData: FormData) {
     );
   }
 
-  const { error } = await supabase.auth.updateUser({
+  const { error } = await guardedAuthRequest(() => supabase.auth.updateUser({
     password: parsed.data.password,
-  });
+  }));
   if (error) {
-    redirect(resetUrl("Не удалось изменить пароль. Запросите новую ссылку и повторите попытку."));
+    logAuthFailure("password_update", error);
+    redirect(resetUrl(authServiceError(error) || "Не удалось изменить пароль. Запросите новую ссылку и повторите попытку."));
   }
 
-  await supabase.auth.signOut();
+  await guardedAuthRequest(() => supabase.auth.signOut());
   redirect(
     `${withAdminBasePath("/login")}?success=${encodeURIComponent(
       "Пароль изменён. Теперь войдите с новым паролем."

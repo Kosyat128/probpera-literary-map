@@ -6,7 +6,7 @@
       "platform": "telegram",
       "id": "-1002791579809",
       "mode": "off",
-      "requirePhotoForNewPosts": false
+      "requirePhotoForNewPosts": true
     },
     {
       "platform": "vk",

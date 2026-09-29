@@ -4,6 +4,7 @@ import { resolveNewsTimeZone } from "../lib/literary-news-reviewed.mjs";
 import { buildPublishedNewsFeed } from "../lib/literary-news-publication.mjs";
 import { NEWS_SOURCE_STATE_KEY, NEWS_STATE_MAX_BYTES, parseNewsSourceState, pendingNewsSourceState } from "../lib/literary-news-state.mjs";
 import { NOBEL_PROFILE_KEY, nobelPublishedRecords, readNobelProfileText } from "../lib/literary-news-nobel-profile.mjs";
+import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LIMITS, dailyPublishedRecords } from '../lib/literary-news-daily-profile.mjs';
 
 const FEED_PATH = "/api/literary-news/feed";
 // The canonical site reads this public feed from news.probpera.ru without
@@ -55,7 +56,17 @@ async function readSourceState(namespace) {
   }
 }
 
-/** Fixed reviewed data and one code-owned profile; no discovery or private queue reads. */
+async function readDailyProfile(stream) {
+  const reader = stream.getReader(), decoder = new TextDecoder(); let bytes = 0, text = '';
+  try {
+    while (true) { const { value, done } = await reader.read(); if (done) break;
+      bytes += value.byteLength; if (bytes > DAILY_NEWS_LIMITS.profileBytes) throw Error('daily_profile_too_large');
+      text += decoder.decode(value, { stream: true }); }
+    return JSON.parse(text + decoder.decode());
+  } finally { await reader.cancel().catch(() => {}); reader.releaseLock(); }
+}
+
+/** Fixed reviewed data and code-owned validated profiles; private findings remain private. */
 export async function handleNewsRequest(request, env, current = new Date()) {
   const headers = headersFor(env.NEWS_RELEASE_SHA);
   const url = new URL(request.url);
@@ -78,6 +89,12 @@ export async function handleNewsRequest(request, env, current = new Date()) {
   } catch {
     console.warn(JSON.stringify({event:"literary_news_nobel_profile_unavailable"}));
   }
+  try {
+    const stream = await env.NEWS_STATE.get(DAILY_NEWS_PROFILE_KEY, 'stream');
+    if (stream !== null) approvedProfile.push(...await dailyPublishedRecords(await readDailyProfile(stream), current));
+  } catch {
+    console.warn(JSON.stringify({ event: 'literary_news_daily_profile_unavailable' }));
+  }
   const timeZone = resolveNewsTimeZone(url.searchParams.get("timeZone"));
   try {
     // Human-reviewed records take precedence on either stable ID or semantic event key.
@@ -93,5 +110,29 @@ export async function handleNewsRequest(request, env, current = new Date()) {
   }
 }
 
+/** Read-only coordinator: the existing handler validates the same three fixed KV keys.
+ * No private queue, ledger, provider client or writable binding operation is exposed. */
+export class LiteraryNewsPublicReader {
+  constructor(_state, env) { this.env = env; }
+  fetch(request) { return handleNewsRequest(request, this.env); }
+}
+
+/** Keep route/method errors at the public boundary. Large approved-profile validation
+ * runs in the SQLite DO's CPU budget; the outer Worker streams its original response. */
+export async function handlePublicNewsRequest(request, env) {
+  const headers = headersFor(env.NEWS_RELEASE_SHA);
+  if (new URL(request.url).pathname !== FEED_PATH) return Response.json({ error: 'not_found' }, { status: 404, headers });
+  if (request.method !== 'GET') return Response.json({ error: 'method_not_allowed' }, {
+    status: 405, headers: { ...headers, Allow: 'GET' },
+  });
+  try {
+    if (!env.NEWS_PUBLIC_READER) throw Error('public_reader_unavailable');
+    const reader = env.NEWS_PUBLIC_READER.get(env.NEWS_PUBLIC_READER.idFromName('literary-news-public-reader'));
+    return await reader.fetch(request);
+  } catch {
+    return Response.json({ error: 'snapshot_unavailable' }, { status: 503, headers });
+  }
+}
+
 /** @type {ExportedHandler<Env>} */
-export default { fetch(request, env) { return handleNewsRequest(request, env); } };
+export default { fetch(request, env) { return handlePublicNewsRequest(request, env); } };

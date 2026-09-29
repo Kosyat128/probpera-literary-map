@@ -1,0 +1,32 @@
+{
+  "batchId": "current-news-reviewed-20260929",
+  "checkedAt": "2026-09-29T20:08:14.288Z",
+  "action": "additive_merge",
+  "written": true,
+  "beforeCount": 239,
+  "afterCount": 254,
+  "beforeSha256": "7a5e9af93eac327913ab465c799877b99348d4d6be3dc406b198b4cc4efc5df9",
+  "afterRecordSha256": "340e10e30ba9d95fa9e37ac976f80753c9c2b9d0d9deb6ade8e86ee5758387cc",
+  "addedOrRemoved": [
+    "asymptote-kleopatra-olympiou-desperado-grandma-20260929",
+    "bisg-brian-oleary-award-renaming-report-20260929",
+    "min-jin-lee-american-hagwon-writing-interview-20260929",
+    "nigerian-anthology-stories-they-forgot-call-20260929",
+    "literary-arts-portland-october-programme-20260929",
+    "ast-tristan-iseut-bilingual-weekly-releases-20260929",
+    "hernan-diaz-ply-literary-hub-profile-20260929",
+    "hachette-international-management-reorganisation-20260929",
+    "babelica-independent-publishers-2026-review-20260929",
+    "ekin-oklap-first-summer-interview-20260929",
+    "brittle-paper-african-campus-novels-20260929",
+    "scugnizzeria-vomero-giancarlo-siani-bookshop-20260929",
+    "andrei-rubanov-tambov-literary-project-20260929",
+    "ast-nikolai-ostrovsky-122-anniversary-20260929",
+    "hannah-grace-icebreaker-netflix-cast-20260929"
+  ],
+  "unchanged": [],
+  "held": [],
+  "firstPublicationCount": 0,
+  "currentlyPublicNew": 0,
+  "publication": "not_deployed"
+}

@@ -1,0 +1,256 @@
+{
+  "sourceId": "le-litteraire",
+  "name": "Le Litteraire",
+  "entryUrl": "https://www.lelitteraire.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:44.354Z",
+  "requests": [
+    {
+      "url": "https://www.lelitteraire.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 113353,
+      "sha256": "7424d9a738e266258f4ce224cfd9273b87608f430d9e9982dc7c832ec598ac43",
+      "accessedAt": "2026-09-29T20:39:45.330Z"
+    },
+    {
+      "url": "https://www.lelitteraire.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 10945,
+      "sha256": "8a88a834f5bf803d3f36eba0896632f27af33b718d3cdeccde97a3edcf02009f",
+      "accessedAt": "2026-09-29T20:39:45.492Z"
+    },
+    {
+      "url": "https://www.lelitteraire.com/jean-pierre-otte-sinfonia-la-delivrante/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 111716,
+      "sha256": "9840fe5328db203c3c91b749fb751de1bd352ebc586093ce44d8ef56a3aefd8a",
+      "accessedAt": "2026-09-29T20:39:45.768Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.lelitteraire.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 178,
+    "sha256": "2c1088497fc1cae8dd0378e43cc072c84d166b4990d6b6c5590e3594ce71a8de",
+    "accessedAt": "2026-09-29T20:39:45.081Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "le-litteraire",
+    "name": "Le Litteraire",
+    "url": "https://www.lelitteraire.com/feed/",
+    "format": "rss",
+    "language": "fr-FR",
+    "region": "global",
+    "sourceFamilyId": "le-litteraire",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.lelitteraire.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.lelitteraire.com/jean-pierre-otte-sinfonia-la-delivrante/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:45.773Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 5,
+  "literaryCandidateCount": 5,
+  "sample": {
+    "sourceId": "le-litteraire",
+    "source": {
+      "name": "Le Litteraire",
+      "url": "https://www.lelitteraire.com/jean-pierre-otte-sinfonia-la-delivrante/",
+      "language": "fr-FR"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Jean-Pierre Otte, Sinfonia – La délivrante",
+    "publishedAt": "2026-09-27T23:08:00.000Z",
+    "description": "Etre, sois Sachant qui il est « sans plus appartenir à soi », Otte est dans l’égarement général et un des rejets de l’humanité. C’est malgré tout sa et notre gloire en spectre dévoré par le temps. C’est contagieux et les hallucinations nourrissent sa Sinfonia à la fois pour être en n’étant pas – l’inverse est vrai aussi. Otte ne craint pas de se faire du mal et dévore les ombres malgré lui avec t…",
+    "discoveredAt": "2026-09-29T20:39:45.493Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.lelitteraire.com/jean-pierre-otte-sinfonia-la-delivrante/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 111716,
+      "sha256": "9840fe5328db203c3c91b749fb751de1bd352ebc586093ce44d8ef56a3aefd8a",
+      "accessedAt": "2026-09-29T20:39:45.768Z",
+      "headline": "Jean-Pierre Otte, Sinfonia - La délivrante - lelitteraire.com",
+      "excerpt": "Etre, sois Sachant qui il est « sans plus appartenir à soi », Otte est dans l’égarement général et un des rejets de l’humanité. C’est malgré tout sa et notre gloire en spectre dévoré par le temps. C’est contagieux et les hallucinations nourrissent sa Sinfonia à la fois pour être en n’étant pas – l’inverse est vrai aussi. Otte ne craint pas de se faire du mal et dévore les ombres malgré lui avec tr",
+      "publishedDates": [
+        {
+          "value": "2026-09-27T23:08:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-27T23:08:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-27T23:08:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.lelitteraire.com/jean-pierre-otte-sinfonia-la-delivrante/",
+      "language": "fr-FR",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:45.773Z",
+  "foundItems": [
+    {
+      "sourceId": "le-litteraire",
+      "source": {
+        "name": "Le Litteraire",
+        "url": "https://www.lelitteraire.com/jean-pierre-otte-sinfonia-la-delivrante/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jean-Pierre Otte, Sinfonia – La délivrante",
+      "publishedAt": "2026-09-27T23:08:00.000Z",
+      "description": "Etre, sois Sachant qui il est « sans plus appartenir à soi », Otte est dans l’égarement général et un des rejets de l’humanité. C’est malgré tout sa et notre gloire en spectre dévoré par le temps. C’est contagieux et les hallucinations nourrissent sa Sinfonia à la fois pour être en n’étant pas – l’inverse est vrai aussi. Otte ne craint pas de se faire du mal et dévore les ombres malgré lui avec t…",
+      "discoveredAt": "2026-09-29T20:39:45.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-litteraire",
+      "source": {
+        "name": "Le Litteraire",
+        "url": "https://www.lelitteraire.com/paolo-roversi-il-mestiere-del-buio/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Paolo Roversi, Il mestiere del buio",
+      "publishedAt": "2026-09-28T23:06:00.000Z",
+      "description": "Ténèbres À Milan, tout est acheté et vendu. La métropole tourne vite entre gratte-ciel, événements, millions d’euros en mouvement. Mais il suffit de s’éloigner des voies du tramway du centre pour découvrir une autre réalité : celle des entrepôts abandonnés, des ménageries clandestines et des personnes disparaissant sans laisser de trace.Lorenzo Visconti, surnommé le Dragon, quitte la Polyclinique…",
+      "discoveredAt": "2026-09-29T20:39:45.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-litteraire",
+      "source": {
+        "name": "Le Litteraire",
+        "url": "https://www.lelitteraire.com/notes-sur-loeuvre-de-yasmina-mahdi/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Notes sur l’œuvre de Yasmina Mahdi",
+      "publishedAt": "2026-09-28T23:04:00.000Z",
+      "description": "Ravir le regard ravissant Toute œuvre originale nous ramène à notre condition première de non-voyant. C’est à pas comptés et comme à tâtons qu’il nous faut avancer pour tenter de comprendre ce qui nous touche, nous séduit et nous frappe dans le travail de Yasmina Mahdi. Ce qu’il nous semble discerner, d’abord, si nous nous aventurons dans une archéologie des émotions ressenties, c’est le moment q…",
+      "discoveredAt": "2026-09-29T20:39:45.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-litteraire",
+      "source": {
+        "name": "Le Litteraire",
+        "url": "https://www.lelitteraire.com/marie-helene-prouteau-ces-mains-pour-linquietude/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Marie Hélène Prouteau, Ces mains pour l’inquiétude",
+      "publishedAt": "2026-09-28T23:02:00.000Z",
+      "description": "Les mots des signes Chaque fois dans ce livre des mains déclinent le vivant. Elles expriment et racontent, à l’infini. S’y retrouvent de très diverses oeuvres de Camille Claudel, à Erri De Luca, des mains de joaillerie aux « patounes » ou patchwork des parois des cavernes. Toutes ces mains veillent dans la chaleur ou le froid des vies. Pour les lire, l’autrice ne s’encombre pas de son ego autocen…",
+      "discoveredAt": "2026-09-29T20:39:45.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-litteraire",
+      "source": {
+        "name": "Le Litteraire",
+        "url": "https://www.lelitteraire.com/lisa-nico-luigi-ghirri-lanello-della-visione/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lisa Nico, Luigi Ghirri – L’anello della visione",
+      "publishedAt": "2026-09-27T23:10:00.000Z",
+      "description": "Une grande figure La force des photographies se concentre sur une révélation inattendue, une illumination « simple » qui surprend pourtant chaque fois par sa richesse toujours signifiée sans que nous nous en rendions compte : regarder. « L’anneau de la vision » restitue non seulement la stature artistique de Ghirri, mais aussi la nouveauté et la clarté de sa pensée.« Peut-être que finalement le p…",
+      "discoveredAt": "2026-09-29T20:39:45.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8a88a834f5bf803d3f36eba0896632f27af33b718d3cdeccde97a3edcf02009f"
+}

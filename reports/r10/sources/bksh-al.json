@@ -8,7 +8,7 @@
   "coverageCountryCodes": [
     "AL"
   ],
-  "attemptedAt": "2026-09-26T17:28:57.142Z",
+  "attemptedAt": "2026-09-29T20:33:32.927Z",
   "requests": [
     {
       "url": "https://www.bksh.al/",
@@ -16,7 +16,7 @@
       "contentType": "text/html; charset=utf-8",
       "bytes": 2633,
       "sha256": "4b0a2999c2535c1b1fe390803bb0099238bf70201ec51efeffc9fd0517b1f60c",
-      "accessedAt": "2026-09-26T17:28:57.700Z"
+      "accessedAt": "2026-09-29T20:33:33.699Z"
     }
   ],
   "status": "blocked",
@@ -27,7 +27,7 @@
     "contentType": "text/html; charset=utf-8",
     "bytes": 2633,
     "sha256": "4b0a2999c2535c1b1fe390803bb0099238bf70201ec51efeffc9fd0517b1f60c",
-    "accessedAt": "2026-09-26T17:28:57.595Z",
+    "accessedAt": "2026-09-29T20:33:33.599Z",
     "disallowed": []
   }
 }

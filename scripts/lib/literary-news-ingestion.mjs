@@ -54,7 +54,10 @@ function readPreviousQueue(value, configured, current) {
 
 /** Merge an entire completed attempt; a failed source never erases its last result. */
 export function buildNewsIngestion({ feed, candidates, previousState = null, previousQueue = null,
-  sources = LITERARY_NEWS_SOURCES, current = new Date(), scheduler = null }) {
+  sources = LITERARY_NEWS_SOURCES, current = new Date(), scheduler = null, approvedSourceUrls = [] }) {
+  if (!Array.isArray(approvedSourceUrls) || approvedSourceUrls.some(url => canonicalUrl(url)?.href !== url))
+    throw new Error("approved_queue_urls_invalid");
+  const approved = new Set(approvedSourceUrls);
   if ((previousState === null) !== (previousQueue === null)) throw new Error("previous_snapshot_incomplete");
   const before = previousState === null ? null : parseNewsSourceState(previousState, current, sources);
   if (previousState !== null && !before) throw new Error("previous_state_invalid");
@@ -76,7 +79,7 @@ export function buildNewsIngestion({ feed, candidates, previousState = null, pre
       : prior.filter((item) => item.sourceId === source.id);
     let count = 0;
     for (const candidate of fromSource) {
-      if (seen.has(candidate.source.url)) continue;
+      if (approved.has(candidate.source.url) || seen.has(candidate.source.url)) continue;
       seen.add(candidate.source.url);
       const old = priorByUrl.get(candidate.source.url);
       merged.push({ ...candidate, discoveredAt: old?.discoveredAt || candidate.discoveredAt,
@@ -92,7 +95,7 @@ export function buildNewsIngestion({ feed, candidates, previousState = null, pre
     };
   });
   for (const item of prior.filter((candidate) => !configured.has(candidate.sourceId))) {
-    if (!seen.has(item.source.url)) { merged.push(item); seen.add(item.source.url); }
+    if (!approved.has(item.source.url) && !seen.has(item.source.url)) { merged.push(item); seen.add(item.source.url); }
   }
   const queue = {
     schemaVersion: 1, generatedAt: current.toISOString(), lastCheckedAt: feed.lastCheckedAt,

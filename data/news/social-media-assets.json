@@ -153,7 +153,833 @@
         "height": 1600,
         "profile": "literary-news-photo-v1"
       }
+    },
+    {
+      "id": "auto-d4229d380cd5b9d3583ee18bc1494128",
+      "status": "approved",
+      "newsIds": [
+        "andrei-rubanov-tambov-literary-project-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "345fe1446b7ef3a3f5cd4e599d656e311bd150835765e0734ff890a68c14bf35",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Andrei Rubanov (Q2846848), exact reviewed name in title.en; Wikidata P18 File:Андрей Рубанов.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Svklimkin",
+      "rightsholder": "Svklimkin",
+      "credit": "Архивный портрет: Andrei Rubanov. «Андрей Рубанов». © Svklimkin.  Wikimedia Commons: https://commons.wikimedia.org/?curid=91211081.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "Андрей Рубанов",
+      "materialUrl": "https://commons.wikimedia.org/?curid=91211081",
+      "copyrightNotice": "© Svklimkin",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg",
+      "licenseEvidenceSha256": "c07c8255a3cba38da38b7c46eef46549e3977c74c1f2de0d273fe797667ff9e1",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "7da22ee64e324defe08b16aaf1d6343f239ea7ec92ee8ee38eb3e295bcacbfb8",
+        "byteLength": 203573,
+        "mime": "image/jpeg",
+        "width": 1172,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-e0cdc6b7f8c4c37a595f7b77b0189a41",
+      "status": "approved",
+      "newsIds": [
+        "ast-nikolai-ostrovsky-122-anniversary-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/N_Ostrovskiy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "3cc56aa59074a6fc360fb4149bfae7d6a1f2b89ed047bf5f3b828e6a6cae51a0",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Nikolai Ostrovsky (Q271853), exact reviewed name in title.en; Wikidata P18 File:N Ostrovskiy.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Unknown authorUnknown author",
+      "rightsholder": "Unknown authorUnknown author",
+      "credit": "Портрет: Nikolai Ostrovsky. Unknown authorUnknown author. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg",
+      "licenseEvidenceSha256": "512e3ca39b3c1ac77f8ee8af73358a32fef24a552b0f337619121dc69924384a",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "579620520ede151d353ba4083918255b26cba868224488ac8b1fd7202ab9eec9",
+        "byteLength": 38559,
+        "mime": "image/jpeg",
+        "width": 471,
+        "height": 720,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-565d99330f63261c54c82a23b6d414c5",
+      "status": "approved",
+      "newsIds": [
+        "min-jin-lee-american-hagwon-writing-interview-20260929",
+        "rumpus-min-jin-lee-october-book-club-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/2018-us-nationalbookfestival-min-jin-lee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "8d0ef6648151210dc543d56a2637bc5ad8920e3a9f11fa4d42991abf2c46d14c",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Lee Min Jin (Q13563026), exact reviewed name in title.ru; Wikidata P18 File:2018-us-nationalbookfestival-min-jin-lee.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Fuzheado",
+      "rightsholder": "Fuzheado",
+      "credit": "Архивный портрет: Lee Min Jin. «2018-us-nationalbookfestival-min-jin-lee». © Fuzheado.  Wikimedia Commons: https://commons.wikimedia.org/?curid=72309976.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "2018-us-nationalbookfestival-min-jin-lee",
+      "materialUrl": "https://commons.wikimedia.org/?curid=72309976",
+      "copyrightNotice": "© Fuzheado",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg",
+      "licenseEvidenceSha256": "d8b0bfdcf048dc9b61b9fe8a05c398ea4fe65eb3e0894c7636f95a91ec4a9bdb",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "606e2cd29d75f15eb548d629a70b16d49abfd1bda4de36027be19fd5533a0035",
+        "byteLength": 113284,
+        "mime": "image/jpeg",
+        "width": 1067,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-7cfd0f303bf2c7194b41fa8fee45b860",
+      "status": "approved",
+      "newsIds": [
+        "viktor-likhonosov-krasnodar-square-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Viktor_Likhonosov.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "6162b8249b84146b27e0a81a8c12b3624523c0a08c94630d9c260ecac33095b0",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Viktor Likhonosov (Q4264242), exact reviewed name in title.en; Wikidata P18 File:Viktor Likhonosov.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+      "rightsholder": "Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+      "credit": "Архивный портрет: Viktor Likhonosov. «Viktor Likhonosov». © Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара. Krd.ru Wikimedia Commons: https://commons.wikimedia.org/?curid=70791056.",
+      "license": "CC-BY-4.0",
+      "materialTitle": "Viktor Likhonosov",
+      "materialUrl": "https://commons.wikimedia.org/?curid=70791056",
+      "copyrightNotice": "© Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+      "derivativeLicense": "CC-BY-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Viktor%20Likhonosov.jpg",
+      "licenseEvidenceSha256": "4706a93b641c00d6632ddbc49803e7772a6da4d498ab065b3541cdf825e1b992",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Viktor%20Likhonosov.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "2a69cdda9a5b9e9c73fe9ed6cca7b6a43f3334eef12901a08149af0c5e442aa8",
+        "byteLength": 22390,
+        "mime": "image/jpeg",
+        "width": 322,
+        "height": 480,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-c62ab2d86d1c2e053bcf996276d43640",
+      "status": "approved",
+      "newsIds": [
+        "vladislav-otroshenko-solzhenitsyn-prize-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Vladislav_Otroshenko.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "8e68624055922d655d62cc424ceeead83aea79b06005b3db3bec117d20fa5475",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Vladislav Otroshenko (Q4340068), exact reviewed name in title.en; Wikidata P18 File:Vladislav Otroshenko.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Rodrigo Fernandez",
+      "rightsholder": "Rodrigo Fernandez",
+      "credit": "Архивный портрет: Vladislav Otroshenko. «Vladislav Otroshenko». © Rodrigo Fernandez.  Wikimedia Commons: https://commons.wikimedia.org/?curid=15699506.",
+      "license": "CC-BY-SA-3.0",
+      "materialTitle": "Vladislav Otroshenko",
+      "materialUrl": "https://commons.wikimedia.org/?curid=15699506",
+      "copyrightNotice": "© Rodrigo Fernandez",
+      "derivativeLicense": "CC-BY-SA-3.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Vladislav%20Otroshenko.jpg",
+      "licenseEvidenceSha256": "540b1fb471c40ec15355c0c5ddbf297a5b1c26df57f72561517043212370bba2",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Vladislav%20Otroshenko.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "d094ea1b36065743bcd7902fd7c8c79e81ee9713acdd694c80fbe586aaf55252",
+        "byteLength": 151280,
+        "mime": "image/jpeg",
+        "width": 1200,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-5614925a54c088ad54033b531d58affb",
+      "status": "approved",
+      "newsIds": [
+        "florent-oiseau-francoise-sagan-prize-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/35/Florent_Oiseau_%28born_1990%29_in_the_video_%27Florent_Oiseau_-_Ma_gloire%27.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "f0e1881f558d2fff3db13d2d62b39d49bc9dacc4a7b080622b5661cf17058619",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Florent Oiseau (Q124736629), exact reviewed name in title.en; Wikidata P18 File:Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'.png. This is a portrait, not a photograph of the news event.",
+      "author": "librairie mollat",
+      "rightsholder": "librairie mollat",
+      "credit": "Архивный портрет: Florent Oiseau. «Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'». © librairie mollat. librairie mollat Wikimedia Commons: https://commons.wikimedia.org/?curid=192445488.",
+      "license": "CC-BY-4.0",
+      "materialTitle": "Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'",
+      "materialUrl": "https://commons.wikimedia.org/?curid=192445488",
+      "copyrightNotice": "© librairie mollat",
+      "derivativeLicense": "CC-BY-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Florent%20Oiseau%20(born%201990)%20in%20the%20video%20'Florent%20Oiseau%20-%20Ma%20gloire'.png",
+      "licenseEvidenceSha256": "99bef1612bf38562ac573c0bc3b0492c929428d0e04462d6cc3e9ff67c550dab",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Florent%20Oiseau%20(born%201990)%20in%20the%20video%20'Florent%20Oiseau%20-%20Ma%20gloire'.png"
+        }
+      ],
+      "derivative": {
+        "sha256": "eb7f52785614a2f311710306b16c1d33df437beb7e7879001a39ab784d6d3c6a",
+        "byteLength": 26923,
+        "mime": "image/jpeg",
+        "width": 584,
+        "height": 592,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-c4df3b2588fe4c64e63cf937a8cad5c2",
+      "status": "approved",
+      "newsIds": [
+        "wells-brynhild-first-russian-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/H.G._Wells_by_Beresford.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "fa4b0340d07288f998849b72bbafc28163b67dc670c945491beb2d60a825c220",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of H. G. Wells (Q42511), exact reviewed name in title.en; Wikidata P18 File:H.G. Wells by Beresford.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "George Charles Beresford",
+      "rightsholder": "George Charles Beresford",
+      "credit": "Портрет: H. G. Wells. George Charles Beresford. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:H.G.%20Wells%20by%20Beresford.jpg",
+      "licenseEvidenceSha256": "a701bb4edd9a64612a87e24d091da0dff44a42b3077e460389d165fcee18a78b",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:H.G.%20Wells%20by%20Beresford.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "3424a7d016d9262564349ba6ea182de3114a3d32c7b572f0f4e0475ebb6968b0",
+        "byteLength": 63030,
+        "mime": "image/jpeg",
+        "width": 573,
+        "height": 800,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-54224b36c72ab6690106945342f5d7c5",
+      "status": "approved",
+      "newsIds": [
+        "lilya-brik-mamm-literary-museum-loans-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/1928_LYuB_editing_film.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "347b42593a4b27fdc531fcfd75d5a415c3ce81a7839f5884fbacf019172ebdc1",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Lilya Brik (Q260537), exact reviewed name in title.en; Wikidata P18 File:1928 LYuB editing film.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Unknown authorUnknown author",
+      "rightsholder": "Unknown authorUnknown author",
+      "credit": "Портрет: Lilya Brik. Unknown authorUnknown author. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:1928%20LYuB%20editing%20film.jpg",
+      "licenseEvidenceSha256": "615c37b439ba2bc40fcbb72aaf8a27bad46ebf4f2dea62d77e08a8ccb55bfcff",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:1928%20LYuB%20editing%20film.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "68bcf89beba25a91165e503881e3a4b3f38d7b4364aff78c8f2881f7ffffded8",
+        "byteLength": 18680,
+        "mime": "image/jpeg",
+        "width": 265,
+        "height": 326,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-0ad7617215178f4071e32b52de6c46ff",
+      "status": "approved",
+      "newsIds": [
+        "heather-cox-richardson-gitlin-auster-award-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/76/Heather_Cox_Richardson_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "f018027da4fd9c68aeaea1661bce5a4eb33204e1df56a0b852d2b8866ed7c76f",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Heather Cox Richardson (Q24321994), exact reviewed name in title.en; Wikidata P18 File:Heather Cox Richardson 2016.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Peter Stevens",
+      "rightsholder": "Peter Stevens",
+      "credit": "Архивный портрет: Heather Cox Richardson. «Heather Cox Richardson 2016». © Peter Stevens.  Wikimedia Commons: https://commons.wikimedia.org/?curid=99204042.",
+      "license": "CC-BY-2.0",
+      "materialTitle": "Heather Cox Richardson 2016",
+      "materialUrl": "https://commons.wikimedia.org/?curid=99204042",
+      "copyrightNotice": "© Peter Stevens",
+      "derivativeLicense": "CC-BY-2.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Heather%20Cox%20Richardson%202016.jpg",
+      "licenseEvidenceSha256": "c4f157f3c17c5d4b62ecfd12c907681fcdb113bf7e4c099ac773e6afe937366f",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Heather%20Cox%20Richardson%202016.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "281c58d7ae738fb7f91e4335f14c5af5fa6ab4c13dbe1cfad835cd15e0ba6ef4",
+        "byteLength": 243214,
+        "mime": "image/jpeg",
+        "width": 1600,
+        "height": 1363,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-fee7574dd6fb66d66d931099fa2e6bb5",
+      "status": "approved",
+      "newsIds": [
+        "stevenson-cevennes-illustrated-french-edition-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "04f39254c322cf498d206b4146696e4c8e113d2b5e90fada2b5bcf2c72994d7e",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Robert Louis Stevenson (Q1512), exact reviewed name in summary.en; Wikidata P18 File:Robert Louis Stevenson by Henry Walter Barnett bw.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Henry Walter Barnett",
+      "rightsholder": "Henry Walter Barnett",
+      "credit": "Портрет: Robert Louis Stevenson. Henry Walter Barnett. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Robert%20Louis%20Stevenson%20by%20Henry%20Walter%20Barnett%20bw.jpg",
+      "licenseEvidenceSha256": "6cc286438e8ca7c328fe5842732fc436430497598dab0a42d4c690bb3e5b9e34",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Robert%20Louis%20Stevenson%20by%20Henry%20Walter%20Barnett%20bw.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "adfff79a1b57dbccbc690dd7eab79b93ce9efbcfa54ddc5da76db7e027e3c9cd",
+        "byteLength": 73245,
+        "mime": "image/jpeg",
+        "width": 1066,
+        "height": 1422,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-3158b858fa58d94a3c42eaefc9925305",
+      "status": "approved",
+      "newsIds": [
+        "kruzhkov-mukha-pukha-reading-theatre-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "fe69b5f50cf007c786b6c71460ea04d044a630d2965ebfae571e4815271f1a30",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Grigory Kruzhkov (Q4242060), exact reviewed name in title.en; Wikidata P18 File:Григорий Кружков.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Svklimkin",
+      "rightsholder": "Svklimkin",
+      "credit": "Архивный портрет: Grigory Kruzhkov. «Григорий Кружков». © Svklimkin.  Wikimedia Commons: https://commons.wikimedia.org/?curid=76272855.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "Григорий Кружков",
+      "materialUrl": "https://commons.wikimedia.org/?curid=76272855",
+      "copyrightNotice": "© Svklimkin",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9%20%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg",
+      "licenseEvidenceSha256": "bd63f5b2f233155e0dbd5a0567b3a58e2d54672bf2dc1a86a90c429bb5814fc8",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9%20%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "d53d944a7375f66f0e3add51add591ebdd296de801954a437496a00ba6c900e4",
+        "byteLength": 126908,
+        "mime": "image/jpeg",
+        "width": 1600,
+        "height": 1094,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-6eed69a1152216a8fb8fc36ef5d615a6",
+      "status": "approved",
+      "newsIds": [
+        "tara-westover-brothers-and-sisters-us-2027"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/Tara_Westover_receives_the_National_Humanities_Medal_on_March_21%2C_2023%2C_in_the_East_Room_of_the_White_House_-_P20230321ES-0780_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "bdb64c05c348cd0968b749d478481bcefd8abeb5574d4f794a269901f7b53ae8",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Tara Westover (Q50345244), exact reviewed name in title.en; Wikidata P18 File:Tara Westover receives the National Humanities Medal on March 21, 2023, in the East Room of the White House - P20230321ES-0780 (cropped).jpg. This is a portrait, not a photograph of the news event.",
+      "author": "The White House",
+      "rightsholder": "The White House",
+      "credit": "Портрет: Tara Westover. The White House. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Tara%20Westover%20receives%20the%20National%20Humanities%20Medal%20on%20March%2021%2C%202023%2C%20in%20the%20East%20Room%20of%20the%20White%20House%20-%20P20230321ES-0780%20(cropped).jpg",
+      "licenseEvidenceSha256": "c6b3bb6dc09e01aa0b8783acf2895e82bee4a309c40057a90562e6daa0d1d4cf",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Tara%20Westover%20receives%20the%20National%20Humanities%20Medal%20on%20March%2021%2C%202023%2C%20in%20the%20East%20Room%20of%20the%20White%20House%20-%20P20230321ES-0780%20(cropped).jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "f38a344ff5e9cf722b78786fed395cdad08a01f00dc774e62326020347327fbe",
+        "byteLength": 174641,
+        "mime": "image/jpeg",
+        "width": 801,
+        "height": 1069,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-7bd3f07f19d2628755dba3015303e266",
+      "status": "approved",
+      "newsIds": [
+        "stanislaw-rosiek-polish-pen-editorial-award-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/03/Stanis%C5%82aw_Rosiek.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "41e7dd0fef2dfeaa146d7b54cecf84b5220a6070f60f321be81eeab26b7d1011",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Stanisław Rosiek (Q9342946), exact reviewed name in title.en; Wikidata P18 File:Stanisław Rosiek.JPG. This is a portrait, not a photograph of the news event.",
+      "author": "Artur Andrzej",
+      "rightsholder": "Artur Andrzej",
+      "credit": "Архивный портрет: Stanisław Rosiek. «Stanisław Rosiek». © Artur Andrzej.  Wikimedia Commons: https://commons.wikimedia.org/?curid=46433461.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "Stanisław Rosiek",
+      "materialUrl": "https://commons.wikimedia.org/?curid=46433461",
+      "copyrightNotice": "© Artur Andrzej",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Stanis%C5%82aw%20Rosiek.JPG",
+      "licenseEvidenceSha256": "99704ac17bbfca944c5c9a574ecaebc605deccdca4540983869d552ad112b5b3",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Stanis%C5%82aw%20Rosiek.JPG"
+        }
+      ],
+      "derivative": {
+        "sha256": "ca9d4ebe081494d033872b42d58434c2f12ee749344a7f1b6f91f381a7ecb525",
+        "byteLength": 282575,
+        "mime": "image/jpeg",
+        "width": 1200,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-95e531cf9d56ede093e3bd72abe90bc0",
+      "status": "approved",
+      "newsIds": [
+        "katarina-wennstam-crimetime-honorary-award-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Katarina_Wennstam_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "a8c26efcc24ef09ee9382b0ffa5c690e6fb31a7081b5552aae5f441c7c72e0ee",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Katarina Wennstam (Q4990307), exact reviewed name in title.en; Wikidata P18 File:Katarina Wennstam 01.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Bengt Oberger",
+      "rightsholder": "Bengt Oberger",
+      "credit": "Архивный портрет: Katarina Wennstam. «Katarina Wennstam 01». © Bengt Oberger.  Wikimedia Commons: https://commons.wikimedia.org/?curid=51938357.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "Katarina Wennstam 01",
+      "materialUrl": "https://commons.wikimedia.org/?curid=51938357",
+      "copyrightNotice": "© Bengt Oberger",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Katarina%20Wennstam%2001.jpg",
+      "licenseEvidenceSha256": "aeb9adf8cf6bcb4d00bfda0f4ec7bca5501bd3fc793b6d5869796e17ba98bf46",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Katarina%20Wennstam%2001.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "f5394bdbfd390375a1ce45e5fe9ed892167609f2b9ae96728daaad98c2ab5da7",
+        "byteLength": 317994,
+        "mime": "image/jpeg",
+        "width": 1537,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-9398d30e893aabd401cb6ddc8e74b4a8",
+      "status": "approved",
+      "newsIds": [
+        "tolstoy-birthday-2026",
+        "tolstoy-ivan-ilyich-brazil-amazon-report-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "6f8d1d8df13c20e0c2ffe1f993e922b4d6ec7ecbb9255b4d73043e8b7497fb1b",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Leo Tolstoy (Q7243), exact reviewed name in title.en; Wikidata P18 File:L.N.Tolstoy Prokudin-Gorsky.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Sergei Prokudin-Gorskii",
+      "rightsholder": "Sergei Prokudin-Gorskii",
+      "credit": "Портрет: Leo Tolstoy. Sergei Prokudin-Gorskii. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg",
+      "licenseEvidenceSha256": "1b12300ba74118ee61e80d4e3bba95fe099d68a3213b5dd231d48e1570b837ff",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "388d84042592ca289414a8e569c494ed45c0c53ede202afa8da9f7b2b7f5571c",
+        "byteLength": 398840,
+        "mime": "image/jpeg",
+        "width": 1156,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-569a84b9280b2173d419c2eaba498f4d",
+      "status": "approved",
+      "newsIds": [
+        "marlon-james-disappearers-us-catalog-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/85/Marlon_james_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "f460abf621847d060a1d85f9d2e8343e31e658d08c2546c87fc545dbd8a252c6",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Marlon James (Q16211564), exact reviewed name in title.en; Wikidata P18 File:Marlon james 2014.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Larry D. Moore",
+      "rightsholder": "Larry D. Moore",
+      "credit": "Архивный портрет: Marlon James. «Marlon james 2014». © Larry D. Moore. Larry D. Moore Wikimedia Commons: https://commons.wikimedia.org/?curid=36692595.",
+      "license": "CC-BY-4.0",
+      "materialTitle": "Marlon james 2014",
+      "materialUrl": "https://commons.wikimedia.org/?curid=36692595",
+      "copyrightNotice": "© Larry D. Moore",
+      "derivativeLicense": "CC-BY-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Marlon%20james%202014.jpg",
+      "licenseEvidenceSha256": "33ee34c29251e96878dba9e5d41961149f0c795d885d93fca6aa714baa80df35",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Marlon%20james%202014.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "dcd0a20594babd6c27868f20dafda3cb1695f35ec5416cf2d7fad8e0009422b7",
+        "byteLength": 58795,
+        "mime": "image/jpeg",
+        "width": 472,
+        "height": 709,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-e7f46cb68b505b8317fc697c64416466",
+      "status": "approved",
+      "newsIds": [
+        "sukhovo-kobylin-basinsky-literary-essay-20260928"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/05/A._Sukhovo-Kobylin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "706f4350a70be48d7c9265b283a6264802641d44930aa5b6859efb61efe53ed9",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Aleksandr Sukhovo-Kobylin (Q2640236), exact reviewed name in title.ru; Wikidata P18 File:A. Sukhovo-Kobylin.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Stanisław Julian Ostroróg",
+      "rightsholder": "Stanisław Julian Ostroróg",
+      "credit": "Портрет: Aleksandr Sukhovo-Kobylin. Stanisław Julian Ostroróg. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:A.%20Sukhovo-Kobylin.jpg",
+      "licenseEvidenceSha256": "afe4108131f160a65f3c1cc028d9958d8eb1ff09faa44ec4199ba68a2ff190e7",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:56:25.956Z",
+      "validUntil": "2026-10-29T20:56:25.956Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:A.%20Sukhovo-Kobylin.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "ea5f585df1e28239b45eed2852841d4eaeca6aa9f42d44704d75558b4b9cf55b",
+        "byteLength": 135467,
+        "mime": "image/jpeg",
+        "width": 1224,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "manual-arrigo-boito-amisani-portrait-20260929",
+      "status": "approved",
+      "newsIds": [
+        "arrigo-boito-ballatella-bilingual-publication-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Arrigo_Boito_ritratto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "04f05200ac4b4a35579c0c239cec74e8498e349b339c6eed2e3dc6fb0698f577",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Arrigo Boito by Giuseppe Amisani. The current GodLiteratury article explicitly includes this painter’s Boito portrait; Commons title, ImageDescription, named Artist and public-domain metadata independently match. This is an archival portrait, not a photograph of the current event.",
+      "author": "Giuseppe Amisani",
+      "rightsholder": "Public domain",
+      "credit": "Архивный портрет Арриго Бойто: Джузеппе Амисани. Общественное достояние. Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Arrigo_Boito_ritratto.jpg.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Arrigo_Boito_ritratto.jpg",
+      "licenseEvidenceSha256": "07c8003550ece37668cd5ca21403ae5292d55f2933320f066fc9c6155624c78e",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:59:01.518Z",
+      "validUntil": "2026-10-29T20:59:01.518Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Arrigo_Boito_ritratto.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "c9520948cb7bac9a9ca2df9223e4720015d2baff15614ca5d69a0d7c6eac4304",
+        "byteLength": 105993,
+        "mime": "image/jpeg",
+        "width": 600,
+        "height": 835,
+        "profile": "literary-news-photo-v1"
+      }
     }
   ],
-  "policy": "Exact reviewed public-domain/CC0 portraits for the named news and verified destination IDs. Rights approval does not enable delivery; runtime history, credentials and canary gates remain mandatory."
+  "policy": "Exact reviewed archival author portraits for named news and verified destinations; public domain, CC0 or verified CC BY 2.0/4.0 and CC BY-SA 3.0/4.0 with title, creator, material link, license and transformation notice. ShareAlike derivatives retain the same license without additional restrictions. Publisher display-only images remain excluded from social reuse."
 }

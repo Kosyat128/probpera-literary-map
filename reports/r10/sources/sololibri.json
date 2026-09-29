@@ -1,0 +1,545 @@
+{
+  "sourceId": "sololibri",
+  "name": "SoloLibri",
+  "entryUrl": "https://www.sololibri.net/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:39.332Z",
+  "requests": [
+    {
+      "url": "https://www.sololibri.net/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 169633,
+      "sha256": "ad1d1fa0a2f4a3a3c8a6775cc14a52391254df6b269df7b0420a681f8ef5d12f",
+      "accessedAt": "2026-09-29T20:39:40.396Z"
+    },
+    {
+      "url": "https://www.sololibri.net/spip.php?page=backend",
+      "status": 200,
+      "contentType": "text/xml; charset=utf-8",
+      "bytes": 119390,
+      "sha256": "59ea98f9566aa8518fc051bb4e967ec778e4867c6fc01471a947f4262770317d",
+      "accessedAt": "2026-09-29T20:39:40.602Z"
+    },
+    {
+      "url": "https://www.sololibri.net/Lo-Sbilico-finalista-Premio-Campiello-2026.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 113406,
+      "sha256": "ba9e2668a9fa6de98093cf2d21c667f9c58ad63fa30f081fdd58fd592122fce5",
+      "accessedAt": "2026-09-29T20:39:41.464Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.sololibri.net/?page=robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 489,
+    "sha256": "7c339f3563c4b154aa724e1e8ac60b86e50aa76e53d5a733bdb1fa922bb069fd",
+    "accessedAt": "2026-09-29T20:39:39.981Z",
+    "disallowed": [
+      "/ecrire/",
+      "/extensions/",
+      "/lib/",
+      "/plugins/",
+      "/prive/",
+      "/squelettes-dist/",
+      "/IMG/distant/",
+      "/IMG/lettre/",
+      "/IMG/html/",
+      "/forum/",
+      "/?action=sharecount",
+      "/ricerca?",
+      "/recherche.php?",
+      "/*?utm_source=",
+      "/*?utm_medium=",
+      "/*?utm_campaign=",
+      "/*?utm_term=",
+      "/*?utm_content="
+    ]
+  },
+  "endpoint": {
+    "id": "sololibri",
+    "name": "SoloLibri",
+    "url": "https://www.sololibri.net/spip.php?page=backend",
+    "format": "rss",
+    "language": "it",
+    "region": "global",
+    "sourceFamilyId": "sololibri",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.sololibri.net"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.sololibri.net/Lo-Sbilico-finalista-Premio-Campiello-2026.html"
+    ],
+    "verifiedAt": "2026-09-29T20:39:41.470Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 16,
+  "literaryCandidateCount": 16,
+  "sample": {
+    "sourceId": "sololibri",
+    "source": {
+      "name": "SoloLibri",
+      "url": "https://www.sololibri.net/Lo-Sbilico-finalista-Premio-Campiello-2026.html",
+      "language": "it"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Perché leggere “Lo Sbilico”, il libro disarmante finalista al Premio Campiello 2026",
+    "publishedAt": "2026-09-29T16:00:00.000Z",
+    "description": "Sabato 3 ottobre 2026 alle ore 18 avrà luogo la cerimonia conclusiva della 64ª edizione del Premio Campiello, che vede tra i finalisti Alcide Pierantozzi con “Lo Sbilico”, già vincitore del Premio Bergamo e del Premio Strega Deutschland e finalista al Premio Strega 2026. Ecco perché leggerlo - Cultura / Alcide Pierantozzi, Einaudi, News Libri, Premio Campiello",
+    "discoveredAt": "2026-09-29T20:39:40.605Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.sololibri.net/Lo-Sbilico-finalista-Premio-Campiello-2026.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 113406,
+      "sha256": "ba9e2668a9fa6de98093cf2d21c667f9c58ad63fa30f081fdd58fd592122fce5",
+      "accessedAt": "2026-09-29T20:39:41.464Z",
+      "headline": "Perché leggere “Lo Sbilico”, il libro disarmante finalista al Premio Campiello 2026",
+      "excerpt": "Premio Campiello Perché leggere “Lo Sbilico”, il libro disarmante finalista al Premio Campiello 2026 Sabato 3 ottobre 2026 alle ore 18 avrà luogo la cerimonia conclusiva della 64ª edizione del Premio Campiello, che vede tra i finalisti Alcide Pierantozzi con “Lo Sbilico”, già vincitore del Premio Bergamo e del Premio Strega Deutschland e finalista al Premio Strega 2026. Ecco perché leggerlo Martin",
+      "publishedDates": [
+        {
+          "value": "2026-09-29T16:00:00Z",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-29T18:00:00+02:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.sololibri.net/Lo-Sbilico-finalista-Premio-Campiello-2026.html",
+      "language": "it",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:41.470Z",
+  "foundItems": [
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Lo-Sbilico-finalista-Premio-Campiello-2026.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Perché leggere “Lo Sbilico”, il libro disarmante finalista al Premio Campiello 2026",
+      "publishedAt": "2026-09-29T16:00:00.000Z",
+      "description": "Sabato 3 ottobre 2026 alle ore 18 avrà luogo la cerimonia conclusiva della 64ª edizione del Premio Campiello, che vede tra i finalisti Alcide Pierantozzi con “Lo Sbilico”, già vincitore del Premio Bergamo e del Premio Strega Deutschland e finalista al Premio Strega 2026. Ecco perché leggerlo - Cultura / Alcide Pierantozzi, Einaudi, News Libri, Premio Campiello",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Male-d-autore-Vieri-Tommasi-Candidi.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Male d'autore",
+      "publishedAt": "2026-09-29T13:00:00.000Z",
+      "description": "Voland, 2026 - Uno di quei romanzi plumbei, spietati, senza remore e senza pietà, un thriller con al centro una domanda molto scomoda: essere un criminale è sempre meglio che essere nessuno? - Recensioni di libri / Recensioni di libri 2026, Voland, Narrativa Italiana, Gialli, Noir, Thriller",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Il-gioco-della-conta-Sinead-Nolan.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il gioco della conta",
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "description": "Fazi, 2026 - Un thriller psicologico nel quale la tensione è palpabile e che culmina in un punto di svolta in cui la verità e il folklore si incontrano. - Recensioni di libri / Recensioni di libri 2026, Fazi, Narrativa Straniera, Gialli, Noir, Thriller",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/L-Italia-ripudia-la-guerra-dove-sta-scritto-perche-Costituzione-articolo-11.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“L'Italia ripudia la guerra”: dove sta scritto e perché",
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "description": "Sembrava passata di moda, e invece negli ultimi anni la guerra è purtroppo tornata prepotentemente presente nelle nostre giornate. Da Gaza, dall'Ucraina e dall'Iran provengono immagini terribili e tanto i politici quanto le persone comuni si interrogano su dove potrebbe spingersi ancora questa situazione internazionale incandescente. E poi, come dovrebbe comportarsi l'Italia che \"ripudia la guerr…",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/I-linguaggi-femminili-del-viaggio-Luciana-De-Palma.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I linguaggi femminili del viaggio",
+      "publishedAt": "2026-09-29T09:00:00.000Z",
+      "description": "QED, 2026 - Un testo sulle prime donne che cominciarono a camminare da sole in questo piccolo mondo, esploratrici e saggiste, soprattutto quando finì il colonialismo dei paesi europei e occidentali e raggiunsero una terra che non era mai stata toccata da piedi umani. - Recensioni di libri / Recensioni di libri 2026, Luciana De Palma, Saggistica, Storie vere",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Il-nonno-respirava-con-il-mare-Trude-Teige.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il nonno respirava con il mare",
+      "publishedAt": "2026-09-29T08:00:00.000Z",
+      "description": "Fazi, 2026 - Il secondo volume della serie nota come la “Trilogia della nonna”, un tuffo nel passato bellico, nel dramma dell'Est e nella prigionia giapponese, per narrare la drammatica storia del protagonista (e nonno dell'autrice) Konrad. - Recensioni di libri / Trude Teige, Recensioni di libri 2026, Fazi, Narrativa Straniera, Romanzi e saggi storici",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Di-rose-e-di-lucciole-Una-nuova-indagine-per-il-commissario-Villata-Marco-Badini.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Di rose e di lucciole. Una nuova indagine per il commissario Villata",
+      "publishedAt": "2026-09-28T15:00:00.000Z",
+      "description": "Todaro, 2026 - Un giallo che si muove tra ricatti, segreti intimi e l'intenzione malvagia di sacrificare un innocente, e che fa respirare al lettore tutta l'atmosfera del lontano 1933. - Recensioni di libri / Recensioni di libri 2026, Narrativa Italiana, Gialli, Noir, Thriller",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Rubare-ai-ricchi-non-e-peccato-Vincenzo-Pipino.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rubare ai ricchi non è peccato",
+      "publishedAt": "2026-09-28T14:00:00.000Z",
+      "description": "Milieu, 2017 - Un memoir su una figura d'altri tempi che sembra essere uscita dalla penna di un romanziere picaresco o dalla pellicola di un poliziottesco anni Sessanta. - Recensioni di libri / Recensioni di libri 2017, Narrativa Italiana, Storie vere",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Icebreaker-Hannah-Grace.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Icebreaker",
+      "publishedAt": "2026-09-28T13:00:00.000Z",
+      "description": "Mondadori, 2023 - Rompere il ghiaccio sul ghiaccio e in amore non è cosa facile per Anastasia, che sogna di entrare nella nazionale americana di pattinaggio, soprattutto dopo l'arrivo di un bad boy bello e presuntuoso. - Recensioni di libri / Recensioni di libri 2023, Mondadori, Narrativa Straniera, Romanzi d'amore, Uno scrittore ci racconta un libro...",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Leonardo-da-Vinci-scenografo-schizzo-segna-inizio-teatro-in-Italia.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Leonardo da Vinci scenografo: lo schizzo che segna l'inizio del teatro in Italia",
+      "publishedAt": "2026-09-28T10:00:00.000Z",
+      "description": "530 anni fa viene allestito uno spettacolo teatrale per Ludovico il moro; l'opera è una commedia in cinque atti, il cui testo è oggi conservato alla Biblioteca Nazionale di Roma. Una grande festa milanese, dunque; macchine di scena ed effetti speciali ante litteram stupirono il pubblico in una delle prime rappresentazioni teatrali note, progettati da un grande genio del nostro paese. - Cultura / …",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Un-matrimonio-un-funerale-per-non-parlare-del-gatto-Francesco-Guccini.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un matrimonio, un funerale, per non parlare del gatto",
+      "publishedAt": "2026-09-28T09:00:00.000Z",
+      "description": "Mondadori, 2015 - Un diario di ricordi, fatto di immagini e scene comuni, tasselli del passato, emozioni vissute e conversazioni da tutti i giorni, scritto da uno dei cantautori più amati della storia della musica italiana. - Recensioni di libri / Francesco Guccini, Recensioni di libri 2015, Mondadori, Narrativa Italiana",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/La-moglie-del-Cramar-Il-ritratto-di-Maria-Raffaella-Cargnelutti.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La moglie del Cramar. Il ritratto di Maria",
+      "publishedAt": "2026-09-27T14:00:00.000Z",
+      "description": "Mursia Editore, 2026 - Una storia di appartenenza, nata dal cuore e dalla mente dell'autrice: i fili parentali sepolti delineati attraverso il tempo, nel cuore antico del Friuli, come una ragnatela tessuta. - Recensioni di libri / Recensioni di libri 2026, Mursia, Narrativa Italiana, Romanzi e saggi storici",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/La-guardiana-Caterina-Battilocchio.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La guardiana",
+      "publishedAt": "2026-09-27T13:00:00.000Z",
+      "description": "Garzanti, 2026 – Gran bel romanzo di una narratrice laziale esordiente o quasi. Una storia apparentemente dura di fuori, tenera dentro e poi intima, personale, di crescita, di distacco, elaborazione della perdita e della memoria. - Recensioni di libri / Recensioni di libri 2026, Garzanti, Narrativa Italiana",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Il-sogno-del-gigante-Jon-Fosse.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il sogno del gigante",
+      "publishedAt": "2026-09-27T10:00:00.000Z",
+      "description": "Iperborea, 2026 - Un complesso albo illustrato, ricco di spunti e dedicato ai più piccoli, scritto dal premio Nobel per la Letteratura del 2023. - Recensioni di libri / Recensioni di libri 2026, Jon Fosse, Iperborea, Narrativa Straniera, Libri per bambini",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/E-colpa-vostra-Mercedes-Ron.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "È colpa vostra",
+      "publishedAt": "2026-09-27T09:00:00.000Z",
+      "description": "Salani, 2026 - Ora bisogna tirare le somme: ecco l'ultimo, attesissimo libro di una serie amatissima, il seguito che tutti desideravano, il nuovo capitolo dell'avvincente storia d'amore di Nick e Noah. - Recensioni di libri / Recensioni di libri 2026, Mercedes Ron, Salani, Narrativa Straniera, Romanzi d'amore, Uno scrittore ci racconta un libro...",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sololibri",
+      "source": {
+        "name": "SoloLibri",
+        "url": "https://www.sololibri.net/Sparire-Denise-Desautels-intervista-alla-traduttrice-Maura-Baldini.html",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Sparire” di Denise Desautels: intervista alla traduttrice Maura Baldini",
+      "publishedAt": "2026-09-27T08:00:00.000Z",
+      "description": "Oggi proponiamo l'intervista a Maura Baldini, che ha curato e tradotto la silloge di poesie “Sparire” di Denise Desautels. - Cultura / Poesia, Ti presento i miei... libri, News Libri",
+      "discoveredAt": "2026-09-29T20:39:40.605Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "59ea98f9566aa8518fc051bb4e967ec778e4867c6fc01471a947f4262770317d"
+}

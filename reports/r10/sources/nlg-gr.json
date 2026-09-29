@@ -8,15 +8,23 @@
   "coverageCountryCodes": [
     "GR"
   ],
-  "attemptedAt": "2026-09-26T17:29:07.742Z",
+  "attemptedAt": "2026-09-29T20:33:43.793Z",
   "requests": [
+    {
+      "url": "https://www.nlg.gr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 205010,
+      "sha256": "84253388dc7e51a8f8c3ea9ea7b860e569e2dd42948cec9282e2f3c0a528b7de",
+      "accessedAt": "2026-09-29T20:33:44.697Z"
+    },
     {
       "url": "https://www.nlg.gr/feed/",
       "status": 200,
       "contentType": "application/rss+xml; charset=UTF-8",
-      "bytes": 19314,
-      "sha256": "8f1ccc5acdfa5d36042b3d69f3766a9ba2889b7f39d89eda2a1c49dbabb96593",
-      "accessedAt": "2026-09-26T17:22:58.501Z"
+      "bytes": 19313,
+      "sha256": "3b5e2728272b1871e6e91073e3f2e89a44e5edecf0d09290e3f1293a3d626d8a",
+      "accessedAt": "2026-09-29T20:33:45.030Z"
     }
   ],
   "status": "blocked",
@@ -27,7 +35,7 @@
     "contentType": "text/plain; charset=utf-8",
     "bytes": 360,
     "sha256": "8338678bfe4f361a73e357b3a28ab071c173c5a622469717789c41c2931d7afd",
-    "accessedAt": "2026-09-26T17:29:08.499Z",
+    "accessedAt": "2026-09-29T20:33:44.566Z",
     "disallowed": [
       "/wp-content/uploads/wc-logs/",
       "/wp-content/uploads/woocommerce_transient_files/",
@@ -36,9 +44,5 @@
       "/*?*add-to-cart=",
       "/wp-admin/"
     ]
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:56.275Z",
-    "sourceDocumentSha256": "8f1ccc5acdfa5d36042b3d69f3766a9ba2889b7f39d89eda2a1c49dbabb96593"
   }
 }

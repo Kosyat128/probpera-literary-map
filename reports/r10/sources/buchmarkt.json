@@ -1,0 +1,369 @@
+{
+  "sourceId": "buchmarkt",
+  "name": "BuchMarkt",
+  "entryUrl": "https://buchmarkt.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:41:41.721Z",
+  "requests": [
+    {
+      "url": "https://buchmarkt.de/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 256731,
+      "sha256": "65449c77ce6caf8cf2d2fe82f631e48764a1593bebc8b73eaac2562f2a6a5ce4",
+      "accessedAt": "2026-09-29T20:41:42.372Z"
+    },
+    {
+      "url": "https://buchmarkt.de/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml",
+      "bytes": 55434,
+      "sha256": "260d4d16553ed3802b8495a6fbd7d36afd131bac3fb13cf7e6154a2a165424f1",
+      "accessedAt": "2026-09-29T20:41:42.485Z"
+    },
+    {
+      "url": "https://buchmarkt.de/2026/09/28/ebuch-bringt-neues-magazin-hallo-2027-heraus/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 115673,
+      "sha256": "8f743b133c85d5f5ce7feda949dd41d9cf815a2d119190d177456f5ba265402c",
+      "accessedAt": "2026-09-29T20:41:42.622Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://buchmarkt.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 191,
+    "sha256": "2e845e0095a4c2452d79d5d67fd94cbd7fb8442362002d67ad059cc31a635d93",
+    "accessedAt": "2026-09-29T20:41:42.128Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-content/uploads/wpo/wpo-plugins-tables-list.json"
+    ]
+  },
+  "endpoint": {
+    "id": "buchmarkt",
+    "name": "BuchMarkt",
+    "url": "https://buchmarkt.de/feed/",
+    "format": "rss",
+    "language": "de",
+    "region": "global",
+    "sourceFamilyId": "buchmarkt",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://buchmarkt.de"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://buchmarkt.de/2026/09/28/ebuch-bringt-neues-magazin-hallo-2027-heraus/"
+    ],
+    "verifiedAt": "2026-09-29T20:41:42.627Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "buchmarkt",
+    "source": {
+      "name": "BuchMarkt",
+      "url": "https://buchmarkt.de/2026/09/28/ebuch-bringt-neues-magazin-hallo-2027-heraus/",
+      "language": "de"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "eBuch bringt neues Magazin „Hallo 2027“ heraus",
+    "publishedAt": "2026-09-28T11:31:27.000Z",
+    "description": "Die Buchhandelsverbundgruppe eBuch bringt ein neues Magazin auf den Markt. „Hallo 2027“ erscheint erstmals im Januar 2027 und damit vor den meisten Frühjahrsausgaben. Verlage sollen ihren Titeln so bereits zu Jahresbeginn einen Vorsprung verschaffen und besondere Aufmerksamkeit bei Leserinnen und Lesern wecken, noch bevor andere Magazine ihre Frühjahrsempfehlungen präsentieren. Das 16-seitige Mag…",
+    "discoveredAt": "2026-09-29T20:41:42.490Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://buchmarkt.de/2026/09/28/ebuch-bringt-neues-magazin-hallo-2027-heraus/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 115673,
+      "sha256": "8f743b133c85d5f5ce7feda949dd41d9cf815a2d119190d177456f5ba265402c",
+      "accessedAt": "2026-09-29T20:41:42.622Z",
+      "headline": "eBuch bringt neues Magazin „Hallo 2027“ heraus",
+      "excerpt": "Börsenverein: PISA-Ergebnisse zeigen dringenden Handlungsbedarf bei Leseförderung Die Lesekompetenz von 15-Jährigen in Deutschland hat sich im Vergleich zu 2022 dramatisch verschlechtert. Das zeigen die PISA-Erhebungen aus dem Frühjahr 2025, deren Ergebnisse heute in Berlin vorgestellt wurden. Die weiterlesen",
+      "publishedDates": [],
+      "canonical": "https://buchmarkt.de/2026/09/28/ebuch-bringt-neues-magazin-hallo-2027-heraus/",
+      "language": "de",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:41:42.627Z",
+  "foundItems": [
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/28/ebuch-bringt-neues-magazin-hallo-2027-heraus/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "eBuch bringt neues Magazin „Hallo 2027“ heraus",
+      "publishedAt": "2026-09-28T11:31:27.000Z",
+      "description": "Die Buchhandelsverbundgruppe eBuch bringt ein neues Magazin auf den Markt. „Hallo 2027“ erscheint erstmals im Januar 2027 und damit vor den meisten Frühjahrsausgaben. Verlage sollen ihren Titeln so bereits zu Jahresbeginn einen Vorsprung verschaffen und besondere Aufmerksamkeit bei Leserinnen und Lesern wecken, noch bevor andere Magazine ihre Frühjahrsempfehlungen präsentieren. Das 16-seitige Mag…",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/25/zuversicht-lautet-das-leitthema-der-europaeischen-literaturtage-2026-die-von-19-bis-22-november-in-krems-stein-an-der-donau-stattfinden/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Zuversicht“ lautet das Leitthema der Europäischen Literaturtage 2026, die von 19. bis 22. November in Krems-Stein an der Donau stattfinden",
+      "publishedAt": "2026-09-25T06:30:52.000Z",
+      "description": "Zuversicht verleiht Flügel und lähmt zugleich. Aber bedeutet Zuversicht in unserer krisengebeutelten Gegenwart wirklich nur noch die erhoffte Abwendung des Schlimmsten? Oder kann aus Zukunftsangst optimistisches Handeln für eine zukunftsfähige Gesellschaft entstehen? Und welchen Sinn hat Kunst in einer Welt im Umbruch? Auch in diesem Jahr versammelt der Schriftsteller und Kurator der Europäischen…",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/28/bestenliste-die-sachbuecher-des-monats-oktober-2026/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bestenliste: Die Sachbücher des Monats Oktober 2026",
+      "publishedAt": "2026-09-28T08:15:36.000Z",
+      "description": "Die Medienunternehmen Die Welt, Radio 3 RBB, Neue Zürcher Zeitung und ORF-Radio Österreich 1 stellen monatlich die „Sachbücher des Monats“ zusammen. Dieses Mal dabei: 1. Peter-André Alt: Die Kanzler und die Intellektuellen. Geschichte einer unbequemen Beziehung, C. H. Beck Verlag, 811 Seiten, € 48,00 2.-3. Philipp Blom: Die strauchelnde Welt. Eine Globalgeschichte 2001 – 2014, […]",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/28/christoph-honig-die-kunst-den-kundinnen-im-buchhandel-zunaechst-zu-glauben/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Christoph Honig: Die Kunst, den Kund:innen im Buchhandel zunächst zu glauben",
+      "publishedAt": "2026-09-28T08:09:49.000Z",
+      "description": "Christoph Honig ist Buchhandelsberater. Im September geht es bei ihm darum, den Kund:innen Vertrauen zu schenken. Ungeduldig wartet die Kundin oder Kunde am Tresen, die Quittung in der Hand, der Ton eine Spur zu scharf. Vielleicht sind Sie stiller Beobachter oder doch involviert. Noch bevor das erste Wort fällt, schätzen Sie Gestik und Mimik ein, […]",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/25/das-sind-die-preistraeger-des-deutschen-verlagspreises-2026/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Das sind die Preisträger des Deutschen Verlagspreises 2026",
+      "publishedAt": "2026-09-25T11:08:59.000Z",
+      "description": "Wolfram Weimer, Staatsminister für Kultur und Medien, hat heute die 85 Gewinner des Deutschen Verlagspreises 2026 bekanntgegeben. 79 Verlage erhalten ein Gütesiegel und ein Preisgeld von jeweils 18.000 Euro. Die mit jeweils 50.000 Euro dotierten Spitzenpreise gehen an drei weitere Verlage. Erstmals wird in diesem Jahr neben dem Nachhaltigkeitspreis ein Innovationspreis verliehen. Beide Preise sin…",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/25/sondermann-preise-2026-gehen-an-frank-kunert-und-olrik-kohlhoff/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sondermann-Preise 2026 gehen an Frank Kunert und Olrik Kohlhoff",
+      "publishedAt": "2026-09-25T08:44:21.000Z",
+      "description": "Der Sondermann-Verein zur Förderung, Erforschung und Verbreitung der Komischen Kunst verleiht den Künstlern Frank Kunert und Olrik Kohlhoff den Sondermann-Preis 2026. Die Preise werden seit 2004 verliehen und sind mit 5.000 Euro und 2.000 Euro dotiert. Der Sondermann-Preis für Komische Kunst 2026 wird dem 1963 geborenen Fotografen Frank Kunert zuerkannt. In der Begründung der Jury heißt es: […]",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/25/comicfestival-hamburg-vom-2-4-oktober/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Comicfestival Hamburg vom 2.-4. Oktober",
+      "publishedAt": "2026-09-25T06:22:59.000Z",
+      "description": "Zum 20. Mal lädt das Comicfestival Hamburg dazu ein, Comics in all ihren Facetten zu entdecken. An zahlreichen Orten in St. Pauli, im Karoviertel, in der Neustadt und der Sternschanze erwartet euch vom 2. bis 4. Oktober 2026 ein vielfältiges Programm mit Ausstellungen, Lesungen und Veranstaltungen. Zwischen etablierten Zeichner*innen und Student*innen, Künstler*innen und Fans, Festivalmacher*inne…",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/29/mirjam-zadoff-gratuliert-dem-verleger-wolfgang-beck-zum-85-geburtstag/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mirjam Zadoff gratuliert dem Verleger Wolfgang Beck zum 85. Geburtstag",
+      "publishedAt": "2026-09-29T09:10:04.000Z",
+      "description": "Mirjam Zadoff, Direktorin des NS-Dokumentationszentrums München, zum 86. Geburtstag von Wolfgang Beck: Lieber Wolfgang, auf diesem Weg überbringe ich dir sehr herzliche Glückwünsche zu deinem 85. Geburtstag. Meine Stimme reiht sich ein in den Chor derer, die dir in Dankbarkeit verbunden sind. Wir sind viele, und während manche von uns zum Stift greifen, stimmen andere […]",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/28/professor-christian-ide-wuerdigt-konstanze-berner-zum-abschied-in-den-ruhestand/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Professor Christian Ide würdigt Konstanze Berner zum Abschied in den Ruhestand",
+      "publishedAt": "2026-09-28T08:24:50.000Z",
+      "description": "Konstanze Berner absolvierte in den 1980er Jahren eine Ausbildung zur Verlagsbuchhändlerin und Verlagsfachwirtin beim Carl Hanser Verlag. Dort entdeckte sie ihre Leidenschaft für Buchgestaltung, Typografie, Papier und Ausstattung. Nach Stationen bei Artemis & Winkler und S. Fischer war sie unter anderem als Herstellungsleiterin beim Berlin Verlag und bei der Büchergilde Gutenberg tätig. Seit 2004…",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "buchmarkt",
+      "source": {
+        "name": "BuchMarkt",
+        "url": "https://buchmarkt.de/2026/09/25/buecher-und-autorinnen-in-der-frankfurter-allgemeinen-sonntagszeitung-58/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bücher und Autor:innen in der Frankfurter Allgemeinen Sonntagszeitung",
+      "publishedAt": "2026-09-25T10:58:24.000Z",
+      "description": "Und hier die Geschichten aus der neuen Ausgabe der FAS: „Ich seh das vielleicht nicht so, aber wenn du dafür brennst?“ Seit 1967 haben erst Reinhold Neven Du Mont, dann Helge Malchow und jetzt Kerstin Gleba Kiepenheuer & Witsch zu einer der wichtigsten Adressen in der deutschen Verlagslandschaft gemacht. Ein Gespräch mit drei Generationen über […]",
+      "discoveredAt": "2026-09-29T20:41:42.490Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "260d4d16553ed3802b8495a6fbd7d36afd131bac3fb13cf7e6154a2a165424f1"
+}

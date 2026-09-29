@@ -1,0 +1,381 @@
+{
+  "sourceId": "placer-lectura",
+  "name": "El Placer de la Lectura",
+  "entryUrl": "https://elplacerdelalectura.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:42.955Z",
+  "requests": [
+    {
+      "url": "https://elplacerdelalectura.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 198069,
+      "sha256": "a445fb1fcfa389cea3acc6ed0ce4847873c5cf0ce73a90190618087c8800370f",
+      "accessedAt": "2026-09-29T20:39:43.967Z"
+    },
+    {
+      "url": "https://elplacerdelalectura.com/feed",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 143663,
+      "sha256": "65e72ae0c9b6732aa6c9a5eb356537430f81301dcabcdc303e9c403efc9a3a31",
+      "accessedAt": "2026-09-29T20:39:44.463Z"
+    },
+    {
+      "url": "https://elplacerdelalectura.com/2026/09/julia-navarro-recomienda-la-ultima-novela-historica-de-lorenzo-silva-es-un-libro-total-es-una-biografia-una-novela-un-libro-de-historia-y-un-ensayo-2.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 222550,
+      "sha256": "8024bbb25c5e01f7bd965afc47ed3295c5f7552ce92d8153598261bbde068fef",
+      "accessedAt": "2026-09-29T20:39:44.756Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://elplacerdelalectura.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accessedAt": "2026-09-29T20:39:43.616Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "placer-lectura",
+    "name": "El Placer de la Lectura",
+    "url": "https://elplacerdelalectura.com/feed",
+    "format": "rss",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "placer-lectura",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://elplacerdelalectura.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://elplacerdelalectura.com/2026/09/julia-navarro-recomienda-la-ultima-novela-historica-de-lorenzo-silva-es-un-libro-total-es-una-biografia-una-novela-un-libro-de-historia-y-un-ensayo-2.html"
+    ],
+    "verifiedAt": "2026-09-29T20:39:44.772Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "placer-lectura",
+    "source": {
+      "name": "El Placer de la Lectura",
+      "url": "https://elplacerdelalectura.com/2026/09/julia-navarro-recomienda-la-ultima-novela-historica-de-lorenzo-silva-es-un-libro-total-es-una-biografia-una-novela-un-libro-de-historia-y-un-ensayo-2.html",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Julia Navarro recomienda la última novela histórica de Lorenzo Silva: «Es un libro total, es una biografía, una novela, un libro de historia y un ensayo»",
+    "publishedAt": "2026-09-29T17:00:00.000Z",
+    "description": "... Leer más La entrada Julia Navarro recomienda la última novela histórica de Lorenzo Silva: «Es un libro total, es una biografía, una novela, un libro de historia y un ensayo» aparece primero en El Placer de la Lectura.",
+    "discoveredAt": "2026-09-29T20:39:44.465Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://elplacerdelalectura.com/2026/09/julia-navarro-recomienda-la-ultima-novela-historica-de-lorenzo-silva-es-un-libro-total-es-una-biografia-una-novela-un-libro-de-historia-y-un-ensayo-2.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 222550,
+      "sha256": "8024bbb25c5e01f7bd965afc47ed3295c5f7552ce92d8153598261bbde068fef",
+      "accessedAt": "2026-09-29T20:39:44.756Z",
+      "headline": "Con nadie de Lorenzo Silva",
+      "excerpt": "Ver esta publicación en InstagramUna publicación compartida por Julia Navarro (@julia.navarro.oficial) Con nadie de Lorenzo SilvaVida y destino del general CampinsVUELVE LORENZO SILVA PARA RESCATAR LA FIGURA DE UN HÉROE DESCONOCIDO. Campins, el general que el 18 de julio de 1936 eligió ser fiel a la legalidad, a su palabra y a su conciencia.En esta novela, Lorenzo Silva rescata del olvido la histo",
+      "publishedDates": [
+        {
+          "value": "2026-09-29T17:00:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-29T17:00:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T17:00:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://elplacerdelalectura.com/2026/09/julia-navarro-recomienda-la-ultima-novela-historica-de-lorenzo-silva-es-un-libro-total-es-una-biografia-una-novela-un-libro-de-historia-y-un-ensayo-2.html",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:44.772Z",
+  "foundItems": [
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/julia-navarro-recomienda-la-ultima-novela-historica-de-lorenzo-silva-es-un-libro-total-es-una-biografia-una-novela-un-libro-de-historia-y-un-ensayo-2.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Julia Navarro recomienda la última novela histórica de Lorenzo Silva: «Es un libro total, es una biografía, una novela, un libro de historia y un ensayo»",
+      "publishedAt": "2026-09-29T17:00:00.000Z",
+      "description": "... Leer más La entrada Julia Navarro recomienda la última novela histórica de Lorenzo Silva: «Es un libro total, es una biografía, una novela, un libro de historia y un ensayo» aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/ha-fallecido-el-director-y-escritor-gonzalo-suarez-goya-de-honor-2026-recordamos-sus-mejores-libros.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ha fallecido el director y escritor Gonzalo Suárez, Goya de Honor 2026. Recordamos sus mejores libros",
+      "publishedAt": "2026-09-29T17:30:00.000Z",
+      "description": "... Leer más La entrada Ha fallecido el director y escritor Gonzalo Suárez, Goya de Honor 2026. Recordamos sus mejores libros aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/isabel-allende-confiesa-su-habito-empiezo-a-escribir-todos-mis-libros-siempre-el-8-de-enero-es-un-dia-sagrado-para-mi-ya-tenemos-su-nuevo-libro-la-palabra-magica.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Isabel Allende confiesa su hábito: «Empiezo a escribir todos mis libros siempre el 8 de enero, es un día sagrado para mí» Ya tenemos su nuevo libro La palabra mágica",
+      "publishedAt": "2026-09-29T16:00:00.000Z",
+      "description": "... Leer más La entrada Isabel Allende confiesa su hábito: «Empiezo a escribir todos mis libros siempre el 8 de enero, es un día sagrado para mí» Ya tenemos su nuevo libro La palabra mágica aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/las-6-novelas-historicas-mas-vendidas-que-llevan-mas-de-un-ano-en-el-mercado-del-29-08-2026-al-29-09-2026.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Las 6 novelas históricas más vendidas que llevan más de un año en el mercado. (Del 29/08/2026 al 29/09/2026)",
+      "publishedAt": "2026-09-29T14:00:00.000Z",
+      "description": "... Leer más La entrada Las 6 novelas históricas más vendidas que llevan más de un año en el mercado. (Del 29/08/2026 al 29/09/2026) aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/el-rescate-el-nuevo-thriller-protagonizado-por-brandon-sklenar-se-estrenara-el-29-de-enero-de-2027.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El Rescate, el nuevo thriller protagonizado por Brandon Sklenar se estrenará el 29 de enero de 2027.",
+      "publishedAt": "2026-09-29T19:30:00.000Z",
+      "description": "... Leer más La entrada El Rescate, el nuevo thriller protagonizado por Brandon Sklenar se estrenará el 29 de enero de 2027. aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/este-es-el-clasico-que-sonsoles-onega-recomienda-el-camino-la-novela-de-miguel-delibes-que-desperto-sus-ganas-de-escribir.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Este es el clásico que Sonsoles Ónega recomienda: El camino, la novela de Miguel Delibes que despertó sus ganas de escribir",
+      "publishedAt": "2026-09-29T17:30:00.000Z",
+      "description": "... Leer más La entrada Este es el clásico que Sonsoles Ónega recomienda: El camino, la novela de Miguel Delibes que despertó sus ganas de escribir aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/moscas-la-nueva-pelicula-del-cineasta-mexicano-fernando-eimbcke-llega-a-los-cines-espanoles-el-23-de-octubre-de-2026.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Moscas, la nueva película del cineasta mexicano Fernando Eimbcke, llega a los cines españoles el 23 de octubre de 2026.",
+      "publishedAt": "2026-09-29T15:30:58.000Z",
+      "description": "... Leer más La entrada Moscas, la nueva película del cineasta mexicano Fernando Eimbcke, llega a los cines españoles el 23 de octubre de 2026. aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/un-dia-sin-mujeres-de-laetitia-colombani-cuatro-voces-que-imaginan-un-mundo-detenido.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un día sin mujeres, de Laetitia Colombani: cuatro voces que imaginan un mundo detenido",
+      "publishedAt": "2026-09-29T19:00:00.000Z",
+      "description": "... Leer más La entrada Un día sin mujeres, de Laetitia Colombani: cuatro voces que imaginan un mundo detenido aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/en-la-tierra-de-los-arces-de-sarah-lark-una-nueva-gran-aventura-en-la-columbia-britanica.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "En la tierra de los arces, de Sarah Lark: una nueva gran aventura en la Columbia Británica",
+      "publishedAt": "2026-09-29T18:00:00.000Z",
+      "description": "... Leer más La entrada En la tierra de los arces, de Sarah Lark: una nueva gran aventura en la Columbia Británica aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "placer-lectura",
+      "source": {
+        "name": "El Placer de la Lectura",
+        "url": "https://elplacerdelalectura.com/2026/09/ahora-que-se-acerca-el-final-de-diana-athill-una-conversacion-luminosa-con-la-vejez.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ahora que se acerca el final, de Diana Athill: una conversación luminosa con la vejez",
+      "publishedAt": "2026-09-29T15:00:00.000Z",
+      "description": "... Leer más La entrada Ahora que se acerca el final, de Diana Athill: una conversación luminosa con la vejez aparece primero en El Placer de la Lectura.",
+      "discoveredAt": "2026-09-29T20:39:44.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "65e72ae0c9b6732aa6c9a5eb356537430f81301dcabcdc303e9c403efc9a3a31"
+}

@@ -1,0 +1,152 @@
+name: Deploy native literary news automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: Exact verified main commit SHA
+        required: true
+        type: string
+      enabled:
+        description: Activate the verified one-year preparation and Telegram schedule
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-native-literary-news
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: production
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Verify the immutable release invocation
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          ENABLED: ${{ inputs.enabled }}
+          NATIVE_DELIVERY_ENABLED: ${{ vars.LITERARY_NEWS_NATIVE_DELIVERY_ENABLED }}
+          RUNTIME_ENABLED: ${{ vars.LITERARY_NEWS_RUNTIME_ENABLED }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" && "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]]
+          [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          test -n "$CLOUDFLARE_API_TOKEN"
+          if [[ "$ENABLED" == "true" ]]; then
+            [[ "$NATIVE_DELIVERY_ENABLED" == "true" && "$RUNTIME_ENABLED" == "true" ]]
+          fi
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install exact dependencies
+        run: npm ci
+      - name: Verify native preparation, delivery and media boundaries
+        run: |
+          npx vitest run scripts/lib/literary-news-preparation-fence.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
+          node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-preparation.jsonc --outdir .tmp/native-news-preparation
+          node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-delivery.jsonc --outdir .tmp/native-news-delivery
+      - name: Verify the deployed public feed before activating writes
+        if: inputs.enabled
+        env:
+          NEWS_RELEASE_SHA: ${{ inputs.expected_main_sha }}
+        run: node scripts/verify-literary-news-live.mjs --expected-head "$NEWS_RELEASE_SHA"
+      - name: Verify the bounded runtime and existing Telegram history
+        if: inputs.enabled
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          node --input-type=module <<'NODE'
+          import {createClient} from '@supabase/supabase-js';
+          import {trustedSupabaseOrigin} from './scripts/lib/trusted-server-url.mjs';
+          import {createDeliverySupabaseFetch,checkedDeliveryDayStatus} from './scripts/workers/literary-news-delivery-worker.mjs';
+          import {createNewsRuntimeStore} from './scripts/lib/literary-news-social.mjs';
+          import configuration from './data/news/social-destinations.json' with {type:'json'};
+          const origin=trustedSupabaseOrigin(process.env.SUPABASE_URL);
+          if(!process.env.SUPABASE_SERVICE_ROLE_KEY)throw Error('runtime_unconfigured');
+          const client=createClient(origin,process.env.SUPABASE_SERVICE_ROLE_KEY,{auth:{persistSession:false,autoRefreshToken:false},global:{fetch:createDeliverySupabaseFetch(origin)}});
+          const destination=configuration.destinations.find(row=>row.platform==='telegram');
+          const control=(await createNewsRuntimeStore(client).read(`destination:telegram:${destination.id}`)).state;
+          if(control?.mode!=='on'||control.paused||control.historyReconciled!==true)throw Error('telegram_history_not_ready');
+          const now=new Date();
+          const status=await client.rpc('literary_news_delivery_day_status',{p_destination_id:destination.id,p_now:now.toISOString()});
+          if(status.error)throw Error('runtime_day_status_unavailable');
+          const due=await client.rpc('read_due_literary_news_runtime_posts',{p_destination_id:destination.id,p_now:now.toISOString(),p_limit:20});
+          if(due.error||!Array.isArray(due.data)||due.data.length>20)throw Error('runtime_due_unavailable');
+          console.log(JSON.stringify({historyReconciled:true,dayStatus:checkedDeliveryDayStatus(status.data,now),dueJobs:due.data.length}));
+          NODE
+      - name: Establish disabled Workers and their coordinators
+        run: |
+          node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:false --var NEWS_AUTOMATION_BOOTSTRAP:false
+          node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-delivery.jsonc --var NEWS_DELIVERY_ENABLED:false
+      - name: Install only the delivery credentials through stdin
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          node --input-type=module <<'NODE'
+          import {spawn} from 'node:child_process';
+          const names=['SUPABASE_URL','SUPABASE_SERVICE_ROLE_KEY','TELEGRAM_BOT_TOKEN'];
+          const values=Object.fromEntries(names.map(name=>{const value=process.env[name];if(!value)throw Error('delivery_credential_missing');return[name,value];}));
+          await new Promise((resolve,reject)=>{
+            const child=spawn(process.execPath,['node_modules/wrangler/bin/wrangler.js','secret','bulk','--config','scripts/wrangler.literary-news-delivery.jsonc'],{stdio:['pipe','inherit','inherit']});
+            child.once('error',()=>reject(Error('delivery_secret_install_failed')));
+            child.once('exit',code=>code===0?resolve():reject(Error('delivery_secret_install_failed')));
+            child.stdin.once('error',()=>reject(Error('delivery_secret_install_failed')));
+            child.stdin.end(JSON.stringify(values));
+          });
+          NODE
+      - name: Restore verified photo bytes
+        if: inputs.enabled
+        uses: actions/cache@v5
+        with:
+          path: .tmp/news-social-media
+          key: literary-news-jpeg-${{ runner.os }}-${{ hashFiles('data/news/social-media-assets.json', 'scripts/lib/literary-news-media*.mjs', 'package-lock.json') }}-${{ github.run_id }}
+          restore-keys: |
+            literary-news-jpeg-${{ runner.os }}-${{ hashFiles('data/news/social-media-assets.json', 'scripts/lib/literary-news-media*.mjs', 'package-lock.json') }}-
+      - name: Prepare licensed photo bytes and complete admissions
+        if: inputs.enabled
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          node scripts/sync-literary-news-delivery-media.mjs
+          node scripts/publish-literary-news.mjs --capture
+      - name: Activate the verified native schedules
+        if: inputs.enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
+          node scripts/verify-literary-news-live.mjs --expected-head "$EXPECTED_MAIN_SHA"
+          node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:true --var NEWS_AUTOMATION_BOOTSTRAP:true
+          node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-delivery.jsonc --var NEWS_DELIVERY_ENABLED:true
+      - name: Record the schedule window
+        env:
+          ENABLED: ${{ inputs.enabled }}
+        run: |
+          node --input-type=module <<'NODE'
+          import {appendFile} from 'node:fs/promises';
+          import {DAILY_NEWS_WINDOW} from './scripts/lib/literary-news-daily-profile.mjs';
+          await appendFile(process.env.GITHUB_STEP_SUMMARY,`Native preparation and delivery enabled: ${process.env.ENABLED}. Window: ${DAILY_NEWS_WINDOW.start} through ${DAILY_NEWS_WINDOW.endExclusive} (exclusive), ${DAILY_NEWS_WINDOW.timeZone}. Preparation: every two hours; Telegram: every 30 minutes. Actual publication and Telegram acknowledgements require postflight verification.\n`);
+          NODE

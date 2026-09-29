@@ -2,6 +2,7 @@ import { logoutAction } from "@/app/(auth)/login/actions";
 import { getStaffSession } from "@/lib/auth";
 import { redirect } from "@/lib/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { authServiceError, guardedAuthRequest } from "@/lib/auth-service-error";
 
 import { verifyAdminMfaAction } from "./actions";
 
@@ -16,12 +17,14 @@ export default async function MfaPage({
   const session = await getStaffSession();
   if (!session.user) redirect("/login");
   if (!session.role) redirect("/login");
+  if (session.mfa.checkError) redirect(`/login?error=${encodeURIComponent(session.mfa.checkError)}`);
   if (!session.mfa.required) redirect("/dashboard");
 
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/login");
-  const { data: factors, error: factorsError } =
-    await supabase.auth.mfa.listFactors();
+  const factorsResult = await guardedAuthRequest(() => supabase.auth.mfa.listFactors());
+  const factors = "data" in factorsResult ? factorsResult.data : null;
+  const factorsError = factorsResult.error;
   const verifiedFactors = (factors?.totp || []).filter(
     (factor) => factor.status === "verified"
   );
@@ -48,9 +51,9 @@ export default async function MfaPage({
         <h2>Код из приложения</h2>
         <p>{session.user.email}</p>
         {query.error && <p className="form-message">{query.error}</p>}
-        {factorsError && (
+        {Boolean(factorsError) && (
           <p className="form-message">
-            Не удалось прочитать подключённые факторы. Выйдите и повторите вход.
+            {authServiceError(factorsError) || "Не удалось прочитать подключённые факторы. Выйдите и повторите вход."}
           </p>
         )}
         {!factorsError && verifiedFactors.length > 0 ? (

@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { isReviewedCalendarAddition, reviewedCalendarAdditionPaths } from "./reviewed-calendar-followup.mjs";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 
@@ -247,6 +248,8 @@ function fingerprint(paths, include) {
         .filter((absolutePath) => {
           const relativePath = repositoryPath(absolutePath);
           if (!include(relativePath)) return false;
+          if (reviewedCalendarAdditionPaths.has(relativePath) &&
+            isReviewedCalendarAddition(relativePath, readFileSync(absolutePath, "utf8"))) return false;
           if (reviewedR10AdditionPaths.has(relativePath) &&
             isReviewedR10Addition(relativePath, readFileSync(absolutePath, "utf8"))) return false;
           if (reviewedR49nPackageAdditionPaths.has(relativePath) &&

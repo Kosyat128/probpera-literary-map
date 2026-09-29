@@ -21,7 +21,7 @@ async function fixture(overrides={},fileName="Fixture.png"){
   const fetchImpl=vi.fn(async(input,options)=>{expect(options.redirect).toBe("error");const url=new URL(input);
     if(url.hostname==="www.wikidata.org")return Response.json({entities:{Q40909:{id:"Q40909",claims:{
       P31:[{mainsnak:{datavalue:{value:{id:"Q5"}}}}],P18:[{rank:"normal",mainsnak:{snaktype:"value",datavalue:{value:fileName}}}]}}}});
-    if(url.hostname==="commons.wikimedia.org")return Response.json({query:{pages:[{title:`File:${fileName}`,imageinfo:[info]}]}});
+    if(url.hostname==="commons.wikimedia.org")return Response.json({query:{pages:[{pageid:123,title:`File:${fileName}`,imageinfo:[info]}]}});
     if(url.hostname==="upload.wikimedia.org")return new Response(bytes,{headers:{"content-type":"image/png"}});
     throw Error("unexpected URL");});
   return{bytes,info,fetchImpl,options:{registry,now,fetchImpl,matchSubjects:()=>[subject],searchCandidates:()=>[]}};
@@ -50,9 +50,24 @@ describe("bounded actual-portrait discovery, no provider uploads",()=>{
     const changed=await resolveNewsMediaBatch([{...item,title:{...item.title,ru:item.title.ru+" - уточнение"}}],[destination],{...f.options,store,maxNews:0});
     expect(changed.mediaOptions.resolutions[item.id].status).toBe("pending");expect(changed.mediaOptions.registry.assets).toHaveLength(0);
   });
-  it.each(["CC BY-SA 4.0","CC BY-NC 4.0","CC BY-ND 4.0"])("holds unsupported %s without downloading the image",async license=>{
+  it.each(["CC BY-SA 1.0","CC BY-NC 4.0","CC BY-ND 4.0"])("holds unsupported %s without downloading the image",async license=>{
     const f=await fixture({LicenseShortName:{value:license}}),r=await resolveNewsMediaBatch([item],[destination],f.options);
     expect(r.report.held).toBe(1);expect(r.report.requests).toBe(2);expect(r.mediaOptions.registry.assets).toHaveLength(0);
+  });
+  it('admits exact CC BY-SA 4.0 with same-license derivative and full visible attribution',async()=>{
+    const f=await fixture({LicenseShortName:{value:'CC BY-SA 4.0'},LicenseUrl:{value:'https://creativecommons.org/licenses/by-sa/4.0/'},
+      UsageTerms:{value:'Creative Commons Attribution-Share Alike 4.0'},ObjectName:{value:'Virginia Woolf portrait'}});
+    const result=await resolveNewsMediaBatch([item],[destination],f.options),asset=result.mediaOptions.registry.assets[0];
+    expect(result.report.approved).toBe(1);
+    expect(asset).toMatchObject({license:'CC-BY-SA-4.0',derivativeLicense:'CC-BY-SA-4.0',additionalRestrictions:false,
+      materialTitle:'Virginia Woolf portrait',materialUrl:'https://commons.wikimedia.org/?curid=123'});
+    const p=await prepareNewsPost(item,{id:'test',release:'a'.repeat(40)},'telegram',{destination,mediaOptions:result.mediaOptions});
+    expect(p.media).not.toBeNull();expect(p.payload.caption).toContain('Fixture Author');
+    expect(p.payload.caption).toContain('https://creativecommons.org/licenses/by-sa/4.0/');
+    expect(p.payload.caption).toContain('дополнительных ограничений нет');
+    await validatePreparedNewsMedia(p,destination,result.mediaOptions);
+    delete asset.derivativeLicense;
+    await expect(validatePreparedNewsMedia(p,destination,result.mediaOptions)).rejects.toThrow('media_sharealike_terms_missing');
   });
   it("rejects a cross-host image URL and metadata/image hash drift",async()=>{
     for(const bad of ["host","hash"]){const f=await fixture();if(bad==="host")f.info.url="https://private.example/photo.png";else f.info.sha1="0".repeat(40);

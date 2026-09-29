@@ -8,39 +8,79 @@
   "coverageCountryCodes": [
     "CH"
   ],
-  "attemptedAt": "2026-09-26T17:29:17.693Z",
+  "attemptedAt": "2026-09-29T20:33:50.231Z",
   "requests": [
     {
       "url": "https://www.nb.admin.ch/de",
       "status": 200,
       "contentType": "text/html;charset=utf-8",
-      "bytes": 273932,
-      "sha256": "81d6c5c25adfd834f137dad56254bec27b0220fc263c6566d7c0c56ae47fe407",
-      "accessedAt": "2026-09-26T17:23:09.292Z"
+      "bytes": 271559,
+      "sha256": "d0227a4110f5d9a96565229e39755decd5402708aa55b7ca89688140598675c9",
+      "accessedAt": "2026-09-29T20:33:50.967Z"
     },
     {
       "url": "https://www.nb.admin.ch/de/newnsb?display=list&newsCategoryIDs=all&publisherIDs=729&sort=dateDecreasing&start_date=2025-01-01&topicIDs=all",
       "status": 200,
       "contentType": "text/html;charset=utf-8",
-      "bytes": 260277,
-      "sha256": "850046394cd28c19fe656b8b9b713c17681884c617e57f19d029f886daee46bc",
-      "accessedAt": "2026-09-26T17:29:18.484Z"
+      "bytes": 262857,
+      "sha256": "5adc3b9f713bebe5b2a918ddb9702c9771c721a32e2ba18c69580052295500cd",
+      "accessedAt": "2026-09-29T20:33:51.325Z"
     },
     {
       "url": "https://www.nb.admin.ch/de/unlesbar",
       "status": 200,
       "contentType": "text/html;charset=utf-8",
-      "bytes": 234497,
-      "sha256": "62dfe9e06f2c37c1e38079d4c1a67c316e3717c51dca3ee47111e4f690b08673",
-      "accessedAt": "2026-09-26T17:29:18.698Z"
+      "bytes": 234501,
+      "sha256": "eb3fad8b216b2cfa26775e1ace1c1f570cb745581dc02051e656f8358942638f",
+      "accessedAt": "2026-09-29T20:33:51.504Z"
     },
     {
-      "url": "https://www.nb.admin.ch/de/jahresbericht",
+      "url": "https://www.nb.admin.ch/de/rilke-zum-abschied-de",
       "status": 200,
       "contentType": "text/html;charset=utf-8",
-      "bytes": 298027,
-      "sha256": "714101c9c339098065e889fcce0cf21adca85fe19e8fea6709f3d8febf687248",
-      "accessedAt": "2026-09-26T17:29:18.927Z"
+      "bytes": 234103,
+      "sha256": "9109b2192b8e2bcf92f62ac3259291f0b2951b19e2c8d750dda7d7bf7e1eb25c",
+      "accessedAt": "2026-09-29T20:33:51.683Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/swiss-press-photo-26-de",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 235272,
+      "sha256": "5bbc6c869430ec90791dd6e4a1feace1b5b8137807d5fdca27995f4d87c2d195",
+      "accessedAt": "2026-09-29T20:33:51.847Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/vergangene-ausstellungen",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 270409,
+      "sha256": "0f29309d4bcd8c6f05fde7688e70b0f49ca092fcfc46ed3583ac7561df872a5f",
+      "accessedAt": "2026-09-29T20:33:52.021Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/archivi-dautore-del-novecento-de",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 231895,
+      "sha256": "bb45ed12570e380377085b1a71aabbf942577623417e18a783b95a7bf40acb80",
+      "accessedAt": "2026-09-29T20:33:52.173Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/vvernissage-unlesbar-de",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 233009,
+      "sha256": "3083b831569719390b09fba2dd209c7b2022d702cfb2a2c6f57f16e616131b78",
+      "accessedAt": "2026-09-29T20:33:52.322Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/veranstaltungskalender",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 253529,
+      "sha256": "e1c10b5c4fdb3803eb331c1e28a372aa541d9044f8e95a09070488df564fa9af",
+      "accessedAt": "2026-09-29T20:33:52.492Z"
     }
   ],
   "status": "blocked",
@@ -51,11 +91,7 @@
     "contentType": "text/plain",
     "bytes": 68,
     "sha256": "acfb5b745be168d2aa2ce6438569e5cd37c937d70e3bc335affc42eecb09dff8",
-    "accessedAt": "2026-09-26T17:29:18.081Z",
+    "accessedAt": "2026-09-29T20:33:50.565Z",
     "disallowed": []
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:23:08.374Z",
-    "sourceDocumentSha256": "81d6c5c25adfd834f137dad56254bec27b0220fc263c6566d7c0c56ae47fe407"
   }
 }

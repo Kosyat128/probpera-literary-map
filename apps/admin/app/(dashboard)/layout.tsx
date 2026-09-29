@@ -32,6 +32,7 @@ export default async function DashboardLayout({
   }
 
   if (!session.user) adminRedirect("/login");
+  if (session.mfa.checkError) adminRedirect(`/login?error=${encodeURIComponent(session.mfa.checkError)}`);
   if (session.mfa.required) adminRedirect("/mfa");
 
   if (!session.role) {
@@ -41,9 +42,7 @@ export default async function DashboardLayout({
           <span className="eyebrow">Доступ ограничен</span>
           <h1>Учётная запись подтверждена</h1>
           <p>
-            У пользователя {session.user.email} нет редакционной роли.
-            Владелец сайта должен добавить его в команду как редактора,
-            администратора или владельца.
+            {session.membershipError || `У пользователя ${session.user.email} нет редакционной роли. Владелец сайта должен добавить его в команду как редактора, администратора или владельца.`}
           </p>
           <form action={logoutAction}>
             <button className="button-secondary" type="submit">

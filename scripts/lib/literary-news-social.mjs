@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { newsDigest, verifyPublishedNewsSnapshot } from "./literary-news-publication.mjs";
 import { newsAnnouncementEligible } from "./literary-news-reviewed.mjs";
-import { selectNewsMedia } from "./literary-news-media.mjs";
+import { selectNewsMedia } from "./literary-news-media-policy.mjs";
 import { reserveNewsDeliverySlot } from "./literary-news-pacing.mjs";
 import socialConfiguration from "../../data/news/social-destinations.json" with { type: "json" };
 
@@ -104,7 +104,7 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
     ...(item.sendable === false || snapshot.sendable === false ? {sendable:false} : {}),
     revision, textRevision, ...(formatRevision ? { formatRevision } : {}),
     publication: { snapshotId: snapshot.id, release: snapshot.release },
-    temporal: { kind: item.kind, eventDate: item.eventDate, verifiedAt: item.verifiedAt },
+    temporal: { kind: item.kind, eventDate: item.eventDate, publishedAt: item.publishedAt, verifiedAt: item.verifiedAt },
     media, fallbackReason, payload: canonicalNewsSocialValue(payload),
     ...(mediaPending ? { mediaPending: true } : {}),
     payloadSha256: await newsSocialPayloadDigest(payload) };
@@ -119,38 +119,124 @@ async function prepareWithdrawal(prepared, withdrawal) {
     revision:await newsSocialPayloadDigest({newsId:prepared.newsId,withdrawal})};
 }
 
+export function isNewsRuntimeQuotaError(error) {
+  return error?.message === "runtime_quota_exceeded";
+}
+
+/** No further request is issued by this runner after the project returns 402.
+ * Errors stay explicit; an uncertain post-dispatch receipt is never retried here.
+ */
 export function createNewsRuntimeStore(supabase) {
+  let quotaExceeded = false, latestRpcAvailable = true;
+  const request = async (run, code, allowMissingRpc = false) => {
+    if (quotaExceeded) throw new Error("runtime_quota_exceeded");
+    let result;
+    try { result = await run(); }
+    catch (error) {
+      if (Number(error?.status) === 402) quotaExceeded = true;
+      throw new Error(quotaExceeded ? "runtime_quota_exceeded" : code);
+    }
+    if (result?.status === 402 || Number(result?.error?.status) === 402 || result?.error?.code === "402") {
+      quotaExceeded = true; throw new Error("runtime_quota_exceeded");
+    }
+    if (result?.error && !(allowMissingRpc && ["PGRST202", "42883"].includes(result.error.code))) throw new Error(code);
+    return result;
+  };
   const read = async (key) => {
-    const { data, error } = await supabase.from("admin_audit_log").select("id,metadata")
-      .eq("entity_type", "literary_news_runtime").eq("entity_id", key).order("id", { ascending: false }).limit(1);
-    if (error) throw new Error("runtime_read_failed");
+    const { data } = await request(() => supabase.from("admin_audit_log").select("id,metadata")
+      .eq("entity_type", "literary_news_runtime").eq("entity_id", key).order("id", { ascending: false }).limit(1), "runtime_read_failed");
     return data?.[0] ? { id: data[0].id, state: data[0].metadata } : { id: null, state: null };
   };
   const compareAppend = async (key, expectedId, state, guard = null) => {
-    const { data, error } = await supabase.rpc("compare_append_literary_news_runtime", {
+    const { data } = await request(() => supabase.rpc("compare_append_literary_news_runtime", {
       p_key: key, p_expected_id: expectedId, p_state: state,
       p_control_key: guard?.key || null, p_expected_control_id: guard?.id || null,
-    });
-    if (error || !data || typeof data.applied !== "boolean") throw new Error("runtime_commit_failed");
+    }), "runtime_commit_failed");
+    if (!data || typeof data.applied !== "boolean") throw new Error("runtime_commit_failed");
     return data;
   };
-  const list = async (prefix = "post:") => {
-    const latest = new Map();
-    let cursor = null;
-    for (let offset = 0; offset < 100000; offset += 1000) {
-      let query = supabase.from("admin_audit_log").select("id,entity_id,metadata")
-        .eq("entity_type", "literary_news_runtime").like("entity_id", `${prefix}%`)
-        .order("id", { ascending: false }).limit(1000);
-      if (cursor !== null) query = query.lt("id",cursor);
-      const { data, error } = await query;
-      if (error || !Array.isArray(data)) throw new Error("runtime_history_read_failed");
-      for (const row of data) if (!latest.has(row.entity_id)) latest.set(row.entity_id, { id: row.id, state: row.metadata });
-      if (data.length < 1000) return [...latest.values()];
+  // Before the additive latest-row RPC is installed, scan only journal IDs.
+  // The immutable journal is retained; old prepared payloads/receipts no longer
+  // cross the API merely to discard them in the client.
+  const listLegacy = async (prefix) => {
+    const latest = new Map(); let cursor = null, complete = false;
+    const pattern = prefix.replace(/[\\%_]/g, "\\$&") + "%";
+    for (let count = 0; count < 100000; count += 1000) {
+      const { data } = await request(() => {
+        let query = supabase.from("admin_audit_log").select("id,entity_id")
+          .eq("entity_type", "literary_news_runtime").like("entity_id", pattern)
+          .order("id", { ascending: false }).limit(1000);
+        return cursor === null ? query : query.lt("id", cursor);
+      }, "runtime_history_read_failed");
+      if (!Array.isArray(data)) throw new Error("runtime_history_read_failed");
+      for (const row of data) if (!latest.has(row.entity_id)) latest.set(row.entity_id, row.id);
+      if (data.length < 1000) { complete = true; break; }
       cursor = data.at(-1).id;
+    }
+    if (!complete) throw new Error("runtime_history_capacity_requires_review");
+    const ids = [...latest.values()], rows = [];
+    for (let offset = 0; offset < ids.length; offset += 250) {
+      const selected = ids.slice(offset, offset + 250);
+      const { data } = await request(() => supabase.from("admin_audit_log").select("id,entity_id,metadata")
+        .eq("entity_type", "literary_news_runtime").in("id", selected).limit(selected.length), "runtime_history_read_failed");
+      if (!Array.isArray(data) || data.length !== selected.length
+        || data.some(row => latest.get(row.entity_id) !== row.id)) throw new Error("runtime_history_read_failed");
+      rows.push(...data.map(row => ({ id: row.id, key: row.entity_id, state: row.metadata })));
+    }
+    return rows;
+  };
+  const list = async (prefix = "post:") => {
+    if (typeof prefix !== "string" || !/^(post|destination|admission|heartbeat|history):[A-Za-z0-9_%:.-]*$/.test(prefix)
+      || prefix.length > 400) throw new Error("runtime_prefix_invalid");
+    if (!latestRpcAvailable) return listLegacy(prefix);
+    const rows = []; let cursor = null;
+    for (let count = 0; count < 100000; count += 500) {
+      const result = await request(() => supabase.rpc("read_latest_literary_news_runtime", {
+        p_prefix: prefix, p_after_key: cursor, p_limit: 500,
+      }), "runtime_history_read_failed", cursor === null);
+      if (result.error) {
+        latestRpcAvailable = false; return listLegacy(prefix);
+      }
+      const data = result.data;
+      if (!Array.isArray(data) || data.length > 500 || data.some((row, index) =>
+        typeof row.entity_id !== "string" || !row.entity_id.startsWith(prefix)
+        || (index ? row.entity_id <= data[index - 1].entity_id : cursor !== null && row.entity_id <= cursor)))
+        throw new Error("runtime_history_read_failed");
+      rows.push(...data.map(row => ({ id: row.id, key: row.entity_id, state: row.metadata })));
+      if (data.length < 500) return rows;
+      cursor = data.at(-1).entity_id;
     }
     throw new Error("runtime_history_capacity_requires_review");
   };
   return { read, compareAppend, list };
+}
+
+/** This cache belongs only to one reconciliation, never to external dispatch.
+ * CAS conflicts refresh its entry from the database result before the retry.
+ */
+async function reconciliationStore(store) {
+  const rows = new Map();
+  for (const row of await store.list("admission:"))
+    rows.set(row.key || "admission:news:" + encodeURIComponent(row.state.newsId), row);
+  for (const row of await store.list("post:"))
+    rows.set(row.key || row.state.key || newsPostKey(row.state.newsId, row.state.destination), row);
+  return {
+    read: async key => {
+      if (!rows.has(key) && !key.startsWith("admission:") && !key.startsWith("post:")) rows.set(key, await store.read(key));
+      return structuredClone(rows.get(key) || { id: null, state: null });
+    },
+    compareAppend: async (key, expectedId, state) => {
+      const result = await store.compareAppend(key, expectedId, state);
+      // This store is never used for guarded dispatch. A malformed CAS response
+      // cannot be turned into an absent state and then overwrite a receipt.
+      if (result.applied || Object.hasOwn(result, "id") && Object.hasOwn(result, "state"))
+        rows.set(key, { id: result.id, state: result.state });
+      else rows.set(key, await store.read(key));
+      return result;
+    },
+    list: async prefix => [...rows].filter(([key]) => key.startsWith(prefix))
+      .map(([, row]) => structuredClone(row)),
+  };
 }
 async function transition(store, key, mutate) {
   for (let attempt = 0; attempt < 5; attempt++) {
@@ -168,6 +254,7 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
   await verifyPublishedNewsSnapshot(feed);
   if (feed.timeZone !== "Europe/Moscow" || feed.fallbackCapturedAt
     || Math.abs(now.getTime() - Date.parse(feed.generatedAt)) > 300000) throw new Error("public_snapshot_not_current");
+  store = await reconciliationStore(store);
   const result = { expectedThisSnapshot: 0, newAdmissions: 0, historyGap: true, keys: [], preparationFailures: [] };
   for (const item of feed.items) {
     const revision = await newsSemanticRevision(item);
@@ -209,6 +296,9 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
           && prior.prepared.media.licenseEvidenceSha256 === prepared.media.licenseEvidenceSha256)
           prepared = {...prior.prepared,temporal:prepared.temporal,publication:prepared.publication};
         if (prior?.desiredRevision === prepared.revision) {
+          // Same desired hash with a different text identity needs explicit
+          // history review. A photo-policy renewal cannot silently repair it.
+          if (prior.prepared?.textRevision !== prepared.textRevision) return null;
           if (prior.status === "blocked" && prior.lastError === "archived_media_requires_source_resolution")
             return {...prior,prepared,status:prior.remoteId?"correction_pending":"pending",nextDueAt:now.toISOString(),lastError:null};
           if (!prior.remoteId && (Boolean(prior.prepared?.mediaPending) !== Boolean(prepared.mediaPending)
@@ -398,12 +488,15 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
   try { outcome = await transport.send({ destination: job.destination, prepared: job.prepared, remoteId: job.remoteId || null,
     remoteMediaKind:job.remoteMediaKind || "text",delivery }); }
   catch { outcome = { kind: "ambiguous", code: "transport_exception" }; }
+  const acknowledgedAt = outcome.kind === "accepted" ? now().toISOString() : null;
   const receipt = await transition(store, key, (current) => {
     if (current.attemptId !== job.attemptId) return null;
     if (outcome.kind === "accepted") return { ...current, remoteId: outcome.remoteId, remoteUrl: outcome.remoteUrl,
       remoteMediaKind:outcome.remoteMediaKind || (job.prepared.media ? "photo" : "text"),
       mediaCache:outcome.mediaCache || current.mediaCache || null,
-      acknowledgedRevision: job.desiredRevision, acknowledgedAt: now().toISOString(),
+      acknowledgedRevision: job.desiredRevision, acknowledgedAt,
+      // Editing an old remote ID cannot prove its original publication date.
+      firstAcknowledgedAt: current.firstAcknowledgedAt || (!job.remoteId ? acknowledgedAt : null),
       status: current.status === "blocked" && current.lastError === "post_preparation_invalid" ? "blocked"
         : current.withdrawal ? job.withdrawal && sameWithdrawal(job.withdrawal, current.withdrawal)
           ? "explicitly_closed" : "correction_pending"
@@ -445,7 +538,8 @@ export async function dispatchNewsBatch({ store, jobs, transport, now = () => ne
       if (outcome.dispatchAttempted) attempts++;
       if (["destination_not_enabled_or_history_gap", "destination_rate_limit", "destination_rights_unverified", "destination_pacing"].includes(outcome.reason))
         controls.set(controlKey, null);
-    } catch {
+    } catch (error) {
+      if (isNewsRuntimeQuotaError(error)) throw error;
       // A storage failure may follow a real external call; count it conservatively.
       attempts++;
       outcomes.push({ key: job.key, status: "ambiguous", reason: "runtime_failure_requires_reconciliation" });

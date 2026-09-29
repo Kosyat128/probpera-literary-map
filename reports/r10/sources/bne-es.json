@@ -8,17 +8,26 @@
   "coverageCountryCodes": [
     "ES"
   ],
-  "attemptedAt": "2026-09-26T17:29:16.878Z",
-  "requests": [],
+  "attemptedAt": "2026-09-29T20:33:49.838Z",
+  "requests": [
+    {
+      "url": "https://www.bne.es/es",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 181802,
+      "sha256": "4886f2f0a5953010939683a9610b49c03b42ce68c4dd2a8ecee2d309da0eb593",
+      "accessedAt": "2026-09-29T20:33:50.705Z"
+    }
+  ],
   "status": "blocked",
-  "reason": "http_403",
+  "reason": "detail_not_verified",
   "robots": {
     "url": "https://www.bne.es/robots.txt",
     "status": 200,
     "contentType": "text/plain; charset=UTF-8",
     "bytes": 3349,
     "sha256": "bd73bc75b30a442dd515f4d378bcd340e23b1bd1486b01aaf9952dc315efe6ef",
-    "accessedAt": "2026-09-26T17:29:17.501Z",
+    "accessedAt": "2026-09-29T20:33:50.254Z",
     "disallowed": [
       "/core/",
       "/profiles/",
@@ -86,5 +95,7 @@
       "/es/preguntas-frecuentes?*&f*",
       "/en/node/*"
     ]
-  }
+  },
+  "indexAttemptError": "http_403",
+  "detailAttemptError": "http_403"
 }

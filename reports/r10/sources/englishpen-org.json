@@ -8,36 +8,907 @@
   "coverageCountryCodes": [
     "GB"
   ],
-  "attemptedAt": "2026-09-26T17:29:28.807Z",
+  "attemptedAt": "2026-09-29T20:33:53.427Z",
   "requests": [
     {
       "url": "https://www.englishpen.org/",
       "status": 200,
       "contentType": "text/html",
-      "bytes": 111910,
-      "sha256": "c94baec56e633bec8e24a72cb235cf664a37e9b3d86d0fb2e35613ed93d00505",
-      "accessedAt": "2026-09-26T17:29:30.817Z"
+      "bytes": 111881,
+      "sha256": "2f923bc1d6bd2a8d00ed175bb2315a24d44f7e5b8262c69fe4e3d74dbf04cc75",
+      "accessedAt": "2026-09-29T20:33:54.929Z"
     },
     {
       "url": "https://www.englishpen.org/feed/",
       "status": 200,
       "contentType": "text/xml;charset=UTF-8",
       "bytes": 1044,
-      "sha256": "e77fc430fdce9b6b1adc19347509d5ee1d304251e6ca948f58789175be0fb53d",
-      "accessedAt": "2026-09-26T17:29:31.489Z"
+      "sha256": "1d1194cf96846248dae420a681d12827fa306be3cbb01b73f9623ae34f2a8848",
+      "accessedAt": "2026-09-29T20:33:55.514Z"
+    },
+    {
+      "url": "https://www.englishpen.org/news/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 140044,
+      "sha256": "f15a11f0e8564c3a5e32cb22641fcf3e50f054310a93c7a4c18bc9dce01d2dad",
+      "accessedAt": "2026-09-29T20:33:55.684Z"
+    },
+    {
+      "url": "https://www.englishpen.org/posts/news/jacqueline-rose-awarded-pen-pinter-prize-2026/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 105513,
+      "sha256": "bb443cd464bb5a44dab7bca9c47b0204a6ee7afbc6e0c476622f5cc6e5fd4eb6",
+      "accessedAt": "2026-09-29T20:33:55.870Z"
     }
   ],
-  "status": "blocked",
-  "reason": "runtime_parser_no_literary_item",
+  "status": "runtime_verified",
+  "reason": null,
   "robots": {
     "url": "https://www.englishpen.org/robots.txt",
     "status": 200,
     "contentType": "text/plain; charset=utf-8",
     "bytes": 254,
     "sha256": "8f0c42f95248c85aa23d00558503f3398fd1a32230de725c6e547faaf4b2176e",
-    "accessedAt": "2026-09-26T17:29:30.552Z",
+    "accessedAt": "2026-09-29T20:33:54.673Z",
     "disallowed": [
       "/wp-content/uploads/wpo/wpo-plugins-tables-list.json"
     ]
-  }
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links",
+  "endpoint": {
+    "id": "englishpen-org",
+    "name": "English PEN",
+    "url": "https://www.englishpen.org/news/",
+    "format": "html",
+    "language": "en-GB",
+    "region": "europe",
+    "sourceFamilyId": "englishpen-org",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [
+      "GB"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.englishpen.org"
+    ],
+    "linkPattern": "^\\/posts\\/events\\/[^/]+\\/?$|^\\/posts\\/campaigns\\/[^/]+\\/?$|^\\/translation\\/[^/]+\\/?$|^\\/posts\\/news\\/[^/]+\\/?$|^\\/campaigns\\/[^/]+\\/?$|^\\/campaigns\\/pen\\x2dwrites\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.englishpen.org/posts/news/jacqueline-rose-awarded-pen-pinter-prize-2026/"
+    ],
+    "verifiedAt": "2026-09-29T20:33:55.876Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 32,
+  "literaryCandidateCount": 32,
+  "sample": {
+    "sourceId": "englishpen-org",
+    "source": {
+      "name": "English PEN",
+      "url": "https://www.englishpen.org/posts/news/jacqueline-rose-awarded-pen-pinter-prize-2026/",
+      "language": "en-GB"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "Jacqueline Rose awarded PEN Pinter Prize 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:33:55.722Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.englishpen.org/posts/news/jacqueline-rose-awarded-pen-pinter-prize-2026/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 105513,
+      "sha256": "bb443cd464bb5a44dab7bca9c47b0204a6ee7afbc6e0c476622f5cc6e5fd4eb6",
+      "accessedAt": "2026-09-29T20:33:55.870Z",
+      "headline": "Jacqueline Rose awarded PEN Pinter Prize 2026",
+      "excerpt": "Judges praised Rose for her ‘luminous precision that makes difficult truths feel newly visible’, calling her voice ‘a beacon of brave, ethically serious thinking – a reminder of what it means to write fearlessly in full view of the world’. Today, Wednesday 8 July 2026, English PEN announced that writer, academic and feminist critic Jacqueline Rose has been awarded the PEN Pinter Prize 2026. The an",
+      "publishedDates": [
+        {
+          "value": "2026-07-08T18:35:55+00:00",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-07-08T18:35:55+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.englishpen.org/posts/news/jacqueline-rose-awarded-pen-pinter-prize-2026/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:33:55.876Z",
+  "foundItems": [
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/jacqueline-rose-awarded-pen-pinter-prize-2026/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jacqueline Rose awarded PEN Pinter Prize 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/pen-heaney-prize-2026-shortlist/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Heaney Prize 2026 shortlist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/tom-paulin-wins-pen-heaney-prize-2025/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tom Paulin wins PEN Heaney Prize 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/pen-heaney-prize-2025-shortlist/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Heaney Prize 2025 shortlist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/judges-announced-and-submissions-open-for-the-pen-heaney-prize-2026/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Judges announced and submissions open for the P...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/events/english-pen-at-the-salon-at-lbf-2026/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "English PEN at the Salon at LBF 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/pen-translates-winners-announced-9/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Translates winners announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/pen-translates-winners-announced-8/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Translates winners announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/pen-presents-x-salt-shortlist-2/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Shortlist announced for PEN Presents x SALT",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/winners-announced-for-pen-presents-brazil/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Winners announced for PEN Presents: Brazil",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/winners-announced-for-pen-presents-x-salt/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Winners announced for PEN Presents x SALT",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/english-pen-announces-pen-presents-brazil-shortlist/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "English PEN announces PEN Presents: Brazil shor...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/pen-presents-x-salt-shortlist/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Shortlist announced for PEN Presents x SALT",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/inaugural-winners-announced-for-pen-presents-x-international-booker-prize/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Inaugural winners announced for PEN Presents x ...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/ai-weiwei-artwork-helps-raise-funds-for-english-pens-fight-for-free-expression/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ai Weiwei artwork helps raise funds for English...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/margaret-macmillan-wins-pen-hessell-tiltman-prize-winner-of-winners/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Margaret MacMillan wins PEN Hessell-Tiltman Pri...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/joint-statement-on-the-rise-of-anti-migrant-violence-in-england-wales-scotland-and-ireland/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Joint statement on the rise of anti-migrant vio...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/events/pen-hessell-tiltman-prize-winner-of-winners/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Historians on 25 Years of Historical Non-Fictio...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/news/english-pen-pays-tribute-to-sir-tom-stoppard/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "English PEN pays tribute to Sir Tom Stoppard",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/leila-aboulela-shares-pen-pinter-prize-2025-with-stella-gaitano/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Leila Aboulela shares PEN Pinter Prize 2025 wit...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/alaa-abd-el-fattah-released/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alaa Abd el-Fattah released from prison",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/eritrea-188-writers-sign-open-letter-to-president-isaias-afwerki/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eritrea: 188 writers sign open letter to Presid...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/afghanistan-five-years-after-the-talibans-return-the-international-community-must-not-abandon-afghanistans-writers/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Afghanistan: Five years after the Taliban’...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/belarus-cultural-crackdown-and-resilience-six-years-on/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Belarus: Cultural crackdown and resilience six ...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/25-years-on-pens-proof-of-life-campaign-for-eritreas-disappeared-writers/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "25 years on: PEN’s Proof of Life campaign...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/joint-appeal-for-dr-abduljalil-al-singace-on-15th-anniversary-of-his-arrest/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Joint appeal for Dr Abduljalil Al-Singace on 15...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/open-call-two-five-day-residencies-for-writers-experiencing-displacement-to-the-uk/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Open call: two five-day residencies for writers...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/jimmy-lai-sentenced-to-20-years-in-prison-in-a-devastating-blow-to-freedom-of-expression/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jimmy Lai sentenced to 20 years in prison in a ...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/pen-welcomes-landmark-ecthr-ruling-on-journalistic-protections-in-georgia/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN welcomes landmark ECtHR ruling on journalis...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/jimmy-lai-found-guilty-in-long-running-national-security-trial/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jimmy Lai found guilty in long-running national...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/penwrites-x-day-of-the-imprisoned-writer/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PENWrites x Day of the Imprisoned Writer",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "englishpen-org",
+      "source": {
+        "name": "English PEN",
+        "url": "https://www.englishpen.org/posts/campaigns/key-decisions-from-91st-pen-congress/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Key decisions from the 91st PEN Congress in Kra...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:55.722Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f15a11f0e8564c3a5e32cb22641fcf3e50f054310a93c7a4c18bc9dce01d2dad"
 }

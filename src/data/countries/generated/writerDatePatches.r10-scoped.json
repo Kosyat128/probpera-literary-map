@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-29T20:15:49.134Z",
+  "sourceReviewSha256": "5bc8e6449d7be2db3c89323cbab3dffb9bf6851394ad0595a1d85071c06d6b97",
+  "scopedIdentitySha256": "199b30aac5b00b9b46b3ef7748e5780e201659520381efc2a4ea783d22946e08",
+  "snapshotSha256": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06",
+  "patches": [
+    {
+      "id": "r10-scoped:usa:george_saunders:birthDate:8bf64c2300ee",
+      "writerKey": "usa:george_saunders",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1958-12-02",
+      "evidence": {
+        "value": "1958-12-02",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q1251926",
+        "claimIds": [
+          "Q1251926$C5AE5E49-4955-48E3-9493-65D999A24555"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1251926&oldid=2549812951",
+        "retrievedAt": "2026-09-29T20:15:49.134Z",
+        "snapshotSha256": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://artsandsciences.syracuse.edu/people/faculty/saunders-george/",
+            "checkedAt": "2026-09-29T20:15:50.243Z",
+            "finding": "George Saunders; Lincoln in the Bardo",
+            "sourceDocumentSha256": "34a5610a03e21b9f33ab7389da87a70f0d7aa581544c8b514389cfecc3d41538"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-scoped:usa:dan_brown:birthDate:a4e128fe0785",
+      "writerKey": "usa:dan_brown",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1964-06-22",
+      "evidence": {
+        "value": "1964-06-22",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q7345",
+        "claimIds": [
+          "q7345$774CC35E-FEE6-456F-A14C-52A8BDAEBC73"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q7345&oldid=2550920936",
+        "retrievedAt": "2026-09-29T20:15:49.134Z",
+        "snapshotSha256": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://danbrown.com/about/",
+            "checkedAt": "2026-09-29T20:15:49.501Z",
+            "finding": "Dan Brown; Da Vinci Code",
+            "sourceDocumentSha256": "858c1fa1a28a101abc93d16a620d38bde5e6e388e0bf4f6f9cffd7955120f683"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-scoped:usa:andy_weir:birthDate:8caa86c7506f",
+      "writerKey": "usa:andy_weir",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1972-06-16",
+      "evidence": {
+        "value": "1972-06-16",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q18590295",
+        "claimIds": [
+          "Q18590295$2448BDAE-18C7-4780-90CF-B773725A32F0"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q18590295&oldid=2546517593",
+        "retrievedAt": "2026-09-29T20:15:49.134Z",
+        "snapshotSha256": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://andyweirauthor.com/",
+            "checkedAt": "2026-09-29T20:15:49.545Z",
+            "finding": "Andy Weir; Martian",
+            "sourceDocumentSha256": "b143b4b201a03d41cd94ce07c3d1dc6c3041820b0ea0f9b7c517b6ff4a584552"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-scoped:usa:n_k_jemisin:birthDate:052f0e3878bb",
+      "writerKey": "usa:n_k_jemisin",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1972-09-19",
+      "evidence": {
+        "value": "1972-09-19",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q2427544",
+        "claimIds": [
+          "Q2427544$C6597242-1FD6-42B0-8C71-6AE1C5E0443C"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q2427544&oldid=2546105568",
+        "retrievedAt": "2026-09-29T20:15:49.134Z",
+        "snapshotSha256": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://nebulas.sfwa.org/grand-masters/n-k-jemisin/",
+            "checkedAt": "2026-09-29T20:15:50.671Z",
+            "finding": "N. K. Jemisin; Nora Keita",
+            "sourceDocumentSha256": "501e4570d4ba1eb539770bed63e9114cb269515d70b239f8a81ccc56f44fabda"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-scoped:england:ronald_delderfield:birthDate:b7a561ab5ea3",
+      "writerKey": "england:ronald_delderfield",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1912-02-12",
+      "evidence": {
+        "value": "1912-02-12",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q438569",
+        "claimIds": [
+          "q438569$5C1BB3AC-64A9-4827-B74B-F58612109FC8"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q438569&oldid=2530344748",
+        "retrievedAt": "2026-09-29T20:15:49.134Z",
+        "snapshotSha256": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.bdcmuseum.org.uk/explore/item/97450/",
+            "checkedAt": "2026-09-29T20:15:50.773Z",
+            "finding": "R. F. Delderfield; Ben Gunn",
+            "sourceDocumentSha256": "9fe4b4f4293548e8dd78c6d6d691bd5c1fb9926c3bb978a167e71221046639e3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-scoped:england:ronald_delderfield:deathDate:86eb38431f31",
+      "writerKey": "england:ronald_delderfield",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1972-06-24",
+      "evidence": {
+        "value": "1972-06-24",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q438569",
+        "claimIds": [
+          "q438569$0AD995F5-9630-45CB-BB5C-0B5D61192129"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q438569&oldid=2530344748",
+        "retrievedAt": "2026-09-29T20:15:49.134Z",
+        "snapshotSha256": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.bdcmuseum.org.uk/explore/item/97450/",
+            "checkedAt": "2026-09-29T20:15:50.773Z",
+            "finding": "R. F. Delderfield; Ben Gunn",
+            "sourceDocumentSha256": "9fe4b4f4293548e8dd78c6d6d691bd5c1fb9926c3bb978a167e71221046639e3"
+          }
+        ]
+      }
+    }
+  ]
+}

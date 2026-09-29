@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "NL"
   ],
-  "attemptedAt": "2026-09-26T17:28:49.745Z",
+  "attemptedAt": "2026-09-29T20:33:30.868Z",
   "requests": [
     {
       "url": "https://www.mediafederatie.nl/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 73275,
-      "sha256": "d67c5d72dc6db64349224647d2d741ebf2e46c2b439e5040b104c1fef9d6f8d8",
-      "accessedAt": "2026-09-26T17:28:50.836Z"
+      "bytes": 73278,
+      "sha256": "3468f5997fc7e62b666733324935507ada09965870e65ecd73b174868aa32e86",
+      "accessedAt": "2026-09-29T20:33:31.780Z"
     },
     {
       "url": "https://www.mediafederatie.nl/agenda/leer-werken-met-chatgpt-en-copilot-verdieping-okt-2026",
@@ -24,23 +24,47 @@
       "contentType": "text/html; charset=utf-8",
       "bytes": 76627,
       "sha256": "1f397348b111ce5d042d7fc9b1e6c37e1bb8b532b478975e9403481b9a64099d",
-      "accessedAt": "2026-09-26T17:28:51.126Z"
+      "accessedAt": "2026-09-29T20:33:32.067Z"
     },
     {
       "url": "https://www.mediafederatie.nl/agenda/video-s-maken-voor-social-media",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 76788,
-      "sha256": "78d8d045d26ff1d3d9d9bc7dd0acd08602b9d29d86e4027e00e29a04c9029544",
-      "accessedAt": "2026-09-26T17:28:51.284Z"
+      "sha256": "df9e52321f3c9aed9eb79714ef36067206463bda7a532b90c6576b10ef857a8f",
+      "accessedAt": "2026-09-29T20:33:32.217Z"
     },
     {
       "url": "https://www.mediafederatie.nl/themas/auteursrecht-en-collectieve-rechten",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 35952,
-      "sha256": "fede62bf146f9edc8ac107260e5db6062de163034698be8236f017ec321300bf",
-      "accessedAt": "2026-09-26T17:28:51.490Z"
+      "bytes": 35951,
+      "sha256": "004c283426ca5047bc3e9371741e9a178eae9bddff1cb058989d60099ee95ce2",
+      "accessedAt": "2026-09-29T20:33:32.471Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/agenda/ai-voor-werkprocessen-najaar",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 72326,
+      "sha256": "5e4e8aad231ca47ddb81ffbac248912e0f24828df113e1985aa8ca1b1b110034",
+      "accessedAt": "2026-09-29T20:33:32.618Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/themas/sociaal-beleid-and-hr",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 36845,
+      "sha256": "bd91873306c953848d71cea3a63bfa06e54a1a6028be628f070a56b029f4f08a",
+      "accessedAt": "2026-09-29T20:33:32.779Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/themas/overige-onderwerpen",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 38957,
+      "sha256": "9fb6dfd8d7c02796f4d158f77204bc1323380ec4ea7a7c84486bf1380f4c0fbf",
+      "accessedAt": "2026-09-29T20:33:32.921Z"
     }
   ],
   "status": "blocked",
@@ -51,7 +75,7 @@
     "contentType": "text/plain; charset=utf-8",
     "bytes": 38,
     "sha256": "5adb441027c8ce50686a8caa74565be2ab7b14daccd6e9db3653c828a62ab872",
-    "accessedAt": "2026-09-26T17:28:50.605Z",
+    "accessedAt": "2026-09-29T20:33:31.594Z",
     "disallowed": [
       "/api/"
     ]

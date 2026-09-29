@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 import { buildNobelProfile, nobelPublishedRecords, validateNobelApprovedPayload, syncNobelProfile, NOBEL_API_URL, NOBEL_PROFILE_KEY, NOBEL_PROFILE_MAX_BYTES } from "./literary-news-nobel-profile.mjs";
+import { DAILY_NEWS_PROFILE_KEY } from './literary-news-daily-profile.mjs';
 import { handleNewsRequest } from "../workers/literary-news-worker.mjs";
 import { verifyPublishedNewsSnapshot } from "./literary-news-publication.mjs";
 import { parseNewsFeed } from "../../src/news/feed.ts";
@@ -60,7 +61,7 @@ describe("reviewed Nobel literature API profile",()=>{
     const result=await handleNewsRequest(new Request("https://news.probpera.ru/api/literary-news/feed?contract=2&key=private-queue"),env,NOW),feed=await result.json();
     expect(result.status).toBe(200);expect(feed.items.filter(item=>item.id==="nobel-literature-2025")).toHaveLength(1);expect(JSON.stringify(feed)).not.toMatch(/INJECTED|attacker\.test|sourceFacts|factsSha256/);
     expect(()=>parseNewsFeed(feed)).not.toThrow();await expect(verifyPublishedNewsSnapshot(feed)).resolves.toBe(feed);
-    expect(env.NEWS_STATE.get.mock.calls.every(([key])=>["literary-news:v1:source-state",NOBEL_PROFILE_KEY].includes(key))).toBe(true);
+    expect(env.NEWS_STATE.get.mock.calls.every(([key])=>["literary-news:v1:source-state",NOBEL_PROFILE_KEY,DAILY_NEWS_PROFILE_KEY].includes(key))).toBe(true);
   });
   it("Worker rejects unreviewed profile versions and preserves authored feed on invalid profile",async()=>{
     vi.spyOn(console,"warn").mockImplementation(()=>{});const payload=(await accepted()).payload;payload.profileVersion=99;

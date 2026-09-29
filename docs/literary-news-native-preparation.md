@@ -1,0 +1,82 @@
+# Native daily preparation
+
+The private Worker is `probpera-literary-news-preparation`, configured by
+`scripts/wrangler.literary-news-preparation.jsonc`. Its public request handler always
+returns 404. The fixed Cron invokes one `DailyNewsPreparationCoordinator` SQLite
+Durable Object. The coordinator owns approved daily profile and annual ledger writes;
+scheduled GitHub Actions only collect delivery/media snapshots and deliver existing
+reviewed items.
+
+The default configuration disables preparation. Activation requires the existing AI
+and `NEWS_STATE` bindings, `NEWS_AUTOMATION_WRITER=native`, and an explicit bootstrap
+for an absent owner/fence. Bootstrap validates any existing ledger and public profile
+before establishing the first fence. It never resets an existing fence or accepts a
+corrupt profile. Once initialized, leaving bootstrap enabled does not bypass hashes.
+
+Each two-hour run checks up to 32 rotating registered sources and 10 article pages,
+using at most 48 external source requests including redirects. Source requests use
+the fixed HTTPS registry, reject credentials/IP literals/unregistered ports and
+cross-origin redirects, and bound response streams to 1 MiB for listings or 512 KiB
+for details. Pool concurrency is four; discarded response bodies are closed.
+
+Only exact source publication metadata within seven days is eligible. Up to five
+eligible candidates can enter the shared two-pass grounded RU/EN engine per run.
+Both provider calls use the existing Cloudflare AI binding and a 45-second abort
+signal. Durable budgets reserve calls before inference: 40 draft requests and 80
+provider calls per Moscow day. Admission stops at 15 distinct accepted stories per
+day. The shared admission window is 2026-09-29 inclusive to 2027-09-30 exclusive.
+Provider quota/rate errors stop further inference and retain prior checkpoints.
+
+Source OG/Twitter thumbnails remain display-only. They do not authorize social
+reuse. New social posts still require separately validated image rights, bytes,
+attribution and destination policy; the default automation report explicitly holds
+unverified photos. Photo materialization uses the separate Node media runner and
+private KV bytes; this preparer does not write Supabase Storage or send Telegram.
+
+## Storage recovery
+
+The Durable Object stores only a seven-minute lease, the expected ledger SHA, a
+pending ledger SHA, and a pending public-profile SHA. The annual content stays in
+the fixed private KV keys. Each ledger write stages its exact digest transactionally,
+writes KV, then confirms the digest. Publication stages the validated public profile
+digest before KV PUT as well, so a late PUT remains fenced after lease expiry.
+
+If a write succeeds but its confirmation is lost, a later run recovers only when KV
+returns the exact staged digest. An old KV value may be stale: it cannot clear a
+pending digest. A differing digest, corrupt content, or unresolved pending write
+fails closed and retains the fence. A truly failed ambiguous KV write can therefore
+require operator recovery; automated rollback would risk deleting accepted content.
+
+Recovery must first disable native preparation and wait at least eight minutes for
+the active lease/run to drain. Preserve both KV values and the small fence before
+changing anything. Read and validate the actual ledger/profile using the shared
+validators, compare their exact digests with the staged and expected digests, and
+recover a verified staged value whenever it exists. Clearing a pending digest is
+permitted only with independent proof that the staged write cannot later complete;
+an old KV GET alone is insufficient proof. There is no public reset endpoint or
+automatic reset command.
+
+The Node fallback writer requires separate explicit authorization, a native-off
+and drained owner record, and the existing `--offline-owner-authorized` gate. Its
+successful writes intentionally invalidate the prior native expected digest. Before
+returning ownership to native, an operator must verify the preserved fallback
+ledger/profile and transfer their exact digest to the small fence while native
+remains disabled. Bootstrap cannot silently perform that transfer.
+
+## Verification limits
+
+Local tests use fake AI/storage and do not establish account quota, deployment,
+delivery or a daily supply guarantee. Wrangler dry-run proves bundling only.
+SQLite Durable Objects have a documented default 30-second CPU budget even on Free;
+network/AI waiting does not consume CPU. The outer Cron only invokes the coordinator.
+Both Workers and Durable Objects still have memory and request/storage quotas.
+Growing annual profiles must be sized and checked in the actual account before
+claiming year-long operating capacity. No paid-plan upgrade is configured here.
+
+Daily reports distinguish admitted stories, supply deficit, provider stop, photo
+readiness and actual destination receipts. A deficit or unresolved fence is a
+degraded state, not a successful publication/delivery guarantee.
+
+Official references: [Durable Objects limits](https://developers.cloudflare.com/durable-objects/platform/limits/),
+[Workers limits](https://developers.cloudflare.com/workers/platform/limits/),
+[Workers AI bindings](https://developers.cloudflare.com/workers-ai/configuration/bindings/).

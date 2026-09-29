@@ -8,17 +8,42 @@
   "coverageCountryCodes": [
     "RU"
   ],
-  "attemptedAt": "2026-09-26T17:31:55.783Z",
-  "requests": [],
+  "attemptedAt": "2026-09-29T20:34:12.417Z",
+  "requests": [
+    {
+      "url": "https://alpinabook.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1197371,
+      "sha256": "a5a59223e076ee478424b7f11611bf2bcfb7e4c6583531dbac204912c019e8cc",
+      "accessedAt": "2026-09-29T20:34:13.021Z"
+    },
+    {
+      "url": "https://alpinabook.ru/events/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 192648,
+      "sha256": "0d330da41f558f2b636e53229f158ee9d956d2cc8106c9d703b7794f228348d7",
+      "accessedAt": "2026-09-29T20:34:13.451Z"
+    },
+    {
+      "url": "https://alpinabook.ru/about-algorithms/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 191132,
+      "sha256": "e2b34af5ea4bc45bb37d022a8f5de29239c9d8bca6b5867a51fb0c9b9954b406",
+      "accessedAt": "2026-09-29T20:34:13.717Z"
+    }
+  ],
   "status": "blocked",
-  "reason": "This operation was aborted",
+  "reason": "detail_not_verified",
   "robots": {
     "url": "https://alpinabook.ru/robots.txt",
     "status": 200,
     "contentType": "text/plain",
     "bytes": 1980,
     "sha256": "5986b89ef648ff1b7883a2fae4c1ae22abd29926ccf4b709e63d2a13e6af9791",
-    "accessedAt": "2026-09-26T17:31:56.463Z",
+    "accessedAt": "2026-09-29T20:34:12.658Z",
     "disallowed": [
       "*/?PAGEN_*",
       "/auth_test",

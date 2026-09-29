@@ -1,0 +1,182 @@
+{
+  "checkedAt": "2026-09-29T20:56:29.750Z",
+  "identityReview": [
+    {
+      "qid": "Q219491",
+      "name": "Arrigo Boito",
+      "matchedField": "title.en",
+      "evidence": {
+        "method": "manual-exact-primary-Wikidata-en-and-ru-literary-identity-review",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q219491",
+        "matchedName": "Arrigo Boito"
+      }
+    },
+    {
+      "qid": "Q2640236",
+      "name": "Aleksandr Sukhovo-Kobylin",
+      "matchedField": "title.ru",
+      "evidence": {
+        "method": "manual-exact-primary-Wikidata-Russian-alias-literary-identity-review",
+        "sourceUrl": "https://www.wikidata.org/wiki/Q2640236",
+        "matchedName": "Александр Сухово-Кобылин"
+      }
+    }
+  ],
+  "scope": "Two exact manually reviewed primary identities (BoitoQ219491, SukhovoQ2640236), fresh humanP31/P18/Commonsrights/imagebytes checked; no uploads or sends.",
+  "inspected": 2,
+  "requests": 5,
+  "cached": 0,
+  "approved": 1,
+  "held": 1,
+  "pending": 0,
+  "outcomes": [
+    {
+      "newsId": "arrigo-boito-ballatella-bilingual-publication-20260929",
+      "status": "held",
+      "reason": "media_commons_metadata_incomplete"
+    },
+    {
+      "newsId": "sukhovo-kobylin-basinsky-literary-essay-20260928",
+      "status": "approved",
+      "reason": "exact_reviewed_writer_p18"
+    }
+  ],
+  "assets": [
+    {
+      "id": "auto-565d99330f63261c54c82a23b6d414c5",
+      "status": "approved",
+      "newsIds": [
+        "min-jin-lee-american-hagwon-writing-interview-20260929",
+        "rumpus-min-jin-lee-october-book-club-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/2018-us-nationalbookfestival-min-jin-lee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "8d0ef6648151210dc543d56a2637bc5ad8920e3a9f11fa4d42991abf2c46d14c",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Lee Min Jin (Q13563026), exact reviewed name in title.ru; Wikidata P18 File:2018-us-nationalbookfestival-min-jin-lee.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Fuzheado",
+      "rightsholder": "Fuzheado",
+      "credit": "Архивный портрет: Lee Min Jin. «2018-us-nationalbookfestival-min-jin-lee». © Fuzheado.  Wikimedia Commons: https://commons.wikimedia.org/?curid=72309976.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "2018-us-nationalbookfestival-min-jin-lee",
+      "materialUrl": "https://commons.wikimedia.org/?curid=72309976",
+      "copyrightNotice": "© Fuzheado",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg",
+      "licenseEvidenceSha256": "d8b0bfdcf048dc9b61b9fe8a05c398ea4fe65eb3e0894c7636f95a91ec4a9bdb",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "606e2cd29d75f15eb548d629a70b16d49abfd1bda4de36027be19fd5533a0035",
+        "byteLength": 113284,
+        "mime": "image/jpeg",
+        "width": 1067,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-9398d30e893aabd401cb6ddc8e74b4a8",
+      "status": "approved",
+      "newsIds": [
+        "tolstoy-birthday-2026",
+        "tolstoy-ivan-ilyich-brazil-amazon-report-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "6f8d1d8df13c20e0c2ffe1f993e922b4d6ec7ecbb9255b4d73043e8b7497fb1b",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Leo Tolstoy (Q7243), exact reviewed name in title.en; Wikidata P18 File:L.N.Tolstoy Prokudin-Gorsky.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Sergei Prokudin-Gorskii",
+      "rightsholder": "Sergei Prokudin-Gorskii",
+      "credit": "Портрет: Leo Tolstoy. Sergei Prokudin-Gorskii. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg",
+      "licenseEvidenceSha256": "1b12300ba74118ee61e80d4e3bba95fe099d68a3213b5dd231d48e1570b837ff",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "388d84042592ca289414a8e569c494ed45c0c53ede202afa8da9f7b2b7f5571c",
+        "byteLength": 398840,
+        "mime": "image/jpeg",
+        "width": 1156,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-e7f46cb68b505b8317fc697c64416466",
+      "status": "approved",
+      "newsIds": [
+        "sukhovo-kobylin-basinsky-literary-essay-20260928"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/05/A._Sukhovo-Kobylin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "706f4350a70be48d7c9265b283a6264802641d44930aa5b6859efb61efe53ed9",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Aleksandr Sukhovo-Kobylin (Q2640236), exact reviewed name in title.ru; Wikidata P18 File:A. Sukhovo-Kobylin.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Stanisław Julian Ostroróg",
+      "rightsholder": "Stanisław Julian Ostroróg",
+      "credit": "Портрет: Aleksandr Sukhovo-Kobylin. Stanisław Julian Ostroróg. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:A.%20Sukhovo-Kobylin.jpg",
+      "licenseEvidenceSha256": "afe4108131f160a65f3c1cc028d9958d8eb1ff09faa44ec4199ba68a2ff190e7",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:56:25.956Z",
+      "validUntil": "2026-10-29T20:56:25.956Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:A.%20Sukhovo-Kobylin.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "ea5f585df1e28239b45eed2852841d4eaeca6aa9f42d44704d75558b4b9cf55b",
+        "byteLength": 135467,
+        "mime": "image/jpeg",
+        "width": 1224,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    }
+  ]
+}

@@ -8,20 +8,383 @@
   "coverageCountryCodes": [
     "NA"
   ],
-  "attemptedAt": "2026-09-26T17:29:56.346Z",
-  "requests": [],
-  "status": "blocked",
-  "reason": "This operation was aborted",
+  "attemptedAt": "2026-09-29T20:34:02.326Z",
+  "requests": [
+    {
+      "url": "https://doeklitmag.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 55713,
+      "sha256": "d41b809914e279cb5e7ec44a42c5c82e05d96fe81794d20394153a092ba2b620",
+      "accessedAt": "2026-09-29T20:34:04.228Z"
+    },
+    {
+      "url": "https://doeklitmag.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 153654,
+      "sha256": "78225cb1c6cc5b0d8f0d3b581a646b99638c6acbe8f1e4a553ea751cdf1c4fe5",
+      "accessedAt": "2026-09-29T20:34:05.091Z"
+    },
+    {
+      "url": "https://doeklitmag.com/good-mourning/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 47714,
+      "sha256": "ffad5d1478f04ffa8b417c2a32d66b34d32e4b291a02d3288f104554967a72e7",
+      "accessedAt": "2026-09-29T20:34:05.739Z"
+    },
+    {
+      "url": "https://doeklitmag.com/that-sweet-faraway-place-where-dreams-are-made/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 73527,
+      "sha256": "2096cbc621c993baf1738cd581bc70446c2085954651dbb483a01c9983d95ab0",
+      "accessedAt": "2026-09-29T20:34:06.609Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
   "robots": {
     "url": "https://doeklitmag.com/robots.txt",
     "status": 200,
     "contentType": "text/plain; charset=utf-8",
     "bytes": 193,
     "sha256": "a61a75933e16b0b76d04cb01f6d4dafc8af18df3ea19288eee20c169beba45a5",
-    "accessedAt": "2026-09-26T17:30:00.360Z",
+    "accessedAt": "2026-09-29T20:34:03.414Z",
     "disallowed": [
       "/wp-admin/",
       "/wp-content/uploads/wpo/wpo-plugins-tables-list.json"
     ]
-  }
+  },
+  "endpoint": {
+    "id": "doek",
+    "name": "Doek!",
+    "url": "https://doeklitmag.com/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "africa",
+    "sourceFamilyId": "doek",
+    "countryCodes": [
+      "NA"
+    ],
+    "coverageCountryCodes": [
+      "NA"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://doeklitmag.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://doeklitmag.com/that-sweet-faraway-place-where-dreams-are-made/"
+    ],
+    "verifiedAt": "2026-09-29T20:34:06.614Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "doek",
+    "source": {
+      "name": "Doek!",
+      "url": "https://doeklitmag.com/that-sweet-faraway-place-where-dreams-are-made/",
+      "language": "en-GB"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "That Sweet Faraway Place Where Dreams Are Made",
+    "publishedAt": "2025-12-23T08:00:50.000Z",
+    "description": "“More and more I am leaning into the intangible, to that sweet faraway place where dreams are made.” — Literatea with Ayesha Harruna Attah.",
+    "discoveredAt": "2026-09-29T20:34:05.093Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://doeklitmag.com/that-sweet-faraway-place-where-dreams-are-made/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 73527,
+      "sha256": "2096cbc621c993baf1738cd581bc70446c2085954651dbb483a01c9983d95ab0",
+      "accessedAt": "2026-09-29T20:34:06.609Z",
+      "headline": "That Sweet Faraway Place Where Dreams Are Made Literatea, 14: Ayesha Harruna Attah.",
+      "excerpt": "23 December 202523 December 2025 Ayesha Harruna AttahIn Issue 16: Offerings Of Tomorrow That Sweet Faraway Place Where Dreams Are Made Literatea, 14: Ayesha Harruna Attah. Literatea is an interview series which brings together prominent and emerging voices in African writing, editing, publishing, translation, marketing, distribution, and retail to discuss the craft of bringing African storytelling",
+      "publishedDates": [
+        {
+          "value": "2025-12-23T08:00:50+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://doeklitmag.com/that-sweet-faraway-place-where-dreams-are-made/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:34:06.614Z",
+  "foundItems": [
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/good-mourning/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Good Mourning",
+      "publishedAt": "2025-12-23T08:00:59.000Z",
+      "description": "“Everything, all of it, is already a memory.” — Good Mourning, poetry by Jeremy Tiboth.",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/that-sweet-faraway-place-where-dreams-are-made/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "That Sweet Faraway Place Where Dreams Are Made",
+      "publishedAt": "2025-12-23T08:00:50.000Z",
+      "description": "“More and more I am leaning into the intangible, to that sweet faraway place where dreams are made.” — Literatea with Ayesha Harruna Attah.",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/corporate-cake/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Corporate Cake",
+      "publishedAt": "2025-12-23T08:00:50.000Z",
+      "description": "The weekly team call makes my stomach hurt. There are about 30 of us in this online meeting. I feel Read More → \"Corporate Cake\"",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/wrapped-in-confinement/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wrapped In Confinement",
+      "publishedAt": "2025-12-23T08:00:49.000Z",
+      "description": "In my work, I transform intimate interiors into psychological landscapes where colour and form become builders of parallel universes. My Read More → \"Wrapped In Confinement\"",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/the-aristocrat/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Aristocrat",
+      "publishedAt": "2025-12-23T08:00:47.000Z",
+      "description": "“When we are alone, he muses over my mistakes, carefully labelling them: shame, guilt, and loathing.” — The Aristocrat, poetry by Kina Indongo.",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/florida/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Florida",
+      "publishedAt": "2025-12-23T08:00:45.000Z",
+      "description": "“The first time I bleed abroad I am thinking of sunlight” — Florida, poetry by Kina Indongo.",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/storm-on-the-horizon/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Storm On The Horizon",
+      "publishedAt": "2025-12-23T08:00:38.000Z",
+      "description": "Florida, our motorboat, renamed after the slain Gazan journalist Anas al Cherif, goes faster than others. We have finished a Read More → \"Storm On The Horizon\"",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/chop-wood-carry-water/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chop Wood, Carry Water",
+      "publishedAt": "2025-12-23T08:00:25.000Z",
+      "description": "“Chop wood, carry water. The work is the work.” — Literatea with Nana Kwame Adjei-Brenyah.",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/the-drama/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Drama",
+      "publishedAt": "2025-12-23T08:00:23.000Z",
+      "description": "“What remains when an event concludes?” — The Drama, visual art by Negyem Adonoo.",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doek",
+      "source": {
+        "name": "Doek!",
+        "url": "https://doeklitmag.com/how-much-does-a-sunset-cost/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How Much Does A Sunset Cost?",
+      "publishedAt": "2025-12-23T08:00:20.000Z",
+      "description": "“Slowly, you were becoming indistinguishable from it all.” How Much Does A Sunset Cost?, poetry by Jeremy Tiboth.",
+      "discoveredAt": "2026-09-29T20:34:05.093Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "78225cb1c6cc5b0d8f0d3b581a646b99638c6acbe8f1e4a553ea751cdf1c4fe5"
 }

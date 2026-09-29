@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "IS"
   ],
-  "attemptedAt": "2026-09-26T17:29:08.509Z",
+  "attemptedAt": "2026-09-29T20:33:44.461Z",
   "requests": [
     {
       "url": "https://landsbokasafn.is/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 267027,
-      "sha256": "7a937846655165da100a0b9c0c836889b24d39677902a45637489281ce38b464",
-      "accessedAt": "2026-09-26T17:29:10.267Z"
+      "bytes": 266836,
+      "sha256": "599dfc49777fb5c048bf22e8d5b2c29b30d9f9ecd860a7ee3249833c2fc8db13",
+      "accessedAt": "2026-09-29T20:33:45.293Z"
     },
     {
       "url": "https://landsbokasafn.is/feed/",
@@ -24,31 +24,71 @@
       "contentType": "application/rss+xml; charset=UTF-8",
       "bytes": 39400,
       "sha256": "5a0337007f81e6471c63ff0bfa0603429071958766443cfa2ecdebc18847dbff",
-      "accessedAt": "2026-09-26T17:29:10.558Z"
+      "accessedAt": "2026-09-29T20:33:45.429Z"
     },
     {
       "url": "https://landsbokasafn.is/read-japan-project-2025-faerir-landsbokasafni-bokagjof/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 103177,
-      "sha256": "a16971ed0c7c420d2e01f1f758068ba2fc1b12f59bd9c97015defbd20d18b35e",
-      "accessedAt": "2026-09-26T17:29:10.733Z"
+      "bytes": 102962,
+      "sha256": "714bf95874ad9cc16a7c39ff89c7f96cae8d4aa02d5eb7bcb101b4071e35a5d6",
+      "accessedAt": "2026-09-29T20:33:45.823Z"
     },
     {
       "url": "https://landsbokasafn.is/ertu-ad-byrja-i-haskola-islands/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 94096,
-      "sha256": "db5e63dccb05ddf8da6bf81b23c917b67a50088370b253e0ee034bf3e1f5a916",
-      "accessedAt": "2026-09-26T17:29:11.378Z"
+      "bytes": 93881,
+      "sha256": "6ee6b059f7e66d344a3a22dff30dca3b3cab81f6eaf5e61492be3875b9cf12bc",
+      "accessedAt": "2026-09-29T20:33:46.186Z"
     },
     {
       "url": "https://landsbokasafn.is/uppfaersla/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 93824,
-      "sha256": "2982e577763e143a958dc7db42bb6ca3588f87a525593e69f91f309f35c220a6",
-      "accessedAt": "2026-09-26T17:29:12.009Z"
+      "bytes": 93609,
+      "sha256": "06a0a0916324e1eef57bae227a025d1599c76c501620907b405acfa3b6445164",
+      "accessedAt": "2026-09-29T20:33:46.568Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/natasha-s-hlytur-maistjornuna-fyrir-mara-kemur-i-heimsokn/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 98990,
+      "sha256": "49f68b33116b41b8c0830623b60d1484c078547307ba4361a4e14943c20278fe",
+      "accessedAt": "2026-09-29T20:33:47.031Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/180-ar-fra-stofnun-handritasafns/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97268,
+      "sha256": "4e8fa8515b7a9f8218bffe064b351ebfb56acb9aac358791e7a4eed636e67bfb",
+      "accessedAt": "2026-09-29T20:33:47.500Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/bokadu-stund-fyrir-bok/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 96971,
+      "sha256": "ed0f083161e185e8494ed72a2494454ee8d6ed3780d1d0229e7161554a18e76a",
+      "accessedAt": "2026-09-29T20:33:47.990Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/vid-erum-margar-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97684,
+      "sha256": "397ce356dfbfed5ee129b0add93aa3686b24fe723b7019c09ab1160a124bf76f",
+      "accessedAt": "2026-09-29T20:33:48.492Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/anna-sigurdardottir-heidursdoktorsnafnbot-vid-haskola-islands/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102525,
+      "sha256": "fd5cff71e11c9960939f7c2de946b50f9b22e795b3e58ae8b7d68b4544a7b6e7",
+      "accessedAt": "2026-09-29T20:33:49.042Z"
     }
   ],
   "status": "blocked",
@@ -59,7 +99,7 @@
     "contentType": "text/plain; charset=utf-8",
     "bytes": 117,
     "sha256": "de2a10265c7d7b521696ea441953ea41119a68f1f4c22923f0cf546b1ca2d422",
-    "accessedAt": "2026-09-26T17:29:09.409Z",
+    "accessedAt": "2026-09-29T20:33:44.994Z",
     "disallowed": [
       "/wp-admin/"
     ]

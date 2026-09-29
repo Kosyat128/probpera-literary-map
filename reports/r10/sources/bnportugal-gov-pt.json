@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "PT"
   ],
-  "attemptedAt": "2026-09-26T17:29:13.799Z",
+  "attemptedAt": "2026-09-29T20:33:49.052Z",
   "requests": [
     {
       "url": "https://www.bnportugal.gov.pt/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 21785,
-      "sha256": "df7c3937027b442cbcd6e85172a8d751c8007594e1dfd6493db0bb9b0baffe91",
-      "accessedAt": "2026-09-26T17:29:16.210Z"
+      "bytes": 21667,
+      "sha256": "90e4256d78f89171bfa53912c83b3589764d50f34af031ac5b6322dcdf21e368",
+      "accessedAt": "2026-09-29T20:33:51.297Z"
     }
   ],
   "status": "blocked",

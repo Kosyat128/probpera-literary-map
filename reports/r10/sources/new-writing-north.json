@@ -1,0 +1,431 @@
+{
+  "sourceId": "new-writing-north",
+  "name": "New Writing North",
+  "entryUrl": "https://newwritingnorth.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:25.581Z",
+  "requests": [
+    {
+      "url": "https://newwritingnorth.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 67056,
+      "sha256": "992057617b7f5729ee34a35e42bc7c65e7afbba9b311c1a9474dcd265aac9f98",
+      "accessedAt": "2026-09-29T20:39:26.498Z"
+    },
+    {
+      "url": "https://newwritingnorth.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 25048,
+      "sha256": "cc468387a41c825991e229c952547904c0b88580dea5faa8b4a1b261763c999c",
+      "accessedAt": "2026-09-29T20:39:26.665Z"
+    },
+    {
+      "url": "https://newwritingnorth.com/durham-book-festival-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 59954,
+      "sha256": "d7efe1f41eddbe168773ea3e0782031623ecd067b752cb96574f109ebdf5644b",
+      "accessedAt": "2026-09-29T20:39:26.924Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://newwritingnorth.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 177,
+    "sha256": "d89242f228642001235b0c2ed81fd73f916e63c4cddf15496d595a7bbbb1ab71",
+    "accessedAt": "2026-09-29T20:39:26.166Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "new-writing-north",
+    "name": "New Writing North",
+    "url": "https://newwritingnorth.com/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "new-writing-north",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://newwritingnorth.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://newwritingnorth.com/durham-book-festival-2026/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:26.927Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 12,
+  "literaryCandidateCount": 12,
+  "sample": {
+    "sourceId": "new-writing-north",
+    "source": {
+      "name": "New Writing North",
+      "url": "https://newwritingnorth.com/durham-book-festival-2026/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Durham Book Festival 2026",
+    "publishedAt": "2026-08-13T09:27:23.000Z",
+    "description": "The post Durham Book Festival 2026 appeared first on New Writing North.",
+    "discoveredAt": "2026-09-29T20:39:26.666Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://newwritingnorth.com/durham-book-festival-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 59954,
+      "sha256": "d7efe1f41eddbe168773ea3e0782031623ecd067b752cb96574f109ebdf5644b",
+      "accessedAt": "2026-09-29T20:39:26.924Z",
+      "headline": "Durham Book Festival 2026",
+      "excerpt": "Durham Book Festival 2026 Posted 13 Aug 2026 by New Writing North Bestselling authors, award-winning poets and one Pet Shop Boy lead this year’s Durham Book Festival, from Friday 9 to Sunday 11 October 2026.Over 30 speakers will come to Durham for events ranging from a gaming jam, a poetry scratch night, writing masterclasses, and a new commission on gender and sleep, to a live podcast recording w",
+      "publishedDates": [
+        {
+          "value": "2026-08-13T09:27:23+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-08-13T09:27:23+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-08-13T09:27:23+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://newwritingnorth.com/durham-book-festival-2026/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:26.927Z",
+  "foundItems": [
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/durham-book-festival-2026/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Durham Book Festival 2026",
+      "publishedAt": "2026-08-13T09:27:23.000Z",
+      "description": "The post Durham Book Festival 2026 appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/significant-ink-2026-awardees/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Significant Ink 2026 Awardees",
+      "publishedAt": "2026-09-25T08:35:45.000Z",
+      "description": "The post Significant Ink 2026 Awardees appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/northern-writers-awards-2026-winners-announced/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Northern Writers’ Awards 2026 Winners Announced",
+      "publishedAt": "2026-06-24T20:40:54.000Z",
+      "description": "The post Northern Writers’ Awards 2026 Winners Announced appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/judges-announced-for-the-2027-gordon-burn-prize/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Judges announced for the 2027 Gordon Burn Prize",
+      "publishedAt": "2026-06-19T13:20:21.000Z",
+      "description": "The post Judges announced for the 2027 Gordon Burn Prize appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/maria-reva-wins-the-gordon-burn-prize-2026/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Maria Reva wins the Gordon Burn Prize 2026",
+      "publishedAt": "2026-03-06T11:23:47.000Z",
+      "description": "The post Maria Reva wins the Gordon Burn Prize 2026 appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/shortlist-announced-for-the-gordon-burn-prize-2026/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Shortlist announced for the Gordon Burn Prize 2026",
+      "publishedAt": "2026-02-25T10:07:40.000Z",
+      "description": "The shortlist for the Gordon Burn Prize 2026 was announced today (21 January 2026). It is: One Day, Everyone Will... The post Shortlist announced for the Gordon Burn Prize 2026 appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/creative-associates-2026-announced/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Creative Associates 2026 Announced",
+      "publishedAt": "2026-09-09T08:59:53.000Z",
+      "description": "The post Creative Associates 2026 Announced appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/adapt-2026-participants-announced/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ADAPT 2026 participants announced",
+      "publishedAt": "2026-08-07T09:25:04.000Z",
+      "description": "Now in its third year, ADAPT is a development programme supporting writers from any creative background to adapt their own... The post ADAPT 2026 participants announced appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/tees-valley-development-programme-participants-announced/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tees Valley Development Programme participants announced",
+      "publishedAt": "2026-07-29T17:00:32.000Z",
+      "description": "The post Tees Valley Development Programme participants announced appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/sinead-rocks-appointed-as-chair-of-new-writing-north/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sinead Rocks appointed as Chair of New Writing North",
+      "publishedAt": "2026-09-25T09:19:39.000Z",
+      "description": "Sinead Rocks takes up the role of Chair of New Writing North, following a nine-month interim tenure by Helen Dalby,... The post Sinead Rocks appointed as Chair of New Writing North appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/remembering-neil-warwick-obe/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Remembering Neil Warwick OBE",
+      "publishedAt": "2026-01-08T16:44:53.000Z",
+      "description": "The staff and board at New Writing North were deeply saddened to learn of the passing of our Chair Neil... The post Remembering Neil Warwick OBE appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "new-writing-north",
+      "source": {
+        "name": "New Writing North",
+        "url": "https://newwritingnorth.com/film4-commission-scrum-following-pilot-development-programme/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Film4 commission SCRUM following pilot development programme",
+      "publishedAt": "2025-12-12T16:09:32.000Z",
+      "description": "The post Film4 commission SCRUM following pilot development programme appeared first on New Writing North.",
+      "discoveredAt": "2026-09-29T20:39:26.666Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "cc468387a41c825991e229c952547904c0b88580dea5faa8b4a1b261763c999c"
+}

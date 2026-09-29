@@ -1,0 +1,16 @@
+{
+  "sourceId": "literandra",
+  "name": "Literandra",
+  "entryUrl": "https://literandra.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:45.775Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://literandra.com/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

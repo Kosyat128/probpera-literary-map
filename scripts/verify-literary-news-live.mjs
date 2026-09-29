@@ -7,13 +7,15 @@ import limits from "../data/news/contract.json" with { type: "json" };
 import { selectReviewed, validTimestamp } from "./lib/literary-news-reviewed.mjs";
 import { publicNewsItem, validNewsWithdrawals, verifyPublishedNewsSnapshot } from "./lib/literary-news-publication.mjs";
 import { validateNobelPublishedItem } from "./lib/literary-news-nobel-profile.mjs";
+import { DAILY_NEWS_PROFILE_KEY, dailyPublishedRecords } from "./lib/literary-news-daily-profile.mjs";
+import { createDailyNewsStorageClient } from "./lib/literary-news-daily-automation.mjs";
 
 const endpoint = "https://news.probpera.ru/api/literary-news/feed";
 const zones = ["UTC", "Pacific/Kiritimati", "America/Los_Angeles"];
 
 /** The same verifier runs against HTTP responses and isolated release fixtures. */
 export async function verifyLiteraryNewsFeed(feed, { timeZone, contractVersion = 2, expectedHead = null,
-  releaseHeader = null, records = [], withdrawals = [], current = new Date() } = {}) {
+  releaseHeader = null, records = [], withdrawals = [], dailyProfile = null, current = new Date() } = {}) {
   assert.equal(feed?.mode, "reviewed");
   assert.equal(feed.timeZone, timeZone);
   assert.ok(validTimestamp(feed.generatedAt), "The feed must have a valid capture timestamp");
@@ -44,7 +46,14 @@ export async function verifyLiteraryNewsFeed(feed, { timeZone, contractVersion =
   if (contractVersion === 2 || expectedHead) {
     const authoredIds = new Set(records.map(item=>item.id));
     const authoredEvents = new Set(records.map(item=>item.eventKey).filter(Boolean));
-    const approvedExtras = feed.items.filter(item=>!authoredIds.has(item.id)).map(item=> {
+    const validatedDaily = dailyProfile === null ? [] : await dailyPublishedRecords(dailyProfile, captured);
+    const dailyRecords = validatedDaily.filter(item=>!authoredIds.has(item.id) && !authoredEvents.has(item.eventKey)
+      && !records.some(authored=>authored.kind===item.kind && authored.category===item.category
+        && authored.eventDate===item.eventDate && authored.source?.url===item.source.url));
+    const knownIds = new Set([...records,...dailyRecords].map(item=>item.id));
+    const approvedExtras = feed.items.filter(item=>!knownIds.has(item.id)).map(item=> {
+      if (/^daily-/.test(item?.id || "")) throw new Error(dailyProfile === null
+        ? "daily_profile_evidence_required" : "daily_profile_public_mismatch");
       const extra = validateNobelPublishedItem(item,captured);
       assert.ok(!authoredEvents.has(extra.eventKey) && !records.some(authored=>authored.kind===extra.kind
         && authored.category===extra.category && authored.eventDate===extra.eventDate && authored.source?.url===extra.source.url),
@@ -52,7 +61,7 @@ export async function verifyLiteraryNewsFeed(feed, { timeZone, contractVersion =
       return extra;
     });
     const removed = new Set(activeWithdrawals.map(row=>row.id));
-    const expected = selectReviewed([...records,...approvedExtras].filter(item=>!removed.has(item.id)),captured,timeZone)
+    const expected = selectReviewed([...records,...dailyRecords,...approvedExtras].filter(item=>!removed.has(item.id)),captured,timeZone)
       .map(publicNewsItem).slice(0,itemLimit);
     assert.deepEqual(feed.items,expected,"The API must serve the complete reviewed selection and only validated profile extras");
   }
@@ -76,13 +85,17 @@ async function readBoundedFeed(response) {
 }
 
 export async function runLiteraryNewsLiveVerification({ args = process.argv.slice(2), fetchImpl = fetch,
-  now = () => new Date(), waitImpl = delay, records, withdrawals } = {}) {
+  now = () => new Date(), waitImpl = delay, records, withdrawals, dailyProfile, env = process.env, readDailyProfile } = {}) {
   const {values} = parseArgs({args,options:{"expected-head":{type:"string"}},allowPositionals:false});
   const expectedHead = values["expected-head"] || null;
   if (values["expected-head"] !== undefined && !/^[a-f0-9]{40}$/u.test(expectedHead || ""))
     throw new Error("Expected news release head must be a full commit SHA");
   records ??= JSON.parse(await readFile(new URL("../data/news/reviewed.json",import.meta.url),"utf8"));
   withdrawals ??= JSON.parse(await readFile(new URL("../data/news/withdrawals.json",import.meta.url),"utf8"));
+  const profileStorage = dailyProfile === undefined && !readDailyProfile
+    && env.CLOUDFLARE_ACCOUNT_ID && env.CLOUDFLARE_API_TOKEN
+    ? createDailyNewsStorageClient({ accountId: env.CLOUDFLARE_ACCOUNT_ID, apiToken: env.CLOUDFLARE_API_TOKEN, fetchImpl }) : null;
+  let validatedDailyProfile = dailyProfile ?? null;
   async function check(timeZone,contractVersion) {
     const query = new URLSearchParams({timeZone});
     if (contractVersion === 2) query.set("contract","2");
@@ -92,11 +105,15 @@ export async function runLiteraryNewsLiveVerification({ args = process.argv.slic
     assert.match(response.headers.get("content-type") || "",/application\/json/u);
     assert.equal(response.headers.get("access-control-allow-origin"),"https://probpera.ru","The public site must be allowed to read the feed");
     return verifyLiteraryNewsFeed(await readBoundedFeed(response),{timeZone,contractVersion,expectedHead,
-      releaseHeader:response.headers.get("x-probpera-news-release"),records,withdrawals,current:now()});
+      releaseHeader:response.headers.get("x-probpera-news-release"),records,withdrawals,dailyProfile:validatedDailyProfile,current:now()});
   }
   let lastError;
   for (let attempt = 0; attempt < 6; attempt++) {
     try {
+      // Reload private evidence on each retry so an intervening preparation commit cannot become a trusted public extra.
+      if (dailyProfile === undefined) validatedDailyProfile = readDailyProfile
+        ? await readDailyProfile() : profileStorage ? await profileStorage.read(DAILY_NEWS_PROFILE_KEY) : null;
+      if (validatedDailyProfile !== null) await dailyPublishedRecords(validatedDailyProfile, now());
       const legacy = [];
       for (const zone of zones) legacy.push(await check(zone,1));
       const complete = await check(limits.editorialTimeZone,2);

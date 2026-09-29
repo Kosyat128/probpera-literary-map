@@ -1,0 +1,899 @@
+{
+  "sourceId": "prochtenie",
+  "name": "Прочтение",
+  "entryUrl": "https://prochtenie.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:28.974Z",
+  "requests": [
+    {
+      "url": "https://prochtenie.org/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 56438,
+      "sha256": "cac2066ae59dae37bd457e1b6e2fef2f48e3b73734f1251642fcb5c3fa0d90a3",
+      "accessedAt": "2026-09-29T20:39:29.732Z"
+    },
+    {
+      "url": "https://prochtenie.org/news",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 81213,
+      "sha256": "1b94e7262d99811f339669dd74b0ef1537e39034c1fc386c9f002fa0c53b8eca",
+      "accessedAt": "2026-09-29T20:39:30.038Z"
+    },
+    {
+      "url": "https://prochtenie.org/news/31455",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 26304,
+      "sha256": "a1492c09447224998b5e904a384ca5323619d143bc061a4ce692ac04115b0673",
+      "accessedAt": "2026-09-29T20:39:30.204Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://prochtenie.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 529,
+    "sha256": "b4d75ef40fd45f90b938a62fe8d3a2f3cda90ff9d2c6981394cc9e56ad4e6f17",
+    "accessedAt": "2026-09-29T20:39:29.374Z",
+    "disallowed": [
+      "/cgi-bin",
+      "/img",
+      "/search",
+      "/user",
+      "/nofollow"
+    ]
+  },
+  "endpoint": {
+    "id": "prochtenie",
+    "name": "Прочтение",
+    "url": "https://prochtenie.org/news",
+    "format": "html",
+    "language": "ru",
+    "region": "global",
+    "sourceFamilyId": "prochtenie",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://prochtenie.org"
+    ],
+    "linkPattern": "^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://prochtenie.org/news/31455"
+    ],
+    "verifiedAt": "2026-09-29T20:39:30.207Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 31,
+  "literaryCandidateCount": 31,
+  "sample": {
+    "sourceId": "prochtenie",
+    "source": {
+      "name": "Прочтение",
+      "url": "https://prochtenie.org/news/31455",
+      "language": "ru"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Объявлен шорт-лист премии «Большая книга — 2024»",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:30.055Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://prochtenie.org/news/31455",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 26304,
+      "sha256": "a1492c09447224998b5e904a384ca5323619d143bc061a4ce692ac04115b0673",
+      "accessedAt": "2026-09-29T20:39:30.204Z",
+      "headline": "Объявлен шорт-лист премии «Большая книга — 2024»",
+      "excerpt": "Объявлен шорт-лист премии «Большая книга — 2024» На традиционном Литературном обеде в московском ГУМе 5 июня был объявлен короткий список девятнадцатого сезона премии «Большая книга». В этом году Совет экспертов под председательством прозаика, поэта и драматурга Дмитрия Данилова из 50 претендентов выбрал 14 финалистов: Василий Аксенов «Флегонт, Февруса и другие»; Надя Алексеева «Полунощница»; Влад",
+      "publishedDates": [],
+      "canonical": "https://prochtenie.org/news/31455",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:30.207Z",
+  "foundItems": [
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31455",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен шорт-лист премии «Большая книга — 2024»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31432",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен лонг-лист премии «Большая книга — 2024»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31328",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Названы лауреаты премии «Большая книга — 2023»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31269",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен лауреат Нобелевской премии по литературе 2023 года",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31223",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен короткий список премии «Ясная Поляна — 2023» в номинации «Иностранная литература»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31217",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен короткий список премии «Большая книга — 2023»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31182",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен лонг-лист премии «Большая книга — 2023»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31140",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В Петербурге пройдет литературный бранч с писательницей Ольгой Птицевой",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31062",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "НАЗВАНЫ ЛАУРЕАТЫ ПРЕМИИ «БОЛЬШАЯ КНИГА — 2022»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31007",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен лауреат Нобелевской премии по литературе 2022 года",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31456",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Названы лауреаты премии «Лицей — 2024»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31439",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен шорт-лист премии «Лицей» 2024 года",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31436",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен лонг-лист премии «Лицей» 2024 года",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31324",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Мы назвали победителей конкурса эссе",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31268",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Названы имена лауреатов премии «Ясная Поляна — 2023»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31221",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Названы лауреаты премии «Лицей — 2023»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31204",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен шорт-лист премии «Лицей» – 2023",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31196",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен длинный список премии «Ясная поляна — 2023» в номинации «Современная русская проза»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31185",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен лонг-лист премии «Лицей» 2023 года",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31000",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Названы имена лауреатов премии «Ясная Поляна — 2022»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/30976",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен короткий список премии «Ясная Поляна — 2022»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/30943",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен длинный список премии «Ясная поляна — 2022» в номинации «Современная русская проза»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/30937",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен опен-колл для серии янг-эдалт литературы",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31298",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Мы запускаем конкурс эссе",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31245",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В Санкт-Петербурге пройдет благотворительный книжный маркет «Фонарь»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31171",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В Санкт-Петербурге пройдет благотворительный книжный маркет «Фонарик»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/31012",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Издательство Ивана Лимбаха» запустило краудфандинг",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/30956",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В Санкт-Петербурге пройдет благотворительный книжный маркет «Фонарь»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/30947",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Издательство «МИФ» запускает опен-колл",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/30931",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Школа прозы «Глагол» и издательство «Самокат» собирают рассказы для сборника «Сообщники»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prochtenie",
+      "source": {
+        "name": "Прочтение",
+        "url": "https://prochtenie.org/news/page1",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Следующая страница",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:30.055Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "1b94e7262d99811f339669dd74b0ef1537e39034c1fc386c9f002fa0c53b8eca"
+}

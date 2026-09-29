@@ -1,0 +1,381 @@
+{
+  "sourceId": "letture-org",
+  "name": "Letture.org",
+  "entryUrl": "https://www.letture.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:39.916Z",
+  "requests": [
+    {
+      "url": "https://www.letture.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 427870,
+      "sha256": "b59f9c6515e12068c5a58f25ef20937d750a575672922d06481ac8822b6207a2",
+      "accessedAt": "2026-09-29T20:39:41.632Z"
+    },
+    {
+      "url": "https://www.letture.org/feed",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 149403,
+      "sha256": "18f87eee03451e4cb7d18a1a036e5f31f611dd6d1ee234a2ff04606f612fe8f0",
+      "accessedAt": "2026-09-29T20:39:42.307Z"
+    },
+    {
+      "url": "https://www.letture.org/nella-mente-di-un-intellettuale-medievale-brunetto-latini-e-il-suo-mondo-gianluca-briguglia",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 209848,
+      "sha256": "0f4f9cb8f324caeeeef7b443fae369dbd69776fed238874525104982f990a0fd",
+      "accessedAt": "2026-09-29T20:39:42.944Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.letture.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 173,
+    "sha256": "b2152a590b872c1fa200a0cabfa13477cde6ab28beb0352c20b75cef2b32940d",
+    "accessedAt": "2026-09-29T20:39:41.297Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "letture-org",
+    "name": "Letture.org",
+    "url": "https://www.letture.org/feed",
+    "format": "rss",
+    "language": "it-IT",
+    "region": "global",
+    "sourceFamilyId": "letture-org",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.letture.org"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.letture.org/nella-mente-di-un-intellettuale-medievale-brunetto-latini-e-il-suo-mondo-gianluca-briguglia"
+    ],
+    "verifiedAt": "2026-09-29T20:39:42.953Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "letture-org",
+    "source": {
+      "name": "Letture.org",
+      "url": "https://www.letture.org/nella-mente-di-un-intellettuale-medievale-brunetto-latini-e-il-suo-mondo-gianluca-briguglia",
+      "language": "it-IT"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "“Nella mente di un intellettuale medievale. Brunetto Latini e il suo mondo” di Gianluca Briguglia",
+    "publishedAt": "2026-09-28T15:09:09.000Z",
+    "description": "Prof. Gianluca Briguglia, Lei è autore del libro Nella mente di un intellettuale medievale. Brunetto Latini e il suo mondo, edito dal Mulino: che rilevanza assume, per la storia del medioevo, la figura di Brunetto Latini? Brunetto Latini è una figura al tempo stesso eccezionale e paradigmatica. È eccezionale per i risultati del suo impegno intellettuale. È il primo a tradurre Cicerone in [...] Le…",
+    "discoveredAt": "2026-09-29T20:39:42.309Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.letture.org/nella-mente-di-un-intellettuale-medievale-brunetto-latini-e-il-suo-mondo-gianluca-briguglia",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 209848,
+      "sha256": "0f4f9cb8f324caeeeef7b443fae369dbd69776fed238874525104982f990a0fd",
+      "accessedAt": "2026-09-29T20:39:42.944Z",
+      "headline": "\"Nella mente di un intellettuale medievale. Brunetto Latini e il suo mondo\" di Gianluca Briguglia",
+      "excerpt": "Home • “Nella mente di un intellettuale medievale. Brunetto Latini e il suo mondo” di Gianluca Briguglia Prof. Gianluca Briguglia, Lei è autore del libro Nella mente di un intellettuale medievale. Brunetto Latini e il suo mondo, edito dal Mulino: che rilevanza assume, per la storia del medioevo, la figura di Brunetto Latini? Brunetto Latini è una figura al tempo stesso eccezionale e paradigmatica.",
+      "publishedDates": [
+        {
+          "value": "2026-09-28T15:09:09+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-28T15:09:09+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-28T15:09:09+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.letture.org/nella-mente-di-un-intellettuale-medievale-brunetto-latini-e-il-suo-mondo-gianluca-briguglia",
+      "language": "it-IT",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:42.953Z",
+  "foundItems": [
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/nella-mente-di-un-intellettuale-medievale-brunetto-latini-e-il-suo-mondo-gianluca-briguglia",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Nella mente di un intellettuale medievale. Brunetto Latini e il suo mondo” di Gianluca Briguglia",
+      "publishedAt": "2026-09-28T15:09:09.000Z",
+      "description": "Prof. Gianluca Briguglia, Lei è autore del libro Nella mente di un intellettuale medievale. Brunetto Latini e il suo mondo, edito dal Mulino: che rilevanza assume, per la storia del medioevo, la figura di Brunetto Latini? Brunetto Latini è una figura al tempo stesso eccezionale e paradigmatica. È eccezionale per i risultati del suo impegno intellettuale. È il primo a tradurre Cicerone in [...] Le…",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/la-medicina-delle-reti-big-data-intelligenza-artificiale-e-nuove-cure-lorenzo-farina",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“La medicina delle reti. Big Data, intelligenza artificiale e nuove cure” di Lorenzo Farina",
+      "publishedAt": "2026-09-19T13:34:44.000Z",
+      "description": "«Questo libro riguarda il futuro della medicina. Anzi no, il presente. Non possiamo più permetterci il lusso di ignorare il fatto, ormai evidente, che la medicina stia attraversando una crisi profonda – una vera e propria emergenza – e che nuovi paradigmi diagnostici e terapeutici siano diventati una necessità vitale, esistenziale. La grande difficoltà nel [...] Leggi di più... from “La medicina …",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/71-luca-cipolla",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“71” di Luca Cipolla",
+      "publishedAt": "2026-09-27T13:36:33.000Z",
+      "description": "Si intitola scarnamente 71, come il numero delle composizioni che contiene, la silloge poetica del poeta e romenista lombardo Luca Cipolla edita da Graus. L’Autore si sottrae così al rischio di offrirne, sin dal titolo, un’interpretazione autentica, celandosi dietro le rime, consegnate alla carta: «Non hai parole, solo versi» (Luna nuova); una dichiarazione poetica che [...] Leggi di più... from …",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/incontri-fortuiti-e-vite-parallele-leonardo-gioia",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Incontri fortuiti e vite parallele” di Leonardo Gioia",
+      "publishedAt": "2026-09-24T08:22:55.000Z",
+      "description": "Su un tabellone dell’aeroporto di Fiumicino compare una sola parola, Cancelled. Uno sciopero generale ha paralizzato i voli e la folla si accalca davanti agli sportelli. È da questa scena di disagio collettivo, familiare a chiunque abbia viaggiato in Italia, che Leonardo Gioia fa partire il suo secondo romanzo, Incontri fortuiti e vite parallele, edito [...] Leggi di più... from “Incontri fortuit…",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/riflessioni-instabili-utili-forse-a-chi-voglia-allenarsi-a-digerire-la-vita-rolando-ciofi",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Riflessioni instabili. Utili (forse) a chi voglia allenarsi a digerire la vita” di Rolando Ciofi",
+      "publishedAt": "2026-09-21T15:19:06.000Z",
+      "description": "Dott. Ciofi, il suo libro si intitola Riflessioni instabili. Utili (forse) a chi voglia allenarsi a digerire la vita: perché quel “forse”? Perché diffido di chi promette di insegnarci a vivere. E, dopo una vita trascorsa anche facendo lo psicologo, ne diffido forse ancora di più. Non ho scritto un manuale. Non propongo dieci regole [...] Leggi di più... from “Riflessioni instabili. Utili (forse) …",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/mobius-il-giardino-carmine-belfiore",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“MÖBIUS. Il giardino” di Carmine Belfiore",
+      "publishedAt": "2026-09-21T03:44:52.000Z",
+      "description": "Con MÖBIUS. Il Giardino, quinto capitolo della saga di fantascienza di Carmine Belfiore, il viaggio attraverso il tempo assume una portata ancora più ampia. Dopo gli eventi raccontati ne La ragazza del Jersey, James Morton continua a seguire una pista di cui non conosce la destinazione, affidandosi sempre più a quell’istinto che ha imparato a [...] Leggi di più... from “MÖBIUS. Il giardino” di Ca…",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/lisa-e-il-muro-arcobaleno-isabella-vezzosi",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Lisa e il muro arcobaleno” di Isabella Vezzosi",
+      "publishedAt": "2026-09-20T05:39:48.000Z",
+      "description": "Un arcobaleno dopo il temporale: Lisa e il muro arcobaleno di Isabella Vezzosi Se nel manuale Educare al rispetto e alla gentilezza Isabella Vezzosi si rivolgeva soprattutto agli adulti, offrendo a genitori e insegnanti strumenti per riconoscere e prevenire il bullismo, con Lisa e il muro arcobaleno l’Autrice compie il passo forse più delicato, quello [...] Leggi di più... from “Lisa e il muro ar…",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/educare-al-rispetto-e-alla-gentilezza-prevenire-bullismo-e-cyberbullismo-isabella-vezzosi",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Educare al rispetto e alla gentilezza. Prevenire bullismo e cyberbullismo” di Isabella Vezzosi",
+      "publishedAt": "2026-09-20T05:30:33.000Z",
+      "description": "Il coraggio di una mano tesa: Educare al rispetto e alla gentilezza di Isabella Vezzosi Nel panorama ormai vasto delle pubblicazioni dedicate al bullismo e al cyberbullismo, dove non di rado il rigore delle statistiche finisce per soffocare la voce di chi quelle ferite le ha davvero attraversate, il volume di Isabella Vezzosi, Educare al [...] Leggi di più... from “Educare al rispetto e alla gent…",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/l-occidente-e-vivo-w-l-occidente-per-sfatare-la-retorica-del-declinismo-paolo-messa",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“L’Occidente è vivo. W l’Occidente. Per sfatare la retorica del declinismo” di Paolo Messa",
+      "publishedAt": "2026-09-19T14:03:12.000Z",
+      "description": "«Da oltre trent’anni, una delle narrazioni più pervasive e affascinanti della scena intellettuale globale è quella che descrive l’Occidente come una civiltà al tramonto. È un sentimento che emerge ciclicamente e che si manifesta con particolare intensità nei momenti storici di maggiore fragilità sistemica, quando crisi economiche, tensioni sociali, transizioni politiche, sfide tecnologiche e inqu…",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "letture-org",
+      "source": {
+        "name": "Letture.org",
+        "url": "https://www.letture.org/roma-cerca-roma-esplorazioni-a-est-giuseppina-granito",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Roma cerca Roma. Esplorazioni a Est” di Giuseppina Granito",
+      "publishedAt": "2026-09-19T13:05:34.000Z",
+      "description": "Una tranquilla e casuale passeggiata, sorprendentemente si trasforma in un interminabile viaggio di scoperta e inaspettate sensazioni. In Roma cerca Roma. Esplorazioni a Est (Palombi Editori) a finire travolta nel gorgo della curiosità è l’Autrice, Giuseppina Granito, una antica passione per la sua città che all’improvviso diventa una Roma estrema, sconosciuta e vivace, apparentemente derelitta […",
+      "discoveredAt": "2026-09-29T20:39:42.309Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "18f87eee03451e4cb7d18a1a036e5f31f611dd6d1ee234a2ff04606f612fe8f0"
+}

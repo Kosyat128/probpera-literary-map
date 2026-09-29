@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "RU"
   ],
-  "attemptedAt": "2026-09-26T17:29:40.425Z",
+  "attemptedAt": "2026-09-29T20:33:57.281Z",
   "requests": [
     {
       "url": "https://www.litres.ru/journal/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 169610,
-      "sha256": "c3cf53963f9364cb0d3e7b4c0c0ed68aee7222a2d1b800c6f42fc1d391d389ef",
-      "accessedAt": "2026-09-26T17:29:40.708Z"
+      "bytes": 169742,
+      "sha256": "6517efbb2f1cb09ab156b639ddc4c545b09265909c221e623546ef4b6897771f",
+      "accessedAt": "2026-09-29T20:33:57.628Z"
     }
   ],
   "status": "blocked",
@@ -27,7 +27,7 @@
     "contentType": "text/plain",
     "bytes": 2420,
     "sha256": "d4b485d8434e97c254fed2dfb333d5d854626d84b0a3933f9edeea88e2815b22",
-    "accessedAt": "2026-09-26T17:29:40.538Z",
+    "accessedAt": "2026-09-29T20:33:57.446Z",
     "disallowed": [
       "*?*",
       "/*/avtor/",
