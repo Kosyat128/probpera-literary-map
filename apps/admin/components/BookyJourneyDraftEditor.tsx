@@ -81,6 +81,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     setInput((current) => {
       const next = { ...current, ...change };
       if (Object.hasOwn(change, "activity") && change.activity === undefined) delete next.activity;
+      if (Object.hasOwn(change, "fact") && change.fact === undefined) delete next.fact;
       return next;
     });
     setErrors([]);
@@ -181,6 +182,22 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     if (input.activity) update({ activity: { ...input.activity, copy: {
       ...input.activity.copy, [locale]: { ...input.activity.copy[locale], [field]: value },
     } } });
+  }
+  function toggleFact(enabled: boolean) {
+    update({ fact: enabled ? { copy: {
+      ru: { title: "", body: "", sources: [{ id: "", url: "", accessedAt: "" }] },
+      en: { title: "", body: "", sources: [{ id: "", url: "", accessedAt: "" }] },
+    } } : undefined });
+  }
+  function updateFactCopy(locale: Locale, field: "title" | "body", value: string) {
+    if (input.fact) update({ fact: { ...input.fact, copy: {
+      ...input.fact.copy, [locale]: { ...input.fact.copy[locale], [field]: value },
+    } } });
+  }
+  function updateFactSource(locale: Locale, index: number, field: "id" | "url" | "accessedAt", value: string) {
+    if (input.fact) update({ fact: { ...input.fact, copy: { ...input.fact.copy, [locale]: {
+      ...input.fact.copy[locale], sources: input.fact.copy[locale].sources.map((source, i) => i === index ? { ...source, [field]: value } : source),
+    } } } });
   }
   async function openDraft(event: ChangeEvent<HTMLInputElement>) {
     const control = event.currentTarget, file = control.files?.[0];
@@ -334,6 +351,49 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     <ol className="site-copy-grid" aria-label="Путь маршрута" style={{ listStyle: "none", margin: 0, padding: 0 }}>
       {steps.map((step) => <li key={step.key}>
         {step.number > 1 && <p aria-hidden="true" style={{ textAlign: "center", margin: "0 0 14px" }}>↓</p>}
+        {step.key === "checkpoint" && <details className="panel site-copy-card" aria-labelledby="journey-fact-heading">
+          <summary id="journey-fact-heading" style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Необязательный факт · источники</summary>
+          <p>Добавьте собственный текст о выбранной книге и источники отдельно для RU и EN. Текст и источники ещё требуют проверки.</p>
+          <label style={{ display: "flex", alignItems: "center", gap: 10, minHeight: 44 }}>
+            <input type="checkbox" checked={!!input.fact} onChange={(event) => toggleFact(event.target.checked)} />
+            Добавить факт об этой книге
+          </label>
+          {input.fact && <div className="site-copy-grid" data-booky-fact-editor>
+            <p>Книга: {work?.label.ru || "Сначала выберите книгу"}</p>
+            <div className="site-copy-locales">
+              {locales.map((locale) => <div key={locale} className="site-copy-grid">
+                <label className="field"><span>Название факта ({locale.toUpperCase()})</span>
+                  <input lang={locale} maxLength={160} style={{ minHeight: 44 }} value={input.fact!.copy[locale].title}
+                    onChange={(event) => updateFactCopy(locale, "title", event.target.value)} /></label>
+                <label className="field"><span>Текст факта ({locale.toUpperCase()})</span>
+                  <textarea lang={locale} maxLength={1600} style={{ minHeight: 44 }} value={input.fact!.copy[locale].body}
+                    onChange={(event) => updateFactCopy(locale, "body", event.target.value)} /></label>
+                <p>Источники ({locale.toUpperCase()}): от 1 до 16. Укажите дату обращения вручную в формате UTC, например 2026-09-30T12:00:00.000Z.</p>
+                {input.fact!.copy[locale].sources.map((source, index) => <div key={index} className="site-copy-grid">
+                  <label className="field"><span>ID источника {index + 1} ({locale.toUpperCase()})</span>
+                    <input maxLength={96} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.id}
+                      onChange={(event) => updateFactSource(locale, index, "id", event.target.value)} /></label>
+                  <label className="field"><span>HTTPS URL источника {index + 1} ({locale.toUpperCase()})</span>
+                    <input type="url" maxLength={1000} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.url}
+                      onChange={(event) => updateFactSource(locale, index, "url", event.target.value)} /></label>
+                  <label className="field"><span>Дата обращения к источнику {index + 1} ({locale.toUpperCase()})</span>
+                    <input maxLength={24} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.accessedAt}
+                      onChange={(event) => updateFactSource(locale, index, "accessedAt", event.target.value)} /></label>
+                  {input.fact!.copy[locale].sources.length > 1 && <button className="button-secondary" type="button" style={{ minHeight: 44 }} onClick={() => {
+                    if (input.fact) update({ fact: { ...input.fact, copy: { ...input.fact.copy, [locale]: {
+                      ...input.fact.copy[locale], sources: input.fact.copy[locale].sources.filter((_, i) => i !== index),
+                    } } } });
+                  }}>Удалить источник {index + 1} ({locale.toUpperCase()})</button>}
+                </div>)}
+                {input.fact!.copy[locale].sources.length < 16 && <button className="button-secondary" type="button" style={{ minHeight: 44 }} onClick={() => {
+                  if (input.fact) update({ fact: { ...input.fact, copy: { ...input.fact.copy, [locale]: {
+                    ...input.fact.copy[locale], sources: [...input.fact.copy[locale].sources, { id: "", url: "", accessedAt: "" }],
+                  } } } });
+                }}>Добавить источник ({locale.toUpperCase()})</button>}
+              </div>)}
+            </div>
+          </div>}
+        </details>}
         {step.key === "checkpoint" && <details className="panel site-copy-card" aria-labelledby="journey-activity-heading">
           <summary id="journey-activity-heading" style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Необязательное задание · выбрать автора</summary>
           <p>Добавьте вопрос между книгой и завершением. Выберите 2–4 автора из каталога; соответствие книге проверяется перед просмотром и экспортом.</p>
@@ -377,7 +437,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           </div>}
         </details>}
         <section className="panel site-copy-card" aria-labelledby={`journey-step-${step.key}`}>
-          <header><h2 id={`journey-step-${step.key}`}>{step.number + (input.activity && step.key === "checkpoint" ? 1 : 0)}. {step.title}</h2>
+          <header><h2 id={`journey-step-${step.key}`}>{step.number + (step.key === "checkpoint" ? Number(!!input.fact) + Number(!!input.activity) : 0)}. {step.title}</h2>
             <span className="badge">{step.key === "checkpoint" ? "Завершение" : "Канонический выбор"}</span></header>
           {step.key === "country" && <>
             <label className="field"><span id="journey-country-label">Страна</span>
@@ -436,6 +496,16 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <p lang="ru">Экран: {previewNode.screen === "globe" ? "Глобус" : "Коллекция"}</p>
           <h4>{previewDialogue.payload.copy.title}</h4>
           <p style={{ whiteSpace: "pre-wrap" }}>{previewDialogue.payload.copy.body}</p>
+          {previewNode.kind === "sourced-fact" && <section data-booky-fact-sources aria-label={preview.locale === "ru" ? "Источники факта" : "Fact sources"}>
+            <p role="note">{preview.locale === "ru" ? "Черновик факта — источники ещё требуют проверки" : "Draft fact — sources still need review"}</p>
+            <ul>
+              {previewDialogue.payload.factualSources.map((source) => <li key={source.id} style={{ marginBottom: 12, overflowWrap: "anywhere" }}>
+                <p>{preview.locale === "ru" ? "ID источника" : "Source ID"}: {source.id}</p>
+                <p><a href={source.url} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", minHeight: 44, padding: "10px 0", overflowWrap: "anywhere" }}>{source.url}</a></p>
+                <p>{preview.locale === "ru" ? "Дата обращения" : "Accessed at"}: <time dateTime={source.accessedAt}>{source.accessedAt}</time></p>
+              </li>)}
+            </ul>
+          </section>}
           {previewNode.kind === "activity" && <div data-booky-activity-answer>
             <ol aria-label="Варианты ответа">
               {previewChoices.map((choice, index) => {
@@ -482,7 +552,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         <ul>{errors.map((error, index) => <li key={`${error.field}-${index}`}>{error.message}</li>)}</ul>
       </div>}
       <p role="status" aria-live="polite">{validating ? "Проверка задания по текущему каталогу…" : notice}</p>
-      <p>JSON содержит два языковых маршрута и {input.activity ? "десять" : "восемь"} черновиков подсказок. Проверка формы не даёт редакционного одобрения.</p>
+      <p>JSON содержит два языковых маршрута и {input.fact && input.activity ? "двенадцать" : input.fact || input.activity ? "десять" : "восемь"} черновиков подсказок. Проверка формы не даёт редакционного одобрения.</p>
       <button className="button" type="submit" disabled={!available} aria-busy={validating}>Скачать черновик JSON</button>
     </section>
   </form>;

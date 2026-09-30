@@ -654,3 +654,261 @@ test('optional adult RU EN author task uses current semantic validation and pres
     productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
   }, null, 2) });
 });
+
+test('optional bilingual work fact preserves authored source metadata through strict local export and reopen', async ({ page }, testInfo) => {
+  const errors = [], externalRequests = [], downloads = [], screenshots = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('download', download => downloads.push(download.suggestedFilename()));
+  await page.addInitScript(() => {
+    window.__factExportBlobs = [];
+    const nativeCreate = URL.createObjectURL;
+    URL.createObjectURL = function(blob) { window.__factExportBlobs.push(blob); return nativeCreate.call(URL, blob); };
+    window.__factStorageWrites = [];
+    const nativeStore = Storage.prototype.setItem;
+    Storage.prototype.setItem = function(key, value) { window.__factStorageWrites.push({ key, local: this === localStorage }); return nativeStore.call(this, key, value); };
+  });
+  await page.route('**/*', async route => {
+    const url = new URL(route.request().url());
+    if (url.origin !== origin) { externalRequests.push(url.origin); return route.abort(); }
+    if (url.pathname === '/') return route.fulfill({ contentType: 'text/html', body: '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/editor.css"></head><body><main id="root" style="padding:16px;max-width:1280px;margin:auto"></main><script src="/editor.js"></script></body></html>' });
+    if (url.pathname === '/editor.js') return route.fulfill({ contentType: 'application/javascript', body: fixture.js });
+    if (url.pathname === '/editor.css') return route.fulfill({ contentType: 'text/css', body: fixture.css });
+    return route.fulfill({ status: 404, body: '' });
+  });
+  await page.setViewportSize({ width: 320, height: 844 });
+  await page.goto(origin);
+  const copy = {
+    ru: { title: 'Синтетическая запись о книге', body: 'Это вымышленный текст для проверки редактора.\nЭто не проверенный литературный факт.', sources: [
+      { id: 'synthetic-ru-one', url: 'https://example.test/ru/unverified-work-note', accessedAt: '2026-09-29T10:15:00.000Z' },
+      { id: 'synthetic-ru-two', url: 'https://example.test/ru/unverified-second-note', accessedAt: '2026-09-29T11:45:00.000Z' },
+    ] },
+    en: { title: 'Synthetic work note', body: 'This is fictional text for checking the editor, not a verified literary fact.', sources: [
+      { id: 'synthetic-en-one', url: 'https://example.test/en/unverified-work-note', accessedAt: '2026-09-28T09:30:00.000Z' },
+    ] },
+  };
+  for (const [label, value] of [
+    ['Идентификатор маршрута', 'synthetic-fact'], ['Версия', '4'], ['Возраст от', '18'], ['Возраст до', '65'],
+    ['Примерная длительность (мин)', '10'], ['Название маршрута (RU)', 'Маршрут с черновиком факта'], ['Название маршрута (EN)', 'Journey with a draft fact'],
+    ['Описание маршрута (RU)', 'Синтетический текст и непроверенные ссылки для проверки формы.'], ['Описание маршрута (EN)', 'Synthetic text and unverified references for checking the form.'],
+  ]) await page.getByLabel(label, { exact: true }).fill(value);
+  await page.getByLabel('Страна', { exact: true }).selectOption('country-a');
+  await page.getByLabel('Писатель', { exact: true }).selectOption('writer-a');
+  await page.getByLabel('Книга', { exact: true }).selectOption('work-a');
+  const factOpener = page.locator('summary#journey-fact-heading');
+  const activityOpener = page.locator('summary#journey-activity-heading');
+  await expect(factOpener.locator('..')).not.toHaveAttribute('open', '');
+  await expect(activityOpener.locator('..')).not.toHaveAttribute('open', '');
+  expect(await factOpener.evaluate(node => Boolean(node.compareDocumentPosition(document.getElementById('journey-activity-heading')) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+  await factOpener.tap();
+  const factEnabled = page.getByLabel('Добавить факт об этой книге', { exact: true });
+  await expect(factEnabled).not.toBeChecked();
+  await factEnabled.check();
+  const editor = page.locator('[data-booky-fact-editor]');
+  const sourceField = (name, number, locale) => page.getByLabel(`${name} ${number} (${locale.toUpperCase()})`, { exact: true });
+  for (const locale of ['ru', 'en']) {
+    await expect(page.getByLabel(`Название факта (${locale.toUpperCase()})`, { exact: true })).toHaveValue('');
+    await expect(page.getByRole('textbox', { name: `Текст факта (${locale.toUpperCase()})`, exact: true })).toHaveValue('');
+    for (const name of ['ID источника', 'HTTPS URL источника', 'Дата обращения к источнику']) {
+      await expect(sourceField(name, 1, locale)).toHaveValue('');
+      await expect(sourceField(name, 2, locale)).toHaveCount(0);
+    }
+  }
+  const previewButton = page.getByRole('button', { name: 'Предпросмотр маршрута', exact: true });
+  const downloadButton = page.getByRole('button', { name: 'Скачать черновик JSON', exact: true });
+  const preview = page.locator('[data-booky-journey-preview]');
+  const factStep = preview.locator('[data-preview-step="sourced-fact"]');
+  await previewButton.tap();
+  await expect(page.getByRole('alert')).toBeVisible(); await expect(preview).toHaveCount(0);
+  await downloadButton.tap(); expect(downloads).toEqual([]);
+  expect(await page.evaluate(() => window.__factExportBlobs.length)).toBe(0);
+  for (const locale of ['ru', 'en']) {
+    await page.getByLabel(`Название факта (${locale.toUpperCase()})`, { exact: true }).fill(copy[locale].title);
+    await page.getByRole('textbox', { name: `Текст факта (${locale.toUpperCase()})`, exact: true }).fill(copy[locale].body);
+    const source = copy[locale].sources[0];
+    await sourceField('ID источника', 1, locale).fill(source.id);
+    await sourceField('HTTPS URL источника', 1, locale).fill(source.url);
+    if (locale === 'ru') await sourceField('Дата обращения к источнику', 1, locale).fill(source.accessedAt);
+  }
+  await expect(sourceField('Дата обращения к источнику', 1, 'en')).toHaveValue('');
+  await previewButton.tap(); await expect(preview).toHaveCount(0);
+  await downloadButton.tap(); expect(downloads).toEqual([]);
+  await expect(sourceField('Дата обращения к источнику', 1, 'en')).toHaveValue('');
+  await sourceField('Дата обращения к источнику', 1, 'en').fill(copy.en.sources[0].accessedAt);
+  await page.getByRole('button', { name: 'Добавить источник (RU)', exact: true }).tap();
+  for (const [name, key] of [['ID источника', 'id'], ['HTTPS URL источника', 'url'], ['Дата обращения к источнику', 'accessedAt']])
+    await sourceField(name, 2, 'ru').fill(copy.ru.sources[1][key]);
+  await previewButton.tap(); await expect(preview).toBeVisible();
+  const next = preview.getByRole('button', { name: 'Следующий шаг', exact: true });
+  const previous = preview.getByRole('button', { name: 'Предыдущий шаг', exact: true });
+  const stepStatus = preview.locator('p[role="status"]').filter({ hasText: /^Шаг / });
+  await expect(stepStatus).toContainText('Шаг 1 из 5');
+  await expect(preview.locator('[data-booky-fact-sources]')).toHaveCount(0);
+  for (let index = 0; index < 3; index++) await next.tap();
+  await expect(factStep).toHaveAttribute('lang', 'ru');
+  await expect(factStep).toContainText(copy.ru.title); await expect(factStep).toContainText(copy.ru.body);
+  const factBodyRu = factStep.locator('p').filter({ hasText: 'Это вымышленный текст для проверки редактора.' });
+  expect(await factBodyRu.evaluate(node => node.textContent)).toBe(copy.ru.body);
+  expect(await factBodyRu.evaluate(node => getComputedStyle(node).whiteSpace)).toBe('pre-wrap');
+  await expect(factStep).toContainText('Тестовая книга А'); await expect(factStep).toContainText('Экран: Коллекция');
+  await expect(factStep.getByRole('note')).toContainText('Черновик факта — источники ещё требуют проверки');
+  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await next.tap(); await expect(preview.locator('[data-preview-step="checkpoint"]')).toBeVisible();
+  await expect(next).toBeDisabled(); await expect(preview.locator('[data-booky-fact-sources]')).toHaveCount(0);
+  await previous.tap();
+  const pendingDownload = page.waitForEvent('download');
+  await downloadButton.tap();
+  const download = await pendingDownload;
+  expect(await download.failure()).toBeNull();
+  const exportedPath = testInfo.outputPath('synthetic-fact-draft.json'); await download.saveAs(exportedPath);
+  const bytes = await fs.readFile(exportedPath), draft = JSON.parse(bytes.toString('utf8'));
+  expect(downloads).toHaveLength(1); expect(await page.evaluate(() => window.__factExportBlobs.length)).toBe(1);
+  expect(await page.evaluate(() => window.__factExportBlobs[0].text())).toBe(bytes.toString('utf8'));
+  expect(draft.authoringSource.input.fact).toEqual({ copy });
+  expect(Object.hasOwn(draft.authoringSource.input, 'activity')).toBe(false);
+  expect(draft.definitions).toHaveLength(2); expect(draft.dialogues).toHaveLength(10);
+  for (const definition of draft.definitions) {
+    expect(definition.audience).toBe('adult'); expect(definition.ageRange).toEqual({ min: 18, max: 65 });
+    expect(definition.readingLevel).toBe('plain');
+    expect(definition.nodes.map(node => node.kind)).toEqual(['country', 'writer', 'work', 'sourced-fact', 'checkpoint']);
+    expect(definition.nodes[3]).toMatchObject({ id: 'sourced-fact', kind: 'sourced-fact', screen: 'collection',
+      entity: { kind: 'work', countryId: 'country-a', writerId: 'writer-a', workId: 'work-a' },
+      fact: { schemaVersion: 1, id: 'synthetic-fact.work-fact', version: 4 },
+    });
+    expect(definition.nodes[3].fact.dialogues.map(binding => binding.locale)).toEqual(['ru', 'en']);
+    for (const binding of definition.nodes[3].fact.dialogues) {
+      expect(binding.id).toBe('synthetic-fact.sourced-fact'); expect(binding.version).toBe(4);
+      const record = draft.dialogues.find(record => record.payload.locale === binding.locale && record.payload.id === binding.id);
+      expect(binding.contentChecksum).toBe(record.review.contentChecksum);
+    }
+    expect(definition.nodes[3].dialogue.contentChecksum).toBe(definition.nodes[3].fact.dialogues.find(binding => binding.locale === definition.locale).contentChecksum);
+  }
+  expect(draft.definitions[0].nodes[3].fact).toEqual(draft.definitions[1].nodes[3].fact);
+  const factRecords = draft.dialogues.filter(record => record.payload.intent === 'sourced-fact');
+  expect(factRecords).toHaveLength(2);
+  for (const record of factRecords) {
+    expect(record.payload.claimKind).toBe('factual');
+    expect(record.payload.copy).toEqual({ title: copy[record.payload.locale].title, body: copy[record.payload.locale].body,
+      caption: copy[record.payload.locale].title, reduced: copy[record.payload.locale].title });
+    expect(record.payload.factualSources).toEqual(copy[record.payload.locale].sources);
+    expect(record.payload.provenance.sourceRef).toBe(`/input/fact/copy/${record.payload.locale}`);
+    expect(record.payload.provenance.sourceSha256).toBe(draft.authoringSourceChecksum);
+  }
+  for (const record of draft.dialogues) expect(record.review).toMatchObject({ status: 'draft', reviewer: null, reviewedAt: null });
+  for (const key of ['journeyApprovals', 'dialogueApprovals', 'currentVersions', 'availability']) expect(draft[key]).toEqual([]);
+  expect(draft.releaseReady).toBe(false); expect(draft.humanReviewed).toBe(false);
+  expect(draft.childApproved).toBe(false); expect(draft.narrationApproved).toBe(false);
+  expect(await page.evaluate(() => window.__activityValidationCalls)).toEqual([]);
+  const fileOpener = page.locator('summary#journey-open-heading'); await fileOpener.tap();
+  const openDraft = page.getByLabel('Открыть черновик JSON', { exact: true });
+  const upload = (name, buffer = bytes) => openDraft.setInputFiles({ name, mimeType: 'application/json', buffer });
+  const factTitleRu = page.getByLabel('Название факта (RU)', { exact: true });
+  await factTitleRu.fill('Текущие несохранённые правки факта');
+  await previewButton.tap(); for (let index = 0; index < 3; index++) await next.tap();
+  const preservedPreview = await preview.innerText();
+  const missingInputSources = structuredClone(draft); missingInputSources.authoringSource.input.fact.copy.en.sources = [];
+  const missingPayloadSources = structuredClone(draft); missingPayloadSources.dialogues.find(record => record.payload.intent === 'sourced-fact').payload.factualSources = [];
+  const metadataTamper = structuredClone(draft); metadataTamper.authoringSource.input.fact.copy.ru.sources[0].url = 'https://example.test/ru/tampered-reference';
+  const bindingTamper = structuredClone(draft); bindingTamper.definitions[1].nodes[3].fact.dialogues[0].contentChecksum = '0'.repeat(64);
+  for (const [filename, buffer] of [
+    ['malformed-fact.json', Buffer.from('{')],
+    ['missing-fact-input-sources.json', Buffer.from(JSON.stringify(missingInputSources))],
+    ['missing-fact-payload-sources.json', Buffer.from(JSON.stringify(missingPayloadSources))],
+    ['tampered-fact-source.json', Buffer.from(JSON.stringify(metadataTamper))],
+    ['tampered-fact-binding.json', Buffer.from(JSON.stringify(bindingTamper))],
+  ]) {
+    await upload(filename, buffer); await expect(page.getByRole('alert')).toBeVisible();
+    await expect(factTitleRu).toHaveValue('Текущие несохранённые правки факта');
+    await expect(sourceField('ID источника', 2, 'ru')).toHaveValue(copy.ru.sources[1].id);
+    expect(await preview.innerText()).toBe(preservedPreview);
+    expect(downloads).toHaveLength(1);
+  }
+  await upload('valid-fact-draft.json');
+  await expect(factEnabled).toBeChecked(); await expect(preview).toHaveCount(0); await expect(openDraft).toHaveValue('');
+  for (const locale of ['ru', 'en']) {
+    await expect(page.getByLabel(`Название факта (${locale.toUpperCase()})`, { exact: true })).toHaveValue(copy[locale].title);
+    await expect(page.getByRole('textbox', { name: `Текст факта (${locale.toUpperCase()})`, exact: true })).toHaveValue(copy[locale].body);
+    for (let index = 0; index < copy[locale].sources.length; index++) {
+      for (const [name, key] of [['ID источника', 'id'], ['HTTPS URL источника', 'url'], ['Дата обращения к источнику', 'accessedAt']])
+        await expect(sourceField(name, index + 1, locale)).toHaveValue(copy[locale].sources[index][key]);
+    }
+  }
+  await sourceField('HTTPS URL источника', 1, 'ru').fill('https://example.test/ru/edited-first-reference');
+  await expect(sourceField('HTTPS URL источника', 2, 'ru')).toHaveValue(copy.ru.sources[1].url);
+  await sourceField('HTTPS URL источника', 1, 'ru').fill(copy.ru.sources[0].url);
+  await page.getByRole('button', { name: 'Добавить источник (EN)', exact: true }).tap();
+  await expect(sourceField('ID источника', 2, 'en')).toHaveValue('');
+  await page.getByRole('button', { name: 'Удалить источник 2 (EN)', exact: true }).tap();
+  await expect(sourceField('ID источника', 2, 'en')).toHaveCount(0);
+  await expect(sourceField('ID источника', 1, 'en')).toHaveValue(copy.en.sources[0].id);
+  await previewButton.tap(); for (let index = 0; index < 3; index++) await next.tap();
+  const overflow = () => page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+  async function capture(filename, scope) {
+    await factStep.scrollIntoViewIfNeeded(); const p = testInfo.outputPath(filename); await page.screenshot({ path: p });
+    screenshots.push({ filename, sha256: sha(await fs.readFile(p)), viewport: page.viewportSize(), scope });
+  }
+  async function verifySources(locale) {
+    const metadata = factStep.locator('[data-booky-fact-sources]');
+    await expect(factStep).toHaveAttribute('lang', locale);
+    await expect(factStep).toContainText(copy[locale].title); await expect(factStep).toContainText(copy[locale].body);
+    await expect(metadata.getByRole('link')).toHaveCount(copy[locale].sources.length);
+    for (const source of copy[locale].sources) {
+      await expect(metadata).toContainText(source.id); await expect(metadata).toContainText(source.accessedAt);
+      const link = metadata.getByRole('link', { name: source.url, exact: true });
+      await expect(link).toHaveAttribute('href', source.url); await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      await expect(link).toHaveAttribute('target', '_blank'); expect((await link.boundingBox()).height).toBeGreaterThanOrEqual(44);
+      await expect(metadata.locator(`time[datetime="${source.accessedAt}"]`)).toHaveText(source.accessedAt);
+    }
+    expect(await overflow()).toBe(false);
+  }
+  await verifySources('ru');
+  await expect(factStep.getByRole('note')).toContainText('Черновик факта — источники ещё требуют проверки');
+  for (const control of [factOpener, factEnabled.locator('..'), factTitleRu, sourceField('ID источника', 1, 'ru'), sourceField('HTTPS URL источника', 1, 'ru'), sourceField('Дата обращения к источнику', 1, 'ru'), previous, next])
+    expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
+  await capture('booky-journey-fact-ru-320.png', 'Actual local sourced-fact preview after native reopen, RU320; explicitly fictional authored text and two unverified synthetic source references, never fetched or attested.');
+  await preview.getByRole('button', { name: 'English', exact: true }).tap();
+  await verifySources('en');
+  await expect(factStep.getByRole('note')).toContainText('Draft fact — sources still need review');
+  await capture('booky-journey-fact-en-320.png', 'Same selected-work draft fact in EN320; independent authored copy, source ID/HTTPS URL/manual UTC date and explicit review notice.');
+  await activityOpener.tap();
+  await page.getByLabel('Добавить задание «Книга и автор»', { exact: true }).check();
+  await page.getByLabel('Автор · вариант 1', { exact: true }).selectOption(JSON.stringify(['country-a', 'writer-a']));
+  await page.getByLabel('Автор · вариант 2', { exact: true }).selectOption(JSON.stringify(['country-b', 'writer-c']));
+  await previewButton.tap(); await expect(preview).toBeVisible(); await expect(stepStatus).toContainText('Шаг 1 из 6');
+  for (let index = 0; index < 3; index++) await next.tap();
+  await expect(factStep).toBeVisible(); await next.tap();
+  const activityStep = preview.locator('[data-preview-step="activity"]');
+  await expect(stepStatus).toContainText('Шаг 5 из 6');
+  await activityStep.locator('[data-answer-choice-id="choice-2"]').tap();
+  await activityStep.getByRole('button', { name: 'Проверить ответ', exact: true }).tap();
+  await expect(activityStep.locator('[data-booky-activity-verdict]')).toHaveAttribute('data-verdict', 'correct');
+  await expect(stepStatus).toContainText('Шаг 5 из 6');
+  const validationCalls = await page.evaluate(() => window.__activityValidationCalls);
+  const answerCalls = await page.evaluate(() => window.__activityAnswerCalls);
+  expect(validationCalls).toHaveLength(1); expect(answerCalls).toHaveLength(1);
+  expect(validationCalls[0].actualHelperCalled).toBe(true); expect(validationCalls[0].actualResult.ok).toBe(true);
+  expect(answerCalls[0].actualHelperCalled).toBe(true); expect(answerCalls[0].actualResult.correct).toBe(true);
+  expect(answerCalls[0].actualResult.draftChecksum).toBe(validationCalls[0].actualResult.draftChecksum);
+  await previous.tap(); await expect(factStep).toBeVisible(); await expect(page.locator('[data-booky-activity-verdict]')).toHaveCount(0);
+  expect(downloads).toHaveLength(1); expect(screenshots).toHaveLength(2);
+  expect(await page.evaluate(() => window.__factExportBlobs.length)).toBe(1);
+  const storageWrites = await page.evaluate(() => window.__factStorageWrites); expect(storageWrites).toEqual([]);
+  expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
+  await testInfo.attach('booky-journey-fact-evidence', { contentType: 'application/json', body: JSON.stringify({
+    pass: true, actualEditorComponent: true, actualEditorStyles: true, actualDraftCompiler: true, actualDraftParser: true,
+    syntheticCatalog: true, authoredSyntheticUnverifiedFact: true, sourceUrlsFetched: false, sourcesAttested: false,
+    optionalFactStartsCollapsedBeforeActivity: true, initialFactCopyAndSourceFieldsBlank: true, noAutomaticAccessDate: true,
+    missingFieldsPreventPreviewAndDownload: true, selectedWorkAnchorOnCollection: true,
+    bilingualDefinitions: 2, factOnlySemanticNodesPerDefinition: 5, unapprovedDialogueDrafts: 10,
+    independentRuEnSourcesPreserved: true, orderedRuEnContentBindingVerified: true, nativeBlobExportObserved: true,
+    nativeFileImportRestoresEverySourceRow: true, importedMultiSourceEditsPreserveOtherRows: true, sourceAddRemoveVerified: true,
+    malformedMissingSourceAndFullEnvelopeTamperPreserveInputAndPreview: true,
+    factPreviewShowsOnlyCurrentLocaleSourceMetadata: true, draftSourceReviewNoticeLocalized: true,
+    sourceLinksHaveHttpsNoopenerNoreferrer: true, narrow320LayoutHasNoHorizontalOverflow: true, minimumControlHitHeightCssPx: 44,
+    combinedFactThenActivityPreviewVerified: true, combinedDraftAnswerBoundToSameWholeHash: true,
+    combinedCurrentCreditedAuthorCheckUsesActualHelper: true, mockedServerActionTransport: true,
+    authenticatedAdminServerTested: false, installedDeviceTested: false, answerCheckDoesNotAdvanceStep: true,
+    storageWrites, downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length },
+    validationCalls, answerCalls, sourceInputs: fixture.sourceInputs, screenshots, errors, externalRequests,
+    productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
+  }, null, 2) });
+});

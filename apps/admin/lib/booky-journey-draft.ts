@@ -7,6 +7,7 @@ import {
   type BookyDialoguePayload, type BookyDialogueRecord,
 } from "../../../src/host/bookyDialogueRegistry";
 import { getBookyJourneyActivityChecksum, type BookyJourneyActivitySpec } from "../../../src/host/bookyJourneyActivity";
+import { getBookyJourneyFactChecksum, type BookyJourneyFactSpec } from "../../../src/host/bookyJourneyFact";
 import { contentRecordHash, contentTextHash } from "../../../src/planet/contentExportHash";
 import type { ContentEntityRef } from "../../../src/planet/contentExportTypes";
 
@@ -29,11 +30,18 @@ export type JourneyDraftInput = {
     nodes: Record<"country" | "writer" | "work" | "checkpoint", { title: string; body: string }>;
   }>;
   activity?: JourneyDraftActivityInput;
+  fact?: JourneyDraftFactInput;
 };
 export type JourneyDraftActivityInput = {
   type: "match-work-author";
   choices: readonly { countryId: string; writerId: string }[];
   copy: Record<"ru" | "en", { title: string; body: string }>;
+};
+export type JourneyDraftFactInput = {
+  copy: Record<"ru" | "en", {
+    title: string; body: string;
+    sources: readonly { id: string; url: string; accessedAt: string }[];
+  }>;
 };
 export type JourneyDraftError = Readonly<{ field: string; message: string }>;
 export type JourneyDraftReviewIssue = Readonly<{
@@ -122,6 +130,35 @@ function activityInput(value: unknown): JourneyDraftActivityInput | null {
   } catch { return null; }
 }
 
+/** Citation metadata is structurally bound to draft copy, not verified here. */
+function factInput(value: unknown): JourneyDraftFactInput | null {
+  try {
+    if (!ownDataKeys(value, ["copy"]) || !ownDataKeys(value.copy, LOCALES)) return null;
+    for (const locale of LOCALES) {
+      const copy = value.copy[locale];
+      if (!ownDataKeys(copy, ["title", "body", "sources"]) || !text(copy.title, 160) || !text(copy.body, 1600, true)
+        || !Array.isArray(copy.sources) || Object.getPrototypeOf(copy.sources) !== Array.prototype
+        || copy.sources.length < 1 || copy.sources.length > 16
+        || Reflect.ownKeys(copy.sources).length !== copy.sources.length + 1) return null;
+      const ids = new Set<string>();
+      for (let index = 0; index < copy.sources.length; index++) {
+        const descriptor = Object.getOwnPropertyDescriptor(copy.sources, String(index));
+        if (!descriptor?.enumerable || !("value" in descriptor)
+          || !ownDataKeys(descriptor.value, ["id", "url", "accessedAt"])) return null;
+        const source = descriptor.value;
+        if (typeof source.id !== "string" || !/^[a-z][a-z0-9._:-]{0,95}$/.test(source.id) || ids.has(source.id)
+          || !text(source.url, 1000) || typeof source.accessedAt !== "string"
+          || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(source.accessedAt)
+          || !Number.isFinite(Date.parse(source.accessedAt)) || new Date(source.accessedAt).toISOString() !== source.accessedAt) return null;
+        const url = new URL(source.url);
+        if (url.protocol !== "https:" || !url.hostname || url.username || url.password) return null;
+        ids.add(source.id);
+      }
+    }
+    return value as unknown as JourneyDraftFactInput;
+  } catch { return null; }
+}
+
 /** Authoring only. The injected catalog must already be a public-eligible view;
  * this model neither grants publication rights nor supplies missing translations. */
 export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: JourneyDraftCatalog): JourneyDraftResult {
@@ -157,6 +194,13 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
     ? activityInput(activityDescriptor.value) : undefined;
   if (activityDescriptor && !activity) {
     fail("activity", "Задание должно содержать тип match-work-author, от двух до четырёх канонических вариантов и тексты RU/EN без лишних полей.");
+    return rejected();
+  }
+  const factDescriptor = Object.getOwnPropertyDescriptor(input, "fact");
+  const fact = factDescriptor?.enumerable && "value" in factDescriptor
+    ? factInput(factDescriptor.value) : undefined;
+  if (factDescriptor && !fact) {
+    fail("fact", "Факт должен содержать исходные тексты RU/EN и от одного до шестнадцати источников каждого языка: уникальный ID, HTTPS URL без учётных данных и дату UTC в формате YYYY-MM-DDTHH:mm:ss.sssZ.");
     return rejected();
   }
   if (!catalog || !Array.isArray(catalog.countries)) {
@@ -253,6 +297,10 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         type: activity.type, choices: activity.choices.map(choice => ({ countryId: choice.countryId, writerId: choice.writerId })),
         copy: { ru: { title: activity.copy.ru.title, body: activity.copy.ru.body }, en: { title: activity.copy.en.title, body: activity.copy.en.body } },
       } } : {}),
+      ...(fact ? { fact: { copy: {
+        ru: { title: fact.copy.ru.title, body: fact.copy.ru.body, sources: fact.copy.ru.sources.map(source => ({ ...source })) },
+        en: { title: fact.copy.en.title, body: fact.copy.en.body, sources: fact.copy.en.sources.map(source => ({ ...source })) },
+      } } } : {}),
     },
     selection: { country: selected(country), writer: selected(writer), work: selected(work),
       ...(activity ? { activityChoices: activitySelections.map(choice => ({ country: selected(choice.country), writer: selected(choice.writer) })) } : {}),
@@ -276,10 +324,75 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
   const definitions: BookyJourneyDefinition[] = [];
   const definitionsChecksums: { locale: "ru" | "en"; checksum: string }[] = [];
   const dialogues: BookyDialogueRecord[] = [];
-  const nodeKinds = activitySpec ? ["country", "writer", "work", "activity", "checkpoint"] as const : NODE_KINDS;
+  let factSpec: BookyJourneyFactSpec | undefined;
+  const factRecords: Partial<Record<"ru" | "en", BookyDialogueRecord>> = {};
+  if (fact) {
+    // Context deliberately excludes the binding table. Valid transient hashes
+    // let the existing helper bind identity/anchor before both payloads exist.
+    // This table is replaced with real payload hashes before any output.
+    const contextSpec: BookyJourneyFactSpec = {
+      schemaVersion: 1, id: `${input.id}.work-fact`, version: input.version,
+      dialogues: [
+        { locale: "ru", id: `${input.id}.sourced-fact`, version: input.version, contentChecksum: "0".repeat(64) },
+        { locale: "en", id: `${input.id}.sourced-fact`, version: input.version, contentChecksum: "0".repeat(64) },
+      ],
+    };
+    const contextNode: BookyJourneyNode = {
+      id: "sourced-fact", kind: "sourced-fact", entity: refs.work, screen: "collection",
+      dialogue: { id: `${input.id}.sourced-fact`, version: input.version, contentChecksum: "" }, fact: contextSpec,
+    };
+    const context = bookyJourneyDialogueContext(input.id, contextNode);
+    if (!context) { fail("fact", "Факт несовместим с контекстом выбранной книги."); return rejected(); }
+    for (const locale of LOCALES) {
+      const copy = authoringSource.input.fact!.copy[locale];
+      const payload: BookyDialoguePayload = {
+        id: contextNode.dialogue.id, version: input.version, locale, audience: "adult",
+        ageRange: { ...authoringSource.input.ageRange }, readingLevel: input.readingLevel,
+        intent: "sourced-fact", screens: ["collection"], context, entityIds: [bookyJourneyEntityId(refs.work!)],
+        claimKind: "factual", factualSources: copy.sources.map(source => ({ ...source })),
+        copy: { title: copy.title, body: copy.body, caption: copy.title, reduced: copy.title },
+        narration: null, prohibitedTags: [],
+        provenance: {
+          kind: "editorial", sourcePath: "authoringSource", sourceVersion: 1,
+          sourceRef: `/input/fact/copy/${locale}`, sourceSha256: authoringSourceChecksum,
+          copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })),
+        },
+      };
+      const contentChecksum = getBookyDialogueContentChecksum(payload);
+      if (!contentChecksum) { fail(`fact.copy.${locale}`, "Диалог факта не соответствует схеме реестра."); return rejected(); }
+      const review = { status: "draft" as const, reviewer: null, reviewedAt: null, contentChecksum };
+      const checksum = getBookyDialogueChecksum({ payload, review });
+      if (!checksum) { fail(`fact.copy.${locale}`, "Не удалось связать draft факт с его контрольной суммой."); return rejected(); }
+      factRecords[locale] = { payload, review, checksum };
+    }
+    factSpec = {
+      ...contextSpec,
+      dialogues: [
+        { ...contextSpec.dialogues[0], contentChecksum: factRecords.ru!.review.contentChecksum },
+        { ...contextSpec.dialogues[1], contentChecksum: factRecords.en!.review.contentChecksum },
+      ],
+    };
+    if (!getBookyJourneyFactChecksum(factSpec, refs.work!, "collection")
+      || bookyJourneyDialogueContext(input.id, { ...contextNode, fact: factSpec }) !== context) {
+      fail("fact", "Не удалось связать тексты RU/EN с выбранной книгой."); return rejected();
+    }
+  }
+  const nodeKinds: readonly ((typeof NODE_KINDS)[number] | "activity" | "sourced-fact")[] = [
+    "country", "writer", "work", ...(factSpec ? ["sourced-fact" as const] : []),
+    ...(activitySpec ? ["activity" as const] : []), "checkpoint",
+  ];
   for (const locale of LOCALES) {
     const nodes: BookyJourneyNode[] = [];
     for (const kind of nodeKinds) {
+      if (kind === "sourced-fact") {
+        const record = factRecords[locale]!;
+        dialogues.push(record);
+        nodes.push({
+          id: kind, kind, entity: refs.work, screen: "collection", fact: factSpec!,
+          dialogue: { id: record.payload.id, version: input.version, contentChecksum: record.review.contentChecksum },
+        });
+        continue;
+      }
       const node: BookyJourneyNode = {
         id: kind, kind, entity: kind === "activity" ? null : refs[kind], screen: kind === "country" || kind === "writer" || kind === "activity" ? "globe" : "collection",
         dialogue: { id: `${input.id}.${kind}`, version: input.version, contentChecksum: "" },
@@ -359,11 +472,14 @@ export function parseBookyJourneyDraft(text: string, catalog: JourneyDraftCatalo
     const inputFields = ["id", "version", "countryId", "writerId", "workId", "ageRange",
       "readingLevel", "estimatedDurationMinutes", "copy"];
     const hasActivity = record(input) && Object.prototype.hasOwnProperty.call(input, "activity");
-    if (!exactKeys(input, hasActivity ? [...inputFields, "activity"] : inputFields) || !exactKeys(input.ageRange, ["min", "max"])
+    const hasFact = record(input) && Object.prototype.hasOwnProperty.call(input, "fact");
+    if (!exactKeys(input, [...inputFields, ...(hasActivity ? ["activity"] : []), ...(hasFact ? ["fact"] : [])]) || !exactKeys(input.ageRange, ["min", "max"])
       || !exactKeys(input.copy, LOCALES))
       return rejected("authoringSource.input", "Исходная форма черновика содержит лишние или отсутствующие поля.");
     if (hasActivity && !activityInput(input.activity))
       return rejected("activity", "Задание содержит неверные, лишние или отсутствующие поля либо неполные тексты RU/EN.");
+    if (hasFact && !factInput(input.fact))
+      return rejected("fact", "Факт содержит неверные, лишние или отсутствующие тексты RU/EN либо источники.");
     for (const locale of LOCALES) {
       const copy = input.copy[locale];
       if (!exactKeys(copy, ["title", "description", "nodes"]) || !exactKeys(copy.nodes, NODE_KINDS))

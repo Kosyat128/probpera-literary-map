@@ -6,6 +6,7 @@ import {
   createBookyDialogueRegistry, getBookyDialogueChecksum, getBookyDialogueContentChecksum,
 } from "../../../src/host/bookyDialogueRegistry";
 import { getBookyJourneyActivityChecksum } from "../../../src/host/bookyJourneyActivity";
+import { getBookyJourneyFactChecksum, parseBookyJourneyFact } from "../../../src/host/bookyJourneyFact";
 import { contentRecordHash, contentTextHash } from "../../../src/planet/contentExportHash";
 import {
   BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft,
@@ -570,5 +571,273 @@ describe("adult Booky journey draft reopening", () => {
     expect(importErrors(serialized, noWorkEnglish)).toContain("workId");
     expect([result.draft.releaseReady, result.draft.humanReviewed, result.draft.childApproved, result.draft.narrationApproved])
       .toEqual([false, false, false, false]);
+  });
+});
+
+function factValue(): JourneyDraftInput {
+  return { ...input(), fact: { copy: {
+    ru: { title: "Тестовый факт", body: "Явно введённый редакторский текст для проверки схемы.\nВторая строка исходного текста.", sources: [
+      { id: "source-ru", url: "https://example.org/ru/work", accessedAt: "2026-09-29T10:00:00.000Z" },
+    ] },
+    en: { title: "Synthetic fact", body: "Explicit editorial text for checking the schema.", sources: [
+      { id: "source-en", url: "https://example.org/en/work", accessedAt: "2026-09-28T11:30:00.000Z" },
+    ] },
+  } } };
+}
+function factRecord(exported: BookyJourneyDraft, locale: "ru" | "en") {
+  return exported.dialogues.find(record => record.payload.intent === "sourced-fact" && record.payload.locale === locale)!;
+}
+
+describe("adult Booky journey draft sourced-fact authoring", () => {
+  it("binds ten draft dialogues and the same ordered bilingual fact table to the selected work using the real schemas", () => {
+    const value = factValue(), exported = draft(value);
+    expect(exported.dialogues).toHaveLength(10);
+    const expectedBindings = (["ru", "en"] as const).map(locale => ({
+      locale, id: "test-route.sourced-fact", version: 2, contentChecksum: factRecord(exported, locale).review.contentChecksum,
+    }));
+    for (const definition of exported.definitions) {
+      expect(definition.nodes.map(node => node.kind)).toEqual(["country", "writer", "work", "sourced-fact", "checkpoint"]);
+      const node = definition.nodes[3], record = factRecord(exported, definition.locale), authored = value.fact!.copy[definition.locale];
+      expect([node.id, node.kind, node.screen]).toEqual(["sourced-fact", "sourced-fact", "collection"]);
+      expect(node.entity).toEqual(definition.nodes[2].entity);
+      expect(node.fact).toEqual({ schemaVersion: 1, id: "test-route.work-fact", version: 2, dialogues: expectedBindings });
+      expect(parseBookyJourneyFact(node.fact)).toEqual(node.fact);
+      expect(getBookyJourneyFactChecksum(node.fact, node.entity!, node.screen)).not.toBeNull();
+      expect(getBookyJourneyChecksum(definition)).toBe(exported.definitionsChecksums.find(item => item.locale === definition.locale)!.checksum);
+      expect(record.payload.context).toBe(bookyJourneyDialogueContext(definition.id, node));
+      expect(record.payload.context).toBe(`fact:${contentRecordHash({ journeyId: "test-route", nodeId: "sourced-fact",
+        factId: "test-route.work-fact", factVersion: 2, entity: node.entity, screen: "collection" })}`);
+      expect(record.payload.entityIds).toEqual([bookyJourneyEntityId(node.entity!)]);
+      expect(record.payload.copy).toEqual({ title: authored.title, body: authored.body, caption: authored.title, reduced: authored.title });
+      expect(record.payload.factualSources).toEqual(authored.sources);
+      expect(record.payload.claimKind).toBe("factual");
+      expect(record.payload.provenance).toEqual({ kind: "editorial", sourcePath: "authoringSource", sourceVersion: 1,
+        sourceRef: `/input/fact/copy/${definition.locale}`, sourceSha256: exported.authoringSourceChecksum,
+        copySha256: contentTextHash(JSON.stringify({ title: authored.title, body: authored.body })),
+      });
+      expect(getBookyDialogueContentChecksum(record.payload)).toBe(node.dialogue.contentChecksum);
+      expect(getBookyDialogueChecksum({ payload: record.payload, review: record.review })).toBe(record.checksum);
+      expect(record.review).toEqual({ status: "draft", reviewer: null, reviewedAt: null, contentChecksum: node.dialogue.contentChecksum });
+      expect(record.payload.narration).toBeNull();
+      expect(record.payload.prohibitedTags).toEqual([]);
+      expect(node.fact!.dialogues.every(binding => binding.contentChecksum !== "0".repeat(64))).toBe(true);
+    }
+    const registry = createBookyDialogueRegistry(exported.dialogues, {
+      canonicalEntityIds: [...new Set(exported.definitions[0].nodes.flatMap(node => node.entity ? [bookyJourneyEntityId(node.entity)] : []))],
+      approvedReviews: [],
+    });
+    expect(registry.size).toBe(10);
+    expect(registry.rejections).toEqual([]);
+    for (const record of exported.dialogues) expect(registry.resolve({
+      id: record.payload.id, locale: record.payload.locale, audience: "adult", age: 30, readingLevel: "plain",
+      intent: record.payload.intent, screen: record.payload.screens[0], context: record.payload.context,
+      entityIds: record.payload.entityIds, now: "2026-09-30T12:00:00.000Z",
+    })).toBeNull();
+    for (const definition of exported.definitions) expect(compileBookyJourney(definition, {
+      audience: "adult", age: 30, locale: definition.locale, readingLevel: "plain", now: "2026-09-30T12:00:00.000Z",
+      connectivity: "online", completedPrerequisites: [], availability: [],
+    }, { currentVersions: [], approvedReviews: [], dialogueRegistry: registry, publicCountries: [], publicBooks: [] })).toBeNull();
+    expect([exported.releaseReady, exported.humanReviewed, exported.childApproved, exported.narrationApproved]).toEqual([false, false, false, false]);
+    for (const entries of [exported.journeyApprovals, exported.dialogueApprovals, exported.currentVersions, exported.availability]) expect(entries).toEqual([]);
+  });
+
+  it("keeps locale copy and citations independent while rebinding both factual payloads to changed shared authoring bytes", () => {
+    const original = draft(factValue()), changedInput = factValue();
+    changedInput.fact!.copy.ru.body = "Другой явно введённый текст.";
+    changedInput.fact!.copy.ru.sources = [{ id: "replacement-ru", url: "https://example.org/ru/changed", accessedAt: "2026-09-29T12:00:00.000Z" }];
+    const changed = draft(changedInput);
+    expect(factRecord(changed, "en").payload.copy).toEqual(factRecord(original, "en").payload.copy);
+    expect(factRecord(changed, "en").payload.factualSources).toEqual(factRecord(original, "en").payload.factualSources);
+    expect(factRecord(changed, "en").payload.provenance.copySha256).toBe(factRecord(original, "en").payload.provenance.copySha256);
+    expect(factRecord(changed, "ru").payload.provenance.copySha256).not.toBe(factRecord(original, "ru").payload.provenance.copySha256);
+    for (const locale of ["ru", "en"] as const) {
+      const record = factRecord(changed, locale);
+      expect(record.review.contentChecksum).not.toBe(factRecord(original, locale).review.contentChecksum);
+      expect(record.payload.provenance.sourceSha256).toBe(changed.authoringSourceChecksum);
+      expect(changed.definitions.every(definition => definition.nodes[3].fact!.dialogues.find(binding => binding.locale === locale)!.contentChecksum
+        === getBookyDialogueContentChecksum(record.payload))).toBe(true);
+    }
+    expect(changed.definitions[0].nodes[3].fact).toEqual(changed.definitions[1].nodes[3].fact);
+    expect(getBookyJourneyFactChecksum(changed.definitions[0].nodes[3].fact, changed.definitions[0].nodes[3].entity!, "collection"))
+      .not.toBe(getBookyJourneyFactChecksum(original.definitions[0].nodes[3].fact, original.definitions[0].nodes[3].entity!, "collection"));
+  });
+
+  it("copies and freezes every factual source without retaining or mutating caller data", () => {
+    const value = factValue(), canonical = catalog(), before = JSON.stringify({ value, canonical });
+    const exported = draft(value, canonical);
+    expect(JSON.stringify({ value, canonical })).toBe(before);
+    expect(draft(value, canonical)).toEqual(exported);
+    value.fact!.copy.ru.sources[0].url = "https://example.org/changed";
+    value.fact!.copy.en.title = "Changed caller title";
+    canonical.countries[0].writers[0].works[0].label.en = "Changed canonical work";
+    expect(exported.authoringSource.input.fact!.copy.ru.sources[0].url).toBe("https://example.org/ru/work");
+    expect(factRecord(exported, "ru").payload.factualSources[0].url).toBe("https://example.org/ru/work");
+    expect(exported.authoringSource.input.fact!.copy.en.title).toBe("Synthetic fact");
+    expect(exported.authoringSource.selection.work.label.en).toBe("Test work");
+    expect(Object.isFrozen(exported.authoringSource.input.fact!.copy.ru.sources)).toBe(true);
+    expect(Object.isFrozen(factRecord(exported, "en").payload.factualSources[0])).toBe(true);
+    expect(Object.isFrozen(exported.definitions[0].nodes[3].fact!.dialogues)).toBe(true);
+    expect(Object.isFrozen(value.fact)).toBe(false);
+  });
+
+  it("accepts one to sixteen explicit sources and registry text limits but rejects invalid IDs, URLs, timestamps and bounds", () => {
+    for (const length of [1, 16]) {
+      const value = factValue();
+      for (const locale of ["ru", "en"] as const) {
+        value.fact!.copy[locale].title = "a".repeat(160);
+        value.fact!.copy[locale].body = "b".repeat(1600);
+        value.fact!.copy[locale].sources = Array.from({ length }, (_, index) => ({
+          id: `source-${index}`, url: `https://example.org/${locale}/${index}`, accessedAt: "2024-02-29T12:00:00.000Z",
+        }));
+      }
+      const exported = draft(value);
+      expect(factRecord(exported, "ru").payload.factualSources).toHaveLength(length);
+      expect(parseBookyJourneyDraft(JSON.stringify(exported), catalog()).ok).toBe(true);
+    }
+    const invalidSources = [
+      { id: "" }, { id: "Uppercase" }, { id: "a".repeat(97) }, { id: "with space" },
+      { url: "http://example.org/work" }, { url: "file:///work" }, { url: "not a URL" },
+      { url: "https://user:secret@example.org/work" }, { url: "https://user@example.org/work" },
+      { url: "https://" }, { url: "https://example.org/" + "a".repeat(1000) }, { url: " https://example.org/work" },
+      { accessedAt: "2026-02-30T12:00:00.000Z" }, { accessedAt: "2026-09-29T10:00:00Z" },
+      { accessedAt: "2026-09-29T10:00:00.000+00:00" }, { accessedAt: "2026-09-29" }, { accessedAt: "" },
+    ];
+    for (const changedSource of invalidSources) {
+      const value = factValue();
+      Object.assign(value.fact!.copy.en.sources[0], changedSource);
+      expect(errors(value)).toContain("fact");
+    }
+    for (const change of [
+      (value: JourneyDraftInput) => { value.fact!.copy.en.title = "a".repeat(161); },
+      (value: JourneyDraftInput) => { value.fact!.copy.ru.body = "b".repeat(1601); },
+      (value: JourneyDraftInput) => { value.fact!.copy.ru.title = ""; },
+      (value: JourneyDraftInput) => { value.fact!.copy.en.body = " "; },
+      (value: JourneyDraftInput) => { value.fact!.copy.ru.body = "Unsupported\u000bcontrol"; },
+      (value: JourneyDraftInput) => { value.fact!.copy.en.sources = []; },
+      (value: JourneyDraftInput) => { value.fact!.copy.en.sources = Array.from({ length: 17 }, (_, index) => ({ id: `source-${index}`, url: "https://example.org/work", accessedAt: "2026-09-29T10:00:00.000Z" })); },
+      (value: JourneyDraftInput) => { value.fact!.copy.ru.sources = [value.fact!.copy.ru.sources[0], { ...value.fact!.copy.ru.sources[0] }]; },
+    ]) {
+      const value = factValue(); change(value); expect(errors(value)).toContain("fact");
+    }
+    // Date syntax is checked without a fabricated review date or current clock.
+    const future = factValue(); future.fact!.copy.en.sources[0].accessedAt = "2099-01-01T00:00:00.000Z";
+    expect(draft(future).humanReviewed).toBe(false);
+  });
+
+  it("rejects unknown fields, sparse arrays, exotic prototypes and accessors without invoking getters", () => {
+    const malformed: unknown[] = [null, undefined, {}, [],
+      { ...factValue().fact, verified: true },
+      { copy: { ru: factValue().fact!.copy.ru } },
+      { copy: { ...factValue().fact!.copy, fr: factValue().fact!.copy.en } },
+    ];
+    let getterCalls = 0;
+    const getter = () => { getterCalls++; throw new Error("getter must not execute"); };
+    const changes: ((value: NonNullable<JourneyDraftInput["fact"]>) => void)[] = [
+      value => { Object.assign(value.copy.ru, { approved: true }); },
+      value => { Object.assign(value.copy.en.sources[0], { verified: true }); },
+      value => { value.copy.ru.sources = Array(1); },
+      value => { Object.assign(value.copy.en.sources, { extra: true }); },
+      value => { Object.defineProperty(value.copy.en.sources, Symbol("extra"), { value: true }); },
+      value => { Object.defineProperty(value, "copy", { get: getter, enumerable: true }); },
+      value => { Object.defineProperty(value.copy, "ru", { get: getter, enumerable: true }); },
+      value => { Object.defineProperty(value.copy.en, "sources", { get: getter, enumerable: true }); },
+      value => { Object.defineProperty(value.copy.ru.sources, "0", { get: getter, enumerable: true }); },
+      value => { Object.defineProperty(value.copy.en.sources[0], "url", { get: getter, enumerable: true }); },
+      value => { Object.defineProperty(value.copy.ru.sources[0], "accessedAt", { get: getter, enumerable: true }); },
+      value => { Object.defineProperty(value.copy.en.sources[0], "hidden", { value: true }); },
+      value => { Object.setPrototypeOf(value.copy.ru.sources[0], { approved: true }); },
+    ];
+    for (const change of changes) { const value = factValue().fact!; change(value); malformed.push(value); }
+    for (const fact of malformed) {
+      const value = input(); Object.assign(value, { fact }); expect(errors(value)).toContain("fact");
+    }
+    const inputAccessor = input();
+    Object.defineProperty(inputAccessor, "fact", { get: getter, enumerable: true });
+    expect(errors(inputAccessor)).toContain("fact");
+    expect(getterCalls).toBe(0);
+  });
+
+  it("round trips complete facts and rejects independently rehashed source, payload, bilingual binding and authority tampering", () => {
+    const exported = draft(factValue()), serialized = JSON.stringify(exported), reopened = parseBookyJourneyDraft(serialized, catalog());
+    expect(reopened.ok).toBe(true);
+    if (!reopened.ok) return;
+    expect(reopened.input).toEqual(factValue());
+    expect(reopened.draft).toEqual(exported);
+    const changes: ((value: Mutable<BookyJourneyDraft>) => void)[] = [
+      value => { value.authoringSource.input.fact!.copy.ru.sources[0].url = "https://example.org/changed"; },
+      value => { value.authoringSource.input.fact!.copy.en.body = "Changed input fact"; value.authoringSourceChecksum = contentRecordHash(value.authoringSource); },
+      value => { value.definitions[0].nodes[3].fact!.dialogues.reverse(); },
+      value => { value.definitions[1].nodes[3].fact!.dialogues[0].contentChecksum = "0".repeat(64); },
+      value => { value.definitions[0].nodes[3].entity = { kind: "work", countryId: "test-country", writerId: "other-writer", workId: "other-work" }; },
+      value => {
+        const record = value.dialogues.find(record => record.payload.intent === "sourced-fact" && record.payload.locale === "en")!;
+        record.payload.factualSources[0].url = "https://example.org/changed";
+        const contentChecksum = getBookyDialogueContentChecksum(record.payload)!;
+        expect(contentChecksum).not.toBeNull();
+        record.review.contentChecksum = contentChecksum;
+        record.checksum = getBookyDialogueChecksum({ payload: record.payload, review: record.review })!;
+        value.definitions[1].nodes[3].dialogue.contentChecksum = contentChecksum;
+        for (const definition of value.definitions) definition.nodes[3].fact!.dialogues[1].contentChecksum = contentChecksum;
+        value.definitionsChecksums = value.definitions.map(definition => ({ locale: definition.locale, checksum: getBookyJourneyChecksum(definition)! }));
+      },
+      value => { value.dialogues.find(record => record.payload.intent === "sourced-fact")!.payload.provenance.sourceRef = "/input/fact/copy/en"; },
+      value => { Object.assign(value, { humanReviewed: true, releaseReady: true }); },
+    ];
+    for (const change of changes) {
+      const value: Mutable<BookyJourneyDraft> = JSON.parse(serialized); change(value);
+      expect(importErrors(JSON.stringify(value))).toContain("file");
+    }
+    for (const invalidFact of [null, {}, { copy: { ru: factValue().fact!.copy.ru } }, { ...factValue().fact, sourceVerified: true }]) {
+      const value: Mutable<BookyJourneyDraft> = JSON.parse(serialized);
+      Object.assign(value.authoringSource.input, { fact: invalidFact });
+      expect(importErrors(JSON.stringify(value))).toContain("fact");
+    }
+  });
+
+  it("rejects fact drafts against stale or removed current canonical anchors and preserves missing country/writer EN issues", () => {
+    const serialized = JSON.stringify(draft(factValue()));
+    for (const entity of ["country", "writer", "work"] as const) {
+      for (const locale of ["ru", "en"] as const) {
+        const canonical = catalog(), country = canonical.countries[0], writer = country.writers[0];
+        (entity === "country" ? country : entity === "writer" ? writer : writer.works[0]).label[locale] += " changed";
+        expect(importErrors(serialized, canonical)).toContain("file");
+      }
+    }
+    const removedWork = catalog(); removedWork.countries[0].writers[0].works = [];
+    expect(importErrors(serialized, removedWork)).toContain("workId");
+    expect(errors({ ...factValue(), workId: "other-work" })).toContain("workId");
+    const missingEnglish = catalog();
+    missingEnglish.countries[0].label.en = ""; missingEnglish.countries[0].writers[0].label.en = "";
+    const exported = draft(factValue(), missingEnglish);
+    expect(exported.blockingReviewIssues.map(issue => issue.field)).toEqual(["countryId", "writerId"]);
+    expect(exported.authoringSource.selection.country.label.en).toBe("");
+    expect(exported.authoringSource.selection.writer.label.en).toBe("");
+    expect(parseBookyJourneyDraft(JSON.stringify(exported), missingEnglish).ok).toBe(true);
+    missingEnglish.countries[0].writers[0].works[0].label.en = "";
+    expect(importErrors(JSON.stringify(exported), missingEnglish)).toContain("workId");
+  });
+
+  it("combines six nodes and twelve dialogues without changing the current activity spec, its choices or the four navigation steps", () => {
+    const activityOnly = draft(activityValue()), value = activityValue();
+    value.fact = factValue().fact;
+    const exported = draft(value);
+    expect(exported.dialogues).toHaveLength(12);
+    expect(exported.authoringSource.input.activity).toEqual(activityOnly.authoringSource.input.activity);
+    expect(exported.authoringSource.selection.activityChoices).toEqual(activityOnly.authoringSource.selection.activityChoices);
+    for (const definition of exported.definitions) {
+      expect(definition.nodes.map(node => node.kind)).toEqual(["country", "writer", "work", "sourced-fact", "activity", "checkpoint"]);
+      const originalActivity = activityOnly.definitions.find(item => item.locale === definition.locale)!.nodes[3];
+      const activity = definition.nodes[4];
+      expect(activity.activity).toEqual(originalActivity.activity);
+      expect(getBookyJourneyActivityChecksum(activity.activity)).toBe(getBookyJourneyActivityChecksum(originalActivity.activity));
+      expect(bookyJourneyDialogueContext(definition.id, activity)).toBe(bookyJourneyDialogueContext(definition.id, originalActivity));
+      expect(definition.nodes.filter(node => ["country", "writer", "work", "checkpoint"].includes(node.kind))
+        .map(node => [node.id, node.entity, node.screen])).toEqual(activityOnly.definitions[0].nodes
+        .filter(node => node.kind !== "activity").map(node => [node.id, node.entity, node.screen]));
+      expect(getBookyJourneyChecksum(definition)).not.toBeNull();
+    }
+    expect(parseBookyJourneyDraft(JSON.stringify(exported), catalog()).ok).toBe(true);
+    expect(Object.prototype.hasOwnProperty.call(activityOnly.authoringSource.input, "fact")).toBe(false);
+    expect(activityOnly.definitions.every(definition => definition.nodes.every(node => !Object.prototype.hasOwnProperty.call(node, "fact")))).toBe(true);
   });
 });
