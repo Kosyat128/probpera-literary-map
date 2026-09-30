@@ -92,6 +92,19 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const previewEntity = preview ? preview.draft.authoringSource.selection[
     previewNode?.kind === "country" ? "country" : previewNode?.kind === "writer" ? "writer" : "work"
   ] : null;
+  const reviewRows = preview && previewDefinition ? previewDefinition.nodes.map((node, step) => ({
+    id: node.id, kind: node.kind, step,
+    copies: locales.map((locale) => {
+      const authored = preview.draft.authoringSource.input;
+      const copy = node.kind === "activity" ? authored.activity?.copy[locale]
+        : node.kind === "sourced-fact" ? authored.fact?.copy[locale]
+          : node.kind === "country" || node.kind === "writer" || node.kind === "work" || node.kind === "checkpoint"
+            ? authored.copy[locale].nodes[node.kind] : undefined;
+      return { locale, supplied: !!copy,
+        captionAuthored: !!copy && Object.hasOwn(copy, "caption"), reducedAuthored: !!copy && Object.hasOwn(copy, "reduced"),
+        sourceCount: node.kind === "sourced-fact" ? authored.fact?.copy[locale].sources.length ?? 0 : null };
+    }),
+  })) : [];
 
   function update(change: Partial<JourneyDraftInput>) {
     operationSequence.current += 1;
@@ -162,6 +175,12 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     if (!preview || !previewDefinition || !Number.isInteger(step) || step < 0 || step >= previewDefinition.nodes.length || step === preview.step) return;
     beginOperation();
     setPreview((current) => current ? { ...current, step } : null);
+  }
+  function inspectReviewNode(locale: Locale, step: number) {
+    if (!preview || !previewDefinition || !Number.isInteger(step) || step < 0 || step >= previewDefinition.nodes.length
+      || (locale === preview.locale && step === preview.step)) return;
+    beginOperation();
+    setPreview((current) => current ? { ...current, locale, step } : null);
   }
   function changePreviewCopyView(view: PreviewCopyView) {
     if (view === previewCopyView) return;
@@ -610,6 +629,29 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             ? previewDefinition.readingLevel === "plain" ? "Простой" : previewDefinition.readingLevel === "developing" ? "Развивающийся" : "Свободный"
             : previewDefinition.readingLevel === "plain" ? "Plain" : previewDefinition.readingLevel === "developing" ? "Developing" : "Fluent"
         } · {preview.locale === "ru" ? "Оценка" : "Estimate"}: {previewDefinition.overview?.estimatedDurationMinutes} {preview.locale === "ru" ? "мин" : "min"}</p>
+        <details data-booky-review-report lang={preview.locale} style={{ minWidth: 0 }}>
+          <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>{preview.locale === "ru" ? "Отчёт по черновику" : "Draft review report"} ({reviewRows.length})</summary>
+          <p>{preview.locale === "ru" ? "Указанные тексты и источники по шагам. Редакционная проверка остаётся отдельной." : "Supplied copy and sources by step. Editorial review remains separate."}</p>
+          <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            {reviewRows.map((row) => <li key={row.id} data-review-node={row.id} style={{ minWidth: 0, padding: "10px 0", borderTop: "1px solid rgba(87, 54, 123, 0.2)" }}>
+              <strong>{row.step + 1}. {previewStepLabels[preview.locale][row.kind]}</strong>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 12, marginTop: 8 }}>
+                {row.copies.map((copy) => <div key={copy.locale} lang={copy.locale} data-review-locale={copy.locale} style={{ minWidth: 0, overflowWrap: "anywhere" }}>
+                  <strong>{copy.locale.toUpperCase()}</strong>
+                  <dl style={{ margin: "6px 0" }}>
+                    <div><dt style={{ display: "inline" }}>{copy.locale === "ru" ? "Заголовок и полный текст: " : "Title and full text: "}</dt><dd data-review-copy="main" data-copy-presence={copy.supplied ? "authored" : "absent"} style={{ display: "inline", margin: 0 }}>{copy.locale === "ru" ? copy.supplied ? "указаны" : "не указаны" : copy.supplied ? "supplied" : "absent"}</dd></div>
+                    <div><dt style={{ display: "inline" }}>{copy.locale === "ru" ? "Подпись: " : "Caption: "}</dt><dd data-review-copy="caption" data-copy-presence={copy.captionAuthored ? "authored" : "title-fallback"} style={{ display: "inline", margin: 0 }}>{copy.locale === "ru" ? copy.captionAuthored ? "авторский текст" : "название шага" : copy.captionAuthored ? "authored" : "title fallback"}</dd></div>
+                    <div><dt style={{ display: "inline" }}>{copy.locale === "ru" ? "Короткий текст: " : "Short text: "}</dt><dd data-review-copy="reduced" data-copy-presence={copy.reducedAuthored ? "authored" : "title-fallback"} style={{ display: "inline", margin: 0 }}>{copy.locale === "ru" ? copy.reducedAuthored ? "авторский текст" : "название шага" : copy.reducedAuthored ? "authored" : "title fallback"}</dd></div>
+                  </dl>
+                  {copy.sourceCount !== null && <p data-review-sources data-source-count={copy.sourceCount} style={{ margin: "6px 0" }}>{copy.locale === "ru" ? `Указано источников (не проверены): ${copy.sourceCount}` : `Supplied sources (unreviewed): ${copy.sourceCount}`}</p>}
+                  <button className="button-secondary" type="button" data-review-inspect={copy.locale} aria-current={preview.locale === copy.locale && preview.step === row.step ? "step" : undefined}
+                    style={{ minHeight: 44, minWidth: 44, maxWidth: "100%", whiteSpace: "normal", textAlign: "start" }}
+                    onClick={() => inspectReviewNode(copy.locale, row.step)}>{copy.locale === "ru" ? `Просмотреть RU · ${row.step + 1}` : `Inspect EN · ${row.step + 1}`}</button>
+                </div>)}
+              </div>
+            </li>)}
+          </ol>
+        </details>
         <details data-booky-preview-profile lang={preview.locale} style={{ minWidth: 0 }}>
           <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>{preview.locale === "ru" ? "Профиль предпросмотра" : "Preview profile"}</summary>
           <p>{preview.locale === "ru" ? "Сравнение использует возраст и уровень чтения, заданные для этого черновика." : "This comparison uses the age and reading level declared in this draft."}</p>
