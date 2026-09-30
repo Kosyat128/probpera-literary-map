@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/checkpoint.mjs",
+    "sha256": "cc1ea79cd578f31ce98763b59841275b9452f3263e868e7a6b0f102b144c0f52"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-state.mjs"
+  ],
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "resolvedRoot": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work",
+  "startedAt": "2026-09-30T14:59:44.634Z",
+  "durationMs": 35155,
+  "exitCode": 1,
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at verifyState (file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/checkpoint.mjs:94:1006)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/checkpoint.mjs:100:54",
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/verify-state-a1/stdout.log",
+    "sha256": "9d8b9a637bc26e8aae4ec4fe2926908b8b16549e77f7119fb69bf95abcff2952"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/verify-state-a1/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "applicationChecksRun": false,
+  "testsRun": false,
+  "buildsRun": false
+}

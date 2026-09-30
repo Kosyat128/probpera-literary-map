@@ -1,0 +1,20 @@
+{
+  "startedAt": "2026-09-30T14:32:02.8000866+00:00",
+  "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "durationMs": 6113,
+  "exitCode": 0,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\native-artifact-audit-stdout.log",
+    "bytes": 1045,
+    "sha256": "b0e1b26510aea6e0e284f94287a2c91573c2e22f835b8034df098961e6d08aef"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\native-artifact-audit-stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-native-artifact.mjs"
+  ]
+}

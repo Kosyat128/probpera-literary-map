@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T14:30:57.180Z",
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a3.json",
+    "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db",
+    "fileCount": 1665
+  },
+  "browserResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/result.json",
+    "sha256": "5d393b271ba10576d86057d026480e4bf1374f05aad5466e5bcaf12277e3d1c3"
+  },
+  "causalReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/agent-causal-review-a3.json",
+    "sha256": "08e587884acd7f38d9a7c7e3b5b151383f43e91bd50b25b68309b052c9eeaf68"
+  },
+  "imageCount": 6,
+  "directRootViews": 6,
+  "directlyViewedImageCount": 6,
+  "readerForegroundScreenshotsViewed": 2,
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5",
+      "filename": "booky-writer-filter-recovery-ru-filtered-empty.png",
+      "width": 390,
+      "height": 844,
+      "framing": "Actual App; repeated ordinary writer request preserves restrictive view; explicit localized recovery is available. Picker setup is controlled.",
+      "locale": "ru",
+      "directRootViewed": true,
+      "visualResult": "Requested help stays within its mobile surface; localized recovery/action text is readable with independent help scrolling. This image alone does not prove the later reader lifecycle."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0",
+      "filename": "booky-writer-filter-recovery-ru-recovered.png",
+      "width": 390,
+      "height": 844,
+      "framing": "Actual App; explicit recovery acknowledged after rendered current-writer results; canonical scene and saved content retained.",
+      "locale": "ru",
+      "directRootViewed": true,
+      "visualResult": "Requested help stays within its mobile surface; localized recovery/action text is readable with independent help scrolling. This image alone does not prove the later reader lifecycle."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-reader-foreground.png",
+      "sha256": "9e79d6845dc3653acebbdc4ee129674fa04ad167aad05801815a62a721a9d461",
+      "filename": "booky-writer-filter-recovery-ru-reader-foreground.png",
+      "width": 390,
+      "height": 844,
+      "framing": "Actual App; trusted entry retires previously open Booky help; selected reader owns focus, compact Booky stays available and decorative motion is paused. Original recovery captures remain separate.",
+      "locale": "ru",
+      "directRootViewed": true,
+      "visualResult": "Automatic Booky help has retired; the title and reader controls remain visible with the compact actor below. Existing catalog duplication, disabled batch navigation and compact article clipping remain separate next design work."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d",
+      "filename": "booky-writer-filter-recovery-en-filtered-empty.png",
+      "width": 320,
+      "height": 844,
+      "framing": "Actual App; repeated ordinary writer request preserves restrictive view; explicit localized recovery is available. Picker setup is controlled.",
+      "locale": "en",
+      "directRootViewed": true,
+      "visualResult": "Requested help stays within its mobile surface; localized recovery/action text is readable with independent help scrolling. This image alone does not prove the later reader lifecycle."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211",
+      "filename": "booky-writer-filter-recovery-en-recovered.png",
+      "width": 320,
+      "height": 844,
+      "framing": "Actual App; explicit recovery acknowledged after rendered current-writer results; canonical scene and saved content retained.",
+      "locale": "en",
+      "directRootViewed": true,
+      "visualResult": "Requested help stays within its mobile surface; localized recovery/action text is readable with independent help scrolling. This image alone does not prove the later reader lifecycle."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-reader-foreground.png",
+      "sha256": "f6f8a622b50f8876a2d4bb4a0cffa9be514db121a6e8a2701553eea9415c9bbc",
+      "filename": "booky-writer-filter-recovery-en-reader-foreground.png",
+      "width": 320,
+      "height": 844,
+      "framing": "Actual App; trusted entry retires previously open Booky help; selected reader owns focus, compact Booky stays available and decorative motion is paused. Original recovery captures remain separate.",
+      "locale": "en",
+      "directRootViewed": true,
+      "visualResult": "Automatic Booky help has retired; the title and reader controls remain visible with the compact actor below. Existing catalog duplication, disabled batch navigation and compact article clipping remain separate next design work."
+    }
+  ],
+  "cases": [
+    {
+      "title": "Booky explicit writer filter recovery ru",
+      "evidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-3731d85a5eeb8de160c1256820407c06d1b3309d.json",
+        "sha256": "03a14e6f270502215c749c2aa995bebcd27c17ca2a88364eea6384dfe0d9c7ef"
+      }
+    },
+    {
+      "title": "Booky explicit writer filter recovery en",
+      "evidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-5248d76ef5734ad9755736f674d271acd06e8d2f.json",
+        "sha256": "b35f4f3b231a792d248837e4f23fb299a82df693255c7decdb03520af2d8e12b"
+      }
+    }
+  ],
+  "scope": "Root directly viewed all six final PNGs. Bounded Booky reader-foreground and recovery layout proof, with current remaining reader/catalog crowding explicitly retained as next work; not final application design acceptance.",
+  "currentReaderBehaviorConfirmed": true,
+  "originalFourRecoveryImagesDoNotProveNewReaderLifecycle": true,
+  "remainingVisualWork": [
+    "Duplicate underlying catalog card/title while the mobile reader is open",
+    "Redundant shelf batch buttons and rail, including disabled controls for a single book",
+    "Small initial reader body clips the author details into scrolling"
+  ],
+  "stageAccepted": false,
+  "fullDesignAccepted": false,
+  "releaseReady": false
+}

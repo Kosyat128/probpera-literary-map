@@ -1,0 +1,30 @@
+{
+  "startedAt": "2026-09-30T14:32:10.6055841+00:00",
+  "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android",
+  "durationMs": 90161,
+  "exitCode": 0,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\assemble-dev-debug-stdout.log",
+    "bytes": 13865,
+    "sha256": "0054d03a01f75e07f5d0129d79157a5da6973bfd1dcb000195570f74fe2d8a1a"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\assemble-dev-debug-stderr.log",
+    "bytes": 251,
+    "sha256": "7947f20a02b8249ee4ac57e08b051987df95393d087248b86ba68192263b665b"
+  },
+  "command": [
+    "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+    "-Xmx64m",
+    "-Xms64m",
+    "-Duser.home=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+    "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-runtime-build-evidence\\attempt-a1\\android\\temp",
+    "-Dorg.gradle.appname=gradlew",
+    "-classpath",
+    "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+    "org.gradle.wrapper.GradleWrapperMain",
+    "--offline",
+    "--no-daemon",
+    ":app:assembleDevDebug"
+  ]
+}

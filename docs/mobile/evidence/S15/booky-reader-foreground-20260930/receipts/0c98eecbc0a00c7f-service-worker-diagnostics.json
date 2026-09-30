@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "passiveOnly": true,
+  "originalAssertionsUnchanged": true,
+  "cacheReadMethod": "read-only CDP CacheStorage",
+  "samples": [
+    {
+      "elapsedMs": 5093,
+      "kind": "interval",
+      "href": "http://127.0.0.1:4301/planet/ru/?country=russia#atlas",
+      "secureContext": true,
+      "supported": true,
+      "controller": null,
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4301/planet/",
+          "installing": {
+            "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+            "state": "installing"
+          },
+          "waiting": null,
+          "active": null
+        }
+      ],
+      "cacheCounts": [
+        {
+          "name": "literary-planet-pwa-v1-464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2",
+          "entries": 340
+        }
+      ],
+      "cacheError": null
+    },
+    {
+      "elapsedMs": 10112,
+      "kind": "interval",
+      "href": "http://127.0.0.1:4301/planet/ru/?country=russia#atlas",
+      "secureContext": true,
+      "supported": true,
+      "controller": null,
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4301/planet/",
+          "installing": {
+            "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+            "state": "installing"
+          },
+          "waiting": null,
+          "active": null
+        }
+      ],
+      "cacheCounts": [
+        {
+          "name": "literary-planet-pwa-v1-464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2",
+          "entries": 730
+        }
+      ],
+      "cacheError": null
+    },
+    {
+      "elapsedMs": 15178,
+      "kind": "interval",
+      "href": "http://127.0.0.1:4301/planet/ru/?country=russia#atlas",
+      "secureContext": true,
+      "supported": true,
+      "controller": null,
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4301/planet/",
+          "installing": {
+            "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+            "state": "installing"
+          },
+          "waiting": null,
+          "active": null
+        }
+      ],
+      "cacheCounts": [
+        {
+          "name": "literary-planet-pwa-v1-464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2",
+          "entries": 1192
+        }
+      ],
+      "cacheError": null
+    },
+    {
+      "elapsedMs": 20220,
+      "kind": "interval",
+      "href": "http://127.0.0.1:4301/planet/ru/?country=russia#atlas",
+      "secureContext": true,
+      "supported": true,
+      "controller": null,
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4301/planet/",
+          "installing": null,
+          "waiting": null,
+          "active": {
+            "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+            "state": "activating"
+          }
+        }
+      ],
+      "cacheCounts": [
+        {
+          "name": "literary-planet-pwa-v1-464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2",
+          "entries": 1399
+        }
+      ],
+      "cacheError": null
+    },
+    {
+      "elapsedMs": 25227,
+      "kind": "interval",
+      "href": "http://127.0.0.1:4301/planet/en/?country=russia#atlas",
+      "secureContext": true,
+      "supported": true,
+      "controller": {
+        "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+        "state": "activated"
+      },
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4301/planet/",
+          "installing": null,
+          "waiting": null,
+          "active": {
+            "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+            "state": "activated"
+          }
+        }
+      ],
+      "cacheCounts": [
+        {
+          "name": "literary-planet-pwa-v1-464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2",
+          "entries": 1399
+        }
+      ],
+      "cacheError": null
+    },
+    {
+      "elapsedMs": 26345,
+      "kind": "after-test",
+      "href": "http://127.0.0.1:4301/planet/ru/?country=russia#atlas",
+      "secureContext": true,
+      "supported": true,
+      "controller": {
+        "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+        "state": "activated"
+      },
+      "registrations": [
+        {
+          "scope": "http://127.0.0.1:4301/planet/",
+          "installing": null,
+          "waiting": null,
+          "active": {
+            "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+            "state": "activated"
+          }
+        }
+      ],
+      "cacheCounts": [
+        {
+          "name": "literary-planet-pwa-v1-464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2",
+          "entries": 1399
+        }
+      ],
+      "cacheError": null
+    }
+  ],
+  "errors": [],
+  "versions": [
+    {
+      "elapsedMs": 18,
+      "versions": []
+    },
+    {
+      "elapsedMs": 269,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "stopped",
+          "status": "new",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 0,
+          "controlledClients": []
+        }
+      ]
+    },
+    {
+      "elapsedMs": 334,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "stopped",
+          "status": "new",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 1790779817.697896,
+          "controlledClients": []
+        }
+      ]
+    },
+    {
+      "elapsedMs": 377,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "starting",
+          "status": "new",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 1790779817.697896,
+          "controlledClients": []
+        }
+      ]
+    },
+    {
+      "elapsedMs": 377,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "starting",
+          "status": "new",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 1790779817.697896,
+          "controlledClients": [],
+          "targetId": "09CB3F440766D423BAB2EC85AACAE321"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 427,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "starting",
+          "status": "installing",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 1790779817.697896,
+          "controlledClients": [],
+          "targetId": "09CB3F440766D423BAB2EC85AACAE321"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 428,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "running",
+          "status": "installing",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 1790779817.697896,
+          "controlledClients": [],
+          "targetId": "09CB3F440766D423BAB2EC85AACAE321"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 19530,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "running",
+          "status": "installed",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 1790779817.697896,
+          "controlledClients": [],
+          "targetId": "09CB3F440766D423BAB2EC85AACAE321"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 19530,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "running",
+          "status": "activating",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 1790779817.697896,
+          "controlledClients": [],
+          "targetId": "09CB3F440766D423BAB2EC85AACAE321"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 21324,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "running",
+          "status": "activating",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 1790779817.697896,
+          "controlledClients": [
+            "E09E367D1821121CD22DB1208294D456"
+          ],
+          "targetId": "09CB3F440766D423BAB2EC85AACAE321"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 21324,
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "http://127.0.0.1:4301/planet/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 1790779817.697896,
+          "controlledClients": [
+            "E09E367D1821121CD22DB1208294D456"
+          ],
+          "targetId": "09CB3F440766D423BAB2EC85AACAE321"
+        }
+      ]
+    }
+  ],
+  "registrations": [
+    {
+      "elapsedMs": 18,
+      "registrations": []
+    },
+    {
+      "elapsedMs": 269,
+      "registrations": [
+        {
+          "registrationId": "0",
+          "scopeURL": "http://127.0.0.1:4301/planet/",
+          "isDeleted": false
+        }
+      ]
+    },
+    {
+      "elapsedMs": 428,
+      "registrations": [
+        {
+          "registrationId": "0",
+          "scopeURL": "http://127.0.0.1:4301/planet/",
+          "isDeleted": false
+        }
+      ]
+    }
+  ],
+  "requestFailures": [],
+  "actualTestStatus": "passed",
+  "expectedTestStatus": "passed",
+  "limits": {
+    "eventsPerCategory": 256,
+    "cacheSamples": 30,
+    "intervalMs": 5000
+  }
+}

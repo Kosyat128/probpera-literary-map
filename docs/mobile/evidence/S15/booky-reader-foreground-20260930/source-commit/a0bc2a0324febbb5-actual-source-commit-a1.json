@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "recordedAt": "2026-09-30T14:31:19.255Z",
+  "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "predecessorDocsCommit": "787902fbc84322879592cca26d53d36a46148a24",
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a3.json",
+    "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1660,
+  "reports": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-validation-review-a1/static-a1/result.json",
+      "sha256": "379e2917dcce2a246a9945e059f39ce50a5e9bd706a0e9a3d0ecae3a7f228d43"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-validation-review-a1/unit-a1/result.json",
+      "sha256": "b43fbb39dba7267839a060268463d21cf7bac8dec5711d99d1a9700f608f1a68"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/result.json",
+      "sha256": "5d393b271ba10576d86057d026480e4bf1374f05aad5466e5bcaf12277e3d1c3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/actual-root-review-a1.json",
+      "sha256": "2f29a3f6ef69123554388806e133da54b1f89860b7e3df612da06d095d57775d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/agent-causal-review-a3.json",
+      "sha256": "08e587884acd7f38d9a7c7e3b5b151383f43e91bd50b25b68309b052c9eeaf68"
+    }
+  ],
+  "blobs": [
+    {
+      "path": "src/App.tsx",
+      "workingSha256": "06779f84df7f21fedcf19460803203300832e26dd654b8ae6a5ab0f1a6fb86a6",
+      "gitBlobSha256": "06779f84df7f21fedcf19460803203300832e26dd654b8ae6a5ab0f1a6fb86a6",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "workingSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+      "gitBlobSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "workingSha256": "2a2cfed45f64c17ad4b310f680e354d2b9064a43a0741ea98cfa81660dbaf171",
+      "gitBlobSha256": "2a2cfed45f64c17ad4b310f680e354d2b9064a43a0741ea98cfa81660dbaf171",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "workingSha256": "4ee9f6d2d7e145581de142f4d1da7ed3158e16fa9dee7aa151016d74cf727939",
+      "gitBlobSha256": "4ee9f6d2d7e145581de142f4d1da7ed3158e16fa9dee7aa151016d74cf727939",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+      "workingSha256": "fa360ce4c1ed6f82fb52bc196cb96f64a25801b2ab972e1dc8db4f1c143e2970",
+      "gitBlobSha256": "24c77a79750129b63d5f4f59a0a953985d8a4f882149ce12faf83269eebc1e4b",
+      "onlyLineEndingNormalization": true
+    }
+  ],
+  "producer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\root-commit-source-a4.mjs",
+    "sha256": "3552a14a95a258bc2da9c2a6758ce18bd8795f67cf3090aceecbb11ed1803ae0"
+  },
+  "sourceInputsUnchanged": true,
+  "worktreeClean": true,
+  "testsRerun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

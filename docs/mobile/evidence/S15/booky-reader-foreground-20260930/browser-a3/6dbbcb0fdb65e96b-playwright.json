@@ -1,0 +1,156 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/playwright.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\execution-review-runtime-fix-a4\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/baseline-ru-a1/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-writer-filter-recovery.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/baseline-ru-a1/playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-writer-filter-recovery.spec.mjs",
+      "file": "booky-writer-filter-recovery.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Booky explicit writer filter recovery ru",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 63846,
+                  "error": {
+                    "message": "Error: Booky help retires once on genuine reader arrival\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-panel]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Booky help retires once on genuine reader arrival with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-panel]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: Booky help retires once on genuine reader arrival\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-panel]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Booky help retires once on genuine reader arrival with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-panel]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs:627:83",
+                    "location": {
+                      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs",
+                      "column": 83,
+                      "line": 627
+                    },
+                    "snippet": "  625 |     foreground.arrival=foregroundArrival;\n  626 |     // The old runtime is expected to fail here after the real committed arrival.\n> 627 |     await expect(panel(page),'Booky help retires once on genuine reader arrival').toHaveCount(0);\n      |                                                                                   ^\n  628 |     await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','true');await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','true');\n  629 |     await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-reduced-motion','true');\n  630 |     await expect.poll(async()=>{const current=await writerReaderObservation(page);return current.focus.reader&&!current.focus.bookyToggle&&current.bookKey===selectedKey&&current.title===readerTitle;},{message:'The actual reader keeps its own focus and identity after automatic help retirement'}).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs",
+                        "column": 83,
+                        "line": 627
+                      },
+                      "message": "Error: Booky help retires once on genuine reader arrival\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-panel]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Booky help retires once on genuine reader arrival with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-panel]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  625 |     foreground.arrival=foregroundArrival;\n  626 |     // The old runtime is expected to fail here after the real committed arrival.\n> 627 |     await expect(panel(page),'Booky help retires once on genuine reader arrival').toHaveCount(0);\n      |                                                                                   ^\n  628 |     await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','true');await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','true');\n  629 |     await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-reduced-motion','true');\n  630 |     await expect.poll(async()=>{const current=await writerReaderObservation(page);return current.focus.reader&&!current.focus.bookyToggle&&current.bookKey===selectedKey&&current.title===readerTitle;},{message:'The actual reader keeps its own focus and identity after automatic help retirement'}).toBe(true);\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs:627:83"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T14:02:50.739Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "diagnostic-failure-ru",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-evidence\\baseline-ru-a1\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\diagnostic-failure-ru-0bce452b730006a6c9fc641882a9a0cec0fb322a.png"
+                    },
+                    {
+                      "name": "booky-writer-filter-recovery-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-evidence\\baseline-ru-a1\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\booky-writer-filter-recovery-source-evidence-00100717e52f705b4b0289f0fbdbd839f85468ad.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-evidence\\baseline-ru-a1\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs",
+                    "column": 83,
+                    "line": 627
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "f82c42912aaff44e191c-27759decaf4d5e570437",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/booky-writer-filter-recovery.spec.mjs",
+          "line": 469,
+          "column": 37
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T14:02:50.080Z",
+    "duration": 65265.403000000006,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-09-30T14:32:08.9939204+00:00",
+  "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "durationMs": 1595,
+  "exitCode": 0,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\capacitor-copy-stdout.log",
+    "bytes": 219,
+    "sha256": "be70bcaf053438fdf68cfe293a5ce408bc66245e46dc7f63c20142acc661625a"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\capacitor-copy-stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@capacitor/cli/bin/capacitor",
+    "copy",
+    "android"
+  ]
+}

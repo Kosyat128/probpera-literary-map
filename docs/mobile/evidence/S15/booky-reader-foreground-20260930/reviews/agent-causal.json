@@ -1,0 +1,1627 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-reader-foreground-causal-review",
+  "recordedAt": "2026-09-30T14:30:10.696Z",
+  "pass": true,
+  "actualReviewer": "design_final_packet",
+  "actualProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/record-final-causal-review-a3.mjs",
+    "sha256": "b89ebcd384f4cdea8916b5e7090be4285325dbbb42c20f47f09ee83990210a5a"
+  },
+  "browserResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/result.json",
+    "sha256": "5d393b271ba10576d86057d026480e4bf1374f05aad5466e5bcaf12277e3d1c3"
+  },
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/playwright.json",
+    "sha256": "a9b23c9b4b346bede18aa569e59fb23d7ecf818cc8186ed91ad8d011d753f5fa"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/source-manifest.json",
+    "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db",
+    "fileCount": 1665
+  },
+  "runtimeSourceCommit": null,
+  "sourceCommit": null,
+  "sourceBeforeCommit": true,
+  "productionImplementationChanged": true,
+  "fixtureOnly": false,
+  "runtimeUnchanged": false,
+  "browserCases": 2,
+  "totalCapturedImageCount": 6,
+  "directImageViewsPerformed": false,
+  "inspectedImageCount": 0,
+  "visualReviewRequiredSeparately": true,
+  "baselineDiagnostic": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/actual-baseline-review-a1.json",
+    "sha256": "492129c0da77cd6564cdd000d965731384d3147e65a2adbeb867e996f2d4b1fc"
+  },
+  "sourceApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-runtime-apply-a1.json",
+    "sha256": "e895f1e09a831007b545fed96b781138333f10959fc3b0b796d36d95768c2a8b"
+  },
+  "fixtureApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-fixture-apply-a1.json",
+    "sha256": "95d90d1985ab0bda1735f3b42976aedc9dbc993e74875f40d065b0b7483886cd"
+  },
+  "incrementalFixtureApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-fixture-viewport-apply-a2.json",
+    "sha256": "e4fd6d986fdb43bd02469232841d0f627bdceeaf1c8e8ddb1d6cdc58307edc69"
+  },
+  "priorFailedFinalRun": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a2/result.json",
+    "sha256": "4177ddaf19f6dbe163673465331b88f14cfe855661f25017b573b3ce58d79061"
+  },
+  "cases": [
+    {
+      "locale": "ru",
+      "rawEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-3731d85a5eeb8de160c1256820407c06d1b3309d.json",
+        "sha256": "03a14e6f270502215c749c2aa995bebcd27c17ca2a88364eea6384dfe0d9c7ef"
+      },
+      "firstOwnedCallback": {
+        "time": 57674,
+        "view": {
+          "active": true,
+          "settled": false,
+          "countryId": "russia",
+          "writerId": "dostoevsky",
+          "workId": "crime-and-punishment"
+        },
+        "helpOpen": true,
+        "focusInReader": true,
+        "focusOnBookyToggle": false,
+        "scrollTop": 902,
+        "clientHeight": 325,
+        "scrollHeight": 1622,
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+      },
+      "settledArrival": {
+        "time": 57725.199999999255,
+        "view": {
+          "active": true,
+          "settled": true,
+          "countryId": "russia",
+          "writerId": "dostoevsky",
+          "workId": "crime-and-punishment"
+        },
+        "helpOpen": false,
+        "focusInReader": true,
+        "focusOnBookyToggle": false,
+        "scrollTop": 902,
+        "clientHeight": 325,
+        "scrollHeight": 1622,
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+      },
+      "collapsed": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+        "bookKey": "russia:dostoevsky:crime-and-punishment",
+        "title": "Преступление и наказание",
+        "reader": {
+          "present": true,
+          "visible": true,
+          "inert": false,
+          "rect": {
+            "top": 343.734375,
+            "bottom": 562.125,
+            "width": 328,
+            "height": 218.390625
+          }
+        },
+        "focus": {
+          "reader": true,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "ARTICLE",
+          "id": "book-archive-detail"
+        },
+        "nativeOwner": {
+          "scrollTop": 941,
+          "clientHeight": 681,
+          "scrollHeight": 1622
+        },
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": false,
+        "booky": {
+          "readerOwned": "true",
+          "readerPaused": "true",
+          "gesture": "rest",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "true",
+          "renderCount": "17",
+          "systemReducedMotion": false
+        }
+      },
+      "explicitReopen": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+        "bookKey": "russia:dostoevsky:crime-and-punishment",
+        "title": "Преступление и наказание",
+        "reader": {
+          "present": true,
+          "visible": true,
+          "inert": false,
+          "rect": {
+            "top": 343.734375,
+            "bottom": 562.125,
+            "width": 328,
+            "height": 218.390625
+          }
+        },
+        "focus": {
+          "reader": false,
+          "bookyToggle": false,
+          "help": true,
+          "tag": "H2",
+          "id": ":rv:-title"
+        },
+        "nativeOwner": {
+          "scrollTop": 941,
+          "clientHeight": 325,
+          "scrollHeight": 1622
+        },
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": true,
+        "booky": {
+          "readerOwned": "true",
+          "readerPaused": "false",
+          "gesture": "greeting",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "false",
+          "renderCount": "18",
+          "systemReducedMotion": false
+        }
+      },
+      "sameEntry": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+        "bookKey": "russia:dostoevsky:crime-and-punishment",
+        "title": "Преступление и наказание",
+        "reader": {
+          "present": true,
+          "visible": true,
+          "inert": false,
+          "rect": {
+            "top": 368.734375,
+            "bottom": 587.125,
+            "width": 328,
+            "height": 218.390625
+          }
+        },
+        "focus": {
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        "nativeOwner": {
+          "scrollTop": 916,
+          "clientHeight": 325,
+          "scrollHeight": 1622
+        },
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": true,
+        "booky": {
+          "readerOwned": "true",
+          "readerPaused": "false",
+          "gesture": "greeting",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "false",
+          "renderCount": "22",
+          "systemReducedMotion": false
+        }
+      },
+      "closed": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+        "bookKey": null,
+        "title": null,
+        "reader": {
+          "present": false,
+          "visible": false,
+          "inert": false,
+          "rect": null
+        },
+        "focus": {
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        "nativeOwner": null,
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": null,
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": false,
+        "booky": {
+          "readerOwned": "false",
+          "readerPaused": "false",
+          "gesture": "greeting",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "false",
+          "renderCount": "22",
+          "systemReducedMotion": false
+        }
+      },
+      "reentryCallback": {
+        "time": 64253.300000000745,
+        "view": {
+          "active": true,
+          "settled": false,
+          "countryId": "russia",
+          "writerId": "dostoevsky",
+          "workId": "crime-and-punishment"
+        },
+        "helpOpen": true,
+        "focusInReader": true,
+        "focusOnBookyToggle": false,
+        "scrollTop": 916,
+        "clientHeight": 325,
+        "scrollHeight": 1622,
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+      },
+      "reentryAttribution": {
+        "inactiveCallbackAfterUrlRemovalObserved": false,
+        "closeProof": "Actual f.closed snapshot has no reader/book, restored history and retired help; ordered trusted Close and reentry activations plus the passing frozen fixture post-close time predicate authenticate this boundary.",
+        "callbackRelation": "Latest same-work owned callback after first arrival is attributed by the ordered input/snapshot evidence and passing post-close fixture predicate; a separate inactive callback after URL removal is absent and is not required."
+      },
+      "reentered": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+        "bookKey": "russia:dostoevsky:crime-and-punishment",
+        "title": "Преступление и наказание",
+        "reader": {
+          "present": true,
+          "visible": true,
+          "inert": false,
+          "rect": {
+            "top": 343.734375,
+            "bottom": 562.125,
+            "width": 328,
+            "height": 218.390625
+          }
+        },
+        "focus": {
+          "reader": true,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "ARTICLE",
+          "id": "book-archive-detail"
+        },
+        "nativeOwner": {
+          "scrollTop": 941,
+          "clientHeight": 681,
+          "scrollHeight": 1622
+        },
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": false,
+        "booky": {
+          "readerOwned": "true",
+          "readerPaused": "true",
+          "gesture": "rest",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "true",
+          "renderCount": "84",
+          "systemReducedMotion": false
+        }
+      },
+      "readerViewTrace": [
+        {
+          "time": 57674,
+          "view": {
+            "active": true,
+            "settled": false,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": true,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 902,
+          "clientHeight": 325,
+          "scrollHeight": 1622,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 57689.800000000745,
+          "view": {
+            "active": false,
+            "settled": false,
+            "countryId": null,
+            "writerId": null,
+            "workId": null
+          },
+          "helpOpen": true,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 902,
+          "clientHeight": 325,
+          "scrollHeight": 1622,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 57725.199999999255,
+          "view": {
+            "active": true,
+            "settled": true,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": false,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 902,
+          "clientHeight": 325,
+          "scrollHeight": 1622,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 58512.40000000037,
+          "view": {
+            "active": false,
+            "settled": false,
+            "countryId": null,
+            "writerId": null,
+            "workId": null
+          },
+          "helpOpen": true,
+          "focusInReader": false,
+          "focusOnBookyToggle": false,
+          "scrollTop": 884,
+          "clientHeight": 325,
+          "scrollHeight": 1622,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 61542.90000000037,
+          "view": {
+            "active": true,
+            "settled": true,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": true,
+          "focusInReader": false,
+          "focusOnBookyToggle": false,
+          "scrollTop": 895,
+          "clientHeight": 325,
+          "scrollHeight": 1622,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 63340.59999999963,
+          "view": {
+            "active": false,
+            "settled": false,
+            "countryId": null,
+            "writerId": null,
+            "workId": null
+          },
+          "helpOpen": false,
+          "focusInReader": false,
+          "focusOnBookyToggle": false,
+          "scrollTop": 916,
+          "clientHeight": 681,
+          "scrollHeight": 1622,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 64253.300000000745,
+          "view": {
+            "active": true,
+            "settled": false,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": true,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 916,
+          "clientHeight": 325,
+          "scrollHeight": 1622,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 64269.40000000037,
+          "view": {
+            "active": false,
+            "settled": false,
+            "countryId": null,
+            "writerId": null,
+            "workId": null
+          },
+          "helpOpen": true,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 916,
+          "clientHeight": 325,
+          "scrollHeight": 1622,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 64305.09999999963,
+          "view": {
+            "active": true,
+            "settled": true,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": false,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 916,
+          "clientHeight": 325,
+          "scrollHeight": 1622,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        }
+      ],
+      "focusTrace": [
+        {
+          "time": 57591.199999999255,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 57666.699999999255,
+          "reader": true,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "ARTICLE",
+          "id": "book-archive-detail"
+        },
+        {
+          "time": 58201.59999999963,
+          "reader": false,
+          "bookyToggle": true,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 58224,
+          "reader": false,
+          "bookyToggle": false,
+          "help": true,
+          "tag": "H2",
+          "id": ":rv:-title"
+        },
+        {
+          "time": 60089.5,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 60113.199999999255,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 60497.90000000037,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 62965.199999999255,
+          "reader": false,
+          "bookyToggle": false,
+          "help": true,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 62982.699999999255,
+          "reader": false,
+          "bookyToggle": true,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 63340.300000000745,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 63435.59999999963,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 63777.800000000745,
+          "reader": false,
+          "bookyToggle": true,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 63799.90000000037,
+          "reader": false,
+          "bookyToggle": false,
+          "help": true,
+          "tag": "H2",
+          "id": ":rv:-title"
+        },
+        {
+          "time": 64209.09999999963,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 64251.5,
+          "reader": true,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "ARTICLE",
+          "id": "book-archive-detail"
+        }
+      ],
+      "touchCount": 8,
+      "checks": [
+        {
+          "name": "Previously open help retires on an actual committed reader entry without moving focus to Booky",
+          "pass": true
+        },
+        {
+          "name": "Retirement preserves semantic content, preferences, history and canonical resources",
+          "pass": true
+        },
+        {
+          "name": "Explicit compact-toggle reopen survives actual inactive/active filter callbacks, width reflow and motion media changes",
+          "pass": true
+        },
+        {
+          "name": "Genuine Close leaves retired help closed; same-work reentry retires newly reopened help again",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-filtered-empty.png",
+          "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5",
+          "filename": "booky-writer-filter-recovery-ru-filtered-empty.png",
+          "width": 390,
+          "height": 844,
+          "framing": "Actual App; repeated ordinary writer request preserves restrictive view; explicit localized recovery is available. Picker setup is controlled.",
+          "locale": "ru"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-recovered.png",
+          "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0",
+          "filename": "booky-writer-filter-recovery-ru-recovered.png",
+          "width": 390,
+          "height": 844,
+          "framing": "Actual App; explicit recovery acknowledged after rendered current-writer results; canonical scene and saved content retained.",
+          "locale": "ru"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-reader-foreground.png",
+          "sha256": "9e79d6845dc3653acebbdc4ee129674fa04ad167aad05801815a62a721a9d461",
+          "filename": "booky-writer-filter-recovery-ru-reader-foreground.png",
+          "width": 390,
+          "height": 844,
+          "framing": "Actual App; trusted entry retires previously open Booky help; selected reader owns focus, compact Booky stays available and decorative motion is paused. Original recovery captures remain separate.",
+          "locale": "ru"
+        }
+      ],
+      "semanticPreservationProof": "Actual passing assertions in the authenticated current fixture compare full IDB/localStorage/tour state, native preferences and canonical resource/pose snapshots; those local comparison values are not separately exported in raw evidence."
+    },
+    {
+      "locale": "en",
+      "rawEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-5248d76ef5734ad9755736f674d271acd06e8d2f.json",
+        "sha256": "b35f4f3b231a792d248837e4f23fb299a82df693255c7decdb03520af2d8e12b"
+      },
+      "firstOwnedCallback": {
+        "time": 38283.5,
+        "view": {
+          "active": true,
+          "settled": false,
+          "countryId": "russia",
+          "writerId": "dostoevsky",
+          "workId": "crime-and-punishment"
+        },
+        "helpOpen": true,
+        "focusInReader": true,
+        "focusOnBookyToggle": false,
+        "scrollTop": 914,
+        "clientHeight": 325,
+        "scrollHeight": 1641,
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+      },
+      "settledArrival": {
+        "time": 38335.40000000037,
+        "view": {
+          "active": true,
+          "settled": true,
+          "countryId": "russia",
+          "writerId": "dostoevsky",
+          "workId": "crime-and-punishment"
+        },
+        "helpOpen": false,
+        "focusInReader": true,
+        "focusOnBookyToggle": false,
+        "scrollTop": 916,
+        "clientHeight": 325,
+        "scrollHeight": 1641,
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+      },
+      "collapsed": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+        "bookKey": "russia:dostoevsky:crime-and-punishment",
+        "title": "Crime and Punishment",
+        "reader": {
+          "present": true,
+          "visible": true,
+          "inert": false,
+          "rect": {
+            "top": 343.578125,
+            "bottom": 561.96875,
+            "width": 258,
+            "height": 218.390625
+          }
+        },
+        "focus": {
+          "reader": true,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "ARTICLE",
+          "id": "book-archive-detail"
+        },
+        "nativeOwner": {
+          "scrollTop": 960,
+          "clientHeight": 681,
+          "scrollHeight": 1641
+        },
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": false,
+        "booky": {
+          "readerOwned": "true",
+          "readerPaused": "true",
+          "gesture": "rest",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "true",
+          "renderCount": "17",
+          "systemReducedMotion": false
+        }
+      },
+      "explicitReopen": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+        "bookKey": "russia:dostoevsky:crime-and-punishment",
+        "title": "Crime and Punishment",
+        "reader": {
+          "present": true,
+          "visible": true,
+          "inert": false,
+          "rect": {
+            "top": 343.578125,
+            "bottom": 561.96875,
+            "width": 258,
+            "height": 218.390625
+          }
+        },
+        "focus": {
+          "reader": false,
+          "bookyToggle": false,
+          "help": true,
+          "tag": "H2",
+          "id": ":rv:-title"
+        },
+        "nativeOwner": {
+          "scrollTop": 960,
+          "clientHeight": 325,
+          "scrollHeight": 1641
+        },
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": true,
+        "booky": {
+          "readerOwned": "true",
+          "readerPaused": "false",
+          "gesture": "greeting",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "false",
+          "renderCount": "18",
+          "systemReducedMotion": false
+        }
+      },
+      "sameEntry": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+        "bookKey": "russia:dostoevsky:crime-and-punishment",
+        "title": "Crime and Punishment",
+        "reader": {
+          "present": true,
+          "visible": true,
+          "inert": false,
+          "rect": {
+            "top": 368.578125,
+            "bottom": 586.96875,
+            "width": 258,
+            "height": 218.390625
+          }
+        },
+        "focus": {
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        "nativeOwner": {
+          "scrollTop": 935,
+          "clientHeight": 325,
+          "scrollHeight": 1641
+        },
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": true,
+        "booky": {
+          "readerOwned": "true",
+          "readerPaused": "false",
+          "gesture": "greeting",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "false",
+          "renderCount": "22",
+          "systemReducedMotion": false
+        }
+      },
+      "closed": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+        "bookKey": null,
+        "title": null,
+        "reader": {
+          "present": false,
+          "visible": false,
+          "inert": false,
+          "rect": null
+        },
+        "focus": {
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        "nativeOwner": null,
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": null,
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": false,
+        "booky": {
+          "readerOwned": "false",
+          "readerPaused": "false",
+          "gesture": "greeting",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "false",
+          "renderCount": "22",
+          "systemReducedMotion": false
+        }
+      },
+      "reentryCallback": {
+        "time": 45459.79999999888,
+        "view": {
+          "active": true,
+          "settled": false,
+          "countryId": "russia",
+          "writerId": "dostoevsky",
+          "workId": "crime-and-punishment"
+        },
+        "helpOpen": true,
+        "focusInReader": true,
+        "focusOnBookyToggle": false,
+        "scrollTop": 935,
+        "clientHeight": 325,
+        "scrollHeight": 1641,
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+      },
+      "reentryAttribution": {
+        "inactiveCallbackAfterUrlRemovalObserved": false,
+        "closeProof": "Actual f.closed snapshot has no reader/book, restored history and retired help; ordered trusted Close and reentry activations plus the passing frozen fixture post-close time predicate authenticate this boundary.",
+        "callbackRelation": "Latest same-work owned callback after first arrival is attributed by the ordered input/snapshot evidence and passing post-close fixture predicate; a separate inactive callback after URL removal is absent and is not required."
+      },
+      "reentered": {
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+        "bookKey": "russia:dostoevsky:crime-and-punishment",
+        "title": "Crime and Punishment",
+        "reader": {
+          "present": true,
+          "visible": true,
+          "inert": false,
+          "rect": {
+            "top": 343.578125,
+            "bottom": 561.96875,
+            "width": 258,
+            "height": 218.390625
+          }
+        },
+        "focus": {
+          "reader": true,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "ARTICLE",
+          "id": "book-archive-detail"
+        },
+        "nativeOwner": {
+          "scrollTop": 960,
+          "clientHeight": 681,
+          "scrollHeight": 1641
+        },
+        "history": {
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books",
+          "context": {
+            "version": 1,
+            "shelfId": "all",
+            "search": {
+              "query": "",
+              "scope": "library"
+            },
+            "filters": {
+              "quickPreset": "custom",
+              "authorKey": "russia:dostoevsky",
+              "countryIds": [],
+              "genreIds": [],
+              "audienceIds": [],
+              "periods": [],
+              "originalLanguageIds": [],
+              "editorialStatuses": [],
+              "coverModes": [],
+              "articleRelations": [],
+              "savedOnly": false,
+              "sort": "title"
+            },
+            "viewMode": "catalog",
+            "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "pageIndex": 0,
+            "scroll": {
+              "x": 0,
+              "y": 0
+            },
+            "selectedBookKey": "russia:dostoevsky:crime-and-punishment",
+            "inspectionOpen": false,
+            "focusOrigin": null
+          }
+        },
+        "helpOpen": false,
+        "booky": {
+          "readerOwned": "true",
+          "readerPaused": "true",
+          "gesture": "rest",
+          "targets": 0,
+          "context": "ready",
+          "animating": "false",
+          "reducedMotion": "true",
+          "renderCount": "87",
+          "systemReducedMotion": false
+        }
+      },
+      "readerViewTrace": [
+        {
+          "time": 38283.5,
+          "view": {
+            "active": true,
+            "settled": false,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": true,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 914,
+          "clientHeight": 325,
+          "scrollHeight": 1641,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 38296.699999999255,
+          "view": {
+            "active": false,
+            "settled": false,
+            "countryId": null,
+            "writerId": null,
+            "workId": null
+          },
+          "helpOpen": true,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 914,
+          "clientHeight": 325,
+          "scrollHeight": 1641,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 38335.40000000037,
+          "view": {
+            "active": true,
+            "settled": true,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": false,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 916,
+          "clientHeight": 325,
+          "scrollHeight": 1641,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 39149.79999999888,
+          "view": {
+            "active": false,
+            "settled": false,
+            "countryId": null,
+            "writerId": null,
+            "workId": null
+          },
+          "helpOpen": true,
+          "focusInReader": false,
+          "focusOnBookyToggle": false,
+          "scrollTop": 903,
+          "clientHeight": 325,
+          "scrollHeight": 1641,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 42305.90000000037,
+          "view": {
+            "active": true,
+            "settled": true,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": true,
+          "focusInReader": false,
+          "focusOnBookyToggle": false,
+          "scrollTop": 914,
+          "clientHeight": 325,
+          "scrollHeight": 1641,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 44479.5,
+          "view": {
+            "active": false,
+            "settled": false,
+            "countryId": null,
+            "writerId": null,
+            "workId": null
+          },
+          "helpOpen": false,
+          "focusInReader": false,
+          "focusOnBookyToggle": false,
+          "scrollTop": 935,
+          "clientHeight": 681,
+          "scrollHeight": 1641,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 45459.79999999888,
+          "view": {
+            "active": true,
+            "settled": false,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": true,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 935,
+          "clientHeight": 325,
+          "scrollHeight": 1641,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 45480.59999999963,
+          "view": {
+            "active": false,
+            "settled": false,
+            "countryId": null,
+            "writerId": null,
+            "workId": null
+          },
+          "helpOpen": true,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 935,
+          "clientHeight": 325,
+          "scrollHeight": 1641,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        },
+        {
+          "time": 45530.90000000037,
+          "view": {
+            "active": true,
+            "settled": true,
+            "countryId": "russia",
+            "writerId": "dostoevsky",
+            "workId": "crime-and-punishment"
+          },
+          "helpOpen": false,
+          "focusInReader": true,
+          "focusOnBookyToggle": false,
+          "scrollTop": 935,
+          "clientHeight": 325,
+          "scrollHeight": 1641,
+          "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+        }
+      ],
+      "focusTrace": [
+        {
+          "time": 38194.199999999255,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 38271.09999999963,
+          "reader": true,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "ARTICLE",
+          "id": "book-archive-detail"
+        },
+        {
+          "time": 38846.5,
+          "reader": false,
+          "bookyToggle": true,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 38872.90000000037,
+          "reader": false,
+          "bookyToggle": false,
+          "help": true,
+          "tag": "H2",
+          "id": ":rv:-title"
+        },
+        {
+          "time": 40790.199999999255,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 40825.699999999255,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 41216.09999999963,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 44075.29999999888,
+          "reader": false,
+          "bookyToggle": false,
+          "help": true,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 44103,
+          "reader": false,
+          "bookyToggle": true,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 44479.29999999888,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 44581.59999999963,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 44950,
+          "reader": false,
+          "bookyToggle": true,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 44973.29999999888,
+          "reader": false,
+          "bookyToggle": false,
+          "help": true,
+          "tag": "H2",
+          "id": ":rv:-title"
+        },
+        {
+          "time": 45401.79999999888,
+          "reader": false,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "BUTTON",
+          "id": ""
+        },
+        {
+          "time": 45453.90000000037,
+          "reader": true,
+          "bookyToggle": false,
+          "help": false,
+          "tag": "ARTICLE",
+          "id": "book-archive-detail"
+        }
+      ],
+      "touchCount": 8,
+      "checks": [
+        {
+          "name": "Previously open help retires on an actual committed reader entry without moving focus to Booky",
+          "pass": true
+        },
+        {
+          "name": "Retirement preserves semantic content, preferences, history and canonical resources",
+          "pass": true
+        },
+        {
+          "name": "Explicit compact-toggle reopen survives actual inactive/active filter callbacks, width reflow and motion media changes",
+          "pass": true
+        },
+        {
+          "name": "Genuine Close leaves retired help closed; same-work reentry retires newly reopened help again",
+          "pass": true
+        }
+      ],
+      "captures": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-filtered-empty.png",
+          "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d",
+          "filename": "booky-writer-filter-recovery-en-filtered-empty.png",
+          "width": 320,
+          "height": 844,
+          "framing": "Actual App; repeated ordinary writer request preserves restrictive view; explicit localized recovery is available. Picker setup is controlled.",
+          "locale": "en"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-recovered.png",
+          "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211",
+          "filename": "booky-writer-filter-recovery-en-recovered.png",
+          "width": 320,
+          "height": 844,
+          "framing": "Actual App; explicit recovery acknowledged after rendered current-writer results; canonical scene and saved content retained.",
+          "locale": "en"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-reader-foreground.png",
+          "sha256": "f6f8a622b50f8876a2d4bb4a0cffa9be514db121a6e8a2701553eea9415c9bbc",
+          "filename": "booky-writer-filter-recovery-en-reader-foreground.png",
+          "width": 320,
+          "height": 844,
+          "framing": "Actual App; trusted entry retires previously open Booky help; selected reader owns focus, compact Booky stays available and decorative motion is paused. Original recovery captures remain separate.",
+          "locale": "en"
+        }
+      ],
+      "semanticPreservationProof": "Actual passing assertions in the authenticated current fixture compare full IDB/localStorage/tour state, native preferences and canonical resource/pose snapshots; those local comparison values are not separately exported in raw evidence."
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5",
+      "filename": "booky-writer-filter-recovery-ru-filtered-empty.png",
+      "width": 390,
+      "height": 844,
+      "framing": "Actual App; repeated ordinary writer request preserves restrictive view; explicit localized recovery is available. Picker setup is controlled.",
+      "locale": "ru"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0",
+      "filename": "booky-writer-filter-recovery-ru-recovered.png",
+      "width": 390,
+      "height": 844,
+      "framing": "Actual App; explicit recovery acknowledged after rendered current-writer results; canonical scene and saved content retained.",
+      "locale": "ru"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-reader-foreground.png",
+      "sha256": "9e79d6845dc3653acebbdc4ee129674fa04ad167aad05801815a62a721a9d461",
+      "filename": "booky-writer-filter-recovery-ru-reader-foreground.png",
+      "width": 390,
+      "height": 844,
+      "framing": "Actual App; trusted entry retires previously open Booky help; selected reader owns focus, compact Booky stays available and decorative motion is paused. Original recovery captures remain separate.",
+      "locale": "ru"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d",
+      "filename": "booky-writer-filter-recovery-en-filtered-empty.png",
+      "width": 320,
+      "height": 844,
+      "framing": "Actual App; repeated ordinary writer request preserves restrictive view; explicit localized recovery is available. Picker setup is controlled.",
+      "locale": "en"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211",
+      "filename": "booky-writer-filter-recovery-en-recovered.png",
+      "width": 320,
+      "height": 844,
+      "framing": "Actual App; explicit recovery acknowledged after rendered current-writer results; canonical scene and saved content retained.",
+      "locale": "en"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-reader-foreground.png",
+      "sha256": "f6f8a622b50f8876a2d4bb4a0cffa9be514db121a6e8a2701553eea9415c9bbc",
+      "filename": "booky-writer-filter-recovery-en-reader-foreground.png",
+      "width": 320,
+      "height": 844,
+      "framing": "Actual App; trusted entry retires previously open Booky help; selected reader owns focus, compact Booky stays available and decorative motion is paused. Original recovery captures remain separate.",
+      "locale": "en"
+    }
+  ],
+  "scope": "Actual callback/reader/focus/renderer/input history and frozen passing assertion review; PNG bytes/headers authenticated, pixels not directly viewed here; normal canonical open scrolling is preserved and recorded, exact pre-entry-to-reader scroll equality is not claimed.",
+  "stageAccepted": false,
+  "deviceTested": false,
+  "releaseReady": false
+}

@@ -1,0 +1,52 @@
+{
+  "recordedAt": "2026-09-30T14:05:03.276Z",
+  "reviewer": "root",
+  "baselineResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/baseline-ru-a1/result.json",
+    "sha256": "ff50c95bc1152286616f0aac03296525e6ee8df6bc8a39e9ddaae01eb06d2109"
+  },
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/baseline-ru-a1/playwright.json",
+    "sha256": "6dbbcb0fdb65e96b0e643cecff14cc13ff117f48167845c4e5d7dfda14cf59d3"
+  },
+  "evidence": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-evidence\\baseline-ru-a1\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\booky-writer-filter-recovery-source-evidence-00100717e52f705b4b0289f0fbdbd839f85468ad.json",
+    "sha256": "2dfa5b7b9505f38fba6576642b523f5d98e0f523fa2bf66ddce66d9e0fbf2ab3"
+  },
+  "actualError": {
+    "location": {
+      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs",
+      "column": 83,
+      "line": 627
+    },
+    "message": "Error: Booky help retires once on genuine reader arrival\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-panel]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Booky help retires once on genuine reader arrival with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-panel]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  625 |     foreground.arrival=foregroundArrival;\n  626 |     // The old runtime is expected to fail here after the real committed arrival.\n> 627 |     await expect(panel(page),'Booky help retires once on genuine reader arrival').toHaveCount(0);\n      |                                                                                   ^\n  628 |     await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','true');await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','true');\n  629 |     await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-reduced-motion','true');\n  630 |     await expect.poll(async()=>{const current=await writerReaderObservation(page);return current.focus.reader&&!current.focus.bookyToggle&&current.bookKey===selectedKey&&current.title===readerTitle;},{message:'The actual reader keeps its own focus and identity after automatic help retirement'}).toBe(true);\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs:627:83"
+  },
+  "readerArrival": {
+    "time": 57741.700000000186,
+    "view": {
+      "active": true,
+      "settled": true,
+      "countryId": "russia",
+      "writerId": "dostoevsky",
+      "workId": "crime-and-punishment"
+    },
+    "helpOpen": true,
+    "focusInReader": true,
+    "focusOnBookyToggle": false,
+    "scrollTop": 902,
+    "clientHeight": 325,
+    "scrollHeight": 1622,
+    "url": "https://booky-support.test/?country=russia&writer=dostoevsky&book=russia%3Adostoevsky%3Acrime-and-punishment#books"
+  },
+  "helpOpenBefore": true,
+  "helpStillOpenAfterActualReader": true,
+  "diagnosticImage": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-evidence\\baseline-ru-a1\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\diagnostic-failure-ru-0bce452b730006a6c9fc641882a9a0cec0fb322a.png",
+    "sha256": "8c6fb92d4c91d94b23ac03d26c287f5689acab4eca481925629a29bfa885f1b2",
+    "directlyViewed": true
+  },
+  "productionDefectReproduced": true,
+  "baselinePassed": false,
+  "baselineCases": 1,
+  "finalAcceptanceClaimed": false
+}

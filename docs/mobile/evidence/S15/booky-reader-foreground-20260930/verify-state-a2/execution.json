@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/checkpoint.mjs",
+    "sha256": "cc1ea79cd578f31ce98763b59841275b9452f3263e868e7a6b0f102b144c0f52"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-state.mjs"
+  ],
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "resolvedRoot": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work",
+  "startedAt": "2026-09-30T15:02:13.359Z",
+  "durationMs": 28977,
+  "exitCode": 0,
+  "error": null,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/verify-state-a2/stdout.log",
+    "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/verify-state-a2/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "applicationChecksRun": false,
+  "testsRun": false,
+  "buildsRun": false
+}

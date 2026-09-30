@@ -1,0 +1,710 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "recordedAt": "2026-09-30T14:59:41.981Z",
+  "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "decision": "D217",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/result.json",
+    "sha256": "6a8eadb5b805f0de4d2ec22c300d2a781f9abbb0929c6c7fafbf34b0d052415f"
+  },
+  "binding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/bound-a1/binding.json",
+    "sha256": "3aa1a07f20219df73cdbc545b0b88b01054d409aac55be1d4544003a7536006d"
+  },
+  "documentPlan": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/bound-a1/document-plan.json",
+    "sha256": "e2e42e0e306b8ef386b14eec91de70a992095d018cc15d002cf7b52dea0428c3"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/checkpoint.mjs",
+    "sha256": "cc1ea79cd578f31ce98763b59841275b9452f3263e868e7a6b0f102b144c0f52"
+  },
+  "outputs": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "66544cbd7f36335ded20556a0b09c7691a0d005aa5415a6e00d5c13e92727069"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "57d3615e12acd77a436dd1dd860ca6f9a2704df31836cb194492cf8d437dc9d0"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "3f95b1b95c350cb5300ee8a2219c415bd39cd5d08fb7b0fd8645b602819ca46b"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "58ffb696801dede44fdcf741041b37f8352b4893d5743d2eba54a2ec3e35dbb0"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "070997688207a9ff79a6c2afc59690d08c6b55ab44e8ff747346e58f0aab2bd5"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "a8a8aebf1f101e2f8a2df3f63502009e3d79759342b52eff8bd26f37b35bc6e1"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "8345df748533ac809ca4e1e1755c2ad620ba6c49349c3b9339b6de2b7ea46c49"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "8f5d6d442523b569b0d1c9b736925529e4fc22820e1bd46b7db66d34564221c1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/result.json",
+      "sha256": "6a8eadb5b805f0de4d2ec22c300d2a781f9abbb0929c6c7fafbf34b0d052415f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/README.md",
+      "sha256": "8c0f0ddf868f082fafc1b32f230178a4fa8092babaf25b8a04112f41ded64fef"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/cc1ea79cd578f31c-checkpoint.mjs",
+      "sha256": "cc1ea79cd578f31ce98763b59841275b9452f3263e868e7a6b0f102b144c0f52"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/reviews/next-action.txt",
+      "sha256": "b5fae7cd9ecda1be11079db4ddc96c753657e9b8ebf056a5946a8d199405887c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/source-manifests/c785a629ec203716.json",
+      "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/source-commit/a0bc2a0324febbb5-actual-source-commit-a1.json",
+      "sha256": "a0bc2a0324febbb547c73e8334f009b678dcab18e8e51ba02948e66632dfad43"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/3552a14a95a258bc-root-commit-source-a4.mjs",
+      "sha256": "3552a14a95a258bc2da9c2a6758ce18bd8795f67cf3090aceecbb11ed1803ae0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/static-a1/379e2917dcce2a24-result.json",
+      "sha256": "379e2917dcce2a246a9945e059f39ce50a5e9bd706a0e9a3d0ecae3a7f228d43"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/c39cae29440c0d30-check-current.mjs",
+      "sha256": "c39cae29440c0d3060089070f38fd1955a0eca255f588e24214554741d5432a9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/229de6926b5ed433-unit.config.mjs",
+      "sha256": "229de6926b5ed433cc2f0a393b85cb312fcaece2d74b36220845ab5528e9998d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/source-manifests/f1c04655e053d124.json",
+      "sha256": "f1c04655e053d1242653bb85d5117269d4be122c651cf101b204345e78090dda"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/static-a1/51a80fd313a00d1a-execution.json",
+      "sha256": "51a80fd313a00d1a189597346893994d1654f809156fbf2fdcfd34826b81d0e6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/static-a1/e3b0c44298fc1c14-stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/static-a1/e3b0c44298fc1c14-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/unit-a1/b43fbb39dba72678-result.json",
+      "sha256": "b43fbb39dba7267839a060268463d21cf7bac8dec5711d99d1a9700f608f1a68"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/unit-a1/9a0daa22a9a59d52-execution.json",
+      "sha256": "9a0daa22a9a59d523ae227320a64f135f20c58b9a556250095fcf80564c429f9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/unit-a1/747df1e0ee97474f-stdout.log",
+      "sha256": "747df1e0ee97474f24e7963fb992dd1596fd9e8e65797dda74ed0d33981d0532"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/unit-a1/e3b0c44298fc1c14-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/unit-a1/vitest.json",
+      "sha256": "ee2e88bd28386fa678330f4854f18b7f96fc5a317e968fb29253736ba9b10bc0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/5d393b271ba10576-result.json",
+      "sha256": "5d393b271ba10576d86057d026480e4bf1374f05aad5466e5bcaf12277e3d1c3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/6c76346a7768e358-run-final-browser-a4.mjs",
+      "sha256": "6c76346a7768e3583af6ba7b18e0cfbe92f4dcb8d785c09dc49a65ee32c68db6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/a9b23c9b4b346bed-playwright.json",
+      "sha256": "a9b23c9b4b346bede18aa569e59fb23d7ecf818cc8186ed91ad8d011d753f5fa"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/061ca647063ad8c9-execution.json",
+      "sha256": "061ca647063ad8c9611abe22b3291776913ef1a8854d3f79c8e37b7d6d741946"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/ae81998a66062899-stdout.log",
+      "sha256": "ae81998a6606289940a8886a62c5c3fa6b81fd1bb90c8df814a3d9ccf4971d00"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/5ef197d375c0fd5d-stderr.log",
+      "sha256": "5ef197d375c0fd5d21bd7d4b12f295f2b2af99162509fdebb91e76730eacac74"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/12c74b9f3764eb4c-source-freeze-receipt.json",
+      "sha256": "12c74b9f3764eb4c123f3a7e934df7261bc510f30bcb15705d53067604b6511f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/7c1ae3438500e6d8-playwright.config.mjs",
+      "sha256": "7c1ae3438500e6d818affa2bfa09f3f298b87ca814bb29c449d680264fbe2098"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/2df4afb5c7567541-entry.json",
+      "sha256": "2df4afb5c7567541ae7a8ad34094e9a2d34fe45dc1da7011ee9272e99e8fc363"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/492129c0da77cd65-actual-baseline-review-a1.json",
+      "sha256": "492129c0da77cd6564cdd000d965731384d3147e65a2adbeb867e996f2d4b1fc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/6dbbcb0fdb65e96b-playwright.json",
+      "sha256": "6dbbcb0fdb65e96b0e643cecff14cc13ff117f48167845c4e5d7dfda14cf59d3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/boundaries/e895f1e09a831007-root-runtime-apply-a1.json",
+      "sha256": "e895f1e09a831007b545fed96b781138333f10959fc3b0b796d36d95768c2a8b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/boundaries/95d90d1985ab0bda-root-fixture-apply-a1.json",
+      "sha256": "95d90d1985ab0bda1735f3b42976aedc9dbc993e74875f40d065b0b7483886cd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/boundaries/e4fd6d986fdb43bd-root-fixture-viewport-apply-a2.json",
+      "sha256": "e4fd6d986fdb43bd02469232841d0f627bdceeaf1c8e8ddb1d6cdc58307edc69"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/source-manifests/c03ac867d1363269.json",
+      "sha256": "c03ac867d1363269506e1e377125ac65dd5fa626803683a1a0807caf7ae52a6c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/boundaries/4177ddaf19f6dbe1-result.json",
+      "sha256": "4177ddaf19f6dbe163673465331b88f14cfe855661f25017b573b3ce58d79061"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/e865c56c9cee230d-run-final-browser-a3.mjs",
+      "sha256": "e865c56c9cee230d501582d8fd8598f478251de748b394e662676590fed688a9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/boundaries/7d7524781c9e2efc-source-binding.json",
+      "sha256": "7d7524781c9e2efc2b4778aaec4d644ba5aa9c9f8734c26c9189ded73b1d0fd6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/boundaries/c791bd3a37cd1ebe-source-binding.json",
+      "sha256": "c791bd3a37cd1ebe818706ad23f74ceae9441435bfd08210330a86def6834214"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/542676dd2bbf6080-root-run-baseline-ru-a1.mjs",
+      "sha256": "542676dd2bbf6080556d634027c34c261eea95c9c8c6480b94d6051b0fc32b66"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/reviews/root-visual.json",
+      "sha256": "2f29a3f6ef69123554388806e133da54b1f89860b7e3df612da06d095d57775d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/reviews/agent-causal.json",
+      "sha256": "08e587884acd7f38d9a7c7e3b5b151383f43e91bd50b25b68309b052c9eeaf68"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/b89ebcd384f4cdea-record-final-causal-review-a3.mjs",
+      "sha256": "b89ebcd384f4cdea8916b5e7090be4285325dbbb42c20f47f09ee83990210a5a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/ru/source-evidence.json",
+      "sha256": "03a14e6f270502215c749c2aa995bebcd27c17ca2a88364eea6384dfe0d9c7ef"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/ru/booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/ru/booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/ru/booky-writer-filter-recovery-ru-reader-foreground.png",
+      "sha256": "9e79d6845dc3653acebbdc4ee129674fa04ad167aad05801815a62a721a9d461"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/en/source-evidence.json",
+      "sha256": "b35f4f3b231a792d248837e4f23fb299a82df693255c7decdb03520af2d8e12b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/en/booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/en/booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/en/booky-writer-filter-recovery-en-reader-foreground.png",
+      "sha256": "f6f8a622b50f8876a2d4bb4a0cffa9be514db121a6e8a2701553eea9415c9bbc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/baseline-ru-a1/result.json",
+      "sha256": "ff50c95bc1152286616f0aac03296525e6ee8df6bc8a39e9ddaae01eb06d2109"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/baseline-ru-a1/source-evidence.json",
+      "sha256": "2dfa5b7b9505f38fba6576642b523f5d98e0f523fa2bf66ddce66d9e0fbf2ab3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/baseline-ru-a1/diagnostic.png",
+      "sha256": "8c6fb92d4c91d94b23ac03d26c287f5689acab4eca481925629a29bfa885f1b2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/baseline-ru-a1/d3495ba73da9f7f8-execution.json",
+      "sha256": "d3495ba73da9f7f864910c5c463638ae3bce3b267d1927af0ec9cbf68299bf79"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/baseline-ru-a1/c2c77959859ed80b-stdout.log",
+      "sha256": "c2c77959859ed80b763a267329dbc3ead3598dae3c401d751567795abd09fe01"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/baseline-ru-a1/d17849305435b79e-stderr.log",
+      "sha256": "d17849305435b79e13959d6247a755c0126a45524e2b654a1dd297bca3de30d2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/baseline-ru-a1/dcf91f5aabbb3746-source-freeze-receipt.json",
+      "sha256": "dcf91f5aabbb374642f4e5f44fb4a713f2f10d714c6409f9acce189defca0eff"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/source-manifests/277aceca14c3a6a2.json",
+      "sha256": "277aceca14c3a6a284f217c66c715a4d9750ae549da7ea1ce0a218b018f930f4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/baseline-ru-a1/f4ba68cbc96813e4-entry.json",
+      "sha256": "f4ba68cbc96813e421ed28c0732a6dc3e9f7ae0768c9d4d56ee2bbf1a16f6bfb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/dc013c60e802c0be-result.json",
+      "sha256": "dc013c60e802c0bee30bae0d093b5bd411d76893ceb5fa626736f3f0d6e3f0aa"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/5c263e12f7bae2f5-run-final-browser-a2.mjs",
+      "sha256": "5c263e12f7bae2f5e8252b99260ba4ad7d7cd6a327770a371b08f929796b4237"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/52e3edea2c9a59f1-playwright.json",
+      "sha256": "52e3edea2c9a59f1f81049ddd47c0117833b0a05ad4aef358b3355b4406b7b8c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/df1d4660c0f03b99-execution.json",
+      "sha256": "df1d4660c0f03b99f6b7ca941a36df553bf3ef4cb82bd47ea19bd84eb2adf73f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/9f3c5cef0dc1bae9-stdout.log",
+      "sha256": "9f3c5cef0dc1bae90dde9be95308061a6ad0845c1debe4741557cf2dd21c6609"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/9b8c884f8adf0a51-stderr.log",
+      "sha256": "9b8c884f8adf0a51019ff4da3a5b3a1c79aafbc6ca297b1b80eb93b5f9a8c30b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/99c3d49d1675028b-source-freeze-receipt.json",
+      "sha256": "99c3d49d1675028bd0b4e041be1697886e3d3eaedb5fe9eac6137d1f7768ffbf"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/d7857211e8d7c4ec-entry.json",
+      "sha256": "d7857211e8d7c4ec5c27dbf408bc16403a71797fff7189156ed657e29be35015"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/diagnosis.json",
+      "sha256": "dad2a8de0ed4f7a3eeaa0e314c2fed998e498ceeb8f8af3edf551e68de5cb3b6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a2/d0dd1f2c12a9bed1-playwright.json",
+      "sha256": "d0dd1f2c12a9bed15f4a67d03da4c71c31996b7d7014614057b6502dc8f88513"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a2/0b7ca7c5c733a940-execution.json",
+      "sha256": "0b7ca7c5c733a9404ac5e2cc3f2d525aa450978f8ba078a5bf6155ae7825a7c7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a2/1662479ea3113564-stdout.log",
+      "sha256": "1662479ea31135644a716fc69c2a9fdaa609f2006b2bf5cea36b5023c9a9b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a2/bca5b80bde9896e7-stderr.log",
+      "sha256": "bca5b80bde9896e71eef8f0de8462023fc58be3d1669954a56873a11be10e3c8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a2/27963ff9dd37acbb-source-freeze-receipt.json",
+      "sha256": "27963ff9dd37acbb2e2e82d55e24ae825593063efaa9975adb9c2c82650a08ec"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a2/3c2f090e7c3d4586-entry.json",
+      "sha256": "3c2f090e7c3d45869d8ff5cdde8ea3a1023fae926975cdf0d6a0be2908f4b770"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/6c5f06937051f1b2-result.json",
+      "sha256": "6c5f06937051f1b254e18819b08730aa728bc154fcc124b6aa5458afb002aff0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/974ec135ca6743ee-browser-execution.json",
+      "sha256": "974ec135ca6743ee8cabfd115a276e30f5e653c9b5d2f7f410ed4516f9d9a38f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/0b73c69f34602a6c-browser-stdout.log",
+      "sha256": "0b73c69f34602a6ceac0dccd00d7061fcb85b841ab36b9e987ce078dc00facd6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/a5f415ac326125cc-browser-stderr.log",
+      "sha256": "a5f415ac326125ccba2500b4b88f00dca912dfa1a865cc360fb7d2681f5f2f4b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/5c6616af824c33a5-playwright.json",
+      "sha256": "5c6616af824c33a59fbc0b5009f749c11997bdfa461b6090fde191220be25513"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/77a2cef25bc7da74-prior-preservation.json",
+      "sha256": "77a2cef25bc7da742e42ad9dfe580de08e6a13ac50405dfb8095175bf6765301"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/3b42d1050e50dc0b-strict-audit-execution.json",
+      "sha256": "3b42d1050e50dc0b61e3b3e5fc9317669df130bf81a2d8c33d22212d4e7720fd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/be76755b848059d3-strict-audit-stdout.log",
+      "sha256": "be76755b848059d3d42f1ee9210430fe4fc1db6660562dd9d4588fe200923e48"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/e3b0c44298fc1c14-strict-audit-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/be76755b848059d3-strict-audit.json",
+      "sha256": "be76755b848059d3d42f1ee9210430fe4fc1db6660562dd9d4588fe200923e48"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/44dd67c439153bd1-build-pwa-a1.mjs",
+      "sha256": "44dd67c439153bd15a4c27eccd6fdc3526872d42fd1a8804c3d0b30c447d4be5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/5516f2cfb3ecc39b-guard-build.mjs",
+      "sha256": "5516f2cfb3ecc39bd4e6bc1b419a3a47cd7201a0b0236f02060666bdc1ad3cfc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/7c7342bbd381bbac-pwa-a1.config.mjs",
+      "sha256": "7c7342bbd381bbac0adf21918a36d41c65d3693583e2a0b5245a9744b58669e3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/diagnosis.json",
+      "sha256": "efb718bb08fc93aba578d723998f1726eb5000a358c922ec0f92da548f50bcc8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/artifact.json",
+      "sha256": "013b5a7a23b3b1db3da5c368a1c5779bab6f9f2319eace3c68f4804e9ad2c0bf"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/receipts/c8559dc704ce51b3-source-binding.json",
+      "sha256": "c8559dc704ce51b37d9d936ed8dbf6964bb4f4c1e10975a8a5e97b8b1d96b402"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/receipts/0c98eecbc0a00c7f-service-worker-diagnostics.json",
+      "sha256": "0c98eecbc0a00c7fa42e9bf030347a3ce2f6761276e2c5eadab07967690edf3a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/receipts/11f55a65e26b868f-failed-a1-artifact-reference.json",
+      "sha256": "11f55a65e26b868fbf300647bb8b873a6291cf66ea590230d483c083fea1f7d2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/6f01b81b820439b8-build-pwa-a2.mjs",
+      "sha256": "6f01b81b820439b8e2abcc49ea604860a6446bd95bce4b22782b96e60c8de228"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/066f6e2e63604468-pwa-a2.config.mjs",
+      "sha256": "066f6e2e63604468f0c2b4f0efecea7a71008d82ea7aaca3ff8ffc1f79795da4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/3e7da954b73f9957-downloads-artifact-wrapper-a2.spec.mjs",
+      "sha256": "3e7da954b73f9957efa5d788fae03a78e58c9837e031bfab87b5d442d5562a69"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/4099b48162ff05e2-result.json",
+      "sha256": "4099b48162ff05e2c540ddb35c96d15250eaafbb0e699d5a8f5531a67c1c64c4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/artifact.json",
+      "sha256": "5c520edadca17c83377b6f5a5a5b149b942df36172d0959bc0aa806c41916375"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/8143910caed52856-strict-audit.json",
+      "sha256": "8143910caed52856b74edd7fad29c70e3702ea6a74699c92616b6136c8511193"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/c2c0d13edc6c984e-copy-verification.json",
+      "sha256": "c2c0d13edc6c984e5b45fa0925d07ddf45e1a5c8f249a8add119427fe7eb8924"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/records/browser-a1-execution.json",
+      "sha256": "78237f35f710b18ad06f1f84f72a264a52c7a185ac94a619a0ae875e5afa0c68"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/records/browser-a1-playwright.json",
+      "sha256": "25ede024f24ac81015e498353e8bd5669af6961cb1fba08de4f7a7efac8df8e3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/records/browser-a1-result.json",
+      "sha256": "87f38553020f113f6ce38bcf3f4194266ff2fd41ab5a9054452ef9d6d9b20ddd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/records/browser-a1-stderr.log",
+      "sha256": "a132cd6a43468ecde311044d48f868efb288eda72b9d3d19ffeeaaff9b798e18"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/records/browser-a1-stdout.log",
+      "sha256": "c1c9a393a9a8cf329895139b524c24d2bd360698369669ef223acf10b6b15681"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/records/prior-preservation.json",
+      "sha256": "77a2cef25bc7da742e42ad9dfe580de08e6a13ac50405dfb8095175bf6765301"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/records/strict-audit-execution.json",
+      "sha256": "08531a1632203b6a4a609564a8e160340b639aee7131fdd1fbbdb44c2aa3aa08"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/records/strict-audit-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/records/strict-audit-stdout.log",
+      "sha256": "8143910caed52856b74edd7fad29c70e3702ea6a74699c92616b6136c8511193"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/9ba146bf02967a0d-build-android-a1.ps1",
+      "sha256": "9ba146bf02967a0d73c96b95c38cf125eed55e1958043793759846f25d8fa783"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/c7c87bd716b9af39-verify-android-a1.mjs",
+      "sha256": "c7c87bd716b9af39a6a9e94d4f4d8cb19aacf71c89b686c50a69e9625faae299"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/producers/41fd1b804cef84cd-preserve-android-a1.mjs",
+      "sha256": "41fd1b804cef84cd8430161ddf9de627d16c1ebd174047d8f8d88ca2bdc19c37"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/3b92d7f9e6cf242d-result.json",
+      "sha256": "3b92d7f9e6cf242d50696219403c610a28fcc99ec3cfa4ae8c63da546bc33058"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/artifact.json",
+      "sha256": "a30ba4c49408abed8782c006ba64f7f009bc38aa8021ffeb2d30dc05d9339aba"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/d7543fd327c0077e-native-artifact-audit.json",
+      "sha256": "d7543fd327c0077e54eec2d1ba91fd964788911445104f150701c01cdc919deb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/678397e26550edb6-android-dev-apk-verification.json",
+      "sha256": "678397e26550edb682fd6a87144494f85120a6bdb29d305f7605ddb597c1f71a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/2ef3cb66f0874ce8-build-run.json",
+      "sha256": "2ef3cb66f0874ce8d47a8352ed624e6ef3de8b54a3d52becd99bb25b4f89dbb3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-aapt2-badging-execution.json",
+      "sha256": "b9acecb71f32cd1ab25432c25b1b498c09e49149b2a3827d97da884d4d5b6231"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-aapt2-badging-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-aapt2-badging-stdout.log",
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-locales-execution.json",
+      "sha256": "c7d3663963638a206a8fdca5cc4fd484903924f89527ac49a7a5300c53a06ada"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-locales-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-locales-stdout.log",
+      "sha256": "e417b96725691c86cc6103223f08367d7454894043884c0e8d1142e519de5200"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-manifest-execution.json",
+      "sha256": "4f83e188be6a9db25bb4ae67aa08db87ec7c2dea71fd6d5b5b80f073c34b1ae7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-manifest-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-manifest-stdout.log",
+      "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-signature-execution.json",
+      "sha256": "4d2deb60a19454ae08c6042fa6258bdffe21c5d4c6eb492e85be81785750287c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-signature-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-signature-stdout.log",
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-zipalign-execution.json",
+      "sha256": "87d2f585d0400973d4d1edaee37e3821c2e3a3fd35058624e3daf9acaa1efe30"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-zipalign-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/android-dev-apk-zipalign-stdout.log",
+      "sha256": "532f2ffe6e92aa77cd26c64829093e5926451f9b0d9f1af6d0b1baafc5e0cc7d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/assemble-dev-debug-execution.json",
+      "sha256": "f595ef4e3853f741f81f338bc9c018e50d4144dbea0c4fabff0532ece43718a9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/assemble-dev-debug-stderr.log",
+      "sha256": "7947f20a02b8249ee4ac57e08b051987df95393d087248b86ba68192263b665b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/assemble-dev-debug-stdout.log",
+      "sha256": "0054d03a01f75e07f5d0129d79157a5da6973bfd1dcb000195570f74fe2d8a1a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/binary-audit-execution.json",
+      "sha256": "95b412a869675cb7a4566551bd4f1e3edcc3741c1f4b00a53e9c83a88da9d056"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/binary-audit-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/binary-audit-stdout.log",
+      "sha256": "678397e26550edb682fd6a87144494f85120a6bdb29d305f7605ddb597c1f71a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/capacitor-copy-execution.json",
+      "sha256": "cf1151640e6d10868a751357bff464ae72bb4aa5f6677bf44a5e1fce612b64e3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/capacitor-copy-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/capacitor-copy-stdout.log",
+      "sha256": "be70bcaf053438fdf68cfe293a5ce408bc66245e46dc7f63c20142acc661625a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-artifact-audit-execution.json",
+      "sha256": "12814a968cf62baef930d031f24eca618204ff91bdd100db94f01685d12dba02"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-artifact-audit-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-artifact-audit-stdout.log",
+      "sha256": "b0e1b26510aea6e0e284f94287a2c91573c2e22f835b8034df098961e6d08aef"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-audit-realpath-execution.json",
+      "sha256": "a4354032c2f5474aad3faff493d407d360f5840ba4f258c22885f98df22266dc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-audit-realpath-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-audit-realpath-stdout.log",
+      "sha256": "4bb5c757536d1884ab29f0526b0d5d2e426607b2155df70ff78d2dc19b62ea84"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-build-execution.json",
+      "sha256": "f5ac2ba5e83cba84fca61f7cc36cb5fca2b3f9b0b81601c5563809ca9187c033"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-build-stderr.log",
+      "sha256": "2876a0104ad3c0728bf7acbc9dc884a35e850333fa554b28d0fde3c00d1840a0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-build-stdout.log",
+      "sha256": "44606a48a035d297f14bafe959b8efdfac5cba69bb77c546aad4fb02833a9af9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-builder-realpath-execution.json",
+      "sha256": "ec279d1a810b0fcfa8972e0cdece9585d315830b3929e7b4f44c913e8bff4e9e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-builder-realpath-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/native-builder-realpath-stdout.log",
+      "sha256": "bbcf3e1ed6b21c04bdf17e380e8f37a574187594bc0c3b84be1c3b9230911f79"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/preserve-execution.json",
+      "sha256": "0346a0488a4f7e31fa19e6d1695e3bc25ad76f40e3ed45f26a091fe35030412f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/preserve-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/preserve-stdout.log",
+      "sha256": "b538e53f7303e71f783a39ebe186f8e00db6a059805b6dfe1c8a886df923989f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/source-after-execution.json",
+      "sha256": "c14587c0fbce058d502d81db1fa16ef0c7c24657b9582b802a3461d6fb392816"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/source-after-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/source-after-stdout.log",
+      "sha256": "ef6b35d80c79902112f6d9e48543810052bde2f9e7b918ea0cfdad275366aeb5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/source-before-execution.json",
+      "sha256": "0f5320e5fa08fe6ba13910cb04246df4e91d8aa075dc1fc835a4f082f2fab7dd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/source-before-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/records/source-before-stdout.log",
+      "sha256": "ef6b35d80c79902112f6d9e48543810052bde2f9e7b918ea0cfdad275366aeb5"
+    }
+  ],
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "allStageAndCriterionStatusesUnchanged": true,
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

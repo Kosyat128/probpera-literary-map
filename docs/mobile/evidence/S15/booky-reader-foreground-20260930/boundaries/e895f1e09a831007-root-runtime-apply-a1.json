@@ -1,0 +1,51 @@
+{
+  "recordedAt": "2026-09-30T14:05:03.867Z",
+  "predecessorDocsCommit": "787902fbc84322879592cca26d53d36a46148a24",
+  "reviewBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/production-draft-a2/source-binding.json",
+    "sha256": "7d7524781c9e2efc2b4778aaec4d644ba5aa9c9f8734c26c9189ded73b1d0fd6"
+  },
+  "baselineDiagnostic": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/actual-baseline-review-a1.json",
+    "sha256": "492129c0da77cd6564cdd000d965731384d3147e65a2adbeb867e996f2d4b1fc"
+  },
+  "changedSourcePaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a1.json",
+    "sha256": "f1c04655e053d1242653bb85d5117269d4be122c651cf101b204345e78090dda",
+    "fileCount": 1665
+  },
+  "protectedInputCount": 1660,
+  "productionChanged": true,
+  "runtimeSourceCommit": null,
+  "sourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "beforeSha256": "e89dd1f69e0fc5e609d31330ad24d82936f823f5e1994bcb8719b27414c4bf88",
+      "sha256": "06779f84df7f21fedcf19460803203300832e26dd654b8ae6a5ab0f1a6fb86a6"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "beforeSha256": "bb1c07e44c57dea310b7eadee1e92a3702ae166142f68631691959c45716cf2b",
+      "sha256": "4ee9f6d2d7e145581de142f4d1da7ed3158e16fa9dee7aa151016d74cf727939"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "beforeSha256": "4acc67383cad75dc1da9f9877258c88516a8ef429da83e256ce78d6a6c9b52cf",
+      "sha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "beforeSha256": "1dd5094e2e96f304f037dc23c0be4b344623bfa6ad9d3930de2e3aec035a7ca7",
+      "sha256": "2a2cfed45f64c17ad4b310f680e354d2b9064a43a0741ea98cfa81660dbaf171"
+    }
+  ],
+  "testsRun": false,
+  "buildsRun": false
+}

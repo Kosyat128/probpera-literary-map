@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a1",
+  "pass": false,
+  "checkpoint": "787902fbc84322879592cca26d53d36a46148a24",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/baseline-ru-a1/source-manifest.json",
+    "sha256": "277aceca14c3a6a284f217c66c715a4d9750ae549da7ea1ce0a218b018f930f4",
+    "fileCount": 1665
+  },
+  "sourceInputsUnchanged": true,
+  "helperInputsUnchanged": true,
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "tests": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   failed: 1,\n-   failed: 0,\n    flaky: 0,\n+   passed: 0,\n-   passed: 1,\n    skipped: 0\n  }\n",
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 65895
+  },
+  "executionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/baseline-ru-a1/execution.json",
+    "sha256": "d3495ba73da9f7f864910c5c463638ae3bce3b267d1927af0ec9cbf68299bf79"
+  },
+  "sourceFreezeReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/baseline-ru-a1/source-freeze-receipt.json",
+    "sha256": "dcf91f5aabbb374642f4e5f44fb4a713f2f10d714c6409f9acce189defca0eff"
+  },
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/baseline-ru-a1/entry.json",
+    "sha256": "f4ba68cbc96813e421ed28c0732a6dc3e9f7ae0768c9d4d56ee2bbf1a16f6bfb"
+  },
+  "fixtureOnly": true,
+  "runtimeUnchanged": true,
+  "productionImplementationChanged": false,
+  "unitRerun": false,
+  "staticRerun": false,
+  "pwaRebuilt": false,
+  "androidRebuilt": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

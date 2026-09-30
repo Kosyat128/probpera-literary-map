@@ -1,0 +1,31 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/playwright.config.mjs"
+  ],
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "resolvedRoot": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work",
+  "startedAt": "2026-09-30T14:12:27.027Z",
+  "durationMs": 131494,
+  "exitCode": 1,
+  "requestedChannel": "msedge",
+  "actualProducer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\run-final-browser-a2.mjs",
+    "sha256": "5c263e12f7bae2f5e8252b99260ba4ad7d7cd6a327770a371b08f929796b4237"
+  },
+  "artifactRoots": {
+    "temp": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a1/temp",
+    "profileRoot": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a1/profiles",
+    "browserOutput": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a1/browser-a1"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a1/stdout.log",
+    "sha256": "9f3c5cef0dc1bae90dde9be95308061a6ad0845c1debe4741557cf2dd21c6609"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a1/stderr.log",
+    "sha256": "9b8c884f8adf0a51019ff4da3a5b3a1c79aafbc6ca297b1b80eb93b5f9a8c30b"
+  }
+}

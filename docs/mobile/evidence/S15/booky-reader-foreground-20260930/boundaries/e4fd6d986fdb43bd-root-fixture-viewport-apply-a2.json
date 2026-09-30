@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T14:26:15.867Z",
+  "checkpoint": "787902fbc84322879592cca26d53d36a46148a24",
+  "pass": true,
+  "fixtureOnlyCorrection": true,
+  "changedPath": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+  "beforeSha256": "e9babdfba8f16b7d82879476b72207ab5ad922ceaf096512051a4fbe5bc6d71b",
+  "sha256": "fa360ce4c1ed6f82fb52bc196cb96f64a25801b2ab972e1dc8db4f1c143e2970",
+  "productionChangedByCorrection": false,
+  "allOther1664InputsUnchanged": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a3.json",
+    "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db",
+    "fileCount": 1665
+  },
+  "priorSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a2.json",
+    "sha256": "c03ac867d1363269506e1e377125ac65dd5fa626803683a1a0807caf7ae52a6c"
+  },
+  "diagnosticRun": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a2/result.json",
+    "sha256": "4177ddaf19f6dbe163673465331b88f14cfe855661f25017b573b3ce58d79061"
+  },
+  "priorCorrection": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-fixture-viewport-apply-a1.json",
+    "sha256": "dad2a8de0ed4f7a3eeaa0e314c2fed998e498ceeb8f8af3edf551e68de5cb3b6"
+  },
+  "cause": "The inner article was entirely outside the native clip. Expose the external book Close toolbar control instead so only the visible native scroll container owns the real touch scrolling. This does not activate Close, assign scroll, fake an observer, or change product code.",
+  "testsRun": false,
+  "buildsRun": false
+}

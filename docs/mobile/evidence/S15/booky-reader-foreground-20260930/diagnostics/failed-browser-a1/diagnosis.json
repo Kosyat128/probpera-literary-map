@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T14:18:49.973Z",
+  "checkpoint": "787902fbc84322879592cca26d53d36a46148a24",
+  "pass": true,
+  "fixtureOnlyCorrection": true,
+  "changedPath": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+  "beforeSha256": "9551543db7b45a27134b5d473c7a9cedddcd135b44284eeabfff2ba09c764ffb",
+  "sha256": "e9babdfba8f16b7d82879476b72207ab5ad922ceaf096512051a4fbe5bc6d71b",
+  "productionChangedByCorrection": false,
+  "allOther1664InputsUnchanged": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a2.json",
+    "sha256": "c03ac867d1363269506e1e377125ac65dd5fa626803683a1a0807caf7ae52a6c",
+    "fileCount": 1665
+  },
+  "priorSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a1.json",
+    "sha256": "f1c04655e053d1242653bb85d5117269d4be122c651cf101b204345e78090dda"
+  },
+  "diagnosticRun": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a1/result.json",
+    "sha256": "dc013c60e802c0bee30bae0d093b5bd411d76893ceb5fa626736f3f0d6e3f0aa"
+  },
+  "cause": "Trusted exposure of the filters moved the actual owned native scroll viewport above the reader. Both locales correctly reported inactive after filters closed. Restore the actual visible reader with the existing trusted touch expose helper before the unchanged active-view assertion; no observer, focus, history or result assignment.",
+  "rootDirectDiagnosticViews": 1,
+  "rootDirectReaderViews": 2,
+  "testsRun": false,
+  "buildsRun": false
+}

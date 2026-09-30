@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "recordedAt": "2026-09-30T14:59:41.981Z",
+  "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/result.json",
+    "sha256": "6a8eadb5b805f0de4d2ec22c300d2a781f9abbb0929c6c7fafbf34b0d052415f"
+  },
+  "checkpoint": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/checkpoint.json",
+    "sha256": "636f0b1145251de38dbf8e5d6a2436b90d45185055045a8e9e3bd7d16b177d20"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/checkpoint.mjs",
+    "sha256": "cc1ea79cd578f31ce98763b59841275b9452f3263e868e7a6b0f102b144c0f52"
+  },
+  "globals": 8,
+  "releaseReady": false
+}

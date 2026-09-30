@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T15:02:11.023Z",
+  "kind": "metadata-verification-git-environment-diagnosis",
+  "failedAttempt": "verify-state-a1",
+  "failedCriterionCount": 34,
+  "affectedHistoricalArtifacts": 16,
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S00/requirements-verification.json",
+      "headGitBlob": "2b8d6f717ddb0f70ce0577328b4fb7ef9f7beec7",
+      "autocrlfFalseBlob": "746da702de3116cdbaa844ec94bbe290e9dc5591",
+      "autocrlfTrueBlob": "2b8d6f717ddb0f70ce0577328b4fb7ef9f7beec7",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/vitest-main-refresh-regression.log",
+      "headGitBlob": "8f4094824f5cb45d619834791f80ff03bc779f28",
+      "autocrlfFalseBlob": "306f821ded0334f2932e915078b933b73bd9db0e",
+      "autocrlfTrueBlob": "8f4094824f5cb45d619834791f80ff03bc779f28",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/lint-main-refresh.log",
+      "headGitBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+      "autocrlfFalseBlob": "a28deb9363c5a63b7c933563db3dfba6a946bd8b",
+      "autocrlfTrueBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/build-domain-main-refresh.log",
+      "headGitBlob": "9758980e018510eb91fc2346c702946dbab2778a",
+      "autocrlfFalseBlob": "3e8aa22f5ed4083e5b1c6278d591f1c9610d5069",
+      "autocrlfTrueBlob": "9758980e018510eb91fc2346c702946dbab2778a",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/admin-build-main-refresh.log",
+      "headGitBlob": "d47627427b2815c2cc7bb036420f1136fc65799f",
+      "autocrlfFalseBlob": "46c7660fb206f15f17c02679e6b89d6a3780b098",
+      "autocrlfTrueBlob": "d47627427b2815c2cc7bb036420f1136fc65799f",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/browser-main-refresh.log",
+      "headGitBlob": "0a798086e83f170e53f0bf9ed071632ed767d5d4",
+      "autocrlfFalseBlob": "86e514f1b03ecbc7852abb2f7e084ea84c314a6c",
+      "autocrlfTrueBlob": "0a798086e83f170e53f0bf9ed071632ed767d5d4",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S01/logs/S01-accepted-regression.log",
+      "headGitBlob": "684aec394383292676b34fe3378147cb3b6b48dd",
+      "autocrlfFalseBlob": "b6c5c70fefc010b52ac20da9f83bbf2b243637bd",
+      "autocrlfTrueBlob": "684aec394383292676b34fe3378147cb3b6b48dd",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S01/logs/S01-lint.log",
+      "headGitBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+      "autocrlfFalseBlob": "a28deb9363c5a63b7c933563db3dfba6a946bd8b",
+      "autocrlfTrueBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-browser-final.log",
+      "headGitBlob": "38bedfe52d2628551e09f23a05cc7b901c2ce2d2",
+      "autocrlfFalseBlob": "4099015b3f6fce7bab9bd8ab909875db7b0a0d45",
+      "autocrlfTrueBlob": "38bedfe52d2628551e09f23a05cc7b901c2ce2d2",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-browser-network-initial.log",
+      "headGitBlob": "372c64009eb027085b835a154199c6b9f03e2f0f",
+      "autocrlfFalseBlob": "523b066b1ca57ec2f0a76b80d357366a95cffa33",
+      "autocrlfTrueBlob": "372c64009eb027085b835a154199c6b9f03e2f0f",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-build-domain-final.log",
+      "headGitBlob": "25f934060c7eba52e736522fcf265f82022fbba6",
+      "autocrlfFalseBlob": "b2b552a190f83ee1fe773e73ed076cbee71ebd5b",
+      "autocrlfTrueBlob": "25f934060c7eba52e736522fcf265f82022fbba6",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-final-boundary-regression.log",
+      "headGitBlob": "c66cada01466ddd215b5656c92e8d41b79ca4d74",
+      "autocrlfFalseBlob": "88607dda0550125f1d1fe0e702ce432a6e8324ad",
+      "autocrlfTrueBlob": "c66cada01466ddd215b5656c92e8d41b79ca4d74",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-final-boundary-serial.log",
+      "headGitBlob": "72c31dee908ca094fe9575f9471ecd07eb77bf48",
+      "autocrlfFalseBlob": "fa1a5098e8d83e21e4635b12577a7fb93d3c78c4",
+      "autocrlfTrueBlob": "72c31dee908ca094fe9575f9471ecd07eb77bf48",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-full-regression.log",
+      "headGitBlob": "46aee7b4639fb4496067eefe4037cdbfc36dfb61",
+      "autocrlfFalseBlob": "0ec1732207bdda77e03dbefef4227e9649a938f5",
+      "autocrlfTrueBlob": "46aee7b4639fb4496067eefe4037cdbfc36dfb61",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-lint-final.log",
+      "headGitBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+      "autocrlfFalseBlob": "a28deb9363c5a63b7c933563db3dfba6a946bd8b",
+      "autocrlfTrueBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+      "historicalFileChanged": false
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-unit-initial.log",
+      "headGitBlob": "0f3b56bb10177b05588f63d384a4eb4398226bf9",
+      "autocrlfFalseBlob": "c35dba53061bd453580ae9d508eddfc51308e06f",
+      "autocrlfTrueBlob": "0f3b56bb10177b05588f63d384a4eb4398226bf9",
+      "historicalFileChanged": false
+    }
+  ],
+  "cause": "The checkpoint helper forced core.autocrlf=false; the repository evidence verifier uses git hash-object --path and therefore requires the established text-cleaning configuration. Every named historical artifact matches HEAD with core.autocrlf=true.",
+  "retryEnvironment": {
+    "GIT_CONFIG_PARAMETERS": "'core.autocrlf=true'"
+  },
+  "environmentScope": "child process only; no local/global Git configuration written",
+  "historicalFilesModified": false,
+  "sourceModified": false,
+  "appChecksRepeated": false,
+  "buildsRepeated": false
+}

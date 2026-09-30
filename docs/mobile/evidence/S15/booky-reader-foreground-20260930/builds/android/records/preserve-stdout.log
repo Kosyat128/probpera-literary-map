@@ -1,0 +1,14 @@
+{
+  "pass": true,
+  "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "buildId": "1e401e638abac95ca8f814bb255629fa09630006cb115268f3dcfd38237a4eb1",
+  "kind": "android-booky-reader-foreground-runtime-dev-apk",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-runtime-build-evidence/attempt-a1/android/android-1e401e63/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "6fadc0895b6ba7f8e01276e12296aa37f44381dc18245e9f6f90e5c5b7898f03"
+  },
+  "runtimeFiles": 1408,
+  "resultPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/android-a1/result.json"
+}
+

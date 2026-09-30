@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/failed-a1-artifact.json",
+    "sha256": "013b5a7a23b3b1db3da5c368a1c5779bab6f9f2319eace3c68f4804e9ad2c0bf",
+    "bytes": 419225
+  },
+  "buildId": "8c2244bb1eb9310ab875c56c0126b6bc57b64e42bff823fe052ffb6af105cddb",
+  "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "strictAuditPass": true,
+  "smokePass": false,
+  "diagnosticOnly": true,
+  "payloadCopied": false,
+  "signingKeyPersisted": false,
+  "priorResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/pwa-a1/result.json",
+    "sha256": "6c5f06937051f1b254e18819b08730aa728bc154fcc124b6aa5458afb002aff0"
+  }
+}

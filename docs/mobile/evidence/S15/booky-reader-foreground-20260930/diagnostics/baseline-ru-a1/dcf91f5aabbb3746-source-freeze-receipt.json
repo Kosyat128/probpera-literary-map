@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-09-30T14:02:49.467Z",
+  "baseHead": "787902fbc84322879592cca26d53d36a46148a24",
+  "sourceFrozen": true,
+  "sourceAppliedByHelper": false,
+  "changedPaths": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/baseline-ru-a1/source-manifest.json",
+    "sha256": "277aceca14c3a6a284f217c66c715a4d9750ae549da7ea1ce0a218b018f930f4",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "protectedInputsVerified": true,
+  "helperInputs": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\root-run-baseline-ru-a1.mjs",
+      "sha256": "542676dd2bbf6080556d634027c34c261eea95c9c8c6480b94d6051b0fc32b66"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/playwright.config.mjs",
+      "sha256": "7c1ae3438500e6d818affa2bfa09f3f298b87ca814bb29c449d680264fbe2098"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/baseline-ru-a1/entry.json",
+      "sha256": "f4ba68cbc96813e421ed28c0732a6dc3e9f7ae0768c9d4d56ee2bbf1a16f6bfb"
+    }
+  ]
+}

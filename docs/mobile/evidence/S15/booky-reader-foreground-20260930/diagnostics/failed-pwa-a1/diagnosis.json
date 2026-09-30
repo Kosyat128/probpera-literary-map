@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-root-pwa-smoke-diagnostic-review",
+  "recordedAt": "2026-09-30T14:52:48.033Z",
+  "failedResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/pwa-a1/result.json",
+    "sha256": "6c5f06937051f1b254e18819b08730aa728bc154fcc124b6aa5458afb002aff0"
+  },
+  "failedArtifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/failed-a1-artifact.json",
+    "sha256": "013b5a7a23b3b1db3da5c368a1c5779bab6f9f2319eace3c68f4804e9ad2c0bf",
+    "bytes": 419225
+  },
+  "acceptedResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/pwa-a2/result.json",
+    "sha256": "4099b48162ff05e2c540ddb35c96d15250eaafbb0e699d5a8f5531a67c1c64c4"
+  },
+  "acceptedSwObservations": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-runtime-build-evidence/attempt-a2/pwa/browser-a1/downloads-artifact-wrapper-2d9f0-ter-cold-offline-navigation/service-worker-diagnostics.json",
+    "sha256": "0c98eecbc0a00c7fa42e9bf030347a3ce2f6761276e2c5eadab07967690edf3a"
+  },
+  "failedImageDirectlyViewed": true,
+  "observedFailure": "Original licensed smoke timed out at unchanged 60000ms controller acquisition; authorized globe rendered. A1 had no SW/cache observation, so exact cause is unknown.",
+  "observedRecovery": "Fresh QA build with short checkout TEMP and unchanged original assertions passed once; cache entries progressed 340,730,1192,1399 and worker activated; no observer/SW/request error. Original test source unchanged.",
+  "causeProven": false,
+  "shortTemporaryPath": "Environmental adjustment, not proof of the original cause",
+  "privateSigningKeyPersisted": false,
+  "freshBuildReason": "Original QA signer was in-memory only and server was closed after failed smoke; new authority cannot authenticate original artifact.",
+  "androidRepeated": false,
+  "staticOrUnitsRepeated": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

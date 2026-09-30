@@ -1,0 +1,36 @@
+{
+  "checkpoint": "787902fbc84322879592cca26d53d36a46148a24",
+  "browserFiles": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky explicit writer filter recovery ru"
+  ],
+  "expectedBrowserTests": 1,
+  "changedPaths": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "fixtureOnly": true,
+  "runtimeUnchanged": true,
+  "productionImplementationChanged": false,
+  "requestedChannel": "msedge",
+  "runtimeSourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "priorSourceManifest": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-manifests/e8d98066ca4f368c.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe"
+  },
+  "reviewedFixture": {
+    "path": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+    "sha256": "9551543db7b45a27134b5d473c7a9cedddcd135b44284eeabfff2ba09c764ffb"
+  },
+  "sourceApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-fixture-apply-a1.json",
+    "sha256": "95d90d1985ab0bda1735f3b42976aedc9dbc993e74875f40d065b0b7483886cd"
+  },
+  "acceptedD216": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/result.json",
+    "sha256": "3a5da6182deb21ae91736933ac0d116362dbbecfb76c5bec6cd40cdc1e2a7f58"
+  }
+}

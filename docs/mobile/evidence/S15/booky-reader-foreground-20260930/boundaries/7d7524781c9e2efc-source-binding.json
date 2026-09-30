@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-reader-foreground-production-and-focused-unit-draft",
+  "observedHead": "6179eee58a57505b7c9a1a9689f578ba157961a2",
+  "currentControlsLastChangedCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "proposals": [
+    {
+      "path": "src/App.tsx",
+      "beforeSha256": "e89dd1f69e0fc5e609d31330ad24d82936f823f5e1994bcb8719b27414c4bf88",
+      "proposedSha256": "06779f84df7f21fedcf19460803203300832e26dd654b8ae6a5ab0f1a6fb86a6",
+      "bytes": 220680,
+      "baseline": "baseline/src/App.tsx",
+      "proposed": "proposed/src/App.tsx"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "beforeSha256": "bb1c07e44c57dea310b7eadee1e92a3702ae166142f68631691959c45716cf2b",
+      "proposedSha256": "4ee9f6d2d7e145581de142f4d1da7ed3158e16fa9dee7aa151016d74cf727939",
+      "bytes": 25944,
+      "baseline": "baseline/src/host/planetMascot.ts",
+      "proposed": "proposed/src/host/planetMascot.ts"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "beforeSha256": "4acc67383cad75dc1da9f9877258c88516a8ef429da83e256ce78d6a6c9b52cf",
+      "proposedSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+      "bytes": 88565,
+      "baseline": "baseline/src/host/PlanetMascotControls.tsx",
+      "proposed": "proposed/src/host/PlanetMascotControls.tsx"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "beforeSha256": "1dd5094e2e96f304f037dc23c0be4b344623bfa6ad9d3930de2e3aec035a7ca7",
+      "proposedSha256": "2a2cfed45f64c17ad4b310f680e354d2b9064a43a0741ea98cfa81660dbaf171",
+      "bytes": 52922,
+      "baseline": "baseline/src/host/planetMascot.test.ts",
+      "proposed": "proposed/src/host/planetMascot.test.ts"
+    }
+  ],
+  "sourceAuthor": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/production-draft-a2/prepare-draft.cjs",
+    "sha256": "9c563de73955f918b6d389adf36dc5ad5e7ead750a95634abb8f8c210625bfc9"
+  },
+  "forward": {
+    "path": "forward.patch",
+    "sha256": "7651b74f3bff9f92d9a39a10db93122c59b9fef20817515ee081f5330f565fc5"
+  },
+  "inverse": {
+    "path": "inverse.patch",
+    "sha256": "6f4133b94db88e6da878c0d08e3aa2107841b48170ee9ddf8bfb02401e419779"
+  },
+  "actualPredecessorResult": null,
+  "actualPredecessorDocsCheckpoint": null,
+  "actualApplyReceipt": null,
+  "decisionNumber": null,
+  "invariants": {
+    "observedReaderOnly": true,
+    "inactiveDoesNotReleaseEntry": true,
+    "canonicalCompletedCloseReleasesEntry": true,
+    "newerExplicitIntentWins": true,
+    "contextCloseDoesNotAcceptPreference": true,
+    "oneTimePresentationPause": true,
+    "explicitReopenAndPresentationActionsRemainAvailable": true,
+    "historicalCopyUnchanged": true,
+    "journeyResolverUnchanged": true,
+    "noApprovalOrPublishingChange": true
+  },
+  "execution": {
+    "authorOnly": true,
+    "repositoryWrites": false,
+    "sourceApplied": false,
+    "checksRun": false,
+    "testsRun": false,
+    "buildsRun": false,
+    "passClaimed": false
+  },
+  "requiredApplicationBoundary": "Bind actual accepted canvas-gesture result and clean docs checkpoint first; recheck all three raw baseline pins, full protected-source manifest and reviewed fixture proposal. This packet does not authorize or claim an application or run.",
+  "priorDraft": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/production-draft-a1/source-binding.json",
+    "sha256": "78fd6ce65a1f37b955bf4c0d52c53a1a38e00e598297330f4048f143d9d667fd"
+  },
+  "correction": "Automatic focus marker covers both current and prior open state at the new observed entry; ownership marker does not imply visibility.",
+  "unitScope": {
+    "path": "src/host/planetMascot.test.ts",
+    "addedCases": 4,
+    "observedTotal": null,
+    "executed": false
+  },
+  "readerObservation": {
+    "ownershipAttribute": "data-booky-reader-owned",
+    "presentationPauseAttribute": "data-booky-reader-paused",
+    "visibleArrivalAuthority": "Unchanged real BookArchiveDetailView.active plus actual detail DOM"
+  }
+}

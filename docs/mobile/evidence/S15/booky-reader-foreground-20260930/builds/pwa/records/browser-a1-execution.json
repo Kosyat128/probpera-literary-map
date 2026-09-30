@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/pwa-a2.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 29134,
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/pwa-a2/browser-a1-stdout.log",
+    "bytes": 269,
+    "sha256": "c1c9a393a9a8cf329895139b524c24d2bd360698369669ef223acf10b6b15681"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/pwa-a2/browser-a1-stderr.log",
+    "bytes": 2905,
+    "sha256": "a132cd6a43468ecde311044d48f868efb288eda72b9d3d19ffeeaaff9b798e18"
+  }
+}

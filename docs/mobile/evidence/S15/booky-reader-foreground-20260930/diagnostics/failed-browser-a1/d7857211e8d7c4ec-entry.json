@@ -1,0 +1,102 @@
+{
+  "checkpoint": "787902fbc84322879592cca26d53d36a46148a24",
+  "browserFiles": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky explicit writer filter recovery ru",
+    "Booky explicit writer filter recovery en"
+  ],
+  "expectedBrowserTests": 2,
+  "expectedSuccessfulCaptures": 6,
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1660,
+  "fixtureOnly": false,
+  "runtimeUnchanged": false,
+  "productionImplementationChanged": true,
+  "requestedChannel": "msedge",
+  "runtimeSourceCommit": null,
+  "sourceCommit": null,
+  "sourceBeforeCommit": true,
+  "predecessorRuntimeSourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "priorSourceManifest": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-manifests/e8d98066ca4f368c.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe"
+  },
+  "runtimeSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a1.json",
+    "sha256": "f1c04655e053d1242653bb85d5117269d4be122c651cf101b204345e78090dda"
+  },
+  "reviewedInputs": {
+    "src/App.tsx": "06779f84df7f21fedcf19460803203300832e26dd654b8ae6a5ab0f1a6fb86a6",
+    "src/host/PlanetMascotControls.tsx": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+    "src/host/planetMascot.test.ts": "2a2cfed45f64c17ad4b310f680e354d2b9064a43a0741ea98cfa81660dbaf171",
+    "src/host/planetMascot.ts": "4ee9f6d2d7e145581de142f4d1da7ed3158e16fa9dee7aa151016d74cf727939",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs": "9551543db7b45a27134b5d473c7a9cedddcd135b44284eeabfff2ba09c764ffb"
+  },
+  "reviewedFixture": {
+    "path": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+    "sha256": "9551543db7b45a27134b5d473c7a9cedddcd135b44284eeabfff2ba09c764ffb"
+  },
+  "sourceApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-runtime-apply-a1.json",
+    "sha256": "e895f1e09a831007b545fed96b781138333f10959fc3b0b796d36d95768c2a8b"
+  },
+  "fixtureApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-fixture-apply-a1.json",
+    "sha256": "95d90d1985ab0bda1735f3b42976aedc9dbc993e74875f40d065b0b7483886cd"
+  },
+  "baselineDiagnostic": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/actual-baseline-review-a1.json",
+    "sha256": "492129c0da77cd6564cdd000d965731384d3147e65a2adbeb867e996f2d4b1fc"
+  },
+  "acceptedD216": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/result.json",
+    "sha256": "3a5da6182deb21ae91736933ac0d116362dbbecfb76c5bec6cd40cdc1e2a7f58"
+  },
+  "boundaryInputs": [
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-manifests/e8d98066ca4f368c.json",
+      "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a1.json",
+      "sha256": "f1c04655e053d1242653bb85d5117269d4be122c651cf101b204345e78090dda"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-runtime-apply-a1.json",
+      "sha256": "e895f1e09a831007b545fed96b781138333f10959fc3b0b796d36d95768c2a8b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-fixture-apply-a1.json",
+      "sha256": "95d90d1985ab0bda1735f3b42976aedc9dbc993e74875f40d065b0b7483886cd"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/actual-baseline-review-a1.json",
+      "sha256": "492129c0da77cd6564cdd000d965731384d3147e65a2adbeb867e996f2d4b1fc"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/result.json",
+      "sha256": "3a5da6182deb21ae91736933ac0d116362dbbecfb76c5bec6cd40cdc1e2a7f58"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/production-draft-a2/source-binding.json",
+      "sha256": "7d7524781c9e2efc2b4778aaec4d644ba5aa9c9f8734c26c9189ded73b1d0fd6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/fixture-draft-a1/source-binding.json",
+      "sha256": "c791bd3a37cd1ebe818706ad23f74ceae9441435bfd08210330a86def6834214"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-run-baseline-ru-a1.mjs",
+      "sha256": "542676dd2bbf6080556d634027c34c261eea95c9c8c6480b94d6051b0fc32b66"
+    }
+  ]
+}

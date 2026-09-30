@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T14:33:39.756Z",
+  "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "buildId": "8c2244bb1eb9310ab875c56c0126b6bc57b64e42bff823fe052ffb6af105cddb",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a3.json",
+    "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db",
+    "fileCount": 1665
+  },
+  "sourceInputsSha256": "8607c3c6f08ba92293750614a5f126e76d6521e190e7f9d687015035c0056cc9",
+  "artifact": null,
+  "browser": null,
+  "pass": false,
+  "failure": {
+    "name": "AssertionError",
+    "message": "browser failed\n\n1 !== 0\n"
+  },
+  "localQaAuthority": true,
+  "requestedBrowserChannel": "msedge",
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

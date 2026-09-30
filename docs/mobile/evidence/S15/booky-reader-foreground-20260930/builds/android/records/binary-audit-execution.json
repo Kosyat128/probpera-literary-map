@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-09-30T14:33:42.0542146+00:00",
+  "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "durationMs": 3504,
+  "exitCode": 0,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\binary-audit-stdout.log",
+    "bytes": 8886,
+    "sha256": "678397e26550edb682fd6a87144494f85120a6bdb29d305f7605ddb597c1f71a"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\binary-audit-stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\verify-android-a1.mjs",
+    "--expected-build-id",
+    "1e401e638abac95ca8f814bb255629fa09630006cb115268f3dcfd38237a4eb1",
+    "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+    "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a3.json",
+    "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db"
+  ]
+}

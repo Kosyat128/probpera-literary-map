@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-09-30T14:31:38.0482721+00:00",
+  "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "durationMs": 24614,
+  "exitCode": 0,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\native-build-stdout.log",
+    "bytes": 8728,
+    "sha256": "44606a48a035d297f14bafe959b8efdfac5cba69bb77c546aad4fb02833a9af9"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-build-review-a1\\android-a1\\native-build-stderr.log",
+    "bytes": 5133,
+    "sha256": "2876a0104ad3c0728bf7acbc9dc884a35e850333fa554b28d0fde3c00d1840a0"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\build-native.mjs",
+    "android",
+    "dev"
+  ]
+}

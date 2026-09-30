@@ -1,0 +1,46 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:469:37 › Booky explicit writer filter recovery ru
+  1) D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:469:37 › Booky explicit writer filter recovery ru 
+
+    Error: Booky help retires once on genuine reader arrival
+
+    expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-planet-mascot-panel]')
+    Expected: 0
+    Received: 1
+    Timeout:  5000ms
+
+    Call log:
+      - Booky help retires once on genuine reader arrival with timeout 5000ms
+      - waiting for locator('[data-planet-mascot-panel]')
+        14 × locator resolved to 1 element
+           - unexpected value "1"
+
+
+      625 |     foreground.arrival=foregroundArrival;
+      626 |     // The old runtime is expected to fail here after the real committed arrival.
+    > 627 |     await expect(panel(page),'Booky help retires once on genuine reader arrival').toHaveCount(0);
+          |                                                                                   ^
+      628 |     await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','true');await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','true');
+      629 |     await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-reduced-motion','true');
+      630 |     await expect.poll(async()=>{const current=await writerReaderObservation(page);return current.focus.reader&&!current.focus.bookyToggle&&current.bookKey===selectedKey&&current.title===readerTitle;},{message:'The actual reader keeps its own focus and identity after automatic help retirement'}).toBe(true);
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:627:83
+
+    attachment #1: diagnostic-failure-ru (image/png) ───────────────────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-evidence\baseline-ru-a1\browser-a1\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\attachments\diagnostic-failure-ru-0bce452b730006a6c9fc641882a9a0cec0fb322a.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: booky-writer-filter-recovery-source-evidence (application/json) ─────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-evidence\baseline-ru-a1\browser-a1\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\attachments\booky-writer-filter-recovery-source-evidence-00100717e52f705b4b0289f0fbdbd839f85468ad.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-evidence\baseline-ru-a1\browser-a1\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\error-context.md
+
+
+  1 failed
+    D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:469:37 › Booky explicit writer filter recovery ru 

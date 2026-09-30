@@ -1,0 +1,454 @@
+{
+  "schemaVersion": 1,
+  "status": "BOUNDED_READER_FOREGROUND_RUNTIME_VALIDATED",
+  "pass": true,
+  "recordedAt": "2026-09-30T14:59:41.981Z",
+  "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "runtimeSourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "buildSourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "predecessorDocsCommit": "787902fbc84322879592cca26d53d36a46148a24",
+  "decision": "D217",
+  "checkpointBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/bound-a1/binding.json",
+    "sha256": "3aa1a07f20219df73cdbc545b0b88b01054d409aac55be1d4544003a7536006d"
+  },
+  "checkpointProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/checkpoint-review-a5/checkpoint.mjs",
+    "sha256": "cc1ea79cd578f31ce98763b59841275b9452f3263e868e7a6b0f102b144c0f52"
+  },
+  "sourceCommitReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/source-commit/a0bc2a0324febbb5-actual-source-commit-a1.json",
+    "sha256": "a0bc2a0324febbb547c73e8334f009b678dcab18e8e51ba02948e66632dfad43"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/source-manifests/c785a629ec203716.json",
+    "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1660,
+  "changedSourcePaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "productionImplemented": true,
+  "productionImplementationChanged": true,
+  "runtimeUnchanged": false,
+  "fixtureOnly": false,
+  "validatedBehavior": "Genuine committed reader entry now retires already-open Booky help once and stops the current decorative presentation without changing preferences or semantic progress. Visibility-only inactive reports retain the entry lease; explicit help or presentation actions remain available and same-entry reflow does not retire reopened help. Genuine Close and same-book re-entry form a new lease. Automatic retirement preserves reader focus; ordinary manual help close retains its focus return. Fresh TypeScript and 50 focused controller units cover the unchanged runtime bytes; two final RU/EN actual-App recovery/reader cases preserve four original recovery captures and add two reader captures. Six root direct views, causal review and fresh source-bound PWA/Android-dev artifacts document this bounded behavior. Baseline and failed final attempts remain diagnostics. Remaining native reader/catalog clutter is a separate bounded implementation task. All34 drafts remain unapproved/unavailable; contextual Controls pins remain stale pending their separate final-commit refresh. PLANETKA-005/UX-006 receive evidence only; all statuses, historical caches and acceptance gates stay unchanged.",
+  "runs": {
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/static-a1/379e2917dcce2a24-result.json",
+      "sha256": "379e2917dcce2a246a9945e059f39ce50a5e9bd706a0e9a3d0ecae3a7f228d43",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/static-a1/51a80fd313a00d1a-execution.json",
+        "sha256": "51a80fd313a00d1a189597346893994d1654f809156fbf2fdcfd34826b81d0e6"
+      },
+      "originalSourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a1.json",
+        "sha256": "f1c04655e053d1242653bb85d5117269d4be122c651cf101b204345e78090dda",
+        "fileCount": 1665
+      }
+    },
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/unit-a1/b43fbb39dba72678-result.json",
+      "sha256": "b43fbb39dba7267839a060268463d21cf7bac8dec5711d99d1a9700f608f1a68",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/unit-a1/9a0daa22a9a59d52-execution.json",
+        "sha256": "9a0daa22a9a59d523ae227320a64f135f20c58b9a556250095fcf80564c429f9"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/unit-a1/vitest.json",
+        "sha256": "ee2e88bd28386fa678330f4854f18b7f96fc5a317e968fb29253736ba9b10bc0"
+      },
+      "tests": {
+        "total": 50,
+        "passed": 50,
+        "failed": 0,
+        "pending": 0,
+        "todo": 0
+      },
+      "originalSourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a1.json",
+        "sha256": "f1c04655e053d1242653bb85d5117269d4be122c651cf101b204345e78090dda",
+        "fileCount": 1665
+      }
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/5d393b271ba10576-result.json",
+      "sha256": "5d393b271ba10576d86057d026480e4bf1374f05aad5466e5bcaf12277e3d1c3",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/061ca647063ad8c9-execution.json",
+        "sha256": "061ca647063ad8c9611abe22b3291776913ef1a8854d3f79c8e37b7d6d741946"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/a9b23c9b4b346bed-playwright.json",
+        "sha256": "a9b23c9b4b346bede18aa569e59fb23d7ecf818cc8186ed91ad8d011d753f5fa"
+      },
+      "entry": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/2df4afb5c7567541-entry.json",
+        "sha256": "2df4afb5c7567541ae7a8ad34094e9a2d34fe45dc1da7011ee9272e99e8fc363"
+      },
+      "sourceFreezeReceipt": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/12c74b9f3764eb4c-source-freeze-receipt.json",
+        "sha256": "12c74b9f3764eb4c123f3a7e934df7261bc510f30bcb15705d53067604b6511f"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "attempt": "a3"
+    }
+  },
+  "unitCount": 50,
+  "unitScope": "Existing planetMascot controller test file once; runtime byte equality is required if the final fixture alone changed",
+  "staticRerun": true,
+  "unitRerun": true,
+  "geometryUnitsRerun": false,
+  "browserCases": 2,
+  "actualAppCaseCount": 2,
+  "totalCapturedImageCount": 6,
+  "inspectedImageCount": 6,
+  "readerForegroundScreenshotsViewed": 2,
+  "captures": [
+    {
+      "test": "Booky explicit writer filter recovery ru",
+      "locale": "ru",
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/ru/source-evidence.json",
+      "sha256": "03a14e6f270502215c749c2aa995bebcd27c17ca2a88364eea6384dfe0d9c7ef",
+      "originalSource": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-3731d85a5eeb8de160c1256820407c06d1b3309d.json",
+        "sha256": "03a14e6f270502215c749c2aa995bebcd27c17ca2a88364eea6384dfe0d9c7ef"
+      }
+    },
+    {
+      "test": "Booky explicit writer filter recovery en",
+      "locale": "en",
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/captures/en/source-evidence.json",
+      "sha256": "b35f4f3b231a792d248837e4f23fb299a82df693255c7decdb03520af2d8e12b",
+      "originalSource": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-evidence/final-browser-a3/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-5248d76ef5734ad9755736f674d271acd06e8d2f.json",
+        "sha256": "b35f4f3b231a792d248837e4f23fb299a82df693255c7decdb03520af2d8e12b"
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/reviews/root-visual.json",
+    "sha256": "2f29a3f6ef69123554388806e133da54b1f89860b7e3df612da06d095d57775d"
+  },
+  "causalReview": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/reviews/agent-causal.json",
+    "sha256": "08e587884acd7f38d9a7c7e3b5b151383f43e91bd50b25b68309b052c9eeaf68"
+  },
+  "baselineDiagnostic": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/browser-a3/492129c0da77cd65-actual-baseline-review-a1.json",
+    "sha256": "492129c0da77cd6564cdd000d965731384d3147e65a2adbeb867e996f2d4b1fc"
+  },
+  "failedDiagnosticHistory": [
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/dc013c60e802c0be-result.json",
+        "sha256": "dc013c60e802c0bee30bae0d093b5bd411d76893ceb5fa626736f3f0d6e3f0aa"
+      },
+      "diagnosis": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-browser-a1/diagnosis.json",
+        "sha256": "dad2a8de0ed4f7a3eeaa0e314c2fed998e498ceeb8f8af3edf551e68de5cb3b6"
+      },
+      "originalResult": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a1/result.json",
+        "sha256": "dc013c60e802c0bee30bae0d093b5bd411d76893ceb5fa626736f3f0d6e3f0aa"
+      },
+      "diagnosticOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/boundaries/4177ddaf19f6dbe1-result.json",
+        "sha256": "4177ddaf19f6dbe163673465331b88f14cfe855661f25017b573b3ce58d79061"
+      },
+      "diagnosis": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/boundaries/e4fd6d986fdb43bd-root-fixture-viewport-apply-a2.json",
+        "sha256": "e4fd6d986fdb43bd02469232841d0f627bdceeaf1c8e8ddb1d6cdc58307edc69"
+      },
+      "originalResult": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a2/result.json",
+        "sha256": "4177ddaf19f6dbe163673465331b88f14cfe855661f25017b573b3ce58d79061"
+      },
+      "diagnosticOnly": true
+    }
+  ],
+  "buildsRebuilt": true,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/4099b48162ff05e2-result.json",
+    "sha256": "4099b48162ff05e2c540ddb35c96d15250eaafbb0e699d5a8f5531a67c1c64c4"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/3b92d7f9e6cf242d-result.json",
+    "sha256": "3b92d7f9e6cf242d50696219403c610a28fcc99ec3cfa4ae8c63da546bc33058"
+  },
+  "currentBuildAuthentication": [
+    {
+      "kind": "pwa",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/4099b48162ff05e2-result.json",
+        "sha256": "4099b48162ff05e2c540ddb35c96d15250eaafbb0e699d5a8f5531a67c1c64c4"
+      },
+      "manifest": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/artifact.json",
+        "sha256": "5c520edadca17c83377b6f5a5a5b149b942df36172d0959bc0aa806c41916375"
+      },
+      "audits": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/8143910caed52856-strict-audit.json",
+          "sha256": "8143910caed52856b74edd7fad29c70e3702ea6a74699c92616b6136c8511193"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/c2c0d13edc6c984e-copy-verification.json",
+          "sha256": "c2c0d13edc6c984e5b45fa0925d07ddf45e1a5c8f249a8add119427fe7eb8924"
+        }
+      ],
+      "producerInputs": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/build-pwa-a2.mjs",
+          "sha256": "6f01b81b820439b8e2abcc49ea604860a6446bd95bce4b22782b96e60c8de228",
+          "bytes": 12439
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/pwa-a2.config.mjs",
+          "sha256": "066f6e2e63604468f0c2b4f0efecea7a71008d82ea7aaca3ff8ffc1f79795da4",
+          "bytes": 966
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/downloads-artifact-wrapper-a2.spec.mjs",
+          "sha256": "3e7da954b73f9957efa5d788fae03a78e58c9837e031bfab87b5d442d5562a69",
+          "bytes": 3648
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/guard-build.mjs",
+          "sha256": "5516f2cfb3ecc39bd4e6bc1b419a3a47cd7201a0b0236f02060666bdc1ad3cfc"
+        }
+      ],
+      "buildId": "464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2",
+      "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+      "originalArtifactAuthentication": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-runtime-build-evidence/attempt-a2/pwa/pwa-46489247/artifact.json",
+        "sha256": "5c520edadca17c83377b6f5a5a5b149b942df36172d0959bc0aa806c41916375"
+      },
+      "apk": null,
+      "payloadAuditRerunByCheckpoint": false
+    },
+    {
+      "kind": "android",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/3b92d7f9e6cf242d-result.json",
+        "sha256": "3b92d7f9e6cf242d50696219403c610a28fcc99ec3cfa4ae8c63da546bc33058"
+      },
+      "manifest": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/artifact.json",
+        "sha256": "a30ba4c49408abed8782c006ba64f7f009bc38aa8021ffeb2d30dc05d9339aba"
+      },
+      "audits": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/d7543fd327c0077e-native-artifact-audit.json",
+          "sha256": "d7543fd327c0077e54eec2d1ba91fd964788911445104f150701c01cdc919deb"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/678397e26550edb6-android-dev-apk-verification.json",
+          "sha256": "678397e26550edb682fd6a87144494f85120a6bdb29d305f7605ddb597c1f71a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/2ef3cb66f0874ce8-build-run.json",
+          "sha256": "2ef3cb66f0874ce8d47a8352ed624e6ef3de8b54a3d52becd99bb25b4f89dbb3"
+        }
+      ],
+      "producerInputs": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/build-android-a1.ps1",
+          "sha256": "9ba146bf02967a0d73c96b95c38cf125eed55e1958043793759846f25d8fa783"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/guard-build.mjs",
+          "sha256": "5516f2cfb3ecc39bd4e6bc1b419a3a47cd7201a0b0236f02060666bdc1ad3cfc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/verify-android-a1.mjs",
+          "sha256": "c7c87bd716b9af39a6a9e94d4f4d8cb19aacf71c89b686c50a69e9625faae299"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/preserve-android-a1.mjs",
+          "sha256": "41fd1b804cef84cd8430161ddf9de627d16c1ebd174047d8f8d88ca2bdc19c37"
+        }
+      ],
+      "buildId": "1e401e638abac95ca8f814bb255629fa09630006cb115268f3dcfd38237a4eb1",
+      "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+      "originalArtifactAuthentication": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-runtime-build-evidence/attempt-a1/android/android-1e401e63/runtime/artifact.json",
+        "sha256": "a30ba4c49408abed8782c006ba64f7f009bc38aa8021ffeb2d30dc05d9339aba"
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-runtime-build-evidence/attempt-a1/android/android-1e401e63/app-dev-debug.apk",
+        "bytes": 70289893,
+        "sha256": "6fadc0895b6ba7f8e01276e12296aa37f44381dc18245e9f6f90e5c5b7898f03"
+      },
+      "payloadAuditRerunByCheckpoint": false
+    }
+  ],
+  "retainedHistory": [
+    {
+      "decision": "D215",
+      "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+      "docsCheckpoint": "43095054d38d55bf8516dfa47504d63fc4e2c653",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/result.json",
+        "sha256": "b5744a5dbe0dbd28b74f8a57f35737cf5887fa1806e36fe1053701540545e402"
+      },
+      "pwaBuildId": "a70b0aacb583e46bbb1936d373511d4a800f60e32abfc97cf657893f47266965",
+      "androidBuildId": "c416812961560d90801ad7f5bfe4892a67b682dfc2498abdee5ad47fb68f25df",
+      "historicalOnly": true,
+      "rerun": false,
+      "identityUnchanged": true
+    },
+    {
+      "decision": "D216",
+      "sourceCommit": "6179eee58a57505b7c9a1a9689f578ba157961a2",
+      "docsCheckpoint": "787902fbc84322879592cca26d53d36a46148a24",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/result.json",
+        "sha256": "3a5da6182deb21ae91736933ac0d116362dbbecfb76c5bec6cd40cdc1e2a7f58"
+      },
+      "historicalOnly": true,
+      "rerun": false,
+      "identityUnchanged": true
+    }
+  ],
+  "d216GestureRerun": false,
+  "contextualControlsPinsStale": true,
+  "contextualDraftRevisionRefreshApplied": false,
+  "draftsApproved": false,
+  "draftsAvailable": false,
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "nextAction": "After recording the actual committed reader foreground repair and its fresh source-bound PWA/Android-dev evidence, refresh only the eight contextual draft provenance records from revision5 to6 against the final Controls last-changed commit and whole-file raw hash. Preserve all22 copy texts/non-provenance fields,14 navigation-v2 records,12 support records and all34 unapproved/unavailable drafts. Run the existing17 focused navigation units and read-only inventory once; these unimported metadata files do not warrant another TS/browser/runtime build. Then address the observed native reader/catalog composition clutter: duplicate background catalog card/title and disabled batch/rail controls when only one book is available. Preserve canonical reader body/history/selected-book state and explicit Booky help controls. Keep exhausted module-retry investigation later, and continue the original S15 plan without inferring final design, installed-device, stage or release acceptance.",
+  "limitations": [
+    "Reader ownership is a committed entry lease, not proof that the detail is currently visible; the actual view observer retains its existing visibility semantics.",
+    "The two new reader captures document help retirement. Four earlier recovery images retain their original scope; passing source-bound assertions and causal traces document reopen, Close/re-entry and semantic preservation.",
+    "Normal reader-open scrolling is preserved; exact equality of pre-entry and reader scroll offsets is not claimed.",
+    "This is focused desktop Chromium mobile-fixture and dev-artifact evidence. Native installed-device execution, iOS, full accessibility, final reader/catalog composition, S15 acceptance and release readiness are not established."
+  ],
+  "readerCatalogCompositionFinal": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false,
+  "staticRerunAfterFixtureCorrections": false,
+  "unitRerunAfterFixtureCorrections": false,
+  "failedBuildAttempts": [
+    {
+      "kind": "pwa",
+      "attempt": "a1",
+      "phase": "build-smoke",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/6c5f06937051f1b2-result.json",
+        "sha256": "6c5f06937051f1b254e18819b08730aa728bc154fcc124b6aa5458afb002aff0"
+      },
+      "records": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/974ec135ca6743ee-browser-execution.json",
+          "sha256": "974ec135ca6743ee8cabfd115a276e30f5e653c9b5d2f7f410ed4516f9d9a38f"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/a5f415ac326125cc-browser-stderr.log",
+          "sha256": "a5f415ac326125ccba2500b4b88f00dca912dfa1a865cc360fb7d2681f5f2f4b"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/0b73c69f34602a6c-browser-stdout.log",
+          "sha256": "0b73c69f34602a6ceac0dccd00d7061fcb85b841ab36b9e987ce078dc00facd6"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/5c6616af824c33a5-playwright.json",
+          "sha256": "5c6616af824c33a59fbc0b5009f749c11997bdfa461b6090fde191220be25513"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/77a2cef25bc7da74-prior-preservation.json",
+          "sha256": "77a2cef25bc7da742e42ad9dfe580de08e6a13ac50405dfb8095175bf6765301"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/3b42d1050e50dc0b-strict-audit-execution.json",
+          "sha256": "3b42d1050e50dc0b61e3b3e5fc9317669df130bf81a2d8c33d22212d4e7720fd"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/e3b0c44298fc1c14-strict-audit-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/be76755b848059d3-strict-audit-stdout.log",
+          "sha256": "be76755b848059d3d42f1ee9210430fe4fc1db6660562dd9d4588fe200923e48"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/be76755b848059d3-strict-audit.json",
+          "sha256": "be76755b848059d3d42f1ee9210430fe4fc1db6660562dd9d4588fe200923e48"
+        }
+      ],
+      "producers": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/build-pwa-a1.mjs",
+          "sha256": "44dd67c439153bd15a4c27eccd6fdc3526872d42fd1a8804c3d0b30c447d4be5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/guard-build.mjs",
+          "sha256": "5516f2cfb3ecc39bd4e6bc1b419a3a47cd7201a0b0236f02060666bdc1ad3cfc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/pwa-a1.config.mjs",
+          "sha256": "7c7342bbd381bbac0adf21918a36d41c65d3693583e2a0b5245a9744b58669e3"
+        }
+      ],
+      "diagnosis": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/diagnosis.json",
+        "sha256": "efb718bb08fc93aba578d723998f1726eb5000a358c922ec0f92da548f50bcc8"
+      },
+      "artifactManifest": {
+        "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/diagnostics/failed-pwa-a1/artifact.json",
+        "sha256": "013b5a7a23b3b1db3da5c368a1c5779bab6f9f2319eace3c68f4804e9ad2c0bf"
+      },
+      "buildId": "8c2244bb1eb9310ab875c56c0126b6bc57b64e42bff823fe052ffb6af105cddb",
+      "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+      "sourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a3.json",
+        "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db",
+        "fileCount": 1665
+      },
+      "diagnosticOnly": true,
+      "accepted": false,
+      "diagnosisPending": false,
+      "originalResult": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/pwa-a1/result.json",
+        "sha256": "6c5f06937051f1b254e18819b08730aa728bc154fcc124b6aa5458afb002aff0"
+      }
+    }
+  ]
+}

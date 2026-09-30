@@ -1,0 +1,80 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:469:37 › Booky explicit writer filter recovery ru
+  1) D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:469:37 › Booky explicit writer filter recovery ru 
+
+    Error: The same reader owns its real view again after filters close
+
+    The same reader owns its real view again after filters close
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      643 |     await expect.poll(()=>page.evaluate(since=>(window.__bookyReaderTrace??[]).some(row=>row.time>=since&&!row.view.active),reopenedTraceStart),{message:'Real filters deliver an inactive reader-view transition'}).toBe(true);
+      644 |     await closeFilters();await expect(selectedReader).toBeVisible();await expect(panel(page)).toBeVisible();
+    > 645 |     await expect.poll(()=>page.evaluate(({since,key})=>(window.__bookyReaderTrace??[]).some(row=>row.time>=since&&row.view.active&&row.view.settled&&row.view.countryId+':'+row.view.writerId+':'+row.view.workId===key),{since:reopenedTraceStart,key:selectedKey}),{message:'The same reader owns its real view again after filters close'}).toBe(true);
+          |                                                                                                                                                                                                                                                                                                                                                ^
+      646 |     const originalViewport=page.viewportSize();
+      647 |     await page.setViewportSize({width:language==='ru'?414:360,height:originalViewport.height});await writerSettle(page);await expect(panel(page)).toBeVisible();
+      648 |     await page.emulateMedia({reducedMotion:'reduce'});await writerSettle(page);await expect(panel(page)).toBeVisible();
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:645:336
+
+    attachment #1: diagnostic-failure-ru (image/png) ───────────────────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-evidence\final-browser-a1\browser-a1\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\attachments\diagnostic-failure-ru-000964660b40fc3cdfd0cdd45da57bc237c72f4a.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: booky-writer-filter-recovery-source-evidence (application/json) ─────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-evidence\final-browser-a1\browser-a1\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\attachments\booky-writer-filter-recovery-source-evidence-22a5567c01a958355218bc65de6a846f0ad94b00.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-evidence\final-browser-a1\browser-a1\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\error-context.md
+
+
+
+
+[2/2] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:469:37 › Booky explicit writer filter recovery en
+  2) D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:469:37 › Booky explicit writer filter recovery en 
+
+    Error: The same reader owns its real view again after filters close
+
+    The same reader owns its real view again after filters close
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      643 |     await expect.poll(()=>page.evaluate(since=>(window.__bookyReaderTrace??[]).some(row=>row.time>=since&&!row.view.active),reopenedTraceStart),{message:'Real filters deliver an inactive reader-view transition'}).toBe(true);
+      644 |     await closeFilters();await expect(selectedReader).toBeVisible();await expect(panel(page)).toBeVisible();
+    > 645 |     await expect.poll(()=>page.evaluate(({since,key})=>(window.__bookyReaderTrace??[]).some(row=>row.time>=since&&row.view.active&&row.view.settled&&row.view.countryId+':'+row.view.writerId+':'+row.view.workId===key),{since:reopenedTraceStart,key:selectedKey}),{message:'The same reader owns its real view again after filters close'}).toBe(true);
+          |                                                                                                                                                                                                                                                                                                                                                ^
+      646 |     const originalViewport=page.viewportSize();
+      647 |     await page.setViewportSize({width:language==='ru'?414:360,height:originalViewport.height});await writerSettle(page);await expect(panel(page)).toBeVisible();
+      648 |     await page.emulateMedia({reducedMotion:'reduce'});await writerSettle(page);await expect(panel(page)).toBeVisible();
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:645:336
+
+    attachment #1: diagnostic-failure-en (image/png) ───────────────────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-evidence\final-browser-a1\browser-a1\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\attachments\diagnostic-failure-en-be48a0287575018d13a7fbd0d479e35fcdf479c0.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: booky-writer-filter-recovery-source-evidence (application/json) ─────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-evidence\final-browser-a1\browser-a1\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\attachments\booky-writer-filter-recovery-source-evidence-4d6a3ff0026b9a5c3f911cadb863dd06b3fdb3e4.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-evidence\final-browser-a1\browser-a1\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\error-context.md
+
+
+  2 failed
+    D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:469:37 › Booky explicit writer filter recovery ru 
+    D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:469:37 › Booky explicit writer filter recovery en 

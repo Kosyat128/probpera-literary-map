@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "pass": true,
+  "expectedHead": "787902fbc84322879592cca26d53d36a46148a24",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a1.json",
+    "sha256": "f1c04655e053d1242653bb85d5117269d4be122c651cf101b204345e78090dda",
+    "fileCount": 1665
+  },
+  "baselineSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-manifests/e8d98066ca4f368c.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe"
+  },
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "actualProducers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-validation-review-a1\\check-current.mjs",
+      "sha256": "c39cae29440c0d3060089070f38fd1955a0eca255f588e24214554741d5432a9"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\runtime-validation-review-a1\\unit.config.mjs",
+      "sha256": "229de6926b5ed433cc2f0a393b85cb312fcaece2d74b36220845ab5528e9998d"
+    }
+  ],
+  "protectedInputCount": 1660,
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "validationError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 33815
+  },
+  "focusedPlanetMascotWholeFileOnly": false,
+  "geometryUnitsRerun": false,
+  "directControlsDomCoverage": false,
+  "browserRerun": false,
+  "pwaRebuilt": false,
+  "androidRebuilt": false,
+  "stageAccepted": false,
+  "deviceTested": false,
+  "releaseReady": false
+}

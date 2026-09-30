@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-reader-foreground-runtime-dev-apk",
+  "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a3.json",
+    "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db",
+    "fileCount": 1665
+  },
+  "buildId": "1e401e638abac95ca8f814bb255629fa09630006cb115268f3dcfd38237a4eb1",
+  "sourceInputsSha256": "fcffbeb6b2d8450c5234b163c44fbad69f26999e5783187a3e12ad354b886fa1",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-runtime-build-evidence/attempt-a1/android/android-1e401e63/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "6fadc0895b6ba7f8e01276e12296aa37f44381dc18245e9f6f90e5c5b7898f03"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-runtime-build-evidence/attempt-a1/android/android-1e401e63/runtime",
+    "sha256": "a30ba4c49408abed8782c006ba64f7f009bc38aa8021ffeb2d30dc05d9339aba",
+    "files": 1408,
+    "bytes": 74958382
+  },
+  "checks": {
+    "strictRuntimeAudit": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/android-a1/native-artifact-audit.json",
+    "binaryAudit": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/android-a1/android-dev-apk-verification.json",
+    "build": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAcceptedReportAuthenticated": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": false,
+    "originalPriorAuthenticationRetained": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": {
+    "result": {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/result.json",
+      "sha256": "43d4da3e44e036fd263e0cf5e6873d45e7e03f30926c19b75d1c98de5e713735"
+    },
+    "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+    "buildId": "c416812961560d90801ad7f5bfe4892a67b682dfc2498abdee5ad47fb68f25df",
+    "apkPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/android/android-c4168129/app-dev-debug.apk"
+  },
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

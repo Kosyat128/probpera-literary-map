@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-reader-foreground-fixture-viewport-correction",
+  "target": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+  "beforeSha256": "9551543db7b45a27134b5d473c7a9cedddcd135b44284eeabfff2ba09c764ffb",
+  "proposedSha256": "e0a6e7779dc93517d81ebb5797c7b1bccfda1e28c83552d90aad648094b6515e",
+  "baseline": "baseline.mjs",
+  "proposed": "proposed.mjs",
+  "edits": "edits.json",
+  "inverseEdits": "inverse-edits.json",
+  "editCount": 1,
+  "author": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\fixture-viewport-correction-a2\\prepare-draft.cjs",
+    "sha256": "53a2fe5e3b797686dd33428edddd03b5149fc393aed87c43c37550fcc9fd04e7"
+  },
+  "failedFinalResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a1/result.json",
+    "sha256": "dc013c60e802c0bee30bae0d093b5bd411d76893ceb5fa626736f3f0d6e3f0aa"
+  },
+  "priorFixtureApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-fixture-apply-a1.json",
+    "sha256": "95d90d1985ab0bda1735f3b42976aedc9dbc993e74875f40d065b0b7483886cd"
+  },
+  "originalFixtureBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/fixture-draft-a1/source-binding.json",
+    "sha256": "c791bd3a37cd1ebe818706ad23f74ceae9441435bfd08210330a86def6834214"
+  },
+  "originalFixtureBeforeSha256": "ac0f72bb997f6362726b88228f3b836aa5b3ddbda30cf9ea6c5eb2af5e5998bc",
+  "runtimeSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a1/source-manifest.json",
+    "sha256": "f1c04655e053d1242653bb85d5117269d4be122c651cf101b204345e78090dda",
+    "fileCount": 1665
+  },
+  "productionChangedByThisStep": false,
+  "sourceApplied": false,
+  "checksRun": false,
+  "testsRun": false,
+  "buildsRun": false,
+  "passClaimed": false,
+  "rationale": "Both genuine Advanced-control expose gestures move the native scroller upward224px (RU941→717, EN960→736). Reader top shifts343.7→about567.7 beyond the real75..400 clip; the active=false callback is correct. Restore the reader heading with the existing bounded trusted CDP expose before the unchanged owned-active predicate; keep manual help visible, original IO/clipping gates and all prior assertions/captures."
+}

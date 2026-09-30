@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a3",
+  "pass": true,
+  "checkpoint": "787902fbc84322879592cca26d53d36a46148a24",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/source-manifest.json",
+    "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db",
+    "fileCount": 1665
+  },
+  "priorSourceManifest": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-manifests/e8d98066ca4f368c.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe"
+  },
+  "sourceInputsUnchanged": true,
+  "helperInputsUnchanged": true,
+  "boundaryInputsUnchanged": true,
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1660,
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "tests": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 114588
+  },
+  "executionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/execution.json",
+    "sha256": "061ca647063ad8c9611abe22b3291776913ef1a8854d3f79c8e37b7d6d741946"
+  },
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/playwright.json",
+    "sha256": "a9b23c9b4b346bede18aa569e59fb23d7ecf818cc8186ed91ad8d011d753f5fa"
+  },
+  "sourceFreezeReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/source-freeze-receipt.json",
+    "sha256": "12c74b9f3764eb4c123f3a7e934df7261bc510f30bcb15705d53067604b6511f"
+  },
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a3/entry.json",
+    "sha256": "2df4afb5c7567541ae7a8ad34094e9a2d34fe45dc1da7011ee9272e99e8fc363"
+  },
+  "actualProducer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-reader-foreground-review\\run-final-browser-a4.mjs",
+    "sha256": "6c76346a7768e3583af6ba7b18e0cfbe92f4dcb8d785c09dc49a65ee32c68db6"
+  },
+  "baselineDiagnostic": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/actual-baseline-review-a1.json",
+    "sha256": "492129c0da77cd6564cdd000d965731384d3147e65a2adbeb867e996f2d4b1fc"
+  },
+  "sourceApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-runtime-apply-a1.json",
+    "sha256": "e895f1e09a831007b545fed96b781138333f10959fc3b0b796d36d95768c2a8b"
+  },
+  "fixtureApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-fixture-apply-a1.json",
+    "sha256": "95d90d1985ab0bda1735f3b42976aedc9dbc993e74875f40d065b0b7483886cd"
+  },
+  "incrementalFixtureApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/root-fixture-viewport-apply-a2.json",
+    "sha256": "e4fd6d986fdb43bd02469232841d0f627bdceeaf1c8e8ddb1d6cdc58307edc69"
+  },
+  "priorRuntimeManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a2.json",
+    "sha256": "c03ac867d1363269506e1e377125ac65dd5fa626803683a1a0807caf7ae52a6c"
+  },
+  "priorFailedFinalRun": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/final-browser-a2/result.json",
+    "sha256": "4177ddaf19f6dbe163673465331b88f14cfe855661f25017b573b3ce58d79061"
+  },
+  "priorFinalRunner": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/run-final-browser-a3.mjs",
+    "sha256": "e865c56c9cee230d501582d8fd8598f478251de748b394e662676590fed688a9"
+  },
+  "fixtureOnly": false,
+  "runtimeUnchanged": false,
+  "productionImplementationChanged": true,
+  "runtimeSourceCommit": null,
+  "sourceCommit": null,
+  "sourceBeforeCommit": true,
+  "checksExecutedByThisRunner": {
+    "browser": true,
+    "static": false,
+    "unit": false,
+    "pwa": false,
+    "android": false
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

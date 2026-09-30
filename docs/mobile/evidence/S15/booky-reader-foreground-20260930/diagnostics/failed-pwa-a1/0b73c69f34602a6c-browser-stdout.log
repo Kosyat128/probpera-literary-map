@@ -1,0 +1,34 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\downloads-artifact.spec.mjs:4:1 › built PWA keeps bilingual downloads on the same globe after cold offline navigation
+  1) D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\downloads-artifact.spec.mjs:4:1 › built PWA keeps bilingual downloads on the same globe after cold offline navigation 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "http://127.0.0.1:4301/planet/sw.js"
+    Received: ""
+
+    Call Log:
+    - Timeout 60000ms exceeded while waiting on the predicate
+
+      10 |   await page.goto('/planet/ru/?country=russia#atlas');
+      11 |   await expect(page.locator('[data-pwa-authorized]')).toBeVisible({ timeout: 45000 });
+    > 12 |   await expect.poll(() => page.evaluate(() => navigator.serviceWorker.controller?.scriptURL ?? ''), { timeout: 60000 }).toBe(config.origin + '/planet/sw.js');
+         |                                                                                                                         ^
+      13 |   await context.setOffline(true);
+      14 |   const observations = [];
+      15 |   try {
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\downloads-artifact.spec.mjs:12:121
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-runtime-build-evidence\attempt-a1\pwa\pwa-a1\downloads-artifact-built-P-ba6df-ter-cold-offline-navigation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-reader-foreground-runtime-build-evidence\attempt-a1\pwa\pwa-a1\downloads-artifact-built-P-ba6df-ter-cold-offline-navigation\error-context.md
+
+
+  1 failed
+    D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\downloads-artifact.spec.mjs:4:1 › built PWA keeps bilingual downloads on the same globe after cold offline navigation 

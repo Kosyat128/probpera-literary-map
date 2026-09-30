@@ -1,0 +1,14 @@
+{
+  "recordedAt": "2026-09-30T14:02:49.027Z",
+  "predecessorDocsCommit": "787902fbc84322879592cca26d53d36a46148a24",
+  "target": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+  "beforeSha256": "ac0f72bb997f6362726b88228f3b836aa5b3ddbda30cf9ea6c5eb2af5e5998bc",
+  "afterSha256": "9551543db7b45a27134b5d473c7a9cedddcd135b44284eeabfff2ba09c764ffb",
+  "reviewBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/fixture-draft-a1/source-binding.json",
+    "sha256": "c791bd3a37cd1ebe818706ad23f74ceae9441435bfd08210330a86def6834214"
+  },
+  "fixtureOnly": true,
+  "productionChanged": false,
+  "testsRun": false
+}

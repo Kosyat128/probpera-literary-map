@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-reader-foreground-fixture-draft",
+  "target": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+  "beforeSha256": "ac0f72bb997f6362726b88228f3b836aa5b3ddbda30cf9ea6c5eb2af5e5998bc",
+  "proposedSha256": "9551543db7b45a27134b5d473c7a9cedddcd135b44284eeabfff2ba09c764ffb",
+  "baseline": "baseline.mjs",
+  "proposed": "proposed.mjs",
+  "edits": "edits.json",
+  "inverseEdits": "inverse-edits.json",
+  "preparedAtHead": "787902fbc84322879592cca26d53d36a46148a24",
+  "author": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/fixture-draft-a1/prepare-draft.cjs",
+    "sha256": "7bd484216acd92ee0fa1fc4bc9179fcc21103a6ddb80744f9d47aa710f5c6276"
+  },
+  "editCount": 5,
+  "sourceApplied": false,
+  "checksRun": false,
+  "testsRun": false,
+  "buildsRun": false,
+  "passClaimed": false,
+  "plannedCases": [
+    "Booky explicit writer filter recovery ru",
+    "Booky explicit writer filter recovery en"
+  ],
+  "baselineSelection": "Booky explicit writer filter recovery ru",
+  "plannedSuccessfulCaptures": 6,
+  "priorCapturesPreserved": 4,
+  "newReaderCaptures": 2,
+  "productionDraftBinding": {
+    "path": "../production-draft-a2/source-binding.json",
+    "sha256": "7d7524781c9e2efc2b4778aaec4d644ba5aa9c9f8734c26c9189ded73b1d0fd6"
+  },
+  "actualApplyReceipt": null,
+  "actualBaselineResult": null,
+  "actualFinalResult": null,
+  "actualSourceCommit": null,
+  "actualPredecessorDocsCheckpoint": null
+}
