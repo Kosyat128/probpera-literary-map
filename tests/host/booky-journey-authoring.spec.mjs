@@ -31,9 +31,10 @@ test.beforeAll(async () => {
   const actionFixture = { name: 'booky-activity-action-fixture', setup(builder) {
     builder.onResolve({ filter: /^@\/app\/\(dashboard\)\/journeys\/actions$/ }, args => ({ path: args.path, namespace: 'booky-activity-action-fixture' }));
     builder.onLoad({ filter: /.*/, namespace: 'booky-activity-action-fixture' }, () => ({ loader: 'js', resolveDir: root, contents: `
-      import {validateBookyJourneyDraftActivity} from ${JSON.stringify(path.join(root, 'apps/admin/lib/booky-journey-activity-validation.ts').replaceAll('\\', '/'))};
+      import {evaluateBookyJourneyDraftActivity,validateBookyJourneyDraftActivity} from ${JSON.stringify(path.join(root, 'apps/admin/lib/booky-journey-activity-validation.ts').replaceAll('\\', '/'))};
       const catalog=${JSON.stringify(catalog)}, publicData=${JSON.stringify(publicData)};
       window.__activityValidationCalls=[];
+      window.__activityAnswerCalls=[];
       export async function validateBookyJourneyDraftActivityAction(serialized) {
         const take=key=>{const value=Boolean(window[key]);window[key]=false;return value;};
         const hold=take('__activityHoldNext'), failSession=take('__activitySessionFailureNext'), failNetwork=take('__activityThrowNext');
@@ -49,6 +50,21 @@ test.beforeAll(async () => {
         call.actualHelperCalled=true;call.actualResult=structuredClone(actual);
         const reply=wrongChecksum&&actual.ok?{...actual,draftChecksum:'0'.repeat(64)}:actual;
         if(hold)await new Promise(resolve=>{window.__activityHeld={index:call.index,release:resolve};});
+        call.completed=true;return reply;
+      }
+      export async function evaluateBookyJourneyDraftActivityAction(serialized,choiceId) {
+        const take=key=>{const value=Boolean(window[key]);window[key]=false;return value;};
+        const hold=take('__answerHoldNext'),failSession=take('__answerSessionFailureNext'),failNetwork=take('__answerThrowNext');
+        const wrongChecksum=take('__answerWrongChecksumNext'),wrongChoice=take('__answerWrongChoiceNext');
+        const draft=JSON.parse(serialized),call={index:window.__activityAnswerCalls.length,choiceId,hold,failSession,failNetwork,wrongChecksum,wrongChoice,
+          titleRu:draft.authoringSource.input.copy.ru.title,actualHelperCalled:false,completed:false};
+        window.__activityAnswerCalls.push(call);
+        if(failNetwork){call.completed=true;call.stubbedFailure='network';throw new Error('Synthetic unavailable answer transport');}
+        if(failSession){call.completed=true;call.stubbedFailure='session';return {ok:false,errors:[{field:'activity.auth',message:'Synthetic unavailable editor session'}]};}
+        const actual=evaluateBookyJourneyDraftActivity(serialized,choiceId,catalog,structuredClone(publicData));
+        call.actualHelperCalled=true;call.actualResult=structuredClone(actual);
+        const reply=actual.ok?{...actual,...(wrongChecksum?{draftChecksum:'0'.repeat(64)}:{}),...(wrongChoice?{choiceId:choiceId==='choice-1'?'choice-2':'choice-1'}:{})}:actual;
+        if(hold)await new Promise(resolve=>{window.__answerHeld={index:call.index,release:resolve};});
         call.completed=true;return reply;
       }
     ` }));
@@ -238,6 +254,9 @@ test('optional adult RU EN author task uses current semantic validation and pres
     window.__draftExportBlobs = [];
     const nativeCreate = URL.createObjectURL;
     URL.createObjectURL = function(blob) { window.__draftExportBlobs.push(blob); return nativeCreate.call(URL, blob); };
+    window.__draftStorageWrites = [];
+    const nativeStore = Storage.prototype.setItem;
+    Storage.prototype.setItem = function(key, value) { window.__draftStorageWrites.push({ key, local: this === localStorage }); return nativeStore.call(this, key, value); };
   });
   await page.route('**/*', async route => {
     const url = new URL(route.request().url());
@@ -433,9 +452,138 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(activityStep).toContainText('Кто автор этой книги?');
   const choices = activityStep.getByRole('list', { name: 'Варианты ответа' });
   await expect(choices).toContainText('Тестовый писатель А'); await expect(choices).toContainText('Тестовый писатель В');
+  const wrongAnswer = choices.locator('[data-answer-choice-id="choice-1"]');
+  const correctAnswer = choices.locator('[data-answer-choice-id="choice-2"]');
+  const verdict = activityStep.locator('[data-booky-activity-verdict]');
+  const answerError = activityStep.locator('[data-booky-activity-answer-error]');
+  const stepStatus = preview.locator('p[role="status"]').filter({ hasText: /^Шаг / });
+  const answerCheckRu = activityStep.getByRole('button', { name: 'Проверить ответ', exact: true });
+  const answerResetRu = activityStep.getByRole('button', { name: 'Сбросить ответ', exact: true });
+  const answerCheckEn = activityStep.getByRole('button', { name: 'Check answer', exact: true });
+  const answerResetEn = activityStep.getByRole('button', { name: 'Reset answer', exact: true });
+  await expect(answerCheckRu).toBeDisabled();
+  await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await wrongAnswer.tap();
+  await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'true');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await answerCheckRu.tap();
+  await expect(verdict).toHaveAttribute('data-verdict', 'wrong');
+  await expect(verdict).toContainText('Этот вариант не подходит. Попробуйте другой.');
+  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  const firstWrongVerdict = await page.evaluate(() => window.__activityAnswerCalls.at(-1));
+  expect(firstWrongVerdict.actualHelperCalled).toBe(true); expect(firstWrongVerdict.actualResult.correct).toBe(false);
+  await answerResetRu.tap();
+  await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
+  await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(answerCheckRu).toBeDisabled();
+  await correctAnswer.focus();
+  await expect(correctAnswer).toBeFocused();
+  await correctAnswer.press('Space');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  await expect(correctAnswer).toBeFocused();
+  await answerCheckRu.focus();
+  await answerCheckRu.press('Enter');
+  await expect(verdict).toHaveAttribute('data-verdict', 'correct');
+  await expect(verdict).toContainText('Верно.');
+  await expect(answerCheckRu).toBeFocused();
+  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  const firstCorrectVerdict = await page.evaluate(() => window.__activityAnswerCalls.at(-1));
+  expect(firstCorrectVerdict.actualHelperCalled).toBe(true); expect(firstCorrectVerdict.actualResult.correct).toBe(true);
+  await next.tap();
+  await expect(preview.locator('[data-preview-step="checkpoint"]')).toBeVisible();
+  await expect(verdict).toHaveCount(0);
+  await previous.tap();
+  await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(verdict).toHaveCount(0);
+  async function answerHeldIndex() { await page.waitForFunction(() => window.__answerHeld); return page.evaluate(() => window.__answerHeld.index); }
+  async function releaseAnswer(index) {
+    await page.evaluate(() => { window.__answerHeld.release(); delete window.__answerHeld; });
+    await page.waitForFunction(index => window.__activityAnswerCalls[index]?.completed === true, index);
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  }
+  await correctAnswer.tap();
+  await page.evaluate(() => { window.__answerHoldNext = true; });
+  await answerCheckRu.tap();
+  const heldChoiceVerdict = await answerHeldIndex();
+  await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true');
+  await expect(answerCheckRu).toHaveAttribute('aria-disabled', 'true');
+  const pendingAnswerCalls = await page.evaluate(() => window.__activityAnswerCalls.length);
+  await answerCheckRu.focus(); await answerCheckRu.press('Enter');
+  expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(pendingAnswerCalls);
+  await wrongAnswer.tap();
+  await releaseAnswer(heldChoiceVerdict);
+  await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'true');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
+  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await correctAnswer.tap();
+  await page.evaluate(() => { window.__answerHoldNext = true; });
+  await answerCheckRu.tap();
+  const heldLocaleVerdict = await answerHeldIndex();
+  await preview.getByRole('button', { name: 'English', exact: true }).tap();
+  await releaseAnswer(heldLocaleVerdict);
+  await expect(activityStep).toHaveAttribute('lang', 'en');
+  await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
+  await expect(answerCheckEn).toBeDisabled();
+  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await correctAnswer.tap();
+  for (const [knob, message] of [
+    ['__answerWrongChecksumNext', 'The check is out of date. Try again.'],
+    ['__answerWrongChoiceNext', 'The check is out of date. Try again.'],
+    ['__answerSessionFailureNext', 'Could not check the answer. Your choice is preserved; try again.'],
+    ['__answerThrowNext', 'Could not check the answer. Your choice is preserved; try again.'],
+  ]) {
+    await page.evaluate(knob => { window[knob] = true; }, knob);
+    await answerCheckEn.tap();
+    await expect(answerError).toContainText(message);
+    await expect(verdict).toHaveCount(0);
+    await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+    await expect(stepStatus).toContainText('Шаг 4 из 5');
+  }
+  await answerResetEn.tap();
+  await expect(answerError).toHaveCount(0); await expect(verdict).toHaveCount(0);
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await correctAnswer.tap();
+  await page.evaluate(() => { window.__answerHoldNext = true; });
+  await answerCheckEn.tap();
+  const heldEditVerdict = await answerHeldIndex();
+  await routeTitle.fill('Правки во время проверки ответа');
+  await releaseAnswer(heldEditVerdict);
+  await expect(routeTitle).toHaveValue('Правки во время проверки ответа');
+  await expect(preview).toHaveCount(0);
+  await expect(page.locator('[data-booky-activity-verdict]')).toHaveCount(0);
+  expect(downloads).toHaveLength(1);
+  await upload('restore-after-answer-edit.json');
+  await expect(routeTitle).toHaveValue('Маршрут с заданием');
+  await previewButton.tap();
+  await expect(preview).toBeVisible();
+  for (let index = 0; index < 3; index++) await next.tap();
+  await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await correctAnswer.tap();
+  await answerCheckRu.tap();
+  await expect(verdict).toHaveAttribute('data-verdict', 'correct');
+  await upload('reopen-discards-answer-verdict.json');
+  await expect(preview).toHaveCount(0);
+  await previewButton.tap();
+  await expect(preview).toBeVisible();
+  for (let index = 0; index < 3; index++) await next.tap();
+  await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
+  await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await wrongAnswer.tap();
+  await answerCheckRu.tap();
+  await expect(verdict).toHaveAttribute('data-verdict', 'wrong');
+  await expect(verdict).toHaveAttribute('aria-live', 'polite');
+  await expect(verdict).toHaveAttribute('lang', 'ru');
+  await expect(stepStatus).toContainText('Шаг 4 из 5');
   const overflow = () => page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   expect(await overflow()).toBe(false);
-  for (const control of [activityOpener, firstChoice, secondChoice, previous, next, preview.getByRole('button', { name: 'English', exact: true }), activityEnabled.locator('..')]) {
+  for (const control of [activityOpener, firstChoice, secondChoice, previous, next, preview.getByRole('button', { name: 'English', exact: true }), activityEnabled.locator('..'), wrongAnswer, correctAnswer, answerCheckRu, answerResetRu]) {
     const bounds = await control.boundingBox(); expect(bounds).toBeTruthy(); expect(bounds.height).toBeGreaterThanOrEqual(44);
   }
   async function capture(filename, scope) {
@@ -443,13 +591,24 @@ test('optional adult RU EN author task uses current semantic validation and pres
     const p = testInfo.outputPath(filename); await page.screenshot({ path: p });
     screenshots.push({ filename, sha256: sha(await fs.readFile(p)), viewport: page.viewportSize(), scope });
   }
-  await capture('booky-journey-activity-ru-320.png', 'Actual editor local activity preview after native draft reopen and current semantic helper validation, RU320; synthetic public corpus, mocked action transport.');
+  await capture('booky-journey-activity-ru-320.png', 'Actual local adult activity preview after native reopen, explicit wrong writer A and current semantic evaluation, RU320; calm wrong feedback, synthetic corpus and mocked action transport.');
   await preview.getByRole('button', { name: 'English', exact: true }).tap();
   await expect(activityStep).toHaveAttribute('lang', 'en');
   await expect(activityStep).toContainText('Who wrote this book?');
   await expect(choices).toContainText('Synthetic writer A'); await expect(choices).toContainText('Synthetic writer C');
+  await expect(verdict).toHaveCount(0); await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
+  await correctAnswer.focus(); await correctAnswer.press('Space');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  await answerCheckEn.focus(); await answerCheckEn.press('Enter');
+  await expect(answerCheckEn).toBeFocused();
+  await expect(verdict).toHaveAttribute('data-verdict', 'correct');
+  await expect(verdict).toHaveAttribute('aria-live', 'polite');
+  await expect(verdict).toHaveAttribute('lang', 'en');
+  await expect(verdict).toContainText('Correct.');
+  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  for (const control of [wrongAnswer, correctAnswer, answerCheckEn, answerResetEn]) expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
   expect(await overflow()).toBe(false);
-  await capture('booky-journey-activity-en-320.png', 'Same reopened local activity preview in EN320 with independently rendered canonical option labels; no authenticated admin, runtime admission or device acceptance.');
+  await capture('booky-journey-activity-en-320.png', 'Same local adult preview in EN320 after keyboard choice/check of credited writer C; calm current correct feedback without automatic advance, publication or runtime admission.');
   expect(screenshots).toHaveLength(2); expect(downloads).toHaveLength(1);
   expect(await page.evaluate(() => window.__draftExportBlobs.length)).toBe(1);
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
@@ -460,6 +619,20 @@ test('optional adult RU EN author task uses current semantic validation and pres
   expect(validationCalls.filter(call => call.wrongChecksum)).toHaveLength(1);
   expect(validationCalls.filter(call => call.actualHelperCalled).length).toBeGreaterThanOrEqual(8);
   expect(validationCalls.every(call => call.completed)).toBe(true);
+  const answerCalls = await page.evaluate(() => window.__activityAnswerCalls);
+  expect(answerCalls.filter(call => call.hold)).toHaveLength(3);
+  expect(answerCalls.filter(call => call.wrongChecksum)).toHaveLength(1);
+  expect(answerCalls.filter(call => call.wrongChoice)).toHaveLength(1);
+  expect(answerCalls.filter(call => call.failSession)).toHaveLength(1);
+  expect(answerCalls.filter(call => call.failNetwork)).toHaveLength(1);
+  expect(answerCalls.every(call => call.completed)).toBe(true);
+  for (const index of [heldChoiceVerdict, heldLocaleVerdict, heldEditVerdict]) {
+    expect(answerCalls[index].actualHelperCalled).toBe(true); expect(answerCalls[index].actualResult.correct).toBe(true);
+  }
+  expect(answerCalls.filter(call => call.actualHelperCalled && call.actualResult.ok && call.actualResult.correct === false).length).toBeGreaterThanOrEqual(2);
+  expect(answerCalls.filter(call => call.actualHelperCalled && call.actualResult.ok && call.actualResult.correct === true).length).toBeGreaterThanOrEqual(3);
+  const storageWrites = await page.evaluate(() => window.__draftStorageWrites);
+  expect(storageWrites).toEqual([]);
   await testInfo.attach('booky-journey-activity-evidence', { contentType: 'application/json', body: JSON.stringify({
     pass: true, actualEditorComponent: true, actualEditorStyles: true, actualDraftCompiler: true, actualDraftParser: true,
     actualActivitySemanticHelper: true, actualActivityResolver: true, mockedServerActionTransport: true, syntheticCatalog: true,
@@ -471,7 +644,12 @@ test('optional adult RU EN author task uses current semantic validation and pres
     obsoleteSuccessfulExportCannotDownload: true, failedSessionOrNetworkCannotDownload: true, wrongChecksumCannotDownload: true,
     obsoleteSuccessfulActivityImportCannotOverwriteEdits: true, bilingualChoiceLabelsVerified: true, noAnswerKeyExported: true,
     narrow320LayoutHasNoHorizontalOverflow: true, minimumControlHitHeightCssPx: 44,
-    downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length }, validationCalls,
+    actualActivityAnswerEvaluator: true, trustedWrongAndCorrectChecksVerified: true, keyboardChoiceCheckAndFocusVerified: true,
+    explicitAnswerResetVerified: true, pendingAnswerSemanticDisabledAndDuplicateRequestGuardVerified: true, navigationAndLocaleDiscardAnswerVerified: true, nativeImportDiscardsAnswerVerified: true,
+    heldVerdictCannotSurviveNewChoiceLocaleOrEdit: true, mismatchedResponseHashOrChoiceCannotShowVerdict: true,
+    failedSessionOrNetworkCannotShowVerdict: true, localizedCalmAriaLiveFeedbackVerified: true,
+    answerCheckDoesNotAdvanceStep: true, answerStateStorageWrites: storageWrites,
+    downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length }, validationCalls, answerCalls,
     sourceInputs: fixture.sourceInputs, screenshots, errors, externalRequests,
     productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
   }, null, 2) });

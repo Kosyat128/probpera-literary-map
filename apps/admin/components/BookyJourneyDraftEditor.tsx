@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput, type BookyJourneyDraft } from "@/lib/booky-journey-draft";
 
-import { validateBookyJourneyDraftActivityAction } from "@/app/(dashboard)/journeys/actions";
+import { evaluateBookyJourneyDraftActivityAction, validateBookyJourneyDraftActivityAction } from "@/app/(dashboard)/journeys/actions";
 import { contentRecordHash } from "../../../src/planet/contentExportHash";
 
 type Locale = "ru" | "en";
 type NodeKind = "country" | "writer" | "work" | "checkpoint";
+type PreviewAnswer = Readonly<{ choiceId: string | null; verdict: boolean | null; pending: boolean; error: string }>;
+const emptyAnswer = (choiceId: string | null = null): PreviewAnswer => ({ choiceId, verdict: null, pending: false, error: "" });
 const locales = ["ru", "en"] as const;
 const steps = [
   { key: "country", title: "Страна", number: 1 },
@@ -42,6 +44,9 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [errors, setErrors] = useState<readonly { field: string; message: string }[]>([]);
   const [notice, setNotice] = useState("");
   const [preview, setPreview] = useState<{ draft: BookyJourneyDraft; locale: Locale; step: number } | null>(null);
+  const [answer, setAnswer] = useState<PreviewAnswer>(emptyAnswer);
+  const previewOwner = useRef(preview), answerOwner = useRef(answer);
+  previewOwner.current = preview; answerOwner.current = answer;
   const [importing, setImporting] = useState(false);
   const [importErrors, setImportErrors] = useState<readonly { field: string; message: string }[]>([]);
   const [importNotice, setImportNotice] = useState("");
@@ -57,6 +62,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const available = catalog.countries.length > 0;
   const previewDefinition = preview?.draft.definitions.find((definition) => definition.locale === preview.locale);
   const previewNode = previewDefinition?.nodes[preview?.step ?? 0];
+  const previewChoices = previewNode?.kind === "activity" ? previewNode.activity?.choices ?? [] : [];
   const previewDialogue = preview?.draft.dialogues.find((record) => record.payload.locale === preview.locale
     && record.payload.id === previewNode?.dialogue.id);
   const previewEntity = preview ? preview.draft.authoringSource.selection[
@@ -70,6 +76,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     setImportNotice(importing ? "Открытие файла отменено: форма была изменена." : "");
     if (fileControl.current) fileControl.current.value = "";
     setPreview(null);
+    setAnswer(emptyAnswer());
     setValidating(false);
     setInput((current) => {
       const next = { ...current, ...change };
@@ -88,12 +95,52 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       [node]: { ...input.copy[locale].nodes[node], [field]: value },
     } } } });
   }
-  function beginOperation() {
+  function beginOperation(keepAnswerChoice = false) {
     const sequence = ++operationSequence.current;
     setImporting(false);
     setValidating(false);
+    setAnswer((current) => emptyAnswer(keepAnswerChoice ? current.choiceId : null));
     if (fileControl.current) fileControl.current.value = "";
     return sequence;
+  }
+  function chooseAnswer(choiceId: string) {
+    if (!previewChoices.some((choice) => choice.id === choiceId)) return;
+    beginOperation();
+    setAnswer(emptyAnswer(choiceId));
+  }
+  function changePreviewLocale(locale: Locale) {
+    beginOperation();
+    setPreview((current) => current ? { ...current, locale } : null);
+  }
+  function changePreviewStep(direction: -1 | 1) {
+    beginOperation();
+    setPreview((current) => current ? { ...current,
+      step: Math.max(0, Math.min(current.draft.definitions[0].nodes.length - 1, current.step + direction)),
+    } : null);
+  }
+  async function checkAnswer() {
+    const candidate = preview, choiceId = answer.choiceId;
+    if (answer.pending || !candidate || previewNode?.kind !== "activity" || !choiceId || !previewChoices.some((choice) => choice.id === choiceId)) return;
+    const sequence = beginOperation(true), draftChecksum = contentRecordHash(candidate.draft);
+    setAnswer({ choiceId, verdict: null, pending: true, error: "" });
+    const report = (stale = false) => setAnswer({ choiceId, verdict: null, pending: false, error: candidate.locale === "ru"
+      ? stale ? "Ответ проверки устарел. Повторите действие." : "Не удалось проверить ответ. Выбор сохранён; повторите проверку."
+      : stale ? "The check is out of date. Try again." : "Could not check the answer. Your choice is preserved; try again." });
+    try {
+      const result = await evaluateBookyJourneyDraftActivityAction(JSON.stringify(candidate.draft), choiceId);
+      if (sequence !== operationSequence.current) return;
+      const current = previewOwner.current, currentDefinition = current?.draft.definitions.find((item) => item.locale === current?.locale);
+      const currentNode = currentDefinition?.nodes[current?.step ?? 0];
+      if (!current || current.locale !== candidate.locale || current.step !== candidate.step || currentNode?.kind !== "activity"
+        || answerOwner.current.choiceId !== choiceId || contentRecordHash(current.draft) !== draftChecksum) return;
+      if (!result.ok) { report(); return; }
+      if (result.draftChecksum !== draftChecksum || result.choiceId !== choiceId || typeof result.correct !== "boolean") { report(true); return; }
+      setAnswer({ choiceId, verdict: result.correct, pending: false, error: "" });
+    } catch {
+      if (sequence === operationSequence.current) report();
+    } finally {
+      if (sequence === operationSequence.current) setAnswer((current) => ({ ...current, pending: false }));
+    }
   }
   async function validateActivity(draft: BookyJourneyDraft, sequence: number, importingFile = false) {
     if (!draft.authoringSource.input.activity) return true;
@@ -373,7 +420,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         <div role="group" aria-label="Язык предпросмотра" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           {locales.map((locale) => <button key={locale} className={preview.locale === locale ? "button" : "button-secondary"} type="button" lang={locale}
             aria-pressed={preview.locale === locale} style={{ minHeight: 44, minWidth: 44 }}
-            onClick={() => setPreview((current) => current ? { ...current, locale } : null)}>{locale === "ru" ? "Русский" : "English"}</button>)}
+            onClick={() => changePreviewLocale(locale)}>{locale === "ru" ? "Русский" : "English"}</button>)}
         </div>
         <p>Возраст: {previewDefinition.ageRange.min}–{previewDefinition.ageRange.max} лет · Уровень чтения: {
           previewDefinition.readingLevel === "plain" ? "Простой" : previewDefinition.readingLevel === "developing" ? "Развивающийся" : "Свободный"
@@ -389,9 +436,33 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <p lang="ru">Экран: {previewNode.screen === "globe" ? "Глобус" : "Коллекция"}</p>
           <h4>{previewDialogue.payload.copy.title}</h4>
           <p style={{ whiteSpace: "pre-wrap" }}>{previewDialogue.payload.copy.body}</p>
-          {previewNode.kind === "activity" && <ol aria-label="Варианты ответа">
-            {preview.draft.authoringSource.selection.activityChoices?.map((choice, index) => <li key={index} lang={preview.locale}>{choice.writer.label[preview.locale]}</li>)}
-          </ol>}
+          {previewNode.kind === "activity" && <div data-booky-activity-answer>
+            <ol aria-label="Варианты ответа">
+              {previewChoices.map((choice, index) => {
+                const label = preview.draft.authoringSource.selection.activityChoices?.[index]?.writer.label[preview.locale];
+                return <li key={choice.id} lang={preview.locale} style={{ marginBottom: 8 }}>
+                  <button className={answer.choiceId === choice.id ? "button" : "button-secondary"} type="button" lang={preview.locale}
+                    data-answer-choice-id={choice.id} aria-pressed={answer.choiceId === choice.id} disabled={!label}
+                    style={{ minHeight: 44, minWidth: 44, width: "100%", textAlign: "start", whiteSpace: "normal" }}
+                    onClick={() => chooseAnswer(choice.id)}>{label || (preview.locale === "ru" ? "Имя пока не подтверждено" : "Name not confirmed")}</button>
+                </li>;
+              })}
+            </ol>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              <button className="button" type="button" lang={preview.locale} style={{ minHeight: 44, minWidth: 44 }}
+                disabled={!answer.choiceId} aria-disabled={answer.pending || !answer.choiceId} aria-busy={answer.pending} onClick={checkAnswer}>
+                {preview.locale === "ru" ? "Проверить ответ" : "Check answer"}</button>
+              <button className="button-secondary" type="button" lang={preview.locale} style={{ minHeight: 44, minWidth: 44 }} onClick={() => beginOperation()}>
+                {preview.locale === "ru" ? "Сбросить ответ" : "Reset answer"}</button>
+            </div>
+            {answer.pending && <p role="status" aria-live="polite" lang={preview.locale} data-booky-activity-answer-pending>
+              {preview.locale === "ru" ? "Проверяем ответ…" : "Checking the answer…"}</p>}
+            {answer.verdict !== null && <p role="status" aria-live="polite" lang={preview.locale}
+              data-booky-activity-verdict data-verdict={answer.verdict ? "correct" : "wrong"}>
+              {preview.locale === "ru" ? answer.verdict ? "Верно." : "Этот вариант не подходит. Попробуйте другой."
+                : answer.verdict ? "Correct." : "This option does not match. Try another."}</p>}
+            {answer.error && <p className="form-message" role="alert" lang={preview.locale} data-booky-activity-answer-error>{answer.error}</p>}
+          </div>}
         </article>
         {preview.draft.blockingReviewIssues.length > 0 && <div className="editorial-note" role="note">
           <strong>Перед дальнейшей проверкой</strong>
@@ -399,9 +470,9 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         </div>}
         <nav aria-label="Шаги предпросмотра" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           <button className="button-secondary" type="button" disabled={preview.step === 0} style={{ minHeight: 44, minWidth: 44 }}
-            onClick={() => setPreview((current) => current ? { ...current, step: Math.max(0, current.step - 1) } : null)}>Предыдущий шаг</button>
+            onClick={() => changePreviewStep(-1)}>Предыдущий шаг</button>
           <button className="button" type="button" disabled={preview.step === previewDefinition.nodes.length - 1} style={{ minHeight: 44, minWidth: 44 }}
-            onClick={() => setPreview((current) => current ? { ...current, step: Math.min(current.draft.definitions[0].nodes.length - 1, current.step + 1) } : null)}>Следующий шаг</button>
+            onClick={() => changePreviewStep(1)}>Следующий шаг</button>
         </nav>
       </div>}
     </section>

@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { StaffSession } from "../../../lib/auth";
 import type { JourneyDraftCatalog } from "../../../lib/booky-journey-draft";
-import type { JourneyDraftActivityValidationResult } from "../../../lib/booky-journey-activity-validation";
+import type { JourneyDraftActivityValidationResult, JourneyDraftActivityEvaluationResult } from "../../../lib/booky-journey-activity-validation";
 import type { Country } from "../../../../../src/data/countries/types";
 import type { BookArchiveEntry } from "../../../../../src/data/bookArchive";
 
@@ -10,16 +10,18 @@ const mocks = vi.hoisted(() => ({
   catalog: vi.fn<() => JourneyDraftCatalog>(),
   archive: vi.fn<(countries: readonly Country[]) => BookArchiveEntry[]>(),
   validate: vi.fn<(...args: unknown[]) => JourneyDraftActivityValidationResult>(),
+  evaluate: vi.fn<(...args: unknown[]) => JourneyDraftActivityEvaluationResult>(),
   countries: [] as Country[],
   bookArchiveCountries: [] as Country[],
 }));
 vi.mock("../../../lib/auth", () => ({ requireStaff: mocks.requireStaff }));
 vi.mock("../../../lib/booky-journey-catalog", () => ({ getBookyJourneyDraftCatalog: mocks.catalog }));
-vi.mock("../../../lib/booky-journey-activity-validation", () => ({ validateBookyJourneyDraftActivity: mocks.validate }));
+vi.mock("../../../lib/booky-journey-activity-validation", () => ({ validateBookyJourneyDraftActivity: mocks.validate,
+  evaluateBookyJourneyDraftActivity: mocks.evaluate }));
 vi.mock("../../../../../src/data/countries/index", () => ({ countries: mocks.countries, bookArchiveCountries: mocks.bookArchiveCountries }));
 vi.mock("../../../../../src/data/bookArchive", () => ({ buildPublicBookArchive: mocks.archive }));
 
-import { validateBookyJourneyDraftActivityAction } from "./actions";
+import { validateBookyJourneyDraftActivityAction, evaluateBookyJourneyDraftActivityAction } from "./actions";
 
 const staff = (): StaffSession => ({ configured: true, user: { id: "synthetic-staff", email: "staff@example.invalid" },
   role: "editor", mfa: { currentLevel: "aal2", nextLevel: "aal2", required: false } });
@@ -27,6 +29,7 @@ const noContentReads = () => {
   expect(mocks.catalog).not.toHaveBeenCalled();
   expect(mocks.archive).not.toHaveBeenCalled();
   expect(mocks.validate).not.toHaveBeenCalled();
+  expect(mocks.evaluate).not.toHaveBeenCalled();
 };
 function expectSafeFailure(result: JourneyDraftActivityValidationResult, field: string) {
   expect(result.ok).toBe(false);
@@ -99,6 +102,83 @@ describe("Booky draft activity action staff boundary", () => {
     mocks.validate.mockClear();
     expectSafeFailure(await validateBookyJourneyDraftActivityAction("draft"), "activity");
     expect(mocks.archive).not.toHaveBeenCalled();
+    expect(mocks.validate).not.toHaveBeenCalled();
+  });
+});
+
+describe("Booky draft answer action staff boundary", () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+    mocks.requireStaff.mockResolvedValue(staff());
+    mocks.catalog.mockReturnValue({ countries: [] });
+    mocks.archive.mockReturnValue([]);
+    // Boundary stub only; actual factual correctness is covered by the pure
+    // evaluator tests with the real canonical runtime resolver.
+    mocks.evaluate.mockReturnValue(Object.freeze({ ok: true, draftChecksum: "b".repeat(64), choiceId: "choice-1", correct: false }));
+  });
+
+  it("rejects an absent staff or required-MFA session before any current data or answer helper call", async () => {
+    mocks.requireStaff.mockResolvedValue(null);
+    expectSafeFailure(await evaluateBookyJourneyDraftActivityAction("draft", "choice-1"), "activity.auth");
+    noContentReads();
+  });
+
+  it("rejects failed MFA assurance and failed session checks safely without content provider calls", async () => {
+    const session = staff();
+    session.mfa.checkError = "secret MFA diagnostic";
+    mocks.requireStaff.mockResolvedValue(session);
+    expectSafeFailure(await evaluateBookyJourneyDraftActivityAction("draft", "choice-2"), "activity.auth");
+    noContentReads();
+    mocks.requireStaff.mockRejectedValue(new Error("secret session error"));
+    expectSafeFailure(await evaluateBookyJourneyDraftActivityAction("draft", "choice-2"), "activity");
+    noContentReads();
+  });
+
+  it("checks staff per answer request and forwards the exact draft/choice with newly loaded public data", async () => {
+    const catalog: JourneyDraftCatalog = { countries: [] }, publicBooks: BookArchiveEntry[] = [];
+    mocks.catalog.mockReturnValue(catalog);
+    mocks.archive.mockReturnValue(publicBooks);
+    for (const choiceId of ["choice-1", "choice-2"]) {
+      const response = Object.freeze({ ok: true as const, draftChecksum: "b".repeat(64), choiceId, correct: choiceId === "choice-2" });
+      mocks.evaluate.mockReturnValue(response);
+      expect(await evaluateBookyJourneyDraftActivityAction("exact draft bytes", choiceId)).toBe(response);
+      expect(mocks.evaluate).toHaveBeenLastCalledWith("exact draft bytes", choiceId, catalog,
+        { publicCountries: mocks.countries, publicBooks });
+    }
+    mocks.requireStaff.mockResolvedValue(null);
+    expectSafeFailure(await evaluateBookyJourneyDraftActivityAction("exact draft bytes", "choice-2"), "activity.auth");
+    expect(mocks.requireStaff).toHaveBeenCalledTimes(3);
+    expect(mocks.catalog).toHaveBeenCalledTimes(2);
+    expect(mocks.archive).toHaveBeenCalledTimes(2);
+    expect(mocks.evaluate).toHaveBeenCalledTimes(2);
+    expect(mocks.archive).toHaveBeenLastCalledWith(mocks.bookArchiveCountries);
+    expect(mocks.validate).not.toHaveBeenCalled();
+    expect(mocks.requireStaff.mock.invocationCallOrder[0]).toBeLessThan(mocks.catalog.mock.invocationCallOrder[0]);
+    expect(mocks.archive.mock.invocationCallOrder[0]).toBeLessThan(mocks.evaluate.mock.invocationCallOrder[0]);
+  });
+
+  it("returns no verdict after catalog/archive/helper exceptions and exposes no provider diagnostics", async () => {
+    mocks.catalog.mockImplementation(() => { throw new Error("secret catalog error"); });
+    expectSafeFailure(await evaluateBookyJourneyDraftActivityAction("draft", "choice-1"), "activity");
+    expect(mocks.archive).not.toHaveBeenCalled();
+    expect(mocks.evaluate).not.toHaveBeenCalled();
+    mocks.catalog.mockReturnValue({ countries: [] });
+    mocks.archive.mockImplementation(() => { throw new Error("secret archive error"); });
+    expectSafeFailure(await evaluateBookyJourneyDraftActivityAction("draft", "choice-1"), "activity");
+    expect(mocks.evaluate).not.toHaveBeenCalled();
+    mocks.archive.mockReturnValue([]);
+    mocks.evaluate.mockImplementation(() => { throw new Error("secret helper error"); });
+    expectSafeFailure(await evaluateBookyJourneyDraftActivityAction("draft", "choice-1"), "activity");
+  });
+
+  it("preserves bounded helper failure without coercing or replacing the selected choice parameter", async () => {
+    const failure = Object.freeze({ ok: false as const,
+      errors: Object.freeze([Object.freeze({ field: "activity.choiceId", message: "Выбранный вариант недоступен." })]) });
+    mocks.evaluate.mockReturnValue(failure);
+    const choiceId = null as unknown as string;
+    expect(await evaluateBookyJourneyDraftActivityAction("exact draft bytes", choiceId)).toBe(failure);
+    expect(mocks.evaluate).toHaveBeenLastCalledWith("exact draft bytes", null, { countries: [] },
+      { publicCountries: mocks.countries, publicBooks: [] });
     expect(mocks.validate).not.toHaveBeenCalled();
   });
 });

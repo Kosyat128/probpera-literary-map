@@ -7,7 +7,7 @@ import {
   BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft,
   type JourneyDraftCatalog, type JourneyDraftInput,
 } from "./booky-journey-draft";
-import { validateBookyJourneyDraftActivity } from "./booky-journey-activity-validation";
+import { validateBookyJourneyDraftActivity, evaluateBookyJourneyDraftActivity } from "./booky-journey-activity-validation";
 
 function fixture() {
   // Synthetic factual data only. No independent approval receipt is fabricated.
@@ -177,5 +177,99 @@ describe("current Booky draft activity semantic validation", () => {
       if (change === "duplicate-choice") node.activity.choices[1] = node.activity.choices[0];
       expect(rejected(JSON.stringify(imported), f)[0].field).toBe("file");
     }
+  });
+});
+
+function evaluationRejected(serialized: string, choiceId: unknown, f: ReturnType<typeof fixture>) {
+  const result = evaluateBookyJourneyDraftActivity(serialized, choiceId as string, f.catalog, f.publicData);
+  expect(result.ok).toBe(false);
+  if (result.ok) throw new Error("Expected answer evaluation error");
+  expect(Object.keys(result).sort()).toEqual(["errors", "ok"]);
+  expect(Object.isFrozen(result)).toBe(true);
+  expect(Object.isFrozen(result.errors)).toBe(true);
+  expect(result.errors.every(error => Object.isFrozen(error) && /[А-Яа-яЁё]/u.test(error.message))).toBe(true);
+  expect(JSON.stringify(result)).not.toMatch(/"correct"|correctChoiceId|semanticChecksum/);
+  return result.errors;
+}
+
+describe("current Booky draft selected-answer preview", () => {
+  it("evaluates right and wrong selected options from actual credit and returns only the exact frozen boolean reply", () => {
+    const f = fixture(), draft = f.compile(), serialized = JSON.stringify(draft);
+    const before = JSON.stringify({ catalog: f.catalog, data: f.publicData, input: f.input });
+    for (const [choiceId, correct] of [["choice-1", false], ["choice-2", true]] as const) {
+      const result = evaluateBookyJourneyDraftActivity(serialized, choiceId, f.catalog, f.publicData);
+      expect(result).toEqual({ ok: true, draftChecksum: contentRecordHash(draft), choiceId, correct });
+      expect(Object.keys(result).sort()).toEqual(["choiceId", "correct", "draftChecksum", "ok"]);
+      expect(Object.isFrozen(result)).toBe(true);
+      expect(JSON.stringify(result)).not.toMatch(/correctChoiceId|semanticChecksum|publicCountries|publicBooks|approved/i);
+    }
+    expect(JSON.stringify({ catalog: f.catalog, data: f.publicData, input: f.input })).toBe(before);
+    expect(draft.journeyApprovals).toEqual([]);
+    expect(draft.dialogueApprovals).toEqual([]);
+  });
+
+  it("rejects unknown, null, object, control-bearing and oversized selected IDs without a verdict", () => {
+    const f = fixture(), serialized = JSON.stringify(f.compile());
+    for (const choiceId of ["choice-3", "unknown-choice", "", null, undefined, 1, {}, new String("choice-2"),
+      "choice-2\n", " choice-2", "Choice-2", "a".repeat(97)]) {
+      expect(evaluationRejected(serialized, choiceId, f)[0].field).toBe("activity.choiceId");
+    }
+  });
+
+  it("reuses complete malformed/oversized draft validation and rejects altered specs or authored answers", () => {
+    const f = fixture();
+    for (const serialized of ["{", "null", "x".repeat(BOOKY_JOURNEY_DRAFT_MAX_BYTES + 1)])
+      expect(evaluationRejected(serialized, "choice-2", f)[0].field).toBe("file");
+    const tampered = JSON.parse(JSON.stringify(f.compile()));
+    tampered.definitions[1].nodes.find((node: { kind: string }) => node.kind === "activity").activity.correctChoiceId = "choice-1";
+    expect(evaluationRejected(JSON.stringify(tampered), "choice-2", f)[0].field).toBe("file");
+    delete f.input.activity;
+    expect(evaluationRejected(JSON.stringify(f.compile()), "choice-2", f)[0].field).toBe("activity");
+  });
+
+  it("returns no verdict after work removal, review revocation or credited-author exclusion", () => {
+    for (const change of ["removed", "unreviewed", "credit-outside-options", "nonpublic-author"] as const) {
+      const f = fixture(), serialized = JSON.stringify(f.compile());
+      expect(evaluateBookyJourneyDraftActivity(serialized, "choice-2", f.catalog, f.publicData).ok).toBe(true);
+      if (change === "removed") f.publicData.publicBooks = [];
+      if (change === "unreviewed") f.book.editorial = { status: "draft" };
+      if (change === "credit-outside-options") f.book.authorship!.authors[0].writerId = "draft-other";
+      if (change === "nonpublic-author") f.country.writers.splice(1, 1);
+      expect(evaluationRejected(serialized, "choice-2", f)[0].field).toBe("activity");
+    }
+  });
+
+  it("returns no verdict for changed DTO labels, current source labels or missing canonical EN names", () => {
+    for (const change of ["dto", "source", "missing-en"] as const) {
+      const f = fixture(), serialized = JSON.stringify(f.compile());
+      if (change === "dto") f.catalog.countries[0].writers[1].label.en = "Changed Author";
+      if (change === "source") f.country.writers[1].fullName = "Changed Author";
+      if (change === "missing-en") delete f.country.writers[1].fullName;
+      expect(evaluationRejected(serialized, "choice-2", f)[0].field)
+        .toBe(change === "dto" ? "file" : "activity.choices.1.en");
+    }
+  });
+
+  it("binds changed authored copy to its new whole-draft checksum without changing any existing validation response fields", () => {
+    const f = fixture(), original = f.compile();
+    f.input.activity!.copy.en.body = "Choose one current canonical author for the selected work.";
+    const changed = f.compile(), serialized = JSON.stringify(changed);
+    const result = evaluateBookyJourneyDraftActivity(serialized, "choice-2", f.catalog, f.publicData);
+    expect(result).toEqual({ ok: true, draftChecksum: contentRecordHash(changed), choiceId: "choice-2", correct: true });
+    expect(contentRecordHash(changed)).not.toBe(contentRecordHash(original));
+    expect(validateBookyJourneyDraftActivity(serialized, f.catalog, f.publicData))
+      .toEqual({ ok: true, draftChecksum: contentRecordHash(changed) });
+  });
+
+  it("keeps the legacy current credited-owner fallback temporary and derives no stored completion or review", () => {
+    const f = fixture(), draft = f.compile(), serialized = JSON.stringify(draft);
+    delete f.book.authorship;
+    expect(evaluateBookyJourneyDraftActivity(serialized, "choice-1", f.catalog, f.publicData))
+      .toEqual({ ok: true, draftChecksum: contentRecordHash(draft), choiceId: "choice-1", correct: true });
+    expect(evaluateBookyJourneyDraftActivity(serialized, "choice-2", f.catalog, f.publicData))
+      .toEqual({ ok: true, draftChecksum: contentRecordHash(draft), choiceId: "choice-2", correct: false });
+    expect(draft.currentVersions).toEqual([]);
+    expect(draft.availability).toEqual([]);
+    expect(draft.humanReviewed).toBe(false);
   });
 });

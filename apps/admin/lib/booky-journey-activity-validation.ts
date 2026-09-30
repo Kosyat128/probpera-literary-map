@@ -13,7 +13,11 @@ export type JourneyDraftActivityValidationResult =
   | Readonly<{ ok: true; draftChecksum: string }>
   | Readonly<{ ok: false; errors: readonly JourneyDraftError[] }>;
 
-function rejected(field: string, message: string): JourneyDraftActivityValidationResult {
+export type JourneyDraftActivityEvaluationResult =
+  | Readonly<{ ok: true; draftChecksum: string; choiceId: string; correct: boolean }>
+  | Extract<JourneyDraftActivityValidationResult, { ok: false }>;
+
+function rejected(field: string, message: string): Extract<JourneyDraftActivityValidationResult, { ok: false }> {
   return Object.freeze({ ok: false as const,
     errors: Object.freeze([Object.freeze({ field, message })]) });
 }
@@ -22,7 +26,7 @@ function rejected(field: string, message: string): JourneyDraftActivityValidatio
  * A catalog label alone cannot attest the current public writer's source shape.
  * No getters or newly authored names supply a different identity. */
 function validateChoiceLabels(spec: BookyJourneyActivitySpec, draft: BookyJourneyDraft,
-  publicData: BookyJourneyActivityPublicData): JourneyDraftActivityValidationResult | null {
+  publicData: BookyJourneyActivityPublicData): Extract<JourneyDraftActivityValidationResult, { ok: false }> | null {
   const selected = draft.authoringSource.selection.activityChoices;
   if (!selected || selected.length !== spec.choices.length)
     return rejected("activity.choices", "Не удалось связать варианты задания с каноническими записями.");
@@ -97,5 +101,40 @@ export function validateBookyJourneyDraftActivity(serializedDraft: string, catal
     return Object.freeze({ ok: true as const, draftChecksum: contentRecordHash(draft) });
   } catch {
     return rejected("activity", "Не удалось проверить задание. Предпросмотр и экспорт не подтверждены.");
+  }
+}
+
+/** Evaluate only the explicitly selected current option in an unapproved draft.
+ * The boolean is temporary preview feedback, never completion, review, a saved
+ * answer, or authority to publish/admit the route. No answer key leaves here. */
+export function evaluateBookyJourneyDraftActivity(serializedDraft: string, choiceId: string,
+  catalog: JourneyDraftCatalog, publicData: BookyJourneyActivityPublicData): JourneyDraftActivityEvaluationResult {
+  try {
+    if (typeof choiceId !== "string" || choiceId.length > 96 || /[\u0000-\u001f\u007f]/u.test(choiceId)
+      || !/^[a-z][a-z0-9._:-]{0,95}$/.test(choiceId))
+      return rejected("activity.choiceId", "Выберите существующий вариант задания с корректным ID длиной до 96 символов.");
+    const validated = validateBookyJourneyDraftActivity(serializedDraft, catalog, publicData);
+    if (!validated.ok) return validated;
+    const parsed = parseBookyJourneyDraft(serializedDraft, catalog);
+    if (!parsed.ok) return Object.freeze({ ok: false as const,
+      errors: Object.freeze(parsed.errors.map(error => Object.freeze({ ...error }))) });
+    const { draft } = parsed;
+    if (contentRecordHash(draft) !== validated.draftChecksum)
+      return rejected("activity", "Черновик изменился во время проверки. Выберите вариант заново.");
+    const spec = draft.definitions.find(definition => definition.locale === "ru")?.nodes
+      .find(node => node.kind === "activity")?.activity;
+    if (!spec || !spec.choices.some(choice => choice.id === choiceId))
+      return rejected("activity.choiceId", "Выбранный вариант отсутствует в текущем задании.");
+    // Derive current credit again; a previous semantic check supplies no answer
+    // authority after a public work/credit change, even within this operation.
+    const resolved = resolveBookyJourneyActivity(spec, publicData);
+    if (!resolved || resolved.definitionChecksum !== getBookyJourneyActivityChecksum(spec))
+      return rejected("activity", "Текущий публичный каталог не подтверждает ответ для этого задания.");
+    const labelError = validateChoiceLabels(resolved.spec, draft, publicData);
+    if (labelError) return labelError;
+    return Object.freeze({ ok: true as const, draftChecksum: validated.draftChecksum, choiceId,
+      correct: resolved.correctChoiceId === choiceId });
+  } catch {
+    return rejected("activity", "Не удалось проверить выбранный ответ. Выберите вариант и повторите действие.");
   }
 }
