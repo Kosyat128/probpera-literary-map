@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T23:28:20.071Z",
+  "stage": "S15",
+  "checkpoint": "6bb20ee2fa0bd9bcdc150ddf800899fa2c101eb9",
+  "previous": "docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json",
+    "sha256": "1cb9941c4e0d8b7cb2466b3286da9fb246b9cdbca5851ea82833dce579d75a0b"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json",
+    "sha256": "1cb9941c4e0d8b7cb2466b3286da9fb246b9cdbca5851ea82833dce579d75a0b"
+  },
+  "previousRuntimeSourceCommit": "295dda520f4af80cd5c88bffb6e012f2f82ce4f1",
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/source-manifests/cf99d54250fa5cf6.json",
+    "sha256": "cf99d54250fa5cf671aa29429b56cf9ce9f9687bbe718c326ae8e6673ed01aed",
+    "fileCount": 1665
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/scope.json",
+    "sha256": "6fd5dc213a5e66716e8c0d1538ae444a03bad53b5e954102e1adf4da8630fddf"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "53d6e8f067cfc080925bf5953a687362dd7545ef5f6a1608352cea6b1a822a97"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "0ab40eea43b73971da1b9c7bf3b74628f74d23466f92bb87fb645327a6b83039"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "8a655caf7f4f30971e387b02e48a59aafec386b537fcff6fa46212cb239e4d16"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "05218d55e8291da2f4ddd0947f64c5df7d7cc3c773a2ecdac982fe05a477dbb5"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "e9b246c2007cb494c461bacee529e2f3368d1926deca4436606f515c3a9090e4"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "060f1907a131e4047fde63feacc26339fb6fc8cf35bcaa772d378f4fc21766de"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "af449fb292b8c64dcfe7568e9947646ee76e72f4a87f7f226a01b6a10ecbecac"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "dcb4b37056062f5cf86e0b77edfd31e75a0f9b3be54bf362811518c12cc01b1a"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/host.css",
+    "src/styles/book-dossier.css",
+    "src/styles/book-shelf-controls.css",
+    "tests/pwa/booky-character-step.spec.mjs",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "e89dd1f69e0fc5e609d31330ad24d82936f823f5e1994bcb8719b27414c4bf88"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "1986d80d263430695057b5cea19c9b3846d19911adf831d53f4ed1c770e918dd"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "281e69cdd398f3fccfa1c4a653b4e88e1410bf29f94935b5e9acf514cfedb773"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "234ccb5066a155d4dfbef89ab7a0bd38f781ed04d6f0197d9999fb1e665ba422"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "40998ee9d62857e16c6cc23addc05f67d43585641ca2b020012fde543ba5727c"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "71199cf88a1d59b4d32f2cfb18e4ec485b9d30f8bae714c13579d9bf7ff8be50"
+    },
+    {
+      "path": "src/styles/book-dossier.css",
+      "sha256": "6e3cb67dafa906d2fdd319b45165ca490ace3265bb40c9d4a34a9f028e12cd9d"
+    },
+    {
+      "path": "src/styles/book-shelf-controls.css",
+      "sha256": "8fb1c01cfb863c1caded404a39a3af632403f669d9627f5e5aa60ed7d0563d77"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "fb9bdfdc9ce56d0741c1f11456b1a9371dc09228c1dd4903470a1ae8892f256c"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "acb821984ec6332773a8fe8842011e15a1a147bdfb4115e152901fdf7d622e6e"
+    }
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1655,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/host.css",
+    "src/styles/book-dossier.css",
+    "src/styles/book-shelf-controls.css"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "6bb20ee2fa0bd9bcdc150ddf800899fa2c101eb9",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [],
+  "retainedRuntimeUnitEvidence": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+      "sha256": "2ac37e81256befc1ea80532d0837ca076b7bc158ce6c33427cf542fbd0a38267"
+    },
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+      "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e"
+    },
+    "execution": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/execution.json",
+      "sha256": "1fbc244dfc0553e5365fccb2494cb9306a89a3db83adfdc498d5e0491ae0639a"
+    },
+    "rawReport": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/vitest.json",
+      "sha256": "281319773b4d2a6fc097582e3fdca78c1beb01acf05d669f3578229a50db556c"
+    },
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+      "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+      "fileCount": 1665
+    },
+    "dependencyProof": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+      "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+    },
+    "count": 120,
+    "currentSuitesRerun": false,
+    "originalManifestOnly": true
+  },
+  "staticValidation": "fresh-typescript-required-for-mobile-controls-and-panel-wiring",
+  "browserChannel": "msedge",
+  "browserFiles": [
+    "tests/pwa/booky-character-step.spec.mjs",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App absent publication capability denies character routes without opening or progress",
+    "Booky actual App font-only 200 percent stress ru",
+    "Booky actual App font-only 200 percent stress en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 0,
+  "expectedBrowserTests": 5,
+  "expectedImages": 21,
+  "scope": "D213 actual mobile design refinement integrates the single owned Booky actor with clear help/actions, preserves reciprocal Search/help intent, removes unused native Collection tracks, improves existing mobile button presentation and retains current navigation/readiness authority. The same five actual-App cases use one final source manifest and21 original captures; normal actual layout is separate from synthetic200% font stress.",
+  "runtimeWiringImplemented": true,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

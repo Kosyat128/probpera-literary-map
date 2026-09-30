@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T09:02:35.642Z",
+  "pass": true,
+  "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/source-manifests/54fcf6e323f98564.json",
+    "sha256": "54fcf6e323f98564f16c03f1880ce7769ef5d7d80d3bb93d7e29c19eaf933827",
+    "fileCount": 1665
+  },
+  "inspectedCount": 21,
+  "totalCapturedCount": 21,
+  "scope": "Direct review of all21 new actual-App design captures at one final manifest. All source/fixture assertions bind actual final inputs. Original composition a1 remains immutable diagnostic evidence with no final-source case/image credit.",
+  "limitations": [
+    "This review directly inspects 21 of 21 final captures.",
+    "Static images cannot establish explicit acknowledgement, current receipt ownership, publication lease revocation or unchanged saved state; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a5/visual-inspection-receipt.json",
+    "sha256": "fb19b911ae5b22f63f85287a704220b3f7112bb91477165b2bbf8e31f92b1f5a"
+  },
+  "images": [
+    {
+      "filename": "character-current-en.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-character-step-actua-d42a8-preserves-canonical-context/character-current-en.png",
+      "sha256": "cc2f48257ad1db3047dafb97bb85e3bc3e8c82167e72d25563b9eae9751430ee",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "English modal chrome and acknowledgement are readable; supplied synthetic Russian field labels remain fixture data, not editorial translation acceptance."
+      ],
+      "bytes": 50527,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "filename": "character-complete-en.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-character-step-actua-d42a8-preserves-canonical-context/character-complete-en.png",
+      "sha256": "ac6552e89bb05d764c75e5337df289392d7551d25cb429cbb9b6ce2f4c19388d",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Mr. Booky stays inside the narrow sheet; whole name, Stop and Close wrap clearly and the completion message remains readable."
+      ],
+      "bytes": 181779,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "filename": "character-closed-en.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-character-step-actua-d42a8-preserves-canonical-context/character-closed-en.png",
+      "sha256": "07e199c28e08853576aadc7948561c1c0dbaee320855aa5c6f24f75712444df6",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "English title and cover fit the card; Booky heading remains a whole name above optional collapsed actions."
+      ],
+      "bytes": 71035,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "filename": "character-current-ru.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-character-step-actua-e9e7f-preserves-canonical-context/character-current-ru.png",
+      "sha256": "85aa77c6ed4954fcf0ca030dbe4cdd0d3fe4e57ad8e00a750bcd03d682f79d4f",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Native modal header, Close and separate acknowledgement remain readable with clear spacing."
+      ],
+      "bytes": 51105,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "character-consecutive-ru.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-character-step-actua-e9e7f-preserves-canonical-context/character-consecutive-ru.png",
+      "sha256": "af84ebabaa9d5be63438342da742638fdc4f33c8b69dede87817c1d1aa20eaf7",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Current selected synthetic character is distinct; the acknowledgement button retains its separate action hierarchy."
+      ],
+      "bytes": 52378,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "character-complete-ru.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-character-step-actua-e9e7f-preserves-canonical-context/character-complete-ru.png",
+      "sha256": "cc1f2ceb1a5f9c196fce0c61ee5e1ce3ba0efdac03e79ba00958220a0c7f5825",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Live globe and country/writer panel remain visible around one completion sheet; Stop and Close are clear separate controls."
+      ],
+      "bytes": 160918,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "character-closed-ru.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-character-step-actua-e9e7f-preserves-canonical-context/character-closed-ru.png",
+      "sha256": "f337666874f60c1f1f8208fbb9a8de4c0d5c592cfa69480df58b009906fef36e",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Single cover and book title, tonal navigation controls and bounded Booky sheet are separated; internal scroll clips content at its own boundary."
+      ],
+      "bytes": 75182,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "character-capability-absent-en.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-character-step-actua-9fee8-without-opening-or-progress/character-capability-absent-en.png",
+      "sha256": "f9e47387b9457d9ca49b6534f3f5b4f7fc838c7cbcdab39b8f2a62d59be53dc7",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Unavailable journey guidance fits one bounded sheet without a character modal or overlapping controls."
+      ],
+      "bytes": 180261,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "filename": "character-unavailable-en.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-character-step-actua-9fee8-without-opening-or-progress/character-unavailable-en.png",
+      "sha256": "6c8e8b957543257320c6f3d0138e8aac1110fadfb3f3d45d12071ce8a7750d4f",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Unavailable character guidance is readable; Collection and its cover/title retain separate space above Booky."
+      ],
+      "bytes": 71629,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "filename": "booky-font-stress-ru-portrait-baseline.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-portrait-baseline.png",
+      "sha256": "910540134f7b1749e77605d359e256f3b6fbc6dd2a0f3707528287889c8da87a",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Normal Russian text, clear Booky heading and separate Stop/Close; gesture guidance fits its own sheet over the live globe."
+      ],
+      "bytes": 218097,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "booky-font-stress-ru-portrait-help-200.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-portrait-help-200.png",
+      "sha256": "cd31431b6075c1d2cefff67e59556451ad8e513d34c34a560f6653269f465fc6",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Synthetic 200-percent Russian text keeps the whole name and separate controls; long help text uses bounded internal scrolling."
+      ],
+      "bytes": 227981,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "booky-font-stress-ru-portrait-walk-200.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-portrait-walk-200.png",
+      "sha256": "4867a0472dd7189bb22a28f2fe573d83c4dac93d3af61c4b148d1f7ee289c34e",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Collapsed walking view shows one live mascot and one Actions control; no open sheet obstructs the globe."
+      ],
+      "bytes": 413771,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "booky-font-stress-ru-landscape-help-200.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-landscape-help-200.png",
+      "sha256": "6340f901211569fdc5c819411c07c2a169c163e83a397fb1725d2242b30cabad",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "568x320 landscape retains whole Russian name, avatar and Stop/Close in one row; the gesture summary and scrollable body remain visible."
+      ],
+      "bytes": 72517,
+      "width": 568,
+      "height": 320
+    },
+    {
+      "filename": "booky-font-stress-ru-recovery-200.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-recovery-200.png",
+      "sha256": "2004639361b864fa0d07fcf400205bc095345bc58b2223eec1e4053d021ff5fa",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Enlarged recovery action stays inside the help body; its full two-line label is visible, with independently scrolled context above."
+      ],
+      "bytes": 175863,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "booky-heading-wrap-ru-collection.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-heading-wrap-ru-collection.png",
+      "sha256": "6bf24f8a20b7b79e21e4895d9afc7eea2c2a6f3ec987afc6a0a12c8a502addae",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Normal Collection copy and Booky sheet occupy separate areas; three gesture actions retain consistent spacing and a clear selected state."
+      ],
+      "bytes": 64230,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "booky-font-stress-en-portrait-baseline.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-portrait-baseline.png",
+      "sha256": "3e978040a1fd6c81032f4dcd1978acc019ce9c3887fc6462ac2d2d6c75a74335",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Narrow normal English heading keeps Mr. Booky intact and wraps the action group; guidance and reduced-motion notice remain readable."
+      ],
+      "bytes": 187844,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "filename": "booky-font-stress-en-portrait-help-200.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-portrait-help-200.png",
+      "sha256": "2099bdc58a73c5144debfd20956471880aaa4c3d96c407828a158ad96de3d527",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Synthetic 200-percent English text preserves the whole name and touch controls; help text scrolls within its bounded sheet."
+      ],
+      "bytes": 190379,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "filename": "booky-font-stress-en-portrait-walk-200.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-portrait-walk-200.png",
+      "sha256": "aeff124efe6d6e387f888cac98b337e3ce789610b77d7d44e45edfac0f171a7a",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Collapsed English walking view has one live actor and one Actions control, with the canonical globe controls remaining separate."
+      ],
+      "bytes": 337154,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "filename": "booky-font-stress-en-landscape-help-200.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-landscape-help-200.png",
+      "sha256": "91af934f7f9f3c17f7d83bf21c90478f044459763a503bbb556bc2d79023a4d2",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "640x360 enlarged English landscape retains avatar, full name and Stop/Close in one row; gesture disclosure and independent body scrolling remain clear."
+      ],
+      "bytes": 80958,
+      "width": 640,
+      "height": 360
+    },
+    {
+      "filename": "booky-font-stress-en-recovery-200.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-recovery-200.png",
+      "sha256": "fef91b4b6e273f9e4c6c8ace804823bd107cb3a6aa76a1952ef061825de1a040",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Full enlarged recovery label fits on two lines inside the help body; Stop/Close and name remain independent of the body scroll."
+      ],
+      "bytes": 150573,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "filename": "booky-heading-wrap-en-collection.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-heading-wrap-en-collection.png",
+      "sha256": "9198fc23039b71b0826d77d13c917f10281faf3f59760b29463b3af2864c3fae",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "Normal English Collection and companion help are separate; gesture disclosure, reduced-motion notice and calm action have consistent margins."
+      ],
+      "bytes": 58821,
+      "width": 320,
+      "height": 844
+    }
+  ],
+  "releaseReady": false
+}

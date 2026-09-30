@@ -1,0 +1,77 @@
+{
+  "sourceInputs": 1665,
+  "protectedInputs": 1655,
+  "changed": 10,
+  "added": 0,
+  "unitSuites": 0,
+  "staticRerun": true,
+  "browserCases": 5,
+  "images": 21,
+  "previousCheckpoint": "6bb20ee2fa0bd9bcdc150ddf800899fa2c101eb9",
+  "previousRuntimeSource": "295dda520f4af80cd5c88bffb6e012f2f82ce4f1",
+  "globalWrites": false,
+  "testsRun": false,
+  "installedAt": "2026-09-30T07:54:13.846Z",
+  "readyManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/ready.json",
+    "sha256": "95b1525425d3a6619744c5380580c27e8c69fe21ff4a33b09009a3ebdfcf95aa"
+  },
+  "installer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-composition-review\\design-a4\\install.mjs",
+    "sha256": "06c9f30e83ee70e3f86fbb52fa47a8d7656e511b432c595b68b98838a7a0e806"
+  },
+  "scope": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a4/scope.json",
+    "sha256": "bfa15c5ac66bcb85bedfa98bbe5b9418d4477c52609f0e5ce0c8ac96ef10282f"
+  },
+  "helpers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/build-android-a1.ps1",
+      "sha256": "b13f6cb042a33454015b344bbf5e1e5e8bd46c64b6bc15bea4e55d6f6b45fb8b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/build-pwa-a1.mjs",
+      "sha256": "2bb38a1aa35b9d14206ac76c133ffb44fd2476b9a6edf3583273466b41c08407"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/check.mjs",
+      "sha256": "8bc314b18492d7700263db4f91faffec3afd0f2d086fc52835b8fc7c344535a4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/checkpoint.mjs",
+      "sha256": "8fd1d7a5ef438b416bd5e35fab700f5e6d3bc1f8efcfeb5903ddfe4d59637e9e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/configure.mjs",
+      "sha256": "56b70a9e288edb611f0bf8e6e36a5323c640fc87f0951616563d84bed33a5e74"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/finalize-notes.mjs",
+      "sha256": "13be96cb2ebf820cdc6f38db25ba396b4ff44eeb1dd216ad77a4d9d37c94c0ef"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/preserve-android-a1.mjs",
+      "sha256": "4ffacafe9da70ab06243257c2befe9f25e8ded1315f8f4b1f6c375804936682c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/pwa-a1.config.mjs",
+      "sha256": "6debffc85469f4485f5df8c7219f7d03e51970468a14bc73aac2dd28d9039a27"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/read-case-evidence.mjs",
+      "sha256": "32e982b9d9532b8c12b254d49294e8beada9ae4f165ff565d78f2de367125201"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/record-visual.mjs",
+      "sha256": "2fad131f0987676200b4299cda19edf55b6235c74cf4c3e78a5407db464e4700"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/verify-android-a1.mjs",
+      "sha256": "83eb48dc7094143609cd88fc16634edbfb39ccc310841e808c1c4efb9df7b71b"
+    }
+  ]
+}

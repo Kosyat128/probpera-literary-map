@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-mobile-design-20260930:begin -->
+Latest source c55c7d07: Booky uses one compact mobile help surface with the same live actor in its heading, deliberate optional controls and reciprocal Search/help foreground. Native book details retain their canonical body identity with a compact handle. Normal captions and separate synthetic200% text stress are verified in RU/EN. Prior journey acknowledgement, completion and reduced-motion guards remain. All34 historical drafts remain unapproved; D207 inventory stays historical. Bounded S15.PLANETKA-002 evidence; statuses unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json. D213. Fresh TypeScript and 5 actual-App cases; 21 authenticated captures. No unit rerun; original D209120 proof remains at its original manifest. Fresh PWA/Android builds bind this source.
+<!-- s15-booky-mobile-design-20260930:end -->
+
 <!-- s15-booky-journey-completion-20260930:begin -->
 Latest source 295dda52: Booky gives immediate optional happy presentation after successful explicit journey completion. RU verifies finite playback and EN verifies a reduced-motion still pose plus completed cold hydration without replay. Semantic acknowledgement and progress remain separate from decoration. All 34 historical drafts remain unapproved; D207 inventory audit retains its historical source only. Bounded S15.PLANETKA-008 evidence; statuses unchanged.
 

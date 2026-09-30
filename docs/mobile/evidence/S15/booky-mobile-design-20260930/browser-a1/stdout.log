@@ -1,0 +1,65 @@
+
+Running 5 tests using 1 worker
+
+
+
+[1/5] tests\pwa\booky-character-step.spec.mjs:700:55 › actual App ru character journey requires current modal acknowledgement and preserves canonical context
+[2/5] tests\pwa\booky-character-step.spec.mjs:700:55 › actual App en character journey requires current modal acknowledgement and preserves canonical context
+[3/5] tests\pwa\booky-character-step.spec.mjs:755:1 › actual App absent publication capability denies character routes without opening or progress
+[4/5] tests\pwa\booky-live-character.spec.mjs:2958:150 › Booky actual App font-only 200 percent stress ru
+  1) tests\pwa\booky-live-character.spec.mjs:2958:150 › Booky actual App font-only 200 percent stress ru 
+
+    Error: landscape large-text select real wave: bounded trusted scroll budget exhausted
+
+      2982 |   async function scale(label){await page.evaluate(()=>document.fonts.ready);const value=await page.evaluate(()=>window.__fontStress.scale()),observation={label,immediate:value,settled:null};o.scales.push(observation);expect(value.elements.length).toBeGreaterThan(5);await settle();observation.settled=await page.evaluate(()=>window.__fontStress.auditScale());expect(observation.settled.elements.every(row=>row.connected&&Math.abs(row.actualFontSize-row.baselineFontSize*2)<.01),'Every current Booky descendant must reach its recorded exact 200 percent font size after settling').toBe(true);await textMode(label+' enlarged',true);}
+      2983 |   async function expose(selector,label){const initial=await read(selector),usableHeight=initial.clip.bottom-initial.clip.top,scrollRange=Math.max(0,(initial.scrollHeight??0)-(initial.clientHeight??0)),estimatedProgress=Math.max(16,usableHeight-36),budget=Math.min(160,Math.max(24,Math.ceil(scrollRange/estimatedProgress)*2+8));(o.scrollBudgets??=[]).push({label,selector,scrollRange,usableHeight,estimatedProgress,budget,finiteCap:160,initial});for(let step=0;step<budget;step++){const before=await read(selector);if(!before.visible)return{reachable:false,reason:'not rendered in this state',state:before};if(before.inside&&before.points.every(point=>point.hit))return{reachable:true,state:before};if(!before.inCard||before.inHeading)return{reachable:false,reason:'critical fixed target is clipped or occluded',state:before};const available=before.clip.bottom-before.clip.top;if(available<44||before.target.height>available+1)return{reachable:false,reason:'target cannot fit below the sticky heading',state:before};const upward=before.target.bottom>before.clip.bottom,overflow=upward?before.target.bottom-before.clip.bottom:before.clip.top-before.target.top,distance=Math.min(available-20,Math.max(24,overflow+14)),x=(before.clip.left+before.clip.right)/2,startY=upward?before.clip.bottom-10:before.clip.top+10,endY=startY+(upward?-distance:distance),start=await page.evaluate(label=>{window.__fontStress.phase='scroll '+label;return window.__fontStress.events.length;},label);await touch('touchStart',[{x,y:startY,id:111}]);for(let n=1;n<=8;n++){await touch('touchMove',[{x,y:startY+(endY-startY)*n/8,id:111}]);await page.waitForTimeout(20);}await page.waitForTimeout(100);await touch('touchEnd',[]);await settle();const after=await read(selector),events=await page.evaluate(start=>window.__fontStress.events.slice(start),start);o.swipes.push({label,before,after,events});expect(after.documentScroll).toEqual(before.documentScroll);expect(events.filter(event=>event.type==='click')).toEqual([]);if(Math.abs(after.scrollTop-before.scrollTop)<1)return{reachable:false,reason:'trusted panel scrolling made no further progress',state:after};}return{reachable:false,reason:'bounded trusted scroll budget exhausted',state:await read(selector)};}
+    > 2984 |   async function tap(selector,label,{required=false,stress=false}={}){await settle();const exposed=await expose(selector,label),action={label,selector,stress,...exposed,events:[]};o.actions.push(action);if(!exposed.reachable){if(stress)o.findings.push({label,kind:'unreachable critical target',reason:exposed.reason,state:exposed.state});if(required)throw Error(label+': '+exposed.reason);return false;}let state,previous,matches=0;action.targetSettle=[];await expect.poll(async()=>{state=await read(selector);action.targetSettle.push(state);const key=JSON.stringify({target:state.target,card:state.card,heading:state.heading,scrollTop:state.scrollTop});matches=key===previous&&state.inside&&state.points.every(point=>point.hit)&&!state.runningFiniteAnimations.length?matches+1:0;previous=key;return matches;},{timeout:3500,intervals:[80]}).toBeGreaterThanOrEqual(3);action.state=state;expect(state.target.width).toBeGreaterThanOrEqual(44);expect(state.target.height).toBeGreaterThanOrEqual(44);const start=await page.evaluate(label=>{window.__fontStress.phase=label;return window.__fontStress.events.length;},label),x=state.target.left+state.target.width/2,y=state.target.top+state.target.height/2;await touch('touchStart',[{x,y,id:112}]);await touch('touchEnd',[]);await twoFrames(page);action.events=await page.evaluate(start=>window.__fontStress.events.slice(start),start);const intended=Object.entries(keys).find(([,value])=>value===selector)?.[0];expect(intended).toBeTruthy();for(const type of state.disabled?['pointerdown','pointerup']:['pointerdown','pointerup','click'])expect(action.events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch'&&event.control===intended),label+' actual '+type+' reaches '+intended).toBe(true);return true;}
+           |                                                                                                                                                                                                                                                                                                                                                                     ^
+      2985 |   async function inspect(label,{stress=false,imageName=null}={}){await settle();const value=await page.evaluate(label=>window.__fontStress.measure(label),label);o.phases.push(value);await headingWrapAudit(label);await galleryWordAudit(label);if(stress){for(const text of value.texts)if(text.control&&text.exceedsControlBorder)o.findings.push({label,kind:'text exceeds critical control border',control:text.control,text:text.text,decorative:text.decorative,glyphs:text.glyphs,controlRect:text.controlRect,overflow:text.intrinsicOverflow});for(const [name,control]of Object.entries(value.controls))if(control.visible&&['stop','close','walk','retry','recover'].includes(name)){if(control.target.width<44||control.target.height<44)o.findings.push({label,kind:'critical target below 44 CSS pixels',name,state:control});if(control.inHeading&&(!control.inside||!control.points.every(p=>p.hit)))o.findings.push({label,kind:'sticky heading control clipped or occluded',name,state:control});}const c=value.controls.close;if(c.card&&c.heading&&c.card.bottom-Math.max(c.card.top,c.heading.bottom)<44)o.findings.push({label,kind:'sticky heading leaves less than one 44px body target',card:c.card,heading:c.heading});}if(imageName){await capture(page,result,testInfo,imageName);Object.assign(result.screenshots.at(-1),{framing:stress?'actual-App synthetic font-only 200 percent stress':'actual-App baseline before synthetic font stress',syntheticTextStress:stress,factor:stress?2:1,nativeFontScaleEquivalent:false});}return value;}
+      2986 |   async function openGallery(label){if(!await panel(page).isVisible())await tap(keys.toggle,label+' help',{required:true});await expect(panel(page)).toBeVisible();await tap(keys.quick,label+' gallery',{required:true});await expect(page.locator('[data-booky-gestures]')).toHaveAttribute('open','');await settle();}
+      2987 |   async function closeForNext(label){if(await panel(page).isVisible()){await tap(keys.close,label,{required:true});await expect(panel(page)).toBeHidden();}}
+        at tap (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:2984:357)
+        at selectedGestureStop (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:3054:5)
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:3098:444
+
+    attachment #1: booky-live-character-source-evidence (application/json) ─────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-mobile-design-evidence\browser-a1\booky-live-character-Booky-ad053--only-200-percent-stress-ru\attachments\booky-live-character-source-evidence-ecd51f27de6bee6f7b3a1aad9c5d6f531191299a.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-mobile-design-evidence\browser-a1\booky-live-character-Booky-ad053--only-200-percent-stress-ru\error-context.md
+
+
+
+
+[5/5] tests\pwa\booky-live-character.spec.mjs:2958:150 › Booky actual App font-only 200 percent stress en
+  2) tests\pwa\booky-live-character.spec.mjs:2958:150 › Booky actual App font-only 200 percent stress en 
+
+    Error: short landscape help 200 percent body space below sticky header
+
+    expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 44
+    Received:    43.796875
+
+      3005 |     expect(value.close.visible,label+' Close rendered').toBe(true);if(!value.stop.visible)expect(value.stop.disabled,label+' hidden Stop has no active gesture').toBe(true);
+      3006 |     for(const [name,target]of[['Stop',value.stop],['Close',value.close]].filter(([,target])=>target.visible)){expect(target.target.width,label+' '+name+' width').toBeGreaterThanOrEqual(44);expect(target.target.height,label+' '+name+' height').toBeGreaterThanOrEqual(44);expect(target.inside&&target.points.every(point=>point.hit),label+' '+name+' exposed').toBe(true);}
+    > 3007 |     expect(value.card.bottom-Math.max(value.card.top,value.header.bottom),label+' body space below sticky header').toBeGreaterThanOrEqual(44);
+           |                                                                                                                    ^
+      3008 |     if(requireNarrow){expect(value.factor).toBe(1);expect(value.rows).toBe(1);expect(value.fragmentWidthSum).toBeLessThanOrEqual(value.content.width+1);expect(value.fragmentWidthSum+value.actions.width+value.gap,'The real narrow card cannot fit the title and action group on one line').toBeGreaterThan(value.content.width+1);expect(value.actions.top).toBeGreaterThanOrEqual(value.title.bottom+value.gap-1);}
+      3009 |     return value;
+      3010 |   }
+        at headingWrapAudit (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:3007:116)
+        at inspect (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:2985:183)
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:3098:314
+
+    attachment #1: booky-live-character-source-evidence (application/json) ─────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-mobile-design-evidence\browser-a1\booky-live-character-Booky-35ad3--only-200-percent-stress-en\attachments\booky-live-character-source-evidence-7082b85d6ffa158cc2fa27501e82331802b123d2.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-mobile-design-evidence\browser-a1\booky-live-character-Booky-35ad3--only-200-percent-stress-en\error-context.md
+
+
+  2 failed
+    tests\pwa\booky-live-character.spec.mjs:2958:150 › Booky actual App font-only 200 percent stress ru 
+    tests\pwa\booky-live-character.spec.mjs:2958:150 › Booky actual App font-only 200 percent stress en 
+  3 passed (5.5m)

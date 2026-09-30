@@ -1,0 +1,26 @@
+# S15 explicit journey completion presentation
+
+Source: c55c7d0749404421807c0138145c0ea97a4e89a7.
+
+D213 actual mobile design refinement integrates the single owned Booky actor with clear help/actions, preserves reciprocal Search/help intent, removes unused native Collection tracks, improves existing mobile button presentation and retains current navigation/readiness authority. The same five actual-App cases use one final source manifest and21 original captures; normal actual layout is separate from synthetic200% font stress. Version a3 follows authenticated failed design a1; original scopes/entries/reports stay immutable. Version a4 follows actual a3 fixture-owner measurement failure; only the live test fixture changes from the a3 source pins. All production inputs and original case/assertion budgets remain exact. Version a5 applies only the root-reviewed ordered owned native IO batch correction and transparent fixture diagnostics. All original case/assertion/capture budgets remain exact; a4 source validation receives no a5 final credit. 5 actual-App mobile composition and journey cases pass with 21 authenticated captures; 21 images are directly reviewed. Fresh TypeScript passes for mobile controls and panel wiring; no unit suite is rerun. Fresh PWA ff3c9f55 and Android-dev 00a6bcaa bind this source. Prior validation retains its original manifest attribution. All acceptance statuses remain unchanged.
+
+- The exact reviewed design/source/fixture paths are pinned in the entry. TypeScript and the same five actual-App cases are fresh at one final source manifest; no runtime unit rerun is claimed.
+- D211 functional evidence retains its original attribution. The superseded composition a1 has1PASS/4FAIL and remains diagnostic at its original4b6fab2d manifest; its earlier28.882s TS PASS is not final-source TS credit. Original D209120 runtime proof and D207 historical inventory keep their own source attribution.
+- All thirty-four historical drafts remain unchanged and unapproved. No inventory audit or literary-copy approval is claimed.
+- Controlled synthetic journeys, browser motion preference and completed cold-document hydration are not editorial, installed-device or native lifecycle acceptance.
+- Only bounded S15.PLANETKA-002 evidence is added; all requirement/stage statuses and acceptance gates remain unchanged.
+- The same3 D211 actual-App journey/capability cases plus2 D210 font/layout cases are selected; original9+12 captures remain21. No new generic cases or capture credit.
+- Shared live and recovery geometry derive integrated mode only from the real production help-sheet marker, preserving all renderer, scene, finite, frustum and no-crop guards.
+- Normal Search and help are mutually foregrounded by real trusted touch. Every displayed result is audited for44px geometry and hit reachability through its existing actual scroll owner; no result selection or geometry injection.
+- Normal Collection uses its natural coherent surface; obsolete forced narrow-card positioning is removed. Caption Range rows measure whole words without font shrinking or width probes.
+- Synthetic200% font assignment remains test-only; no native keyboard, OS font scale, installed-device or full accessibility equivalence.
+- Existing character semantic acknowledgement, explicit Resume/Open, finite RU completion and static EN cold completion checks remain intact.
+- Native Collection toolbar records actual missing views, natural computed tracks,44px control geometry/hit reachability and horizontal overflow through real owned scrolling only if needed. Color/radius design quality is judged from direct actual frames, not mirrored CSS values.
+- Original composition browser a1 (1PASS/4FAIL,230332ms) and TS a1 (PASS,28882ms) retain their4b6fab2d source manifest and do not satisfy the new final checks. A new full five-case browser plus TS is required after actual source fixes and broader user design scope.
+- The design a1 retained3PASS/2FAIL ated43d0a5; its passing journeys and23.925s static are diagnostics at their original source. Corrected production CSS affects their emitted closure, so the same5cases and21captures must be fresh at one final manifest.
+- a3 static-a1 PASS23375ms and browser-a2 4PASS1FAIL279385ms retain manifest7dbc3333 only. The owner-height fixture correction changes the complete test-source manifest; final same5cases/21captures and one TypeScript pass must share the fresh a4 manifest.
+- The a3 browser-a1 zero-child preflight remains a separate receipt with empty directory, no child/browser/app cases or helper logs/results.
+- Actual a4 static PASS23757ms and browser4PASS1FAIL328913ms stay diagnostic at original0a89918b source. Actual static start/completion850b5d/407a63 and browser466d5e/5fea6f are retained separately. Two reviewed source pins change for a5; same5cases/21captures and one fresh TypeScript are required at one final manifest before the single PWA/Android pair.
+- This review directly inspects 21 of 21 final captures.
+- Static images cannot establish explicit acknowledgement, current receipt ownership, publication lease revocation or unchanged saved state; those depend on separately scoped runtime assertions.
+- No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed.

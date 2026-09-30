@@ -1,0 +1,767 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-30T07:50:19.167Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json",
+    "sha256": "1cb9941c4e0d8b7cb2466b3286da9fb246b9cdbca5851ea82833dce579d75a0b"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/record-history.mjs",
+    "sha256": "c10a4f5ca3fc5fbb8c0d910957a59ac248accd21344c9e96ff6e715afb112750"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/diagnostic-history-input.json",
+    "sha256": "5ec9ec267458a341736e60626e85a0e1e924e3d27ad9b88cedc574ceac919460"
+  },
+  "scopeBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/evidence-draft/scope.json",
+    "sha256": "5a4e17c7518446a19b6e83570a010cc0fecba82264d0ffdd0f99e892bf9c9876"
+  },
+  "amendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/draft/source-bindings.json",
+      "sha256": "bb00f43b6fd940fec72d7b9f09f1e57819556bae95cdb73e756e3f67a717a3ba"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/ui-source-apply-receipt.json",
+      "sha256": "0d94f79c1fbadd9d8574d1c6c42e3a994d11e55492499ff84fc259dfc3d3167f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/detail-review/source-bindings.json",
+      "sha256": "3519066966a47288bff518b600729d3249c7cffe1f853f5c56c5f0ec6636bd9b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/detail-apply-receipt.json",
+      "sha256": "739a2ff161fe7c7e189698ba1f5c615a7f07d505793eb6fc07b4dd63fb3ddde1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/browser-draft/fixture-edit-plan.json",
+      "sha256": "218e34280e23c0d368c8b2098e853a6ec305848263f075715dea0a89a2adcd8c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/live-source-apply-receipt.json",
+      "sha256": "b7081fedad5871abc44924faaf2c7bd51a1feddcfb90970c6875fd3453e16634"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/browser-draft/design-a2/fixture-edit-plan.json",
+      "sha256": "f6710435ff047548399e22a42c0d6afc2a91a4e775db68b46fe17052f0bde461"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/live-design-source-apply-receipt.json",
+      "sha256": "af7f0dea7f55797ff2b05fa8c943ec9a6f3f9f2ed9cdbfa9a6e459fc40cf5a28"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-edit-plan.json",
+      "sha256": "58c991714a2a47bf14713226b8f356ee622da99f47d3b7e3d6178bdd959d7b9f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-apply-receipt.json",
+      "sha256": "95465430bfd3b2bc2bacc46ee62fe185511d861b6bd5050673718b38c0e00636"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/snapshot-edit-plan.json",
+      "sha256": "920c8a3bbae1b6bd9c4e561952fa8582196d9319e1d8fda4e911bbf1fba66bd0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/snapshot-apply-receipt.json",
+      "sha256": "d87c8616def1a31d98bef85ad8f333ea5847f082dd5603466ffbae431c1b9576"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/source-binding.json",
+      "sha256": "b86afd67e4a9f2430aa846ce169a23c9986bf9915743c49b3b4e386521fc9ea2"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/source-apply-receipt.json",
+      "sha256": "87e4af23d45fae0717efee33223b4ded5a00e2e4b419b814014c2fefb15d22fd"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-polish/final/source-bindings.json",
+      "sha256": "0db2b77789dce19eb4fc01a2e7f339621d197dcff288503fe42fa9cc1e66276d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-css-apply-receipt.json",
+      "sha256": "35a294c0dd67bb62cc4ba484a9986be6282f684281758d9008a6c319f5b0ee2f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a2/source-freeze-receipt.json",
+      "sha256": "17370174f6a720e3b54402ede14c45f54633f661ac7d78c6e0efc2a0d0bb0c3b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/retained-diagnostic-namespaces.json",
+      "sha256": "93f01de6d94a922596e497fdcaba399dbba4c1585c518abd644ee1b1df969a50"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/layout-a2/source-binding.json",
+      "sha256": "18e1df20c756984f7de6f6aef9393ee0eedc30fe731b1d4b7aa88f63b00cc9a3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/layout-a2/source-apply-receipt.json",
+      "sha256": "47a996c91266a9fbc7e78f3e5c225200fe60a20b81536799453432201e339d09"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/source-freeze-receipt.json",
+      "sha256": "db801ebbad6a576adee56f07520243b5c572f1ce184c0a5597b21ff58314a4f6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/workflow-reuse-plan.json",
+      "sha256": "a9e890e7e9d3f923ee333ffbdd273dc2fae0f55b4529dce931cdf0ea2aecba5c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/retained-diagnostic-namespaces.json",
+      "sha256": "14b06217ba25ea9f5b7356061b4ab9c1ce1b27e6493dd0d60ec240b45303afff"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/toolbar-owner-root/source-binding.json",
+      "sha256": "2113d30f6dbe4b8bc682cf350e3fc3ae6dcb3ccca537b4de0fe50a928ee4e99e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/toolbar-owner-root/source-apply-receipt.json",
+      "sha256": "02e3083ca4df2262d0b37be309176f55a3db0d6151dbdb78178c7b22f518a30f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/source-freeze-receipt.json",
+      "sha256": "c768e38fd2658f22a8ec9fe94829f37d3b7e2fb73b5060c5d26d5863452834a7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/workflow-reuse-plan.json",
+      "sha256": "a57a810898d1fd0f0d02c1fccdb94e50c782fa4eaa38ee65c2fcb1ae232a2172"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "composition-static-a1",
+      "classification": "retained-earlier-source-static-pass",
+      "diagnosticOnly": true,
+      "reportFormat": "typescript",
+      "browserStarted": false,
+      "nativeObservationExecuted": false,
+      "tests": null,
+      "report": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/static-a1/execution.json",
+        "sha256": "0befe02bf63116db4ed38d1382cf32e06c94bbb73285b32e99017ba313e2f6c3"
+      },
+      "executionEvidence": {
+        "streamSeparation": "recorded",
+        "stdout": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/static-a1/stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/static-a1/stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "log": null,
+        "nodeExit": 0
+      },
+      "sourceManifestSha256": "4b6fab2d733ae428e19deacfdbbf13d76fdd0ba0949e2cddbd2143a64d7d6bb4",
+      "sourceValidationCountsAsFinal": false,
+      "interpretation": "Original TypeScript passed in28882ms at4b6fab2d source. It is retained only as earlier-source diagnostic provenance; the final design TS remains required.",
+      "additionalEvidence": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/static-a1/result.json",
+          "sha256": "557f08458a879f216a39393a0e7701f05be52a16e43657624c5874eb3cc2af48"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/source-manifests/4b6fab2d733ae428.json",
+          "sha256": "4b6fab2d733ae428e19deacfdbbf13d76fdd0ba0949e2cddbd2143a64d7d6bb4",
+          "fileCount": 1665
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/check.mjs",
+          "sha256": "c6e0356d7d9a8c7e0540d10df6e505b3d466db6c374eab714a3ac6d69e218408"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/entry.json",
+          "sha256": "8522b6f5bfe199f091106d15bddfc90bbc51e3f949878493a771dd399265caf2"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/configure.mjs",
+          "sha256": "0f9a8166f29d5a2c8738f36790c2705a556f5225289421c033f6874a833cf1a2"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/scope.json",
+          "sha256": "d9a43295068132eaa0359b96235fffa918e115973828ee24eaff99a7fbeba2f1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+          "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+        }
+      ]
+    },
+    {
+      "id": "composition-browser-a1",
+      "classification": "original-five-case-composition-failure",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "nativeObservationExecuted": false,
+      "tests": {
+        "passed": 1,
+        "failed": 4,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/browser-a1/playwright.json",
+        "sha256": "fefaa7ece28af495c0b036b49fccd7a25a46a61a242de91005ce4eac48491fe9"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/browser-a1/execution.json",
+        "sha256": "94278823fb4c6c073e119494c02f4a63c69f87e91a3cace587dd53074887a374"
+      },
+      "executionEvidence": {
+        "streamSeparation": "recorded",
+        "stdout": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/browser-a1/stdout.log",
+          "bytes": 27151,
+          "sha256": "bcc8d2ca461b2532524bff43972d75dcfd0c13e79b3cc5fa86a9a379b2aa1a52"
+        },
+        "stderr": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/browser-a1/stderr.log",
+          "bytes": 655,
+          "sha256": "9bff28e1bd02536972475790e60a875aeeb214ff4f501de78981620375290951"
+        },
+        "log": null,
+        "nodeExit": 1
+      },
+      "sourceManifestSha256": "4b6fab2d733ae428e19deacfdbbf13d76fdd0ba0949e2cddbd2143a64d7d6bb4",
+      "sourceValidationCountsAsFinal": false,
+      "interpretation": "Original five actual-App cases completed1PASS/4FAIL in230332ms at4b6fab2d. Two layout failures used nonexistent wave enum; navigation failures remain attributed to original evidence. No original case/image is final-design credit.",
+      "additionalEvidence": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/browser-a1/result.json",
+          "sha256": "60985d6e3d540b9f7f632ea2cb4e02e35b63b9ccb67b8c17b1d2bec746b0ad85"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/source-manifests/4b6fab2d733ae428.json",
+          "sha256": "4b6fab2d733ae428e19deacfdbbf13d76fdd0ba0949e2cddbd2143a64d7d6bb4",
+          "fileCount": 1665
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/check.mjs",
+          "sha256": "c6e0356d7d9a8c7e0540d10df6e505b3d466db6c374eab714a3ac6d69e218408"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/entry.json",
+          "sha256": "8522b6f5bfe199f091106d15bddfc90bbc51e3f949878493a771dd399265caf2"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/configure.mjs",
+          "sha256": "0f9a8166f29d5a2c8738f36790c2705a556f5225289421c033f6874a833cf1a2"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-composition-20260930/scope.json",
+          "sha256": "d9a43295068132eaa0359b96235fffa918e115973828ee24eaff99a7fbeba2f1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+          "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/browser-draft/design-a2/fixture-edit-plan.json",
+          "sha256": "f6710435ff047548399e22a42c0d6afc2a91a4e775db68b46fe17052f0bde461"
+        }
+      ]
+    },
+    {
+      "id": "native-readiness-selection-a1",
+      "classification": "playwright-selection-no-tests",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": false,
+      "nativeObservationExecuted": false,
+      "tests": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/browser-diagnostic-a1/playwright.json",
+        "sha256": "9e9acf34b1bc99e8c894f8aa7dd0b2c3bb59602a3d09a1c49435e9af812f103b"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a2/browser-diagnostic-a1-execution-evidence.json",
+        "sha256": "840a1fef649803ef5cb7e9fe611bfb1d8141da6029d0ed19b9829538a6f93e81"
+      },
+      "executionEvidence": {
+        "streamSeparation": "tool-return-only",
+        "stdout": null,
+        "stderr": null,
+        "log": null,
+        "nodeExit": 1
+      },
+      "sourceValidationCountsAsFinal": false,
+      "reportDurationMs": 208.361,
+      "interpretation": "Incorrect start-anchored grep selected0cases and produced NoTestsFound. Browser/native observations never ran. This is a selection preflight failure, with no product behavior conclusion.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/playwright-observation.config.mjs",
+          "sha256": "7fe68dcb0dbeb719fef1b58734f344cce20e0f3eca7ae42573abc06f04b033b5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-edit-plan.json",
+          "sha256": "58c991714a2a47bf14713226b8f356ee622da99f47d3b7e3d6178bdd959d7b9f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-proposed.mjs",
+          "sha256": "6fffe73bcacb7fa7fa5f348901d9281ed3ddbc2e6ce1b936c44be66aa0698abd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-baseline.mjs",
+          "sha256": "5ab42617d5b8460a5c6251d8277b0ffe81a1935ccd15da3b119e401019b42329"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-apply-receipt.json",
+          "sha256": "95465430bfd3b2bc2bacc46ee62fe185511d861b6bd5050673718b38c0e00636"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/original-tool-return-receipts.json",
+          "sha256": "548cf9c37eb4e501600c3ab63df97b1c985f9f5babc522428d1dc38917a56229"
+        }
+      ]
+    },
+    {
+      "id": "native-readiness-observation-a2",
+      "classification": "one-existing-en-read-only-observation-pass",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "nativeObservationExecuted": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/browser-diagnostic-a2/playwright.json",
+        "sha256": "805b50c976b0f02746e40bc730e046d118596bcd25c107d165027396c22b2be5"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a2/browser-diagnostic-a2-execution-evidence.json",
+        "sha256": "a27fe382e2c9995c60be808397c1997181026bf29f4b1b2de6a384a447f5ac1b"
+      },
+      "executionEvidence": {
+        "streamSeparation": "tool-return-only",
+        "stdout": null,
+        "stderr": null,
+        "log": null,
+        "nodeExit": 0
+      },
+      "sourceValidationCountsAsFinal": false,
+      "reportDurationMs": 63234.625,
+      "actualProductionSourceGraphMatchesCompositionA1Manifest": true,
+      "auditedRuntimeSourcePaths": 676,
+      "rootCauseProved": false,
+      "failClosedAbsenceProved": false,
+      "sourceFixProved": false,
+      "interpretation": "Suffix grep executed exactly the original EN case with temporary pass-through readonly native IO/RO telemetry and got1PASS. The emitted production source graph matches composition a1. PASS alone proves neither the intermittent cause nor absence of fail-closed behavior; it is not final source/fix acceptance and receives no final case/image credit.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/playwright-observation-a2.config.mjs",
+          "sha256": "6081705888396c0cef003d0ea7a61e325f2db0c7f5b55d963a61b0c53196b2f3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-edit-plan.json",
+          "sha256": "58c991714a2a47bf14713226b8f356ee622da99f47d3b7e3d6178bdd959d7b9f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-proposed.mjs",
+          "sha256": "6fffe73bcacb7fa7fa5f348901d9281ed3ddbc2e6ce1b936c44be66aa0698abd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-baseline.mjs",
+          "sha256": "5ab42617d5b8460a5c6251d8277b0ffe81a1935ccd15da3b119e401019b42329"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-apply-receipt.json",
+          "sha256": "95465430bfd3b2bc2bacc46ee62fe185511d861b6bd5050673718b38c0e00636"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/original-tool-return-receipts.json",
+          "sha256": "548cf9c37eb4e501600c3ab63df97b1c985f9f5babc522428d1dc38917a56229"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/browser-diagnostic-a2/artifacts/booky-character-step-actua-d42a8-preserves-canonical-context/booky-character-step.json",
+          "sha256": "a1b25540597dc175cba9979b7fd37bd1786129e5650aae76e0d7f38cc92049a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/browser-diagnostic-a2/artifacts/booky-character-step-actua-d42a8-preserves-canonical-context/attachments/booky-character-step-source-evidence-430c30fd88e1529ca0ddaa4d5f759ede23c5d636.json",
+          "sha256": "a1b25540597dc175cba9979b7fd37bd1786129e5650aae76e0d7f38cc92049a9"
+        }
+      ]
+    },
+    {
+      "id": "design-static-a1",
+      "classification": "retained-failed-design-source-static-pass",
+      "diagnosticOnly": true,
+      "reportFormat": "typescript",
+      "browserStarted": false,
+      "nativeObservationExecuted": false,
+      "tests": null,
+      "report": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/static-a1/execution.json",
+        "sha256": "6e6d39d864478a2d1d08c37efc6ad652e65f60ea7b3173d8af746f66dfd77a0d"
+      },
+      "executionEvidence": {
+        "streamSeparation": "recorded",
+        "stdout": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/static-a1/stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/static-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "log": null,
+        "nodeExit": 0
+      },
+      "sourceManifestSha256": "ed43d0a504454af350b382eb7f040c8b4a4f74afb3c4760f17aafc563c34cdc0",
+      "sourceValidationCountsAsFinal": false,
+      "interpretation": "Original design TS passed23925ms ated43d0a5; corrected-source static remains required.",
+      "additionalEvidence": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/static-a1/result.json",
+          "sha256": "fc426a39de00defd321bd22d6907a669242f4601772c3dfcd361e66d89b4d34b"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/source-manifests/ed43d0a504454af3.json",
+          "sha256": "ed43d0a504454af350b382eb7f040c8b4a4f74afb3c4760f17aafc563c34cdc0",
+          "fileCount": 1665
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/scope.json",
+          "sha256": "6fd5dc213a5e66716e8c0d1538ae444a03bad53b5e954102e1adf4da8630fddf"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/entry.json",
+          "sha256": "40c90b27e8c80fb012326a47c638f0b14955c23a3f8a6face8f75dc201b52c42"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/check.mjs",
+          "sha256": "bcd69343f66cad7a7823a8c0a8421f63cff59738d61354da0a50d0cd8b0f8432"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a1-tool-return.json",
+          "sha256": "02ff39ac4761705da735fbbb2a85e69b6b4e1cfa6547f39daa5ddd80b396e76e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/retained-diagnostic-namespaces.json",
+          "sha256": "93f01de6d94a922596e497fdcaba399dbba4c1585c518abd644ee1b1df969a50"
+        }
+      ]
+    },
+    {
+      "id": "design-browser-a1",
+      "classification": "original-five-case-design-landscape-failure",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "nativeObservationExecuted": false,
+      "tests": {
+        "passed": 3,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/browser-a1/playwright.json",
+        "sha256": "4377aacb821b091cb7551c54d395c873f368fe5ff28faf708fc94cfcdba2f145"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/browser-a1/execution.json",
+        "sha256": "01821e755bd5fa55eddc19f19ef3dde62acfe4ae4ad55ae16f965ea5cff7438d"
+      },
+      "executionEvidence": {
+        "streamSeparation": "recorded",
+        "stdout": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/browser-a1/stdout.log",
+          "sha256": "4f0dd5b511969c34bcabddb898cd5cad8809a1dfe70a7c6d55028b3721ed993c"
+        },
+        "stderr": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/browser-a1/stderr.log",
+          "sha256": "adbf10cbd3b20da4b45622597ca8c0bdb7afb5cdf17cf47aace28e3195d6d531"
+        },
+        "log": null,
+        "nodeExit": 1
+      },
+      "sourceManifestSha256": "ed43d0a504454af350b382eb7f040c8b4a4f74afb3c4760f17aafc563c34cdc0",
+      "sourceValidationCountsAsFinal": false,
+      "interpretation": "Original design browser completed3PASS2FAIL331673ms ated43d0a5. RU/EN landscape layout failures are preserved; no case is promoted to corrected-source credit.",
+      "additionalEvidence": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/browser-a1/result.json",
+          "sha256": "d195acd40e5f1ae962a424ef9343f1cac4bd135aace3ce68fbc770f1dff376df"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/source-manifests/ed43d0a504454af3.json",
+          "sha256": "ed43d0a504454af350b382eb7f040c8b4a4f74afb3c4760f17aafc563c34cdc0",
+          "fileCount": 1665
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/scope.json",
+          "sha256": "6fd5dc213a5e66716e8c0d1538ae444a03bad53b5e954102e1adf4da8630fddf"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/entry.json",
+          "sha256": "40c90b27e8c80fb012326a47c638f0b14955c23a3f8a6face8f75dc201b52c42"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/check.mjs",
+          "sha256": "bcd69343f66cad7a7823a8c0a8421f63cff59738d61354da0a50d0cd8b0f8432"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a1-tool-return.json",
+          "sha256": "02ff39ac4761705da735fbbb2a85e69b6b4e1cfa6547f39daa5ddd80b396e76e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/retained-diagnostic-namespaces.json",
+          "sha256": "93f01de6d94a922596e497fdcaba399dbba4c1585c518abd644ee1b1df969a50"
+        }
+      ]
+    },
+    {
+      "id": "design-a3-static-a1",
+      "classification": "retained-fixture-failed-source-static-pass",
+      "diagnosticOnly": true,
+      "reportFormat": "typescript",
+      "browserStarted": false,
+      "nativeObservationExecuted": false,
+      "tests": null,
+      "report": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/static-a1/execution.json",
+        "sha256": "400ef523fd75647eff307bf2904eb3e2e3ff8a91f018fd3ed487f96eb51aa724"
+      },
+      "executionEvidence": {
+        "streamSeparation": "recorded",
+        "stdout": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/static-a1/stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/static-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "log": null,
+        "nodeExit": 0
+      },
+      "sourceManifestSha256": "7dbc3333bf196b7b968378ed11c93990c734d0a1cbfcfd4f40528bf29d088426",
+      "sourceValidationCountsAsFinal": false,
+      "interpretation": "Original a3 TS passed23375ms at7dbc3333; retained as diagnostic at that source. Fresh final one-manifest static is required.",
+      "additionalEvidence": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/static-a1/result.json",
+          "sha256": "7e84ceaa724b54a787672b0ada6360c8112747ce3e8f1e082c2cbaec2a84370e"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/source-manifests/7dbc3333bf196b7b.json",
+          "sha256": "7dbc3333bf196b7b968378ed11c93990c734d0a1cbfcfd4f40528bf29d088426",
+          "fileCount": 1665
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/scope.json",
+          "sha256": "a614f3ee184b4b241f147ddf44570266a7307c072a67e82ef2a00fe565ebe13a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/entry.json",
+          "sha256": "d6ca400803f8d6d242b5b53a3a51e547e025419af74682b29cca4c296c9f3b26"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/check.mjs",
+          "sha256": "3ca35840800b8f97315f5406f583a561efc76409ad0217c148edf24f252f6135"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/retained-diagnostic-namespaces.json",
+          "sha256": "14b06217ba25ea9f5b7356061b4ab9c1ce1b27e6493dd0d60ec240b45303afff"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a1-preflight-evidence.json",
+          "sha256": "a3d08ef11daf0393499c05609e9088aa6e1f4039d4f42eaad04575801fffe1c4"
+        }
+      ]
+    },
+    {
+      "id": "design-a3-browser-a2",
+      "classification": "original-five-case-toolbar-owner-fixture-failure",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "nativeObservationExecuted": false,
+      "tests": {
+        "passed": 4,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a2/playwright.json",
+        "sha256": "6d34a211439a222aadd12ebf7d0a1875091304cff94fb244607907ebb88fdb1b"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a2/execution.json",
+        "sha256": "7560f67ce0f0ea1bf182d163d3aa345d114859f492b3ee81c4bf4745f8a7531b"
+      },
+      "executionEvidence": {
+        "streamSeparation": "recorded",
+        "stdout": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a2/stdout.log",
+          "sha256": "89edc5e90f36f63907f6925a2985a5456786385d3cb308712c2e5cfb0397f71e"
+        },
+        "stderr": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a2/stderr.log",
+          "sha256": "dcb84fbfcb678b3d52b59f2d4db3f6085ec687304fb233fc6587640af748bd9e"
+        },
+        "log": null,
+        "nodeExit": 1
+      },
+      "sourceManifestSha256": "7dbc3333bf196b7b968378ed11c93990c734d0a1cbfcfd4f40528bf29d088426",
+      "sourceValidationCountsAsFinal": false,
+      "interpretation": "Original a3 browser-a2 completed4PASS1FAIL279385ms at7dbc3333. Production Collection targets/tracks were correct; the remaining measured owner-height failure was in readToolbar. No prior case receives corrected-fixture credit.",
+      "additionalEvidence": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a2/result.json",
+          "sha256": "8be5f74a81e66f989a91f15806facabfae3146749471aa313ec61c171031b593"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/source-manifests/7dbc3333bf196b7b.json",
+          "sha256": "7dbc3333bf196b7b968378ed11c93990c734d0a1cbfcfd4f40528bf29d088426",
+          "fileCount": 1665
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/scope.json",
+          "sha256": "a614f3ee184b4b241f147ddf44570266a7307c072a67e82ef2a00fe565ebe13a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/entry.json",
+          "sha256": "d6ca400803f8d6d242b5b53a3a51e547e025419af74682b29cca4c296c9f3b26"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/check-browser-a2.mjs",
+          "sha256": "fc6b23abe603e96002bf608c644b6d8778e29561d55fd52349bfaaebf0ad151c"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/playwright-browser-a2.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/retained-diagnostic-namespaces.json",
+          "sha256": "14b06217ba25ea9f5b7356061b4ab9c1ce1b27e6493dd0d60ec240b45303afff"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a1-preflight-evidence.json",
+          "sha256": "a3d08ef11daf0393499c05609e9088aa6e1f4039d4f42eaad04575801fffe1c4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/a3-browser-root-tool-return.json",
+          "sha256": "f7dd20af5eea1a99891466e73c113391db2857ae5a2f13323a3580a8549947c9"
+        }
+      ]
+    }
+  ],
+  "separateZeroChildPreflightReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a1-preflight-evidence.json",
+    "sha256": "a3d08ef11daf0393499c05609e9088aa6e1f4039d4f42eaad04575801fffe1c4"
+  },
+  "retainedEarlierSameTaskHistory": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/diagnostic-history.json",
+    "sha256": "01829e15b5c5a756da370091b95d808227d9f8c995a9c3ed45142ccb0dda8eab"
+  },
+  "summary": {
+    "compositionBrowser": {
+      "passed": 1,
+      "failed": 4,
+      "exitCode": 1,
+      "executionDurationMs": 230332,
+      "countsAsFinal": false
+    },
+    "compositionStatic": {
+      "pass": true,
+      "exitCode": 0,
+      "executionDurationMs": 28882,
+      "countsAsFinal": false
+    },
+    "nativeSelection": {
+      "cases": 0,
+      "exitCode": 1,
+      "nativeObservationExecuted": false,
+      "classification": "selection-preflight-only"
+    },
+    "nativeObservation": {
+      "cases": 1,
+      "passed": 1,
+      "exitCode": 0,
+      "reportDurationMs": 63234.625,
+      "rootCauseProved": false,
+      "failClosedAbsenceProved": false,
+      "sourceFixProved": false,
+      "countsAsFinal": false
+    },
+    "designStatic": {
+      "pass": true,
+      "exitCode": 0,
+      "executionDurationMs": 23925,
+      "countsAsFinal": false
+    },
+    "designBrowser": {
+      "passed": 3,
+      "failed": 2,
+      "exitCode": 1,
+      "executionDurationMs": 331673,
+      "countsAsFinal": false
+    },
+    "a3Static": {
+      "pass": true,
+      "exitCode": 0,
+      "executionDurationMs": 23375,
+      "countsAsFinal": false
+    },
+    "a3Browser": {
+      "passed": 4,
+      "failed": 1,
+      "exitCode": 1,
+      "executionDurationMs": 279385,
+      "countsAsFinal": false
+    },
+    "zeroChildPreflight": {
+      "toolChunkId": "03b9f9",
+      "childStarted": false,
+      "browserStarted": false,
+      "cases": 0,
+      "tests": null,
+      "report": null
+    },
+    "combinedToolWallTimeInvented": false,
+    "allOriginalEvidencePreserved": true
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

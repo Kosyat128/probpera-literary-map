@@ -1,0 +1,923 @@
+{
+  "schemaVersion": 1,
+  "description": "D213 actual mobile design refinement integrates the single owned Booky actor with clear help/actions, preserves reciprocal Search/help intent, removes unused native Collection tracks, improves existing mobile button presentation and retains current navigation/readiness authority. The same five actual-App cases use one final source manifest and21 original captures; normal actual layout is separate from synthetic200% font stress. Version a3 follows authenticated failed design a1; original scopes/entries/reports stay immutable. Version a4 follows actual a3 fixture-owner measurement failure; only the live test fixture changes from the a3 source pins. All production inputs and original case/assertion budgets remain exact. Version a5 applies only the root-reviewed ordered owned native IO batch correction and transparent fixture diagnostics. All original case/assertion/capture budgets remain exact; a4 source validation receives no a5 final credit.",
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "caseEvidenceContractsComplete": true,
+  "changedPaths": [
+    "src/App.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/host.css",
+    "src/styles/book-dossier.css",
+    "src/styles/book-shelf-controls.css",
+    "tests/pwa/booky-character-step.spec.mjs",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "expectedSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "e89dd1f69e0fc5e609d31330ad24d82936f823f5e1994bcb8719b27414c4bf88"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "45a64bcea800f5e243380912cb6a67f7525e9df09c5ba0b766e0dfe269999ecc"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "281e69cdd398f3fccfa1c4a653b4e88e1410bf29f94935b5e9acf514cfedb773"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "234ccb5066a155d4dfbef89ab7a0bd38f781ed04d6f0197d9999fb1e665ba422"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "3e4e8b75c17c81f0d2323b9318f1da9c9a708075449c2d3596ad5ec0f0ea9230"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "71199cf88a1d59b4d32f2cfb18e4ec485b9d30f8bae714c13579d9bf7ff8be50"
+    },
+    {
+      "path": "src/styles/book-dossier.css",
+      "sha256": "6e3cb67dafa906d2fdd319b45165ca490ace3265bb40c9d4a34a9f028e12cd9d"
+    },
+    {
+      "path": "src/styles/book-shelf-controls.css",
+      "sha256": "8fb1c01cfb863c1caded404a39a3af632403f669d9627f5e5aa60ed7d0563d77"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "f4976859d684086cd65b6ec2d2c02ff4844b5c37d17399168fde8279fb308f30"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "db94a85988d40d83ae26149f272436e715a2d777324c7a06cb0c9cca4bd4a10f"
+    }
+  ],
+  "expectedSourceInputCount": 1665,
+  "expectedProtectedInputCount": 1655,
+  "unitFiles": [],
+  "expectedUnitTests": 0,
+  "unitValidation": "not-rerun-unchanged-runtime-unit-dependency-closure",
+  "browserFiles": [
+    "tests/pwa/booky-character-step.spec.mjs",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App absent publication capability denies character routes without opening or progress",
+    "Booky actual App font-only 200 percent stress ru",
+    "Booky actual App font-only 200 percent stress en"
+  ],
+  "expectedBrowserTests": 5,
+  "expectedImages": 21,
+  "caseEvidenceContracts": [
+    {
+      "title": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-journey-en",
+      "evidenceKind": "source-attachment",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-journey-en",
+      "imagesField": "screenshots",
+      "expectedImages": 3,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterJourneyPassed": true,
+        "observations.characterStep.routeAdmittedBeforeDossier": true,
+        "observations.characterStep.closeAndReopenNoCredit": true,
+        "observations.characterStep.explicitCurrentModalCredit": true,
+        "observations.characterStep.staticCharacterFingerprintOnly": true,
+        "observations.characterStep.canonicalSceneAndReadingRetained": true,
+        "observations.characterStep.characterReadyHintTracksModal": true,
+        "observations.characterStep.hintPresentationAddsNoPublicationRequest": true,
+        "observations.characterStep.workResume.resumeRestoresWorkWithoutModalOrCredit": true,
+        "observations.characterStep.workResume.freshOpenAfterWorkResumeRequired": true,
+        "observations.characterStep.workResume.inSessionCharacterWorkRestored": false,
+        "observations.characterStep.workResume.coldPausedCharacterWorkRestored": true,
+        "observations.characterStep.workResume.oldTokenIdentityObserved": false,
+        "observations.characterStep.workResume.modalAudit.opened": false,
+        "observations.characterStep.workResume.modalAudit.overflow": 0,
+        "observations.characterStep.workResume.exitNavigationActions": 2,
+        "observations.characterStep.workResume.helpCollapsedBeforeBookClose": true,
+        "observations.characterStep.workResume.helpReopenedBeforeResume": true,
+        "observations.characterStep.completionPresentation.trigger": "explicit-final-next",
+        "observations.characterStep.completionPresentation.animated": false,
+        "observations.characterStep.completionPresentation.audit.overflow": 0,
+        "observations.characterStep.completionPresentation.audit.happyTransitions": 1,
+        "observations.characterStep.completionPresentation.audit.happyObserved": true,
+        "observations.characterStep.completedColdHydration.audit.overflow": 0,
+        "observations.characterStep.completedColdHydration.audit.happyTransitions": 0,
+        "observations.characterStep.completedColdHydration.audit.happyObserved": false,
+        "observations.characterStep.completedColdHydration.semanticProgressUnchanged": true,
+        "observations.characterStep.completedColdHydration.companionPreferenceUnchanged": true,
+        "observations.characterStep.completedColdHydration.noPublicationRequest": true,
+        "observations.characterStep.mobileBookDetailLayout.readOnly": true,
+        "observations.characterStep.mobileBookDetailLayout.audits.length": 2,
+        "observations.characterStep.mobileBookDetailLayout.audits.0.helpCollapsed": false,
+        "observations.characterStep.mobileBookDetailLayout.audits.1.helpCollapsed": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions",
+        "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+        "one explicit Resume restores only the exact current character work without modal or semantic credit",
+        "a fresh explicit Open after work restoration is required before character acknowledgement",
+        "cold paused character restore performs no navigation before explicit Resume"
+      ],
+      "captureFilenames": [
+        "character-current-en.png",
+        "character-complete-en.png",
+        "character-closed-en.png"
+      ],
+      "phaseBoundary": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration after one controlled cold document reload. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted. Help is explicitly collapsed before the existing book Close and reopened before the single Resume, using real current controls.",
+      "attachmentName": "booky-character-step-source-evidence",
+      "requiredSourcePaths": [
+        "src/host/bookyJourneyRuntime.ts",
+        "tests/pwa/booky-character-step.spec.mjs",
+        "src/App.tsx",
+        "src/host/PlanetMascotControls.tsx",
+        "src/host/BookyJourneyControls.tsx",
+        "src/host/useBookyJourney.ts"
+      ],
+      "scope": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration after one controlled cold document reload. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted. Help is explicitly collapsed before the existing book Close and reopened before the single Resume, using real current controls.",
+      "phaseScopedValues": null
+    },
+    {
+      "title": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-journey-ru",
+      "evidenceKind": "source-attachment",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-journey-ru",
+      "imagesField": "screenshots",
+      "expectedImages": 4,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterJourneyPassed": true,
+        "observations.characterStep.routeAdmittedBeforeDossier": true,
+        "observations.characterStep.closeAndReopenNoCredit": true,
+        "observations.characterStep.explicitCurrentModalCredit": true,
+        "observations.characterStep.staticCharacterFingerprintOnly": true,
+        "observations.characterStep.canonicalSceneAndReadingRetained": true,
+        "observations.characterStep.characterReadyHintTracksModal": true,
+        "observations.characterStep.hintPresentationAddsNoPublicationRequest": true,
+        "observations.characterStep.workResume.resumeRestoresWorkWithoutModalOrCredit": true,
+        "observations.characterStep.workResume.freshOpenAfterWorkResumeRequired": true,
+        "observations.characterStep.workResume.inSessionCharacterWorkRestored": true,
+        "observations.characterStep.workResume.coldPausedCharacterWorkRestored": false,
+        "observations.characterStep.workResume.oldTokenIdentityObserved": false,
+        "observations.characterStep.workResume.modalAudit.opened": false,
+        "observations.characterStep.workResume.modalAudit.overflow": 0,
+        "observations.characterStep.workResume.exitNavigationActions": 2,
+        "observations.characterStep.workResume.helpCollapsedBeforeBookClose": true,
+        "observations.characterStep.workResume.helpReopenedBeforeResume": true,
+        "observations.characterStep.completionPresentation.trigger": "explicit-final-next",
+        "observations.characterStep.completionPresentation.animated": true,
+        "observations.characterStep.completionPresentation.audit.overflow": 0,
+        "observations.characterStep.completionPresentation.audit.happyTransitions": 1,
+        "observations.characterStep.completionPresentation.audit.happyObserved": true,
+        "observations.characterStep.mobileBookDetailLayout.readOnly": true,
+        "observations.characterStep.mobileBookDetailLayout.audits.length": 2,
+        "observations.characterStep.mobileBookDetailLayout.audits.0.helpCollapsed": false,
+        "observations.characterStep.mobileBookDetailLayout.audits.1.helpCollapsed": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions",
+        "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+        "one explicit Resume restores only the exact current character work without modal or semantic credit",
+        "a fresh explicit Open after work restoration is required before character acknowledgement",
+        "in-session character work recovery preserves the saved semantic step"
+      ],
+      "captureFilenames": [
+        "character-current-ru.png",
+        "character-consecutive-ru.png",
+        "character-complete-ru.png",
+        "character-closed-ru.png"
+      ],
+      "phaseBoundary": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration within the same document. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted. Help is explicitly collapsed before the existing book Close and reopened before the single Resume, using real current controls.",
+      "attachmentName": "booky-character-step-source-evidence",
+      "requiredSourcePaths": [
+        "src/host/bookyJourneyRuntime.ts",
+        "tests/pwa/booky-character-step.spec.mjs",
+        "src/App.tsx",
+        "src/host/PlanetMascotControls.tsx",
+        "src/host/BookyJourneyControls.tsx",
+        "src/host/useBookyJourney.ts"
+      ],
+      "scope": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration within the same document. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted. Help is explicitly collapsed before the existing book Close and reopened before the single Resume, using real current controls.",
+      "phaseScopedValues": null
+    },
+    {
+      "title": "actual App absent publication capability denies character routes without opening or progress",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-publication-absent",
+      "evidenceKind": "source-attachment",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-publication-absent",
+      "imagesField": "screenshots",
+      "expectedImages": 2,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": false,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": false,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterCapabilityDenied": true,
+        "observations.characterStep.controlledShortLeaseMs": 15000,
+        "observations.characterStep.realRenewalTimer": true,
+        "observations.characterStep.failedRenewalRevokesWithoutCredit": true,
+        "observations.characterStep.characterUnavailableHintCurrent": true,
+        "observations.characterStep.hintPresentationAddsNoPublicationRequest": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "absent publication capability exposes no character route or action",
+        "unavailable route produces no publication request or progress write",
+        "canonical globe remains retained",
+        "real short-lease renewal failure revokes current modal without credit or replay",
+        "failed renewal shows current unavailable hint and disabled Open without extra publication request or credit"
+      ],
+      "captureFilenames": [
+        "character-capability-absent-en.png",
+        "character-unavailable-en.png"
+      ],
+      "phaseBoundary": "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed.",
+      "attachmentName": "booky-character-step-source-evidence",
+      "requiredSourcePaths": [
+        "src/host/bookyJourneyRuntime.ts",
+        "tests/pwa/booky-character-step.spec.mjs"
+      ],
+      "scope": "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed.",
+      "phaseScopedValues": {
+        "syntheticPublicationCapability": "false only in first absent-capability phase; true in subsequent approved synthetic short-lease phase"
+      }
+    },
+    {
+      "title": "Booky actual App font-only 200 percent stress ru",
+      "file": "tests/pwa/booky-live-character.spec.mjs",
+      "scenario": "booky-font-only-200-stress-ru",
+      "evidenceKind": "source-attachment",
+      "attachmentName": "booky-live-character-source-evidence",
+      "rawFilename": "booky-live-character.json",
+      "rawScenario": "booky-font-only-200-stress-ru",
+      "imagesField": "screenshots",
+      "expectedImages": 6,
+      "sourceBinding": "emitted-hashes",
+      "requiredSourcePaths": [
+        "src/host/PlanetMascotControls.css",
+        "src/host/PlanetMascotControls.tsx",
+        "tests/pwa/booky-live-character.spec.mjs"
+      ],
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "observationsComplete": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "fontStressFindings": 0,
+        "fontStressExactTwoHundredPercent": true,
+        "fontStressCriticalControlsFitAndRespond": true,
+        "fontStressRecoveryReachableByTouch": true,
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved": true,
+        "fontStressPortraitModelPreserved": true,
+        "fontStressNormalModeRestored": true,
+        "headingWrapNormalTitleFits": true,
+        "headingWrapStickyControlsExposed": true,
+        "headingWrapCollectionScrollAndClose": true,
+        "observations.fontStress.headingWrap.collection.geometryInjected": false,
+        "mobileHelpUnifiedSurface": true,
+        "mobileOptionalControlsByIntent": true,
+        "mobileSearchHelpExclusiveByIntent": true,
+        "mobileSearchResultsReachable": true,
+        "galleryCaptionsKeepWholeWords": true,
+        "observations.fontStress.mobileComposition.readOnly": true,
+        "observations.fontStress.normalSearch.geometryInjected": false,
+        "observations.fontStress.normalSearch.selectionPerformed": false,
+        "observations.fontStress.normalSearch.reciprocalIntents": true,
+        "collectionToolbarUsesActualThreeAreas": true,
+        "observations.fontStress.collectionToolbar.readOnly": true,
+        "observations.fontStress.collectionToolbar.geometryInjected": false,
+        "observations.fontStress.collectionToolbar.actualViewsCount": 0,
+        "observations.fontStress.collectionToolbar.tracks.length": 3,
+        "observations.fontStress.collectionToolbar.noHorizontalOverflow": true,
+        "observations.fontStress.collectionToolbar.allThreeControlsReachable": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources",
+        "customizationWrites",
+        "unexpectedPreferenceWrites",
+        "observations.fontStress.findings"
+      ],
+      "observationKey": "fontStress",
+      "requiredChecks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ],
+      "captureFilenames": [
+        "booky-font-stress-ru-portrait-baseline.png",
+        "booky-font-stress-ru-portrait-help-200.png",
+        "booky-font-stress-ru-portrait-walk-200.png",
+        "booky-font-stress-ru-landscape-help-200.png",
+        "booky-font-stress-ru-recovery-200.png",
+        "booky-heading-wrap-ru-collection.png"
+      ],
+      "scope": "All prior globe font stress/recovery assertions remain exact. Only afterward: restore normal text, real Collection activation, deliberate trusted Move toward left, fresh scene/preference/position baseline, real gallery activation and panel scrolling, Stop/Close. No injected card geometry, book/journey provider or native font equivalence."
+    },
+    {
+      "title": "Booky actual App font-only 200 percent stress en",
+      "file": "tests/pwa/booky-live-character.spec.mjs",
+      "scenario": "booky-font-only-200-stress-en",
+      "evidenceKind": "source-attachment",
+      "attachmentName": "booky-live-character-source-evidence",
+      "rawFilename": "booky-live-character.json",
+      "rawScenario": "booky-font-only-200-stress-en",
+      "imagesField": "screenshots",
+      "expectedImages": 6,
+      "sourceBinding": "emitted-hashes",
+      "requiredSourcePaths": [
+        "src/host/PlanetMascotControls.css",
+        "src/host/PlanetMascotControls.tsx",
+        "tests/pwa/booky-live-character.spec.mjs"
+      ],
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "observationsComplete": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "fontStressFindings": 0,
+        "fontStressExactTwoHundredPercent": true,
+        "fontStressCriticalControlsFitAndRespond": true,
+        "fontStressRecoveryReachableByTouch": true,
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved": true,
+        "fontStressPortraitModelPreserved": true,
+        "fontStressNormalModeRestored": true,
+        "headingWrapNormalTitleFits": true,
+        "headingWrapStickyControlsExposed": true,
+        "headingWrapCollectionScrollAndClose": true,
+        "observations.fontStress.headingWrap.collection.geometryInjected": false,
+        "mobileHelpUnifiedSurface": true,
+        "mobileOptionalControlsByIntent": true,
+        "mobileSearchHelpExclusiveByIntent": true,
+        "mobileSearchResultsReachable": true,
+        "galleryCaptionsKeepWholeWords": true,
+        "observations.fontStress.mobileComposition.readOnly": true,
+        "observations.fontStress.normalSearch.geometryInjected": false,
+        "observations.fontStress.normalSearch.selectionPerformed": false,
+        "observations.fontStress.normalSearch.reciprocalIntents": true,
+        "collectionToolbarUsesActualThreeAreas": true,
+        "observations.fontStress.collectionToolbar.readOnly": true,
+        "observations.fontStress.collectionToolbar.geometryInjected": false,
+        "observations.fontStress.collectionToolbar.actualViewsCount": 0,
+        "observations.fontStress.collectionToolbar.tracks.length": 3,
+        "observations.fontStress.collectionToolbar.noHorizontalOverflow": true,
+        "observations.fontStress.collectionToolbar.allThreeControlsReachable": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources",
+        "customizationWrites",
+        "unexpectedPreferenceWrites",
+        "observations.fontStress.findings"
+      ],
+      "observationKey": "fontStress",
+      "requiredChecks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ],
+      "captureFilenames": [
+        "booky-font-stress-en-portrait-baseline.png",
+        "booky-font-stress-en-portrait-help-200.png",
+        "booky-font-stress-en-portrait-walk-200.png",
+        "booky-font-stress-en-landscape-help-200.png",
+        "booky-font-stress-en-recovery-200.png",
+        "booky-heading-wrap-en-collection.png"
+      ],
+      "scope": "All prior globe font stress/recovery assertions remain exact. Only afterward: restore normal text, real Collection activation, deliberate trusted Move toward left, fresh scene/preference/position baseline, real gallery activation and panel scrolling, Stop/Close. No injected card geometry, book/journey provider or native font equivalence."
+    }
+  ],
+  "requiredCaptureFlags": [],
+  "requiredCaptureValues": [],
+  "requiredObservationChecks": [
+    {
+      "scenario": "character-journey-en",
+      "observation": "characterStep",
+      "checks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions",
+        "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+        "one explicit Resume restores only the exact current character work without modal or semantic credit",
+        "a fresh explicit Open after work restoration is required before character acknowledgement",
+        "cold paused character restore performs no navigation before explicit Resume"
+      ]
+    },
+    {
+      "scenario": "character-journey-ru",
+      "observation": "characterStep",
+      "checks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions",
+        "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+        "one explicit Resume restores only the exact current character work without modal or semantic credit",
+        "a fresh explicit Open after work restoration is required before character acknowledgement",
+        "in-session character work recovery preserves the saved semantic step"
+      ]
+    },
+    {
+      "scenario": "character-publication-absent",
+      "observation": "characterStep",
+      "checks": [
+        "absent publication capability exposes no character route or action",
+        "unavailable route produces no publication request or progress write",
+        "canonical globe remains retained",
+        "real short-lease renewal failure revokes current modal without credit or replay",
+        "failed renewal shows current unavailable hint and disabled Open without extra publication request or credit"
+      ]
+    },
+    {
+      "scenario": "booky-font-only-200-stress-ru",
+      "observation": "fontStress",
+      "checks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ]
+    },
+    {
+      "scenario": "booky-font-only-200-stress-en",
+      "observation": "fontStress",
+      "checks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ]
+    }
+  ],
+  "requiredVisualFilenames": [
+    "character-current-en.png",
+    "character-complete-en.png",
+    "character-closed-en.png",
+    "character-current-ru.png",
+    "character-consecutive-ru.png",
+    "character-complete-ru.png",
+    "character-closed-ru.png",
+    "character-capability-absent-en.png",
+    "character-unavailable-en.png",
+    "booky-font-stress-ru-portrait-baseline.png",
+    "booky-font-stress-ru-portrait-help-200.png",
+    "booky-font-stress-ru-portrait-walk-200.png",
+    "booky-font-stress-ru-landscape-help-200.png",
+    "booky-font-stress-ru-recovery-200.png",
+    "booky-heading-wrap-ru-collection.png",
+    "booky-font-stress-en-portrait-baseline.png",
+    "booky-font-stress-en-portrait-help-200.png",
+    "booky-font-stress-en-portrait-walk-200.png",
+    "booky-font-stress-en-landscape-help-200.png",
+    "booky-font-stress-en-recovery-200.png",
+    "booky-heading-wrap-en-collection.png"
+  ],
+  "retainPriorModelPhotos": false,
+  "expectedRetainedModelPhotos": 0,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "requireDiagnosticHistory": true,
+  "requirementEvidenceTargets": [
+    "PLANETKA-002"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-002"
+  ],
+  "previousCheckpoint": {
+    "checkpoint": "6bb20ee2fa0bd9bcdc150ddf800899fa2c101eb9",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json",
+      "sha256": "1cb9941c4e0d8b7cb2466b3286da9fb246b9cdbca5851ea82833dce579d75a0b"
+    },
+    "sourceCommit": "295dda520f4af80cd5c88bffb6e012f2f82ce4f1",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/source-manifests/cf99d54250fa5cf6.json",
+      "sha256": "cf99d54250fa5cf671aa29429b56cf9ce9f9687bbe718c326ae8e6673ed01aed",
+      "fileCount": 1665
+    }
+  },
+  "previousRuntime": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json",
+      "sha256": "1cb9941c4e0d8b7cb2466b3286da9fb246b9cdbca5851ea82833dce579d75a0b"
+    },
+    "sourceCommit": "295dda520f4af80cd5c88bffb6e012f2f82ce4f1",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/source-manifests/cf99d54250fa5cf6.json",
+      "sha256": "cf99d54250fa5cf671aa29429b56cf9ce9f9687bbe718c326ae8e6673ed01aed",
+      "fileCount": 1665
+    },
+    "pwa": {
+      "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/pwa-a1/result.json",
+      "sha256": "05e9403ed3cf0d171cee34cdaddacaa77ecc393fa9049345a78d575e59f3a839"
+    },
+    "android": {
+      "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/android-a1/result.json",
+      "sha256": "ccb19d146e126498e374afd292b83ff225d08e338e8bca1cf5e077db479a0856"
+    }
+  },
+  "historicalDialogueInputs": [
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "10e41f50bc7e2a564c18d13c6afba988fe11508e313a537173e2f3bc73b86eb4"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "76feddfb236ff2486d35c5181847419a9c93b96506b73f4f8a740fcc9467330f"
+    }
+  ],
+  "directSpecificationEvidence": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/user-steering.json",
+      "sha256": "fb289496199ae0c8dda6d415e7ec8c2f98457a9dd3c738d3a6f16cea9f944a56"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/user-design-request.json",
+      "sha256": "e5d95f0caaff58a5606512fbda554406c91739195fb9874f6437e5b4e78e7363"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a2/retained-composition-a1.json",
+      "sha256": "d2d98f19e520b8e165e7e064cd376cad31767ff1e9c764e27b7d97b24a62843a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/draft/DESIGN.md",
+      "sha256": "6d3f8c0968efced8fa1686615c3e7c71d860ef2b90446f89ead6ed586e712c12"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-polish/final/source-bindings.json",
+      "sha256": "0db2b77789dce19eb4fc01a2e7f339621d197dcff288503fe42fa9cc1e66276d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a1-tool-return.json",
+      "sha256": "02ff39ac4761705da735fbbb2a85e69b6b4e1cfa6547f39daa5ddd80b396e76e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/retained-diagnostic-namespaces.json",
+      "sha256": "93f01de6d94a922596e497fdcaba399dbba4c1585c518abd644ee1b1df969a50"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/layout-a2/source-binding.json",
+      "sha256": "18e1df20c756984f7de6f6aef9393ee0eedc30fe731b1d4b7aa88f63b00cc9a3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/retained-diagnostic-namespaces.json",
+      "sha256": "14b06217ba25ea9f5b7356061b4ab9c1ce1b27e6493dd0d60ec240b45303afff"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a1-preflight-evidence.json",
+      "sha256": "a3d08ef11daf0393499c05609e9088aa6e1f4039d4f42eaad04575801fffe1c4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/a3-browser-root-tool-return.json",
+      "sha256": "f7dd20af5eea1a99891466e73c113391db2857ae5a2f13323a3580a8549947c9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/toolbar-owner-root/source-binding.json",
+      "sha256": "2113d30f6dbe4b8bc682cf350e3fc3ae6dcb3ccca537b4de0fe50a928ee4e99e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/batch-a2/source-binding.json",
+      "sha256": "6d0e7c46c2aa499661b68964fd45be4481548b2641e2e7e0b3bbbc7914c6b413"
+    }
+  ],
+  "runtimeAmendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/draft/source-bindings.json",
+      "sha256": "bb00f43b6fd940fec72d7b9f09f1e57819556bae95cdb73e756e3f67a717a3ba"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/ui-source-apply-receipt.json",
+      "sha256": "0d94f79c1fbadd9d8574d1c6c42e3a994d11e55492499ff84fc259dfc3d3167f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/detail-review/source-bindings.json",
+      "sha256": "3519066966a47288bff518b600729d3249c7cffe1f853f5c56c5f0ec6636bd9b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/detail-apply-receipt.json",
+      "sha256": "739a2ff161fe7c7e189698ba1f5c615a7f07d505793eb6fc07b4dd63fb3ddde1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/browser-draft/fixture-edit-plan.json",
+      "sha256": "218e34280e23c0d368c8b2098e853a6ec305848263f075715dea0a89a2adcd8c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/live-source-apply-receipt.json",
+      "sha256": "b7081fedad5871abc44924faaf2c7bd51a1feddcfb90970c6875fd3453e16634"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/browser-draft/design-a2/fixture-edit-plan.json",
+      "sha256": "f6710435ff047548399e22a42c0d6afc2a91a4e775db68b46fe17052f0bde461"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/live-design-source-apply-receipt.json",
+      "sha256": "af7f0dea7f55797ff2b05fa8c943ec9a6f3f9f2ed9cdbfa9a6e459fc40cf5a28"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-edit-plan.json",
+      "sha256": "58c991714a2a47bf14713226b8f356ee622da99f47d3b7e3d6178bdd959d7b9f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/observation-apply-receipt.json",
+      "sha256": "95465430bfd3b2bc2bacc46ee62fe185511d861b6bd5050673718b38c0e00636"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/snapshot-edit-plan.json",
+      "sha256": "920c8a3bbae1b6bd9c4e561952fa8582196d9319e1d8fda4e911bbf1fba66bd0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/snapshot-apply-receipt.json",
+      "sha256": "d87c8616def1a31d98bef85ad8f333ea5847f082dd5603466ffbae431c1b9576"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/source-binding.json",
+      "sha256": "b86afd67e4a9f2430aa846ce169a23c9986bf9915743c49b3b4e386521fc9ea2"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/source-apply-receipt.json",
+      "sha256": "87e4af23d45fae0717efee33223b4ded5a00e2e4b419b814014c2fefb15d22fd"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-polish/final/source-bindings.json",
+      "sha256": "0db2b77789dce19eb4fc01a2e7f339621d197dcff288503fe42fa9cc1e66276d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-css-apply-receipt.json",
+      "sha256": "35a294c0dd67bb62cc4ba484a9986be6282f684281758d9008a6c319f5b0ee2f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a2/source-freeze-receipt.json",
+      "sha256": "17370174f6a720e3b54402ede14c45f54633f661ac7d78c6e0efc2a0d0bb0c3b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/retained-diagnostic-namespaces.json",
+      "sha256": "93f01de6d94a922596e497fdcaba399dbba4c1585c518abd644ee1b1df969a50"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/layout-a2/source-binding.json",
+      "sha256": "18e1df20c756984f7de6f6aef9393ee0eedc30fe731b1d4b7aa88f63b00cc9a3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/layout-a2/source-apply-receipt.json",
+      "sha256": "47a996c91266a9fbc7e78f3e5c225200fe60a20b81536799453432201e339d09"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/source-freeze-receipt.json",
+      "sha256": "db801ebbad6a576adee56f07520243b5c572f1ce184c0a5597b21ff58314a4f6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/workflow-reuse-plan.json",
+      "sha256": "a9e890e7e9d3f923ee333ffbdd273dc2fae0f55b4529dce931cdf0ea2aecba5c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/retained-diagnostic-namespaces.json",
+      "sha256": "14b06217ba25ea9f5b7356061b4ab9c1ce1b27e6493dd0d60ec240b45303afff"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/toolbar-owner-root/source-binding.json",
+      "sha256": "2113d30f6dbe4b8bc682cf350e3fc3ae6dcb3ccca537b4de0fe50a928ee4e99e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-review/toolbar-owner-root/source-apply-receipt.json",
+      "sha256": "02e3083ca4df2262d0b37be309176f55a3db0d6151dbdb78178c7b22f518a30f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/source-freeze-receipt.json",
+      "sha256": "c768e38fd2658f22a8ec9fe94829f37d3b7e2fb73b5060c5d26d5863452834a7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a4/workflow-reuse-plan.json",
+      "sha256": "a57a810898d1fd0f0d02c1fccdb94e50c782fa4eaa38ee65c2fcb1ae232a2172"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/batch-a2/source-binding.json",
+      "sha256": "6d0e7c46c2aa499661b68964fd45be4481548b2641e2e7e0b3bbbc7914c6b413"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/native-readiness-review/batch-a2/source-apply-receipt.json",
+      "sha256": "b04463718d32a173d520abb096f97e2250e4c5879f6256b45cb7371b871ad016"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a5/retained-diagnostic-namespaces.json",
+      "sha256": "241b1e5bc123008a429b47d1b581a2a14313342c6fabf68f495bc4e939f3c64f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a5/a4-root-tool-chunks.json",
+      "sha256": "24640d51630f65aae099a9877390302ed812dfba8b0d703cb5611f7265027356"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a5/source-freeze-receipt.json",
+      "sha256": "41b4c46e46d9523977eb0ef4bc7d55423800dd2ff494f87c8b61576da9d114c3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a5/helper-byte-bindings.json",
+      "sha256": "d0ee8b0c16fc8dd685d39953c05ae953d1d279a28924a0ca68229f09c4f5d480"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a5/freeze-ready.mjs",
+      "sha256": "996249a623025d58f597507f1157a80a906c6346f0318006a29ccb9731742289"
+    }
+  ],
+  "newUiCopyStatus": {
+    "status": "bounded-localized-Actions-presentation-reviewed-by-root-agent; editorial-and-child-approval-remain-open",
+    "humanReviewed": false,
+    "childApproved": false,
+    "narrationApproved": false
+  },
+  "evidenceAdapter": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/read-case-evidence.mjs",
+    "sha256": "32e982b9d9532b8c12b254d49294e8beada9ae4f165ff565d78f2de367125201"
+  },
+  "checkpointNextAction": "D212: refresh source-only contextual provenance once against the final D213 Controls hash, preserving all established copy hashes,34 unapproved drafts and existing review gates. Run only17 existing navigation tests and the existing inventory audit; no duplicate provenance pass, browser, TypeScript or build run.",
+  "pendingFields": [],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "browserContract": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/browser-draft/design-a2/fixture-edit-plan.json",
+    "sha256": "f6710435ff047548399e22a42c0d6afc2a91a4e775db68b46fe17052f0bde461"
+  },
+  "canonicalPromotion": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a5/source-freeze-receipt.json",
+    "sha256": "41b4c46e46d9523977eb0ef4bc7d55423800dd2ff494f87c8b61576da9d114c3"
+  },
+  "diagnosticAttempts": [],
+  "visualReviewScope": "Direct review of all21 new actual-App design captures at one final manifest. All source/fixture assertions bind actual final inputs. Original composition a1 remains immutable diagnostic evidence with no final-source case/image credit.",
+  "browserScopeNotes": [
+    "The same3 D211 actual-App journey/capability cases plus2 D210 font/layout cases are selected; original9+12 captures remain21. No new generic cases or capture credit.",
+    "Shared live and recovery geometry derive integrated mode only from the real production help-sheet marker, preserving all renderer, scene, finite, frustum and no-crop guards.",
+    "Normal Search and help are mutually foregrounded by real trusted touch. Every displayed result is audited for44px geometry and hit reachability through its existing actual scroll owner; no result selection or geometry injection.",
+    "Normal Collection uses its natural coherent surface; obsolete forced narrow-card positioning is removed. Caption Range rows measure whole words without font shrinking or width probes.",
+    "Synthetic200% font assignment remains test-only; no native keyboard, OS font scale, installed-device or full accessibility equivalence.",
+    "Existing character semantic acknowledgement, explicit Resume/Open, finite RU completion and static EN cold completion checks remain intact.",
+    "Native Collection toolbar records actual missing views, natural computed tracks,44px control geometry/hit reachability and horizontal overflow through real owned scrolling only if needed. Color/radius design quality is judged from direct actual frames, not mirrored CSS values.",
+    "Original composition browser a1 (1PASS/4FAIL,230332ms) and TS a1 (PASS,28882ms) retain their4b6fab2d source manifest and do not satisfy the new final checks. A new full five-case browser plus TS is required after actual source fixes and broader user design scope.",
+    "The design a1 retained3PASS/2FAIL ated43d0a5; its passing journeys and23.925s static are diagnostics at their original source. Corrected production CSS affects their emitted closure, so the same5cases and21captures must be fresh at one final manifest.",
+    "a3 static-a1 PASS23375ms and browser-a2 4PASS1FAIL279385ms retain manifest7dbc3333 only. The owner-height fixture correction changes the complete test-source manifest; final same5cases/21captures and one TypeScript pass must share the fresh a4 manifest.",
+    "The a3 browser-a1 zero-child preflight remains a separate receipt with empty directory, no child/browser/app cases or helper logs/results.",
+    "Actual a4 static PASS23757ms and browser4PASS1FAIL328913ms stay diagnostic at original0a89918b source. Actual static start/completion850b5d/407a63 and browser466d5e/5fea6f are retained separately. Two reviewed source pins change for a5; same5cases/21captures and one fresh TypeScript are required at one final manifest before the single PWA/Android pair."
+  ],
+  "historicalProvenanceScope": "All34 unapproved historical draft records and copy hashes remain exact. D207 inventory proof remains historical. D212 provenance is deferred until final D213 Controls hash so the focused metadata validation happens once.",
+  "staticValidation": "fresh-typescript-required-for-mobile-controls-and-panel-wiring",
+  "requestedBrowserChannel": "msedge",
+  "retainedRuntimeUnitEvidence": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+      "sha256": "2ac37e81256befc1ea80532d0837ca076b7bc158ce6c33427cf542fbd0a38267"
+    },
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+      "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e"
+    },
+    "execution": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/execution.json",
+      "sha256": "1fbc244dfc0553e5365fccb2494cb9306a89a3db83adfdc498d5e0491ae0639a"
+    },
+    "rawReport": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/vitest.json",
+      "sha256": "281319773b4d2a6fc097582e3fdca78c1beb01acf05d669f3578229a50db556c"
+    },
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+      "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+      "fileCount": 1665
+    },
+    "dependencyProof": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+      "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+    },
+    "count": 120,
+    "currentSuitesRerun": false,
+    "originalManifestOnly": true
+  },
+  "sourceAmendment": null,
+  "minimumChangedPaths": [
+    "src/App.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/host.css",
+    "src/styles/book-dossier.css",
+    "src/styles/book-shelf-controls.css",
+    "tests/pwa/booky-character-step.spec.mjs",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "priorDiagnosticEvidence": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a2/retained-composition-a1.json",
+    "sha256": "d2d98f19e520b8e165e7e064cd376cad31767ff1e9c764e27b7d97b24a62843a"
+  }
+}

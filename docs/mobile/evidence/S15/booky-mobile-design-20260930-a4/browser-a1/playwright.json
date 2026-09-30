@@ -1,0 +1,320 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-mobile-design-20260930-a4/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-design-20260930-a4\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a4-evidence/attempt-a1/browser/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-character-step.spec.mjs",
+          "booky-live-character.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-design-20260930-a4\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-character-step.spec.mjs",
+      "file": "booky-character-step.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 60047,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T07:55:46.033Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a4-evidence\\attempt-a1\\browser\\browser-a1\\booky-character-step-actua-e9e7f-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-eeae3078c282a5ab052a7c258b2612111d7021d9.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-020556cb0b130fda9c8c",
+          "file": "booky-character-step.spec.mjs",
+          "line": 700,
+          "column": 55
+        },
+        {
+          "title": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 95591,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-journey-status]')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"navigating\"\u001b[39m\nTimeout:  60000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 60000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-status]')\u001b[22m\n\u001b[2m    122 × locator resolved to <p tabindex=\"-1\" role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"booky-journey-controls__status\" data-booky-journey-status=\"navigating\">Opening this journey step…</p>\u001b[22m\n\u001b[2m        - unexpected value \"navigating\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-journey-status]')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"navigating\"\u001b[39m\nTimeout:  60000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 60000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-status]')\u001b[22m\n\u001b[2m    122 × locator resolved to <p tabindex=\"-1\" role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"booky-journey-controls__status\" data-booky-journey-status=\"navigating\">Opening this journey step…</p>\u001b[22m\n\u001b[2m        - unexpected value \"navigating\"\u001b[22m\n\n    at restoreCharacterWorkByUser (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:671:32)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:725:12",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                      "column": 32,
+                      "line": 671
+                    },
+                    "snippet": "  669 |     await expect(page.locator('#book-archive-detail')).toHaveAttribute('data-cms-entity-id',bookKey,{timeout:60000});\n  670 |     await expect(node(page)).toHaveAttribute('data-booky-journey-node','character');\n> 671 |     await expect(status(page)).toHaveAttribute('data-booky-journey-status','ready',{timeout:60000});\n      |                                ^\n  672 |     await expect(page.locator('.book-dossier-reader')).toHaveAttribute('aria-busy','false');\n  673 |     await expect(page.locator('[data-booky-journey-open]')).toBeEnabled();\n  674 |     await expect(status(page)).toHaveText(characterHintCopy[language].closed);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                        "column": 32,
+                        "line": 671
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-journey-status]')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"navigating\"\u001b[39m\nTimeout:  60000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 60000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-status]')\u001b[22m\n\u001b[2m    122 × locator resolved to <p tabindex=\"-1\" role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"booky-journey-controls__status\" data-booky-journey-status=\"navigating\">Opening this journey step…</p>\u001b[22m\n\u001b[2m        - unexpected value \"navigating\"\u001b[22m\n\n\n  669 |     await expect(page.locator('#book-archive-detail')).toHaveAttribute('data-cms-entity-id',bookKey,{timeout:60000});\n  670 |     await expect(node(page)).toHaveAttribute('data-booky-journey-node','character');\n> 671 |     await expect(status(page)).toHaveAttribute('data-booky-journey-status','ready',{timeout:60000});\n      |                                ^\n  672 |     await expect(page.locator('.book-dossier-reader')).toHaveAttribute('aria-busy','false');\n  673 |     await expect(page.locator('[data-booky-journey-open]')).toBeEnabled();\n  674 |     await expect(status(page)).toHaveText(characterHintCopy[language].closed);\n    at restoreCharacterWorkByUser (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:671:32)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:725:12"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T07:56:47.065Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a4-evidence\\attempt-a1\\browser\\browser-a1\\booky-character-step-actua-d42a8-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-c771886d7058c7e59aa3df0431c318d437788c38.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a4-evidence\\attempt-a1\\browser\\browser-a1\\booky-character-step-actua-d42a8-preserves-canonical-context\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                    "column": 32,
+                    "line": 671
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-90c282ef0bca3f5ad5bc",
+          "file": "booky-character-step.spec.mjs",
+          "line": 700,
+          "column": 55
+        },
+        {
+          "title": "actual App absent publication capability denies character routes without opening or progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 36616,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T07:58:23.116Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a4-evidence\\attempt-a1\\browser\\browser-a1\\booky-character-step-actua-9fee8-without-opening-or-progress\\attachments\\booky-character-step-source-evidence-aeaed7e5c9c54f972969083c7043ba77c2314eb7.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-c1a814475e13c60b8a9e",
+          "file": "booky-character-step.spec.mjs",
+          "line": 755,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "booky-live-character.spec.mjs",
+      "file": "booky-live-character.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Booky actual App font-only 200 percent stress ru",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 65215,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T07:59:00.882Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a4-evidence\\attempt-a1\\browser\\browser-a1\\booky-live-character-Booky-ad053--only-200-percent-stress-ru\\attachments\\booky-live-character-source-evidence-b5e00dc97f6c2d4564154e1a8dbbb273b5e5db17.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-3d7a7a238d90424891fa",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2958,
+          "column": 150
+        },
+        {
+          "title": "Booky actual App font-only 200 percent stress en",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 66150,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T08:00:06.750Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a4-evidence\\attempt-a1\\browser\\browser-a1\\booky-live-character-Booky-35ad3--only-200-percent-stress-en\\attachments\\booky-live-character-source-evidence-bedae98bfb1f63715876af69e26d27f3b82164ba.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-406f82dd0b5d810c96f7",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2958,
+          "column": 150
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T07:55:44.739Z",
+    "duration": 328200.925,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

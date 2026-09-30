@@ -1,0 +1,11 @@
+
+Running 5 tests using 1 worker
+
+
+
+[1/5] tests\pwa\booky-character-step.spec.mjs:707:55 › actual App ru character journey requires current modal acknowledgement and preserves canonical context
+[2/5] tests\pwa\booky-character-step.spec.mjs:707:55 › actual App en character journey requires current modal acknowledgement and preserves canonical context
+[3/5] tests\pwa\booky-character-step.spec.mjs:762:1 › actual App absent publication capability denies character routes without opening or progress
+[4/5] tests\pwa\booky-live-character.spec.mjs:2958:150 › Booky actual App font-only 200 percent stress ru
+[5/5] tests\pwa\booky-live-character.spec.mjs:2958:150 › Booky actual App font-only 200 percent stress en
+  5 passed (5.0m)

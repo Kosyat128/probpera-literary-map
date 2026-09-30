@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T09:03:40.880Z",
+  "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "buildId": "ff3c9f551938b9b4f4540bc567100f0133f543300b7d14ea7aca81687e3af4d9",
+  "sourceInputsSha256": "e66523c8d18d24fe7af9d7c98645eb30ee750aa2ae632626c3c2bad87c882549",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/pwa/pwa-ff3c9f55",
+    "files": 1427,
+    "bytes": 76875975,
+    "artifactSha256": "47a331cbc04d8954564ed1c0a8b2ae2231eecc01f6a838384b377c02ab904370",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-30T09:03:15.832Z",
+    "duration": 21158.339,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "requestedBrowserChannel": "msedge",
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

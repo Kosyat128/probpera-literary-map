@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T23:51:28.098Z",
+  "kind": "installed-versioned-isolated-browser-output-correction",
+  "reviewedByRoot": true,
+  "plan": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/browser-output-a2/tool-correction-plan.json",
+    "sha256": "3d7563b77261d2de8f06748b2f562ef6b84fe28879b09f103d955238322bcf3c"
+  },
+  "installer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-composition-review/design-a3/browser-output-a2/install.mjs",
+    "sha256": "083f15229904078b0f1fe1007d80cfa75351f9d79923da4a54972dd759893c14"
+  },
+  "immutableOriginals": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/check.mjs",
+      "sha256": "3ca35840800b8f97315f5406f583a561efc76409ad0217c148edf24f252f6135"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/checkpoint.mjs",
+      "sha256": "238196aa24968279b417f76969615295c17361fc711b12682fa46703663b2ccc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/entry.json",
+      "sha256": "d6ca400803f8d6d242b5b53a3a51e547e025419af74682b29cca4c296c9f3b26"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/scope.json",
+      "sha256": "a614f3ee184b4b241f147ddf44570266a7307c072a67e82ef2a00fe565ebe13a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/static-a1/result.json",
+      "sha256": "7e84ceaa724b54a787672b0ada6360c8112747ce3e8f1e082c2cbaec2a84370e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/static-a1/execution.json",
+      "sha256": "400ef523fd75647eff307bf2904eb3e2e3ff8a91f018fd3ed487f96eb51aa724"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/source-manifests/7dbc3333bf196b7b.json",
+      "sha256": "7dbc3333bf196b7b968378ed11c93990c734d0a1cbfcfd4f40528bf29d088426"
+    }
+  ],
+  "proposedHelpers": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/check-browser-a2.mjs",
+      "sha256": "fc6b23abe603e96002bf608c644b6d8778e29561d55fd52349bfaaebf0ad151c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/playwright-browser-a2.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/checkpoint-a2.mjs",
+      "sha256": "11cd001ec170ba5e642dcb6a2b63fc74894e0b1db1c17e8346fa9ba2a6f6c5b7"
+    }
+  ],
+  "preflightEvidence": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a1-preflight-evidence.json",
+    "sha256": "a3d08ef11daf0393499c05609e9088aa6e1f4039d4f42eaad04575801fffe1c4"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/source-manifests/7dbc3333bf196b7b.json",
+    "sha256": "7dbc3333bf196b7b968378ed11c93990c734d0a1cbfcfd4f40528bf29d088426",
+    "fileCount": 1665
+  },
+  "originalScopeUnchanged": true,
+  "originalEntryUnchanged": true,
+  "originalCheckerUnchanged": true,
+  "originalConfigUnchanged": true,
+  "originalCheckpointUnchanged": true,
+  "emptyFailedAttemptPreserved": true,
+  "oldCapturesPreserved": true,
+  "removeOrMoveFiles": false,
+  "reuseStaticAttempt": "a1",
+  "freshBrowserAttempt": "a2",
+  "artifactRoot": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a3-evidence/attempt-a2",
+  "helperSyntaxCheckPass": true,
+  "productionSourceChanged": false,
+  "testsRun": false,
+  "browserRun": false,
+  "nativeObservationExecuted": false,
+  "canonicalToolFilesAdded": 5,
+  "releaseReady": false
+}

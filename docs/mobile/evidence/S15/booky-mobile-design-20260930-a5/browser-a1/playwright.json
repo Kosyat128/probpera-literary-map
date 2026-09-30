@@ -1,0 +1,291 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-design-20260930-a5\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/browser/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-character-step.spec.mjs",
+          "booky-live-character.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-design-20260930-a5\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-character-step.spec.mjs",
+      "file": "booky-character-step.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 61654,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T08:50:35.435Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a5-evidence\\attempt-a1\\browser\\browser-a1\\booky-character-step-actua-e9e7f-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-369bc4fd246987b9ce649dac66c2a802e6412e52.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-020556cb0b130fda9c8c",
+          "file": "booky-character-step.spec.mjs",
+          "line": 707,
+          "column": 55
+        },
+        {
+          "title": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 60740,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T08:51:38.166Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a5-evidence\\attempt-a1\\browser\\browser-a1\\booky-character-step-actua-d42a8-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-a711d9ad5f1f5216c85b22bb2d452335db6f3504.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-90c282ef0bca3f5ad5bc",
+          "file": "booky-character-step.spec.mjs",
+          "line": 707,
+          "column": 55
+        },
+        {
+          "title": "actual App absent publication capability denies character routes without opening or progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 37026,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T08:52:38.919Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a5-evidence\\attempt-a1\\browser\\browser-a1\\booky-character-step-actua-9fee8-without-opening-or-progress\\attachments\\booky-character-step-source-evidence-43e74ad12ac6bec0585c2bb68e65425d9bb7ffa9.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-c1a814475e13c60b8a9e",
+          "file": "booky-character-step.spec.mjs",
+          "line": 762,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "booky-live-character.spec.mjs",
+      "file": "booky-live-character.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Booky actual App font-only 200 percent stress ru",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 65647,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T08:53:16.100Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a5-evidence\\attempt-a1\\browser\\browser-a1\\booky-live-character-Booky-ad053--only-200-percent-stress-ru\\attachments\\booky-live-character-source-evidence-1576bb1ea88e284ce6b50a58c3ac2be5cdc4da77.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-3d7a7a238d90424891fa",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2958,
+          "column": 150
+        },
+        {
+          "title": "Booky actual App font-only 200 percent stress en",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 69328,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T08:54:22.632Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a5-evidence\\attempt-a1\\browser\\browser-a1\\booky-live-character-Booky-35ad3--only-200-percent-stress-en\\attachments\\booky-live-character-source-evidence-46d196ac6f78e698d30a32925fff6830113d552c.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-406f82dd0b5d810c96f7",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2958,
+          "column": 150
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T08:50:34.093Z",
+    "duration": 297917.041,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76875975,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/pwa/pwa-a1-copy-verification.json",
+    "sha256": "da02cce3749916dbbfd731b158ebf791aee956fbf613076056b1f623cabf3794"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/pwa/pwa-ff3c9f55/artifact.json",
+    "sha256": "47a331cbc04d8954564ed1c0a8b2ae2231eecc01f6a838384b377c02ab904370"
+  }
+}

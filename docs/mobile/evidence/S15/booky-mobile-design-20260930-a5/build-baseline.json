@@ -1,0 +1,25 @@
+{
+  "checkpoint": "6bb20ee2fa0bd9bcdc150ddf800899fa2c101eb9",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json",
+    "sha256": "1cb9941c4e0d8b7cb2466b3286da9fb246b9cdbca5851ea82833dce579d75a0b"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json",
+    "sha256": "1cb9941c4e0d8b7cb2466b3286da9fb246b9cdbca5851ea82833dce579d75a0b"
+  },
+  "runtimeSourceCommit": "295dda520f4af80cd5c88bffb6e012f2f82ce4f1",
+  "sourceOnlyInterveningCheckpoint": null,
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/pwa-a1/result.json",
+    "sha256": "05e9403ed3cf0d171cee34cdaddacaa77ecc393fa9049345a78d575e59f3a839",
+    "buildId": "231aa01829ff6ec9b232c66252f940afeded6e295487c334d39aeb450e2406b2",
+    "sourceCommit": "295dda520f4af80cd5c88bffb6e012f2f82ce4f1"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/android-a1/result.json",
+    "sha256": "ccb19d146e126498e374afd292b83ff225d08e338e8bca1cf5e077db479a0856",
+    "buildId": "5bd22d806ce7596a4d84d881f0f5458147df27d76c38ada9b3e033e3aea0f879",
+    "sourceCommit": "295dda520f4af80cd5c88bffb6e012f2f82ce4f1"
+  }
+}

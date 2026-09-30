@@ -1,0 +1,320 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/playwright-browser-a2.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-design-20260930-a3\\playwright-browser-a2.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a3-evidence/attempt-a2/browser-a2",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-character-step.spec.mjs",
+          "booky-live-character.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-design-20260930-a3\\browser-a2\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-character-step.spec.mjs",
+      "file": "booky-character-step.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 58974,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-29T23:51:41.110Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a3-evidence\\attempt-a2\\browser-a2\\booky-character-step-actua-e9e7f-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-d68172d3ef350bdf5066c72306fed89ada7e9fa3.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-020556cb0b130fda9c8c",
+          "file": "booky-character-step.spec.mjs",
+          "line": 700,
+          "column": 55
+        },
+        {
+          "title": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 54556,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-29T23:52:40.951Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a3-evidence\\attempt-a2\\browser-a2\\booky-character-step-actua-d42a8-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-9955aa9bb28883d4decca6f0cb4b2ac7f97c267e.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-90c282ef0bca3f5ad5bc",
+          "file": "booky-character-step.spec.mjs",
+          "line": 700,
+          "column": 55
+        },
+        {
+          "title": "actual App absent publication capability denies character routes without opening or progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 35798,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-29T23:53:35.514Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a3-evidence\\attempt-a2\\browser-a2\\booky-character-step-actua-9fee8-without-opening-or-progress\\attachments\\booky-character-step-source-evidence-530f2da00a5a318f0153762900d3ab615f8dd3c2.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-c1a814475e13c60b8a9e",
+          "file": "booky-character-step.spec.mjs",
+          "line": 755,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "booky-live-character.spec.mjs",
+      "file": "booky-live-character.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Booky actual App font-only 200 percent stress ru",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 65272,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-29T23:54:11.434Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a3-evidence\\attempt-a2\\browser-a2\\booky-live-character-Booky-ad053--only-200-percent-stress-ru\\attachments\\booky-live-character-source-evidence-834a29aea0424722e9807e454a2028b2596a95db.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-3d7a7a238d90424891fa",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2958,
+          "column": 150
+        },
+        {
+          "title": "Booky actual App font-only 200 percent stress en",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 61284,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m44\u001b[39m\nReceived:    \u001b[31m37.03125\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m44\u001b[39m\nReceived:    \u001b[31m37.03125\u001b[39m\n    at collectionToolbarAudit (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:3081:570)\n    at collectionHeadingPhase (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:3088:313)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:3100:5",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                      "column": 570,
+                      "line": 3081
+                    },
+                    "snippet": "  3079 |     const readToolbar=()=>page.evaluate(selectors=>{const grid=document.querySelector('.native-planet-panel:not([hidden]) .book-shelf-controls__topline');if(!grid)throw Error('Actual native shelf controls not present');const box=e=>{const r=e.getBoundingClientRect();return{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};},controls={};for(const [name,selector]of Object.entries(selectors)){const button=grid.querySelector(selector);if(!button)throw Error('Actual shelf '+name+' control not present');const r=box(button),style=getComputedStyle(button),clip={left:0,top:0,right:innerWidth,bottom:innerHeight};let owner=null;for(let e=button.parentElement;e&&e!==document.body;e=e.parentElement){if(e===document.documentElement)continue;const s=getComputedStyle(e),b=e.getBoundingClientRect(),inner={left:b.left+e.clientLeft,right:b.left+e.clientLeft+e.clientWidth,top:b.top+e.clientTop,bottom:b.top+e.clientTop+e.clientHeight};if(/auto|scroll|hidden|clip/.test(s.overflowX)){clip.left=Math.max(clip.left,inner.left);clip.right=Math.min(clip.right,inner.right);}if(/auto|scroll|hidden|clip/.test(s.overflowY)){clip.top=Math.max(clip.top,inner.top);clip.bottom=Math.min(clip.bottom,inner.bottom);}if(!owner&&/auto|scroll/.test(s.overflowY)&&e.scrollHeight>e.clientHeight+1)owner=e;}const points=[.3,.5,.7].map(f=>{const x=r.left+r.width*f,y=r.top+r.height/2,hit=document.elementFromPoint(x,y);return{x,y,hit:!!hit&&(hit===button||button.contains(hit))};});controls[name]={rect:r,clip,points,visible:style.display!=='none'&&style.visibility==='visible'&&r.width>0&&r.height>0,inside:r.left>=clip.left-1&&r.right<=clip.right+1&&r.top>=clip.top-1&&r.bottom<=clip.bottom+1,label:button.getAttribute('aria-label'),disabled:button.disabled,owner:owner?{className:owner.className,scrollTop:owner.scrollTop,clientHeight:owner.clientHeight,scrollHeight:owner.scrollHeight,clip}:null};}const style=getComputedStyle(grid);return{actualViewsCount:grid.querySelectorAll(':scope > .book-shelf-controls__views').length,tracks:style.gridTemplateColumns.trim().split(/\\s+/),areas:style.gridTemplateAreas,grid:box(grid),controls,horizontalOverflow:Math.max(document.documentElement.scrollWidth-innerWidth,grid.scrollWidth-grid.clientWidth),documentScroll:{x:scrollX,y:scrollY,left:document.scrollingElement.scrollLeft,top:document.scrollingElement.scrollTop}};},selectors);\n  3080 |     await expect(page.locator('.native-planet-panel:not([hidden]) .book-shelf-controls__topline')).toBeVisible();await expect.poll(async()=>(await readToolbar()).actualViewsCount).toBe(0);const observation=o.collectionToolbar={readOnly:true,geometryInjected:false,initial:await readToolbar(),controls:[],swipes:[]};\n> 3081 |     for(const name of Object.keys(selectors)){let value=await readToolbar(),control=value.controls[name];const range=Math.max(0,(control.owner?.scrollHeight??0)-(control.owner?.clientHeight??0)),room=control.clip.bottom-control.clip.top,budget=Math.min(80,Math.max(4,Math.ceil(range/Math.max(24,room-36))*2+4));for(let n=0;n<budget&&!(control.visible&&control.inside&&control.points.every(p=>p.hit));n++){expect(control.owner,'Actual '+name+' has a scroll owner').toBeTruthy();const before=value,clip=control.owner.clip,available=clip.bottom-clip.top;expect(available).toBeGreaterThanOrEqual(control.rect.height);const up=control.rect.bottom>clip.bottom,overflow=up?control.rect.bottom-clip.bottom:clip.top-control.rect.top,distance=Math.min(available-24,Math.max(24,overflow+16)),x=(clip.left+clip.right)/2,startY=up?clip.bottom-12:clip.top+12,endY=startY+(up?-distance:distance),start=await page.evaluate(()=>{window.__fontStress.phase='real Collection toolbar scroll';return window.__fontStress.events.length;});await touch('touchStart',[{x,y:startY,id:251}]);for(let step=1;step<=8;step++){await touch('touchMove',[{x,y:startY+(endY-startY)*step/8,id:251}]);await page.waitForTimeout(20);}await page.waitForTimeout(100);await touch('touchEnd',[]);await settle();value=await readToolbar();control=value.controls[name];const events=await page.evaluate(start=>window.__fontStress.events.slice(start),start);observation.swipes.push({name,before,after:value,events});expect(events.filter(e=>e.type==='click')).toEqual([]);expect(events.some(e=>e.type==='touchmove'&&e.trusted)).toBe(true);expect(value.documentScroll).toEqual(before.documentScroll);expect(Math.abs(control.owner.scrollTop-before.controls[name].owner.scrollTop),'real owned Collection scroll progress').toBeGreaterThan(1);}expect(control.visible&&control.inside&&control.points.every(p=>p.hit),'Actual '+name+' is reachable').toBe(true);expect(control.rect.width).toBeGreaterThanOrEqual(44);expect(control.rect.height).toBeGreaterThanOrEqual(44);observation.controls.push({name,...control,budget});}\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  3082 |     const final=await readToolbar();expect(final.actualViewsCount).toBe(0);expect(final.tracks).toHaveLength(3);expect(final.tracks.every(track=>/^\\d+(?:\\.\\d+)?px$/u.test(track)&&parseFloat(track)>0)).toBe(true);expect(final.horizontalOverflow).toBeLessThanOrEqual(1);Object.assign(observation,{final,actualViewsCount:final.actualViewsCount,tracks:final.tracks,noHorizontalOverflow:true,allThreeControlsReachable:true});Object.assign(result,{collectionToolbarUsesActualThreeAreas:true});\n  3083 |   }\n  3084 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                        "column": 570,
+                        "line": 3081
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m44\u001b[39m\nReceived:    \u001b[31m37.03125\u001b[39m\n\n  3079 |     const readToolbar=()=>page.evaluate(selectors=>{const grid=document.querySelector('.native-planet-panel:not([hidden]) .book-shelf-controls__topline');if(!grid)throw Error('Actual native shelf controls not present');const box=e=>{const r=e.getBoundingClientRect();return{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};},controls={};for(const [name,selector]of Object.entries(selectors)){const button=grid.querySelector(selector);if(!button)throw Error('Actual shelf '+name+' control not present');const r=box(button),style=getComputedStyle(button),clip={left:0,top:0,right:innerWidth,bottom:innerHeight};let owner=null;for(let e=button.parentElement;e&&e!==document.body;e=e.parentElement){if(e===document.documentElement)continue;const s=getComputedStyle(e),b=e.getBoundingClientRect(),inner={left:b.left+e.clientLeft,right:b.left+e.clientLeft+e.clientWidth,top:b.top+e.clientTop,bottom:b.top+e.clientTop+e.clientHeight};if(/auto|scroll|hidden|clip/.test(s.overflowX)){clip.left=Math.max(clip.left,inner.left);clip.right=Math.min(clip.right,inner.right);}if(/auto|scroll|hidden|clip/.test(s.overflowY)){clip.top=Math.max(clip.top,inner.top);clip.bottom=Math.min(clip.bottom,inner.bottom);}if(!owner&&/auto|scroll/.test(s.overflowY)&&e.scrollHeight>e.clientHeight+1)owner=e;}const points=[.3,.5,.7].map(f=>{const x=r.left+r.width*f,y=r.top+r.height/2,hit=document.elementFromPoint(x,y);return{x,y,hit:!!hit&&(hit===button||button.contains(hit))};});controls[name]={rect:r,clip,points,visible:style.display!=='none'&&style.visibility==='visible'&&r.width>0&&r.height>0,inside:r.left>=clip.left-1&&r.right<=clip.right+1&&r.top>=clip.top-1&&r.bottom<=clip.bottom+1,label:button.getAttribute('aria-label'),disabled:button.disabled,owner:owner?{className:owner.className,scrollTop:owner.scrollTop,clientHeight:owner.clientHeight,scrollHeight:owner.scrollHeight,clip}:null};}const style=getComputedStyle(grid);return{actualViewsCount:grid.querySelectorAll(':scope > .book-shelf-controls__views').length,tracks:style.gridTemplateColumns.trim().split(/\\s+/),areas:style.gridTemplateAreas,grid:box(grid),controls,horizontalOverflow:Math.max(document.documentElement.scrollWidth-innerWidth,grid.scrollWidth-grid.clientWidth),documentScroll:{x:scrollX,y:scrollY,left:document.scrollingElement.scrollLeft,top:document.scrollingElement.scrollTop}};},selectors);\n  3080 |     await expect(page.locator('.native-planet-panel:not([hidden]) .book-shelf-controls__topline')).toBeVisible();await expect.poll(async()=>(await readToolbar()).actualViewsCount).toBe(0);const observation=o.collectionToolbar={readOnly:true,geometryInjected:false,initial:await readToolbar(),controls:[],swipes:[]};\n> 3081 |     for(const name of Object.keys(selectors)){let value=await readToolbar(),control=value.controls[name];const range=Math.max(0,(control.owner?.scrollHeight??0)-(control.owner?.clientHeight??0)),room=control.clip.bottom-control.clip.top,budget=Math.min(80,Math.max(4,Math.ceil(range/Math.max(24,room-36))*2+4));for(let n=0;n<budget&&!(control.visible&&control.inside&&control.points.every(p=>p.hit));n++){expect(control.owner,'Actual '+name+' has a scroll owner').toBeTruthy();const before=value,clip=control.owner.clip,available=clip.bottom-clip.top;expect(available).toBeGreaterThanOrEqual(control.rect.height);const up=control.rect.bottom>clip.bottom,overflow=up?control.rect.bottom-clip.bottom:clip.top-control.rect.top,distance=Math.min(available-24,Math.max(24,overflow+16)),x=(clip.left+clip.right)/2,startY=up?clip.bottom-12:clip.top+12,endY=startY+(up?-distance:distance),start=await page.evaluate(()=>{window.__fontStress.phase='real Collection toolbar scroll';return window.__fontStress.events.length;});await touch('touchStart',[{x,y:startY,id:251}]);for(let step=1;step<=8;step++){await touch('touchMove',[{x,y:startY+(endY-startY)*step/8,id:251}]);await page.waitForTimeout(20);}await page.waitForTimeout(100);await touch('touchEnd',[]);await settle();value=await readToolbar();control=value.controls[name];const events=await page.evaluate(start=>window.__fontStress.events.slice(start),start);observation.swipes.push({name,before,after:value,events});expect(events.filter(e=>e.type==='click')).toEqual([]);expect(events.some(e=>e.type==='touchmove'&&e.trusted)).toBe(true);expect(value.documentScroll).toEqual(before.documentScroll);expect(Math.abs(control.owner.scrollTop-before.controls[name].owner.scrollTop),'real owned Collection scroll progress').toBeGreaterThan(1);}expect(control.visible&&control.inside&&control.points.every(p=>p.hit),'Actual '+name+' is reachable').toBe(true);expect(control.rect.width).toBeGreaterThanOrEqual(44);expect(control.rect.height).toBeGreaterThanOrEqual(44);observation.controls.push({name,...control,budget});}\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  3082 |     const final=await readToolbar();expect(final.actualViewsCount).toBe(0);expect(final.tracks).toHaveLength(3);expect(final.tracks.every(track=>/^\\d+(?:\\.\\d+)?px$/u.test(track)&&parseFloat(track)>0)).toBe(true);expect(final.horizontalOverflow).toBeLessThanOrEqual(1);Object.assign(observation,{final,actualViewsCount:final.actualViewsCount,tracks:final.tracks,noHorizontalOverflow:true,allThreeControlsReachable:true});Object.assign(result,{collectionToolbarUsesActualThreeAreas:true});\n  3083 |   }\n  3084 |\n    at collectionToolbarAudit (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:3081:570)\n    at collectionHeadingPhase (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:3088:313)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:3100:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-29T23:55:17.302Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a3-evidence\\attempt-a2\\browser-a2\\booky-live-character-Booky-35ad3--only-200-percent-stress-en\\attachments\\booky-live-character-source-evidence-99571e1fae72bd49462100896084aa21dfec06f5.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-design-a3-evidence\\attempt-a2\\browser-a2\\booky-live-character-Booky-35ad3--only-200-percent-stress-en\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                    "column": 570,
+                    "line": 3081
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-406f82dd0b5d810c96f7",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2958,
+          "column": 150
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-29T23:51:39.942Z",
+    "duration": 278690.08900000004,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

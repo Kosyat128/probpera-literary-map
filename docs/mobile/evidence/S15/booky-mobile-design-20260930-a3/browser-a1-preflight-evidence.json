@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "original-browser-output-collision-before-child-spawn",
+  "provenance": "Original tool return supplied by root; no independent process log exists",
+  "toolChunkId": "03b9f9",
+  "nodeExit": 1,
+  "wallTimeSeconds": 0.3698924,
+  "independentProcessLog": null,
+  "classification": "browser-output-preflight-collision",
+  "attempt": "a1",
+  "mode": "browser",
+  "originalChecker": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/check.mjs",
+    "sha256": "3ca35840800b8f97315f5406f583a561efc76409ad0217c148edf24f252f6135"
+  },
+  "originalConfig": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/playwright.config.mjs",
+    "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+  },
+  "frozenEntry": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/entry.json",
+    "sha256": "d6ca400803f8d6d242b5b53a3a51e547e025419af74682b29cca4c296c9f3b26"
+  },
+  "frozenScope": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/scope.json",
+    "sha256": "a614f3ee184b4b241f147ddf44570266a7307c072a67e82ef2a00fe565ebe13a"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/source-manifests/7dbc3333bf196b7b.json",
+    "sha256": "7dbc3333bf196b7b968378ed11c93990c734d0a1cbfcfd4f40528bf29d088426",
+    "fileCount": 1665
+  },
+  "failedAssertion": "Missing expected rejection at check.mjs50: old s15-booky-mobile-design-evidence/browser-a1 already exists",
+  "browserDirectory": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a3/browser-a1",
+  "directoryExpectedEmpty": true,
+  "childStarted": false,
+  "browserStarted": false,
+  "nativeObservationExecuted": false,
+  "report": null,
+  "tests": null,
+  "stdout": null,
+  "stderr": null,
+  "result": null,
+  "helperLogsEmitted": false,
+  "sourceCommitCreated": false,
+  "buildsRun": false,
+  "sourceValidationCountsAsFinal": false,
+  "testsRun": false,
+  "releaseReady": false
+}
