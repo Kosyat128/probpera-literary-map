@@ -1,0 +1,151 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/playwright.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a3\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-evidence/attempt-a3/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-support.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a3/playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-support.spec.mjs",
+      "file": "booky-support.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9999,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 53\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"key\": \"probpera-booky-adult-v1\",\u001b[39m\n\u001b[31m+     \"observed\": Object {\u001b[39m\n\u001b[31m+       \"backgroundCount\": 0,\u001b[39m\n\u001b[31m+       \"backgroundResource\": null,\u001b[39m\n\u001b[31m+       \"contextLost\": false,\u001b[39m\n\u001b[31m+       \"frame\": 10,\u001b[39m\n\u001b[31m+       \"geometry\": \"c52966c7-8813-4514-9af0-5e70fa4b5e17\",\u001b[39m\n\u001b[31m+       \"gpu\": Object {\u001b[39m\n\u001b[31m+         \"calls\": 53,\u001b[39m\n\u001b[31m+         \"geometries\": 93,\u001b[39m\n\u001b[31m+         \"textures\": 3,\u001b[39m\n\u001b[31m+         \"triangles\": 92355,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"mascotObjects\": Array [],\u001b[39m\n\u001b[31m+       \"pose\": Object {\u001b[39m\n\u001b[31m+         \"fov\": 43,\u001b[39m\n\u001b[31m+         \"position\": Array [\u001b[39m\n\u001b[31m+           -0.22336,\u001b[39m\n\u001b[31m+           2.58914,\u001b[39m\n\u001b[31m+           -1.37654,\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"quaternion\": Array [\u001b[39m\n\u001b[31m+           0.04119,\u001b[39m\n\u001b[31m+           0.85577,\u001b[39m\n\u001b[31m+           0.51108,\u001b[39m\n\u001b[31m+           -0.06898,\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           0,\u001b[39m\n\u001b[31m+           0,\u001b[39m\n\u001b[31m+           0,\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"zoom\": 1,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"quality\": \"high\",\u001b[39m\n\u001b[31m+       \"sameScene\": true,\u001b[39m\n\u001b[31m+       \"selection\": Object {\u001b[39m\n\u001b[31m+         \"backgroundId\": \"background.base.site-starfield\",\u001b[39m\n\u001b[31m+         \"editionId\": \"rand-mcnally-1887\",\u001b[39m\n\u001b[31m+         \"standId\": \"canonical\",\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"standCount\": 0,\u001b[39m\n\u001b[31m+       \"surfaceCount\": 1,\u001b[39m\n\u001b[31m+       \"texture\": \"1929e05b-457c-4ec3-9c99-9be25c675543\",\u001b[39m\n\u001b[31m+       \"uploaded\": true,\u001b[39m\n\u001b[31m+       \"url\": \"https://booky-support.test/?country=russia&writer=dostoevsky#atlas\",\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"operation\": \"set\",\u001b[39m\n\u001b[31m+     \"value\": \"{\\\"schemaVersion\\\":2,\\\"audience\\\":\\\"adult\\\",\\\"visible\\\":true,\\\"resume\\\":{\\\"route\\\":\\\"overview\\\",\\\"routeVersion\\\":1,\\\"stepId\\\":\\\"collection\\\"},\\\"progress\\\":[]}\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 53\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"key\": \"probpera-booky-adult-v1\",\u001b[39m\n\u001b[31m+     \"observed\": Object {\u001b[39m\n\u001b[31m+       \"backgroundCount\": 0,\u001b[39m\n\u001b[31m+       \"backgroundResource\": null,\u001b[39m\n\u001b[31m+       \"contextLost\": false,\u001b[39m\n\u001b[31m+       \"frame\": 10,\u001b[39m\n\u001b[31m+       \"geometry\": \"c52966c7-8813-4514-9af0-5e70fa4b5e17\",\u001b[39m\n\u001b[31m+       \"gpu\": Object {\u001b[39m\n\u001b[31m+         \"calls\": 53,\u001b[39m\n\u001b[31m+         \"geometries\": 93,\u001b[39m\n\u001b[31m+         \"textures\": 3,\u001b[39m\n\u001b[31m+         \"triangles\": 92355,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"mascotObjects\": Array [],\u001b[39m\n\u001b[31m+       \"pose\": Object {\u001b[39m\n\u001b[31m+         \"fov\": 43,\u001b[39m\n\u001b[31m+         \"position\": Array [\u001b[39m\n\u001b[31m+           -0.22336,\u001b[39m\n\u001b[31m+           2.58914,\u001b[39m\n\u001b[31m+           -1.37654,\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"quaternion\": Array [\u001b[39m\n\u001b[31m+           0.04119,\u001b[39m\n\u001b[31m+           0.85577,\u001b[39m\n\u001b[31m+           0.51108,\u001b[39m\n\u001b[31m+           -0.06898,\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           0,\u001b[39m\n\u001b[31m+           0,\u001b[39m\n\u001b[31m+           0,\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"zoom\": 1,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"quality\": \"high\",\u001b[39m\n\u001b[31m+       \"sameScene\": true,\u001b[39m\n\u001b[31m+       \"selection\": Object {\u001b[39m\n\u001b[31m+         \"backgroundId\": \"background.base.site-starfield\",\u001b[39m\n\u001b[31m+         \"editionId\": \"rand-mcnally-1887\",\u001b[39m\n\u001b[31m+         \"standId\": \"canonical\",\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"standCount\": 0,\u001b[39m\n\u001b[31m+       \"surfaceCount\": 1,\u001b[39m\n\u001b[31m+       \"texture\": \"1929e05b-457c-4ec3-9c99-9be25c675543\",\u001b[39m\n\u001b[31m+       \"uploaded\": true,\u001b[39m\n\u001b[31m+       \"url\": \"https://booky-support.test/?country=russia&writer=dostoevsky#atlas\",\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"operation\": \"set\",\u001b[39m\n\u001b[31m+     \"value\": \"{\\\"schemaVersion\\\":2,\\\"audience\\\":\\\"adult\\\",\\\"visible\\\":true,\\\"resume\\\":{\\\"route\\\":\\\"overview\\\",\\\"routeVersion\\\":1,\\\"stepId\\\":\\\"collection\\\"},\\\"progress\\\":[]}\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-support.spec.mjs:662:35",
+                    "location": {
+                      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-support.spec.mjs",
+                      "column": 35,
+                      "line": 662
+                    },
+                    "snippet": "  660 |     result.observations.explicitReturn = await snapshot(page);\n  661 |     expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk]);\n> 662 |     expect(fixture.bookyWrites()).toEqual([]); expect(JSON.parse(fixture.memory.get(BOOKY))).toEqual(SEED);\n      |                                   ^\n  663 |     expect(fixture.writes()).toEqual([]); expect(fixture.memory.get(KEY)).toBe(fixture.initialRecord);\n  664 |     Object.assign(result, { realPrimaryAndRetryChunkFailures: true, persistentFailureStaysHonest: true,\n  665 |       networkHintsCannotClearContentError: true, noAutomaticRetry: true, explicitReturnUsesCanonicalGlobe: true,"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-support.spec.mjs",
+                        "column": 35,
+                        "line": 662
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 53\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"key\": \"probpera-booky-adult-v1\",\u001b[39m\n\u001b[31m+     \"observed\": Object {\u001b[39m\n\u001b[31m+       \"backgroundCount\": 0,\u001b[39m\n\u001b[31m+       \"backgroundResource\": null,\u001b[39m\n\u001b[31m+       \"contextLost\": false,\u001b[39m\n\u001b[31m+       \"frame\": 10,\u001b[39m\n\u001b[31m+       \"geometry\": \"c52966c7-8813-4514-9af0-5e70fa4b5e17\",\u001b[39m\n\u001b[31m+       \"gpu\": Object {\u001b[39m\n\u001b[31m+         \"calls\": 53,\u001b[39m\n\u001b[31m+         \"geometries\": 93,\u001b[39m\n\u001b[31m+         \"textures\": 3,\u001b[39m\n\u001b[31m+         \"triangles\": 92355,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"mascotObjects\": Array [],\u001b[39m\n\u001b[31m+       \"pose\": Object {\u001b[39m\n\u001b[31m+         \"fov\": 43,\u001b[39m\n\u001b[31m+         \"position\": Array [\u001b[39m\n\u001b[31m+           -0.22336,\u001b[39m\n\u001b[31m+           2.58914,\u001b[39m\n\u001b[31m+           -1.37654,\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"quaternion\": Array [\u001b[39m\n\u001b[31m+           0.04119,\u001b[39m\n\u001b[31m+           0.85577,\u001b[39m\n\u001b[31m+           0.51108,\u001b[39m\n\u001b[31m+           -0.06898,\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"target\": Array [\u001b[39m\n\u001b[31m+           0,\u001b[39m\n\u001b[31m+           0,\u001b[39m\n\u001b[31m+           0,\u001b[39m\n\u001b[31m+         ],\u001b[39m\n\u001b[31m+         \"zoom\": 1,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"quality\": \"high\",\u001b[39m\n\u001b[31m+       \"sameScene\": true,\u001b[39m\n\u001b[31m+       \"selection\": Object {\u001b[39m\n\u001b[31m+         \"backgroundId\": \"background.base.site-starfield\",\u001b[39m\n\u001b[31m+         \"editionId\": \"rand-mcnally-1887\",\u001b[39m\n\u001b[31m+         \"standId\": \"canonical\",\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"standCount\": 0,\u001b[39m\n\u001b[31m+       \"surfaceCount\": 1,\u001b[39m\n\u001b[31m+       \"texture\": \"1929e05b-457c-4ec3-9c99-9be25c675543\",\u001b[39m\n\u001b[31m+       \"uploaded\": true,\u001b[39m\n\u001b[31m+       \"url\": \"https://booky-support.test/?country=russia&writer=dostoevsky#atlas\",\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"operation\": \"set\",\u001b[39m\n\u001b[31m+     \"value\": \"{\\\"schemaVersion\\\":2,\\\"audience\\\":\\\"adult\\\",\\\"visible\\\":true,\\\"resume\\\":{\\\"route\\\":\\\"overview\\\",\\\"routeVersion\\\":1,\\\"stepId\\\":\\\"collection\\\"},\\\"progress\\\":[]}\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  660 |     result.observations.explicitReturn = await snapshot(page);\n  661 |     expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk]);\n> 662 |     expect(fixture.bookyWrites()).toEqual([]); expect(JSON.parse(fixture.memory.get(BOOKY))).toEqual(SEED);\n      |                                   ^\n  663 |     expect(fixture.writes()).toEqual([]); expect(fixture.memory.get(KEY)).toBe(fixture.initialRecord);\n  664 |     Object.assign(result, { realPrimaryAndRetryChunkFailures: true, persistentFailureStaysHonest: true,\n  665 |       networkHintsCannotClearContentError: true, noAutomaticRetry: true, explicitReturnUsesCanonicalGlobe: true,\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-support.spec.mjs:662:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T16:10:11.758Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-support-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-evidence\\attempt-a3\\browser-a1\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\attachments\\booky-support-source-evidence-f30aa4c45f2aba44a8a00cbe0872c79c51f67650.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-evidence\\attempt-a3\\browser-a1\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-support.spec.mjs",
+                    "column": 35,
+                    "line": 662
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "744eebdbd5516c7e281d-f352f13b545fa019bf21",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/booky-support.spec.mjs",
+          "line": 623,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T16:10:11.145Z",
+    "duration": 11323.300000000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

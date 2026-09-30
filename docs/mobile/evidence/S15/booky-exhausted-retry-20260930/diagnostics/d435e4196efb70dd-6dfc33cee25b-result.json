@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "pass": false,
+  "kind": "existing-RU-restored-delivery-explicit-retry-assessment",
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a1/entry.json",
+    "sha256": "7b7010b69ed2ec2087dbe8a50392039301b261feadd998b4bc7f673d90058fb6"
+  },
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-review\\execution-outline-a1\\bound-a1/source-manifest.json",
+    "sha256": "12b5bb0ec44c9bfca01651f10e3367325eac4985ad35fff3cd3f9a7dac5265f6",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "sourceInputsUnchanged": true,
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a1/playwright.json",
+    "sha256": "b8389866952d1bdfe60bb76a1c1417479dc83397c3082176edf877bcc05b6ac4"
+  },
+  "execution": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a1/execution.json",
+    "sha256": "30f0817d9921b2e03e4cd86ddc9c38055877661adb904e5a2f52a5cdc376bc93"
+  },
+  "evidence": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-evidence\\attempt-a1\\browser-a1\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\attachments\\booky-support-source-evidence-0780001bc568a4f66b0a97c6eb214357b06a4f22.json",
+    "sha256": "59ba4c0d91f4dbdbb77bf9d35afb377b4cc7c21b4c023354730d1d0e142c17f2"
+  },
+  "captures": [],
+  "tests": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "actualStatus": "failed",
+  "fixtureOnly": true,
+  "runtimeUnchanged": true,
+  "acceptedRuntimeSourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "stageAccepted": false,
+  "releaseReady": false
+}

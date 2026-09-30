@@ -1,0 +1,23 @@
+{
+  "pass": true,
+  "sourceInputsUnchanged": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/source-manifest.json",
+    "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "fileCount": 1665
+  },
+  "results": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/static-result.json",
+      "sha256": "280afaa8cb33201d916ff9f16677b2be2a4af262fa623288fa5fff22c16a4917"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/unit-result.json",
+      "sha256": "2db7e7ef1f97a86fb795fbf67d6ebfd02f02c3f0e27317eb74dde177d346fd19"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/boundaries-result.json",
+      "sha256": "3cc96fabc17cc80b99bced7af8b1057541aca87936168f24ff9dd58fef94dd61"
+    }
+  ]
+}

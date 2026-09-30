@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "browserResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/result.json",
+    "sha256": "ad064d97b411805e04e048d0433ca8a70d146735bc403edd15619c3287a0392d"
+  },
+  "evidence": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-evidence\\attempt-a6\\browser-a1\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\attachments\\booky-support-source-evidence-fc720c6d012d02537e853e3f8f7d313893267178.json",
+    "sha256": "cb84247d1cbe3686d7f952e7e4bcec834ccd091496ea083aba635297fc947cd8"
+  },
+  "originalTwo503AndExplicitReturnRetained": true,
+  "restoredBytesDoNotAutomaticallyRetryOrReload": true,
+  "actualTrustedRestartInputs": [
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "pointerType": "touch",
+      "tag": "BUTTON",
+      "bookyRetry": null,
+      "atlasAction": null,
+      "bookyHelp": false,
+      "bookyRestart": "books"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "pointerType": "touch",
+      "tag": "BUTTON",
+      "bookyRetry": null,
+      "atlasAction": null,
+      "bookyHelp": false,
+      "bookyRestart": "books"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "pointerType": "touch",
+      "tag": "BUTTON",
+      "bookyRetry": null,
+      "atlasAction": null,
+      "bookyHelp": false,
+      "bookyRestart": "books"
+    }
+  ],
+  "originalPrimary200RestoredBytes": {
+    "at": 1790785664844,
+    "kind": "response",
+    "path": "/fixture/chunks/books-SKHXJ4FF.js",
+    "status": 200,
+    "sha256": "395cbaba2e00efb83dbda2aba0c144a7e4a9499877110b930106d603bc5ce73e",
+    "bytes": 1245
+  },
+  "canonicalSceneRetainedBeforeExplicitRestart": true,
+  "canonicalSceneCountOneWithinEachDocument": true,
+  "oldSceneIdentityPreservedAcrossRestartClaimed": false,
+  "bookyAndAppearanceWrites": 0,
+  "otherPreferenceOperations": "Ordinary recent writer history records one write; no zero-total-preference-write claim.",
+  "actualReadyAfterExplicitRestartAndReopen": true,
+  "scope": "One RU 320x844 actual App case in Edge, controlled transport/native ports; not installed-device or stage acceptance.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

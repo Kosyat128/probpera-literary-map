@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "method": "Direct root and delegated edits reviewed against accepted D219 source; no application checks yet.",
+  "checkpoint": "f6b502d3ab4e86eda7927df638a863183dc174f6",
+  "changedPaths": [
+    "src/App.tsx",
+    "src/components/RecentHistoryPanel.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyGlobeSupport.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookySupport.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "src/loading/DeferredHomepageArchives.tsx",
+    "src/loading/bookArchiveRuntime.test.ts",
+    "src/loading/bookArchiveRuntime.ts",
+    "tests/pwa/booky-support.spec.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/source-manifest.json",
+    "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "fileCount": 1665
+  },
+  "priorSourceManifest": {
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work/docs/mobile/evidence/S15/native-reader-composition-20260930/actual/48e8db3dcaeeab54-ef433fdaadae-source-manifest.json",
+    "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1653
+}

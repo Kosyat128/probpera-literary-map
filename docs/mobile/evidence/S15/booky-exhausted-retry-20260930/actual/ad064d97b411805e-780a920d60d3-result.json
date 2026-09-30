@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "existing-RU-explicit-restart-recovery",
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/entry.json",
+    "sha256": "796dfaa21fb451705669cdc15a191b2a25e92ab2840370b3af7c8d41e83fd56c"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/source-manifest.json",
+    "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1653,
+  "sourceInputsUnchanged": true,
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/playwright.json",
+    "sha256": "658061d0d12151031e797bf967d022004616e490dd77cf7b708198ead55ebc2a"
+  },
+  "execution": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/execution.json",
+    "sha256": "4bea77ed282138cc5ba4f71684d11b05b31e3399a4344b36abe1cc1190cdea09"
+  },
+  "evidence": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-evidence\\attempt-a6\\browser-a1\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\attachments\\booky-support-source-evidence-fc720c6d012d02537e853e3f8f7d313893267178.json",
+    "sha256": "cb84247d1cbe3686d7f952e7e4bcec834ccd091496ea083aba635297fc947cd8"
+  },
+  "captures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-evidence/attempt-a6/browser-a1/booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe/booky-support-retry-failed-ru-320.png",
+      "sha256": "b08a3b582afc73b98e17d03ef7f0d080a591735a155b174fdba27e52ffd4f564",
+      "filename": "booky-support-retry-failed-ru-320.png"
+    }
+  ],
+  "tests": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "actualStatus": "passed",
+  "fixtureOnly": false,
+  "runtimeUnchanged": false,
+  "priorRuntimeSourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "stageAccepted": false,
+  "releaseReady": false
+}

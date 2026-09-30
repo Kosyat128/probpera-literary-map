@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:628:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe
+  1) D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:628:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe 
+
+    Error: A fresh trusted Retry must request authenticated original bytes after two HTTP load failures
+
+    A fresh trusted Retry must request authenticated original bytes after two HTTP load failures
+
+    expect(received).toBeGreaterThan(expected)
+
+    Expected: > 2
+    Received:   2
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      597 |     expect(input.events.some(event => event.type === 'click' && event.trusted && event.bookyRetry === 'books')).toBe(true);
+      598 |     await expect.poll(() => fixture.bookRequests.length, { timeout: 5000, intervals: [100, 200, 300],
+    > 599 |       message: 'A fresh trusted Retry must request authenticated original bytes after two HTTP load failures' }).toBeGreaterThan(2);
+          |                                                                                                                  ^
+      600 |     expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk, retryBookChunk]);
+      601 |     await expect(page.locator('.stage5-deferred-books')).toHaveAttribute('data-loading-status', 'ready');
+      602 |     await expect(support(page)).toHaveCount(0);
+        at assessRestoredBookRetry (D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:599:114)
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:675:5
+
+    attachment #1: booky-support-source-evidence (application/json) ────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-exhausted-retry-assessment-evidence\attempt-a5\browser-a1\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\attachments\booky-support-source-evidence-4a4b7c389a114c68c7c3d6c82556a64710d248ad.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-exhausted-retry-assessment-evidence\attempt-a5\browser-a1\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\error-context.md
+
+
+  1 failed
+    D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:628:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe 

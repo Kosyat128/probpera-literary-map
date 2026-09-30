@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:641:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe
+  1 passed (16.4s)

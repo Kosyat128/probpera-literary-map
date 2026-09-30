@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "single-existing-booky-two-http-failure-assessment-draft",
+  "target": "tests/pwa/booky-support.spec.mjs",
+  "caseTitle": "when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe",
+  "rawBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/revision-a1/raw-before.mjs",
+    "sha256": "34626117500dae12353eaaebd893ad8ece24e5b74bf52e77b1b85a3b2aa94bd9",
+    "bytes": 50362
+  },
+  "proposed": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/revision-a1/proposed.mjs",
+    "sha256": "8e3e9576d9803ea0e45a8bfb10fe84882d1addba824cece1c270a4afc6ff75c5",
+    "bytes": 60309
+  },
+  "rawInverse": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/revision-a1/raw-inverse.mjs",
+    "sha256": "34626117500dae12353eaaebd893ad8ece24e5b74bf52e77b1b85a3b2aa94bd9",
+    "bytes": 50362
+  },
+  "actualAcceptedD217Result": null,
+  "actualAcceptedD217SourceCommit": null,
+  "actualAcceptedProvenanceRevision6Result": null,
+  "actualCleanDocsCheckpoint": null,
+  "actualSourceManifest": null,
+  "actualApplyReceipt": null,
+  "actualBrowserResult": null,
+  "actualCausalReview": null,
+  "expectedCases": 1,
+  "originalCaptureContract": [
+    "booky-support-retry-failed-ru-320.png"
+  ],
+  "extraScreenshots": 0,
+  "scope": "One existing RU case, preserving every original assertion/capture before appended restoration/explicit-Retry assessment. No unproved module evaluation failure or reload requirement is inferred from two HTTP503 transport failures.",
+  "browserChannelBinding": "S15_BROWSER_CHANNEL=msedge when root runs; original default chrome retained",
+  "fixtureControlOnly": "Hold the original compiled book-entry bytes after the two planned503 responses; explicit Node-side restoration only releases their original authenticated bytes. Product state, focus, history and outcomes are never assigned.",
+  "plannedEvents": [
+    {
+      "ordinal": 1,
+      "event": "primary book entry request",
+      "path": "actual primaryBookChunk",
+      "response": 503
+    },
+    {
+      "ordinal": 2,
+      "event": "first existing Booky Retry",
+      "path": "actual retryBookChunk",
+      "response": 503
+    },
+    {
+      "ordinal": 3,
+      "event": "all original assertions/image/Return preserved",
+      "requests": 2
+    },
+    {
+      "ordinal": 4,
+      "event": "trusted existing atlas collection opener while delivery held",
+      "additionalBookRequests": 0
+    },
+    {
+      "ordinal": 5,
+      "event": "release original authenticated compiled bytes, observe350ms",
+      "additionalBookRequests": 0
+    },
+    {
+      "ordinal": 6,
+      "event": "trusted touchscreen Booky Retry with actual isTrusted pointer/click observations",
+      "expectedPath": "same actual retryBookChunk, no added URL"
+    },
+    {
+      "ordinal": 7,
+      "event": "record actual requests/status/bytes/realm/preferences/canonical owners; diagnostic if recovery not observed",
+      "outcome": null
+    }
+  ],
+  "sourceChangedPaths": [
+    "tests/pwa/booky-support.spec.mjs"
+  ],
+  "productionChanged": false,
+  "fixtureOnly": true,
+  "sourceApplied": false,
+  "helpersInvoked": false,
+  "checksRun": false,
+  "buildsRun": false,
+  "stageAccepted": false,
+  "deviceTested": false,
+  "releaseReady": false
+}

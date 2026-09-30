@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "recordedAt": "2026-09-30T16:32:37.782Z",
+  "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "predecessorDocsCommit": "f6b502d3ab4e86eda7927df638a863183dc174f6",
+  "changedPaths": [
+    "src/App.tsx",
+    "src/components/RecentHistoryPanel.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyGlobeSupport.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookySupport.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "src/loading/DeferredHomepageArchives.tsx",
+    "src/loading/bookArchiveRuntime.test.ts",
+    "src/loading/bookArchiveRuntime.ts",
+    "tests/pwa/booky-support.spec.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/source-manifest.json",
+    "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1653,
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/entry.json",
+    "sha256": "796dfaa21fb451705669cdc15a191b2a25e92ab2840370b3af7c8d41e83fd56c"
+  },
+  "sourceApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/source-apply-receipt.json",
+    "sha256": "7c9d3c8aefc1c9a76c583a6752aed81ea066364ceb832e440e746a22b0c1ef96"
+  },
+  "checksResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/checks-result.json",
+    "sha256": "437023983541c95eb8a08a1fd6ea046b9bbedeb94941da335fe014a36f843453"
+  },
+  "browserResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/result.json",
+    "sha256": "ad064d97b411805e04e048d0433ca8a70d146735bc403edd15619c3287a0392d"
+  },
+  "causalReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/root-causal-review.json",
+    "sha256": "c9d1692be40aed8458026a61b483a6ef79dcb31453b0d11b101ed76c7abadb4c"
+  },
+  "rootReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/root-visual-review.json",
+    "sha256": "8a400a98023cf9721e567b1feffb6dcab0c0040eb674ec580679b7cd935d34f7"
+  },
+  "blobs": [
+    {
+      "path": "src/App.tsx",
+      "workingSha256": "1fab3a9538c38d6ffbd9fb5e01bae6c7d103e5f5d3e215634b8c5a177abe6c0c",
+      "gitBlobSha256": "1fab3a9538c38d6ffbd9fb5e01bae6c7d103e5f5d3e215634b8c5a177abe6c0c",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/components/RecentHistoryPanel.tsx",
+      "workingSha256": "568820868aded53edd06b05b1afeb441dc21434924864ba97389252dab56ffc1",
+      "gitBlobSha256": "568820868aded53edd06b05b1afeb441dc21434924864ba97389252dab56ffc1",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "workingSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "gitBlobSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.ts",
+      "workingSha256": "dba9f5489ab0d515548776dc342479ddd7359a780d809f5a440717393f5141e1",
+      "gitBlobSha256": "dba9f5489ab0d515548776dc342479ddd7359a780d809f5a440717393f5141e1",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/bookySupport.test.ts",
+      "workingSha256": "926a28fbbe4b703bec3671ba932bb869965a8ef30f1268dc46487549bfe5abb9",
+      "gitBlobSha256": "926a28fbbe4b703bec3671ba932bb869965a8ef30f1268dc46487549bfe5abb9",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/bookySupport.ts",
+      "workingSha256": "d75cb24a1a593ac778788c972511849fc5b0d4c8030d7f864448b1a0b29b2ff8",
+      "gitBlobSha256": "d75cb24a1a593ac778788c972511849fc5b0d4c8030d7f864448b1a0b29b2ff8",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "workingSha256": "ad57548f1c2590aa5d38dd1f2b50a4fae3357c41f3d2cf68efd5f0e96675a17d",
+      "gitBlobSha256": "ad57548f1c2590aa5d38dd1f2b50a4fae3357c41f3d2cf68efd5f0e96675a17d",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "workingSha256": "00e8c8319d6a5143e07f1210e754d990a9f7deb4d7f389be2cebcd90d90e8673",
+      "gitBlobSha256": "00e8c8319d6a5143e07f1210e754d990a9f7deb4d7f389be2cebcd90d90e8673",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "workingSha256": "8b0730bd19e326257f65949257f3b14da978519bee6d02489621a3b5b5a0db04",
+      "gitBlobSha256": "8b0730bd19e326257f65949257f3b14da978519bee6d02489621a3b5b5a0db04",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.test.ts",
+      "workingSha256": "ff5c8283d9a07e46cdc09141a0553a18732b6f05462c49ca095861a46b3be6e2",
+      "gitBlobSha256": "ff5c8283d9a07e46cdc09141a0553a18732b6f05462c49ca095861a46b3be6e2",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.ts",
+      "workingSha256": "b4b28d74d2a4ee83f5d7eb57a08247af04c1a098e91e926b3eff139eb98c0512",
+      "gitBlobSha256": "b4b28d74d2a4ee83f5d7eb57a08247af04c1a098e91e926b3eff139eb98c0512",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "tests/pwa/booky-support.spec.mjs",
+      "workingSha256": "1277d6488de2bfea75ffa8e9a3a379be619c7fac7a066afdc93185f965d7f4ab",
+      "gitBlobSha256": "1277d6488de2bfea75ffa8e9a3a379be619c7fac7a066afdc93185f965d7f4ab",
+      "onlyLineEndingNormalization": false
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "sourceInputsVerifiedBeforeAfter": true,
+  "worktreeClean": true,
+  "productionImplemented": true,
+  "runtimeUnchanged": false,
+  "fixtureOnly": false,
+  "testsRerun": false,
+  "buildsRun": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "commitOutput": "[codex/literary-planet-v12-bilingual-final-autopilot aba461a7] Restore collection after exhausted module retry with explicit restart\n 12 files changed, 377 insertions(+), 42 deletions(-)",
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/record-reviewed-source.mjs",
+    "sha256": "193fce20fd543a3346694654bfc4020ac7b088d960c9c95a2902e35eee8dc8b5"
+  }
+}

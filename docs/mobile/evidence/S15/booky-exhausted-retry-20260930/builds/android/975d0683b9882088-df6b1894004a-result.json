@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-exhausted-retry-runtime-dev-apk",
+  "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/source-manifest.json",
+    "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "fileCount": 1665
+  },
+  "buildId": "6954c79044a6767eec860b29ef9db5e56821933aba134112970fa4fce0cd762e",
+  "sourceBlobs": [
+    {
+      "path": "src/App.tsx",
+      "oid": "f6ddb32330aa683b99dd3d40e9b0d885020afce6",
+      "workingSha256": "1fab3a9538c38d6ffbd9fb5e01bae6c7d103e5f5d3e215634b8c5a177abe6c0c",
+      "gitBlobSha256": "1fab3a9538c38d6ffbd9fb5e01bae6c7d103e5f5d3e215634b8c5a177abe6c0c",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/components/RecentHistoryPanel.tsx",
+      "oid": "e138abf2e287ccc17692c5df3e0ecec1a5214069",
+      "workingSha256": "568820868aded53edd06b05b1afeb441dc21434924864ba97389252dab56ffc1",
+      "gitBlobSha256": "568820868aded53edd06b05b1afeb441dc21434924864ba97389252dab56ffc1",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "oid": "6c7d0ef61499e0f50221e12e9be287cd21d1086a",
+      "workingSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "gitBlobSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.ts",
+      "oid": "716fa6cbd5cb03ad5b4de8ba88fc5c83fe4ba7bf",
+      "workingSha256": "dba9f5489ab0d515548776dc342479ddd7359a780d809f5a440717393f5141e1",
+      "gitBlobSha256": "dba9f5489ab0d515548776dc342479ddd7359a780d809f5a440717393f5141e1",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/host/bookySupport.test.ts",
+      "oid": "b731f3eb6c2dc6b7bdcba9a9c40c5c349a04f88b",
+      "workingSha256": "926a28fbbe4b703bec3671ba932bb869965a8ef30f1268dc46487549bfe5abb9",
+      "gitBlobSha256": "926a28fbbe4b703bec3671ba932bb869965a8ef30f1268dc46487549bfe5abb9",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/host/bookySupport.ts",
+      "oid": "0239d8920a74a952b031235454188656486e775c",
+      "workingSha256": "d75cb24a1a593ac778788c972511849fc5b0d4c8030d7f864448b1a0b29b2ff8",
+      "gitBlobSha256": "d75cb24a1a593ac778788c972511849fc5b0d4c8030d7f864448b1a0b29b2ff8",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "oid": "186888d737b78d30dc0f45844126be7aac87727f",
+      "workingSha256": "ad57548f1c2590aa5d38dd1f2b50a4fae3357c41f3d2cf68efd5f0e96675a17d",
+      "gitBlobSha256": "ad57548f1c2590aa5d38dd1f2b50a4fae3357c41f3d2cf68efd5f0e96675a17d",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "oid": "8283fc5a1887d67293f4b60139239ae1ebe5010c",
+      "workingSha256": "00e8c8319d6a5143e07f1210e754d990a9f7deb4d7f389be2cebcd90d90e8673",
+      "gitBlobSha256": "00e8c8319d6a5143e07f1210e754d990a9f7deb4d7f389be2cebcd90d90e8673",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "oid": "09430209fab8684533c542482167b073cc421872",
+      "workingSha256": "8b0730bd19e326257f65949257f3b14da978519bee6d02489621a3b5b5a0db04",
+      "gitBlobSha256": "8b0730bd19e326257f65949257f3b14da978519bee6d02489621a3b5b5a0db04",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.test.ts",
+      "oid": "7c79cb7674d6e6bd26383e8c3cec5fac7ff3db6c",
+      "workingSha256": "ff5c8283d9a07e46cdc09141a0553a18732b6f05462c49ca095861a46b3be6e2",
+      "gitBlobSha256": "ff5c8283d9a07e46cdc09141a0553a18732b6f05462c49ca095861a46b3be6e2",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.ts",
+      "oid": "7c9387358939993c549a5afa5744337847f5855f",
+      "workingSha256": "b4b28d74d2a4ee83f5d7eb57a08247af04c1a098e91e926b3eff139eb98c0512",
+      "gitBlobSha256": "b4b28d74d2a4ee83f5d7eb57a08247af04c1a098e91e926b3eff139eb98c0512",
+      "lineEndingOnly": false
+    },
+    {
+      "path": "tests/pwa/booky-support.spec.mjs",
+      "oid": "442763e0f8477f65c01605e3303c395fb317e142",
+      "workingSha256": "1277d6488de2bfea75ffa8e9a3a379be619c7fac7a066afdc93185f965d7f4ab",
+      "gitBlobSha256": "1277d6488de2bfea75ffa8e9a3a379be619c7fac7a066afdc93185f965d7f4ab",
+      "lineEndingOnly": false
+    }
+  ],
+  "boundEntry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/entry.json",
+    "sha256": "796dfaa21fb451705669cdc15a191b2a25e92ab2840370b3af7c8d41e83fd56c"
+  },
+  "buildPacket": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-review\\runtime-build-a1\\packet-binding.json",
+    "sha256": "9198d4ac8cbe8355aeb485aca2b704d699a609411e7dfdb3f2495f5cffca90e0"
+  },
+  "actualProducers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/guard-build.mjs",
+      "sha256": "9d27f04b8dbb3b21e0c76f9b13cd729968cb0bf7d3907108aa10e172f93cba21"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/build-pwa-a1.mjs",
+      "sha256": "e31f1d445d88b935234cc8024056253be6fcebfbf6bc5631ef34c06f08f4bfc8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/build-android-a1.ps1",
+      "sha256": "ac7e39cae888d1a013b0599cbc541e3f02e7207f9040f934774567fd24fb9c29"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/preserve-android-a1.mjs",
+      "sha256": "d5003e2c15c321577f600a0614f1e9e4fafc12d02a8af94f4eb8c733b2316fb4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/verify-android-a1.mjs",
+      "sha256": "d27ade74a250edbdd42cf0ff36ecc58f5f07658a00bd98a5e7692922af38a5b5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/pwa-a1.config.mjs",
+      "sha256": "822ba1c761dfbd577b847a0dcae81305c42d0757b73e6cc4b98d181080e4aac5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/downloads-artifact-wrapper-a1.spec.mjs",
+      "sha256": "3e7da954b73f9957efa5d788fae03a78e58c9837e031bfab87b5d442d5562a69"
+    }
+  ],
+  "sourceInputsSha256": "61aa3110ef28ab21901393dccf31304aa8c901cb51fbbd12b32c7f98ff0c3e46",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-runtime-build-evidence/attempt-a1/android/android-6954c790/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "d37536566878a53403872702fd1a3e54f16273ac9c94614dbc1c1da90aa84c28"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-runtime-build-evidence/attempt-a1/android/android-6954c790/runtime",
+    "sha256": "e593db9bd315ab6ef651c100ddb37f13832a1c47f92b62a707f3602aa21b46ba",
+    "files": 1408,
+    "bytes": 74965124
+  },
+  "checks": {
+    "strictRuntimeAudit": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/android-a1/native-artifact-audit.json",
+    "binaryAudit": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/android-a1/android-dev-apk-verification.json",
+    "build": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAcceptedReportAuthenticated": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": false,
+    "originalPriorAuthenticationRetained": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": {
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/android-a1/result.json",
+      "sha256": "7b914b1861be377edc71696a2ee291314ec80d25f63c91c9f83d71ce4d50d978"
+    },
+    "sourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+    "buildId": "a38c4247d5ec6d4511903b7f099d0ce89cec2c24c924b8431c51d336fcb82573",
+    "apkPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-runtime-build-evidence/attempt-a1/android/android-a38c4247/app-dev-debug.apk"
+  },
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

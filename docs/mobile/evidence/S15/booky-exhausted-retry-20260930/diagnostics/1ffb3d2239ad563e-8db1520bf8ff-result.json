@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "pass": false,
+  "kind": "existing-RU-restored-delivery-explicit-retry-assessment",
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a4/entry.json",
+    "sha256": "3c9bc4767b47e1cf0a16e2de076d9a37d5327fe317e4b59db59d9837f7a41e12"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a4/source-manifest.json",
+    "sha256": "48a03df24ce7fc0887ff90fd489e6d9b3a9e4489bc8d5ca6855871d6596166ee",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "sourceInputsUnchanged": true,
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a4/playwright.json",
+    "sha256": "3a3c3db499436b74b1fff339d6c98dea432b910026634362beef640ea46124a1"
+  },
+  "execution": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a4/execution.json",
+    "sha256": "05b9800cdabcb80aacc0f1f66ed4872a44945af121d39703048b42c12e63ec09"
+  },
+  "evidence": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-evidence\\attempt-a4\\browser-a1\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\attachments\\booky-support-source-evidence-a6f0a87e1ad90dc8593aedf8c85532f34d544607.json",
+    "sha256": "cdc0efaf1dcd5df05b4524471a4f458bc382fc0d2f7fb18dff4278f495e64c32"
+  },
+  "captures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-evidence/attempt-a4/browser-a1/booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe/booky-support-retry-failed-ru-320.png",
+      "sha256": "423953de99f3f8b9c560656142130fa1865d14b8a49bb053870c597a11dc5078",
+      "filename": "booky-support-retry-failed-ru-320.png"
+    }
+  ],
+  "tests": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "actualStatus": "failed",
+  "fixtureOnly": true,
+  "runtimeUnchanged": true,
+  "acceptedRuntimeSourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "captures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-evidence/attempt-a6/browser-a1/booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe/booky-support-retry-failed-ru-320.png",
+      "sha256": "b08a3b582afc73b98e17d03ef7f0d080a591735a155b174fdba27e52ffd4f564",
+      "filename": "booky-support-retry-failed-ru-320.png"
+    }
+  ],
+  "reviewer": "root",
+  "directViewCompleted": true,
+  "observations": [
+    "The 320x844 actual failure capture shows an aligned reserved Booky header; avatar, title and close do not overlap.",
+    "The collection failure message states explicit restart or return. The help body scrolls; actions below the initial crop are not claimed visible in this image.",
+    "The actual browser evidence separately proves the 44px restart action is scrolled into view and receives trusted touch."
+  ],
+  "allStatesVisuallyAccepted": false,
+  "installedDeviceAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

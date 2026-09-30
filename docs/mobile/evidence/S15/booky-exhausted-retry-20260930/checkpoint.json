@@ -1,0 +1,391 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/result.json",
+    "sha256": "3e505ed546e65f2cd10989be177fbfdb8dae54885152300a3951a54a9dd630b1"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/checkpoint-review-a1/checkpoint.mjs",
+    "sha256": "166564cb8d310377eb4320e8038c24582f44221cf3a90cd844c0b609698dfd0a"
+  },
+  "documentPlan": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/checkpoint-review-a1/bound-a1/document-plan.json",
+    "sha256": "fdeacf2287a5c457807e6721a22767eb78e7613049d91e0e5b74b24c22f05efb"
+  },
+  "outputs": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "44d525e3cab4215516945697d076f6de8fd612b3db27625a26513a25de6d3f8a"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "b38fa95ffad5c2ec15d77f2d2010375bf825a9167323116bca703ab63bbf20b4"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "9e0003ffa63584d287e21600001e0c17c8aeb51ac4468fffac69c5c0a2809226"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "c63284e2eaca872427f5265ef50833bb99cefa8390d6fa0ca8fdcf5eecd3a98b"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "c32a9b8b026b71335662d18639a02be70f7992eef740ed59c1eae9793ffd5e0a"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "4635db00f4ec392f1285f031c99bf4ca475395bcd50b74dc5b61070df6a983d4"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "c6fd0b88ad615828576864030fb0f34dc0059cfaec34e87dcbafa203034371be"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "92c3150e58f027a2f5b2aef3745a625895b0b7c273ca55f2131f2efc97822b9d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/result.json",
+      "sha256": "3e505ed546e65f2cd10989be177fbfdb8dae54885152300a3951a54a9dd630b1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/README.md",
+      "sha256": "74e1ab874dc85c79e66ac519319ef6d36f11b8544ec7a09a8e18a5f6866bc989"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/796dfaa21fb45170-95d3a4bbe3b3-entry.json",
+      "sha256": "796dfaa21fb451705669cdc15a191b2a25e92ab2840370b3af7c8d41e83fd56c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/555b4c84f613941d-bbb22bb0c290-source-manifest.json",
+      "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/48e8db3dcaeeab54-f2d90d894684-48e8db3dcaeeab54-ef433fdaadae-source-manifest.json",
+      "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/7c9d3c8aefc1c9a7-c9375027c450-source-apply-receipt.json",
+      "sha256": "7c9d3c8aefc1c9a76c583a6752aed81ea066364ceb832e440e746a22b0c1ef96"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/12a5ab3eb8e1f1ba-c4ef825b8cc3-prepare-next.mjs",
+      "sha256": "12a5ab3eb8e1f1baca6c4713d44e5d12bc9cacb61e36e5c15dc5667623e4718c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/cec30b68d77d218f-9af668b14410-actual-inputs-a1.json",
+      "sha256": "cec30b68d77d218f3cbdbb07bc92a535303c59cd16ef3c076aa43210870b48c2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/d4e54c938a03aad1-05eddf2c7203-proposal.json",
+      "sha256": "d4e54c938a03aad1bf6cf8067f3ef1ca8216ce37d7653e7f597b471130cd6662"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/8e3e9576d9803ea0-250eec88f08a-proposed.mjs",
+      "sha256": "8e3e9576d9803ea0e45a8bfb10fe84882d1addba824cece1c270a4afc6ff75c5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/dd96f5d18e806628-6dd50b5995a9-actual-source-commit.json",
+      "sha256": "dd96f5d18e806628421d7eb924857eaab42025f888f4ab53e2a230e2ef0fd1e8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/193fce20fd543a33-32b8da8552a2-record-reviewed-source.mjs",
+      "sha256": "193fce20fd543a3346694654bfc4020ac7b088d960c9c95a2902e35eee8dc8b5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/437023983541c95e-b7213528352e-checks-result.json",
+      "sha256": "437023983541c95eb8a08a1fd6ea046b9bbedeb94941da335fe014a36f843453"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/280afaa8cb33201d-106247b7d116-static-result.json",
+      "sha256": "280afaa8cb33201d916ff9f16677b2be2a4af262fa623288fa5fff22c16a4917"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/4949236162b46844-69f04e85ad21-run-checks.mjs",
+      "sha256": "4949236162b46844d0f72cd26d2d044ff26e807ce9ee3b48c995da0a621b9e0d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/e3b0c44298fc1c14-bbbc161845f9-static-stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/e3b0c44298fc1c14-88a24795d2a0-static-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/2db7e7ef1f97a86f-8888019fe7c6-unit-result.json",
+      "sha256": "2db7e7ef1f97a86fb795fbf67d6ebfd02f02c3f0e27317eb74dde177d346fd19"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/098ea4a9ea9d978f-0bbe129e32ee-unit-stdout.log",
+      "sha256": "098ea4a9ea9d978f04f2abc6be11eeb0461aa0573a49594f6c86b48c41b140af"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/e3b0c44298fc1c14-99118aa06309-unit-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/3cc96fabc17cc80b-4ee27a5606b9-boundaries-result.json",
+      "sha256": "3cc96fabc17cc80b99bced7af8b1057541aca87936168f24ff9dd58fef94dd61"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/ab7b724b5d801b44-4bdf4bbf4fd2-boundaries-stdout.log",
+      "sha256": "ab7b724b5d801b44537908d32b5a07af0c53de3bc84e689b0a450a21e0967737"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/e3b0c44298fc1c14-a71e96cc3445-boundaries-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/8a400a98023cf972-69626967a5e9-root-visual-review.json",
+      "sha256": "8a400a98023cf9721e567b1feffb6dcab0c0040eb674ec580679b7cd935d34f7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/b08a3b582afc73b9-094b4578d0ad-booky-support-retry-failed-ru-320.png",
+      "sha256": "b08a3b582afc73b98e17d03ef7f0d080a591735a155b174fdba27e52ffd4f564"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/c9d1692be40aed84-0179c47df038-root-causal-review.json",
+      "sha256": "c9d1692be40aed8458026a61b483a6ef79dcb31453b0d11b101ed76c7abadb4c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/ad064d97b411805e-780a920d60d3-result.json",
+      "sha256": "ad064d97b411805e04e048d0433ca8a70d146735bc403edd15619c3287a0392d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/4bea77ed282138cc-0dc0e1ca2ba1-execution.json",
+      "sha256": "4bea77ed282138cc5ba4f71684d11b05b31e3399a4344b36abe1cc1190cdea09"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/a8e2e462ea7b0eaf-2675f99d7252-run-browser.mjs",
+      "sha256": "a8e2e462ea7b0eaf86b779100aa63d129eea6efd7c226e8bfed7c5f7dbf168f6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/b9fb8cd0e7f80511-3e1206ad15da-browser-stdout.log",
+      "sha256": "b9fb8cd0e7f80511c5483610ef812c0058efbd449082eba8f66097b76652cc4c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/dcac5903f8026a98-93b1c7f15f47-browser-stderr.log",
+      "sha256": "dcac5903f8026a985a838da05874b9f92e1b2cfc39116a0bd1761045bffdca15"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/658061d0d1215103-a1e4727cf280-playwright.json",
+      "sha256": "658061d0d12151031e797bf967d022004616e490dd77cf7b708198ead55ebc2a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/1eed0e9485ad3340-8782289fed3c-unit-report.json",
+      "sha256": "1eed0e9485ad33405e46f43847e51f6673f661f9990c2d5cbea53d747eabfdeb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/d435e4196efb70dd-6dfc33cee25b-result.json",
+      "sha256": "d435e4196efb70ddcb977cefa364191060c27952530336b972d2953739c28e58"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/7b7010b69ed2ec20-b7e6e7c3eae5-entry.json",
+      "sha256": "7b7010b69ed2ec2087dbe8a50392039301b261feadd998b4bc7f673d90058fb6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/12b5bb0ec44c9bfc-4afd694ffe5b-source-manifest.json",
+      "sha256": "12b5bb0ec44c9bfca01651f10e3367325eac4985ad35fff3cd3f9a7dac5265f6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/30f0817d9921b2e0-570b43f7d678-execution.json",
+      "sha256": "30f0817d9921b2e03e4cd86ddc9c38055877661adb904e5a2f52a5cdc376bc93"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/4d523f504f11bf68-50bceb818a68-run-browser-a1.mjs",
+      "sha256": "4d523f504f11bf6859d4803580f2823b2c20efb609186135808a85bb09163520"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/1d5db9f574f1758e-2ac0780263f7-browser-stdout.log",
+      "sha256": "1d5db9f574f1758e745e91020e220c4a662ce3b1bc08fb6f3cb6a1b2c5f021a0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/c5b612d106a1b0a8-344471d8f7e2-browser-stderr.log",
+      "sha256": "c5b612d106a1b0a847c403f25a18221344f7427fbc341ac20f20fb8823869ed1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/b8389866952d1bdf-2c20a2f32877-playwright.json",
+      "sha256": "b8389866952d1bdfe60bb76a1c1417479dc83397c3082176edf877bcc05b6ac4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/742b943361c7622a-5637583e5979-result.json",
+      "sha256": "742b943361c7622a2bb1816dd146504bc51975a79776dcded549c7f94f66b5c0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/c861e21d42684518-af6e779b1ccd-entry.json",
+      "sha256": "c861e21d42684518f8614439e707c40b4d0bcd3a70830c464cc1ecea302a41ea"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/9c964a82b354813f-c0a24ce255f0-source-manifest.json",
+      "sha256": "9c964a82b354813fc84315c14801a5003b9ca041fc03b7a2d2c608bab30c8dde"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/71205f5a09fafe7f-00f19092ecd9-execution.json",
+      "sha256": "71205f5a09fafe7f78106c01c5e93e0a4cf6e2665215d1da3efeb051dd6fc85d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/219f3d7c161815da-43d3ed0a000e-run-browser-a2.mjs",
+      "sha256": "219f3d7c161815da373bfb1b9e218abfa4a1e03b50ab99e0f9311baffae9870d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/7e40d15661aff3d6-a6d7d4cebcfe-browser-stdout.log",
+      "sha256": "7e40d15661aff3d6c0794154002d61229cc0ad359800f28e2970a9b1d0f47af7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/938f18c5ffcfb2a9-e527eed9a64c-browser-stderr.log",
+      "sha256": "938f18c5ffcfb2a989151bcaa6b89c45b93012c0d7e4dfbaaf89ff93514375e9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/99f35c0bec6c7fc0-c415a72e4396-playwright.json",
+      "sha256": "99f35c0bec6c7fc0d66bfef9794d92dfbda6e8cd25ef96cfe59c8a273ef57ab5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/423953de99f3f8b9-cf1653db9f08-booky-support-retry-failed-ru-320.png",
+      "sha256": "423953de99f3f8b9c560656142130fa1865d14b8a49bb053870c597a11dc5078"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/e01cf6089c5c12c4-13e27a9f7a48-result.json",
+      "sha256": "e01cf6089c5c12c4225a16a593e772499b943f933b2307fabdca95a371bfc0d8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/bad885c49e14874c-080c9df368ed-entry.json",
+      "sha256": "bad885c49e14874c3c9692337b9146d1051404f87fb0ac0c13b4d07c287d0e03"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/d88e6eb94599fd01-d3af0ff1ee31-source-manifest.json",
+      "sha256": "d88e6eb94599fd0104b7d1f317e8b4da3f1889a702274cfbd8ede461ee29460a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/ff77b3f319f674df-ba778ed66250-execution.json",
+      "sha256": "ff77b3f319f674dffb0c0602d9185905d95d6db0f930e140008ab49b0fe265b2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/19b3918d9fd81865-3060f107777a-run-browser-a3.mjs",
+      "sha256": "19b3918d9fd81865ddee6b4de29f2b931ccb38d04ff9f05384282c5e46341c39"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/34b7ab765c9b440d-08368e2fb822-browser-stdout.log",
+      "sha256": "34b7ab765c9b440d5d5967f83034eed4910115676cb966931eed3a830985d59b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/e5c86bf19aa4df99-cfe6422d35f0-browser-stderr.log",
+      "sha256": "e5c86bf19aa4df993601606c544164c535d8d70632df99516affcd0f7676e546"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/6207d7808f57a48d-e58fa2a34d45-playwright.json",
+      "sha256": "6207d7808f57a48d10e464789166498146fcd742ad4d3cc0fca949d3a6345099"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/423953de99f3f8b9-48375c4c22ef-booky-support-retry-failed-ru-320.png",
+      "sha256": "423953de99f3f8b9c560656142130fa1865d14b8a49bb053870c597a11dc5078"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/1ffb3d2239ad563e-8db1520bf8ff-result.json",
+      "sha256": "1ffb3d2239ad563e15d3c06f2b36a3d2ad1e0d1e22ff1f2ce957cd5b54522270"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/3c9bc4767b47e1cf-25c496b91faf-entry.json",
+      "sha256": "3c9bc4767b47e1cf0a16e2de076d9a37d5327fe317e4b59db59d9837f7a41e12"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/48a03df24ce7fc08-e1f338ee515b-source-manifest.json",
+      "sha256": "48a03df24ce7fc0887ff90fd489e6d9b3a9e4489bc8d5ca6855871d6596166ee"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/05b9800cdabcb80a-f0bbe43d32fd-execution.json",
+      "sha256": "05b9800cdabcb80aacc0f1f66ed4872a44945af121d39703048b42c12e63ec09"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/8b4650b212d915a0-a5b0cbdff018-run-browser-a4.mjs",
+      "sha256": "8b4650b212d915a093022165735fd22715661a740c7ca1b626da3f92bfd659d0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/3a8f1d56e1824329-9ee16376f455-browser-stdout.log",
+      "sha256": "3a8f1d56e18243295598601e1cecc95de07a3fda6c4adce14d5d85f34daf5556"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/6a043ce0707bbddb-48d3c6d9af6e-browser-stderr.log",
+      "sha256": "6a043ce0707bbddbcfdbd80a8537d72e7e1a3be6390055f424c9cecc948b735d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/3a3c3db499436b74-aa86bfa03090-playwright.json",
+      "sha256": "3a3c3db499436b74b1fff339d6c98dea432b910026634362beef640ea46124a1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/423953de99f3f8b9-3debe6d1443e-booky-support-retry-failed-ru-320.png",
+      "sha256": "423953de99f3f8b9c560656142130fa1865d14b8a49bb053870c597a11dc5078"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/cc1320dbbda50138-58a863344272-result.json",
+      "sha256": "cc1320dbbda5013868f5b7a053b7e02b7e6dd3894c828ca92b4b5432cca49cd5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/ff0c45376217bad4-1c55b792be78-entry.json",
+      "sha256": "ff0c45376217bad44a7ea7b65d8bcf8b08590eda1cacbed5a4ab0d12f41a7d6c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/021da6d01af955de-e237cd93f5f6-source-manifest.json",
+      "sha256": "021da6d01af955deaf38f3772625c2d452b1f90fc95b73388d8374b3db131b74"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/3ddece9ada9fdb85-06a7be20769f-execution.json",
+      "sha256": "3ddece9ada9fdb852a99772f218b0156cbd71d50923387bce9abf84cc3e2e44c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/9d05c7faf1a60039-a9521f29355f-run-browser-a5.mjs",
+      "sha256": "9d05c7faf1a600396d7050416ca11aed0a27ae62b533995dcf786f2be4c9e6d9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/aa3659fc6a7dfacb-1098ba2ab294-browser-stdout.log",
+      "sha256": "aa3659fc6a7dfacbf610ed138579fdbd09681be4d3c80c43494c2a30418bc633"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/54ac7e7d654531b0-a5e3a8fe9734-browser-stderr.log",
+      "sha256": "54ac7e7d654531b08cb1cc2291e20a9be5fadcc3f78dfabd246749a10d0daec5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/9079b24f4f0b2d0b-4f410f69550b-playwright.json",
+      "sha256": "9079b24f4f0b2d0b510113501afedca03c2fc4be56998bd4de7f0d65c1ab8eb0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/423953de99f3f8b9-9f6c89a78365-booky-support-retry-failed-ru-320.png",
+      "sha256": "423953de99f3f8b9c560656142130fa1865d14b8a49bb053870c597a11dc5078"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/builds/pwa/b7951ee9ba9e8e5d-603ef40ec561-result.json",
+      "sha256": "b7951ee9ba9e8e5d00d6f3b5e11c2214a40f19dc68fc72d85cd4c4433147a2ac"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/builds/android/975d0683b9882088-df6b1894004a-result.json",
+      "sha256": "975d0683b98820881fd535ea74ba4fede6386e18f3f8bc7002c485a3fb524ee0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/attachments/cb84247d1cbe3686-19e2dd266a16-booky-support-source-evidence-fc720c6d012d02537e853e3f8f7d313893267178.json",
+      "sha256": "cb84247d1cbe3686d7f952e7e4bcec834ccd091496ea083aba635297fc947cd8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/history/cbc2d1b58ada4164-22b1af2805ac-result.json",
+      "sha256": "cbc2d1b58ada4164f0a1e86c5177c25669e4c874ced0b1ad083b444637dc882b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/plan/21edf00543cbaa76-f23c24c4343d-next-action.txt",
+      "sha256": "21edf00543cbaa7680baf53300ece58bbef6d7ac79e88d66aed6b08b8f59f59c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/producers/166564cb8d310377-30811a46689c-checkpoint.mjs",
+      "sha256": "166564cb8d310377eb4320e8038c24582f44221cf3a90cd844c0b609698dfd0a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/producers/85b5b7fdc11d6570-64db9c6726eb-proposal.json",
+      "sha256": "85b5b7fdc11d65709c975e0e213137fa028ec403516ee8bf6e78ffa8589420c8"
+    }
+  ],
+  "allStatusesUnchanged": true,
+  "applicationChecksRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

@@ -1,0 +1,41 @@
+{
+  "name": "unit",
+  "pass": true,
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work/node_modules/vitest/vitest.mjs",
+    "run",
+    "src/loading/bookArchiveRuntime.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/bookyGlobeSupport.test.ts",
+    "src/components/RecentHistoryPanel.test.tsx",
+    "--reporter=json",
+    "--outputFile=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/unit-report.json"
+  ],
+  "startedAt": "2026-09-30T16:26:37.195Z",
+  "durationMs": 2220,
+  "exitCode": 0,
+  "error": null,
+  "producer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-review\\runtime-fix-a6\\run-checks.mjs",
+    "sha256": "4949236162b46844d0f72cd26d2d044ff26e807ce9ee3b48c995da0a621b9e0d"
+  },
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/entry.json",
+    "sha256": "796dfaa21fb451705669cdc15a191b2a25e92ab2840370b3af7c8d41e83fd56c"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/source-manifest.json",
+    "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "fileCount": 1665
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/unit-stdout.log",
+    "sha256": "098ea4a9ea9d978f04f2abc6be11eeb0461aa0573a49594f6c86b48c41b140af"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/unit-stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

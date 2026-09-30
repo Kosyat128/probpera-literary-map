@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:607:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe
+  1) D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:607:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe 
+
+    Error: Two stable 320px samples show pet/card without overlap, all inside the viewport, with both language controls directly clickable
+
+    Two stable 320px samples show pet/card without overlap, all inside the viewport, with both language controls directly clickable
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      348 |     layout.stableSamples=stableSamples;
+      349 |     return stableSamples>=2;
+    > 350 |   },{intervals:[100,200,300],message:'Two stable 320px samples show pet/card without overlap, all inside the viewport, with both language controls directly clickable'}).toBe(true);
+          |                                                                                                                                                                          ^
+      351 |   return layout;
+      352 | }
+      353 |
+        at fitNarrow (D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:350:170)
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:626:20
+
+    attachment #1: booky-support-source-evidence (application/json) ────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-exhausted-retry-assessment-evidence\attempt-a1\browser-a1\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\attachments\booky-support-source-evidence-0780001bc568a4f66b0a97c6eb214357b06a4f22.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-exhausted-retry-assessment-evidence\attempt-a1\browser-a1\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\error-context.md
+
+
+  1 failed
+    D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:607:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe 

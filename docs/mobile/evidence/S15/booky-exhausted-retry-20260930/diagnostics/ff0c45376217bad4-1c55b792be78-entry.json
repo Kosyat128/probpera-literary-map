@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "checkpoint": "f6b502d3ab4e86eda7927df638a863183dc174f6",
+  "browserFiles": [
+    "tests/pwa/booky-support.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe"
+  ],
+  "expectedBrowserTests": 1,
+  "expectedSuccessfulCaptures": 1,
+  "expectedCaptureFilenames": [
+    "booky-support-retry-failed-ru-320.png"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a5/source-manifest.json",
+    "sha256": "021da6d01af955deaf38f3772625c2d452b1f90fc95b73388d8374b3db131b74",
+    "fileCount": 1665
+  },
+  "priorSourceManifest": {
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work/docs/mobile/evidence/S15/native-reader-composition-20260930/actual/48e8db3dcaeeab54-ef433fdaadae-source-manifest.json",
+    "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "changedPaths": [
+    "tests/pwa/booky-support.spec.mjs"
+  ],
+  "acceptedD219Result": {
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work/docs/mobile/evidence/S15/native-reader-composition-20260930/result.json",
+    "sha256": "cbc2d1b58ada4164f0a1e86c5177c25669e4c874ced0b1ad083b444637dc882b"
+  },
+  "acceptedD219SourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "binding": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-review\\execution-outline-a1\\bound-a1/binding.json",
+    "sha256": "c339f28f1656e87de765b7f9fa1a920170cdbc2ff43668354ca2da07ce8713b3"
+  },
+  "fixtureProposal": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/revision-a1/proposal.json",
+    "sha256": "d4e54c938a03aad1bf6cf8067f3ef1ca8216ce37d7653e7f597b471130cd6662"
+  },
+  "helperInputs": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-assessment-review\\execution-outline-a1\\prepare-next.mjs",
+      "sha256": "12a5ab3eb8e1f1baca6c4713d44e5d12bc9cacb61e36e5c15dc5667623e4718c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/actual-inputs-a1.json",
+      "sha256": "cec30b68d77d218f3cbdbb07bc92a535303c59cd16ef3c076aa43210870b48c2"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/revision-a1/proposal.json",
+      "sha256": "d4e54c938a03aad1bf6cf8067f3ef1ca8216ce37d7653e7f597b471130cd6662"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/revision-a1/proposed.mjs",
+      "sha256": "8e3e9576d9803ea0e45a8bfb10fe84882d1addba824cece1c270a4afc6ff75c5",
+      "bytes": 60309
+    }
+  ],
+  "fixtureOnly": true,
+  "runtimeUnchanged": true,
+  "sourceCommit": null,
+  "actualBrowserResult": null,
+  "outcome": null,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "diagnosticExtension": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/diagnostic-a2/proposal.json",
+    "sha256": "74701ad54843c41a76a01a98fd258390d12cce4a2b5310f70aabc9c83e0573fe"
+  },
+  "priorFailedAssessment": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a1/result.json",
+    "sha256": "d435e4196efb70ddcb977cefa364191060c27952530336b972d2953739c28e58"
+  },
+  "headerFitCorrection": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/header-fit-a3/proposal.json",
+    "sha256": "b0f1e64974616e2b54e85217314975ebba48bdc334f4514db55357c0492c3038"
+  },
+  "priorFailedGeometryDiagnostic": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a2/result.json",
+    "sha256": "742b943361c7622a2bb1816dd146504bc51975a79776dcded549c7f94f66b5c0"
+  },
+  "currentSeedCorrection": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/current-seed-a4/proposal.json",
+    "sha256": "f8f6581d50d43ad4b88e8d9398ba9543f1d60ce489a4f22dc4b7f252a28b395c"
+  },
+  "priorFailedMigrationDiagnostic": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a3/result.json",
+    "sha256": "e01cf6089c5c12c4225a16a593e772499b943f933b2307fabdca95a371bfc0d8"
+  },
+  "explicitHelpCorrection": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/explicit-help-a5/proposal.json",
+    "sha256": "efbddeb5fc4268b7094596b144a3956f2aa14c20396bb2d08e39886e5f6fb5ef"
+  },
+  "priorFailedClosedHelpDiagnostic": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/execution-outline-a1/bound-a4/result.json",
+    "sha256": "1ffb3d2239ad563e15d3c06f2b36a3d2ad1e0d1e22ff1f2ce957cd5b54522270"
+  }
+}

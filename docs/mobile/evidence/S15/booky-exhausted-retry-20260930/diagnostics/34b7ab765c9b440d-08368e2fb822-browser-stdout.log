@@ -1,0 +1,86 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:623:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe
+  1) D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:623:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 53
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "key": "probpera-booky-adult-v1",
+    +     "observed": Object {
+    +       "backgroundCount": 0,
+    +       "backgroundResource": null,
+    +       "contextLost": false,
+    +       "frame": 10,
+    +       "geometry": "c52966c7-8813-4514-9af0-5e70fa4b5e17",
+    +       "gpu": Object {
+    +         "calls": 53,
+    +         "geometries": 93,
+    +         "textures": 3,
+    +         "triangles": 92355,
+    +       },
+    +       "mascotObjects": Array [],
+    +       "pose": Object {
+    +         "fov": 43,
+    +         "position": Array [
+    +           -0.22336,
+    +           2.58914,
+    +           -1.37654,
+    +         ],
+    +         "quaternion": Array [
+    +           0.04119,
+    +           0.85577,
+    +           0.51108,
+    +           -0.06898,
+    +         ],
+    +         "target": Array [
+    +           0,
+    +           0,
+    +           0,
+    +         ],
+    +         "zoom": 1,
+    +       },
+    +       "quality": "high",
+    +       "sameScene": true,
+    +       "selection": Object {
+    +         "backgroundId": "background.base.site-starfield",
+    +         "editionId": "rand-mcnally-1887",
+    +         "standId": "canonical",
+    +       },
+    +       "standCount": 0,
+    +       "surfaceCount": 1,
+    +       "texture": "1929e05b-457c-4ec3-9c99-9be25c675543",
+    +       "uploaded": true,
+    +       "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+    +     },
+    +     "operation": "set",
+    +     "value": "{\"schemaVersion\":2,\"audience\":\"adult\",\"visible\":true,\"resume\":{\"route\":\"overview\",\"routeVersion\":1,\"stepId\":\"collection\"},\"progress\":[]}",
+    +   },
+    + ]
+
+      660 |     result.observations.explicitReturn = await snapshot(page);
+      661 |     expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk]);
+    > 662 |     expect(fixture.bookyWrites()).toEqual([]); expect(JSON.parse(fixture.memory.get(BOOKY))).toEqual(SEED);
+          |                                   ^
+      663 |     expect(fixture.writes()).toEqual([]); expect(fixture.memory.get(KEY)).toBe(fixture.initialRecord);
+      664 |     Object.assign(result, { realPrimaryAndRetryChunkFailures: true, persistentFailureStaysHonest: true,
+      665 |       networkHintsCannotClearContentError: true, noAutomaticRetry: true, explicitReturnUsesCanonicalGlobe: true,
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:662:35
+
+    attachment #1: booky-support-source-evidence (application/json) ────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-exhausted-retry-assessment-evidence\attempt-a3\browser-a1\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\attachments\booky-support-source-evidence-f30aa4c45f2aba44a8a00cbe0872c79c51f67650.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-exhausted-retry-assessment-evidence\attempt-a3\browser-a1\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\error-context.md
+
+
+  1 failed
+    D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:623:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe 

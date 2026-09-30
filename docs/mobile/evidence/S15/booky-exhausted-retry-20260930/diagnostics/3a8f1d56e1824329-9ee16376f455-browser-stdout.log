@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:623:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe
+  1) D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:623:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: locator('[data-booky-support]')
+    Expected: "books-error"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" with timeout 5000ms
+      - waiting for locator('[data-booky-support]')
+
+
+      575 |       page.locator('.atlas-immersive-chrome [data-atlas-action="open-collection"]'), 'existing collection toolbar');
+      576 |     await expect(pet(page)).toHaveAttribute('data-planet-mascot-screen', 'collection');
+    > 577 |     await expect(support(page)).toHaveAttribute('data-booky-support', 'books-error');
+          |                                 ^
+      578 |     await expect(page.locator('.stage5-deferred-books')).toHaveAttribute('data-loading-status', 'error');
+      579 |     expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk]);
+      580 |     observation.beforeRestoration = await retryAssessmentState(page);
+        at assessRestoredBookRetry (D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:577:33)
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:670:5
+
+    attachment #1: booky-support-source-evidence (application/json) ────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-exhausted-retry-assessment-evidence\attempt-a4\browser-a1\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\attachments\booky-support-source-evidence-a6f0a87e1ad90dc8593aedf8c85532f34d544607.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-exhausted-retry-assessment-evidence\attempt-a4\browser-a1\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\error-context.md
+
+
+  1 failed
+    D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:623:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe 

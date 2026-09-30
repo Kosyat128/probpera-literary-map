@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-state.mjs"
+  ],
+  "startedAt": "2026-09-30T16:44:16.976Z",
+  "durationMs": 27500,
+  "exitCode": 0,
+  "error": null,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/checkpoint-review-a1/checkpoint.mjs",
+    "sha256": "166564cb8d310377eb4320e8038c24582f44221cf3a90cd844c0b609698dfd0a"
+  },
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/verify-state-a1/stdout.log",
+    "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/verify-state-a1/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "applicationChecksRun": false,
+  "testsRun": false,
+  "buildsRun": false
+}
