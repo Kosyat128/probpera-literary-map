@@ -21,6 +21,7 @@ const mime = { '.js': 'text/javascript', '.css': 'text/css', '.json': 'applicati
   '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.avif': 'image/avif', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.woff': 'font/woff', '.woff2': 'font/woff2' };
 let files, selectedAssets, sourceEvidence, bookChunks, primaryBookChunk, retryBookChunk;
 let countryChunks, primaryCountryChunk, retryCountryChunk, componentChunks, primaryComponentChunk, retryComponentChunk;
+let globeFocusTimingTransform;
 
 // Actual App, source CSS and existing R3F scene. Native OS/preference bindings
 // and HTTP delivery of real split chunks are controlled. Every camera movement uses real product controls or
@@ -71,6 +72,54 @@ test.beforeAll(async () => {
       async renderSample(){const root=current();if(!root)throw Error('No mounted globe renderer');
         for(let i=0;i<2;i++){root.invalidate();await new Promise(requestAnimationFrame)}return window.__bookySupportFixture.sample();},
     };
+
+    // Test-only scheduler for the single transformed globe-controls focus RAF.
+    // Native RAF identity and every unrelated callback remain untouched.
+    const nativeFocusRafOwner=window.requestAnimationFrame,nativeFocusRaf=nativeFocusRafOwner.bind(window);
+    let focusArmed=false,focusPending=null,focusRecord=null,focusSerial=0,focusTracing=false,focusEvents=[];
+    let releaseTracing=false,releaseSamples=[];
+    const focusIdentity=element=>element instanceof Element?{tag:element.tagName,id:element.id,
+      atlasOwnerTag:element.closest('[data-atlas-action]')?.tagName??null,
+      atlasAction:element.closest('[data-atlas-action]')?.getAttribute('data-atlas-action')??null,
+      globeOwnerTag:element.closest('[data-globe-control]')?.tagName??null,
+      globeControl:element.closest('[data-globe-control]')?.getAttribute('data-globe-control')??null,
+      searchInput:!!element.closest('[data-atlas-search-input]'),bookyToggle:!!element.closest('[data-planet-mascot-toggle]')}:null;
+    const recordFocusEvent=event=>{if(focusTracing&&focusEvents.length<320)focusEvents.push({type:event.type,at:performance.now(),
+      trusted:event.isTrusted,key:event.key??null,pointerType:event.pointerType??null,target:focusIdentity(event.target),
+      active:focusIdentity(document.activeElement)});};
+    for(const type of ['pointerdown','keydown','input','focusin'])document.addEventListener(type,recordFocusEvent,true);
+    window.__bookyGlobeFocusRace={
+      arm(){if(focusArmed||focusPending)throw Error('A focus callback is already armed or pending');
+        focusArmed=true;focusRecord=null;focusTracing=true;focusEvents=[];releaseTracing=false;releaseSamples=[];},
+      schedule(callback){
+        if(!focusArmed)return nativeFocusRaf(callback);
+        focusArmed=false;
+        if(focusPending)throw Error('Only one globe-controls focus callback may be held');
+        const record={id:++focusSerial,callbackText:callback.toString(),scheduledAt:performance.now(),
+          nativeFrameAt:null,heldAt:null,releaseAt:null,invocationAt:null,completionAt:null};
+        focusRecord=record;focusPending={callback,record};
+        return nativeFocusRaf(timestamp=>{record.nativeFrameAt=timestamp;record.heldAt=performance.now();});
+      },
+      release(){
+        if(!focusPending||focusPending.record.heldAt===null)throw Error('Native frame must deliver the held callback first');
+        const pending=focusPending;focusPending=null;pending.record.releaseAt=performance.now();
+        // Separate read-only bounded samples for this extension; old trace3600 stays exact.
+        releaseTracing=true;
+        const observeRelease=()=>{if(!releaseTracing)return;const cue=document.querySelector('[data-booky-target]'),pet=document.querySelector('[data-planet-mascot-pet]');
+          releaseSamples.push({at:performance.now(),action:cue?.getAttribute('data-booky-target-action')??null,
+            cue:cue?.getAttribute('data-booky-target')??null,gesture:pet?.getAttribute('data-planet-mascot-gesture')??null,
+            active:focusIdentity(document.activeElement)});
+          if(releaseSamples.length<256)nativeFocusRaf(observeRelease);};
+        nativeFocusRaf(observeRelease);
+        return nativeFocusRaf(timestamp=>{pending.record.invocationAt=performance.now();
+          try{pending.callback(timestamp);}finally{pending.record.completionAt=performance.now();}});
+      },
+      read(){return {armed:focusArmed,pendingId:focusPending?.record.id??null,
+        nativeRafUnchanged:window.requestAnimationFrame===nativeFocusRafOwner,
+        record:focusRecord?{...focusRecord}:null,events:focusEvents.map(event=>({...event})),
+        releaseSamples:releaseSamples.map(sample=>({...sample})),caps:{inputFocusEvents:320,releaseSamples:256}};},
+      stop(){focusTracing=false;releaseTracing=false;return this.read();}
+    };
     createAndroidPlatformAdapter({bindings,channel:'dev'}).then(mountHostApp).catch(error=>{window.__bookySupportFixtureError=error.message});
   ` }, bundle: true, write: false, metafile: true, outdir: output, entryNames: 'booky-support', assetNames: 'assets/[name]-[hash]',
     publicPath: '/fixture/', format: 'esm', splitting: true, chunkNames: 'chunks/[name]-[hash]', platform: 'browser', target: 'es2020', jsx: 'automatic', logLevel: 'silent',
@@ -92,7 +141,32 @@ test.beforeAll(async () => {
         const [filename, query] = args.path.split('?'); return { path: path.resolve(args.resolveDir, filename), suffix: '?' + query };
       });
       builder.onLoad({ filter: /[\\/](?:bookArchiveRuntime\.ts|App\.tsx|DeferredHomepageArchives\.tsx)$/ }, async args => {
-        const source = await fs.readFile(args.path, 'utf8'); let replacements = 0;
+        const originalSource = await fs.readFile(args.path, 'utf8'); let source=originalSource, replacements = 0;
+        if(path.basename(args.path)==='App.tsx'){
+          let anchor=[
+            '      window.requestAnimationFrame(() => {',
+            '        document.removeEventListener("pointerdown", interrupt, true);',
+            '        document.removeEventListener("keydown", interrupt, true);',
+            '        document.removeEventListener("visibilitychange", interrupt);',
+            '        const state = mascot.getSnapshot(), focused = document.activeElement;',
+            '        if (interrupted || document.hidden || focusSequence !== mascotFocusSequence.current || state.revision !== revision',
+            '          || !state.available || state.visibility !== "shown" || state.panel !== "closed" || state.mode !== "help"',
+            '          || findControl() !== target || focused !== origin && focused !== document.body',
+            '            && !focused?.closest("[data-planet-mascot-toggle]")) return;',
+            '        target.focus({ preventScroll: true });',
+            '      });',
+          ].join('\n');
+          if(!source.includes(anchor))anchor=anchor.replaceAll('\n','\r\n');
+          const timingAnchor=anchor.replace('window.requestAnimationFrame(', 'window.__bookyGlobeFocusRace.schedule(');
+          expect(source.split(anchor),'one exact globe-controls focus RAF anchor').toHaveLength(2);
+          source=source.replace(anchor,timingAnchor);
+          expect(source.split(timingAnchor),'one timing-only transformed anchor').toHaveLength(2);
+          expect(source.replace(timingAnchor,anchor),'single-callee inverse restores exact App source').toBe(originalSource);
+          globeFocusTimingTransform={actualAppSourceSha256:digest(Buffer.from(originalSource)),
+            originalAnchorSha256:digest(Buffer.from(anchor)),timingAnchorSha256:digest(Buffer.from(timingAnchor)),
+            originalCallee:'window.requestAnimationFrame',timingCallee:'window.__bookyGlobeFocusRace.schedule',
+            callbackBodyChanged:false,exactInverseVerified:true};
+        }
         const expected = args.path.endsWith('bookArchiveRuntime.ts') ? ['../planet/books', '../planet/books.ts']
           : args.path.endsWith('DeferredHomepageArchives.tsx') ? ['../components/BookArchiveSection', '../components/BookArchiveSection.tsx']
           : ['./planet/catalog', './planet/catalog.ts'];
@@ -164,13 +238,14 @@ test.beforeAll(async () => {
     if (entry.source !== 'public/' + entry.output || entry.transformation !== 'none' || /(?:^|\/)\.\.(?:\/|$)|\\/u.test(entry.output)) throw Error('Invalid selected native asset');
     return ['/' + entry.output, entry];
   }));
-  sourceEvidence = { externalFixtureSha256: digest(await fs.readFile(fileURLToPath(import.meta.url))), kind: 'canonical-app-booky-globe-guidance-in-Chrome', actualApp: true, actualCss: true, actualGlobe: true,
-    controlledPorts: ['native OS plugins and preferences backed by a Node map', 'HTTP responses for real dynamic country, book runtime and collection component chunks with no injected transport failures', 'API-initiated real canonical WebGL context loss/restoration via WEBGL_lose_context; not native lifecycle'],
+  sourceEvidence = { externalFixtureSha256: digest(await fs.readFile(fileURLToPath(import.meta.url))), kind: 'canonical-app-booky-globe-guidance-in-Chromium', actualApp: true, actualCss: true, actualGlobe: true,
+    controlledPorts: ['native OS plugins and preferences backed by a Node map', 'HTTP responses for real dynamic country, book runtime and collection component chunks with no injected transport failures', 'API-initiated real canonical WebGL context loss/restoration via WEBGL_lose_context; not native lifecycle', 'Test-only delayed delivery of the exact single globe-controls focus RAF callback; body and reference retained, native RAF and unrelated callbacks unchanged'],
+    globeFocusTimingTransform,
     bookChunks, primaryBookChunk, retryBookChunk, sharedBookDependencies,
     countryChunks, primaryCountryChunk, retryCountryChunk, sharedCountryDependencies,
     componentChunks, primaryComponentChunk, retryComponentChunk, sharedComponentDependencies, sourceInputs,
     cameraAuthority: 'Companion show/hide/tour steps do not own the camera. Only existing canonical App navigation owns scene changes; no fixture camera assignments.',
-    representation: 'Actual-App RU/EN mobile globe guidance uses trusted touch and read-only scene observations. Canonical WebGL loss/restoration is explicitly API-initiated. The fixture expands canonical Vite globs and builds in-memory esbuild ESM chunks; this is source behavior evidence, not a dist artifact, installed-device or service-availability test.',
+    representation: 'Original actual-App RU/EN mobile globe guidance uses trusted touch and read-only scene observations. Appended cancellation checks use a disclosed single-focus-callback scheduling hold: RU newer trusted toolbar Search; EN actual keyboard navigation/input as a mobile accessibility race harness. Canonical WebGL loss/restoration is API-initiated. Canonical Vite globs expand into in-memory esbuild ESM chunks; this is source behavior evidence, not a dist artifact, full keyboard/screen-reader acceptance, installed-device or service-availability test.',
     fallbackArtwork: { path: ASSET, sha256: ASSET_SHA, bytes: assetBytes.length, width: 1254, height: 1254, pngColorType: 6,
       bundledPath: '/fixture/' + path.relative(output, assetOutput.path).replaceAll('\\', '/') },
     publicAssetSelectionSha256: digest(selectionBytes), selectedAssetCount: selectedAssets.size,
@@ -181,7 +256,7 @@ test.beforeAll(async () => {
 async function open(testInfo, { rejectBooks = 0, rejectCountries = 0, rejectComponents = 0 } = {}) {
   const profileRoot = path.resolve(process.env.S15_BROWSER_PROFILE_ROOT ?? path.join(ROOT, '.tmp/s15-booky-live'));
   await fs.mkdir(profileRoot, { recursive: true }); const profile = await fs.mkdtemp(path.join(profileRoot, 'pk-'));
-  const context = await chromium.launchPersistentContext(profile, { channel: 'chrome', headless: true,
+  const context = await chromium.launchPersistentContext(profile, { channel: process.env.S15_BROWSER_CHANNEL || 'chrome', headless: true,
     viewport: { width: 1440, height: 850 }, reducedMotion: 'reduce', hasTouch: true });
   const page = await context.newPage(); page.setDefaultTimeout(12_000);
   const initialRecord = JSON.stringify({ schemaVersion: 1, commitId: 'booky-support-fixture:1', selection: BASE });
@@ -446,12 +521,12 @@ for(const language of ['ru','en'])test('Booky mobile globe guidance '+language,a
     o.focus=await guidanceState(page);const focused=page.locator('#atlas .globe-controls [data-globe-control="'+o.focus.focusedControl+'"]');o.focusGeometry=await input.geometry(focused);expect(o.focusGeometry.box.width).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.box.height).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.hits.every(hit=>hit.inside)).toBe(true);retained(await actual(page),baseGlobe);
     await expect(page.locator('[data-booky-target-action="globe-controls"]')).toHaveCount(1);
     if(language==='ru'){
-      await expect(page.locator('[data-booky-walk-stop]')).toBeVisible();await input.tap(page.locator('[data-booky-walk-stop]'),'Stop finite globe-controls approach',{moving:true});
+      await expect(page.locator('[data-booky-walk-stop]')).toBeVisible();await expect(page.locator('[data-booky-walk-stop]')).toHaveAccessibleName('Остановить прогулку');await expect(page.locator('[data-booky-walk-stop]')).toHaveAttribute('title','Остановить прогулку');await input.tap(page.locator('[data-booky-walk-stop]'),'Stop finite globe-controls approach',{moving:true});
       await expect(page.locator('[data-booky-target]')).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');await page.waitForTimeout(1900);await expect(page.locator('[data-booky-target]')).toHaveCount(0);o.finiteCuePolicy='normal-motion approach stopped by a genuine trusted Stop';
     }else{
       await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','pointing');await expect(page.locator('[data-booky-target]')).toHaveAttribute('data-booky-target','tapping');await expect(page.locator('[data-booky-target]')).toHaveCount(0,{timeout:2000});await page.waitForTimeout(850);o.finiteCuePolicy='OS reduced motion uses a finite still pointing pose, then settles without replay';
     }
-    const cueTrace=await page.evaluate(()=>window.__globeGuidanceTrace.samples.filter(row=>row.phase==='show-controls'));expect(cueTrace.some(row=>row.action==='globe-controls')).toBe(true);if(language==='en'){expect(cueTrace.some(row=>row.cue==='approaching')).toBe(false);const still=cueTrace.filter(row=>row.cue==='tapping');expect(still.length).toBeGreaterThan(1);expect(still.every(row=>JSON.stringify(row.pet)===JSON.stringify(still[0].pet))).toBe(true);}o.cueTrace=cueTrace;
+    const cueTrace=await page.evaluate(()=>window.__globeGuidanceTrace.samples.filter(row=>row.phase==='show-controls'));expect(cueTrace.some(row=>row.action==='globe-controls')).toBe(true);if(language==='en'){expect(cueTrace.some(row=>row.cue==='approaching')).toBe(false);const still=cueTrace.filter(row=>row.cue==='tapping');expect(still.length).toBeGreaterThan(1);expect(still.every(row=>JSON.stringify(row.pet)===JSON.stringify(still[0].pet))).toBe(true);}else{const approaching=cueTrace.filter(row=>row.cue==='approaching');expect(approaching.length).toBeGreaterThan(0);expect(approaching.every(row=>row.pet.width===120&&row.pet.height===64),'Stop occupies the existing cell without growing the compact actor').toBe(true);}o.cueTrace=cueTrace;
     await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-controls.png','Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.');
     retained(await actual(page),baseGlobe);expect(await page.evaluate(()=>window.__globeGuidanceTrace.controlClicks)).toEqual([]);expect(saved()).toEqual(preferences);
     if(language==='ru'){
@@ -490,16 +565,99 @@ for(const language of ['ru','en'])test('Booky mobile globe guidance '+language,a
     }
     await phase('actual-user-zoom');const beforeZoom=await actual(page);const zoom=page.locator('#atlas [data-globe-control="zoom-in"]');await expect(zoom).toBeEnabled();await input.tap(zoom,'real user zoom in');await expect.poll(async()=>JSON.stringify((await sample(page)).pose),{intervals:[80,150],timeout:5000}).not.toBe(JSON.stringify(beforeZoom.pose));await ready(page);await stablePose(page);const afterZoom=await actual(page);retained(afterZoom,beforeZoom,false,true);const controlClicks=await page.evaluate(()=>window.__globeGuidanceTrace.controlClicks);expect(controlClicks).toEqual([{phase:'actual-user-zoom',control:'zoom-in',trusted:true,pointerType:'touch'}]);o.realZoom={before:beforeZoom,after:afterZoom,controlClicks};
     await phase('globe-loss');await expandGuidance();const beforeLoss=await actual(page),lossContext=await guidanceState(page);await page.evaluate(()=>{const owner=window.__bookySupportFixture.scenes().find(row=>document.querySelector('#atlas')?.contains(row.canvas)),extension=owner?.renderer.getContext().getExtension('WEBGL_lose_context');if(!extension)throw Error('Canonical renderer does not expose WEBGL_lose_context');window.__canonicalGlobeLoss=extension;extension.loseContext();});
-    await expect(globe(page)).toHaveAttribute('data-globe-webgl-context','lost');await expect(notice()).toBeVisible();await expect(page.locator('[data-planet-mascot-context-tip]')).toHaveCount(0);await expect(show()).toBeDisabled();const lost=await sample(page);expect(lost.contextLost).toBe(true);retained(lost,beforeLoss);o.loss={before:beforeLoss,beforeContext:lossContext,lost,notice:await notice().textContent(),state:await guidanceState(page)};
+    await expect(globe(page)).toHaveAttribute('data-globe-webgl-context','lost');await expect(notice()).toBeVisible();await expect(page.locator('[data-planet-mascot-context-tip]')).toHaveCount(0);await expect(show()).toBeDisabled();const lost=await sample(page);expect(lost.contextLost).toBe(true);retained(lost,beforeLoss);o.loss={before:beforeLoss,beforeContext:lossContext,lost,notice:await notice().textContent(),showDisabled:await show().isDisabled(),state:await guidanceState(page)};
     await input.expose(notice(),'current globe-unavailable explanation');await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-unavailable.png','Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.');
-    await input.tap(page.locator('[data-planet-mascot-action="search"]'),'Search remains usable during globe loss');await expect(page.locator('[data-atlas-action="toggle-search"]')).toHaveAttribute('aria-expanded','true');await expect(panel(page)).toBeVisible();await expect(show()).toBeDisabled();await expect(notice()).toBeVisible();o.refusal={reason:'actual lost globe plus real competing atlas Search surface',state:await guidanceState(page),showDisabled:await show().isDisabled(),contextTipCount:await page.locator('[data-planet-mascot-context-tip]').count()};
+    await input.tap(page.locator('[data-planet-mascot-action="search"]'),'Search remains usable during globe loss');await expect(page.locator('[data-atlas-action="toggle-search"]')).toHaveAttribute('aria-expanded','true');await expect(panel(page)).toHaveCount(0);const unavailableSearch=page.locator('[data-atlas-search-input]:visible');await expect(unavailableSearch).toHaveCount(1);await expect(unavailableSearch).toBeEnabled();await expect(unavailableSearch).toBeFocused();await guidanceSettle(page);await expect(unavailableSearch).toBeFocused();o.refusal={reason:'actual lost globe with mobile Search owning foreground',state:await guidanceState(page),helpRetired:true,showDisabledBeforeSearch:o.loss.showDisabled,contextTipCount:await page.locator('[data-planet-mascot-context-tip]').count()};
     o.searchClose={beforeCollapse:await guidanceState(page)};await collapse();o.searchClose.afterCollapse=await guidanceState(page);
     if(o.searchClose.afterCollapse.searchOpen==='true'){
       await input.tap(page.locator('[data-atlas-action="toggle-search"]'),'close currently open atlas Search');await expect(page.locator('[data-atlas-action="toggle-search"]')).toHaveAttribute('aria-expanded','false');o.searchClose.observedTransition='closed-by-one-toolbar-touch-after-help-collapse';
     }else{expect(o.searchClose.afterCollapse.searchOpen).toBe('false');o.searchClose.observedTransition='already-closed-during-explicit-help-collapse';}
-    o.searchClose.final=await guidanceState(page);await expect(page.locator('[data-atlas-action="toggle-search"]')).toHaveAttribute('aria-expanded','false');await page.evaluate(()=>window.__canonicalGlobeLoss.restoreContext());await ready(page);await stablePose(page);const restored=await actual(page);retained(restored,beforeLoss);await help();await expect(notice()).toHaveCount(0);await expect(page.locator('[data-planet-mascot-context-tip]')).toHaveCount(1);await expandGuidance();await expect(show()).toBeEnabled();o.restored={globe:restored,state:await guidanceState(page)};
+    o.searchClose.final=await guidanceState(page);await expect(page.locator('[data-atlas-action="toggle-search"]')).toHaveAttribute('aria-expanded','false');await help();await expect(show()).toBeDisabled();await expect(notice()).toBeVisible();o.refusal.afterSearchClosed=await guidanceState(page);await page.evaluate(()=>window.__canonicalGlobeLoss.restoreContext());await ready(page);await stablePose(page);const restored=await actual(page);retained(restored,beforeLoss);await help();await expect(notice()).toHaveCount(0);await expect(page.locator('[data-planet-mascot-context-tip]')).toHaveCount(1);await expandGuidance();await expect(show()).toBeEnabled();o.restored={globe:restored,state:await guidanceState(page)};
     expect(saved()).toEqual(preferences);expect(fixture.operations.slice(operationStart).filter(entry=>entry.operation!=='get')).toEqual([]);expect(fixture.bookyWrites()).toEqual([]);expect(fixture.writes()).toEqual([]);const finalState=await guidanceState(page);for(const key of ['mode','route','step','screen','visibility','url'])expect(finalState[key]).toEqual(o.baseline.state[key]);
-    o.checks=['localized mobile instructions are readable without implicit globe movement','trusted Show controls closes help and focuses a real enabled canonical control','finite Booky cue respects normal Stop or reduced motion','only the later real user zoom changes the canonical camera pose','actual WebGL loss shows current unavailable help without contradictory context tips','Search remains usable and Show controls is disabled while the globe is unavailable','real context restoration clears unavailable guidance and retains canonical owners','Booky route progress preferences and canonical selection remain exact'].map(name=>({name,pass:true}));Object.assign(result,{mobileGuidanceVerified:true,trustedControlsFocusVerified:true,finiteCuePolicyVerified:true,realZoomOnlyVerified:true,realGlobeLossVerified:true,unavailableSearchGateVerified:true,contextRestorationVerified:true,preferencesAndSelectionPreserved:true});if(language==='ru')o.checks.push({name:'a controlled reserved top cutoff stops a fresh target approach without replay',pass:true});fixture.verify();
+    o.checks=['localized mobile instructions are readable without implicit globe movement','trusted Show controls closes help and focuses a real enabled canonical control','finite Booky cue respects normal Stop or reduced motion','only the later real user zoom changes the canonical camera pose','actual WebGL loss shows current unavailable help without contradictory context tips','Search remains usable and Show controls is disabled while the globe is unavailable','real context restoration clears unavailable guidance and retains canonical owners','Booky route progress preferences and canonical selection remain exact'].map(name=>({name,pass:true}));Object.assign(result,{mobileGuidanceVerified:true,trustedControlsFocusVerified:true,finiteCuePolicyVerified:true,realZoomOnlyVerified:true,realGlobeLossVerified:true,unavailableSearchGateVerified:true,contextRestorationVerified:true,preferencesAndSelectionPreserved:true});if(language==='ru')o.checks.push({name:'a controlled reserved top cutoff stops a fresh target approach without replay',pass:true});
+    // Append after every original assertion and the three original locale captures.
+    // Controlled scheduling race only; no native-device or desktop-flow claim.
+    result.originalGuidanceTouchOnlyProductActions=result.touchOnlyProductActions;
+    result.touchOnlyProductActions=language==='ru';
+    result.keyboardAccessibilityRaceHarness=language==='en';
+    result.controlledSingleGlobeFocusRafTiming=true;
+    const race=o.focusCallbackRace={language,mechanism:'single exact App focus RAF callee only; original callback retained until a later native RAF',
+      keyboardScope:language==='en'?'Actual keyboard focus/input in the mobile App solely for cancellation evidence; no desktop flow or full accessibility claim':null};
+    await expandGuidance();await input.expose(show(),'fresh Show before focus callback interruption');
+    await phase('focus-race-held');await page.evaluate(()=>window.__bookyGlobeFocusRace.arm());
+    await input.tap(show(),'trusted Show with its single focus callback held');await expect(panel(page)).toHaveCount(0);
+    await expect.poll(()=>page.evaluate(()=>window.__bookyGlobeFocusRace.read().record?.heldAt??null),
+      {intervals:[16,32],timeout:2000,message:'native RAF delivered the held single focus callback'}).not.toBeNull();
+    race.held=await page.evaluate(()=>window.__bookyGlobeFocusRace.read());
+    expect(race.held.nativeRafUnchanged).toBe(true);expect(race.held.armed).toBe(false);
+    expect(race.held.pendingId).toBe(race.held.record.id);expect(race.held.record.invocationAt).toBeNull();
+    expect(race.held.record.completionAt).toBeNull();await expect(page.locator('[data-booky-target-action="globe-controls"]')).toHaveCount(1);
+    race.beforeInterruption={state:await guidanceState(page),globe:await actual(page),preferences:saved()};
+    const searchToolbar=page.locator('[data-atlas-action="toggle-search"]');
+    await expect(searchToolbar).toHaveAttribute('aria-expanded','false');
+    await phase('focus-race-newer-input');
+    if(language==='ru'){
+      await input.tap(searchToolbar,'newer trusted atlas Search while focus callback is held');
+    }else{
+      // Actual page.keyboard events only: no locator.press, DOM.focus or assigned outcome.
+      race.keyboardSteps=[];
+      await expect(page.locator('[data-planet-mascot-toggle]')).toBeFocused();
+      let searchFocused=false;
+      for(let step=0;step<80;step++){
+        await page.keyboard.press('Shift+Tab');
+        const observed=await page.evaluate(()=>({searchFocused:document.activeElement?.matches('[data-atlas-action="toggle-search"]')??false,
+          active:{tag:document.activeElement?.tagName,id:document.activeElement?.id,
+            atlasAction:document.activeElement?.getAttribute('data-atlas-action'),globeControl:document.activeElement?.getAttribute('data-globe-control')}}));
+        race.keyboardSteps.push({key:'Shift+Tab',observed});
+        if(observed.searchFocused){searchFocused=true;break;}
+      }
+      expect(searchFocused,'bounded actual keyboard navigation reaches current atlas Search').toBe(true);
+      await expect(searchToolbar).toBeFocused();await page.keyboard.press('Enter');
+    }
+    await expect(searchToolbar).toHaveAttribute('aria-expanded','true');
+    const searchInput=page.locator('[data-atlas-search-input]:visible');await expect(searchInput).toHaveCount(1);
+    await expect(searchInput).toBeFocused();
+    if(language==='en'){
+      await page.keyboard.type('verne');await expect(searchInput).toHaveValue('verne');
+      race.keyboardSteps.push({key:'Enter then typed verne',observed:await guidanceState(page)});
+    }
+    await expect(page.locator('[data-booky-target-action="globe-controls"]')).toHaveCount(0);
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');
+    race.interrupted=await page.evaluate(()=>{window.__bookyGuidanceNewerFocus=document.activeElement;return window.__bookyGlobeFocusRace.read();});
+    expect(race.interrupted.record.invocationAt).toBeNull();expect(race.interrupted.pendingId).toBe(race.held.record.id);
+    const trustedInterrupt=race.interrupted.events.find(event=>event.trusted&&event.at>race.held.record.heldAt
+      &&(language==='ru'?event.type==='pointerdown'&&event.target?.atlasAction==='toggle-search':event.type==='keydown'&&event.key==='Tab'));
+    expect(trustedInterrupt,'new genuine input occurred after the native frame held the callback').toBeTruthy();
+    if(language==='en')expect(race.interrupted.events.some(event=>event.type==='input'&&event.trusted&&event.target?.searchInput)).toBe(true);
+    race.newerFocus=await guidanceState(page);race.releaseMarker=await page.evaluate(()=>performance.now());
+    await phase('focus-race-release');await page.evaluate(()=>window.__bookyGlobeFocusRace.release());
+    await expect.poll(()=>page.evaluate(()=>window.__bookyGlobeFocusRace.read().record?.completionAt??null),
+      {intervals:[16,32],timeout:2000,message:'exact delayed callback actually executed after interruption'}).not.toBeNull();
+    await guidanceSettle(page);race.completed=await page.evaluate(()=>window.__bookyGlobeFocusRace.read());
+    expect(race.completed.nativeRafUnchanged).toBe(true);expect(race.completed.pendingId).toBeNull();
+    expect(race.completed.record.id).toBe(race.held.record.id);
+    expect(race.completed.record.callbackText).toBe(race.held.record.callbackText);
+    expect(race.completed.record.releaseAt).toBeGreaterThan(trustedInterrupt.at);
+    expect(race.completed.record.invocationAt).toBeGreaterThanOrEqual(race.completed.record.releaseAt);
+    expect(race.completed.record.completionAt).toBeGreaterThanOrEqual(race.completed.record.invocationAt);
+    expect(await page.evaluate(()=>document.activeElement===window.__bookyGuidanceNewerFocus)).toBe(true);
+    await expect(searchInput).toBeFocused();await expect(searchToolbar).toHaveAttribute('aria-expanded','true');
+    expect(race.completed.events.filter(event=>event.type==='focusin'&&event.at>=race.releaseMarker&&event.target?.globeControl)).toEqual([]);
+    await expect(page.locator('[data-booky-target-action="globe-controls"]')).toHaveCount(0);
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');
+    await page.waitForTimeout(1900);await expect(searchInput).toBeFocused();
+    await expect(page.locator('[data-booky-target-action="globe-controls"]')).toHaveCount(0);
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');
+    race.trace=await page.evaluate(()=>window.__bookyGlobeFocusRace.read().releaseSamples);
+    expect(race.trace.length).toBeGreaterThan(1);expect(race.trace.some(row=>row.action==='globe-controls')).toBe(false);
+    race.after={state:await guidanceState(page),globe:await actual(page),preferences:saved()};
+    retained(race.after.globe,restored);expect(race.after.preferences).toEqual(preferences);
+    for(const key of ['mode','route','step','screen','visibility','url'])expect(race.after.state[key]).toEqual(finalState[key]);
+    expect(fixture.operations.slice(operationStart).filter(entry=>entry.operation!=='get')).toEqual([]);
+    expect(fixture.bookyWrites()).toEqual([]);expect(fixture.writes()).toEqual([]);
+    expect(await page.evaluate(()=>window.__globeGuidanceTrace.controlClicks)).toEqual(controlClicks);
+    race.completed=await page.evaluate(()=>window.__bookyGlobeFocusRace.stop());
+    fixture.verify();
   }catch(error){const filename='diagnostic-failure-'+language+'.png',bytes=await page.screenshot({path:testInfo.outputPath(filename)});o.failureCapture={filename,sha256:digest(bytes),error:error.message,scope:'failure diagnosis only'};await testInfo.attach('diagnostic-failure-'+language,{path:testInfo.outputPath(filename),contentType:'image/png'});throw error;
   }finally{o.trace=await page.evaluate(()=>{const state=window.__globeGuidanceTrace;if(state)state.active=false;return state??null;});await input.close();await fixture.close();}
 });

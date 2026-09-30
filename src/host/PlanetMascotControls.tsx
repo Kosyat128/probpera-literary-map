@@ -324,8 +324,12 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     prior.current = { panel: snapshot.panel, visibility: snapshot.visibility };
     if (!snapshot.available) return;
     if (open && previous.panel !== "open") heading.current?.focus({ preventScroll: true });
-    else if ((!open && previous.panel === "open") || (!shown && previous.visibility === "shown")) toggle.current?.focus({ preventScroll: true });
-  }, [snapshot.available, snapshot.panel, snapshot.visibility, shown, open]);
+    else if ((!open && previous.panel === "open") || (!shown && previous.visibility === "shown")) {
+      // Mobile Search owns focus when it retires help. Returning it to the
+      // avatar here would blur the newly opened input and immediately close Search.
+      if (!(compact && screen === "globe" && atlasSearchVisible)) toggle.current?.focus({ preventScroll: true });
+    }
+  }, [snapshot.available, snapshot.panel, snapshot.visibility, shown, open, compact, screen, atlasSearchVisible]);
 
   useLayoutEffect(() => {
     if (!focusAfterNavigation.current) return;
@@ -400,6 +404,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     if (!selector) { handledPoint.current = pointRequest.id; return; }
     let cancelled = false, frame = 0, timer = 0, target: Element | null = null;
     let movementStarted = false, returnedToDock = false;
+    let measuredPet: Rect | null = null;
     const began = performance.now();
     const stop = (consume: unknown = true) => {
       // Let the Stop button own its activation. Stopping on pointer/key down
@@ -446,14 +451,22 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     const find = () => {
       if (cancelled) return;
       const current = pointEnvironment.current;
-      // Opening phone utilities changes both the panel and the companion size.
-      // Wait for those measured bounds before consuming this one-shot request;
-      // otherwise the first walking frame immediately invalidates its route.
+      // Closing tips changes the companion footprint on both the globe and utilities.
+      // Wait for measured size and two stable rendered positions before this request.
+      // CSS may clamp the rendered left, so do not compare it with the raw position.
+      const actualPet = root.current?.getBoundingClientRect() ?? null;
+      const settled = actualPet && Math.abs(actualPet.width - current.size.width) < .5
+        && Math.abs(actualPet.height - current.size.height) < .5 && sameRect(actualPet, measuredPet);
+      measuredPet = actualPet;
+      if (!settled) {
+        if (performance.now() - began < 600) frame = requestAnimationFrame(find);
+        else stop();
+        return;
+      }
       const panel = root.current?.closest(".native-planet-panel");
       const expectsDock = window.matchMedia("(max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape)").matches
         && panel?.querySelector(selector);
       if (expectsDock) {
-        const actualPet = root.current?.getBoundingClientRect();
         const actualDock = panel?.querySelector('[data-booky-dock-active="true"]')?.getBoundingClientRect();
         const ready = actualPet && actualDock && current.dock
           && sameRect(actualPet, { ...current.position, ...current.size })
@@ -874,7 +887,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       {shown && <button id={`${id}-walk-control`} type="button" className="planet-mascot-controls__walk"
         data-booky-walk={walk.active ? undefined : ""} data-booky-walk-stop={walk.active ? "" : undefined}
         disabled={!walk.active && !walk.canStart}
-        title={walk.reducedMotion ? ru ? "Включено уменьшенное движение" : "Reduced motion is enabled"
+        aria-label={walk.active ? ru ? "Остановить прогулку" : "Stop walking" : undefined}
+        title={walk.active ? ru ? "Остановить прогулку" : "Stop walking"
+          : walk.reducedMotion ? ru ? "Включено уменьшенное движение" : "Reduced motion is enabled"
           : open ? ru ? "Сверните подсказки, чтобы начать прогулку" : "Collapse the tips to start a walk"
           : walkNeedsSpace ? ru ? "Пока мало свободного места для прогулки" : "There is not enough clear space to walk here"
           : ru ? "Короткая прогулка по свободному месту" : "A short walk through a clear area"}

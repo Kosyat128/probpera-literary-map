@@ -83,6 +83,11 @@ export default function AtlasExperienceChrome({
             aria-controls="atlas-search-panel"
             aria-label={t("Поиск по Литературной планете")}
             data-atlas-action="toggle-search"
+            onPointerDown={event => {
+              // Keep the mobile input focused until this button owns its click.
+              // An earlier blur would close Search and make that click reopen it.
+              if (applicationRoot && searchOpen && event.isPrimary && event.button === 0) event.preventDefault();
+            }}
             onClick={onSearchToggle}
           >
             {t("Поиск")}
