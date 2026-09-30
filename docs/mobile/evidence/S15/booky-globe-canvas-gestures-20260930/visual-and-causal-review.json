@@ -1,0 +1,202 @@
+{
+  "recordedAt": "2026-09-30T13:46:35.328Z",
+  "reviewer": "root",
+  "browserResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/result.json",
+    "sha256": "443b664416f2ccd77f351444af3bb9b026fb6508d58e92ccf34708872c87fd25"
+  },
+  "pass": true,
+  "inspectedImageCount": 6,
+  "totalCapturedImageCount": 6,
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+      "sha256": "6bff05b11228c8df8f556fb1d9b93568f0545e6fb3ad0f06e43d109abc0c3bb5",
+      "locale": "ru",
+      "name": "help",
+      "directlyViewed": true,
+      "view": "Root tools.view_image, all six after this passing run",
+      "scope": "Original scrolled guidance state, not dynamic gesture evidence"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-controls.png",
+      "sha256": "a0a2696264cbf47637c565870e6b15aef6d02975a28a4a171feb3696d4fa53b3",
+      "locale": "ru",
+      "name": "controls",
+      "directlyViewed": true,
+      "view": "Root tools.view_image, all six after this passing run",
+      "scope": "Original scrolled guidance state, not dynamic gesture evidence"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-unavailable.png",
+      "sha256": "98a6e461624a4ed4ca85d65a2fb29abea994fe8eade88a5fb511d25ca7875905",
+      "locale": "ru",
+      "name": "unavailable",
+      "directlyViewed": true,
+      "view": "Root tools.view_image, all six after this passing run",
+      "scope": "Original scrolled guidance state, not dynamic gesture evidence"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-help.png",
+      "sha256": "1a0a92aa3be3fa55f2bd4a499d204de9026548f984eaa54877cb709f44644ede",
+      "locale": "en",
+      "name": "help",
+      "directlyViewed": true,
+      "view": "Root tools.view_image, all six after this passing run",
+      "scope": "Original scrolled guidance state, not dynamic gesture evidence"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-controls.png",
+      "sha256": "8b0050086f89220ca39026e613518d9427ae16bf961047c2ac2b85d7355fa89d",
+      "locale": "en",
+      "name": "controls",
+      "directlyViewed": true,
+      "view": "Root tools.view_image, all six after this passing run",
+      "scope": "Original scrolled guidance state, not dynamic gesture evidence"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-unavailable.png",
+      "sha256": "660310b62483109e95ad28d88dc970936ffd919a5f98d3759f39fbebdc81364b",
+      "locale": "en",
+      "name": "unavailable",
+      "directlyViewed": true,
+      "view": "Root tools.view_image, all six after this passing run",
+      "scope": "Original scrolled guidance state, not dynamic gesture evidence"
+    }
+  ],
+  "cases": [
+    {
+      "locale": "ru",
+      "title": "Booky mobile globe guidance ru",
+      "evidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+        "sha256": "232f6daf318c0d33ffb7789821c6f9bbbc0d5952d3f55cfac5eafa7b6a16b58f"
+      },
+      "camera": {
+        "before": {
+          "radius": 2.4922204344319145,
+          "direction": [
+            -0.07595235051635689,
+            0.8804157006682081,
+            -0.4680805854422383
+          ],
+          "quaternion": [
+            0.04119,
+            0.85577,
+            0.51108,
+            -0.06898
+          ]
+        },
+        "after": {
+          "radius": 2.4922207322386196,
+          "direction": [
+            0.03214402278406606,
+            0.8804155954633618,
+            -0.47311218655214454
+          ],
+          "quaternion": [
+            -0.01739,
+            0.85805,
+            0.51244,
+            0.02912
+          ]
+        }
+      },
+      "semanticSelection": {
+        "countryCount": 1,
+        "countryId": "russia",
+        "selectedWriterCount": 1,
+        "selectedWriterLabel": "Открыть карточку автора: Фёдор Михайлович Достоевский. Подтверждено источниками",
+        "breadcrumbCount": 1,
+        "writerName": "Фёдор Михайлович Достоевский",
+        "headingCount": 1,
+        "writerHeading": "Фёдор Михайлович Достоевский",
+        "countryRoute": "russia",
+        "writerRoute": "dostoevsky"
+      },
+      "nativePointerIds": [
+        36
+      ],
+      "liveGestureSteps": 9,
+      "allNativeInputTrusted": true,
+      "selectionAndPreferencesPreserved": true
+    },
+    {
+      "locale": "en",
+      "title": "Booky mobile globe guidance en",
+      "evidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+        "sha256": "7eadbb190eda2596306a2fff6c077a86a8e0b838a2943bf2c1a7d56952d58826"
+      },
+      "camera": {
+        "before": {
+          "radius": 2.4922204344319145,
+          "direction": [
+            -0.07595235051635689,
+            0.8804157006682081,
+            -0.4680805854422383
+          ],
+          "quaternion": [
+            0.04119,
+            0.85577,
+            0.51108,
+            -0.06898
+          ]
+        },
+        "after": {
+          "radius": 2.2500032862420447,
+          "direction": [
+            -0.07595100018072438,
+            0.8804164918836922,
+            -0.46807931634580907
+          ],
+          "quaternion": [
+            0.04119,
+            0.85577,
+            0.51108,
+            -0.06898
+          ]
+        },
+        "clamped": true
+      },
+      "semanticSelection": {
+        "countryCount": 1,
+        "countryId": "russia",
+        "selectedWriterCount": 1,
+        "selectedWriterLabel": "Open writer profile: Fyodor Dostoevsky. In editorial review",
+        "breadcrumbCount": 1,
+        "writerName": "Fyodor Dostoevsky",
+        "headingCount": 1,
+        "writerHeading": "Fyodor Dostoevsky",
+        "countryRoute": "russia",
+        "writerRoute": "dostoevsky"
+      },
+      "nativePointerIds": [
+        28,
+        29
+      ],
+      "liveGestureSteps": 9,
+      "allNativeInputTrusted": true,
+      "selectionAndPreferencesPreserved": true
+    }
+  ],
+  "visualConclusion": "The captured narrow mobile help/controls/unavailable states preserve one readable help surface, separate compact actor/actions and visible native navigation. Guidance captures are intentionally scrolled and predate the gesture extension.",
+  "causalConclusion": "Trusted canvas gestures change only intended camera state; actual country/writer DOM selection, route, progress, preferences and canonical owners/resources remain exact. EN pinch reaches the measured minimum radius while preserving orientation.",
+  "limitations": [
+    "Browser touch protocol evidence, no installed-device gesture acceptance.",
+    "Six stills show original guidance; gesture behavior is established by actual input/camera traces."
+  ],
+  "preChildLauncherDiagnostic": {
+    "helper": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-run-browser-a1.mjs",
+      "sha256": "33094078d78339243c7189333c27c6f47076b188b0a15603bbaaae94a4a3a018"
+    },
+    "reason": "SyntaxError before module evaluation or browser launch",
+    "browserRuns": 0
+  },
+  "actualBrowserRunCount": 1,
+  "fixtureOnly": true,
+  "runtimeUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

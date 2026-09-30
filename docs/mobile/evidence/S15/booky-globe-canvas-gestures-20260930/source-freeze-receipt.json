@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-09-30T13:43:32.414Z",
+  "baseHead": "43095054d38d55bf8516dfa47504d63fc4e2c653",
+  "sourceFrozen": true,
+  "sourceAppliedByHelper": false,
+  "changedPaths": [
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/source-manifest.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "protectedInputsVerified": true,
+  "helperInputs": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-canvas-gesture-review\\root-run-browser-a2.mjs",
+      "sha256": "c7c26c8fbbca6de6a56b199b412d2b78c44bc1d0ac085ca2d6544abcdb2a63b5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/playwright.config.mjs",
+      "sha256": "7c1ae3438500e6d818affa2bfa09f3f298b87ca814bb29c449d680264fbe2098"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/entry.json",
+      "sha256": "0ef28e23300b5ffe0dc3a98ae7d4a91ab11bc5807f2eea0bff7c0c7494ef4e43"
+    }
+  ]
+}

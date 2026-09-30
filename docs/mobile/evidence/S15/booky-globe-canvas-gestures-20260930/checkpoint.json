@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T13:57:53.078Z",
+  "pass": true,
+  "kind": "FIXTURE_ONLY_CANVAS_GESTURE_GLOBAL_CHECKPOINT",
+  "sourceCommit": "6179eee58a57505b7c9a1a9689f578ba157961a2",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/result.json",
+    "sha256": "3a5da6182deb21ae91736933ac0d116362dbbecfb76c5bec6cd40cdc1e2a7f58"
+  },
+  "binding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/checkpoint-review-a3/binding.json",
+    "sha256": "9865ed89f80dc064c1aeb471c812e616003a54ddf8a0ad8afb093ca4434a73f0"
+  },
+  "helper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/checkpoint-review-a3/record-checkpoint.mjs",
+    "sha256": "ce40be6a8d50355d1511b5eb2ba9aff6688ce6b6eb0d27fc1167407ebe6fa1d6"
+  },
+  "documentPlan": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/checkpoint-review-a3/document-plan.json",
+    "sha256": "151389b6e51ea5616161456c23280e7a80d9427220a4aa0ce981121647fedd07"
+  },
+  "originalGlobals": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "81dc8a95a4d7ea0f4f96ef27165ae2f3575cb792da769d869ac0cfbfedde96a1"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "e42df13fca1cc67f91f3f00506222e9e9f78766fe4ffab60c90e6575691ee7fc"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "6ebea2cc7815d028b10dc5d672427ca4f5d91b602d0c0ba41d95eb7c0c538ae2"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "cefdba29cef991230b118e29da41588dadfb8f6ec8d9058e53356372baa341f2"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "c523a8b4f2252bd6be2e464f3bab106f13c2b043898856c0e113421ee8ff4b06"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "ca1cd175832155554356988d27e458f01b0c1a361868e8b50619840f52996b9d"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "505cf15b43070733bce324106949a1242774e30ad1c255542eaffedd0a423f77"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "ce29f79d92fceb64cab99f4fac2e7b427b0bbfccb50d03f01126bd62de2280b1"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "4980500b1239509b94d3ff26cc7b5d86b7d6e71ac344b799ab460e21b8c14c36"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "6cb1165a76fcb2f6bc4d7d3a24ba5d17d95097d4791dea52a7049ec078b67f41"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "138b2700cf3813b9a3d91064c2e1a3be4626b1c58629c549309361f1d25bba1c"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "7f1bbba6b1cb7fe4e75fc618ab464d286255d9303224c3904e00bf64701a3fab"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "dbb963f0db732dcac1cf1fe0cda3a745b8a434f263a8da2e8a7290c93035c0dc"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "73643a6150023ff6600be470d5e6208e81ee33858d3018d3a0cca6bf4d193812"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "00744906aad57ba079526e6bbff5ffb6e2af9b671824c4e2062e59317ed60902"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "0778b6d58af6b16178b4361bb51e38760b6fd9baa922c3331ce7cff5510b0260"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/result.json",
+      "sha256": "3a5da6182deb21ae91736933ac0d116362dbbecfb76c5bec6cd40cdc1e2a7f58"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/README.md",
+      "sha256": "89d78c6dbb95882c0bc81e036dd1409f966838dc8d13b744f408d00e57f05c74"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/entry.json",
+      "sha256": "0ef28e23300b5ffe0dc3a98ae7d4a91ab11bc5807f2eea0bff7c0c7494ef4e43"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-commit.json",
+      "sha256": "5ff43947f4cba4632d83e088a1dbb62e6cd66b9100e0b41116180dbcc0511f88"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/visual-and-causal-review.json",
+      "sha256": "8adc811635f66424df3ae187dd613a2f6c3e85d0a49ebf1e0bc8d874183a84be"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/agent-causal-review.json",
+      "sha256": "6a966e2513963c98d9435b32dd75ab4c3624069a1fadc199e761a004c2d0d7fc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-apply-1.json",
+      "sha256": "9b3d6692c174b20d308c57c8e96fbee2a1e393b87a84e1145981b2a9724fff22"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-apply-2.json",
+      "sha256": "f2b2735ee2c80807a31e6fa49da889b0a3d47ae6209070e55956af72d45049a5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-manifests/e8d98066ca4f368c.json",
+      "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-freeze-receipt.json",
+      "sha256": "ab360b98a97f438674e6988a124a50f41ee64a805b4bc3337681cbe61a9713a9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/browser-a1/result.json",
+      "sha256": "443b664416f2ccd77f351444af3bb9b026fb6508d58e92ccf34708872c87fd25"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/browser-a1/execution.json",
+      "sha256": "1ffdada617a61cd8d16a00844bf419c5394e9ba920a584ed3e6e3262ed27c1cf"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/browser-a1/playwright.json",
+      "sha256": "9fd9d8ee2cd6ee1a6d1671b79e695c98c65495a4cb5918e4f511dcc7351b4aba"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/browser-a1/stdout.log",
+      "sha256": "6cf5ee84a7df9fd77042c72bd0fbe5ac3e8a09442cd81659adc0f5414cbe850b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/browser-a1/stderr.log",
+      "sha256": "2d54faaa9f85638ff1f873f9c0ca944a7107b8452b0fcb59348a17de320bde0b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/captures/ru.json",
+      "sha256": "232f6daf318c0d33ffb7789821c6f9bbbc0d5952d3f55cfac5eafa7b6a16b58f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/captures/en.json",
+      "sha256": "7eadbb190eda2596306a2fff6c077a86a8e0b838a2943bf2c1a7d56952d58826"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/images/booky-globe-guidance-ru-help.png",
+      "sha256": "6bff05b11228c8df8f556fb1d9b93568f0545e6fb3ad0f06e43d109abc0c3bb5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/images/booky-globe-guidance-ru-controls.png",
+      "sha256": "a0a2696264cbf47637c565870e6b15aef6d02975a28a4a171feb3696d4fa53b3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/images/booky-globe-guidance-ru-unavailable.png",
+      "sha256": "98a6e461624a4ed4ca85d65a2fb29abea994fe8eade88a5fb511d25ca7875905"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/images/booky-globe-guidance-en-help.png",
+      "sha256": "1a0a92aa3be3fa55f2bd4a499d204de9026548f984eaa54877cb709f44644ede"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/images/booky-globe-guidance-en-controls.png",
+      "sha256": "8b0050086f89220ca39026e613518d9427ae16bf961047c2ac2b85d7355fa89d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/images/booky-globe-guidance-en-unavailable.png",
+      "sha256": "660310b62483109e95ad28d88dc970936ffd919a5f98d3759f39fbebdc81364b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/runner-diagnostics/launcher-a1.mjs",
+      "sha256": "33094078d78339243c7189333c27c6f47076b188b0a15603bbaaae94a4a3a018"
+    }
+  ],
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "allStageAndCriterionStatusesUnchanged": true,
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

@@ -1,0 +1,37 @@
+{
+  "checkpoint": "43095054d38d55bf8516dfa47504d63fc4e2c653",
+  "browserFiles": [
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky mobile globe guidance ru",
+    "Booky mobile globe guidance en"
+  ],
+  "expectedBrowserTests": 2,
+  "changedPaths": [
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "fixtureOnly": true,
+  "runtimeUnchanged": true,
+  "productionImplementationChanged": false,
+  "requestedChannel": "msedge",
+  "runtimeSourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "priorSourceManifest": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-focus-race-20260930/source-manifests/776f4031fb175139.json",
+    "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4"
+  },
+  "reviewedFixture": {
+    "path": "tests/pwa/booky-globe-guidance.spec.mjs",
+    "sha256": "0d3c06491ddede0af3ef4229f8c75c26c2bdc7b83bdf441dd31acaa510e5b099"
+  },
+  "sourceApply": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-source-apply-a2.json",
+    "sha256": "f2b2735ee2c80807a31e6fa49da889b0a3d47ae6209070e55956af72d45049a5"
+  },
+  "acceptedD215": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-focus-race-20260930/result.json",
+    "sha256": "b5744a5dbe0dbd28b74f8a57f35737cf5887fa1806e36fe1053701540545e402"
+  }
+}

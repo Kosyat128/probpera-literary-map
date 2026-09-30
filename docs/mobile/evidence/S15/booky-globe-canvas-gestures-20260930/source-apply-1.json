@@ -1,0 +1,16 @@
+{
+  "recordedAt": "2026-09-30T13:36:14.330Z",
+  "predecessorDocsCommit": "43095054d38d55bf8516dfa47504d63fc4e2c653",
+  "predecessorSourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "target": "tests/pwa/booky-globe-guidance.spec.mjs",
+  "beforeSha256": "bbef4c91d433338433e8b4ba5655469fcfd6cb36d6f89d7d8b1d952659f2af11",
+  "afterSha256": "a661d38f37de909097e3709d41d37277260c1270cfbc47bc8d2a0ee5abc97832",
+  "reviewBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/revision-a1/source-binding.json",
+    "sha256": "fda677b462e6eea1e8627a89829528c64a9f5ac3094fd32a0cacc3e33d55962e"
+  },
+  "fixtureOnly": true,
+  "productionChanged": false,
+  "testsRun": false,
+  "buildsRun": false
+}

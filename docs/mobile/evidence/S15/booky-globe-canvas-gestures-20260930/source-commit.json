@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-09-30T13:46:37.033Z",
+  "sourceCommit": "6179eee58a57505b7c9a1a9689f578ba157961a2",
+  "parent": "43095054d38d55bf8516dfa47504d63fc4e2c653",
+  "changedPaths": [
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/source-manifest.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe",
+    "fileCount": 1665
+  },
+  "browserResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/result.json",
+    "sha256": "443b664416f2ccd77f351444af3bb9b026fb6508d58e92ccf34708872c87fd25"
+  },
+  "rootReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/actual-root-review-a1.json",
+    "sha256": "8adc811635f66424df3ae187dd613a2f6c3e85d0a49ebf1e0bc8d874183a84be"
+  },
+  "fixture": {
+    "path": "tests/pwa/booky-globe-guidance.spec.mjs",
+    "sha256": "0d3c06491ddede0af3ef4229f8c75c26c2bdc7b83bdf441dd31acaa510e5b099",
+    "gitBlobSha256": "0d3c06491ddede0af3ef4229f8c75c26c2bdc7b83bdf441dd31acaa510e5b099",
+    "gitBlobRelation": "exact"
+  },
+  "protectedInputCount": 1664,
+  "sourceInputsVerifiedBeforeAfter": true,
+  "clean": true,
+  "runtimeUnchanged": true
+}

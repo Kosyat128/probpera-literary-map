@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a1",
+  "pass": true,
+  "checkpoint": "43095054d38d55bf8516dfa47504d63fc4e2c653",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/source-manifest.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe",
+    "fileCount": 1665
+  },
+  "sourceInputsUnchanged": true,
+  "helperInputsUnchanged": true,
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "tests": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 72676
+  },
+  "executionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/execution.json",
+    "sha256": "1ffdada617a61cd8d16a00844bf419c5394e9ba920a584ed3e6e3262ed27c1cf"
+  },
+  "sourceFreezeReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/source-freeze-receipt.json",
+    "sha256": "ab360b98a97f438674e6988a124a50f41ee64a805b4bc3337681cbe61a9713a9"
+  },
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/entry.json",
+    "sha256": "0ef28e23300b5ffe0dc3a98ae7d4a91ab11bc5807f2eea0bff7c0c7494ef4e43"
+  },
+  "fixtureOnly": true,
+  "runtimeUnchanged": true,
+  "productionImplementationChanged": false,
+  "unitRerun": false,
+  "staticRerun": false,
+  "pwaRebuilt": false,
+  "androidRebuilt": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

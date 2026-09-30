@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T13:57:53.078Z",
+  "pass": true,
+  "sourceCommit": "6179eee58a57505b7c9a1a9689f578ba157961a2",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/result.json",
+    "sha256": "3a5da6182deb21ae91736933ac0d116362dbbecfb76c5bec6cd40cdc1e2a7f58"
+  },
+  "checkpoint": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/checkpoint.json",
+    "sha256": "794b79cc8b07cba474983d5dc3820d21d6594aea3d8f791eb63be693a18d55ba"
+  },
+  "helper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/checkpoint-review-a3/record-checkpoint.mjs",
+    "sha256": "ce40be6a8d50355d1511b5eb2ba9aff6688ce6b6eb0d27fc1167407ebe6fa1d6"
+  },
+  "outputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "0778b6d58af6b16178b4361bb51e38760b6fd9baa922c3331ce7cff5510b0260"
+    }
+  ],
+  "scope": "Exactly one fixture-only canvas gesture checkpoint note",
+  "releaseReady": false
+}

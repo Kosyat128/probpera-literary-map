@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "kind": "AUTHENTICATED_READ_ONLY_GESTURE_CAUSAL_REVIEW",
+  "recordedAt": "2026-09-30T13:47:52.554Z",
+  "pass": true,
+  "sourceCommit": null,
+  "sourceCommitPendingActualReceipt": true,
+  "runtimeSourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "predecessorDocsCheckpoint": "43095054d38d55bf8516dfa47504d63fc4e2c653",
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/record-causal-review-a1.mjs",
+    "sha256": "7ca1694ad609399d2219e4409ed2ac953f14b23538baeb83bef0509b6af9b088"
+  },
+  "run": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/result.json",
+    "sha256": "443b664416f2ccd77f351444af3bb9b026fb6508d58e92ccf34708872c87fd25"
+  },
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/entry.json",
+    "sha256": "0ef28e23300b5ffe0dc3a98ae7d4a91ab11bc5807f2eea0bff7c0c7494ef4e43"
+  },
+  "execution": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/execution.json",
+    "sha256": "1ffdada617a61cd8d16a00844bf419c5394e9ba920a584ed3e6e3262ed27c1cf"
+  },
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/playwright.json",
+    "sha256": "9fd9d8ee2cd6ee1a6d1671b79e695c98c65495a4cb5918e4f511dcc7351b4aba"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/source-manifest.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe",
+    "fileCount": 1665
+  },
+  "sourceFreezeReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/source-freeze-receipt.json",
+    "sha256": "ab360b98a97f438674e6988a124a50f41ee64a805b4bc3337681cbe61a9713a9"
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "browserCases": 2,
+  "cases": [
+    {
+      "test": "Booky mobile globe guidance ru",
+      "evidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+        "sha256": "232f6daf318c0d33ffb7789821c6f9bbbc0d5952d3f55cfac5eafa7b6a16b58f"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/attachments/booky-globe-guidance-source-evidence-162107dbd0f383e5c8c9235d5347bef84968d3c5.json",
+        "sha256": "232f6daf318c0d33ffb7789821c6f9bbbc0d5952d3f55cfac5eafa7b6a16b58f"
+      },
+      "gesture": "rotate",
+      "plannedTouchIds": [
+        101
+      ],
+      "pointers": [
+        {
+          "nativePointerId": 36,
+          "downAt": 37092,
+          "upAt": 37869.89999999944,
+          "moves": 8,
+          "from": {
+            "x": 163,
+            "y": 295.3999938964844
+          },
+          "to": {
+            "x": 227,
+            "y": 295.3999938964844
+          }
+        }
+      ],
+      "frames": 9,
+      "livePathPoints": 9,
+      "allCanvasHitsAndOwnerReferencesPreserved": true,
+      "camera": {
+        "before": {
+          "radius": 2.4922204344319145,
+          "direction": [
+            -0.07595235051635689,
+            0.8804157006682081,
+            -0.4680805854422383
+          ],
+          "quaternion": [
+            0.04119,
+            0.85577,
+            0.51108,
+            -0.06898
+          ]
+        },
+        "after": {
+          "radius": 2.4922207322386196,
+          "direction": [
+            0.03214402278406606,
+            0.8804155954633618,
+            -0.47311218655214454
+          ],
+          "quaternion": [
+            -0.01739,
+            0.85805,
+            0.51244,
+            0.02912
+          ]
+        },
+        "directionDelta": 0.10821341381938135,
+        "radiusDelta": 2.9780670507406626e-7,
+        "observedLimits": {
+          "min": 2.25,
+          "max": 5.15
+        },
+        "clamped": false
+      },
+      "semanticSelection": {
+        "countryCount": 1,
+        "countryId": "russia",
+        "selectedWriterCount": 1,
+        "selectedWriterLabel": "Открыть карточку автора: Фёдор Михайлович Достоевский. Подтверждено источниками",
+        "breadcrumbCount": 1,
+        "writerName": "Фёдор Михайлович Достоевский",
+        "headingCount": 1,
+        "writerHeading": "Фёдор Михайлович Достоевский",
+        "countryRoute": "russia",
+        "writerRoute": "dostoevsky"
+      },
+      "preserved": {
+        "mode": "help",
+        "route": "none",
+        "step": "0",
+        "screen": "globe",
+        "visibility": "shown",
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas"
+      },
+      "resourceTuple": {
+        "selection": {
+          "editionId": "rand-mcnally-1887",
+          "standId": "canonical",
+          "backgroundId": "background.base.site-starfield"
+        },
+        "texture": "e0a3f615-e506-45e8-a532-07e1205d4085",
+        "geometry": "e25b3ed2-c192-4413-a912-c6316816a8bd",
+        "backgroundResource": null,
+        "standCount": 0,
+        "backgroundCount": 0,
+        "surfaceCount": 1,
+        "quality": "high",
+        "mascotObjects": []
+      },
+      "preferencesEqual": true,
+      "bookyWrites": 0,
+      "supplementalCapturedInputs": [],
+      "images": [
+        {
+          "filename": "booky-globe-guidance-ru-help.png",
+          "sha256": "6bff05b11228c8df8f556fb1d9b93568f0545e6fb3ad0f06e43d109abc0c3bb5",
+          "width": 390,
+          "height": 844,
+          "framing": "Actual App mobile globe instructions and explicit localized Show controls action; reading help does not move or select the canonical globe.",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+          "test": "Booky mobile globe guidance ru"
+        },
+        {
+          "filename": "booky-globe-guidance-ru-controls.png",
+          "sha256": "a0a2696264cbf47637c565870e6b15aef6d02975a28a4a171feb3696d4fa53b3",
+          "width": 390,
+          "height": 844,
+          "framing": "Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-controls.png",
+          "test": "Booky mobile globe guidance ru"
+        },
+        {
+          "filename": "booky-globe-guidance-ru-unavailable.png",
+          "sha256": "98a6e461624a4ed4ca85d65a2fb29abea994fe8eade88a5fb511d25ca7875905",
+          "width": 390,
+          "height": 844,
+          "framing": "Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-unavailable.png",
+          "test": "Booky mobile globe guidance ru"
+        }
+      ]
+    },
+    {
+      "test": "Booky mobile globe guidance en",
+      "evidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+        "sha256": "7eadbb190eda2596306a2fff6c077a86a8e0b838a2943bf2c1a7d56952d58826"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/attachments/booky-globe-guidance-source-evidence-d83d88949e26d43aac956893485706abf7a19181.json",
+        "sha256": "7eadbb190eda2596306a2fff6c077a86a8e0b838a2943bf2c1a7d56952d58826"
+      },
+      "gesture": "pinch",
+      "plannedTouchIds": [
+        101,
+        102
+      ],
+      "pointers": [
+        {
+          "nativePointerId": 28,
+          "downAt": 27121.799999999814,
+          "upAt": 27752.799999999814,
+          "moves": 8,
+          "from": {
+            "x": 128,
+            "y": 295.3999938964844
+          },
+          "to": {
+            "x": 96,
+            "y": 295.3999938964844
+          }
+        },
+        {
+          "nativePointerId": 29,
+          "downAt": 27143.599999999627,
+          "upAt": 27774,
+          "moves": 8,
+          "from": {
+            "x": 192,
+            "y": 295.3999938964844
+          },
+          "to": {
+            "x": 224,
+            "y": 295.3999938964844
+          }
+        }
+      ],
+      "frames": 9,
+      "livePathPoints": 18,
+      "allCanvasHitsAndOwnerReferencesPreserved": true,
+      "camera": {
+        "before": {
+          "radius": 2.4922204344319145,
+          "direction": [
+            -0.07595235051635689,
+            0.8804157006682081,
+            -0.4680805854422383
+          ],
+          "quaternion": [
+            0.04119,
+            0.85577,
+            0.51108,
+            -0.06898
+          ]
+        },
+        "after": {
+          "radius": 2.2500032862420447,
+          "direction": [
+            -0.07595100018072438,
+            0.8804164918836922,
+            -0.46807931634580907
+          ],
+          "quaternion": [
+            0.04119,
+            0.85577,
+            0.51108,
+            -0.06898
+          ]
+        },
+        "directionDelta": 0.0000020149526072366245,
+        "radiusDelta": -0.24221714818986984,
+        "observedLimits": {
+          "min": 2.25,
+          "max": 5.15
+        },
+        "clamped": true
+      },
+      "semanticSelection": {
+        "countryCount": 1,
+        "countryId": "russia",
+        "selectedWriterCount": 1,
+        "selectedWriterLabel": "Open writer profile: Fyodor Dostoevsky. In editorial review",
+        "breadcrumbCount": 1,
+        "writerName": "Fyodor Dostoevsky",
+        "headingCount": 1,
+        "writerHeading": "Fyodor Dostoevsky",
+        "countryRoute": "russia",
+        "writerRoute": "dostoevsky"
+      },
+      "preserved": {
+        "mode": "help",
+        "route": "none",
+        "step": "0",
+        "screen": "globe",
+        "visibility": "shown",
+        "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas"
+      },
+      "resourceTuple": {
+        "selection": {
+          "editionId": "rand-mcnally-1887",
+          "standId": "canonical",
+          "backgroundId": "background.base.site-starfield"
+        },
+        "texture": "a5ab4530-575e-4ac8-8520-fec4d5c5d668",
+        "geometry": "653e9ffc-5b75-46f8-a379-d5e750547681",
+        "backgroundResource": null,
+        "standCount": 0,
+        "backgroundCount": 0,
+        "surfaceCount": 1,
+        "quality": "high",
+        "mascotObjects": []
+      },
+      "preferencesEqual": true,
+      "bookyWrites": 0,
+      "supplementalCapturedInputs": [],
+      "images": [
+        {
+          "filename": "booky-globe-guidance-en-help.png",
+          "sha256": "1a0a92aa3be3fa55f2bd4a499d204de9026548f984eaa54877cb709f44644ede",
+          "width": 320,
+          "height": 844,
+          "framing": "Actual App mobile globe instructions and explicit localized Show controls action; reading help does not move or select the canonical globe.",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-help.png",
+          "test": "Booky mobile globe guidance en"
+        },
+        {
+          "filename": "booky-globe-guidance-en-controls.png",
+          "sha256": "8b0050086f89220ca39026e613518d9427ae16bf961047c2ac2b85d7355fa89d",
+          "width": 320,
+          "height": 844,
+          "framing": "Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-controls.png",
+          "test": "Booky mobile globe guidance en"
+        },
+        {
+          "filename": "booky-globe-guidance-en-unavailable.png",
+          "sha256": "660310b62483109e95ad28d88dc970936ffd919a5f98d3759f39fbebdc81364b",
+          "width": 320,
+          "height": 844,
+          "framing": "Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-unavailable.png",
+          "test": "Booky mobile globe guidance en"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "filename": "booky-globe-guidance-ru-help.png",
+      "sha256": "6bff05b11228c8df8f556fb1d9b93568f0545e6fb3ad0f06e43d109abc0c3bb5",
+      "width": 390,
+      "height": 844,
+      "framing": "Actual App mobile globe instructions and explicit localized Show controls action; reading help does not move or select the canonical globe.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+      "test": "Booky mobile globe guidance ru"
+    },
+    {
+      "filename": "booky-globe-guidance-ru-controls.png",
+      "sha256": "a0a2696264cbf47637c565870e6b15aef6d02975a28a4a171feb3696d4fa53b3",
+      "width": 390,
+      "height": 844,
+      "framing": "Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-controls.png",
+      "test": "Booky mobile globe guidance ru"
+    },
+    {
+      "filename": "booky-globe-guidance-ru-unavailable.png",
+      "sha256": "98a6e461624a4ed4ca85d65a2fb29abea994fe8eade88a5fb511d25ca7875905",
+      "width": 390,
+      "height": 844,
+      "framing": "Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-unavailable.png",
+      "test": "Booky mobile globe guidance ru"
+    },
+    {
+      "filename": "booky-globe-guidance-en-help.png",
+      "sha256": "1a0a92aa3be3fa55f2bd4a499d204de9026548f984eaa54877cb709f44644ede",
+      "width": 320,
+      "height": 844,
+      "framing": "Actual App mobile globe instructions and explicit localized Show controls action; reading help does not move or select the canonical globe.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-help.png",
+      "test": "Booky mobile globe guidance en"
+    },
+    {
+      "filename": "booky-globe-guidance-en-controls.png",
+      "sha256": "8b0050086f89220ca39026e613518d9427ae16bf961047c2ac2b85d7355fa89d",
+      "width": 320,
+      "height": 844,
+      "framing": "Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-controls.png",
+      "test": "Booky mobile globe guidance en"
+    },
+    {
+      "filename": "booky-globe-guidance-en-unavailable.png",
+      "sha256": "660310b62483109e95ad28d88dc970936ffd919a5f98d3759f39fbebdc81364b",
+      "width": 320,
+      "height": 844,
+      "framing": "Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-unavailable.png",
+      "test": "Booky mobile globe guidance en"
+    }
+  ],
+  "imageCount": 6,
+  "directImageViewsPerformed": false,
+  "appCommandsRun": false,
+  "testsRun": false,
+  "buildsRun": false,
+  "canonicalWrites": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "limitations": [
+    "This receipt reviews authenticated actual runtime measurements and input chronology. It does not perform or substitute direct image views.",
+    "All six PNGs preserve original guidance captures before both extensions; physical gesture claims rely on input/camera/semantic DOM/owner evidence.",
+    "Only the observed RU rotation and EN spreading pinch are established. EN reaches the real2.25 minimum clamp; reverse pinch, other viewports and installed devices are not claimed.",
+    "Whole-case preferenceOperations contain permitted earlier setup writes; this review establishes gesture before/after preference equality and the existing scoped no-write assertions.",
+    "Supplemental captured source pins are separately authenticated current raw inputs and do not inflate the1665 primary envelope."
+  ]
+}

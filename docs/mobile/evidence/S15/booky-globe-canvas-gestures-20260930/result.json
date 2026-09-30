@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T13:57:53.078Z",
+  "stage": "S15",
+  "status": "BOOKY_CANONICAL_CANVAS_GESTURES_FOCUSED_VALIDATION",
+  "pass": true,
+  "sourceCommit": "6179eee58a57505b7c9a1a9689f578ba157961a2",
+  "runtimeSourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "buildSourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "previous": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-focus-race-20260930/result.json",
+    "sha256": "b5744a5dbe0dbd28b74f8a57f35737cf5887fa1806e36fe1053701540545e402"
+  },
+  "acceptedD215": {
+    "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+    "docsCheckpoint": "43095054d38d55bf8516dfa47504d63fc4e2c653",
+    "result": {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-focus-race-20260930/result.json",
+      "sha256": "b5744a5dbe0dbd28b74f8a57f35737cf5887fa1806e36fe1053701540545e402"
+    },
+    "pwaBuildId": "a70b0aacb583e46bbb1936d373511d4a800f60e32abfc97cf657893f47266965",
+    "androidBuildId": "c416812961560d90801ad7f5bfe4892a67b682dfc2498abdee5ad47fb68f25df"
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/entry.json",
+    "sha256": "0ef28e23300b5ffe0dc3a98ae7d4a91ab11bc5807f2eea0bff7c0c7494ef4e43"
+  },
+  "checkpointBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/checkpoint-review-a3/binding.json",
+    "sha256": "9865ed89f80dc064c1aeb471c812e616003a54ddf8a0ad8afb093ca4434a73f0"
+  },
+  "checkpointHelper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/checkpoint-review-a3/record-checkpoint.mjs",
+    "sha256": "ce40be6a8d50355d1511b5eb2ba9aff6688ce6b6eb0d27fc1167407ebe6fa1d6"
+  },
+  "sourceCommitReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-commit.json",
+    "sha256": "5ff43947f4cba4632d83e088a1dbb62e6cd66b9100e0b41116180dbcc0511f88"
+  },
+  "sourceApplyReceipts": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-apply-1.json",
+      "sha256": "9b3d6692c174b20d308c57c8e96fbee2a1e393b87a84e1145981b2a9724fff22"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-apply-2.json",
+      "sha256": "f2b2735ee2c80807a31e6fa49da889b0a3d47ae6209070e55956af72d45049a5"
+    }
+  ],
+  "runnerDiagnostics": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/runner-diagnostics/launcher-a1.mjs",
+      "sha256": "33094078d78339243c7189333c27c6f47076b188b0a15603bbaaae94a4a3a018"
+    }
+  ],
+  "independentGestureCausalReview": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/agent-causal-review.json",
+    "sha256": "6a966e2513963c98d9435b32dd75ab4c3624069a1fadc199e761a004c2d0d7fc"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/source-manifests/e8d98066ca4f368c.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe",
+    "fileCount": 1665
+  },
+  "observedSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-review/root-execution-a1/source-manifest.json",
+    "sha256": "e8d98066ca4f368cb753404dcfdfa1e59509d0ce157a933bb1ea14436be62fbe",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "unchangedTrackedInputCount": 1664,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "runtimeUnchanged": true,
+  "fixtureOnly": true,
+  "productionImplemented": false,
+  "productionImplementationChanged": false,
+  "browserCases": 2,
+  "actualAppCaseCount": 2,
+  "captures": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/captures/ru.json",
+      "sha256": "232f6daf318c0d33ffb7789821c6f9bbbc0d5952d3f55cfac5eafa7b6a16b58f",
+      "test": "Booky mobile globe guidance ru",
+      "originalSource": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+        "sha256": "232f6daf318c0d33ffb7789821c6f9bbbc0d5952d3f55cfac5eafa7b6a16b58f",
+        "test": "Booky mobile globe guidance ru"
+      }
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/captures/en.json",
+      "sha256": "7eadbb190eda2596306a2fff6c077a86a8e0b838a2943bf2c1a7d56952d58826",
+      "test": "Booky mobile globe guidance en",
+      "originalSource": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-canvas-gesture-evidence/attempt-a1/browser-a1/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+        "sha256": "7eadbb190eda2596306a2fff6c077a86a8e0b838a2943bf2c1a7d56952d58826",
+        "test": "Booky mobile globe guidance en"
+      }
+    }
+  ],
+  "validatedBehavior": [
+    "Actual RU trusted canonical-canvas rotation and EN symmetric two-finger perspective dolly; exact selection/route/progress/preferences and canonical owners preserved."
+  ],
+  "canonicalCanvasGestureVerified": true,
+  "originalGuidanceRealZoomOnlyVerified": true,
+  "realZoomOnlyVerified": false,
+  "touchOnlyProductActions": false,
+  "originalGuidanceTouchOnlyProductActions": true,
+  "keyboardAccessibilityRaceHarness": true,
+  "keyboardAccessibilityRaceHarnessLocale": "en",
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/visual-and-causal-review.json",
+    "sha256": "8adc811635f66424df3ae187dd613a2f6c3e85d0a49ebf1e0bc8d874183a84be"
+  },
+  "gestureCausalReview": {
+    "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/visual-and-causal-review.json",
+    "sha256": "8adc811635f66424df3ae187dd613a2f6c3e85d0a49ebf1e0bc8d874183a84be"
+  },
+  "inspectedImageCount": 6,
+  "totalCapturedImageCount": 6,
+  "visualReviewScope": "The captured narrow mobile help/controls/unavailable states preserve one readable help surface, separate compact actor/actions and visible native navigation. Guidance captures are intentionally scrolled and predate the gesture extension.",
+  "visualReviewLimitations": [
+    "Trusted Chrome/Edge CDP touch demonstrates this bounded mobile canvas interaction; installed-device/native gesture equivalence remains unverified.",
+    "Six original guidance images precede the appended gesture; actual capture assertions and authenticated causal review provide gesture evidence.",
+    "Rotation uses observed direction/quaternion and invariant camera-to-target radius; pinch uses changed perspective radius within observed clamps. No camera state is assigned and camera.zoom does not establish perspective zoom.",
+    "The original guidance real-zoom-only claim is scoped to its earlier segment. Aggregate realZoomOnlyVerified:false explicitly admits the additional real gesture camera changes.",
+    "EN earlier keyboard input remains a mobile accessibility-race harness; original guidance product actions remain touch-only. No full keyboard/screen-reader acceptance.",
+    "D215 TS39-unit and build evidence retains its original manifest/source. The current fixture is outside those old build captures; no payload reauthentication or rebuild is performed.",
+    "D212 eight contextual whole-file Controls pins remain stale/held; refresh them separately after the next reader-foreground Controls fix; all34 drafts remain unapproved/unavailable. No stage, editorial, child, installed-device or release acceptance."
+  ],
+  "runs": {
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/browser-a1/result.json",
+      "sha256": "443b664416f2ccd77f351444af3bb9b026fb6508d58e92ccf34708872c87fd25",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/browser-a1/execution.json",
+        "sha256": "1ffdada617a61cd8d16a00844bf419c5394e9ba920a584ed3e6e3262ed27c1cf"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-globe-canvas-gestures-20260930/browser-a1/playwright.json",
+        "sha256": "9fd9d8ee2cd6ee1a6d1671b79e695c98c65495a4cb5918e4f511dcc7351b4aba"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "attempts": {
+    "browser": "a1"
+  },
+  "unitCount": 0,
+  "unitRerun": false,
+  "unitSuitesRerun": false,
+  "staticRerun": false,
+  "browserRerun": true,
+  "priorSelectedCasesRerun": true,
+  "priorSelectedCasesRerunScope": "Only the two existing globe-guidance cases; unrelated accepted cases not rerun",
+  "buildsRebuilt": false,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/result.json",
+    "sha256": "0e38a7ca50083a17d4062eed7a0950681d97485c690cf699d5c33b64e3029463"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/result.json",
+    "sha256": "43d4da3e44e036fd263e0cf5e6873d45e7e03f30926c19b75d1c98de5e713735"
+  },
+  "pwaBuildId": "a70b0aacb583e46bbb1936d373511d4a800f60e32abfc97cf657893f47266965",
+  "androidBuildId": "c416812961560d90801ad7f5bfe4892a67b682dfc2498abdee5ad47fb68f25df",
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/result.json",
+        "sha256": "0e38a7ca50083a17d4062eed7a0950681d97485c690cf699d5c33b64e3029463"
+      },
+      "buildId": "a70b0aacb583e46bbb1936d373511d4a800f60e32abfc97cf657893f47266965",
+      "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+      "payloadAuthenticatedAtD215": true,
+      "payloadReverified": false,
+      "currentFixtureIncluded": false
+    },
+    {
+      "kind": "android",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/result.json",
+        "sha256": "43d4da3e44e036fd263e0cf5e6873d45e7e03f30926c19b75d1c98de5e713735"
+      },
+      "buildId": "c416812961560d90801ad7f5bfe4892a67b682dfc2498abdee5ad47fb68f25df",
+      "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+      "payloadAuthenticatedAtD215": true,
+      "payloadReverified": false,
+      "currentFixtureIncluded": false
+    }
+  ],
+  "retainedValidation": {
+    "result": {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-focus-race-20260930/result.json",
+      "sha256": "b5744a5dbe0dbd28b74f8a57f35737cf5887fa1806e36fe1053701540545e402"
+    },
+    "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+    "runs": {
+      "browser": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/result.json",
+        "sha256": "c7c72ee39a95a3a81295e20e4b351df95c0877e1ce5eb1891efdbb5e9c40f070",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/execution.json",
+          "sha256": "eb99f1320f8a442c19e967c9c3824ff279e1be6a40fb459505fe2327a0f8a049"
+        },
+        "rawReport": {
+          "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/playwright.json",
+          "sha256": "355733f93d972a65899e4b16ee7bf9ad522454de7df132a1ca4796ac7d3e08c6"
+        },
+        "tests": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "flaky": 0
+        }
+      },
+      "static": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/static-a1/result.json",
+        "sha256": "cb30b3df40a7097b57a828d3bf17c98a0fbaaad153744e93e5ef71a78c9e8c9d",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/static-a1/execution.json",
+          "sha256": "5c5675af6588972d1ce206240f29076f55757e8a3240386f4f0febf24b158942"
+        }
+      },
+      "unit": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/unit-a1/result.json",
+        "sha256": "541f627f692b58e7e1f1045e48bf99ea9ae8417a9eef8cb079de587326c38b57",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/unit-a1/execution.json",
+          "sha256": "67380f6e0722251e98f4b056f61221cdbe7548d7ac6fe0b1bdb3b6b5808a40b6"
+        },
+        "rawReport": {
+          "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/unit-a1/vitest.json",
+          "sha256": "5dbaf4dcf591c77d9da275e9cb793402b1165aba8302418f8ca788d8aedc5215"
+        },
+        "tests": {
+          "total": 39,
+          "passed": 39,
+          "failed": 0,
+          "pending": 0,
+          "todo": 0
+        }
+      }
+    },
+    "unitCount": 39,
+    "rerun": false,
+    "attributedToCurrentFixture": false
+  },
+  "contextualControlsPinsStale": true,
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "stageChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decision": "D216",
+  "nextAction": "Assess and reproduce the bounded reader-foreground integration gap: open Booky help currently persists over an actual committed reader. If confirmed, collapse it once on real reader entry while preserving an explicit later reopen, correct focus, selection, semantic route/progress, saved preferences and the canonical scene. Bind only necessary affected checks and fresh source-bound builds if production changes. Defer the eight unimported contextual draft provenance revisions5-to6 until after the final reader Controls fix so their whole-file pins need one refresh. Keep all34 drafts unapproved/unavailable, every requirement/stage status unchanged, S03.acceptance first unresolved and all editorial/child/device/full-accessibility/release gates open. Do not assign a future decision before its actual checkpoint.",
+  "limitations": [
+    "Trusted Chrome/Edge CDP touch demonstrates this bounded mobile canvas interaction; installed-device/native gesture equivalence remains unverified.",
+    "Six original guidance images precede the appended gesture; actual capture assertions and authenticated causal review provide gesture evidence.",
+    "Rotation uses observed direction/quaternion and invariant camera-to-target radius; pinch uses changed perspective radius within observed clamps. No camera state is assigned and camera.zoom does not establish perspective zoom.",
+    "The original guidance real-zoom-only claim is scoped to its earlier segment. Aggregate realZoomOnlyVerified:false explicitly admits the additional real gesture camera changes.",
+    "EN earlier keyboard input remains a mobile accessibility-race harness; original guidance product actions remain touch-only. No full keyboard/screen-reader acceptance.",
+    "D215 TS39-unit and build evidence retains its original manifest/source. The current fixture is outside those old build captures; no payload reauthentication or rebuild is performed.",
+    "D212 eight contextual whole-file Controls pins remain stale/held; refresh them separately after the next reader-foreground Controls fix; all34 drafts remain unapproved/unavailable. No stage, editorial, child, installed-device or release acceptance."
+  ],
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}
