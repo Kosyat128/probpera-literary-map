@@ -1,0 +1,21 @@
+// External-only ES2020 emission proof. No app checks, imports of application code, or canonical writes.
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {createRequire} from 'node:module';
+import {fileURLToPath} from 'node:url';
+assert.equal(process.argv.length,2);
+const self=fileURLToPath(import.meta.url),base=path.dirname(self),out=path.join(base,'test-type-proof-a1');
+const root=await fs.realpath('C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work'),changedPath='apps/admin/lib/booky-journey-draft.test.ts';
+const sha=b=>createHash('sha256').update(b).digest('hex'),norm=p=>path.normalize(p).replaceAll('\\','/'),ref=async p=>({path:norm(p),sha256:sha(await fs.readFile(p))});
+const originalPath=path.join(base,'proposed',changedPath),correctedPath=path.join(base,'corrected',changedPath),original=await fs.readFile(originalPath,'utf8'),corrected=await fs.readFile(correctedPath,'utf8');
+assert.equal(sha(original),'7f47f474950a7117593dfdd69743ef5260311368c81716ff86db55c562c34b70');
+const before='const removedChoice = catalog(); removedChoice.countries[0].writers.pop();',after='const removedChoice = catalog() as Mutable<JourneyDraftCatalog>; removedChoice.countries[0].writers.pop();';
+assert.equal(original.split(before).length,2);assert.equal(corrected,original.replace(before,after));
+const esbuild=createRequire(path.join(root,'package.json'))('esbuild'),options={loader:'ts',target:'es2020',format:'esm',legalComments:'none',sourcefile:changedPath};
+const [beforeEmission,afterEmission]=await Promise.all([esbuild.transform(original,options),esbuild.transform(corrected,options)]);
+assert.equal(beforeEmission.code,afterEmission.code,'Entire emitted ES2020 JavaScript must be identical');
+await fs.mkdir(out);await fs.writeFile(path.join(out,'before.js'),beforeEmission.code,{flag:'wx'});await fs.writeFile(path.join(out,'after.js'),afterEmission.code,{flag:'wx'});
+const result={pass:true,kind:'booky-journey-optional-order-test-type-erasure',changedPath,beforeSha256:sha(original),afterSha256:sha(corrected),original:await ref(originalPath),corrected:await ref(correctedPath),transform:{tool:'actual esbuild.transform',version:esbuild.version,options},emittedBefore:await ref(path.join(out,'before.js')),emittedAfter:await ref(path.join(out,'after.js')),emittedJavaScriptSha256:sha(beforeEmission.code),emittedJavaScriptUnchanged:true,applicationSourceChanged:false,unitExecuted:false,browserExecuted:false,typecheckExecuted:false,canonicalWrites:false,producer:await ref(self)};
+const target=path.join(out,'result.json');await fs.writeFile(target,JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({pass:true,corrected:result.corrected,emittedJavaScriptSha256:result.emittedJavaScriptSha256,proof:await ref(target)}));

@@ -1,0 +1,45 @@
+{
+  "pass": true,
+  "kind": "booky-journey-optional-order-test-type-erasure",
+  "changedPath": "apps/admin/lib/booky-journey-draft.test.ts",
+  "beforeSha256": "7f47f474950a7117593dfdd69743ef5260311368c81716ff86db55c562c34b70",
+  "afterSha256": "05a17d7c98e3027b4a935c5a72b1fb93d79abc75d6089a6bfac0882cc23c43e6",
+  "original": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/proposed/apps/admin/lib/booky-journey-draft.test.ts",
+    "sha256": "7f47f474950a7117593dfdd69743ef5260311368c81716ff86db55c562c34b70"
+  },
+  "corrected": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/corrected/apps/admin/lib/booky-journey-draft.test.ts",
+    "sha256": "05a17d7c98e3027b4a935c5a72b1fb93d79abc75d6089a6bfac0882cc23c43e6"
+  },
+  "transform": {
+    "tool": "actual esbuild.transform",
+    "version": "0.28.2",
+    "options": {
+      "loader": "ts",
+      "target": "es2020",
+      "format": "esm",
+      "legalComments": "none",
+      "sourcefile": "apps/admin/lib/booky-journey-draft.test.ts"
+    }
+  },
+  "emittedBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/test-type-proof-a1/before.js",
+    "sha256": "3558e7b8b16162a52a6b7c0558f73252341d14e18867e78a3a514e75abfad5c7"
+  },
+  "emittedAfter": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/test-type-proof-a1/after.js",
+    "sha256": "3558e7b8b16162a52a6b7c0558f73252341d14e18867e78a3a514e75abfad5c7"
+  },
+  "emittedJavaScriptSha256": "3558e7b8b16162a52a6b7c0558f73252341d14e18867e78a3a514e75abfad5c7",
+  "emittedJavaScriptUnchanged": true,
+  "applicationSourceChanged": false,
+  "unitExecuted": false,
+  "browserExecuted": false,
+  "typecheckExecuted": false,
+  "canonicalWrites": false,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/prove-test-type.mjs",
+    "sha256": "b9e633a41893297454b6f607919309da8d0ae9338f18fdbbcb635b4d3ab4a73d"
+  }
+}

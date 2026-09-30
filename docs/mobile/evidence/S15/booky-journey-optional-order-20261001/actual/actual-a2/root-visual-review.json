@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "decision": "D230",
+  "recordedAt": "2026-09-30T22:41:20.1095030Z",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/source-manifest.json",
+    "sha256": "a55eb3cac636a8d1f26ba2bb9520c022b766c67f1b4c6e071881243486a0abe4"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/browser-result.json",
+    "sha256": "db83c89206970396ed616a8f9a1a2fa60d8bda23404ee9d46406c72f4516d53d"
+  },
+  "directRootViews": 8,
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "014f84d694a904b6e4c40b6646c2ecb22c815eedbf958a5f00d896d9168d1861"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "f38c1b48c28e5439cb5afbdd7deba55591c2dfafb8c1c6f0375416657e0b3694"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "aaf1de1a750536a53dec1416c44d7458f0bbc29c8b55f4ece2e22037d7db6d2d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "fc41951771a199fd2ab433f769d1de23918a5fc09156a10b0fd9d9d23703f0a5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "92a9a530e932669a7b7308fb35831f201044c57ba67ef8741ec84e85efae48f9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "56d50c01b36f0c6d5b7398caefe986c2f13084122dcd44dba333e1aa5a601f52"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-optional-order-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "91ecce7747341ac95200c46a4f57f6f1623608850d5509dea41a5c402cf766b8"
+    }
+  ],
+  "findings": [
+    "Directly inspected all eight original second-attempt captures. RU320 optional-order panel shows Activity fourth and Fact fifth, Earlier/Later controls, restoration action and visible retained keyboard focus without overlap.",
+    "Native reopened EN320 preview shows actual six-node reversed order, current Activity fourth and Fact fifth, with wrapping overview controls.",
+    "RU matching and EN outside profile panels, authored copy fields and activity answer/navigation screens remain readable at320px. Desktop/editor field layout is intact."
+  ],
+  "limitations": [
+    "Actual admin component with synthetic catalog and mocked server transport; not a mobile application, installed device or authenticated staff shell.",
+    "The EN ordered-preview viewport shows the choices and check control; the resulting verdict and lower navigation fall below its screenshot fold and are covered by browser assertions.",
+    "Desktop file-read error is intentional. Source citations are synthetic/unreviewed; no complete graph, factual, accessibility, stage or release acceptance."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}
