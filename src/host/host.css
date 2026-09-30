@@ -545,3 +545,92 @@ body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-
   .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome button:disabled { color: GrayText !important; }
   .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome button:focus-visible { outline-color: Highlight !important; }
 }
+
+/* Native mobile reading uses the existing expanded sheet and a single-step footer. */
+@media (max-width: 767px) {
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame.is-catalog
+    > .book-shelf-frame__workspace > .book-shelf-frame__primary > .book-shelf-frame__catalog {
+    height: 100%;
+  }
+
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame.is-catalog
+    > .book-shelf-frame__workspace:has(> .book-shelf-frame__detail[data-mobile-position="expanded"])
+    > .book-shelf-frame__primary > .book-shelf-frame__catalog {
+    display: none;
+  }
+
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__navigation {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__navigation
+    > .book-shelf-navigation__previous,
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-navigation__position
+    > :is(.is-edge, .book-shelf-navigation__batch) {
+    display: none;
+  }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-navigation__position {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    grid-template-rows: auto auto;
+    justify-self: stretch;
+    justify-content: stretch;
+    width: 100%;
+    gap: 6px;
+  }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__navigation
+    .book-shelf-navigation__position > .book-shelf-navigation__single {
+    display: inline-flex;
+    grid-column: 1;
+    grid-row: 1;
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+  }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__navigation
+    .book-shelf-navigation__count ~ .book-shelf-navigation__single {
+    grid-column: 3;
+  }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-navigation__count {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    min-width: 0;
+    padding-inline: 4px;
+  }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-navigation__position
+    > .book-shelf-progress-rail {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+  }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-navigation__actions {
+    grid-column: 1;
+  }
+
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__navigation:is(
+    [data-navigation-count="0"], [data-navigation-count="1"]
+  ) .book-shelf-navigation__position {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 0;
+  }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__navigation:is(
+    [data-navigation-count="0"], [data-navigation-count="1"]
+  ) .book-shelf-navigation__position > :is(.book-shelf-navigation__single, .book-shelf-progress-rail) {
+    display: none;
+  }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__navigation:is(
+    [data-navigation-count="0"], [data-navigation-count="1"]
+  ) .book-shelf-navigation__count {
+    grid-column: 1;
+    min-height: 24px;
+  }
+
+  /* A selected reader owns this surface until actual Close. */
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame:has(
+    > .book-shelf-frame__workspace > .book-shelf-frame__detail
+  ) > .book-shelf-frame__navigation > .book-shelf-navigation__position {
+    display: none;
+  }
+}

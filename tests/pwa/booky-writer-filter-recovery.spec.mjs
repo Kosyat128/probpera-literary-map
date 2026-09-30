@@ -417,6 +417,14 @@ async function writerReaderObservation(page) {
       booky:{readerOwned:pet?.dataset.bookyReaderOwned??null,readerPaused:pet?.dataset.bookyReaderPaused??null,gesture:pet?.dataset.planetMascotGesture??null,targets:document.querySelectorAll('[data-booky-target]').length,context:canvas?.dataset.bookyContext??null,animating:canvas?.dataset.bookyAnimating??null,reducedMotion:canvas?.dataset.bookyReducedMotion??null,renderCount:canvas?.dataset.bookyRenderCount??null,systemReducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}};
   });
 }
+async function writerReaderComposition(page) {
+  return page.evaluate(()=>{
+    const frame=document.querySelector('.native-planet-panel .book-shelf-frame'),detail=frame?.querySelector('.book-shelf-frame__detail'),catalog=frame?.querySelector('.book-shelf-frame__catalog'),position=frame?.querySelector('.book-shelf-navigation__position'),navigation=frame?.querySelector('.book-shelf-frame__navigation');
+    const rect=e=>{const r=e?.getBoundingClientRect();return r?{left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height}:null;},visible=e=>!!e?.getClientRects().length&&getComputedStyle(e).visibility!=='hidden';
+    const controls=[...(navigation?.querySelectorAll('.book-shelf-navigation__single, .book-shelf-navigation__actions > button')??[])].map(e=>({label:e.getAttribute('aria-label')??e.textContent.trim(),visible:visible(e),disabled:e.disabled,rect:rect(e)}));
+    return {bookKey:new URL(location.href).searchParams.get('book'),position:detail?.dataset.mobilePosition??null,phase:detail?.dataset.mobilePhase??null,catalogPresent:!!catalog,catalogVisible:visible(catalog),navigationPresent:!!position,navigationVisible:visible(position),navigationCount:Number(navigation?.dataset.navigationCount??NaN),controls,documentOverflow:Math.max(0,document.documentElement.scrollWidth-innerWidth),frameOverflow:frame?Math.max(0,frame.scrollWidth-frame.clientWidth):null,history:window.__bookySupportFixture.historyObservation()};
+  });
+}
 async function writerInputs(page, observation) {
   const cdp=await page.context().newCDPSession(page);
   const touch=(type,touchPoints)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints});
@@ -454,15 +462,19 @@ async function writerInputs(page, observation) {
       const after=await geometry(locator);record.after=after.scrollers.find(owner=>owner.index===record.ownerIndex)?.top??null;record.scrollersAfter=after.scrollers;record.targetAfter=after.box;
     }
   }
-  async function tap(locator,label,{minimum44=true}={}) {
+  async function tap(locator,label,{minimum44=true,rangeEdge=null}={}) {
     await expose(locator,label);let state,last=null,matches=0;
     await expect.poll(async()=>{state=await geometry(locator);const key=JSON.stringify([state.box,state.clip,state.hits.map(hit=>hit.inside)]);matches=key===last?matches+1:1;last=key;return matches>=3&&state.hits.every(hit=>hit.inside);},{intervals:[80],message:label+' settled touch geometry'}).toBe(true);
     observation.targets.push({label,...state});
     if(minimum44){expect(state.box.width,label+' width').toBeGreaterThanOrEqual(44);expect(state.box.height,label+' height').toBeGreaterThanOrEqual(44);}expect(state.disabled,label+' enabled').toBe(false);
-    await locator.evaluate(target=>{window.__writerRecoveryTouch=[];for(const type of ['pointerdown','pointerup','click'])target.addEventListener(type,event=>window.__writerRecoveryTouch.push({type,trusted:event.isTrusted,pointerType:event.pointerType,intended:target.contains(event.target)}),{once:true});});
-    await touch('touchStart',[state.center]);await page.waitForTimeout(65);await touch('touchEnd',[]);await writerSettle(page);
-    const events=await page.evaluate(()=>window.__writerRecoveryTouch);observation.touches.push({label,events});
-    for(const type of ['pointerdown','pointerup','click'])expect(events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch'&&event.intended),label+' trusted '+type).toBe(true);
+    const rangeBefore=rangeEdge!==null?await locator.inputValue():null;
+    await locator.evaluate((target,isRange)=>{window.__writerRecoveryTouch=[];for(const type of isRange?['pointerdown','pointerup','input','change']:['pointerdown','pointerup','click'])target.addEventListener(type,event=>window.__writerRecoveryTouch.push({type,trusted:event.isTrusted,pointerType:event.pointerType,intended:target.contains(event.target),...(isRange?{value:target.value}:{})}),{once:true});},rangeEdge!==null);
+    let point=state.center;
+    if(rangeEdge!==null){expect(['start','end']).toContain(rangeEdge);await expect(locator).toHaveAttribute('type','range');point={x:rangeEdge==='start'?state.box.left+1:state.box.right-1,y:state.center.y};expect(await locator.evaluate((target,p)=>{const hit=document.elementFromPoint(p.x,p.y);return hit===target||target.contains(hit);},point),label+' actual endpoint belongs to the same native range').toBe(true);observation.targets.at(-1).actualRangeEndpoint={edge:rangeEdge,point};}
+    await touch('touchStart',[point]);await page.waitForTimeout(65);await touch('touchEnd',[]);await writerSettle(page);
+    const events=await page.evaluate(()=>window.__writerRecoveryTouch),rangeAfter=rangeEdge!==null?await locator.inputValue():null;observation.touches.push({label,events,...(rangeEdge!==null?{nativeRange:{edge:rangeEdge,before:rangeBefore,after:rangeAfter}}:{})});
+    for(const type of rangeEdge!==null?['pointerdown','pointerup']:['pointerdown','pointerup','click'])expect(events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch'&&event.intended),label+' trusted '+type).toBe(true);
+    if(rangeEdge!==null&&rangeAfter!==rangeBefore)for(const type of ['input','change'])expect(events.some(event=>event.type===type&&event.trusted&&event.intended&&event.value===rangeAfter),label+' native '+type+' commits the actual changed value').toBe(true);
   }
   return {tap,expose,geometry,close:()=>cdp.detach()};
 }
@@ -550,7 +562,7 @@ for (const language of ['ru','en']) test('Booky explicit writer filter recovery 
     await input.tap(readerFrance,'restrict the underlying writer view while the real book stays open',{minimum44:false});
     await expect(readerFrance.locator('input')).toBeChecked();
     const readerRestricted=await writerControls(page);expect(readerRestricted.author).toBe('russia:dostoevsky');expect(readerRestricted.sort).toBe('title');
-    await closeFilters();await expect(selectedReader).toBeVisible();await expect(page.locator('.book-archive-empty')).toBeVisible();
+    await closeFilters();await expect(selectedReader).toBeVisible();await expect(page.locator('.book-archive-empty')).toHaveCount(1);await expect(page.locator('.book-shelf-frame__catalog')).toBeHidden();await expect(selectedReader).toHaveAttribute('data-mobile-position','expanded');
     await help();await status('filtered-empty');await expect(recovery()).toBeVisible();
     const previousAuthorId=await page.evaluate(()=>Math.max(0,...(window.__bookyAuthorTrace??[]).map(row=>row.id??0)));
     await input.tap(recovery(),'explicit recovery while the actual reader still owns its book');
@@ -632,8 +644,22 @@ for (const language of ['ru','en']) test('Booky explicit writer filter recovery 
     const foregroundFocus=await page.evaluate(since=>(window.__bookyReaderFocus??[]).filter(row=>row.time>=since),foregroundArrival.time);
     expect(foregroundFocus.some(row=>row.bookyToggle),'Automatic retirement never transfers reader focus to Booky').toBe(false);
     expect(foreground.collapsed.booky.context).toBe('ready');expect(foreground.collapsed.booky.systemReducedMotion).toBe(false);expect(foreground.collapsed.booky.targets).toBe(0);
+    foreground.composition=await writerReaderComposition(page);
+    const originalSubtitle=selectedReader.locator('.book-original-title');
+    if(language==='ru')await expect(originalSubtitle,'Identical original title does not duplicate the native reader heading').toHaveCount(0);
+    else await expect(originalSubtitle,'Distinct original title remains visible in English').toBeVisible();
+    foreground.composition.titleHierarchy={title:await selectedReader.locator('.book-detail-copy h3').innerText(),originalTitles:await originalSubtitle.allTextContents()};
+    await expect(selectedReader).toHaveAttribute('data-mobile-position','expanded');await expect(selectedControl).toHaveAttribute('aria-expanded','true');
+    expect(foreground.composition.catalogPresent).toBe(true);expect(foreground.composition.catalogVisible).toBe(false);expect(foreground.composition.navigationPresent).toBe(true);expect(foreground.composition.navigationVisible).toBe(false);
+    for(const control of foreground.composition.controls.filter(control=>control.visible)){expect(control.rect.width,control.label+' width').toBeGreaterThanOrEqual(44);expect(control.rect.height,control.label+' height').toBeGreaterThanOrEqual(44);}expect(foreground.composition.controls.filter(control=>control.visible)).toHaveLength(2);expect(foreground.composition.documentOverflow).toBeLessThanOrEqual(1);expect(foreground.composition.frameOverflow).toBeLessThanOrEqual(1);
     expect(await writerOwnedState(page)).toEqual({...foregroundOwned,hash:new URL(foreground.collapsed.url).hash});expect([...fixture.memory.entries()].sort()).toEqual(foregroundPreferences);expect(fixture.bookyWrites().length).toBe(foregroundBookyWrites);retained(await actual(page),foregroundGlobe,true,false);
     await capture(fixture,testInfo,'booky-writer-filter-recovery-'+language+'-reader-foreground.png','Actual App; trusted entry retires previously open Booky help; selected reader owns focus, compact Booky stays available and decorative motion is paused. Original recovery captures remain separate.');
+    const detailHandle=selectedReader.locator('.book-detail-mobile-handle');
+    await expect(detailHandle).toHaveAttribute('aria-label',language==='ru'?'Свернуть сведения о книге':'Collapse book details');await input.tap(detailHandle,'show underlying catalog without closing the owned reader');
+    await expect(selectedReader).toHaveAttribute('data-mobile-position','half');await expect(detailHandle).toHaveAttribute('aria-label',language==='ru'?'Развернуть сведения о книге':'Expand book details');await expect(detailHandle).toHaveAttribute('aria-expanded','true');
+    foreground.half=await writerReaderComposition(page);expect(foreground.half.catalogVisible).toBe(true);expect(foreground.half.navigationVisible).toBe(false);expect(foreground.half.bookKey).toBe(selectedKey);expect(foreground.half.history).toEqual(foreground.collapsed.history);await expect(selectedControl).toHaveAttribute('aria-expanded','true');await expect(panel(page)).toHaveCount(0);
+    await input.tap(detailHandle,'restore the existing full reader');await expect(selectedReader).toHaveAttribute('data-mobile-position','expanded');
+    foreground.expandedAgain=await writerReaderComposition(page);expect(foreground.expandedAgain.catalogVisible).toBe(false);expect(foreground.expandedAgain.navigationVisible).toBe(false);expect(foreground.expandedAgain.bookKey).toBe(selectedKey);expect(foreground.expandedAgain.history).toEqual(foreground.collapsed.history);await expect(panel(page)).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','true');await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','true');
     const ownedReader=await writerOwnedState(page),readerHistory=foreground.collapsed.history;
     await help();await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','true');await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','false');
     const reopenedTraceStart=await page.evaluate(()=>performance.now());
@@ -662,6 +688,46 @@ for (const language of ['ru','en']) test('Booky explicit writer filter recovery 
     foreground.readerViewTrace=await page.evaluate(since=>(window.__bookyReaderTrace??[]).filter(row=>row.time>=since),foregroundTraceStart);foreground.focusTrace=await page.evaluate(()=>window.__bookyReaderFocus??[]);
     foreground.checks=['Previously open help retires on an actual committed reader entry without moving focus to Booky','Retirement preserves semantic content, preferences, history and canonical resources','Explicit compact-toggle reopen survives actual inactive/active filter callbacks, width reflow and motion media changes','Genuine Close leaves retired help closed; same-work reentry retires newly reopened help again'].map(name=>({name,pass:true}));
     Object.assign(result,{readerForegroundExercised:true,readerAutomaticHelpRetirementVerified:true,readerExplicitReopenSurvivesInactiveViews:true,readerSameBookReentryVerified:true,readerDecorativePauseVerified:true});
+    result.nativeReaderCompositionExercised=true;
+    if(language==='ru'){
+      const many=o.readerCompositionManyBooks={touchesStart:o.touches.length,selectionSetup:'Existing controlled native author picker; every footer/reader activation is trusted CDP touch',steps:[],checks:[]};
+      await input.tap(selectedReader.locator('.book-detail-close'),'true Close returns functional catalog navigation');await expect(selectedReader).toHaveCount(0);await expect(page.locator('.book-shelf-navigation__position')).toBeVisible();
+      await filters();await nativeSelect(drawer().locator('[data-book-author-filter]'),'','all real public authors for many-book browsing');await closeFilters();await expect(shelf()).toHaveValue('all');await expect(page.locator('.book-shelf-frame__catalog')).toBeVisible();
+      const navigation=page.locator('.book-shelf-frame__navigation'),position=navigation.locator('.book-shelf-navigation__position'),rail=position.locator('input[type="range"]'),previous=position.locator('.book-shelf-navigation__single').nth(0),next=position.locator('.book-shelf-navigation__single').nth(1);
+      await expect(position).toBeVisible();await expect(rail).toBeEnabled();const total=Number(await rail.getAttribute('max'));expect(total,'Actual public corpus has more than one browsable book').toBeGreaterThan(1);expect(Number(await navigation.getAttribute('data-navigation-count'))).toBe(total);many.total=total;
+      const browsingOwned=await writerOwnedState(page),browsingPreferences=[...fixture.memory.entries()].sort(),browsingBookyWrites=fixture.bookyWrites().length,browsingGlobe=await actual(page);
+      // Native navigation must reveal the real card, not only update a counter.
+      const measureCurrentCard=key=>page.evaluate(key=>{
+        const catalog=document.querySelector('.native-planet-panel .book-shelf-frame__catalog');
+        const button=[...(catalog?.querySelectorAll('.archive-book-detail[data-book-key]')??[])].find(node=>node.dataset.bookKey===key),card=button?.closest('.archive-book-card'),heading=card?.querySelector('h3');
+        if(!catalog||!button||!card||!heading)return {key,ready:false,present:false};
+        const rect=node=>{const r=node.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height};};
+        let clip={left:0,top:0,right:innerWidth,bottom:innerHeight};
+        for(let parent=card.parentElement;parent;parent=parent.parentElement){const style=getComputedStyle(parent),r=rect(parent);if(/auto|scroll|hidden|clip/.test(style.overflowX)){clip.left=Math.max(clip.left,r.left+parent.clientLeft);clip.right=Math.min(clip.right,r.left+parent.clientLeft+parent.clientWidth);}if(/auto|scroll|hidden|clip/.test(style.overflowY)){clip.top=Math.max(clip.top,r.top+parent.clientTop);clip.bottom=Math.min(clip.bottom,r.top+parent.clientTop+parent.clientHeight);}}
+        const box=rect(card),fullyVisible=box.width>0&&box.height>0&&box.left>=clip.left-1&&box.right<=clip.right+1&&box.top>=clip.top-1&&box.bottom<=clip.bottom+1;
+        const actualHit=node=>{const r=rect(node),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);return !!hit&&node.contains(hit);};
+        const titleHit=actualHit(heading),buttonHit=actualHit(button);
+        return {key,present:true,title:heading.textContent.trim(),card:box,clip,catalog:{rect:rect(catalog),scrollTop:catalog.scrollTop,clientHeight:catalog.clientHeight,scrollHeight:catalog.scrollHeight,renderedCards:catalog.querySelectorAll('.archive-book-card').length},fullyVisible,titleHit,buttonHit,ready:fullyVisible&&titleHit&&buttonHit};
+      },key);
+      const observeStep=async(name,value)=>{await expect(rail).toHaveValue(String(value));await expect(position.locator('.book-shelf-navigation__count strong')).toHaveText(String(value));const current=await writerReaderComposition(page);expect(current.navigationCount).toBe(total);expect(current.navigationVisible).toBe(true);expect(current.catalogVisible).toBe(true);expect(current.bookKey).toBeNull();expect(current.documentOverflow).toBeLessThanOrEqual(1);expect(current.frameOverflow).toBeLessThanOrEqual(1);expect(current.history.context?.focusedBookKey?.length).toBeGreaterThan(0);expect(await previous.isDisabled()).toBe(value===1);expect(await next.isDisabled()).toBe(value===total);let visual=null;await expect.poll(async()=>{visual=await measureCurrentCard(current.history.context.focusedBookKey);return visual.ready;},{message:name+' reveals the actual focused card and its usable detail button'}).toBe(true);many.steps.push({name,value,focusedBookKey:current.history.context.focusedBookKey,layout:current,visual});};
+      await input.tap(rail,'trusted native range lower boundary',{minimum44:false,rangeEdge:'start'});await observeStep('first boundary',1);
+      await input.tap(next,'one actual next book');await observeStep('next increments',2);
+      await input.tap(previous,'one actual previous book');await observeStep('previous restores',1);
+      await input.tap(rail,'trusted native range upper boundary',{minimum44:false,rangeEdge:'end'});await observeStep('last boundary',total);
+      await input.tap(previous,'previous from last boundary');await observeStep('previous decrements',total-1);
+      for(const control of (await writerReaderComposition(page)).controls.filter(control=>control.visible)){expect(control.rect.width,control.label+' width').toBeGreaterThanOrEqual(44);expect(control.rect.height,control.label+' height').toBeGreaterThanOrEqual(44);}
+      await input.expose(navigation.locator('.book-shelf-navigation__actions > button').last(),'frame the full native catalog footer');
+      await expect.poll(async()=>(await measureCurrentCard(many.steps.at(-1).focusedBookKey)).ready,{message:'Focused card stays usable with the complete footer framed'}).toBe(true);
+      await capture(fixture,testInfo,'native-reader-composition-many-books-ru.png','Actual native App public catalog with observed N>1, trusted single-step navigation and visible 44px previous/count/next. This additional browsing capture is separate from the original six recovery/reader captures.');
+      await input.tap(rail,'return to actual first boundary',{minimum44:false,rangeEdge:'start'});await observeStep('first boundary restored',1);expect(many.steps[1].focusedBookKey).not.toBe(many.steps[0].focusedBookKey);expect(many.steps[2].focusedBookKey).toBe(many.steps[0].focusedBookKey);expect(many.steps[4].focusedBookKey).not.toBe(many.steps[3].focusedBookKey);
+      expect(await writerOwnedState(page)).toEqual(browsingOwned);expect([...fixture.memory.entries()].sort()).toEqual(browsingPreferences);expect(fixture.bookyWrites().length).toBe(browsingBookyWrites);retained(await actual(page),browsingGlobe,true,false);
+      const availableBook=page.locator('.archive-book-detail[data-book-key]').first(),manyReaderKey=await availableBook.getAttribute('data-book-key');expect(manyReaderKey).toMatch(/^[^:]+:[^:]+:[^:]+$/u);many.readerExpectedKey=manyReaderKey;
+      const beforeManyReader=await page.evaluate(()=>window.__bookySupportFixture.historyObservation());await input.tap(availableBook,'open an actually loaded real reader from the many-book catalog');await expect(selectedReader).toHaveAttribute('data-mobile-position','expanded');await expect(availableBook).toHaveAttribute('aria-expanded','true');
+      many.reader=await writerReaderComposition(page);expect(many.reader.bookKey).toBe(manyReaderKey);expect(many.reader.catalogVisible).toBe(false);expect(many.reader.navigationVisible).toBe(false);expect(many.reader.navigationCount).toBe(total);expect(many.reader.controls.filter(control=>control.visible)).toHaveLength(2);for(const control of many.reader.controls.filter(control=>control.visible)){expect(control.rect.width).toBeGreaterThanOrEqual(44);expect(control.rect.height).toBeGreaterThanOrEqual(44);}
+      await input.tap(selectedReader.locator('.book-detail-close'),'true Close restores the many-book catalog footer');await expect(selectedReader).toHaveCount(0);await expect(position).toBeVisible();await expect.poll(()=>page.evaluate(()=>window.__bookySupportFixture.historyObservation())).toEqual(beforeManyReader);
+      many.closed=await writerReaderComposition(page);expect(many.closed.catalogVisible).toBe(true);expect(many.closed.navigationVisible).toBe(true);expect(many.closed.navigationCount).toBe(total);
+      many.checks=['Real observed N>1 catalog reveals the actual focused card with bounded trusted previous/next and native range boundary semantics','Visible footer controls are at least44px with no horizontal overflow','Catalog navigation preserves selected country/writer, saved content, preferences, Booky progress and canonical resources','Mounted reader hides disabled navigation; true Close restores functional catalog navigation and exact prior history'].map(name=>({name,pass:true}));result.nativeManyBookCatalogNavigationVerified=true;
+    }
     fixture.verify();
   } catch(error) {
     const filename='diagnostic-failure-'+language+'.png';const bytes=await page.screenshot({path:testInfo.outputPath(filename)});o.failureCapture={filename,sha256:digest(bytes),scope:'failure diagnosis only; not a successful contract capture',error:error.message};await testInfo.attach('diagnostic-failure-'+language,{path:testInfo.outputPath(filename),contentType:'image/png'});throw error;
