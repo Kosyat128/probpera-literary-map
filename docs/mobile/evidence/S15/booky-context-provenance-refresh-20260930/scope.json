@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "sourceFrozen": true,
+  "status": "CONTEXT_PROVENANCE_SOURCE_FROZEN",
+  "changedPaths": [
+    "src/host/bookyNavigationDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs"
+  ],
+  "proposedSha256": [
+    "462ef334186954535c87a8a4b94e6b709888bbf1acfa6a6832357eec883880fe",
+    "42f1fa6bb3b551a176311d1987ec3d41ca00ae7aad9b6b50c76fd1f8d0280caa",
+    "d9a6e6b53f55a33e02530cee0ef6c4f46abecb4fb86ce1c67eab768dd90b1ca5"
+  ],
+  "patchSha256": "10be7ce0284362c7af1909249e3c5c6a5990c9b6beff3a6c89a6dcb5f177469b",
+  "controlsSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "controlsNormalizedSha256": "71199cf88a1d59b4d32f2cfb18e4ec485b9d30f8bae714c13579d9bf7ff8be50",
+  "navigationVersion": 2,
+  "contextFromVersion": 4,
+  "contextToVersion": 5,
+  "navigationRecordCount": 14,
+  "contextRecordCount": 8,
+  "supportRecordCount": 12,
+  "combinedRecordCount": 34,
+  "unitFiles": [
+    "src/host/bookyNavigationDrafts.test.ts"
+  ],
+  "expectedUnitTests": 17,
+  "validationModes": [
+    "unit",
+    "inventory"
+  ],
+  "staticRerun": false,
+  "staticReason": "Only unimported authored provenance/checksum and existing negative-test literals change. Keep final native-design TypeScript/five browser cases/21 inspected captures, original D209120 runtime units and actual PWA/APK evidence at their original authenticated source IDs. Fresh validation is17 existing units and inventory only.",
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "priorChangedInputCount": 10,
+  "priorRuntimeInputCount": 8,
+  "rebuild": false,
+  "browserRerun": false,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "stageAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "releaseReady": false,
+  "d211SourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "d211Checkpoint": "a139bbbe3d3dd27255773147e79312dda5faf4e4",
+  "d211ResultPath": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+  "d211ResultSha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c",
+  "expectedSourceInputCount": null,
+  "expectedProtectedInputCount": null,
+  "nextAction": "Continue the persisted S15 current-only recovery plan: assess and exercise real-reader deferral and cancellation by a newer trusted user filter/navigation edit using the existing RU/EN writer-filter recovery cases. Preserve accepted native mobile design, actual publication/admission/readiness guards, semantic progress and canonical scene. Do not repeat accepted design/browser/build work solely for unimported provenance or infer stage, editorial, child or installed-device acceptance.",
+  "sourceAuthor": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/prepare-d212.cjs",
+    "sha256": "944076ff710a6b9a10afe9510dcfb34b78366226e610a3c6869cd6c0abfba595"
+  },
+  "authorGuide": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/FINAL-DESIGN-ADAPTATION.md",
+    "sha256": "6bf12d87804e92f5f9a821a3406d45aadd63f18fde34c726de3ffaff2c549c58"
+  },
+  "proposalBindings": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/source-bindings.json",
+    "sha256": "80838b91df6978d6dde523e49a7be3a3c1ba7c2b5cfec696435a88ed3de091cf"
+  },
+  "requiredPreviousResultPath": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+  "historicalRejectedCompositionReference": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/mobile-composition-feedback-a2/feedback.json",
+    "sha256": "bf1016eca6d53a156e3b81912a8f22c63f6f3120424a6868661574802a252857"
+  },
+  "finalDesignSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "finalDesignCheckpoint": "a139bbbe3d3dd27255773147e79312dda5faf4e4",
+  "finalDesignResultPath": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+  "finalDesignResultSha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+}

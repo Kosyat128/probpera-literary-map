@@ -1,0 +1,26 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-context-provenance-refresh-20260930\\unit-a1\\vitest.json"
+  ],
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "startedAt": "2026-09-30T09:49:22.539Z",
+  "durationMs": 4213.273700000001,
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdout": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit-a1/stdout.log",
+    "sha256": "d8477a812eb1899ee50f360879a0f11ee2d70131fffeba162c38817a1ee65b3b",
+    "bytes": 196
+  },
+  "stderr": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit-a1/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

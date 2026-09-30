@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "kind": "D212_GLOBAL_CHECKPOINT",
+  "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+  "runtimeSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "unitCount": 17,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "allStageAndCriterionStatusesUnchanged": true,
+  "unrelatedRequirementsUnchanged": true,
+  "releaseReady": false,
+  "recordedAt": "2026-09-30T09:50:33.892Z",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+    "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+  },
+  "helper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/checkpoint-d212.mjs",
+    "sha256": "57073469dbbc09652718c1be80ad04e7b9a80d625980bc6c4a2a31864924cba6"
+  },
+  "originalGlobals": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "de220c386be36598f50756b3c06ac204097fa3d5042866e6ddfa5cbaa5669f34"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "47d703b76996a098cc3c5ea19ee27ae6e8b2338d167c28b58e7b215de1b81f0d"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "31c61daa9eda210c729ebb824723134d9f77127274847755078dabdb96f16bd6"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "9fdeadef9d89b22dba47d994b49fb38da01592ea5d761ad3b720e19ca09e9ace"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "a95b449644945d0ff3815bc9b9fc3a6e966278a0978cb293f8eecf5b606c8ae5"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "2f27834800f3e34a3f49ebf347d2d648d6c945ab15cfff82949b83298a2b0e5c"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "e3c944ee3265b76cde867d2bb50d93a2bced2d8189c6b26aa313571ec99b0c0c"
+    }
+  ],
+  "agentsBefore": {
+    "path": "AGENTS.md",
+    "sha256": "ce3f3af0719bd8169b81e67cc6c9051cca1e3a5f77aa77cd82dee637564f46cd"
+  },
+  "outputs": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "e88a36892e6788832796534ca5401d82a210f68924bf321e4b1d15cef64237ed"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "649dcbf4c346e780d73eaa1943addd054f1374617ba337287c8d68246996749a"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "e2f387e4d0c530ad10ef6a9757646ec19633de8a4fa8840161f72723b8e1ffaa"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "6be2db1bbe1116d17bb6f82abf69c2954e00e8a4528812ca7c42dab7954b6446"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "a5fa6bce0c6094a9525607f9292b22a8db99a1dd88d490afc92453c4e93a0a6f"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "040f71cf940ab34dffd3f58ffe7947f4e40a80ca8f5ffa7146a6e78da5042e73"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "95424985efc9addfc043b1bec23ee47afc323e6e5546cd3649102ff450fc8260"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/README.md",
+      "sha256": "ab1848c32045fb89c5b6c2654af164d22547ac1092d99f83fda43ae547fd2a2d"
+    }
+  ],
+  "nextAction": "Continue the persisted S15 current-only recovery plan: assess and exercise real-reader deferral and cancellation by a newer trusted user filter/navigation edit using the existing RU/EN writer-filter recovery cases. Preserve accepted native mobile design, actual publication/admission/readiness guards, semantic progress and canonical scene. Do not repeat accepted design/browser/build work solely for unimported provenance or infer stage, editorial, child or installed-device acceptance.",
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-003"
+  ],
+  "requirementEvidenceTargets": [
+    "PLANETKA-003"
+  ]
+}

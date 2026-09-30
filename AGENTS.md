@@ -37,6 +37,14 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-context-provenance-refresh-20260930:begin -->
+Latest source 6dff109a78c7a678362689c80c569184128de00f: only eight contextual draft source revisions advance 4→5, pinned to actual last-changed Controls c55c7d0749404421807c0138145c0ea97a4e89a7. Fourteen navigation records at revision 2, twelve support records and all 22 texts remain exact. All 34 records remain unapproved and unavailable. Only S15.PLANETKA-003 evidence changes; every stage and criterion status stays unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json. D212. Existing 17 focused units and the read-only inventory audit passed. final native design runtime c55c7d0749404421807c0138145c0ea97a4e89a7 and PWA ff3c9f551938b9b4f4540bc567100f0133f543300b7d14ea7aca81687e3af4d9 / ANDROID 00a6bcaa9b042491593608f517851d1d7961d804c3af37c531de7b852fcf6183 are retained at their own source with actual payload/APK byte authentication. No new static/browser validation or rebuild; D212 source-only changes are not included in those builds. Stage, editorial, device and release acceptance remains open.
+
+Next: Continue the persisted S15 current-only recovery plan: assess and exercise real-reader deferral and cancellation by a newer trusted user filter/navigation edit using the existing RU/EN writer-filter recovery cases. Preserve accepted native mobile design, actual publication/admission/readiness guards, semantic progress and canonical scene. Do not repeat accepted design/browser/build work solely for unimported provenance or infer stage, editorial, child or installed-device acceptance.
+<!-- s15-booky-context-provenance-refresh-20260930:end -->
+
 <!-- s15-booky-mobile-design-20260930:begin -->
 Latest source c55c7d07: Booky uses one compact mobile help surface with the same live actor in its heading, deliberate optional controls and reciprocal Search/help foreground. Native book details retain their canonical body identity with a compact handle. Normal captions and separate synthetic200% text stress are verified in RU/EN. Prior journey acknowledgement, completion and reduced-motion guards remain. All34 historical drafts remain unapproved; D207 inventory stays historical. Bounded S15.PLANETKA-002 evidence; statuses unchanged.
 

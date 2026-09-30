@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "headSha": "6dff109a78c7a678362689c80c569184128de00f",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-30T09:07:09.623Z",
+  "updatedAt": "2026-09-30T09:50:33.892Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2654,11 +2654,12 @@
             "docs/mobile/evidence/S15/journey-runtime-20260923/result.json",
             "docs/mobile/evidence/S15/journey-fact-20260923/result.json",
             "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/result.json",
-            "docs/mobile/evidence/S15/booky-context-provenance-20260927/result.json"
+            "docs/mobile/evidence/S15/booky-context-provenance-20260927/result.json",
+            "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json"
           ],
-          "commit": "2a3b8f7564e74231147e3db2b5fc872e87d85fb4",
-          "lastValidatedAt": "2026-09-27T05:07:52.290Z",
-          "notes": "Scripted reviewed sourced dialogue. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope. The fixed adult RU/EN dialogue inventory now adds 14 existing navigation-step and 8 contextual records. All 22 new records and the 12 existing support records remain draft, with no approved or available reviewed dialogue. 55 focused tests, TypeScript and a source-bound inventory audit passed. Existing runtime remains unchanged; this extends PLANETKA-003 infrastructure without completing reviewed dialogue or child/narration scope. Repaired the stale contextual draft provenance after the Controls integration: eight RU/EN contextual payload/source versions now explicitly advance to 2 with identical copy; fourteen navigation and twelve support records remain exact. All 34 remain draft. 56 selected unit tests, TypeScript and the read-only source inventory audit passed; original inventory-a1 failure is preserved. Runtime code is unchanged; 353 prior reader tests and 2 actual-App Chrome cases are retained without rerun. PWA ec2dd9dd / Android-dev 91837818 remain at source c5f8e80a, with preserved runtime/APK bytes rehashed and the old unimported inventory source hash explicitly distinguished. No rebuild or stage/release acceptance. Actual App journey controls now use current explicit adult policy, exact independent review receipts, whole-route availability and settled canonical country/writer/work views. Semantic acknowledgement is explicit and ephemeral; locale and resume preserve its identity without claiming disk persistence or books read. Production content remains empty and all 34 inventoried dialogues remain draft. 223 focused tests, TypeScript, five actual-App Chrome cases and 5 inspected captures bind fresh PWA 046440f9 / Android-dev f3c9f92d. All 1,591 protected inputs remain exact. No stage or release acceptance. Scoped factual-dialogue admission and current citation-display infrastructure only; real content, source accuracy and editorial/narration approval remain separate. Added sourced-fact nodes with current canonical country/writer/work anchors, prior navigation context, factual editorial dialogue, source references and independent review. A shared RU/EN fingerprint protects acknowledged history, prerequisites and migration after either payload changes. Every fact is rechecked at runtime commit boundaries; explicit Next earns only semantic step progress, while source disclosure is read-only and facts add no passport navigation credit. Legacy records and overview behavior remain intact. Fresh 717 unit tests from 25 files, TypeScript, 23 actual-App Chrome cases and 22 inspected captures bind PWA ad274bb7 / Android-dev e1628424. All 1,615 protected inputs stay exact. Production inventories remain empty; 34 dialogues stay draft. PLANETKA-003/004/008 remain IN_PROGRESS without editorial, age-adaptive, device, stage or release acceptance. Rebound 22 historical RU/EN navigation/contextual draft records to the final D202 runtime sources: navigation revisions 1→2 and contextual revisions 2→3, with identical copy and unchanged non-provenance fields. Twelve support records remain exact; all 34 remain draft and unavailable. 60 focused units, TypeScript and the read-only source inventory audit passed. Runtime code is unchanged. D202 66-unit/two-case/six-capture evidence and PWA 3d3e0760 / Android a69e7541 remain at source 798c072e; retained payload/APK bytes are rehashed and the older unimported inventory hash is explicit. No rebuild or stage/release acceptance. Rebound only eight existing contextual RU/EN draft records from revision 3 to 4 to the actual last-changed D205 Controls source e23e58109dbe81f181f6440725ad71157b387e69. Fourteen navigation records at revision 2 and twelve support records stay exact. All 22 texts and non-provenance scope/review fields are unchanged; all 34 records remain draft, unapproved and unavailable. The existing 17 focused unit cases and read-only source inventory audit passed. D206 runtime source 09a262bac6ec684aab2d6f45c5b57b16066c31ad and PWA 98c0a615a7d499c6ec826fe0c29b0191f145a00cce68d8e11df449b5b244f535 / ANDROID 850da396a2c855547a78a8c19a39eb4755948eb22d251c34db14a3240e7d3b5c are retained with actual payload/APK byte authentication and explicit captured-source inventory differences. No new static/browser run, rebuild, editorial/device/stage/release acceptance."
+          "commit": "6dff109a78c7a678362689c80c569184128de00f",
+          "lastValidatedAt": "2026-09-30T09:50:33.892Z",
+          "notes": "Scripted reviewed sourced dialogue. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope. The fixed adult RU/EN dialogue inventory now adds 14 existing navigation-step and 8 contextual records. All 22 new records and the 12 existing support records remain draft, with no approved or available reviewed dialogue. 55 focused tests, TypeScript and a source-bound inventory audit passed. Existing runtime remains unchanged; this extends PLANETKA-003 infrastructure without completing reviewed dialogue or child/narration scope. Repaired the stale contextual draft provenance after the Controls integration: eight RU/EN contextual payload/source versions now explicitly advance to 2 with identical copy; fourteen navigation and twelve support records remain exact. All 34 remain draft. 56 selected unit tests, TypeScript and the read-only source inventory audit passed; original inventory-a1 failure is preserved. Runtime code is unchanged; 353 prior reader tests and 2 actual-App Chrome cases are retained without rerun. PWA ec2dd9dd / Android-dev 91837818 remain at source c5f8e80a, with preserved runtime/APK bytes rehashed and the old unimported inventory source hash explicitly distinguished. No rebuild or stage/release acceptance. Actual App journey controls now use current explicit adult policy, exact independent review receipts, whole-route availability and settled canonical country/writer/work views. Semantic acknowledgement is explicit and ephemeral; locale and resume preserve its identity without claiming disk persistence or books read. Production content remains empty and all 34 inventoried dialogues remain draft. 223 focused tests, TypeScript, five actual-App Chrome cases and 5 inspected captures bind fresh PWA 046440f9 / Android-dev f3c9f92d. All 1,591 protected inputs remain exact. No stage or release acceptance. Scoped factual-dialogue admission and current citation-display infrastructure only; real content, source accuracy and editorial/narration approval remain separate. Added sourced-fact nodes with current canonical country/writer/work anchors, prior navigation context, factual editorial dialogue, source references and independent review. A shared RU/EN fingerprint protects acknowledged history, prerequisites and migration after either payload changes. Every fact is rechecked at runtime commit boundaries; explicit Next earns only semantic step progress, while source disclosure is read-only and facts add no passport navigation credit. Legacy records and overview behavior remain intact. Fresh 717 unit tests from 25 files, TypeScript, 23 actual-App Chrome cases and 22 inspected captures bind PWA ad274bb7 / Android-dev e1628424. All 1,615 protected inputs stay exact. Production inventories remain empty; 34 dialogues stay draft. PLANETKA-003/004/008 remain IN_PROGRESS without editorial, age-adaptive, device, stage or release acceptance. Rebound 22 historical RU/EN navigation/contextual draft records to the final D202 runtime sources: navigation revisions 1→2 and contextual revisions 2→3, with identical copy and unchanged non-provenance fields. Twelve support records remain exact; all 34 remain draft and unavailable. 60 focused units, TypeScript and the read-only source inventory audit passed. Runtime code is unchanged. D202 66-unit/two-case/six-capture evidence and PWA 3d3e0760 / Android a69e7541 remain at source 798c072e; retained payload/APK bytes are rehashed and the older unimported inventory hash is explicit. No rebuild or stage/release acceptance. Rebound only eight existing contextual RU/EN draft records from revision 3 to 4 to the actual last-changed D205 Controls source e23e58109dbe81f181f6440725ad71157b387e69. Fourteen navigation records at revision 2 and twelve support records stay exact. All 22 texts and non-provenance scope/review fields are unchanged; all 34 records remain draft, unapproved and unavailable. The existing 17 focused unit cases and read-only source inventory audit passed. D206 runtime source 09a262bac6ec684aab2d6f45c5b57b16066c31ad and PWA 98c0a615a7d499c6ec826fe0c29b0191f145a00cce68d8e11df449b5b244f535 / ANDROID 850da396a2c855547a78a8c19a39eb4755948eb22d251c34db14a3240e7d3b5c are retained with actual payload/APK byte authentication and explicit captured-source inventory differences. No new static/browser run, rebuild, editorial/device/stage/release acceptance. Rebound only eight existing contextual RU/EN draft records from revision 4 to 5 to the actual last-changed Controls source c55c7d0749404421807c0138145c0ea97a4e89a7. Fourteen navigation records at revision 2 and twelve support records stay exact. All 22 texts and non-provenance scope/review fields are unchanged; all 34 records remain draft, unapproved and unavailable. The existing 17 focused unit cases and read-only source inventory audit passed. final native design runtime source c55c7d0749404421807c0138145c0ea97a4e89a7 and PWA ff3c9f551938b9b4f4540bc567100f0133f543300b7d14ea7aca81687e3af4d9 / ANDROID 00a6bcaa9b042491593608f517851d1d7961d804c3af37c531de7b852fcf6183 are retained with actual payload/APK byte authentication and explicit captured-source inventory differences. No new static/browser run, rebuild, editorial/device/stage/release acceptance."
         },
         {
           "id": "S15.PLANETKA-004",
@@ -3000,7 +3001,9 @@
         "node docs/mobile/evidence/S15/booky-journey-completion-20260930/check-a2.mjs static a2",
         "node docs/mobile/evidence/S15/booky-journey-completion-20260930/check-a2.mjs browser a2",
         "node docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/check.mjs static a1",
-        "node docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/check.mjs browser a1"
+        "node docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/check.mjs browser a1",
+        "node D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/check-d212.mjs unit a1",
+        "node D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/check-d212.mjs inventory a1"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -3586,7 +3589,13 @@
         "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/static-a1/result.json",
         "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/browser-a1/result.json",
         "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
-        "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/android-a1/result.json"
+        "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/android-a1/result.json",
+        "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/entry.json",
+        "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+        "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/README.md",
+        "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/source-manifests/23e33fb6a438e46f.json",
+        "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit-a1/result.json",
+        "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/inventory-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11949,7 +11958,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "D212: refresh source-only contextual provenance once against the final D213 Controls hash, preserving all established copy hashes,34 unapproved drafts and existing review gates. Run only17 existing navigation tests and the existing inventory audit; no duplicate provenance pass, browser, TypeScript or build run.",
+    "nextAction": "Continue the persisted S15 current-only recovery plan: assess and exercise real-reader deferral and cancellation by a newer trusted user filter/navigation edit using the existing RU/EN writer-filter recovery cases. Preserve accepted native mobile design, actual publication/admission/readiness guards, semantic progress and canonical scene. Do not repeat accepted design/browser/build work solely for unimported provenance or infer stage, editorial, child or installed-device acceptance.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -12102,7 +12111,8 @@
       "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
       "docs/mobile/evidence/S15/booky-heading-wrap-20260927/result.json",
       "docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json",
-      "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json"
+      "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+      "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -12200,7 +12210,8 @@
       "D207 refreshed only eight contextual draft source revisions 3→4. All copy, fourteen navigation records and twelve support records remain exact; all 34 stay unapproved. Preserve D206 runtime/build attribution and do not rerun browser/builds solely for this unimported inventory repair.",
       "Preserve the complete localized Booky heading, 44-pixel functional targets, independent help scrolling and enlarged-text behavior. CSS layout grants no capability or semantic progress.",
       "Preserve immediate optional completion presentation: successful explicit final checkpoint Next owns semantic credit; hydration, content arrival or recovery must never replay happy. D207 inventory stays historical until bounded D212 provenance refresh.",
-      "Preserve coherent mobile help, intent-only optional controls, reciprocal Search/help foreground and the canonical scene. Explicit final acknowledgement still owns semantic credit; hydration, content arrival or recovery must never replay happy. D212 refreshes provenance once against final Controls."
+      "Preserve coherent mobile help, intent-only optional controls, reciprocal Search/help foreground and the canonical scene. Explicit final acknowledgement still owns semantic credit; hydration, content arrival or recovery must never replay happy. D212 refreshes provenance once against final Controls.",
+      "D212 refreshed only eight contextual draft source revisions 4→5. All copy, fourteen navigation records and twelve support records remain exact; all 34 stay unapproved. Preserve final native design runtime/build attribution and do not rerun browser/builds solely for this unimported inventory repair."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -14927,6 +14938,23 @@
       "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c",
       "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
       "status": "BOOKY_MOBILE_DESIGN_SCOPED_VALIDATION",
+      "pwa": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
+        "sha256": "62bbb224b378d0fa378f7d918afd89bcbbb8e4b3d816216c510695970f551fd0"
+      },
+      "android": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/android-a1/result.json",
+        "sha256": "c27d2e127c610f40aff350e75ebb815c0007b37694fc4a4161dfa2f9d5a5762f"
+      },
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyContextProvenanceRefresh": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+      "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3",
+      "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+      "runtimeSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+      "status": "BOOKY_CONTEXT_PROVENANCE_SCOPED_VALIDATION",
       "pwa": {
         "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
         "sha256": "62bbb224b378d0fa378f7d918afd89bcbbb8e4b3d816216c510695970f551fd0"

@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T09:50:26.789Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_CONTEXT_PROVENANCE_SCOPED_VALIDATION",
+  "actualProducer": {
+    "correction": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/tool-correction.json",
+      "sha256": "beaf0b8ea9435b19bfaed94a63b1d7efc114f53942e072c36e55644e7b7a8822"
+    },
+    "helper": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/record-d212.mjs",
+      "sha256": "fe64bf3570b5d2478fde4a31f3a59dbcbbf132b9aa434a4b191145ac4398f401"
+    }
+  },
+  "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+  "controlsSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "controlsNormalizedSha256": "71199cf88a1d59b4d32f2cfb18e4ec485b9d30f8bae714c13579d9bf7ff8be50",
+  "runtimeSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+    "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+    "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/entry.json",
+    "sha256": "dd3158d74b044afd11fd94d4e8bb545a77aedafeddb4a94d1a6c79f691d65584"
+  },
+  "scopeConfiguration": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/scope.json",
+    "sha256": "6a442fe75af80b18ba57ecdc222472360c43af2b57b735cb5842e4e654c1455f"
+  },
+  "sourceManifest": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/source-manifests/23e33fb6a438e46f.json",
+    "sha256": "3842ab835529ccc493d6864bf0151105906d8aa2e251639623c7fed6b8979949",
+    "fileCount": 1665
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit-a1/result.json",
+      "sha256": "d4d6c8ca2c47be3adf1f1036dcd3d5544d1c6c067008ec861f99bb1820397f43",
+      "execution": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit-a1/execution.json",
+        "sha256": "26a52068bb046f3e962d2b62f3afc2f46aa4ae79c15f676f75e88d703f9348e0"
+      },
+      "rawReport": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit-a1/vitest.json",
+        "sha256": "3e0cdc805def804afc2c536b6b6d7efa0f8ed2b2990eccc386f296ca10a2803e"
+      },
+      "tests": {
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0
+      },
+      "actualProducer": {
+        "correction": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/tool-correction.json",
+          "sha256": "beaf0b8ea9435b19bfaed94a63b1d7efc114f53942e072c36e55644e7b7a8822"
+        },
+        "helper": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/check-d212.mjs",
+          "sha256": "d3bebb15a3d4810141853e58b2004fd2fdc5217ae9df611be0372d8a9d36a2d4"
+        }
+      }
+    },
+    "inventory": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/inventory-a1/result.json",
+      "sha256": "fd3344153d645e53d0fd391b08113508da1ec53e311a057673fb9c206c6c6d08",
+      "execution": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/inventory-a1/execution.json",
+        "sha256": "8f327edc9e46afba0ec3321f7c3e54ca4e1828b7c046d27d25f25c58f581bc95"
+      },
+      "rawReport": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/inventory-a1/inventory.json",
+        "sha256": "f349a4975296e06d04b4f052cb4b252ddb13b6e739092fd0f91de7c78cdac6c7"
+      },
+      "tests": null,
+      "actualProducer": {
+        "correction": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/tool-correction.json",
+          "sha256": "beaf0b8ea9435b19bfaed94a63b1d7efc114f53942e072c36e55644e7b7a8822"
+        },
+        "helper": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/check-d212.mjs",
+          "sha256": "d3bebb15a3d4810141853e58b2004fd2fdc5217ae9df611be0372d8a9d36a2d4"
+        }
+      }
+    }
+  },
+  "attempts": {
+    "unit": "a1",
+    "inventory": "a1"
+  },
+  "sourceCommitReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/bound-final-design-a5/d212-a1/source-commit.json",
+    "sha256": "da13fdae8077ebbbc934909a2eead2c72a6ad43ccc40e67af91ec0137cf26ad3"
+  },
+  "changedPaths": [
+    "src/host/bookyNavigationDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs"
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "unchangedPriorChangedInputCount": 10,
+  "unchangedPriorRuntimeInputCount": 8,
+  "retainedPriorRuntimeInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "e89dd1f69e0fc5e609d31330ad24d82936f823f5e1994bcb8719b27414c4bf88"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "45a64bcea800f5e243380912cb6a67f7525e9df09c5ba0b766e0dfe269999ecc"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "234ccb5066a155d4dfbef89ab7a0bd38f781ed04d6f0197d9999fb1e665ba422"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "3e4e8b75c17c81f0d2323b9318f1da9c9a708075449c2d3596ad5ec0f0ea9230"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "71199cf88a1d59b4d32f2cfb18e4ec485b9d30f8bae714c13579d9bf7ff8be50"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "281e69cdd398f3fccfa1c4a653b4e88e1410bf29f94935b5e9acf514cfedb773"
+    },
+    {
+      "path": "src/styles/book-dossier.css",
+      "sha256": "6e3cb67dafa906d2fdd319b45165ca490ace3265bb40c9d4a34a9f028e12cd9d"
+    },
+    {
+      "path": "src/styles/book-shelf-controls.css",
+      "sha256": "8fb1c01cfb863c1caded404a39a3af632403f669d9627f5e5aa60ed7d0563d77"
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyNavigationDrafts.test.ts"
+  ],
+  "unitCount": 17,
+  "recordCount": 22,
+  "navigationRecordCount": 14,
+  "contextualRecordCount": 8,
+  "supportRecordCount": 12,
+  "combinedRecordCount": 34,
+  "combinedDraftCount": 34,
+  "contextualRevision": {
+    "from": 4,
+    "to": 5
+  },
+  "navigationRevision": 2,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "proposalEvidence": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/source-bindings.json",
+      "sha256": "80838b91df6978d6dde523e49a7be3a3c1ba7c2b5cfec696435a88ed3de091cf"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/semantic-invariants.json",
+      "sha256": "899e1e415fbafa192005fd7ed31f2a098f4008236bce49cd6b79f13c250d06b2"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/context-provenance.patch",
+      "sha256": "10be7ce0284362c7af1909249e3c5c6a5990c9b6beff3a6c89a6dcb5f177469b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/proposed/src/host/bookyNavigationDrafts.ts",
+      "sha256": "462ef334186954535c87a8a4b94e6b709888bbf1acfa6a6832357eec883880fe"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/proposed/src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "42f1fa6bb3b551a176311d1987ec3d41ca00ae7aad9b6b50c76fd1f8d0280caa"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/proposed/scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "d9a6e6b53f55a33e02530cee0ef6c4f46abecb4fb86ce1c67eab768dd90b1ca5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/prepare-d212.cjs",
+      "sha256": "944076ff710a6b9a10afe9510dcfb34b78366226e610a3c6869cd6c0abfba595"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/draft/final-visual-source/FINAL-DESIGN-ADAPTATION.md",
+      "sha256": "6bf12d87804e92f5f9a821a3406d45aadd63f18fde34c726de3ffaff2c549c58"
+    }
+  ],
+  "applyReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/bound-final-design-a5/d212-a1/apply-receipt.json",
+    "sha256": "35a17b414911a1350f2d89df4515244cdf1f483c253336f9a76a8609419047e8"
+  },
+  "runtimeImportProof": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/bound-final-design-a5/d212-a1/runtime-import-proof.json",
+    "sha256": "f6dd972cf1ad698fc93af5c3006f6e6156cc9cb3522c26af5c68c710ab9899ee"
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
+    "sha256": "62bbb224b378d0fa378f7d918afd89bcbbb8e4b3d816216c510695970f551fd0"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/android-a1/result.json",
+    "sha256": "c27d2e127c610f40aff350e75ebb815c0007b37694fc4a4161dfa2f9d5a5762f"
+  },
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
+        "sha256": "62bbb224b378d0fa378f7d918afd89bcbbb8e4b3d816216c510695970f551fd0"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/pwa/pwa-ff3c9f55/artifact.json",
+        "sha256": "47a331cbc04d8954564ed1c0a8b2ae2231eecc01f6a838384b377c02ab904370"
+      },
+      "apk": null,
+      "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+      "buildId": "ff3c9f551938b9b4f4540bc567100f0133f543300b7d14ea7aca81687e3af4d9",
+      "runtimePayloadRehashed": true,
+      "payloadFileCount": 1426,
+      "sourceInventoryDifferences": [
+        {
+          "path": "src/host/bookyNavigationDrafts.ts",
+          "artifactSourceSha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4",
+          "currentSourceSha256": "462ef334186954535c87a8a4b94e6b709888bbf1acfa6a6832357eec883880fe",
+          "unimportedProvenanceInput": true
+        }
+      ],
+      "unchangedOtherCapturedSourceInputs": true,
+      "contextProvenanceRepairIncluded": false,
+      "rebuilt": false
+    },
+    {
+      "kind": "android",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/android-a1/result.json",
+        "sha256": "c27d2e127c610f40aff350e75ebb815c0007b37694fc4a4161dfa2f9d5a5762f"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/android/android-00a6bcaa/runtime/artifact.json",
+        "sha256": "85ce4582b53f788ce477d58c78f7ad45b241db716be15e486172be3d541276fe"
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/android/android-00a6bcaa/app-dev-debug.apk",
+        "bytes": 70289893,
+        "sha256": "079b615f22e91760156d9aa03853bb8d609920c58191e02525b6685db4eca93d"
+      },
+      "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+      "buildId": "00a6bcaa9b042491593608f517851d1d7961d804c3af37c531de7b852fcf6183",
+      "runtimePayloadRehashed": true,
+      "payloadFileCount": 1407,
+      "sourceInventoryDifferences": [
+        {
+          "path": "src/host/bookyNavigationDrafts.ts",
+          "artifactSourceSha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4",
+          "currentSourceSha256": "462ef334186954535c87a8a4b94e6b709888bbf1acfa6a6832357eec883880fe",
+          "unimportedProvenanceInput": true
+        }
+      ],
+      "unchangedOtherCapturedSourceInputs": true,
+      "contextProvenanceRepairIncluded": false,
+      "rebuilt": false
+    }
+  ],
+  "retainedValidation": {
+    "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+      "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+    },
+    "runs": {
+      "static": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/static-a1/result.json",
+        "sha256": "0f3f05bd73a3eb9dc2514f0dd1cb0b9493cadf37fb7592176aacd2fd91506ca1",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/static-a1/execution.json",
+          "sha256": "09a1d5692b5a00c9ed096e2353df094005ef25a17d6efe4bde7ebab46ce218ec"
+        },
+        "tests": null,
+        "rawReport": null
+      },
+      "browser": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/browser-a1/result.json",
+        "sha256": "4263570f3e5d75fc7897480f1af2cd5800e3209f5f84a1140b7bb3a7e74cfc5b",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/browser-a1/execution.json",
+          "sha256": "28368675ab888131d1651ecd07f0a802c3662e92a0546c521234ae45b3967641"
+        },
+        "tests": {
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "flaky": 0
+        },
+        "rawReport": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/browser-a1/playwright.json",
+          "sha256": "ad53951164fd07c90d5176a72f0c1a67b34b78a7d3b3c917c5a1db9d5694c903"
+        }
+      }
+    },
+    "unitCount": 0,
+    "retainedUnitCount": 120,
+    "retainedRuntimeUnitEvidence": {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+        "sha256": "2ac37e81256befc1ea80532d0837ca076b7bc158ce6c33427cf542fbd0a38267"
+      },
+      "unit": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+        "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/execution.json",
+        "sha256": "1fbc244dfc0553e5365fccb2494cb9306a89a3db83adfdc498d5e0491ae0639a"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/vitest.json",
+        "sha256": "281319773b4d2a6fc097582e3fdca78c1beb01acf05d669f3578229a50db556c"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+        "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+        "fileCount": 1665
+      },
+      "dependencyProof": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+        "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+      },
+      "count": 120,
+      "currentSuitesRerun": false,
+      "originalManifestOnly": true
+    },
+    "browserCases": 5,
+    "visualReview": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/visual-review.json",
+      "sha256": "83609384113b8a466e9079f6a548b3ac0cf23b61c9398ef9d6024859e2d76f02"
+    },
+    "rerun": false
+  },
+  "retainedMobileVisualReview": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/visual-review.json",
+    "sha256": "83609384113b8a466e9079f6a548b3ac0cf23b61c9398ef9d6024859e2d76f02"
+  },
+  "historicalModelPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+    "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+  },
+  "currentModelPhotoReview": null,
+  "photosHistoricalOnly": true,
+  "runtimeUnchanged": true,
+  "rebuilt": false,
+  "buildSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "staticRerun": false,
+  "browserRerun": false,
+  "staticEvidenceScope": "Retained final native design static validation at its own source; no fresh static result claimed.",
+  "requirementEvidenceTargets": [
+    "PLANETKA-003"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-003"
+  ],
+  "nextAction": "Continue the persisted S15 current-only recovery plan: assess and exercise real-reader deferral and cancellation by a newer trusted user filter/navigation edit using the existing RU/EN writer-filter recovery cases. Preserve accepted native mobile design, actual publication/admission/readiness guards, semantic progress and canonical scene. Do not repeat accepted design/browser/build work solely for unimported provenance or infer stage, editorial, child or installed-device acceptance.",
+  "limitations": [
+    "Only the eight contextual draft source revisions and checksums change, from 4 to 5. Fourteen navigation records at revision 2 and twelve support records stay exact.",
+    "All 22 existing texts and non-provenance review/scope fields stay exact. All 34 combined records remain unapproved and unavailable.",
+    "Tracked direct-reference and literal-glob proof establishes this inventory is not imported by runtime; no build or new static/browser validation is claimed.",
+    "Retained final native design build payloads and APK are authenticated at their original source/build IDs. Captured source-inventory differences are explicit; D212 is not included in those builds.",
+    "Only PLANETKA-003 evidence is refreshed. Stage, child, editorial, device and release acceptance remain open."
+  ],
+  "changesExistingHelp": false,
+  "stageAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "humanReviewed": false,
+  "childApproved": false,
+  "narrationApproved": false,
+  "productionJourneysEnabled": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}
