@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "checkpoint": "9334959be89d3a319879bd3134c79b5c529c7ec8",
+  "runtimeSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "proposal": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/proposal.json",
+    "sha256": "97210ad8281d89377d4e76ca0029d64138d45cf1694707f05a444f1e8407b511"
+  },
+  "priorSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/source-manifest.json",
+    "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/source-manifest.json",
+    "sha256": "f0afcc1f442626a3f6744aa041cc4735c63b7b42adfbdf52c69527766ecca883",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1659,
+  "changedPaths": [
+    "scripts/mobile/verify-booky-dialogue-drafts.mjs",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyNavigationDrafts.ts"
+  ],
+  "metadataOnly": true,
+  "runtimeUnchanged": true,
+  "oldCopyAndScopePreserved": true,
+  "navigationV2Retained": 14,
+  "contextualRevision": 7,
+  "supportProvenanceRevision": 2,
+  "newSupportDrafts": 2,
+  "combinedDraftCount": 36,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,46 @@
+{
+  "name": "unit",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-dialogue-provenance-rev7-review\\actual-a1\\unit-report.json"
+  ],
+  "exitCode": 0,
+  "error": null,
+  "durationMs": 1605,
+  "pass": true,
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/entry.json",
+    "sha256": "d388f54a7e3eb5b8dd56cff32cb3f353dadc8c46be70657aa12ae13aec5a3f0f"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/source-manifest.json",
+    "sha256": "f0afcc1f442626a3f6744aa041cc4735c63b7b42adfbdf52c69527766ecca883"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/unit-stdout.log",
+    "sha256": "820d1e00bf2d47c65b8faa8ed8e6da6a8c87dd829851d735c6f59e320fe69264"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/unit-stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/unit-report.json",
+    "sha256": "279cff6bb3ee02b70b855b82fc8d5b92a3c38e08f6c079b442f645e74cfe6fba"
+  },
+  "summary": {
+    "total": 27,
+    "passed": 27,
+    "failed": 0,
+    "pending": 0
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/apply-and-check.mjs",
+    "sha256": "120ecc1dcb1dfd9fcf7bbc02afaacb081d4a737934a32767cc11067954735b7c"
+  }
+}

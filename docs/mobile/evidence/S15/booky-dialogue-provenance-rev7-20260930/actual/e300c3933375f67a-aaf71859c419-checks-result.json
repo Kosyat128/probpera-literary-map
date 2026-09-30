@@ -1,0 +1,37 @@
+{
+  "pass": true,
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/entry.json",
+    "sha256": "d388f54a7e3eb5b8dd56cff32cb3f353dadc8c46be70657aa12ae13aec5a3f0f"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/source-manifest.json",
+    "sha256": "f0afcc1f442626a3f6744aa041cc4735c63b7b42adfbdf52c69527766ecca883"
+  },
+  "results": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/unit-result.json",
+      "sha256": "6bbcb3c4afcb0078e623f0d265cfa1c94ed30f2f4de20e174a1bba239003aee4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/support-inventory-result.json",
+      "sha256": "e7f777a408acf0d7a13778b8fc3d940a8b40dc9dc21b5bd4d1eb1d8aad5b9681"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/navigation-inventory-result.json",
+      "sha256": "826d2c1af5ace97db6818303da48ba47c22ae7bd7e056adc34ed68c82e2b8f1f"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1659,
+  "runtimeSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "runtimeUnchanged": true,
+  "testsRun": true,
+  "inventoryAuditsRun": 2,
+  "typescriptRun": false,
+  "browserRun": false,
+  "buildsRun": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,568 @@
+{
+  "schemaVersion": 1,
+  "kind": "booky-navigation-draft-inventory",
+  "pass": true,
+  "recordCount": 22,
+  "navigationRecordCount": 14,
+  "contextualRecordCount": 8,
+  "combinedRecordCount": 36,
+  "stateCount": 11,
+  "locales": [
+    "ru",
+    "en"
+  ],
+  "draftCount": 22,
+  "notReviewedCount": 22,
+  "combinedDraftCount": 36,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "sources": [
+    {
+      "sourcePath": "src/host/planetMascotRoutes.ts",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "sourceHashEncoding": "sha256:utf8:lf",
+      "copyHashEncoding": "sha256:utf8:JSON.stringify({title,body})"
+    },
+    {
+      "sourcePath": "src/host/PlanetMascotControls.tsx",
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "sourceHashEncoding": "sha256:utf8:lf",
+      "copyHashEncoding": "sha256:utf8:JSON.stringify({title,body})"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "normalizedSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "normalizedSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "node_modules/@noble/hashes/esm/_md.js",
+      "sha256": "cefb1557e7715cb2117c83f82ef3e3175c7e0391c80bd5795b2d4effc45fc582"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/_u64.js",
+      "sha256": "e48c0cfc10810439a4807b46db136ce603a3fa09b62584f513ef2f3ca496af54"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/cryptoNode.js",
+      "sha256": "26f80c6a85b6ef7bfd83b99d95b2b5ba8764397b9465feff32e81ba4e6416619"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/sha2.js",
+      "sha256": "e729088b82e5450bff54c3a0013582aa42e1fe8f58dd31f5967f6ebe34c52299"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/utils.js",
+      "sha256": "4cf4c1e05affedcb4fd584a43d76ae1a3711e34a36e2251b90c27e33ecc74fad"
+    },
+    {
+      "path": "node_modules/typescript/lib/typescript.js",
+      "sha256": "3ae902c92cc44dace175c0e69e13a4b0899f6983c6121d76b9ab8dd5795e7675"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "873aa708d50cedd927cb73e13b8dd806efb2c5791785636fe8d5a33f90dc705e"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "9e48051043b4cf58fc5f89c916b443e881df6bbebf96d6e1764134232d5fd321"
+    },
+    {
+      "path": "src/host/bookyDialogueRegistry.ts",
+      "sha256": "3329ed944937ef8f7b9b892641ed40285a166c3944d6817ddda0bc145daffa65"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "2e14577bd27adef01ec4dfc55d5cc5f3bc6da99323b59387114041942676006c"
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+    },
+    {
+      "path": "src/planet/contentExportHash.ts",
+      "sha256": "05e24bf089e59bf8015e74d8adc9b96147abbc665596920917e8ca2fd5dc7c46"
+    }
+  ],
+  "records": [
+    {
+      "id": "navigation.overview.search",
+      "locale": "ru",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:overview:search",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "064b0098e09346deae05aa11178c0d2abaa613621c67f8b843f68e4aac037878",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.search",
+      "locale": "en",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:overview:search",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "c276f48220c3a154de837df6b3277e69b8c7480f06c2e9f364f1c2de61bfa004",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.country",
+      "locale": "ru",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:overview:country",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "77a496b056fe0a836ed63a9932707dcb8ebe6b71d6fd5bab2b64065b60d8d5a0",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.country",
+      "locale": "en",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:overview:country",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "9ed67151d3ff85dcd68914c16b75075bdeb529ae335f710bf2e4d514c1b51546",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.collection",
+      "locale": "ru",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:overview:collection",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "collection",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "07cd3adf2a101cd5423f260b8f76d26ec2b067eeab0bb5d119df96c56a363004",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.collection",
+      "locale": "en",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:overview:collection",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "collection",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "bc77c487f199122015d795b5c6c9bb91fcc69b09a2e2e9826a6b63d27d3a481f",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.appearance",
+      "locale": "ru",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:overview:appearance",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "fc50ab52fa27624e2e0ba2b4fd06057b726cc8bcda4a6c4052ae0da509f35a8b",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.appearance",
+      "locale": "en",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:overview:appearance",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "92356c27de8fde148c1dcbc27384226f51452e5abc418ae46b547306511c155c",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.choose-country",
+      "locale": "ru",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:country-to-book:choose-country",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "a5b15413ab581efe5743d46b1b531ec92c9bd78a9b47b164dce0af4ca564efe8",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.choose-country",
+      "locale": "en",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:country-to-book:choose-country",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "9323c54df68b66bc901937a445ba0e0cc955b6bd04513db8cf86ae68cc1475a1",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.choose-writer",
+      "locale": "ru",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:country-to-book:choose-writer",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "f3acfdb0b61e092e17e9c16a972c6232e2e1eec1356def4a302c1fec3a0f14fc",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.choose-writer",
+      "locale": "en",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:country-to-book:choose-writer",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "1688ce3bdd4f4d53bf7e4c512fa5a8d79ab6da111b6755c7395b87e964e33523",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.open-books",
+      "locale": "ru",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:country-to-book:open-books",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "collection",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "0601303c07c807fc57ac34c0e7e8a4e96bf990fbceab8500de66c3b7da756787",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.open-books",
+      "locale": "en",
+      "version": 2,
+      "status": "draft",
+      "context": "tour:country-to-book:open-books",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "collection",
+      "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+      "sourceVersion": 2,
+      "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "copySha256": "21d683f52cc02970a53b271fd1be7e12e362fdbab813e4325a95efa0b15f96c5",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.globe",
+      "locale": "ru",
+      "version": 7,
+      "status": "draft",
+      "context": "help:globe",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "copySha256": "27ab56b59dfa7e8257703434a055f2919bbb3e05cae56c439ce0bcf6130fa612",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.globe",
+      "locale": "en",
+      "version": 7,
+      "status": "draft",
+      "context": "help:globe",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "copySha256": "5d6556c7ee38bf23d8dc75accca2cf62de585505f2ef04973a08be580f09e91d",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.country",
+      "locale": "ru",
+      "version": 7,
+      "status": "draft",
+      "context": "help:country",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "copySha256": "ab19a53a3ca8f596de23f551812a21e2bbeb3f22f349ecd7b35eba9962c063ea",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.country",
+      "locale": "en",
+      "version": 7,
+      "status": "draft",
+      "context": "help:country",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "copySha256": "e89dbc3c808272f9d7a548d9f06f5d6e437e72a1eb4330ec5f6a3db1691aacfa",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.writer",
+      "locale": "ru",
+      "version": 7,
+      "status": "draft",
+      "context": "help:writer",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "copySha256": "ea1a3a737dd177f4b85cd7a8b813bb2654bd1ec77ea6572a6ad950c4d8bfec1f",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.writer",
+      "locale": "en",
+      "version": 7,
+      "status": "draft",
+      "context": "help:writer",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "copySha256": "ff636a208acd0c12b8a31fd0b8e5b9fca00e78fc66d996cd19da554e77f6dc82",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.collection",
+      "locale": "ru",
+      "version": 7,
+      "status": "draft",
+      "context": "help:collection",
+      "displayScreens": [
+        "collection"
+      ],
+      "targetRequiredScreen": null,
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "copySha256": "12ab4c9bda6171a785adf109398e7fa8618b965f8f53fac6af041b3b2ff3e443",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.collection",
+      "locale": "en",
+      "version": 7,
+      "status": "draft",
+      "context": "help:collection",
+      "displayScreens": [
+        "collection"
+      ],
+      "targetRequiredScreen": null,
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
+      "copySha256": "c153e034391e99b5556fbcb879300fcd18c3a80ba9133d6ea0d24fd7c96ccf5c",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    }
+  ],
+  "errors": [],
+  "changesExistingHelp": false,
+  "narrationEnabled": false,
+  "childApproved": false,
+  "humanReviewed": false,
+  "factualEditorialEvidenceClaimed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

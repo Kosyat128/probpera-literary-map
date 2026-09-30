@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "status": "BOUNDED_BOOKY_EXHAUSTED_RESTART_RECOVERY_VALIDATED",
+  "recordedAt": "2026-09-30T16:43:58.539Z",
+  "decision": "D220",
+  "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "runtimeSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "buildSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "predecessorDocsCommit": "f6b502d3ab4e86eda7927df638a863183dc174f6",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/555b4c84f613941d-bbb22bb0c290-source-manifest.json",
+    "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1653,
+  "changedSourcePaths": [
+    "src/App.tsx",
+    "src/components/RecentHistoryPanel.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyGlobeSupport.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookySupport.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "src/loading/DeferredHomepageArchives.tsx",
+    "src/loading/bookArchiveRuntime.test.ts",
+    "src/loading/bookArchiveRuntime.ts",
+    "tests/pwa/booky-support.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "productionImplementationChanged": true,
+  "fixtureOnly": false,
+  "runtimeUnchanged": false,
+  "sourceCommitReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/dd96f5d18e806628-6dd50b5995a9-actual-source-commit.json",
+    "sha256": "dd96f5d18e806628421d7eb924857eaab42025f888f4ab53e2a230e2ef0fd1e8"
+  },
+  "sourceApply": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/7c9d3c8aefc1c9a7-c9375027c450-source-apply-receipt.json",
+    "sha256": "7c9d3c8aefc1c9a76c583a6752aed81ea066364ceb832e440e746a22b0c1ef96"
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/796dfaa21fb45170-95d3a4bbe3b3-entry.json",
+    "sha256": "796dfaa21fb451705669cdc15a191b2a25e92ab2840370b3af7c8d41e83fd56c"
+  },
+  "runs": {
+    "checks": {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/437023983541c95e-b7213528352e-checks-result.json",
+        "sha256": "437023983541c95eb8a08a1fd6ea046b9bbedeb94941da335fe014a36f843453"
+      },
+      "static": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/280afaa8cb33201d-106247b7d116-static-result.json",
+        "sha256": "280afaa8cb33201d916ff9f16677b2be2a4af262fa623288fa5fff22c16a4917"
+      },
+      "unit": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/2db7e7ef1f97a86f-8888019fe7c6-unit-result.json",
+        "sha256": "2db7e7ef1f97a86fb795fbf67d6ebfd02f02c3f0e27317eb74dde177d346fd19"
+      },
+      "boundaries": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/3cc96fabc17cc80b-4ee27a5606b9-boundaries-result.json",
+        "sha256": "3cc96fabc17cc80b99bced7af8b1057541aca87936168f24ff9dd58fef94dd61"
+      },
+      "unitReport": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/1eed0e9485ad3340-8782289fed3c-unit-report.json",
+        "sha256": "1eed0e9485ad33405e46f43847e51f6673f661f9990c2d5cbea53d747eabfdeb"
+      },
+      "passedUnits": 106
+    },
+    "browser": {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/ad064d97b411805e-780a920d60d3-result.json",
+        "sha256": "ad064d97b411805e04e048d0433ca8a70d146735bc403edd15619c3287a0392d"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/658061d0d1215103-a1e4727cf280-playwright.json",
+        "sha256": "658061d0d12151031e797bf967d022004616e490dd77cf7b708198ead55ebc2a"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/4bea77ed282138cc-0dc0e1ca2ba1-execution.json",
+        "sha256": "4bea77ed282138cc5ba4f71684d11b05b31e3399a4344b36abe1cc1190cdea09"
+      },
+      "evidence": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/attachments/cb84247d1cbe3686-19e2dd266a16-booky-support-source-evidence-fc720c6d012d02537e853e3f8f7d313893267178.json",
+        "sha256": "cb84247d1cbe3686d7f952e7e4bcec834ccd091496ea083aba635297fc947cd8"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "staticChecks": 1,
+  "browserCases": 1,
+  "imageCount": 1,
+  "directRootViews": 1,
+  "images": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/b08a3b582afc73b9-094b4578d0ad-booky-support-retry-failed-ru-320.png",
+      "sha256": "b08a3b582afc73b98e17d03ef7f0d080a591735a155b174fdba27e52ffd4f564",
+      "filename": "booky-support-retry-failed-ru-320.png"
+    }
+  ],
+  "rootReview": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/8a400a98023cf972-69626967a5e9-root-visual-review.json",
+    "sha256": "8a400a98023cf9721e567b1feffb6dcab0c0040eb674ec580679b7cd935d34f7"
+  },
+  "causalReview": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/c9d1692be40aed84-0179c47df038-root-causal-review.json",
+    "sha256": "c9d1692be40aed8458026a61b483a6ef79dcb31453b0d11b101ed76c7abadb4c"
+  },
+  "explicitRestartVerified": true,
+  "automaticRetryOnRestoredBytes": false,
+  "canonicalSceneIdentityAcrossDocumentClaimed": false,
+  "bookyAndAppearanceWrites": 0,
+  "ordinaryWriterHistoryWrites": 1,
+  "zeroTotalPreferenceWritesClaimed": false,
+  "initialCaptureRestartVisibilityClaimed": false,
+  "restartTouchableGeometryAuthenticatedByTrace": true,
+  "priorDiagnostics": [
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/d435e4196efb70dd-6dfc33cee25b-result.json",
+        "sha256": "d435e4196efb70ddcb977cefa364191060c27952530336b972d2953739c28e58"
+      },
+      "reason": "Initial exhausted retry assessment",
+      "review": null,
+      "originalIdentityRetained": true,
+      "acceptedAsFinal": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/742b943361c7622a-5637583e5979-result.json",
+        "sha256": "742b943361c7622a2bb1816dd146504bc51975a79776dcded549c7f94f66b5c0"
+      },
+      "reason": "Actual native header geometry diagnostic",
+      "review": null,
+      "originalIdentityRetained": true,
+      "acceptedAsFinal": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/e01cf6089c5c12c4-13e27a9f7a48-result.json",
+        "sha256": "e01cf6089c5c12c4225a16a593e772499b943f933b2307fabdca95a371bfc0d8"
+      },
+      "reason": "Fixture current preference seed diagnostic",
+      "review": null,
+      "originalIdentityRetained": true,
+      "acceptedAsFinal": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/1ffb3d2239ad563e-8db1520bf8ff-result.json",
+        "sha256": "1ffb3d2239ad563e15d3c06f2b36a3d2ad1e0d1e22ff1f2ce957cd5b54522270"
+      },
+      "reason": "Explicit help prerequisite diagnostic",
+      "review": null,
+      "originalIdentityRetained": true,
+      "acceptedAsFinal": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/diagnostics/cc1320dbbda50138-58a863344272-result.json",
+        "sha256": "cc1320dbbda5013868f5b7a053b7e02b7e6dd3894c828ca92b4b5432cca49cd5"
+      },
+      "reason": "Actual exhausted module-loader bug established before runtime repair",
+      "review": null,
+      "originalIdentityRetained": true,
+      "acceptedAsFinal": false
+    }
+  ],
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/builds/pwa/b7951ee9ba9e8e5d-603ef40ec561-result.json",
+    "sha256": "b7951ee9ba9e8e5d00d6f3b5e11c2214a40f19dc68fc72d85cd4c4433147a2ac"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/builds/android/975d0683b9882088-df6b1894004a-result.json",
+    "sha256": "975d0683b98820881fd535ea74ba4fede6386e18f3f8bc7002c485a3fb524ee0"
+  },
+  "currentBuildAuthentication": [
+    {
+      "kind": "pwa",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/builds/pwa/b7951ee9ba9e8e5d-603ef40ec561-result.json",
+        "sha256": "b7951ee9ba9e8e5d00d6f3b5e11c2214a40f19dc68fc72d85cd4c4433147a2ac"
+      },
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "buildId": "313940bce3ea3ecb46b73e63ec30bab0528c17453d197055b8f44f9938246ed4",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/555b4c84f613941d-bbb22bb0c290-source-manifest.json",
+        "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324"
+      },
+      "authenticationRetainedFromBuilder": true,
+      "payloadHashesRecheckedAtCheckpoint": false
+    },
+    {
+      "kind": "android",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/builds/android/975d0683b9882088-df6b1894004a-result.json",
+        "sha256": "975d0683b98820881fd535ea74ba4fede6386e18f3f8bc7002c485a3fb524ee0"
+      },
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "buildId": "6954c79044a6767eec860b29ef9db5e56821933aba134112970fa4fce0cd762e",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/555b4c84f613941d-bbb22bb0c290-source-manifest.json",
+        "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324"
+      },
+      "authenticationRetainedFromBuilder": true,
+      "payloadHashesRecheckedAtCheckpoint": false
+    }
+  ],
+  "payloadHashesRechecked": false,
+  "checkpointProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/checkpoint-review-a1/checkpoint.mjs",
+    "sha256": "166564cb8d310377eb4320e8038c24582f44221cf3a90cd844c0b609698dfd0a"
+  },
+  "checkpointBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/checkpoint-review-a1/bound-a1/binding.json",
+    "sha256": "34cddc9d644eb8e30660ca95c4e17b15757a28689e383debe9833ec45d527519"
+  },
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "validatedScope": "Repaired exhausted collection-module recovery with an explicit trusted Restart action after the original primary and retry both fail. Restoring original compiled bytes alone makes no request or reload; a trusted Restart starts a new document, retrieves the original primary with HTTP200 and restores actual collection readiness. The canonical scene remains owned before restart and has one canvas/renderer within each document; cross-document object identity is not claimed. Current-source TypeScript,106 focused units,platform boundaries,one existing RU actual-App case,one direct root image view and fresh source-bound PWA/Android-dev artifacts pass. Booky/appearance/unexpected preference writes are zero; ordinary writer recent history records one write. The initial screenshot does not show the below-fold Restart action; its actual44px hit and trusted touch are proved separately. Earlier a1-a5 failed diagnostics retain their original identities. Contextual/support whole-file metadata pins are stale pending the next explicit provenance slice; all34 drafts remain unapproved/unavailable. Only PLANETKA-005/UX-006 evidence is appended; every status,prior verification cache and acceptance gate remains unchanged.",
+  "nextAction": "Refresh only six unimported navigation/support metadata owners against the actual D220 Controls and support source aba461a774c125f9c38ea4c10aac9b3cc8024d2d: eight contextual records revision6 to7 and twelve existing support records revision1 to2, preserving all old copy,14 navigation-v2 records and every unapproved/unavailable flag. Add two distinct unapproved RU/EN support.books-error-restart draft records selected by booksReloadRequired:true for live books-error; only then does combined inventory34 become36. Run only the two existing focused metadata test files and two read-only inventory scripts once; no TypeScript,browser or runtime builds for this unimported slice. Then continue the original S15 substantive coding with a bounded adult RU/EN journey draft graph in the existing admin: canonical country/writer/work to checkpoint,age/reading-level conditions,fail-closed validation and draft JSON export,starting with a simple path. Do not publish,enable audio,write production databases or infer editorial,child,device,stage or release acceptance.",
+  "unapprovedUnavailableDraftCount": 34,
+  "contextAndSupportProvenanceStale": true,
+  "fullDesignAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "productionJourneysEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

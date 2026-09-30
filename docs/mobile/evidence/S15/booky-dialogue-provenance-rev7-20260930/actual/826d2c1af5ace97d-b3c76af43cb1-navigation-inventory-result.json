@@ -1,0 +1,38 @@
+{
+  "name": "navigation-inventory",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-booky-navigation-drafts.mjs"
+  ],
+  "exitCode": 0,
+  "error": null,
+  "durationMs": 458,
+  "pass": true,
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/entry.json",
+    "sha256": "d388f54a7e3eb5b8dd56cff32cb3f353dadc8c46be70657aa12ae13aec5a3f0f"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/source-manifest.json",
+    "sha256": "f0afcc1f442626a3f6744aa041cc4735c63b7b42adfbdf52c69527766ecca883"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/navigation-inventory-stdout.log",
+    "sha256": "a8a8c16c50cd3e91cd0b0e21584bf61409ea7196ac4a65bbd4d862be84472aef"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/navigation-inventory-stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/navigation-inventory-report.json",
+    "sha256": "a8a8c16c50cd3e91cd0b0e21584bf61409ea7196ac4a65bbd4d862be84472aef"
+  },
+  "summary": {
+    "pass": true
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/apply-and-check.mjs",
+    "sha256": "120ecc1dcb1dfd9fcf7bbc02afaacb081d4a737934a32767cc11067954735b7c"
+  }
+}

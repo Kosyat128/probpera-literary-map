@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceCommit": "9f6eb67fa65e98283c5219e59305b9fc92a1eaa7",
+  "predecessorDocsCommit": "9334959be89d3a319879bd3134c79b5c529c7ec8",
+  "runtimeSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "changedPaths": [
+    "scripts/mobile/verify-booky-dialogue-drafts.mjs",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyNavigationDrafts.ts"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/source-manifest.json",
+    "sha256": "f0afcc1f442626a3f6744aa041cc4735c63b7b42adfbdf52c69527766ecca883",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1659,
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/entry.json",
+    "sha256": "d388f54a7e3eb5b8dd56cff32cb3f353dadc8c46be70657aa12ae13aec5a3f0f"
+  },
+  "checksResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/checks-result.json",
+    "sha256": "e300c3933375f67a6ef88ff70f459d718c2e02bcee9891cf501c524da47b1e27"
+  },
+  "sourceInputsUnchanged": true,
+  "worktreeClean": true,
+  "metadataOnly": true,
+  "runtimeUnchanged": true,
+  "testsRerun": false,
+  "buildsRun": false,
+  "blobs": [
+    {
+      "path": "scripts/mobile/verify-booky-dialogue-drafts.mjs",
+      "workingSha256": "8faa29239a896f068da23c469946328d1cbe1fe1426fb9db9a8e64cd005066ac",
+      "gitBlobSha256": "8faa29239a896f068da23c469946328d1cbe1fe1426fb9db9a8e64cd005066ac",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "workingSha256": "873aa708d50cedd927cb73e13b8dd806efb2c5791785636fe8d5a33f90dc705e",
+      "gitBlobSha256": "873aa708d50cedd927cb73e13b8dd806efb2c5791785636fe8d5a33f90dc705e",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.test.ts",
+      "workingSha256": "2c42f6986fc9e596339fc93616fc89e60e60baefdbcc002d94518d8e6a3dcd26",
+      "gitBlobSha256": "2c42f6986fc9e596339fc93616fc89e60e60baefdbcc002d94518d8e6a3dcd26",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "workingSha256": "9e48051043b4cf58fc5f89c916b443e881df6bbebf96d6e1764134232d5fd321",
+      "gitBlobSha256": "9e48051043b4cf58fc5f89c916b443e881df6bbebf96d6e1764134232d5fd321",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "workingSha256": "2606f5b1e6ebc565d619f70fca1e9ba8c124dd4896a1a6e7852e53a3fb283dbc",
+      "gitBlobSha256": "2606f5b1e6ebc565d619f70fca1e9ba8c124dd4896a1a6e7852e53a3fb283dbc",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "workingSha256": "2e14577bd27adef01ec4dfc55d5cc5f3bc6da99323b59387114041942676006c",
+      "gitBlobSha256": "2e14577bd27adef01ec4dfc55d5cc5f3bc6da99323b59387114041942676006c",
+      "onlyLineEndingNormalization": false
+    }
+  ],
+  "commitOutput": "[codex/literary-planet-v12-bilingual-final-autopilot 9f6eb67f] Refresh Booky contextual and support draft provenance\n 6 files changed, 244 insertions(+), 147 deletions(-)",
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/commit-source.mjs",
+    "sha256": "a39b363085678eabd97d7e932b33146ecbee4585f2d0f3cb578da0fdadbfc434"
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

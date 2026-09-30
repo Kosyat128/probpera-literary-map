@@ -1,0 +1,44 @@
+{
+  "kind": "external-booky-dialogue-provenance-rev7-checkpoint",
+  "decision": "D221",
+  "preparedOnly": true,
+  "canonicalWrites": false,
+  "checksRun": false,
+  "buildsRun": false,
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1659,
+  "changedPaths": [
+    "scripts/mobile/verify-booky-dialogue-drafts.mjs",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyNavigationDrafts.ts"
+  ],
+  "priorSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-fix-a6/source-manifest.json",
+    "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324"
+  },
+  "predecessorResult": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-exhausted-retry-20260930/result.json",
+    "sha256": "3e505ed546e65f2cd10989be177fbfdb8dae54885152300a3951a54a9dd630b1"
+  },
+  "priorBuildIds": {
+    "pwa": "313940bce3ea3ecb46b73e63ec30bab0528c17453d197055b8f44f9938246ed4",
+    "android": "6954c79044a6767eec860b29ef9db5e56821933aba134112970fa4fce0cd762e"
+  },
+  "donor": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/checkpoint-review-a1/checkpoint.mjs",
+    "sha256": "166564cb8d310377eb4320e8038c24582f44221cf3a90cd844c0b609698dfd0a"
+  },
+  "files": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/checkpoint-review-a1/checkpoint.mjs",
+      "sha256": "48c47b6926387ade1a7808fd390d9b26decc0834195153237f47193809775218"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/checkpoint-review-a1/next-action.txt",
+      "sha256": "7ab9eed024dcf06a83122cadcb9ac7742d12e517b105e4eb9134bba9f5984ca2"
+    }
+  ]
+}
