@@ -3429,6 +3429,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       writerLabel={selectedWriter ? writerName(selectedWriter, t("Автор"), language) : null}
       onAction={handleMascotActionWithPoint} pointRequest={mascotPointRequest}
       completionReactionRef={mascotCompletionReactionRef}
+      atlasSearchVisible={atlasSearchOpen} onHelpOpen={() => setAtlasSearchVisibility(false)}
       position={mascotPosition} onPositionChange={setMascotPosition}
       persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry}
       motion={bookyMotionSnapshot} onMotionChange={bookyMotion.selectMode} onRetryMotion={bookyMotion.retry}

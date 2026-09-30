@@ -184,6 +184,7 @@ test.beforeAll(async () => {
   sourceEvidence = { externalFixtureSha256:digest(await fs.readFile(fileURLToPath(import.meta.url))),syntheticPublicationCapability:true,realPublicationServiceClaimed:false,syntheticDossierWorkflowOnly:true,publicClientReplacementSha256:digest(SYNTHETIC_PUBLIC_CLIENT),characterContentReplacementSha256:digest(SYNTHETIC_CONTENT),kind: 'canonical-app-adult-booky-journey-in-Chrome', actualApp: true, actualCss: true, actualGlobe: true,
     controlledPorts: ['native OS lifecycle and preference map; key-specific journey-progress write rejection and manually released write gate', 'HTTP delivery of real split chunks', 'explicitly synthetic content provider'],
     controllerObservation: 'No controller is replaced or called by the fixture. Semantic progress and readiness are observed through the real rendered controls.',
+    visibilityObservation: 'Read-only native IntersectionObserver/ResizeObserver constructor wrappers forward every native entry array, observer, options and callback delivery unchanged; no visibility, root, state, controller or outcome is forced.',
     bookChunks, primaryBookChunk, retryBookChunk, sharedBookDependencies,
     countryChunks, primaryCountryChunk, retryCountryChunk, sharedCountryDependencies,
     componentChunks, primaryComponentChunk, retryComponentChunk, sharedComponentDependencies, sourceInputs,
@@ -222,6 +223,74 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
   const context = await chromium.launchPersistentContext(profile, { channel: process.env.S15_BROWSER_CHANNEL ?? 'chrome', headless: true,
     viewport: { width, height: 844 }, reducedMotion: 'reduce', hasTouch: true });
   const page = await context.newPage(); page.setDefaultTimeout(15_000);
+  await page.addInitScript(() => {
+    const rows = window.__journeyWorkObservations = [];
+    window.__journeyWorkObservationOverflow = 0;
+    window.__journeyWorkObservationErrors = [];
+    const signatures = new Map();
+    let observerSequence = 0;
+    const rect = value => value ? Object.fromEntries(['x','y','top','right','bottom','left','width','height'].map(key => [key,value[key]])) : null;
+    const describe = element => {
+      if (!element) return null;
+      const style = getComputedStyle(element);
+      return { tag: element.tagName, id: element.id, className: element.className,
+        rect: rect(element.getBoundingClientRect()), position: style.position, transform: style.transform,
+        display: style.display, visibility: style.visibility, overflowX: style.overflowX, overflowY: style.overflowY,
+        scrollTop: element.scrollTop, clientHeight: element.clientHeight, scrollHeight: element.scrollHeight };
+    };
+    const relevant = element => element instanceof Element && (element.id === 'book-archive-detail' || element.classList.contains('native-planet-panel__content'));
+    const record = (kind, entry, root, batch) => {
+      try {
+        const detail = document.getElementById('book-archive-detail');
+        const clippingRoot = root ?? detail?.closest('.native-planet-panel__content');
+        const ancestors = [];
+        for (let ancestor = detail?.parentElement; ancestor; ancestor = ancestor.parentElement) ancestors.push(describe(ancestor));
+        const row = { kind, target: describe(entry.target), detail: describe(detail), root: describe(clippingRoot), ancestors,
+          hidden: document.hidden, publicEntity: detail?.getAttribute('data-cms-entity-id'),
+          readerBusy: detail?.querySelector('.book-dossier-reader')?.getAttribute('aria-busy'),
+          mobilePhase: detail?.closest('[data-mobile-phase]')?.getAttribute('data-mobile-phase'),
+          mobilePosition: detail?.closest('[data-mobile-position]')?.getAttribute('data-mobile-position'),
+          journey: document.querySelector('[data-booky-journey-status]')?.getAttribute('data-booky-journey-status'),
+          node: document.querySelector('[data-booky-journey-node]')?.getAttribute('data-booky-journey-node') };
+        if (kind === 'intersection') Object.assign(row, { isIntersecting: entry.isIntersecting,
+          intersectionRatio: entry.intersectionRatio, rootBounds: rect(entry.rootBounds),
+          intersectionRect: rect(entry.intersectionRect), boundingClientRect: rect(entry.boundingClientRect) });
+        else row.contentRect = rect(entry.contentRect);
+        const key = kind + ':' + entry.target.id + ':' + entry.target.className;
+        const signature = JSON.stringify(row);
+        if (signatures.get(key) === signature) return;
+        signatures.set(key, signature);
+        if (rows.length < 160) rows.push({ at: performance.now(), ...row, ...batch });
+        else window.__journeyWorkObservationOverflow++;
+      } catch (error) {
+        if (window.__journeyWorkObservationErrors.length < 8) window.__journeyWorkObservationErrors.push(String(error));
+      }
+    };
+    const NativeIntersectionObserver = window.IntersectionObserver;
+    if (NativeIntersectionObserver) window.IntersectionObserver = class extends NativeIntersectionObserver {
+      constructor(callback, options) {
+        const observerId = ++observerSequence; let batchId = 0;
+        super((entries, observer) => {
+          const currentBatchId = ++batchId;
+          for (const [entryIndex, entry] of entries.entries()) if (relevant(entry.target)) record('intersection', entry, options?.root,
+            { observerId, batchId: currentBatchId, entryCount: entries.length, entryIndex, nativeEntryTime: entry.time });
+          callback.call(observer, entries, observer);
+        }, options);
+      }
+    };
+    const NativeResizeObserver = window.ResizeObserver;
+    if (NativeResizeObserver) window.ResizeObserver = class extends NativeResizeObserver {
+      constructor(callback) {
+        const observerId = ++observerSequence; let batchId = 0;
+        super((entries, observer) => {
+          const currentBatchId = ++batchId;
+          for (const [entryIndex, entry] of entries.entries()) if (relevant(entry.target)) record('resize', entry, entry.target.closest('.native-planet-panel__content'),
+            { observerId, batchId: currentBatchId, entryCount: entries.length, entryIndex, nativeEntryTime: entry.time ?? null });
+          callback.call(observer, entries, observer);
+        });
+      }
+    };
+  });
   await page.addInitScript(()=>{window.__d206LibraryWrites=[];const setItem=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(this===localStorage&&key.startsWith('probpera-reading-library'))window.__d206LibraryWrites.push({key,value});return setItem.call(this,key,value);};});
   const memory = new Map([['probpera-interface-language', language], ['probpera-planet-welcome-v1', 'completed'],
     [KEY, JSON.stringify({ schemaVersion: 1, commitId: 'booky-journey-fixture:1', selection: BASE })],
@@ -331,7 +400,9 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
             journey: document.querySelector('[data-booky-journey-status]')?.getAttribute('data-booky-journey-status'),
             node: document.querySelector('[data-booky-journey-node]')?.getAttribute('data-booky-journey-node'),
             detail: describe(detail), ancestors,
-            workObservations: window.__journeyWorkObservations ?? [] };
+            workObservations: window.__journeyWorkObservations ?? [],
+            workObservationOverflow: window.__journeyWorkObservationOverflow ?? 0,
+            workObservationErrors: window.__journeyWorkObservationErrors ?? [] };
         }).catch(error => ({ diagnosticError: error.message }));
         result.publicationCalls=await page.evaluate(()=>window.__d206PublicationCalls??[]);result.libraryWrites=await page.evaluate(()=>window.__d206LibraryWrites??[]);
         Object.assign(result, { operations, errors, externalRequests, missingResources, requestedChunks,
@@ -489,6 +560,51 @@ async function readyJourneyNode(page,id,input){await expect(node(page)).toHaveAt
 async function reachCharacter(fixture,input){const {page,result}=fixture;await openJourney(fixture,input);expect(await page.evaluate(()=>window.__d206PublicationCalls)).toEqual([]);await input.tap(routeFor(page,PRIMARY_JOURNEY),'Start country-first character journey');await readyJourneyNode(page,'country',input);await characterPrefix(fixture,[]);for(const [previous,current] of [['country','writer'],['writer','work']]){await input.tap(next(page),'Acknowledge '+previous);await readyJourneyNode(page,current,input);}await characterPrefix(fixture,['country','writer']);await stablePose(page);const scene=await actual(page);const library=await page.evaluate(()=>({writes:[...window.__d206LibraryWrites],values:Object.fromEntries(Object.keys(localStorage).filter(key=>key.startsWith('probpera-reading-library')).map(key=>[key,localStorage.getItem(key)]))}));result.observations.characterStep={touches:result.observations.characterStep.touches,targets:result.observations.characterStep.targets,scrolls:result.observations.characterStep.scrolls,routeAdmittedBeforeDossier:true,sceneBeforeCharacter:scene,libraryBeforeCharacter:library};await input.tap(next(page),'Acknowledge work and request first character');await readyJourneyNode(page,'character',input);await expect(characterDialog(page)).toBeVisible();await expect(page.locator('[data-dossier-character-view]')).toHaveAttribute('data-dossier-character-view','character-c');await expect(next(page)).toHaveCount(0);await characterPrefix(fixture,['country','writer','work']);return {scene,library};}
 async function assertNoReadingOrSceneChange(fixture,before){const {page}=fixture;retained(await actual(page),before.scene,true);expect(await page.evaluate(()=>({writes:[...window.__d206LibraryWrites],values:Object.fromEntries(Object.keys(localStorage).filter(key=>key.startsWith('probpera-reading-library')).map(key=>[key,localStorage.getItem(key)]))}))).toEqual(before.library);}
 
+async function inspectNativeBookDetailLayout(fixture,label,{helpCollapsed=false}={}) {
+  const {page,result}=fixture;
+  await guidanceSettle(page);
+  const before={progressRaw:fixture.memory.get(PROGRESS),progressWrites:fixture.progressWrites().length};
+  const observed=await page.evaluate(({label,helpCollapsed})=>{
+    const detail=document.querySelector(".native-planet-panel:not([hidden]) .book-shelf-frame__detail");
+    if(!detail)throw Error("Expected the actual native book detail for "+label);
+    const toolbar=detail.querySelector(".book-detail-toolbar"),handle=detail.querySelector(".book-detail-mobile-handle");
+    const close=detail.querySelector(".book-detail-close"),card=detail.querySelector(".book-detail-card");
+    const title=card?.querySelector(".book-detail-copy h3"),author=card?.querySelector(".book-detail-copy dl > div:first-child dd");
+    const cover=card?.querySelector(".book-detail-cover"),handleTitle=handle?.querySelector("strong"),handleAuthor=handle?.querySelector(".book-detail-mobile-author");
+    const returnControl=document.querySelector(".native-planet-panel__header > button");
+    if(![toolbar,handle,close,card,title,author,cover,handleTitle,handleAuthor,returnControl].every(Boolean))throw Error("Incomplete production detail controls");
+    const rect=element=>{const r=element.getBoundingClientRect();return{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};
+    const shown=element=>getComputedStyle(element).display!=="none"&&getComputedStyle(element).visibility==="visible"&&element.getClientRects().length>0;
+    const hit=element=>{const r=element.getBoundingClientRect(),value=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return Boolean(value&&element.contains(value));};
+    const coverTransform=getComputedStyle(cover).transform,coverMatrix=coverTransform==="none"?null:new DOMMatrixReadOnly(coverTransform);
+    return{label,helpCollapsed,position:detail.getAttribute("data-mobile-position"),phase:detail.getAttribute("data-mobile-phase"),
+      detail:rect(detail),toolbar:rect(toolbar),handle:rect(handle),close:rect(close),returnControl:rect(returnControl),card:rect(card),
+      bodyTitle:title.textContent.trim(),regionTitle:card.getAttribute("aria-label"),bodyAuthor:author.textContent.trim(),
+      handleTitle:handleTitle.textContent.trim(),handleAuthor:handleAuthor.textContent.trim(),
+      handleTitleShown:shown(handleTitle),handleAuthorShown:shown(handleAuthor),bodyTitleShown:shown(title),bodyCardShown:shown(card),
+      coverTransform,coverRotationDegrees:coverMatrix?Math.atan2(coverMatrix.b,coverMatrix.a)*180/Math.PI:0,
+      documentOverflowX:document.documentElement.scrollWidth-document.documentElement.clientWidth,bodyOverflowX:card.scrollWidth-card.clientWidth,
+      bodyOverflowY:getComputedStyle(card).overflowY,bodyScrollTop:card.scrollTop,bodyScrollHeight:card.scrollHeight,
+      handleLabel:handle.getAttribute("aria-label"),handleControls:handle.getAttribute("aria-controls"),closeLabel:close.getAttribute("aria-label"),returnLabel:returnControl.getAttribute("aria-label"),
+      postHelpCollapseHits:helpCollapsed?{handle:hit(handle),close:hit(close),returnControl:hit(returnControl)}:null};
+  },{label,helpCollapsed});
+  expect(["collapsed","half","expanded"]).toContain(observed.position);
+  expect(observed.bodyTitle).toBe(observed.regionTitle);expect(observed.bodyTitle).toBe(observed.handleTitle);
+  expect(observed.bodyAuthor).toBe(observed.handleAuthor);expect(observed.bodyAuthor).not.toBe("");
+  expect(observed.handleControls).toBe("book-archive-detail");expect(observed.handleLabel).not.toBe("");
+  expect(observed.closeLabel).not.toBe(observed.returnLabel);
+  for(const control of [observed.handle,observed.close,observed.returnControl]){expect(control.width).toBeGreaterThanOrEqual(44);expect(control.height).toBeGreaterThanOrEqual(44);}
+  expect(Math.abs(observed.coverRotationDegrees)).toBeLessThan(.01);
+  expect(observed.documentOverflowX).toBeLessThanOrEqual(1);expect(observed.bodyOverflowX).toBeLessThanOrEqual(1);
+  if(observed.position==="collapsed"){expect(observed.handleTitleShown).toBe(true);expect(observed.handleAuthorShown).toBe(true);expect(observed.bodyCardShown).toBe(false);}
+  else{expect(observed.handleTitleShown).toBe(false);expect(observed.handleAuthorShown).toBe(false);expect(observed.bodyTitleShown).toBe(true);expect(observed.handle.height).toBeLessThanOrEqual(64);expect(["auto","scroll"]).toContain(observed.bodyOverflowY);expect(observed.card.height).toBeGreaterThan(0);}
+  expect(observed.close.left).toBeGreaterThanOrEqual(observed.toolbar.left-.5);expect(observed.close.right).toBeLessThanOrEqual(observed.toolbar.right+.5);
+  expect(observed.close.top).toBeGreaterThanOrEqual(observed.toolbar.top-.5);expect(observed.close.bottom).toBeLessThanOrEqual(observed.toolbar.bottom+.5);
+  // The unchanged trusted book Close below owns natural scrolling and action hit acceptance.
+  // These reads do not move the detail or require all body controls onscreen at once.
+  expect(fixture.memory.get(PROGRESS)).toBe(before.progressRaw);expect(fixture.progressWrites()).toHaveLength(before.progressWrites);
+  (result.observations.characterStep.mobileBookDetailLayout??={audits:[],readOnly:true}).audits.push(observed);
+}
 async function restoreCharacterWorkByUser(fixture,input,language,expected){
   const {page,result}=fixture,bookKey='russia:dostoevsky:crime-and-punishment';
   const observation={coldRestore:language==='en',snapshots:[],oldTokenIdentityObserved:false};
@@ -505,8 +621,11 @@ async function restoreCharacterWorkByUser(fixture,input,language,expected){
       phase:document.querySelector('[data-booky-journey-status]')?.getAttribute('data-booky-journey-status')??null,
       node:document.querySelector('[data-booky-journey-node]')?.getAttribute('data-booky-journey-node')??null,
       detail:document.querySelector('#book-archive-detail')?.getAttribute('data-cms-entity-id')??null,
+      workObservations:[...(window.__journeyWorkObservations??[])],
+      workObservationIntegrity:{overflow:window.__journeyWorkObservationOverflow??0,errors:[...(window.__journeyWorkObservationErrors??[])]},
       publicationCalls:[...window.__d206PublicationCalls],libraryWrites:[...window.__d206LibraryWrites],
       libraryValues:Object.fromEntries(Object.keys(localStorage).filter(key=>key.startsWith('probpera-reading-library')).map(key=>[key,localStorage.getItem(key)]))}));
+    expect(dom.workObservationIntegrity).toEqual({overflow:0,errors:[]});
     observation.snapshots.push({label,...dom,progressRaw:fixture.memory.get(PROGRESS),progressWriteCount:fixture.progressWrites().length,scene:await actual(page)});
   };
   await assertSemantic();await snapshot('current character before deliberate exit');
@@ -515,6 +634,7 @@ async function restoreCharacterWorkByUser(fixture,input,language,expected){
   await input.tap(page.locator('[data-planet-mascot-collapse]'),'Close Booky help before closing the underlying book detail');
   await expect(panel(page)).toHaveCount(0);await assertSemantic(false);
   observation.helpCollapsedBeforeBookClose=true;
+  await inspectNativeBookDetailLayout(fixture,'underlying detail after existing help collapse',{helpCollapsed:true});
   await input.tap(page.locator('.book-detail-close'),'Explicitly close current book detail before leaving collection');
   await expect(page.locator('#book-archive-detail')).toHaveCount(0);
   await expect.poll(()=>new URL(page.url()).searchParams.has('book')).toBe(false);
@@ -599,6 +719,7 @@ for(const [language,width] of [['ru',390],['en',320]])test('actual App '+languag
     await expect(page.locator('[data-booky-journey-open]')).toBeEnabled();
     expect(await page.evaluate(()=>window.__d206PublicationCalls)).toEqual(callsBeforeClose);
     await input.expose(status(page),'Current ready-to-open hint after character Close');
+    await inspectNativeBookDetailLayout(fixture,'character closed with Booky help open');
     await characterCapture(fixture,testInfo,'character-closed-'+language+'.png','Current ready-to-open hint after trusted Close; the modal acknowledgement is absent. Static framing does not prove unchanged progress or request counts.');
     expect(await page.evaluate(()=>window.__d206PublicationCalls)).toEqual(callsBeforeClose);
     expect(fixture.memory.get(PROGRESS)).toBe(raw);expect(fixture.progressWrites()).toHaveLength(writes);

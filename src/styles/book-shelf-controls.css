@@ -274,6 +274,7 @@
 @media (max-width: 767px) {
   .book-shelf-frame__search-rail { padding: 10px 16px 12px; }
   .book-shelf-controls__topline { grid-template-areas: "collection collection collection collection" "search search search search" "views filters random settings"; grid-template-columns: 94px 44px minmax(0, 1fr) 44px; gap: 8px; }
+  .native-planet-panel .book-shelf-controls__topline:not(:has(> .book-shelf-controls__views)) { grid-template-areas: "collection collection collection" "search search search" "filters random settings"; grid-template-columns: 44px minmax(0, 1fr) 44px; }
   .book-shelf-controls__collection { padding-bottom: 1px; }
   .book-shelf-controls .book-shelf-controls__views button { width: 44px; min-inline-size: 44px; padding: 10px; }
   .book-shelf-controls__views button > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -307,4 +308,33 @@
   .book-collection-switcher__compact-count { color: CanvasText; border: 1px solid CanvasText; }
   .book-shelf-controls :is(button, input, select),
   .book-shelf-frame__detail :is(button, a) { box-shadow: none; forced-color-adjust: auto; }
+}
+
+/* Native Collection fields and icon targets follow the host control rhythm. */
+.native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__search-rail { border-bottom-color: color-mix(in srgb, var(--planet-on-dark) 12%, var(--planet-chrome)); }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-collection-switcher__field { border-radius: 12px; }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-collection-switcher__compact-value { padding-block: 8px; gap: 8px; }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-collection-switcher__compact-count { border-radius: 6px; background: color-mix(in srgb, var(--planet-on-dark) 10%, var(--planet-chrome)); color: var(--planet-muted-dark); }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-controls__search-group {
+  border-color: color-mix(in srgb, var(--planet-on-dark) 14%, var(--planet-chrome));
+  border-radius: 12px;
+  background: var(--planet-chrome);
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-controls__search-group:focus-within,
+.native-planet-app[data-planet-edition] .native-planet-panel .book-collection-switcher__field:focus-within { outline: 3px solid var(--planet-accent); outline-offset: 2px; }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-controls__scope select { border-radius: 0 12px 12px 0; }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-controls :is(.book-shelf-controls__advanced, .book-shelf-quality-menu > button) { padding: 11px; border-radius: 12px; }
+.native-planet-app[data-planet-edition] .native-planet-panel :is(
+  .book-shelf-controls__views, .book-shelf-controls__random, .book-shelf-controls__advanced,
+  .book-shelf-quality-menu__panel button, .archive-book-actions, .book-detail-actions, .book-detail-close
+) svg {
+  inline-size: 20px;
+  block-size: 20px;
+  flex: 0 0 20px;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-quality-menu__panel { border-radius: 16px; border-color: color-mix(in srgb, var(--planet-on-dark) 16%, var(--planet-chrome)); background: var(--planet-chrome); }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-quality-menu__panel > button { border-radius: 12px; gap: 8px; }
+@media (forced-colors: active) {
+  .native-planet-app[data-planet-edition] .native-planet-panel :is(.book-shelf-controls__search-group, .book-collection-switcher__field, .book-shelf-quality-menu__panel) { border: 1px solid ButtonText; background: Canvas; }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-collection-switcher__compact-count { color: CanvasText; background: Canvas; }
 }

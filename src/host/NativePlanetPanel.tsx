@@ -46,7 +46,7 @@ export default function NativePlanetPanel({ open, onClose, onBack, globeRef, ret
     const panel = panelRef.current, dock = dockRef.current;
     if (!panel || !dock) return;
     const mobile = window.matchMedia("(max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape)");
-    let observedPet: HTMLElement | null = null;
+    let observedPet: HTMLElement | null = null, observedHelp: HTMLElement | null = null;
     const measure = () => {
       const pet = dock.querySelector<HTMLElement>("[data-planet-mascot-pet]");
       if (pet !== observedPet) {
@@ -54,24 +54,30 @@ export default function NativePlanetPanel({ open, onClose, onBack, globeRef, ret
         observedPet = pet;
         if (pet) resize?.observe(pet);
       }
-      const hasOpenSection = Object.values(sectionSelectors).some(selector => {
-        const section = panel.querySelector<HTMLDetailsElement>(selector);
-        return Boolean(section?.open && !section.closest('[hidden], [inert], [aria-hidden="true"]'));
-      });
-      const active = open && mobile.matches && Boolean(pet) && hasOpenSection;
-      const fallback = pet?.getAttribute("data-planet-mascot-visibility") === "hidden" ? 68 : 120;
-      const measured = pet?.getBoundingClientRect().height ?? 0;
+      const help = pet?.getAttribute("data-booky-help-sheet") === "true"
+        ? pet.querySelector<HTMLElement>("[data-planet-mascot-panel]") : null;
+      if (help !== observedHelp) {
+        if (observedHelp) resize?.unobserve(observedHelp);
+        observedHelp = help ?? null;
+        if (help) resize?.observe(help);
+      }
+      // Search and book content retain a scrollable area above the actual
+      // companion surface, even when no optional utility section is open.
+      const active = open && mobile.matches && Boolean(pet);
+      const fallback = pet?.getAttribute("data-planet-mascot-visibility") === "hidden" ? 68 : 88;
+      const measured = (help ?? pet)?.getBoundingClientRect().height ?? 0;
       setDockLayout(previous => {
-        // Activating the dock also applies its compact layout. Measure that
-        // layout on the next layout effect before reserving its actual height.
-        const height = active && previous.active && measured > 0 ? Math.ceil(measured) + 24 : fallback;
+        // Both the compact row and open help are measured in their current
+        // layout; disclosure and text reflow update this existing observer.
+        const height = active && measured > 0 ? Math.ceil(measured) + 24 : fallback;
         return previous.active === active && previous.height === height ? previous : { active, height };
       });
     };
     const resize = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
     const mutation = typeof MutationObserver === "undefined" ? null : new MutationObserver(measure);
     mutation?.observe(panel, { subtree: true, childList: true, attributes: true,
-      attributeFilter: ["open", "hidden", "inert", "aria-hidden", "data-planet-mascot-visibility"] });
+      attributeFilter: ["open", "hidden", "inert", "aria-hidden", "data-planet-mascot-visibility",
+        "data-booky-help-sheet", "data-booky-actions-open"] });
     mobile.addEventListener("change", measure);
     measure();
     return () => { resize?.disconnect(); mutation?.disconnect(); mobile.removeEventListener("change", measure); };

@@ -4402,10 +4402,12 @@ export default function BookArchiveSection({
     refreshDetailViewRef.current = refresh;
     const intersectionRoot = detail.closest<HTMLElement>(".native-planet-panel__content");
     const intersection = typeof IntersectionObserver === "undefined" ? null
-      : new IntersectionObserver(([entry]) => { intersects = entry.isIntersecting; refresh(); }, { root: intersectionRoot });
+      : new IntersectionObserver((entries) => { for (const entry of entries) if (entry.target === detail) intersects = entry.isIntersecting; refresh(); }, { root: intersectionRoot });
     intersection?.observe(detail);
     const resize = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(refresh);
     resize?.observe(detail);
+    // The native companion can resize this clipping root without resizing the card.
+    if (intersectionRoot) resize?.observe(intersectionRoot);
     window.addEventListener("resize", refresh);
     document.addEventListener("scroll", refresh, true);
     document.addEventListener("visibilitychange", refresh);

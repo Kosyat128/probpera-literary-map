@@ -220,3 +220,18 @@
 .book-dossier-reader__progress select:focus-visible { outline: 2px solid #c65709; outline-offset: 3px; }
 @layer site-typography { .book-dossier-reader__progress { font-family: var(--font-ui); font-size: var(--type-action); font-weight: 600; line-height: 1.45; } .book-dossier-reader__progress select { font: inherit; font-weight: 400; } }
 @media (forced-colors: active) { .book-dossier-reader__progress select { color: ButtonText; background: ButtonFace; border-color: ButtonText; } .book-dossier-reader__progress select:focus-visible { outline-color: Highlight; } }
+
+/* Native mobile book detail keeps one visible identity in each sheet state. */
+@media (max-width: 767px) {
+  .native-planet-panel .book-shelf-frame__detail:is([data-mobile-position="half"], [data-mobile-position="expanded"]) .book-detail-mobile-handle {
+    min-height: 44px;
+    padding-block: 8px;
+  }
+  .native-planet-panel .book-shelf-frame__detail:is([data-mobile-position="half"], [data-mobile-position="expanded"]) .book-detail-mobile-handle > :is(strong, .book-detail-mobile-author) {
+    display: none;
+  }
+  .native-planet-panel .book-shelf-frame__detail:is([data-mobile-position="half"], [data-mobile-position="expanded"]) .book-detail-mobile-handle > span[aria-hidden] {
+    grid-row: 1;
+  }
+  .native-planet-panel .book-shelf-frame__detail .book-detail-cover { transform: none; }
+}

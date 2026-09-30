@@ -28,6 +28,8 @@ export type PlanetMascotControlsProps = {
   pointRequest?: Readonly<{ id: number; action: PlanetMascotAction }> | null;
   /** Immediate decorative command only; unavailable owners never queue it. */
   completionReactionRef?: { current: (() => boolean) | null };
+  atlasSearchVisible?: boolean;
+  onHelpOpen?: () => void;
   position: Position | null;
   onPositionChange: (position: Position | null) => void;
   persistence: PlanetMascotPersistenceSnapshot;
@@ -94,7 +96,8 @@ const navigationControls = ".native-planet-app .globe-controls, .native-planet-a
   + ".native-planet-app .book-shelf-frame__navigation, .native-planet-app .book-detail-actions, "
   + ".native-planet-app .archive-book-actions, "
   + ".native-planet-app .atlas-country-presentation .panel-close, "
-  + ".native-planet-app .book-detail-page-navigation, .native-planet-app [data-planet-stand-toggle]";
+  + ".native-planet-app .book-detail-page-navigation, .native-planet-app [data-planet-stand-toggle], "
+  + '.native-planet-app [data-atlas-search-combobox][data-open="true"], .native-planet-app [data-atlas-search-listbox]';
 function companionViewport(): Rect {
   const view = viewport();
   let top = view.top;
@@ -107,13 +110,15 @@ function companionViewport(): Rect {
   return { ...view, top, height: Math.max(0, view.top + view.height - top) };
 }
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, pointRequest, completionReactionRef, position, onPositionChange, persistence, onRetryPersistence, motion, onMotionChange,
+  onAction, pointRequest, completionReactionRef, atlasSearchVisible = false, onHelpOpen, position, onPositionChange, persistence, onRetryPersistence, motion, onMotionChange,
   onRetryMotion, onRecoverMotion, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
   const calmMotion = !motion.hydrated || motion.mode === "calm";
   const id = useId(), root = useRef<HTMLDivElement>(null), card = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null), heading = useRef<HTMLHeadingElement>(null);
+  const actionsToggle = useRef<HTMLButtonElement>(null);
+  const [actionsOpen, setActionsOpen] = useState(false);
   const gestureGallery = useRef<HTMLDetailsElement>(null), gestureSummary = useRef<HTMLElement>(null);
   const tourHeading = useRef<HTMLHeadingElement>(null), focusAfterNavigation = useRef(false);
   const resetStart = useRef<HTMLButtonElement>(null), resetConfirm = useRef<HTMLButtonElement>(null);
@@ -147,6 +152,16 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const previousPage = useRef(`${snapshot.mode}:${snapshot.route}:${snapshot.step}`);
   const prior = useRef({ panel: snapshot.panel, visibility: snapshot.visibility });
   const shown = snapshot.visibility === "shown", open = shown && snapshot.panel === "open";
+  const compact = view.width <= 1024 && screen === "globe" && view.height < 240 || typeof window !== "undefined"
+    && window.matchMedia("(max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape)").matches;
+  useLayoutEffect(() => { setActionsOpen(false); }, [open, shown, snapshot.available, screen, compact]);
+  useLayoutEffect(() => {
+    if (!compact || screen !== "globe" || !atlasSearchVisible || !open) return;
+    const current = controller.getSnapshot();
+    // Search is the mobile foreground owner; this retires only the help panel.
+    if (current.revision === snapshot.revision && current.available && current.visibility === "shown"
+      && current.panel === "open" && !document.hidden && !drag.current) controller.togglePanel();
+  }, [compact, screen, atlasSearchVisible, open, controller, snapshot.revision]);
   const step = getPlanetMascotStep(snapshot.route, snapshot.step);
   const tour = snapshot.mode === "tour" && step && snapshot.route ? PLANET_MASCOT_ROUTES[snapshot.route] : null;
   const savedTour = snapshot.resumeOffer ? PLANET_MASCOT_ROUTES[snapshot.resumeOffer.route] : null;
@@ -516,6 +531,21 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const cardPosition = open ? placeBookyCard({ left: petPosition.left - cardWidth - MARGIN,
     top: petPosition.top + petSize.height - height }, { width: cardWidth, height }, cardView, petRect, cardObstacles, minimumCardHeight)
     : { left: 0, top: 0, width: cardWidth, height };
+  // Help uses the measured host-safe viewport, keeping the existing actor
+  // mounted in a reserved header column. Closed movement keeps its own position.
+  const helpSheet = compact && open;
+  const sheetView = dockBounds ? view : cardView;
+  const sheetWidth = Math.min(560, Math.max(0, sheetView.width - MARGIN * 2));
+  const sheetLimit = Math.min(Math.max(0, sheetView.height - MARGIN * 2),
+    Math.max(minimumCardHeight, Math.min(420, sheetView.height * .6)));
+  const sheetHeight = Math.min(cardHeight, sheetLimit);
+  const helpPosition = helpSheet ? {
+    left: sheetView.left + (sheetView.width - sheetWidth) / 2,
+    top: sheetView.top + sheetView.height - MARGIN - sheetHeight,
+    width: sheetWidth, height: sheetHeight,
+  } : cardPosition;
+  const displayPosition = helpSheet
+    ? { left: helpPosition.left + MARGIN, top: helpPosition.top + MARGIN } : petPosition;
   const perform = (action: PlanetMascotAction) => {
     const performed = controller.act(action, snapshot.revision, () => onAction(action));
     if (performed) { setGesture("rest"); setReactionKey(value => value + 1); }
@@ -721,14 +751,19 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       data-booky-calm={calmMotion ? "true" : undefined}
       data-booky-expanded-text={expandedText ? "true" : undefined}
       data-booky-short-space={shortSpace ? "true" : undefined}
+      data-booky-mobile-composition={compact ? "true" : undefined}
+      data-booky-help-sheet={helpSheet ? "true" : undefined}
+      data-booky-actions-open={compact && actionsOpen ? "true" : undefined}
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
       data-planet-mascot-panel-state={open ? "open" : "closed"}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
       data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen} data-planet-mascot-gesture={walk.active ? "walking" : gesture}
       data-booky-returning={targetCue?.phase === "returning" ? "true" : undefined}
       data-planet-mascot-closed-notice={!open && persistence.state !== "idle" ? "true" : undefined}
-      style={{ ...petPosition, "--booky-available-height": `${view.height}px`,
-        left: `min(${petPosition.left}px, var(--booky-dock-max-left, ${petPosition.left}px))` } as CSSProperties}
+      style={{ ...displayPosition, "--booky-available-height": `${view.height}px`,
+        "--booky-help-header-height": `${Math.max(88, cardTextSize.heading)}px`,
+        left: helpSheet ? displayPosition.left
+          : `min(${displayPosition.left}px, var(--booky-dock-max-left, ${displayPosition.left}px))` } as CSSProperties}
       onPointerDown={event => event.stopPropagation()} onPointerUp={event => event.stopPropagation()}
       onPointerMove={event => event.stopPropagation()} onWheel={event => event.stopPropagation()}
       onClick={event => event.stopPropagation()} onKeyDown={event => {
@@ -745,6 +780,10 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             return;
           }
           if (open) { event.preventDefault(); event.stopPropagation(); controller.togglePanel(); }
+          else if (compact && actionsOpen) {
+            event.preventDefault(); event.stopPropagation(); setActionsOpen(false);
+            actionsToggle.current?.focus({ preventScroll: true });
+          }
           return;
         }
         event.stopPropagation();
@@ -754,7 +793,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         aria-label={shown ? ru ? `Подсказки: ${name}` : `Tips from ${name}` : ru ? `Показать: ${name}` : `Show ${name}`}
         aria-describedby={shown ? `${id}-move` : undefined}
         onPointerDown={event => {
-          if (!shown || !event.isPrimary || event.button !== 0) return;
+          if (!shown || helpSheet || !event.isPrimary || event.button !== 0) return;
           suppressAvatarClick.current = false;
           drag.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, origin: petPosition,
             source: "avatar", moved: false, element: event.currentTarget };
@@ -769,6 +808,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         onPointerLeave={() => { if (!drag.current) { setPointerLook(null); setGesture("rest"); } }}
         onClick={event => {
           if (event.detail > 0 && suppressAvatarClick.current) { suppressAvatarClick.current = false; return; }
+          const current = controller.getSnapshot();
+          if (current.revision !== snapshot.revision || !current.available || document.hidden) return;
+          if (compact && screen === "globe" && (current.visibility !== "shown" || current.panel !== "open")) onHelpOpen?.();
           if (!characterRestoring) { setGesture("greeting"); setReactionKey(value => value + 1); }
           controller.togglePanel();
         }}>
@@ -778,7 +820,18 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           interaction={walk.active ? "walking" : gesture === "rest" && open && highlight ? "pointing" : gesture}
           reactionKey={reactionKey} active={snapshot.available} calmMotion={calmMotion} /> : name}
       </button>
-      {shown && <div className="planet-mascot-controls__tools">
+      {shown && <button ref={actionsToggle} type="button" className="planet-mascot-controls__options"
+        data-booky-actions-toggle="" aria-expanded={actionsOpen}
+        aria-controls={`${id}-move-controls ${id}-walk-control`}
+        aria-label={ru ? "Действия Книжулика" : "Mr. Booky’s actions"}
+        title={ru ? "Действия Книжулика" : "Mr. Booky’s actions"} onClick={() => {
+          const current = controller.getSnapshot();
+          if (current.revision === snapshot.revision && current.available && current.visibility === "shown"
+            && current.panel === "closed" && !document.hidden && !drag.current) setActionsOpen(value => !value);
+        }}><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="5" cy="12" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="19" cy="12" r="2" />
+        </svg></button>}
+      {shown && <div id={`${id}-move-controls`} className="planet-mascot-controls__tools">
         <button type="button" data-planet-mascot-move="" className="planet-mascot-controls__move"
           aria-label={ru ? "Переместить помощника" : "Move the companion"} aria-describedby={`${id}-move`}
           title={ru ? "Перетащите или используйте стрелки. Home — исходное место." : "Drag or use arrow keys. Home resets the position."}
@@ -818,7 +871,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             : "Tap Mr. Booky for tips or drag the character to move him. Use the arrow button for keyboard movement. Home restores the default position."}
         </span>
       </div>}
-      {shown && <button type="button" className="planet-mascot-controls__walk"
+      {shown && <button id={`${id}-walk-control`} type="button" className="planet-mascot-controls__walk"
         data-booky-walk={walk.active ? undefined : ""} data-booky-walk-stop={walk.active ? "" : undefined}
         disabled={!walk.active && !walk.canStart}
         title={walk.reducedMotion ? ru ? "Включено уменьшенное движение" : "Reduced motion is enabled"
@@ -853,8 +906,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           : ru ? "Прогуляться" : "Take a walk"}</button>}
       {!open && persistenceNotice}
       {open && <section ref={card} id={id} role="region" aria-labelledby={`${id}-title`} data-planet-mascot-panel=""
-        className="planet-mascot-controls__panel" style={{ left: cardPosition.left, top: cardPosition.top,
-          width: cardPosition.width, maxHeight: cardPosition.height }}>
+        className="planet-mascot-controls__panel" style={{ left: helpPosition.left, top: helpPosition.top,
+          width: helpPosition.width, maxHeight: helpPosition.height }}>
         <div className="planet-mascot-controls__leaf" data-planet-mascot-leaf={pageTurn}
           style={pageTurn ? { animationName: pageTurn % 2 ? "booky-leaf-reveal-a" : "booky-leaf-reveal-b" } : undefined}>
         <header className="planet-mascot-controls__heading">
