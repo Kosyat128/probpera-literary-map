@@ -133,6 +133,51 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   for (const record of draft.dialogues) expect(record.review).toMatchObject({ status: 'draft', reviewer: null, reviewedAt: null });
   for (const key of ['journeyApprovals', 'dialogueApprovals', 'currentVersions', 'availability']) expect(draft[key]).toEqual([]);
   expect(draft.releaseReady).toBe(false); expect(downloads).toHaveLength(1);
+  const opener=page.locator('summary').filter({hasText:'Открыть локальный черновик'});
+  await expect(opener.locator('..')).not.toHaveAttribute('open','');
+  await opener.tap();
+  const openDraft=page.getByLabel('Открыть черновик JSON',{exact:true});
+  const routeTitle=page.getByLabel('Название маршрута (RU)',{exact:true});
+  const upload=(name,buffer=bytes)=>openDraft.setInputFiles({name,mimeType:'application/json',buffer});
+  await routeTitle.fill('Несохранённые правки');
+  await previewButton.tap();
+  const tampered=structuredClone(draft);tampered.releaseReady=true;
+  await upload('tampered-draft.json',Buffer.from(JSON.stringify(tampered)));
+  await expect(page.getByRole('alert')).toBeVisible();
+  await expect(routeTitle).toHaveValue('Несохранённые правки');
+  await expect(preview).toBeVisible();
+  await upload('saved-draft.json');
+  await expect(routeTitle).toHaveValue('Тестовый маршрут обновлён');
+  await expect(page.getByLabel('Название маршрута (EN)',{exact:true})).toHaveValue('Synthetic journey');
+  await expect(preview).toHaveCount(0);
+  await expect(country).toHaveValue('country-a');await expect(writer).toHaveValue('writer-a');await expect(work).toHaveValue('work-a');
+  await expect(openDraft).toHaveValue('');
+  await page.evaluate(()=>{
+    const original=File.prototype.text;
+    File.prototype.text=function(){
+      if(this.name==='delayed-draft.json'){
+        window.__draftReadStarted=true;
+        return new Promise(resolve=>{window.__finishDraftRead=()=>original.call(this).then(resolve);});
+      }
+      if(this.name==='unreadable-draft.json')return Promise.reject(new Error('Synthetic local read failure'));
+      return original.call(this);
+    };
+  });
+  await upload('delayed-draft.json');
+  await page.waitForFunction(()=>window.__draftReadStarted===true);
+  await routeTitle.fill('Правки во время чтения');
+  await page.evaluate(()=>window.__finishDraftRead());
+  await expect(routeTitle).toHaveValue('Правки во время чтения');
+  await expect(openDraft).not.toHaveAttribute('aria-busy','true');
+  await page.evaluate(()=>{window.__draftReadStarted=false;});
+  await upload('delayed-draft.json');
+  await page.waitForFunction(()=>window.__draftReadStarted===true);
+  await upload('unreadable-draft.json');
+  await expect(page.getByRole('alert')).toBeVisible();
+  await page.evaluate(()=>window.__finishDraftRead());
+  await expect(routeTitle).toHaveValue('Правки во время чтения');
+  await expect(page.getByRole('alert')).toBeVisible();
+  expect(downloads).toHaveLength(1);
   await page.setViewportSize({ width: 1280, height: 960 });
   await page.evaluate(() => window.scrollTo(0, 0));
   expect(await overflow()).toBe(false);
@@ -141,7 +186,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await testInfo.attach('booky-journey-editor-evidence', { contentType: 'application/json', body: JSON.stringify({
     pass: true, actualEditorComponent: true, actualEditorStyles: true, actualDraftCompiler: true,
     syntheticCatalog: true, authenticatedAdminServerTested: false, installedDeviceTested: false,
-    bilingualDefinitions: 2, unapprovedDialogueDrafts: 8, cascadeResetsVerified: true, adultRuEnPreviewVerified:true, previewInvalidationVerified:true, missingCanonicalEnglishPreserved:true, downloads,
+    bilingualDefinitions: 2, unapprovedDialogueDrafts: 8, cascadeResetsVerified: true, adultRuEnPreviewVerified:true, previewInvalidationVerified:true, missingCanonicalEnglishPreserved:true, localDraftRoundtripVerified:true, rejectedImportPreservesEditsAndPreview:true, delayedImportCannotOverwriteNewEdits:true, newerFileSelectionCancelsOlderResult:true, readFailurePreservesEdits:true, downloads,
     exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length }, sourceInputs: fixture.sourceInputs,
     screenshots, errors, externalRequests, productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
   }, null, 2) });

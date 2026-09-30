@@ -6,7 +6,10 @@ import {
   createBookyDialogueRegistry, getBookyDialogueChecksum, getBookyDialogueContentChecksum,
 } from "../../../src/host/bookyDialogueRegistry";
 import { contentRecordHash, contentTextHash } from "../../../src/planet/contentExportHash";
-import { createBookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput } from "./booky-journey-draft";
+import {
+  BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft,
+  type BookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput,
+} from "./booky-journey-draft";
 
 function catalog(): JourneyDraftCatalog {
   return { countries: [{ id: "test-country", label: { ru: "Тестовая страна", en: "Test country" }, writers: [
@@ -181,5 +184,170 @@ describe("adult Booky journey draft authoring", () => {
       currentVersions: exported.currentVersions, approvedReviews: exported.journeyApprovals,
       dialogueRegistry: registry, publicCountries: [], publicBooks: [],
     })).toBeNull();
+  });
+});
+
+type Mutable<T> = T extends readonly (infer Item)[] ? Mutable<Item>[]
+  : T extends object ? { -readonly [Key in keyof T]: Mutable<T[Key]> } : T;
+function modifiedExport(change: (value: Mutable<BookyJourneyDraft>) => void): string {
+  const value: Mutable<BookyJourneyDraft> = JSON.parse(JSON.stringify(draft()));
+  change(value);
+  return JSON.stringify(value);
+}
+function importErrors(serialized: string, canonical = catalog()) {
+  const result = parseBookyJourneyDraft(serialized, canonical);
+  expect(result.ok).toBe(false);
+  if (result.ok) return [];
+  expect(result.errors.length).toBeGreaterThan(0);
+  expect(result.errors.every(error => /[А-Яа-яЁё]/u.test(error.message))).toBe(true);
+  expect(Object.isFrozen(result.errors)).toBe(true);
+  return result.errors.map(error => error.field);
+}
+
+describe("adult Booky journey draft reopening", () => {
+  it("round trips all RU/EN authored copy and ignores object key order while returning fresh frozen compiled snapshots", () => {
+    const exported = draft();
+    const reverseKeys = (value: unknown): unknown => {
+      if (Array.isArray(value)) return value.map(reverseKeys);
+      if (value && typeof value === "object") return Object.fromEntries(Object.entries(value).reverse()
+        .map(([key, child]) => [key, reverseKeys(child)]));
+      return value;
+    };
+    const canonical = catalog(), before = JSON.stringify(canonical);
+    for (const serialized of [JSON.stringify(exported, null, 2) + "\n", JSON.stringify(reverseKeys(exported))]) {
+      const result = parseBookyJourneyDraft(serialized, canonical);
+      expect(result.ok).toBe(true);
+      if (!result.ok) continue;
+      expect(result.input).toEqual(input());
+      expect(result.draft).toEqual(exported);
+      expect(result.draft).not.toBe(exported);
+      expect(result.input).toBe(result.draft.authoringSource.input);
+      expect(result.input).not.toBe(exported.authoringSource.input);
+      expect(Object.isFrozen(result)).toBe(true);
+      expect(Object.isFrozen(result.input.copy.en.nodes.work)).toBe(true);
+      expect([result.draft.status, result.draft.releaseReady, result.draft.humanReviewed,
+        result.draft.childApproved, result.draft.narrationApproved]).toEqual(["draft", false, false, false, false]);
+      for (const list of [result.draft.journeyApprovals, result.draft.dialogueApprovals,
+        result.draft.currentVersions, result.draft.availability]) expect(list).toEqual([]);
+    }
+    expect(JSON.stringify(canonical)).toBe(before);
+  });
+
+  it("rejects stale selected canonical labels and removed countries, writers or works using the current scoped catalog", () => {
+    const serialized = JSON.stringify(draft());
+    for (const entity of ["country", "writer", "work"] as const) {
+      for (const locale of ["ru", "en"] as const) {
+        const current = catalog(), country = current.countries[0], writer = country.writers[0];
+        const selected = entity === "country" ? country : entity === "writer" ? writer : writer.works[0];
+        selected.label[locale] += " changed";
+        expect(importErrors(serialized, current)).toContain("file");
+      }
+    }
+    const noCountry = catalog();
+    noCountry.countries = [];
+    expect(importErrors(serialized, noCountry)).toContain("countryId");
+    const noWriter = catalog();
+    noWriter.countries[0].writers = noWriter.countries[0].writers.filter(writer => writer.id !== "test-writer");
+    expect(importErrors(serialized, noWriter)).toContain("writerId");
+    const noWork = catalog();
+    noWork.countries[0].writers[0].works = [];
+    expect(importErrors(serialized, noWork)).toContain("workId");
+  });
+
+  it("rejects altered authored and derived copy, validly rehashed dialogue tampering, checksums and canonical references", () => {
+    const changes: ((value: Mutable<BookyJourneyDraft>) => void)[] = [
+      value => { value.authoringSource.input.copy.ru.nodes.work.body = "Изменённая исходная подсказка."; },
+      value => {
+        value.authoringSource.input.copy.en.nodes.writer.title = "Changed writer title";
+        value.authoringSourceChecksum = contentRecordHash(value.authoringSource);
+      },
+      value => {
+        const record = value.dialogues[0];
+        record.payload.copy.body = "Изменённый текст с согласованной контрольной суммой.";
+        record.payload.provenance.copySha256 = contentTextHash(JSON.stringify({ title: record.payload.copy.title, body: record.payload.copy.body }));
+        const contentChecksum = getBookyDialogueContentChecksum(record.payload);
+        expect(contentChecksum).not.toBeNull();
+        record.review.contentChecksum = contentChecksum!;
+        const checksum = getBookyDialogueChecksum({ payload: record.payload, review: record.review });
+        expect(checksum).not.toBeNull();
+        record.checksum = checksum!;
+      },
+      value => { value.authoringSourceChecksum = "0".repeat(64); },
+      value => { value.definitionsChecksums[0].checksum = "0".repeat(64); },
+      value => { value.dialogues[0].checksum = "0".repeat(64); },
+      value => { value.definitions[0].title = "Подменённое название маршрута"; },
+      value => { value.definitions[0].nodes[0].entity = { kind: "country", countryId: "other-country" }; },
+      value => { value.dialogues[0].payload.entityIds = ["other-country"]; },
+      value => { value.dialogues[0].payload.provenance.sourceRef = "/input/copy/en/nodes/work"; },
+      value => { value.authoringSource.selection.work.label.en = "Changed imported canonical title"; },
+    ];
+    for (const change of changes) expect(importErrors(modifiedExport(change))).toContain("file");
+  });
+
+  it("rejects imported authority, unknown or missing fields and every extra nested input key including special names", () => {
+    const changes: ((value: Mutable<BookyJourneyDraft>) => void)[] = [
+      value => { Object.assign(value, { releaseReady: true }); },
+      value => { Object.assign(value, { humanReviewed: true }); },
+      value => { Object.assign(value, { childApproved: true }); },
+      value => { Object.assign(value, { narrationApproved: true }); },
+      value => { Object.assign(value, { journeyApprovals: [{ reviewer: "imported" }] }); },
+      value => { Object.assign(value, { dialogueApprovals: [{ reviewer: "imported" }] }); },
+      value => { Object.assign(value, { currentVersions: [{ version: 2 }] }); },
+      value => { Object.assign(value, { availability: [{ available: true }] }); },
+      value => { Object.assign(value.dialogues[0].review, { status: "approved", reviewer: "imported", reviewedAt: "2026-09-30T12:00:00.000Z" }); },
+      value => { Object.assign(value, { extra: "unrecognized" }); },
+      value => { Reflect.deleteProperty(value, "dialogues"); },
+      value => { Object.assign(value.authoringSource, { extra: "unrecognized" }); },
+      value => { Object.assign(value.authoringSource.input, { extra: "unrecognized" }); },
+      value => { Object.assign(value.authoringSource.input.ageRange, { extra: "unrecognized" }); },
+      value => { Object.assign(value.authoringSource.input.copy, { fr: value.authoringSource.input.copy.en }); },
+      value => { Object.assign(value.authoringSource.input.copy.ru, { extra: "unrecognized" }); },
+      value => { Object.assign(value.authoringSource.input.copy.en.nodes, { extra: { title: "Extra", body: "Extra" } }); },
+      value => { Object.assign(value.authoringSource.input.copy.ru.nodes.country, { extra: "unrecognized" }); },
+      value => { Reflect.deleteProperty(value.authoringSource.input.copy.en.nodes.work, "body"); },
+      value => { Object.defineProperty(value.authoringSource.input.copy.en.nodes.checkpoint, "__proto__", { value: { approved: true }, enumerable: true }); },
+      value => { Object.assign(value.authoringSource.input.copy.en.nodes.writer, { constructor: "unrecognized" }); },
+    ];
+    for (const change of changes) importErrors(modifiedExport(change));
+  });
+
+  it("rejects malformed roots, unsupported draft versions/statuses, invalid input values and byte-bounded UTF-8 oversize text", () => {
+    for (const serialized of ["", "{", "null", "[]", "42", '"draft"',
+      JSON.stringify({ schemaVersion: 2, status: "draft" }), JSON.stringify({ schemaVersion: 1, status: "approved" }),
+      " ".repeat(BOOKY_JOURNEY_DRAFT_MAX_BYTES + 1)]) expect(importErrors(serialized)).toContain("file");
+    const oversizedUtf8 = JSON.stringify({ text: "я".repeat(BOOKY_JOURNEY_DRAFT_MAX_BYTES / 2) });
+    expect(oversizedUtf8.length).toBeLessThan(BOOKY_JOURNEY_DRAFT_MAX_BYTES);
+    expect(new TextEncoder().encode(oversizedUtf8).byteLength).toBeGreaterThan(BOOKY_JOURNEY_DRAFT_MAX_BYTES);
+    expect(importErrors(oversizedUtf8)).toContain("file");
+    expect(importErrors(modifiedExport(value => { value.authoringSource.input.ageRange.min = 17; }))).toContain("ageRange");
+    expect(importErrors(modifiedExport(value => { value.authoringSource.input.copy.en.nodes.work.body = ""; })))
+      .toContain("copy.en.nodes.work.body");
+    const invalidCatalog = { countries: null } as unknown as JourneyDraftCatalog;
+    expect(importErrors(JSON.stringify(draft()), invalidCatalog)).toContain("catalog");
+    const failedCatalog = { get countries() { throw new Error("Catalog unavailable"); } } as JourneyDraftCatalog;
+    expect(importErrors(JSON.stringify(draft()), failedCatalog)).toContain("file");
+  });
+
+  it("preserves missing canonical country/writer EN labels and blocking issues without translation or approval fallback", () => {
+    const current = catalog();
+    current.countries[0].label.en = "";
+    current.countries[0].writers[0].label.en = "";
+    const exported = draft(input(), current), serialized = JSON.stringify(exported);
+    const result = parseBookyJourneyDraft(serialized, current);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.draft.authoringSource.selection.country.label.en).toBe("");
+    expect(result.draft.authoringSource.selection.writer.label.en).toBe("");
+    expect(result.input.copy.en).toEqual(input().copy.en);
+    expect(result.draft.blockingReviewIssues).toEqual(exported.blockingReviewIssues);
+    expect(result.draft.blockingReviewIssues).toHaveLength(2);
+    const removedIssues = JSON.parse(serialized);
+    removedIssues.blockingReviewIssues = [];
+    expect(importErrors(JSON.stringify(removedIssues), current)).toContain("file");
+    const noWorkEnglish = catalog();
+    noWorkEnglish.countries[0].writers[0].works[0].label.en = "";
+    expect(importErrors(serialized, noWorkEnglish)).toContain("workId");
+    expect([result.draft.releaseReady, result.draft.humanReviewed, result.draft.childApproved, result.draft.narrationApproved])
+      .toEqual([false, false, false, false]);
   });
 });

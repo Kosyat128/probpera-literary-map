@@ -57,6 +57,11 @@ export type BookyJourneyDraft = Readonly<{
 export type JourneyDraftResult =
   | Readonly<{ ok: true; draft: BookyJourneyDraft }>
   | Readonly<{ ok: false; errors: readonly JourneyDraftError[] }>;
+export type JourneyDraftParseResult =
+  | Readonly<{ ok: true; input: JourneyDraftInput; draft: BookyJourneyDraft }>
+  | Readonly<{ ok: false; errors: readonly JourneyDraftError[] }>;
+
+export const BOOKY_JOURNEY_DRAFT_MAX_BYTES = 524288;
 
 const LOCALES = ["ru", "en"] as const;
 const NODE_KINDS = ["country", "writer", "work", "checkpoint"] as const;
@@ -232,4 +237,54 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
     journeyApprovals: [], dialogueApprovals: [], currentVersions: [], availability: [],
     releaseReady: false as const, humanReviewed: false as const, childApproved: false as const, narrationApproved: false as const,
   } });
+}
+
+/** Reopen only an exact draft rebuilt against the current canonical catalog.
+ * Matching hashes bind the snapshot; they do not constitute human review. */
+export function parseBookyJourneyDraft(text: string, catalog: JourneyDraftCatalog): JourneyDraftParseResult {
+  const rejected = (field: string, message: string): JourneyDraftParseResult =>
+    freeze({ ok: false as const, errors: [{ field, message }] });
+  try {
+    if (typeof text !== "string" || text.length === 0)
+      return rejected("file", "Файл черновика пуст или не содержит текст JSON.");
+    // Check code units first so oversized text is rejected before UTF-8 allocation.
+    if (text.length > BOOKY_JOURNEY_DRAFT_MAX_BYTES
+      || new TextEncoder().encode(text).byteLength > BOOKY_JOURNEY_DRAFT_MAX_BYTES)
+      return rejected("file", "Размер файла черновика превышает 512 КиБ.");
+    let imported: unknown;
+    try { imported = JSON.parse(text); }
+    catch { return rejected("file", "Файл черновика должен содержать корректный JSON."); }
+    const record = (value: unknown): value is Record<string, unknown> => !!value
+      && typeof value === "object" && !Array.isArray(value)
+      && [Object.prototype, null].includes(Object.getPrototypeOf(value));
+    const exactKeys = (value: unknown, keys: readonly string[]): value is Record<string, unknown> =>
+      record(value) && Object.keys(value).length === keys.length
+      && keys.every(key => Object.prototype.hasOwnProperty.call(value, key));
+    if (!record(imported) || imported.schemaVersion !== 1 || imported.status !== "draft")
+      return rejected("file", "Откройте объект черновика JSON версии 1 со статусом draft.");
+    if (!record(imported.authoringSource) || imported.authoringSource.schemaVersion !== 1)
+      return rejected("authoringSource", "В файле отсутствует исходная форма черновика версии 1.");
+    const input = imported.authoringSource.input;
+    const inputFields = ["id", "version", "countryId", "writerId", "workId", "ageRange",
+      "readingLevel", "estimatedDurationMinutes", "copy"];
+    if (!exactKeys(input, inputFields) || !exactKeys(input.ageRange, ["min", "max"])
+      || !exactKeys(input.copy, LOCALES))
+      return rejected("authoringSource.input", "Исходная форма черновика содержит лишние или отсутствующие поля.");
+    for (const locale of LOCALES) {
+      const copy = input.copy[locale];
+      if (!exactKeys(copy, ["title", "description", "nodes"]) || !exactKeys(copy.nodes, NODE_KINDS))
+        return rejected(`copy.${locale}`, "Языковая форма черновика содержит лишние или отсутствующие поля.");
+      for (const kind of NODE_KINDS) {
+        if (!exactKeys(copy.nodes[kind], ["title", "body"]))
+          return rejected(`copy.${locale}.nodes.${kind}`, "Текст шага должен содержать только название и подсказку.");
+      }
+    }
+    const compiled = createBookyJourneyDraft(input as unknown as JourneyDraftInput, catalog);
+    if (!compiled.ok) return compiled;
+    if (contentRecordHash(imported) !== contentRecordHash(compiled.draft))
+      return rejected("file", "Черновик изменён или не соответствует текущему каталогу. Откройте исходный экспорт и проверьте канонические записи.");
+    return freeze({ ok: true as const, input: compiled.draft.authoringSource.input, draft: compiled.draft });
+  } catch {
+    return rejected("file", "Не удалось проверить черновик. Текущая форма не изменена.");
+  }
 }

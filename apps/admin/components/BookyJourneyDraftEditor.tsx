@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { createBookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput, type BookyJourneyDraft } from "@/lib/booky-journey-draft";
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput, type BookyJourneyDraft } from "@/lib/booky-journey-draft";
 
 type Locale = "ru" | "en";
 type NodeKind = "country" | "writer" | "work" | "checkpoint";
@@ -39,6 +39,12 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [errors, setErrors] = useState<readonly { field: string; message: string }[]>([]);
   const [notice, setNotice] = useState("");
   const [preview, setPreview] = useState<{ draft: BookyJourneyDraft; locale: Locale; step: number } | null>(null);
+  const [importing, setImporting] = useState(false);
+  const [importErrors, setImportErrors] = useState<readonly { field: string; message: string }[]>([]);
+  const [importNotice, setImportNotice] = useState("");
+  const importSequence = useRef(0);
+  const fileControl = useRef<HTMLInputElement>(null);
+  useEffect(() => () => { importSequence.current += 1; }, []);
   const country = catalog.countries.find((item) => item.id === input.countryId);
   const writer = country?.writers.find((item) => item.id === input.writerId);
   const work = writer?.works.find((item) => item.id === input.workId);
@@ -52,6 +58,11 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   ] : null;
 
   function update(change: Partial<JourneyDraftInput>) {
+    importSequence.current += 1;
+    setImporting(false);
+    setImportErrors([]);
+    setImportNotice(importing ? "Открытие файла отменено: форма была изменена." : "");
+    if (fileControl.current) fileControl.current.value = "";
     setPreview(null);
     setInput((current) => ({ ...current, ...change }));
     setErrors([]);
@@ -65,6 +76,49 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       ...input.copy[locale].nodes,
       [node]: { ...input.copy[locale].nodes[node], [field]: value },
     } } } });
+  }
+  async function openDraft(event: ChangeEvent<HTMLInputElement>) {
+    const control = event.currentTarget, file = control.files?.[0];
+    const sequence = ++importSequence.current;
+    setImporting(false);
+    setImportErrors([]);
+    setImportNotice("");
+    if (!file) {
+      setImportNotice("Файл не выбран. Текущая форма сохранена.");
+      control.value = "";
+      return;
+    }
+    if (file.size === 0 || file.size > BOOKY_JOURNEY_DRAFT_MAX_BYTES) {
+      setImportErrors([{ field: "file", message: file.size === 0
+        ? "Выбранный файл пуст. Текущая форма сохранена."
+        : "Размер файла превышает 512 КиБ. Текущая форма сохранена." }]);
+      control.value = "";
+      return;
+    }
+    setImporting(true);
+    try {
+      const text = await file.text();
+      if (sequence !== importSequence.current) return;
+      const result = parseBookyJourneyDraft(text, catalog);
+      if (!result.ok) {
+        setImportErrors(result.errors);
+        return;
+      }
+      setInput(result.input);
+      setPreview(null);
+      setErrors([]);
+      setNotice("");
+      setImportNotice("Черновик открыт. Проверьте форму и запустите предпросмотр заново.");
+    } catch {
+      if (sequence === importSequence.current) {
+        setImportErrors([{ field: "file", message: "Не удалось прочитать файл. Текущая форма сохранена." }]);
+      }
+    } finally {
+      if (sequence === importSequence.current) {
+        setImporting(false);
+        control.value = "";
+      }
+    }
   }
   function showPreview() {
     setPreview(null);
@@ -119,6 +173,21 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         Тексты ещё требуют проверки; публикация, детский доступ и озвучка отключены.</p>
     </section>
     {!available && <p className="form-message" role="alert">Нет доступных канонических путей страна → писатель → книга. Экспорт отключён.</p>}
+
+    <details className="panel site-copy-card" aria-labelledby="journey-open-heading">
+      <summary id="journey-open-heading" style={{ minHeight: 44, cursor: "pointer", padding: "10px 0" }}>Открыть локальный черновик</summary>
+      <p><span className="badge">JSON · до 512 КиБ</span></p>
+      <p id="journey-open-description">Выберите ранее экспортированный файл JSON. Только успешная проверка заменит текущую форму.
+        При ошибке форма и предпросмотр сохранятся.</p>
+      <label className="field"><span id="journey-open-file-label">Открыть черновик JSON</span>
+        <input ref={fileControl} className="journey-draft-open-file" type="file" accept=".json" aria-labelledby="journey-open-file-label"
+          aria-describedby="journey-open-description" aria-busy={importing} onChange={openDraft} /></label>
+      <p aria-live="polite">{importing ? "Чтение и проверка черновика…" : importNotice}</p>
+      {importErrors.length > 0 && <div className="form-message" role="alert">
+        <strong>Черновик не открыт:</strong>
+        <ul>{importErrors.map((error, index) => <li key={`${error.field}-${index}`}>{error.message}</li>)}</ul>
+      </div>}
+    </details>
 
     <section className="panel site-copy-card" aria-labelledby="journey-conditions-heading">
       <header><h2 id="journey-conditions-heading">Маршрут и условия</h2><span className="badge">Черновик · RU / EN</span></header>
