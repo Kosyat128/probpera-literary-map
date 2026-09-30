@@ -1,0 +1,39 @@
+{
+  "pass": false,
+  "exitCode": 1,
+  "error": null,
+  "durationMs": 2290,
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "apps/admin/lib/booky-journey-draft.test.ts",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-copy-variants-review\\actual-a1\\unit-report.json"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a1/source-manifest.json",
+    "sha256": "97f2bdb3222a0592122b2c9e4d5ccf1a01e975e79b9f4e9ec6ab710cb05d32b5"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a1/unit.stdout.log",
+    "sha256": "f60c5da08aa9beb41e55b9e4df36e47073ad609c45dd9fe932174fef43faac2a"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a1/unit.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "report": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a1/unit-report.json",
+    "sha256": "1ec4481fffa0931cf496e216284cc0cb0ff93eaa08d226e860cb46fcf3f23c3f"
+  },
+  "files": [
+    "apps/admin/lib/booky-journey-draft.test.ts"
+  ],
+  "summary": {
+    "total": 36,
+    "passed": 35,
+    "failed": 1,
+    "pending": 0
+  }
+}

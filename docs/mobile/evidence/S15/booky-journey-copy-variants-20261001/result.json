@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "status": "BOUNDED_BOOKY_JOURNEY_COPY_VARIANTS_VALIDATED",
+  "decision": "D228",
+  "recordedAt": "2026-09-30T22:07:54.976Z",
+  "sourceCommit": "3870626f906e059bafbcdf24ec8c1dc3a850ebf0",
+  "predecessorDocsCommit": "b923f1d66eb957539cc500c58dde54e2bba3665a",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/source-manifest.json",
+    "sha256": "0100554380b4bbf27fe26478b0709cde3311d15e18cf883d0b76679508a02356",
+    "fileCount": 2101
+  },
+  "sourceInputCount": 2101,
+  "protectedInputCount": 2097,
+  "changedSourcePaths": [
+    "apps/admin/components/BookyJourneyDraftEditor.tsx",
+    "apps/admin/lib/booky-journey-draft.test.ts",
+    "apps/admin/lib/booky-journey-draft.ts",
+    "tests/host/booky-journey-authoring.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "proposalFiles": [
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "sha256": "23f9388f558e26315e6cfae4ff90ef8fe02c9e99d878fd8c224da622865a07a7"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "sha256": "7e48bc4080029f4143466f20be1232f158a98269238ca8ebc12c60ba73d8de41"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "sha256": "998eb8c1bb89f535381a31c5410e6b074d6c5b684982dc77dbd098f645e959aa"
+    },
+    {
+      "path": "tests/host/booky-journey-authoring.spec.mjs",
+      "sha256": "f6c086469a650cb193ea5a7b978694c81b2d160ae9cca80b1b5790fdee162ed9"
+    }
+  ],
+  "effectiveProposalFiles": [
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "sha256": "23f9388f558e26315e6cfae4ff90ef8fe02c9e99d878fd8c224da622865a07a7"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "sha256": "7e48bc4080029f4143466f20be1232f158a98269238ca8ebc12c60ba73d8de41"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "sha256": "ffcb6b2ef5564ae161df7fd89022fd400de592ae548824530f421f4d5878b2a1"
+    },
+    {
+      "path": "tests/host/booky-journey-authoring.spec.mjs",
+      "sha256": "f6c086469a650cb193ea5a7b978694c81b2d160ae9cca80b1b5790fdee162ed9"
+    }
+  ],
+  "sourceCommitReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/actual-source-commit.json",
+    "sha256": "fac405ab8124555f2188e0efb0e04420b97355a6ec5b5f5d6420085e87608ad6"
+  },
+  "checks": {
+    "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/checks-result.json",
+    "sha256": "58e6bb2f4db44fd36e35775f06e32eff546ce4937777749ceb862b042d56c418"
+  },
+  "runtimeCorrection": {
+    "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/runtime-correction.json",
+    "sha256": "fbea3f2d3ddff114aaac04021ed56a095368710d68381948a97f6d9ed0f125f2"
+  },
+  "failedAttempt": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a1/checks-result.json",
+      "sha256": "f6970da3d146d2604f67b67b156e0b182ae796b1ad9be0b260726c85144a762a"
+    },
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a1/source-manifest.json",
+      "sha256": "97f2bdb3222a0592122b2c9e4d5ccf1a01e975e79b9f4e9ec6ab710cb05d32b5"
+    },
+    "typecheck": {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a1/typecheck-result.json",
+      "sha256": "a37758b9637430ef200d546c714959e27eed291815fc1f2c85c6338de51cd9c4"
+    },
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a1/unit-result.json",
+      "sha256": "5d5cbf3f82b86db408a6e0909a10bb7cff6db6214c2c53f4c5d9a37aaea4c69d"
+    },
+    "report": {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a1/unit-report.json",
+      "sha256": "1ec4481fffa0931cf496e216284cc0cb0ff93eaa08d226e860cb46fcf3f23c3f"
+    },
+    "passed": 35,
+    "total": 36,
+    "browserStarted": false,
+    "captureCount": 0,
+    "diagnosticOnly": true
+  },
+  "mobileRuntimeUnchanged": true,
+  "runtimeSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "buildSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-rev7-20260930/retained-builds/pwa/b7951ee9ba9e8e5d-bc345e4c7add-b7951ee9ba9e8e5d-603ef40ec561-result.json",
+    "sha256": "b7951ee9ba9e8e5d00d6f3b5e11c2214a40f19dc68fc72d85cd4c4433147a2ac"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-rev7-20260930/retained-builds/android/975d0683b9882088-789e3a551885-975d0683b9882088-df6b1894004a-result.json",
+    "sha256": "975d0683b98820881fd535ea74ba4fede6386e18f3f8bc7002c485a3fb524ee0"
+  },
+  "retainedBuildAuthentication": [
+    {
+      "kind": "pwa",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-rev7-20260930/retained-builds/pwa/b7951ee9ba9e8e5d-bc345e4c7add-b7951ee9ba9e8e5d-603ef40ec561-result.json",
+        "sha256": "b7951ee9ba9e8e5d00d6f3b5e11c2214a40f19dc68fc72d85cd4c4433147a2ac"
+      },
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "buildId": "313940bce3ea3ecb46b73e63ec30bab0528c17453d197055b8f44f9938246ed4",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-rev7-20260930/history/555b4c84f613941d-bbb22bb0c290-source-manifest.json",
+        "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324"
+      },
+      "authenticationRetainedFromD220": true,
+      "payloadHashesRechecked": false,
+      "rebuilt": false
+    },
+    {
+      "kind": "android",
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-rev7-20260930/retained-builds/android/975d0683b9882088-789e3a551885-975d0683b9882088-df6b1894004a-result.json",
+        "sha256": "975d0683b98820881fd535ea74ba4fede6386e18f3f8bc7002c485a3fb524ee0"
+      },
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "buildId": "6954c79044a6767eec860b29ef9db5e56821933aba134112970fa4fce0cd762e",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-rev7-20260930/history/555b4c84f613941d-bbb22bb0c290-source-manifest.json",
+        "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324"
+      },
+      "authenticationRetainedFromD220": true,
+      "payloadHashesRechecked": false,
+      "rebuilt": false
+    }
+  ],
+  "mobileBuildExecuted": false,
+  "payloadHashesRechecked": false,
+  "runs": {
+    "typecheck": {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/typecheck-result.json",
+        "sha256": "756c1ef4e047715eaef6bb9ce2c53a3d9d613f83c62df444d8c08b12f06d8dbb"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/source-manifest.json",
+        "sha256": "0100554380b4bbf27fe26478b0709cde3311d15e18cf883d0b76679508a02356"
+      }
+    },
+    "unit": {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/unit-result.json",
+        "sha256": "9f5c745c8ec6e2343a6b813dc2eca65fe28df61402a02b244de3b439979b7032"
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/unit-report.json",
+        "sha256": "adbcb85bfd22a9fcea08d9d2c63a60cd85a24bd032bfa9e6f6295a4c9b9fc317"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/source-manifest.json",
+        "sha256": "0100554380b4bbf27fe26478b0709cde3311d15e18cf883d0b76679508a02356"
+      },
+      "files": [
+        "apps/admin/lib/booky-journey-draft.test.ts"
+      ],
+      "passed": 36
+    },
+    "browser": {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/browser-result.json",
+        "sha256": "8c9f044ef99e89be486443dccacd23876ca1e54b6ee6be7f4f0f0acf4c805a6e"
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/browser-report.json",
+        "sha256": "b7922d60936f3cd7241166867b99e3bb61a7ab462e3f80b036504b0396d7e28a"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/source-manifest.json",
+        "sha256": "0100554380b4bbf27fe26478b0709cde3311d15e18cf883d0b76679508a02356"
+      },
+      "cases": 3,
+      "locales": [
+        "ru",
+        "en"
+      ],
+      "actualHelperThroughMockedActionBridge": true,
+      "syntheticPublicData": true,
+      "authenticatedAdminSession": false
+    }
+  },
+  "unitExecuted": true,
+  "helperUnitExecuted": false,
+  "catalogSmokeExecuted": false,
+  "retainedHelper": {
+    "decision": "D226",
+    "passed": 18,
+    "rerun": false,
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-journey-fact-20261001/actual/actual-a1/unit-result.json",
+      "sha256": "31227590a482ff1e776a53fad3b9276a256eb2b31759823bad98042cb1de12cb"
+    },
+    "report": {
+      "path": "docs/mobile/evidence/S15/booky-journey-fact-20261001/actual/actual-a1/unit-report.json",
+      "sha256": "8eeeebb4532d8e09cfab1c56fcc37cbb13f27ebfb26dea9f8284580768da0c9a"
+    },
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-journey-fact-20261001/actual/actual-a1/source-manifest.json",
+      "sha256": "b15d386b58589f87316b43beb43a91da17d07a7a5715cbb9f4f796630a9bd289"
+    },
+    "files": [
+      {
+        "path": "apps/admin/lib/booky-journey-activity-validation.test.ts",
+        "sha256": "4504553c8ac28ff745196ff4a2c1f3785974cc55658a94567a03152644711424"
+      },
+      {
+        "path": "apps/admin/lib/booky-journey-activity-validation.ts",
+        "sha256": "a048e731d68e5a0a2fa4e3524d4a4a72d97c431ae0b54011e444546455ae779e"
+      }
+    ],
+    "helperOwnBytesUnchanged": true,
+    "coreDependencyChanged": true,
+    "currentParserCoverageClaimed": false
+  },
+  "retainedAction": {
+    "decision": "D225",
+    "passed": 10,
+    "rerun": false,
+    "predecessorResult": {
+      "path": "docs/mobile/evidence/S15/booky-journey-answer-preview-20260930/result.json",
+      "sha256": "905bc5f112bb77c861725bc5108e5d3bac60fdc7d49da9e9d034ed73f7aa5737"
+    },
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-journey-answer-preview-20260930/actual/actual-a1/unit-result.json",
+      "sha256": "940f51e80e4a00385c997ba5e7d27514e3d3cd979aa6bfd80ec1325f67e547f1"
+    },
+    "report": {
+      "path": "docs/mobile/evidence/S15/booky-journey-answer-preview-20260930/actual/actual-a1/unit-report.json",
+      "sha256": "84f7f51c5d28d7f95fc05813bf3399cfe62e3dbf0fba14996d18a076f0da3aac"
+    },
+    "files": [
+      {
+        "path": "apps/admin/app/(dashboard)/journeys/actions.test.ts",
+        "sha256": "ecd958636aec1bd8b3f9b4c097c546502398301587544b2d6042c776d0b91426"
+      },
+      {
+        "path": "apps/admin/app/(dashboard)/journeys/actions.ts",
+        "sha256": "a4182503b80bf7acde559cdde73412fa8e59dd8e7cc45077881101c3fe6600ac"
+      },
+      {
+        "path": "apps/admin/lib/booky-journey-activity-validation.ts",
+        "sha256": "a048e731d68e5a0a2fa4e3524d4a4a72d97c431ae0b54011e444546455ae779e"
+      }
+    ],
+    "mockedActionCoverage": true,
+    "parserCoverageClaimed": false
+  },
+  "retainedHistoricalFactSmoke": {
+    "decision": "D226",
+    "rerun": false,
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-journey-fact-20261001/actual/actual-a2/fact-smoke-result.json",
+      "sha256": "9c411b7b8ee5705ebada165092ad257b28d510eb9f3ecb0afd924baf8dd498d8"
+    },
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-journey-fact-20261001/actual/actual-a2/source-manifest.json",
+      "sha256": "3a8786ad17ed5e192b9958997bc7f70209b7bb5f16daf19661ad5b52eec9da67",
+      "fileCount": 2101
+    },
+    "importManifest": {
+      "path": "docs/mobile/evidence/S15/booky-journey-fact-20261001/actual/actual-a2/fact-smoke-source-manifest.json",
+      "sha256": "dde9ac87f2a622aa233cf3e6649a94ce82d58311a57728cdf7a42254b8c303db"
+    },
+    "historicalOnly": true,
+    "currentCoreCompatibilityClaimed": false,
+    "evaluatedWorkCount": 1,
+    "evaluatedChoiceCount": 2,
+    "syntheticCitationMetadata": true,
+    "factualClaimsVerified": false,
+    "sourcesFetched": false
+  },
+  "retainedD227Checks": {
+    "path": "docs/mobile/evidence/S15/booky-journey-step-overview-20261001/actual/actual-a1/checks-result.json",
+    "sha256": "54578d3b6712f6db4ead98183df0bd4654364bbc7551041e428dda5f7f39ae20"
+  },
+  "retainedD225AnswerSmoke": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-journey-answer-preview-20260930/actual/actual-a1/answer-smoke-result.json",
+      "sha256": "240f153708113d57ad35b0586f1b7efd8127690916f31919b82b284b7ea8dda6"
+    },
+    "rerun": false
+  },
+  "retainedD224CatalogAssessment": {
+    "source": {
+      "path": "docs/mobile/evidence/S15/booky-journey-activity-20260930/actual/actual-a2/catalog-smoke-result.json",
+      "sha256": "d9b8de2d27cb81e736aff3a9ca84ff736b50d97f93691ceb0a34fc5ac2638624"
+    },
+    "canonical": {
+      "countries": 10,
+      "writers": 30,
+      "works": 46
+    },
+    "supportedWorkCount": 18,
+    "rejectedWorkCount": 0,
+    "ineligibleWorkCount": 28,
+    "reasonCounts": {
+      "credited-author-missing-bilingual-label": 28
+    },
+    "assessmentWasRepeated": false
+  },
+  "adminBuild": {
+    "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/admin-build-a1/result.json",
+    "sha256": "a0af426fc85c88f3e9cd776e0babe36eeb3991cf20ddf2a70e5fb30d62de6b32"
+  },
+  "adminTypeScriptSeconds": 6.3,
+  "adminClientSecretAudit": true,
+  "adminBuildWarningsRetained": true,
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/root-visual-review.json",
+    "sha256": "0eabc1ba7e11a47d28538afd7169acd9a15a3b70277808a5444f378880d389e4"
+  },
+  "screenshots": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "014f84d694a904b6e4c40b6646c2ecb22c815eedbf958a5f00d896d9168d1861",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "55455214b6182399aa5b39ac0654a11e08cb9a98252d845ab0a84c5b5d8a7649",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "cb82d8544054814f63612b3ba3c2446031d66e3f65df2b05c8c5ecc31a4cf642",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "564930a22710b7a0e205d4deea5fbec29a76512446e58fde368315797e7965c7",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "224248383ca833e4804a9a03a0b3e29110d4a26d3f8deb9d599e66e67b92e2cb",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "18de79bf5e8f1d8e4d968c01a72ce4316dc01fbd5b66384bcf609dcff8453266",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "e16706e1a2e84d84b1c47f0cb9e257c015648eee6e09beb5221ad58c2461b01e",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    }
+  ],
+  "directRootImageViews": 8,
+  "authoredCaptionAndReducedOptional": true,
+  "copyVariantLimits": {
+    "caption": 1600,
+    "reduced": 320
+  },
+  "absentVariantsUseTitleFallback": true,
+  "absentVariantsLegacyBytesPreserved": true,
+  "mainTitleBodyProvenanceHashPreserved": true,
+  "fullPayloadAndFactBindingsIncludeVariants": true,
+  "previewTextViewsLocalized": true,
+  "copyVariantEditsRetirePendingAnswers": true,
+  "previewStepOverviewLocalized": true,
+  "overviewUsesActualNodes": true,
+  "directStepSelectionUsesExistingLease": true,
+  "currentStepSelectionRetainsAnswer": true,
+  "differentStepSelectionRetiresPendingAnswer": true,
+  "previousNextBehaviorPreserved": true,
+  "importByteLimit": 524288,
+  "noFactDownloadedJsonSha256": "7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5",
+  "noFactDownloadByteEvidenceOwner": "unchanged-browser-case",
+  "noFactBytesAndChecksumsPreserved": true,
+  "factOnlyNodeCount": 5,
+  "factOnlyDialogueDraftCount": 10,
+  "factAndActivityNodeCount": 6,
+  "factAndActivityDialogueDraftCount": 12,
+  "activityChoiceBounds": [
+    2,
+    4
+  ],
+  "canonicalRegeneratedFullHashEquality": true,
+  "currentFactualAuthorshipResolvedByStaffAction": true,
+  "staffActionAuthorizationUnitTestedWithMocks": true,
+  "authenticatedStaffSession": false,
+  "liveSupabaseTested": false,
+  "serverResponsesExposeAnswerKey": false,
+  "answerPreviewSelectionCheckReset": true,
+  "currentResponseBindsChoiceAndChecksum": true,
+  "currentResponseLeasePreservesEdits": true,
+  "importRevalidatesCurrentFactAndActivity": true,
+  "automaticJourneyProgress": false,
+  "historicalDialogueDraftCount": 36,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "productionJourneyCount": 0,
+  "requirementEvidenceTargets": [
+    "PLANETKA-003",
+    "PLANETKA-004"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-003",
+    "S15.PLANETKA-004"
+  ],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "historicalVerificationCacheUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "validatedScope": "Added independently authored optional RU/EN caption and reduced text to each base, activity and fact copy in the existing adult draft editor. Absent variants retain exact legacy bytes and title fallback; supplied variants are bounded and preserved without translation or factual generation. Main title/body provenance hashes remain unchanged in meaning, while full authoring-source, dialogue content and bilingual fact bindings include the variants. Collapsed editing and localized local text views preserve current-canonical reopen checks and retire pending answer work after an edit; EN preview conditions, kinds, record, screen and navigation labels are explicitly localized. Actual focused admin TypeScript, 36 current core units, three component browser cases/eight directly root-viewed captures and committed-source Next webpack/client-secret checks bind the D228 source. The first attempt passed TypeScript but failed one existing leaf-error-address unit (35/36) before any browser run; its source, logs and diagnostic remain retained. A one-condition main-code parser correction preserved all test/UI/browser bytes and restored compiler leaf validation, followed by fresh second-attempt TypeScript36-unit and first browser checks; this was not a fixture change or type erasure. Helper18 remains historical at original D22646-unit evidence with unchanged helper own bytes but changed core dependency, granting no current parser coverage; D225 mocked action10 remains original. The D226 one-work fact/combo smoke is historical only and grants no compatibility claim for the new core; its citations remain synthetic and no sources are fetched or factual claims verified. Browser coverage uses a mocked action bridge and synthetic public data without an authenticated staff session or live Supabase. Mobile runtime aba461a774c125f9c38ea4c10aac9b3cc8024d2d and original D220 PWA313940/Android6954 identities remain exact without mobile rebuilds or payload rehashing. All36 historical dialogues remain draft/unapproved/unavailable and production journey inventories stay empty. Only PLANETKA-003/004 receive evidence; every status, historical cache and acceptance gate stays unchanged.",
+  "nextAction": "D229: Add an optional collapsed adult-only local preview scenario with explicit age18..120 and existing reading level. Compare the freshly compiled draft definition's inclusive age range and exact reading level with a strict scenario through a pure admin condition helper; show localized matches/outside/invalid feedback about draft conditions only. Scenario changes retire pending answers and selection through the existing lease while preserving current draft, step, text view, authored inputs and export bytes; invalid or outside scenarios prevent local answer checks, and ordinary preview can be restored explicitly. Keep profile state local without reader-policy/storage writes, runtime trust or admission, automatic progress, child/audio/store/auth/scene edits or acceptance uplift. Reuse four existing owners and bounded current core tests/TS/three browser cases/eight captures; retain unrelated evidence.",
+  "fullDesignAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "productionJourneysEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false,
+  "checkpointProducer": {
+    "path": "docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/actual/checkpoint.mjs",
+    "sha256": "6a0b67028f3e1c1aeb9879fecfa303134db0463ac611d42f9f93ab2fcf8bb0f6"
+  }
+}

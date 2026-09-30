@@ -1,0 +1,41 @@
+{
+  "pass": true,
+  "path": "apps/admin/lib/booky-journey-draft.ts",
+  "beforeSha256": "998eb8c1bb89f535381a31c5410e6b074d6c5b684982dc77dbd098f645e959aa",
+  "afterSha256": "ffcb6b2ef5564ae161df7fd89022fd400de592ae548824530f421f4d5878b2a1",
+  "originalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a1/source-manifest.json",
+    "sha256": "97f2bdb3222a0592122b2c9e4d5ccf1a01e975e79b9f4e9ec6ab710cb05d32b5"
+  },
+  "finalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a2/source-manifest.json",
+    "sha256": "0100554380b4bbf27fe26478b0709cde3311d15e18cf883d0b76679508a02356"
+  },
+  "failedChecks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-copy-variants-review\\actual-a1\\checks-result.json",
+    "sha256": "f6970da3d146d2604f67b67b156e0b182ae796b1ad9be0b260726c85144a762a"
+  },
+  "failedUnit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a1/unit-result.json",
+    "sha256": "5d5cbf3f82b86db408a6e0909a10bb7cff6db6214c2c53f4c5d9a37aaea4c69d"
+  },
+  "originalTypecheck": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a1/typecheck-result.json",
+    "sha256": "a37758b9637430ef200d546c714959e27eed291815fc1f2c85c6338de51cd9c4"
+  },
+  "originalApplyProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/apply-and-check.mjs",
+    "sha256": "470e79bacde575ca0ca1de9986d58afbc476d789f5d2fd79bb4e54f4abdbd47d"
+  },
+  "testSourceUnchanged": true,
+  "uiSourceUnchanged": true,
+  "browserSourceUnchanged": true,
+  "typecheckRerun": true,
+  "coreUnitRerun": true,
+  "browserFirstRun": true,
+  "reason": "Keep base-node shape checks in the parser and defer text validation to the compiler, preserving existing leaf error fields; no test changes or type erasure.",
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/fix-and-check.mjs",
+    "sha256": "a86005c68505ef9f161837530fe7180cd7ba14c981026ed947373bdd6a9f1017"
+  }
+}
