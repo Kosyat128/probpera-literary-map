@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T13:33:51.514Z",
+  "pass": true,
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/result.json",
+    "sha256": "b5744a5dbe0dbd28b74f8a57f35737cf5887fa1806e36fe1053701540545e402"
+  },
+  "checkpoint": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/checkpoint.json",
+    "sha256": "048b18f59237bc893c37eb6841cd3820918cf50c8c63abe2a0243226caf300cb"
+  },
+  "helper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-checkpoint-review-a2/record-checkpoint.mjs",
+    "sha256": "606e117d53b36193d83671593f52cda0454d458bd02ac78d1d3e9ab7b875a347"
+  },
+  "outputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ce29f79d92fceb64cab99f4fac2e7b427b0bbfccb50d03f01126bd62de2280b1"
+    }
+  ],
+  "scope": "Exactly one bounded runtime/focus checkpoint note",
+  "releaseReady": false
+}

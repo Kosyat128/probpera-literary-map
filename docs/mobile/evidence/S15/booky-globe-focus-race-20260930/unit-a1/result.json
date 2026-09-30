@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a1",
+  "pass": true,
+  "expectedHead": "fbb84ded86da90976f552f50c29aea59d11dcb08",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\runtime-build-review-a2\\source-manifest-776f4031fb175139.json",
+    "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4",
+    "fileCount": 1665
+  },
+  "sourcePins": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/root-runtime-fix-a3/source-pins.json",
+    "sha256": "5c4abd08d7942e0df1ef818f1a4ecae7922e3f7fe6f4cba458881a8250a25be5"
+  },
+  "actualProducers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\runtime-build-review-a2\\check-current.mjs",
+      "sha256": "461739d2451f4661a3194d9cd4313a64ea1ec8511e8c4c1a345685aa745817de"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\runtime-build-review-a2\\unit.config.mjs",
+      "sha256": "3319e36315c0050529e94fef3b836ab0af0028d9299c5651cdb9aca61d7c9b2e"
+    }
+  ],
+  "protectedInputCount": 1661,
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "total": 39,
+    "passed": 39,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0
+  },
+  "validationError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 2572
+  },
+  "focusedGeometryUnitsOnly": true,
+  "directControlsDomCoverage": false,
+  "browserRerun": false,
+  "pwaRebuilt": false,
+  "androidRebuilt": false,
+  "stageAccepted": false,
+  "deviceTested": false,
+  "releaseReady": false
+}

@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-30T12:54:41.009Z",
+  "exitCode": 0,
+  "durationMs": 66405,
+  "requestedChannel": "msedge",
+  "artifactRoots": {
+    "temp": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a4/temp",
+    "profileRoot": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a4/profiles",
+    "browserOutput": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a4/browser-a4"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/bound-a4/browser-a4/stdout.log",
+    "bytes": 371,
+    "sha256": "2dfed7aca848168353713ca4a481a0d61f330a8dc925d9bc4deb53181bb77f7a"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/bound-a4/browser-a4/stderr.log",
+    "bytes": 164,
+    "sha256": "b720d4ade6930b15b0a606f04f9f91cf485ecf53020cdae3f2142e924a8038a0"
+  }
+}

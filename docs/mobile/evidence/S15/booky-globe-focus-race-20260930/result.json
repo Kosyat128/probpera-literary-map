@@ -1,0 +1,496 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T13:33:51.514Z",
+  "stage": "S15",
+  "status": "BOOKY_GLOBE_GUIDANCE_RUNTIME_REPAIR_AND_FOCUS_CANCELLATION_FOCUSED_VALIDATION",
+  "pass": true,
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "runtimeSourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "buildSourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json",
+    "sha256": "cc84efa6e7dc8c97ba0fae7423e3f34b56ee02f5bd162c1f3adedde2fce1585a"
+  },
+  "acceptedRecovery": {
+    "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+    "docsCheckpoint": "fbb84ded86da90976f552f50c29aea59d11dcb08",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json",
+      "sha256": "cc84efa6e7dc8c97ba0fae7423e3f34b56ee02f5bd162c1f3adedde2fce1585a"
+    }
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/entry.json",
+    "sha256": "eeb9a071a84c0bc13dda80e0d1e954c7362069f8a55a439eaba25cd80654a269"
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/scope.json",
+    "sha256": "e12207e0c3ffd86f2622d7c87ce3ceabb292e86c7ffa4371bde9ec068242ddff"
+  },
+  "checkpointBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-checkpoint-review-a2/bound-a1/binding.json",
+    "sha256": "fa191bcf1e79605ed63749009941966e281a8465955bf5ed95241642c8fb5a44"
+  },
+  "checkpointHelper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-checkpoint-review-a2/record-checkpoint.mjs",
+    "sha256": "606e117d53b36193d83671593f52cda0454d458bd02ac78d1d3e9ab7b875a347"
+  },
+  "sourceCommitReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/source-commit.json",
+    "sha256": "30dbf976d38108936ef24097096c71e38c8e15674700ea27aff634010396be83"
+  },
+  "sourceFreezeReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/source-freeze-receipt.json",
+    "sha256": "283ae85a5dcee4694918b1dc232885c7acbd1d0b28e843dd06020088af6e01fc"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/source-manifests/776f4031fb175139.json",
+    "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4",
+    "fileCount": 1665
+  },
+  "observedSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a2/source-manifest-776f4031fb175139.json",
+    "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1661,
+  "unchangedTrackedInputCount": 1661,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/components/AtlasExperienceChrome.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "runtimeUnchanged": false,
+  "fixtureOnly": false,
+  "productionImplemented": true,
+  "productionImplementationChanged": true,
+  "browserCases": 2,
+  "actualAppCaseCount": 2,
+  "captures": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/captures/ru.json",
+      "sha256": "5d3f0db9209142b873a4d8dbeaa8c16256a442100b6e489151724e517bf22d5a",
+      "test": "Booky mobile globe guidance ru",
+      "originalSource": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a4\\browser-a4\\booky-globe-guidance-Booky-mobile-globe-guidance-ru\\attachments\\booky-globe-guidance-source-evidence-a8568e52e14fee055fe1f85d43a667130b2a3925.json",
+        "sha256": "5d3f0db9209142b873a4d8dbeaa8c16256a442100b6e489151724e517bf22d5a"
+      }
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/captures/en.json",
+      "sha256": "8b0010e08464c6c2642ea9f58631efd4b43c97d6db4a74d8ad39a6e6410ef5b8",
+      "test": "Booky mobile globe guidance en",
+      "originalSource": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a4\\browser-a4\\booky-globe-guidance-Booky-mobile-globe-guidance-en\\attachments\\booky-globe-guidance-source-evidence-0460a7c84d011380e7c1c0032b8e4ff22438ac3c.json",
+        "sha256": "8b0010e08464c6c2642ea9f58631efd4b43c97d6db4a74d8ad39a6e6410ef5b8"
+      }
+    }
+  ],
+  "validatedBehavior": [
+    "Repaired actual compact walking self-resize cancellation and post-help measured-placement race, then Search focus-return and trusted toolbar close pointer/click conflicts. Compact Stop retains the same cell and actor size; point planning waits for measured current placement; Search keeps current ownership through help retirement and one real close toggle. The same two RU/EN actual-App guidance cases preserve six original image contracts and all other prior assertions, then release the exact held focus callback after newer trusted RU Search touch or EN real keyboard/input without stealing current focus or replaying an obsolete cue. EN keyboard input is a mobile accessibility-race harness. Fresh TypeScript, 39 focused geometry units, two actual-App browser cases and six root direct views bind this exact source; fresh PWA/Android-dev payloads bind its actual commit. Failed a1/a2/a3 remain causal diagnostic evidence. D214 writer recovery stays protected without rerun. D21217-unit/inventory and D213 builds retain historical source attribution only; eight contextual whole-file Controls draft pins are now stale and held for a separate refresh. All34 drafts remain unapproved and unavailable. Only bounded PLANETKA-005/UX-006 evidence is appended; all statuses and acceptance gates remain unchanged."
+  ],
+  "appTimingTransform": {
+    "exactSingleAnchor": true,
+    "originalAnchorSha256": "3b4a3dacb3cf9591802a32ee200daba0b1f9be400be70274e788ecf8fb9ed185",
+    "transformedAnchorSha256": "f3b3a7115694e12187d2e7a901e27fdf6a96de3f39dec688047c3938dc0bba4c",
+    "callbackBodySha256": "7cc98357601b49806d65a37c78035a63a2feabdf5f82d86a6616de4728653c6b",
+    "originalCallee": "window.requestAnimationFrame",
+    "replacementCallee": "window.__bookyGlobeFocusRace.schedule",
+    "callbackBodyPreserved": true,
+    "inverseRawAppSha256": "e89dd1f69e0fc5e609d31330ad24d82936f823f5e1994bcb8719b27414c4bf88",
+    "repositoryAppMutation": false,
+    "globalRafMutation": false
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/visual-review.json",
+    "sha256": "39beb89f0e3c793ea12e203cd52e8a9d417580417d339feadd271bb41ea5e80d"
+  },
+  "inspectedImageCount": 6,
+  "totalCapturedImageCount": 6,
+  "visualReviewScope": "Six original locale captures precede callback-race extension; race and input claims reviewed from passing assertions and authenticated trace, not images.",
+  "visualReviewLimitations": [
+    "The fixture transparently schedules only one exact existing focus callback; callback body/identity/conditions and native global RAF stay unchanged. No focus/history/progress/model outcome is assigned.",
+    "Six earlier help/controls/unavailable images do not prove the appended race; the actual capture assertions and root causal receipt prove held -> newer trusted input -> released callback execution -> no focus/cue replay across256 samples.",
+    "EN keyboard input is a mobile accessibility-race harness; no new desktop product flow or full keyboard/screen-reader acceptance.",
+    "The39 focused geometry units do not independently provide new direct Controls DOM coverage; current behavior is exercised by the real App browser cases.",
+    "D21217-unit/inventory validation and all historical provenance caches remain at their original source. Eight contextual Controls whole-file pins are stale pending a separate bounded refresh; all34 drafts remain unapproved/unavailable.",
+    "D213 original build identities and earlier cases retain their original source. Fresh current builds cover this commit without installing/claiming device or release acceptance.",
+    "Actual drag/pinch execution remains the bounded next interaction gap; no native lifecycle, full accessibility, editorial, child, stage or release acceptance."
+  ],
+  "runs": {
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/result.json",
+      "sha256": "c7c72ee39a95a3a81295e20e4b351df95c0877e1ce5eb1891efdbb5e9c40f070",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/execution.json",
+        "sha256": "eb99f1320f8a442c19e967c9c3824ff279e1be6a40fb459505fe2327a0f8a049"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/playwright.json",
+        "sha256": "355733f93d972a65899e4b16ee7bf9ad522454de7df132a1ca4796ac7d3e08c6"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/static-a1/result.json",
+      "sha256": "cb30b3df40a7097b57a828d3bf17c98a0fbaaad153744e93e5ef71a78c9e8c9d",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/static-a1/execution.json",
+        "sha256": "5c5675af6588972d1ce206240f29076f55757e8a3240386f4f0febf24b158942"
+      }
+    },
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/unit-a1/result.json",
+      "sha256": "541f627f692b58e7e1f1045e48bf99ea9ae8417a9eef8cb079de587326c38b57",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/unit-a1/execution.json",
+        "sha256": "67380f6e0722251e98f4b056f61221cdbe7548d7ac6fe0b1bdb3b6b5808a40b6"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/unit-a1/vitest.json",
+        "sha256": "5dbaf4dcf591c77d9da275e9cb793402b1165aba8302418f8ca788d8aedc5215"
+      },
+      "tests": {
+        "total": 39,
+        "passed": 39,
+        "failed": 0,
+        "pending": 0,
+        "todo": 0
+      }
+    }
+  },
+  "unitCount": 39,
+  "unitRerun": true,
+  "unitScope": "Focused geometry regressions only; direct Controls DOM coverage is supplied by actual-App cases",
+  "staticRerun": true,
+  "browserRerun": true,
+  "priorSelectedCasesRerun": true,
+  "priorSelectedCasesRerunScope": "Only the two existing globe-guidance cases; unrelated accepted cases not rerun",
+  "buildsRebuilt": true,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/result.json",
+    "sha256": "0e38a7ca50083a17d4062eed7a0950681d97485c690cf699d5c33b64e3029463"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/result.json",
+    "sha256": "43d4da3e44e036fd263e0cf5e6873d45e7e03f30926c19b75d1c98de5e713735"
+  },
+  "pwaBuildId": "a70b0aacb583e46bbb1936d373511d4a800f60e32abfc97cf657893f47266965",
+  "androidBuildId": "c416812961560d90801ad7f5bfe4892a67b682dfc2498abdee5ad47fb68f25df",
+  "buildManifests": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/artifact.json",
+      "sha256": "41af3164075f184ffad9def3bc948d469b3a946c15f4221c8babb77d6c323486"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/artifact.json",
+      "sha256": "24401569f80d0083fee4a37053ed824e3a3bddad3ff5a7bd0502f975b0e9d5b1"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/audit-1.json",
+      "sha256": "b24bbfcab5ed02a6af7fd8d0ebb20cdafc64ccd6e242c8bfe2a091e406b0bf35"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/audit-2.json",
+      "sha256": "ea52740af0e61579b405bb9bef158990900e85090af649dfd3d5ccb1155d167e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/audit-1.json",
+      "sha256": "786580371c65c0ab3977f9207e7f0335a1bfbadf4fb6935011533f01b2572aca"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/audit-2.json",
+      "sha256": "69489dffcf437f613d3f538337506b807621436b2ccd4f52a2ce63a94747c231"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/audit-3.json",
+      "sha256": "b45900d9b427c6e73a1b84b3ce52d5cd9bb02c20f76a6794ed344486d3ec529d"
+    }
+  ],
+  "currentBuildAuthentication": [
+    {
+      "kind": "pwa",
+      "result": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/pwa-a2/result.json",
+        "sha256": "0e38a7ca50083a17d4062eed7a0950681d97485c690cf699d5c33b64e3029463"
+      },
+      "manifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/pwa/pwa-a70b0aac/artifact.json",
+        "sha256": "41af3164075f184ffad9def3bc948d469b3a946c15f4221c8babb77d6c323486"
+      },
+      "audits": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/pwa-a2/strict-audit.json",
+          "sha256": "b24bbfcab5ed02a6af7fd8d0ebb20cdafc64ccd6e242c8bfe2a091e406b0bf35"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/pwa-a2/copy-verification.json",
+          "sha256": "ea52740af0e61579b405bb9bef158990900e85090af649dfd3d5ccb1155d167e"
+        }
+      ],
+      "buildId": "a70b0aacb583e46bbb1936d373511d4a800f60e32abfc97cf657893f47266965",
+      "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+      "payloadBytesAuthenticated": true,
+      "apk": null
+    },
+    {
+      "kind": "android",
+      "result": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/android-a2/result.json",
+        "sha256": "43d4da3e44e036fd263e0cf5e6873d45e7e03f30926c19b75d1c98de5e713735"
+      },
+      "manifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/android/android-c4168129/runtime/artifact.json",
+        "sha256": "24401569f80d0083fee4a37053ed824e3a3bddad3ff5a7bd0502f975b0e9d5b1"
+      },
+      "audits": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/android-a2/native-artifact-audit.json",
+          "sha256": "786580371c65c0ab3977f9207e7f0335a1bfbadf4fb6935011533f01b2572aca"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/android-a2/android-dev-apk-verification.json",
+          "sha256": "69489dffcf437f613d3f538337506b807621436b2ccd4f52a2ce63a94747c231"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/android-a2/build-run.json",
+          "sha256": "b45900d9b427c6e73a1b84b3ce52d5cd9bb02c20f76a6794ed344486d3ec529d"
+        }
+      ],
+      "buildId": "c416812961560d90801ad7f5bfe4892a67b682dfc2498abdee5ad47fb68f25df",
+      "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+      "payloadBytesAuthenticated": true,
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/android/android-c4168129/app-dev-debug.apk",
+        "bytes": 70289893,
+        "sha256": "937ef02228c4a6b829ea7d66e6d1396f0ace9ab21db0118b7f932b54a84ed1f8"
+      }
+    }
+  ],
+  "buildDiagnosticHistory": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-1.json",
+      "sha256": "4f5d4fc21ecfb6ca1982bd6477db957583b021434f0dc3dd50e3df08b0a63a4c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-2.json",
+      "sha256": "99a1308787ede5e1bbe5874b0b32b01d9885c1adb52c4baabf778e2ee054d642"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-3.json",
+      "sha256": "24ecab62862ff46f5cad03844ef3562b1235b7ba0554f34f971e49f8e1542b0a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-4.json",
+      "sha256": "7545099329a6177ed67082219fc62780645a00eb4dec49989390a5c03d3983fa"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-5.json",
+      "sha256": "cfa256360ede979c4d5dcdfe3599f7f72de777370a641b8bdcd6ef30a9ad0c3b"
+    }
+  ],
+  "failedDiagnosticHistory": [
+    {
+      "status": "AUTHENTICATED_FAILED_A1_DIAGNOSTIC_ONLY",
+      "diagnosticOnly": true,
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "entry": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/entry.json",
+        "sha256": "502916cee5190a67a5bfecee4787ed3da2bc86656a86be05ebdfd157acb3ea57"
+      },
+      "scope": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/scope.json",
+        "sha256": "fc70af76a6cd1d1762f5cf2e0e184c91c3d292503c3acbfb7fadd15bbb03122e"
+      },
+      "identity": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/identity.json",
+        "sha256": "8b89b3a675d2054177c8c94abf88e73bbdc682ee4350b1526c3e7b232fcb6090"
+      },
+      "sourceApplyReceipt": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/source-apply-receipt.json",
+        "sha256": "be6c298f525e85bd887044f8d12f31ba6f187122db729790a163551a5a7cfa26"
+      },
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a1/result.json",
+        "sha256": "1cc5c32496dc9a59b35e8311b7369f9d8e464f8ed8547836aff0b427820f670d"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a1/execution.json",
+        "sha256": "4f1985fe816170f1c0529bcd5dde1893199e2ab35bc251165b2045dc7ca383b3"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a1/playwright.json",
+        "sha256": "f6fd55823ad2198ce6b05ea5e54dd5f870528ce28f407def578ced9b2b9a3e6b"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a1/source-manifest.json",
+        "sha256": "6594c23bc248e5ab8144e3ef9775cc6f323d3d8d0a0cf8636ed2905b8a4b1b83"
+      }
+    },
+    {
+      "status": "AUTHENTICATED_FAILED_A2_DIAGNOSTIC_ONLY",
+      "diagnosticOnly": true,
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "entry": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/entry.json",
+        "sha256": "85cfe6404e897cce5873063769516956743b81333e1861b30b088f44fd650d62"
+      },
+      "scope": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/scope.json",
+        "sha256": "f79de2d62de95ad387c837221a089b9ccd3a937b7e2279c9ad7e82ee3828d71d"
+      },
+      "identity": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/identity.json",
+        "sha256": "8b89b3a675d2054177c8c94abf88e73bbdc682ee4350b1526c3e7b232fcb6090"
+      },
+      "sourceFreezeReceipt": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/source-freeze-receipt.json",
+        "sha256": "da822502f56f24f22f69823520eac2029ae152d706108a33213a221ebc4f838e"
+      },
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a2/result.json",
+        "sha256": "cf7c7005e4a0017f3500627b7fd11757c1629d3754ea8cab431ba721cf21d957"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a2/execution.json",
+        "sha256": "06faf50ab17cbda4e9c8e9c0f9f6b0d45d4066c123d0ffc087b26fc44c54cb03"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a2/playwright.json",
+        "sha256": "842b60063814211a681410d976c5527cb25d4be6bf3448470abe6b2328074aa2"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a2/source-manifest.json",
+        "sha256": "b4fae32e756bdb3e8d1e16008cadd6f2b19a4593181fc72a7032e0396664948b"
+      }
+    },
+    {
+      "status": "AUTHENTICATED_FAILED_A3_DIAGNOSTIC_ONLY",
+      "diagnosticOnly": true,
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "entry": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a3/bound-a3/entry.json",
+        "sha256": "637a0c67c19b6013e513478d540a6e8bcfbfc7347c887f799b69558da4ee3239"
+      },
+      "scope": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a3/bound-a3/scope.json",
+        "sha256": "ca39d9d41491d62ba243ab4c488e3ed36545460dd62939e67d85620420016cd8"
+      },
+      "identity": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a3/bound-a3/identity.json",
+        "sha256": "8b89b3a675d2054177c8c94abf88e73bbdc682ee4350b1526c3e7b232fcb6090"
+      },
+      "sourceFreezeReceipt": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a3/bound-a3/source-freeze-receipt.json",
+        "sha256": "31cd51c9cea24ac025c82a54a61bfa6a2390b1071250103244950a0fe9e46089"
+      },
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a3/result.json",
+        "sha256": "2f7ad1cf1282dd69b83e01081cd3b03622cbeccd577cd069f97ca44a6819f34e"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a3/execution.json",
+        "sha256": "5451e78d864120de1115361ae395a1421b76050960bb88a224a7fc3bd58002a2"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a3/playwright.json",
+        "sha256": "58eb23a848ca5974da66e73cb0b00536433f987e193fe2dcf38f2582076170bc"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a3/source-manifest.json",
+        "sha256": "d5daefecdcf7f1c9c037b1eac4d2fffad80e27df6390b06c3f55b5f87db83eaf"
+      }
+    }
+  ],
+  "retainedRecoveryValidation": {
+    "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+    "docsCheckpoint": "fbb84ded86da90976f552f50c29aea59d11dcb08",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json",
+      "sha256": "cc84efa6e7dc8c97ba0fae7423e3f34b56ee02f5bd162c1f3adedde2fce1585a"
+    },
+    "rerun": false,
+    "writerFixtureProtected": true
+  },
+  "retainedProvenanceValidation": {
+    "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+    "unitCount": 17,
+    "historicalOnly": true,
+    "attributedToCurrentRuntime": false,
+    "contextualControlsPinsStale": true,
+    "draftsApproved": false,
+    "available": false
+  },
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "stageChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decision": "D215",
+  "nextAction": "Continue the original S15 mobile globe guidance plan with a bounded trusted-canvas gesture check after accepted writer-reader lifecycle and delayed focus cancellation. Reuse the existing two RU/EN guidance cases and their six capture contracts. In RU use a single genuine one-finger horizontal drag (64 CSS px in eight moves); in EN use a single symmetric two-finger pinch with stable IDs and an observed safe distance from the zoom clamp. Require every gesture path hit to belong to the same canonical canvas. Observe camera direction/quaternion and camera-to-target radius rather than assigning camera state or using camera.zoom to infer perspective zoom. Preserve actual selected country/writer, route, Booky progress, preferences and canonical canvas/renderer/resources; do not require viewed-country metadata to stay unchanged during rotation. Use the existing CDP trusted-touch driver. No production change unless a real defect is reproduced. Run only the two affected cases, with no repeated units, TypeScript or PWA/Android builds for fixture-only work. Keep requirement/stage statuses and editorial/child/device/full-accessibility/release acceptance unchanged.",
+  "limitations": [
+    "The fixture transparently schedules only one exact existing focus callback; callback body/identity/conditions and native global RAF stay unchanged. No focus/history/progress/model outcome is assigned.",
+    "Six earlier help/controls/unavailable images do not prove the appended race; the actual capture assertions and root causal receipt prove held -> newer trusted input -> released callback execution -> no focus/cue replay across256 samples.",
+    "EN keyboard input is a mobile accessibility-race harness; no new desktop product flow or full keyboard/screen-reader acceptance.",
+    "The39 focused geometry units do not independently provide new direct Controls DOM coverage; current behavior is exercised by the real App browser cases.",
+    "D21217-unit/inventory validation and all historical provenance caches remain at their original source. Eight contextual Controls whole-file pins are stale pending a separate bounded refresh; all34 drafts remain unapproved/unavailable.",
+    "D213 original build identities and earlier cases retain their original source. Fresh current builds cover this commit without installing/claiming device or release acceptance.",
+    "Actual drag/pinch execution remains the bounded next interaction gap; no native lifecycle, full accessibility, editorial, child, stage or release acceptance."
+  ],
+  "productionDefectIdentified": true,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

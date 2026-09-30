@@ -1,0 +1,26 @@
+{
+  "design": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+      "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+    },
+    "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+    "checkpoint": "a139bbbe3d3dd27255773147e79312dda5faf4e4"
+  },
+  "d212": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+      "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+    },
+    "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+    "checkpoint": "b04fbd2574fb8da8ac830b63127df924dd684fe1"
+  },
+  "recovery": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json",
+      "sha256": "cc84efa6e7dc8c97ba0fae7423e3f34b56ee02f5bd162c1f3adedde2fce1585a"
+    },
+    "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+    "checkpoint": "fbb84ded86da90976f552f50c29aea59d11dcb08"
+  }
+}

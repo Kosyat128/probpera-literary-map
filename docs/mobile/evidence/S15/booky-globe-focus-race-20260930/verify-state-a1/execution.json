@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "verificationProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-checkpoint-review-a2/verify-checkpoint.mjs",
+    "sha256": "eff46f7bb37fb6f9ea4f046329744d062e59e008e8ce0629b13d9cc578218a43"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-state.mjs"
+  ],
+  "startedAt": "2026-09-30T13:34:05.317Z",
+  "finishedAt": "2026-09-30T13:34:34.090Z",
+  "durationMs": 28772,
+  "exitCode": 0,
+  "error": null,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/verify-state-a1/stdout.log",
+    "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/verify-state-a1/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "applicationChecksRun": false,
+  "oldCasesRun": false,
+  "testsRun": false,
+  "buildsRun": false
+}

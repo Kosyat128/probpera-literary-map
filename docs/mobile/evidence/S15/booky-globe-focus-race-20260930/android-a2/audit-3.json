@@ -1,0 +1,47 @@
+{
+  "releaseReady": false,
+  "deviceTested": false,
+  "pass": true,
+  "sourceManifest": {
+    "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4",
+    "fileCount": 1665,
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a2/source-manifest-776f4031fb175139.json"
+  },
+  "execution": {
+    "startedAt": "2026-09-30T13:22:09.8712568+00:00",
+    "durationMs": 21950,
+    "command": [
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "-Xmx64m",
+      "-Xms64m",
+      "-Duser.home=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+      "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-build-evidence\\attempt-a2\\android\\temp",
+      "-Dorg.gradle.appname=gradlew",
+      "-classpath",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+      "org.gradle.wrapper.GradleWrapperMain",
+      "--offline",
+      "--no-daemon",
+      ":app:assembleDevDebug"
+    ],
+    "stdout": {
+      "bytes": 13862,
+      "sha256": "13c1ebcec1b81924d1c1fd244e5c18fdc18617b02b63d36a0f87b37f9efaf084",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\runtime-build-review-a1\\android-a2\\assemble-dev-debug-a2-stdout.log"
+    },
+    "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android",
+    "stderr": {
+      "bytes": 251,
+      "sha256": "7947f20a02b8249ee4ac57e08b051987df95393d087248b86ba68192263b665b",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\runtime-build-review-a1\\android-a2\\assemble-dev-debug-a2-stderr.log"
+    },
+    "exitCode": 0
+  },
+  "buildId": "c416812961560d90801ad7f5bfe4892a67b682dfc2498abdee5ad47fb68f25df",
+  "task": ":app:assembleDevDebug",
+  "startedAt": "2026-09-30T13:22:09.8712568+00:00",
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "durationMs": 21950,
+  "offline": true,
+  "iosCompiled": false
+}

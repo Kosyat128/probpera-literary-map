@@ -1,0 +1,230 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/playwright.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\execution-review-runtime-fix-a2\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a2/browser-a2",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-globe-guidance.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\execution-review-runtime-fix-a2\\bound-a2\\browser-a2\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-globe-guidance.spec.mjs",
+      "file": "booky-globe-guidance.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Booky mobile globe guidance ru",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 34048,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-action=\"toggle-search\"]')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-action=\"toggle-search\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" aria-expanded=\"false\" data-atlas-action=\"toggle-search\" aria-controls=\"atlas-search-panel\" aria-label=\"Поиск по Литературной планете\" class=\"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-immersive-search-toggle\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-action=\"toggle-search\"]')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-action=\"toggle-search\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" aria-expanded=\"false\" data-atlas-action=\"toggle-search\" aria-controls=\"atlas-search-panel\" aria-label=\"Поиск по Литературной планете\" class=\"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-immersive-search-toggle\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs:570:183",
+                    "location": {
+                      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                      "column": 183,
+                      "line": 570
+                    },
+                    "snippet": "  568 |     await expect(globe(page)).toHaveAttribute('data-globe-webgl-context','lost');await expect(notice()).toBeVisible();await expect(page.locator('[data-planet-mascot-context-tip]')).toHaveCount(0);await expect(show()).toBeDisabled();const lost=await sample(page);expect(lost.contextLost).toBe(true);retained(lost,beforeLoss);o.loss={before:beforeLoss,beforeContext:lossContext,lost,notice:await notice().textContent(),state:await guidanceState(page)};\n  569 |     await input.expose(notice(),'current globe-unavailable explanation');await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-unavailable.png','Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.');\n> 570 |     await input.tap(page.locator('[data-planet-mascot-action=\"search\"]'),'Search remains usable during globe loss');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','true');await expect(panel(page)).toBeVisible();await expect(show()).toBeDisabled();await expect(notice()).toBeVisible();o.refusal={reason:'actual lost globe plus real competing atlas Search surface',state:await guidanceState(page),showDisabled:await show().isDisabled(),contextTipCount:await page.locator('[data-planet-mascot-context-tip]').count()};\n      |                                                                                                                                                                                       ^\n  571 |     o.searchClose={beforeCollapse:await guidanceState(page)};await collapse();o.searchClose.afterCollapse=await guidanceState(page);\n  572 |     if(o.searchClose.afterCollapse.searchOpen==='true'){\n  573 |       await input.tap(page.locator('[data-atlas-action=\"toggle-search\"]'),'close currently open atlas Search');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','false');o.searchClose.observedTransition='closed-by-one-toolbar-touch-after-help-collapse';"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                        "column": 183,
+                        "line": 570
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-action=\"toggle-search\"]')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-action=\"toggle-search\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" aria-expanded=\"false\" data-atlas-action=\"toggle-search\" aria-controls=\"atlas-search-panel\" aria-label=\"Поиск по Литературной планете\" class=\"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-immersive-search-toggle\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n\n  568 |     await expect(globe(page)).toHaveAttribute('data-globe-webgl-context','lost');await expect(notice()).toBeVisible();await expect(page.locator('[data-planet-mascot-context-tip]')).toHaveCount(0);await expect(show()).toBeDisabled();const lost=await sample(page);expect(lost.contextLost).toBe(true);retained(lost,beforeLoss);o.loss={before:beforeLoss,beforeContext:lossContext,lost,notice:await notice().textContent(),state:await guidanceState(page)};\n  569 |     await input.expose(notice(),'current globe-unavailable explanation');await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-unavailable.png','Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.');\n> 570 |     await input.tap(page.locator('[data-planet-mascot-action=\"search\"]'),'Search remains usable during globe loss');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','true');await expect(panel(page)).toBeVisible();await expect(show()).toBeDisabled();await expect(notice()).toBeVisible();o.refusal={reason:'actual lost globe plus real competing atlas Search surface',state:await guidanceState(page),showDisabled:await show().isDisabled(),contextTipCount:await page.locator('[data-planet-mascot-context-tip]').count()};\n      |                                                                                                                                                                                       ^\n  571 |     o.searchClose={beforeCollapse:await guidanceState(page)};await collapse();o.searchClose.afterCollapse=await guidanceState(page);\n  572 |     if(o.searchClose.afterCollapse.searchOpen==='true'){\n  573 |       await input.tap(page.locator('[data-atlas-action=\"toggle-search\"]'),'close currently open atlas Search');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','false');o.searchClose.observedTransition='closed-by-one-toolbar-touch-after-help-collapse';\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs:570:183"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T12:36:20.359Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "diagnostic-failure-ru",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a2\\browser-a2\\booky-globe-guidance-Booky-mobile-globe-guidance-ru\\attachments\\diagnostic-failure-ru-ee022e29a46787c06682eed8c87c82e7ee999729.png"
+                    },
+                    {
+                      "name": "booky-globe-guidance-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a2\\browser-a2\\booky-globe-guidance-Booky-mobile-globe-guidance-ru\\attachments\\booky-globe-guidance-source-evidence-d36cf0eebcac55547c953e818f18fe3860cf5b50.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a2\\browser-a2\\booky-globe-guidance-Booky-mobile-globe-guidance-ru\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                    "column": 183,
+                    "line": 570
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "728a2b95a867902406f6-995f40cbe6327264b2cc",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/booky-globe-guidance.spec.mjs",
+          "line": 502,
+          "column": 35
+        },
+        {
+          "title": "Booky mobile globe guidance en",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 24869,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-action=\"toggle-search\"]')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-action=\"toggle-search\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" aria-expanded=\"false\" data-atlas-action=\"toggle-search\" aria-controls=\"atlas-search-panel\" aria-label=\"Search the Literary Planet\" class=\"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-immersive-search-toggle\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-action=\"toggle-search\"]')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-action=\"toggle-search\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" aria-expanded=\"false\" data-atlas-action=\"toggle-search\" aria-controls=\"atlas-search-panel\" aria-label=\"Search the Literary Planet\" class=\"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-immersive-search-toggle\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs:570:183",
+                    "location": {
+                      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                      "column": 183,
+                      "line": 570
+                    },
+                    "snippet": "  568 |     await expect(globe(page)).toHaveAttribute('data-globe-webgl-context','lost');await expect(notice()).toBeVisible();await expect(page.locator('[data-planet-mascot-context-tip]')).toHaveCount(0);await expect(show()).toBeDisabled();const lost=await sample(page);expect(lost.contextLost).toBe(true);retained(lost,beforeLoss);o.loss={before:beforeLoss,beforeContext:lossContext,lost,notice:await notice().textContent(),state:await guidanceState(page)};\n  569 |     await input.expose(notice(),'current globe-unavailable explanation');await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-unavailable.png','Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.');\n> 570 |     await input.tap(page.locator('[data-planet-mascot-action=\"search\"]'),'Search remains usable during globe loss');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','true');await expect(panel(page)).toBeVisible();await expect(show()).toBeDisabled();await expect(notice()).toBeVisible();o.refusal={reason:'actual lost globe plus real competing atlas Search surface',state:await guidanceState(page),showDisabled:await show().isDisabled(),contextTipCount:await page.locator('[data-planet-mascot-context-tip]').count()};\n      |                                                                                                                                                                                       ^\n  571 |     o.searchClose={beforeCollapse:await guidanceState(page)};await collapse();o.searchClose.afterCollapse=await guidanceState(page);\n  572 |     if(o.searchClose.afterCollapse.searchOpen==='true'){\n  573 |       await input.tap(page.locator('[data-atlas-action=\"toggle-search\"]'),'close currently open atlas Search');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','false');o.searchClose.observedTransition='closed-by-one-toolbar-touch-after-help-collapse';"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                        "column": 183,
+                        "line": 570
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-action=\"toggle-search\"]')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-action=\"toggle-search\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" aria-expanded=\"false\" data-atlas-action=\"toggle-search\" aria-controls=\"atlas-search-panel\" aria-label=\"Search the Literary Planet\" class=\"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-immersive-search-toggle\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n\n  568 |     await expect(globe(page)).toHaveAttribute('data-globe-webgl-context','lost');await expect(notice()).toBeVisible();await expect(page.locator('[data-planet-mascot-context-tip]')).toHaveCount(0);await expect(show()).toBeDisabled();const lost=await sample(page);expect(lost.contextLost).toBe(true);retained(lost,beforeLoss);o.loss={before:beforeLoss,beforeContext:lossContext,lost,notice:await notice().textContent(),state:await guidanceState(page)};\n  569 |     await input.expose(notice(),'current globe-unavailable explanation');await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-unavailable.png','Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.');\n> 570 |     await input.tap(page.locator('[data-planet-mascot-action=\"search\"]'),'Search remains usable during globe loss');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','true');await expect(panel(page)).toBeVisible();await expect(show()).toBeDisabled();await expect(notice()).toBeVisible();o.refusal={reason:'actual lost globe plus real competing atlas Search surface',state:await guidanceState(page),showDisabled:await show().isDisabled(),contextTipCount:await page.locator('[data-planet-mascot-context-tip]').count()};\n      |                                                                                                                                                                                       ^\n  571 |     o.searchClose={beforeCollapse:await guidanceState(page)};await collapse();o.searchClose.afterCollapse=await guidanceState(page);\n  572 |     if(o.searchClose.afterCollapse.searchOpen==='true'){\n  573 |       await input.tap(page.locator('[data-atlas-action=\"toggle-search\"]'),'close currently open atlas Search');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','false');o.searchClose.observedTransition='closed-by-one-toolbar-touch-after-help-collapse';\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs:570:183"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T12:36:55.762Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "diagnostic-failure-en",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a2\\browser-a2\\booky-globe-guidance-Booky-mobile-globe-guidance-en\\attachments\\diagnostic-failure-en-01a8a715323bf59ca5319000d6159b786305ba18.png"
+                    },
+                    {
+                      "name": "booky-globe-guidance-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a2\\browser-a2\\booky-globe-guidance-Booky-mobile-globe-guidance-en\\attachments\\booky-globe-guidance-source-evidence-267be8b0f31827e3bcec6088589024d15621db80.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a2\\browser-a2\\booky-globe-guidance-Booky-mobile-globe-guidance-en\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                    "column": 183,
+                    "line": 570
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "728a2b95a867902406f6-9b9cc6df9d4b750914fe",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/booky-globe-guidance.spec.mjs",
+          "line": 502,
+          "column": 35
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T12:36:19.665Z",
+    "duration": 61937.759000000005,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

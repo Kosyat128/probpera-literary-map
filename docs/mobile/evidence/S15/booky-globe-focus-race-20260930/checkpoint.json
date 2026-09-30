@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T13:33:51.514Z",
+  "pass": true,
+  "kind": "RUNTIME_GLOBAL_CHECKPOINT",
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/result.json",
+    "sha256": "b5744a5dbe0dbd28b74f8a57f35737cf5887fa1806e36fe1053701540545e402"
+  },
+  "binding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-checkpoint-review-a2/bound-a1/binding.json",
+    "sha256": "fa191bcf1e79605ed63749009941966e281a8465955bf5ed95241642c8fb5a44"
+  },
+  "helper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-checkpoint-review-a2/record-checkpoint.mjs",
+    "sha256": "606e117d53b36193d83671593f52cda0454d458bd02ac78d1d3e9ab7b875a347"
+  },
+  "documentPlan": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-checkpoint-review-a2/bound-a1/document-plan.json",
+    "sha256": "1079a1ee8a4118f2b6751cda37dce1541cdcd1d1cc039ec6438ab97184cf2399"
+  },
+  "originalGlobals": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "204ad9def824e1128010c002c72da3471e11730521f6420b646aa1297e360b31"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "0066388afbd46624e110d31a849dd5fbc98fb2bac5dae531e4f66e089a5a71f5"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "511689a70aee1bb258387151f3d728fa8e0d1d4a3b2557e3677b0974fba8cc75"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "aa62c34e19097cd0325dac636c1d9707c9b18a44c9591b4a6b650b90cc864972"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "01a72ba616abad1dc1e9f8fe6888f8db14a6b7b8ec13fdd79b29c8392aac2442"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "39a16914275f619f315be1c503d233786737acdb2e72e68bc916eba4f70ab12a"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "1cd41ab2f877b36e0c42f6030af86da947e938b74671da33770c0a4a828ed1e1"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "10e69b51261d45949a6b6383e78696047dbdd37f68947aee06bea2a07c5b941c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "81dc8a95a4d7ea0f4f96ef27165ae2f3575cb792da769d869ac0cfbfedde96a1"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "e42df13fca1cc67f91f3f00506222e9e9f78766fe4ffab60c90e6575691ee7fc"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "6ebea2cc7815d028b10dc5d672427ca4f5d91b602d0c0ba41d95eb7c0c538ae2"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "cefdba29cef991230b118e29da41588dadfb8f6ec8d9058e53356372baa341f2"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "c523a8b4f2252bd6be2e464f3bab106f13c2b043898856c0e113421ee8ff4b06"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "ca1cd175832155554356988d27e458f01b0c1a361868e8b50619840f52996b9d"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "505cf15b43070733bce324106949a1242774e30ad1c255542eaffedd0a423f77"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "ce29f79d92fceb64cab99f4fac2e7b427b0bbfccb50d03f01126bd62de2280b1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/result.json",
+      "sha256": "b5744a5dbe0dbd28b74f8a57f35737cf5887fa1806e36fe1053701540545e402"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/README.md",
+      "sha256": "d7b5dcf48996f8d6a47239297e66dc389238f428d103ca2ef038fe8518c7da8b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/entry.json",
+      "sha256": "eeb9a071a84c0bc13dda80e0d1e954c7362069f8a55a439eaba25cd80654a269"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/scope.json",
+      "sha256": "e12207e0c3ffd86f2622d7c87ce3ceabb292e86c7ffa4371bde9ec068242ddff"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/identity.json",
+      "sha256": "8b89b3a675d2054177c8c94abf88e73bbdc682ee4350b1526c3e7b232fcb6090"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/source-freeze-receipt.json",
+      "sha256": "283ae85a5dcee4694918b1dc232885c7acbd1d0b28e843dd06020088af6e01fc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/source-commit.json",
+      "sha256": "30dbf976d38108936ef24097096c71e38c8e15674700ea27aff634010396be83"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/visual-review.json",
+      "sha256": "39beb89f0e3c793ea12e203cd52e8a9d417580417d339feadd271bb41ea5e80d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/source-manifests/776f4031fb175139.json",
+      "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/result.json",
+      "sha256": "c7c72ee39a95a3a81295e20e4b351df95c0877e1ce5eb1891efdbb5e9c40f070"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/execution.json",
+      "sha256": "eb99f1320f8a442c19e967c9c3824ff279e1be6a40fb459505fe2327a0f8a049"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/playwright.json",
+      "sha256": "355733f93d972a65899e4b16ee7bf9ad522454de7df132a1ca4796ac7d3e08c6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/stdout.log",
+      "sha256": "2dfed7aca848168353713ca4a481a0d61f330a8dc925d9bc4deb53181bb77f7a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/browser-a4/stderr.log",
+      "sha256": "b720d4ade6930b15b0a606f04f9f91cf485ecf53020cdae3f2142e924a8038a0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/static-a1/result.json",
+      "sha256": "cb30b3df40a7097b57a828d3bf17c98a0fbaaad153744e93e5ef71a78c9e8c9d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/static-a1/execution.json",
+      "sha256": "5c5675af6588972d1ce206240f29076f55757e8a3240386f4f0febf24b158942"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/unit-a1/result.json",
+      "sha256": "541f627f692b58e7e1f1045e48bf99ea9ae8417a9eef8cb079de587326c38b57"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/unit-a1/execution.json",
+      "sha256": "67380f6e0722251e98f4b056f61221cdbe7548d7ac6fe0b1bdb3b6b5808a40b6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/unit-a1/vitest.json",
+      "sha256": "5dbaf4dcf591c77d9da275e9cb793402b1165aba8302418f8ca788d8aedc5215"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/captures/ru.json",
+      "sha256": "5d3f0db9209142b873a4d8dbeaa8c16256a442100b6e489151724e517bf22d5a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/captures/en.json",
+      "sha256": "8b0010e08464c6c2642ea9f58631efd4b43c97d6db4a74d8ad39a6e6410ef5b8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/images/booky-globe-guidance-ru-help.png",
+      "sha256": "6bff05b11228c8df8f556fb1d9b93568f0545e6fb3ad0f06e43d109abc0c3bb5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/images/booky-globe-guidance-ru-controls.png",
+      "sha256": "7f827e8c4f91594710985e4f86eead60b734766872ed08f25fcbddd26054238e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/images/booky-globe-guidance-ru-unavailable.png",
+      "sha256": "d14a0728e748890e6ad1ff0e9fda586cd918c424d7b3a28375f22fb927ac632a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/images/booky-globe-guidance-en-help.png",
+      "sha256": "1a0a92aa3be3fa55f2bd4a499d204de9026548f984eaa54877cb709f44644ede"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/images/booky-globe-guidance-en-controls.png",
+      "sha256": "ce844c505a09985e95de1095ef533caa9e4f3b2a7bbf32510439f4ce283cd3be"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/images/booky-globe-guidance-en-unavailable.png",
+      "sha256": "b70a01aa294cdd617942c270f3f5f4f5809ace18157debd4fbfba9c248f29d08"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a1/result.json",
+      "sha256": "1cc5c32496dc9a59b35e8311b7369f9d8e464f8ed8547836aff0b427820f670d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a1/execution.json",
+      "sha256": "4f1985fe816170f1c0529bcd5dde1893199e2ab35bc251165b2045dc7ca383b3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a1/playwright.json",
+      "sha256": "f6fd55823ad2198ce6b05ea5e54dd5f870528ce28f407def578ced9b2b9a3e6b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a1/source-manifest.json",
+      "sha256": "6594c23bc248e5ab8144e3ef9775cc6f323d3d8d0a0cf8636ed2905b8a4b1b83"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a2/result.json",
+      "sha256": "cf7c7005e4a0017f3500627b7fd11757c1629d3754ea8cab431ba721cf21d957"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a2/execution.json",
+      "sha256": "06faf50ab17cbda4e9c8e9c0f9f6b0d45d4066c123d0ffc087b26fc44c54cb03"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a2/playwright.json",
+      "sha256": "842b60063814211a681410d976c5527cb25d4be6bf3448470abe6b2328074aa2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a2/source-manifest.json",
+      "sha256": "b4fae32e756bdb3e8d1e16008cadd6f2b19a4593181fc72a7032e0396664948b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a3/result.json",
+      "sha256": "2f7ad1cf1282dd69b83e01081cd3b03622cbeccd577cd069f97ca44a6819f34e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a3/execution.json",
+      "sha256": "5451e78d864120de1115361ae395a1421b76050960bb88a224a7fc3bd58002a2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a3/playwright.json",
+      "sha256": "58eb23a848ca5974da66e73cb0b00536433f987e193fe2dcf38f2582076170bc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/diagnostic-a3/source-manifest.json",
+      "sha256": "d5daefecdcf7f1c9c037b1eac4d2fffad80e27df6390b06c3f55b5f87db83eaf"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-1.json",
+      "sha256": "4f5d4fc21ecfb6ca1982bd6477db957583b021434f0dc3dd50e3df08b0a63a4c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-2.json",
+      "sha256": "99a1308787ede5e1bbe5874b0b32b01d9885c1adb52c4baabf778e2ee054d642"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-3.json",
+      "sha256": "24ecab62862ff46f5cad03844ef3562b1235b7ba0554f34f971e49f8e1542b0a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-4.json",
+      "sha256": "7545099329a6177ed67082219fc62780645a00eb4dec49989390a5c03d3983fa"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/build-diagnostics/attempt-5.json",
+      "sha256": "cfa256360ede979c4d5dcdfe3599f7f72de777370a641b8bdcd6ef30a9ad0c3b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/result.json",
+      "sha256": "0e38a7ca50083a17d4062eed7a0950681d97485c690cf699d5c33b64e3029463"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/artifact.json",
+      "sha256": "41af3164075f184ffad9def3bc948d469b3a946c15f4221c8babb77d6c323486"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/audit-1.json",
+      "sha256": "b24bbfcab5ed02a6af7fd8d0ebb20cdafc64ccd6e242c8bfe2a091e406b0bf35"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/pwa-a2/audit-2.json",
+      "sha256": "ea52740af0e61579b405bb9bef158990900e85090af649dfd3d5ccb1155d167e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/result.json",
+      "sha256": "43d4da3e44e036fd263e0cf5e6873d45e7e03f30926c19b75d1c98de5e713735"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/artifact.json",
+      "sha256": "24401569f80d0083fee4a37053ed824e3a3bddad3ff5a7bd0502f975b0e9d5b1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/audit-1.json",
+      "sha256": "786580371c65c0ab3977f9207e7f0335a1bfbadf4fb6935011533f01b2572aca"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/audit-2.json",
+      "sha256": "69489dffcf437f613d3f538337506b807621436b2ccd4f52a2ce63a94747c231"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-globe-focus-race-20260930/android-a2/audit-3.json",
+      "sha256": "b45900d9b427c6e73a1b84b3ce52d5cd9bb02c20f76a6794ed344486d3ec529d"
+    }
+  ],
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "allStageAndCriterionStatusesUnchanged": true,
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

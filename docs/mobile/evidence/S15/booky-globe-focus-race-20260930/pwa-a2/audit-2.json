@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76876908,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/pwa/pwa-a1-copy-verification.json",
+    "sha256": "59bdac79fa7dcc3ded8b5bb18aadb560dc572c8e1bc53e687e2443f29c21204a"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/pwa/pwa-a70b0aac/artifact.json",
+    "sha256": "41af3164075f184ffad9def3bc948d469b3a946c15f4221c8babb77d6c323486"
+  }
+}

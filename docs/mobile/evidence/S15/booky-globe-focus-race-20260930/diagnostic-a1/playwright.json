@@ -1,0 +1,230 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/playwright.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\execution-review-v4\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-evidence/attempt-a1/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-globe-guidance.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-review\\execution-review-v4\\bound-a1\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-globe-guidance.spec.mjs",
+      "file": "booky-globe-guidance.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Booky mobile globe guidance ru",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21293,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-target-action=\"globe-controls\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-target-action=\"globe-controls\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-target-action=\"globe-controls\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-target-action=\"globe-controls\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs:522:79",
+                    "location": {
+                      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                      "column": 79,
+                      "line": 522
+                    },
+                    "snippet": "  520 |     await expect.poll(async()=>{const current=await guidanceState(page);return current.focusedConnected&&current.focusedCanonical&&!current.focusedDisabled&&['zoom-in','zoom-out','reset'].includes(current.focusedControl);},{intervals:[16,32,64],timeout:2000,message:'existing enabled canonical globe control receives guarded focus'}).toBe(true);\n  521 |     o.focus=await guidanceState(page);const focused=page.locator('#atlas .globe-controls [data-globe-control=\"'+o.focus.focusedControl+'\"]');o.focusGeometry=await input.geometry(focused);expect(o.focusGeometry.box.width).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.box.height).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.hits.every(hit=>hit.inside)).toBe(true);retained(await actual(page),baseGlobe);\n> 522 |     await expect(page.locator('[data-booky-target-action=\"globe-controls\"]')).toHaveCount(1);\n      |                                                                               ^\n  523 |     if(language==='ru'){\n  524 |       await expect(page.locator('[data-booky-walk-stop]')).toBeVisible();await input.tap(page.locator('[data-booky-walk-stop]'),'Stop finite globe-controls approach',{moving:true});\n  525 |       await expect(page.locator('[data-booky-target]')).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');await page.waitForTimeout(1900);await expect(page.locator('[data-booky-target]')).toHaveCount(0);o.finiteCuePolicy='normal-motion approach stopped by a genuine trusted Stop';"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                        "column": 79,
+                        "line": 522
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-target-action=\"globe-controls\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-target-action=\"globe-controls\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  520 |     await expect.poll(async()=>{const current=await guidanceState(page);return current.focusedConnected&&current.focusedCanonical&&!current.focusedDisabled&&['zoom-in','zoom-out','reset'].includes(current.focusedControl);},{intervals:[16,32,64],timeout:2000,message:'existing enabled canonical globe control receives guarded focus'}).toBe(true);\n  521 |     o.focus=await guidanceState(page);const focused=page.locator('#atlas .globe-controls [data-globe-control=\"'+o.focus.focusedControl+'\"]');o.focusGeometry=await input.geometry(focused);expect(o.focusGeometry.box.width).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.box.height).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.hits.every(hit=>hit.inside)).toBe(true);retained(await actual(page),baseGlobe);\n> 522 |     await expect(page.locator('[data-booky-target-action=\"globe-controls\"]')).toHaveCount(1);\n      |                                                                               ^\n  523 |     if(language==='ru'){\n  524 |       await expect(page.locator('[data-booky-walk-stop]')).toBeVisible();await input.tap(page.locator('[data-booky-walk-stop]'),'Stop finite globe-controls approach',{moving:true});\n  525 |       await expect(page.locator('[data-booky-target]')).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');await page.waitForTimeout(1900);await expect(page.locator('[data-booky-target]')).toHaveCount(0);o.finiteCuePolicy='normal-motion approach stopped by a genuine trusted Stop';\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs:522:79"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T12:10:36.061Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "diagnostic-failure-ru",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-evidence\\attempt-a1\\browser-a1\\booky-globe-guidance-Booky-mobile-globe-guidance-ru\\attachments\\diagnostic-failure-ru-fa69c85a64ae90d83046fb880a9f3dc5afafd802.png"
+                    },
+                    {
+                      "name": "booky-globe-guidance-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-evidence\\attempt-a1\\browser-a1\\booky-globe-guidance-Booky-mobile-globe-guidance-ru\\attachments\\booky-globe-guidance-source-evidence-1611c1be2d6c84b5d19263874975e9e5192e17a1.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-evidence\\attempt-a1\\browser-a1\\booky-globe-guidance-Booky-mobile-globe-guidance-ru\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                    "column": 79,
+                    "line": 522
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "728a2b95a867902406f6-995f40cbe6327264b2cc",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/booky-globe-guidance.spec.mjs",
+          "line": 502,
+          "column": 35
+        },
+        {
+          "title": "Booky mobile globe guidance en",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13860,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs:529:450",
+                    "location": {
+                      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                      "column": 450,
+                      "line": 529
+                    },
+                    "snippet": "  527 |       await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','pointing');await expect(page.locator('[data-booky-target]')).toHaveAttribute('data-booky-target','tapping');await expect(page.locator('[data-booky-target]')).toHaveCount(0,{timeout:2000});await page.waitForTimeout(850);o.finiteCuePolicy='OS reduced motion uses a finite still pointing pose, then settles without replay';\n  528 |     }\n> 529 |     const cueTrace=await page.evaluate(()=>window.__globeGuidanceTrace.samples.filter(row=>row.phase==='show-controls'));expect(cueTrace.some(row=>row.action==='globe-controls')).toBe(true);if(language==='en'){expect(cueTrace.some(row=>row.cue==='approaching')).toBe(false);const still=cueTrace.filter(row=>row.cue==='tapping');expect(still.length).toBeGreaterThan(1);expect(still.every(row=>JSON.stringify(row.pet)===JSON.stringify(still[0].pet))).toBe(true);}o.cueTrace=cueTrace;\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  530 |     await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-controls.png','Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.');\n  531 |     retained(await actual(page),baseGlobe);expect(await page.evaluate(()=>window.__globeGuidanceTrace.controlClicks)).toEqual([]);expect(saved()).toEqual(preferences);\n  532 |     if(language==='ru'){"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                        "column": 450,
+                        "line": 529
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  527 |       await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','pointing');await expect(page.locator('[data-booky-target]')).toHaveAttribute('data-booky-target','tapping');await expect(page.locator('[data-booky-target]')).toHaveCount(0,{timeout:2000});await page.waitForTimeout(850);o.finiteCuePolicy='OS reduced motion uses a finite still pointing pose, then settles without replay';\n  528 |     }\n> 529 |     const cueTrace=await page.evaluate(()=>window.__globeGuidanceTrace.samples.filter(row=>row.phase==='show-controls'));expect(cueTrace.some(row=>row.action==='globe-controls')).toBe(true);if(language==='en'){expect(cueTrace.some(row=>row.cue==='approaching')).toBe(false);const still=cueTrace.filter(row=>row.cue==='tapping');expect(still.length).toBeGreaterThan(1);expect(still.every(row=>JSON.stringify(row.pet)===JSON.stringify(still[0].pet))).toBe(true);}o.cueTrace=cueTrace;\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  530 |     await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-controls.png','Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.');\n  531 |     retained(await actual(page),baseGlobe);expect(await page.evaluate(()=>window.__globeGuidanceTrace.controlClicks)).toEqual([]);expect(saved()).toEqual(preferences);\n  532 |     if(language==='ru'){\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs:529:450"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T12:10:59.841Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "diagnostic-failure-en",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-evidence\\attempt-a1\\browser-a1\\booky-globe-guidance-Booky-mobile-globe-guidance-en\\attachments\\diagnostic-failure-en-895c69256e9aaad75c5499bfebb31be9e44f3eb0.png"
+                    },
+                    {
+                      "name": "booky-globe-guidance-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-evidence\\attempt-a1\\browser-a1\\booky-globe-guidance-Booky-mobile-globe-guidance-en\\attachments\\booky-globe-guidance-source-evidence-6e31d96458765b2a766270023b196dacafebae91.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-race-evidence\\attempt-a1\\browser-a1\\booky-globe-guidance-Booky-mobile-globe-guidance-en\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-globe-guidance.spec.mjs",
+                    "column": 450,
+                    "line": 529
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "728a2b95a867902406f6-9b9cc6df9d4b750914fe",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/booky-globe-guidance.spec.mjs",
+          "line": 502,
+          "column": 35
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T12:10:35.313Z",
+    "duration": 39255.812999999995,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

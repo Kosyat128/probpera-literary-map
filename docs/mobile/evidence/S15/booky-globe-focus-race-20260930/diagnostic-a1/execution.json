@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-30T12:10:34.213Z",
+  "exitCode": 1,
+  "durationMs": 40510,
+  "requestedChannel": "msedge",
+  "artifactRoots": {
+    "temp": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-evidence/attempt-a1/temp",
+    "profileRoot": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-evidence/attempt-a1/profiles",
+    "browserOutput": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-evidence/attempt-a1/browser-a1"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/browser-a1/stdout.log",
+    "bytes": 8712,
+    "sha256": "41322c2545c4a798b09ec22faabbba51f264d83a6d102aee8cda9a4934ed1cae"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/browser-a1/stderr.log",
+    "bytes": 328,
+    "sha256": "7208e5c238c788ec20d6045a8fd10010b5cd2532c469e754094c5c9d0c2a10ea"
+  }
+}

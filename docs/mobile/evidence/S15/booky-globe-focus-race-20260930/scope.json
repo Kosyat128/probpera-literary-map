@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "status": "BOUND_RUNTIME_FIX_AFTER_DIAGNOSTICS_A1_A2_A3",
+  "sourceFrozen": true,
+  "description": "Scoped production repair of compact walking Stop geometry, measured post-help point readiness and Search focus ownership and the trusted toolbar close pointer/click race, followed by the exact deferred focus callback cancellation assertions in the same two RU/EN guidance cases and six original images. The fixture follows current reciprocal Search/help ownership and retains all other original assertions/captures.",
+  "changedPaths": [
+    "src/components/AtlasExperienceChrome.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "browserFiles": [
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky mobile globe guidance ru",
+    "Booky mobile globe guidance en"
+  ],
+  "expectedBrowserTests": 2,
+  "expectedImages": 6,
+  "requestedChannel": "msedge",
+  "expectedSourceInputCount": 1665,
+  "expectedProtectedInputCount": 1661,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-mobile-globe-guidance-ru",
+      "flags": [
+        "mobileGuidanceVerified",
+        "trustedControlsFocusVerified",
+        "finiteCuePolicyVerified",
+        "realZoomOnlyVerified",
+        "realGlobeLossVerified",
+        "unavailableSearchGateVerified",
+        "contextRestorationVerified",
+        "preferencesAndSelectionPreserved",
+        "reservedTopCutoffVerified"
+      ]
+    },
+    {
+      "scenario": "booky-mobile-globe-guidance-en",
+      "flags": [
+        "mobileGuidanceVerified",
+        "trustedControlsFocusVerified",
+        "finiteCuePolicyVerified",
+        "realZoomOnlyVerified",
+        "realGlobeLossVerified",
+        "unavailableSearchGateVerified",
+        "contextRestorationVerified",
+        "preferencesAndSelectionPreserved"
+      ]
+    }
+  ],
+  "requiredCaptureValues": [
+    {
+      "scenario": "booky-mobile-globe-guidance-ru",
+      "values": {
+        "apiInitiatedWebGlLoss": true,
+        "nativeLifecycleEquivalent": false,
+        "touchOnlyProductActions": true,
+        "controlledLayoutFaultInjected": true,
+        "originalGuidanceTouchOnlyProductActions": true,
+        "keyboardAccessibilityRaceHarness": false,
+        "controlledSingleGlobeFocusRafTiming": true
+      }
+    },
+    {
+      "scenario": "booky-mobile-globe-guidance-en",
+      "values": {
+        "apiInitiatedWebGlLoss": true,
+        "nativeLifecycleEquivalent": false,
+        "touchOnlyProductActions": false,
+        "controlledLayoutFaultInjected": false,
+        "originalGuidanceTouchOnlyProductActions": true,
+        "keyboardAccessibilityRaceHarness": true,
+        "controlledSingleGlobeFocusRafTiming": true
+      }
+    }
+  ],
+  "requiredObservationChecks": [
+    {
+      "scenario": "booky-mobile-globe-guidance-ru",
+      "observation": "globeGuidance",
+      "checks": [
+        "localized mobile instructions are readable without implicit globe movement",
+        "trusted Show controls closes help and focuses a real enabled canonical control",
+        "finite Booky cue respects normal Stop or reduced motion",
+        "only the later real user zoom changes the canonical camera pose",
+        "actual WebGL loss shows current unavailable help without contradictory context tips",
+        "Search remains usable and Show controls is disabled while the globe is unavailable",
+        "real context restoration clears unavailable guidance and retains canonical owners",
+        "Booky route progress preferences and canonical selection remain exact",
+        "a controlled reserved top cutoff stops a fresh target approach without replay"
+      ]
+    },
+    {
+      "scenario": "booky-mobile-globe-guidance-en",
+      "observation": "globeGuidance",
+      "checks": [
+        "localized mobile instructions are readable without implicit globe movement",
+        "trusted Show controls closes help and focuses a real enabled canonical control",
+        "finite Booky cue respects normal Stop or reduced motion",
+        "only the later real user zoom changes the canonical camera pose",
+        "actual WebGL loss shows current unavailable help without contradictory context tips",
+        "Search remains usable and Show controls is disabled while the globe is unavailable",
+        "real context restoration clears unavailable guidance and retains canonical owners",
+        "Booky route progress preferences and canonical selection remain exact"
+      ]
+    }
+  ],
+  "requiredVisualFilenames": [
+    "booky-globe-guidance-ru-help.png",
+    "booky-globe-guidance-ru-controls.png",
+    "booky-globe-guidance-ru-unavailable.png",
+    "booky-globe-guidance-en-help.png",
+    "booky-globe-guidance-en-controls.png",
+    "booky-globe-guidance-en-unavailable.png"
+  ],
+  "criticalOwnerPaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/planetMascot.ts",
+    "src/host/useBookyWalk.ts",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "src/components/GlobeCameraRig.tsx"
+  ],
+  "independentExtensionObservationCaps": {
+    "inputFocusEvents": 320,
+    "releaseSamples": 256,
+    "originalTraceSamples": 3600
+  },
+  "unitFiles": [],
+  "unitRerun": false,
+  "staticRerun": false,
+  "pwaRebuilt": false,
+  "androidRebuilt": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "expectedSourceInputs": [
+    {
+      "path": "src/components/AtlasExperienceChrome.tsx",
+      "sha256": "0973b7c8f8db3c65fad47c011cfad42444dcdcf22184140caa4821a17fade848"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "312f8629c66c6ac1c5e80c9d25c40ed741b4cad5ae7b6591ddb16d26c3e22382"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "4acc67383cad75dc1da9f9877258c88516a8ef429da83e256ce78d6a6c9b52cf"
+    },
+    {
+      "path": "tests/pwa/booky-globe-guidance.spec.mjs",
+      "sha256": "bbef4c91d433338433e8b4ba5655469fcfd6cb36d6f89d7d8b1d952659f2af11"
+    }
+  ],
+  "runtimeUnchanged": false,
+  "fixtureOnly": false,
+  "productionImplementationChanged": true,
+  "currentBuildValidationPending": true
+}

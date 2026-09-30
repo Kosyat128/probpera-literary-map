@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T13:08:01.569Z",
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "buildId": "a70b0aacb583e46bbb1936d373511d4a800f60e32abfc97cf657893f47266965",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a2/source-manifest-776f4031fb175139.json",
+    "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4",
+    "fileCount": 1665
+  },
+  "sourceInputsSha256": "b38511869132fac01e32bca1b523de5f846ee815a1261a26ed489f3a896a1c48",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/pwa/pwa-a70b0aac",
+    "files": 1427,
+    "bytes": 76876908,
+    "artifactSha256": "41af3164075f184ffad9def3bc948d469b3a946c15f4221c8babb77d6c323486",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-30T13:07:34.373Z",
+    "duration": 22500.577999999998,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "requestedBrowserChannel": "msedge",
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

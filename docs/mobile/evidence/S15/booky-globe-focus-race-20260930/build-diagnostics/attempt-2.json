@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "pass": false,
+  "helper": "runtime-build-review-a1/build-android-a2.ps1",
+  "helperSha256": "24e1ee0e3891e59590e06622a366fb1aad03e49bf30096dff8c9e0d0ec34e338",
+  "actualError": "Process.Start executable path concatenated two Get-Command node application results",
+  "nodeChildStarted": false,
+  "applicationBuildStarted": false,
+  "sourceChanged": false,
+  "emptyAttemptDirectoriesPreserved": true,
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "toolEvidenceChunk": "caafbc"
+}

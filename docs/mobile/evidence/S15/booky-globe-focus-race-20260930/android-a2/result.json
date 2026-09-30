@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-globe-focus-runtime-dev-apk",
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a2/source-manifest-776f4031fb175139.json",
+    "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4",
+    "fileCount": 1665
+  },
+  "buildId": "c416812961560d90801ad7f5bfe4892a67b682dfc2498abdee5ad47fb68f25df",
+  "sourceInputsSha256": "9c3365b2e130934f3acb7fa8515d60abdcc74226a46af3d5b51cacaece65ee4b",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/android/android-c4168129/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "937ef02228c4a6b829ea7d66e6d1396f0ace9ab21db0118b7f932b54a84ed1f8"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/android/android-c4168129/runtime",
+    "sha256": "24401569f80d0083fee4a37053ed824e3a3bddad3ff5a7bd0502f975b0e9d5b1",
+    "files": 1408,
+    "bytes": 74956677
+  },
+  "checks": {
+    "strictRuntimeAudit": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/android-a2/native-artifact-audit.json",
+    "binaryAudit": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/android-a2/android-dev-apk-verification.json",
+    "build": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/android-a2/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/android/android-00a6bcaa/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

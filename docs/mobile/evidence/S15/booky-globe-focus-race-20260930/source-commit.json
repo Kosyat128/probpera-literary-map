@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "parent": "fbb84ded86da90976f552f50c29aea59d11dcb08",
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "changedPaths": [
+    "src/components/AtlasExperienceChrome.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "sourcePins": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/root-runtime-fix-a3/source-pins.json",
+    "sha256": "5c4abd08d7942e0df1ef818f1a4ecae7922e3f7fe6f4cba458881a8250a25be5"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a2/source-manifest-776f4031fb175139.json",
+    "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4",
+    "fileCount": 1665
+  },
+  "protectedInputCount": 1661,
+  "inputs": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a2/static-a1/result.json",
+      "sha256": "cb30b3df40a7097b57a828d3bf17c98a0fbaaad153744e93e5ef71a78c9e8c9d",
+      "type": "static"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a2/unit-a1/result.json",
+      "sha256": "541f627f692b58e7e1f1045e48bf99ea9ae8417a9eef8cb079de587326c38b57",
+      "type": "unit"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/bound-a4/browser-a4/result.json",
+      "sha256": "c7c72ee39a95a3a81295e20e4b351df95c0877e1ce5eb1891efdbb5e9c40f070",
+      "type": "browser"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/actual-six-view-and-causal-a4.json",
+      "sha256": "39beb89f0e3c793ea12e203cd52e8a9d417580417d339feadd271bb41ea5e80d",
+      "type": "root-review"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "emptyStaging": true,
+  "clean": true,
+  "buildValidationPending": true,
+  "stageAccepted": false,
+  "deviceTested": false,
+  "releaseReady": false
+}

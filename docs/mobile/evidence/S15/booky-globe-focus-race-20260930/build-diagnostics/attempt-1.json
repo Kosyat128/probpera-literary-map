@@ -1,0 +1,14 @@
+{
+  "pass": true,
+  "scope": "Actual built artifact retained as diagnostic only; no original smoke validation",
+  "failedAttempt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a1/pwa-a1/result.json",
+    "sha256": "7545099329a6177ed67082219fc62780645a00eb4dec49989390a5c03d3983fa"
+  },
+  "buildId": "e3af7bad5a9fb2c07b8d3e946c8f84c9e2f5b1d41c0c5ab7f921046495d65fd3",
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-build-evidence/attempt-a2/pwa/diagnostic-prior-e3af7bad",
+  "artifactSha256": "472f2092d22d00d31375b99210f02d78f0804ef8de7b99fe9b342d8811e24cfa",
+  "qaSigningAuthorityEnded": true,
+  "rebuildNecessaryForOneLicensedDownloadsSmoke": true
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T13:02:12.828Z",
+  "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+  "buildId": "e3af7bad5a9fb2c07b8d3e946c8f84c9e2f5b1d41c0c5ab7f921046495d65fd3",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/runtime-build-review-a2/source-manifest-776f4031fb175139.json",
+    "sha256": "776f4031fb175139cc37cd796fdf929f63879e3752e957ef212e32a1859ef7f4",
+    "fileCount": 1665
+  },
+  "sourceInputsSha256": "b38511869132fac01e32bca1b523de5f846ee815a1261a26ed489f3a896a1c48",
+  "artifact": null,
+  "browser": null,
+  "pass": false,
+  "failure": {
+    "name": "SyntaxError",
+    "message": "Unexpected end of JSON input"
+  },
+  "localQaAuthority": true,
+  "requestedBrowserChannel": "msedge",
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

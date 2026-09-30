@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a2",
+  "pass": false,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/source-manifests/b4fae32e756bdb3e.json",
+    "sha256": "b4fae32e756bdb3e8d1e16008cadd6f2b19a4593181fc72a7032e0396664948b",
+    "fileCount": 1665
+  },
+  "checkInputs": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bind-runtime-fix.mjs",
+      "sha256": "f2e00b4e0c8f4c9eb23e89fdf5c5731aa1c2c6d2f13cdc11b90b5a5d06875ad2"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/check-reviewed.mjs",
+      "sha256": "5b92228b18932ffafa726d4f52fd7016d29c23c3ca77c80a596a5a74b92f0dbb"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/playwright.config.mjs",
+      "sha256": "7c1ae3438500e6d818affa2bfa09f3f298b87ca814bb29c449d680264fbe2098"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/actual-accepted-identities-a1.json",
+      "sha256": "8b89b3a675d2054177c8c94abf88e73bbdc682ee4350b1526c3e7b232fcb6090"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/proposal.json",
+      "sha256": "c5c45db3387f8878cc356163062ff78b20fb60696a95eb4fd708f11f974de404"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/apply.mjs",
+      "sha256": "beff42982e52b6949d22fc0d6b3aa683ae32101543ee9d07e3138bc680a7c6df"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/assess.mjs",
+      "sha256": "4a48a8b3379dd000c708ad3ec7498dff1eb269f2106a15235ec44d881612841a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bind.mjs",
+      "sha256": "7a302b4f63421f52dc628cbee5b824d871c4f64657977e366eed298876c81c24"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/check-reviewed.mjs",
+      "sha256": "58a6967e6f9e850737f14154fe78d5f8cbbb98b76976f6da64fc529ce7342e6f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/fixture-source-binding.json",
+      "sha256": "310054191f77f56765b0f2a31fe13e32c06fa37e06cd77f9173fba2fd3d7898d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/identity-template.json",
+      "sha256": "23b5cb02fc05e7af3c8ed947314cc1b3e5fbe157f63d77eb724efbca6023f45e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/list-captures.mjs",
+      "sha256": "12c842a9b2dd5e03c0e6b7855daa6ee4bf1fb58f13d325942b08ac461c139a2c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/playwright.config.mjs",
+      "sha256": "7c1ae3438500e6d818affa2bfa09f3f298b87ca814bb29c449d680264fbe2098"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/record-visual.mjs",
+      "sha256": "c249397c7ef11db25b1f31d5122c2597807f89f6c5346e88c3f9b631dc67f000"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/scope-template.json",
+      "sha256": "6619f9fc669185b4bf142736661da85cada2c67f2adcdc2b8d59b6abc5fea2c6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/v3/app-anchor.before.txt",
+      "sha256": "3b4a3dacb3cf9591802a32ee200daba0b1f9be400be70274e788ecf8fb9ed185"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/v3/app-anchor.transformed.txt",
+      "sha256": "f3b3a7115694e12187d2e7a901e27fdf6a96de3f39dec688047c3938dc0bba4c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/v3/apply.ps1",
+      "sha256": "50caacde074269e42b5bcdae73aa8b922a3f5f861379abe54e1763b09b48c5ed"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/v3/before.raw.mjs",
+      "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/v3/inverse.raw.mjs",
+      "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/v3/manifest.json",
+      "sha256": "cffcf7b95a39d4d8f3b2043630d77330fd0ad2b1b0a85a260fdbc4b0d8b0a5b7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/v3/proposal.diff",
+      "sha256": "df66c45dea234e4bd8c0b4845ebbd248c84af157d3f23bc2c078e27797e7ec31"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/v3/proposed.raw.mjs",
+      "sha256": "0ec93c3c6fa1386254a2787362b69f8e319e77dc5a5e9d7bd33a1aea8091ba22"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-globe-guidance-20260927/scope.json",
+      "sha256": "8eb23edacfa73a0bd9c297ecf275d420069039de8cedbeb8480661d372f3f525"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+      "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/source-manifests/54fcf6e323f98564.json",
+      "sha256": "54fcf6e323f98564f16c03f1880ce7769ef5d7d80d3bb93d7e29c19eaf933827"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+      "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/source-manifests/23e33fb6a438e46f.json",
+      "sha256": "3842ab835529ccc493d6864bf0151105906d8aa2e251639623c7fed6b8979949"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json",
+      "sha256": "cc84efa6e7dc8c97ba0fae7423e3f34b56ee02f5bd162c1f3adedde2fce1585a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/source-manifests/bb1c90e3d6f492ee.json",
+      "sha256": "bb1c90e3d6f492ee0150d9bdaac0069f6ecd3dfbc1416f77c799ca22ca34eacd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/browser-a3/result.json",
+      "sha256": "74edf63282bc487319b5a23251c7041959cdd3ea7aaf0fc411c699085299e6a4"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "204ad9def824e1128010c002c72da3471e11730521f6420b646aa1297e360b31"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "0066388afbd46624e110d31a849dd5fbc98fb2bac5dae531e4f66e089a5a71f5"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "511689a70aee1bb258387151f3d728fa8e0d1d4a3b2557e3677b0974fba8cc75"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "aa62c34e19097cd0325dac636c1d9707c9b18a44c9591b4a6b650b90cc864972"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "01a72ba616abad1dc1e9f8fe6888f8db14a6b7b8ec13fdd79b29c8392aac2442"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "39a16914275f619f315be1c503d233786737acdb2e72e68bc916eba4f70ab12a"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "1cd41ab2f877b36e0c42f6030af86da947e938b74671da33770c0a4a828ed1e1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/source-pins.template.json",
+      "sha256": "f15d6604a3ee0f203c0eae2a8957157faac83a5e8a4909c60e9a2c5c2d18412d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/README.txt",
+      "sha256": "2c350fe161981f3f7a14542b8e4684985fe2e56d65a2ebd71e8045f08cf85d5f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/proposal.json",
+      "sha256": "2c26efe14202e945866084465458674dc2d4cbcb65fda1a85a0e0ba0c3717d9f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/root-runtime-fix-a1/source-pins.json",
+      "sha256": "4f525f8640ef2f8b36e2a0b6adf90f192a8f7b508228a2a0e4cc37688716f67e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/entry.json",
+      "sha256": "502916cee5190a67a5bfecee4787ed3da2bc86656a86be05ebdfd157acb3ea57"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/scope.json",
+      "sha256": "fc70af76a6cd1d1762f5cf2e0e184c91c3d292503c3acbfb7fadd15bbb03122e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/identity.json",
+      "sha256": "8b89b3a675d2054177c8c94abf88e73bbdc682ee4350b1526c3e7b232fcb6090"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/source-apply-receipt.json",
+      "sha256": "be6c298f525e85bd887044f8d12f31ba6f187122db729790a163551a5a7cfa26"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/browser-a1/result.json",
+      "sha256": "1cc5c32496dc9a59b35e8311b7369f9d8e464f8ed8547836aff0b427820f670d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/browser-a1/execution.json",
+      "sha256": "4f1985fe816170f1c0529bcd5dde1893199e2ab35bc251165b2045dc7ca383b3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/browser-a1/playwright.json",
+      "sha256": "f6fd55823ad2198ce6b05ea5e54dd5f870528ce28f407def578ced9b2b9a3e6b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/source-manifests/6594c23bc248e5ab.json",
+      "sha256": "6594c23bc248e5ab8144e3ef9775cc6f323d3d8d0a0cf8636ed2905b8a4b1b83"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/entry.json",
+      "sha256": "85cfe6404e897cce5873063769516956743b81333e1861b30b088f44fd650d62"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/scope.json",
+      "sha256": "f79de2d62de95ad387c837221a089b9ccd3a937b7e2279c9ad7e82ee3828d71d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/identity.json",
+      "sha256": "8b89b3a675d2054177c8c94abf88e73bbdc682ee4350b1526c3e7b232fcb6090"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/source-freeze-receipt.json",
+      "sha256": "da822502f56f24f22f69823520eac2029ae152d706108a33213a221ebc4f838e"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 0,
+    "failed": 2,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   failed: 2,\n-   failed: 0,\n    flaky: 0,\n+   passed: 0,\n-   passed: 2,\n    skipped: 0\n  }\n",
+  "acceptedDesign": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+      "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+    },
+    "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+    "checkpoint": "a139bbbe3d3dd27255773147e79312dda5faf4e4"
+  },
+  "d212": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+      "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+    },
+    "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+    "checkpoint": "b04fbd2574fb8da8ac830b63127df924dd684fe1"
+  },
+  "acceptedRecovery": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json",
+      "sha256": "cc84efa6e7dc8c97ba0fae7423e3f34b56ee02f5bd162c1f3adedde2fce1585a"
+    },
+    "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+    "checkpoint": "fbb84ded86da90976f552f50c29aea59d11dcb08"
+  },
+  "priorFailedAttempt": {
+    "status": "AUTHENTICATED_FAILED_A1_DIAGNOSTIC_ONLY",
+    "diagnosticOnly": true,
+    "pass": false,
+    "tests": {
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "entry": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/entry.json",
+      "sha256": "502916cee5190a67a5bfecee4787ed3da2bc86656a86be05ebdfd157acb3ea57"
+    },
+    "scope": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/scope.json",
+      "sha256": "fc70af76a6cd1d1762f5cf2e0e184c91c3d292503c3acbfb7fadd15bbb03122e"
+    },
+    "identity": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/identity.json",
+      "sha256": "8b89b3a675d2054177c8c94abf88e73bbdc682ee4350b1526c3e7b232fcb6090"
+    },
+    "sourceApplyReceipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/source-apply-receipt.json",
+      "sha256": "be6c298f525e85bd887044f8d12f31ba6f187122db729790a163551a5a7cfa26"
+    },
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/browser-a1/result.json",
+      "sha256": "1cc5c32496dc9a59b35e8311b7369f9d8e464f8ed8547836aff0b427820f670d"
+    },
+    "execution": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/browser-a1/execution.json",
+      "sha256": "4f1985fe816170f1c0529bcd5dde1893199e2ab35bc251165b2045dc7ca383b3"
+    },
+    "rawReport": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/browser-a1/playwright.json",
+      "sha256": "f6fd55823ad2198ce6b05ea5e54dd5f870528ce28f407def578ced9b2b9a3e6b"
+    },
+    "sourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-v4/bound-a1/source-manifests/6594c23bc248e5ab.json",
+      "sha256": "6594c23bc248e5ab8144e3ef9775cc6f323d3d8d0a0cf8636ed2905b8a4b1b83",
+      "fileCount": 1665
+    }
+  },
+  "currentBuildValidationPending": true,
+  "historicalBuildsAttributedToCurrentRuntime": false,
+  "sourceFreezeReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a2/bound-a2/source-freeze-receipt.json",
+    "sha256": "da822502f56f24f22f69823520eac2029ae152d706108a33213a221ebc4f838e"
+  },
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 62736
+  },
+  "runtimeUnchanged": false,
+  "fixtureOnly": false,
+  "productionImplementationChanged": true,
+  "unitRerun": false,
+  "staticRerun": false,
+  "pwaRebuilt": false,
+  "androidRebuilt": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

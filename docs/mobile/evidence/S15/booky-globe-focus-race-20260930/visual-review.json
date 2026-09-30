@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "mode": "ROOT_DIRECT_SIX_IMAGE_AND_CAUSAL_REVIEW",
+  "cases": [
+    {
+      "title": "Booky mobile globe guidance ru",
+      "evidence": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a4\\browser-a4\\booky-globe-guidance-Booky-mobile-globe-guidance-ru\\attachments\\booky-globe-guidance-source-evidence-a8568e52e14fee055fe1f85d43a667130b2a3925.json",
+        "sha256": "5d3f0db9209142b873a4d8dbeaa8c16256a442100b6e489151724e517bf22d5a"
+      },
+      "checks": [
+        {
+          "name": "localized mobile instructions are readable without implicit globe movement",
+          "pass": true
+        },
+        {
+          "name": "trusted Show controls closes help and focuses a real enabled canonical control",
+          "pass": true
+        },
+        {
+          "name": "finite Booky cue respects normal Stop or reduced motion",
+          "pass": true
+        },
+        {
+          "name": "only the later real user zoom changes the canonical camera pose",
+          "pass": true
+        },
+        {
+          "name": "actual WebGL loss shows current unavailable help without contradictory context tips",
+          "pass": true
+        },
+        {
+          "name": "Search remains usable and Show controls is disabled while the globe is unavailable",
+          "pass": true
+        },
+        {
+          "name": "real context restoration clears unavailable guidance and retains canonical owners",
+          "pass": true
+        },
+        {
+          "name": "Booky route progress preferences and canonical selection remain exact",
+          "pass": true
+        },
+        {
+          "name": "a controlled reserved top cutoff stops a fresh target approach without replay",
+          "pass": true
+        }
+      ],
+      "searchOwner": {
+        "tag": "INPUT",
+        "id": "country-search",
+        "className": "",
+        "atlasSearchInput": true,
+        "bookyToggle": false
+      },
+      "searchClosed": "false",
+      "race": {
+        "held": 33202.10000000009,
+        "invoked": 33771.10000000009,
+        "release": 33768.80000000028,
+        "completed": 33771.10000000009,
+        "events": [
+          {
+            "type": "pointerdown",
+            "at": 33104.10000000009,
+            "trusted": true,
+            "key": null,
+            "pointerType": "touch",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": false,
+              "bookyToggle": false
+            },
+            "active": {
+              "tag": "SUMMARY",
+              "id": "",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": false,
+              "bookyToggle": false
+            }
+          },
+          {
+            "type": "pointerdown",
+            "at": 33515.200000000186,
+            "trusted": true,
+            "key": null,
+            "pointerType": "touch",
+            "target": {
+              "tag": "svg",
+              "id": "",
+              "atlasOwnerTag": "BUTTON",
+              "atlasAction": "toggle-search",
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": false,
+              "bookyToggle": false
+            },
+            "active": {
+              "tag": "BUTTON",
+              "id": "",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": false,
+              "bookyToggle": true
+            }
+          }
+        ],
+        "afterFocused": {
+          "tag": "INPUT",
+          "id": "country-search",
+          "className": "",
+          "atlasSearchInput": true,
+          "bookyToggle": false
+        },
+        "afterCue": null,
+        "releaseSamples": 256,
+        "oldCueSamples": 0,
+        "nativeRafUnchanged": true
+      },
+      "preferenceWrites": 0,
+      "images": 3
+    },
+    {
+      "title": "Booky mobile globe guidance en",
+      "evidence": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-focus-runtime-fix-evidence\\attempt-a4\\browser-a4\\booky-globe-guidance-Booky-mobile-globe-guidance-en\\attachments\\booky-globe-guidance-source-evidence-0460a7c84d011380e7c1c0032b8e4ff22438ac3c.json",
+        "sha256": "8b0010e08464c6c2642ea9f58631efd4b43c97d6db4a74d8ad39a6e6410ef5b8"
+      },
+      "checks": [
+        {
+          "name": "localized mobile instructions are readable without implicit globe movement",
+          "pass": true
+        },
+        {
+          "name": "trusted Show controls closes help and focuses a real enabled canonical control",
+          "pass": true
+        },
+        {
+          "name": "finite Booky cue respects normal Stop or reduced motion",
+          "pass": true
+        },
+        {
+          "name": "only the later real user zoom changes the canonical camera pose",
+          "pass": true
+        },
+        {
+          "name": "actual WebGL loss shows current unavailable help without contradictory context tips",
+          "pass": true
+        },
+        {
+          "name": "Search remains usable and Show controls is disabled while the globe is unavailable",
+          "pass": true
+        },
+        {
+          "name": "real context restoration clears unavailable guidance and retains canonical owners",
+          "pass": true
+        },
+        {
+          "name": "Booky route progress preferences and canonical selection remain exact",
+          "pass": true
+        }
+      ],
+      "searchOwner": {
+        "tag": "INPUT",
+        "id": "country-search",
+        "className": "",
+        "atlasSearchInput": true,
+        "bookyToggle": false
+      },
+      "searchClosed": "false",
+      "race": {
+        "held": 23269.600000000093,
+        "invoked": 23837.399999999907,
+        "release": 23833.899999999907,
+        "completed": 23837.399999999907,
+        "events": [
+          {
+            "type": "input",
+            "at": 23681.5,
+            "trusted": true,
+            "key": null,
+            "pointerType": null,
+            "target": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            }
+          },
+          {
+            "type": "keydown",
+            "at": 23722.899999999907,
+            "trusted": true,
+            "key": "r",
+            "pointerType": null,
+            "target": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            }
+          },
+          {
+            "type": "input",
+            "at": 23723.799999999814,
+            "trusted": true,
+            "key": null,
+            "pointerType": null,
+            "target": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            }
+          },
+          {
+            "type": "keydown",
+            "at": 23744.200000000186,
+            "trusted": true,
+            "key": "n",
+            "pointerType": null,
+            "target": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            }
+          },
+          {
+            "type": "input",
+            "at": 23744.899999999907,
+            "trusted": true,
+            "key": null,
+            "pointerType": null,
+            "target": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            }
+          },
+          {
+            "type": "keydown",
+            "at": 23764.899999999907,
+            "trusted": true,
+            "key": "e",
+            "pointerType": null,
+            "target": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            }
+          },
+          {
+            "type": "input",
+            "at": 23765.700000000186,
+            "trusted": true,
+            "key": null,
+            "pointerType": null,
+            "target": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "country-search",
+              "atlasOwnerTag": null,
+              "atlasAction": null,
+              "globeOwnerTag": null,
+              "globeControl": null,
+              "searchInput": true,
+              "bookyToggle": false
+            }
+          }
+        ],
+        "afterFocused": {
+          "tag": "INPUT",
+          "id": "country-search",
+          "className": "",
+          "atlasSearchInput": true,
+          "bookyToggle": false
+        },
+        "afterCue": null,
+        "releaseSamples": 256,
+        "oldCueSamples": 0,
+        "nativeRafUnchanged": true
+      },
+      "preferenceWrites": 0,
+      "images": 3
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a4/browser-a4/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+      "sha256": "6bff05b11228c8df8f556fb1d9b93568f0545e6fb3ad0f06e43d109abc0c3bb5",
+      "directRootViewed": true,
+      "visualResult": "PASS within recorded mobile viewport and captured scroll state"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a4/browser-a4/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-controls.png",
+      "sha256": "7f827e8c4f91594710985e4f86eead60b734766872ed08f25fcbddd26054238e",
+      "directRootViewed": true,
+      "visualResult": "PASS within recorded mobile viewport and captured scroll state"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a4/browser-a4/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-unavailable.png",
+      "sha256": "d14a0728e748890e6ad1ff0e9fda586cd918c424d7b3a28375f22fb927ac632a",
+      "directRootViewed": true,
+      "visualResult": "PASS within recorded mobile viewport and captured scroll state"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a4/browser-a4/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-help.png",
+      "sha256": "1a0a92aa3be3fa55f2bd4a499d204de9026548f984eaa54877cb709f44644ede",
+      "directRootViewed": true,
+      "visualResult": "PASS within recorded mobile viewport and captured scroll state"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a4/browser-a4/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-controls.png",
+      "sha256": "ce844c505a09985e95de1095ef533caa9e4f3b2a7bbf32510439f4ce283cd3be",
+      "directRootViewed": true,
+      "visualResult": "PASS within recorded mobile viewport and captured scroll state"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-runtime-fix-evidence/attempt-a4/browser-a4/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-unavailable.png",
+      "sha256": "b70a01aa294cdd617942c270f3f5f4f5809ace18157debd4fbfba9c248f29d08",
+      "directRootViewed": true,
+      "visualResult": "PASS within recorded mobile viewport and captured scroll state"
+    }
+  ],
+  "imageCount": 6,
+  "directRootViews": 6,
+  "pass": true,
+  "scope": "Six original locale captures precede callback-race extension; race and input claims reviewed from passing assertions and authenticated trace, not images.",
+  "stageAccepted": false,
+  "deviceTested": false,
+  "releaseReady": false
+}
