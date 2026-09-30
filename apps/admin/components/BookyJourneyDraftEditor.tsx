@@ -11,6 +11,7 @@ type NodeKind = "country" | "writer" | "work" | "checkpoint";
 type CopyKind = NodeKind | "activity" | "sourced-fact";
 type OptionalNodeKind = "sourced-fact" | "activity";
 type PreviewCopyView = "body" | "caption" | "reduced";
+type PreviewWidth = "available" | "320" | "768";
 type PreviewProfile = Readonly<{ enabled: boolean; age: string; readingLevel: string }>;
 type PreviewAnswer = Readonly<{ choiceId: string | null; verdict: boolean | null; pending: boolean; error: string }>;
 const emptyAnswer = (choiceId: string | null = null): PreviewAnswer => ({ choiceId, verdict: null, pending: false, error: "" });
@@ -53,6 +54,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [notice, setNotice] = useState("");
   const [preview, setPreview] = useState<{ draft: BookyJourneyDraft; locale: Locale; step: number } | null>(null);
   const [previewCopyView, setPreviewCopyView] = useState<PreviewCopyView>("body");
+  const [previewWidth, setPreviewWidth] = useState<PreviewWidth>("available");
   const [previewProfile, setPreviewProfile] = useState<PreviewProfile>({ enabled: false, age: "", readingLevel: "" });
   const [answer, setAnswer] = useState<PreviewAnswer>(emptyAnswer);
   const previewOwner = useRef(preview), answerOwner = useRef(answer);
@@ -165,6 +167,10 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     if (view === previewCopyView) return;
     beginOperation();
     setPreviewCopyView(view);
+  }
+  function changePreviewWidth(width: PreviewWidth) {
+    if (width === previewWidth) return;
+    setPreviewWidth(width);
   }
   function updatePreviewProfile(change: Partial<PreviewProfile>) {
     const next = { ...previewProfile, ...change };
@@ -578,6 +584,22 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       <p>Просмотрите тексты шагов перед экспортом. Это локальный просмотр; он не запускает маршрут в приложении.</p>
       <button className="button-secondary" type="button" disabled={!available} onClick={showPreview} aria-busy={validating} style={{ minHeight: 44, minWidth: 44 }}>Предпросмотр маршрута</button>
       {preview && previewDefinition && previewNode && previewDialogue && <div data-booky-journey-preview className="site-copy-grid" style={{ marginTop: 18, minWidth: 0 }}>
+        <details data-booky-preview-width lang={preview.locale} style={{ minWidth: 0 }}>
+          <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>{preview.locale === "ru" ? "Ширина предпросмотра" : "Preview width"}</summary>
+          <label className="field" style={{ maxWidth: 320, minWidth: 0 }}><span>{preview.locale === "ru" ? "Ширина области предпросмотра" : "Preview frame width"}</span>
+            <select lang={preview.locale} data-booky-preview-width-choice value={previewWidth} style={{ minHeight: 44 }}
+              onChange={(event) => changePreviewWidth(event.target.value as PreviewWidth)}>
+              <option value="available">{preview.locale === "ru" ? "По доступной ширине" : "Available width"}</option>
+              <option value="320">{preview.locale === "ru" ? "320 пикс." : "320 px"}</option>
+              <option value="768">{preview.locale === "ru" ? "768 пикс." : "768 px"}</option>
+            </select>
+          </label>
+          <p>{preview.locale === "ru" ? "Область помещается в доступное место." : "The frame fits the available space."}</p>
+        </details>
+        <div data-booky-preview-frame data-preview-width={previewWidth} className="site-copy-grid" style={{
+          width: "100%", maxWidth: previewWidth === "available" ? "100%" : Number(previewWidth), minWidth: 0,
+          boxSizing: "border-box", padding: 12, border: "1px solid rgba(87, 54, 123, 0.2)", borderRadius: 12,
+        }}>
         <div role="group" aria-label="Язык предпросмотра" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           {locales.map((locale) => <button key={locale} className={preview.locale === locale ? "button" : "button-secondary"} type="button" lang={locale}
             aria-pressed={preview.locale === locale} style={{ minHeight: 44, minWidth: 44 }}
@@ -595,7 +617,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             <input type="checkbox" checked={previewProfile.enabled} onChange={(event) => updatePreviewProfile({ enabled: event.target.checked })} />
             {preview.locale === "ru" ? "Сравнить взрослый профиль" : "Compare an adult profile"}
           </label>
-          {previewProfile.enabled && <div className="site-copy-locales">
+          {previewProfile.enabled && <div className="site-copy-locales" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))" }}>
             <label className="field"><span>{preview.locale === "ru" ? "Возраст для предпросмотра" : "Preview age"}</span>
               <input type="number" min={18} max={120} step={1} value={previewProfile.age} style={{ minHeight: 44 }}
                 onChange={(event) => updatePreviewProfile({ age: event.target.value })} /></label>
@@ -702,6 +724,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <button className="button" type="button" disabled={preview.step === previewDefinition.nodes.length - 1} style={{ minHeight: 44, minWidth: 44 }}
             onClick={() => changePreviewStep(1)}>{preview.locale === "ru" ? "Следующий шаг" : "Next step"}</button>
         </nav>
+        </div>
       </div>}
     </section>
     <section className="panel" aria-label="Экспорт черновика">

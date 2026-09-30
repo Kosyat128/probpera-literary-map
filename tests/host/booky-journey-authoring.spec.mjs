@@ -114,6 +114,18 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   expect(downloads).toEqual([]);
   const previewButton = page.getByRole('button', { name: 'Предпросмотр маршрута', exact: true });
   const preview = page.locator('[data-booky-journey-preview]');
+  const widthPanel = preview.locator('[data-booky-preview-width]');
+  const previewFrame = preview.locator('[data-booky-preview-frame]');
+  const previewWidthMeasurements = [];
+  async function measurePreviewWidth() {
+    const measured = await previewFrame.evaluate(node => ({ mode: node.dataset.previewWidth,
+      width: node.getBoundingClientRect().width, available: node.parentElement.getBoundingClientRect().width,
+      scrollWidth: node.scrollWidth, clientWidth: node.clientWidth }));
+    previewWidthMeasurements.push(measured);
+    expect(measured.width).toBeLessThanOrEqual(measured.available + 1);
+    expect(measured.scrollWidth).toBeLessThanOrEqual(measured.clientWidth + 1);
+    return measured;
+  }
   await previewButton.tap();
   await expect(preview).toHaveCount(0);
   for (const [label, value] of [
@@ -151,6 +163,9 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await previewButton.tap();
   const previous=preview.getByRole('button',{name: /^(?:Предыдущий шаг|Previous step)$/});
   const next=preview.getByRole('button',{name: /^(?:Следующий шаг|Next step)$/});
+  await expect(widthPanel).not.toHaveAttribute('open', '');
+  await expect(previewFrame).toHaveAttribute('data-preview-width', 'available');
+  await measurePreviewWidth();
   await expect(previous).toBeDisabled();
   const overview=preview.locator('[data-booky-journey-step-overview]');
   const overviewSummary=overview.locator('summary');
@@ -207,20 +222,49 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await profileLevelRu.selectOption('plain'); await expect(profileReport).toHaveAttribute('data-profile-status','matches');
   for(const control of [profilePanel.locator('summary'),profileEnabledRu.locator('..'),profileAgeRu,profileLevelRu])
     expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
-  await profilePanel.locator('summary').scrollIntoViewIfNeeded();
-  await profilePanel.locator('summary').evaluate(node=>window.scrollBy(0,node.getBoundingClientRect().top-12));
-  for(const bounds of [await profilePanel.boundingBox(),await profileReport.boundingBox()]) {
-    expect(bounds).toBeTruthy(); expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.y).toBeGreaterThanOrEqual(0);
-    expect(bounds.x+bounds.width).toBeLessThanOrEqual(321); expect(bounds.y+bounds.height).toBeLessThanOrEqual(844);
+  await profilePanel.locator('summary').tap(); await overviewSummary.tap();
+  const widthSummaryRu = widthPanel.locator('summary');
+  await expect(widthSummaryRu).toHaveText('Ширина предпросмотра');
+  await widthSummaryRu.focus(); await widthSummaryRu.press('Enter'); await expect(widthSummaryRu).toBeFocused();
+  const widthChoiceRu = widthPanel.getByRole('combobox', { name: 'Ширина области предпросмотра', exact: true });
+  await expect(widthChoiceRu).toHaveValue('available');
+  await expect(widthChoiceRu.locator('option')).toHaveText(['По доступной ширине', '320 пикс.', '768 пикс.']);
+  await widthChoiceRu.focus(); await widthChoiceRu.selectOption('320'); await expect(widthChoiceRu).toBeFocused();
+  await expect(previewFrame).toHaveAttribute('data-preview-width', '320'); await measurePreviewWidth();
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
+  await expect(profilePanel.locator('input[type="number"]')).toHaveValue('30'); await expect(profilePanel.locator('select')).toHaveValue('plain');
+  await expect(previewCopyView).toHaveValue('body'); await expect(previewCopy).toHaveText('Перейдите к выбранной книге в коллекции.');
+  await expect(overview.locator('[data-preview-step-choice="work"]')).toHaveAttribute('aria-current', 'step');
+  for (const control of [widthSummaryRu, widthChoiceRu]) {
+    const bounds = await control.boundingBox(); expect(bounds.height).toBeGreaterThanOrEqual(44); expect(bounds.width).toBeGreaterThanOrEqual(44);
   }
+  await widthPanel.scrollIntoViewIfNeeded();
+  await widthPanel.evaluate(node => window.scrollBy(0, node.getBoundingClientRect().top - 12));
+  for (const control of [widthSummaryRu, widthChoiceRu]) {
+    const bounds = await control.boundingBox();
+    expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.x + bounds.width).toBeLessThanOrEqual(321);
+    expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844);
+  }
+  const narrowFrameBounds = await previewFrame.boundingBox();
+  expect(narrowFrameBounds.y).toBeGreaterThanOrEqual(0); expect(narrowFrameBounds.y).toBeLessThan(844);
+  expect(narrowFrameBounds.x + narrowFrameBounds.width).toBeLessThanOrEqual(321);
   expect(await overflow()).toBe(false);
-  await capture('booky-journey-preview-ru-320.png','Actual local RU320 work-step preview with expanded adult profile age30/plain and matching draft-condition feedback; no runtime admission.');
+  await capture('booky-journey-preview-ru-320.png','Actual local RU320 preview with open native320px width selector and visibly bounded current work frame; matching adult scenario remains unchanged, no platform certification or runtime admission.');
+  await widthSummaryRu.press('Enter'); await profilePanel.locator('summary').tap(); await overviewSummary.tap();
   await profileEnabledRu.uncheck(); await expect(profileReport).toHaveCount(0); await profilePanel.locator('summary').tap();
   await next.tap();
   await expect(next).toBeDisabled();
   await expect(preview.locator('[data-preview-step="checkpoint"]')).toContainText('Отметьте завершение этого маршрута.');
   await previous.tap();
   await preview.getByRole('button',{name:'English',exact:true}).tap();
+  await widthPanel.locator('summary').tap();
+  await expect(widthPanel.locator('summary')).toHaveText('Preview width');
+  const widthChoiceEn = widthPanel.getByRole('combobox', { name: 'Preview frame width', exact: true });
+  await expect(widthChoiceEn).toHaveValue('320');
+  await expect(widthChoiceEn.locator('option')).toHaveText(['Available width', '320 px', '768 px']);
+  await widthChoiceEn.selectOption('768'); await measurePreviewWidth();
+  await expect(preview.locator('[data-preview-step="work"]')).toHaveAttribute('lang', 'en');
+  await widthChoiceEn.selectOption('320'); await widthPanel.locator('summary').tap();
   await expect(overview).toHaveAttribute('lang','en');
   await expect(overviewSummary).toHaveText('Journey steps (4)');
   await expect(overview.getByRole('button')).toHaveText(['1. Country','2. Writer','3. Work','4. Finish']);
@@ -280,6 +324,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   expect(Object.hasOwn(draft.authoringSource.input.copy.ru.nodes.work,'caption')).toBe(false);
   expect(Object.hasOwn(draft.authoringSource.input.copy.ru.nodes.work,'reduced')).toBe(false);
   expect(Object.hasOwn(draft.authoringSource.input,'previewProfile')).toBe(false);
+  expect(Object.hasOwn(draft.authoringSource.input,'previewWidth')).toBe(false);
   expect(await page.evaluate(() => window.__activityValidationCalls)).toEqual([]);
   expect(draft.definitions).toHaveLength(2); expect(draft.dialogues).toHaveLength(8);
   expect(draft.definitions.map(d => d.locale).sort()).toEqual(['en', 'ru']);
@@ -338,9 +383,34 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await expect(page.getByRole('alert')).toBeVisible();
   expect(downloads).toHaveLength(1);
   await page.setViewportSize({ width: 1280, height: 960 });
-  await page.evaluate(() => window.scrollTo(0, 0));
+  await upload('restore-before-width-preview.json'); await expect(routeTitle).toHaveValue('Тестовый маршрут обновлён');
+  await previewButton.click(); await overviewSummary.click(); await overviewWork.click(); await overviewSummary.click();
+  await widthPanel.locator('summary').click();
+  const desktopWidthChoice = widthPanel.getByRole('combobox', { name: 'Ширина области предпросмотра', exact: true });
+  const formWidthBefore = (await page.locator('form').boundingBox()).width;
+  await desktopWidthChoice.selectOption('available');
+  const availableWidth = await measurePreviewWidth(); expect(availableWidth.width).toBeCloseTo(availableWidth.available, 0);
+  await desktopWidthChoice.focus(); await desktopWidthChoice.press('ArrowDown');
+  await expect(desktopWidthChoice).toHaveValue('320'); await expect(desktopWidthChoice).toBeFocused();
+  expect((await measurePreviewWidth()).width).toBeCloseTo(320, 0);
+  await previewCopyView.selectOption('caption'); await expect(previewCopy).toHaveText('Откройте книгу');
+  await desktopWidthChoice.selectOption('768'); expect((await measurePreviewWidth()).width).toBeCloseTo(768, 0);
+  await expect(previewCopyView).toHaveValue('caption'); await expect(previewCopy).toHaveText('Откройте книгу');
+  await previewCopyView.selectOption('reduced'); await expect(previewCopy).toHaveText('Откройте книгу');
+  await previewCopyView.selectOption('body');
+  await profilePanel.locator('summary').click(); await profileEnabledRu.check();
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
+  await expect(profileAgeRu).toHaveValue('30'); await expect(profileLevelRu).toHaveValue('plain');
+  await desktopWidthChoice.selectOption('768');
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
+  expect((await page.locator('form').boundingBox()).width).toBe(formWidthBefore);
+  await widthPanel.scrollIntoViewIfNeeded(); await widthPanel.evaluate(node => window.scrollBy(0, node.getBoundingClientRect().top - 12));
+  for (const control of [widthPanel.locator('summary'), desktopWidthChoice]) {
+    const bounds = await control.boundingBox(); expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(960);
+  }
+  const desktopFrameBounds = await previewFrame.boundingBox(); expect(desktopFrameBounds.y).toBeGreaterThanOrEqual(0); expect(desktopFrameBounds.y).toBeLessThan(960);
   expect(await overflow()).toBe(false);
-  await capture('booky-journey-editor-ru-1280.png', 'Actual editor component, same authored state, desktop upper form.');
+  await capture('booky-journey-editor-ru-1280.png', 'Actual local RU preview at1280 browser width with open native768px selector and measured768px current-work frame; age30/plain profile visible and matching, no device/platform acceptance.');
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
   const profileStorageWrites=await page.evaluate(()=>window.__previewProfileStorageWrites); expect(profileStorageWrites).toEqual([]);
   await testInfo.attach('booky-journey-editor-evidence', { contentType: 'application/json', body: JSON.stringify({
@@ -350,6 +420,9 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     optionalStepOverviewStartsCollapsed:true, actualFourNodeOverviewRuEnVerified:true, currentStepAriaCurrentVerified:true,
     trustedKeyboardAndTouchJumpOnlyLocalPreview:true, overviewControlsMinimum44CssPx:true, overviewWrapHasNo320Overflow:true, sequentialPreviewControlsRetained:true, downloads,
     omittedCopyVariantsUseTitleFallback:true, previewCopyViewRuEnLabelsVerified:true, clearedCopyVariantFieldsDeleteOwnKeysAndPreserveOriginalExportBytes:true,
+    localPreviewWidthStartsCollapsedAndAvailable:true, localizedNativeWidthChoicesRuEnVerified:true, actualPreviewFrameFitsParentAt320:true,
+    actualDesktopFrameWidths320And768Verified:true, availableWidthRestoresActualParentWidth:true, widthControlsMinimum44CssPxAndKeyboardFocusVerified:true,
+    widthSelectionPreservesWorkProfileAndCopyView:true, widthSelectionDoesNotChangeExportedBytesOrFormWidth:true, previewWidthHasNoStorageWrites:true, previewWidthMeasurements,
     actualDraftProfileConditionHelper:true, ordinaryPreviewStartsWithCollapsedDisabledAdultScenario:true, explicitAgeAndLevelInitiallyBlank:true,
     adultProfileBoundaryInvalidAgeAndReadingMismatchVerified:true, profileReportRuEnParityVerified:true,
     previewScenarioKeepsDraftStepCopyViewAndOriginalExportBytes:true, previewProfileStorageWrites:profileStorageWrites,
@@ -602,6 +675,17 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   const firstCorrectVerdict = await page.evaluate(() => window.__activityAnswerCalls.at(-1));
   expect(firstCorrectVerdict.actualHelperCalled).toBe(true); expect(firstCorrectVerdict.actualResult.correct).toBe(true);
+  const activityWidthPanel = preview.locator('[data-booky-preview-width]');
+  const activityFrame = preview.locator('[data-booky-preview-frame]');
+  await expect(activityWidthPanel).not.toHaveAttribute('open', '');
+  await activityWidthPanel.locator('summary').tap();
+  const activityWidthChoice = activityWidthPanel.getByRole('combobox', { name: 'Ширина области предпросмотра', exact: true });
+  const callsBeforeWidthChange = await page.evaluate(() => window.__activityAnswerCalls.length);
+  await activityWidthChoice.selectOption('320'); await activityWidthChoice.selectOption('320');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true'); await expect(verdict).toHaveAttribute('data-verdict', 'correct');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
+  await expect(activityFrame).toHaveAttribute('data-preview-width', '320');
+  expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(callsBeforeWidthChange);
   const overview = preview.locator('[data-booky-journey-step-overview]');
   await expect(overview).not.toHaveAttribute('open', '');
   await overview.locator('summary').tap();
@@ -629,6 +713,21 @@ test('optional adult RU EN author task uses current semantic validation and pres
     await page.waitForFunction(index => window.__activityAnswerCalls[index]?.completed === true, index);
     await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   }
+  await correctAnswer.tap();
+  await page.evaluate(() => { window.__answerHoldNext = true; });
+  await answerCheckRu.tap();
+  const heldWidthVerdict = await answerHeldIndex();
+  const widthPendingCallCount = await page.evaluate(() => window.__activityAnswerCalls.length);
+  await activityWidthChoice.selectOption('768'); await activityWidthChoice.selectOption('768'); await activityWidthChoice.selectOption('available');
+  await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
+  await expect(preview.locator('[data-booky-preview-copy-view]')).toHaveValue('body');
+  expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(widthPendingCallCount);
+  await releaseAnswer(heldWidthVerdict);
+  await expect(verdict).toHaveAttribute('data-verdict', 'correct'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  await activityWidthChoice.selectOption('320'); await expect(verdict).toHaveAttribute('data-verdict', 'correct');
+  await activityWidthPanel.locator('summary').tap();
   await correctAnswer.tap();
   await page.evaluate(() => { window.__answerHoldNext = true; });
   await answerCheckRu.tap();
@@ -754,6 +853,12 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await answerCheckRu.tap();
   const heldProfileVerdict = await answerHeldIndex();
   await profileAge.fill('30'); await profileLevel.selectOption('plain');
+  await activityWidthPanel.locator('summary').tap();
+  await activityWidthChoice.selectOption('320'); await activityWidthChoice.selectOption('768'); await activityWidthChoice.selectOption('768');
+  await expect(profileAge).toHaveValue('30'); await expect(profileLevel).toHaveValue('plain');
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
+  await expect(preview.locator('[data-booky-preview-copy-view]')).toHaveValue('body');
+  await activityWidthPanel.locator('summary').tap();
   await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true');
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
   const callsBeforeOutsideProfile = await page.evaluate(() => window.__activityAnswerCalls.length);
@@ -844,13 +949,13 @@ test('optional adult RU EN author task uses current semantic validation and pres
   expect(validationCalls.filter(call => call.actualHelperCalled).length).toBeGreaterThanOrEqual(8);
   expect(validationCalls.every(call => call.completed)).toBe(true);
   const answerCalls = await page.evaluate(() => window.__activityAnswerCalls);
-  expect(answerCalls.filter(call => call.hold)).toHaveLength(6);
+  expect(answerCalls.filter(call => call.hold)).toHaveLength(7);
   expect(answerCalls.filter(call => call.wrongChecksum)).toHaveLength(1);
   expect(answerCalls.filter(call => call.wrongChoice)).toHaveLength(1);
   expect(answerCalls.filter(call => call.failSession)).toHaveLength(1);
   expect(answerCalls.filter(call => call.failNetwork)).toHaveLength(1);
   expect(answerCalls.every(call => call.completed)).toBe(true);
-  for (const index of [heldStepVerdict, heldChoiceVerdict, heldLocaleVerdict, heldEditVerdict, heldVariantEditVerdict, heldProfileVerdict]) {
+  for (const index of [heldWidthVerdict, heldStepVerdict, heldChoiceVerdict, heldLocaleVerdict, heldEditVerdict, heldVariantEditVerdict, heldProfileVerdict]) {
     expect(answerCalls[index].actualHelperCalled).toBe(true); expect(answerCalls[index].actualResult.correct).toBe(true);
   }
   expect(answerCalls.filter(call => call.actualHelperCalled && call.actualResult.ok && call.actualResult.correct === false).length).toBeGreaterThanOrEqual(2);
@@ -875,6 +980,8 @@ test('optional adult RU EN author task uses current semantic validation and pres
     differentStepJumpClearsAnswerAndRejectsLateVerdict: true, heldStepVerdictCallIndex: heldStepVerdict,
     copyVariantEditRejectsLateAnswerAndNativeImportRestoresOmission: true, heldVariantEditVerdictCallIndex: heldVariantEditVerdict,
     sameCopyViewKeepsVerdictAndDifferentCopyViewClearsAnswerWithoutMovingStep: true,
+    previewWidthChangesAndSameSelectionPreserveChoiceVerdictAndPendingLease:true, actualHeldWidthReplyStillAppliesToCurrentBoundDraft:true,
+    widthChangesDoNotRequestAnswerChecksOrAdvanceStep:true, heldWidthVerdictCallIndex:heldWidthVerdict,
     actualDraftProfileConditionHelper: true, invalidAndOutsideProfilesBlockKeyboardCheckWithoutHelperRequest: true,
     sameExplicitProfileKeepsPendingAnswer: true, newerOutsideProfileRejectsHeldAnswer: true, heldProfileVerdictCallIndex: heldProfileVerdict,
     returningToOrdinaryPreviewRestoresExplicitAnswerCheck: true, previewProfileScenarioHasNoStoredReaderPolicy: true,
@@ -1155,6 +1262,14 @@ test('optional bilingual work fact preserves authored source metadata through st
   await expect(factStep.getByRole('note')).toContainText('Черновик факта — источники ещё требуют проверки');
   await factCopyView.selectOption('caption'); expect(await factCopyText.evaluate(node => node.textContent)).toBe(copy.ru.caption);
   await factCopyView.selectOption('reduced'); expect(await factCopyText.evaluate(node => node.textContent)).toBe(copy.ru.reduced);
+  const factWidthPanel = preview.locator('[data-booky-preview-width]');
+  const factFrame = preview.locator('[data-booky-preview-frame]');
+  await expect(factWidthPanel).not.toHaveAttribute('open', ''); await factWidthPanel.locator('summary').tap();
+  await factWidthPanel.getByRole('combobox', { name: 'Ширина области предпросмотра', exact: true }).selectOption('320');
+  await expect(factCopyView).toHaveValue('reduced'); expect(await factCopyText.evaluate(node => node.textContent)).toBe(copy.ru.reduced);
+  await expect(factStep.locator('[data-booky-fact-sources]').getByRole('link')).toHaveCount(copy.ru.sources.length);
+  expect(await factFrame.evaluate(node => node.scrollWidth > node.clientWidth + 1)).toBe(false);
+  await factWidthPanel.locator('summary').tap();
   await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   for (const control of [factOpener, factEnabled.locator('..'), factTitleRu, sourceField('ID источника', 1, 'ru'), sourceField('HTTPS URL источника', 1, 'ru'), sourceField('Дата обращения к источнику', 1, 'ru'), previous, next])
     expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
@@ -1172,6 +1287,13 @@ test('optional bilingual work fact preserves authored source metadata through st
   await overview.locator('summary').tap();
   await expect(factStep.getByRole('note')).toContainText('Draft fact — sources still need review');
   await factCopyView.selectOption('caption'); expect(await factCopyText.evaluate(node => node.textContent)).toBe(copy.en.caption);
+  await factWidthPanel.locator('summary').tap();
+  await factWidthPanel.getByRole('combobox', { name: 'Preview frame width', exact: true }).selectOption('768');
+  await expect(factCopyView).toHaveValue('caption'); expect(await factCopyText.evaluate(node => node.textContent)).toBe(copy.en.caption);
+  await expect(factStep.locator('[data-booky-fact-sources]').getByRole('link')).toHaveCount(copy.en.sources.length);
+  expect(await factFrame.evaluate(node => node.getBoundingClientRect().width <= node.parentElement.getBoundingClientRect().width + 1)).toBe(true);
+  expect(await factFrame.evaluate(node => node.scrollWidth > node.clientWidth + 1)).toBe(false);
+  await factWidthPanel.locator('summary').tap();
   expect(await factCopyText.evaluate(node => getComputedStyle(node).whiteSpace)).toBe('pre-wrap');
   expect((await factCopyView.boundingBox()).height).toBeGreaterThanOrEqual(44); expect(await overflow()).toBe(false);
   await activityOpener.tap();
@@ -1349,6 +1471,7 @@ test('optional bilingual work fact preserves authored source metadata through st
     authoredBaseAndFactCopyVariantsExportedAndNativeImported: true, optionalVariantsStartBlankInCollapsedLocaleDetails: true,
     independentOptionalEnReducedOmissionUsesCompiledTitleFallback: true, localizedExplicitCopyViewKeepsCurrentSemanticStep: true,
     multilineCaptionAndShortTextPreviewPreserved: true, rehashedDerivedCopyVariantTamperCannotReplaceInputOrPreview: true,
+    localWidthChoicesPreserveCurrentLocaleAuthoredFactVariantsAndSourceLinks:true, selected768WidthFitsNarrowAvailableParent:true,
     englishPreviewConditionsStepLabelsRecordScreenAndSequentialNavigationLocalized: true,
     sourceLinksHaveHttpsNoopenerNoreferrer: true, narrow320LayoutHasNoHorizontalOverflow: true, minimumControlHitHeightCssPx: 44,
     combinedFactThenActivityPreviewVerified: true, combinedDraftAnswerBoundToSameWholeHash: true,
