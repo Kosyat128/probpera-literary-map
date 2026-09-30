@@ -1,0 +1,31 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {spawn} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const root='C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work';
+const base=path.dirname(fileURLToPath(import.meta.url));
+const checks=JSON.parse(await fs.readFile(path.join(base,'actual-a4/checks-result.json'),'utf8'));
+for(const prior of [checks.unit,checks.catalog])assert.equal(JSON.parse(await fs.readFile(prior.path,'utf8')).pass,true);
+const manifest=JSON.parse(await fs.readFile(checks.sourceManifest.path,'utf8'));
+const hash=async p=>createHash('sha256').update(await fs.readFile(p)).digest('hex');
+const ref=async p=>({path:p.replaceAll('\\','/'),sha256:await hash(p)});
+async function guard(){for(const f of manifest.files)assert.equal(await hash(path.join(root,f.path)),f.sha256,f.path);}
+await guard();
+const out=path.join(base,'browser-a3'); await fs.mkdir(out);
+const report=path.join(out,'report.json');
+const args=[path.join(root,'node_modules/@playwright/test/cli.js'),'test','--config='+path.join(base,'playwright.config.mjs')];
+const stdout=[],stderr=[]; const began=Date.now();
+const exitCode=await new Promise((resolve,reject)=>{
+ const child=spawn(process.execPath,args,{cwd:root,windowsHide:true,env:{...process.env,BOOKY_JOURNEY_BROWSER_OUTPUT:path.join(out,'captures'),BOOKY_JOURNEY_BROWSER_REPORT:report},stdio:['ignore','pipe','pipe']});
+ child.stdout.on('data',b=>stdout.push(b));child.stderr.on('data',b=>stderr.push(b));child.once('error',reject);child.once('close',resolve);
+});
+for(const [label,bytes] of [['stdout',stdout],['stderr',stderr]])await fs.writeFile(path.join(out,label+'.log'),Buffer.concat(bytes),{flag:'wx'});
+const raw=JSON.parse(await fs.readFile(report,'utf8'));
+const tests=[];function walk(s){for(const spec of s.specs||[])tests.push(...spec.tests);for(const child of s.suites||[])walk(child);}walk(raw);
+const pass=exitCode===0&&tests.length===1&&tests.every(t=>t.results.length===1&&t.results[0].status==='passed')&&!(raw.errors||[]).length;
+await guard();
+const result={pass,exitCode,durationMs:Date.now()-began,command:[process.execPath,...args],testCount:tests.length,retries:0,sourceManifest:checks.sourceManifest,sourceInputsUnchanged:true,report:await ref(report),stdout:await ref(path.join(out,'stdout.log')),stderr:await ref(path.join(out,'stderr.log')),producer:await ref(fileURLToPath(import.meta.url)),authenticatedAdminSession:false,installedDevice:false,stageAccepted:false,releaseReady:false};
+const resultPath=path.join(out,'result.json');await fs.writeFile(resultPath,JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({...result,report:result.report.path,sourceManifest:undefined,result:await ref(resultPath)}));
+if(!pass)process.exitCode=1;

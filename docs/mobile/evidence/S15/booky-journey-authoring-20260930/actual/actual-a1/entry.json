@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "checkpoint": "00ab73ff2e2be05da62c7e4b7b14718dca048a0b",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/source-manifest.json",
+    "sha256": "0525cbd0c5fc0d3b176d6c30a0f99f8b9a5c06beb78e9fe47a893a1e650d0f81",
+    "fileCount": 2097
+  },
+  "baselineManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/baseline-manifest.json",
+    "sha256": "6d58ac09dca74da740fb814c89a736bd0653c09c13e8a9d95f323cef6a10fa69"
+  },
+  "previousMobileSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-rev7-review/actual-a1/source-manifest.json",
+    "sha256": "f0afcc1f442626a3f6744aa041cc4735c63b7b42adfbdf52c69527766ecca883"
+  },
+  "sourceInputCount": 2097,
+  "protectedInputCount": 2090,
+  "changedPaths": [
+    "apps/admin/app/(dashboard)/journeys/page.tsx",
+    "apps/admin/components/BookyJourneyDraftEditor.tsx",
+    "apps/admin/lib/admin-module-registry.ts",
+    "apps/admin/lib/booky-journey-catalog.ts",
+    "apps/admin/lib/booky-journey-draft.test.ts",
+    "apps/admin/lib/booky-journey-draft.ts",
+    "tests/host/booky-journey-authoring.spec.mjs"
+  ],
+  "newPaths": [
+    "apps/admin/app/(dashboard)/journeys/page.tsx",
+    "apps/admin/components/BookyJourneyDraftEditor.tsx",
+    "apps/admin/lib/booky-journey-catalog.ts",
+    "apps/admin/lib/booky-journey-draft.test.ts",
+    "apps/admin/lib/booky-journey-draft.ts",
+    "tests/host/booky-journey-authoring.spec.mjs"
+  ],
+  "proposed": [
+    {
+      "path": "apps/admin/app/(dashboard)/journeys/page.tsx",
+      "proposal": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/proposed/apps/admin/app/(dashboard)/journeys/page.tsx",
+        "sha256": "a4655ee33021b5a6ed1049c757057806e339cedfef0aa2f89adbf211eceec797"
+      }
+    },
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "proposal": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/proposed/apps/admin/components/BookyJourneyDraftEditor.tsx",
+        "sha256": "74b516a2cc74af8c3cbd0c4bfd074e31c00d88482b0bea95f9a0c050fe749356"
+      }
+    },
+    {
+      "path": "apps/admin/lib/admin-module-registry.ts",
+      "proposal": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/proposed/apps/admin/lib/admin-module-registry.ts",
+        "sha256": "307b6650d5ff5c9c2b2bff6ddba32fcf192cf1b53b9f0aeb25cbd9bdc8485f92"
+      }
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-catalog.ts",
+      "proposal": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/proposed/apps/admin/lib/booky-journey-catalog.ts",
+        "sha256": "8fdebe9c59a277b5b2f9aed11b82103a14ec01d695e0649e206fdc30e9abcbf7"
+      }
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "proposal": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/proposed/apps/admin/lib/booky-journey-draft.test.ts",
+        "sha256": "071e1549b6de5d2f8c9e3680157cbc053512ea5fb64d3cc6e5875dcd5d59e3cb"
+      }
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "proposal": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/proposed/apps/admin/lib/booky-journey-draft.ts",
+        "sha256": "666d5974d922193a0aaf621ab1a2399d9adc37ad8479f710f32b2fdbe7f53bc1"
+      }
+    },
+    {
+      "path": "tests/host/booky-journey-authoring.spec.mjs",
+      "proposal": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/proposed/tests/host/booky-journey-authoring.spec.mjs",
+        "sha256": "b4af084668f7034ef1f46878cce40d335887818cbf624e6b2f386f5dec46a87c"
+      }
+    }
+  ],
+  "adminImplementationChanged": true,
+  "mobileRuntimeUnchanged": true,
+  "retainedMobileRuntimeSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+  "productionJourneysEnabled": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

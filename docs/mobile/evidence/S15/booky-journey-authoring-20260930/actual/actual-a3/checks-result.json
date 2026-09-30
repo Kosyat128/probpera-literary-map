@@ -1,0 +1,47 @@
+{
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a3/source-manifest.json",
+    "sha256": "9018b7eeb193e062c0e498364d949c2cdc992ad227c1f905551504b24a546c45"
+  },
+  "typeOnlyChanges": [
+    {
+      "path": "src/host/bookyJourney.ts",
+      "beforeSha256": "4f4d7dc3a487f5c6a78aa826fea93e5323f5ecf230b6d190632c07706ee3811b",
+      "afterSha256": "eda587e3611f86a0ff03b1c16aea88a16b0ca4120182a3f2f9952d1c128f3d5a",
+      "normalizedEmittedRuntimeSha256": "3006278f98c3bd657544bf77b90f3015ec8cd56d7cf890f473cbfa27032b1d0f"
+    },
+    {
+      "path": "src/host/bookyJourneyActivity.ts",
+      "beforeSha256": "b27bf7e3b83bb1390e5023f7bab809ceb4026217fcbca70f037211556d333dad",
+      "afterSha256": "600d057407eb8eff106d98c83f3e3fe16c63f026befff90edf6aaae519096e6b",
+      "normalizedEmittedRuntimeSha256": "d41067120aa3a7784291c4c89970e2f879f85562dd209a872eb2c7e4c2ac8a9c"
+    },
+    {
+      "path": "src/host/bookyDossierCharacter.ts",
+      "beforeSha256": "4f2840a284e7310c790c367ece00034a819c0375906a8fa5299517d30c291964",
+      "afterSha256": "746ed791967c25d656cb603a61b518c611e6875e868b5fa06595d8b7dec00d87",
+      "normalizedEmittedRuntimeSha256": "c7ec7d0eee2b432d14fa4b72275d005fbd62da34bd3a64dc82fa3fc324526a6c"
+    }
+  ],
+  "removedOwnTemporaryDeclaration": "apps/admin/shared-mobile-env.d.ts",
+  "priorCoreTypeCorrection": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a2/checks-result.json",
+    "sha256": "e7ef8b5589227f22b2e715b88c890932f12d30713327e0683958f527dcad0be7"
+  },
+  "unit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/unit-result.json",
+    "sha256": "c33a4c3dd8560e575f38bae2e97be865c565f084c2765e716b6f9acab3aa6821"
+  },
+  "catalog": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/catalog-smoke-result.json",
+    "sha256": "e493c05ca56d336e9d6e7c772b197ba0c99a2b91a1e8d1a9795134cd5edc2299"
+  },
+  "retainedChecksAtOriginalManifest": true,
+  "mobileEmittedRuntimeUnchanged": true,
+  "adminTypesPendingNextBuild": true,
+  "uiIncludesAdultRuEnPreview": true,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/integrate-final.mjs",
+    "sha256": "3d5a7b7f2f4a4ee115d028f7140ae8577660e2ab51f6b0d6dc2aa4e946a44595"
+  }
+}

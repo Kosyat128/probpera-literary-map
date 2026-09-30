@@ -1,0 +1,52 @@
+{
+  "name": "catalog-smoke",
+  "pass": true,
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-authoring-review\\catalog-smoke.mjs"
+  ],
+  "exitCode": 0,
+  "error": null,
+  "durationMs": 1679,
+  "summary": {
+    "pass": true,
+    "actualStaticCatalog": true,
+    "countries": 10,
+    "writers": 30,
+    "works": 46,
+    "selected": {
+      "countryId": "austria",
+      "writerId": "franz_kafka",
+      "workId": "openlibrary-works-ol498556w"
+    },
+    "bilingualDraftDefinitions": 2,
+    "unapprovedDraftDialogues": 8,
+    "exportedToProduction": false,
+    "networkOrDatabaseRequests": false,
+    "releaseReady": false
+  },
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/catalog-smoke-report.json",
+    "sha256": "e444605b667255bfca76fcef5b4c51a90679e8de53da27448197a9002f6cc43a"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/catalog-smoke-stdout.log",
+    "sha256": "ede03b65c8a4a539268ff0912005aaaf381fa54c51f63ae509f91256c223a967"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/catalog-smoke-stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/entry.json",
+    "sha256": "bde6d2037acc2a466db29c466d5f2e43688a802a42d4d8def01e2cdddaaccb2e"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/source-manifest.json",
+    "sha256": "0525cbd0c5fc0d3b176d6c30a0f99f8b9a5c06beb78e9fe47a893a1e650d0f81"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/apply-and-check.mjs",
+    "sha256": "54c4f3e62f680474262082754c41edc51fe7ff2147bce1298b729092585bfa6d"
+  }
+}

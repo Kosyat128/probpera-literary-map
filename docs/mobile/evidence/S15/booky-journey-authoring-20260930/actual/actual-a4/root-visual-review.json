@@ -1,0 +1,60 @@
+{
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a4/source-manifest.json",
+    "sha256": "70848ff4b46aee77dd7260805c8f47a94f4dd6ba001067f74d33d9ab3747ccc3"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/browser-a3/result.json",
+    "sha256": "16f80eb1c6de83488aa29a8cba8deb91036f7498f418e0e7f833a1cff0f94d24"
+  },
+  "directRootViews": 4,
+  "screenshots": [
+    {
+      "filename": "booky-journey-editor-ru-320.png",
+      "sha256": "bc602dbfb67783e5c75e3f96de63faab9d0790a42783c8e954b2672f98b6784c",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "scope": "Actual editor component with synthetic canonical choices; upper form at 320px.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/browser-a3/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png"
+    },
+    {
+      "filename": "booky-journey-preview-ru-320.png",
+      "sha256": "81444cab28c03db1b7619fa540e89b259507c925979cd3cb6653880bc76df054",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "scope": "Actual local authoring preview, RU work step at 320px; not production route admission.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/browser-a3/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png"
+    },
+    {
+      "filename": "booky-journey-preview-en-320.png",
+      "sha256": "d814d116266ef89ee57a7b257d238253af08c9d1feb5025c9fc48e34d42bb62c",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "scope": "Actual local authoring preview, same work step in EN at 320px.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/browser-a3/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png"
+    },
+    {
+      "filename": "booky-journey-editor-ru-1280.png",
+      "sha256": "e12ae76901b2b9c1d4aba4b4c002e84f071ba9f65d55a92c968e28f58a2631c7",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "scope": "Actual editor component, same authored state, desktop upper form.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/browser-a3/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png"
+    }
+  ],
+  "findings": [
+    "Forms and controls stay within the 320px/1280px viewport; screenshots show upper form and RU/EN work-step preview only.",
+    "Selected preview language is distinguished from secondary controls; Back is secondary and Next primary.",
+    "Synthetic catalog and component fixture; authenticated admin shell, full font loading, mobile app runtime and installed devices are not assessed."
+  ],
+  "editorialOrDeviceAcceptance": false
+}

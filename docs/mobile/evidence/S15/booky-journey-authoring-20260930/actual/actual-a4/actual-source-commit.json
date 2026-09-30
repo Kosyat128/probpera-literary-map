@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "sourceCommit": "8a12a47d31374ab35282285ed5e61a4bceaac13b",
+  "predecessorDocsCommit": "00ab73ff2e2be05da62c7e4b7b14718dca048a0b",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a4/source-manifest.json",
+    "sha256": "70848ff4b46aee77dd7260805c8f47a94f4dd6ba001067f74d33d9ab3747ccc3"
+  },
+  "changedPaths": [
+    "apps/admin/app/(dashboard)/journeys/page.tsx",
+    "apps/admin/components/BookyJourneyDraftEditor.tsx",
+    "apps/admin/lib/admin-module-registry.ts",
+    "apps/admin/lib/booky-journey-catalog.ts",
+    "apps/admin/lib/booky-journey-draft.test.ts",
+    "apps/admin/lib/booky-journey-draft.ts",
+    "src/host/bookyDossierCharacter.ts",
+    "src/host/bookyJourney.ts",
+    "src/host/bookyJourneyActivity.ts",
+    "tests/host/booky-journey-authoring.spec.mjs"
+  ],
+  "sourceInputsUnchanged": true,
+  "worktreeClean": true,
+  "blobs": [
+    {
+      "path": "apps/admin/app/(dashboard)/journeys/page.tsx",
+      "workingSha256": "a4655ee33021b5a6ed1049c757057806e339cedfef0aa2f89adbf211eceec797",
+      "gitBlobSha256": "a4655ee33021b5a6ed1049c757057806e339cedfef0aa2f89adbf211eceec797"
+    },
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "workingSha256": "de9a433c5fd5b54d580246d08304a4ccd9bc6d2bdc0f56d9f44d9960f8eeac97",
+      "gitBlobSha256": "de9a433c5fd5b54d580246d08304a4ccd9bc6d2bdc0f56d9f44d9960f8eeac97"
+    },
+    {
+      "path": "apps/admin/lib/admin-module-registry.ts",
+      "workingSha256": "307b6650d5ff5c9c2b2bff6ddba32fcf192cf1b53b9f0aeb25cbd9bdc8485f92",
+      "gitBlobSha256": "307b6650d5ff5c9c2b2bff6ddba32fcf192cf1b53b9f0aeb25cbd9bdc8485f92"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-catalog.ts",
+      "workingSha256": "8fdebe9c59a277b5b2f9aed11b82103a14ec01d695e0649e206fdc30e9abcbf7",
+      "gitBlobSha256": "8fdebe9c59a277b5b2f9aed11b82103a14ec01d695e0649e206fdc30e9abcbf7"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "workingSha256": "071e1549b6de5d2f8c9e3680157cbc053512ea5fb64d3cc6e5875dcd5d59e3cb",
+      "gitBlobSha256": "071e1549b6de5d2f8c9e3680157cbc053512ea5fb64d3cc6e5875dcd5d59e3cb"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "workingSha256": "c83e86c6dc34457772582d156b7ca5123968d490772e59ff51a80dde46399eab",
+      "gitBlobSha256": "c83e86c6dc34457772582d156b7ca5123968d490772e59ff51a80dde46399eab"
+    },
+    {
+      "path": "src/host/bookyDossierCharacter.ts",
+      "workingSha256": "746ed791967c25d656cb603a61b518c611e6875e868b5fa06595d8b7dec00d87",
+      "gitBlobSha256": "746ed791967c25d656cb603a61b518c611e6875e868b5fa06595d8b7dec00d87"
+    },
+    {
+      "path": "src/host/bookyJourney.ts",
+      "workingSha256": "eda587e3611f86a0ff03b1c16aea88a16b0ca4120182a3f2f9952d1c128f3d5a",
+      "gitBlobSha256": "eda587e3611f86a0ff03b1c16aea88a16b0ca4120182a3f2f9952d1c128f3d5a"
+    },
+    {
+      "path": "src/host/bookyJourneyActivity.ts",
+      "workingSha256": "600d057407eb8eff106d98c83f3e3fe16c63f026befff90edf6aaae519096e6b",
+      "gitBlobSha256": "600d057407eb8eff106d98c83f3e3fe16c63f026befff90edf6aaae519096e6b"
+    },
+    {
+      "path": "tests/host/booky-journey-authoring.spec.mjs",
+      "workingSha256": "10440ea90f8d30379a7009dd2acb9a6c14bcc627c849bf7933e85307ad314035",
+      "gitBlobSha256": "10440ea90f8d30379a7009dd2acb9a6c14bcc627c849bf7933e85307ad314035"
+    }
+  ],
+  "checks": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a4/checks-result.json",
+    "sha256": "974fdfcebd17f58c151b2c7b861213c94c48f6ac7a4bf13371d332a2dc8bdc10"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/browser-a3/result.json",
+    "sha256": "16f80eb1c6de83488aa29a8cba8deb91036f7498f418e0e7f833a1cff0f94d24"
+  },
+  "visual": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a4/root-visual-review.json",
+    "sha256": "c9aecaa66d867d86081e10ee122ecd601ba0d69784429b16b8c12acccf83c338"
+  },
+  "adminTypeValidationPendingBuild": true,
+  "mobileEmittedRuntimeUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/commit-source.mjs",
+    "sha256": "3932a87fdd3015e77aa4a633b44122f195bf82eacc3fa7771efdb628a3fb7dcc"
+  }
+}

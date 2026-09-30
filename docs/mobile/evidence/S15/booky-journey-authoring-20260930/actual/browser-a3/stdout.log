@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\host\booky-journey-authoring.spec.mjs:38:1 › adult bilingual journey editor exports only a draft and clears dependent canonical selections
+  1 passed (4.8s)

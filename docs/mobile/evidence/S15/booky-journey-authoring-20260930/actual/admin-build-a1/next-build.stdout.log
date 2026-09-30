@@ -1,0 +1,73 @@
+▲ Next.js 16.3.3 (webpack)
+✓ Running next.config.ts took 157ms
+⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 20.0s
+  Running TypeScript ...
+  Finished TypeScript in 15.9s ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/8) ...
+  Generating static pages using 15 workers (2/8) 
+  Generating static pages using 15 workers (4/8) 
+  Generating static pages using 15 workers (6/8) 
+✓ Generating static pages using 15 workers (8/8) in 1016ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /.well-known/security.txt
+├ ƒ /analytics
+├ ƒ /analytics/export
+├ ƒ /api/media/assets
+├ ƒ /api/media/upload
+├ ƒ /api/site-fonts/upload
+├ ƒ /articles
+├ ƒ /articles/[id]
+├ ƒ /articles/[id]/preview
+├ ƒ /articles/edit
+├ ƒ /articles/new
+├ ƒ /auth/callback
+├ ƒ /banners
+├ ƒ /categories
+├ ƒ /comments
+├ ƒ /dashboard
+├ ƒ /data-studio
+├ ƒ /editorial-database
+├ ƒ /health
+├ ƒ /history
+├ ƒ /homepage
+├ ƒ /journeys
+├ ƒ /library
+├ ƒ /library/dossiers
+├ ƒ /literary-news
+├ ƒ /login
+├ ƒ /media
+├ ƒ /menus
+├ ƒ /mfa
+├ ƒ /pages
+├ ƒ /pages/[id]
+├ ƒ /pages/[id]/preview
+├ ƒ /publication
+├ ƒ /reset-password
+├ ○ /robots.txt
+├ ƒ /seo
+├ ƒ /settings
+├ ƒ /site-copy
+├ ƒ /site-studio
+├ ƒ /site-studio/components
+├ ƒ /site-studio/fonts
+├ ƒ /site-studio/releases
+├ ƒ /site-studio/tokens
+└ ƒ /translations
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

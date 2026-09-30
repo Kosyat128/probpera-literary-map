@@ -1,0 +1,45 @@
+{
+  "pass": false,
+  "exitCode": 2,
+  "durationMs": 18185,
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\typescript\\bin\\tsc",
+    "--noEmit",
+    "-p",
+    "apps/admin/tsconfig.json",
+    "--incremental",
+    "false"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a2/source-manifest.json",
+    "sha256": "da7669e8cd0fb48be6275a4ef693600f24512871aeab4d836bee3138eaa07749"
+  },
+  "typeOnlyChanges": [
+    "apps/admin/lib/booky-journey-draft.ts",
+    "apps/admin/shared-mobile-env.d.ts"
+  ],
+  "emittedCoreRuntimeUnchanged": true,
+  "unit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/unit-result.json",
+    "sha256": "c33a4c3dd8560e575f38bae2e97be865c565f084c2765e716b6f9acab3aa6821"
+  },
+  "catalog": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/catalog-smoke-result.json",
+    "sha256": "e493c05ca56d336e9d6e7c772b197ba0c99a2b91a1e8d1a9795134cd5edc2299"
+  },
+  "retainedChecksAtOriginalManifest": true,
+  "sourceInputsUnchanged": true,
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a2/stdout.log",
+    "sha256": "c74403eeb6b0921ba6ba892eb989b05402cc802ba1dddd6efdb827840ca24ab8"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a2/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/type-fix-and-check.mjs",
+    "sha256": "f88ea0e92ff8d448521064d93d6dc0625955b2dde8db0fac5c596101d52149c9"
+  }
+}

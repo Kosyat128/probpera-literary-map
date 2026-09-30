@@ -1,0 +1,46 @@
+{
+  "name": "unit",
+  "pass": true,
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "apps/admin/lib/booky-journey-draft.test.ts",
+    "apps/admin/lib/admin-module-coverage.test.ts",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-authoring-review\\actual-a1\\unit-report.json"
+  ],
+  "exitCode": 0,
+  "error": null,
+  "durationMs": 2227,
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "pending": 0
+  },
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/unit-report.json",
+    "sha256": "dc1b9f960d73b8889f7eea5a09807d0d597e86baf1a7c85e6dbb76b4d7528bbb"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/unit-stdout.log",
+    "sha256": "8fc09b3d01d3974fccf0097a9fcae47a43b23ffeee8ae0142b216be65cf74872"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/unit-stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/entry.json",
+    "sha256": "bde6d2037acc2a466db29c466d5f2e43688a802a42d4d8def01e2cdddaaccb2e"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/actual-a1/source-manifest.json",
+    "sha256": "0525cbd0c5fc0d3b176d6c30a0f99f8b9a5c06beb78e9fe47a893a1e650d0f81"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/apply-and-check.mjs",
+    "sha256": "54c4f3e62f680474262082754c41edc51fe7ff2147bce1298b729092585bfa6d"
+  }
+}

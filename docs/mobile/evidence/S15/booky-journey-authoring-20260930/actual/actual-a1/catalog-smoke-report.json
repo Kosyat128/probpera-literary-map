@@ -1,0 +1,17 @@
+{
+  "pass": true,
+  "actualStaticCatalog": true,
+  "countries": 10,
+  "writers": 30,
+  "works": 46,
+  "selected": {
+    "countryId": "austria",
+    "writerId": "franz_kafka",
+    "workId": "openlibrary-works-ol498556w"
+  },
+  "bilingualDraftDefinitions": 2,
+  "unapprovedDraftDialogues": 8,
+  "exportedToProduction": false,
+  "networkOrDatabaseRequests": false,
+  "releaseReady": false
+}

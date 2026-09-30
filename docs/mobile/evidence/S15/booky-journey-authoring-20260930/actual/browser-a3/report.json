@@ -1,0 +1,122 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-authoring-review\\playwright.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-authoring-review\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-authoring-review/browser-a3/captures",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-journey-authoring.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-authoring-review\\browser-a3\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-journey-authoring.spec.mjs",
+      "file": "booky-journey-authoring.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "adult bilingual journey editor exports only a draft and clears dependent canonical selections",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3805,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T17:17:32.638Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-editor-evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJwYXNzIjogdHJ1ZSwKICAiYWN0dWFsRWRpdG9yQ29tcG9uZW50IjogdHJ1ZSwKICAiYWN0dWFsRWRpdG9yU3R5bGVzIjogdHJ1ZSwKICAiYWN0dWFsRHJhZnRDb21waWxlciI6IHRydWUsCiAgInN5bnRoZXRpY0NhdGFsb2ciOiB0cnVlLAogICJhdXRoZW50aWNhdGVkQWRtaW5TZXJ2ZXJUZXN0ZWQiOiBmYWxzZSwKICAiaW5zdGFsbGVkRGV2aWNlVGVzdGVkIjogZmFsc2UsCiAgImJpbGluZ3VhbERlZmluaXRpb25zIjogMiwKICAidW5hcHByb3ZlZERpYWxvZ3VlRHJhZnRzIjogOCwKICAiY2FzY2FkZVJlc2V0c1ZlcmlmaWVkIjogdHJ1ZSwKICAiYWR1bHRSdUVuUHJldmlld1ZlcmlmaWVkIjogdHJ1ZSwKICAicHJldmlld0ludmFsaWRhdGlvblZlcmlmaWVkIjogdHJ1ZSwKICAibWlzc2luZ0Nhbm9uaWNhbEVuZ2xpc2hQcmVzZXJ2ZWQiOiB0cnVlLAogICJkb3dubG9hZHMiOiBbCiAgICAic3ludGhldGljLWpvdXJuZXktdjItZHJhZnQuanNvbiIKICBdLAogICJleHBvcnRlZERyYWZ0IjogewogICAgInBhdGgiOiAiRDpcXENvZGV4RGF0YVxcLmNvZGV4XFx2aXN1YWxpemF0aW9uc1xcMjAyNlxcMDlcXDIwXFwwMWEwYmQ3ZS1lN2I1LTcxMTEtYjMxOS1kYjFhNjA3NDZlOTRcXHMxNS1ib29reS1qb3VybmV5LWF1dGhvcmluZy1yZXZpZXdcXGJyb3dzZXItYTNcXGNhcHR1cmVzXFxib29reS1qb3VybmV5LWF1dGhvcmluZy1hZC1lZGFlMS1lbmRlbnQtY2Fub25pY2FsLXNlbGVjdGlvbnNcXHN5bnRoZXRpYy1qb3VybmV5LWRyYWZ0Lmpzb24iLAogICAgInNoYTI1NiI6ICI3NTIzZWEwYTY5NzI5OTFjNmZmOTk5YjNkMWY2MWE4MTJjMTIxNzk3ODFiMTViNDUwMjJjY2YxYTNlZThjNmQ1IiwKICAgICJieXRlcyI6IDE5NzIyCiAgfSwKICAic291cmNlSW5wdXRzIjogWwogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2FwcC9nbG9iYWxzLmNzcyIsCiAgICAgICJzaGEyNTYiOiAiNjc4ZTZmYzdjNWUyYjc4ZjdiNjk5MjlkNGExM2E3MjEwYzhlY2Q5OWVlMTcxZDdiYmFkN2E3MzViYzc3NDAxZSIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImFwcHMvYWRtaW4vYXBwL3N0eWxlcy9iYXNlLmNzcyIsCiAgICAgICJzaGEyNTYiOiAiMDQwMzQyMDgyMGIxZTNhMzhkMDNmMjBiNzc3ZWZlZjhiNTQ4NGMxNGZjOWYwYzlkNjBhYTY0MzFhM2Y0ZjZjNCIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImFwcHMvYWRtaW4vYXBwL3N0eWxlcy9lZGl0b3JzLmNzcyIsCiAgICAgICJzaGEyNTYiOiAiODBiN2M1MTE0NjAzMDQ5ZjJlMWQ4MDY3NDIwN2NiYjIwMWEzZDY4MDU4YjYxNWZkY2IzZmY3M2U2YTk5M2QwMyIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImFwcHMvYWRtaW4vYXBwL3N0eWxlcy9mb3Jtcy5jc3MiLAogICAgICAic2hhMjU2IjogImNhYTU0NWM2YzBiOTRkZTczOTg0MWQ0NTBiNWNlZWYxYmE1YzE3MmVjY2E5ZDNiNTNjNTc5MDUxODEyNTBjN2MiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2FwcC9zdHlsZXMvbGF5b3V0LmNzcyIsCiAgICAgICJzaGEyNTYiOiAiNjQ1NTJkMjU4ZTBkZDQ5NTRkMWFjMDNlMjVhNDlmNjlkMTdjNzU2Mjg4OGU1NzQ1MTFmMmU5NWMxNzFjMjgxYSIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImFwcHMvYWRtaW4vYXBwL3N0eWxlcy9yZXNwb25zaXZlLmNzcyIsCiAgICAgICJzaGEyNTYiOiAiMTU0ZGJjM2MyMjU2NmIwY2MxNTU4ZGFkYmZhM2M0MTBjZmFhMWE2NGY2MDhiOTZkMGU3NThkOTNlZmNmN2QwNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImFwcHMvYWRtaW4vYXBwL3N0eWxlcy9zaXRlLXN0dWRpby5jc3MiLAogICAgICAic2hhMjU2IjogImYxMGFiYTc2YmU5NjJkNThiNmMyZWI3YWM0Njk4Y2NkNjczZGQzNTcwZDQ1MmIxZjYzNTQ0MmFhZTJiYTYxZjUiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2FwcC9zdHlsZXMvdGFibGVzLmNzcyIsCiAgICAgICJzaGEyNTYiOiAiMGNkZmY3YjNkNWM3NmY2ZWY3YTlhOThiOWEyNDdlMTJhMjc4Y2Q2OTRhNGRiYjdiZjNhYjA5YjkyMTUxNzlkYSIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImFwcHMvYWRtaW4vYXBwL3N0eWxlcy90b2tlbnMuY3NzIiwKICAgICAgInNoYTI1NiI6ICI5MzM3OGE3MWY1ODdiNzhiMDhiNjcwNTk5MmZjMjgwZjJiYTk4NWQ1ZDk3MTM5Y2RhZmI1MTYwNWQ3MWY1NWM3IgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAiYXBwcy9hZG1pbi9hcHAvc3R5bGVzL3V0aWxpdGllcy5jc3MiLAogICAgICAic2hhMjU2IjogIjkzY2ZkNDk0ZTk0OGI0MzkzNzk2YjMwNDVlZGViNzUxMDQ2Njg4ZTdiN2QxZjNhMDcyMTAwMmJhODlmOGQ5M2IiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2NvbXBvbmVudHMvQm9va3lKb3VybmV5RHJhZnRFZGl0b3IudHN4IiwKICAgICAgInNoYTI1NiI6ICJkZTlhNDMzYzVmZDViNTRkNTgwMjQ2ZDA4MzA0YTRjY2Q5YmM2ZDJiZGMwZjU2ZDlmNDRkOTk2MGY4ZWVhYzk3IgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAiYXBwcy9hZG1pbi9saWIvYm9va3ktam91cm5leS1kcmFmdC50cyIsCiAgICAgICJzaGEyNTYiOiAiYzgzZTg2YzZkYzM0NDU3NzcyNTgyZDE1NmI3Y2E1MTIzOTY4ZDQ5MDc3MmU1OWZmNTFhODBkZGU0NjM5OWVhYiIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ib29rcy9ib29rRG9zc2llckNvbXBpbGVyLnRzIiwKICAgICAgInNoYTI1NiI6ICIzMjk2NjM2MGY3ZGNjNGM5MzRlNWVjNGFjM2IyNjY5ODVhYTY1ZWRkMDMwOTgwMDNkZGU1ZTllMzk2Y2E3MDBlIgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAic3JjL2Jvb2tzL2Jvb2tEb3NzaWVyRGVsaXZlcnkudHMiLAogICAgICAic2hhMjU2IjogIjA2NTE0OTQ1NThhNDA1YzBjZDNiNWJiYTFhNzQwMmNmYTgzNWY2OGRmMzczYjJkYjFiY2UxNzU5NTYzYjI2NzYiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvYm9va3MvYm9va0Rvc3NpZXJEZXNpZ24udHMiLAogICAgICAic2hhMjU2IjogIjFkODg0Y2RmNGMyYmViMjkzOGZlYzhjMDYxNjhjMTI3YTRjMmExYjgwNWRkMzU5NWJmNmMzYTg3NzIyMjkxMDciCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvYm9va3MvYm9va0Rvc3NpZXJEb2N1bWVudC50cyIsCiAgICAgICJzaGEyNTYiOiAiZWViZGFhYzg5N2JmZjVjZDQ5Y2U5YTI3YjhkZWY3OGJhNGRjNjVkODE0ZWU3MjhkMGUxZmEzZDU0Y2JlOTliNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ib29rcy9ib29rRG9zc2llclJlYWRpbmdTdGVwcy50cyIsCiAgICAgICJzaGEyNTYiOiAiNTRlMjE5ODAxZWNmOWY4MWQ4ZDMwZmJiZWFiODUwMzFkOWIzOWY3NjY5N2M5N2RmMTc5MGMzZTI5YTE5MDJmYSIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ib29rcy9ib29rRG9zc2llclJpZ2h0cy50cyIsCiAgICAgICJzaGEyNTYiOiAiMTgxMTNlYmZmOTJlM2Y1MzMzZTkyMjI3MjY0OWRmZWQ1NjIyY2Q4N2Y2NmEzNjFmOWEyNzJmMDVmYTRiYTBiNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ib29rcy9ib29rRG9zc2llclZhbGlkYXRpb24udHMiLAogICAgICAic2hhMjU2IjogIjhjNjcxM2VkNzZmNTc2MzkyYWQwNDM2Mzk1M2VlZTdhYmE1YTI3NWNkOWNkOGIxYTkyN2M0YzUwNTNkMWYzNjYiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvYm9va3MvYm9va0luc3BlY3Rpb25QYWdlTGF5b3V0LnRzIiwKICAgICAgInNoYTI1NiI6ICI3MmNjODhkZmI2ZTMwNTBmZDQxOGQ2NTM5YzQxZjU5ZTY0M2MyZGY2OGI4ZjFjNTdmZThlYmQ1ZWJiZDYyMjA4IgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAic3JjL2Jvb2tzL2Jvb2tUeXBvZ3JhcGh5LnRzIiwKICAgICAgInNoYTI1NiI6ICJkNDkyZDhmZDNmZGZkNzUxOTNmMTJhN2ZhMzkwNTI2YjI5ZjMwMTg3Y2I4Nzc3Mjk4YTdjODQ3MDBhZGZlOWNjIgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAic3JjL2RhdGEvYm9va0xvY2FsaXphdGlvbi50cyIsCiAgICAgICJzaGEyNTYiOiAiMWNiYjMyMjFlNjIzMTBmZTc2ZmUzMjg3NDFlMzMxNmI4ZjA2MjNkMDNlYTc3Yzk5NGQyNWQ2Y2E1MjU0NTc3MyIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ob3N0L2Jvb2t5RGlhbG9ndWVSZWdpc3RyeS50cyIsCiAgICAgICJzaGEyNTYiOiAiMzMyOWVkOTQ0OTM3ZWY4ZjdiOWI4OTI2NDFlZDQwMjg1YTE2NmMzOTQ0ZDY4MTdkZGRhMGJjMTQ1ZGFmZmE2NSIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ob3N0L2Jvb2t5RG9zc2llckNoYXJhY3Rlci50cyIsCiAgICAgICJzaGEyNTYiOiAiNzQ2ZWQ3OTE5NjdjMjVkNjU2Y2I2MDNhNjFiNTE4YzYxMWU2ODc1ZTg2OGI1ZmEwNjU5NWQ4YjdkZWMwMGQ4NyIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ob3N0L2Jvb2t5Sm91cm5leS50cyIsCiAgICAgICJzaGEyNTYiOiAiZWRhNTg3ZTM2MTFmODZhMGZmMDNiMWMxNmFlYTg4YTE2YjBjYTQxMjAxODJhM2YyZjk5NTJkMWMxMjhmM2Q1YSIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ob3N0L2Jvb2t5Sm91cm5leUFjdGl2aXR5LnRzIiwKICAgICAgInNoYTI1NiI6ICI2MDBkMDU3NDA3ZWI4ZWZmMTA2ZDk4YzgzZjNlM2ZlMTZjNjNmMDI2YmVmZmY5MGVkZjZhYWFlNTE5MDk2ZTZiIgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAic3JjL2hvc3QvYm9va3lKb3VybmV5Q2hhcmFjdGVyLnRzIiwKICAgICAgInNoYTI1NiI6ICIwOWU5MGM2M2IxYzE5MzY0YzhmMTM3YzJlYWQzNTIyNzQyN2FmMDNlZGFkOWZhMDMwMTViZmM0YzQyOTI3ZmI2IgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAic3JjL2hvc3QvYm9va3lKb3VybmV5RmFjdC50cyIsCiAgICAgICJzaGEyNTYiOiAiNWJhMDAyOTRiYmE4MmJmMWRjMmEzZDg1ODkxMTE2NTY1YWZjMzk4NTlmMWI5NGZjYWRmYTQ5YWQ3NjdlYmNkNyIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9wbGFuZXQvY29udGVudEV4cG9ydEhhc2gudHMiLAogICAgICAic2hhMjU2IjogIjA1ZTI0YmYwODllNTliZjgwMTVlNzRkOGFkYzliOTYxNDdhYmJjNjY1NTk2OTIwOTE3ZThjYTJmZDVkYzdjNDYiCiAgICB9CiAgXSwKICAic2NyZWVuc2hvdHMiOiBbCiAgICB7CiAgICAgICJmaWxlbmFtZSI6ICJib29reS1qb3VybmV5LWVkaXRvci1ydS0zMjAucG5nIiwKICAgICAgInNoYTI1NiI6ICJiYzYwMmRiZmI2Nzc4M2U1Yzc1ZTNmOTZkZTYzZmFhYjlkMDc5MGE0Mjc4M2M4ZTk1NGIyNjcyZjk4YjY3ODRjIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgICAiaGVpZ2h0IjogODQ0CiAgICAgIH0sCiAgICAgICJzY29wZSI6ICJBY3R1YWwgZWRpdG9yIGNvbXBvbmVudCB3aXRoIHN5bnRoZXRpYyBjYW5vbmljYWwgY2hvaWNlczsgdXBwZXIgZm9ybSBhdCAzMjBweC4iCiAgICB9LAogICAgewogICAgICAiZmlsZW5hbWUiOiAiYm9va3ktam91cm5leS1wcmV2aWV3LXJ1LTMyMC5wbmciLAogICAgICAic2hhMjU2IjogIjgxNDQ0Y2FiMjhjMDNkYjFiNzYxOWZhNTQwZTg5YjI1OTUwN2M5MjU5NzljZDNjYjY2NTM4ODBiYzc2ZGYwNTQiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMzIwLAogICAgICAgICJoZWlnaHQiOiA4NDQKICAgICAgfSwKICAgICAgInNjb3BlIjogIkFjdHVhbCBsb2NhbCBhdXRob3JpbmcgcHJldmlldywgUlUgd29yayBzdGVwIGF0IDMyMHB4OyBub3QgcHJvZHVjdGlvbiByb3V0ZSBhZG1pc3Npb24uIgogICAgfSwKICAgIHsKICAgICAgImZpbGVuYW1lIjogImJvb2t5LWpvdXJuZXktcHJldmlldy1lbi0zMjAucG5nIiwKICAgICAgInNoYTI1NiI6ICJkODE0ZDExNjI2NmVmODllZTU3YTdiMjU3ZDIzODI1M2FmMDhjOWQxZmViNTAyNWM5ZmM0OGUzNGQ0MmJiNjJjIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDMyMCwKICAgICAgICAiaGVpZ2h0IjogODQ0CiAgICAgIH0sCiAgICAgICJzY29wZSI6ICJBY3R1YWwgbG9jYWwgYXV0aG9yaW5nIHByZXZpZXcsIHNhbWUgd29yayBzdGVwIGluIEVOIGF0IDMyMHB4LiIKICAgIH0sCiAgICB7CiAgICAgICJmaWxlbmFtZSI6ICJib29reS1qb3VybmV5LWVkaXRvci1ydS0xMjgwLnBuZyIsCiAgICAgICJzaGEyNTYiOiAiZTEyYWU3NjkwMWIyYjljMWQ0YWJhNGI0YzAwMmU4NGYwNzFiYTlmNjVkNTVhOTJjOTY4ZTI4ZjU4YTI2MzFjNyIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAxMjgwLAogICAgICAgICJoZWlnaHQiOiA5NjAKICAgICAgfSwKICAgICAgInNjb3BlIjogIkFjdHVhbCBlZGl0b3IgY29tcG9uZW50LCBzYW1lIGF1dGhvcmVkIHN0YXRlLCBkZXNrdG9wIHVwcGVyIGZvcm0uIgogICAgfQogIF0sCiAgImVycm9ycyI6IFtdLAogICJleHRlcm5hbFJlcXVlc3RzIjogW10sCiAgInByb2R1Y3Rpb25BY3Rpb25zUGVyZm9ybWVkIjogZmFsc2UsCiAgInN0YWdlQWNjZXB0ZWQiOiBmYWxzZSwKICAicmVsZWFzZVJlYWR5IjogZmFsc2UKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fc102a1299349af6bda4-d3427d1b3c329bf0c8e9",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/host/booky-journey-authoring.spec.mjs",
+          "line": 38,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T17:17:32.182Z",
+    "duration": 4827.45,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
