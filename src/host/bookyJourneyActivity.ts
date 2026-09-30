@@ -1,6 +1,7 @@
 import { contentRecordHash } from "../planet/contentExportHash";
 import type { ContentEntityRef } from "../planet/contentExportTypes";
-import type { BookArchiveEntry, Country } from "../planet/types";
+import type { Country } from "../data/countries/types";
+import type { BookArchiveEntry } from "../data/bookArchive";
 
 type WriterRef = Readonly<Extract<ContentEntityRef, { kind: "writer" }>>;
 type WorkRef = Readonly<Extract<ContentEntityRef, { kind: "work" }>>;

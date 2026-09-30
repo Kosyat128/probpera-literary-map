@@ -1,7 +1,8 @@
 import { contentRecordHash } from "../planet/contentExportHash";
 import { selectWriterDisplayName } from "../data/bookLocalization";
 import type { ContentEntityRef } from "../planet/contentExportTypes";
-import type { Country, BookArchiveEntry } from "../planet/types";
+import type { Country } from "../data/countries/types";
+import type { BookArchiveEntry } from "../data/bookArchive";
 import type { BookyDialogueLocale, BookyDialogueReadingLevel, BookyDialogueRecord, BookyDialogueRegistry } from "./bookyDialogueRegistry";
 import { getBookyJourneyActivityChecksum, resolveBookyJourneyActivity,
   type BookyJourneyActivitySpec, type BookyJourneyActivityResolved } from "./bookyJourneyActivity";

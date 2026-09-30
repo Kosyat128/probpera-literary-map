@@ -2,7 +2,8 @@ import { parsePublishedBookDossier } from "../books/bookDossierDelivery";
 import type { BookDossierDocumentV2, BookDossierPublicSource, BookDossierReadingMode } from "../books/bookDossierDocument";
 import { contentRecordHash } from "../planet/contentExportHash";
 import type { ContentEntityRef, ContentLocale } from "../planet/contentExportTypes";
-import type { BookArchiveEntry, Country } from "../planet/types";
+import type { Country } from "../data/countries/types";
+import type { BookArchiveEntry } from "../data/bookArchive";
 import type { BookySupportContentStatus } from "./bookySupport";
 
 type WorkRef = Readonly<Extract<ContentEntityRef, { kind: "work" }>>;
