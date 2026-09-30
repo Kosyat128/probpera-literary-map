@@ -475,7 +475,52 @@ async function globeGuidanceInputs(page, observation) {
     const events=await page.evaluate(()=>window.__writerRecoveryTouch);observation.touches.push({label,events});
     for(const type of ['pointerdown','pointerup','click'])expect(events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch'&&event.intended),label+' trusted '+type).toBe(true);
   }
-  return {tap,expose,geometry,close:()=>cdp.detach()};
+  async function canvasGesture(kind) {
+    const canvas=page.locator('#atlas canvas');await expect(canvas).toHaveCount(1);
+    const plan=await canvas.evaluate((element,kind)=>{
+      const root=window.__bookySupportFixture.scenes().find(row=>row.canvas===element);if(!root?.controls)throw Error('Canonical controls owner missing');
+      const box=element.getBoundingClientRect(),clip={left:Math.max(0,box.left),top:Math.max(0,box.top),right:Math.min(innerWidth,box.right),bottom:Math.min(innerHeight,box.bottom)};
+      const radius=root.camera.position.distanceTo(root.controls.target),min=root.controls.minDistance,max=root.controls.maxDistance;
+      const spreading=kind==='pinch'&&radius-min>.05;if(kind==='pinch'&&!spreading&&max-radius<=.05)throw Error('No measured zoom distance clear of a clamp');
+      const candidates=[],xs=[.5,.4,.6],ys=[.35,.3,.4,.25,.45,.2,.5,.55,.6,.65,.7,.75,.8];
+      for(const fy of ys)for(const fx of xs){const x=clip.left+(clip.right-clip.left)*fx,y=clip.top+(clip.bottom-clip.top)*fy;
+        const frames=Array.from({length:9},(_,step)=>kind==='rotate'?[{id:101,x:x-32+step*8,y}]:
+          [{id:101,x:x-(spreading?64+step*8:128-step*8)/2,y},{id:102,x:x+(spreading?64+step*8:128-step*8)/2,y}]);
+        const clear=frames.every(points=>points.every(point=>point.x>=clip.left+2&&point.x<=clip.right-2&&point.y>=clip.top+2&&point.y<=clip.bottom-2&&document.elementFromPoint(point.x,point.y)===element));
+        candidates.push({x,y,clear});if(clear)return {kind,frames,candidates,canvas:{left:box.left,top:box.top,width:box.width,height:box.height},radius,min,max,spreading,
+          controls:{enabled:root.controls.enabled,enableRotate:root.controls.enableRotate,enableZoom:root.controls.enableZoom,enablePan:root.controls.enablePan,zoomSpeed:root.controls.zoomSpeed}};
+      }throw Error('No bounded canonical canvas gesture corridor: '+JSON.stringify(candidates));
+    },kind);
+    expect(plan.controls.enabled).toBe(true);expect(plan.controls.enablePan).toBe(false);expect(kind==='rotate'?plan.controls.enableRotate:plan.controls.enableZoom).toBe(true);
+    const record={...plan,steps:[],nativeInput:null};(observation.canvasGestures??=[]).push(record);
+    await canvas.evaluate(element=>{
+      const owner=window.__bookySupportFixture.scenes().find(row=>row.canvas===element),events=[],types=['pointerdown','pointermove','pointerup','pointercancel','click'];
+      const listener=event=>{if(events.length<128)events.push({type:event.type,at:performance.now(),trusted:event.isTrusted,pointerType:event.pointerType,
+        pointerId:event.pointerId,x:event.clientX,y:event.clientY,targetIsCanvas:event.target===owner.canvas});};
+      for(const type of types)element.addEventListener(type,listener,{capture:true,passive:true});
+      window.__bookyCanvasGesture={owner,events,cleanup:()=>{for(const type of types)element.removeEventListener(type,listener,true);}};
+    });
+    try {
+      for(const [step,points]of plan.frames.entries()){
+        const hit=await canvas.evaluate((element,points)=>{const saved=window.__bookyCanvasGesture.owner,current=window.__bookySupportFixture.scenes().find(row=>row.canvas===element);
+          return {sameOwner:!!current&&['canvas','renderer','camera','scene','controls'].every(key=>current[key]===saved[key])&&document.querySelector('#atlas canvas')===element,
+            points:points.map(point=>{const hit=document.elementFromPoint(point.x,point.y);return {...point,inside:hit===element,hit:hit?{tag:hit.tagName,className:typeof hit.className==='string'?hit.className:null}:null};})};},points);
+        record.steps.push({step,hit});expect(hit.sameOwner,'same canonical owner before every dispatched touch').toBe(true);expect(hit.points.every(point=>point.inside),'every actual gesture path point hits that canonical canvas').toBe(true);
+        await touch(step===0?'touchStart':'touchMove',points);await page.waitForTimeout(35);record.steps.at(-1).globe=await sample(page);
+      }
+    } finally {
+      await touch('touchEnd',[]);await guidanceSettle(page);
+      record.nativeInput=await page.evaluate(()=>{const state=window.__bookyCanvasGesture,events=state.events.map(event=>({...event}));state.cleanup();delete window.__bookyCanvasGesture;return events;});
+    }
+    const downs=record.nativeInput.filter(event=>event.type==='pointerdown'),ups=record.nativeInput.filter(event=>event.type==='pointerup'),fingerCount=kind==='rotate'?1:2;
+    expect(downs).toHaveLength(fingerCount);expect(ups).toHaveLength(fingerCount);expect(new Set(downs.map(event=>event.pointerId)).size).toBe(fingerCount);
+    expect(record.nativeInput.filter(event=>event.type==='pointercancel')).toEqual([]);
+    for(const down of downs){const moves=record.nativeInput.filter(event=>event.type==='pointermove'&&event.pointerId===down.pointerId);
+      expect(moves.length,'each stable native touch identity receives all eight moves').toBeGreaterThanOrEqual(8);expect(ups.some(event=>event.pointerId===down.pointerId)).toBe(true);}
+    expect(record.nativeInput.filter(event=>event.type!=='click').every(event=>event.trusted&&event.pointerType==='touch'&&event.targetIsCanvas),'only trusted native touch input on the canonical canvas').toBe(true);
+    expect(record.steps).toHaveLength(9);return record;
+  }
+  return {tap,expose,geometry,canvasGesture,close:()=>cdp.detach()};
 }
 
 async function installReservedTopObserver(page){await page.evaluate(()=>{
@@ -657,6 +702,45 @@ for(const language of ['ru','en'])test('Booky mobile globe guidance '+language,a
     expect(fixture.bookyWrites()).toEqual([]);expect(fixture.writes()).toEqual([]);
     expect(await page.evaluate(()=>window.__globeGuidanceTrace.controlClicks)).toEqual(controlClicks);
     race.completed=await page.evaluate(()=>window.__bookyGlobeFocusRace.stop());
+    // New camera-input scope begins only after every original guidance/race assertion and capture.
+    result.originalGuidanceRealZoomOnlyVerified=result.realZoomOnlyVerified;result.realZoomOnlyVerified=false;
+    result.realZoomOnlyScope='Original guidance segment only; the appended trusted canvas gesture also changes camera pose.';
+    await phase('canonical-canvas-gesture');await expect(searchToolbar).toHaveAttribute('aria-expanded','true');
+    await input.tap(searchToolbar,'close current Search before the canonical canvas gesture');
+    await expect(searchToolbar).toHaveAttribute('aria-expanded','false');await expect(panel(page)).toHaveCount(0);
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');await expect(page.locator('[data-booky-target]')).toHaveCount(0);
+    await ready(page);await stablePose(page);
+    const semanticSelection=()=>page.evaluate(()=>{
+      const countries=[...document.querySelectorAll('.atlas-country-presentation[data-atlas-country]')],country=countries[0],writers=country?[...country.querySelectorAll('.writer-row[aria-pressed="true"]')]:[],breadcrumbs=country?[...country.querySelectorAll('.country-panel-breadcrumbs li[aria-current="page"]')]:[],headings=country?[...country.querySelectorAll('.writer-detail-heading h4')]:[];
+      const route=new URL(location.href);return {countryCount:countries.length,countryId:country?.getAttribute('data-atlas-country')??null,selectedWriterCount:writers.length,selectedWriterLabel:writers[0]?.getAttribute('aria-label')??null,breadcrumbCount:breadcrumbs.length,writerName:breadcrumbs[0]?.textContent?.trim()??null,headingCount:headings.length,writerHeading:headings[0]?.textContent?.trim()??null,countryRoute:route.searchParams.get('country'),writerRoute:route.searchParams.get('writer')};
+    });
+    const gesture=o.canonicalCanvasGesture={kind:language==='ru'?'one-finger horizontal rotation':'symmetric two-finger perspective dolly',
+      scope:'Trusted Chrome CDP touch on the real canonical canvas; no installed-device/native gesture equivalence',before:{globe:await actual(page),state:await guidanceState(page),preferences:saved(),semanticSelection:await semanticSelection()}};
+    const selected=gesture.before.semanticSelection;expect(selected.countryCount).toBe(1);expect(selected.countryId).toBe('russia');expect(selected.countryRoute).toBe('russia');expect(selected.writerRoute).toBe('dostoevsky');expect(selected.selectedWriterCount).toBe(1);expect(selected.breadcrumbCount).toBe(1);expect(selected.headingCount).toBe(1);
+    expect(selected.writerName).toMatch(language==='ru'?/Достоевск/iu:/Dostoevsky/iu);expect(selected.writerHeading).toBe(selected.writerName);expect(selected.selectedWriterLabel).toContain(selected.writerName);
+    gesture.input=await input.canvasGesture(language==='ru'?'rotate':'pinch');await ready(page);await stablePose(page);
+    gesture.after={globe:await actual(page),state:await guidanceState(page),preferences:saved(),semanticSelection:await semanticSelection()};retained(gesture.after.globe,gesture.before.globe,false,true);
+    expect(gesture.after.semanticSelection).toEqual(gesture.before.semanticSelection);
+    const cameraMeasure=pose=>{expect(pose.target).not.toBeNull();const delta=pose.position.map((value,index)=>value-pose.target[index]),radius=Math.hypot(...delta);return {radius,direction:delta.map(value=>value/radius),quaternion:pose.quaternion};};
+    const beforeCamera=cameraMeasure(gesture.before.globe.pose),afterCamera=cameraMeasure(gesture.after.globe.pose);gesture.camera={before:beforeCamera,after:afterCamera};
+    expect(gesture.after.globe.pose.target).toEqual(gesture.before.globe.pose.target);expect(gesture.after.globe.pose.zoom).toBe(gesture.before.globe.pose.zoom);expect(gesture.after.globe.pose.fov).toBe(gesture.before.globe.pose.fov);
+    const directionDelta=Math.hypot(...afterCamera.direction.map((value,index)=>value-beforeCamera.direction[index]));
+    if(language==='ru'){
+      expect(directionDelta,'one real drag changes camera orientation').toBeGreaterThan(.01);expect(gesture.after.globe.pose.quaternion).not.toEqual(gesture.before.globe.pose.quaternion);
+      expect(Math.abs(afterCamera.radius-beforeCamera.radius),'rotation preserves camera-to-target radius').toBeLessThan(.001);
+    }else{
+      const difference=afterCamera.radius-beforeCamera.radius;expect(gesture.input.spreading?-difference:difference,'the genuine pinch changes perspective radius in the observed expected direction').toBeGreaterThan(.01);
+      expect(afterCamera.radius).toBeGreaterThanOrEqual(gesture.input.min-.001);expect(afterCamera.radius).toBeLessThanOrEqual(gesture.input.max+.001);
+      expect(directionDelta,'symmetric pinch retains camera direction').toBeLessThan(.0003);
+      for(const [index,value]of gesture.after.globe.pose.quaternion.entries())expect(Math.abs(value-gesture.before.globe.pose.quaternion[index])).toBeLessThan(.0003);
+      gesture.camera.clamped=afterCamera.radius<=gesture.input.min+.001||afterCamera.radius>=gesture.input.max-.001;
+    }
+    for(const key of ['mode','route','step','screen','visibility','url'])expect(gesture.after.state[key]).toEqual(gesture.before.state[key]);
+    expect(gesture.after.state.panelOpen).toBe(false);expect(gesture.after.state.searchOpen).toBe('false');expect(gesture.after.state.gesture).toBe('rest');expect(gesture.after.state.cue).toBeNull();
+    expect(gesture.after.preferences).toEqual(gesture.before.preferences);expect(gesture.after.preferences).toEqual(preferences);
+    expect(fixture.operations.slice(operationStart).filter(entry=>entry.operation!=='get')).toEqual([]);expect(fixture.bookyWrites()).toEqual([]);expect(fixture.writes()).toEqual([]);
+    expect(await page.evaluate(()=>window.__globeGuidanceTrace.controlClicks)).toEqual(controlClicks);
+    result.canonicalCanvasGestureVerified=true;result.canonicalCanvasGestureScope=gesture.scope;
     fixture.verify();
   }catch(error){const filename='diagnostic-failure-'+language+'.png',bytes=await page.screenshot({path:testInfo.outputPath(filename)});o.failureCapture={filename,sha256:digest(bytes),error:error.message,scope:'failure diagnosis only'};await testInfo.attach('diagnostic-failure-'+language,{path:testInfo.outputPath(filename),contentType:'image/png'});throw error;
   }finally{o.trace=await page.evaluate(()=>{const state=window.__globeGuidanceTrace;if(state)state.active=false;return state??null;});await input.close();await fixture.close();}
