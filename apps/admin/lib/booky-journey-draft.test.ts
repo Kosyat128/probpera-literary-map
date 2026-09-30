@@ -324,7 +324,7 @@ describe("adult Booky journey draft reopening", () => {
       .toContain("copy.en.nodes.work.body");
     const invalidCatalog = { countries: null } as unknown as JourneyDraftCatalog;
     expect(importErrors(JSON.stringify(draft()), invalidCatalog)).toContain("catalog");
-    const failedCatalog = { get countries() { throw new Error("Catalog unavailable"); } } as JourneyDraftCatalog;
+    const failedCatalog = { get countries() { throw new Error("Catalog unavailable"); } } as unknown as JourneyDraftCatalog;
     expect(importErrors(JSON.stringify(draft()), failedCatalog)).toContain("file");
   });
 
