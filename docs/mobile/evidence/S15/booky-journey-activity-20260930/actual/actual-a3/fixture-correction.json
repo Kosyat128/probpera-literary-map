@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "path": "tests/host/booky-journey-authoring.spec.mjs",
+  "beforeSha256": "db74b54a19a6d90bcef30580c0d69765095d432b372545bbb9a53b8a06b020ef",
+  "afterSha256": "2e9490cb046e8f2de49b7a91063b575d476bff156ece626c71d548aa3249741d",
+  "originalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/source-manifest.json",
+    "sha256": "27d56ef25a7f3f3fecd2e9ad3b65861bd644a962c31a5ddeef89e32d5a4821b7"
+  },
+  "finalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a3/source-manifest.json",
+    "sha256": "610fdb0c5247f71949c51d3359ec178aee5a4f7a4a9f314f216a5d6865fd62c7"
+  },
+  "failedBrowser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/browser-result.json",
+    "sha256": "ec765a627deef74310c8819cd85a36d8048d96540c3add8bda87036e6a57b75d"
+  },
+  "applicationSourceUnchanged": true,
+  "typecheckRerun": false,
+  "unitRerun": false,
+  "catalogSmokeRerun": false,
+  "reason": "Observe the native disabled option attribute and property because the generic Playwright disabled matcher did not recognize the actual disabled option.",
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/fix-browser-and-check.mjs",
+    "sha256": "a2de29ffe156d0298e22cb464755374c37116b138b18ac93682d0ccd5fc77060"
+  }
+}

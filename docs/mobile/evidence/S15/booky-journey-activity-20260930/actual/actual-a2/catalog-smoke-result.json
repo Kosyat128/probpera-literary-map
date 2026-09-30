@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "actualStaticCatalog": true,
+  "canonical": {
+    "countries": 10,
+    "writers": 30,
+    "works": 46
+  },
+  "supportedWorkCount": 18,
+  "rejectedWorkCount": 0,
+  "ineligibleWorkCount": 28,
+  "candidateAttempts": 18,
+  "pureDraftRejectedAttempts": 0,
+  "semanticRejectedAttempts": 0,
+  "reasonCounts": {
+    "credited-author-missing-bilingual-label": 28
+  },
+  "supportedExamples": [
+    {
+      "countryId": "austria",
+      "writerId": "franz_kafka",
+      "workId": "openlibrary-works-ol498556w"
+    },
+    {
+      "countryId": "england",
+      "writerId": "j_r_r_tolkien",
+      "workId": "openlibrary-works-ol27448w"
+    },
+    {
+      "countryId": "england",
+      "writerId": "j_r_r_tolkien",
+      "workId": "the-hobbit"
+    },
+    {
+      "countryId": "england",
+      "writerId": "john_galsworthy",
+      "workId": "the-forsyte-saga"
+    },
+    {
+      "countryId": "england",
+      "writerId": "david_mitchell",
+      "workId": "ghostwritten"
+    },
+    {
+      "countryId": "england",
+      "writerId": "david_mitchell",
+      "workId": "number9dream"
+    },
+    {
+      "countryId": "england",
+      "writerId": "david_mitchell",
+      "workId": "slade-house"
+    },
+    {
+      "countryId": "england",
+      "writerId": "david_mitchell",
+      "workId": "the-bone-clocks"
+    }
+  ],
+  "ineligibleExamples": [
+    {
+      "countryId": "england",
+      "writerId": "william_shakespeare",
+      "workId": "hamlet",
+      "reason": "credited-author-missing-bilingual-label"
+    },
+    {
+      "countryId": "england",
+      "writerId": "jane_austen",
+      "workId": "pride-and-prejudice",
+      "reason": "credited-author-missing-bilingual-label"
+    },
+    {
+      "countryId": "england",
+      "writerId": "charles_dickens",
+      "workId": "a-tale-of-two-cities",
+      "reason": "credited-author-missing-bilingual-label"
+    },
+    {
+      "countryId": "england",
+      "writerId": "h_g_wells",
+      "workId": "ann-veronica",
+      "reason": "credited-author-missing-bilingual-label"
+    },
+    {
+      "countryId": "england",
+      "writerId": "h_g_wells",
+      "workId": "men-like-gods",
+      "reason": "credited-author-missing-bilingual-label"
+    },
+    {
+      "countryId": "england",
+      "writerId": "h_g_wells",
+      "workId": "the-first-men-in-the-moon",
+      "reason": "credited-author-missing-bilingual-label"
+    },
+    {
+      "countryId": "england",
+      "writerId": "h_g_wells",
+      "workId": "the-food-of-the-gods",
+      "reason": "credited-author-missing-bilingual-label"
+    },
+    {
+      "countryId": "england",
+      "writerId": "h_g_wells",
+      "workId": "the-history-of-mr-polly",
+      "reason": "credited-author-missing-bilingual-label"
+    }
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/catalog-smoke-source-manifest.json",
+    "sha256": "648279bdd440439f1907425c01853de80a6df4823fc599d5229597fd03a76b98"
+  },
+  "sourceBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/catalog-smoke-source-before.json",
+    "sha256": "d9f0ad3db7ca6521c3604656b1265d4fd2cbb4b6ef7e7f52344fdd2e8ec70b12"
+  },
+  "sourceAfter": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/catalog-smoke-source-after.json",
+    "sha256": "d9f0ad3db7ca6521c3604656b1265d4fd2cbb4b6ef7e7f52344fdd2e8ec70b12"
+  },
+  "sourceInputsUnchanged": true,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/catalog-smoke.mjs",
+    "sha256": "ac331205c8c34ef7d1c60ae312ffd8a5f94e09f84a280b2ecc3d67e55aa5b892"
+  },
+  "unapprovedDraftOnly": true,
+  "authenticatedAdminSession": false,
+  "networkOrDatabaseRequests": false,
+  "exportedToProduction": false,
+  "humanReviewed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

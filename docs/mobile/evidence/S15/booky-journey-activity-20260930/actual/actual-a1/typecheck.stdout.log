@@ -1,0 +1,9 @@
+apps/admin/components/BookyJourneyDraftEditor.tsx(315,16): error TS18048: 'input.activity' is possibly 'undefined'.
+apps/admin/lib/booky-journey-draft.test.ts(394,32): error TS2769: No overload matches this call.
+  Overload 1 of 4, '(target: {}, source: { correctChoiceId: string; }): { correctChoiceId: string; }', gave the following error.
+    Argument of type '{ type: "match-work-author"; choices: { countryId: string; writerId: string; }[]; copy: { en: { title: string; body: string; }; ru: { title: string; body: string; }; }; } | undefined' is not assignable to parameter of type '{}'.
+      Type 'undefined' is not assignable to type '{}'.
+  Overload 2 of 4, '(target: object, ...sources: any[]): any', gave the following error.
+    Argument of type '{ type: "match-work-author"; choices: { countryId: string; writerId: string; }[]; copy: { en: { title: string; body: string; }; ru: { title: string; body: string; }; }; } | undefined' is not assignable to parameter of type 'object'.
+      Type 'undefined' is not assignable to type 'object'.
+apps/admin/lib/booky-journey-draft.ts(212,38): error TS7006: Parameter 'item' implicitly has an 'any' type.

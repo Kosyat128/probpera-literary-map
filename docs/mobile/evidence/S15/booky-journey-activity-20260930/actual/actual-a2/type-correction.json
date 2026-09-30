@@ -1,0 +1,53 @@
+{
+  "pass": true,
+  "originalUnit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a1/unit-result.json",
+    "sha256": "939e0dcb20980a361c5022945675e3a3c877c8d18769b44aa1bb244562a1b4ce"
+  },
+  "originalUnitManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a1/source-manifest.json",
+    "sha256": "25310638f37035d8b8a999f5e814702de97bc5c6eb1840e4613a3eb00e185a0f"
+  },
+  "finalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/source-manifest.json",
+    "sha256": "27d56ef25a7f3f3fecd2e9ad3b65861bd644a962c31a5ddeef89e32d5a4821b7"
+  },
+  "proofs": [
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "beforeSha256": "2ed14659e023f433f048b0df2607efda54ccfc7aa9d2f5b778b31bc68a83a487",
+      "afterSha256": "4e86b796c82d1422f0cbc1a450b406e52b528e48bda39414771d080def179ada",
+      "emittedJavaScriptSha256": "526dfc676bba8a97228e65a5834d3fbf634ca3283b45920f8be00409e5a1d44c",
+      "emittedJavaScriptIdentical": true,
+      "compiler": "esbuild",
+      "target": "es2020"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "beforeSha256": "de793d6206c022dba9def6c8c03605596dc9a385c38edf7cc091f6476529cf36",
+      "afterSha256": "1e323e0517eaa068d19a7575a28705c63250c1398e16d9e1d4dbfa22bcd04869",
+      "emittedJavaScriptSha256": "f300fcbceb391641bec8a64e0b942ad795f6d12e9bac5c8097fcba5bd00a3ef7",
+      "emittedJavaScriptIdentical": true,
+      "compiler": "esbuild",
+      "target": "es2020"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "beforeSha256": "d0a348a461d897bf079c6d5c7134edebf0a9bae2b4b731026c9fa7e4f5e96764",
+      "afterSha256": "b958cc64bb0544e0def97e04eebaccf7824fca9180e907447310fba3723b4872",
+      "emittedJavaScriptSha256": "8bc21e6b9c10ce3c21884f48aab1bd80221caf30abdd9769ac0c5bb6e96ce13b",
+      "emittedJavaScriptIdentical": true,
+      "compiler": "esbuild",
+      "target": "es2020"
+    }
+  ],
+  "unitRerun": false,
+  "failedTypecheck": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a1/typecheck-result.json",
+    "sha256": "f7ba99814b83239052cda1a77d3cd3ec60c0f63b773c2d34a6f2435135ff52a2"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/fix-types-and-check.mjs",
+    "sha256": "3c88022adcacf90c36b8d77b7d44ec82f6105f1b55e94a36ae42bed47ff2c304"
+  }
+}

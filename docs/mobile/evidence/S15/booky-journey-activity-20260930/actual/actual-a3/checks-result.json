@@ -1,0 +1,61 @@
+{
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a3/source-manifest.json",
+    "sha256": "610fdb0c5247f71949c51d3359ec178aee5a4f7a4a9f314f216a5d6865fd62c7"
+  },
+  "sourceInputsUnchanged": true,
+  "predecessorDocsCommit": "6cef35a8850b7d83cff353655f6495e82fc27361",
+  "changedPaths": [
+    "apps/admin/app/(dashboard)/journeys/actions.test.ts",
+    "apps/admin/app/(dashboard)/journeys/actions.ts",
+    "apps/admin/components/BookyJourneyDraftEditor.tsx",
+    "apps/admin/lib/booky-journey-activity-validation.test.ts",
+    "apps/admin/lib/booky-journey-activity-validation.ts",
+    "apps/admin/lib/booky-journey-draft.test.ts",
+    "apps/admin/lib/booky-journey-draft.ts",
+    "tests/host/booky-journey-authoring.spec.mjs"
+  ],
+  "newPaths": [
+    "apps/admin/app/(dashboard)/journeys/actions.test.ts",
+    "apps/admin/app/(dashboard)/journeys/actions.ts",
+    "apps/admin/lib/booky-journey-activity-validation.test.ts",
+    "apps/admin/lib/booky-journey-activity-validation.ts"
+  ],
+  "protectedInputCount": 2093,
+  "typecheck": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/typecheck-result.json",
+    "sha256": "9a8270883591bc4c1bc4f4b77f8764b1aefc02d034b57a0173a9c478d37cdfc3"
+  },
+  "unit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a1/unit-result.json",
+    "sha256": "939e0dcb20980a361c5022945675e3a3c877c8d18769b44aa1bb244562a1b4ce"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a3/browser-result.json",
+    "sha256": "01b654d953d2894f3cf6cfd87b407231446aaf6e4063987b44cd8c3854d2cc45"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/fix-browser-and-check.mjs",
+    "sha256": "a2de29ffe156d0298e22cb464755374c37116b138b18ac93682d0ccd5fc77060"
+  },
+  "mobileRuntimeUnchanged": true,
+  "mobileBuildExecuted": false,
+  "authenticatedAdminSession": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "unitRetainedAtOriginalManifest": true,
+  "correction": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/type-correction.json",
+    "sha256": "07398c90ba9d79ff9bf59f9cdf0661ac16474ca8f06a0e31c6a566db37e7e7f9"
+  },
+  "fixtureCorrection": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a3/fixture-correction.json",
+    "sha256": "062a1047765fb29ce8374a0c98fd95e6689113cfa9826f8dfd810f99bf473a08"
+  },
+  "typecheckRetainedAtOriginalManifest": true,
+  "catalogSmoke": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/catalog-smoke-result.json",
+    "sha256": "d9b8de2d27cb81e736aff3a9ca84ff736b50d97f93691ceb0a34fc5ac2638624"
+  }
+}

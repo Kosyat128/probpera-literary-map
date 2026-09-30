@@ -1,0 +1,35 @@
+{
+  "pass": false,
+  "exitCode": 1,
+  "error": null,
+  "durationMs": 17077,
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "--config=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-authoring-review\\playwright.config.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/source-manifest.json",
+    "sha256": "27d56ef25a7f3f3fecd2e9ad3b65861bd644a962c31a5ddeef89e32d5a4821b7"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/browser.stdout.log",
+    "sha256": "4f1045e5fb4474e5496765f3c2ce13d1279c85eebcba39d084713d6cc22f017b"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/browser.stderr.log",
+    "sha256": "cd163d87cdfd4df3be6659609505e27580b18a38e09e22ef7c2b6a8322df5cbd"
+  },
+  "report": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/browser-report.json",
+    "sha256": "17cf00f6425b3e50584016da4bb94a4466cf4022237108535bc50daf93c336bb"
+  },
+  "summary": {
+    "cases": 2,
+    "passed": 1,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0
+  }
+}

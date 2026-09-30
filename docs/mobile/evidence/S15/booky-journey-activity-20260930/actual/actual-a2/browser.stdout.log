@@ -1,0 +1,46 @@
+
+Running 2 tests using 1 worker
+·F
+
+  1) tests\host\booky-journey-authoring.spec.mjs:233:1 › optional adult RU EN author task uses current semantic validation and preserves edits through failed or obsolete operations 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator:  getByLabel('Автор · вариант 1', { exact: true }).locator('option').filter({ hasText: 'Тестовый писатель Б' })
+    Expected: disabled
+    Received: enabled
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeDisabled" with timeout 10000ms
+      - waiting for getByLabel('Автор · вариант 1', { exact: true }).locator('option').filter({ hasText: 'Тестовый писатель Б' })
+        23 × locator resolved to <option disabled value="["country-a","writer-b"]">Тестовый писатель Б · Тестовая страна А · EN пока…</option>
+           - unexpected value "enabled"
+
+
+      270 |   await expect(firstChoice).toHaveValue(JSON.stringify(['', '']));
+      271 |   await expect(secondChoice).toHaveValue(JSON.stringify(['', '']));
+    > 272 |   await expect(firstChoice.locator('option').filter({ hasText: 'Тестовый писатель Б' })).toBeDisabled();
+          |                                                                                          ^
+      273 |   await firstChoice.selectOption(JSON.stringify(['country-a', 'writer-a']));
+      274 |   await secondChoice.selectOption(JSON.stringify(['country-c', 'writer-d']));
+      275 |   const previewButton = page.getByRole('button', { name: 'Предпросмотр маршрута', exact: true });
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\host\booky-journey-authoring.spec.mjs:272:90
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-activity-review\actual-a2\captures\booky-journey-authoring-op-df663-iled-or-obsolete-operations\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-activity-review\actual-a2\captures\booky-journey-authoring-op-df663-iled-or-obsolete-operations\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-activity-review\actual-a2\captures\booky-journey-authoring-op-df663-iled-or-obsolete-operations\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-activity-review\actual-a2\captures\booky-journey-authoring-op-df663-iled-or-obsolete-operations\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\host\booky-journey-authoring.spec.mjs:233:1 › optional adult RU EN author task uses current semantic validation and preserves edits through failed or obsolete operations 
+  1 passed (16.5s)
