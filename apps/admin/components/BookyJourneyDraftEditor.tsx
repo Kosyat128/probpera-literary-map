@@ -17,6 +17,10 @@ const steps = [
   { key: "work", title: "Книга", number: 3 },
   { key: "checkpoint", title: "Завершение", number: 4 },
 ] as const;
+const previewStepLabels = {
+  ru: { country: "Страна", writer: "Писатель", work: "Книга", "sourced-fact": "Факт", activity: "Задание", checkpoint: "Завершение", character: "Персонаж" },
+  en: { country: "Country", writer: "Writer", work: "Work", "sourced-fact": "Fact", activity: "Activity", checkpoint: "Finish", character: "Character" },
+} as const;
 
 function initialCopy(): JourneyDraftInput["copy"] {
   return {
@@ -118,6 +122,11 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     setPreview((current) => current ? { ...current,
       step: Math.max(0, Math.min(current.draft.definitions[0].nodes.length - 1, current.step + direction)),
     } : null);
+  }
+  function jumpPreviewStep(step: number) {
+    if (!preview || !previewDefinition || !Number.isInteger(step) || step < 0 || step >= previewDefinition.nodes.length || step === preview.step) return;
+    beginOperation();
+    setPreview((current) => current ? { ...current, step } : null);
   }
   async function checkAnswer() {
     const candidate = preview, choiceId = answer.choiceId;
@@ -486,6 +495,20 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           previewDefinition.readingLevel === "plain" ? "Простой" : previewDefinition.readingLevel === "developing" ? "Развивающийся" : "Свободный"
         } · Оценка: {previewDefinition.overview?.estimatedDurationMinutes} мин</p>
         <p role="status" aria-live="polite">Шаг {preview.step + 1} из {previewDefinition.nodes.length} · {{ country: "Страна", writer: "Писатель", work: "Книга", activity: "Задание", checkpoint: "Завершение", "sourced-fact": "Факт", character: "Персонаж" }[previewNode.kind]}</p>
+        <details data-booky-journey-step-overview lang={preview.locale} style={{ minWidth: 0 }}>
+          <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>
+            {preview.locale === "ru" ? "Шаги маршрута" : "Journey steps"} ({previewDefinition.nodes.length})
+          </summary>
+          <ol aria-label={preview.locale === "ru" ? "Выбор шага предпросмотра" : "Choose a preview step"}
+            style={{ display: "flex", flexWrap: "wrap", gap: 8, listStyle: "none", padding: 0, margin: "8px 0" }}>
+            {previewDefinition.nodes.map((node, index) => <li key={node.id} style={{ minWidth: 0, maxWidth: "100%" }}>
+              <button className={index === preview.step ? "button" : "button-secondary"} type="button" lang={preview.locale}
+                data-preview-step-choice={node.id} aria-current={index === preview.step ? "step" : undefined}
+                style={{ minHeight: 44, minWidth: 44, maxWidth: "100%", whiteSpace: "normal", textAlign: "start" }}
+                onClick={() => jumpPreviewStep(index)}>{index + 1}. {previewStepLabels[preview.locale][node.kind]}</button>
+            </li>)}
+          </ol>
+        </details>
         <article lang={preview.locale} aria-label={preview.locale === "ru" ? "Текст выбранного шага" : "Selected step text"}
           data-preview-step={previewNode.id} style={{ minWidth: 0, overflowWrap: "anywhere" }}>
           <h3>{previewDefinition.title}</h3>
