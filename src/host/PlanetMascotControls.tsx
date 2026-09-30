@@ -29,6 +29,7 @@ export type PlanetMascotControlsProps = {
   /** Immediate decorative command only; unavailable owners never queue it. */
   completionReactionRef?: { current: (() => boolean) | null };
   atlasSearchVisible?: boolean;
+  readerEntry?: Readonly<{ key: string; intentRevision: number }> | null;
   onHelpOpen?: () => void;
   position: Position | null;
   onPositionChange: (position: Position | null) => void;
@@ -110,7 +111,7 @@ function companionViewport(): Rect {
   return { ...view, top, height: Math.max(0, view.top + view.height - top) };
 }
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, pointRequest, completionReactionRef, atlasSearchVisible = false, onHelpOpen, position, onPositionChange, persistence, onRetryPersistence, motion, onMotionChange,
+  onAction, pointRequest, completionReactionRef, atlasSearchVisible = false, readerEntry = null, onHelpOpen, position, onPositionChange, persistence, onRetryPersistence, motion, onMotionChange,
   onRetryMotion, onRecoverMotion, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
@@ -119,6 +120,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const toggle = useRef<HTMLButtonElement>(null), heading = useRef<HTMLHeadingElement>(null);
   const actionsToggle = useRef<HTMLButtonElement>(null);
   const [actionsOpen, setActionsOpen] = useState(false);
+  const [readerPaused, setReaderPaused] = useState(false);
+  const seenReaderKey = useRef<string | null>(null), readerCollapseIntent = useRef<number | null>(null);
+  const readerWalkStop = useRef<(() => void) | null>(null);
   const gestureGallery = useRef<HTMLDetailsElement>(null), gestureSummary = useRef<HTMLElement>(null);
   const tourHeading = useRef<HTMLHeadingElement>(null), focusAfterNavigation = useRef(false);
   const resetStart = useRef<HTMLButtonElement>(null), resetConfirm = useRef<HTMLButtonElement>(null);
@@ -155,6 +159,21 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const compact = view.width <= 1024 && screen === "globe" && view.height < 240 || typeof window !== "undefined"
     && window.matchMedia("(max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape)").matches;
   useLayoutEffect(() => { setActionsOpen(false); }, [open, shown, snapshot.available, screen, compact]);
+  useLayoutEffect(() => {
+    const key = readerEntry?.key ?? null;
+    if (seenReaderKey.current === key) return;
+    seenReaderKey.current = key; readerCollapseIntent.current = null;
+    if (!key) { setReaderPaused(false); return; }
+    const current = controller.getSnapshot();
+    if (readerEntry?.intentRevision !== current.intentRevision) return;
+    if (current.panel === "open" || prior.current.panel === "open") readerCollapseIntent.current = current.intentRevision;
+    cancelPoint.current?.(); readerWalkStop.current?.();
+    if (pointRequest) handledPoint.current = pointRequest.id;
+    const intent = drag.current; drag.current = null;
+    if (intent?.element.hasPointerCapture(intent.pointerId)) intent.element.releasePointerCapture(intent.pointerId);
+    walkStopActivation.current = null; setActionsOpen(false);
+    setTargetCue(null); setGesture("rest"); setPointerLook(null); setPageTurn(0); setReaderPaused(true);
+  }, [readerEntry?.key, readerEntry?.intentRevision, controller]);
   useLayoutEffect(() => {
     if (!compact || screen !== "globe" || !atlasSearchVisible || !open) return;
     const current = controller.getSnapshot();
@@ -327,9 +346,12 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     else if ((!open && previous.panel === "open") || (!shown && previous.visibility === "shown")) {
       // Mobile Search owns focus when it retires help. Returning it to the
       // avatar here would blur the newly opened input and immediately close Search.
-      if (!(compact && screen === "globe" && atlasSearchVisible)) toggle.current?.focus({ preventScroll: true });
+      if (readerCollapseIntent.current !== snapshot.intentRevision
+        && !(compact && screen === "globe" && atlasSearchVisible)) toggle.current?.focus({ preventScroll: true });
     }
-  }, [snapshot.available, snapshot.panel, snapshot.visibility, shown, open, compact, screen, atlasSearchVisible]);
+    // The automatic close owns one transition; later manual Close returns focus normally.
+    if (!open || readerCollapseIntent.current !== snapshot.intentRevision) readerCollapseIntent.current = null;
+  }, [snapshot.available, snapshot.panel, snapshot.visibility, snapshot.intentRevision, shown, open, compact, screen, atlasSearchVisible]);
 
   useLayoutEffect(() => {
     if (!focusAfterNavigation.current) return;
@@ -380,6 +402,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     calmMotion,
     revision: snapshot.revision, position: restingPosition, committedPosition: position ?? preferredPosition,
     size: petSize, viewport: view, controls: navigation, onFinish: onPositionChange });
+  readerWalkStop.current = walk.stop;
   useLayoutEffect(() => { if (walk.reducedMotion) setPageTurn(0); }, [walk.reducedMotion]);
   const walkNeedsSpace = !walk.active && !walk.canStart && !walk.reducedMotion && !open
     && snapshot.available && snapshot.mode === "help";
@@ -402,6 +425,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     };
     const selector = targets[pointRequest.action];
     if (!selector) { handledPoint.current = pointRequest.id; return; }
+    setReaderPaused(false);
     let cancelled = false, frame = 0, timer = 0, target: Element | null = null;
     let movementStarted = false, returnedToDock = false;
     let measuredPet: Rect | null = null;
@@ -561,7 +585,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     ? { left: helpPosition.left + MARGIN, top: helpPosition.top + MARGIN } : petPosition;
   const perform = (action: PlanetMascotAction) => {
     const performed = controller.act(action, snapshot.revision, () => onAction(action));
-    if (performed) { setGesture("rest"); setReactionKey(value => value + 1); }
+    if (performed) { setReaderPaused(false); setGesture("rest"); setReactionKey(value => value + 1); }
     return performed;
   };
   const restoreCharacter = () => {
@@ -570,7 +594,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       || !current.available || current.visibility !== "shown" || current.panel !== "open" || document.hidden || drag.current) return;
     // Claim the attempt synchronously: repeated activation cannot queue a remount.
     const next = { attempt: owner.attempt + 1, recoveryAttempt: true, state: "loading" as const };
-    characterOwner.current = next;
+    characterOwner.current = next; setReaderPaused(false);
     cancelPoint.current?.(); walk.stop();
     if (pointRequest) handledPoint.current = pointRequest.id;
     walkStopActivation.current = null;
@@ -585,7 +609,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
       || current.panel !== "open" || document.hidden || drag.current
       || characterOwner.current.recoveryAttempt && characterOwner.current.state === "loading") return false;
-    setPointerLook(null); setGesture(next); setReactionKey(value => value + 1);
+    setReaderPaused(false); setPointerLook(null); setGesture(next); setReactionKey(value => value + 1);
     return true;
   };
   useLayoutEffect(() => {
@@ -629,6 +653,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     if (onRetryPersistence()) toggle.current?.focus({ preventScroll: true });
   };
   const move = (next: Position) => {
+    setReaderPaused(false);
     dockDetached.current = Boolean(dock);
     onPositionChange(clamped(next, petSize.width, petSize.height, view));
   };
@@ -637,7 +662,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
       || current.panel !== "open" || current.mode !== "help" || document.hidden || drag.current) return;
     cancelPoint.current?.(); walk.stop();
-    dockDetached.current = false;
+    dockDetached.current = false; setReaderPaused(false);
     setPointerLook(null); setGesture("rest");
     onPositionChange(null);
     // This deliberate touch action changes presentation only. Keep the helper
@@ -663,7 +688,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       move({ left: intent.origin.left + dx, top: intent.origin.top + dy });
       return;
     }
-    if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
+    if (readerPaused || event.pointerType !== "mouse" && event.pointerType !== "pen") return;
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = Math.max(-1, Math.min(1, (event.clientX - bounds.left) / Math.max(1, bounds.width) * 2 - 1));
     const y = Math.max(-1, Math.min(1, (event.clientY - bounds.top) / Math.max(1, bounds.height) * 2 - 1));
@@ -767,6 +792,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       data-booky-mobile-composition={compact ? "true" : undefined}
       data-booky-help-sheet={helpSheet ? "true" : undefined}
       data-booky-actions-open={compact && actionsOpen ? "true" : undefined}
+      data-booky-reader-owned={readerEntry ? "true" : "false"} data-booky-reader-paused={readerPaused ? "true" : "false"}
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
       data-planet-mascot-panel-state={open ? "open" : "closed"}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
@@ -824,6 +850,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           const current = controller.getSnapshot();
           if (current.revision !== snapshot.revision || !current.available || document.hidden) return;
           if (compact && screen === "globe" && (current.visibility !== "shown" || current.panel !== "open")) onHelpOpen?.();
+          setReaderPaused(false);
           if (!characterRestoring) { setGesture("greeting"); setReactionKey(value => value + 1); }
           controller.togglePanel();
         }}>
@@ -831,7 +858,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           recoveryAttempt={character.recoveryAttempt} onRendererState={onCharacterState} src={mascotImage} mood={snapshot.completedRoute ? "celebrate" : snapshot.mode === "tour" ? "guiding" : "idle"}
           lookAt={walk.active ? { x: walk.direction * .45, y: 0 } : pointerLook ?? guidedLook}
           interaction={walk.active ? "walking" : gesture === "rest" && open && highlight ? "pointing" : gesture}
-          reactionKey={reactionKey} active={snapshot.available} calmMotion={calmMotion} /> : name}
+          reactionKey={reactionKey} active={snapshot.available} calmMotion={calmMotion || readerPaused} /> : name}
       </button>
       {shown && <button ref={actionsToggle} type="button" className="planet-mascot-controls__options"
         data-booky-actions-toggle="" aria-expanded={actionsOpen}
@@ -840,7 +867,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         title={ru ? "Действия Книжулика" : "Mr. Booky’s actions"} onClick={() => {
           const current = controller.getSnapshot();
           if (current.revision === snapshot.revision && current.available && current.visibility === "shown"
-            && current.panel === "closed" && !document.hidden && !drag.current) setActionsOpen(value => !value);
+            && current.panel === "closed" && !document.hidden && !drag.current) { setReaderPaused(false); setActionsOpen(value => !value); }
         }}><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
           <circle cx="5" cy="12" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="19" cy="12" r="2" />
         </svg></button>}
@@ -854,7 +881,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             if (dock) { dockDetached.current = true; onPositionChange(petPosition); }
             drag.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, origin: petPosition,
               source: "handle", moved: true, element: event.currentTarget };
-            setGesture("dragging");
+            setReaderPaused(false); setGesture("dragging");
             event.currentTarget.setPointerCapture(event.pointerId);
           }} onPointerMove={event => {
             const intent = drag.current; if (!intent || intent.pointerId !== event.pointerId) return;
@@ -914,7 +941,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           walkStopActivation.current = null;
           if (walk.active || stopping) { cancelPoint.current?.(); walk.stop(); return; }
           if (controller.getSnapshot().revision !== snapshot.revision) return;
-          if (walk.start()) { setGesture("rest"); setPointerLook(null); setReactionKey(value => value + 1); }
+          if (walk.start()) { setReaderPaused(false); setGesture("rest"); setPointerLook(null); setReactionKey(value => value + 1); }
         }}><span aria-hidden="true">{walk.active ? "Ⅱ" : "↝"}</span> {walk.active
           ? ru ? "Остановить" : "Stop walking"
           : walkNeedsSpace ? ru ? "Мало места" : "No room"

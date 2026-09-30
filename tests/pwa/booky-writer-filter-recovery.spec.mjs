@@ -99,6 +99,10 @@ test.beforeAll(async () => {
         replaceOnce('      setQuery(recovery.query); setFilterState(recovery.filterState); setSearchScope("library");','      diagnosticTrace("recovery-dispatch"); setQuery(recovery.query); setFilterState(recovery.filterState); setSearchScope("library");');
         replaceOnce('    activateGlobalSearchAction({ type: "select-writer", authorKey: resolved.authorKey,','    diagnosticTrace("ordinary-dispatch", {resolvedAuthorKey: resolved.authorKey}); activateGlobalSearchAction({ type: "select-writer", authorKey: resolved.authorKey,');
         replaceOnce('      || shelfState.phase === "SHELF_RESTORING") return;', '      || shelfState.phase === "SHELF_RESTORING") { diagnosticTrace("reader-defer", {readerBookKey: selectedBookRef.current ? bookKey(selectedBookRef.current) : null, recoveryViewKey: authorViewKey}); return; }');
+        // Transparent committed reader-view telemetry; original callback/view and
+        // all private clipping/ownership guards are forwarded once unchanged.
+        replaceOnce('    onDetailViewChangeRef.current?.(view);',
+          '    const readerTrace = ((window as any).__bookyReaderTrace ??= []); const readerDetail = document.querySelector("#book-archive-detail"); const readerOwner = readerDetail?.closest(".native-planet-panel__content") as HTMLElement | null; readerTrace.push({time:performance.now(),view:{...view},helpOpen:!!document.querySelector("[data-planet-mascot-panel]"),focusInReader:!!readerDetail?.contains(document.activeElement),focusOnBookyToggle:!!document.activeElement?.matches("[data-planet-mascot-toggle]"),scrollTop:readerOwner?.scrollTop??null,clientHeight:readerOwner?.clientHeight??null,scrollHeight:readerOwner?.scrollHeight??null,url:location.href}); if(readerTrace.length>160)readerTrace.shift();\n    onDetailViewChangeRef.current?.(view);');
         return {contents,loader:'tsx',resolveDir:path.dirname(args.path)};
       });
       builder.onLoad({ filter: /[\\/]BookShelfScene\.tsx$/ }, async args => {
@@ -186,7 +190,7 @@ test.beforeAll(async () => {
     return ['/' + entry.output, entry];
   }));
   sourceEvidence = { externalFixtureSha256: digest(await fs.readFile(fileURLToPath(import.meta.url))), kind: 'canonical-app-booky-writer-filter-recovery-in-Chrome', actualApp: true, actualCss: true, actualGlobe: true,
-    controlledPorts: ['native OS plugins and preferences backed by a Node map', 'HTTP responses for real dynamic country, book runtime and collection component chunks, with no injected transport failure', 'Native selectOption used only for initial sort and shelf setup; Booky actions and country facet use CDP trusted touch', 'Bounded read-only author effect trace: original request/recovery-token identity, branches and outcomes unchanged'],
+    controlledPorts: ['native OS plugins and preferences backed by a Node map', 'HTTP responses for real dynamic country, book runtime and collection component chunks, with no injected transport failure', 'Native selectOption used only for initial sort and shelf setup; Booky actions and country facet use CDP trusted touch', 'Bounded read-only author effect trace: original request/recovery-token identity, branches and outcomes unchanged', 'Bounded read-only committed reader-view callback trace; callback/view forwarded once unchanged; OS motion media and viewport reflow are controlled'],
     bookChunks, primaryBookChunk, retryBookChunk, sharedBookDependencies,
     countryChunks, primaryCountryChunk, retryCountryChunk, sharedCountryDependencies,
     componentChunks, primaryComponentChunk, retryComponentChunk, sharedComponentDependencies, sourceInputs,
@@ -401,6 +405,18 @@ async function writerOwnedState(page) {
       viewMode:[...document.querySelectorAll('.book-shelf-controls__views button')].find(button=>button.getAttribute('aria-pressed')==='true')?.textContent.trim()??null};
   });
 }
+async function writerReaderObservation(page) {
+  return page.evaluate(()=>{
+    const detail=document.querySelector('#book-archive-detail'),owner=detail?.closest('.native-planet-panel__content'),pet=document.querySelector('[data-planet-mascot-pet]'),canvas=pet?.querySelector('[data-booky-canvas]'),focus=document.activeElement;
+    const r=detail?.getBoundingClientRect(),url=new URL(location.href);
+    return {url:location.href,bookKey:url.searchParams.get('book'),title:detail?.querySelector('.book-detail-copy h3')?.textContent?.trim()??null,
+      reader:{present:!!detail,visible:!!detail?.getClientRects().length,inert:!!detail?.closest('[inert],[aria-hidden="true"]'),rect:r?{top:r.top,bottom:r.bottom,width:r.width,height:r.height}:null},
+      focus:{reader:!!detail?.contains(focus),bookyToggle:!!focus?.matches('[data-planet-mascot-toggle]'),help:!!pet?.querySelector('[data-planet-mascot-panel]')?.contains(focus),tag:focus?.tagName,id:focus?.id},
+      nativeOwner:owner?{scrollTop:owner.scrollTop,clientHeight:owner.clientHeight,scrollHeight:owner.scrollHeight}:null,
+      history:window.__bookySupportFixture.historyObservation(),helpOpen:!!pet?.querySelector('[data-planet-mascot-panel]'),
+      booky:{readerOwned:pet?.dataset.bookyReaderOwned??null,readerPaused:pet?.dataset.bookyReaderPaused??null,gesture:pet?.dataset.planetMascotGesture??null,targets:document.querySelectorAll('[data-booky-target]').length,context:canvas?.dataset.bookyContext??null,animating:canvas?.dataset.bookyAnimating??null,reducedMotion:canvas?.dataset.bookyReducedMotion??null,renderCount:canvas?.dataset.bookyRenderCount??null,systemReducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}};
+  });
+}
 async function writerInputs(page, observation) {
   const cdp=await page.context().newCDPSession(page);
   const touch=(type,touchPoints)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints});
@@ -590,8 +606,64 @@ for (const language of ['ru','en']) test('Booky explicit writer filter recovery 
     lifecycle.checks=[{name:'trusted real book owns the reader before a current recovery is admitted',pass:true},{name:'reader deferral neither dispatches recovery nor changes the current book or semantic progress',pass:true},{name:'real current-view change discards only the obsolete request before a fresh explicit writer request',pass:true}];
     if(language==='en')lifecycle.checks.push({name:'a newer trusted facet edit invalidates deferred recovery while its reader is still owned',pass:true});
 
+    // Reader foreground extension: help is open BEFORE this genuine new entry.
+    // Inactive observer/filter/reflow callbacks never substitute for book Close.
+    const foreground=o.readerForeground={touchesStart:o.touches.length,checks:[]};
+    const foregroundOwned=await writerOwnedState(page),foregroundPreferences=[...fixture.memory.entries()].sort(),foregroundBookyWrites=fixture.bookyWrites().length,foregroundGlobe=await actual(page);
+    await page.emulateMedia({reducedMotion:'no-preference'});await writerSettle(page);
+    await help();await expect(selectedReader).toHaveCount(0);
+    await input.expose(selectedControl,'real writer book while Booky help is open');
+    await expect(panel(page)).toBeVisible();
+    foreground.before=await writerReaderObservation(page);
+    expect(foreground.before.helpOpen).toBe(true);expect(foreground.before.reader.present).toBe(false);expect(foreground.before.booky.systemReducedMotion).toBe(false);
+    const foregroundTraceStart=await page.evaluate(()=>performance.now());
+    await page.evaluate(()=>{window.__bookyReaderFocus=[];document.addEventListener('focusin',event=>{const entries=window.__bookyReaderFocus;if(!entries)return;const target=event.target;entries.push({time:performance.now(),reader:!!target?.closest?.('#book-archive-detail'),bookyToggle:!!target?.matches?.('[data-planet-mascot-toggle]'),help:!!target?.closest?.('[data-planet-mascot-panel]'),tag:target?.tagName,id:target?.id});if(entries.length>160)entries.shift();});});
+    await input.tap(selectedControl,'open real reader with Booky help already open');
+    await expect(selectedReader).toBeVisible();await expect(selectedControl).toHaveAttribute('aria-expanded','true');
+    let foregroundArrival;
+    await expect.poll(async()=>{foregroundArrival=await page.evaluate(({since,key})=>(window.__bookyReaderTrace??[]).find(row=>row.time>=since&&row.view.active&&row.view.settled&&row.view.countryId+':'+row.view.writerId+':'+row.view.workId===key),{since:foregroundTraceStart,key:selectedKey});return !!foregroundArrival;},{message:'Actual committed selected reader reports its owned active view'}).toBe(true);
+    foreground.arrival=foregroundArrival;
+    // The old runtime is expected to fail here after the real committed arrival.
+    await expect(panel(page),'Booky help retires once on genuine reader arrival').toHaveCount(0);
+    await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','true');await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','true');
+    await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-reduced-motion','true');
+    await expect.poll(async()=>{const current=await writerReaderObservation(page);return current.focus.reader&&!current.focus.bookyToggle&&current.bookKey===selectedKey&&current.title===readerTitle;},{message:'The actual reader keeps its own focus and identity after automatic help retirement'}).toBe(true);
+    await writerSettle(page);foreground.collapsed=await writerReaderObservation(page);
+    const foregroundFocus=await page.evaluate(since=>(window.__bookyReaderFocus??[]).filter(row=>row.time>=since),foregroundArrival.time);
+    expect(foregroundFocus.some(row=>row.bookyToggle),'Automatic retirement never transfers reader focus to Booky').toBe(false);
+    expect(foreground.collapsed.booky.context).toBe('ready');expect(foreground.collapsed.booky.systemReducedMotion).toBe(false);expect(foreground.collapsed.booky.targets).toBe(0);
+    expect(await writerOwnedState(page)).toEqual({...foregroundOwned,hash:new URL(foreground.collapsed.url).hash});expect([...fixture.memory.entries()].sort()).toEqual(foregroundPreferences);expect(fixture.bookyWrites().length).toBe(foregroundBookyWrites);retained(await actual(page),foregroundGlobe,true,false);
+    await capture(fixture,testInfo,'booky-writer-filter-recovery-'+language+'-reader-foreground.png','Actual App; trusted entry retires previously open Booky help; selected reader owns focus, compact Booky stays available and decorative motion is paused. Original recovery captures remain separate.');
+    const ownedReader=await writerOwnedState(page),readerHistory=foreground.collapsed.history;
+    await help();await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','true');await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','false');
+    const reopenedTraceStart=await page.evaluate(()=>performance.now());
+    foreground.explicitReopen=await writerReaderObservation(page);expect(foreground.explicitReopen.helpOpen).toBe(true);
+    // No legacy filters() helper here: it deliberately collapses Booky itself.
+    await input.tap(page.locator('.book-shelf-controls__advanced'),'open filters while explicitly reopened reader help stays open');await expect(drawer()).toBeVisible();await expect(panel(page)).toBeVisible();
+    await expect.poll(()=>page.evaluate(since=>(window.__bookyReaderTrace??[]).some(row=>row.time>=since&&!row.view.active),reopenedTraceStart),{message:'Real filters deliver an inactive reader-view transition'}).toBe(true);
+    await closeFilters();await expect(selectedReader).toBeVisible();await expect(panel(page)).toBeVisible();
+    await input.expose(selectedReader.locator('.book-detail-close'),'return same reader to actual viewport with help still open');await expect(panel(page)).toBeVisible();
+    await expect.poll(()=>page.evaluate(({since,key})=>(window.__bookyReaderTrace??[]).some(row=>row.time>=since&&row.view.active&&row.view.settled&&row.view.countryId+':'+row.view.writerId+':'+row.view.workId===key),{since:reopenedTraceStart,key:selectedKey}),{message:'The same reader owns its real view again after filters close'}).toBe(true);
+    const originalViewport=page.viewportSize();
+    await page.setViewportSize({width:language==='ru'?414:360,height:originalViewport.height});await writerSettle(page);await expect(panel(page)).toBeVisible();
+    await page.emulateMedia({reducedMotion:'reduce'});await writerSettle(page);await expect(panel(page)).toBeVisible();
+    await page.setViewportSize(originalViewport);await page.emulateMedia({reducedMotion:'no-preference'});await writerSettle(page);await expect(panel(page)).toBeVisible();await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','false');
+    foreground.sameEntry=await writerReaderObservation(page);expect(foreground.sameEntry.bookKey).toBe(selectedKey);expect(foreground.sameEntry.title).toBe(readerTitle);expect(foreground.sameEntry.history).toEqual(readerHistory);
+    expect(await writerOwnedState(page)).toEqual(ownedReader);expect([...fixture.memory.entries()].sort()).toEqual(foregroundPreferences);expect(fixture.bookyWrites().length).toBe(foregroundBookyWrites);
+    await collapse();await input.tap(selectedReader.locator('.book-detail-close'),'close reader without reopening retired Booky help');
+    await expect(selectedReader).toHaveCount(0);await expect(panel(page)).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','false');
+    foreground.closed=await writerReaderObservation(page);expect(foreground.closed.history).toEqual(foreground.before.history);expect(await writerOwnedState(page)).toEqual(foregroundOwned);
+    await help();await expect(panel(page)).toBeVisible();const reentryTraceStart=await page.evaluate(()=>performance.now());
+    await input.tap(selectedControl,'reopen the same book after genuine Close while help is open');await expect(selectedReader).toBeVisible();
+    await expect.poll(()=>page.evaluate(({since,key})=>(window.__bookyReaderTrace??[]).some(row=>row.time>=since&&row.view.active&&row.view.settled&&row.view.countryId+':'+row.view.writerId+':'+row.view.workId===key),{since:reentryTraceStart,key:selectedKey}),{message:'Genuine same-work reentry reports a new committed reader view'}).toBe(true);
+    await expect(panel(page)).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-booky-reader-owned','true');await expect(pet(page)).toHaveAttribute('data-booky-reader-paused','true');await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
+    await expect.poll(async()=>{const current=await writerReaderObservation(page);return current.focus.reader&&!current.focus.bookyToggle&&current.bookKey===selectedKey;}).toBe(true);
+    foreground.reentered=await writerReaderObservation(page);expect(await writerOwnedState(page)).toEqual(ownedReader);expect([...fixture.memory.entries()].sort()).toEqual(foregroundPreferences);expect(fixture.bookyWrites().length).toBe(foregroundBookyWrites);retained(await actual(page),foregroundGlobe,true,false);
+    foreground.readerViewTrace=await page.evaluate(since=>(window.__bookyReaderTrace??[]).filter(row=>row.time>=since),foregroundTraceStart);foreground.focusTrace=await page.evaluate(()=>window.__bookyReaderFocus??[]);
+    foreground.checks=['Previously open help retires on an actual committed reader entry without moving focus to Booky','Retirement preserves semantic content, preferences, history and canonical resources','Explicit compact-toggle reopen survives actual inactive/active filter callbacks, width reflow and motion media changes','Genuine Close leaves retired help closed; same-work reentry retires newly reopened help again'].map(name=>({name,pass:true}));
+    Object.assign(result,{readerForegroundExercised:true,readerAutomaticHelpRetirementVerified:true,readerExplicitReopenSurvivesInactiveViews:true,readerSameBookReentryVerified:true,readerDecorativePauseVerified:true});
     fixture.verify();
   } catch(error) {
     const filename='diagnostic-failure-'+language+'.png';const bytes=await page.screenshot({path:testInfo.outputPath(filename)});o.failureCapture={filename,sha256:digest(bytes),scope:'failure diagnosis only; not a successful contract capture',error:error.message};await testInfo.attach('diagnostic-failure-'+language,{path:testInfo.outputPath(filename),contentType:'image/png'});throw error;
-  } finally {o.authorEffectTrace=await page.evaluate(()=>window.__bookyAuthorTrace??[]);await input.close();await fixture.close();}
+  } finally {o.readerViewTrace=await page.evaluate(()=>window.__bookyReaderTrace??[]);o.readerFocusTrace=await page.evaluate(()=>window.__bookyReaderFocus??[]);o.authorEffectTrace=await page.evaluate(()=>window.__bookyAuthorTrace??[]);await input.close();await fixture.close();}
 });

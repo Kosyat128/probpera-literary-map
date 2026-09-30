@@ -750,3 +750,71 @@ describe("observed globe load context", () => {
     }
   });
 });
+
+
+describe("observed reader foreground", () => {
+  const selection = { screen: "collection" as const, selectedCountry: true, selectedWriter: true };
+  const key = JSON.stringify(["russia", "dostoevsky", "reader-test-work"]);
+  function opened() {
+    const controller = createPlanetMascotController();
+    controller.setContext(ready(selection));
+    controller.togglePanel();
+    return controller;
+  }
+
+  it("closes one observed reader entry without accepting preference or semantic progress", () => {
+    const controller = opened();
+    controller.setContext(ready({ ...selection, screen: "globe" }));
+    controller.start("overview"); controller.next();
+    const before = controller.getSnapshot(), intent = controller.getPreferenceIntent();
+    expect(before.progress.length).toBeGreaterThan(0);
+    controller.setContext(ready({ ...selection, readerEntry: { key, intentRevision: intent.revision } }));
+    expect(controller.getSnapshot()).toMatchObject({ panel: "closed", visibility: before.visibility,
+      mode: before.mode, route: before.route, step: before.step, completedRoute: before.completedRoute });
+    expect(controller.getSnapshot().progress).toBe(before.progress);
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    expect(controller.getSnapshot().intentRevision).toBe(intent.revision);
+    controller.dispose();
+  });
+
+  it("keeps an explicit reopen through same-key context churn", () => {
+    const controller = opened(), entry = { key, intentRevision: controller.getPreferenceIntent().revision };
+    controller.setContext(ready({ ...selection, readerEntry: entry }));
+    expect(controller.getSnapshot().panel).toBe("closed");
+    expect(controller.togglePanel()).toBe(true);
+    const intent = controller.getPreferenceIntent();
+    for (const update of [{ locale: "en" as const }, { connectivity: "offline" as const },
+      { booksStatus: "loading" as const }, { selectedWriter: false }]) {
+      controller.setContext(ready({ ...selection, ...update, readerEntry: { ...entry } }));
+      expect(controller.getSnapshot().panel).toBe("open");
+      expect(controller.getPreferenceIntent()).toBe(intent);
+    }
+    controller.dispose();
+  });
+
+  it("lets a newer explicit intent fence a delayed reader entry", () => {
+    const controller = opened(), entry = { key, intentRevision: controller.getPreferenceIntent().revision };
+    controller.togglePanel(); controller.togglePanel();
+    const intent = controller.getPreferenceIntent();
+    expect(intent.revision).toBeGreaterThan(entry.intentRevision);
+    controller.setContext(ready({ ...selection, readerEntry: entry }));
+    expect(controller.getSnapshot().panel).toBe("open");
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    controller.dispose();
+  });
+
+  it("does not reopen on real exit and closes a new entry to the same work", () => {
+    const controller = opened();
+    controller.setContext(ready({ ...selection, readerEntry: { key, intentRevision: controller.getPreferenceIntent().revision } }));
+    const closed = controller.getPreferenceIntent();
+    controller.setContext(ready({ ...selection, readerEntry: null }));
+    expect(controller.getSnapshot().panel).toBe("closed");
+    expect(controller.getPreferenceIntent()).toBe(closed);
+    controller.togglePanel();
+    const reopened = controller.getPreferenceIntent();
+    controller.setContext(ready({ ...selection, readerEntry: { key, intentRevision: reopened.revision } }));
+    expect(controller.getSnapshot().panel).toBe("closed");
+    expect(controller.getPreferenceIntent()).toBe(reopened);
+    controller.dispose();
+  });
+});

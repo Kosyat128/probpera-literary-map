@@ -17,6 +17,8 @@ export type PlanetMascotContext = Readonly<{
   access: "adult" | "child" | "blocked";
   active: boolean;
   screen: PlanetMascotScreen;
+  /** Observed reader entry; later visibility churn is not a new entry. */
+  readerEntry?: Readonly<{ key: string; intentRevision: number }> | null;
   selectedCountry: boolean;
   selectedWriter: boolean;
   /** Canonical selection identity fences callbacks even when both flags stay true. */
@@ -261,7 +263,10 @@ export function createPlanetMascotController() {
     setContext(value: PlanetMascotContext) {
       if (disposed) return;
       const next = Object.freeze({ enabled: value.enabled, access: value.access, active: value.active,
-        screen: value.screen, selectedCountry: value.selectedCountry,
+        screen: value.screen, readerEntry: value.readerEntry && typeof value.readerEntry.key === "string"
+          && value.readerEntry.key.length > 0 && Number.isSafeInteger(value.readerEntry.intentRevision)
+          && value.readerEntry.intentRevision >= 0 ? Object.freeze({ ...value.readerEntry }) : null,
+        selectedCountry: value.selectedCountry,
         selectedWriter: value.selectedCountry && value.selectedWriter, selectionKey: value.selectionKey,
         authorBooksStatus: value.authorBooksStatus ?? "idle", connectivity: value.connectivity ?? "unknown",
         countryStatus: value.countryStatus ?? "idle", booksStatus: value.booksStatus ?? "idle",
@@ -273,7 +278,8 @@ export function createPlanetMascotController() {
         locale: value.locale === "ru" || value.locale === "en" ? value.locale : undefined,
         readerPolicy: parseBookyReaderPolicy(value.readerPolicy) });
       if (context && context.enabled === next.enabled && context.access === next.access && context.active === next.active
-        && context.screen === next.screen && context.selectedCountry === next.selectedCountry
+        && context.screen === next.screen && context.readerEntry?.key === next.readerEntry?.key
+        && context.readerEntry?.intentRevision === next.readerEntry?.intentRevision && context.selectedCountry === next.selectedCountry
         && context.selectedWriter === next.selectedWriter && context.selectionKey === next.selectionKey
         && context.authorBooksStatus === next.authorBooksStatus && context.connectivity === next.connectivity
         && context.countryStatus === next.countryStatus && context.booksStatus === next.booksStatus
@@ -281,6 +287,8 @@ export function createPlanetMascotController() {
         && context.canRecoverAuthorBooks === next.canRecoverAuthorBooks && context.canGuideGlobe === next.canGuideGlobe
         && context.globeDisplayUnavailable === next.globeDisplayUnavailable && context.globeLoadStatus === next.globeLoadStatus
         && context.locale === next.locale && serializeBookyReaderPolicy(context.readerPolicy) === serializeBookyReaderPolicy(next.readerPolicy)) return;
+      const readerEntered = next.readerEntry && next.readerEntry.key !== context?.readerEntry?.key
+        && next.readerEntry.intentRevision === preferenceIntent.revision;
       context = next;
       // Connection/locale/panel changes do not create a new failed load.
       // Re-arm only after the real target leaves its current error state.
@@ -296,7 +304,8 @@ export function createPlanetMascotController() {
       }
       // Background suspension closes the bubble and removes the highlight, but
       // keeps the user's place. Resume requires an explicit panel toggle.
-      publish({ visibility: snapshot.visibility, panel: next.active ? snapshot.panel : "closed", mode: snapshot.mode,
+      // Reader arrival retires presentation only; a newer explicit intent wins.
+      publish({ visibility: snapshot.visibility, panel: next.active && !readerEntered ? snapshot.panel : "closed", mode: snapshot.mode,
         route: snapshot.route, step, completedRoute: snapshot.completedRoute, resumeOffer: snapshot.resumeOffer }, true);
     },
     show() {

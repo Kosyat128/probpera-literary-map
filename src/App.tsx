@@ -695,6 +695,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     composition.controller.refreshEnvironment();
   }, [compositionEnvironmentKey, composition.controller]);
   const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isPlanetApplication && addressRequestsCollection());
+  const [mascotReaderEntry, setMascotReaderEntry] = useState<Readonly<{ key: string; intentRevision: number }> | null>(null);
   const [planetLaunchComplete, setPlanetLaunchComplete] = useState(false);
   const completePlanetLaunch = useCallback(() => setPlanetLaunchComplete(true), []);
   const [planetWelcomeSuppressed, setPlanetWelcomeSuppressed] = useState(() => {
@@ -724,6 +725,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     nativeReturnRequestedRef.current = false;
   }, []);
   const closeNativeCollection = useCallback(() => {
+    setMascotReaderEntry(null);
     setMascotSectionRequest(null);
     nativeReturnRequestedRef.current = false;
     setNativeCollectionOpen(false);
@@ -839,6 +841,14 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const requestedBookIntent = useRef<{ book: BookArchiveEntry; token: number; valid: () => boolean; cleanup: () => void; cancelJourney: () => void } | null>(null);
   const [journeyBookView, setJourneyBookView] = useState<BookArchiveDetailView>({ active: false, settled: false,
     countryId: null, writerId: null, workId: null });
+  const observeJourneyBookView = useCallback((view: BookArchiveDetailView) => {
+    setJourneyBookView(view);
+    if (!nativeCollectionOpen || !view.active || !view.countryId || !view.writerId || !view.workId) return;
+    const key = JSON.stringify([view.countryId, view.writerId, view.workId]);
+    const intentRevision = mascot.getSnapshot().intentRevision;
+    // Visibility/reflow reports do not end this observed reader lease.
+    setMascotReaderEntry(previous => previous?.key === key ? previous : { key, intentRevision });
+  }, [mascot, nativeCollectionOpen]);
   const [journeyCollectionSettled, setJourneyCollectionSettled] = useState(false);
   const [journeyPublishedDossier, setJourneyPublishedDossier] = useState<BookArchivePublishedDossierView | null>(null);
   const observeJourneyPublishedDossier = useCallback((view: BookArchivePublishedDossierView) => {
@@ -880,6 +890,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (!nativeBookBackRef.current?.(intent)) closeNativeCollection();
   }, [closeNativeCollection]);
   const finishNativeDetailClose = useCallback(() => {
+    // Only the canonical completed Close boundary releases this work identity.
+    setMascotReaderEntry(null);
     if (nativeReturnRequestedRef.current) closeNativeCollection();
   }, [closeNativeCollection]);
   const cancelNativeNavigation = useCallback(() => {
@@ -2329,7 +2341,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     // provide its own reviewed routes and access decision, never an age guess.
     mascot.setContext({ enabled: isPlanetApplication, access: isPlanetApplication ? "adult" : "blocked",
       active: planetLaunchComplete && platformVisibility === "active" && !globalSearchOpen && !communityOpen,
-      screen: nativeCollectionOpen ? "collection" : "globe", selectedCountry: Boolean(selectedCountry),
+      screen: nativeCollectionOpen ? "collection" : "globe", readerEntry: nativeCollectionOpen ? mascotReaderEntry : null,
+      selectedCountry: Boolean(selectedCountry),
       selectedWriter: Boolean(selectedWriter), selectionKey: `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`,
       connectivity: platformConnectivity, countryStatus: archiveDataStatus, booksStatus: mascotBookStatus,
       canDiscoverCountry: filteredCountries.length > 0, canOpenDownloads: Boolean(platformServices.downloads), canGuideGlobe, globeDisplayUnavailable, globeLoadStatus,
@@ -2343,7 +2356,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           : mascotAuthorResult.status === "loading" && mascotBookStatus === "error" ? "load-failed" : mascotAuthorResult.status
         : "idle" });
   }, [mascot, isPlanetApplication, planetLaunchComplete, platformVisibility, globalSearchOpen, communityOpen,
-    nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView,
+    nativeCollectionOpen, mascotReaderEntry, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView,
     platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy, filteredCountries.length, platformServices.downloads, canGuideGlobe, globeDisplayUnavailable, globeLoadStatus]);
 
   const navigateJourney = useCallback<BookyJourneyNavigation>((offer, signal, isCurrent) => {
@@ -3399,7 +3412,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           requestedBook={requestedBook}
           requestedBookToken={requestedBookToken}
           canOpenRequestedBook={canOpenRequestedBook}
-          onDetailViewChange={isPlanetApplication ? setJourneyBookView : undefined}
+          onDetailViewChange={isPlanetApplication ? observeJourneyBookView : undefined}
           onPublishedDossierViewChange={isPlanetApplication ? observeJourneyPublishedDossier : undefined}
           dossierCharacterRequest={isPlanetApplication ? journey.characterRequest : null}
           dossierCharacterAction={isPlanetApplication ? journey.characterAction : null}
@@ -3424,7 +3437,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     // One companion follows the active accessible surface. Its tiny decorative
     // viewport is independent of the canonical globe's scene, camera and atlas.
     const mascotControls = <PlanetMascotControls controller={mascot} snapshot={mascotSnapshot}
-      screen={nativeCollectionOpen ? "collection" : "globe"}
+      screen={nativeCollectionOpen ? "collection" : "globe"} readerEntry={nativeCollectionOpen ? mascotReaderEntry : null}
       countryLabel={selectedCountry ? countryName(selectedCountry.code, selectedCountry.name) : null}
       writerLabel={selectedWriter ? writerName(selectedWriter, t("Автор"), language) : null}
       onAction={handleMascotActionWithPoint} pointRequest={mascotPointRequest}
