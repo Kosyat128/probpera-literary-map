@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-contextual-provenance-revision6-draft",
+  "preparedAt": "2026-09-30T14:37:24.887Z",
+  "observedHead": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "contextSource": {
+    "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+    "sourceVersion": 6,
+    "sourceSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd"
+  },
+  "controlsRawAndLfSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+  "actualSourceCommitReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/actual-source-commit-a1.json",
+    "sha256": "a0bc2a0324febbb547c73e8334f009b678dcab18e8e51ba02948e66632dfad43"
+  },
+  "controlsGitWorkingProof": {
+    "workingSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+    "gitBlobSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+    "rawByteEqualityVerified": true,
+    "lineEndingNormalizationApplied": false
+  },
+  "sourceAuthor": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-context-provenance-refresh-rev6-review\\draft-a2\\prepare-draft.cjs",
+    "sha256": "fc541da32ab0a73ecf272494c0988d103a02f516b866f55d1c5c54268b968512"
+  },
+  "supersedesPreparedDraft": {
+    "path": "../draft-a1/source-bindings.json",
+    "sha256": "3f763afebe63a0a080ae6965a957c76dbda1a60b295ace65503546101b36c1f7",
+    "sourceCommit": "dd041380a75da0c1349908c1dd7a8269f22cc981",
+    "sourceSha256": "4acc67383cad75dc1da9f9877258c88516a8ef429da83e256ce78d6a6c9b52cf",
+    "applied": false
+  },
+  "base": [
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "462ef334186954535c87a8a4b94e6b709888bbf1acfa6a6832357eec883880fe",
+      "bytes": 32448
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "42f1fa6bb3b551a176311d1987ec3d41ca00ae7aad9b6b50c76fd1f8d0280caa",
+      "bytes": 10799
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "d9a6e6b53f55a33e02530cee0ef6c4f46abecb4fb86ce1c67eab768dd90b1ca5",
+      "bytes": 13950
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+      "bytes": 88565
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360",
+      "bytes": 5947
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090",
+      "bytes": 17461
+    },
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00",
+      "bytes": 4820
+    },
+    {
+      "path": "src/host/bookyDialogueRegistry.ts",
+      "sha256": "3329ed944937ef8f7b9b892641ed40285a166c3944d6817ddda0bc145daffa65",
+      "bytes": 14785
+    },
+    {
+      "path": "src/planet/contentExportHash.ts",
+      "sha256": "05e24bf089e59bf8015e74d8adc9b96147abbc665596920917e8ca2fd5dc7c46",
+      "bytes": 1978
+    }
+  ],
+  "proposals": [
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "beforeSha256": "462ef334186954535c87a8a4b94e6b709888bbf1acfa6a6832357eec883880fe",
+      "sha256": "8e8668b73a4943580d76dae893503744664cc4025800a8f98d03b0e20dcaf985",
+      "bytes": 32448,
+      "baseline": "baseline/src/host/bookyNavigationDrafts.ts",
+      "proposed": "proposed/src/host/bookyNavigationDrafts.ts"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "beforeSha256": "42f1fa6bb3b551a176311d1987ec3d41ca00ae7aad9b6b50c76fd1f8d0280caa",
+      "sha256": "a4639e1c80c12cc37502dfaba0de875981e6cd311e611e973ce4955ffc575173",
+      "bytes": 10799,
+      "baseline": "baseline/src/host/bookyNavigationDrafts.test.ts",
+      "proposed": "proposed/src/host/bookyNavigationDrafts.test.ts"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "beforeSha256": "d9a6e6b53f55a33e02530cee0ef6c4f46abecb4fb86ce1c67eab768dd90b1ca5",
+      "sha256": "a874fc4772dcc54501d4d93c6cd0fb37d92ae2f180bb05b40d2ab4aff928e078",
+      "bytes": 13950,
+      "baseline": "baseline/scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "proposed": "proposed/scripts/mobile/verify-booky-navigation-drafts.mjs"
+    }
+  ],
+  "forward": {
+    "path": "forward.patch",
+    "sha256": "0bb50f62adb6cd0fe7fd3e3786c8688d817a605cb0ab26d9e17b3187726a1483",
+    "bytes": 18052
+  },
+  "inverse": {
+    "path": "inverse.patch",
+    "sha256": "9af3852a8c8808aaeb19546fb9c012faeb9be24ba0fabfa832804e6eef77f712",
+    "bytes": 18052
+  },
+  "actualPredecessorResult": null,
+  "actualPredecessorDocsCheckpoint": null,
+  "actualMetadataSourceCommit": null,
+  "decisionNumber": null,
+  "requiredApplicationBoundary": "D217 reader runtime, actual browser/six views and fresh PWA/Android builds go first. Supply its actual accepted result and clean docs checkpoint later; recheck all source/protected bytes and actual last-changed Controls commit before any application. No build identity is inferred from this preparation.",
+  "preparationScope": "External literal-data author only; no esbuild, tsc, audit, unit, browser, PWA/native build or repository writes."
+}

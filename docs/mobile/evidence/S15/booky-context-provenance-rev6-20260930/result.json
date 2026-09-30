@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "status": "BOUNDED_CONTEXT_PROVENANCE_REV6_VALIDATED",
+  "recordedAt": "2026-09-30T15:11:58.254Z",
+  "decision": "D218",
+  "sourceCommit": "f43c72d21da48aab0afdb93cc40a2641971f24f3",
+  "runtimeSourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "buildSourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "predecessorDocsCommit": "c4ced26a273d9a95b0a4533f6bcf30ea60f37238",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/source-manifest.json",
+    "sha256": "4c36863d98abcc6c9904873c4672ee43e67977a9e5ef10ceeba92109382aaef6",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "changedSourcePaths": [
+    "scripts/mobile/verify-booky-navigation-drafts.mjs",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyNavigationDrafts.ts"
+  ],
+  "newSourcePaths": [],
+  "fixtureOnly": false,
+  "unimportedMetadataOnly": true,
+  "runtimeUnchanged": true,
+  "productionImplementationChanged": false,
+  "contextRevision": 6,
+  "contextualRecordCount": 8,
+  "navigationRecordCount": 14,
+  "supportRecordCount": 12,
+  "copyRecordCount": 22,
+  "combinedDraftCount": 34,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "contextSource": {
+    "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+    "sourceVersion": 6,
+    "sourceSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd"
+  },
+  "sourceApply": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/result.json",
+    "sha256": "15b1bcc23082692d0961714efb088e30aaa0a966cb542331b684fceb290ebccb"
+  },
+  "sourceCommitReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/source-commit.json",
+    "sha256": "063f1d4cf2fe56ae9fefd13221f82900bc1b798d5ad969230502a262a7df13f3"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/vitest.json",
+      "sha256": "7eb319c1487bb1691a4f549338c3c8c5711b75bd15d8bc1e68133907a39685eb",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/unit-execution.json",
+        "sha256": "224930805a3d8f27da642eb2352d68fddc8ad1b1132229479d7974f97e00d6b9"
+      },
+      "tests": {
+        "total": 17,
+        "passed": 17,
+        "failed": 0,
+        "pending": 0
+      }
+    },
+    "inventory": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/inventory.json",
+      "sha256": "fb5db4cc93c0a236b198338c91eebfd478a0299c7046c3590b13c74eb7c067a1",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/inventory-execution.json",
+        "sha256": "da6bc232d70992a3da2137dca801c323d06056076dc763d2dc7539f7c417fa05"
+      }
+    }
+  },
+  "unitCount": 17,
+  "unitRerun": true,
+  "staticRerun": false,
+  "browserRerun": false,
+  "buildsRebuilt": false,
+  "payloadHashesRechecked": false,
+  "retainedD217": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/result.json",
+      "sha256": "6a8eadb5b805f0de4d2ec22c300d2a781f9abbb0929c6c7fafbf34b0d052415f"
+    },
+    "builds": {
+      "pwa": {
+        "result": {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/4099b48162ff05e2-result.json",
+          "sha256": "4099b48162ff05e2c540ddb35c96d15250eaafbb0e699d5a8f5531a67c1c64c4"
+        },
+        "buildId": "464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2"
+      },
+      "android": {
+        "result": {
+          "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/3b92d7f9e6cf242d-result.json",
+          "sha256": "3b92d7f9e6cf242d50696219403c610a28fcc99ec3cfa4ae8c63da546bc33058"
+        },
+        "buildId": "1e401e638abac95ca8f814bb255629fa09630006cb115268f3dcfd38237a4eb1"
+      }
+    },
+    "runtimeSourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+    "rerun": false,
+    "originalIdentityRetained": true
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/pwa/4099b48162ff05e2-result.json",
+    "sha256": "4099b48162ff05e2c540ddb35c96d15250eaafbb0e699d5a8f5531a67c1c64c4"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-reader-foreground-20260930/builds/android/3b92d7f9e6cf242d-result.json",
+    "sha256": "3b92d7f9e6cf242d50696219403c610a28fcc99ec3cfa4ae8c63da546bc33058"
+  },
+  "checkpointProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/checkpoint-review-a1/checkpoint.mjs",
+    "sha256": "da36cd2a24be9b170e95ef2c4c1a4d75d7491d2e33a87d39427753f5efeeb463"
+  },
+  "checkpointBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/checkpoint-review-a1/bound-a1/binding.json",
+    "sha256": "0cf3d8dcc552948bff2a25eb7617ee0b8ee2da9441052f9208cb37c1bd71f107"
+  },
+  "requirementEvidenceTargets": [
+    "PLANETKA-003"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-003"
+  ],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "validatedScope": "Refreshed eight contextual draft provenance records from revision5 to6 to the actual committed Controls whole-file identity. All22 copy texts and non-provenance fields,14 navigation-v2 records and12 support records remain unchanged. The three unimported metadata paths passed the existing17 focused units and read-only inventory once; all34 combined drafts remain unapproved and unavailable to adults/children. D217 reader runtime, browser/visual and PWA/Android-dev evidence retains its original source/build identity without rerun or payload hashing. Only PLANETKA-003 evidence is appended; statuses, all historical caches and acceptance gates remain unchanged.",
+  "nextAction": "Implement the reviewed native reader composition a3 in its two existing owners: remove the duplicate background catalog/title presentation and suppress inapplicable batch/rail controls for a single available work. Preserve the canonical reader body, history, selected-book state, progress and the user's explicit Booky help controls. Reuse only the existing two RU/EN browser cases with the bounded seven-image contract, then obtain fresh runtime checks/artifacts required by the actual production change. Retain the contextual revision6 metadata proof and original D217 identities; do not repeat metadata17-unit/inventory or unrelated gesture suites. Continue the original S15 UI quality plan without final-design, installed-device, stage or release claims.",
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "productionJourneysEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

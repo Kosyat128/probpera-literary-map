@@ -1,0 +1,19 @@
+{
+  "head": "c4ced26a273d9a95b0a4533f6bcf30ea60f37238",
+  "checkpoint": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-reader-foreground-20260930/result.json",
+    "sha256": "6a8eadb5b805f0de4d2ec22c300d2a781f9abbb0929c6c7fafbf34b0d052415f"
+  },
+  "binding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/draft-a2/source-bindings.json",
+    "sha256": "7a27fa8e149a5db4a20fd5d6b58b78e1a8ec64fc98b2272ff4948491a3816fe3"
+  },
+  "beforeSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-source-manifest-a3.json",
+    "sha256": "c785a629ec20371617288bc2edeafbb672a1a3fdb09b9c81466797623b45b1db"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/apply-check-commit-a2.mjs",
+    "sha256": "9530fbe3902e2cdd5d2763aab19510b35c2a6b2f59aad6239f17ccb00ec83935"
+  }
+}

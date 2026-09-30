@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/draft-a2/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/vitest.json"
+  ],
+  "exitCode": 0,
+  "durationMs": 1624,
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/unit-stdout.log",
+    "sha256": "180c139e866f7546fab4ab040d433b4e54ff8fc53d4441bd01db062b2fda6dde"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/unit-stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

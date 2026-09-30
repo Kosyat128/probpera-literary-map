@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "sourceCommit": "f43c72d21da48aab0afdb93cc40a2641971f24f3",
+  "predecessorDocsCommit": "c4ced26a273d9a95b0a4533f6bcf30ea60f37238",
+  "changedPaths": [
+    "scripts/mobile/verify-booky-navigation-drafts.mjs",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyNavigationDrafts.ts"
+  ],
+  "sourceInputsUnchanged": true,
+  "result": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/result.json",
+    "sha256": "15b1bcc23082692d0961714efb088e30aaa0a966cb542331b684fceb290ebccb"
+  }
+}

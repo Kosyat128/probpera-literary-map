@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceCommit": "f43c72d21da48aab0afdb93cc40a2641971f24f3",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/result.json",
+    "sha256": "fcc29ab1657ebd5350ffd5dbcb746370de28206c5ae6c5469cc09e3e8abf1bfb"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/checkpoint-review-a1/checkpoint.mjs",
+    "sha256": "da36cd2a24be9b170e95ef2c4c1a4d75d7491d2e33a87d39427753f5efeeb463"
+  },
+  "documentPlan": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/checkpoint-review-a1/bound-a1/document-plan.json",
+    "sha256": "442bebcac0f7147bc8f4de73efa6aa1d303db6c913b13af5ec661b8ac789d5b6"
+  },
+  "outputs": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "c65059baabcd3a8dc4bdd11a0d446a62570faf0ccd6b0ed2621ead102100b406"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "93ae4c23fe6d5d2d2206e45ea5d5841aacb8f6360928112a771f14122444587e"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "5f3dc8397c35062e3710fc0e2e6c2b53ad1735262dd10c58e6bfdd93e7c89108"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "0d2cd75ee5797138088b6a2f85df117d8f7df893f7f1ac50a19c9981f03b0123"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "0ab3e7a8813a8a52ae9fc955e1c8707517598c9d96a64c07ac7cf9c249b3220b"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "c8740314907d7f1250a4f613b7bff3eb5d22c19b3d0a254737b42932954195da"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "66b0de6b9e59e3100e7e7ab53695d7126e0773ff57cbf41924a6155fa1648fa3"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "19ce4d49dffecec83aabcd22e02b9665ce718fa2bc51a6fdd4196887ac633b79"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/result.json",
+      "sha256": "fcc29ab1657ebd5350ffd5dbcb746370de28206c5ae6c5469cc09e3e8abf1bfb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/README.md",
+      "sha256": "37bc31e565b2a5f67d01e82f5b9fa3bdd759916885bc4b339e73a9070b75ed1f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/apply.json",
+      "sha256": "062d3557cffa839aeb4757f7104a7f5fbcfb7de55f234551f1af1f8a39c83135"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/before.json",
+      "sha256": "610de0accc3cf983b37afdb66aefa144540239b2064d00a8c446134df2421366"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/inventory-execution.json",
+      "sha256": "da6bc232d70992a3da2137dca801c323d06056076dc763d2dc7539f7c417fa05"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/inventory-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/inventory-stdout.log",
+      "sha256": "fb5db4cc93c0a236b198338c91eebfd478a0299c7046c3590b13c74eb7c067a1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/inventory.json",
+      "sha256": "fb5db4cc93c0a236b198338c91eebfd478a0299c7046c3590b13c74eb7c067a1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/result.json",
+      "sha256": "15b1bcc23082692d0961714efb088e30aaa0a966cb542331b684fceb290ebccb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/source-commit.json",
+      "sha256": "063f1d4cf2fe56ae9fefd13221f82900bc1b798d5ad969230502a262a7df13f3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/source-manifest.json",
+      "sha256": "4c36863d98abcc6c9904873c4672ee43e67977a9e5ef10ceeba92109382aaef6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/unit-execution.json",
+      "sha256": "224930805a3d8f27da642eb2352d68fddc8ad1b1132229479d7974f97e00d6b9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/unit-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/unit-stdout.log",
+      "sha256": "180c139e866f7546fab4ab040d433b4e54ff8fc53d4441bd01db062b2fda6dde"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/actual-a1/vitest.json",
+      "sha256": "7eb319c1487bb1691a4f549338c3c8c5711b75bd15d8bc1e68133907a39685eb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/source-bindings.json",
+      "sha256": "7a27fa8e149a5db4a20fd5d6b58b78e1a8ec64fc98b2272ff4948491a3816fe3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/producers/checkpoint.mjs",
+      "sha256": "da36cd2a24be9b170e95ef2c4c1a4d75d7491d2e33a87d39427753f5efeeb463"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/producers/apply-check-commit.mjs",
+      "sha256": "9530fbe3902e2cdd5d2763aab19510b35c2a6b2f59aad6239f17ccb00ec83935"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/next-action.txt",
+      "sha256": "4cddca8388c3ef4ab8a74ea545286d96b7bd146f7c3f3142055f3bfe49bc766b"
+    }
+  ],
+  "allStatusesUnchanged": true,
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

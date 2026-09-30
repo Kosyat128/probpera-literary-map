@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "changedPaths": [
+    "scripts/mobile/verify-booky-navigation-drafts.mjs",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyNavigationDrafts.ts"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/source-manifest.json",
+    "sha256": "4c36863d98abcc6c9904873c4672ee43e67977a9e5ef10ceeba92109382aaef6"
+  },
+  "checksRun": false
+}
