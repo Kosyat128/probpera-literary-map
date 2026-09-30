@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/source-manifest.json",
+    "sha256": "1535dc7bb5ef22f52f504e971c721de0f763389c839e5ab23ef68b82228e8433"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/browser-result.json",
+    "sha256": "0ba76d45f4fe9c17f91c421822089a3ab83cd3dd525b2ab0f21a7881fcb69ca7"
+  },
+  "directRootViews": 8,
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "4a29bc7e85a5306fdf95f697266c6a560ec6d3cae4702b1ea1864c7219d46b9c",
+      "scope": "Original editor component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9",
+      "scope": "Original editor component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "3674a56c67cf3bad3deb36009a9e09ed652f486fa56b3873c17032e20d710c8a",
+      "scope": "Original editor component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "0f90946d3af11f599d028f2558e291878d0db0bcc02f445f9fe8307379a44d81",
+      "scope": "Original editor component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "1e59296072422d506564733cf0202d95b11066dab1c72b4834b1a2486f687366",
+      "scope": "Original editor component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "50685f0bb3359a984296417121779bed1bac63a36c643a9a532cdb5fbb6ea9d1",
+      "scope": "Original editor component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "8d194f99aed46b1bb9734e045f068d0e096adb297caa07fe17290cf761da7c97",
+      "scope": "Original editor component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-step-overview-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "2437d2decc433cb5abb51f45a0cba0bcc63cc2c50eb107b3ed75ebc4338fb0ab",
+      "scope": "Original editor component browser capture directly viewed by root; synthetic catalog and mocked action transport."
+    }
+  ],
+  "findings": [
+    "Expanded RU and EN step overviews wrap cleanly at320px, expose their real numbered sequence and visibly highlight the current step.",
+    "Collapsed fact and activity overviews retain readable preview composition; question, selected answers and calm feedback have no overlap.",
+    "Optional source metadata preserves multiline copy and readable citations."
+  ],
+  "limitations": [
+    "These are actual admin editor component captures, not mobile-app or authenticated staff-shell screenshots.",
+    "Viewport slices do not show every control at once; long fact citations continue beyond the captured viewport.",
+    "Existing shared admin preview metadata and sequential navigation labels remain Russian when viewing English authored copy; full bilingual shell acceptance is not claimed.",
+    "Desktop read-error notice is an intentional fixture, and citation metadata is synthetic and unverified."
+  ],
+  "installedDeviceTested": false,
+  "authenticatedAdminSession": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
