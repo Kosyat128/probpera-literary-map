@@ -31,6 +31,7 @@ test.beforeAll(async () => {
   const built = await build({ absWorkingDir: ROOT, stdin: { resolveDir: ROOT, loader: 'ts', contents: `
     import{_roots}from'@react-three/fiber';
     import{mountHostApp}from'./src/host/mountHostApp';
+    import{parseBookArchiveNavigationContext,BOOK_ARCHIVE_CONTEXT_HISTORY_STATE_KEY}from'./src/books/bookArchiveLocation';
     import{createAndroidPlatformAdapter}from'./src/platform/adapters/android/AndroidPlatformAdapter';
     const handles=[];let active=true,networkState={connected:true,connectionType:'wifi'};
     const subscribe=async(event,listener)=>{const handle={event,listener,removed:false,async remove(){handle.removed=true}};handles.push(handle);return handle};
@@ -49,6 +50,7 @@ test.beforeAll(async () => {
       zoom:root.camera.zoom,fov:root.camera.fov,target:root.controls?rounded(root.controls.target.toArray()):null});
     let original=null;
     window.__bookySupportFixture={scenes,remember:()=>{original=current()},
+      historyObservation(){const serialized=history.state?.[BOOK_ARCHIVE_CONTEXT_HISTORY_STATE_KEY];return{url:location.href,context:parseBookArchiveNavigationContext(typeof serialized==='string'?serialized:null)};},
       setConnectivity(value){networkState=value;for(const handle of handles)if(!handle.removed&&handle.event==='networkStatusChange')handle.listener(value);},
       setVisible(value){active=value;for(const handle of handles)if(!handle.removed&&handle.event==='appStateChange')handle.listener({isActive:value});},
       sample(){const root=current();if(!root)return null;const stands=[],backgrounds=[],surfaces=[],mascotObjects=[];
@@ -96,6 +98,7 @@ test.beforeAll(async () => {
         replaceOnce('      const recovery = planBookArchiveAuthorRecovery(resolved, authorViewState, authorViewToken);','      const recovery = planBookArchiveAuthorRecovery(resolved, authorViewState, authorViewToken); diagnosticTrace("recovery-plan", {accepted: !!recovery, sameToken: resolved.request.recovery?.view === authorViewToken});');
         replaceOnce('      setQuery(recovery.query); setFilterState(recovery.filterState); setSearchScope("library");','      diagnosticTrace("recovery-dispatch"); setQuery(recovery.query); setFilterState(recovery.filterState); setSearchScope("library");');
         replaceOnce('    activateGlobalSearchAction({ type: "select-writer", authorKey: resolved.authorKey,','    diagnosticTrace("ordinary-dispatch", {resolvedAuthorKey: resolved.authorKey}); activateGlobalSearchAction({ type: "select-writer", authorKey: resolved.authorKey,');
+        replaceOnce('      || shelfState.phase === "SHELF_RESTORING") return;', '      || shelfState.phase === "SHELF_RESTORING") { diagnosticTrace("reader-defer", {readerBookKey: selectedBookRef.current ? bookKey(selectedBookRef.current) : null, recoveryViewKey: authorViewKey}); return; }');
         return {contents,loader:'tsx',resolveDir:path.dirname(args.path)};
       });
       builder.onLoad({ filter: /[\\/]BookShelfScene\.tsx$/ }, async args => {
@@ -199,7 +202,7 @@ test.beforeAll(async () => {
 async function open(testInfo, { rejectBooks = 0, rejectCountries = 0, rejectComponents = 0 } = {}) {
   const profileRoot = path.resolve(process.env.S15_BROWSER_PROFILE_ROOT ?? path.join(ROOT, '.tmp/s15-booky-live'));
   await fs.mkdir(profileRoot, { recursive: true }); const profile = await fs.mkdtemp(path.join(profileRoot, 'pk-'));
-  const context = await chromium.launchPersistentContext(profile, { channel: 'chrome', headless: true,
+  const context = await chromium.launchPersistentContext(profile, { channel: process.env.S15_BROWSER_CHANNEL ?? 'chrome', headless: true,
     viewport: { width: 1440, height: 850 }, reducedMotion: 'reduce', hasTouch: true });
   const page = await context.newPage(); page.setDefaultTimeout(12_000);
   const initialRecord = JSON.stringify({ schemaVersion: 1, commitId: 'booky-support-fixture:1', selection: BASE });
@@ -425,7 +428,7 @@ async function writerInputs(page, observation) {
       const corridor=await locator.evaluate((element,{left,right,start,end,ownerIndex})=>{
         const scrollers=[];for(let parent=element.parentElement;parent;parent=parent.parentElement){const style=getComputedStyle(parent);if(/auto|scroll/.test(style.overflowY)&&parent.scrollHeight>parent.clientHeight+1)scrollers.push(parent);}const scroll=scrollers[ownerIndex];
         const describe=node=>({tag:node.tagName,className:typeof node.className==='string'?node.className:null,touchAction:getComputedStyle(node).touchAction,pointerEvents:getComputedStyle(node).pointerEvents,overflowY:getComputedStyle(node).overflowY,scrollTop:node.scrollTop,scrollHeight:node.scrollHeight,clientHeight:node.clientHeight,chosenScroll:node===scroll});
-        const candidates=[left+8,right-8,(left+right)/2].map(x=>({x,points:[start,(start+end)/2,end].map(y=>{const hit=document.elementFromPoint(x,y),ancestors=[];let current=hit;while(current){ancestors.push(describe(current));if(current===scroll)break;current=current.parentElement;}return {x,y,hit:hit?describe(hit):null,inside:!!scroll&&!!hit&&scroll.contains(hit),interactive:!!scroll&&!!hit&&(()=>{const owner=hit.closest('canvas,button,a,input,textarea,select,[role="button"],[data-planet-mascot-pet]');return !!owner&&scroll.contains(owner);})(),ancestors};})}));
+        const candidates=[left+8,right-8,(left+right)/2].map(x=>({x,points:[start,(start+end)/2,end].map(y=>{const hit=document.elementFromPoint(x,y),ancestors=[];let current=hit;while(current){ancestors.push(describe(current));if(current===scroll)break;current=current.parentElement;}return {x,y,hit:hit?describe(hit):null,inside:!!scroll&&!!hit&&scroll.contains(hit),interactive:!!scroll&&!!hit&&(()=>{const owner=hit.closest('canvas,button,a,input,textarea,select,[role="button"],[data-planet-mascot-pet]');return !!owner&&owner!==scroll&&scroll.contains(owner);})(),ancestors};})}));
         const chosen=candidates.find(candidate=>candidate.points.every(point=>point.inside&&!point.interactive&&point.ancestors.every(node=>node.touchAction!=='none'&&(node.chosenScroll||!/auto|scroll/.test(node.overflowY)||node.scrollHeight<=node.clientHeight+1))));
         return {candidates,chosen:chosen?.x??null};
       },{left,right,start,end,ownerIndex:state.scroll.index});
@@ -508,7 +511,86 @@ for (const language of ['ru','en']) test('Booky explicit writer filter recovery 
     const afterGlobe=await actual(page);retained(afterGlobe,baseGlobe,true,language==='ru');const beforeUrl=new URL(baseGlobe.url),afterUrl=new URL(afterGlobe.url);if(language==='en'){expect(beforeUrl.searchParams.get('archiveShelf')).toBe('favorites');beforeUrl.searchParams.delete('archiveShelf');expect(afterUrl.href).toBe(beforeUrl.href);}else expect(afterUrl.href).toBe(beforeUrl.href);
     o.after={filters:recovered,shelf:await shelf().inputValue(),owned:afterOwned,globe:afterGlobe,visibleBookKeys:keys};
     o.checks=['ordinary writer requests preserve the conflicting view and nondefault sort','explicit trusted recovery opens All books and clears only restrictions','current canonical writer and title sort remain selected','rendered current-writer results receive visible applied acknowledgement','saved shelves favorites history and local storage remain exact','Booky route progress preferences and canonical globe remain exact','native picker setup is explicitly controlled and Booky activations are trusted touch','initial intervening render waits for its own filter batch before applied acknowledgement'].map(name=>({name,pass:true}));
-    Object.assign(result,{ordinaryRestrictionsPreserved:true,explicitRecoveryTrustedTouch:true,allBooksSelected:true,writerAndSortPreserved:true,renderedResultsAcknowledged:true,savedContentPreserved:true,preferencesAndGlobePreserved:true,readerDeferralExercised:false,newerUserEditIntegrationExercised:false});if(language==='ru')o.checks.push({name:'manual facet repair updates current rendered status without another Booky request',pass:true});fixture.verify();
+    Object.assign(result,{ordinaryRestrictionsPreserved:true,explicitRecoveryTrustedTouch:true,allBooksSelected:true,writerAndSortPreserved:true,renderedResultsAcknowledged:true,savedContentPreserved:true,preferencesAndGlobePreserved:true,readerDeferralExercised:false,newerUserEditIntegrationExercised:false});if(language==='ru')o.checks.push({name:'manual facet repair updates current rendered status without another Booky request',pass:true});
+    // Bounded lifecycle extension: real selected-book ownership defers this
+    // exact user-requested recovery. No renderer/state/outcome is assigned.
+    const lifecycle=o.currentOnlyRecovery={kind:language==='ru'?'reader-close-restores-current-history':'newer-trusted-facet-edit-during-reader-deferral',touchesStart:o.touches.length,checks:[]};
+    await collapse();
+    const selectedControl=page.locator('.archive-book-detail[data-book-key]').first();
+    const selectedKey=await selectedControl.getAttribute('data-book-key');
+    expect(selectedKey).toMatch(/^russia:dostoevsky:/u);
+    let priorReaderHistory;
+    await expect.poll(async()=>{priorReaderHistory=await page.evaluate(()=>window.__bookySupportFixture.historyObservation());return priorReaderHistory.context?.selectedBookKey===null&&priorReaderHistory.context?.shelfId==='all'&&priorReaderHistory.context?.search?.query===''&&priorReaderHistory.context?.search?.scope==='library'&&priorReaderHistory.context?.filters?.authorKey==='russia:dostoevsky'&&priorReaderHistory.context?.filters?.countryIds?.length===0&&priorReaderHistory.context?.filters?.sort==='title';},{message:'Real pre-book history has the unrestricted current writer view'}).toBe(true);
+    await input.tap(selectedControl,'open a real current writer book for reader ownership');
+    const selectedReader=page.locator('.book-shelf-frame__detail:has(#book-archive-detail)');
+    await expect(selectedReader).toBeVisible();await expect(selectedControl).toHaveAttribute('aria-expanded','true');
+    await expect.poll(()=>page.evaluate(()=>new URL(location.href).searchParams.get('book'))).toBe(selectedKey);
+    const readerTitle=await selectedReader.locator('.book-detail-copy h3').first().textContent();
+    expect(readerTitle?.trim().length).toBeGreaterThan(0);
+    lifecycle.reader={bookKey:selectedKey,title:readerTitle,selectedByTrustedTouch:true,dossierPresent:await selectedReader.locator('.book-dossier-reader').count()};
+    const readerOwnedBefore=await writerOwnedState(page),readerPreferencesBefore=[...fixture.memory.entries()].sort(),readerBookyWritesBefore=fixture.bookyWrites().length;
+    await filters();
+    const readerFrance=drawer().locator('fieldset').filter({has:page.locator('legend').filter({hasText:/^(Страны|Countries)$/u})}).locator('label').filter({hasText:/^(Франция|France)$/u});
+    await input.tap(readerFrance,'restrict the underlying writer view while the real book stays open',{minimum44:false});
+    await expect(readerFrance.locator('input')).toBeChecked();
+    const readerRestricted=await writerControls(page);expect(readerRestricted.author).toBe('russia:dostoevsky');expect(readerRestricted.sort).toBe('title');
+    await closeFilters();await expect(selectedReader).toBeVisible();await expect(page.locator('.book-archive-empty')).toBeVisible();
+    await help();await status('filtered-empty');await expect(recovery()).toBeVisible();
+    const previousAuthorId=await page.evaluate(()=>Math.max(0,...(window.__bookyAuthorTrace??[]).map(row=>row.id??0)));
+    await input.tap(recovery(),'explicit recovery while the actual reader still owns its book');
+    let deferred;
+    await expect.poll(async()=>{deferred=await page.evaluate(previous=>[...(window.__bookyAuthorTrace??[])].reverse().find(row=>row.id>previous&&row.phase==='reader-defer'&&row.recovery),previousAuthorId);return !!deferred;},{message:'The real selected reader defers the admitted recovery request'}).toBe(true);
+    const recoveryId=deferred.id;
+    expect(deferred.selectedBookRef).toBe(true);expect(deferred.readerBookKey).toBe(selectedKey);expect(deferred.pending).toBe(false);
+    await expect(selectedReader).toBeVisible();await expect.poll(()=>page.evaluate(()=>new URL(location.href).searchParams.get('book'))).toBe(selectedKey);
+    await status('loading');
+    const deferredRows=await page.evaluate(id=>(window.__bookyAuthorTrace??[]).filter(row=>row.id===id),recoveryId);
+    expect(deferredRows.some(row=>row.phase==='recovery-dispatch'||row.phase==='settle')).toBe(false);
+    expect(await selectedReader.locator('.book-detail-copy h3').first().textContent()).toBe(readerTitle);
+    expect(await writerOwnedState(page)).toEqual(readerOwnedBefore);expect([...fixture.memory.entries()].sort()).toEqual(readerPreferencesBefore);expect(fixture.bookyWrites().length).toBe(readerBookyWritesBefore);
+    lifecycle.deferred={requestId:recoveryId,row:deferred,rows:deferredRows,filters:readerRestricted,readerIdentityPreserved:true,semanticProgressUnchanged:true,noRecoveryDispatch:true};
+    if(language==='en'){
+      await filters();
+      await input.tap(readerFrance,'newer user removes the country facet while recovery is deferred',{minimum44:false});
+      await expect(readerFrance.locator('input')).not.toBeChecked();
+      const newerFilters=await writerControls(page);expect(newerFilters.author).toBe(readerRestricted.author);expect(newerFilters.sort).toBe(readerRestricted.sort);expect(newerFilters.checked).toEqual([]);
+      await closeFilters();await expect(selectedReader).toBeVisible();await help();await status('invalid');
+      const newerRows=await page.evaluate(id=>(window.__bookyAuthorTrace??[]).filter(row=>row.id===id),recoveryId);
+      const mismatch=newerRows.findIndex(row=>row.phase==='waiting-filter-mismatch');
+      const invalid=newerRows.findIndex(row=>row.phase==='settle'&&row.result==='invalid');
+      expect(mismatch).toBeGreaterThanOrEqual(0);expect(invalid).toBeGreaterThan(mismatch);expect(newerRows[invalid].selectedBookRef).toBe(true);
+      expect(newerRows.filter(row=>row.phase==='settle').length).toBe(1);expect(newerRows.some(row=>row.phase==='recovery-dispatch')).toBe(false);
+      expect(new URL(await page.url()).searchParams.get('book')).toBe(selectedKey);
+      await filters();expect(await writerControls(page)).toEqual(newerFilters);await closeFilters();
+      lifecycle.newerUserEdit={filters:newerFilters,rows:newerRows,invalidWhileReaderOwned:true,currentViewPreserved:true,noRecoveryDispatch:true};
+      o.newerUserEditIntegrationExercised=true;result.newerUserEditIntegrationExercised=true;
+    }
+    const realCloseBoundary=await page.evaluate(()=>({detailKey:history.state?.probperaBookDetail??null,shelfChanged:!!history.state?.probperaBookDetailShelfChanged,book:new URL(location.href).searchParams.get('book')}));
+    expect(realCloseBoundary.detailKey).toBe(selectedKey);expect(realCloseBoundary.book).toBe(selectedKey);expect(realCloseBoundary.shelfChanged).toBe(false);
+    lifecycle.historyBoundary={prior:priorReaderHistory,close:realCloseBoundary};
+    await collapse();await input.tap(selectedReader.locator('.book-detail-close'),'close only the real book reader through its own Close control');
+    await expect(selectedReader).toHaveCount(0);await expect.poll(()=>page.evaluate(()=>new URL(location.href).searchParams.get('book'))).toBeNull();
+    await help();await status('invalid');
+    const restoredReaderHistory=await page.evaluate(()=>window.__bookySupportFixture.historyObservation());
+    expect(restoredReaderHistory.url).toBe(priorReaderHistory.url);expect(restoredReaderHistory.context?.filters).toEqual(priorReaderHistory.context.filters);expect(restoredReaderHistory.context?.search).toEqual(priorReaderHistory.context.search);expect(restoredReaderHistory.context?.shelfId).toBe(priorReaderHistory.context.shelfId);
+    lifecycle.historyBoundary.restored=restoredReaderHistory;
+    const closedRows=await page.evaluate(id=>(window.__bookyAuthorTrace??[]).filter(row=>row.id===id),recoveryId);
+    const mismatch=closedRows.findIndex(row=>row.phase==='waiting-filter-mismatch'),invalid=closedRows.findIndex(row=>row.phase==='settle'&&row.result==='invalid');
+    expect(mismatch).toBeGreaterThanOrEqual(0);expect(invalid).toBeGreaterThan(mismatch);expect(closedRows.filter(row=>row.phase==='settle').length).toBe(1);
+    expect(closedRows.some(row=>row.phase==='recovery-dispatch')).toBe(false);
+    await filters();const currentAfterClose=await writerControls(page);expect(currentAfterClose.author).toBe(readerRestricted.author);expect(currentAfterClose.sort).toBe('title');expect(currentAfterClose.checked).toEqual([]);await closeFilters();
+    lifecycle.closed={rows:closedRows,filters:currentAfterClose,bookCloseTrusted:true,oldRecoveryInvalidated:true,noRecoveryDispatch:true,cause:language==='ru'?'actual pre-book history filters restored on Close':'newer explicit facet edit consumed recovery before Close'};
+    await help();await input.tap(writerAction(),'fresh explicit writer request after the old recovery was discarded');await status('applied');
+    const freshRows=await page.evaluate(id=>(window.__bookyAuthorTrace??[]).filter(row=>row.id>id),recoveryId);
+    expect(freshRows.some(row=>row.phase==='ordinary-dispatch')).toBe(true);expect(freshRows.some(row=>row.phase==='settle'&&row.result==='applied')).toBe(true);
+    expect(await writerOwnedState(page)).toEqual({...readerOwnedBefore,hash:new URL(priorReaderHistory.url).hash});expect([...fixture.memory.entries()].sort()).toEqual(readerPreferencesBefore);expect(fixture.bookyWrites().length).toBe(readerBookyWritesBefore);
+    retained(await actual(page),afterGlobe,true,true);
+    lifecycle.freshRequest={rows:freshRows,explicit:true,oldRecoveryNotReplayed:true,semanticProgressUnchanged:true,readerOwnedContentPreserved:true};
+    o.readerDeferralExercised=true;result.readerDeferralExercised=true;
+    lifecycle.checks=[{name:'trusted real book owns the reader before a current recovery is admitted',pass:true},{name:'reader deferral neither dispatches recovery nor changes the current book or semantic progress',pass:true},{name:'real current-view change discards only the obsolete request before a fresh explicit writer request',pass:true}];
+    if(language==='en')lifecycle.checks.push({name:'a newer trusted facet edit invalidates deferred recovery while its reader is still owned',pass:true});
+
+    fixture.verify();
   } catch(error) {
     const filename='diagnostic-failure-'+language+'.png';const bytes=await page.screenshot({path:testInfo.outputPath(filename)});o.failureCapture={filename,sha256:digest(bytes),scope:'failure diagnosis only; not a successful contract capture',error:error.message};await testInfo.attach('diagnostic-failure-'+language,{path:testInfo.outputPath(filename),contentType:'image/png'});throw error;
   } finally {o.authorEffectTrace=await page.evaluate(()=>window.__bookyAuthorTrace??[]);await input.close();await fixture.close();}
