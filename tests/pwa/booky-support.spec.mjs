@@ -164,7 +164,7 @@ test.beforeAll(async () => {
     if (entry.source !== 'public/' + entry.output || entry.transformation !== 'none' || /(?:^|\/)\.\.(?:\/|$)|\\/u.test(entry.output)) throw Error('Invalid selected native asset');
     return ['/' + entry.output, entry];
   }));
-  sourceEvidence = { kind: 'canonical-app-adult-booky-support-in-Chrome', actualApp: true, actualCss: true, actualGlobe: true,
+  sourceEvidence = { kind: 'canonical-app-adult-booky-support-in-Chromium', actualApp: true, actualCss: true, actualGlobe: true,
     controlledPorts: ['native OS plugins and preferences backed by a Node map', 'HTTP responses for real dynamic country, book runtime and collection component chunks'],
     bookChunks, primaryBookChunk, retryBookChunk, sharedBookDependencies,
     countryChunks, primaryCountryChunk, retryCountryChunk, sharedCountryDependencies,
@@ -178,17 +178,20 @@ test.beforeAll(async () => {
     installedNative: false, deviceTested: false, childReviewed: false, childProfileCreated: false, childAccessGranted: false, reviewedDialogueAccepted: false, narrationEnabled: false, artAccepted: false, devicePerformanceAccepted: false, releaseReady: false };
 });
 
-async function open(testInfo, { rejectBooks = 0, rejectCountries = 0, rejectComponents = 0 } = {}) {
+async function open(testInfo, { rejectBooks = 0, rejectCountries = 0, rejectComponents = 0, holdBooksAfterFailures = false, bookySeed = SEED } = {}) {
   const profileRoot = path.resolve(process.env.S15_BROWSER_PROFILE_ROOT ?? path.join(ROOT, '.tmp/s15-booky-live'));
   await fs.mkdir(profileRoot, { recursive: true }); const profile = await fs.mkdtemp(path.join(profileRoot, 'pk-'));
-  const context = await chromium.launchPersistentContext(profile, { channel: 'chrome', headless: true,
+  const context = await chromium.launchPersistentContext(profile, { channel: process.env.S15_BROWSER_CHANNEL || 'chrome', headless: true,
     viewport: { width: 1440, height: 850 }, reducedMotion: 'reduce', hasTouch: true });
   const page = await context.newPage(); page.setDefaultTimeout(12_000);
   const initialRecord = JSON.stringify({ schemaVersion: 1, commitId: 'booky-support-fixture:1', selection: BASE });
-  const memory = new Map([['probpera-interface-language', 'ru'], ['probpera-planet-welcome-v1', 'completed'], [KEY, initialRecord], [BOOKY, JSON.stringify(SEED)]]);
+  const memory = new Map([['probpera-interface-language', 'ru'], ['probpera-planet-welcome-v1', 'completed'], [KEY, initialRecord], [BOOKY, JSON.stringify(bookySeed)]]);
   const operations = [], errors = [], externalRequests = [], missingResources = [];
   const bookRequests = [], countryRequests = [], componentRequests = [], controlledFailures = [];
   const failuresRemaining = { books: rejectBooks, countries: rejectCountries, component: rejectComponents };
+  let bookDeliveryHeld = holdBooksAfterFailures;
+  const bookDeliveryEvents = [];
+  const bookEvent = value => { if (holdBooksAfterFailures) { expect(bookDeliveryEvents.length).toBeLessThan(64); bookDeliveryEvents.push({ at: Date.now(), ...value }); } };
   const result = { ...sourceEvidence, pass: false, observations: {}, screenshots: [] };
   page.on('pageerror', error => errors.push(error.message));
   await page.exposeBinding('__osPreference', (_source, operation, key, value, observed) => {
@@ -213,8 +216,13 @@ async function open(testInfo, { rejectBooks = 0, rejectCountries = 0, rejectComp
       : componentChunks.includes(pathname) ? 'component' : null;
     if (target) {
       ({ books: bookRequests, countries: countryRequests, component: componentRequests })[target].push(pathname);
-      if (failuresRemaining[target] > 0) { failuresRemaining[target]--; controlledFailures.push({ path: pathname, status: 503 });
-        await route.fulfill({ status: 503, contentType: 'text/plain', body: 'Controlled chunk transport failure' }); return; }
+      if (target === 'books') bookEvent({ kind: 'request', path: pathname, remainingFailures: failuresRemaining.books, held: bookDeliveryHeld });
+      if (failuresRemaining[target] > 0 || target === 'books' && bookDeliveryHeld) {
+        if (failuresRemaining[target] > 0) failuresRemaining[target]--;
+        controlledFailures.push({ path: pathname, status: 503 });
+        await route.fulfill({ status: 503, contentType: 'text/plain', body: 'Controlled chunk transport failure' });
+        if (target === 'books') bookEvent({ kind: 'response', path: pathname, status: 503, controlledTransportFailure: true });
+        return; }
     }
     if (!files.has(pathname) && selectedAssets.has(pathname)) {
       const entry = selectedAssets.get(pathname), filename = path.resolve(ROOT, entry.source);
@@ -223,7 +231,9 @@ async function open(testInfo, { rejectBooks = 0, rejectCountries = 0, rejectComp
       files.set(pathname, bytes);
     }
     const bytes = files.get(pathname);
-    if (bytes) { await route.fulfill({ contentType: mime[path.extname(pathname)] ?? 'application/octet-stream', body: bytes }); return; }
+    if (bytes) { await route.fulfill({ contentType: mime[path.extname(pathname)] ?? 'application/octet-stream', body: bytes });
+      if (target === 'books') bookEvent({ kind: 'response', path: pathname, status: 200, sha256: digest(bytes), bytes: bytes.length });
+      return; }
     if (pathname !== '/favicon.ico') missingResources.push(pathname);
     await route.fulfill({ status: 404, contentType: 'text/plain', body: 'Unselected fixture asset' });
   });
@@ -234,7 +244,14 @@ async function open(testInfo, { rejectBooks = 0, rejectCountries = 0, rejectComp
       await expect(page.locator('.native-planet-launch')).toBeHidden();
       await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility', 'shown');
     } else await ready(page);
-    return { page, memory, operations, result, initialRecord, bookRequests, countryRequests, componentRequests, controlledFailures,
+    return { page, memory, operations, result, initialRecord, bookySeed, bookRequests, countryRequests, componentRequests, controlledFailures, bookDeliveryEvents,
+      restoreBookDelivery() {
+        expect(holdBooksAfterFailures).toBe(true); expect(bookDeliveryHeld).toBe(true); expect(failuresRemaining.books).toBe(0);
+        bookDeliveryHeld = false;
+        const available = bookChunks.map(filename => { const bytes = files.get(filename); expect(bytes).toBeTruthy();
+          return { path: filename, sha256: digest(bytes), bytes: bytes.length }; });
+        bookEvent({ kind: 'delivery-restored', available }); return available;
+      },
       bookyWrites:()=>operations.filter(value=>value.operation==='set'&&value.key===BOOKY),
       writes: () => operations.filter(value => value.operation !== 'get' && CUSTOMIZATION_KEYS.has(value.key)),
       verify() { expect(errors).toEqual([]); expect(externalRequests).toEqual([]); expect(missingResources).toEqual([]);
@@ -246,6 +263,7 @@ async function open(testInfo, { rejectBooks = 0, rejectCountries = 0, rejectComp
         result.bookyWrites=operations.filter(value=>value.operation==='set'&&value.key===BOOKY);result.finalBookyPreference=JSON.parse(memory.get(BOOKY)??'null');
         result.preferenceOperations = operations; result.bookRequests = bookRequests; result.countryRequests = countryRequests;
         result.componentRequests = componentRequests; result.controlledFailures = controlledFailures;
+        if (holdBooksAfterFailures) result.bookDeliveryEvents = bookDeliveryEvents;
         result.errors = errors; result.externalRequests = externalRequests; result.missingResources = missingResources;
         const filename = testInfo.outputPath('booky-support.json'); await fs.writeFile(filename, JSON.stringify(result, null, 2) + '\n');
         await testInfo.attach('booky-support-source-evidence', { path: filename, contentType: 'application/json' }); await context.close();
@@ -306,6 +324,21 @@ async function fitNarrow(page) {
       const pet=rect('[data-planet-mascot-pet]'),panel=rect('[data-planet-mascot-panel]'),avatar=rect('[data-planet-mascot-avatar]');
       const overlaps=(a,b)=>!!a&&!!b&&Math.min(a.right,b.right)-Math.max(a.left,b.left)>.5
         &&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>.5;
+      const header=rect('.planet-mascot-controls__heading');
+      const headerTargets=[...document.querySelectorAll('.planet-mascot-controls__heading h2, .planet-mascot-controls__heading button')]
+        .filter(element=>!element.closest('[hidden], [inert], [aria-hidden="true"]')&&element.getClientRects().length
+          &&getComputedStyle(element).visibility==='visible'&&getComputedStyle(element).display!=='none')
+        .map(element=>{const rectangle=bounds(element),hit=document.elementFromPoint(rectangle.left+rectangle.width/2,rectangle.top+rectangle.height/2);
+          return{kind:element.tagName,label:element.textContent.trim(),...rectangle,reachable:!!hit&&element.contains(hit),
+            overlapsPet:overlaps(rectangle,pet),overlapsAvatar:overlaps(rectangle,avatar)};});
+      const contains=(outer,inner,tolerance=.5)=>!!outer&&!!inner&&inner.left>=outer.left-tolerance&&inner.top>=outer.top-tolerance
+        &&inner.right<=outer.right+tolerance&&inner.bottom<=outer.bottom+tolerance;
+      // Open help reserves a header column for the same companion. Its visual
+      // avatar and hit area must fit there and keep the title/buttons clear.
+      const petInReservedHeader=contains(panel,pet)&&contains(pet,avatar)&&contains(header,pet,2)&&contains(header,avatar,2)
+        &&headerTargets.some(target=>target.kind==='H2')&&headerTargets.some(target=>target.kind==='BUTTON')
+        &&headerTargets.every(target=>!target.overlapsPet&&!target.overlapsAvatar&&contains(header,target)
+          &&(target.kind!=='BUTTON'||target.reachable));
       const languageButtons=[...document.querySelectorAll('.native-planet-app .interface-language-control button')]
         .filter(button=>!button.closest('[hidden], [inert], [aria-hidden="true"]')&&button.getClientRects().length
           &&getComputedStyle(button).visibility==='visible'&&getComputedStyle(button).display!=='none')
@@ -315,21 +348,22 @@ async function fitNarrow(page) {
             overlapsPet:overlaps(rectangle,pet),overlapsPanel:overlaps(rectangle,panel),
             hitTarget:hit?{tag:hit.tagName,className:typeof hit.className==='string'?hit.className:null}:null};});
       return{width:innerWidth,height:innerHeight,overflow:document.documentElement.scrollWidth>innerWidth+1,
-        pet,panel,avatar,languageButtons,panelOverlapsPet:overlaps(panel,pet),panelOverlapsAvatar:overlaps(panel,avatar)};
+        pet,panel,avatar,header,headerTargets,petInReservedHeader,languageButtons,panelOverlapsPet:overlaps(panel,pet),panelOverlapsAvatar:overlaps(panel,avatar)};
     });
     const inside=rect=>rect&&rect.width>0&&rect.height>0&&rect.left>=-.5&&rect.top>=-.5
       &&rect.right<=layout.width+.5&&rect.bottom<=layout.height+.5;
-    const valid=!layout.overflow&&!layout.panelOverlapsPet&&!layout.panelOverlapsAvatar
+    const clearCompanion=(!layout.panelOverlapsPet&&!layout.panelOverlapsAvatar)||layout.petInReservedHeader;
+    const valid=!layout.overflow&&clearCompanion
       &&[layout.pet,layout.panel,layout.avatar].every(inside)
       &&layout.languageButtons.length===2&&layout.languageButtons.map(button=>button.label).sort().join(',')==='EN,RU'
       &&layout.languageButtons.every(button=>inside(button)&&button.reachable&&!button.overlapsPet&&!button.overlapsPanel);
-    const geometry=JSON.stringify([layout.width,layout.height,layout.pet,layout.panel,layout.avatar,
+    const geometry=JSON.stringify([layout.width,layout.height,layout.pet,layout.panel,layout.avatar,layout.header,layout.headerTargets,
       layout.languageButtons.map(({left,top,right,bottom,width,height})=>({left,top,right,bottom,width,height}))]);
     stableSamples=valid?(geometry===previousGeometry?stableSamples+1:1):0;
     previousGeometry=valid?geometry:undefined;
     layout.stableSamples=stableSamples;
     return stableSamples>=2;
-  },{intervals:[100,200,300],message:'Two stable 320px samples show pet/card without overlap, all inside the viewport, with both language controls directly clickable'}).toBe(true);
+  },{intervals:[100,200,300],message:'Two stable narrow samples keep the companion separate or inside its reserved header without covering title/buttons; all content fits and both language controls are clickable'}).toBe(true).catch(error => { error.bookyNarrowLayout = layout; throw error; });
   return layout;
 }
 
@@ -476,9 +510,140 @@ test('a real book chunk failure stays visible across network hints and only expl
   } finally { await fixture.close(); }
 });
 
+
+// Assessment-only observers for the single existing two-failure case. Read UI,
+// trusted input and original HTTP bytes; never assign product state or focus.
+async function retryAssessmentState(page) {
+  const ui = await page.evaluate(() => ({ timeOrigin: performance.timeOrigin, href: location.href,
+    detailStatus: document.querySelector('.stage5-deferred-books')?.getAttribute('data-loading-status') ?? null,
+    selectedCountry: document.querySelector('[data-country-id]')?.getAttribute('data-country-id') ?? null,
+    activeElement: document.activeElement ? { tag: document.activeElement.tagName, id: document.activeElement.id } : null }));
+  return { ...await snapshot(page), ...ui };
+}
+async function observeRetryInput(page) {
+  const retainedEvents = [];
+  await page.exposeBinding('__bookyRecoveryInput', (_source, event) => { retainedEvents.push(event); });
+  await page.evaluate(() => {
+    const ownerSelector = '[data-booky-retry-content], [data-booky-restart-content], [data-atlas-action], [data-planet-mascot-toggle]';
+    const evidence = window.__bookyRetryAssessment = { events: [], overflow: false, loadingStates: [] };
+    const input = event => {
+      const owner = event.target instanceof Element ? event.target.closest(ownerSelector) : null;
+      if (!owner) return;
+      if (evidence.events.length >= 32) { evidence.overflow = true; return; }
+      evidence.events.push({ type: event.type, trusted: event.isTrusted,
+        pointerType: 'pointerType' in event ? event.pointerType : null, tag: event.target.tagName,
+        bookyRetry: owner.getAttribute('data-booky-retry-content'), atlasAction: owner.getAttribute('data-atlas-action'), bookyHelp: owner.hasAttribute('data-planet-mascot-toggle'), bookyRestart: owner.getAttribute('data-booky-restart-content') });
+      void window.__bookyRecoveryInput(evidence.events.at(-1)).catch(() => undefined);
+    };
+    for (const type of ['pointerdown', 'pointerup', 'click']) document.addEventListener(type, input, true);
+    const record = () => {
+      const status = document.querySelector('.stage5-deferred-books')?.getAttribute('data-loading-status') ?? null;
+      if (evidence.loadingStates.at(-1)?.status === status) return;
+      if (evidence.loadingStates.length >= 32) { evidence.overflow = true; return; }
+      evidence.loadingStates.push({ at: performance.now(), status });
+    };
+    const observer = new MutationObserver(record);
+    observer.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-loading-status'] });
+    record(); evidence.stop = () => { observer.disconnect(); for (const type of ['pointerdown', 'pointerup', 'click']) document.removeEventListener(type, input, true); };
+  });
+  return retainedEvents;
+}
+const retryInputEvidence = page => page.evaluate(() => {
+  const evidence = window.__bookyRetryAssessment;
+  return evidence ? { events: evidence.events, loadingStates: evidence.loadingStates, overflow: evidence.overflow } : null;
+});
+async function trustedRetryAssessmentTap(page, locator, label) {
+  await expect(locator).toHaveCount(1); await expect(locator).toBeVisible(); await expect(locator).toBeEnabled();
+  await locator.scrollIntoViewIfNeeded();
+  const bounds = await locator.boundingBox(); expect(bounds, label + ' actual bounds').toBeTruthy();
+  expect(bounds.width).toBeGreaterThanOrEqual(43.5); expect(bounds.height).toBeGreaterThanOrEqual(43.5);
+  const center = { x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 };
+  expect(await locator.evaluate((owner, point) => { const hit = document.elementFromPoint(point.x, point.y);
+    return !!hit && owner.contains(hit) && !owner.closest('[hidden], [inert], [aria-hidden="true"]'); }, center), label + ' direct owner hit').toBe(true);
+  await page.touchscreen.tap(center.x, center.y);
+  return { label, bounds, center, driver: 'Playwright touchscreen.tap with actual pointer/click isTrusted observations' };
+}
+async function assessRestoredBookRestart(fixture) {
+  const { page, result } = fixture;
+  const observation = result.observations.restoredDeliveryExplicitRestart = {
+    before: await retryAssessmentState(page), requestsBefore: [...fixture.bookRequests],
+    expectedTransportPathAfterRestart: primaryBookChunk, phase: 'before-extension', verified: false,
+    originalNoSuccessfulCollectionClaim: result.noSuccessfulCollectionClaim,
+  };
+  const retainedInput = await observeRetryInput(page);
+  try {
+    observation.collectionTap = await trustedRetryAssessmentTap(page,
+      page.locator('.atlas-immersive-chrome [data-atlas-action="open-collection"]'), 'existing collection toolbar');
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-screen', 'collection');
+    await expect(page.locator('.stage5-deferred-books')).toHaveAttribute('data-loading-status', 'error');
+    expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk]);
+    await expect(panel(page)).toHaveCount(0);
+    observation.helpTap = await trustedRetryAssessmentTap(page, page.locator('[data-planet-mascot-toggle]'), 'explicitly reopen Booky help');
+    await expect(support(page)).toHaveAttribute('data-booky-support', 'books-error');
+    await expect(page.locator('[data-booky-retry-content="books"]')).toHaveCount(0);
+    await expect(page.locator('[data-booky-restart-content="books"]')).toHaveText('Перезапустить приложение');
+    expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk]);
+    observation.beforeRestoration = await retryAssessmentState(page);
+    observation.availableBytes = fixture.restoreBookDelivery(); observation.phase = 'delivery-restored';
+    await page.waitForTimeout(350);
+    expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk]);
+    await expect(support(page)).toHaveAttribute('data-booky-support', 'books-error');
+    observation.afterRestorationWithoutAction = await retryAssessmentState(page);
+    expect(observation.afterRestorationWithoutAction.timeOrigin).toBe(observation.before.timeOrigin);
+    expect(observation.afterRestorationWithoutAction.href).toBe(observation.before.href);
+    retained(observation.afterRestorationWithoutAction.globe, observation.before.globe, false, false);
+    expect(fixture.bookyWrites()).toEqual([]); expect(fixture.writes()).toEqual([]);
+    observation.inputBeforeRestart = await retryInputEvidence(page);
+    observation.phase = 'explicit-restart';
+    const navigation = page.waitForEvent('framenavigated', frame => frame === page.mainFrame());
+    observation.restartTap = await trustedRetryAssessmentTap(page,
+      page.locator('[data-booky-restart-content="books"]'), 'explicit application restart');
+    await navigation;
+    await ready(page);
+    await page.evaluate(() => window.__bookySupportFixture.remember()); await stablePose(page);
+    await expect.poll(() => retainedInput.filter(event => event.bookyRestart === 'books' && event.trusted).length).toBe(3);
+    expect(retainedInput.some(event => event.type === 'pointerdown' && event.trusted && event.pointerType === 'touch' && event.bookyRestart === 'books')).toBe(true);
+    expect(retainedInput.some(event => event.type === 'click' && event.trusted && event.bookyRestart === 'books')).toBe(true);
+    observation.afterRestart = await retryAssessmentState(page);
+    expect(observation.afterRestart.timeOrigin).not.toBe(observation.before.timeOrigin);
+    expect(observation.afterRestart.href).toBe(observation.before.href);
+    expect(observation.afterRestart.globe.surfaceCount).toBe(1);
+    expect(observation.afterRestart.globe.selection).toEqual(observation.before.globe.selection);
+    observation.reopenCollectionTap = await trustedRetryAssessmentTap(page,
+      page.locator('.atlas-immersive-chrome [data-atlas-action="open-collection"]'), 'collection after explicit restart');
+    await expect(page.locator('.stage5-deferred-books')).toHaveAttribute('data-loading-status', 'ready');
+    await expect(support(page)).toHaveCount(0);
+    await expect.poll(() => fixture.bookRequests.length).toBe(3);
+    expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk, primaryBookChunk]);
+    const response = fixture.bookDeliveryEvents.filter(event => event.kind === 'response' && event.status === 200);
+    expect(response).toHaveLength(1); expect(response[0].path).toBe(primaryBookChunk);
+    expect(response[0].sha256).toBe(observation.availableBytes.find(item => item.path === primaryBookChunk).sha256);
+    observation.afterRecovery = await retryAssessmentState(page);
+    retained(observation.afterRecovery.globe, observation.afterRestart.globe, false, false);
+    expect(fixture.controlledFailures).toEqual([{ path: primaryBookChunk, status: 503 }, { path: retryBookChunk, status: 503 }]);
+    expect(fixture.bookyWrites()).toEqual([]); expect(JSON.parse(fixture.memory.get(BOOKY))).toEqual(fixture.bookySeed);
+    expect(fixture.writes()).toEqual([]); expect(fixture.memory.get(KEY)).toBe(fixture.initialRecord);
+    observation.phase = 'actual-ready-after-explicit-restart'; observation.verified = true;
+    result.originalExhaustionSegmentNoSuccessfulCollectionClaim = observation.originalNoSuccessfulCollectionClaim;
+    result.noSuccessfulCollectionClaim = false; result.restoredDeliveryExplicitRestartVerified = true;
+  } catch (error) {
+    observation.failure = { name: error.name, message: error.message, phase: observation.phase };
+    observation.failureState = await retryAssessmentState(page).catch(sampleError => ({ observationError: sampleError.message }));
+    observation.actualBookRequests = [...fixture.bookRequests]; result.pass = false; throw error;
+  } finally {
+    observation.retainedInputEvents = structuredClone(retainedInput);
+    observation.inputInCurrentDocument = await retryInputEvidence(page).catch(() => null);
+    observation.delivery = structuredClone(fixture.bookDeliveryEvents);
+    await page.evaluate(() => window.__bookyRetryAssessment?.stop()).catch(() => undefined);
+  }
+}
+
 test('when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe', async ({}, testInfo) => {
   test.setTimeout(120_000);
-  const fixture = await open(testInfo, { rejectBooks: 2 }), { page, result } = fixture;
+  // Recovery preserves a current preference; legacy schema migration is tested separately.
+  const bookySeed = { schemaVersion: 2, audience: 'adult', visible: true,
+    resume: { route: 'overview', routeVersion: 1, stepId: 'collection' }, progress: [] };
+  const fixture = await open(testInfo, { rejectBooks: 2, holdBooksAfterFailures: true, bookySeed }), { page, result } = fixture;
   try {
     await expect.poll(() => fixture.controlledFailures.length).toBe(1);
     await page.setViewportSize({ width: 320, height: 844 });
@@ -495,7 +660,13 @@ test('when both book entry fetches fail the companion keeps an honest error and 
     expect(fixture.controlledFailures).toEqual([
       { path: primaryBookChunk, status: 503 }, { path: retryBookChunk, status: 503 },
     ]);
-    const layout = await fitNarrow(page); await stablePose(page);
+    await expect(page.locator('[data-booky-retry-content="books"]')).toHaveCount(0);
+    await expect(page.locator('[data-booky-restart-content="books"]')).toHaveText('Перезапустить приложение');
+    const layout = await fitNarrow(page).catch(async error => {
+      result.observations.narrowLayoutFailure = { layout: error.bookyNarrowLayout, state: await snapshot(page) };
+      await capture(fixture, testInfo, 'booky-support-retry-failed-ru-320.png', 'Diagnostic: actual two-failure state before the existing narrow-layout assertion failed; recovery extension not reached');
+      throw error;
+    }); await stablePose(page);
     retained(await actual(page), original, false, false);
     result.observations.secondFailure = { ...await snapshot(page), layout };
     await capture(fixture, testInfo, 'booky-support-retry-failed-ru-320.png', 'Actual App remains failed after primary and retry book entry HTTP 503; explicit return to the globe remains available');
@@ -511,11 +682,12 @@ test('when both book entry fetches fail the companion keeps an honest error and 
     retained(await actual(page), original, false, false);
     result.observations.explicitReturn = await snapshot(page);
     expect(fixture.bookRequests).toEqual([primaryBookChunk, retryBookChunk]);
-    expect(fixture.bookyWrites()).toEqual([]); expect(JSON.parse(fixture.memory.get(BOOKY))).toEqual(SEED);
+    expect(fixture.bookyWrites()).toEqual([]); expect(JSON.parse(fixture.memory.get(BOOKY))).toEqual(fixture.bookySeed);
     expect(fixture.writes()).toEqual([]); expect(fixture.memory.get(KEY)).toBe(fixture.initialRecord);
     Object.assign(result, { realPrimaryAndRetryChunkFailures: true, persistentFailureStaysHonest: true,
       networkHintsCannotClearContentError: true, noAutomaticRetry: true, explicitReturnUsesCanonicalGlobe: true,
       noSuccessfulCollectionClaim: true, sameCanonicalSceneWithinLoad: true, noAppearanceWrites: true });
+    await assessRestoredBookRestart(fixture);
     fixture.verify();
   } finally { await fixture.close(); }
 });

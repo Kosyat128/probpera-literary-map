@@ -103,10 +103,11 @@ describe("demand-owned book runtime recovery", () => {
     await retryFailure;
     expect(f.primaryFactory).toHaveBeenCalledTimes(1);
     expect(f.retryFactory).toHaveBeenCalledTimes(1);
-    // Another explicit request must report the persistent failure instead of
-    // manufacturing success. Whether the browser fetches that same known URL
-    // again is covered by the real-browser case, not this module mock.
-    await expect(f.load(true)).rejects.toThrow();
+    // An exhausted module map requires a separate explicit document restart.
+    // Neither ordinary demand nor repeated Retry may keep importing a known failed URL.
+    await expect(f.load(true)).rejects.toMatchObject({ name: "BookArchiveReloadRequiredError" });
+    await expect(f.load()).rejects.toMatchObject({ name: "BookArchiveReloadRequiredError" });
+    expect(f.retryFactory).toHaveBeenCalledTimes(1);
     expect(f.primaryFactory).toHaveBeenCalledTimes(1);
     const retryCalls = f.retryFactory.mock.calls.length;
     await Promise.resolve();

@@ -683,6 +683,65 @@ describe("Booky recovery from live platform and content state", () => {
     controller.dispose();
   });
 
+  it("publishes an exhaustion-only context change and accepts only its current offered restart without mutation", () => {
+    const controller = createPlanetMascotController(), restart = vi.fn();
+    const context = ready({ screen: "collection", booksStatus: "error" });
+    controller.setContext(context); controller.togglePanel();
+    const retryRevision = controller.getSnapshot().revision, intent = controller.getPreferenceIntent();
+    expect(controller.restartContent(retryRevision, restart)).toBe(false);
+    controller.setContext({ ...context, booksReloadRequired: true });
+    const snapshot = controller.getSnapshot();
+    expect(snapshot.revision).toBeGreaterThan(retryRevision);
+    expect(snapshot.support).toMatchObject({ id: "books-error", retry: null, restart: "books" });
+    expect(controller.restartContent(retryRevision, restart)).toBe(false);
+    expect(controller.retryContent("books", snapshot.revision, restart)).toBe(false);
+    const changed = vi.fn(), stop = controller.subscribe(changed);
+    expect(controller.restartContent(snapshot.revision, restart)).toBe(true);
+    expect(restart).toHaveBeenCalledOnce();
+    expect(changed).not.toHaveBeenCalled();
+    expect(controller.getSnapshot()).toBe(snapshot);
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    controller.setContext(context);
+    expect(controller.getSnapshot().support?.restart).toBeUndefined();
+    expect(controller.restartContent(controller.getSnapshot().revision, restart)).toBe(false);
+    expect(restart).toHaveBeenCalledOnce();
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    stop(); controller.dispose();
+  });
+
+  it("rejects exhausted restart after closure, hiding, lost adult availability or disposal", () => {
+    const states = ["closed", "hidden", "inactive", "child", "blocked", "disabled", "disposed"] as const;
+    for (const state of states) {
+      const controller = createPlanetMascotController(), restart = vi.fn();
+      const context = ready({ screen: "collection", booksStatus: "error", booksReloadRequired: true });
+      controller.setContext(context); controller.togglePanel();
+      const offeredRevision = controller.getSnapshot().revision;
+      if (state === "closed") controller.togglePanel();
+      else if (state === "hidden") controller.hide();
+      else if (state === "disposed") controller.dispose();
+      else controller.setContext({ ...context, ...(state === "inactive" ? { active: false }
+        : state === "disabled" ? { enabled: false } : { access: state }) });
+      const snapshot = controller.getSnapshot(), intent = controller.getPreferenceIntent();
+      expect(controller.restartContent(offeredRevision, restart)).toBe(false);
+      expect(controller.restartContent(snapshot.revision, restart)).toBe(false);
+      expect(restart).not.toHaveBeenCalled();
+      expect(controller.getSnapshot()).toBe(snapshot);
+      expect(controller.getPreferenceIntent()).toBe(intent);
+      controller.dispose();
+    }
+  });
+
+  it("leaves restart support and preference intact when the host callback throws", () => {
+    const controller = createPlanetMascotController();
+    controller.setContext(ready({ screen: "collection", booksStatus: "error", booksReloadRequired: true }));
+    controller.togglePanel();
+    const snapshot = controller.getSnapshot(), intent = controller.getPreferenceIntent();
+    expect(controller.restartContent(snapshot.revision, () => { throw new Error("Host restart failed"); })).toBe(false);
+    expect(controller.getSnapshot()).toBe(snapshot);
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    controller.dispose();
+  });
+
   it("does not advance failed or pending collection steps, reopen tips, or save connectivity changes", () => {
     const controller = createPlanetMascotController();
     const context = ready({ screen: "collection", booksStatus: "loading" });

@@ -80,6 +80,8 @@ type DeferredBookArchiveProps = BookArchiveComponentProps & {
   retryToken?: number;
   onLoadIntent: () => void;
   onRetryArchive: () => void;
+  reloadRequired?: boolean;
+  onRestartArchive?: () => void;
   onStatusChange?: (status: DeferredLoadStatus) => void;
 };
 
@@ -90,10 +92,12 @@ export function DeferredBookArchive({
   retryToken = 0,
   onLoadIntent,
   onRetryArchive,
+  reloadRequired = false,
+  onRestartArchive,
   onStatusChange,
   ...componentProps
 }: DeferredBookArchiveProps) {
-  const { t } = useInterfaceLanguage();
+  const { t, language } = useInterfaceLanguage();
   const [attempt, setAttempt] = useState(0);
   const [component, setComponent] =
     useState<BookArchiveComponent | null>(null);
@@ -178,13 +182,14 @@ export function DeferredBookArchive({
                   : t("Собираем книжный архив…")}
             </strong>
             <p>
-              {t(
-                "Место полки уже зарезервировано, поэтому страница не сдвинется."
-              )}
+              {reloadRequired ? language === "ru"
+                ? "Чтобы снова открыть коллекцию, перезапустите приложение. Это произойдёт только после нажатия кнопки."
+                : "Restart the application to try opening the collection again. It will restart only when you press the button."
+                : t("Место полки уже зарезервировано, поэтому страница не сдвинется.")}
             </p>
             {effectiveStatus === "error" && (
-              <button type="button" onClick={retry}>
-                {t("Повторить загрузку")}
+              <button type="button" onClick={reloadRequired ? onRestartArchive : retry}>
+                {reloadRequired ? language === "ru" ? "Перезапустить приложение" : "Restart application" : t("Повторить загрузку")}
               </button>
             )}
           </div>
@@ -327,16 +332,18 @@ export function DeferredArticleLibrary({
 
 type GlobalSearchLoadingDialogProps = {
   error?: boolean;
+  reloadRequired?: boolean;
   onClose: () => void;
   onRetry: () => void;
 };
 
 export function GlobalSearchLoadingDialog({
   error = false,
+  reloadRequired = false,
   onClose,
   onRetry,
 }: GlobalSearchLoadingDialogProps) {
-  const { t } = useInterfaceLanguage();
+  const { t, language } = useInterfaceLanguage();
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -414,13 +421,14 @@ export function GlobalSearchLoadingDialog({
         <div className="stage5-global-search-shell__status" role="status" aria-live="polite">
           <span aria-hidden="true">✦</span>
           <p>
-            {error
+            {reloadRequired ? language === "ru" ? "Чтобы снова открыть каталог, перезапустите приложение." : "Restart the application to try opening the catalog again."
+              : error
               ? t("Проверьте соединение и повторите загрузку.")
               : t("Готовим страны, авторов, книги и публикации.")}
           </p>
           {error && (
             <button type="button" onClick={onRetry}>
-              {t("Повторить загрузку")}
+              {reloadRequired ? language === "ru" ? "Перезапустить приложение" : "Restart application" : t("Повторить загрузку")}
             </button>
           )}
         </div>

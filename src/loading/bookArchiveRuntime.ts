@@ -16,6 +16,16 @@ export type BookArchiveRuntime = {
 
 let runtimePromise: Promise<BookArchiveRuntime> | null = null;
 let primaryFailed = false;
+/** Both known module URLs failed in this document; only an explicit restart can reset them. */
+export class BookArchiveReloadRequiredError extends Error {
+  readonly cause: unknown;
+  constructor(cause: unknown) {
+    super("Book archive loading requires an application restart");
+    this.name = "BookArchiveReloadRequiredError";
+    this.cause = cause;
+  }
+}
+let reloadRequiredError: BookArchiveReloadRequiredError | null = null;
 function retryBookArchive() {
   const retryModules = import.meta.glob<typeof import("../planet/books")>(
     "../planet/books.ts",
@@ -27,9 +37,11 @@ function retryBookArchive() {
 /** The only production entry point that evaluates the full book graph. */
 export function loadBookArchiveRuntime(explicitRetry = false) {
   if (runtimePromise) return runtimePromise;
+  if (reloadRequiredError) return Promise.reject(reloadRequiredError);
   // A failed facade URL may remain cached by the browser. One compiled retry
   // facade shares the canonical data dependencies; it never retries itself.
-  const load = explicitRetry && primaryFailed
+  const usingRetry = explicitRetry && primaryFailed;
+  const load = usingRetry
     ? retryBookArchive
     : () => import("../planet/books");
   runtimePromise = load()
@@ -43,6 +55,10 @@ export function loadBookArchiveRuntime(explicitRetry = false) {
     .catch((error) => {
       primaryFailed = true;
       runtimePromise = null;
+      if (usingRetry) {
+        reloadRequiredError = new BookArchiveReloadRequiredError(error);
+        throw reloadRequiredError;
+      }
       throw error;
     });
   return runtimePromise;

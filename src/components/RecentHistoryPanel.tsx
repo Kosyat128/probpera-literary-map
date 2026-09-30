@@ -20,6 +20,7 @@ export interface RecentHistoryPanelProps {
   readonly bookStatus: LoadStatus;
   readonly onLoad: () => void;
   readonly onRetry: () => void;
+  readonly restartRequired?: boolean;
   readonly onOpenWriter: (country: Country, writer: Writer) => void;
   readonly onOpenWork: (book: BookArchiveEntry, returnFocus: HTMLElement) => void;
 }
@@ -59,7 +60,7 @@ export default function RecentHistoryPanel(props: RecentHistoryPanelProps) {
     <summary id={labelId}>{copy.heading}</summary>
     <div className="recent-history__content" aria-labelledby={labelId}>
       {storageMessage ? <p role="status" aria-atomic="true" data-recent-storage-status={history.storageStatus}>{storageMessage}{storageFailed && history.retry ? <> <button type="button" data-recent-storage-retry="" onClick={() => { void history.retry?.(); }}>{copy.storageRetry}</button></> : null}</p> : null}
-      {failed ? <p role="status">{copy.failed} <button type="button" data-recent-catalog-retry="" onClick={props.onRetry}>{copy.retry}</button></p> : loading ? <p role="status">{copy.loading}</p> : null}
+      {failed ? <p role="status">{copy.failed} <button type="button" data-recent-catalog-retry="" onClick={props.onRetry}>{props.restartRequired ? language === "ru" ? "Перезапустить приложение" : "Restart application" : copy.retry}</button></p> : loading ? <p role="status">{copy.loading}</p> : null}
       {rows.length ? <ol>{rows.map(row => <li key={row.key}><button type="button" data-recent-entry={row.key} onClick={event => row.open(event.currentTarget)}><span className="recent-history__kind">{row.kind}</span><span className="recent-history__label">{row.label}</span></button></li>)}</ol> : history.loaded && !loading && !failed && !storageBusy && !storageFailed ? <p>{copy.empty}</p> : null}
       <button type="button" data-recent-clear="" disabled={!history.entries.length && (!history.storageStatus || (history.loaded && !storageFailed))} onClick={() => { void history.clear(); }}>{copy.clear}</button>
     </div>

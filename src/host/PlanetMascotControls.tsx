@@ -40,6 +40,7 @@ export type PlanetMascotControlsProps = {
   onRetryMotion: () => boolean;
   onRecoverMotion: () => boolean;
   onRetryContent: (target: "countries" | "books") => void;
+  onRestartContent?: () => void;
   readerSettings?: ReactNode;
 };
 const MARGIN = 12;
@@ -112,7 +113,7 @@ function companionViewport(): Rect {
 }
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
   onAction, pointRequest, completionReactionRef, atlasSearchVisible = false, readerEntry = null, onHelpOpen, position, onPositionChange, persistence, onRetryPersistence, motion, onMotionChange,
-  onRetryMotion, onRecoverMotion, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
+  onRetryMotion, onRecoverMotion, onRetryContent, onRestartContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
   const calmMotion = !motion.hydrated || motion.mode === "calm";
@@ -989,6 +990,10 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
               const target = snapshot.support?.retry;
               if (target) navigateTips(() => controller.retryContent(target, snapshot.revision, () => onRetryContent(target)));
             }}>{ru ? "Повторить загрузку" : "Try loading again"}</button>}
+          {snapshot.support.restart === "books" && onRestartContent && <button type="button"
+            data-booky-restart-content="books" onClick={() => {
+              navigateTips(() => controller.restartContent(snapshot.revision, onRestartContent));
+            }}>{ru ? "Перезапустить приложение" : "Restart application"}</button>}
           {snapshot.support.kind === "error" && screen === "collection" && <button type="button"
             data-booky-recovery-return="" onClick={() => perform("return-globe")}>
             {ru ? "Вернуться к глобусу" : "Return to the globe"}

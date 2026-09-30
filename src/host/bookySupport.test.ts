@@ -14,6 +14,38 @@ describe("adult Booky support guidance", () => {
     expect(result?.kind).toBe("error");
   });
 
+  it.each(["online", "offline", "unknown"] as const)("offers explicit restart for an exhausted visible collection with %s connectivity", connectivity => {
+    const input = Object.freeze({ ...ready, connectivity, screen: "collection" as const,
+      countryStatus: "error" as const, booksStatus: "error" as const, booksReloadRequired: true });
+    const result = getBookySupport(input)!;
+    expect(result).toMatchObject({ id: "books-error", kind: "error", retry: null, restart: "books" });
+    expect(result.title).toBe(guidance({ screen: "collection", booksStatus: "error" })?.title);
+    expect(result.body.ru).toContain("перезапустите приложение");
+    expect(result.body.en).toContain("Restart the application");
+    expect(result.body.ru).toContain("вернуться к глобусу");
+    expect(result.body.en).toContain("return to the globe");
+    expect(Object.isFrozen(result)).toBe(true);
+    expect(Object.isFrozen(result.body)).toBe(true);
+    expect(getBookySupport({ ...input })).toBe(result);
+    expect(input.booksReloadRequired).toBe(true);
+  });
+
+  it("does not infer restart outside an exhausted visible collection error", () => {
+    for (const booksReloadRequired of [undefined, false]) {
+      const result = guidance({ screen: "collection", booksStatus: "error", booksReloadRequired });
+      expect(result?.retry).toBe("books");
+      expect(result?.restart).toBeUndefined();
+    }
+    for (const changes of [
+      { screen: "globe", booksStatus: "error" },
+      { screen: "collection", booksStatus: "loading" },
+      { screen: "collection", booksStatus: "ready" },
+      { screen: "collection", countryStatus: "error", booksStatus: "loading" },
+    ] satisfies Partial<BookySupportInput>[]) {
+      expect(guidance({ ...changes, booksReloadRequired: true })?.restart).toBeUndefined();
+    }
+  });
+
   it.each(["online", "offline", "unknown"] as const)("does not hide a country error behind loading or %s connectivity", connectivity => {
     const result = guidance({ connectivity, screen: "collection", countryStatus: "error", booksStatus: "loading" });
     expect(result?.id).toBe("countries-error");

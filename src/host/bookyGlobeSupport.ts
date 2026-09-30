@@ -13,6 +13,7 @@ type GlobeDisplaySupport = Readonly<{
   title: PlanetMascotCopy;
   body: PlanetMascotCopy;
   retry: null;
+  restart?: "books";
 }>;
 const globeUnavailable: GlobeDisplaySupport = Object.freeze({
   id: "globe-unavailable", kind: "error", retry: null,

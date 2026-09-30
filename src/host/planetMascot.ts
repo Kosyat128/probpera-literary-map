@@ -27,6 +27,7 @@ export type PlanetMascotContext = Readonly<{
   connectivity?: BookySupportInput["connectivity"];
   countryStatus?: BookySupportInput["countryStatus"];
   booksStatus?: BookySupportInput["booksStatus"];
+  booksReloadRequired?: boolean;
   /** Current host capabilities, never inferred from retained selections. */
   canDiscoverCountry?: boolean;
   canOpenDownloads?: boolean;
@@ -100,7 +101,8 @@ export function createPlanetMascotController() {
     const authorBooksStatus = context?.authorBooksStatus ?? "idle";
     const support = available && context ? getBookyGlobeSupport({ screen: context.screen,
       connectivity: context.connectivity ?? "unknown", countryStatus: context.countryStatus ?? "idle",
-      booksStatus: context.booksStatus ?? "idle", globeDisplayUnavailable: context.globeDisplayUnavailable,
+      booksStatus: context.booksStatus ?? "idle", booksReloadRequired: context.booksReloadRequired,
+      globeDisplayUnavailable: context.globeDisplayUnavailable,
       globeLoadStatus: context.globeLoadStatus }) : null;
     const step = state.mode === "tour" ? getPlanetMascotStep(state.route, state.step) : null;
     const onScreen = step !== null && (step.requiredScreen === null || step.requiredScreen === context?.screen);
@@ -270,6 +272,7 @@ export function createPlanetMascotController() {
         selectedWriter: value.selectedCountry && value.selectedWriter, selectionKey: value.selectionKey,
         authorBooksStatus: value.authorBooksStatus ?? "idle", connectivity: value.connectivity ?? "unknown",
         countryStatus: value.countryStatus ?? "idle", booksStatus: value.booksStatus ?? "idle",
+        booksReloadRequired: value.booksReloadRequired === true,
         canDiscoverCountry: value.canDiscoverCountry === true, canOpenDownloads: value.canOpenDownloads === true,
         canRecoverAuthorBooks: value.canRecoverAuthorBooks === true, canGuideGlobe: value.canGuideGlobe === true,
         globeDisplayUnavailable: value.globeDisplayUnavailable === true,
@@ -283,6 +286,7 @@ export function createPlanetMascotController() {
         && context.selectedWriter === next.selectedWriter && context.selectionKey === next.selectionKey
         && context.authorBooksStatus === next.authorBooksStatus && context.connectivity === next.connectivity
         && context.countryStatus === next.countryStatus && context.booksStatus === next.booksStatus
+        && context.booksReloadRequired === next.booksReloadRequired
         && context.canDiscoverCountry === next.canDiscoverCountry && context.canOpenDownloads === next.canOpenDownloads
         && context.canRecoverAuthorBooks === next.canRecoverAuthorBooks && context.canGuideGlobe === next.canGuideGlobe
         && context.globeDisplayUnavailable === next.globeDisplayUnavailable && context.globeLoadStatus === next.globeLoadStatus
@@ -376,6 +380,13 @@ export function createPlanetMascotController() {
       contentRetries.add(target);
       try { callback(); return true; }
       catch { contentRetries.delete(target); return false; }
+    },
+    restartContent(revision: number, callback: () => void) {
+      if (!opened() || !current(revision) || snapshot.support?.restart !== "books"
+        || typeof callback !== "function") return false;
+      // The host owns the new document. Offering restart never changes intent,
+      // progress or the current canonical scene before the explicit action.
+      try { callback(); return true; } catch { return false; }
     },
     act(action: PlanetMascotAction, revision: number, callback: () => void) {
       if (!current(revision) || !canAct(action) || typeof callback !== "function") return false;

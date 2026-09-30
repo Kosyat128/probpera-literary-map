@@ -149,6 +149,7 @@ import IconButton from "./ui/IconButton";
 import { calculateLightweightArchiveOverview } from "./loading/archiveOverview";
 import {
   loadBookArchiveRuntime,
+  BookArchiveReloadRequiredError,
   type BookArchiveRuntime,
 } from "./loading/bookArchiveRuntime";
 import {
@@ -812,6 +813,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     initialHashIntent(BOOK_DATA_HASH_TARGETS) || addressRequestsBook()
   );
   const [bookRuntimeAttempt, setBookRuntimeAttempt] = useState(0);
+  const [bookRuntimeReloadRequired, setBookRuntimeReloadRequired] = useState(false);
   const [bookRuntimeStatus, setBookRuntimeStatus] =
     useState<DeferredLoadStatus>("idle");
   const [bookLoadRequested, setBookLoadRequested] = useState(() =>
@@ -1184,12 +1186,16 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       .then(
         ({ runtime, books }) => {
           if (!active) return;
+          setBookRuntimeReloadRequired(false);
           setBookArchiveRuntime(runtime);
           setBookArchive(books);
           setBookRuntimeStatus("ready");
         },
-        () => {
-          if (active) setBookRuntimeStatus("error");
+        (error: unknown) => {
+          if (active) {
+            setBookRuntimeReloadRequired(error instanceof BookArchiveReloadRequiredError);
+            setBookRuntimeStatus("error");
+          }
         }
       );
     return () => {
@@ -1657,13 +1663,20 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return true;
   }, [cancelNativeNavigation, isPlanetApplication, requestBookRuntime]);
 
+  const restartBookArchive = useCallback(() => {
+    if (!bookRuntimeReloadRequired || bookRuntimeStatus !== "error" || document.hidden) return;
+    // This callback is wired only to explicitly labelled user actions.
+    window.location.reload();
+  }, [bookRuntimeReloadRequired, bookRuntimeStatus]);
+
   const retryBookArchive = useCallback(() => {
+    if (bookRuntimeReloadRequired) return;
     requestBookRuntime();
     if (archiveDataStatus === "error") retryArchiveData();
     setBookRuntimeStatus("idle");
     setBookRuntimeAttempt((value) => value + 1);
     setBookArchiveRetryToken((value) => value + 1);
-  }, [archiveDataStatus, requestBookRuntime, retryArchiveData]);
+  }, [archiveDataStatus, requestBookRuntime, retryArchiveData, bookRuntimeReloadRequired]);
 
   const canOpenRequestedBook = useCallback((book: BookArchiveEntry, token: number | undefined) => {
     const intent = requestedBookIntent.current;
@@ -2345,6 +2358,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       selectedCountry: Boolean(selectedCountry),
       selectedWriter: Boolean(selectedWriter), selectionKey: `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`,
       connectivity: platformConnectivity, countryStatus: archiveDataStatus, booksStatus: mascotBookStatus,
+      booksReloadRequired: bookRuntimeReloadRequired,
       canDiscoverCountry: filteredCountries.length > 0, canOpenDownloads: Boolean(platformServices.downloads), canGuideGlobe, globeDisplayUnavailable, globeLoadStatus,
       canRecoverAuthorBooks: mascotAuthorView.settled && !mascotAuthorView.hasVisibleBooks
         && mascotAuthorView.authorKey === `${selectedCountry?.id}:${selectedWriter?.id}` && Boolean(mascotAuthorView.recoveryToken),
@@ -2356,7 +2370,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           : mascotAuthorResult.status === "loading" && mascotBookStatus === "error" ? "load-failed" : mascotAuthorResult.status
         : "idle" });
   }, [mascot, isPlanetApplication, planetLaunchComplete, platformVisibility, globalSearchOpen, communityOpen,
-    nativeCollectionOpen, mascotReaderEntry, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView,
+    nativeCollectionOpen, mascotReaderEntry, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView, bookRuntimeReloadRequired,
     platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy, filteredCountries.length, platformServices.downloads, canGuideGlobe, globeDisplayUnavailable, globeLoadStatus]);
 
   const navigateJourney = useCallback<BookyJourneyNavigation>((offer, signal, isCurrent) => {
@@ -3387,7 +3401,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           countryStatus={archiveDataStatus}
           bookStatus={bookRuntimeStatus}
           onLoad={() => { requestArchiveData(); requestBookRuntime(); }}
-          onRetry={() => { retryArchiveData(); retryBookArchive(); }}
+          restartRequired={bookRuntimeReloadRequired}
+          onRetry={() => { if (bookRuntimeReloadRequired) restartBookArchive(); else { retryArchiveData(); retryBookArchive(); } }}
           onOpenWriter={(country, writer) => {
             if (isPlanetApplication) {
               selectWriterAndFocus(country, writer, "all");
@@ -3409,6 +3424,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           retryToken={bookArchiveRetryToken}
           onLoadIntent={requestBookRuntime}
           onRetryArchive={retryBookArchive}
+          reloadRequired={bookRuntimeReloadRequired}
+          onRestartArchive={restartBookArchive}
           requestedBook={requestedBook}
           requestedBookToken={requestedBookToken}
           canOpenRequestedBook={canOpenRequestedBook}
@@ -3448,12 +3465,14 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       motion={bookyMotionSnapshot} onMotionChange={bookyMotion.selectMode} onRetryMotion={bookyMotion.retry}
       onRecoverMotion={bookyMotion.recoverWithCalm}
       onRetryContent={target => { if (target === "countries") retryArchiveData(); else retryBookArchive(); }}
+      onRestartContent={restartBookArchive}
       readerSettings={<>
         {journey.needsBooks && <button type="button" data-booky-journey-load=""
           disabled={mascotBookStatus === "loading"}
-          onClick={() => { if (mascotBookStatus === "error") retryBookArchive(); else requestBookRuntime(); setBookLoadRequested(true); }}>
-          {language === "ru" ? mascotBookStatus === "loading" ? "Загружаем книги для маршрутов…" : "Загрузить книги для маршрутов"
-            : mascotBookStatus === "loading" ? "Loading books for journeys…" : "Load books for journeys"}
+          onClick={() => { if (bookRuntimeReloadRequired) { restartBookArchive(); return; } if (mascotBookStatus === "error") retryBookArchive(); else requestBookRuntime(); setBookLoadRequested(true); }}>
+          {bookRuntimeReloadRequired ? language === "ru" ? "Перезапустить приложение" : "Restart application"
+            : language === "ru" ? mascotBookStatus === "loading" ? "Загружаем книги для маршрутов…" : "Загрузить книги для маршрутов"
+              : mascotBookStatus === "loading" ? "Loading books for journeys…" : "Load books for journeys"}
         </button>}
         <BookyJourneyControls snapshot={journey.snapshot} controller={journey.controller}
           persistence={journey.persistence} persistenceSnapshot={journey.persistenceSnapshot}
@@ -4820,8 +4839,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         ) : (
           <GlobalSearchLoadingDialog
             error={globalSearchArchiveError}
+            reloadRequired={bookRuntimeReloadRequired}
             onClose={closeGlobalSearch}
-            onRetry={retryBookArchive}
+            onRetry={bookRuntimeReloadRequired ? restartBookArchive : retryBookArchive}
           />
         )
       ) : null}

@@ -7,6 +7,7 @@ export type BookySupportInput = Readonly<{
   screen: PlanetMascotScreen;
   countryStatus: BookySupportContentStatus;
   booksStatus: BookySupportContentStatus;
+  booksReloadRequired?: boolean;
 }>;
 export type BookySupport = Readonly<{
   id: "countries-error" | "books-error" | "countries-loading" | "books-loading" | "offline" | "network-unknown";
@@ -14,6 +15,7 @@ export type BookySupport = Readonly<{
   title: PlanetMascotCopy;
   body: PlanetMascotCopy;
   retry: "countries" | "books" | null;
+  restart?: "books";
 }>;
 
 /** Adult interface guidance only; this is not reviewed literary dialogue or
@@ -33,6 +35,12 @@ const booksError = support({
   title: copy("Не удалось открыть коллекцию", "The collection could not be opened"),
   body: copy("Попробуйте ещё раз. Без сети можно открыть только материалы, уже доступные на устройстве.",
     "Try again. Without a connection, only materials already available on this device can be opened."),
+});
+const booksReloadRequired = support({
+  id: "books-error", kind: "error", retry: null, restart: "books",
+  title: booksError.title,
+  body: copy("Чтобы снова попробовать открыть коллекцию, перезапустите приложение. Также можно вернуться к глобусу.",
+    "Restart the application to try opening the collection again. You can also return to the globe."),
 });
 const countriesLoading = support({
   id: "countries-loading", kind: "loading", retry: null,
@@ -63,7 +71,8 @@ const unknown = support({
  * a retry or navigation, changes permissions, or promises offline retention.
  * The host remains responsible for accepting an explicit recovery action. */
 export function getBookySupport(input: BookySupportInput): BookySupport | null {
-  if (input.screen === "collection" && input.booksStatus === "error") return booksError;
+  if (input.screen === "collection" && input.booksStatus === "error")
+    return input.booksReloadRequired === true ? booksReloadRequired : booksError;
   // Country data is shared by the globe, search and collection. Its failure
   // remains relevant while the visible collection is still loading.
   if (input.countryStatus === "error") return countriesError;
