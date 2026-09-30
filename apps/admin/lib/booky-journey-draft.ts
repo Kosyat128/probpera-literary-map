@@ -6,6 +6,7 @@ import {
   getBookyDialogueChecksum, getBookyDialogueContentChecksum,
   type BookyDialoguePayload, type BookyDialogueRecord,
 } from "../../../src/host/bookyDialogueRegistry";
+import { getBookyJourneyActivityChecksum, type BookyJourneyActivitySpec } from "../../../src/host/bookyJourneyActivity";
 import { contentRecordHash, contentTextHash } from "../../../src/planet/contentExportHash";
 import type { ContentEntityRef } from "../../../src/planet/contentExportTypes";
 
@@ -27,6 +28,12 @@ export type JourneyDraftInput = {
     title: string; description: string;
     nodes: Record<"country" | "writer" | "work" | "checkpoint", { title: string; body: string }>;
   }>;
+  activity?: JourneyDraftActivityInput;
+};
+export type JourneyDraftActivityInput = {
+  type: "match-work-author";
+  choices: readonly { countryId: string; writerId: string }[];
+  copy: Record<"ru" | "en", { title: string; body: string }>;
 };
 export type JourneyDraftError = Readonly<{ field: string; message: string }>;
 export type JourneyDraftReviewIssue = Readonly<{
@@ -35,10 +42,14 @@ export type JourneyDraftReviewIssue = Readonly<{
   message: string;
 }>;
 type SelectedEntity = Readonly<{ id: string; label: Readonly<{ ru: string; en: string }> }>;
+export type JourneyDraftActivityChoiceSnapshot = Readonly<{ country: SelectedEntity; writer: SelectedEntity }>;
 export type JourneyDraftAuthoringSource = Readonly<{
   schemaVersion: 1;
   input: JourneyDraftInput;
-  selection: Readonly<{ country: SelectedEntity; writer: SelectedEntity; work: SelectedEntity }>;
+  selection: Readonly<{
+    country: SelectedEntity; writer: SelectedEntity; work: SelectedEntity;
+    activityChoices?: readonly JourneyDraftActivityChoiceSnapshot[];
+  }>;
 }>;
 export type BookyJourneyDraft = Readonly<{
   schemaVersion: 1; status: "draft";
@@ -81,6 +92,36 @@ function freeze<T>(value: T): T {
   return value;
 }
 
+function ownDataKeys(value: unknown, fields: readonly string[]): value is Record<string, unknown> {
+  if (!value || typeof value !== "object" || Array.isArray(value)
+    || ![Object.prototype, null].includes(Object.getPrototypeOf(value))
+    || Reflect.ownKeys(value).length !== fields.length) return false;
+  return fields.every(field => {
+    const descriptor = Object.getOwnPropertyDescriptor(value, field);
+    return !!descriptor?.enumerable && "value" in descriptor;
+  });
+}
+function activityInput(value: unknown): JourneyDraftActivityInput | null {
+  try {
+    if (!ownDataKeys(value, ["type", "choices", "copy"]) || value.type !== "match-work-author"
+      || !Array.isArray(value.choices) || Object.getPrototypeOf(value.choices) !== Array.prototype
+      || value.choices.length < 2 || value.choices.length > 4
+      || Reflect.ownKeys(value.choices).length !== value.choices.length + 1
+      || !ownDataKeys(value.copy, LOCALES)) return null;
+    for (let index = 0; index < value.choices.length; index++) {
+      const descriptor = Object.getOwnPropertyDescriptor(value.choices, String(index));
+      if (!descriptor?.enumerable || !("value" in descriptor)
+        || !ownDataKeys(descriptor.value, ["countryId", "writerId"])
+        || !entityId(descriptor.value.countryId) || !entityId(descriptor.value.writerId)) return null;
+    }
+    for (const locale of LOCALES) {
+      const copy = value.copy[locale];
+      if (!ownDataKeys(copy, ["title", "body"]) || !text(copy.title, 160) || !text(copy.body, 1600, true)) return null;
+    }
+    return value as unknown as JourneyDraftActivityInput;
+  } catch { return null; }
+}
+
 /** Authoring only. The injected catalog must already be a public-eligible view;
  * this model neither grants publication rights nor supplies missing translations. */
 export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: JourneyDraftCatalog): JourneyDraftResult {
@@ -110,6 +151,13 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
       if (!text(copy?.nodes?.[kind]?.title, 160)) fail(`copy.${locale}.nodes.${kind}.title`, "Заполните название шага: до 160 символов без внешних пробелов и переносов строк.");
       if (!text(copy?.nodes?.[kind]?.body, 1600, true)) fail(`copy.${locale}.nodes.${kind}.body`, "Заполните текст шага: до 1600 символов без внешних пробелов.");
     }
+  }
+  const activityDescriptor = Object.getOwnPropertyDescriptor(input, "activity");
+  const activity = activityDescriptor?.enumerable && "value" in activityDescriptor
+    ? activityInput(activityDescriptor.value) : undefined;
+  if (activityDescriptor && !activity) {
+    fail("activity", "Задание должно содержать тип match-work-author, от двух до четырёх канонических вариантов и тексты RU/EN без лишних полей.");
+    return rejected();
   }
   if (!catalog || !Array.isArray(catalog.countries)) {
     fail("catalog", "Канонический каталог недоступен.");
@@ -152,6 +200,29 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
   if (!writer) fail("writerId", "Выбранный писатель не принадлежит этой стране.");
   if (!work) fail("workId", "Выбранная книга не принадлежит этому писателю.");
   else if (!text(work.label?.en, 2000)) fail("workId", "Для выбранной книги требуется подтверждённое EN название.");
+  const activitySelections: JourneyDraftActivityChoiceSnapshot[] = [];
+  if (activity) {
+    const tuples = new Set<string>(), labels = { ru: new Set<string>(), en: new Set<string>() };
+    for (const [index, choice] of activity.choices.entries()) {
+      const field = `activity.choices.${index}`, tuple = JSON.stringify([choice.countryId, choice.writerId]);
+      if (tuples.has(tuple)) { fail(field, "Варианты задания должны ссылаться на разных канонических писателей."); continue; }
+      tuples.add(tuple);
+      const choiceCountry = catalog.countries.find(item => item?.id === choice.countryId);
+      const choiceWriter = choiceCountry && Array.isArray(choiceCountry.writers)
+        ? choiceCountry.writers.find((item: JourneyDraftCatalog["countries"][number]["writers"][number]) => item?.id === choice.writerId) : undefined;
+      if (!choiceCountry || !choiceWriter) { fail(field, "Писатель варианта отсутствует в выбранной канонической стране."); continue; }
+      if (bookyJourneyEntityId({ kind: "writer", countryId: choiceCountry.id, writerId: choiceWriter.id }).length > 200)
+        fail(field, "Канонический идентификатор варианта превышает предел реестра.");
+      for (const locale of LOCALES) {
+        const label = choiceWriter.label?.[locale];
+        if (!text(label, 200)) { fail(`${field}.label.${locale}`, "Для каждого варианта требуется исходное подтверждённое имя писателя RU/EN длиной до 200 символов."); continue; }
+        const normalized = label.normalize("NFKC").trim().replace(/\s+/gu, " ").toLocaleLowerCase(locale);
+        if (!normalized || labels[locale].has(normalized)) fail(`${field}.label.${locale}`, "Имена вариантов должны различаться в каждом языке после нормализации пробелов и регистра.");
+        labels[locale].add(normalized);
+      }
+      activitySelections.push({ country: choiceCountry, writer: choiceWriter });
+    }
+  }
   if (errors.length || !country || !writer || !work) return rejected();
 
   const refs: Record<(typeof NODE_KINDS)[number], ContentEntityRef | null> = {
@@ -178,9 +249,26 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
       id: input.id, version: input.version, countryId: input.countryId, writerId: input.writerId, workId: input.workId,
       ageRange: { min: input.ageRange.min, max: input.ageRange.max }, readingLevel: input.readingLevel,
       estimatedDurationMinutes: input.estimatedDurationMinutes, copy: { ru: copySnapshot("ru"), en: copySnapshot("en") },
+      ...(activity ? { activity: {
+        type: activity.type, choices: activity.choices.map(choice => ({ countryId: choice.countryId, writerId: choice.writerId })),
+        copy: { ru: { title: activity.copy.ru.title, body: activity.copy.ru.body }, en: { title: activity.copy.en.title, body: activity.copy.en.body } },
+      } } : {}),
     },
-    selection: { country: selected(country), writer: selected(writer), work: selected(work) },
+    selection: { country: selected(country), writer: selected(writer), work: selected(work),
+      ...(activity ? { activityChoices: activitySelections.map(choice => ({ country: selected(choice.country), writer: selected(choice.writer) })) } : {}),
+    },
   };
+  // A routing owner is not an answer key. Current factual authorship is checked
+  // separately by the staff server against the authorized public data.
+  const activitySpec: BookyJourneyActivitySpec | undefined = activity ? {
+    schemaVersion: 1, id: `${input.id}.match-author`, version: input.version, type: "match-work-author",
+    targetWork: { kind: "work", countryId: country.id, writerId: writer.id, workId: work.id },
+    choices: activity.choices.map((choice, index) => ({ id: `choice-${index + 1}`, writer: { kind: "writer", countryId: choice.countryId, writerId: choice.writerId } })),
+  } : undefined;
+  if (activitySpec && !getBookyJourneyActivityChecksum(activitySpec)) {
+    fail("activity", "Задание не соответствует канонической схеме сопоставления книги и автора.");
+    return rejected();
+  }
   const authoringSourceChecksum = contentRecordHash(authoringSource);
   const blockingReviewIssues: JourneyDraftReviewIssue[] = [];
   if (country.label.en === "") blockingReviewIssues.push({ field: "countryId", code: "canonical-english-label-missing", message: "Английское название страны пока не подтверждено." });
@@ -188,27 +276,30 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
   const definitions: BookyJourneyDefinition[] = [];
   const definitionsChecksums: { locale: "ru" | "en"; checksum: string }[] = [];
   const dialogues: BookyDialogueRecord[] = [];
+  const nodeKinds = activitySpec ? ["country", "writer", "work", "activity", "checkpoint"] as const : NODE_KINDS;
   for (const locale of LOCALES) {
     const nodes: BookyJourneyNode[] = [];
-    for (const kind of NODE_KINDS) {
+    for (const kind of nodeKinds) {
       const node: BookyJourneyNode = {
-        id: kind, kind, entity: refs[kind], screen: kind === "country" || kind === "writer" ? "globe" : "collection",
+        id: kind, kind, entity: kind === "activity" ? null : refs[kind], screen: kind === "country" || kind === "writer" || kind === "activity" ? "globe" : "collection",
         dialogue: { id: `${input.id}.${kind}`, version: input.version, contentChecksum: "" },
+        ...(kind === "activity" ? { activity: activitySpec! } : {}),
       };
       const context = bookyJourneyDialogueContext(input.id, node);
-      const copy = authoringSource.input.copy[locale].nodes[kind];
+      const copy = kind === "activity" ? authoringSource.input.activity!.copy[locale] : authoringSource.input.copy[locale].nodes[kind];
       if (!context) { fail("id", "ID маршрута несовместим с контекстом диалога."); return rejected(); }
       const payload: BookyDialoguePayload = {
         id: node.dialogue.id, version: input.version, locale, audience: "adult",
         ageRange: { ...authoringSource.input.ageRange }, readingLevel: input.readingLevel,
-        intent: "navigation", screens: [node.screen], context,
-        entityIds: node.entity ? [bookyJourneyEntityId(node.entity)] : [],
+        intent: kind === "activity" ? "activity" : "navigation", screens: [node.screen], context,
+        entityIds: kind === "activity" ? [...new Set([activitySpec!.targetWork, ...activitySpec!.choices.map(choice => choice.writer)]
+          .map(bookyJourneyEntityId))] : node.entity ? [bookyJourneyEntityId(node.entity)] : [],
         claimKind: "interface-guidance", factualSources: [],
         copy: { title: copy.title, body: copy.body, caption: copy.title, reduced: copy.title },
         narration: null, prohibitedTags: [],
         provenance: {
           kind: "editorial", sourcePath: "authoringSource", sourceVersion: 1,
-          sourceRef: `/input/copy/${locale}/nodes/${kind}`,
+          sourceRef: kind === "activity" ? `/input/activity/copy/${locale}` : `/input/copy/${locale}/nodes/${kind}`,
           sourceSha256: authoringSourceChecksum, copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })),
         },
       };
@@ -267,9 +358,12 @@ export function parseBookyJourneyDraft(text: string, catalog: JourneyDraftCatalo
     const input = imported.authoringSource.input;
     const inputFields = ["id", "version", "countryId", "writerId", "workId", "ageRange",
       "readingLevel", "estimatedDurationMinutes", "copy"];
-    if (!exactKeys(input, inputFields) || !exactKeys(input.ageRange, ["min", "max"])
+    const hasActivity = record(input) && Object.prototype.hasOwnProperty.call(input, "activity");
+    if (!exactKeys(input, hasActivity ? [...inputFields, "activity"] : inputFields) || !exactKeys(input.ageRange, ["min", "max"])
       || !exactKeys(input.copy, LOCALES))
       return rejected("authoringSource.input", "Исходная форма черновика содержит лишние или отсутствующие поля.");
+    if (hasActivity && !activityInput(input.activity))
+      return rejected("activity", "Задание содержит неверные, лишние или отсутствующие поля либо неполные тексты RU/EN.");
     for (const locale of LOCALES) {
       const copy = input.copy[locale];
       if (!exactKeys(copy, ["title", "description", "nodes"]) || !exactKeys(copy.nodes, NODE_KINDS))

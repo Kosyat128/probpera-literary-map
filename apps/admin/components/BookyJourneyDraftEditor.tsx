@@ -3,6 +3,9 @@
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput, type BookyJourneyDraft } from "@/lib/booky-journey-draft";
 
+import { validateBookyJourneyDraftActivityAction } from "@/app/(dashboard)/journeys/actions";
+import { contentRecordHash } from "../../../src/planet/contentExportHash";
+
 type Locale = "ru" | "en";
 type NodeKind = "country" | "writer" | "work" | "checkpoint";
 const locales = ["ru", "en"] as const;
@@ -42,9 +45,12 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [importing, setImporting] = useState(false);
   const [importErrors, setImportErrors] = useState<readonly { field: string; message: string }[]>([]);
   const [importNotice, setImportNotice] = useState("");
-  const importSequence = useRef(0);
+  const operationSequence = useRef(0);
   const fileControl = useRef<HTMLInputElement>(null);
-  useEffect(() => () => { importSequence.current += 1; }, []);
+  const [validating, setValidating] = useState(false);
+  const choiceWriters = catalog.countries.flatMap((item) => item.writers.map((author) => ({ country: item, writer: author })));
+  const choiceKey = (choice: { countryId: string; writerId: string }) => JSON.stringify([choice.countryId, choice.writerId]);
+  useEffect(() => () => { operationSequence.current += 1; }, []);
   const country = catalog.countries.find((item) => item.id === input.countryId);
   const writer = country?.writers.find((item) => item.id === input.writerId);
   const work = writer?.works.find((item) => item.id === input.workId);
@@ -58,13 +64,18 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   ] : null;
 
   function update(change: Partial<JourneyDraftInput>) {
-    importSequence.current += 1;
+    operationSequence.current += 1;
     setImporting(false);
     setImportErrors([]);
     setImportNotice(importing ? "Открытие файла отменено: форма была изменена." : "");
     if (fileControl.current) fileControl.current.value = "";
     setPreview(null);
-    setInput((current) => ({ ...current, ...change }));
+    setValidating(false);
+    setInput((current) => {
+      const next = { ...current, ...change };
+      if (Object.hasOwn(change, "activity") && change.activity === undefined) delete next.activity;
+      return next;
+    });
     setErrors([]);
     setNotice("");
   }
@@ -77,9 +88,56 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       [node]: { ...input.copy[locale].nodes[node], [field]: value },
     } } } });
   }
+  function beginOperation() {
+    const sequence = ++operationSequence.current;
+    setImporting(false);
+    setValidating(false);
+    if (fileControl.current) fileControl.current.value = "";
+    return sequence;
+  }
+  async function validateActivity(draft: BookyJourneyDraft, sequence: number, importingFile = false) {
+    if (!draft.authoringSource.input.activity) return true;
+    setValidating(true);
+    const report = (message: string) => {
+      const items = [{ field: "activity", message }];
+      if (importingFile) setImportErrors(items); else setErrors(items);
+    };
+    try {
+      const result = await validateBookyJourneyDraftActivityAction(JSON.stringify(draft));
+      if (sequence !== operationSequence.current) return false;
+      if (!result.ok) {
+        if (importingFile) setImportErrors(result.errors); else setErrors(result.errors);
+        return false;
+      }
+      if (result.draftChecksum !== contentRecordHash(draft)) {
+        report("Каталог или черновик изменился во время проверки. Проверьте форму и повторите действие.");
+        return false;
+      }
+      return true;
+    } catch {
+      if (sequence === operationSequence.current) report("Проверка задания сейчас недоступна. Форма сохранена; повторите действие.");
+      return false;
+    } finally {
+      if (sequence === operationSequence.current) setValidating(false);
+    }
+  }
+  function toggleActivity(enabled: boolean) {
+    update({ activity: enabled ? {
+      type: "match-work-author", choices: [{ countryId: "", writerId: "" }, { countryId: "", writerId: "" }],
+      copy: {
+        ru: { title: "Кто автор этой книги?", body: "Выберите имя автора среди предложенных вариантов." },
+        en: { title: "Who wrote this book?", body: "Choose the author's name from the options." },
+      },
+    } : undefined });
+  }
+  function updateActivityCopy(locale: Locale, field: "title" | "body", value: string) {
+    if (input.activity) update({ activity: { ...input.activity, copy: {
+      ...input.activity.copy, [locale]: { ...input.activity.copy[locale], [field]: value },
+    } } });
+  }
   async function openDraft(event: ChangeEvent<HTMLInputElement>) {
     const control = event.currentTarget, file = control.files?.[0];
-    const sequence = ++importSequence.current;
+    const sequence = beginOperation();
     setImporting(false);
     setImportErrors([]);
     setImportNotice("");
@@ -98,29 +156,32 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     setImporting(true);
     try {
       const text = await file.text();
-      if (sequence !== importSequence.current) return;
+      if (sequence !== operationSequence.current) return;
       const result = parseBookyJourneyDraft(text, catalog);
       if (!result.ok) {
         setImportErrors(result.errors);
         return;
       }
+      if (result.input.activity && !(await validateActivity(result.draft, sequence, true))) return;
+      if (sequence !== operationSequence.current) return;
       setInput(result.input);
       setPreview(null);
       setErrors([]);
       setNotice("");
       setImportNotice("Черновик открыт. Проверьте форму и запустите предпросмотр заново.");
     } catch {
-      if (sequence === importSequence.current) {
+      if (sequence === operationSequence.current) {
         setImportErrors([{ field: "file", message: "Не удалось прочитать файл. Текущая форма сохранена." }]);
       }
     } finally {
-      if (sequence === importSequence.current) {
+      if (sequence === operationSequence.current) {
         setImporting(false);
         control.value = "";
       }
     }
   }
-  function showPreview() {
+  async function showPreview() {
+    const sequence = beginOperation();
     setPreview(null);
     setNotice("");
     const result = createBookyJourneyDraft(input, catalog);
@@ -129,10 +190,13 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       return;
     }
     setErrors([]);
+    if (input.activity && !(await validateActivity(result.draft, sequence))) return;
+    if (sequence !== operationSequence.current) return;
     setPreview({ draft: result.draft, locale: "ru", step: 0 });
   }
-  function download(event: FormEvent<HTMLFormElement>) {
+  async function download(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const sequence = beginOperation();
     setNotice("");
     const result = createBookyJourneyDraft(input, catalog);
     if (!result.ok) {
@@ -140,6 +204,8 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       return;
     }
     setErrors([]);
+    if (input.activity && !(await validateActivity(result.draft, sequence))) return;
+    if (sequence !== operationSequence.current) return;
     let objectUrl: string | undefined;
     try {
       const blob = new Blob([JSON.stringify(result.draft, null, 2) + "\n"], { type: "application/json;charset=utf-8" });
@@ -221,8 +287,50 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     <ol className="site-copy-grid" aria-label="Путь маршрута" style={{ listStyle: "none", margin: 0, padding: 0 }}>
       {steps.map((step) => <li key={step.key}>
         {step.number > 1 && <p aria-hidden="true" style={{ textAlign: "center", margin: "0 0 14px" }}>↓</p>}
+        {step.key === "checkpoint" && <details className="panel site-copy-card" aria-labelledby="journey-activity-heading">
+          <summary id="journey-activity-heading" style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Необязательное задание · выбрать автора</summary>
+          <p>Добавьте вопрос между книгой и завершением. Выберите 2–4 автора из каталога; соответствие книге проверяется перед просмотром и экспортом.</p>
+          <label style={{ display: "flex", alignItems: "center", gap: 10, minHeight: 44 }}>
+            <input type="checkbox" checked={!!input.activity} onChange={(event) => toggleActivity(event.target.checked)} />
+            Добавить задание «Книга и автор»
+          </label>
+          {input.activity && <div className="site-copy-grid" data-booky-activity-editor>
+            <p>Книга: {work?.label.ru || "Сначала выберите книгу"}</p>
+            {input.activity.choices.map((choice, index) => <div key={index} className="site-copy-grid">
+              <label className="field"><span id={`journey-choice-${index}`}>Автор · вариант {index + 1}</span>
+                <select aria-labelledby={`journey-choice-${index}`} value={choiceKey(choice)} onChange={(event) => {
+                  const selected = choiceWriters.find((item) => choiceKey({ countryId: item.country.id, writerId: item.writer.id }) === event.target.value);
+                  if (input.activity) update({ activity: { ...input.activity, choices: input.activity.choices.map((item, i) => i === index
+                    ? { countryId: selected?.country.id || "", writerId: selected?.writer.id || "" } : item) } });
+                }}>
+                  <option value={choiceKey({ countryId: "", writerId: "" })}>Выберите автора</option>
+                  {choiceWriters.map((item) => {
+                    const key = choiceKey({ countryId: item.country.id, writerId: item.writer.id });
+                    return <option key={key} value={key} disabled={!item.writer.label.en || input.activity?.choices.some((other, i) => i !== index && choiceKey(other) === key)}>
+                      {item.writer.label.ru} · {item.country.label.ru}{!item.writer.label.en ? " · EN пока не подтверждён" : ""}
+                    </option>;
+                  })}
+                </select>
+              </label>
+              {input.activity!.choices.length > 2 && <button className="button-secondary" type="button" style={{ minHeight: 44 }} onClick={() => {
+                if (input.activity) update({ activity: { ...input.activity, choices: input.activity.choices.filter((_, i) => i !== index) } });
+              }}>Удалить вариант {index + 1}</button>}
+            </div>)}
+            {input.activity.choices.length < 4 && <button className="button-secondary" type="button" style={{ minHeight: 44 }} onClick={() => {
+              if (input.activity) update({ activity: { ...input.activity, choices: [...input.activity.choices, { countryId: "", writerId: "" }] } });
+            }}>Добавить вариант автора</button>}
+            <div className="site-copy-locales">
+              {locales.map((locale) => <div key={locale} className="site-copy-grid">
+                <label className="field"><span>Вопрос задания ({locale.toUpperCase()})</span>
+                  <input lang={locale} maxLength={160} value={input.activity!.copy[locale].title} onChange={(event) => updateActivityCopy(locale, "title", event.target.value)} /></label>
+                <label className="field"><span>Подсказка задания ({locale.toUpperCase()})</span>
+                  <textarea lang={locale} maxLength={1600} value={input.activity!.copy[locale].body} onChange={(event) => updateActivityCopy(locale, "body", event.target.value)} /></label>
+              </div>)}
+            </div>
+          </div>}
+        </details>}
         <section className="panel site-copy-card" aria-labelledby={`journey-step-${step.key}`}>
-          <header><h2 id={`journey-step-${step.key}`}>{step.number}. {step.title}</h2>
+          <header><h2 id={`journey-step-${step.key}`}>{step.number + (input.activity && step.key === "checkpoint" ? 1 : 0)}. {step.title}</h2>
             <span className="badge">{step.key === "checkpoint" ? "Завершение" : "Канонический выбор"}</span></header>
           {step.key === "country" && <>
             <label className="field"><span id="journey-country-label">Страна</span>
@@ -260,7 +368,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     <section className="panel site-copy-card" aria-labelledby="journey-preview-heading" style={{ minWidth: 0 }}>
       <header><h2 id="journey-preview-heading">Предпросмотр маршрута</h2><span className="badge">Взрослый черновик</span></header>
       <p>Просмотрите тексты шагов перед экспортом. Это локальный просмотр; он не запускает маршрут в приложении.</p>
-      <button className="button-secondary" type="button" disabled={!available} onClick={showPreview} style={{ minHeight: 44, minWidth: 44 }}>Предпросмотр маршрута</button>
+      <button className="button-secondary" type="button" disabled={!available} onClick={showPreview} aria-busy={validating} style={{ minHeight: 44, minWidth: 44 }}>Предпросмотр маршрута</button>
       {preview && previewDefinition && previewNode && previewDialogue && <div data-booky-journey-preview className="site-copy-grid" style={{ marginTop: 18, minWidth: 0 }}>
         <div role="group" aria-label="Язык предпросмотра" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           {locales.map((locale) => <button key={locale} className={preview.locale === locale ? "button" : "button-secondary"} type="button" lang={locale}
@@ -270,7 +378,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         <p>Возраст: {previewDefinition.ageRange.min}–{previewDefinition.ageRange.max} лет · Уровень чтения: {
           previewDefinition.readingLevel === "plain" ? "Простой" : previewDefinition.readingLevel === "developing" ? "Развивающийся" : "Свободный"
         } · Оценка: {previewDefinition.overview?.estimatedDurationMinutes} мин</p>
-        <p role="status" aria-live="polite">Шаг {preview.step + 1} из {previewDefinition.nodes.length} · {steps[preview.step].title}</p>
+        <p role="status" aria-live="polite">Шаг {preview.step + 1} из {previewDefinition.nodes.length} · {{ country: "Страна", writer: "Писатель", work: "Книга", activity: "Задание", checkpoint: "Завершение", "sourced-fact": "Факт", character: "Персонаж" }[previewNode.kind]}</p>
         <article lang={preview.locale} aria-label={preview.locale === "ru" ? "Текст выбранного шага" : "Selected step text"}
           data-preview-step={previewNode.id} style={{ minWidth: 0, overflowWrap: "anywhere" }}>
           <h3>{previewDefinition.title}</h3>
@@ -281,6 +389,9 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <p lang="ru">Экран: {previewNode.screen === "globe" ? "Глобус" : "Коллекция"}</p>
           <h4>{previewDialogue.payload.copy.title}</h4>
           <p style={{ whiteSpace: "pre-wrap" }}>{previewDialogue.payload.copy.body}</p>
+          {previewNode.kind === "activity" && <ol aria-label="Варианты ответа">
+            {preview.draft.authoringSource.selection.activityChoices?.map((choice, index) => <li key={index} lang={preview.locale}>{choice.writer.label[preview.locale]}</li>)}
+          </ol>}
         </article>
         {preview.draft.blockingReviewIssues.length > 0 && <div className="editorial-note" role="note">
           <strong>Перед дальнейшей проверкой</strong>
@@ -299,9 +410,9 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         <strong>Проверьте поля перед просмотром или экспортом:</strong>
         <ul>{errors.map((error, index) => <li key={`${error.field}-${index}`}>{error.message}</li>)}</ul>
       </div>}
-      <p role="status" aria-live="polite">{notice}</p>
-      <p>JSON содержит два языковых маршрута и восемь черновиков подсказок. Проверка формы не даёт редакционного одобрения.</p>
-      <button className="button" type="submit" disabled={!available}>Скачать черновик JSON</button>
+      <p role="status" aria-live="polite">{validating ? "Проверка задания по текущему каталогу…" : notice}</p>
+      <p>JSON содержит два языковых маршрута и {input.activity ? "десять" : "восемь"} черновиков подсказок. Проверка формы не даёт редакционного одобрения.</p>
+      <button className="button" type="submit" disabled={!available} aria-busy={validating}>Скачать черновик JSON</button>
     </section>
   </form>;
 }

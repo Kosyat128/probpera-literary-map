@@ -5,6 +5,7 @@ import {
 import {
   createBookyDialogueRegistry, getBookyDialogueChecksum, getBookyDialogueContentChecksum,
 } from "../../../src/host/bookyDialogueRegistry";
+import { getBookyJourneyActivityChecksum } from "../../../src/host/bookyJourneyActivity";
 import { contentRecordHash, contentTextHash } from "../../../src/planet/contentExportHash";
 import {
   BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft,
@@ -184,6 +185,226 @@ describe("adult Booky journey draft authoring", () => {
       currentVersions: exported.currentVersions, approvedReviews: exported.journeyApprovals,
       dialogueRegistry: registry, publicCountries: [], publicBooks: [],
     })).toBeNull();
+  });
+});
+
+function activityValue(): JourneyDraftInput {
+  return { ...input(), activity: {
+    type: "match-work-author",
+    choices: [
+      { countryId: "test-country", writerId: "other-writer" },
+      { countryId: "test-country", writerId: "test-writer" },
+    ],
+    copy: {
+      ru: { title: "Сопоставьте книгу и автора", body: "Выберите автора указанной книги из предложенных вариантов." },
+      en: { title: "Match the work and author", body: "Choose the author of the indicated work from the available choices." },
+    },
+  } };
+}
+
+describe("adult Booky journey draft activity authoring", () => {
+  it("preserves the exact D223 downloaded no-activity bytes and original source/definition checksums", () => {
+    // Actual D223 browser-a2 download, not a regenerated expected fixture.
+    // Original core SHA256: 5b1a6bbda53af7aed3fa9cff04833d7b09c5a86b07dd6002aa42870e6127c0e0.
+    const legacy: JourneyDraftInput = {
+      id: "synthetic-journey", version: 2, countryId: "country-a", writerId: "writer-a", workId: "work-a",
+      ageRange: { min: 18, max: 65 }, readingLevel: "plain", estimatedDurationMinutes: 8,
+      copy: {
+        ru: { title: "Тестовый маршрут обновлён", description: "Черновик для проверки редактора.", nodes: {
+          country: { title: "Начните со страны", body: "Откройте выбранную страну на глобусе." },
+          writer: { title: "Перейдите к писателю", body: "Откройте выбранного писателя." },
+          work: { title: "Откройте книгу", body: "Перейдите к выбранной книге в коллекции." },
+          checkpoint: { title: "Подведите итог", body: "Отметьте завершение этого маршрута." },
+        } },
+        en: { title: "Synthetic journey", description: "A draft for testing the editor.", nodes: {
+          country: { title: "Start with the country", body: "Open the selected country on the globe." },
+          writer: { title: "Go to the writer", body: "Open the selected writer." },
+          work: { title: "Open the book", body: "Go to the selected book in the collection." },
+          checkpoint: { title: "Finish the journey", body: "Mark this journey as complete." },
+        } },
+      },
+    };
+    const canonical: JourneyDraftCatalog = { countries: [{ id: "country-a", label: { ru: "Тестовая страна А", en: "Synthetic country A" }, writers: [
+      { id: "writer-a", label: { ru: "Тестовый писатель А", en: "Synthetic writer A" }, works: [
+        { id: "work-a", label: { ru: "Тестовая книга А", en: "Synthetic work A" } },
+      ] },
+    ] }] };
+    const exported = draft(legacy, canonical);
+    expect(contentTextHash(JSON.stringify(exported, null, 2) + "\n"))
+      .toBe("7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5");
+    expect(exported.authoringSourceChecksum).toBe("07f1ac8a8337e8c3bcb712e43c46458494993f1758b29d998159a40b34373cee");
+    expect(exported.definitionsChecksums).toEqual([
+      { locale: "ru", checksum: "4ab845a9c3c153386a5252abac394a3d2cd46fe3d8fbf5ef0bba34a77b57a72d" },
+      { locale: "en", checksum: "50ad521328a4d43c08afa68bc022a93c15d1ea29557cc1a28fc0bae55e189ac3" },
+    ]);
+    expect(Object.prototype.hasOwnProperty.call(exported.authoringSource.input, "activity")).toBe(false);
+    expect(Object.prototype.hasOwnProperty.call(exported.authoringSource.selection, "activityChoices")).toBe(false);
+    expect(exported.definitions.every(definition => definition.nodes.every(node => !Object.prototype.hasOwnProperty.call(node, "activity")))).toBe(true);
+    expect(parseBookyJourneyDraft(JSON.stringify(exported), canonical).ok).toBe(true);
+  });
+
+  it("binds five nodes and ten RU/EN dialogues to canonical activity checksums, exact source copy and original choice labels", () => {
+    const value = activityValue(), canonical = catalog(), before = JSON.stringify({ value, canonical });
+    const exported = draft(value, canonical);
+    expect(JSON.stringify({ value, canonical })).toBe(before);
+    expect(exported.dialogues).toHaveLength(10);
+    expect(exported.authoringSourceChecksum).toBe(contentRecordHash(exported.authoringSource));
+    expect(exported.authoringSource.input.activity).toEqual(value.activity);
+    expect(exported.authoringSource.selection.activityChoices?.map(choice => [choice.country.id, choice.writer.id, choice.writer.label])).toEqual([
+      ["test-country", "other-writer", { ru: "Другой писатель", en: "Other writer" }],
+      ["test-country", "test-writer", { ru: "Тестовый писатель", en: "Test writer" }],
+    ]);
+    for (const definition of exported.definitions) {
+      expect(definition.nodes.map(node => node.kind)).toEqual(["country", "writer", "work", "activity", "checkpoint"]);
+      expect(exported.definitionsChecksums.find(item => item.locale === definition.locale)?.checksum).toBe(getBookyJourneyChecksum(definition));
+      const node = definition.nodes[3], spec = node.activity!;
+      expect([node.id, node.kind, node.entity, node.screen]).toEqual(["activity", "activity", null, "globe"]);
+      expect(spec).toEqual({ schemaVersion: 1, id: "test-route.match-author", version: 2, type: "match-work-author",
+        targetWork: { kind: "work", countryId: "test-country", writerId: "test-writer", workId: "test-work" },
+        choices: [
+          { id: "choice-1", writer: { kind: "writer", countryId: "test-country", writerId: "other-writer" } },
+          { id: "choice-2", writer: { kind: "writer", countryId: "test-country", writerId: "test-writer" } },
+        ],
+      });
+      const activityChecksum = getBookyJourneyActivityChecksum(spec);
+      expect(activityChecksum).not.toBeNull();
+      const record = exported.dialogues.find(record => record.payload.locale === definition.locale && record.payload.id === node.dialogue.id)!;
+      const authored = value.activity!.copy[definition.locale];
+      expect(record.payload.intent).toBe("activity");
+      expect(record.payload.context).toBe(`activity:${contentRecordHash({ journeyId: "test-route", nodeId: "activity", activityChecksum })}`);
+      expect(record.payload.context).toBe(bookyJourneyDialogueContext(definition.id, node));
+      expect(record.payload.entityIds).toEqual([...new Set([spec.targetWork, ...spec.choices.map(choice => choice.writer)].map(bookyJourneyEntityId))]);
+      expect(record.payload.copy).toEqual({ title: authored.title, body: authored.body, caption: authored.title, reduced: authored.title });
+      expect(record.payload.provenance).toEqual({ kind: "editorial", sourcePath: "authoringSource", sourceVersion: 1,
+        sourceRef: `/input/activity/copy/${definition.locale}`, sourceSha256: exported.authoringSourceChecksum,
+        copySha256: contentTextHash(JSON.stringify(authored)),
+      });
+      expect(record.payload.claimKind).toBe("interface-guidance");
+      expect(record.payload.factualSources).toEqual([]);
+      expect(record.payload.narration).toBeNull();
+      expect(record.review.status).toBe("draft");
+      expect(getBookyDialogueContentChecksum(record.payload)).toBe(node.dialogue.contentChecksum);
+      expect(getBookyDialogueChecksum({ payload: record.payload, review: record.review })).toBe(record.checksum);
+      for (const key of ["correctChoiceId", "semanticChecksum", "author"]) expect(Object.prototype.hasOwnProperty.call(spec, key)).toBe(false);
+    }
+    expect([exported.releaseReady, exported.humanReviewed, exported.childApproved, exported.narrationApproved]).toEqual([false, false, false, false]);
+    for (const list of [exported.journeyApprovals, exported.dialogueApprovals, exported.currentVersions, exported.availability]) expect(list).toEqual([]);
+    value.activity!.copy.ru.body = "Изменённый текст формы.";
+    canonical.countries[0].writers[1].label.en = "Changed canonical name";
+    expect(exported.authoringSource.input.activity!.copy.ru.body).toBe("Выберите автора указанной книги из предложенных вариантов.");
+    expect(exported.authoringSource.selection.activityChoices?.[0].writer.label.en).toBe("Other writer");
+    expect(Object.isFrozen(exported.authoringSource.input.activity!.choices)).toBe(true);
+  });
+
+  it("accepts two to four scoped canonical writers without requiring the routing owner to be an answer choice", () => {
+    const canonical = catalog();
+    canonical.countries[0].writers = [...canonical.countries[0].writers,
+      { id: "third-writer", label: { ru: "Третий писатель", en: "Third writer" }, works: [] },
+    ];
+    canonical.countries = [...canonical.countries,
+      { id: "another-country", label: { ru: "Ещё одна страна", en: "Another country" }, writers: [
+        { id: "other-writer", label: { ru: "Четвёртый писатель", en: "Fourth writer" }, works: [] },
+        { id: "fifth-writer", label: { ru: "Пятый писатель", en: "Fifth writer" }, works: [] },
+      ] },
+    ];
+    const choices = [
+      { countryId: "test-country", writerId: "other-writer" },
+      { countryId: "test-country", writerId: "third-writer" },
+      { countryId: "another-country", writerId: "other-writer" },
+      { countryId: "another-country", writerId: "fifth-writer" },
+    ];
+    for (const length of [2, 3, 4]) {
+      const value = activityValue();
+      value.activity!.choices = choices.slice(0, length);
+      const exported = draft(value, canonical), spec = exported.definitions[0].nodes[3].activity!;
+      expect(spec.choices.map(choice => choice.id)).toEqual(Array.from({ length }, (_, index) => `choice-${index + 1}`));
+      expect(spec.choices.some(choice => choice.writer.writerId === "test-writer")).toBe(false);
+      expect(spec.targetWork).toEqual({ kind: "work", countryId: "test-country", writerId: "test-writer", workId: "test-work" });
+    }
+  });
+
+  it("rejects repeated writer tuples, missing canonical writers and absent or normalization-ambiguous original RU/EN names", () => {
+    const duplicate = activityValue();
+    duplicate.activity!.choices = [duplicate.activity!.choices[0], duplicate.activity!.choices[0]];
+    expect(errors(duplicate)).toContain("activity.choices.1");
+    for (const missing of [{ countryId: "missing-country", writerId: "other-writer" }, { countryId: "test-country", writerId: "missing-writer" }]) {
+      const value = activityValue();
+      value.activity!.choices = [missing, value.activity!.choices[1]];
+      expect(errors(value)).toContain("activity.choices.0");
+    }
+    for (const locale of ["ru", "en"] as const) {
+      for (const name of ["", " ", "a".repeat(201)]) {
+        const canonical = catalog();
+        canonical.countries[0].writers[1].label[locale] = name;
+        expect(errors(activityValue(), canonical)).toContain(`activity.choices.0.label.${locale}`);
+      }
+      const canonical = catalog();
+      canonical.countries[0].writers[0].label[locale] = locale === "ru" ? "АВТОР  ТЕСТ" : "AUTHOR  TEST";
+      canonical.countries[0].writers[1].label[locale] = locale === "ru" ? "автор тест" : "ａｕｔｈｏｒ test";
+      expect(errors(activityValue(), canonical)).toContain(`activity.choices.1.label.${locale}`);
+    }
+  });
+
+  it("rejects null, missing or extra activity data, sparse choices, accessors and incomplete authored RU/EN copy", () => {
+    const malformed: unknown[] = [null, undefined, {}, [], { ...activityValue().activity, type: "unknown" },
+      { ...activityValue().activity, correctChoiceId: "choice-1" },
+      { ...activityValue().activity, choices: [] }, { ...activityValue().activity, choices: [{ countryId: "test-country", writerId: "test-writer" }] },
+      { ...activityValue().activity, choices: Array(2) },
+      { ...activityValue().activity, choices: Array.from({ length: 5 }, () => ({ countryId: "test-country", writerId: "test-writer" })) },
+      { ...activityValue().activity, choices: [{ countryId: "test-country", writerId: "other-writer", label: "Added name" }, { countryId: "test-country", writerId: "test-writer" }] },
+    ];
+    for (const change of [
+      (activity: NonNullable<JourneyDraftInput["activity"]>) => { Object.assign(activity.choices, { extra: true }); },
+      (activity: NonNullable<JourneyDraftInput["activity"]>) => { Object.assign(activity.copy, { fr: activity.copy.en }); },
+      (activity: NonNullable<JourneyDraftInput["activity"]>) => { Object.assign(activity.copy.en, { extra: true }); },
+      (activity: NonNullable<JourneyDraftInput["activity"]>) => { activity.copy.ru.title = ""; },
+      (activity: NonNullable<JourneyDraftInput["activity"]>) => { activity.copy.en.body = ""; },
+      (activity: NonNullable<JourneyDraftInput["activity"]>) => { Object.defineProperty(activity, "type", { get: () => "match-work-author", enumerable: true }); },
+      (activity: NonNullable<JourneyDraftInput["activity"]>) => { Object.defineProperty(activity, Symbol("extra"), { value: true }); },
+      (activity: NonNullable<JourneyDraftInput["activity"]>) => { Object.defineProperty(activity.choices[0], "writerId", { get: () => "other-writer", enumerable: true }); },
+    ]) {
+      const activity = activityValue().activity!;
+      change(activity);
+      malformed.push(activity);
+    }
+    for (const activity of malformed) {
+      const value = input();
+      Object.assign(value, { activity });
+      expect(errors(value)).toContain("activity");
+    }
+  });
+
+  it("round trips activities and rejects current-choice drift, removed choices and activity copy/reference/authority tampering", () => {
+    const exported = draft(activityValue()), serialized = JSON.stringify(exported);
+    const result = parseBookyJourneyDraft(serialized, catalog());
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.input).toEqual(activityValue());
+    expect(result.draft).toEqual(exported);
+    for (const locale of ["ru", "en"] as const) {
+      const canonical = catalog();
+      canonical.countries[0].writers[1].label[locale] += " changed";
+      expect(importErrors(serialized, canonical)).toContain("file");
+    }
+    const missing = catalog();
+    missing.countries[0].writers = missing.countries[0].writers.slice(0, 1);
+    expect(importErrors(serialized, missing)).toContain("activity.choices.0");
+    const changes: ((value: Mutable<BookyJourneyDraft>) => void)[] = [
+      value => { value.authoringSource.input.activity!.copy.en.body = "Changed activity body"; },
+      value => { Object.assign(value.authoringSource.input.activity!, { correctChoiceId: "choice-1" }); },
+      value => { value.authoringSource.selection.activityChoices![0].writer.label.en = "Changed imported name"; },
+      value => { value.definitions[0].nodes[3].activity!.targetWork.workId = "other-work"; },
+      value => { value.definitions[0].nodes[3].activity!.choices[0].writer.writerId = "missing-writer"; },
+      value => { value.dialogues[3].payload.copy.body = "Подменённый текст задания."; },
+      value => { value.dialogues[3].payload.entityIds = []; },
+      value => { Reflect.deleteProperty(value.authoringSource.input, "activity"); },
+      value => { Object.assign(value, { humanReviewed: true, releaseReady: true }); },
+    ];
+    for (const change of changes) {
+      const value: Mutable<BookyJourneyDraft> = JSON.parse(serialized);
+      change(value);
+      importErrors(JSON.stringify(value));
+    }
   });
 });
 
