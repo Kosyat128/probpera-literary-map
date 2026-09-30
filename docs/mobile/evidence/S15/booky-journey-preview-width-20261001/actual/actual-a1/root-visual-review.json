@@ -1,0 +1,61 @@
+{
+  "pass": true,
+  "decision": "D231",
+  "directRootViews": 8,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/source-manifest.json",
+    "sha256": "e08c9c698aa3df6525258b94058020c90f630f0829da63c4550f63c201d7b2d0"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/browser-result.json",
+    "sha256": "163c6b0e79e1dc2fdf3f173090df3aaebed4d012703ad0ed5b24297e0447e249"
+  },
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "c6f93760f0fad5241bbc58462bcb9cc5041cfb30c9dc49b46cbfe5536fa8055c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "e6943eceeec2158435e32352e046b9092b534757b7fbc35827fe71d0d69e5d6d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "45b5d154625830f920e882aced371eac0af31f640bf2a11de2197dab52349431"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "40e64e4b9d05419a470b6d49bad10b1affb04eae76d83735373fdabd70f66d1e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "92a9a530e932669a7b7308fb35831f201044c57ba67ef8741ec84e85efae48f9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "22016f31def95567a430dc062206bd728e946a30a7f50d452d5fbf73fb889fdf"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-preview-width-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "4e8344cbe9ca9fd190391fad4a892b527cd4b699b5c9d2e399dc3bfbe4290adc"
+    }
+  ],
+  "observations": [
+    "Desktop capture directly shows the 768 px preview frame and width selector with matching adult profile.",
+    "RU narrow capture directly shows localized 320 px width control and keyboard focus; content fits available width.",
+    "EN narrow profile shows age outside draft range and actual selected work in the step overview.",
+    "RU optional order controls and EN actual reversed six-node overview remain visible.",
+    "RU incorrect and EN correct activity states retain readable choice and navigation controls."
+  ],
+  "limits": [
+    "Synthetic admin component and mocked transport; no authenticated admin session, mobile device or stage acceptance.",
+    "The EN six-node overview screenshot does not show the activity verdict below the fold.",
+    "Source citations are synthetic and unreviewed."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}
