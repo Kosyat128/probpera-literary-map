@@ -1,0 +1,84 @@
+{
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/source-manifest.json",
+    "sha256": "1da72fb2b7948443c88ef882f50cdc32adc33a9e2d6e41cf61328a3b46aff744"
+  },
+  "sourceBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/source-before.json",
+    "sha256": "4b4cc2b5d1b3094374dd33ee74c0e7dee37caeff06556576db43e8cb516b6a53"
+  },
+  "sourceAfter": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/source-after.json",
+    "sha256": "4b4cc2b5d1b3094374dd33ee74c0e7dee37caeff06556576db43e8cb516b6a53"
+  },
+  "sourceInputsUnchanged": true,
+  "predecessorDocsCommit": "c971d09081ee0d58ba9b960ed9b743375699afc4",
+  "changedPaths": [
+    "apps/admin/app/(dashboard)/journeys/actions.test.ts",
+    "apps/admin/app/(dashboard)/journeys/actions.ts",
+    "apps/admin/components/BookyJourneyDraftEditor.tsx",
+    "apps/admin/lib/booky-journey-activity-validation.test.ts",
+    "apps/admin/lib/booky-journey-activity-validation.ts",
+    "tests/host/booky-journey-authoring.spec.mjs"
+  ],
+  "newPaths": [],
+  "protectedInputCount": 2095,
+  "typecheck": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/typecheck-result.json",
+    "sha256": "fc2e58c1efd85e473cc4e820e379b76f6945ff84fb66fe5fadafb357f31db120"
+  },
+  "unit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/unit-result.json",
+    "sha256": "940f51e80e4a00385c997ba5e7d27514e3d3cd979aa6bfd80ec1325f67e547f1"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/browser-result.json",
+    "sha256": "a700ebc91a313ad6236748a13e407cf1fdbab8080534e3a7131984cf44c564ea"
+  },
+  "retainedCore": {
+    "decision": "D224",
+    "passed": 20,
+    "rerun": false,
+    "predecessorResult": {
+      "path": "docs/mobile/evidence/S15/booky-journey-activity-20260930/result.json",
+      "sha256": "fba038917320f2fa7c1752e1055f28ba1c14e1582d816f807522932233501d5c"
+    },
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-journey-activity-20260930/actual/actual-a1/unit-result.json",
+      "sha256": "939e0dcb20980a361c5022945675e3a3c877c8d18769b44aa1bb244562a1b4ce"
+    },
+    "report": {
+      "path": "docs/mobile/evidence/S15/booky-journey-activity-20260930/actual/actual-a1/unit-report.json",
+      "sha256": "36969e8d200eb2824ea86a511b6b70644e383487849556316b244027d12131c6"
+    },
+    "erasureProof": {
+      "path": "docs/mobile/evidence/S15/booky-journey-activity-20260930/actual/actual-a2/type-correction.json",
+      "sha256": "07398c90ba9d79ff9bf59f9cdf0661ac16474ca8f06a0e31c6a566db37e7e7f9"
+    },
+    "files": [
+      {
+        "path": "apps/admin/lib/booky-journey-draft.test.ts",
+        "sha256": "1e323e0517eaa068d19a7575a28705c63250c1398e16d9e1d4dbfa22bcd04869"
+      },
+      {
+        "path": "apps/admin/lib/booky-journey-draft.ts",
+        "sha256": "b958cc64bb0544e0def97e04eebaccf7824fca9180e907447310fba3723b4872"
+      }
+    ]
+  },
+  "proposal": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/proposal-manifest.json",
+    "sha256": "06e2cabc9442a6e8af6406f255a91492a588605018f8ca8ea47ee9850d775759"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/apply-and-check.mjs",
+    "sha256": "2b39e0fd232151a4c49cf7667c6c4c55208e03eb5a89647da877acfb6f3fa3ac"
+  },
+  "mobileRuntimeUnchanged": true,
+  "mobileBuildExecuted": false,
+  "authenticatedAdminSession": false,
+  "liveSupabaseTested": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

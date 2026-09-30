@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "predecessorDocsCommit": "c971d09081ee0d58ba9b960ed9b743375699afc4",
+  "files": [
+    {
+      "path": "apps/admin/app/(dashboard)/journeys/actions.test.ts",
+      "sha256": "ecd958636aec1bd8b3f9b4c097c546502398301587544b2d6042c776d0b91426"
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/journeys/actions.ts",
+      "sha256": "a4182503b80bf7acde559cdde73412fa8e59dd8e7cc45077881101c3fe6600ac"
+    },
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "sha256": "e6d06deb7615d3cc3c34257de200a33bb12cf0e7896e3ffa8292481e53b63621"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-activity-validation.test.ts",
+      "sha256": "4504553c8ac28ff745196ff4a2c1f3785974cc55658a94567a03152644711424"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-activity-validation.ts",
+      "sha256": "a048e731d68e5a0a2fa4e3524d4a4a72d97c431ae0b54011e444546455ae779e"
+    },
+    {
+      "path": "tests/host/booky-journey-authoring.spec.mjs",
+      "sha256": "fed808816b8125e5ed89c95acbd0a11eefc143b6b1cdbf8bbc83f1e811c35863"
+    }
+  ]
+}

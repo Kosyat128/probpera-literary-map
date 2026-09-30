@@ -1,0 +1,1239 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "apps/admin/lib/booky-journey-activity-validation.ts",
+      "sha256": "a048e731d68e5a0a2fa4e3524d4a4a72d97c431ae0b54011e444546455ae779e"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-catalog.ts",
+      "sha256": "8fdebe9c59a277b5b2f9aed11b82103a14ec01d695e0649e206fdc30e9abcbf7"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "sha256": "b958cc64bb0544e0def97e04eebaccf7824fca9180e907447310fba3723b4872"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/_md.js",
+      "sha256": "cefb1557e7715cb2117c83f82ef3e3175c7e0391c80bd5795b2d4effc45fc582"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/_u64.js",
+      "sha256": "e48c0cfc10810439a4807b46db136ce603a3fa09b62584f513ef2f3ca496af54"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/cryptoNode.js",
+      "sha256": "26f80c6a85b6ef7bfd83b99d95b2b5ba8764397b9465feff32e81ba4e6416619"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/sha2.js",
+      "sha256": "e729088b82e5450bff54c3a0013582aa42e1fe8f58dd31f5967f6ebe34c52299"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/utils.js",
+      "sha256": "4cf4c1e05affedcb4fd584a43d76ae1a3711e34a36e2251b90c27e33ecc74fad"
+    },
+    {
+      "path": "src/books/bookDossierCompiler.ts",
+      "sha256": "32966360f7dcc4c934e5ec4ac3b266985aa65edd03098003dde5e9e396ca700e"
+    },
+    {
+      "path": "src/books/bookDossierDelivery.ts",
+      "sha256": "0651494558a405c0cd3b5bba1a7402cfa835f68df373b2db1bce1759563b2676"
+    },
+    {
+      "path": "src/books/bookDossierDesign.ts",
+      "sha256": "1d884cdf4c2beb2938fec8c06168c127a4c2a1b805dd3595bf6c3a8772229107"
+    },
+    {
+      "path": "src/books/bookDossierDocument.ts",
+      "sha256": "eebdaac897bff5cd49ce9a27b8def78ba4dc65d814ee728d0e1fa3d54cbe99b6"
+    },
+    {
+      "path": "src/books/bookDossierReadingSteps.ts",
+      "sha256": "54e219801ecf9f81d8d30fbbeab85031d9b39f76697c97df1790c3e29a1902fa"
+    },
+    {
+      "path": "src/books/bookDossierRights.ts",
+      "sha256": "18113ebff92e3f5333e922272649dfed5622cd87f66a361f9a272f05fa4ba0b6"
+    },
+    {
+      "path": "src/books/bookDossierValidation.ts",
+      "sha256": "8c6713ed76f576392ad04363953eee7aba5a275cd9cd8b1a927c4c5053d1f366"
+    },
+    {
+      "path": "src/books/bookInspectionPageLayout.ts",
+      "sha256": "72cc88dfb6e3050fd418d6539c41f59e643c2df68b8f1c57fe8ebd5ebbd62208"
+    },
+    {
+      "path": "src/books/bookTypography.ts",
+      "sha256": "d492d8fd3fdfd75193f12a7fa390526b29f30187cb8777298a7c84700adfe9cc"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.ts",
+      "sha256": "727f157477a4969412e472b86aa51f7cc1c807ff6f5ea3d5e5e48c81bc3b7c8d"
+    },
+    {
+      "path": "src/data/bookArchive.ts",
+      "sha256": "4ce49f1e712cd2448fa0d8f798655294972c33622ef2b73fd4ed4f0244822884"
+    },
+    {
+      "path": "src/data/bookLocalization.ts",
+      "sha256": "1cbb3221e62310fe76fe328741e3316b8f0623d03ea77c994d25d6ca52545773"
+    },
+    {
+      "path": "src/data/bookQuality.ts",
+      "sha256": "eefcd1d589684d2fb16995c5158355005a968ac325b80502842a050d749ffd77"
+    },
+    {
+      "path": "src/data/cms/bookEditions.generated.ts",
+      "sha256": "3ef359e0a7ab025fda76d728024f33401453b6faa175bfdc5550c1621e2e4726"
+    },
+    {
+      "path": "src/data/cms/bookEditions.ts",
+      "sha256": "c7a372e8fa23857c45a88eeddd2e485ca71bbcf42edcb93718cf012c12ac4867"
+    },
+    {
+      "path": "src/data/cms/countryProfiles.generated.ts",
+      "sha256": "8a9a93607b7108709b8cf37f036dd1476acae780cf49b4beec92664e0199b409"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "sha256": "b328dfb3b5b1023782bdd625ed33312ea55bbc763543eb9d2dfacb1c1115a882"
+    },
+    {
+      "path": "src/data/cms/literaryWorks.generated.ts",
+      "sha256": "eac4343ef1fe3f4707d2598521824941ab62034beea83750637d27df65d9587c"
+    },
+    {
+      "path": "src/data/cms/writerProfiles.generated.ts",
+      "sha256": "ed95100fba2c4a469e72fac677ed0ec9456c7fd086a411d3b931f9d5429790e2"
+    },
+    {
+      "path": "src/data/countries/afghanistan.ts",
+      "sha256": "8a61dc8a4b318203f76b30970b7da00ae44f77a4e0710aabb5f035861f755b86"
+    },
+    {
+      "path": "src/data/countries/albania.ts",
+      "sha256": "ade399fb40c6c682138a0943b205d9d4d8ed25a20c1c499df32bee0f68b7afbc"
+    },
+    {
+      "path": "src/data/countries/algeria.ts",
+      "sha256": "69557c13f781a0912de030a60934f0a17feeedbbb9e34c033bdf25e753504edc"
+    },
+    {
+      "path": "src/data/countries/andorra.ts",
+      "sha256": "d751260a38483c26f45da3f4736cfc9dbec16ce2249e0022e8afd1f940a18561"
+    },
+    {
+      "path": "src/data/countries/angola.ts",
+      "sha256": "691effdcb01bd16383a22fbedbf18b4625ee4d9af75efabf0296270f07b6600b"
+    },
+    {
+      "path": "src/data/countries/antigua_and_barbuda.ts",
+      "sha256": "b54b316f46882b93d95aba17174fe019fb091206d12f70d251c230b58d03b0d6"
+    },
+    {
+      "path": "src/data/countries/argentina.ts",
+      "sha256": "6b5321b5608893675e6167e8c8a3316b5204dcd3f8af04e19c14c2d81f6af418"
+    },
+    {
+      "path": "src/data/countries/armenia.ts",
+      "sha256": "74fc4d0cf44a1dc34147831cd162c1c3fd2bf2f248f2b9f7d8bbb9b257f60e1e"
+    },
+    {
+      "path": "src/data/countries/articleCatalogBooks.ts",
+      "sha256": "66244e1fec29703a8e533dad061ece24e7bbf34fe388fa872b269d066c233c85"
+    },
+    {
+      "path": "src/data/countries/articleReferencedBooks.ts",
+      "sha256": "6d3fe2939e14e39d98d2e975f403647166a7d242b975b91f5d6378135e3d3bd4"
+    },
+    {
+      "path": "src/data/countries/australia.ts",
+      "sha256": "8e139f43f0052de9ec1015e6cdd0d39bf68da750a5eb5d94a0bed63b5158d026"
+    },
+    {
+      "path": "src/data/countries/austria.ts",
+      "sha256": "2545508945addfe64b4a5b42a7590ddfd253e194ce96c9ae290af358d3cac4f2"
+    },
+    {
+      "path": "src/data/countries/azerbaijan.ts",
+      "sha256": "eecf13560283a19f138df4e14463a23c7301228baea9f675ebdb5ef27f5e8d96"
+    },
+    {
+      "path": "src/data/countries/bahamas.ts",
+      "sha256": "9bc505bd9a13ee1a244d465823664418fe3a8537fd23e32d5282df696ca0243c"
+    },
+    {
+      "path": "src/data/countries/bahrain.ts",
+      "sha256": "9bf1a6bed0d652d75709c7ecf667ba3e23ff3c36e111600fda4fa9ebe1694147"
+    },
+    {
+      "path": "src/data/countries/bangladesh.ts",
+      "sha256": "994d3aae2a6556c28e81b86c7822cf29ddff0b8cd7d4af49e8027a37b9c750af"
+    },
+    {
+      "path": "src/data/countries/barbados.ts",
+      "sha256": "a5563ce100f6359bd9652eacf5209c35860fb43bc1ad41c2daeff259b4aadeb4"
+    },
+    {
+      "path": "src/data/countries/belarus.ts",
+      "sha256": "3c532358938ddc5204bdb701c712b1c73014083fa837df0543a4eb3010ec8e32"
+    },
+    {
+      "path": "src/data/countries/belgium.ts",
+      "sha256": "f70bc3a7365ede6ad48a32c3a8c17c94ae5cd9ab8c5f11dfecb4fcead2bd9902"
+    },
+    {
+      "path": "src/data/countries/belize.ts",
+      "sha256": "bc70d37f2a928c6404043c251986affc599d5b8580d1cf36e3629b96d189b7c2"
+    },
+    {
+      "path": "src/data/countries/bhutan.ts",
+      "sha256": "df1750dce841c1b06c2e5cf49e719e798287e22ce2a65b516d3ec6529ad3e5ab"
+    },
+    {
+      "path": "src/data/countries/bolivia.ts",
+      "sha256": "8a4c24247dfb37341bf5d0900e81c3f50918fbee6c80feeff2724460b28ae289"
+    },
+    {
+      "path": "src/data/countries/bookArticleSynopsisBatch01.ts",
+      "sha256": "e11ccf873286ca0d2e9124cbbc75988cfaa5a8ed7aa87abba64e5c07f362ca0e"
+    },
+    {
+      "path": "src/data/countries/bookBibliographicOverlays.ts",
+      "sha256": "7c62441a40d83fcef8e91c3cd142a42796e6119b8aa31edeba739884849ddd4c"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2ExpansionBatch01.ts",
+      "sha256": "cc8012a301ce2804a94a323164a499577c6c4b705c439164099821e3ecc873a1"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2LegacyVerifiedReaudit01.ts",
+      "sha256": "c0dbf6111aa50e4f1ee253ac18de1799e4e5f1a57e2012dbc13481b0f21e0392"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch02.ts",
+      "sha256": "e5010f2e683818b4c82850ffa8530a7144b75b950b4bd77180d19f659f710cfc"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch03.ts",
+      "sha256": "34d83df89022208e45be1ee8b108fab48df37efda535c13d0fa856d1ff37ae94"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch04.ts",
+      "sha256": "b05988fad25cc9afac26bac8058e762c4fd90b2cea49c11420af32564bbf4ddb"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch05.ts",
+      "sha256": "b80e8537c6e4127b7e3a9eea4a790761c0677d1b95c5fde45083ca3233b18813"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch06.ts",
+      "sha256": "cbbc3e05682469c4ba27ee939b91b34b41e565a3cd54e25771dab682e5099ed9"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch07.ts",
+      "sha256": "8d9fbab5898dfe2ebd1e31c6bb18774cddf5333d1bf11383e269bfbe8d72f0a9"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicHolds01.ts",
+      "sha256": "c846b2b42a73e97c17b7c71131cc2f2cea7de0df0286aaa7985d9238490bfba7"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicQuarantine01.ts",
+      "sha256": "d99d9ca38edb7a8b117ca101074881311913871d0ffa09ddbb20dd488e05f3ae"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2TitleEvidence.ts",
+      "sha256": "dcf1135f6b47f24f98a8be740affa6ac7825ecf59028c9d9c148ac44edfa8dea"
+    },
+    {
+      "path": "src/data/countries/bosnia.ts",
+      "sha256": "3c87d5da2ecee09c89c45dd339bcd343a7af651aedab2d79d78f3ae9a0379a8e"
+    },
+    {
+      "path": "src/data/countries/botswana.ts",
+      "sha256": "793f07a27a1cb555ec518c98cdab4be36cf19c91401f867d5790dd8c34004f4c"
+    },
+    {
+      "path": "src/data/countries/brazil.ts",
+      "sha256": "9e45168a4778262632d351b44f9f256c691569d4c630a55922b3a4f9fe70813f"
+    },
+    {
+      "path": "src/data/countries/brunei.ts",
+      "sha256": "5f553a5973f2384b5f6364239e145c69a7a996bc2582eaf8101f57d273039c26"
+    },
+    {
+      "path": "src/data/countries/bulgaria.ts",
+      "sha256": "71c5b1b4f44b220d5623a81fa13ed3dae025689dc471f403e29d69abd196d8dc"
+    },
+    {
+      "path": "src/data/countries/burkina_faso.ts",
+      "sha256": "7dc55e7b271cd6c131acf640737c8e02cccf48dc09d2a481a87fa843556461b6"
+    },
+    {
+      "path": "src/data/countries/burundi.ts",
+      "sha256": "a5e21e263495b9fae6deef75a152a313a8654c3e679c6e38b08e46ef51908e9e"
+    },
+    {
+      "path": "src/data/countries/cambodia.ts",
+      "sha256": "6a08a8493081b7f131318af0707d6d778f7c034c8727bec1b59a4939609fbe88"
+    },
+    {
+      "path": "src/data/countries/cameroon.ts",
+      "sha256": "e96d6894b6372692df9462d4b855abe8dd2334f8f8195894590a9351e3d58ce6"
+    },
+    {
+      "path": "src/data/countries/canada.ts",
+      "sha256": "25670f05b7b9d0a71f7efcc45cb421329259c0ca60b7002b637bbcee8c56160c"
+    },
+    {
+      "path": "src/data/countries/cape_verde.ts",
+      "sha256": "b6881d5a102f1805a6d9fa0db69c54f7d232ea151132be8de88282107fdceefa"
+    },
+    {
+      "path": "src/data/countries/central_african_republic.ts",
+      "sha256": "ca6f8a38651e30177bd3a009efc7ab02253b63c5bf49ef57efe8ba1fc2eaf647"
+    },
+    {
+      "path": "src/data/countries/chad.ts",
+      "sha256": "acf9e857877f2544e9b019b0ffe09c3f03d610e5f9fd064952a38cc0f9f82ed8"
+    },
+    {
+      "path": "src/data/countries/chile.ts",
+      "sha256": "75ecd664625280c5327d3e83b01fa14b48924f4d11c28b581320d91fdc65e38f"
+    },
+    {
+      "path": "src/data/countries/china.ts",
+      "sha256": "ea56040b37d77999d88a8ff4446c4d8c1a9312ccf9de1a9265c57dab962e865b"
+    },
+    {
+      "path": "src/data/countries/colombia.ts",
+      "sha256": "9c77bb8bd637daaa22bc4d3fb7efe7513d9279dbefa2bc71e374c8e16f54858a"
+    },
+    {
+      "path": "src/data/countries/comoros.ts",
+      "sha256": "4f5f583078a42a4b358971b43f4bd6014c81e8148684ab2a3115dcc05e18d2f0"
+    },
+    {
+      "path": "src/data/countries/cook_islands.ts",
+      "sha256": "2fe79bc25765f261556c49f264cbf2c94006dac59b54e57eda42e164216aa95c"
+    },
+    {
+      "path": "src/data/countries/costa_rica.ts",
+      "sha256": "edd98d4a4121e6c1c861c4459d18ed2f343ed0ec61cbc0be6f96d5d8ae79c520"
+    },
+    {
+      "path": "src/data/countries/cote_d_ivoire.ts",
+      "sha256": "d253f1fddb35edcca5119e53b855151245c212c5d36c4262e9ad23383dc86804"
+    },
+    {
+      "path": "src/data/countries/croatia.ts",
+      "sha256": "2639f0f72e996989991c7c007916ec6a1e268dfee7af777de8d28671b8aa77f2"
+    },
+    {
+      "path": "src/data/countries/cuba.ts",
+      "sha256": "1c0b57ca78bea02a799dbebc7d176904ba127fe40ae16c3de3da90e2b880200d"
+    },
+    {
+      "path": "src/data/countries/cyprus.ts",
+      "sha256": "d8a7c9f63688f16066313e11a0fbc4d73901a4994b25abdc9a8383b53ff42ff7"
+    },
+    {
+      "path": "src/data/countries/czechia.ts",
+      "sha256": "cb2b840135d038a81a4c151130da04e54d640e92d808ec5c24445d9926b6b605"
+    },
+    {
+      "path": "src/data/countries/democratic_republic_of_congo.ts",
+      "sha256": "bc23540ab026b7a9e7010701b074afe13b1537f324a5afbb50940408d0caafc1"
+    },
+    {
+      "path": "src/data/countries/denmark.ts",
+      "sha256": "a6c9dfcb9cc970239da04fd0a4eeb38e73a0615ffcc085aac804545c36d4824a"
+    },
+    {
+      "path": "src/data/countries/djibouti.ts",
+      "sha256": "f74110ff8078bfe3f80e0636d64c75fbb43cacec80d5d054868843d9c9f77436"
+    },
+    {
+      "path": "src/data/countries/dominica.ts",
+      "sha256": "4834c25ba0e49c9638e9ce9956e9aa50d0bf93310d7cc609668d2c822914bf3b"
+    },
+    {
+      "path": "src/data/countries/dominican_republic.ts",
+      "sha256": "5104b0de06ee7fbb3c063ff0b252844aa8e5a2d360811c96ad51099a38676449"
+    },
+    {
+      "path": "src/data/countries/ecuador.ts",
+      "sha256": "44ba0156978386f6add247a384e76d226cb14c66f88fe6c4bac13a3610bc47e2"
+    },
+    {
+      "path": "src/data/countries/egypt.ts",
+      "sha256": "992f2823656985f43938cc1edf74df60957e48b42525c2e71fb392af0812c147"
+    },
+    {
+      "path": "src/data/countries/el_salvador.ts",
+      "sha256": "76f52c779bc364130efdf472074d487437cbdf60aec903b31964c0cd57819fbf"
+    },
+    {
+      "path": "src/data/countries/england.ts",
+      "sha256": "f275ec6861a40de9bc5021d6d83e5582c2d2a2acf259cdc7fcba852eae1c7a84"
+    },
+    {
+      "path": "src/data/countries/equatorial_guinea.ts",
+      "sha256": "a305605711bcb9647d9ed4af5a0edfe9952c4268740dfd1cfb96c0c588563390"
+    },
+    {
+      "path": "src/data/countries/eritrea.ts",
+      "sha256": "22af7cd05d0ce6ce9fbd114648ab648c27a501b7d373684b388de3ddcb74683e"
+    },
+    {
+      "path": "src/data/countries/estonia.ts",
+      "sha256": "172fd9bab1e4a7969ec3017aa93dc58c3f0dacfa91b491af7611f1dfcd7f200f"
+    },
+    {
+      "path": "src/data/countries/eswatini.ts",
+      "sha256": "0cdc63119a441109692f85c666aff015dbef48fbd6416f2e4c1f2295064afbd8"
+    },
+    {
+      "path": "src/data/countries/ethiopia.ts",
+      "sha256": "90e69d2604da93913a5670a1a7f00740465964ea691c68f597124a2f20a797be"
+    },
+    {
+      "path": "src/data/countries/fiji.ts",
+      "sha256": "bff3c8492fe82d3c4bff65197774b31c0af7f0f639a9dd7632bfbccd6b4527c3"
+    },
+    {
+      "path": "src/data/countries/finland.ts",
+      "sha256": "72b93fadbba87362eac13cc38898fd490f290e5cd245b877ab64fe2c916c768d"
+    },
+    {
+      "path": "src/data/countries/france.ts",
+      "sha256": "36e5a688e628aebe598b7586e1de96f488fffb90b588958264394d2d067099a8"
+    },
+    {
+      "path": "src/data/countries/french_guiana.ts",
+      "sha256": "35eb79f70f5cf817aed0b97c0ae33ea49e4eceb1a150a493e5d752a5dddfc6f3"
+    },
+    {
+      "path": "src/data/countries/gabon.ts",
+      "sha256": "ef80de976dfa859416cafabe57448e115525f1c34e1d05ff349d36485a52365a"
+    },
+    {
+      "path": "src/data/countries/gambia.ts",
+      "sha256": "fae6d4157c5c39d81c034f2a5a634bc8d3e9cd52160002ae37c91f1859ffe388"
+    },
+    {
+      "path": "src/data/countries/generated/books.enrichment-actions.json",
+      "sha256": "816493b01d85b27878231ea18af9c726ccca3434e9817045407e97d3d5436000"
+    },
+    {
+      "path": "src/data/countries/generated/books.generated.json",
+      "sha256": "074ba8f31fd9591b0f09156b64784566995f7a9df2ceb0940acdb46936350aea"
+    },
+    {
+      "path": "src/data/countries/generated/books.reviewed.json",
+      "sha256": "7d117fdea7dcfa0727a9c9f252621de43c8a7d20ace79a851bd1c8d5ef9fa028"
+    },
+    {
+      "path": "src/data/countries/generated/generatedBooks.ts",
+      "sha256": "2beb8791e96a164dab4045aee9d20844a890b5775371eee1388085259554e3cb"
+    },
+    {
+      "path": "src/data/countries/generated/index.ts",
+      "sha256": "44c4c4947dad07bce2d30c8ffd29fc64c77e076002a1128570ed3bf4ff25a56a"
+    },
+    {
+      "path": "src/data/countries/generated/metadata.generated.json",
+      "sha256": "c226ffe076fe850e1a38d8102084fdd99667d69ab25707805d262f291872fa7c"
+    },
+    {
+      "path": "src/data/countries/generated/nobelLiterature.official.json",
+      "sha256": "17ae9117699ac10d6ea857f422b3625730fabe2378901124e7b4d3b98f540576"
+    },
+    {
+      "path": "src/data/countries/generated/userSuppliedBookCovers.generated.json",
+      "sha256": "760a49fff4b4152545758ebbc360b90e1fd82739950d606a43289ec26df9a627"
+    },
+    {
+      "path": "src/data/countries/generated/userSuppliedBookCoversBatch20260813.generated.json",
+      "sha256": "39ac684ee6ec504cc717e235e266bac3306aa346ed007a9cd209692962a9ae14"
+    },
+    {
+      "path": "src/data/countries/generated/userSuppliedBookCoversBatch20260820.generated.json",
+      "sha256": "fd8e5811fb6172cf9d8aa732f0aeede06f6ed71a16b05f8759e7badb315cf3ad"
+    },
+    {
+      "path": "src/data/countries/generated/writerBiographyEnglishTranslations.generated.json",
+      "sha256": "c1bf1f67597e2faa1768f8d60b3c6b116c134ac36361c7e3ad994350d562ce66"
+    },
+    {
+      "path": "src/data/countries/generated/writerBiographyFactReviewRuntime.generated.json",
+      "sha256": "76df3b0d99d24fb83055204b7a05d391862e618b6cdd47b690f5b8fe4743c3f1"
+    },
+    {
+      "path": "src/data/countries/generated/writerIdentityRemediations.generated.json",
+      "sha256": "4f5872fccf6b38a3f797c5a6bf3df6c2d6951b4bce3ec703fc18fc4def5c6c7b"
+    },
+    {
+      "path": "src/data/countries/generated/writerPortraits.generated.json",
+      "sha256": "c18c91a581f8c77e81a54e0579d5ac2474a699645181c8aac5246790e4b5807c"
+    },
+    {
+      "path": "src/data/countries/generated/writerPortraits.ts",
+      "sha256": "df9439840d358edf6f36d4d42aa07b0cdf4b8226c9771200a3f0be914b124523"
+    },
+    {
+      "path": "src/data/countries/georgia.ts",
+      "sha256": "9d2b5a3f9d1ff99ec51ba475c4f5bf04acdd1b02fc47c23b5187c089bb341559"
+    },
+    {
+      "path": "src/data/countries/germany.ts",
+      "sha256": "01ffa8a24468918e830212b7472c77d930fe5ea400b78b81ff92806be1dd462f"
+    },
+    {
+      "path": "src/data/countries/ghana.ts",
+      "sha256": "05d265c43434301c0800b3f7afe9356c845c88a4f3d09462dd32419b9e54b918"
+    },
+    {
+      "path": "src/data/countries/greece.ts",
+      "sha256": "20768e879a182c59561fb2116f05a841c9b6058b07aad74ea2745bc2beb23fa3"
+    },
+    {
+      "path": "src/data/countries/grenada.ts",
+      "sha256": "de0bd94a841a57cf306e06194594cf9a574b6d84922c342f7f53dc438e0ebd50"
+    },
+    {
+      "path": "src/data/countries/guatemala.ts",
+      "sha256": "7cecdf465960bb1ff251970239573295be202cd943edabf3cf83eb83e42ea5e7"
+    },
+    {
+      "path": "src/data/countries/guinea.ts",
+      "sha256": "6d07d35aabbafc5c86bb9d3794be4d1a5313d59938acbe2ccb618a1addfb1961"
+    },
+    {
+      "path": "src/data/countries/guinea_republic.ts",
+      "sha256": "8b28570a159edc18861dda8fbd91909e00c72a871b7d8e413faa67f1b16e3504"
+    },
+    {
+      "path": "src/data/countries/guyana.ts",
+      "sha256": "b3262282de058f2f10568c72984c6a9d27caf4db3b680ff6017ee35165930411"
+    },
+    {
+      "path": "src/data/countries/haiti.ts",
+      "sha256": "427a0aaf1b854a45e28fa1e2a1a1279357643ad600f2fcb7a4dda988a91a6200"
+    },
+    {
+      "path": "src/data/countries/honduras.ts",
+      "sha256": "f89d9a5d8a895791d04b12193a22ced66b15b2936fb75568347e75c271d2cc80"
+    },
+    {
+      "path": "src/data/countries/hong_kong.ts",
+      "sha256": "f1146c82fd5b612eb0f7eea7156719ab896629cf8f436051717b2a70e9b37a0e"
+    },
+    {
+      "path": "src/data/countries/hungary.ts",
+      "sha256": "f86da0083530282eca957a578c094efc73df04d1e4653f26272ac40f6229d052"
+    },
+    {
+      "path": "src/data/countries/iceland.ts",
+      "sha256": "ebead5991c3ecf9d0b070317fd17525df9c63017fdf5ea8185c4ec21b6f1aba7"
+    },
+    {
+      "path": "src/data/countries/index.ts",
+      "sha256": "52c164f5db1eedaa55d9a95456ff9903596480a3bad084148384a68d47a0967c"
+    },
+    {
+      "path": "src/data/countries/india.ts",
+      "sha256": "ce1da0957d3ca7ef8e05169f99b4d3bb8b4f2fe51fd73f5d36b23047a22b073e"
+    },
+    {
+      "path": "src/data/countries/indonesia.ts",
+      "sha256": "e5a775e9edf600a3d4d8d6ebea8b4dff6c51f406ebea9589bd4f4616d9a696cb"
+    },
+    {
+      "path": "src/data/countries/iran.ts",
+      "sha256": "1ae789c30d1175b467b2c8367e3faa7d051aed1972edf5d5b286db169791050a"
+    },
+    {
+      "path": "src/data/countries/iraq.ts",
+      "sha256": "8efa17ddc4c96508a1678a5feabb88535ba158ed3bc549ff8039407a03efde91"
+    },
+    {
+      "path": "src/data/countries/ireland.ts",
+      "sha256": "058b06fb7657653738eb569966116e832b8008c70d55fbf11e033bc027d89b5b"
+    },
+    {
+      "path": "src/data/countries/israel.ts",
+      "sha256": "1ed95fa3356a82d7af1da4fb4ab3e75f510f13aa1d59d4daa499d6d8a8031eea"
+    },
+    {
+      "path": "src/data/countries/italy.ts",
+      "sha256": "911fcd2c331dce9d6fa22f3c80a42bd4556e0bc91e72c86512ff9a270fe1f45f"
+    },
+    {
+      "path": "src/data/countries/jamaica.ts",
+      "sha256": "f2c91d6571513f097f34a8c0a40a1798d73d8b7d63aa807d5f15c3da6b09e717"
+    },
+    {
+      "path": "src/data/countries/japan.ts",
+      "sha256": "ba2dcdfe0d4728fa1dbe97f967f888dbd6e42e575ac7febc71e0451bbddce77b"
+    },
+    {
+      "path": "src/data/countries/jordan.ts",
+      "sha256": "9409c7021c80d98f0da6287ee7e0fd5f4b175d982da7372ada9619d399af2e39"
+    },
+    {
+      "path": "src/data/countries/kazakhstan.ts",
+      "sha256": "3787fb47ae302087322bfba30d77f53855a3202f1768a640a38effcd3621de66"
+    },
+    {
+      "path": "src/data/countries/kenya.ts",
+      "sha256": "e2ba5fa7429f2af35b202d2eb0929b7f1ea0d58df4a327bfb88d487379530434"
+    },
+    {
+      "path": "src/data/countries/kiribati.ts",
+      "sha256": "704c185169e37124181e3618370697a20f46b5d46ff847897ff6e078b7355bde"
+    },
+    {
+      "path": "src/data/countries/kosovo.ts",
+      "sha256": "ee60dcccbdc5182e2a64c3891a97b0bc6ca938f887c973d83956ab1c402ea3a9"
+    },
+    {
+      "path": "src/data/countries/kuwait.ts",
+      "sha256": "ca709c866c667f71a70da134fe852237aa2ab1483529b6f807383dcf94849348"
+    },
+    {
+      "path": "src/data/countries/kyrgyzstan.ts",
+      "sha256": "8e831fe91710e2ab0e7be29f20ba2c419f61c14866e8ab67f62f2238919f4c97"
+    },
+    {
+      "path": "src/data/countries/laos.ts",
+      "sha256": "84e38cfcfe4bda14bbd524fb55543f6a7a9754c3aaf10bd5c950d741ee60daa4"
+    },
+    {
+      "path": "src/data/countries/latvia.ts",
+      "sha256": "47212f5e8086a18bab8cef87dbc69053cd94e896fc4b7c2050eaed730778f059"
+    },
+    {
+      "path": "src/data/countries/lebanon.ts",
+      "sha256": "66506bcd59ce96fc093956f01ec1f388aff92194eedf6f0a29232f898c0b1c66"
+    },
+    {
+      "path": "src/data/countries/lesotho.ts",
+      "sha256": "87cb632dfe73cb8740a02c573ae2619d00b98328a56fb4a07b4ac8a7432541fb"
+    },
+    {
+      "path": "src/data/countries/liberia.ts",
+      "sha256": "c97a2875d2accbb4a01e9c008f7825e7b2f4e0d4dc8c50c2d2aecc37adbd29ea"
+    },
+    {
+      "path": "src/data/countries/libya.ts",
+      "sha256": "126382f874a84e7e287fbbfd6c561bf04b15527944693aedf31256278c32f06a"
+    },
+    {
+      "path": "src/data/countries/liechtenstein.ts",
+      "sha256": "d5e2dc7b48df8d5a3235e3e8091972fc81bb5dbde147c577b0d2453a6e6aafca"
+    },
+    {
+      "path": "src/data/countries/lithuania.ts",
+      "sha256": "38a8ecbf14abfed3b831b394750f4c11e1e29be4383ba1396942d26465ffb722"
+    },
+    {
+      "path": "src/data/countries/luxembourg.ts",
+      "sha256": "07bc69cef1366bd4c9e09a09d1d62458d0aa5ec7141bafe08af833efae6ee564"
+    },
+    {
+      "path": "src/data/countries/macau.ts",
+      "sha256": "7e747d63b2d5bdfda478ebd2e53d6562dfedc446a856462b3808a86ef16402e5"
+    },
+    {
+      "path": "src/data/countries/madagascar.ts",
+      "sha256": "f475ff547fe52216519b8d82819cea9d97cb27f4c1f4373a99e8982287087691"
+    },
+    {
+      "path": "src/data/countries/malawi.ts",
+      "sha256": "1e1cfc41a8a3904cb113a7d9e501d499ef4cf295754cb5cb52d05bef399a77be"
+    },
+    {
+      "path": "src/data/countries/malaysia.ts",
+      "sha256": "81dc739d3171a1e4ba9759021b5cedc31c644e7dfad45d298385b489f214fe80"
+    },
+    {
+      "path": "src/data/countries/maldives.ts",
+      "sha256": "eb0ba325ded6f021d3c32289925e0760fecda5e36036bee2fd932402e4c1a204"
+    },
+    {
+      "path": "src/data/countries/mali.ts",
+      "sha256": "624ea6654e02d18a8c016815620c0b934d5cf9e8e81d6877e4030aeb38179a62"
+    },
+    {
+      "path": "src/data/countries/malta.ts",
+      "sha256": "fd1eaa744ada05c7818591dfed3df815e03656f184604be5d255dc9fbdedb5b4"
+    },
+    {
+      "path": "src/data/countries/marshall_islands.ts",
+      "sha256": "11f2cfc2c0f3bf29c5345d99f4c1e5dcdf76efdf88ccb36bf965a49bee2369ad"
+    },
+    {
+      "path": "src/data/countries/mauritania.ts",
+      "sha256": "323a5ccf5a9dded44b4b5dc4e4a676b327247ffc9a283e53a6635b072c325a6d"
+    },
+    {
+      "path": "src/data/countries/mauritius.ts",
+      "sha256": "9529dec69da3c233614db387b38eddf9b6f7054188c58dafd7514ee955cffe40"
+    },
+    {
+      "path": "src/data/countries/mexico.ts",
+      "sha256": "d1e1b3a2873cc847b72e42d46aa3ff4bd8fc599224c36ae2840debcc232c8d67"
+    },
+    {
+      "path": "src/data/countries/micronesia.ts",
+      "sha256": "ad464feab1850572100542b840e2e5b536d049eb38b6a6d60e4590b4825815ae"
+    },
+    {
+      "path": "src/data/countries/moldova.ts",
+      "sha256": "115c477b87d09fc9caf6ea3042831d185615df19bfe7f34f2cb7d4ad55f99644"
+    },
+    {
+      "path": "src/data/countries/monaco.ts",
+      "sha256": "b906ebfe9889622bfd022ab03bf0556e7b3b78a4002821e287ee2b014f508fba"
+    },
+    {
+      "path": "src/data/countries/mongolia.ts",
+      "sha256": "38b2bebcf7cac4ac56ea558301c9146415194696f91239252d52bf1fd4365ac3"
+    },
+    {
+      "path": "src/data/countries/montenegro.ts",
+      "sha256": "d973c4495aa8debbff47d469dc668000bf9aaad93adb87dd14abe4f2f8db461a"
+    },
+    {
+      "path": "src/data/countries/morocco.ts",
+      "sha256": "b667f4d9595d766f1056a876c62d6c7cf984d75b4d59a2d84f8102b28ebac724"
+    },
+    {
+      "path": "src/data/countries/mozambique.ts",
+      "sha256": "a88190cccfb1260e4d4ac847d242274ba1b46b262f5d1ffc82da6a077ccb483e"
+    },
+    {
+      "path": "src/data/countries/myanmar.ts",
+      "sha256": "e2e7d70b9745242ccac79a1af3fefd0357a6784da004974037cf931caa2196a9"
+    },
+    {
+      "path": "src/data/countries/namibia.ts",
+      "sha256": "33a057027184077bcb07ab854f00f0c835397a089a42ab42f7bc4f6ba8f82059"
+    },
+    {
+      "path": "src/data/countries/nauru.ts",
+      "sha256": "dec60a2f8669723bdebfcbbf39c306a1d4aab4ab7a6f1dea48d68dfda4f5dd87"
+    },
+    {
+      "path": "src/data/countries/nepal.ts",
+      "sha256": "9a58fc923aee0254612137bc771b39596d1c1bd897e515867e8cbcad3511dea5"
+    },
+    {
+      "path": "src/data/countries/netherlands.ts",
+      "sha256": "f3f11b55cf8fa5346d1d4893cb408b5622a9916dd76cac1cd8ab9153590aef65"
+    },
+    {
+      "path": "src/data/countries/new_zealand.ts",
+      "sha256": "1d780a5f8f00dd634bd6f5e655cd6387f89c9bb69393cf6b96a18cb670b548ef"
+    },
+    {
+      "path": "src/data/countries/nicaragua.ts",
+      "sha256": "03dd99209a7afd3ce4e17836d3c6a9e5574e2a0bf11335ba6965e39da05a2b37"
+    },
+    {
+      "path": "src/data/countries/niger.ts",
+      "sha256": "efbd622eece28d360aee682385d2d30f68848c750fdabf01119018d1267a7ebf"
+    },
+    {
+      "path": "src/data/countries/nigeria.ts",
+      "sha256": "5e6097e7234d9c6a23cc759d9a078904a2d180ca0d1789b2a15f2436e598f8ca"
+    },
+    {
+      "path": "src/data/countries/niue.ts",
+      "sha256": "4bfa590a2023f8798abaf383a4f173a01cb2f632d8c08cea2d091015f8303704"
+    },
+    {
+      "path": "src/data/countries/nobelLaureatesSupplement.ts",
+      "sha256": "444ab0394e9082b0c4189a509886a4272488889b2f441bcaa678175bf69a8267"
+    },
+    {
+      "path": "src/data/countries/nobelLiteratureRegistry.ts",
+      "sha256": "f1f756a8aa4015351d1cf953418256be2242eaccdc3b1b521d1b709b177a4e0d"
+    },
+    {
+      "path": "src/data/countries/north_korea.ts",
+      "sha256": "2ca04128078771a06186b70823993490e85e15d9a146c3fb8224e5053e1c6f20"
+    },
+    {
+      "path": "src/data/countries/north_macedonia.ts",
+      "sha256": "f8a5117da142d00ef009c8283e84cf8b7ad952bb97ed2ca5855ad03100e76cef"
+    },
+    {
+      "path": "src/data/countries/norway.ts",
+      "sha256": "be9fa317253c865a48a6d3fb7cd63b7578fbcc0e9437aab4b23e7b28ee134795"
+    },
+    {
+      "path": "src/data/countries/oman.ts",
+      "sha256": "5b7dc9297a2e032b196c923e9733de9d7da79e79aaeb1c568e10d5bf3f8a9923"
+    },
+    {
+      "path": "src/data/countries/pakistan.ts",
+      "sha256": "915daf2ee4a8bda69c806e99de997a580d4fddb89979a36cc7af702f2c9fbad9"
+    },
+    {
+      "path": "src/data/countries/palau.ts",
+      "sha256": "d5d332bcb989a4f85423a02c26542ef0959b7d5af94d3932523509896e700637"
+    },
+    {
+      "path": "src/data/countries/palestine.ts",
+      "sha256": "09de1cf421671dcd45a89a058a2e6872a6585722d6db4fd7a6d96cecb139597d"
+    },
+    {
+      "path": "src/data/countries/panama.ts",
+      "sha256": "8013c5296f7a080ee8b8e2c572ed59842b80932bb96a8cddd6bed1ee2de3d0ae"
+    },
+    {
+      "path": "src/data/countries/papua_new_guinea.ts",
+      "sha256": "fd201f15f9d952617a52cc8789766063bb0bed6b8812bd38f511c5d64720a33b"
+    },
+    {
+      "path": "src/data/countries/paraguay.ts",
+      "sha256": "404f3d795f8b1bbec7974e4f31b3aef24e7ccfc3fb92daa8758e04b1293c72d0"
+    },
+    {
+      "path": "src/data/countries/peru.ts",
+      "sha256": "69640a9fd2575d8aa0a8b21812ee2472d28875d5e7292e47667c815c2e9b2c46"
+    },
+    {
+      "path": "src/data/countries/philippines.ts",
+      "sha256": "fa449cbe5a90d162024fb666170f4e92bacf123f452cb8949f6fade16ada56e8"
+    },
+    {
+      "path": "src/data/countries/poland.ts",
+      "sha256": "79d9dd27beaf27179ba6cb6c94406ce4a0e67eaa35ff6c6495943595f36fe3b9"
+    },
+    {
+      "path": "src/data/countries/portugal.ts",
+      "sha256": "1c1768a9761fecc747f20e0b8ff9ca14bfb316cec09fc5f425d1f29d32ceafe2"
+    },
+    {
+      "path": "src/data/countries/puerto_rico.ts",
+      "sha256": "e52b14de15f535ec09766cbd3b5626c9706814162c9bcf93134c6d6400de00e2"
+    },
+    {
+      "path": "src/data/countries/qatar.ts",
+      "sha256": "0ff473424f1f06cd20a4d348e92664ba77f5b5170b96e44c0063f47eacfe7cf0"
+    },
+    {
+      "path": "src/data/countries/republic_of_congo.ts",
+      "sha256": "f04b3e84e63e617d75791ce3bc442ac0a2a2b369e0f1e26f251c748938d6b0ab"
+    },
+    {
+      "path": "src/data/countries/romania.ts",
+      "sha256": "4429da45124304c1903e0fc5f6bda42f99395b9da25463c94d3a67c00ad7f360"
+    },
+    {
+      "path": "src/data/countries/russia.ts",
+      "sha256": "5cebb4dab442dee20e8df8b845d06714c75f71bbc93a7177ff5708cc6271cedd"
+    },
+    {
+      "path": "src/data/countries/russianWriterExpansion.ts",
+      "sha256": "178d6ee53d96ca6f35e304ed7083d9863b5cb55d80d7a84d515b02b346b5f064"
+    },
+    {
+      "path": "src/data/countries/rwanda.ts",
+      "sha256": "0cb3bfa5a2dbc97341018577176e518efef6d47e1261b2f5ad3283b248c324ce"
+    },
+    {
+      "path": "src/data/countries/saint_kitts_and_nevis.ts",
+      "sha256": "e3fe1709d6ebfe25c64e602c417949d05b3ff5f3942b6da2b3c0f2b16a8eafc4"
+    },
+    {
+      "path": "src/data/countries/saint_lucia.ts",
+      "sha256": "c590334798507cc2f860cc799447814dbdfffe656ef777b064837009c0fbaa67"
+    },
+    {
+      "path": "src/data/countries/saint_vincent_and_the_grenadines.ts",
+      "sha256": "4a016f43e1081c6d690fe5863a14b6d54661daf055ad6312fa66a23a189d5b71"
+    },
+    {
+      "path": "src/data/countries/samoa.ts",
+      "sha256": "db8d07993841762b535c3c57fa1ee6bd19f05b27b8305a37545d37db87c0427f"
+    },
+    {
+      "path": "src/data/countries/san_marino.ts",
+      "sha256": "fe34bd7fe20388c5d6ab67ebb810144d8aa6a20ad38e17b1f659eb978c6fad10"
+    },
+    {
+      "path": "src/data/countries/sao_tome_and_principe.ts",
+      "sha256": "fbe28636cf1627e8ff5f2b642656dc0e7feb49da6ac99ad0f323f374920cc42e"
+    },
+    {
+      "path": "src/data/countries/senegal.ts",
+      "sha256": "9075a4c5fa3ab392d14046fb0b03e35c67caa46eed32f862237bddab8f8726c6"
+    },
+    {
+      "path": "src/data/countries/serbia.ts",
+      "sha256": "600e7a6eb07bbe7f2926c985a170d67a47a9c5a2c7936f4e27535f02b28f6b28"
+    },
+    {
+      "path": "src/data/countries/seychelles.ts",
+      "sha256": "9be20eb35b389f8a995a045d2042ec6ec0fde370339fb8a4d58f5f26581d0bf8"
+    },
+    {
+      "path": "src/data/countries/sierra_leone.ts",
+      "sha256": "81c118890bcf6c4d20f9135ac7a7d3def6281b0836f7702146098cb25a4f419c"
+    },
+    {
+      "path": "src/data/countries/singapore.ts",
+      "sha256": "c9ecc82ba49d1f3c01ae3fb046eb33b02819557f771b697825c81be13d627884"
+    },
+    {
+      "path": "src/data/countries/slovakia.ts",
+      "sha256": "0b17f3bc29d4b3d04aa37ee3c146d458a016b0dd54d4c288453d98028b93a2d3"
+    },
+    {
+      "path": "src/data/countries/slovenia.ts",
+      "sha256": "80ed92a294f9115b5d74a8152c5d0edc2e15a26003115053b8b9d3de627a56d0"
+    },
+    {
+      "path": "src/data/countries/solomon_islands.ts",
+      "sha256": "aad64d8916b09d498fe5b0a8fe5f207234fa4072ae7fd9f57ee4cb1c84874ec8"
+    },
+    {
+      "path": "src/data/countries/somalia.ts",
+      "sha256": "76760361ffcda13650dd914c25da7186944881124bd11165871a2d4b206b5c3d"
+    },
+    {
+      "path": "src/data/countries/south_africa.ts",
+      "sha256": "e78678b205e2766df16bc24f8031d7e17374df574f358ad22034a538d70d413c"
+    },
+    {
+      "path": "src/data/countries/south_korea.ts",
+      "sha256": "6401e56111996d8acc6385a56a3f58e7884e40572bd4c8edc1fadf46a77d4154"
+    },
+    {
+      "path": "src/data/countries/south_sudan.ts",
+      "sha256": "13678f334fc4e5050642dabdd2441bfce10ff4a772bb136d027e8571e426fd96"
+    },
+    {
+      "path": "src/data/countries/spain.ts",
+      "sha256": "26b027fedf9fd827f3429269296d96947f22e7444cdd503418af4a72406af73c"
+    },
+    {
+      "path": "src/data/countries/sri_lanka.ts",
+      "sha256": "95111ebb994a00611320964d5e1da4cccf2ff3b286188358aec5aafab60465da"
+    },
+    {
+      "path": "src/data/countries/sudan.ts",
+      "sha256": "b91bbd8537c9b018e91c5d068e9c2a2912c405eb8e264847c931e0f284b08e74"
+    },
+    {
+      "path": "src/data/countries/suriname.ts",
+      "sha256": "af312bf7ca7d8a0d89f9b3fee1b59119e30181be3b91b839488e264713546255"
+    },
+    {
+      "path": "src/data/countries/sweden.ts",
+      "sha256": "30016ff296c2a34134f7ccf78e8a418c4f26994dc236e26844f673185b3cd3dd"
+    },
+    {
+      "path": "src/data/countries/switzerland.ts",
+      "sha256": "f73971325dceac3a7d1ab510675fd5c39d6013ed2a96ec4774f5bbdf0e60802f"
+    },
+    {
+      "path": "src/data/countries/syria.ts",
+      "sha256": "9b9bf3b6fbe57dc87d33ea9026ed44426ab667c49f324c0e1ac12f0807209be1"
+    },
+    {
+      "path": "src/data/countries/taiwan.ts",
+      "sha256": "bec08d77539d21fcb97c9e1daf04266e69f8029b4264cf6230f82ef94a2f4ceb"
+    },
+    {
+      "path": "src/data/countries/tajikistan.ts",
+      "sha256": "b4ec97990a065c52ef6c41582de3beeb3ea0f5fdadf5b2ceded5b20f6b90164a"
+    },
+    {
+      "path": "src/data/countries/tanzania.ts",
+      "sha256": "e5b2a1820c4bbdd1112c2ca0aaf5c2287d694ee58575bcb792e3b206af3fc5e9"
+    },
+    {
+      "path": "src/data/countries/thailand.ts",
+      "sha256": "b6588938f66cf61cb512cbb3c59b4c2bcadcc68c2c99391bb2185ed856e7598e"
+    },
+    {
+      "path": "src/data/countries/timor_leste.ts",
+      "sha256": "5ce560988ea9a6087fa97afeb9237240b015f5134b10cc285588b533e7b9b789"
+    },
+    {
+      "path": "src/data/countries/tonga.ts",
+      "sha256": "00c9a69570543f97a6f95268235ade86762834682e1cc74c6ad14bf02f5fd8d2"
+    },
+    {
+      "path": "src/data/countries/trinidad_and_tobago.ts",
+      "sha256": "1be9935f86b872d7fca80dd8ad98b2f365de0fd909ea8930800c107570164aa4"
+    },
+    {
+      "path": "src/data/countries/tunisia.ts",
+      "sha256": "95b0a00d4fd62046eb67bb25e6c0f99f1afa2b16d9b80902387d10e348089219"
+    },
+    {
+      "path": "src/data/countries/turkey.ts",
+      "sha256": "abb760d06c78a4ba16b4b90e63eadc5fdc79ca70d32c01bcbb6204f8c05c030f"
+    },
+    {
+      "path": "src/data/countries/turkmenistan.ts",
+      "sha256": "38534af2ea36e058ffde0b3776ef83b2ce344458f326c109583d28cc54729630"
+    },
+    {
+      "path": "src/data/countries/tuvalu.ts",
+      "sha256": "4b45ae33ec0d7e9415c208eaa9c324e4b96d26907797b3303e51254ddc41e9f0"
+    },
+    {
+      "path": "src/data/countries/uae.ts",
+      "sha256": "993a2641e73843f8f351fd1ee7108cb5bb3d81d344c134edd930aa61daf28bf4"
+    },
+    {
+      "path": "src/data/countries/uganda.ts",
+      "sha256": "cf52eb7721312a1573e6712528a20ec1b5d24bd08c72336b7e7c18b1e2cbdc62"
+    },
+    {
+      "path": "src/data/countries/ukraine.ts",
+      "sha256": "75fcbb4db8f90acd2b5f20a007936d39426ee699b9629afcd1f00235794f7251"
+    },
+    {
+      "path": "src/data/countries/uruguay.ts",
+      "sha256": "9471c24ff84db79d2cf347d25a26eb36d8df386871240895da52823cb6224743"
+    },
+    {
+      "path": "src/data/countries/usa.ts",
+      "sha256": "9e95fce4dd285f8d8f579b8ffeebfc883c2391be3efe04b24920c36b020901f7"
+    },
+    {
+      "path": "src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts",
+      "sha256": "19ba3e05bfcae1bba9733d3fa991d4063a20a44c1cd124c94f977a029b96523f"
+    },
+    {
+      "path": "src/data/countries/uzbekistan.ts",
+      "sha256": "7f4e84c94ff8f174307d6a7e3bdb70c367fd11bee5e5143ded76537e83dd1406"
+    },
+    {
+      "path": "src/data/countries/vanuatu.ts",
+      "sha256": "c7bf3557233a1b4e1c2d4fa9ff0f7881ba3c8eb3b053eb55cee847db99eca9d2"
+    },
+    {
+      "path": "src/data/countries/vatican.ts",
+      "sha256": "379e93210b5733759372f7d5743932e571c7ddc3193871f1b8dc818d0433cbc7"
+    },
+    {
+      "path": "src/data/countries/venezuela.ts",
+      "sha256": "527cc7c0ebff0a5b3edc58fad669dbbc1188170186977914fb6eb2793628293f"
+    },
+    {
+      "path": "src/data/countries/verifiedBookSupplements.ts",
+      "sha256": "b998a103f5ffec4f4ad8f90b0e86489c09a781bba2eed6a8ce0ad63d360201fa"
+    },
+    {
+      "path": "src/data/countries/vietnam.ts",
+      "sha256": "58162c7254bdb4229eceb5dc3766356312da17e30b15a12d726c253534109fe5"
+    },
+    {
+      "path": "src/data/countries/writerBiographyEnglishTranslations.ts",
+      "sha256": "c0aa56d541af7a1f1351a977d2dc2668ad4d67b7076e3c732613369590a3a26f"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviews.ts",
+      "sha256": "cbdd8742ed256d378599ed5055589622663704b84bb4805c7df358a898e0fcd9"
+    },
+    {
+      "path": "src/data/countries/writerBiographyLegacyCorrections.ts",
+      "sha256": "e51197937037be6671f802fb04d8b6cf9262e9914ab99350a88ed8abd07003e7"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch32.ts",
+      "sha256": "b63f83e6997cca57640ca5ba5fac23ea37b1a9ba2b542892488dfbb508aa0f10"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch33.ts",
+      "sha256": "ae00891417b45358b90d4157b962be0b5f9b7cecd89351b51f42ed7548962b07"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch34.ts",
+      "sha256": "caacee556c52a25cd4c3ece90322f370a7c1f7b8657fd2ca10831018523df6a2"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch35.ts",
+      "sha256": "7bd3a4d218c1716b0fdce27d9bc884fc8810c0a3d9e2d5ec682ea6f101335579"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch36.ts",
+      "sha256": "87f847bc01a844a8be80701254e7323e23deb5feac2c57db36adc6546164f83c"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch37.ts",
+      "sha256": "ea3f8daa1f4ab8663b9cb430421c5bedab605da0f74c825540f3561e74d7cfdd"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch38.ts",
+      "sha256": "48338d4c06e7ebf0e31658c11fba4c4fd8b5d73b858bc5cd1265e1216a7c49d8"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch39.ts",
+      "sha256": "67543f7a4702999155378dc8596ca588117d6cd8c70a52281038102f579f2ef2"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch40.ts",
+      "sha256": "f60f9b6c49d355c109fc7fbb76fec89c48b8df6f5c50d7523df92a7a452e06da"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch41.ts",
+      "sha256": "4961011577f92e0b2f5d21c58e8a9d367088e46259080883f0f858bb5c1fb287"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch42.ts",
+      "sha256": "1350170f9aad4ee9f90ffa6420e1d188ad0325b23ae1df3fe5bfa1edfd21ad16"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch43.ts",
+      "sha256": "e91fc5b9211472df740c7a07ed0ef53d913ec27afefd666fb5cfd0adad6dae3a"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch44.ts",
+      "sha256": "4f69e924ef365fe35207ae4edd4b153781382bb7db4b7fb4bc05c66295591239"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch45.ts",
+      "sha256": "f6ae97c3e7d2e621c8e334f718d7fdfcb4f46b3d602fd5faf99103f11c9b7ba9"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch46.ts",
+      "sha256": "598fb7204d0d26314dd6bafd04a355857b8ad5573302662a82f4603e4ebbf21b"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch47.ts",
+      "sha256": "b36a56dac9a8afb95385e49e256c881660f7cc0e16ae7cf0189cc711a0a13593"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch48.ts",
+      "sha256": "2e7263c346fa6b5df7f867853245275dce68c0c2b60bca38e99b0c084325798f"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch49.ts",
+      "sha256": "e9283805a30a4482f20c2d55f34f26b49a1b9b982546ca592483a23c9c474af5"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch50.ts",
+      "sha256": "aa8855ea68761765907f99a7c131e57b16cc793a44a3e4f5be89f0245c8655b7"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch51.ts",
+      "sha256": "06fc7a617a878a89289bbdb7c7dcbdff4ad0ab2c6b69131196cdac8bd8e25fcf"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch52.ts",
+      "sha256": "5df377d35611109b5151962423af0a98cafee9ffcb06bd36c1a3acab1e481000"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch53.ts",
+      "sha256": "2cc765275e6a68c18ffe5ec0998d64dd04496ba0269598013e356d00a78d18ab"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch54.ts",
+      "sha256": "2b3ed74971287200a66edf884526821855e89e5e209d182c18e8f7c0a2aa31dd"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch55.ts",
+      "sha256": "a81b41fa271d5b1df0fca43c06c2e48e2d06574eb080f74051f9be9d065bfbfe"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch56.ts",
+      "sha256": "bebd63722ece4e49382a367254e8b90ad220b693958bb7814ddc630ce55dcf40"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch57.ts",
+      "sha256": "9fe7e7ae3d880356ad051935d4a0c8027daa6a9d655b57e03698ec1d22e2c5c4"
+    },
+    {
+      "path": "src/data/countries/writerBiographyResearch.ts",
+      "sha256": "ea7ea72e52e5a148b8987f866b1d67dccb68429ddddb7037bab5a250389241ff"
+    },
+    {
+      "path": "src/data/countries/writerBiographyResearchBatch01.ts",
+      "sha256": "180da43e2eaed4206df302fa819d75d79fc56c7b34c00fb54ffd50c0828657f1"
+    },
+    {
+      "path": "src/data/countries/writerBiographyResearchBatches.ts",
+      "sha256": "a68f8d3ec00bcc3b47b8801387c9eea287aec0f9508c476626da2be42296e6a3"
+    },
+    {
+      "path": "src/data/countries/yemen.ts",
+      "sha256": "6591e80ec23313a4adbf210de0c8779fe8f15c3ffba36641cfffbd25a57fd5b3"
+    },
+    {
+      "path": "src/data/countries/zambia.ts",
+      "sha256": "36f6e3754088a5ab31c60d6f3fe60f3d5804f22586dd7812620dbd9f86f0a677"
+    },
+    {
+      "path": "src/data/countries/zimbabwe.ts",
+      "sha256": "ba75274d847589426aaedbcf1358a320f91760fc0fe3bcbe532761c014a3b917"
+    },
+    {
+      "path": "src/data/countryCapitalReview.mjs",
+      "sha256": "8c6669d72245f172bf0d72b46c4b8a53744e22ba8fc7100285904394c7a226da"
+    },
+    {
+      "path": "src/data/countryLocalization.ts",
+      "sha256": "74017f5fff13816c8c25b5d975314f1911c55ebd1197ee58e794a854198cc6bd"
+    },
+    {
+      "path": "src/data/userSuppliedBookCovers.ts",
+      "sha256": "2f0c590c1d0c61ae73eeb63980ef79dd2f35534e03f9f71273267601b05d1e70"
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "sha256": "4d0097d6d0c450798d720076457ab901a5e2ee48b2ac3526f5d0b548ccd12086"
+    },
+    {
+      "path": "src/host/bookyDialogueRegistry.ts",
+      "sha256": "3329ed944937ef8f7b9b892641ed40285a166c3944d6817ddda0bc145daffa65"
+    },
+    {
+      "path": "src/host/bookyDossierCharacter.ts",
+      "sha256": "746ed791967c25d656cb603a61b518c611e6875e868b5fa06595d8b7dec00d87"
+    },
+    {
+      "path": "src/host/bookyJourney.ts",
+      "sha256": "eda587e3611f86a0ff03b1c16aea88a16b0ca4120182a3f2f9952d1c128f3d5a"
+    },
+    {
+      "path": "src/host/bookyJourneyActivity.ts",
+      "sha256": "600d057407eb8eff106d98c83f3e3fe16c63f026befff90edf6aaae519096e6b"
+    },
+    {
+      "path": "src/host/bookyJourneyCharacter.ts",
+      "sha256": "09e90c63b1c19364c8f137c2ead35227427af03edad9fa03015bfc4c42927fb6"
+    },
+    {
+      "path": "src/host/bookyJourneyFact.ts",
+      "sha256": "5ba00294bba82bf1dc2a3d85891116565afc39859f1b94fcadfa49ad767ebcd7"
+    },
+    {
+      "path": "src/planet/contentExportHash.ts",
+      "sha256": "05e24bf089e59bf8015e74d8adc9b96147abbc665596920917e8ca2fd5dc7c46"
+    },
+    {
+      "path": "src/utils/countryFlag.ts",
+      "sha256": "0a52e22624d93da3cab8a9f88b90920770bbb0e7091ebe8d8ac592d4ab798a9b"
+    }
+  ],
+  "stdinSha256": "b02b4cb9ae05ea6ee1f8f5cfea6ef1864550fb5a4c3a1ce63022c45d1dac3100",
+  "bundleSha256": "655cbe828108aa1ed3fd609c83243a05cd61a55033178f7e9d6dc6ee814a515d",
+  "currentSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/source-manifest.json",
+    "sha256": "1da72fb2b7948443c88ef882f50cdc32adc33a9e2d6e41cf61328a3b46aff744"
+  }
+}

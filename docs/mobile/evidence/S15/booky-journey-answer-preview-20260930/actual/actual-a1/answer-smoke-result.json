@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "actualStaticCatalog": true,
+  "canonical": {
+    "countries": 10,
+    "writers": 30,
+    "works": 46
+  },
+  "selected": {
+    "countryId": "austria",
+    "writerId": "franz_kafka",
+    "workId": "openlibrary-works-ol498556w"
+  },
+  "evaluatedWorkCount": 1,
+  "evaluatedChoiceCount": 2,
+  "ineligibleSelectedWorkCount": 0,
+  "rejectedSelectedWorkCount": 0,
+  "reason": null,
+  "checks": {
+    "wrongVerdict": true,
+    "rightVerdict": true,
+    "exactReplyBinding": true,
+    "unapprovedDraftOnly": true
+  },
+  "fullCatalogValidationRepeated": false,
+  "retainedD224Assessment": {
+    "source": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-activity-review/actual-a2/catalog-smoke-result.json",
+      "sha256": "d9b8de2d27cb81e736aff3a9ca84ff736b50d97f93691ceb0a34fc5ac2638624"
+    },
+    "canonical": {
+      "countries": 10,
+      "writers": 30,
+      "works": 46
+    },
+    "supportedWorkCount": 18,
+    "rejectedWorkCount": 0,
+    "ineligibleWorkCount": 28,
+    "reasonCounts": {
+      "credited-author-missing-bilingual-label": 28
+    }
+  },
+  "currentSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/source-manifest.json",
+    "sha256": "1da72fb2b7948443c88ef882f50cdc32adc33a9e2d6e41cf61328a3b46aff744"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/answer-smoke-source-manifest.json",
+    "sha256": "5546e5fcd46075e6f492a6c81345eebc4a366094244a65029d581b4977c2819a"
+  },
+  "sourceBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/answer-smoke-source-before.json",
+    "sha256": "c0c1f61c0a6788f61e95561902190662ffef29db48cd53a8d15f35703342580f"
+  },
+  "sourceAfter": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/answer-smoke-source-after.json",
+    "sha256": "c0c1f61c0a6788f61e95561902190662ffef29db48cd53a8d15f35703342580f"
+  },
+  "sourceInputsUnchanged": true,
+  "dependencyInputCount": 5,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/answer-smoke.mjs",
+    "sha256": "db242d31ddc7e4c90d26b04e05a5a233445d3ad7c5fbf0871ed864cbbdac1dc7"
+  },
+  "authenticatedAdminSession": false,
+  "networkOrDatabaseRequests": false,
+  "exportedToProduction": false,
+  "humanReviewed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

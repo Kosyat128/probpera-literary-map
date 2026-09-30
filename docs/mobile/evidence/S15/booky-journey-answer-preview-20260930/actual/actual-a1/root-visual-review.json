@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/source-manifest.json",
+    "sha256": "1da72fb2b7948443c88ef882f50cdc32adc33a9e2d6e41cf61328a3b46aff744"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/browser-result.json",
+    "sha256": "a700ebc91a313ad6236748a13e407cf1fdbab8080534e3a7131984cf44c564ea"
+  },
+  "directRootViews": 6,
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "72014ee464796fae3643074e6307187dbe05e34bab1daed3d96f6820a36f4801",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog, local admin editor and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog, local admin editor and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "b04fa35624cb0208b139e08181a0742ef490e4f1504edff041078af07aac2802",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog, local admin editor and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "b4500fd3e2b5a4c6450f93b6a707ad93702ecb9892b46b2aa7dcd63cd996b87a",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog, local admin editor and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "20aa8575e2ceb40e1f1d3e9efcffc280f3687583aeececf9142c14ca10acf744",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog, local admin editor and mocked action transport."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "b32769eb3ffc2f43d6771b1db33eb195186bcfa27cbd825d614f31db6f225230",
+      "scope": "Original component browser capture directly viewed by root; synthetic catalog, local admin editor and mocked action transport."
+    }
+  ],
+  "findings": [
+    "RU and EN activity questions precede selectable author choices; selected state and explicit Check/Reset are readable.",
+    "Calm wrong/correct feedback fits320px without overlap; EN keyboard focus ring is visible on Check.",
+    "Existing no-activity editor/preview capture composition remains readable in narrow and desktop viewports."
+  ],
+  "limitations": [
+    "Viewport slices do not show every control simultaneously; full-page and native device design acceptance is not claimed.",
+    "These are actual admin editor component captures, not screenshots of the mobile app or authenticated staff shell.",
+    "Desktop import failure is the intentional read-error fixture; current edits remain preserved."
+  ],
+  "installedDeviceTested": false,
+  "authenticatedAdminSession": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
