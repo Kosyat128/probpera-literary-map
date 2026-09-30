@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "predecessorDocsCommit": "3f5dab9618ed040fa86e071af8f71accc12a73c9",
+  "files": [
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "sha256": "27204117d10b444655a00e50cf9f486dedae3682b88a98e3d18f44abca7cb408"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "sha256": "a47b6c0d3679737bee0c22b7aa276de63a813534e2c66714347d4bb646de7fae"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "sha256": "134d10c6ebf5724325c0c89f19d58e29f639d823dde327cc9a8dc0395f5a8606"
+    },
+    {
+      "path": "tests/host/booky-journey-authoring.spec.mjs",
+      "sha256": "27c98852e9389459fcce731e34cd6c29e01c2b361573e2c421b8fb64f992b65e"
+    }
+  ]
+}

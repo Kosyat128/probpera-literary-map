@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "path": "tests/host/booky-journey-authoring.spec.mjs",
+  "beforeSha256": "27c98852e9389459fcce731e34cd6c29e01c2b361573e2c421b8fb64f992b65e",
+  "afterSha256": "24314b3a761ce05c28bebe884dfc621de23ec6152085f1588bac0af03e083509",
+  "originalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a1/source-manifest.json",
+    "sha256": "b15d386b58589f87316b43beb43a91da17d07a7a5715cbb9f4f796630a9bd289"
+  },
+  "finalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/source-manifest.json",
+    "sha256": "3a8786ad17ed5e192b9958997bc7f70209b7bb5f16daf19661ad5b52eec9da67"
+  },
+  "failedBrowser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a1/browser-result.json",
+    "sha256": "72da58988f24eec3de2227bbbf2ef359f4e9ae549be02e8baac335b32334db2e"
+  },
+  "applicationSourceUnchanged": true,
+  "typecheckRerun": false,
+  "unitRerun": false,
+  "catalogSmokeRerun": false,
+  "reason": "Use exact textbox roles and accessible names for three imported fact-body assertions in the new case; preserve both earlier cases and all application code.",
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/fix-browser-and-check.mjs",
+    "sha256": "ff8321acd19f34843c79c9366d9d065f75f8e885da42807c3c5cc6e17f6e3cf3"
+  }
+}

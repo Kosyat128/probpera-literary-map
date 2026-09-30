@@ -1,0 +1,49 @@
+
+Running 3 tests using 1 worker
+··F
+
+  1) tests\host\booky-journey-authoring.spec.mjs:658:1 › optional bilingual work fact preserves authored source metadata through strict local export and reopen 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Текст факта (RU)', { exact: true })
+    Expected: "Это вымышленный текст для проверки редактора.
+    Это не проверенный литературный факт."
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" with timeout 10000ms
+      - waiting for getByLabel('Текст факта (RU)', { exact: true })
+
+
+      827 |   for (const locale of ['ru', 'en']) {
+      828 |     await expect(page.getByLabel(`Название факта (${locale.toUpperCase()})`, { exact: true })).toHaveValue(copy[locale].title);
+    > 829 |     await expect(page.getByLabel(`Текст факта (${locale.toUpperCase()})`, { exact: true })).toHaveValue(copy[locale].body);
+          |                                                                                             ^
+      830 |     for (let index = 0; index < copy[locale].sources.length; index++) {
+      831 |       for (const [name, key] of [['ID источника', 'id'], ['HTTPS URL источника', 'url'], ['Дата обращения к источнику', 'accessedAt']])
+      832 |         await expect(sourceField(name, index + 1, locale)).toHaveValue(copy[locale].sources[index][key]);
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\host\booky-journey-authoring.spec.mjs:829:93
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\host\booky-journey-authoring.spec.mjs:658:1 › optional bilingual work fact preserves authored source metadata through strict local export and reopen 
+  2 passed (22.4s)

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "actualStaticCatalog": true,
+  "canonical": {
+    "countries": 10,
+    "writers": 30,
+    "works": 46
+  },
+  "selected": {
+    "countryId": "austria",
+    "writerId": "franz_kafka",
+    "workId": "openlibrary-works-ol498556w"
+  },
+  "evaluatedWorkCount": 1,
+  "evaluatedChoiceCount": 2,
+  "noFactDraftNodeCount": 4,
+  "noFactDraftDialogueCount": 8,
+  "factDraftNodeCount": 5,
+  "factDraftDialogueCount": 10,
+  "registryDraftAdmissionCount": 10,
+  "comboDraftNodeCount": 6,
+  "comboDraftDialogueCount": 12,
+  "ineligibleSelectedWorkCount": 0,
+  "rejectedSelectedWorkCount": 0,
+  "reason": null,
+  "checks": {
+    "retainedNoFactDownloadAuthenticated": true,
+    "currentNoFactConstruction": true,
+    "factParserRoundTrip": true,
+    "factContextsAndBilingualBindings": true,
+    "currentWorkAnchor": true,
+    "independentSyntheticCitations": true,
+    "registryDraftAdmissions": true,
+    "unapprovedDraftOnly": true,
+    "comboParserRoundTrip": true,
+    "comboActivityValidation": true,
+    "wrongVerdict": true,
+    "rightVerdict": true,
+    "exactReplyBinding": true
+  },
+  "fullCatalogValidationRepeated": false,
+  "retainedD225AnswerSmoke": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/answer-smoke-result.json",
+    "sha256": "240f153708113d57ad35b0586f1b7efd8127690916f31919b82b284b7ea8dda6"
+  },
+  "retainedD225NoFactDownload": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-answer-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/synthetic-journey-draft.json",
+    "sha256": "7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5"
+  },
+  "legacyByteCompatibilityEvidenceOwner": "unchanged-browser-case",
+  "currentSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/source-manifest.json",
+    "sha256": "3a8786ad17ed5e192b9958997bc7f70209b7bb5f16daf19661ad5b52eec9da67"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/fact-smoke-source-manifest.json",
+    "sha256": "dde9ac87f2a622aa233cf3e6649a94ce82d58311a57728cdf7a42254b8c303db"
+  },
+  "sourceBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/fact-smoke-source-before.json",
+    "sha256": "7da3678b20739e6b7ef06cadc54f9cb5b480ca974b5e9a134b81e495155d5eea"
+  },
+  "sourceAfter": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/fact-smoke-source-after.json",
+    "sha256": "7da3678b20739e6b7ef06cadc54f9cb5b480ca974b5e9a134b81e495155d5eea"
+  },
+  "sourceInputsUnchanged": true,
+  "dependencyInputCount": 5,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/fact-smoke.mjs",
+    "sha256": "abc664777458a5547441c549534ec0d1985f1329da1f49b3337aeac0264f82c2"
+  },
+  "syntheticCitationMetadata": true,
+  "factualClaimsVerified": false,
+  "sourcesFetched": false,
+  "authenticatedAdminSession": false,
+  "networkOrDatabaseRequests": false,
+  "exportedToProduction": false,
+  "humanReviewed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
