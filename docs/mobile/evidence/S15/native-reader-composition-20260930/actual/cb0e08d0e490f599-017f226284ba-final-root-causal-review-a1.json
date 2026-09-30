@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "recordedAt": "2026-09-30T15:54:52.425Z",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a3/bound-a1/source-manifest.json",
+    "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c",
+    "fileCount": 1665
+  },
+  "browserResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/browser-a1/result.json",
+    "sha256": "3846a02c57a6d32fbbafb3aafc823815c63a52ff8eb1aeb8e4b142131daf801e"
+  },
+  "stageAccepted": false,
+  "releaseReady": false,
+  "installedDevice": false,
+  "kind": "root-review-of-actual-RU-EN-evidence",
+  "cases": [
+    {
+      "language": "ru",
+      "evidence": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a3\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\booky-writer-filter-recovery-source-evidence-bd647416932323e43092051db69db4670b130934.json",
+        "sha256": "844975d5afba924853f921a0ff8ee76025854ceb14642c1f980f69d7662f8396"
+      },
+      "readerComposition": {
+        "position": "expanded",
+        "catalogVisible": false,
+        "navigationVisible": false,
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "titleHierarchy": {
+          "title": "Преступление и наказание",
+          "originalTitles": []
+        },
+        "visibleControls": [
+          {
+            "label": "Избранное",
+            "height": 50,
+            "width": 161
+          },
+          {
+            "label": "＋Добавить на полку",
+            "height": 50,
+            "width": 161
+          }
+        ]
+      },
+      "catalogNavigationSteps": [
+        {
+          "name": "first boundary",
+          "value": 1,
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "ready": true,
+          "fullyVisible": true,
+          "titleHit": true,
+          "buttonHit": true,
+          "renderedCards": 13,
+          "scrollTop": 18,
+          "clientHeight": 480
+        },
+        {
+          "name": "next increments",
+          "value": 2,
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "451° по Фаренгейту",
+          "ready": true,
+          "fullyVisible": true,
+          "titleHit": true,
+          "buttonHit": true,
+          "renderedCards": 13,
+          "scrollTop": 87,
+          "clientHeight": 480
+        },
+        {
+          "name": "previous restores",
+          "value": 1,
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "ready": true,
+          "fullyVisible": true,
+          "titleHit": true,
+          "buttonHit": true,
+          "renderedCards": 13,
+          "scrollTop": 18,
+          "clientHeight": 480
+        },
+        {
+          "name": "last boundary",
+          "value": 46,
+          "key": "russia:chekhov:the-black-monk",
+          "title": "Черный монах",
+          "ready": true,
+          "fullyVisible": true,
+          "titleHit": true,
+          "buttonHit": true,
+          "renderedCards": 46,
+          "scrollTop": 9183,
+          "clientHeight": 480
+        },
+        {
+          "name": "previous decrements",
+          "value": 45,
+          "key": "russia:chekhov:the-man-in-a-case",
+          "title": "Человек в футляре",
+          "ready": true,
+          "fullyVisible": true,
+          "titleHit": true,
+          "buttonHit": true,
+          "renderedCards": 46,
+          "scrollTop": 9183,
+          "clientHeight": 480
+        },
+        {
+          "name": "first boundary restored",
+          "value": 1,
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "ready": true,
+          "fullyVisible": true,
+          "titleHit": true,
+          "buttonHit": true,
+          "renderedCards": 46,
+          "scrollTop": 18,
+          "clientHeight": 480
+        }
+      ],
+      "preferencesAndGlobePreserved": true,
+      "savedContentPreserved": true,
+      "readerAutomaticHelpRetirementVerified": true,
+      "readerExplicitReopenSurvivesInactiveViews": true,
+      "readerSameBookReentryVerified": true
+    },
+    {
+      "language": "en",
+      "evidence": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a3\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\attachments\\booky-writer-filter-recovery-source-evidence-e984eac9dfd093d36f1511741c60416b592f98f0.json",
+        "sha256": "e8a87c5a611bd6e8bd560a2d6591d723b618902db5f6e4d08585ebccc103b389"
+      },
+      "readerComposition": {
+        "position": "expanded",
+        "catalogVisible": false,
+        "navigationVisible": false,
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "titleHierarchy": {
+          "title": "Crime and Punishment",
+          "originalTitles": [
+            "Преступление и наказание"
+          ]
+        },
+        "visibleControls": [
+          {
+            "label": "Favourites",
+            "height": 50,
+            "width": 126
+          },
+          {
+            "label": "＋Add to shelf",
+            "height": 50,
+            "width": 126
+          }
+        ]
+      },
+      "catalogNavigationSteps": [],
+      "preferencesAndGlobePreserved": true,
+      "savedContentPreserved": true,
+      "readerAutomaticHelpRetirementVerified": true,
+      "readerExplicitReopenSurvivesInactiveViews": true,
+      "readerSameBookReentryVerified": true
+    }
+  ],
+  "tests": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "limitations": "Browser-rendered native host emulation; no installed-device or complete stage acceptance."
+}

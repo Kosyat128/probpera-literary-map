@@ -1,0 +1,27 @@
+[
+  {
+    "before": "      const observeStep=async(name,value)=>{",
+    "after": "      // Native navigation must reveal the real card, not only update a counter.\n      const measureCurrentCard=key=>page.evaluate(key=>{\n        const catalog=document.querySelector('.native-planet-panel .book-shelf-frame__catalog');\n        const button=[...(catalog?.querySelectorAll('.archive-book-detail[data-book-key]')??[])].find(node=>node.dataset.bookKey===key),card=button?.closest('.archive-book-card'),heading=card?.querySelector('h3');\n        if(!catalog||!button||!card||!heading)return {key,ready:false,present:false};\n        const rect=node=>{const r=node.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height};};\n        let clip={left:0,top:0,right:innerWidth,bottom:innerHeight};\n        for(let parent=card.parentElement;parent;parent=parent.parentElement){const style=getComputedStyle(parent),r=rect(parent);if(/auto|scroll|hidden|clip/.test(style.overflowX)){clip.left=Math.max(clip.left,r.left+parent.clientLeft);clip.right=Math.min(clip.right,r.left+parent.clientLeft+parent.clientWidth);}if(/auto|scroll|hidden|clip/.test(style.overflowY)){clip.top=Math.max(clip.top,r.top+parent.clientTop);clip.bottom=Math.min(clip.bottom,r.top+parent.clientTop+parent.clientHeight);}}\n        const box=rect(card),fullyVisible=box.width>0&&box.height>0&&box.left>=clip.left-1&&box.right<=clip.right+1&&box.top>=clip.top-1&&box.bottom<=clip.bottom+1;\n        const actualHit=node=>{const r=rect(node),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);return !!hit&&node.contains(hit);};\n        const titleHit=actualHit(heading),buttonHit=actualHit(button);\n        return {key,present:true,title:heading.textContent.trim(),card:box,clip,catalog:{rect:rect(catalog),scrollTop:catalog.scrollTop,clientHeight:catalog.clientHeight,scrollHeight:catalog.scrollHeight,renderedCards:catalog.querySelectorAll('.archive-book-card').length},fullyVisible,titleHit,buttonHit,ready:fullyVisible&&titleHit&&buttonHit};\n      },key);\n      const observeStep=async(name,value)=>{",
+    "label": "Measure real card and every clipping ancestor without scrolling or assigning state"
+  },
+  {
+    "before": "many.steps.push({name,value,focusedBookKey:current.history.context.focusedBookKey,layout:current});",
+    "after": "let visual=null;await expect.poll(async()=>{visual=await measureCurrentCard(current.history.context.focusedBookKey);return visual.ready;},{message:name+' reveals the actual focused card and its usable detail button'}).toBe(true);many.steps.push({name,value,focusedBookKey:current.history.context.focusedBookKey,layout:current,visual});",
+    "label": "Assert real visible card for all six navigation steps including first and last"
+  },
+  {
+    "before": "      await capture(fixture,testInfo,'native-reader-composition-many-books-ru.png'",
+    "after": "      await input.expose(navigation.locator('.book-shelf-navigation__actions > button').last(),'frame the full native catalog footer');\n      await expect.poll(async()=>(await measureCurrentCard(many.steps.at(-1).focusedBookKey)).ready,{message:'Focused card stays usable with the complete footer framed'}).toBe(true);\n      await capture(fixture,testInfo,'native-reader-composition-many-books-ru.png'",
+    "label": "Frame the complete footer through the existing genuine-touch helper before capture"
+  },
+  {
+    "before": "Real observed N>1 catalog keeps bounded trusted previous/next and native range boundary semantics",
+    "after": "Real observed N>1 catalog reveals the actual focused card with bounded trusted previous/next and native range boundary semantics",
+    "label": "State the stronger actual visibility contract"
+  },
+  {
+    "label": "Remove identical RU subtitle while retaining distinct EN original title",
+    "before": "    foreground.composition=await writerReaderComposition(page);",
+    "after": "    foreground.composition=await writerReaderComposition(page);\n    const originalSubtitle=selectedReader.locator('.book-original-title');\n    if(language==='ru')await expect(originalSubtitle,'Identical original title does not duplicate the native reader heading').toHaveCount(0);\n    else await expect(originalSubtitle,'Distinct original title remains visible in English').toBeVisible();\n    foreground.composition.titleHierarchy={title:await selectedReader.locator('.book-detail-copy h3').innerText(),originalTitles:await originalSubtitle.allTextContents()};"
+  }
+]

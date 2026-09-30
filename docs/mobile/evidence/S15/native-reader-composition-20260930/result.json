@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "status": "BOUNDED_NATIVE_READER_COMPOSITION_VALIDATED",
+  "recordedAt": "2026-09-30T16:00:31.589Z",
+  "decision": "D219",
+  "sourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "runtimeSourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "buildSourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "predecessorDocsCommit": "b87b343d3cc1decf970ca3fa9da2dc38d941b302",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/48e8db3dcaeeab54-ef433fdaadae-source-manifest.json",
+    "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "changedSourcePaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/host.css",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "productionImplementationChanged": true,
+  "fixtureOnly": false,
+  "runtimeUnchanged": false,
+  "sourceCommitReceipt": {
+    "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/c6de4f341bd12413-cae482abc783-actual-source-commit-a1.json",
+    "sha256": "c6de4f341bd12413321b232f02bcbf01b593c2b319207a0b45c00236656edaac"
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/1f07721b2b05924b-09b0ee10dfcf-entry.json",
+    "sha256": "1f07721b2b05924bca77c13f89849c5188c2cea9ff0a35e40be211152f5c46ef"
+  },
+  "runs": {
+    "static": {
+      "result": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/4d4c2c4c4f5fc0d4-de2987e2f038-result.json",
+        "sha256": "4d4c2c4c4f5fc0d4d8ab0a17a6803f6dd87480d7e330d19ac2d0384c0ba0af3b"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/48e8db3dcaeeab54-ef433fdaadae-source-manifest.json",
+        "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/f3f5fce967693c8b-75d650f367ff-execution.json",
+        "sha256": "f3f5fce967693c8b2edbd9f561cea028c7f3ea795e81b3c908363a41c626a53c"
+      },
+      "fixtureDeltaSinceStatic": []
+    },
+    "browser": {
+      "result": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/3846a02c57a6d32f-432a48ca196a-result.json",
+        "sha256": "3846a02c57a6d32fbbafb3aafc823815c63a52ff8eb1aeb8e4b142131daf801e"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/e1372b43e321695d-e69626eed1e0-playwright.json",
+        "sha256": "e1372b43e321695da201d9a5060fb92d371a1f78c0066b2c06aca07baed1f326"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/0c80217d60a6e127-d54ed116db7b-execution.json",
+        "sha256": "0c80217d60a6e12761d82f3301c56cdc1ae0baae65c094e041a68ee03c55f4f7"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "singleAcceptedTwoCaseRun": true
+    }
+  },
+  "unitRerun": false,
+  "staticChecks": 1,
+  "browserCases": 2,
+  "imageCount": 7,
+  "directRootViews": 7,
+  "images": [
+    {
+      "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/2c7885e6ea2c1dd5-546ad14080ea-booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5",
+      "filename": "booky-writer-filter-recovery-ru-filtered-empty.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/49fbc13076501984-9d6a89c227aa-booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0",
+      "filename": "booky-writer-filter-recovery-ru-recovered.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/76777571f8907c35-de170414b21c-booky-writer-filter-recovery-ru-reader-foreground.png",
+      "sha256": "76777571f8907c35e31a0e587e23d8270c95ee20fb9f0b626d389c3d26cf6fe6",
+      "filename": "booky-writer-filter-recovery-ru-reader-foreground.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/ddc1a4e1995a90b9-368c2d05f516-native-reader-composition-many-books-ru.png",
+      "sha256": "ddc1a4e1995a90b95c64aff52330d760ea6857fb09d56ebf00db009ea771f1c6",
+      "filename": "native-reader-composition-many-books-ru.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/7909b7d908986ada-34b57993b3d5-booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d",
+      "filename": "booky-writer-filter-recovery-en-filtered-empty.png",
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/624d4b93f8e5fbd6-cc8783c0f1dd-booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211",
+      "filename": "booky-writer-filter-recovery-en-recovered.png",
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/6f884752958e4f82-350aa75bf92c-booky-writer-filter-recovery-en-reader-foreground.png",
+      "sha256": "6f884752958e4f8240f40c51ce5598eda1881aef2a87230f0347982c1f63f2bc",
+      "filename": "booky-writer-filter-recovery-en-reader-foreground.png",
+      "width": 320,
+      "height": 844
+    }
+  ],
+  "rootReview": {
+    "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/adb79a9a607cc533-0f51cff6c343-final-root-visual-review-a1.json",
+    "sha256": "adb79a9a607cc533a320027927c770e5ad4ce68c3081c544914c6084e53bcabf"
+  },
+  "causalReview": {
+    "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/cb0e08d0e490f599-017f226284ba-final-root-causal-review-a1.json",
+    "sha256": "cb0e08d0e490f5991ad3ebef04904145436ae7ddda47e918aeed043d0e4d072e"
+  },
+  "priorDiagnostics": [
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/79b79883081adec8-8fd7dddc3a2e-result.json",
+        "sha256": "79b79883081adec8a810b9a8200ae5482074c82bbe3f0e20109ad763be41c578"
+      },
+      "review": null,
+      "reason": "RU native range click fixture assertion failed; overall run 1PASS/1FAIL, EN passed at its original snapshot.",
+      "originalIdentityRetained": true,
+      "acceptedAsFinal": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/diagnostics/4d77f95e1b4fbbbb-23b9acf29d44-result.json",
+        "sha256": "4d77f95e1b4fbbbbac98f943b593de9e9ab0c1400d72018af41d8e1e2926f5ab"
+      },
+      "review": null,
+      "reason": "Aggregate selected EN from a1 and fresh RU PASS, but root direct view found catalog at45/46 still displaying first cards; superseded production, not final visual acceptance.",
+      "originalIdentityRetained": true,
+      "acceptedAsFinal": false
+    }
+  ],
+  "failedBuildAttempts": [],
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/builds/pwa/dea9a7c1ed77a843-764081645626-result.json",
+    "sha256": "dea9a7c1ed77a84351522de38061d947d62b698816c43d43bd753ed3711623f5"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/builds/android/7b914b1861be377e-cfaa46e8b250-result.json",
+    "sha256": "7b914b1861be377edc71696a2ee291314ec80d25f63c91c9f83d71ce4d50d978"
+  },
+  "currentBuildAuthentication": [
+    {
+      "kind": "pwa",
+      "result": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/builds/pwa/dea9a7c1ed77a843-764081645626-result.json",
+        "sha256": "dea9a7c1ed77a84351522de38061d947d62b698816c43d43bd753ed3711623f5"
+      },
+      "sourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+      "buildId": "8381cbd3d922515ffcf063bf4841394ac065fbcf288fdeccba940c70f463ffbe",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/48e8db3dcaeeab54-ef433fdaadae-source-manifest.json",
+        "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c"
+      },
+      "authenticationRetainedFromBuilder": true,
+      "payloadHashesRecheckedAtCheckpoint": false
+    },
+    {
+      "kind": "android",
+      "result": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/builds/android/7b914b1861be377e-cfaa46e8b250-result.json",
+        "sha256": "7b914b1861be377edc71696a2ee291314ec80d25f63c91c9f83d71ce4d50d978"
+      },
+      "sourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+      "buildId": "a38c4247d5ec6d4511903b7f099d0ce89cec2c24c924b8431c51d336fcb82573",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/actual/48e8db3dcaeeab54-ef433fdaadae-source-manifest.json",
+        "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c"
+      },
+      "authenticationRetainedFromBuilder": true,
+      "payloadHashesRecheckedAtCheckpoint": false
+    }
+  ],
+  "payloadHashesRechecked": false,
+  "checkpointProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/checkpoint-review-a2/checkpoint.mjs",
+    "sha256": "0a79501cfbd529cc19bd29bb517f804e3cb5e70699d3dcac61afde7ee970d12b"
+  },
+  "checkpointBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/checkpoint-review-a2/bound-a1/binding.json",
+    "sha256": "4c04e5b9828844e6b903334fae6b7b36b50ce986ea8c128c435713e6cb303bfe"
+  },
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "validatedScope": "Implemented bounded native mobile reader/catalog composition in the existing Archive and CSS owners: the expanded reader suppresses duplicate catalog presentation and selected readers hide inactive position controls. Explicit native footer navigation loads the required batch and reveals the actual focused card; the catalog viewport matches the workspace height. An identical RU original-title subtitle is omitted in native layout while distinct EN text remains. Reader body, history, selected work, progress and explicit Booky help remain canonical. Actual final TS and two RU/EN App cases, seven root direct image views and fresh source-bound PWA/Android-dev records authenticate the final runtime. Earlier range-fixture and catalog visual attempts remain diagnostics with their original source identities. No previous PASS is transferred to changed runtime. Only PLANETKA-005/UX-006 evidence is appended; statuses, historical caches and acceptance gates remain unchanged.",
+  "nextAction": "Assess the existing RU Booky two-HTTP503 case from s15-booky-exhausted-retry-assessment-review/execution-outline-a1/outline.json. Retain the actual error and Return behavior, restore the original compiled bytes, then use explicit trusted touch Retry. Its outcome is unknown until observed. Reuse one existing case and its one original PNG; this fixture-only assessment does not require another runtime build. Preserve D219 source/build proof, context revision6 and all34 unapproved/unavailable drafts; no acceptance is inferred before actual evidence.",
+  "fullDesignAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "productionJourneysEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

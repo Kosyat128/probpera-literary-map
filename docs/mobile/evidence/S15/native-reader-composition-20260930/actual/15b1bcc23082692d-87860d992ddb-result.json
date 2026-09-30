@@ -1,0 +1,52 @@
+{
+  "pass": true,
+  "predecessorDocsCommit": "c4ced26a273d9a95b0a4533f6bcf30ea60f37238",
+  "contextRuntimeCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "contextSource": {
+    "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+    "sourceVersion": 6,
+    "sourceSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/source-manifest.json",
+    "sha256": "4c36863d98abcc6c9904873c4672ee43e67977a9e5ef10ceeba92109382aaef6"
+  },
+  "binding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/draft-a2/source-bindings.json",
+    "sha256": "7a27fa8e149a5db4a20fd5d6b58b78e1a8ec64fc98b2272ff4948491a3816fe3"
+  },
+  "changedPaths": [
+    "scripts/mobile/verify-booky-navigation-drafts.mjs",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyNavigationDrafts.ts"
+  ],
+  "unit": {
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/vitest.json",
+      "sha256": "7eb319c1487bb1691a4f549338c3c8c5711b75bd15d8bc1e68133907a39685eb"
+    },
+    "execution": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/unit-execution.json",
+      "sha256": "224930805a3d8f27da642eb2352d68fddc8ad1b1132229479d7974f97e00d6b9"
+    },
+    "passed": 17
+  },
+  "inventory": {
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/inventory.json",
+      "sha256": "fb5db4cc93c0a236b198338c91eebfd478a0299c7046c3590b13c74eb7c067a1"
+    },
+    "execution": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/inventory-execution.json",
+      "sha256": "da6bc232d70992a3da2137dca801c323d06056076dc763d2dc7539f7c417fa05"
+    }
+  },
+  "staticRerun": false,
+  "browserRerun": false,
+  "buildsRerun": false,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "stageAccepted": false,
+  "releaseReady": false
+}

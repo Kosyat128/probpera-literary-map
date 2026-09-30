@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "pass": true,
+  "checkpoint": "b87b343d3cc1decf970ca3fa9da2dc38d941b302",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/bound-a1/source-manifest.json",
+    "sha256": "aeb226c6bf3a28e0d77ed530b6b92d628d481f8d88d00a1a495877aaf6df63df",
+    "fileCount": 1665
+  },
+  "priorSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/source-manifest.json",
+    "sha256": "4c36863d98abcc6c9904873c4672ee43e67977a9e5ef10ceeba92109382aaef6"
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "changedPaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/host.css",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/entry.json",
+    "sha256": "e97613f1231343b9f528374b342e96d5e96b986fae6914948c851d3ce59447fb"
+  },
+  "sourceApply": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/bound-a1/source-apply-receipt.json",
+    "sha256": "772707043bcac97c723109fdb985ef38739c0574d562b338f8aa6a4a3098b0e8"
+  },
+  "actualProducer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1\\check.mjs",
+    "sha256": "09dee0db69dd0208141fa90436f01a8700690cc9367f6cf08636882bcfa29dfd"
+  },
+  "helperInputs": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/common.mjs",
+      "sha256": "8cfc66cd74f197a77c7e06788b3b2ab608f558de9cf04fb20375d25f461dfab0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/apply-and-freeze.mjs",
+      "sha256": "bdb0df1ad39ee3af0f739298f213a3a27f08e6504d5f22283b7f832a25b0c988"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/check.mjs",
+      "sha256": "09dee0db69dd0208141fa90436f01a8700690cc9367f6cf08636882bcfa29dfd"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/playwright.config.mjs",
+      "sha256": "7c1ae3438500e6d818affa2bfa09f3f298b87ca814bb29c449d680264fbe2098"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/packet-binding.json",
+      "sha256": "e4a7750ae1e985a6d758bde5d1073f4444fd6de3fe2d0beba8d42e4ef9e1613e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/entry.json",
+      "sha256": "e97613f1231343b9f528374b342e96d5e96b986fae6914948c851d3ce59447fb"
+    }
+  ],
+  "boundaryInputs": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/packet-binding.json",
+      "sha256": "e4a7750ae1e985a6d758bde5d1073f4444fd6de3fe2d0beba8d42e4ef9e1613e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposal.json",
+      "sha256": "4f6acfd9b731c4d86b6063e33d2b3e6312a47cdc4c4939764d95b2d1b7cf6a7d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/binding.json",
+      "sha256": "bea6490c3aff2da1c7a66ea2e0bfd6eee1374beb17a13ab6cec666c457900b14"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/draft-a2/source-bindings.json",
+      "sha256": "7a27fa8e149a5db4a20fd5d6b58b78e1a8ec64fc98b2272ff4948491a3816fe3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/run-final-browser-a4.mjs",
+      "sha256": "6c76346a7768e3583af6ba7b18e0cfbe92f4dcb8d785c09dc49a65ee32c68db6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/playwright.config.mjs",
+      "sha256": "7c1ae3438500e6d818affa2bfa09f3f298b87ca814bb29c449d680264fbe2098"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/before/src/components/BookArchiveSection.tsx",
+      "sha256": "45a64bcea800f5e243380912cb6a67f7525e9df09c5ba0b766e0dfe269999ecc"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposed/src/components/BookArchiveSection.tsx",
+      "sha256": "0a69dc948133e3267945658eef09d6ddcaea7a30d1ce905b899cb0f5136e07e3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/before/src/host/host.css",
+      "sha256": "281e69cdd398f3fccfa1c4a653b4e88e1410bf29f94935b5e9acf514cfedb773"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposed/src/host/host.css",
+      "sha256": "8ee902873e44921655e2b74927ab57900219a454e0c4de25256dcdb319ddb6b0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposed.patch",
+      "sha256": "845b0bd3f24f06f1839f102ef82d2dfe924b629c5972d91d3165d1693d4afc84"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/before.mjs",
+      "sha256": "fa360ce4c1ed6f82fb52bc196cb96f64a25801b2ab972e1dc8db4f1c143e2970"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/proposed.mjs",
+      "sha256": "471ed8066a7fbf5d817e41ab14ba103d20d891d0fd574d510a6cdcfafe334656"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/edits.json",
+      "sha256": "3ba4d02ed5c0507a3bcdcf13711e18a034846d3a24fabe85cb5964ebefe6143a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/inverse-edits.json",
+      "sha256": "39e281d057ef982eabb92c52756adddb1dd60aef17cfa0818b0d60369bf50804"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/proposed.patch",
+      "sha256": "75f5aed2fc9f898186632f4e059585c21a3cdef4887efa02212b2c2286fdc28a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/source-manifest.json",
+      "sha256": "4c36863d98abcc6c9904873c4672ee43e67977a9e5ef10ceeba92109382aaef6"
+    },
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/result.json",
+      "sha256": "fcc29ab1657ebd5350ffd5dbcb746370de28206c5ae6c5469cc09e3e8abf1bfb"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/bound-a1/source-apply-receipt.json",
+      "sha256": "772707043bcac97c723109fdb985ef38739c0574d562b338f8aa6a4a3098b0e8"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "helperInputsUnchanged": true,
+  "boundaryInputsUnchanged": true,
+  "tests": null,
+  "rawReport": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 22781
+  },
+  "executionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/static-a1/execution.json",
+    "sha256": "639fab2bb057d5ef875583bbe321904faf5655b4af35132f78532d393b0961b6"
+  },
+  "validationError": null,
+  "captureRefs": [],
+  "evidenceRefs": [],
+  "expectedSuccessfulCaptures": 7,
+  "inspectedImageCount": 0,
+  "directImageViewsPerformed": false,
+  "fixtureOnly": false,
+  "runtimeUnchanged": false,
+  "productionImplementationChanged": true,
+  "sourceCommit": null,
+  "runtimeSourceCommit": null,
+  "sourceBeforeCommit": true,
+  "checksExecutedByThisRunner": {
+    "static": true,
+    "browser": false,
+    "unit": false,
+    "pwa": false,
+    "android": false
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

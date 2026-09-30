@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-native-reader-composition-checkpoint-draft",
+  "decision": "D219",
+  "sourceCommit": null,
+  "checksRun": false,
+  "buildsRun": false,
+  "canonicalWrites": false,
+  "namespace": "docs/mobile/evidence/S15/native-reader-composition-20260930",
+  "predecessorDocsCommit": "b87b343d3cc1decf970ca3fa9da2dc38d941b302",
+  "priorSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/source-manifest.json",
+    "sha256": "4c36863d98abcc6c9904873c4672ee43e67977a9e5ef10ceeba92109382aaef6"
+  },
+  "predecessorResult": {
+    "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/result.json",
+    "sha256": "fcc29ab1657ebd5350ffd5dbcb746370de28206c5ae6c5469cc09e3e8abf1bfb"
+  },
+  "priorBuildIds": {
+    "pwa": "464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2",
+    "android": "1e401e638abac95ca8f814bb255629fa09630006cb115268f3dcfd38237a4eb1"
+  },
+  "requiredDiagnostics": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/browser-a1/result.json",
+      "sha256": "79b79883081adec8a810b9a8200ae5482074c82bbe3f0e20109ad763be41c578"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/result.json",
+      "sha256": "4d77f95e1b4fbbbbac98f943b593de9e9ab0c1400d72018af41d8e1e2926f5ab"
+    }
+  ],
+  "changedPaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/host.css",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "acceptedBrowserCases": 2,
+  "rootViewedImages": 7,
+  "finalTwoCaseRunRequired": true,
+  "payloadHashesRechecked": false,
+  "files": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/checkpoint-review-a2/checkpoint.mjs",
+      "sha256": "0a79501cfbd529cc19bd29bb517f804e3cb5e70699d3dcac61afde7ee970d12b",
+      "bytes": 30764
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/checkpoint-review-a2/README.txt",
+      "sha256": "54643239edd00357a54e45818fca57d8d620687747edfacb649a5f9b424e52f0",
+      "bytes": 2604
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/checkpoint-review-a2/next-action.txt",
+      "sha256": "fe129d54193566d12455192a87787b69129535cb186fe76c300e182e0996cb85",
+      "bytes": 554
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/checkpoint-review-a2/actual-inputs.template.json",
+      "sha256": "c1907432fef5f92b2f96b420a309c00f0605549365880bd3a4676df306fbfd5a",
+      "bytes": 1417
+    }
+  ],
+  "immutablePredecessor": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/checkpoint-review-a1/proposal.json",
+    "sha256": "6be2fdf84786d8bc03432f6e1b26a1eb531c0e46b345a14a5e982c6aef280e58"
+  },
+  "revisionNote": "Only descriptive noteText updated for actual final catalog batch/card/viewport/subtitle correction; validation and execution unchanged."
+}

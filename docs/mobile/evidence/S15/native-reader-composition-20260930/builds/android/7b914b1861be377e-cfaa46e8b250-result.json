@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-native-reader-composition-runtime-dev-apk",
+  "sourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/source-manifest.json",
+    "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c",
+    "fileCount": 1665
+  },
+  "buildId": "a38c4247d5ec6d4511903b7f099d0ce89cec2c24c924b8431c51d336fcb82573",
+  "boundEntry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/entry.json",
+    "sha256": "1f07721b2b05924bca77c13f89849c5188c2cea9ff0a35e40be211152f5c46ef"
+  },
+  "buildPacket": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\runtime-build-review-a1\\packet-binding.json",
+    "sha256": "7117e96fcd8c48f5272fbed486361772f6402325902693889434493743fa6436"
+  },
+  "actualProducers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/guard-build-a2.mjs",
+      "sha256": "6f7a6eed9a3347203473a81e3627cb93032c466d2f5f370c0efd1b37532752e8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/build-pwa-a2.mjs",
+      "sha256": "13b97aca94d53093bbc4318b2ae5a54186a5bd910a2b0b0aee9149605d5bcd84"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/pwa-a1.config.mjs",
+      "sha256": "3347c840a3f6aa4586a31485b50b40d73a712700faf1ffc0e9de793197227bd1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/downloads-artifact-wrapper-a1.spec.mjs",
+      "sha256": "3e7da954b73f9957efa5d788fae03a78e58c9837e031bfab87b5d442d5562a69"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/build-android-a1.ps1",
+      "sha256": "4a28dc079cb8c113576222c47231af55c412593674a20f95b19e5424ef04b077"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/preserve-android-a1.mjs",
+      "sha256": "cb0ab0e6e3deafa6cc3eea552c08f257a7cdaf695e3a52806b88d887f202b115"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/verify-android-a1.mjs",
+      "sha256": "f534c6afc0f053a2338222fbef78bd68dead23e3c0eca4d436ae26af807fbb69"
+    }
+  ],
+  "sourceInputsSha256": "f244779e515061dd7261eba9c587ed6d9d8f1b04c2bd8f63e4df859b1868b3dc",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-runtime-build-evidence/attempt-a1/android/android-a38c4247/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "8c2a1486670de4f4feea9051009f92d057ceffc55786f169cfdcb05ec8c4b661"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-runtime-build-evidence/attempt-a1/android/android-a38c4247/runtime",
+    "sha256": "fb9b96a37f0ee6a0ea14608967bd053ad21ca715702de66579f6b98199a3259a",
+    "files": 1408,
+    "bytes": 74963011
+  },
+  "checks": {
+    "strictRuntimeAudit": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/android-a1/native-artifact-audit.json",
+    "binaryAudit": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/android-a1/android-dev-apk-verification.json",
+    "build": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAcceptedReportAuthenticated": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": false,
+    "originalPriorAuthenticationRetained": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": {
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/android-a1/result.json",
+      "sha256": "3b92d7f9e6cf242d50696219403c610a28fcc99ec3cfa4ae8c63da546bc33058"
+    },
+    "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+    "buildId": "1e401e638abac95ca8f814bb255629fa09630006cb115268f3dcfd38237a4eb1",
+    "apkPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-runtime-build-evidence/attempt-a1/android/android-1e401e63/app-dev-debug.apk"
+  },
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

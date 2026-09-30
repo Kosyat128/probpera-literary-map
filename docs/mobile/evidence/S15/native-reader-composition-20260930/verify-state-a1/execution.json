@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-state.mjs"
+  ],
+  "startedAt": "2026-09-30T16:00:43.913Z",
+  "durationMs": 29935,
+  "exitCode": 0,
+  "error": null,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/checkpoint-review-a2/checkpoint.mjs",
+    "sha256": "0a79501cfbd529cc19bd29bb517f804e3cb5e70699d3dcac61afde7ee970d12b"
+  },
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/verify-state-a1/stdout.log",
+    "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/native-reader-composition-20260930/verify-state-a1/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "applicationChecksRun": false,
+  "testsRun": false,
+  "buildsRun": false
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "target": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+  "beforeSha256": "68cab9667d220f50e54824a714abaf0b5774360638da55f2b7db21a635357e20",
+  "proposedSha256": "e7f15d419169f77368241db68af58a1762de0dd228afdfa746e6316838751858",
+  "before": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/visible-card-proof-a2/before.mjs",
+    "sha256": "68cab9667d220f50e54824a714abaf0b5774360638da55f2b7db21a635357e20"
+  },
+  "proposed": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/visible-card-proof-a2/proposed.mjs",
+    "sha256": "e7f15d419169f77368241db68af58a1762de0dd228afdfa746e6316838751858"
+  },
+  "edits": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/visible-card-proof-a2/edits.json",
+    "sha256": "9d4aeb644796a19333dd4138afc7c2edbc2262e4f0868dccff59b164710e6157"
+  },
+  "inverseVerified": true,
+  "productionChanged": false,
+  "sourceApplied": false,
+  "appChecksRun": false,
+  "expectedCases": 2,
+  "expectedCaptures": 7,
+  "scope": "Existing RU many-book segment gains actual fully visible card and hit tests, including off-batch last book; other RU/EN scenarios and existing real touch are preserved. Existing reader scenarios also assert native RU duplicate title absent and distinct EN original title visible.",
+  "priorProposal": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/visible-card-proof-a1/proposal.json",
+    "sha256": "2f84458ce648818d42926dbe4f4af27881f006ab8c7d44d17509923888f61be8"
+  }
+}

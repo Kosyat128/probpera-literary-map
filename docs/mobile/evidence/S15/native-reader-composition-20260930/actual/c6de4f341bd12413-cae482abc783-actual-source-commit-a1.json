@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "recordedAt": "2026-09-30T15:55:08.528Z",
+  "sourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "predecessorDocsCommit": "b87b343d3cc1decf970ca3fa9da2dc38d941b302",
+  "changedPaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/host.css",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a3/bound-a1/source-manifest.json",
+    "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/entry.json",
+    "sha256": "1f07721b2b05924bca77c13f89849c5188c2cea9ff0a35e40be211152f5c46ef"
+  },
+  "reports": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/static-a1/result.json",
+      "sha256": "4d4c2c4c4f5fc0d4d8ab0a17a6803f6dd87480d7e330d19ac2d0384c0ba0af3b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/browser-a1/result.json",
+      "sha256": "3846a02c57a6d32fbbafb3aafc823815c63a52ff8eb1aeb8e4b142131daf801e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/final-root-visual-review-a1.json",
+      "sha256": "adb79a9a607cc533a320027927c770e5ad4ce68c3081c544914c6084e53bcabf"
+    }
+  ],
+  "browserResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/browser-a1/result.json",
+    "sha256": "3846a02c57a6d32fbbafb3aafc823815c63a52ff8eb1aeb8e4b142131daf801e"
+  },
+  "rootReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/final-root-visual-review-a1.json",
+    "sha256": "adb79a9a607cc533a320027927c770e5ad4ce68c3081c544914c6084e53bcabf"
+  },
+  "sourceApply": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a3/bound-a1/source-apply-receipt.json",
+    "sha256": "22332671500895dff21c1722ce68516fa83e0cee1b7fb1416124e946b389a7ab"
+  },
+  "reviewedProposal": null,
+  "productionCorrection": null,
+  "blobs": [
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "workingSha256": "196f2fdb68498067a480bfbd1c0c8be8050ec4a585eb7529592d0b07d395bf9d",
+      "gitBlobSha256": "196f2fdb68498067a480bfbd1c0c8be8050ec4a585eb7529592d0b07d395bf9d",
+      "onlyLineEndingNormalization": false
+    },
+    {
+      "path": "src/host/host.css",
+      "workingSha256": "a30985022c78bd7a6eb09f0bd87633925a61e3601c5f49c30aea3f84635d5d55",
+      "gitBlobSha256": "6a51f16688cb7c20b51092951d5f48cb871f17ea0bdd1dbde57ddcf58589f5d4",
+      "onlyLineEndingNormalization": true
+    },
+    {
+      "path": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+      "workingSha256": "e7f15d419169f77368241db68af58a1762de0dd228afdfa746e6316838751858",
+      "gitBlobSha256": "996aa50a260d126f42ca076d2741fe84ab45e6c6994f3eaf44a1ab3cdab18ba4",
+      "onlyLineEndingNormalization": true
+    }
+  ],
+  "producer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\source-commit-review-a4\\commit-source.mjs",
+    "sha256": "f9e2d79509170f17af041458e910e16d3e2acee183bc99c095fb64c91adc779d"
+  },
+  "sourceInputsUnchanged": true,
+  "sourceInputsVerifiedBeforeAfter": true,
+  "worktreeClean": true,
+  "productionImplemented": true,
+  "runtimeUnchanged": false,
+  "fixtureOnly": false,
+  "staticSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a3/bound-a1/source-manifest.json",
+    "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c",
+    "fileCount": 1665
+  },
+  "staticFixtureMatchesFinalBrowser": true,
+  "singleAcceptedTwoCaseRun": true,
+  "testsRerun": false,
+  "buildsRun": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "commitOutput": "[codex/literary-planet-v12-bilingual-final-autopilot c1ea8c7f] Refine native mobile reader and collection navigation\n 3 files changed, 221 insertions(+), 21 deletions(-)"
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-native-catalog-explicit-navigation-production-draft",
+  "preparedAt": "2026-09-30T15:42:19.329Z",
+  "repositoryRoot": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "repositoryMutation": false,
+  "checksRun": false,
+  "applied": false,
+  "acceptedSourceCommit": null,
+  "actualValidationResult": null,
+  "sourcePaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/host.css"
+  ],
+  "files": [
+    {
+      "relativePath": "src/components/BookArchiveSection.tsx",
+      "before": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/catalog-navigation-production-draft-a2/before/src/components/BookArchiveSection.tsx",
+        "sha256": "0a69dc948133e3267945658eef09d6ddcaea7a30d1ce905b899cb0f5136e07e3",
+        "bytes": 248817
+      },
+      "proposed": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/catalog-navigation-production-draft-a2/proposed/src/components/BookArchiveSection.tsx",
+        "sha256": "196f2fdb68498067a480bfbd1c0c8be8050ec4a585eb7529592d0b07d395bf9d",
+        "bytes": 251044
+      },
+      "inverseExactSha256": "0a69dc948133e3267945658eef09d6ddcaea7a30d1ce905b899cb0f5136e07e3"
+    },
+    {
+      "relativePath": "src/host/host.css",
+      "before": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/catalog-navigation-production-draft-a2/before/src/host/host.css",
+        "sha256": "8ee902873e44921655e2b74927ab57900219a454e0c4de25256dcdb319ddb6b0",
+        "bytes": 37038
+      },
+      "proposed": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/catalog-navigation-production-draft-a2/proposed/src/host/host.css",
+        "sha256": "a30985022c78bd7a6eb09f0bd87633925a61e3601c5f49c30aea3f84635d5d55",
+        "bytes": 37253
+      },
+      "inverseExactSha256": "8ee902873e44921655e2b74927ab57900219a454e0c4de25256dcdb319ddb6b0"
+    }
+  ],
+  "edits": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/catalog-navigation-production-draft-a2/edits.json",
+    "sha256": "67512e73bf5fbca895143d6e7c79cd6412bff7f7b0dfcdc26ceb59a2c3c3bde7"
+  },
+  "scope": {
+    "explicitFooterAndRangeOnly": true,
+    "nativeMobileEmbeddedCatalogOnly": true,
+    "initialBatchSize": 13,
+    "loadThroughRequestedBatch": true,
+    "pagination": "Existing visibleItems prefix; no virtualization",
+    "catalogInnerScrollOnly": true,
+    "focusAssigned": false,
+    "historyAssigned": false,
+    "selectedReaderPreserved": true,
+    "publicSiteAndShelfBehaviorPreserved": true,
+    "duplicateOriginalTitleHiddenOnlyWhenEqualInEmbeddedReader": true,
+    "publicOriginalTitleConditionPreserved": true,
+    "englishOriginalSubtitlePreserved": true
+  },
+  "validationOwnedByRoot": true,
+  "knownDiagnostic": "Selected45of46 leaves initial rendered catalog cards visible. Actual focused key/card visibility must be asserted through clipping ancestors; state/count alone are insufficient.",
+  "revision": 2,
+  "supersedes": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/catalog-navigation-production-draft-a1/proposal.json",
+    "sha256": "5f17d5786463c3e9ce21c6139b93639707fa43934d1eb5c50ba28e7a0235e6e7",
+    "reason": "One native-only duplicate original-title guard; all navigation/CSS bytes retained"
+  }
+}

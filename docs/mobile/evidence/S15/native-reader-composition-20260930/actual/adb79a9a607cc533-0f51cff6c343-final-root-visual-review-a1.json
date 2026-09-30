@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "recordedAt": "2026-09-30T15:54:52.425Z",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a3/bound-a1/source-manifest.json",
+    "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c",
+    "fileCount": 1665
+  },
+  "browserResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/browser-a1/result.json",
+    "sha256": "3846a02c57a6d32fbbafb3aafc823815c63a52ff8eb1aeb8e4b142131daf801e"
+  },
+  "stageAccepted": false,
+  "releaseReady": false,
+  "installedDevice": false,
+  "kind": "root-direct-visual-review",
+  "causalReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/final-root-causal-review-a1.json",
+    "sha256": "cb0e08d0e490f5991ad3ebef04904145436ae7ddda47e918aeed043d0e4d072e"
+  },
+  "directlyViewedImageCount": 7,
+  "images": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a3\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5",
+      "filename": "booky-writer-filter-recovery-ru-filtered-empty.png",
+      "width": 390,
+      "height": 844,
+      "directRootViewed": true
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a3\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0",
+      "filename": "booky-writer-filter-recovery-ru-recovered.png",
+      "width": 390,
+      "height": 844,
+      "directRootViewed": true
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a3\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\booky-writer-filter-recovery-ru-reader-foreground.png",
+      "sha256": "76777571f8907c35e31a0e587e23d8270c95ee20fb9f0b626d389c3d26cf6fe6",
+      "filename": "booky-writer-filter-recovery-ru-reader-foreground.png",
+      "width": 390,
+      "height": 844,
+      "directRootViewed": true
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a3\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\native-reader-composition-many-books-ru.png",
+      "sha256": "ddc1a4e1995a90b95c64aff52330d760ea6857fb09d56ebf00db009ea771f1c6",
+      "filename": "native-reader-composition-many-books-ru.png",
+      "width": 390,
+      "height": 844,
+      "directRootViewed": true
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a3\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d",
+      "filename": "booky-writer-filter-recovery-en-filtered-empty.png",
+      "width": 320,
+      "height": 844,
+      "directRootViewed": true
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a3\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211",
+      "filename": "booky-writer-filter-recovery-en-recovered.png",
+      "width": 320,
+      "height": 844,
+      "directRootViewed": true
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a3\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\booky-writer-filter-recovery-en-reader-foreground.png",
+      "sha256": "6f884752958e4f8240f40c51ce5598eda1881aef2a87230f0347982c1f63f2bc",
+      "filename": "booky-writer-filter-recovery-en-reader-foreground.png",
+      "width": 320,
+      "height": 844,
+      "directRootViewed": true
+    }
+  ],
+  "findings": [
+    "All seven final attempt-a3 PNGs directly inspected by root before this receipt.",
+    "Expanded reader removes competing catalog and inactive navigation. Primary actions remain fully visible.",
+    "RU duplicate original title removed; distinct Russian original preserved in EN.",
+    "RU position 45/46 actually shows the selected card and the following card with the complete footer visible.",
+    "Explicitly opened Booky help remains available in recovery views; reader closes automatic help and retains compact companion."
+  ],
+  "limitations": "Focused composition review at RU 390x844 and EN 320x844; no full visual-design, character-art or installed-device acceptance."
+}

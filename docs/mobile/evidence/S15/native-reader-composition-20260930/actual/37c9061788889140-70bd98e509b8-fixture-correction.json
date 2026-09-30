@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/source-manifest.json",
+    "sha256": "921a16a451a78d82c13d0829ea176897c4b30a9f53b28b8d55561a19f972c536",
+    "fileCount": 1665
+  },
+  "priorSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/bound-a1/source-manifest.json",
+    "sha256": "aeb226c6bf3a28e0d77ed530b6b92d628d481f8d88d00a1a495877aaf6df63df",
+    "fileCount": 1665
+  },
+  "changedPaths": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "productionInputsUnchanged": true,
+  "protectedInputCount": 1662,
+  "proposed": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/range-touch-correction-a1/proposed.mjs",
+    "sha256": "68cab9667d220f50e54824a714abaf0b5774360638da55f2b7db21a635357e20"
+  },
+  "proposal": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/range-touch-correction-a1/source-binding.json",
+    "sha256": "a9a8ca3bd66d60ff67d5ad706674c07d1c629f6c79459087a5652691397e7609"
+  },
+  "producer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\run-ru-correction-a2.mjs",
+    "sha256": "eca5879ec9e402923be1c22d2ca096ea2c13a225eed2c58b4140e8a504d51c92"
+  },
+  "failedResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/browser-a1/result.json",
+    "sha256": "79b79883081adec8a810b9a8200ae5482074c82bbe3f0e20109ad763be41c578"
+  },
+  "staticResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/static-a1/result.json",
+    "sha256": "51c8ed81a9ab756f5b4d0240ef8f1e1c291beeec09dd90be97f96cefc853aced"
+  },
+  "staticNotRepeated": true,
+  "englishNotRepeated": true
+}

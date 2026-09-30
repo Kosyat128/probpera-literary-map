@@ -1,0 +1,8 @@
+{
+  "browserFiles": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky explicit writer filter recovery ru"
+  ]
+}

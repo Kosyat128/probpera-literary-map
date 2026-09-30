@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-reader-composition-accepted-case-aggregate",
+  "pass": true,
+  "mode": "browser",
+  "attempt": "ru-correction-a2",
+  "checkpoint": "b87b343d3cc1decf970ca3fa9da2dc38d941b302",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/source-manifest.json",
+    "sha256": "921a16a451a78d82c13d0829ea176897c4b30a9f53b28b8d55561a19f972c536",
+    "fileCount": 1665
+  },
+  "priorSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/bound-a1/source-manifest.json",
+    "sha256": "aeb226c6bf3a28e0d77ed530b6b92d628d481f8d88d00a1a495877aaf6df63df",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "changedPaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/host.css",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/entry.json",
+    "sha256": "15459c90626f6e0507a4b97ebed7ea1bab58a98122a671ad0da07b3a2adff983"
+  },
+  "sourceApply": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/bound-a1/source-apply-receipt.json",
+    "sha256": "772707043bcac97c723109fdb985ef38739c0574d562b338f8aa6a4a3098b0e8"
+  },
+  "fixtureCorrection": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/fixture-correction.json",
+    "sha256": "37c9061788889140047accca0a89e2336dcc8663bd3eab7bdadbbccf92bacb34"
+  },
+  "actualProducer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\run-ru-correction-a2.mjs",
+    "sha256": "eca5879ec9e402923be1c22d2ca096ea2c13a225eed2c58b4140e8a504d51c92"
+  },
+  "helperInputs": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/common.mjs",
+      "sha256": "8cfc66cd74f197a77c7e06788b3b2ab608f558de9cf04fb20375d25f461dfab0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/apply-and-freeze.mjs",
+      "sha256": "bdb0df1ad39ee3af0f739298f213a3a27f08e6504d5f22283b7f832a25b0c988"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/check.mjs",
+      "sha256": "09dee0db69dd0208141fa90436f01a8700690cc9367f6cf08636882bcfa29dfd"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/playwright.config.mjs",
+      "sha256": "7c1ae3438500e6d818affa2bfa09f3f298b87ca814bb29c449d680264fbe2098"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/packet-binding.json",
+      "sha256": "e4a7750ae1e985a6d758bde5d1073f4444fd6de3fe2d0beba8d42e4ef9e1613e"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\run-ru-correction-a2.mjs",
+      "sha256": "eca5879ec9e402923be1c22d2ca096ea2c13a225eed2c58b4140e8a504d51c92"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/range-touch-correction-a1/source-binding.json",
+      "sha256": "a9a8ca3bd66d60ff67d5ad706674c07d1c629f6c79459087a5652691397e7609"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/range-touch-correction-a1/proposed.mjs",
+      "sha256": "68cab9667d220f50e54824a714abaf0b5774360638da55f2b7db21a635357e20"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/browser-a1/result.json",
+      "sha256": "79b79883081adec8a810b9a8200ae5482074c82bbe3f0e20109ad763be41c578"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/browser-a1/playwright.json",
+      "sha256": "36a251eac6271bfe69d27efc559aba61ac8f45d919425391f9a837213a2404ff"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/static-a1/result.json",
+      "sha256": "51c8ed81a9ab756f5b4d0240ef8f1e1c291beeec09dd90be97f96cefc853aced"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/entry.json",
+      "sha256": "15459c90626f6e0507a4b97ebed7ea1bab58a98122a671ad0da07b3a2adff983"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/runner/entry.json",
+      "sha256": "1d42102e6fc0f56736a42b614a74ac471aff865e8ceb3009bfe10ca9b06555c6"
+    }
+  ],
+  "boundaryInputs": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/packet-binding.json",
+      "sha256": "e4a7750ae1e985a6d758bde5d1073f4444fd6de3fe2d0beba8d42e4ef9e1613e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposal.json",
+      "sha256": "4f6acfd9b731c4d86b6063e33d2b3e6312a47cdc4c4939764d95b2d1b7cf6a7d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/binding.json",
+      "sha256": "bea6490c3aff2da1c7a66ea2e0bfd6eee1374beb17a13ab6cec666c457900b14"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/draft-a2/source-bindings.json",
+      "sha256": "7a27fa8e149a5db4a20fd5d6b58b78e1a8ec64fc98b2272ff4948491a3816fe3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/run-final-browser-a4.mjs",
+      "sha256": "6c76346a7768e3583af6ba7b18e0cfbe92f4dcb8d785c09dc49a65ee32c68db6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-focus-race-review/execution-review-runtime-fix-a4/playwright.config.mjs",
+      "sha256": "7c1ae3438500e6d818affa2bfa09f3f298b87ca814bb29c449d680264fbe2098"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/before/src/components/BookArchiveSection.tsx",
+      "sha256": "45a64bcea800f5e243380912cb6a67f7525e9df09c5ba0b766e0dfe269999ecc"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposed/src/components/BookArchiveSection.tsx",
+      "sha256": "0a69dc948133e3267945658eef09d6ddcaea7a30d1ce905b899cb0f5136e07e3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/before/src/host/host.css",
+      "sha256": "281e69cdd398f3fccfa1c4a653b4e88e1410bf29f94935b5e9acf514cfedb773"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposed/src/host/host.css",
+      "sha256": "8ee902873e44921655e2b74927ab57900219a454e0c4de25256dcdb319ddb6b0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposed.patch",
+      "sha256": "845b0bd3f24f06f1839f102ef82d2dfe924b629c5972d91d3165d1693d4afc84"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/before.mjs",
+      "sha256": "fa360ce4c1ed6f82fb52bc196cb96f64a25801b2ab972e1dc8db4f1c143e2970"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/proposed.mjs",
+      "sha256": "471ed8066a7fbf5d817e41ab14ba103d20d891d0fd574d510a6cdcfafe334656"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/edits.json",
+      "sha256": "3ba4d02ed5c0507a3bcdcf13711e18a034846d3a24fabe85cb5964ebefe6143a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/inverse-edits.json",
+      "sha256": "39e281d057ef982eabb92c52756adddb1dd60aef17cfa0818b0d60369bf50804"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/proposed.patch",
+      "sha256": "75f5aed2fc9f898186632f4e059585c21a3cdef4887efa02212b2c2286fdc28a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-rev6-review/actual-a1/source-manifest.json",
+      "sha256": "4c36863d98abcc6c9904873c4672ee43e67977a9e5ef10ceeba92109382aaef6"
+    },
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-rev6-20260930/result.json",
+      "sha256": "fcc29ab1657ebd5350ffd5dbcb746370de28206c5ae6c5469cc09e3e8abf1bfb"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/bound-a1/source-apply-receipt.json",
+      "sha256": "772707043bcac97c723109fdb985ef38739c0574d562b338f8aa6a4a3098b0e8"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "helperInputsUnchanged": true,
+  "boundaryInputsUnchanged": true,
+  "tests": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "components": [
+    {
+      "language": "en",
+      "title": "Booky explicit writer filter recovery en",
+      "acceptedTestStatus": "passed",
+      "sourceManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/bound-a1/source-manifest.json",
+        "sha256": "aeb226c6bf3a28e0d77ed530b6b92d628d481f8d88d00a1a495877aaf6df63df",
+        "fileCount": 1665
+      },
+      "rawReport": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/browser-a1/playwright.json",
+        "sha256": "36a251eac6271bfe69d27efc559aba61ac8f45d919425391f9a837213a2404ff"
+      },
+      "evidence": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a1\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\attachments\\booky-writer-filter-recovery-source-evidence-5b44d1328c90a94652f2a8863a52fa5771c5206d.json",
+        "sha256": "235cec60d068ba41e4a404b600d446141afc5d31808e36376ca2b18a70aa24ed"
+      },
+      "originalRunResult": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/browser-a1/result.json",
+        "sha256": "79b79883081adec8a810b9a8200ae5482074c82bbe3f0e20109ad763be41c578"
+      },
+      "repeated": false
+    },
+    {
+      "language": "ru",
+      "title": "Booky explicit writer filter recovery ru",
+      "acceptedTestStatus": "passed",
+      "sourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/source-manifest.json",
+        "sha256": "921a16a451a78d82c13d0829ea176897c4b30a9f53b28b8d55561a19f972c536",
+        "fileCount": 1665
+      },
+      "rawReport": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/playwright-ru.json",
+        "sha256": "73c0ef7f7a849f6f233f06cfec7bad4d8042b4c594826d6fc82a160e96be575a"
+      },
+      "evidence": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a2\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\booky-writer-filter-recovery-source-evidence-a392454b57ea270b774a0990128667e4c5b3d240.json",
+        "sha256": "245091a730580ac3e329eb5f4520f33bfb705425d741426219a9995af54988f7"
+      },
+      "originalRunResult": null,
+      "repeated": true
+    }
+  ],
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/playwright-ru.json",
+    "sha256": "73c0ef7f7a849f6f233f06cfec7bad4d8042b4c594826d6fc82a160e96be575a"
+  },
+  "priorFailedRun": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/browser-a1/result.json",
+    "sha256": "79b79883081adec8a810b9a8200ae5482074c82bbe3f0e20109ad763be41c578"
+  },
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 70820,
+    "executedTests": 1,
+    "language": "ru"
+  },
+  "executionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/execution.json",
+    "sha256": "e612e44a7730a062051961f999ef23d1f4aa2765e573809c1394a2e55ab66cfb"
+  },
+  "staticResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/static-a1/result.json",
+    "sha256": "51c8ed81a9ab756f5b4d0240ef8f1e1c291beeec09dd90be97f96cefc853aced"
+  },
+  "staticRepeated": false,
+  "englishRepeated": false,
+  "validationError": null,
+  "captureRefs": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a1\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d",
+      "filename": "booky-writer-filter-recovery-en-filtered-empty.png",
+      "width": 320,
+      "height": 844,
+      "language": "en"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a1\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211",
+      "filename": "booky-writer-filter-recovery-en-recovered.png",
+      "width": 320,
+      "height": 844,
+      "language": "en"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a1\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\booky-writer-filter-recovery-en-reader-foreground.png",
+      "sha256": "6f884752958e4f8240f40c51ce5598eda1881aef2a87230f0347982c1f63f2bc",
+      "filename": "booky-writer-filter-recovery-en-reader-foreground.png",
+      "width": 320,
+      "height": 844,
+      "language": "en"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a2\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5",
+      "filename": "booky-writer-filter-recovery-ru-filtered-empty.png",
+      "width": 390,
+      "height": 844,
+      "language": "ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a2\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0",
+      "filename": "booky-writer-filter-recovery-ru-recovered.png",
+      "width": 390,
+      "height": 844,
+      "language": "ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a2\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\booky-writer-filter-recovery-ru-reader-foreground.png",
+      "sha256": "8cf12bc9e8c4734ba8233a979f45ff11e4178334485baa982b92a8f204424d5d",
+      "filename": "booky-writer-filter-recovery-ru-reader-foreground.png",
+      "width": 390,
+      "height": 844,
+      "language": "ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a2\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\native-reader-composition-many-books-ru.png",
+      "sha256": "b0d00694b74a5adc2295d05c564a45d876ed5ace9a91bece18e956252cc18a01",
+      "filename": "native-reader-composition-many-books-ru.png",
+      "width": 390,
+      "height": 844,
+      "language": "ru"
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a1\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\attachments\\booky-writer-filter-recovery-source-evidence-5b44d1328c90a94652f2a8863a52fa5771c5206d.json",
+      "sha256": "235cec60d068ba41e4a404b600d446141afc5d31808e36376ca2b18a70aa24ed"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a2\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\booky-writer-filter-recovery-source-evidence-a392454b57ea270b774a0990128667e4c5b3d240.json",
+      "sha256": "245091a730580ac3e329eb5f4520f33bfb705425d741426219a9995af54988f7"
+    }
+  ],
+  "expectedSuccessfulCaptures": 7,
+  "inspectedImageCount": 0,
+  "directImageViewsPerformed": false,
+  "fixtureOnly": false,
+  "runtimeUnchanged": false,
+  "productionImplementationChanged": true,
+  "sourceCommit": null,
+  "runtimeSourceCommit": null,
+  "sourceBeforeCommit": true,
+  "checksExecutedByThisRunner": {
+    "static": false,
+    "browser": true,
+    "unit": false,
+    "pwa": false,
+    "android": false
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

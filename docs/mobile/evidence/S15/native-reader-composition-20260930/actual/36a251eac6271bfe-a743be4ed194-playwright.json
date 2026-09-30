@@ -1,0 +1,196 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1/playwright.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\execution-review-a1\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-evidence/attempt-a1/browser/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-writer-filter-recovery.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/browser-a1/playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-writer-filter-recovery.spec.mjs",
+      "file": "booky-writer-filter-recovery.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Booky explicit writer filter recovery ru",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 66562,
+                  "error": {
+                    "message": "Error: trusted native range lower boundary trusted click\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: trusted native range lower boundary trusted click\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at Object.tap (D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs:475:188)\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs:694:7",
+                    "location": {
+                      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs",
+                      "column": 188,
+                      "line": 475
+                    },
+                    "snippet": "  473 |     await touch('touchStart',[point]);await page.waitForTimeout(65);await touch('touchEnd',[]);await writerSettle(page);\n  474 |     const events=await page.evaluate(()=>window.__writerRecoveryTouch);observation.touches.push({label,events});\n> 475 |     for(const type of ['pointerdown','pointerup','click'])expect(events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch'&&event.intended),label+' trusted '+type).toBe(true);\n      |                                                                                                                                                                                            ^\n  476 |   }\n  477 |   return {tap,expose,geometry,close:()=>cdp.detach()};\n  478 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs",
+                        "column": 188,
+                        "line": 475
+                      },
+                      "message": "Error: trusted native range lower boundary trusted click\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  473 |     await touch('touchStart',[point]);await page.waitForTimeout(65);await touch('touchEnd',[]);await writerSettle(page);\n  474 |     const events=await page.evaluate(()=>window.__writerRecoveryTouch);observation.touches.push({label,events});\n> 475 |     for(const type of ['pointerdown','pointerup','click'])expect(events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch'&&event.intended),label+' trusted '+type).toBe(true);\n      |                                                                                                                                                                                            ^\n  476 |   }\n  477 |   return {tap,expose,geometry,close:()=>cdp.detach()};\n  478 | }\n    at Object.tap (D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs:475:188)\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs:694:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T15:15:27.663Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "diagnostic-failure-ru",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a1\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\diagnostic-failure-ru-7ac950571e4346588975fff96118b22f67f775ef.png"
+                    },
+                    {
+                      "name": "booky-writer-filter-recovery-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a1\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\booky-writer-filter-recovery-source-evidence-f2a70356e966b85e1b5c44fa9b167cf591088d0e.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a1\\browser\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-writer-filter-recovery.spec.mjs",
+                    "column": 188,
+                    "line": 475
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "f82c42912aaff44e191c-27759decaf4d5e570437",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/booky-writer-filter-recovery.spec.mjs",
+          "line": 479,
+          "column": 37
+        },
+        {
+          "title": "Booky explicit writer filter recovery en",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 43908,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T15:16:35.476Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-writer-filter-recovery-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-evidence\\attempt-a1\\browser\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\attachments\\booky-writer-filter-recovery-source-evidence-5b44d1328c90a94652f2a8863a52fa5771c5206d.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f82c42912aaff44e191c-eaf7f646b11a7a59256d",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/booky-writer-filter-recovery.spec.mjs",
+          "line": 479,
+          "column": 37
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T15:15:26.988Z",
+    "duration": 113097.033,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

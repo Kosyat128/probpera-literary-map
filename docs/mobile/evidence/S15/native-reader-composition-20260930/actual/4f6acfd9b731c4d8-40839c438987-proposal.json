@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-native-mobile-reader-composition-design-draft",
+  "createdAt": "2026-09-30T14:53:46.563Z",
+  "repositoryRoot": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "repositoryMutation": false,
+  "checksRun": false,
+  "applied": false,
+  "acceptedSourceCommit": null,
+  "acceptedDocsCommit": null,
+  "acceptedCheckpointResult": null,
+  "sourcePaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/host.css"
+  ],
+  "files": [
+    {
+      "relativePath": "src/components/BookArchiveSection.tsx",
+      "before": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/before/src/components/BookArchiveSection.tsx",
+        "sha256": "45a64bcea800f5e243380912cb6a67f7525e9df09c5ba0b766e0dfe269999ecc",
+        "bytes": 248675
+      },
+      "proposed": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposed/src/components/BookArchiveSection.tsx",
+        "sha256": "0a69dc948133e3267945658eef09d6ddcaea7a30d1ce905b899cb0f5136e07e3",
+        "bytes": 248817
+      },
+      "inverseExactSha256": "45a64bcea800f5e243380912cb6a67f7525e9df09c5ba0b766e0dfe269999ecc"
+    },
+    {
+      "relativePath": "src/host/host.css",
+      "before": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/before/src/host/host.css",
+        "sha256": "281e69cdd398f3fccfa1c4a653b4e88e1410bf29f94935b5e9acf514cfedb773",
+        "bytes": 33681
+      },
+      "proposed": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposed/src/host/host.css",
+        "sha256": "8ee902873e44921655e2b74927ab57900219a454e0c4de25256dcdb319ddb6b0",
+        "bytes": 37038
+      },
+      "inverseExactSha256": "281e69cdd398f3fccfa1c4a653b4e88e1410bf29f94935b5e9acf514cfedb773"
+    }
+  ],
+  "patch": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposed.patch",
+    "sha256": "845b0bd3f24f06f1839f102ef82d2dfe924b629c5972d91d3165d1693d4afc84",
+    "bytes": 4815
+  },
+  "readme": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/README.txt",
+    "sha256": "ba4ff29acfd8b40611c009c6476c5af2568ca54020c2eee5348f16845828a7b3",
+    "bytes": 2929
+  },
+  "scope": {
+    "nativeMobileOnly": true,
+    "defaultReaderPosition": "expanded via existing reducer",
+    "catalogHiddenOnlyWhileExpanded": true,
+    "canonicalArticlePreserved": true,
+    "historyAndClosePreserved": true,
+    "filtersPreserved": true,
+    "explicitBookyReopenPreserved": true,
+    "explicitHalfExpandedHandlePreserved": true,
+    "footer": "In catalog with no selected reader: existing single-step previous/count/next + existing rail for count>1; no batch/edge/standalone previous. Any mounted selected reader hides complete position row; Favourites/Add remain.",
+    "inactiveFooterSuppressedAtCount": "0 or 1",
+    "favoritesAndAddPreserved": true,
+    "navigationAvailabilityGuardsUnchanged": true,
+    "selectedReaderNavigationPositionHidden": true,
+    "publicSiteAndWideNativeLayoutPreserved": true,
+    "catalogAndShelfReaderNavigationPositionHidden": true
+  },
+  "actualValidationResult": null,
+  "revision": 4,
+  "supersedes": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a3/proposal.json",
+    "sha256": "617b37787ce1afa38254c54595649b1d217d6273b5d038ed4824684653b04dac",
+    "bytes": 4027,
+    "reason": "Single CSS selector correction: hide inactive position row with any native mobile selected reader, including shelf presentation."
+  }
+}

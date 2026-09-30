@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "target": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+  "beforeSha256": "471ed8066a7fbf5d817e41ab14ba103d20d891d0fd574d510a6cdcfafe334656",
+  "proposedSha256": "68cab9667d220f50e54824a714abaf0b5774360638da55f2b7db21a635357e20",
+  "baseline": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/range-touch-correction-a1/before.mjs",
+    "sha256": "471ed8066a7fbf5d817e41ab14ba103d20d891d0fd574d510a6cdcfafe334656"
+  },
+  "proposed": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/range-touch-correction-a1/proposed.mjs",
+    "sha256": "68cab9667d220f50e54824a714abaf0b5774360638da55f2b7db21a635357e20"
+  },
+  "edits": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/range-touch-correction-a1/edits.json",
+    "sha256": "a268455397dd42404adf7d552ea67fc6b1a85bb7483d1108da3ae658ccab1636"
+  },
+  "inverseEdits": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/range-touch-correction-a1/inverse-edits.json",
+    "sha256": "6165c30cab99431edab4b7a6c59601c2e21e5694066af77de55d19608e5c84f3"
+  },
+  "patch": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/range-touch-correction-a1/proposed.patch",
+    "sha256": "9f090115802ae37d666979b1268c20de4cd5f166aeff91256e1b226d380c80e0"
+  },
+  "rawInverseVerified": true,
+  "actualDiagnostic": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/bound-a1/browser-a1/result.json",
+    "sha256": "79b79883081adec8a810b9a8200ae5482074c82bbe3f0e20109ad763be41c578"
+  },
+  "actualRuEvidence": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-evidence/attempt-a1/browser/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-f2a70356e966b85e1b5c44fa9b167cf591088d0e.json",
+    "sha256": "1ea31005d5904d14b16fd97d435112419f4020dd0962aba3bca56ea08f4c6051"
+  },
+  "measuredCause": "Native range lower-bound tap yielded trusted touch pointerdown/up and no click; native value was already1. Generic ordinary button click proof remains exact. Actual changed native range value requires trusted input and change with matching value.",
+  "productionChanged": false,
+  "applicationPerformed": false,
+  "appChecksPerformed": false,
+  "rerunScope": "RU existing case only; retain actual EN PASS and TypeScript at prior fixture manifest with explicit provenance. No same-run aggregate claim."
+}

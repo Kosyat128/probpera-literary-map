@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-native-reader-composition-fixture-draft",
+  "preparedAt": "2026-09-30T14:53:46.643Z",
+  "target": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+  "beforeSha256": "fa360ce4c1ed6f82fb52bc196cb96f64a25801b2ab972e1dc8db4f1c143e2970",
+  "proposedSha256": "471ed8066a7fbf5d817e41ab14ba103d20d891d0fd574d510a6cdcfafe334656",
+  "baseline": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/before.mjs",
+    "sha256": "fa360ce4c1ed6f82fb52bc196cb96f64a25801b2ab972e1dc8db4f1c143e2970",
+    "bytes": 82291
+  },
+  "proposed": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/proposed.mjs",
+    "sha256": "471ed8066a7fbf5d817e41ab14ba103d20d891d0fd574d510a6cdcfafe334656",
+    "bytes": 93425
+  },
+  "edits": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/edits.json",
+    "sha256": "3ba4d02ed5c0507a3bcdcf13711e18a034846d3a24fabe85cb5964ebefe6143a",
+    "bytes": 14248
+  },
+  "inverseEdits": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/inverse-edits.json",
+    "sha256": "39e281d057ef982eabb92c52756adddb1dd60aef17cfa0818b0d60369bf50804",
+    "bytes": 14248
+  },
+  "patch": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a2/proposed.patch",
+    "sha256": "75f5aed2fc9f898186632f4e059585c21a3cdef4887efa02212b2c2286fdc28a",
+    "bytes": 18448
+  },
+  "rawInverseVerified": true,
+  "productionDesignProposal": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/revision-a4/proposal.json",
+    "sha256": "4f6acfd9b731c4d86b6063e33d2b3e6312a47cdc4c4939764d95b2d1b7cf6a7d",
+    "bytes": 4074
+  },
+  "actualD217Result": null,
+  "actualD217DocsCheckpoint": null,
+  "actualProvenance6Result": null,
+  "actualProvenance6DocsCheckpoint": null,
+  "applicationBoundary": "Root binds final accepted D217 and provenance6 plus reader-composition successor before any repository apply. Current draft is not executed evidence.",
+  "cases": [
+    "Booky explicit writer filter recovery ru",
+    "Booky explicit writer filter recovery en"
+  ],
+  "existingCaptureContractsPreserved": 6,
+  "additionalCaptureContracts": 1,
+  "totalCaptureContracts": 7,
+  "additionalCaptureLocale": "ru",
+  "controlledSetup": "Existing native author selectOption only; no native-picker equivalence. Actual range endpoints and arrows use the existing CDP touch owner with hit/trust/clipping proofs.",
+  "scope": "Fixture-only external draft; original lifecycle/foreground assertions and six captures retained. One reader-owned empty-state visibility assertion is adapted to intentional hidden catalog with mounted count1. No application, source syntax check, unit/browser/build or canonical writes.",
+  "readerAuthority": "No assigned history, camera, reader-view/IO, selection, range values or DOM events; production navigationLocked remains untouched.",
+  "supersedesPreparedDraft": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/validation-draft-a1/binding.json",
+    "sha256": "ac1a30240885c58fb0d456abf14cba4e56b44576ed76c8a6914e32d0dcd89e1b",
+    "bytes": 3011
+  },
+  "revision": 2,
+  "readOnlyLabelsVerified": {
+    "path": "src/i18n/InterfaceLanguage.tsx",
+    "ru": [
+      "Свернуть сведения о книге",
+      "Развернуть сведения о книге"
+    ],
+    "en": [
+      "Collapse book details",
+      "Expand book details"
+    ]
+  }
+}

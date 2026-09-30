@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-native-reader-composition-final-source-commit",
+  "acceptedSourceCommit": null,
+  "checksRun": false,
+  "buildsRun": false,
+  "canonicalWrites": false,
+  "predecessorDocsCommit": "b87b343d3cc1decf970ca3fa9da2dc38d941b302",
+  "protectedInputCount": 1662,
+  "sourceInputCount": 1665,
+  "changedPaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/host.css",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "donor": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/source-commit-review-a3/commit-source.mjs",
+    "sha256": "489a1f41dd6d43e4e6b2be756b692f7159e0086f868a8e259630ea2d648d78a2",
+    "executed": false
+  },
+  "files": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/source-commit-review-a4/commit-source.mjs",
+      "sha256": "f9e2d79509170f17af041458e910e16d3e2acee183bc99c095fb64c91adc779d",
+      "bytes": 10162
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/source-commit-review-a4/README.txt",
+      "sha256": "8756a6cdf11745355740abd1c9eff7f68cb515c63e924b51b67f0c260892b0b6",
+      "bytes": 757
+    }
+  ]
+}

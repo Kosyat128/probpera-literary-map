@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T15:56:16.380Z",
+  "sourceCommit": "c1ea8c7fb338103bebb8df45f87651166abfb555",
+  "buildId": "8381cbd3d922515ffcf063bf4841394ac065fbcf288fdeccba940c70f463ffbe",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/source-manifest.json",
+    "sha256": "48e8db3dcaeeab540551ea9106989c0fd0b5823a31bb5a7f4ae8252022c6e20c",
+    "fileCount": 1665
+  },
+  "boundEntry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a3/bound-a1/entry.json",
+    "sha256": "1f07721b2b05924bca77c13f89849c5188c2cea9ff0a35e40be211152f5c46ef"
+  },
+  "buildPacket": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\runtime-build-review-a1\\packet-binding.json",
+    "sha256": "7117e96fcd8c48f5272fbed486361772f6402325902693889434493743fa6436"
+  },
+  "actualProducers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/guard-build-a2.mjs",
+      "sha256": "6f7a6eed9a3347203473a81e3627cb93032c466d2f5f370c0efd1b37532752e8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/build-pwa-a2.mjs",
+      "sha256": "13b97aca94d53093bbc4318b2ae5a54186a5bd910a2b0b0aee9149605d5bcd84"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/pwa-a1.config.mjs",
+      "sha256": "3347c840a3f6aa4586a31485b50b40d73a712700faf1ffc0e9de793197227bd1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/downloads-artifact-wrapper-a1.spec.mjs",
+      "sha256": "3e7da954b73f9957efa5d788fae03a78e58c9837e031bfab87b5d442d5562a69"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/build-android-a1.ps1",
+      "sha256": "4a28dc079cb8c113576222c47231af55c412593674a20f95b19e5424ef04b077"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/preserve-android-a1.mjs",
+      "sha256": "cb0ab0e6e3deafa6cc3eea552c08f257a7cdaf695e3a52806b88d887f202b115"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/verify-android-a1.mjs",
+      "sha256": "f534c6afc0f053a2338222fbef78bd68dead23e3c0eca4d436ae26af807fbb69"
+    }
+  ],
+  "sourceInputsSha256": "6c869b261cc07335ba0de9226412f298d8df460cf9763685e4cd59cb90fcc959",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-runtime-build-evidence/attempt-a1/pwa/pwa-8381cbd3",
+    "files": 1427,
+    "bytes": 76883243,
+    "artifactSha256": "dc27053355ec7e639aeb4a518690ca76f9bcce629eeccd3c52d3b57b5aeffa33",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-30T15:55:45.228Z",
+    "duration": 26948.916,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "browserAttempts": [
+    {
+      "attempt": 1,
+      "pass": true,
+      "result": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/pwa-a1/browser-a1-result.json",
+        "sha256": "eb0f70a650d700c6d13e2469eacaf1f5dbe8e6cc7ddeedb8dc0bf15a0c3543d3"
+      }
+    }
+  ],
+  "localQaAuthority": true,
+  "requestedBrowserChannel": "msedge",
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

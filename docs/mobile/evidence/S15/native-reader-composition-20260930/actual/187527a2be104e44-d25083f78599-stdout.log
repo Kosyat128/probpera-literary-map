@@ -1,0 +1,42 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:479:37 › Booky explicit writer filter recovery ru
+  1) D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:479:37 › Booky explicit writer filter recovery ru 
+
+    Error: trusted native range lower boundary trusted click
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      473 |     await touch('touchStart',[point]);await page.waitForTimeout(65);await touch('touchEnd',[]);await writerSettle(page);
+      474 |     const events=await page.evaluate(()=>window.__writerRecoveryTouch);observation.touches.push({label,events});
+    > 475 |     for(const type of ['pointerdown','pointerup','click'])expect(events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch'&&event.intended),label+' trusted '+type).toBe(true);
+          |                                                                                                                                                                                            ^
+      476 |   }
+      477 |   return {tap,expose,geometry,close:()=>cdp.detach()};
+      478 | }
+        at Object.tap (D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:475:188)
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:694:7
+
+    attachment #1: diagnostic-failure-ru (image/png) ───────────────────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-native-reader-composition-evidence\attempt-a1\browser\browser-a1\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\attachments\diagnostic-failure-ru-7ac950571e4346588975fff96118b22f67f775ef.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: booky-writer-filter-recovery-source-evidence (application/json) ─────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-native-reader-composition-evidence\attempt-a1\browser\browser-a1\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\attachments\booky-writer-filter-recovery-source-evidence-f2a70356e966b85e1b5c44fa9b167cf591088d0e.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-native-reader-composition-evidence\attempt-a1\browser\browser-a1\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\error-context.md
+
+
+
+
+[2/2] D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:479:37 › Booky explicit writer filter recovery en
+  1 failed
+    D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-writer-filter-recovery.spec.mjs:479:37 › Booky explicit writer filter recovery ru 
+  1 passed (1.9m)

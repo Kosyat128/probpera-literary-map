@@ -1,0 +1,28 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/execution-review-a1/playwright.config.mjs"
+  ],
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "startedAt": "2026-09-30T15:26:40.532Z",
+  "durationMs": 70820,
+  "exitCode": 0,
+  "producer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-native-reader-composition-review\\run-ru-correction-a2.mjs",
+    "sha256": "eca5879ec9e402923be1c22d2ca096ea2c13a225eed2c58b4140e8a504d51c92"
+  },
+  "runnerEntry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/runner/entry.json",
+    "sha256": "1d42102e6fc0f56736a42b614a74ac471aff865e8ceb3009bfe10ca9b06555c6"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/stdout.log",
+    "sha256": "68c6b4a72e630883b3557e74d24b62fa46161e86548fae04f7c65c43812ecfdf"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/ru-correction-a2/stderr.log",
+    "sha256": "c52c1fa67f555a00726f2e1f57dfd9c153047fb7a9a26b5f6fada4dcab92f2e2"
+  }
+}

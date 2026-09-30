@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-native-reader-composition-runtime-build-draft",
+  "preparedAt": "2026-09-30T15:31:10.909Z",
+  "helpers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/guard-build-a2.mjs",
+      "sha256": "6f7a6eed9a3347203473a81e3627cb93032c466d2f5f370c0efd1b37532752e8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/build-pwa-a2.mjs",
+      "sha256": "13b97aca94d53093bbc4318b2ae5a54186a5bd910a2b0b0aee9149605d5bcd84"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/pwa-a1.config.mjs",
+      "sha256": "3347c840a3f6aa4586a31485b50b40d73a712700faf1ffc0e9de793197227bd1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/downloads-artifact-wrapper-a1.spec.mjs",
+      "sha256": "3e7da954b73f9957efa5d788fae03a78e58c9837e031bfab87b5d442d5562a69"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/build-android-a1.ps1",
+      "sha256": "4a28dc079cb8c113576222c47231af55c412593674a20f95b19e5424ef04b077"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/preserve-android-a1.mjs",
+      "sha256": "cb0ab0e6e3deafa6cc3eea552c08f257a7cdaf695e3a52806b88d887f202b115"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/verify-android-a1.mjs",
+      "sha256": "f534c6afc0f053a2338222fbef78bd68dead23e3c0eca4d436ae26af807fbb69"
+    }
+  ],
+  "boundaryInputs": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/guard-build.mjs",
+      "sha256": "5516f2cfb3ecc39bd4e6bc1b419a3a47cd7201a0b0236f02060666bdc1ad3cfc"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/build-android-a1.ps1",
+      "sha256": "9ba146bf02967a0d73c96b95c38cf125eed55e1958043793759846f25d8fa783"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/preserve-android-a1.mjs",
+      "sha256": "41fd1b804cef84cd8430161ddf9de627d16c1ebd174047d8f8d88ca2bdc19c37"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/verify-android-a1.mjs",
+      "sha256": "c7c87bd716b9af39a6a9e94d4f4d8cb19aacf71c89b686c50a69e9625faae299"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/build-pwa-a2.mjs",
+      "sha256": "6f01b81b820439b8e2abcc49ea604860a6446bd95bce4b22782b96e60c8de228"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/pwa-a2.config.mjs",
+      "sha256": "066f6e2e63604468f0c2b4f0efecea7a71008d82ea7aaca3ff8ffc1f79795da4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/downloads-artifact-wrapper-a2.spec.mjs",
+      "sha256": "3e7da954b73f9957efa5d788fae03a78e58c9837e031bfab87b5d442d5562a69"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/pwa-a2/result.json",
+      "sha256": "4099b48162ff05e2c540ddb35c96d15250eaafbb0e699d5a8f5531a67c1c64c4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/android-a1/result.json",
+      "sha256": "3b92d7f9e6cf242d50696219403c610a28fcc99ec3cfa4ae8c63da546bc33058"
+    }
+  ],
+  "priorPwa": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-diagnostic-review-a2/pwa-a2/result.json",
+    "sha256": "4099b48162ff05e2c540ddb35c96d15250eaafbb0e699d5a8f5531a67c1c64c4"
+  },
+  "priorAndroid": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-reader-foreground-review/runtime-build-review-a1/android-a1/result.json",
+    "sha256": "3b92d7f9e6cf242d50696219403c610a28fcc99ec3cfa4ae8c63da546bc33058"
+  },
+  "retainedSourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
+  "retainedPwaBuildId": "464892474f1a49068c0928868d839b82739c317bdff43863302730a30f076bc2",
+  "retainedAndroidBuildId": "1e401e638abac95ca8f814bb255629fa09630006cb115268f3dcfd38237a4eb1",
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "changedPaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/host.css",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "actualFutureSourceCommit": null,
+  "actualFutureSourceManifest": null,
+  "actualFutureBoundEntry": null,
+  "mandatoryFutureCli": [
+    "actual sourcecommit",
+    "actual1665manifestpath",
+    "actualmanifestSHA",
+    "actual final entrypath",
+    "actualentrySHA"
+  ],
+  "preparedPartialSuperseded": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/guard-build.mjs",
+      "sha256": "c9a0e231585c31a992373407f14edcff2ad0fdd85f1276e018427282173fbb8e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-native-reader-composition-review/runtime-build-review-a1/build-pwa-a1.mjs",
+      "sha256": "6f07bff000c7513536df540ace9be2a43ff4f61901eae531bee6dfabb5d88686"
+    }
+  ],
+  "preparationCorrection": "First external author stopped before native files due JavaScript replacement-string dollar expansion; successor uses literal callback replacement. No application/build child ran.",
+  "unitsRun": false,
+  "typeScriptRun": false,
+  "actualAppCasesRerun": false,
+  "buildsRun": false,
+  "repositoryMutated": false,
+  "priorPayloadHashesRechecked": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,547 @@
+.host-runtime-status {
+  box-sizing: border-box;
+  display: grid;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  max-width: min(30rem, calc(100vw - 2rem - env(safe-area-inset-left) - env(safe-area-inset-right)));
+  overflow-wrap: break-word;
+  pointer-events: none;
+}
+
+.native-planet-app {
+  min-height: 100dvh;
+  background: var(--violet-950);
+}
+
+/* Preserve the full 44px targets inside the language group's 1px border. */
+.native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control {
+  height: 46px;
+}
+
+/* Keep the one global language/navigation row discoverable while a first-time
+   visitor reads the invitation. Ordinary exploration keeps its quiet mode. */
+.native-planet-app .atlas-experience-surface:has(> .planet-welcome) .atlas-immersive-chrome {
+  opacity: 1;
+  transform: none;
+  border-color: rgba(var(--atlas-chrome-state), 0.38);
+}
+.native-planet-app .atlas-experience-surface:has(> .planet-welcome) .atlas-immersive-chrome nav > *,
+.native-planet-app .atlas-experience-surface:has(> .planet-welcome) .atlas-immersive-identity {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The site's generic 0.01ms transition duration can cascade inherited
+     visibility through descendants after their search or country panel opens.
+     Keep those committed targets immediately focusable with reduced motion. */
+  .native-planet-app .atlas-heading .country-search,
+  .native-planet-app .atlas-heading .country-search *,
+  .native-planet-app .atlas-country-sheet-content,
+  .native-planet-app .atlas-country-sheet-content * {
+    transition: none !important;
+  }
+}
+
+.native-planet-panel {
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  /* The outer frame must never scroll when a reader descendant is revealed. */
+  overflow: clip;
+  color: var(--violet-950);
+  background: var(--paper, #fff8eb);
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+    env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.native-planet-panel[hidden] { display: none; }
+.native-planet-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  gap: 16px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line, #dccfc0);
+}
+.native-planet-panel__header h1 {
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  font-size: 1.25rem;
+  overflow-wrap: anywhere;
+}
+.native-planet-panel__header > .ui-icon-button {
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+}
+.native-planet-panel__header .interface-language-control {
+  flex-shrink: 0;
+  margin-left: auto;
+  height: auto;
+  padding: 2px;
+  background: #eadfef;
+  border-color: #c9b7d3;
+}
+.native-planet-panel__header .interface-language-control button {
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--violet-950);
+}
+.native-planet-panel__header .interface-language-control button:focus-visible {
+  outline: 2px solid var(--violet-950);
+  outline-offset: 2px;
+}
+.native-planet-panel__content { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; }
+.native-planet-panel__companion { display: contents; }
+@media (max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape) {
+  .native-planet-panel__companion[data-booky-dock-active="true"] {
+    display: block;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    height: var(--booky-dock-height, 120px);
+    padding: 12px;
+  }
+}
+.native-planet-panel .book-archive-section { padding: 24px clamp(12px, 3vw, 40px); }
+.native-planet-panel .recent-history {
+  margin: 12px clamp(12px, 3vw, 40px);
+  padding: 12px 16px;
+}
+.native-planet-panel .recent-history > summary { box-sizing: border-box; min-height: 44px; }
+
+/* Retain the canonical brand in the existing phone toolbar and keep all six
+   controls at least 44px wide, including both production locale buttons. */
+@media (max-width: 720px) {
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
+    grid-template-columns: 26px minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity {
+    display: grid;
+    grid-template-columns: 24px;
+    justify-content: center;
+    width: 26px;
+    gap: 0;
+    padding: 0;
+    border-right: 0;
+  }
+
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity > img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity > div {
+    display: none;
+  }
+
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav {
+    padding-inline: 0;
+  }
+
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control button {
+    width: 44px;
+    min-width: 44px;
+    flex: 0 0 44px;
+  }
+}
+
+/* The collapsed country header and globe dock share one reserved height on
+   short screens. Keep the normal 64px header instead of a 142px empty sheet. */
+@media (max-width: 980px) and (max-height: 540px) and (orientation: landscape) {
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] {
+    --planet-collapsed-country-height: calc(64px + max(8px, env(safe-area-inset-bottom)));
+  }
+
+  /* A focused rail item must scroll its own rail, never the globe viewport.
+     Unlike hidden, clip cannot retain an offscreen programmatic scroll. */
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .world-map-stage {
+    overflow: clip;
+  }
+
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-presentation[data-atlas-sheet-state="collapsed"] {
+    height: var(--planet-collapsed-country-height);
+    max-height: var(--planet-collapsed-country-height);
+  }
+
+  .native-planet-app .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .literary-globe .globe-controls {
+    bottom: calc(var(--planet-collapsed-country-height) + max(8px, env(safe-area-inset-bottom)));
+  }
+}
+
+/* Keep the visible companion beside the edition rail on short phones.
+   Reserve the companion's width plus a 12px gap; the rail still scrolls with
+   its 44px targets. Hiding the companion or rotating restores the layout. */
+@media (max-width: 640px) and (max-height: 540px) and (orientation: landscape) {
+  .native-planet-app { --booky-landscape-reserve: 252px; }
+  .native-planet-app:has(> .planet-mascot-controls[data-planet-mascot-active="true"][data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="open"]) {
+    --booky-landscape-reserve: 156px;
+  }
+
+  .native-planet-app:has(> .planet-mascot-controls[data-planet-mascot-active="true"][data-planet-mascot-screen="globe"])
+    .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe :is(.globe-style-switch, .globe-edition-scroll-cue.is-next) {
+    right: calc(max(var(--atlas-globe-mobile-gutter), env(safe-area-inset-right)) + var(--booky-landscape-reserve));
+  }
+
+  /* The scale label is positioned inside the unchanged lower toolbar. */
+  .native-planet-app:has(> .planet-mascot-controls[data-planet-mascot-active="true"][data-planet-mascot-screen="globe"])
+    .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls .globe-scale-feedback {
+    right: var(--booky-landscape-reserve);
+  }
+
+  /* Reuse the utility dock's two rows without reducing the avatar or targets. */
+  .native-planet-app > .planet-mascot-controls[data-planet-mascot-active="true"][data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="closed"] {
+    --booky-dock-max-left: max(12px, calc(100vw - 252px));
+    width: 240px;
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-rows: 46px 46px;
+    gap: 4px;
+  }
+  .native-planet-app > .planet-mascot-controls[data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="closed"] > .planet-mascot-controls__avatar-button {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+  .native-planet-app > .planet-mascot-controls[data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="closed"] > .planet-mascot-controls__tools {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .native-planet-app > .planet-mascot-controls[data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="closed"] > .planet-mascot-controls__walk {
+    grid-column: 2;
+    grid-row: 2;
+    height: 44px;
+    min-height: 44px;
+    padding: 4px 8px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .native-planet-panel {
+    left: auto;
+    width: min(820px, 78vw);
+    box-shadow: -24px 0 80px #11031d66;
+  }
+}
+
+/* Native reading surfaces share one control hierarchy; scene chrome is unchanged. */
+.native-planet-app[data-planet-edition] {
+  --native-control-radius: 12px;
+  --native-surface-radius: 16px;
+  --native-control-tonal: color-mix(in srgb, var(--planet-on-dark) 8%, var(--planet-chrome));
+  --native-control-hover: color-mix(in srgb, var(--planet-on-dark) 14%, var(--planet-chrome));
+  --native-control-pressed: color-mix(in srgb, var(--planet-on-dark) 20%, var(--planet-chrome));
+  --native-control-line: color-mix(in srgb, var(--planet-on-dark) 16%, var(--planet-chrome));
+  --native-paper-tonal: color-mix(in srgb, var(--planet-ink) 5%, var(--planet-surface));
+  --native-paper-hover: color-mix(in srgb, var(--planet-ink) 9%, var(--planet-surface));
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header {
+  gap: 12px;
+  border-color: var(--planet-line);
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header h1 { font-weight: 650; letter-spacing: -.015em; }
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header > .ui-icon-button {
+  width: 44px;
+  height: 44px;
+  padding: 11px;
+  color: var(--planet-ink);
+  border-color: transparent;
+  border-radius: var(--native-control-radius);
+  background: var(--native-paper-tonal);
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header > .ui-icon-button svg { width: 20px; height: 20px; }
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header > .ui-icon-button:not(:disabled):hover { background: var(--native-paper-hover); }
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header > .ui-icon-button:not(:disabled):active { background: color-mix(in srgb, var(--planet-ink) 14%, var(--planet-surface)); }
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header .interface-language-control {
+  gap: 2px;
+  border-color: transparent;
+  border-radius: var(--native-control-radius);
+  background: var(--native-paper-tonal);
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header .interface-language-control button { border-radius: 10px; font-weight: 650; }
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header .interface-language-control button.is-active {
+  color: var(--planet-ink);
+  background: var(--planet-card);
+  box-shadow: inset 0 0 0 1px var(--planet-line);
+}
+.native-planet-app[data-planet-edition] .native-planet-panel :is(.archive-book-card, .book-shelf-frame__detail) {
+  border-color: var(--native-control-line);
+  border-radius: var(--native-surface-radius);
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__detail { background: var(--planet-chrome); }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-detail-toolbar {
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome);
+  border-color: var(--native-control-line);
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-detail-card {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-detail-copy dl > div { border-color: var(--native-control-line); }
+.native-planet-app[data-planet-edition] .native-planet-panel :is(
+  .book-shelf-controls button, .book-shelf-frame__navigation button,
+  .book-shelf-frame__collection-actions button, .book-shelf-frame__active-rail button,
+  .archive-book-actions button, .book-detail-actions button, .book-detail-close
+) {
+  min-width: 44px;
+  min-height: 44px;
+  gap: 8px;
+  color: var(--planet-on-dark);
+  background: var(--native-control-tonal);
+  border-color: transparent;
+  border-radius: var(--native-control-radius);
+  box-shadow: none;
+  font-weight: 600;
+  text-shadow: none;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel :is(
+  .book-shelf-controls button, .book-shelf-frame__navigation button,
+  .book-shelf-frame__collection-actions button, .book-shelf-frame__active-rail button,
+  .archive-book-actions button, .book-detail-actions button, .book-detail-close
+):not(:disabled):hover { color: var(--planet-on-dark); background: var(--native-control-hover); border-color: transparent; box-shadow: none; }
+.native-planet-app[data-planet-edition] .native-planet-panel :is(
+  .book-shelf-controls button, .book-shelf-frame__navigation button,
+  .book-shelf-frame__collection-actions button, .book-shelf-frame__active-rail button,
+  .archive-book-actions button, .book-detail-actions button, .book-detail-close
+):not(:disabled):active { background: var(--native-control-pressed); box-shadow: none; }
+.native-planet-app[data-planet-edition] .native-planet-panel :is(
+  .book-shelf-controls__random, .book-shelf-navigation__actions > button.is-primary,
+  .archive-book-detail, .book-detail-read-dossier, .book-detail-open-cover
+) {
+  color: var(--planet-ink);
+  background: var(--planet-accent);
+  border-color: transparent;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel :is(
+  .book-shelf-controls__random, .book-shelf-navigation__actions > button.is-primary,
+  .archive-book-detail, .book-detail-read-dossier, .book-detail-open-cover
+):not(:disabled):hover { color: var(--planet-ink); background: color-mix(in srgb, var(--planet-accent) 88%, var(--planet-card)); }
+.native-planet-app[data-planet-edition] .native-planet-panel :is(
+  .book-shelf-controls__random, .book-shelf-navigation__actions > button.is-primary,
+  .archive-book-detail, .book-detail-read-dossier, .book-detail-open-cover
+):not(:disabled):active { color: var(--planet-ink); background: color-mix(in srgb, var(--planet-accent) 86%, var(--planet-ink)); }
+.native-planet-app[data-planet-edition] .native-planet-panel :is(
+  .book-shelf-controls button, .archive-book-actions button, .book-detail-actions button
+):is([aria-pressed="true"], [aria-expanded="true"], .is-saved) {
+  color: var(--planet-on-dark);
+  background: color-mix(in srgb, var(--planet-accent) 16%, var(--planet-chrome));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--planet-accent) 55%, transparent);
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-detail-actions > [data-book-navigation-origin] {
+  color: var(--planet-muted-dark);
+  background: transparent;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel :is(
+  .book-shelf-controls button, .book-shelf-frame__navigation button,
+  .archive-book-actions button, .book-detail-actions button, .book-detail-close
+):disabled {
+  opacity: 1;
+  color: var(--planet-muted-dark);
+  background: color-mix(in srgb, var(--planet-on-dark) 4%, var(--planet-chrome));
+  border-color: transparent;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel :is(button, select, input, summary, a):focus-visible {
+  outline: 3px solid var(--planet-accent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header :is(button, a):focus-visible { outline-color: var(--planet-accent-strong); }
+
+/* Only portals belonging to the native edition receive the reading palette. */
+body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-collection-manager__backdrop) { z-index: 1200; }
+body[data-planet-portal-edition] > .book-dossier-map-dialog.book-dossier-reader,
+body[data-planet-portal-edition] > .book-collection-dialog__backdrop .book-collection-dialog,
+body[data-planet-portal-edition] > .book-collection-manager__backdrop .book-collection-manager {
+  --collection-dialog-accent: var(--planet-accent-strong);
+  --collection-dialog-paper: var(--planet-ink);
+  color: var(--planet-ink);
+  background: var(--planet-surface);
+  border: 1px solid var(--planet-line);
+  border-radius: 16px;
+}
+body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map-dialog__header,
+body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map__detail {
+  color: var(--planet-ink);
+  background: var(--planet-card);
+  border-color: var(--planet-line);
+}
+body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map__detail { border-radius: 12px; }
+body[data-planet-portal-edition] > .book-dossier-map-dialog :is(h2, h3, h4, p, li) { color: var(--planet-ink); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog :is(.book-dossier-map__count, .book-dossier-map__endpoints) { color: var(--planet-muted); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog a { color: var(--planet-accent-strong); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map__drawing { color: var(--planet-accent-strong); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map__symbol { fill: var(--planet-card); stroke: var(--planet-accent-strong); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map__symbol text { fill: var(--planet-ink); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog button:not(.book-dossier-map__node),
+body[data-planet-portal-edition] > .book-collection-dialog__backdrop button,
+body[data-planet-portal-edition] > .book-collection-manager__backdrop :is(.book-collection-manager__header > button, .book-collection-manager__moves button, .book-collection-manager__save) {
+  min-width: 44px;
+  min-height: 44px;
+  gap: 8px;
+  color: var(--planet-ink);
+  background: color-mix(in srgb, var(--planet-ink) 5%, var(--planet-surface));
+  border: 1px solid transparent;
+  border-radius: 12px;
+  box-shadow: none;
+}
+body[data-planet-portal-edition] > .book-dossier-map-dialog button:not(.book-dossier-map__node):not(:disabled):hover,
+body[data-planet-portal-edition] > .book-collection-dialog__backdrop button:not(:disabled):hover,
+body[data-planet-portal-edition] > .book-collection-manager__backdrop :is(.book-collection-manager__header > button, .book-collection-manager__moves button, .book-collection-manager__save):not(:disabled):hover { background: color-mix(in srgb, var(--planet-ink) 9%, var(--planet-surface)); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog button:not(.book-dossier-map__node):not(:disabled):active,
+body[data-planet-portal-edition] > .book-collection-dialog__backdrop button:not(:disabled):active,
+body[data-planet-portal-edition] > .book-collection-manager__backdrop :is(.book-collection-manager__header > button, .book-collection-manager__moves button, .book-collection-manager__save):not(:disabled):active { background: color-mix(in srgb, var(--planet-ink) 14%, var(--planet-surface)); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog button:not(.book-dossier-map__node)[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--planet-accent) 18%, var(--planet-surface));
+  border-color: var(--planet-accent-strong);
+}
+body[data-planet-portal-edition] > .book-dossier-map-dialog button[data-dossier-character-acknowledge],
+body[data-planet-portal-edition] > .book-collection-dialog__backdrop .book-collection-dialog__create button[type="submit"],
+body[data-planet-portal-edition] > .book-collection-manager__backdrop button.book-collection-manager__save {
+  color: var(--planet-ink);
+  background: var(--planet-accent);
+}
+body[data-planet-portal-edition] > .book-dossier-map-dialog button[data-dossier-character-acknowledge]:not(:disabled):hover,
+body[data-planet-portal-edition] > .book-collection-dialog__backdrop .book-collection-dialog__create button[type="submit"]:not(:disabled):hover,
+body[data-planet-portal-edition] > .book-collection-manager__backdrop button.book-collection-manager__save:not(:disabled):hover { background: color-mix(in srgb, var(--planet-accent) 88%, var(--planet-card)); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog button[data-dossier-character-acknowledge]:not(:disabled):active,
+body[data-planet-portal-edition] > .book-collection-dialog__backdrop .book-collection-dialog__create button[type="submit"]:not(:disabled):active,
+body[data-planet-portal-edition] > .book-collection-manager__backdrop button.book-collection-manager__save:not(:disabled):active { background: color-mix(in srgb, var(--planet-accent) 86%, var(--planet-ink)); }
+body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map__node:is([aria-pressed="true"], :focus-visible) { outline-color: var(--planet-accent-strong); }
+body[data-planet-portal-edition] > :is(.book-dossier-map-dialog, .book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(button, input, select, textarea, a, [tabindex="-1"]):focus-visible {
+  outline: 3px solid var(--planet-accent-strong);
+  outline-offset: 3px;
+}
+body[data-planet-portal-edition] > :is(.book-dossier-map-dialog, .book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(button, input, select, textarea):disabled { opacity: .55; box-shadow: none; }
+body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(h2, h3, strong) { color: var(--planet-ink); }
+body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(
+  .book-collection-dialog__description, .book-collection-dialog__header > div > span,
+  .book-collection-dialog__create > label, .book-collection-dialog__shelves legend,
+  .book-collection-dialog__count, .book-collection-dialog__readonly,
+  .book-collection-manager__description, .book-collection-manager__form label > span,
+  .book-collection-manager__form label small, .book-collection-manager__header > div > span
+) { color: var(--planet-muted); }
+body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(input[type="text"], textarea, select) {
+  min-height: 44px;
+  color: var(--planet-ink);
+  background: var(--planet-card);
+  border-color: var(--planet-line);
+  border-radius: 12px;
+}
+body[data-planet-portal-edition] > .book-collection-dialog__backdrop .book-collection-dialog__shelf { color: var(--planet-ink); background: var(--planet-card); border-color: transparent; border-radius: 12px; }
+body[data-planet-portal-edition] > .book-collection-dialog__backdrop .book-collection-dialog__shelf.is-checked { background: color-mix(in srgb, var(--planet-accent) 16%, var(--planet-surface)); border-color: var(--planet-accent-strong); }
+
+@media (prefers-reduced-motion: reduce) {
+  .native-planet-app[data-planet-edition] .native-planet-panel :is(button, input, select),
+  body[data-planet-portal-edition] > :is(.book-dossier-map-dialog, .book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(button, input, select) { transition: none; }
+}
+@media (forced-colors: active) {
+  .native-planet-app[data-planet-edition] .native-planet-panel :is(.archive-book-card, .book-shelf-frame__detail, .book-detail-toolbar, .book-detail-card),
+  body[data-planet-portal-edition] > :is(.book-dossier-map-dialog, .book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(.book-dossier-map-dialog__header, .book-dossier-map__detail, .book-collection-dialog, .book-collection-manager) { color: CanvasText; background: Canvas; border-color: CanvasText; }
+  .native-planet-app[data-planet-edition] .native-planet-panel :is(button, select, input),
+  body[data-planet-portal-edition] > :is(.book-dossier-map-dialog, .book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(button:not(.book-dossier-map__node), select, input, textarea, .book-collection-dialog__shelf) { color: ButtonText !important; background: ButtonFace !important; border: 1px solid ButtonText !important; box-shadow: none !important; }
+  .native-planet-app[data-planet-edition] .native-planet-panel :is(button, select, input, summary, a):focus-visible,
+  body[data-planet-portal-edition] > :is(.book-dossier-map-dialog, .book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(button, input, select, textarea, a):focus-visible { outline-color: Highlight !important; }
+  body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map__drawing { color: CanvasText; }
+  body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map__symbol { fill: Canvas; stroke: CanvasText; }
+  body[data-planet-portal-edition] > .book-dossier-map-dialog .book-dossier-map__symbol text { fill: CanvasText; }
+  body[data-planet-portal-edition] > .book-dossier-map-dialog a { color: LinkText; }
+}
+
+/* Paper portals retain readable authored metadata and confirmation text. */
+body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(.book-collection-dialog, .book-collection-manager) {
+  --manager-accent: var(--planet-accent-strong);
+  --manager-paper: var(--planet-ink);
+  --ink: var(--planet-ink);
+  --orange: var(--planet-accent);
+  --orange-soft: var(--planet-accent);
+  --ui-focus-color: var(--planet-accent-strong);
+}
+body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(small, .book-collection-dialog__empty, .book-collection-manager__smart-note, .book-collection-manager__books > p) { color: var(--planet-muted); }
+body[data-planet-portal-edition] > .book-collection-manager__backdrop .book-collection-manager__range output { color: var(--planet-ink); }
+body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(input, textarea)::placeholder { color: var(--planet-muted); opacity: 1; }
+body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(.book-collection-dialog__error, .book-collection-manager__error, .book-collection-manager__danger p, .book-collection-manager__danger button, .book-collection-manager__moves button.is-remove) { color: var(--planet-ink); }
+@media (forced-colors: active) {
+  .native-planet-app[data-planet-edition] .native-planet-panel button:is([aria-pressed="true"], [aria-expanded="true"], .is-saved),
+  body[data-planet-portal-edition] > :is(.book-dossier-map-dialog, .book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(button[aria-pressed="true"], .book-collection-dialog__shelf.is-checked) { border-color: Highlight !important; }
+  .native-planet-app[data-planet-edition] .native-planet-panel button:disabled,
+  body[data-planet-portal-edition] > :is(.book-dossier-map-dialog, .book-collection-dialog__backdrop, .book-collection-manager__backdrop) button:disabled { color: GrayText !important; }
+  body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-collection-manager__backdrop) :is(small, output, .book-collection-dialog__empty, .book-collection-manager__smart-note, .book-collection-dialog__error, .book-collection-manager__error, .book-collection-manager__danger p) { color: CanvasText; }
+}
+
+/* Native globe navigation has quiet controls; canonical scene geometry is untouched. */
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav {
+  background: var(--planet-chrome);
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px var(--native-control-line);
+  backdrop-filter: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button {
+  min-width: 44px;
+  min-height: 44px;
+  gap: 8px;
+  color: var(--planet-on-dark);
+  background: var(--native-control-tonal);
+  border-color: transparent;
+  border-radius: 12px;
+  box-shadow: none;
+  backdrop-filter: none;
+  text-shadow: none;
+  transform: none;
+  transition: color var(--ui-transition-fast), background-color var(--ui-transition-fast);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button:not(:disabled):hover { color: var(--planet-on-dark); background: var(--native-control-hover); border-color: transparent; box-shadow: none; transform: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button:not(:disabled):active { background: var(--native-control-pressed); box-shadow: none; transform: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button:is([aria-expanded="true"], [aria-pressed="true"], .is-active) {
+  background: color-mix(in srgb, var(--planet-accent) 16%, var(--planet-chrome));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--planet-accent) 55%, transparent);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button:is([aria-expanded="true"], [aria-pressed="true"], .is-active):not(:disabled):is(:hover, :active) { background: color-mix(in srgb, var(--planet-accent) 20%, var(--planet-chrome)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--planet-accent) 65%, transparent); }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button:disabled { opacity: .55; box-shadow: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button::before,
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button::after { display: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button :is(.ui-action__icon, .ui-icon-button__icon) {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  filter: none;
+  transform: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button svg { width: 20px; height: 20px; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome .interface-language-control { background: var(--native-control-tonal); border-color: transparent; border-radius: 12px; box-shadow: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome .interface-language-control button {
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--planet-muted-dark);
+  background: transparent;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome .interface-language-control button:not(.is-active):hover { color: var(--planet-on-dark); background: var(--native-control-hover); }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome .interface-language-control button.is-active { color: var(--planet-ink); background: var(--planet-accent); box-shadow: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome button:focus-visible { outline: 3px solid var(--planet-accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > button,
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome .interface-language-control button { transition: none; }
+}
+@media (forced-colors: active) {
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav { background: Canvas; box-shadow: inset 0 0 0 1px CanvasText; }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome button { color: ButtonText !important; background: ButtonFace !important; border: 1px solid ButtonText !important; box-shadow: none !important; }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome button:is([aria-expanded="true"], [aria-pressed="true"], .is-active) { border-color: Highlight !important; }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome button:disabled { color: GrayText !important; }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome button:focus-visible { outline-color: Highlight !important; }
+}
