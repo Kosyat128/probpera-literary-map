@@ -28,9 +28,9 @@ const expectedSources = {
     "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
   },
   "src/host/PlanetMascotControls.tsx": {
-    "sourceCommit": "e23e58109dbe81f181f6440725ad71157b387e69",
-    "sourceVersion": 4,
-    "sourceSha256": "4c2de3c256f178f7ed308d3a30a78be6a2e547af7f6b1b58a4c717f3ffcffe0d"
+    "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+    "sourceVersion": 5,
+    "sourceSha256": "71199cf88a1d59b4d32f2cfb18e4ec485b9d30f8bae714c13579d9bf7ff8be50"
   }
 };
 const expectedPaths = ['src/host/planetMascotRoutes.ts', 'src/host/PlanetMascotControls.tsx'];
