@@ -19,9 +19,9 @@ const expectedSources = {
     "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
   },
   "src/host/PlanetMascotControls.tsx": {
-    "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
-    "sourceVersion": 6,
-    "sourceSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd"
+    "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+    "sourceVersion": 7,
+    "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88"
   }
 } as const;
 const policy = { canonicalEntityIds: [], approvedReviews: [] } as const;
@@ -114,14 +114,14 @@ describe("fixed unreviewed adult navigation inventory", () => {
       childApproved: false, narrationApproved: false, releaseReady: false });
   });
 
-  it("validates all fixed hashes and combines 34 unique drafts while admitting no reviewed adult or child dialogue", () => {
+  it("validates all fixed hashes and combines 36 unique drafts while admitting no reviewed adult or child dialogue", () => {
     const combined = [...BOOKY_DIALOGUE_DRAFTS, ...BOOKY_NAVIGATION_DRAFTS];
     const registry = createBookyDialogueRegistry(combined, policy);
     expect(BOOKY_NAVIGATION_DRAFTS).toHaveLength(22);
-    expect(combined).toHaveLength(34);
-    expect(registry.size).toBe(34);
+    expect(combined).toHaveLength(36);
+    expect(registry.size).toBe(36);
     expect(registry.rejections).toEqual([]);
-    expect(new Set(combined.map(record => `${record.payload.id}:${record.payload.locale}`)).size).toBe(34);
+    expect(new Set(combined.map(record => `${record.payload.id}:${record.payload.locale}`)).size).toBe(36);
     for (const record of BOOKY_NAVIGATION_DRAFTS) {
       const { payload, review, checksum } = record;
       expect(payload).toMatchObject({ audience: "adult", ageRange: { min: 18, max: 120 }, readingLevel: "plain",
@@ -146,11 +146,11 @@ describe("fixed unreviewed adult navigation inventory", () => {
     const changed = [BOOKY_NAVIGATION_DRAFTS[0], context].map(original => ({ ...original,
       payload: { ...original.payload, copy: { ...original.payload.copy, body: "Changed." } } }));
     const stale = [
-      { ...context, payload: { ...context.payload, version: 5 } },
-      { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance, sourceVersion: 5 } } },
+      { ...context, payload: { ...context.payload, version: 6 } },
+      { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance, sourceVersion: 6 } } },
       { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance,
         sourceRef: context.payload.provenance.sourceRef.replace(expectedSources["src/host/PlanetMascotControls.tsx"].sourceCommit,
-          "c5f8e80ab3b8f6be42e04584a0b174ac427197e7") } } },
+          "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c") } } },
     ];
     for (const record of [...changed, ...stale]) {
       const registry = createBookyDialogueRegistry([record], policy);

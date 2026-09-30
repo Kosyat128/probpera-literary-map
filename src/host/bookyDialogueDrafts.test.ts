@@ -15,6 +15,7 @@ const ready: BookySupportInput = {
 const scenarios = [
   ["countries-error", { countryStatus: "error" }],
   ["books-error", { screen: "collection", booksStatus: "error" }],
+  ["books-error-restart", { screen: "collection", booksStatus: "error", booksReloadRequired: true }],
   ["countries-loading", { countryStatus: "loading" }],
   ["books-loading", { screen: "collection", booksStatus: "loading" }],
   ["offline", { connectivity: "offline" }],
@@ -33,9 +34,9 @@ describe("unreviewed bilingual Booky support inventory", () => {
     const provenance = BOOKY_DIALOGUE_DRAFT_INVENTORY.source;
     expect(provenance).toEqual({
       sourcePath: "src/host/bookySupport.ts",
-      sourceCommit: "707044e708cb5b0ce1b564b378cc5adffd574f12",
-      sourceVersion: 1,
-      sourceSha256: "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00",
+      sourceCommit: "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      sourceVersion: 2,
+      sourceSha256: "d75cb24a1a593ac778788c972511849fc5b0d4c8030d7f864448b1a0b29b2ff8",
       sourceHashEncoding: "sha256:utf8:lf",
       copyHashEncoding: "sha256:utf8:JSON.stringify({title,body})",
     });
@@ -46,7 +47,11 @@ describe("unreviewed bilingual Booky support inventory", () => {
 
   it.each(scenarios)("keeps exact RU/EN %s text and independently verifiable declared hashes", (state, changes) => {
     const live = getBookySupport({ ...ready, ...changes });
-    expect(live?.id).toBe(state);
+    expect(live?.id).toBe(state === "books-error-restart" ? "books-error" : state);
+    if (state === "books-error-restart") {
+      expect(live?.retry).toBeNull();
+      expect(live?.restart).toBe("books");
+    } else expect(live?.restart).toBeUndefined();
     const rows = BOOKY_DIALOGUE_DRAFTS.filter(record => record.payload.context === state);
     expect(rows.map(record => record.payload.locale).sort()).toEqual(["en", "ru"]);
     for (const { payload, review, checksum } of rows) {
@@ -58,7 +63,7 @@ describe("unreviewed bilingual Booky support inventory", () => {
       expect(payload.copy.reduced).toBe(title);
       expect(payload.provenance).toEqual({
         kind: "existing-interface-copy", sourcePath: BOOKY_DIALOGUE_DRAFT_INVENTORY.source.sourcePath,
-        sourceVersion: 1,
+        sourceVersion: 2,
         sourceRef: BOOKY_DIALOGUE_DRAFT_INVENTORY.source.sourceCommit + ":" + state + ":" + payload.locale,
         sourceSha256: BOOKY_DIALOGUE_DRAFT_INVENTORY.source.sourceSha256,
         copySha256: sha256(JSON.stringify({ title, body })),
@@ -68,13 +73,13 @@ describe("unreviewed bilingual Booky support inventory", () => {
     }
   });
 
-  it("retains twelve structural drafts but admits none as adult or child reviewed dialogue", () => {
+  it("retains fourteen structural drafts but admits none as adult or child reviewed dialogue", () => {
     const registry = createBookyDialogueRegistry(BOOKY_DIALOGUE_DRAFTS, policy);
-    expect(BOOKY_DIALOGUE_DRAFTS).toHaveLength(12);
-    expect(registry.size).toBe(12);
+    expect(BOOKY_DIALOGUE_DRAFTS).toHaveLength(14);
+    expect(registry.size).toBe(14);
     expect(registry.rejections).toEqual([]);
     expect(BOOKY_DIALOGUE_DRAFT_INVENTORY).toMatchObject({
-      recordCount: 12, status: "draft", humanReviewed: false, childApproved: false,
+      recordCount: 14, status: "draft", humanReviewed: false, childApproved: false,
       narrationApproved: false, releaseReady: false,
     });
     for (const record of BOOKY_DIALOGUE_DRAFTS) {

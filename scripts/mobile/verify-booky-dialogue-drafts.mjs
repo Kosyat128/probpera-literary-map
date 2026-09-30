@@ -18,42 +18,45 @@ const api = await import('data:text/javascript;base64,' + Buffer.from(built.outp
 const { BOOKY_DIALOGUE_DRAFTS: records, BOOKY_DIALOGUE_DRAFT_INVENTORY: inventory } = api;
 const findings = [];
 const check = (ok, code, record = null) => { if (!ok) findings.push({ code, ...(record ? { record } : {}) }); };
-const expectedStates = ['books-error', 'books-loading', 'countries-error', 'countries-loading', 'network-unknown', 'offline'];
+const expectedStates = ['books-error', 'books-error-restart', 'books-loading', 'countries-error', 'countries-loading', 'network-unknown', 'offline'];
 const ready = { connectivity: 'online', screen: 'globe', countryStatus: 'ready', booksStatus: 'ready' };
 const contexts = {
   'countries-error': { countryStatus: 'error' }, 'books-error': { screen: 'collection', booksStatus: 'error' },
+  'books-error-restart': { screen: 'collection', booksStatus: 'error', booksReloadRequired: true },
   'countries-loading': { countryStatus: 'loading' }, 'books-loading': { screen: 'collection', booksStatus: 'loading' },
   offline: { connectivity: 'offline' }, 'network-unknown': { connectivity: 'unknown' },
 };
 const sourceBytes = await fs.readFile(path.join(root, inventory.source.sourcePath));
 const source = sourceBytes.toString('utf8');
 const actualSourceSha256 = sha256(source.replaceAll('\r\n', '\n'));
-check(inventory.schemaVersion === 1 && inventory.recordCount === 12 && records.length === 12, 'INVENTORY_SIZE');
+check(inventory.schemaVersion === 1 && inventory.recordCount === 14 && records.length === 14, 'INVENTORY_SIZE');
 check(inventory.status === 'draft' && inventory.humanReviewed === false && inventory.childApproved === false
   && inventory.narrationApproved === false && inventory.releaseReady === false, 'NO_APPROVAL');
 check(api.BOOKY_SUPPORT_COPY_METADATA.status === 'draft' && api.BOOKY_SUPPORT_COPY_METADATA.releaseReady === false, 'EXISTING_HELP_REMAINS_DRAFT');
 check(actualSourceSha256 === inventory.source.sourceSha256, 'SOURCE_BYTES_CHANGED');
-check(inventory.source.sourcePath === 'src/host/bookySupport.ts' && inventory.source.sourceVersion === 1
-  && inventory.source.sourceCommit === '707044e708cb5b0ce1b564b378cc5adffd574f12', 'SOURCE_PROVENANCE');
+check(inventory.source.sourcePath === 'src/host/bookySupport.ts' && inventory.source.sourceVersion === 2
+  && inventory.source.sourceCommit === 'aba461a774c125f9c38ea4c10aac9b3cc8024d2d', 'SOURCE_PROVENANCE');
 check(inventory.source.sourceHashEncoding === 'sha256:utf8:lf'
   && inventory.source.copyHashEncoding === 'sha256:utf8:JSON.stringify({title,body})', 'CHECKSUM_ENCODING');
 const registry = api.createBookyDialogueRegistry(records, { canonicalEntityIds: [], approvedReviews: [] });
-check(registry.size === 12 && registry.rejections.length === 0, 'REGISTRY_STRUCTURE');
+check(registry.size === 14 && registry.rejections.length === 0, 'REGISTRY_STRUCTURE');
 const audited = [];
 for (const record of records) {
   const { payload, review } = record, key = payload.id + ':' + payload.locale;
   const existing = Object.hasOwn(contexts, payload.context) ? api.getBookySupport({ ...ready, ...contexts[payload.context] }) : null;
-  const runtimeTextMatches = !!existing && existing.id === payload.context
+  const runtimeContext = payload.context === 'books-error-restart' ? 'books-error' : payload.context;
+  const runtimeTextMatches = !!existing && existing.id === runtimeContext
     && payload.copy.title === existing.title[payload.locale] && payload.copy.body === existing.body[payload.locale];
   const copySha256 = sha256(JSON.stringify({ title: payload.copy.title, body: payload.copy.body }));
   const contentChecksumMatches = api.getBookyDialogueContentChecksum(payload) === review.contentChecksum;
   const recordChecksumMatches = api.getBookyDialogueChecksum({ payload, review }) === record.checksum;
   check(runtimeTextMatches, 'RUNTIME_TEXT_CHANGED', key);
+  check(payload.context !== 'books-error-restart' || existing?.restart === 'books' && existing.retry === null, 'RESTART_SCOPE', key);
   check(payload.copy.caption === payload.copy.title && payload.copy.reduced === payload.copy.title, 'EXTRA_COPY_CHANGED', key);
   check(payload.id === 'support.' + payload.context && expectedStates.includes(payload.context), 'UNKNOWN_CONTEXT', key);
   check(payload.version === 1 && payload.audience === 'adult' && payload.ageRange.min === 18 && payload.ageRange.max === 120
     && payload.readingLevel === 'plain' && payload.claimKind === 'interface-guidance', 'DRAFT_SCOPE', key);
-  check(payload.intent === (payload.context.endsWith('-error') ? 'load-error' : payload.context.endsWith('-loading') ? 'loading-help' : 'offline-help')
+  check(payload.intent === (payload.context === 'books-error-restart' || payload.context.endsWith('-error') ? 'load-error' : payload.context.endsWith('-loading') ? 'loading-help' : 'offline-help')
     && JSON.stringify(payload.screens) === JSON.stringify(payload.context.startsWith('books-') ? ['collection'] : ['globe', 'collection']), 'CONTEXT_SCOPE', key);
   check(payload.entityIds.length === 0 && payload.factualSources.length === 0 && payload.prohibitedTags.length === 0
     && payload.narration === null, 'UNAPPROVED_CONTENT', key);
@@ -78,7 +81,7 @@ for (const context of expectedStates) {
   const locales = records.filter(record => record.payload.context === context).map(record => record.payload.locale).sort();
   check(JSON.stringify(locales) === JSON.stringify(['en', 'ru']), 'LOCALE_PARITY', context);
 }
-check(new Set(records.map(record => record.payload.id + ':' + record.payload.locale)).size === 12, 'DUPLICATE_LOCALE_RECORD');
+check(new Set(records.map(record => record.payload.id + ':' + record.payload.locale)).size === 14, 'DUPLICATE_LOCALE_RECORD');
 const sourcePaths = [...new Set([...Object.keys(built.metafile.inputs).filter(file => !file.startsWith('<')),
   'scripts/mobile/verify-booky-dialogue-drafts.mjs'])].sort();
 const sourceInputs = await Promise.all(sourcePaths.map(async file => ({ path: file.replaceAll('\\', '/'),

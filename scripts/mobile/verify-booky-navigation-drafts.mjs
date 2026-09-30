@@ -28,9 +28,9 @@ const expectedSources = {
     "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
   },
   "src/host/PlanetMascotControls.tsx": {
-    "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
-    "sourceVersion": 6,
-    "sourceSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd"
+    "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+    "sourceVersion": 7,
+    "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88"
   }
 };
 const expectedPaths = ['src/host/planetMascotRoutes.ts', 'src/host/PlanetMascotControls.tsx'];
@@ -117,7 +117,7 @@ if (contextual) for (const { context, body } of contextual.tips) {
 }
 const combined = [...api.BOOKY_DIALOGUE_DRAFTS, ...records];
 const registry = api.createBookyDialogueRegistry(combined, { canonicalEntityIds: [], approvedReviews: [] });
-check(combined.length === 34 && registry.size === 34 && registry.rejections.length === 0, 'COMBINED_REGISTRY_STRUCTURE');
+check(combined.length === 36 && registry.size === 36 && registry.rejections.length === 0, 'COMBINED_REGISTRY_STRUCTURE');
 const request = payload => ({ id: payload.id, locale: payload.locale, audience: 'adult', age: 30, readingLevel: payload.readingLevel,
   intent: payload.intent, screen: payload.screens[0], context: payload.context, entityIds: [], now: '2026-09-20T00:00:00.000Z' });
 const adultAvailable = record => record.payload.screens.some(screen => registry.resolve({ ...request(record.payload), screen }) !== null);

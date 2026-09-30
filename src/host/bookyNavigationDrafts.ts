@@ -1,7 +1,7 @@
 import type { BookyDialogueRecord } from "./bookyDialogueRegistry";
 
 // Explicit source provenance rebaseline: navigation drafts use revision 2
-// and contextual drafts revision 6. Existing copy and review status stay exact.
+// and contextual drafts revision 7. Existing copy and review status stay exact.
 // Draft revisions are independent of the unchanged version-1 runtime tours.
 // Unwired inventory of existing adult navigation copy; every record is draft.
 // Source, copy, payload and envelope hashes are fixed authored declarations.
@@ -66,9 +66,9 @@ export const BOOKY_NAVIGATION_DRAFT_INVENTORY = freeze({
     },
     {
       "sourcePath": "src/host/PlanetMascotControls.tsx",
-      "sourceCommit": "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c",
-      "sourceVersion": 6,
-      "sourceSha256": "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+      "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+      "sourceVersion": 7,
+      "sourceSha256": "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
       "sourceHashEncoding": "sha256:utf8:lf",
       "copyHashEncoding": "sha256:utf8:JSON.stringify({title,body})"
     }
@@ -442,7 +442,7 @@ export const BOOKY_NAVIGATION_DRAFTS: readonly BookyDialogueRecord[] = freeze([
   },
   {
     payload: {
-      id: "guidance.globe", locale: "ru", version: 6, audience: "adult",
+      id: "guidance.globe", locale: "ru", version: 7, audience: "adult",
       ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation",
       screens: ["globe"], context: "help:globe",
       entityIds: [], claimKind: "interface-guidance", factualSources: [],
@@ -454,21 +454,21 @@ export const BOOKY_NAVIGATION_DRAFTS: readonly BookyDialogueRecord[] = freeze([
       },
       narration: null, prohibitedTags: [],
       provenance: {
-        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 6,
-        sourceRef: "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c:PlanetMascotControls.name+helpTip.globe:ru",
-        sourceSha256: "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 7,
+        sourceRef: "aba461a774c125f9c38ea4c10aac9b3cc8024d2d:PlanetMascotControls.name+helpTip.globe:ru",
+        sourceSha256: "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
         copySha256: "27ab56b59dfa7e8257703434a055f2919bbb3e05cae56c439ce0bcf6130fa612",
       },
     },
     review: {
       status: "draft", reviewer: null, reviewedAt: null,
-      contentChecksum: "db24e215b231a98baf6fccb849c657f90e8edd20ca0232a587d4cf7df15f4ea9",
+      contentChecksum: "2a183ccccff5180a0d63a29661ccd1a13b06daadfef16d021f85ef93a95d5922",
     },
-    checksum: "2ca8d2664d84a0f920e4fc98f26303cf3c1e25c9463840cf23c7b93a6e8b0ab4",
+    checksum: "a12d85426c42d486fcd582e33194b7ab3e99b7612acd3e60780837f4a331f242",
   },
   {
     payload: {
-      id: "guidance.globe", locale: "en", version: 6, audience: "adult",
+      id: "guidance.globe", locale: "en", version: 7, audience: "adult",
       ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation",
       screens: ["globe"], context: "help:globe",
       entityIds: [], claimKind: "interface-guidance", factualSources: [],
@@ -480,21 +480,21 @@ export const BOOKY_NAVIGATION_DRAFTS: readonly BookyDialogueRecord[] = freeze([
       },
       narration: null, prohibitedTags: [],
       provenance: {
-        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 6,
-        sourceRef: "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c:PlanetMascotControls.name+helpTip.globe:en",
-        sourceSha256: "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 7,
+        sourceRef: "aba461a774c125f9c38ea4c10aac9b3cc8024d2d:PlanetMascotControls.name+helpTip.globe:en",
+        sourceSha256: "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
         copySha256: "5d6556c7ee38bf23d8dc75accca2cf62de585505f2ef04973a08be580f09e91d",
       },
     },
     review: {
       status: "draft", reviewer: null, reviewedAt: null,
-      contentChecksum: "43bb5ca76ccdaec0d23d81f025763a3f0aae745d1da59463decf4ddcd1e757e4",
+      contentChecksum: "48fdcfcd128001cc664a4303fba0ed74b3d6a9dce3d6a77e69a2746c3f55c36f",
     },
-    checksum: "4056265b82fe77e8c71743148ba09b73d16baf0112cedbb644da3adfcddb6395",
+    checksum: "af7499713868344a49cab10387d6b36c3f8ba3ccdf7e78c77e37bc44002827f7",
   },
   {
     payload: {
-      id: "guidance.country", locale: "ru", version: 6, audience: "adult",
+      id: "guidance.country", locale: "ru", version: 7, audience: "adult",
       ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation",
       screens: ["globe"], context: "help:country",
       entityIds: [], claimKind: "interface-guidance", factualSources: [],
@@ -506,21 +506,21 @@ export const BOOKY_NAVIGATION_DRAFTS: readonly BookyDialogueRecord[] = freeze([
       },
       narration: null, prohibitedTags: [],
       provenance: {
-        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 6,
-        sourceRef: "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c:PlanetMascotControls.name+helpTip.country:ru",
-        sourceSha256: "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 7,
+        sourceRef: "aba461a774c125f9c38ea4c10aac9b3cc8024d2d:PlanetMascotControls.name+helpTip.country:ru",
+        sourceSha256: "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
         copySha256: "ab19a53a3ca8f596de23f551812a21e2bbeb3f22f349ecd7b35eba9962c063ea",
       },
     },
     review: {
       status: "draft", reviewer: null, reviewedAt: null,
-      contentChecksum: "0e5b53637f40a4d9ae06b0c472457a2d218cc78c2b58df1f593cd0c995d40951",
+      contentChecksum: "adad1d53550d47e777bea21c408a4d901965df0c2047b3d0445e010f837d0820",
     },
-    checksum: "c06a029bd546dab9dcfdb09d2e5ce19b5bb9e8003dbeaea2f4b74e99554f4a04",
+    checksum: "974b8bfe6a0c95ec40ea9e85381627f0d453bb71414b137c3c50a600404ec3ce",
   },
   {
     payload: {
-      id: "guidance.country", locale: "en", version: 6, audience: "adult",
+      id: "guidance.country", locale: "en", version: 7, audience: "adult",
       ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation",
       screens: ["globe"], context: "help:country",
       entityIds: [], claimKind: "interface-guidance", factualSources: [],
@@ -532,21 +532,21 @@ export const BOOKY_NAVIGATION_DRAFTS: readonly BookyDialogueRecord[] = freeze([
       },
       narration: null, prohibitedTags: [],
       provenance: {
-        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 6,
-        sourceRef: "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c:PlanetMascotControls.name+helpTip.country:en",
-        sourceSha256: "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 7,
+        sourceRef: "aba461a774c125f9c38ea4c10aac9b3cc8024d2d:PlanetMascotControls.name+helpTip.country:en",
+        sourceSha256: "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
         copySha256: "e89dbc3c808272f9d7a548d9f06f5d6e437e72a1eb4330ec5f6a3db1691aacfa",
       },
     },
     review: {
       status: "draft", reviewer: null, reviewedAt: null,
-      contentChecksum: "6dccf1662825df3d4b79373039a3f9a007cc222454e092f4dac82bd33a4942b8",
+      contentChecksum: "5fe71060e0bb72d2fdbe9b02f32cc6af3c1131fc5ac6822c211a851bc1e76553",
     },
-    checksum: "f69dedddf25ebc4d2d31ddc6c56fe3c1b1825e142a35ad5093629ea6870bd572",
+    checksum: "eeade5e743c956ab986acbcb1e65ae9cf8c25e7c89c614693f2b2cd57601f31c",
   },
   {
     payload: {
-      id: "guidance.writer", locale: "ru", version: 6, audience: "adult",
+      id: "guidance.writer", locale: "ru", version: 7, audience: "adult",
       ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation",
       screens: ["globe"], context: "help:writer",
       entityIds: [], claimKind: "interface-guidance", factualSources: [],
@@ -558,21 +558,21 @@ export const BOOKY_NAVIGATION_DRAFTS: readonly BookyDialogueRecord[] = freeze([
       },
       narration: null, prohibitedTags: [],
       provenance: {
-        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 6,
-        sourceRef: "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c:PlanetMascotControls.name+helpTip.writer:ru",
-        sourceSha256: "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 7,
+        sourceRef: "aba461a774c125f9c38ea4c10aac9b3cc8024d2d:PlanetMascotControls.name+helpTip.writer:ru",
+        sourceSha256: "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
         copySha256: "ea1a3a737dd177f4b85cd7a8b813bb2654bd1ec77ea6572a6ad950c4d8bfec1f",
       },
     },
     review: {
       status: "draft", reviewer: null, reviewedAt: null,
-      contentChecksum: "5f96e653fd52d836c9c723a124b58830b732a6ae665079009663eb9fb6c4d8ee",
+      contentChecksum: "c35edc8881e17b3519abd2927e252803af696015f3e78f808506034f737c20cf",
     },
-    checksum: "9ec1d7a8ba9da2d26ac5fe8ff307757f927b8a0dbe24358990c33234249ea232",
+    checksum: "13e0f72dfbc593ac168941cec7c81d6294ae437a58be91fee62a243c50280522",
   },
   {
     payload: {
-      id: "guidance.writer", locale: "en", version: 6, audience: "adult",
+      id: "guidance.writer", locale: "en", version: 7, audience: "adult",
       ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation",
       screens: ["globe"], context: "help:writer",
       entityIds: [], claimKind: "interface-guidance", factualSources: [],
@@ -584,21 +584,21 @@ export const BOOKY_NAVIGATION_DRAFTS: readonly BookyDialogueRecord[] = freeze([
       },
       narration: null, prohibitedTags: [],
       provenance: {
-        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 6,
-        sourceRef: "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c:PlanetMascotControls.name+helpTip.writer:en",
-        sourceSha256: "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 7,
+        sourceRef: "aba461a774c125f9c38ea4c10aac9b3cc8024d2d:PlanetMascotControls.name+helpTip.writer:en",
+        sourceSha256: "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
         copySha256: "ff636a208acd0c12b8a31fd0b8e5b9fca00e78fc66d996cd19da554e77f6dc82",
       },
     },
     review: {
       status: "draft", reviewer: null, reviewedAt: null,
-      contentChecksum: "a784a7f753226b4f424dd7f8c789d0fe853ba078fb30d99b94563cab32a1b3ff",
+      contentChecksum: "0a77df8e0ad99fbf62f14badff1edbac9193d782f28a252a9afba8d6cea5b62b",
     },
-    checksum: "8042f08a72dac7409b8a32d8d27a05babbdb9978eb6a230dbc66f4bf60b3f65d",
+    checksum: "5c3990fe3d1dbe60221901ee1fa6f6d783f20cdb40076a80aa8bcab924d787c3",
   },
   {
     payload: {
-      id: "guidance.collection", locale: "ru", version: 6, audience: "adult",
+      id: "guidance.collection", locale: "ru", version: 7, audience: "adult",
       ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation",
       screens: ["collection"], context: "help:collection",
       entityIds: [], claimKind: "interface-guidance", factualSources: [],
@@ -610,21 +610,21 @@ export const BOOKY_NAVIGATION_DRAFTS: readonly BookyDialogueRecord[] = freeze([
       },
       narration: null, prohibitedTags: [],
       provenance: {
-        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 6,
-        sourceRef: "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c:PlanetMascotControls.name+helpTip.collection:ru",
-        sourceSha256: "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 7,
+        sourceRef: "aba461a774c125f9c38ea4c10aac9b3cc8024d2d:PlanetMascotControls.name+helpTip.collection:ru",
+        sourceSha256: "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
         copySha256: "12ab4c9bda6171a785adf109398e7fa8618b965f8f53fac6af041b3b2ff3e443",
       },
     },
     review: {
       status: "draft", reviewer: null, reviewedAt: null,
-      contentChecksum: "ae85c06648566be1d75a797f54353f4775a8640012d50defa6dd150eb0cd673c",
+      contentChecksum: "c57cc7152edc5b5edcde773f7665b80d8e09d9dca3080cda7e361f6a28b34cf5",
     },
-    checksum: "0f70407d63ad0d3d758255b625cd744a0044b36ad8c9165142fda80865a3a91f",
+    checksum: "a62740b622e2debf9e27b893de6c4e2ca8ce297dd68f487b58d25f65b3ff23d2",
   },
   {
     payload: {
-      id: "guidance.collection", locale: "en", version: 6, audience: "adult",
+      id: "guidance.collection", locale: "en", version: 7, audience: "adult",
       ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation",
       screens: ["collection"], context: "help:collection",
       entityIds: [], claimKind: "interface-guidance", factualSources: [],
@@ -636,16 +636,16 @@ export const BOOKY_NAVIGATION_DRAFTS: readonly BookyDialogueRecord[] = freeze([
       },
       narration: null, prohibitedTags: [],
       provenance: {
-        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 6,
-        sourceRef: "5c66d6aa0061fe915e6c8fa6ef23fc6b1664a63c:PlanetMascotControls.name+helpTip.collection:en",
-        sourceSha256: "f9ee5ae157e1f97d95f43171e83a60d28c181cf1264c6c9e301db135c7a022cd",
+        kind: "existing-interface-copy", sourcePath: "src/host/PlanetMascotControls.tsx", sourceVersion: 7,
+        sourceRef: "aba461a774c125f9c38ea4c10aac9b3cc8024d2d:PlanetMascotControls.name+helpTip.collection:en",
+        sourceSha256: "c3d696a33e18f9b7d33d211b876a3397d270e017cf2bee3df19210aad56a7f88",
         copySha256: "c153e034391e99b5556fbcb879300fcd18c3a80ba9133d6ea0d24fd7c96ccf5c",
       },
     },
     review: {
       status: "draft", reviewer: null, reviewedAt: null,
-      contentChecksum: "3e224b40c7607d07150fdd21e337891b5a0a2d82c3e924c413187338e887923e",
+      contentChecksum: "fea65edfef25b0a3c048765310b1a21501ba783c0d261ddb94d321725eb0fa52",
     },
-    checksum: "fd9045f6809c3d0e9af5c820028080e5fc10ae2e9c4f03dd90f7820a9b95e703",
+    checksum: "d32b9fa4477a84e4ddfa9d4f6e52e200f4c59ea95a6cb434d127385d7c69f181",
   }
 ] satisfies BookyDialogueRecord[]);
