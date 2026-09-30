@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/source-manifest.json",
+    "sha256": "e3f47976f529a083b99bae8b566fa18752a66a1a131b2a8a454a4b9a92a41c88"
+  },
+  "unit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a1/unit-result.json",
+    "sha256": "5be5c487ab8765f383cd3385a3db2bebce11f23d2dad5cc19cd2645f1706085a"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/browser-result.json",
+    "sha256": "a2d481adaed89dfa4f376917533a50ecf08a4399b8a2a21e43845d85eaa0d837"
+  },
+  "sourceInputsUnchanged": true,
+  "adminTypesPendingNextBuild": true,
+  "mobileRuntimeUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "unitRetainedAtOriginalManifest": true,
+  "fileButtonStyled": true
+}

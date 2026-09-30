@@ -1,0 +1,37 @@
+{
+  "pass": true,
+  "exitCode": 0,
+  "summary": {
+    "cases": 1,
+    "passed": 1,
+    "retries": 0
+  },
+  "durationMs": 4714,
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "--config=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-authoring-review\\playwright.config.mjs"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/source-manifest.json",
+    "sha256": "e3f47976f529a083b99bae8b566fa18752a66a1a131b2a8a454a4b9a92a41c88"
+  },
+  "sourceInputsUnchanged": true,
+  "report": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/browser-report.json",
+    "sha256": "e78ca51d64feeffef47529e51f9462ff3e5511c7f182dc389073e04886677103"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/browser-stdout.log",
+    "sha256": "b02d6baac0c1ee51a6df9b46ee1b3e9c1167f5a22566eeb125a583d58d956e2a"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/browser-stderr.log",
+    "sha256": "50f6bc6e76df93006c385606bfc0c67f7dd0d4727946d09533ac46bc713f0c61"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/finish-file-button.mjs",
+    "sha256": "807283194f74e64088138e1ccbcfb25f507a58f3fe631fb95502f3cdf0485bdd"
+  }
+}

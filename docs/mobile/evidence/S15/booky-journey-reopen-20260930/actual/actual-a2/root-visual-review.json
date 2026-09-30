@@ -1,0 +1,60 @@
+{
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/source-manifest.json",
+    "sha256": "e3f47976f529a083b99bae8b566fa18752a66a1a131b2a8a454a4b9a92a41c88"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/browser-result.json",
+    "sha256": "a2d481adaed89dfa4f376917533a50ecf08a4399b8a2a21e43845d85eaa0d837"
+  },
+  "directRootViews": 4,
+  "screenshots": [
+    {
+      "filename": "booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "scope": "Actual editor component with synthetic canonical choices; upper form at 320px.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png"
+    },
+    {
+      "filename": "booky-journey-preview-ru-320.png",
+      "sha256": "b4500fd3e2b5a4c6450f93b6a707ad93702ecb9892b46b2aa7dcd63cd996b87a",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "scope": "Actual local authoring preview, RU work step at 320px; not production route admission.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png"
+    },
+    {
+      "filename": "booky-journey-preview-en-320.png",
+      "sha256": "b04fa35624cb0208b139e08181a0742ef490e4f1504edff041078af07aac2802",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "scope": "Actual local authoring preview, same work step in EN at 320px.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png"
+    },
+    {
+      "filename": "booky-journey-editor-ru-1280.png",
+      "sha256": "2c5ad82f1eeba0b6a9f560efb90f5ae561551a9e16d50d719f4e07374713bb8f",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "scope": "Actual editor component, same authored state, desktop upper form.",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png"
+    }
+  ],
+  "findings": [
+    "Root viewed the actual 320px/1280px editor and RU/EN work-step previews.",
+    "The file opener starts collapsed, and failed or obsolete imports preserve edited fields.",
+    "Synthetic component fixture; authenticated admin shell, full font loading, mobile runtime and installed devices are not assessed."
+  ],
+  "editorialOrDeviceAcceptance": false
+}

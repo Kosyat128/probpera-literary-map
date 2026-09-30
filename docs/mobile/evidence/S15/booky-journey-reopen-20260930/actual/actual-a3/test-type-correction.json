@@ -1,0 +1,21 @@
+{
+  "pass": true,
+  "sourceCommit": "e0ccf87d19858c1fedf9747b5a45d8eebc3cebd6",
+  "previousSourceCommit": "6fb722e2838157d3445fe99f1c04cae152482fcb",
+  "changedPath": "apps/admin/lib/booky-journey-draft.test.ts",
+  "beforeSha256": "a15943e4065670acff6177856cc89040284a3d465a7b8eee146834e48a183b07",
+  "afterSha256": "e7be87c16241acab348b37f2b606b1b8d063a5db39d7f161861ba069dd75a985",
+  "emittedJavaScriptSha256": "3740f84ab9b101e3653259996ce130feeb41795a911725a0e7048825223c07e0",
+  "emittedJavaScriptUnchanged": true,
+  "originalUnitSource": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-reopen-review\\actual-a1\\source-manifest.json",
+  "originalBrowserSource": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-reopen-review\\actual-a2\\source-manifest.json",
+  "unitOrBrowserExecuted": false,
+  "failedBuild": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/admin-build-a1/result.json",
+    "sha256": "c6997bbf5c4242bfd43cd86003faf15c53dfa2165988e74adb16be7c5b186d9b"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-reopen-review/fix-test-type.mjs",
+    "sha256": "4cce87e7dbe86fed21431a713b0845c89a2d613f96d5111ff1886687f4fe7705"
+  }
+}

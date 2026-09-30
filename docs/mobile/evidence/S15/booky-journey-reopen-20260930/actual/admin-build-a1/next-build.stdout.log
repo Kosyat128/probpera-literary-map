@@ -1,0 +1,11 @@
+▲ Next.js 16.3.3 (webpack)
+✓ Running next.config.ts took 171ms
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 9.3s
+  Running TypeScript ...
+lib/booky-journey-draft.test.ts(327,27): error TS2352: Conversion of type '{ readonly countries: void; }' to type 'JourneyDraftCatalog' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'countries' are incompatible.
+    Type 'void' is not comparable to type 'readonly { id: string; label: { ru: string; en: string; }; writers: readonly { id: string; label: { ru: string; en: string; }; works: readonly { id: string; label: { ru: string; en: string; }; }[]; }[]; }[]'.
