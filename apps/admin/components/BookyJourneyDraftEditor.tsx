@@ -8,6 +8,8 @@ import { contentRecordHash } from "../../../src/planet/contentExportHash";
 
 type Locale = "ru" | "en";
 type NodeKind = "country" | "writer" | "work" | "checkpoint";
+type CopyKind = NodeKind | "activity" | "sourced-fact";
+type PreviewCopyView = "body" | "caption" | "reduced";
 type PreviewAnswer = Readonly<{ choiceId: string | null; verdict: boolean | null; pending: boolean; error: string }>;
 const emptyAnswer = (choiceId: string | null = null): PreviewAnswer => ({ choiceId, verdict: null, pending: false, error: "" });
 const locales = ["ru", "en"] as const;
@@ -48,6 +50,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [errors, setErrors] = useState<readonly { field: string; message: string }[]>([]);
   const [notice, setNotice] = useState("");
   const [preview, setPreview] = useState<{ draft: BookyJourneyDraft; locale: Locale; step: number } | null>(null);
+  const [previewCopyView, setPreviewCopyView] = useState<PreviewCopyView>("body");
   const [answer, setAnswer] = useState<PreviewAnswer>(emptyAnswer);
   const previewOwner = useRef(preview), answerOwner = useRef(answer);
   previewOwner.current = preview; answerOwner.current = answer;
@@ -127,6 +130,11 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     if (!preview || !previewDefinition || !Number.isInteger(step) || step < 0 || step >= previewDefinition.nodes.length || step === preview.step) return;
     beginOperation();
     setPreview((current) => current ? { ...current, step } : null);
+  }
+  function changePreviewCopyView(view: PreviewCopyView) {
+    if (view === previewCopyView) return;
+    beginOperation();
+    setPreviewCopyView(view);
   }
   async function checkAnswer() {
     const candidate = preview, choiceId = answer.choiceId;
@@ -208,6 +216,36 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       ...input.fact.copy[locale], sources: input.fact.copy[locale].sources.map((source, i) => i === index ? { ...source, [field]: value } : source),
     } } } });
   }
+  function updateCopyVariant(locale: Locale, kind: CopyKind, field: "caption" | "reduced", value: string) {
+    function edit<T extends { caption?: string; reduced?: string }>(copy: T) {
+      const next = { ...copy };
+      if (value === "") delete next[field];
+      else if (field === "caption") next.caption = value;
+      else next.reduced = value;
+      return next;
+    }
+    if (kind === "activity") {
+      if (input.activity) update({ activity: { ...input.activity, copy: { ...input.activity.copy, [locale]: edit(input.activity.copy[locale]) } } });
+    } else if (kind === "sourced-fact") {
+      if (input.fact) update({ fact: { ...input.fact, copy: { ...input.fact.copy, [locale]: edit(input.fact.copy[locale]) } } });
+    } else {
+      update({ copy: { ...input.copy, [locale]: { ...input.copy[locale], nodes: { ...input.copy[locale].nodes, [kind]: edit(input.copy[locale].nodes[kind]) } } } });
+    }
+  }
+  function copyVariantFields(locale: Locale, kind: CopyKind, copy: { caption?: string; reduced?: string }) {
+    const captionLabel = locale === "ru" ? `Подпись «${previewStepLabels.ru[kind]}» (RU)` : `Caption “${previewStepLabels.en[kind]}” (EN)`;
+    const reducedLabel = locale === "ru" ? `Короткий текст «${previewStepLabels.ru[kind]}» (RU)` : `Short text “${previewStepLabels.en[kind]}” (EN)`;
+    return <details lang={locale} data-booky-copy-variants={kind} data-copy-locale={locale} style={{ minWidth: 0 }}>
+      <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>{locale === "ru" ? "Подпись и короткий текст" : "Caption and short text"}</summary>
+      <p>{locale === "ru" ? "Пустое поле использует название шага." : "An empty field uses the step title."}</p>
+      <label className="field"><span>{captionLabel}</span>
+        <textarea lang={locale} aria-label={captionLabel} maxLength={1600} style={{ minHeight: 44 }} value={copy.caption ?? ""}
+          onChange={(event) => updateCopyVariant(locale, kind, "caption", event.target.value)} /></label>
+      <label className="field"><span>{reducedLabel}</span>
+        <textarea lang={locale} aria-label={reducedLabel} maxLength={320} style={{ minHeight: 44 }} value={copy.reduced ?? ""}
+          onChange={(event) => updateCopyVariant(locale, kind, "reduced", event.target.value)} /></label>
+    </details>;
+  }
   async function openDraft(event: ChangeEvent<HTMLInputElement>) {
     const control = event.currentTarget, file = control.files?.[0];
     const sequence = beginOperation();
@@ -265,6 +303,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     setErrors([]);
     if (input.activity && !(await validateActivity(result.draft, sequence))) return;
     if (sequence !== operationSequence.current) return;
+    setPreviewCopyView("body");
     setPreview({ draft: result.draft, locale: "ru", step: 0 });
   }
   async function download(event: FormEvent<HTMLFormElement>) {
@@ -377,6 +416,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                 <label className="field"><span>Текст факта ({locale.toUpperCase()})</span>
                   <textarea lang={locale} maxLength={1600} style={{ minHeight: 44 }} value={input.fact!.copy[locale].body}
                     onChange={(event) => updateFactCopy(locale, "body", event.target.value)} /></label>
+                {copyVariantFields(locale, "sourced-fact", input.fact!.copy[locale])}
                 <p>Источники ({locale.toUpperCase()}): от 1 до 16. Укажите дату обращения вручную в формате UTC, например 2026-09-30T12:00:00.000Z.</p>
                 {input.fact!.copy[locale].sources.map((source, index) => <div key={index} className="site-copy-grid">
                   <label className="field"><span>ID источника {index + 1} ({locale.toUpperCase()})</span>
@@ -441,6 +481,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                   <input lang={locale} maxLength={160} value={input.activity!.copy[locale].title} onChange={(event) => updateActivityCopy(locale, "title", event.target.value)} /></label>
                 <label className="field"><span>Подсказка задания ({locale.toUpperCase()})</span>
                   <textarea lang={locale} maxLength={1600} value={input.activity!.copy[locale].body} onChange={(event) => updateActivityCopy(locale, "body", event.target.value)} /></label>
+                {copyVariantFields(locale, "activity", input.activity!.copy[locale])}
               </div>)}
             </div>
           </div>}
@@ -476,6 +517,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                 <input lang={locale} maxLength={160} value={input.copy[locale].nodes[step.key].title} onChange={(event) => updateNode(locale, step.key, "title", event.target.value)} /></label>
               <label className="field"><span>Подсказка шага «{step.title}» ({locale.toUpperCase()})</span>
                 <textarea lang={locale} maxLength={1600} value={input.copy[locale].nodes[step.key].body} onChange={(event) => updateNode(locale, step.key, "body", event.target.value)} /></label>
+              {copyVariantFields(locale, step.key, input.copy[locale].nodes[step.key])}
             </div>)}
           </div>
         </section>
@@ -491,10 +533,12 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             aria-pressed={preview.locale === locale} style={{ minHeight: 44, minWidth: 44 }}
             onClick={() => changePreviewLocale(locale)}>{locale === "ru" ? "Русский" : "English"}</button>)}
         </div>
-        <p>Возраст: {previewDefinition.ageRange.min}–{previewDefinition.ageRange.max} лет · Уровень чтения: {
-          previewDefinition.readingLevel === "plain" ? "Простой" : previewDefinition.readingLevel === "developing" ? "Развивающийся" : "Свободный"
-        } · Оценка: {previewDefinition.overview?.estimatedDurationMinutes} мин</p>
-        <p role="status" aria-live="polite">Шаг {preview.step + 1} из {previewDefinition.nodes.length} · {{ country: "Страна", writer: "Писатель", work: "Книга", activity: "Задание", checkpoint: "Завершение", "sourced-fact": "Факт", character: "Персонаж" }[previewNode.kind]}</p>
+        <p lang={preview.locale}>{preview.locale === "ru" ? "Возраст" : "Age"}: {previewDefinition.ageRange.min}–{previewDefinition.ageRange.max} {preview.locale === "ru" ? "лет" : "years"} · {preview.locale === "ru" ? "Уровень чтения" : "Reading level"}: {
+          preview.locale === "ru"
+            ? previewDefinition.readingLevel === "plain" ? "Простой" : previewDefinition.readingLevel === "developing" ? "Развивающийся" : "Свободный"
+            : previewDefinition.readingLevel === "plain" ? "Plain" : previewDefinition.readingLevel === "developing" ? "Developing" : "Fluent"
+        } · {preview.locale === "ru" ? "Оценка" : "Estimate"}: {previewDefinition.overview?.estimatedDurationMinutes} {preview.locale === "ru" ? "мин" : "min"}</p>
+        <p role="status" aria-live="polite" lang={preview.locale}>{preview.locale === "ru" ? `Шаг ${preview.step + 1} из ${previewDefinition.nodes.length}` : `Step ${preview.step + 1} of ${previewDefinition.nodes.length}`} · {previewStepLabels[preview.locale][previewNode.kind]}</p>
         <details data-booky-journey-step-overview lang={preview.locale} style={{ minWidth: 0 }}>
           <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>
             {preview.locale === "ru" ? "Шаги маршрута" : "Journey steps"} ({previewDefinition.nodes.length})
@@ -513,12 +557,20 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           data-preview-step={previewNode.id} style={{ minWidth: 0, overflowWrap: "anywhere" }}>
           <h3>{previewDefinition.title}</h3>
           <p>{previewDefinition.overview?.description}</p>
-          <p lang="ru">{previewNode.kind === "checkpoint" ? "Книга для завершения" : "Каноническая запись"}: {previewEntity?.label[preview.locale]
+          <p lang={preview.locale}>{preview.locale === "ru" ? previewNode.kind === "checkpoint" ? "Книга для завершения" : "Каноническая запись" : previewNode.kind === "checkpoint" ? "Work for completion" : "Canonical record"}: {previewEntity?.label[preview.locale]
             ? <span lang={preview.locale}>{previewEntity.label[preview.locale]}</span>
-            : <span>Английское название пока не подтверждено</span>}</p>
-          <p lang="ru">Экран: {previewNode.screen === "globe" ? "Глобус" : "Коллекция"}</p>
+            : <span>{preview.locale === "ru" ? "Английское название пока не подтверждено" : "English title is not confirmed"}</span>}</p>
+          <p lang={preview.locale}>{preview.locale === "ru" ? "Экран" : "Screen"}: {preview.locale === "ru" ? previewNode.screen === "globe" ? "Глобус" : "Коллекция" : previewNode.screen === "globe" ? "Globe" : "Collection"}</p>
           <h4>{previewDialogue.payload.copy.title}</h4>
-          <p style={{ whiteSpace: "pre-wrap" }}>{previewDialogue.payload.copy.body}</p>
+          <label className="field" style={{ maxWidth: 320 }}><span>{preview.locale === "ru" ? "Вариант текста предпросмотра" : "Preview text view"}</span>
+            <select lang={preview.locale} data-booky-preview-copy-view value={previewCopyView} style={{ minHeight: 44 }}
+              onChange={(event) => changePreviewCopyView(event.target.value as PreviewCopyView)}>
+              <option value="body">{preview.locale === "ru" ? "Полный текст" : "Full text"}</option>
+              <option value="caption">{preview.locale === "ru" ? "Подпись" : "Caption"}</option>
+              <option value="reduced">{preview.locale === "ru" ? "Короткий текст" : "Short text"}</option>
+            </select>
+          </label>
+          <p data-booky-preview-copy={previewCopyView} style={{ whiteSpace: "pre-wrap" }}>{previewDialogue.payload.copy[previewCopyView]}</p>
           {previewNode.kind === "sourced-fact" && <section data-booky-fact-sources aria-label={preview.locale === "ru" ? "Источники факта" : "Fact sources"}>
             <p role="note">{preview.locale === "ru" ? "Черновик факта — источники ещё требуют проверки" : "Draft fact — sources still need review"}</p>
             <ul>
@@ -561,11 +613,11 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <strong>Перед дальнейшей проверкой</strong>
           <ul>{preview.draft.blockingReviewIssues.map((issue) => <li key={issue.field}>{issue.message}</li>)}</ul>
         </div>}
-        <nav aria-label="Шаги предпросмотра" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+        <nav aria-label={preview.locale === "ru" ? "Шаги предпросмотра" : "Preview steps"} style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           <button className="button-secondary" type="button" disabled={preview.step === 0} style={{ minHeight: 44, minWidth: 44 }}
-            onClick={() => changePreviewStep(-1)}>Предыдущий шаг</button>
+            onClick={() => changePreviewStep(-1)}>{preview.locale === "ru" ? "Предыдущий шаг" : "Previous step"}</button>
           <button className="button" type="button" disabled={preview.step === previewDefinition.nodes.length - 1} style={{ minHeight: 44, minWidth: 44 }}
-            onClick={() => changePreviewStep(1)}>Следующий шаг</button>
+            onClick={() => changePreviewStep(1)}>{preview.locale === "ru" ? "Следующий шаг" : "Next step"}</button>
         </nav>
       </div>}
     </section>

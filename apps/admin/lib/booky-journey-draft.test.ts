@@ -841,3 +841,219 @@ describe("adult Booky journey draft sourced-fact authoring", () => {
     expect(activityOnly.definitions.every(definition => definition.nodes.every(node => !Object.prototype.hasOwnProperty.call(node, "fact")))).toBe(true);
   });
 });
+
+type VariantCopy = JourneyDraftInput["copy"]["ru"]["nodes"]["work"];
+type VariantKind = "country" | "writer" | "work" | "checkpoint" | "activity" | "sourced-fact";
+function variantValue(): JourneyDraftInput {
+  const value = activityValue();
+  value.fact = factValue().fact;
+  return value;
+}
+function variantCopies(value: JourneyDraftInput): { locale: "ru" | "en"; kind: VariantKind; copy: VariantCopy }[] {
+  return (["ru", "en"] as const).flatMap(locale => [
+    ...(["country", "writer", "work", "checkpoint"] as const).map(kind => ({ locale, kind, copy: value.copy[locale].nodes[kind] })),
+    { locale, kind: "activity" as const, copy: value.activity!.copy[locale] },
+    { locale, kind: "sourced-fact" as const, copy: value.fact!.copy[locale] },
+  ]);
+}
+function variantRecord(exported: BookyJourneyDraft, locale: "ru" | "en", kind: VariantKind) {
+  return exported.dialogues.find(record => record.payload.locale === locale && record.payload.id === `test-route.${kind}`)!;
+}
+
+describe("adult Booky journey draft optional copy variants", () => {
+  it("binds explicit RU/EN variants on every navigation, factual and activity node to the existing registry schemas", () => {
+    const value = variantValue();
+    for (const { locale, kind, copy } of variantCopies(value)) {
+      copy.caption = `${locale} ${kind} caption\nSecond line.`;
+      copy.reduced = `${locale} ${kind} reduced`;
+    }
+    const exported = draft(value);
+    expect(exported.authoringSource.input).toEqual(value);
+    expect(exported.authoringSourceChecksum).toBe(contentRecordHash(exported.authoringSource));
+    expect(exported.dialogues).toHaveLength(12);
+    for (const { locale, kind, copy } of variantCopies(value)) {
+      const record = variantRecord(exported, locale, kind);
+      expect(record.payload.copy).toEqual({ title: copy.title, body: copy.body, caption: copy.caption, reduced: copy.reduced });
+      expect(record.payload.provenance.copySha256).toBe(contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })));
+      expect(record.payload.provenance.sourceSha256).toBe(exported.authoringSourceChecksum);
+      expect(getBookyDialogueContentChecksum(record.payload)).toBe(record.review.contentChecksum);
+      expect(getBookyDialogueChecksum({ payload: record.payload, review: record.review })).toBe(record.checksum);
+      expect(record.review.status).toBe("draft");
+      expect(record.payload.narration).toBeNull();
+    }
+    const registry = createBookyDialogueRegistry(exported.dialogues, {
+      canonicalEntityIds: [...new Set(exported.dialogues.flatMap(record => record.payload.entityIds))], approvedReviews: [],
+    });
+    expect(registry.size).toBe(12);
+    expect(registry.rejections).toEqual([]);
+    expect(exported.definitionsChecksums).toEqual(exported.definitions.map(definition => ({ locale: definition.locale, checksum: getBookyJourneyChecksum(definition) })));
+    expect([exported.releaseReady, exported.humanReviewed, exported.childApproved, exported.narrationApproved]).toEqual([false, false, false, false]);
+    expect(exported.journeyApprovals).toEqual([]);
+    expect(exported.dialogueApprovals).toEqual([]);
+  });
+
+  it("keeps independent explicit presence while each omitted variant falls back to the original title", () => {
+    const omitted = draft(variantValue()), value = variantValue();
+    for (const { locale, copy } of variantCopies(value)) {
+      if (locale === "ru") copy.caption = copy.title;
+      else copy.reduced = copy.title;
+    }
+    const exported = draft(value);
+    for (const { locale, kind, copy } of variantCopies(exported.authoringSource.input)) {
+      expect(Object.keys(copy)).toEqual(kind === "sourced-fact"
+        ? ["title", "body", locale === "ru" ? "caption" : "reduced", "sources"]
+        : ["title", "body", locale === "ru" ? "caption" : "reduced"]);
+      expect(variantRecord(exported, locale, kind).payload.copy).toEqual(variantRecord(omitted, locale, kind).payload.copy);
+      expect(Object.prototype.hasOwnProperty.call(copy, locale === "ru" ? "reduced" : "caption")).toBe(false);
+      expect(Object.keys(variantCopies(omitted.authoringSource.input).find(item => item.locale === locale && item.kind === kind)!.copy))
+        .toEqual(kind === "sourced-fact" ? ["title", "body", "sources"] : ["title", "body"]);
+    }
+    expect(exported.authoringSourceChecksum).not.toBe(omitted.authoringSourceChecksum);
+    expect(parseBookyJourneyDraft(JSON.stringify(exported), catalog()).ok).toBe(true);
+  });
+
+  it("accepts bounded multiline variants and rejects missing text, nonstrings, controls and every over-limit variant", () => {
+    const valid = variantValue();
+    for (const { copy } of variantCopies(valid)) {
+      copy.caption = "c".repeat(1600);
+      copy.reduced = "r".repeat(320);
+    }
+    expect(draft(valid).dialogues).toHaveLength(12);
+    for (const { copy } of variantCopies(valid)) { copy.caption = "First\nSecond\tline\r\nThird"; copy.reduced = "Short\nSecond"; }
+    expect(parseBookyJourneyDraft(JSON.stringify(draft(valid)), catalog()).ok).toBe(true);
+    for (let index = 0; index < 12; index++) {
+      for (const field of ["caption", "reduced"] as const) {
+        for (const invalid of [undefined, null, "", " ", " padded", "padded ", "bad\u000bcontrol", "bad\u007fcontrol", 1, {}, "x".repeat(field === "caption" ? 1601 : 321)]) {
+          const value = variantValue();
+          Object.assign(variantCopies(value)[index].copy, { [field]: invalid });
+          expect(createBookyJourneyDraft(value, catalog()).ok).toBe(false);
+        }
+      }
+      const value = variantValue();
+      variantCopies(value)[index].copy.body = "b".repeat(1601);
+      expect(createBookyJourneyDraft(value, catalog()).ok).toBe(false);
+    }
+  });
+
+  it("rejects extra, hidden, inherited and accessor copy fields without evaluating authoring getters", () => {
+    let getterCalls = 0;
+    const getter = () => { getterCalls++; throw new Error("authoring getter must not execute"); };
+    const malformed: ((copy: VariantCopy) => void)[] = [
+      copy => { Object.assign(copy, { audioApproved: true }); },
+      copy => { Object.defineProperty(copy, "caption", { value: "Hidden" }); },
+      copy => { Object.defineProperty(copy, Symbol("extra"), { value: "Hidden" }); },
+      copy => { Object.setPrototypeOf(copy, { caption: "Inherited" }); },
+      copy => { Object.defineProperty(copy, "caption", { enumerable: true, get: getter }); },
+      copy => { Object.defineProperty(copy, "reduced", { enumerable: true, get: getter }); },
+      copy => { Object.defineProperty(copy, "body", { enumerable: true, get: getter }); },
+    ];
+    for (let index = 0; index < 12; index++) for (const change of malformed) {
+      const value = variantValue(); change(variantCopies(value)[index].copy);
+      expect(createBookyJourneyDraft(value, catalog()).ok).toBe(false);
+    }
+    for (const change of [
+      (value: JourneyDraftInput) => { Object.defineProperty(value, "copy", { enumerable: true, get: getter }); },
+      (value: JourneyDraftInput) => { Object.defineProperty(value.copy, "ru", { enumerable: true, get: getter }); },
+      (value: JourneyDraftInput) => { Object.defineProperty(value.copy.en, "nodes", { enumerable: true, get: getter }); },
+      (value: JourneyDraftInput) => { Object.defineProperty(value.copy.ru.nodes, "work", { enumerable: true, get: getter }); },
+      (value: JourneyDraftInput) => { Object.assign(value.copy.en, { caption: "Wrong level" }); },
+    ]) {
+      const value = variantValue(); change(value);
+      expect(createBookyJourneyDraft(value, catalog()).ok).toBe(false);
+    }
+    expect(getterCalls).toBe(0);
+  });
+
+  it("round trips explicit variants into immutable independent clones and still rejects current canonical drift", () => {
+    const value = variantValue();
+    value.copy.ru.nodes.work.caption = "Подпись книги";
+    value.activity!.copy.en.reduced = "Choose an author";
+    value.fact!.copy.ru.caption = "Подпись факта";
+    value.fact!.copy.en.reduced = "Short fact";
+    const before = JSON.stringify(value), exported = draft(value), serialized = JSON.stringify(exported);
+    expect(JSON.stringify(value)).toBe(before);
+    const reopened = parseBookyJourneyDraft(serialized, catalog());
+    expect(reopened.ok).toBe(true);
+    if (!reopened.ok) return;
+    expect(reopened.input).toEqual(value);
+    expect(reopened.input).not.toBe(value);
+    expect(reopened.draft).toEqual(exported);
+    expect(JSON.stringify(reopened.draft)).toBe(serialized);
+    for (const { copy } of variantCopies(reopened.input)) expect(Object.isFrozen(copy)).toBe(true);
+    value.copy.ru.nodes.work.caption = "Changed caller";
+    value.activity!.copy.en.reduced = "Changed caller";
+    value.fact!.copy.en.sources[0].url = "https://example.org/changed";
+    expect(reopened.input.copy.ru.nodes.work.caption).toBe("Подпись книги");
+    expect(reopened.input.activity!.copy.en.reduced).toBe("Choose an author");
+    expect(reopened.input.fact!.copy.en.sources[0].url).toBe("https://example.org/en/work");
+    const current = catalog(); current.countries[0].writers[0].works[0].label.en = "Changed work";
+    expect(importErrors(serialized, current)).toContain("file");
+  });
+
+  it("rebinds bilingual fact checksums for variants while preserving main-copy provenance, citations and factual identity", () => {
+    const original = draft(factValue()), value = factValue();
+    value.fact!.copy.ru.caption = "Явная подпись факта";
+    value.fact!.copy.ru.reduced = "Короткий факт";
+    const exported = draft(value);
+    for (const locale of ["ru", "en"] as const) {
+      const record = factRecord(exported, locale), previous = factRecord(original, locale);
+      expect(record.payload.provenance.copySha256).toBe(previous.payload.provenance.copySha256);
+      expect(record.payload.context).toBe(previous.payload.context);
+      expect(record.payload.factualSources).toEqual(previous.payload.factualSources);
+      expect(record.review.contentChecksum).not.toBe(previous.review.contentChecksum);
+      expect(record.payload.provenance.sourceSha256).toBe(exported.authoringSourceChecksum);
+      for (const definition of exported.definitions) {
+        const node = definition.nodes[3];
+        expect(node.fact!.dialogues.find(binding => binding.locale === locale)!.contentChecksum).toBe(getBookyDialogueContentChecksum(record.payload));
+        expect(getBookyJourneyFactChecksum(node.fact, node.entity!, node.screen)).not.toBeNull();
+      }
+    }
+    expect(factRecord(exported, "en").payload.copy).toEqual(factRecord(original, "en").payload.copy);
+    expect(exported.definitions[0].nodes[3].fact).toEqual(exported.definitions[1].nodes[3].fact);
+    expect(exported.authoringSourceChecksum).not.toBe(original.authoringSourceChecksum);
+  });
+
+  it("rejects independently rehashed derived variants and altered explicit source presence against full regeneration", () => {
+    const value = variantValue();
+    for (const { copy } of variantCopies(value)) { copy.caption = "Explicit caption"; copy.reduced = "Explicit reduced"; }
+    const serialized = JSON.stringify(draft(value));
+    for (const kind of ["work", "activity", "sourced-fact"] as const) for (const field of ["caption", "reduced"] as const) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized);
+      const record = changed.dialogues.find(item => item.payload.id === `test-route.${kind}` && item.payload.locale === "ru")!;
+      record.payload.copy[field] = "Tampered derived variant";
+      const checksum = getBookyDialogueContentChecksum(record.payload)!;
+      expect(checksum).not.toBeNull();
+      record.review.contentChecksum = checksum;
+      record.checksum = getBookyDialogueChecksum({ payload: record.payload, review: record.review })!;
+      for (const definition of changed.definitions) {
+        if (definition.locale === "ru") definition.nodes.find(node => node.kind === kind)!.dialogue.contentChecksum = checksum;
+        if (kind === "sourced-fact") definition.nodes.find(node => node.kind === kind)!.fact!.dialogues[0].contentChecksum = checksum;
+      }
+      changed.definitionsChecksums = changed.definitions.map(definition => ({ locale: definition.locale, checksum: getBookyJourneyChecksum(definition)! }));
+      expect(importErrors(JSON.stringify(changed))).toContain("file");
+    }
+    for (const change of [
+      (changed: Mutable<BookyJourneyDraft>) => { changed.authoringSource.input.copy.ru.nodes.work.caption = "Changed input caption"; },
+      (changed: Mutable<BookyJourneyDraft>) => { delete changed.authoringSource.input.fact!.copy.ru.reduced; },
+    ]) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized); change(changed);
+      changed.authoringSourceChecksum = contentRecordHash(changed.authoringSource);
+      expect(importErrors(JSON.stringify(changed))).toContain("file");
+    }
+  });
+
+  it("rejects malformed imported optional fields on all node kinds before they can grant any draft authority", () => {
+    const serialized = JSON.stringify(draft(variantValue()));
+    for (let index = 0; index < 12; index++) for (const invalid of [null, "", " padded", "x".repeat(1601)]) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized);
+      Object.assign(variantCopies(changed.authoringSource.input)[index].copy, { caption: invalid });
+      expect(parseBookyJourneyDraft(JSON.stringify(changed), catalog()).ok).toBe(false);
+    }
+    for (let index = 0; index < 12; index++) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized);
+      Object.assign(variantCopies(changed.authoringSource.input)[index].copy, { reduced: "x".repeat(321), narrationApproved: true });
+      expect(parseBookyJourneyDraft(JSON.stringify(changed), catalog()).ok).toBe(false);
+    }
+    expect(parseBookyJourneyDraft(serialized, catalog()).ok).toBe(true);
+  });
+});

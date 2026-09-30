@@ -32,6 +32,8 @@ test.beforeAll(async () => {
     builder.onResolve({ filter: /^@\/app\/\(dashboard\)\/journeys\/actions$/ }, args => ({ path: args.path, namespace: 'booky-activity-action-fixture' }));
     builder.onLoad({ filter: /.*/, namespace: 'booky-activity-action-fixture' }, () => ({ loader: 'js', resolveDir: root, contents: `
       import {evaluateBookyJourneyDraftActivity,validateBookyJourneyDraftActivity} from ${JSON.stringify(path.join(root, 'apps/admin/lib/booky-journey-activity-validation.ts').replaceAll('\\', '/'))};
+      import {contentRecordHash} from ${JSON.stringify(path.join(root, 'src/planet/contentExportHash.ts').replaceAll('\\', '/'))};
+      window.__copyVariantRecordHash=contentRecordHash;
       const catalog=${JSON.stringify(catalog)}, publicData=${JSON.stringify(publicData)};
       window.__activityValidationCalls=[];
       window.__activityAnswerCalls=[];
@@ -125,8 +127,8 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await previewButton.tap();
   await expect(preview.getByRole('note')).toContainText('Английское имя писателя пока не подтверждено.');
   await preview.getByRole('button', {name:'English',exact:true}).tap();
-  await preview.getByRole('button', {name:'Следующий шаг',exact:true}).tap();
-  await expect(preview.locator('[data-preview-step="writer"]')).toContainText('Английское название пока не подтверждено');
+  await preview.getByRole('button', {name: /^(?:Следующий шаг|Next step)$/}).tap();
+  await expect(preview.locator('[data-preview-step="writer"]')).toContainText('English title is not confirmed');
   await expect(preview.locator('[data-preview-step="writer"]')).not.toContainText('Тестовый писатель Б');
   await country.selectOption('country-b');
   await expect(preview).toHaveCount(0);
@@ -142,8 +144,8 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   }
   await capture('booky-journey-editor-ru-320.png', 'Actual editor component with synthetic canonical choices; upper form at 320px.');
   await previewButton.tap();
-  const previous=preview.getByRole('button',{name:'Предыдущий шаг',exact:true});
-  const next=preview.getByRole('button',{name:'Следующий шаг',exact:true});
+  const previous=preview.getByRole('button',{name: /^(?:Предыдущий шаг|Previous step)$/});
+  const next=preview.getByRole('button',{name: /^(?:Следующий шаг|Next step)$/});
   await expect(previous).toBeDisabled();
   const overview=preview.locator('[data-booky-journey-step-overview]');
   const overviewSummary=overview.locator('summary');
@@ -169,6 +171,14 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await expect(preview.locator('[data-preview-step="writer"]')).toContainText('Откройте выбранного писателя.');
   await next.tap();
   await expect(preview.locator('[data-preview-step="work"]')).toContainText('Перейдите к выбранной книге в коллекции.');
+  const previewCopyView=preview.locator('[data-booky-preview-copy-view]');
+  const previewCopy=preview.locator('[data-booky-preview-copy]');
+  await expect(previewCopyView).toHaveValue('body');
+  await expect(previewCopyView.locator('option')).toHaveText(['Полный текст','Подпись','Короткий текст']);
+  await previewCopyView.selectOption('caption'); await expect(previewCopy).toHaveText('Откройте книгу');
+  await previewCopyView.selectOption('reduced'); await expect(previewCopy).toHaveText('Откройте книгу');
+  await expect(overview.locator('[data-preview-step-choice="work"]')).toHaveAttribute('aria-current','step');
+  await previewCopyView.selectOption('body'); await expect(previewCopy).toHaveText('Перейдите к выбранной книге в коллекции.');
   await preview.scrollIntoViewIfNeeded();
   expect(await overflow()).toBe(false);
   await capture('booky-journey-preview-ru-320.png','Actual local authoring preview, RU work step at 320px; not production route admission.');
@@ -182,7 +192,14 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await expect(overview.getByRole('button')).toHaveText(['1. Country','2. Writer','3. Work','4. Finish']);
   await expect(overview.locator('[aria-current="step"]')).toHaveCount(1);
   await expect(overview.locator('[data-preview-step-choice="work"]')).toHaveAttribute('aria-current','step');
+  await expect(previewCopyView.locator('option')).toHaveText(['Full text','Caption','Short text']);
   await expect(preview.locator('[data-preview-step="work"]')).toHaveAttribute('lang','en');
+  await expect(preview.getByRole('status')).toContainText('Step 3 of 4 · Work');
+  await expect(preview).toContainText('Age: 18–65 years · Reading level: Plain · Estimate: 8 min');
+  await expect(preview.locator('[data-preview-step="work"]')).toContainText('Canonical record: Synthetic work A');
+  await expect(preview.locator('[data-preview-step="work"]')).toContainText('Screen: Collection');
+  await expect(preview.getByRole('button',{name:'Previous step',exact:true})).toBeVisible();
+  await expect(preview.getByRole('button',{name:'Next step',exact:true})).toBeVisible();
   await expect(preview.locator('[data-preview-step="work"]')).toContainText('Synthetic work A');
   await expect(preview.locator('[data-preview-step="work"]')).toContainText('Go to the selected book in the collection.');
   await preview.scrollIntoViewIfNeeded();
@@ -191,6 +208,13 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await page.getByLabel('Название маршрута (RU)',{exact:true}).fill('Тестовый маршрут обновлён');
   await expect(preview).toHaveCount(0);
   expect(downloads).toEqual([]);
+  const workVariants=page.locator('[data-booky-copy-variants="work"][data-copy-locale="ru"]');
+  await expect(workVariants).not.toHaveAttribute('open',''); await workVariants.locator('summary').tap();
+  const workCaption=workVariants.getByRole('textbox',{name:'Подпись «Книга» (RU)',exact:true});
+  const workReduced=workVariants.getByRole('textbox',{name:'Короткий текст «Книга» (RU)',exact:true});
+  await expect(workCaption).toHaveValue(''); await expect(workReduced).toHaveValue('');
+  await workCaption.fill('Временная подпись'); await workCaption.fill('');
+  await workReduced.fill('Временный короткий текст'); await workReduced.fill('');
   const downloaded = page.waitForEvent('download');
   await button.tap();
   const download = await downloaded;
@@ -199,6 +223,8 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await download.saveAs(exportedPath);
   const bytes = await fs.readFile(exportedPath), draft = JSON.parse(bytes.toString('utf8'));
   expect(sha(bytes)).toBe('7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5');
+  expect(Object.hasOwn(draft.authoringSource.input.copy.ru.nodes.work,'caption')).toBe(false);
+  expect(Object.hasOwn(draft.authoringSource.input.copy.ru.nodes.work,'reduced')).toBe(false);
   expect(await page.evaluate(() => window.__activityValidationCalls)).toEqual([]);
   expect(draft.definitions).toHaveLength(2); expect(draft.dialogues).toHaveLength(8);
   expect(draft.definitions.map(d => d.locale).sort()).toEqual(['en', 'ru']);
@@ -267,6 +293,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     bilingualDefinitions: 2, unapprovedDialogueDrafts: 8, cascadeResetsVerified: true, adultRuEnPreviewVerified:true, previewInvalidationVerified:true, missingCanonicalEnglishPreserved:true, localDraftRoundtripVerified:true, rejectedImportPreservesEditsAndPreview:true, delayedImportCannotOverwriteNewEdits:true, newerFileSelectionCancelsOlderResult:true, readFailurePreservesEdits:true, noActivityExportMatchesOriginalD223Bytes:true, activityServerValidationCalls:0,
     optionalStepOverviewStartsCollapsed:true, actualFourNodeOverviewRuEnVerified:true, currentStepAriaCurrentVerified:true,
     trustedKeyboardAndTouchJumpOnlyLocalPreview:true, overviewControlsMinimum44CssPx:true, overviewWrapHasNo320Overflow:true, sequentialPreviewControlsRetained:true, downloads,
+    omittedCopyVariantsUseTitleFallback:true, previewCopyViewRuEnLabelsVerified:true, clearedCopyVariantFieldsDeleteOwnKeysAndPreserveOriginalExportBytes:true,
     exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length }, sourceInputs: fixture.sourceInputs,
     screenshots, errors, externalRequests, productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
   }, null, 2) });
@@ -339,16 +366,16 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await secondChoice.selectOption(JSON.stringify(['country-b', 'writer-c']));
   await previewButton.tap();
   await expect(preview).toBeVisible();
-  await expect(preview.getByRole('status')).toContainText('Шаг 1 из 5');
-  const next = preview.getByRole('button', { name: 'Следующий шаг', exact: true });
-  const previous = preview.getByRole('button', { name: 'Предыдущий шаг', exact: true });
+  await expect(preview.getByRole('status')).toContainText(/^(?:Шаг 1 из 5|Step 1 of 5)/);
+  const next = preview.getByRole('button', { name: /^(?:Следующий шаг|Next step)$/ });
+  const previous = preview.getByRole('button', { name: /^(?:Предыдущий шаг|Previous step)$/ });
   for (let index = 0; index < 3; index++) await next.tap();
   const activityStep = preview.locator('[data-preview-step="activity"]');
   await expect(activityStep).toContainText('Кто автор этой книги?');
   await expect(activityStep.getByRole('list', { name: 'Варианты ответа' })).toContainText('Тестовый писатель А');
   await expect(activityStep.getByRole('list', { name: 'Варианты ответа' })).toContainText('Тестовый писатель В');
   await next.tap();
-  await expect(preview.getByRole('status')).toContainText('Шаг 5 из 5');
+  await expect(preview.getByRole('status')).toContainText(/^(?:Шаг 5 из 5|Step 5 of 5)/);
   await expect(preview.locator('[data-preview-step="checkpoint"]')).toBeVisible();
   await expect(next).toBeDisabled();
   await previous.tap();
@@ -472,7 +499,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   expect(importedCall.actualHelperCalled).toBe(true); expect(importedCall.actualResult.ok).toBe(true);
   await previewButton.tap();
   await expect(preview).toBeVisible();
-  await expect(preview.getByRole('status')).toContainText('Шаг 1 из 5');
+  await expect(preview.getByRole('status')).toContainText(/^(?:Шаг 1 из 5|Step 1 of 5)/);
   for (let index = 0; index < 3; index++) await next.tap();
   await expect(activityStep).toHaveAttribute('lang', 'ru');
   await expect(activityStep).toContainText('Кто автор этой книги?');
@@ -482,7 +509,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   const correctAnswer = choices.locator('[data-answer-choice-id="choice-2"]');
   const verdict = activityStep.locator('[data-booky-activity-verdict]');
   const answerError = activityStep.locator('[data-booky-activity-answer-error]');
-  const stepStatus = preview.locator('p[role="status"]').filter({ hasText: /^Шаг / });
+  const stepStatus = preview.locator('p[role="status"]').filter({ hasText: /^(?:Шаг |Step )/ });
   const answerCheckRu = activityStep.getByRole('button', { name: 'Проверить ответ', exact: true });
   const answerResetRu = activityStep.getByRole('button', { name: 'Сбросить ответ', exact: true });
   const answerCheckEn = activityStep.getByRole('button', { name: 'Check answer', exact: true });
@@ -496,7 +523,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await answerCheckRu.tap();
   await expect(verdict).toHaveAttribute('data-verdict', 'wrong');
   await expect(verdict).toContainText('Этот вариант не подходит. Попробуйте другой.');
-  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   const firstWrongVerdict = await page.evaluate(() => window.__activityAnswerCalls.at(-1));
   expect(firstWrongVerdict.actualHelperCalled).toBe(true); expect(firstWrongVerdict.actualResult.correct).toBe(false);
   await answerResetRu.tap();
@@ -513,7 +540,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(verdict).toHaveAttribute('data-verdict', 'correct');
   await expect(verdict).toContainText('Верно.');
   await expect(answerCheckRu).toBeFocused();
-  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   const firstCorrectVerdict = await page.evaluate(() => window.__activityAnswerCalls.at(-1));
   expect(firstCorrectVerdict.actualHelperCalled).toBe(true); expect(firstCorrectVerdict.actualResult.correct).toBe(true);
   const overview = preview.locator('[data-booky-journey-step-overview]');
@@ -528,7 +555,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
   await expect(verdict).toHaveAttribute('data-verdict', 'correct');
   expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(callsBeforeCurrentStep);
-  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   await next.tap();
   await expect(preview.locator('[data-preview-step="checkpoint"]')).toBeVisible();
   await expect(overview.locator('[data-preview-step-choice="checkpoint"]')).toHaveAttribute('aria-current', 'step');
@@ -556,11 +583,11 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(preview.locator('[data-preview-step="work"]')).toBeVisible();
   await expect(overviewWork).toHaveAttribute('aria-current', 'step');
   await releaseAnswer(heldStepVerdict);
-  await expect(stepStatus).toContainText('Шаг 3 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 3 из 5|Step 3 of 5)/);
   await expect(page.locator('[data-booky-activity-verdict]')).toHaveCount(0);
   await expect(page.locator('[data-booky-activity-answer-error]')).toHaveCount(0);
   await overviewActivity.tap();
-  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
   await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
   await expect(answerCheckRu).toBeDisabled();
@@ -579,7 +606,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'true');
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
   await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
-  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   await correctAnswer.tap();
   await page.evaluate(() => { window.__answerHoldNext = true; });
   await answerCheckRu.tap();
@@ -590,11 +617,13 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(overview.getByRole('button')).toHaveText(['1. Country', '2. Writer', '3. Work', '4. Activity', '5. Finish']);
   await expect(overviewActivity).toHaveAttribute('aria-current', 'step');
   await expect(activityStep).toHaveAttribute('lang', 'en');
+  await expect(stepStatus).toContainText('Step 4 of 5 · Activity');
+  await expect(activityStep).toContainText('Screen: Globe');
   await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
   await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
   await expect(answerCheckEn).toBeDisabled();
-  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   await correctAnswer.tap();
   for (const [knob, message] of [
     ['__answerWrongChecksumNext', 'The check is out of date. Try again.'],
@@ -607,7 +636,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
     await expect(answerError).toContainText(message);
     await expect(verdict).toHaveCount(0);
     await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
-    await expect(stepStatus).toContainText('Шаг 4 из 5');
+    await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   }
   await answerResetEn.tap();
   await expect(answerError).toHaveCount(0); await expect(verdict).toHaveCount(0);
@@ -629,6 +658,22 @@ test('optional adult RU EN author task uses current semantic validation and pres
   for (let index = 0; index < 3; index++) await next.tap();
   await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  const activityVariants = page.locator('[data-booky-copy-variants="activity"][data-copy-locale="ru"]');
+  await expect(activityVariants).not.toHaveAttribute('open', ''); await activityVariants.locator('summary').tap();
+  const activityReduced = activityVariants.getByRole('textbox', { name: 'Короткий текст «Задание» (RU)', exact: true });
+  await expect(activityReduced).toHaveValue('');
+  await correctAnswer.tap();
+  await page.evaluate(() => { window.__answerHoldNext = true; });
+  await answerCheckRu.tap();
+  const heldVariantEditVerdict = await answerHeldIndex();
+  await activityReduced.fill('Краткая подсказка: выберите автора.');
+  await releaseAnswer(heldVariantEditVerdict);
+  await expect(activityReduced).toHaveValue('Краткая подсказка: выберите автора.');
+  await expect(preview).toHaveCount(0); await expect(page.locator('[data-booky-activity-verdict]')).toHaveCount(0);
+  await upload('restore-after-copy-variant-edit.json');
+  await expect(activityReduced).toHaveValue('');
+  await previewButton.tap(); for (let index = 0; index < 3; index++) await next.tap();
+  await expect(preview.locator('[data-booky-preview-copy-view]')).toHaveValue('body');
   await correctAnswer.tap();
   await answerCheckRu.tap();
   await expect(verdict).toHaveAttribute('data-verdict', 'correct');
@@ -645,7 +690,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(verdict).toHaveAttribute('data-verdict', 'wrong');
   await expect(verdict).toHaveAttribute('aria-live', 'polite');
   await expect(verdict).toHaveAttribute('lang', 'ru');
-  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   const overflow = () => page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   expect(await overflow()).toBe(false);
   for (const control of [activityOpener, firstChoice, secondChoice, previous, next, preview.getByRole('button', { name: 'English', exact: true }), activityEnabled.locator('..'), wrongAnswer, correctAnswer, answerCheckRu, answerResetRu]) {
@@ -670,10 +715,21 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(verdict).toHaveAttribute('aria-live', 'polite');
   await expect(verdict).toHaveAttribute('lang', 'en');
   await expect(verdict).toContainText('Correct.');
-  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   for (const control of [wrongAnswer, correctAnswer, answerCheckEn, answerResetEn]) expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
   expect(await overflow()).toBe(false);
   await capture('booky-journey-activity-en-320.png', 'Same local adult preview in EN320 after keyboard choice/check of credited writer C; calm current correct feedback without automatic advance, publication or runtime admission.');
+  const activityCopyView = preview.locator('[data-booky-preview-copy-view]');
+  const callsBeforeSameCopyView = await page.evaluate(() => window.__activityAnswerCalls.length);
+  await activityCopyView.selectOption('body');
+  await expect(verdict).toHaveAttribute('data-verdict', 'correct');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(callsBeforeSameCopyView);
+  await activityCopyView.selectOption('caption');
+  await expect(verdict).toHaveCount(0); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
+  await expect(preview.locator('[data-booky-preview-copy]')).toHaveText('Who wrote this book?');
+  await activityCopyView.selectOption('body');
   expect(screenshots).toHaveLength(2); expect(downloads).toHaveLength(1);
   expect(await page.evaluate(() => window.__draftExportBlobs.length)).toBe(1);
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
@@ -685,13 +741,13 @@ test('optional adult RU EN author task uses current semantic validation and pres
   expect(validationCalls.filter(call => call.actualHelperCalled).length).toBeGreaterThanOrEqual(8);
   expect(validationCalls.every(call => call.completed)).toBe(true);
   const answerCalls = await page.evaluate(() => window.__activityAnswerCalls);
-  expect(answerCalls.filter(call => call.hold)).toHaveLength(4);
+  expect(answerCalls.filter(call => call.hold)).toHaveLength(5);
   expect(answerCalls.filter(call => call.wrongChecksum)).toHaveLength(1);
   expect(answerCalls.filter(call => call.wrongChoice)).toHaveLength(1);
   expect(answerCalls.filter(call => call.failSession)).toHaveLength(1);
   expect(answerCalls.filter(call => call.failNetwork)).toHaveLength(1);
   expect(answerCalls.every(call => call.completed)).toBe(true);
-  for (const index of [heldStepVerdict, heldChoiceVerdict, heldLocaleVerdict, heldEditVerdict]) {
+  for (const index of [heldStepVerdict, heldChoiceVerdict, heldLocaleVerdict, heldEditVerdict, heldVariantEditVerdict]) {
     expect(answerCalls[index].actualHelperCalled).toBe(true); expect(answerCalls[index].actualResult.correct).toBe(true);
   }
   expect(answerCalls.filter(call => call.actualHelperCalled && call.actualResult.ok && call.actualResult.correct === false).length).toBeGreaterThanOrEqual(2);
@@ -714,6 +770,8 @@ test('optional adult RU EN author task uses current semantic validation and pres
     heldVerdictCannotSurviveNewChoiceLocaleOrEdit: true, mismatchedResponseHashOrChoiceCannotShowVerdict: true,
     actualFiveNodeOverviewRuEnVerified: true, currentStepJumpPreservesSelectedVerdictAndPendingAttempt: true,
     differentStepJumpClearsAnswerAndRejectsLateVerdict: true, heldStepVerdictCallIndex: heldStepVerdict,
+    copyVariantEditRejectsLateAnswerAndNativeImportRestoresOmission: true, heldVariantEditVerdictCallIndex: heldVariantEditVerdict,
+    sameCopyViewKeepsVerdictAndDifferentCopyViewClearsAnswerWithoutMovingStep: true,
     failedSessionOrNetworkCannotShowVerdict: true, localizedCalmAriaLiveFeedbackVerified: true,
     answerCheckDoesNotAdvanceStep: true, answerStateStorageWrites: storageWrites,
     downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length }, validationCalls, answerCalls,
@@ -745,11 +803,13 @@ test('optional bilingual work fact preserves authored source metadata through st
   await page.setViewportSize({ width: 320, height: 844 });
   await page.goto(origin);
   const copy = {
-    ru: { title: 'Синтетическая запись о книге', body: 'Это вымышленный текст для проверки редактора.\nЭто не проверенный литературный факт.', sources: [
+    ru: { title: 'Синтетическая запись о книге', body: 'Это вымышленный текст для проверки редактора.\nЭто не проверенный литературный факт.',
+      caption: 'Синтетическая подпись.\nИсточники не проверены.', reduced: 'Короткая синтетическая запись; источники не проверены.', sources: [
       { id: 'synthetic-ru-one', url: 'https://example.test/ru/unverified-work-note', accessedAt: '2026-09-29T10:15:00.000Z' },
       { id: 'synthetic-ru-two', url: 'https://example.test/ru/unverified-second-note', accessedAt: '2026-09-29T11:45:00.000Z' },
     ] },
-    en: { title: 'Synthetic work note', body: 'This is fictional text for checking the editor, not a verified literary fact.', sources: [
+    en: { title: 'Synthetic work note', body: 'This is fictional text for checking the editor, not a verified literary fact.',
+      caption: 'Synthetic caption.\nSources have not been reviewed.', sources: [
       { id: 'synthetic-en-one', url: 'https://example.test/en/unverified-work-note', accessedAt: '2026-09-28T09:30:00.000Z' },
     ] },
   };
@@ -772,6 +832,10 @@ test('optional bilingual work fact preserves authored source metadata through st
   await factEnabled.check();
   const editor = page.locator('[data-booky-fact-editor]');
   const sourceField = (name, number, locale) => page.getByLabel(`${name} ${number} (${locale.toUpperCase()})`, { exact: true });
+  const factVariantPanel = locale => page.locator(`[data-booky-copy-variants="sourced-fact"][data-copy-locale="${locale}"]`);
+  const factVariantField = (locale, field) => factVariantPanel(locale).getByRole('textbox', { name: locale === 'ru'
+    ? `${field === 'caption' ? 'Подпись' : 'Короткий текст'} «Факт» (RU)`
+    : `${field === 'caption' ? 'Caption' : 'Short text'} “Fact” (EN)`, exact: true });
   for (const locale of ['ru', 'en']) {
     await expect(page.getByLabel(`Название факта (${locale.toUpperCase()})`, { exact: true })).toHaveValue('');
     await expect(page.getByRole('textbox', { name: `Текст факта (${locale.toUpperCase()})`, exact: true })).toHaveValue('');
@@ -779,6 +843,14 @@ test('optional bilingual work fact preserves authored source metadata through st
       await expect(sourceField(name, 1, locale)).toHaveValue('');
       await expect(sourceField(name, 2, locale)).toHaveCount(0);
     }
+    await expect(factVariantPanel(locale)).not.toHaveAttribute('open', '');
+    await factVariantPanel(locale).locator('summary').tap();
+    await expect(factVariantField(locale, 'caption')).toHaveValue('');
+    await expect(factVariantField(locale, 'reduced')).toHaveValue('');
+    for (const control of [factVariantPanel(locale).locator('summary'), factVariantField(locale, 'caption'), factVariantField(locale, 'reduced')])
+      expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
+    await expect(factVariantField(locale, 'caption')).toHaveAttribute('lang', locale);
+    await expect(factVariantField(locale, 'reduced')).toHaveAttribute('lang', locale);
   }
   const previewButton = page.getByRole('button', { name: 'Предпросмотр маршрута', exact: true });
   const downloadButton = page.getByRole('button', { name: 'Скачать черновик JSON', exact: true });
@@ -791,6 +863,8 @@ test('optional bilingual work fact preserves authored source metadata through st
   for (const locale of ['ru', 'en']) {
     await page.getByLabel(`Название факта (${locale.toUpperCase()})`, { exact: true }).fill(copy[locale].title);
     await page.getByRole('textbox', { name: `Текст факта (${locale.toUpperCase()})`, exact: true }).fill(copy[locale].body);
+    await factVariantField(locale, 'caption').fill(copy[locale].caption);
+    if (Object.hasOwn(copy[locale], 'reduced')) await factVariantField(locale, 'reduced').fill(copy[locale].reduced);
     const source = copy[locale].sources[0];
     await sourceField('ID источника', 1, locale).fill(source.id);
     await sourceField('HTTPS URL источника', 1, locale).fill(source.url);
@@ -801,14 +875,18 @@ test('optional bilingual work fact preserves authored source metadata through st
   await downloadButton.tap(); expect(downloads).toEqual([]);
   await expect(sourceField('Дата обращения к источнику', 1, 'en')).toHaveValue('');
   await sourceField('Дата обращения к источнику', 1, 'en').fill(copy.en.sources[0].accessedAt);
+  const workVariants = page.locator('[data-booky-copy-variants="work"][data-copy-locale="ru"]');
+  await workVariants.locator('summary').tap();
+  const workCaption = workVariants.getByRole('textbox', { name: 'Подпись «Книга» (RU)', exact: true });
+  await workCaption.fill('Авторская синтетическая подпись шага книги.');
   await page.getByRole('button', { name: 'Добавить источник (RU)', exact: true }).tap();
   for (const [name, key] of [['ID источника', 'id'], ['HTTPS URL источника', 'url'], ['Дата обращения к источнику', 'accessedAt']])
     await sourceField(name, 2, 'ru').fill(copy.ru.sources[1][key]);
   await previewButton.tap(); await expect(preview).toBeVisible();
-  const next = preview.getByRole('button', { name: 'Следующий шаг', exact: true });
-  const previous = preview.getByRole('button', { name: 'Предыдущий шаг', exact: true });
-  const stepStatus = preview.locator('p[role="status"]').filter({ hasText: /^Шаг / });
-  await expect(stepStatus).toContainText('Шаг 1 из 5');
+  const next = preview.getByRole('button', { name: /^(?:Следующий шаг|Next step)$/ });
+  const previous = preview.getByRole('button', { name: /^(?:Предыдущий шаг|Previous step)$/ });
+  const stepStatus = preview.locator('p[role="status"]').filter({ hasText: /^(?:Шаг |Step )/ });
+  await expect(stepStatus).toContainText(/^(?:Шаг 1 из 5|Step 1 of 5)/);
   const overview = preview.locator('[data-booky-journey-step-overview]');
   await expect(overview).not.toHaveAttribute('open', '');
   await overview.locator('summary').tap();
@@ -817,7 +895,7 @@ test('optional bilingual work fact preserves authored source metadata through st
   await expect(factStep).toBeVisible();
   await expect(overview.locator('[data-preview-step-choice="sourced-fact"]')).toHaveAttribute('aria-current', 'step');
   await overview.locator('[data-preview-step-choice="country"]').tap();
-  await expect(stepStatus).toContainText('Шаг 1 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 1 из 5|Step 1 of 5)/);
   await overview.locator('summary').tap();
   await expect(preview.locator('[data-booky-fact-sources]')).toHaveCount(0);
   for (let index = 0; index < 3; index++) await next.tap();
@@ -828,7 +906,7 @@ test('optional bilingual work fact preserves authored source metadata through st
   expect(await factBodyRu.evaluate(node => getComputedStyle(node).whiteSpace)).toBe('pre-wrap');
   await expect(factStep).toContainText('Тестовая книга А'); await expect(factStep).toContainText('Экран: Коллекция');
   await expect(factStep.getByRole('note')).toContainText('Черновик факта — источники ещё требуют проверки');
-  await expect(stepStatus).toContainText('Шаг 4 из 5');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   await next.tap(); await expect(preview.locator('[data-preview-step="checkpoint"]')).toBeVisible();
   await expect(next).toBeDisabled(); await expect(preview.locator('[data-booky-fact-sources]')).toHaveCount(0);
   await previous.tap();
@@ -841,6 +919,9 @@ test('optional bilingual work fact preserves authored source metadata through st
   expect(downloads).toHaveLength(1); expect(await page.evaluate(() => window.__factExportBlobs.length)).toBe(1);
   expect(await page.evaluate(() => window.__factExportBlobs[0].text())).toBe(bytes.toString('utf8'));
   expect(draft.authoringSource.input.fact).toEqual({ copy });
+  expect(draft.authoringSource.input.copy.ru.nodes.work.caption).toBe('Авторская синтетическая подпись шага книги.');
+  expect(Object.hasOwn(draft.authoringSource.input.copy.ru.nodes.work, 'reduced')).toBe(false);
+  expect(Object.hasOwn(draft.authoringSource.input.fact.copy.en, 'reduced')).toBe(false);
   expect(Object.hasOwn(draft.authoringSource.input, 'activity')).toBe(false);
   expect(draft.definitions).toHaveLength(2); expect(draft.dialogues).toHaveLength(10);
   for (const definition of draft.definitions) {
@@ -865,7 +946,7 @@ test('optional bilingual work fact preserves authored source metadata through st
   for (const record of factRecords) {
     expect(record.payload.claimKind).toBe('factual');
     expect(record.payload.copy).toEqual({ title: copy[record.payload.locale].title, body: copy[record.payload.locale].body,
-      caption: copy[record.payload.locale].title, reduced: copy[record.payload.locale].title });
+      caption: copy[record.payload.locale].caption, reduced: copy[record.payload.locale].reduced ?? copy[record.payload.locale].title });
     expect(record.payload.factualSources).toEqual(copy[record.payload.locale].sources);
     expect(record.payload.provenance.sourceRef).toBe(`/input/fact/copy/${record.payload.locale}`);
     expect(record.payload.provenance.sourceSha256).toBe(draft.authoringSourceChecksum);
@@ -886,24 +967,47 @@ test('optional bilingual work fact preserves authored source metadata through st
   const missingPayloadSources = structuredClone(draft); missingPayloadSources.dialogues.find(record => record.payload.intent === 'sourced-fact').payload.factualSources = [];
   const metadataTamper = structuredClone(draft); metadataTamper.authoringSource.input.fact.copy.ru.sources[0].url = 'https://example.test/ru/tampered-reference';
   const bindingTamper = structuredClone(draft); bindingTamper.definitions[1].nodes[3].fact.dialogues[0].contentChecksum = '0'.repeat(64);
+  const rehashedVariantTamper = await page.evaluate(original => {
+    const forged = structuredClone(original), hash = window.__copyVariantRecordHash;
+    const record = forged.dialogues.find(record => record.payload.intent === 'sourced-fact' && record.payload.locale === 'ru');
+    record.payload.copy.caption = 'Подменённая подпись с пересчитанными производными хешами.';
+    record.review.contentChecksum = hash(record.payload);
+    record.checksum = hash({ payload: record.payload, review: record.review });
+    for (const definition of forged.definitions) {
+      const node = definition.nodes.find(node => node.kind === 'sourced-fact');
+      if (definition.locale === 'ru') node.dialogue.contentChecksum = record.review.contentChecksum;
+      node.fact.dialogues.find(binding => binding.locale === 'ru').contentChecksum = record.review.contentChecksum;
+      forged.definitionsChecksums.find(binding => binding.locale === definition.locale).checksum = hash(definition);
+    }
+    return forged;
+  }, draft);
+  expect(rehashedVariantTamper.authoringSource).toEqual(draft.authoringSource);
+  expect(rehashedVariantTamper.dialogues.find(record => record.payload.intent === 'sourced-fact' && record.payload.locale === 'ru').review.contentChecksum)
+    .not.toBe(draft.dialogues.find(record => record.payload.intent === 'sourced-fact' && record.payload.locale === 'ru').review.contentChecksum);
   for (const [filename, buffer] of [
     ['malformed-fact.json', Buffer.from('{')],
     ['missing-fact-input-sources.json', Buffer.from(JSON.stringify(missingInputSources))],
     ['missing-fact-payload-sources.json', Buffer.from(JSON.stringify(missingPayloadSources))],
     ['tampered-fact-source.json', Buffer.from(JSON.stringify(metadataTamper))],
     ['tampered-fact-binding.json', Buffer.from(JSON.stringify(bindingTamper))],
+    ['rehashed-fact-copy-variant.json', Buffer.from(JSON.stringify(rehashedVariantTamper))],
   ]) {
     await upload(filename, buffer); await expect(page.getByRole('alert')).toBeVisible();
     await expect(factTitleRu).toHaveValue('Текущие несохранённые правки факта');
     await expect(sourceField('ID источника', 2, 'ru')).toHaveValue(copy.ru.sources[1].id);
+    await expect(factVariantField('ru', 'caption')).toHaveValue(copy.ru.caption);
+    await expect(factVariantField('en', 'reduced')).toHaveValue('');
     expect(await preview.innerText()).toBe(preservedPreview);
     expect(downloads).toHaveLength(1);
   }
   await upload('valid-fact-draft.json');
   await expect(factEnabled).toBeChecked(); await expect(preview).toHaveCount(0); await expect(openDraft).toHaveValue('');
+  await expect(workCaption).toHaveValue('Авторская синтетическая подпись шага книги.');
   for (const locale of ['ru', 'en']) {
     await expect(page.getByLabel(`Название факта (${locale.toUpperCase()})`, { exact: true })).toHaveValue(copy[locale].title);
     await expect(page.getByRole('textbox', { name: `Текст факта (${locale.toUpperCase()})`, exact: true })).toHaveValue(copy[locale].body);
+    await expect(factVariantField(locale, 'caption')).toHaveValue(copy[locale].caption);
+    await expect(factVariantField(locale, 'reduced')).toHaveValue(copy[locale].reduced ?? '');
     for (let index = 0; index < copy[locale].sources.length; index++) {
       for (const [name, key] of [['ID источника', 'id'], ['HTTPS URL источника', 'url'], ['Дата обращения к источнику', 'accessedAt']])
         await expect(sourceField(name, index + 1, locale)).toHaveValue(copy[locale].sources[index][key]);
@@ -918,6 +1022,9 @@ test('optional bilingual work fact preserves authored source metadata through st
   await expect(sourceField('ID источника', 2, 'en')).toHaveCount(0);
   await expect(sourceField('ID источника', 1, 'en')).toHaveValue(copy.en.sources[0].id);
   await previewButton.tap(); for (let index = 0; index < 3; index++) await next.tap();
+  const factCopyView = preview.locator('[data-booky-preview-copy-view]');
+  const factCopyText = preview.locator('[data-booky-preview-copy]');
+  await expect(factCopyView).toHaveValue('body');
   const overflow = () => page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   async function capture(filename, scope) {
     await factStep.scrollIntoViewIfNeeded(); const p = testInfo.outputPath(filename); await page.screenshot({ path: p });
@@ -939,23 +1046,34 @@ test('optional bilingual work fact preserves authored source metadata through st
   }
   await verifySources('ru');
   await expect(factStep.getByRole('note')).toContainText('Черновик факта — источники ещё требуют проверки');
+  await factCopyView.selectOption('caption'); expect(await factCopyText.evaluate(node => node.textContent)).toBe(copy.ru.caption);
+  await factCopyView.selectOption('reduced'); expect(await factCopyText.evaluate(node => node.textContent)).toBe(copy.ru.reduced);
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   for (const control of [factOpener, factEnabled.locator('..'), factTitleRu, sourceField('ID источника', 1, 'ru'), sourceField('HTTPS URL источника', 1, 'ru'), sourceField('Дата обращения к источнику', 1, 'ru'), previous, next])
     expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
-  await capture('booky-journey-fact-ru-320.png', 'Actual local sourced-fact preview after native reopen, RU320; explicitly fictional authored text and two unverified synthetic source references, never fetched or attested.');
+  await capture('booky-journey-fact-ru-320.png', 'Actual local sourced-fact preview after native reopen, RU320 short-text view; explicitly authored synthetic reduced copy and unverified source references, never fetched or attested.');
   await preview.getByRole('button', { name: 'English', exact: true }).tap();
+  await expect(factCopyView).toHaveValue('reduced'); await expect(factCopyText).toHaveText(copy.en.title);
+  await factCopyView.selectOption('body');
   await verifySources('en');
+  await expect(stepStatus).toContainText('Step 4 of 5 · Fact');
+  await expect(factStep).toContainText('Canonical record: Synthetic work A');
+  await expect(factStep).toContainText('Screen: Collection');
   await expect(overview.locator('summary')).toHaveText('Journey steps (5)');
   await overview.locator('summary').tap();
   await expect(overview.getByRole('button')).toHaveText(['1. Country', '2. Writer', '3. Work', '4. Fact', '5. Finish']);
   await expect(overview.locator('[data-preview-step-choice="sourced-fact"]')).toHaveAttribute('aria-current', 'step');
   await overview.locator('summary').tap();
   await expect(factStep.getByRole('note')).toContainText('Draft fact — sources still need review');
-  await capture('booky-journey-fact-en-320.png', 'Same selected-work draft fact in EN320; independent authored copy, source ID/HTTPS URL/manual UTC date and explicit review notice.');
+  await factCopyView.selectOption('caption'); expect(await factCopyText.evaluate(node => node.textContent)).toBe(copy.en.caption);
+  expect(await factCopyText.evaluate(node => getComputedStyle(node).whiteSpace)).toBe('pre-wrap');
+  expect((await factCopyView.boundingBox()).height).toBeGreaterThanOrEqual(44); expect(await overflow()).toBe(false);
+  await capture('booky-journey-fact-en-320.png', 'Same selected-work draft fact in EN320 caption view; independent authored multiline caption, source ID/HTTPS URL/manual UTC date and explicit review notice.');
   await activityOpener.tap();
   await page.getByLabel('Добавить задание «Книга и автор»', { exact: true }).check();
   await page.getByLabel('Автор · вариант 1', { exact: true }).selectOption(JSON.stringify(['country-a', 'writer-a']));
   await page.getByLabel('Автор · вариант 2', { exact: true }).selectOption(JSON.stringify(['country-b', 'writer-c']));
-  await previewButton.tap(); await expect(preview).toBeVisible(); await expect(stepStatus).toContainText('Шаг 1 из 6');
+  await previewButton.tap(); await expect(preview).toBeVisible(); await expect(stepStatus).toContainText(/^(?:Шаг 1 из 6|Step 1 of 6)/);
   await expect(overview).not.toHaveAttribute('open', '');
   await overview.locator('summary').tap();
   await expect(overview.locator('summary')).toHaveText('Шаги маршрута (6)');
@@ -968,11 +1086,11 @@ test('optional bilingual work fact preserves authored source metadata through st
   await expect(factStep).toBeVisible();
   await overview.locator('[data-preview-step-choice="activity"]').tap();
   const activityStep = preview.locator('[data-preview-step="activity"]');
-  await expect(stepStatus).toContainText('Шаг 5 из 6');
+  await expect(stepStatus).toContainText(/^(?:Шаг 5 из 6|Step 5 of 6)/);
   await activityStep.locator('[data-answer-choice-id="choice-2"]').tap();
   await activityStep.getByRole('button', { name: 'Проверить ответ', exact: true }).tap();
   await expect(activityStep.locator('[data-booky-activity-verdict]')).toHaveAttribute('data-verdict', 'correct');
-  await expect(stepStatus).toContainText('Шаг 5 из 6');
+  await expect(stepStatus).toContainText(/^(?:Шаг 5 из 6|Step 5 of 6)/);
   const validationCalls = await page.evaluate(() => window.__activityValidationCalls);
   const answerCalls = await page.evaluate(() => window.__activityAnswerCalls);
   expect(validationCalls).toHaveLength(1); expect(answerCalls).toHaveLength(1);
@@ -994,6 +1112,10 @@ test('optional bilingual work fact preserves authored source metadata through st
     nativeFileImportRestoresEverySourceRow: true, importedMultiSourceEditsPreserveOtherRows: true, sourceAddRemoveVerified: true,
     malformedMissingSourceAndFullEnvelopeTamperPreserveInputAndPreview: true,
     factPreviewShowsOnlyCurrentLocaleSourceMetadata: true, draftSourceReviewNoticeLocalized: true,
+    authoredBaseAndFactCopyVariantsExportedAndNativeImported: true, optionalVariantsStartBlankInCollapsedLocaleDetails: true,
+    independentOptionalEnReducedOmissionUsesCompiledTitleFallback: true, localizedExplicitCopyViewKeepsCurrentSemanticStep: true,
+    multilineCaptionAndShortTextPreviewPreserved: true, rehashedDerivedCopyVariantTamperCannotReplaceInputOrPreview: true,
+    englishPreviewConditionsStepLabelsRecordScreenAndSequentialNavigationLocalized: true,
     sourceLinksHaveHttpsNoopenerNoreferrer: true, narrow320LayoutHasNoHorizontalOverflow: true, minimumControlHitHeightCssPx: 44,
     combinedFactThenActivityPreviewVerified: true, combinedDraftAnswerBoundToSameWholeHash: true,
     factFiveNodeOverviewRuEnVerified: true, combinedSixNodeOverviewUsesActualDefinitionOrder: true,

@@ -20,6 +20,7 @@ export type JourneyDraftCatalog = {
     }[];
   }[];
 };
+export type JourneyDraftNodeCopy = { title: string; body: string; caption?: string; reduced?: string };
 export type JourneyDraftInput = {
   id: string; version: number; countryId: string; writerId: string; workId: string;
   ageRange: { min: number; max: number };
@@ -27,7 +28,7 @@ export type JourneyDraftInput = {
   estimatedDurationMinutes: number;
   copy: Record<"ru" | "en", {
     title: string; description: string;
-    nodes: Record<"country" | "writer" | "work" | "checkpoint", { title: string; body: string }>;
+    nodes: Record<"country" | "writer" | "work" | "checkpoint", JourneyDraftNodeCopy>;
   }>;
   activity?: JourneyDraftActivityInput;
   fact?: JourneyDraftFactInput;
@@ -35,11 +36,10 @@ export type JourneyDraftInput = {
 export type JourneyDraftActivityInput = {
   type: "match-work-author";
   choices: readonly { countryId: string; writerId: string }[];
-  copy: Record<"ru" | "en", { title: string; body: string }>;
+  copy: Record<"ru" | "en", JourneyDraftNodeCopy>;
 };
 export type JourneyDraftFactInput = {
-  copy: Record<"ru" | "en", {
-    title: string; body: string;
+  copy: Record<"ru" | "en", JourneyDraftNodeCopy & {
     sources: readonly { id: string; url: string; accessedAt: string }[];
   }>;
 };
@@ -109,6 +109,26 @@ function ownDataKeys(value: unknown, fields: readonly string[]): value is Record
     return !!descriptor?.enumerable && "value" in descriptor;
   });
 }
+function nodeCopyKeys(value: unknown, extraFields: readonly string[] = []): value is Record<string, unknown> {
+  try {
+    const optional = ["caption", "reduced"].filter(field => !!value && Object.prototype.hasOwnProperty.call(value, field));
+    return ownDataKeys(value, ["title", "body", ...extraFields, ...optional]);
+  } catch { return false; }
+}
+function nodeCopyInput(value: unknown, extraFields: readonly string[] = []): value is Record<string, unknown> {
+  return nodeCopyKeys(value, extraFields) && text(value.title, 160) && text(value.body, 1600, true)
+    && (!Object.prototype.hasOwnProperty.call(value, "caption") || text(value.caption, 1600, true))
+    && (!Object.prototype.hasOwnProperty.call(value, "reduced") || text(value.reduced, 320, true));
+}
+function nodeCopySnapshot(copy: JourneyDraftNodeCopy): JourneyDraftNodeCopy {
+  return { title: copy.title, body: copy.body,
+    ...(Object.prototype.hasOwnProperty.call(copy, "caption") ? { caption: copy.caption } : {}),
+    ...(Object.prototype.hasOwnProperty.call(copy, "reduced") ? { reduced: copy.reduced } : {}),
+  };
+}
+function payloadCopy(copy: JourneyDraftNodeCopy): BookyDialoguePayload["copy"] {
+  return { title: copy.title, body: copy.body, caption: copy.caption ?? copy.title, reduced: copy.reduced ?? copy.title };
+}
 function activityInput(value: unknown): JourneyDraftActivityInput | null {
   try {
     if (!ownDataKeys(value, ["type", "choices", "copy"]) || value.type !== "match-work-author"
@@ -124,7 +144,7 @@ function activityInput(value: unknown): JourneyDraftActivityInput | null {
     }
     for (const locale of LOCALES) {
       const copy = value.copy[locale];
-      if (!ownDataKeys(copy, ["title", "body"]) || !text(copy.title, 160) || !text(copy.body, 1600, true)) return null;
+      if (!nodeCopyInput(copy)) return null;
     }
     return value as unknown as JourneyDraftActivityInput;
   } catch { return null; }
@@ -136,7 +156,7 @@ function factInput(value: unknown): JourneyDraftFactInput | null {
     if (!ownDataKeys(value, ["copy"]) || !ownDataKeys(value.copy, LOCALES)) return null;
     for (const locale of LOCALES) {
       const copy = value.copy[locale];
-      if (!ownDataKeys(copy, ["title", "body", "sources"]) || !text(copy.title, 160) || !text(copy.body, 1600, true)
+      if (!nodeCopyInput(copy, ["sources"])
         || !Array.isArray(copy.sources) || Object.getPrototypeOf(copy.sources) !== Array.prototype
         || copy.sources.length < 1 || copy.sources.length > 16
         || Reflect.ownKeys(copy.sources).length !== copy.sources.length + 1) return null;
@@ -180,13 +200,32 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
     fail("readingLevel", "Выберите уровень чтения.");
   if (!integer(input.estimatedDurationMinutes, 1, 1440))
     fail("estimatedDurationMinutes", "Укажите оценку длительности целым числом от 1 до 1440 минут.");
+  const copyDescriptor = Object.getOwnPropertyDescriptor(input, "copy");
+  const authoredCopy = copyDescriptor?.enumerable && "value" in copyDescriptor ? copyDescriptor.value : undefined;
+  if (!ownDataKeys(authoredCopy, LOCALES)) {
+    fail("copy", "Тексты маршрута должны содержать исходные формы RU/EN без лишних полей и вычисляемых свойств.");
+    return rejected();
+  }
   for (const locale of LOCALES) {
-    const copy = input.copy?.[locale];
+    const copy = authoredCopy[locale];
+    if (!ownDataKeys(copy, ["title", "description", "nodes"]) || !ownDataKeys(copy.nodes, NODE_KINDS)) {
+      fail(`copy.${locale}`, "Языковая форма должна содержать название, описание и четыре исходных шага без лишних полей.");
+      continue;
+    }
     if (!text(copy?.title, 200)) fail(`copy.${locale}.title`, "Заполните название маршрута: до 200 символов без внешних пробелов и переносов строк.");
     if (!text(copy?.description, 800)) fail(`copy.${locale}.description`, "Заполните описание: до 800 символов без внешних пробелов и переносов строк.");
     for (const kind of NODE_KINDS) {
-      if (!text(copy?.nodes?.[kind]?.title, 160)) fail(`copy.${locale}.nodes.${kind}.title`, "Заполните название шага: до 160 символов без внешних пробелов и переносов строк.");
-      if (!text(copy?.nodes?.[kind]?.body, 1600, true)) fail(`copy.${locale}.nodes.${kind}.body`, "Заполните текст шага: до 1600 символов без внешних пробелов.");
+      const node = copy.nodes[kind];
+      if (!nodeCopyKeys(node)) {
+        fail(`copy.${locale}.nodes.${kind}`, "Текст шага должен содержать название и текст, а также необязательные подпись и короткий текст без лишних полей и вычисляемых свойств.");
+        continue;
+      }
+      if (!text(node.title, 160)) fail(`copy.${locale}.nodes.${kind}.title`, "Заполните название шага: до 160 символов без внешних пробелов и переносов строк.");
+      if (!text(node.body, 1600, true)) fail(`copy.${locale}.nodes.${kind}.body`, "Заполните текст шага: до 1600 символов без внешних пробелов.");
+      if (Object.prototype.hasOwnProperty.call(node, "caption") && !text(node.caption, 1600, true))
+        fail(`copy.${locale}.nodes.${kind}.caption`, "Подпись: от 1 до 1600 символов без внешних пробелов и неподдерживаемых управляющих символов.");
+      if (Object.prototype.hasOwnProperty.call(node, "reduced") && !text(node.reduced, 320, true))
+        fail(`copy.${locale}.nodes.${kind}.reduced`, "Короткий текст: от 1 до 320 символов без внешних пробелов и неподдерживаемых управляющих символов.");
     }
   }
   const activityDescriptor = Object.getOwnPropertyDescriptor(input, "activity");
@@ -295,11 +334,11 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
       estimatedDurationMinutes: input.estimatedDurationMinutes, copy: { ru: copySnapshot("ru"), en: copySnapshot("en") },
       ...(activity ? { activity: {
         type: activity.type, choices: activity.choices.map(choice => ({ countryId: choice.countryId, writerId: choice.writerId })),
-        copy: { ru: { title: activity.copy.ru.title, body: activity.copy.ru.body }, en: { title: activity.copy.en.title, body: activity.copy.en.body } },
+        copy: { ru: nodeCopySnapshot(activity.copy.ru), en: nodeCopySnapshot(activity.copy.en) },
       } } : {}),
       ...(fact ? { fact: { copy: {
-        ru: { title: fact.copy.ru.title, body: fact.copy.ru.body, sources: fact.copy.ru.sources.map(source => ({ ...source })) },
-        en: { title: fact.copy.en.title, body: fact.copy.en.body, sources: fact.copy.en.sources.map(source => ({ ...source })) },
+        ru: { ...nodeCopySnapshot(fact.copy.ru), sources: fact.copy.ru.sources.map(source => ({ ...source })) },
+        en: { ...nodeCopySnapshot(fact.copy.en), sources: fact.copy.en.sources.map(source => ({ ...source })) },
       } } } : {}),
     },
     selection: { country: selected(country), writer: selected(writer), work: selected(work),
@@ -350,7 +389,7 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         ageRange: { ...authoringSource.input.ageRange }, readingLevel: input.readingLevel,
         intent: "sourced-fact", screens: ["collection"], context, entityIds: [bookyJourneyEntityId(refs.work!)],
         claimKind: "factual", factualSources: copy.sources.map(source => ({ ...source })),
-        copy: { title: copy.title, body: copy.body, caption: copy.title, reduced: copy.title },
+        copy: payloadCopy(copy),
         narration: null, prohibitedTags: [],
         provenance: {
           kind: "editorial", sourcePath: "authoringSource", sourceVersion: 1,
@@ -408,7 +447,7 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         entityIds: kind === "activity" ? [...new Set([activitySpec!.targetWork, ...activitySpec!.choices.map(choice => choice.writer)]
           .map(bookyJourneyEntityId))] : node.entity ? [bookyJourneyEntityId(node.entity)] : [],
         claimKind: "interface-guidance", factualSources: [],
-        copy: { title: copy.title, body: copy.body, caption: copy.title, reduced: copy.title },
+        copy: payloadCopy(copy),
         narration: null, prohibitedTags: [],
         provenance: {
           kind: "editorial", sourcePath: "authoringSource", sourceVersion: 1,
@@ -485,8 +524,8 @@ export function parseBookyJourneyDraft(text: string, catalog: JourneyDraftCatalo
       if (!exactKeys(copy, ["title", "description", "nodes"]) || !exactKeys(copy.nodes, NODE_KINDS))
         return rejected(`copy.${locale}`, "Языковая форма черновика содержит лишние или отсутствующие поля.");
       for (const kind of NODE_KINDS) {
-        if (!exactKeys(copy.nodes[kind], ["title", "body"]))
-          return rejected(`copy.${locale}.nodes.${kind}`, "Текст шага должен содержать только название и подсказку.");
+        if (!nodeCopyKeys(copy.nodes[kind]))
+          return rejected(`copy.${locale}.nodes.${kind}`, "Текст шага должен содержать название и текст, а необязательные подпись и короткий текст должны соответствовать установленным ограничениям.");
       }
     }
     const compiled = createBookyJourneyDraft(input as unknown as JourneyDraftInput, catalog);
