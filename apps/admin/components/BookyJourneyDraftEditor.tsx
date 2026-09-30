@@ -9,6 +9,7 @@ import { contentRecordHash } from "../../../src/planet/contentExportHash";
 type Locale = "ru" | "en";
 type NodeKind = "country" | "writer" | "work" | "checkpoint";
 type CopyKind = NodeKind | "activity" | "sourced-fact";
+type OptionalNodeKind = "sourced-fact" | "activity";
 type PreviewCopyView = "body" | "caption" | "reduced";
 type PreviewProfile = Readonly<{ enabled: boolean; age: string; readingLevel: string }>;
 type PreviewAnswer = Readonly<{ choiceId: string | null; verdict: boolean | null; pending: boolean; error: string }>;
@@ -61,14 +62,22 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [importNotice, setImportNotice] = useState("");
   const operationSequence = useRef(0);
   const fileControl = useRef<HTMLInputElement>(null);
+  const optionalOrderFocus = useRef<HTMLButtonElement | null>(null);
   const [validating, setValidating] = useState(false);
   const choiceWriters = catalog.countries.flatMap((item) => item.writers.map((author) => ({ country: item, writer: author })));
   const choiceKey = (choice: { countryId: string; writerId: string }) => JSON.stringify([choice.countryId, choice.writerId]);
   useEffect(() => () => { operationSequence.current += 1; }, []);
+  useEffect(() => {
+    const control = optionalOrderFocus.current;
+    optionalOrderFocus.current = null;
+    if (control?.isConnected) control.focus({ preventScroll: true });
+  }, [input.optionalNodeOrder]);
   const country = catalog.countries.find((item) => item.id === input.countryId);
   const writer = country?.writers.find((item) => item.id === input.writerId);
   const work = writer?.works.find((item) => item.id === input.workId);
   const available = catalog.countries.length > 0;
+  const defaultOptionalNodeOrder: OptionalNodeKind[] = [...(input.fact ? ["sourced-fact" as const] : []), ...(input.activity ? ["activity" as const] : [])];
+  const optionalNodeOrder = input.optionalNodeOrder ?? defaultOptionalNodeOrder;
   const previewDefinition = preview?.draft.definitions.find((definition) => definition.locale === preview.locale);
   const previewProfileResult = previewProfile.enabled && previewDefinition ? evaluateBookyJourneyDraftPreviewProfile(previewDefinition, {
     age: previewProfile.age === "" ? NaN : Number(previewProfile.age), readingLevel: previewProfile.readingLevel,
@@ -95,6 +104,8 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       const next = { ...current, ...change };
       if (Object.hasOwn(change, "activity") && change.activity === undefined) delete next.activity;
       if (Object.hasOwn(change, "fact") && change.fact === undefined) delete next.fact;
+      if (Object.hasOwn(change, "optionalNodeOrder") && change.optionalNodeOrder === undefined) delete next.optionalNodeOrder;
+      if (!!next.fact !== !!current.fact || !!next.activity !== !!current.activity) delete next.optionalNodeOrder;
       return next;
     });
     setErrors([]);
@@ -108,6 +119,19 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       ...input.copy[locale].nodes,
       [node]: { ...input.copy[locale].nodes[node], [field]: value },
     } } } });
+  }
+  function moveOptionalNode(kind: OptionalNodeKind, direction: -1 | 1, control: HTMLButtonElement) {
+    const index = optionalNodeOrder.indexOf(kind), target = index + direction;
+    if (index < 0 || target < 0 || target >= optionalNodeOrder.length) return;
+    const next = [...optionalNodeOrder];
+    [next[index], next[target]] = [next[target], next[index]];
+    if (next.every((item, i) => item === optionalNodeOrder[i])) return;
+    if (control === document.activeElement) optionalOrderFocus.current = control;
+    update({ optionalNodeOrder: next.every((item, i) => item === defaultOptionalNodeOrder[i]) ? undefined : next });
+  }
+  function restoreOptionalNodeOrder() {
+    if (!Object.hasOwn(input, "optionalNodeOrder")) return;
+    update({ optionalNodeOrder: undefined });
   }
   function beginOperation(keepAnswerChoice = false) {
     const sequence = ++operationSequence.current;
@@ -497,6 +521,20 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
               </div>)}
             </div>
           </div>}
+        </details>}
+        {step.key === "checkpoint" && optionalNodeOrder.length > 0 && <details className="panel site-copy-card" data-booky-optional-order aria-labelledby="journey-optional-order-heading">
+          <summary id="journey-optional-order-heading" style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Порядок необязательных шагов</summary>
+          <p>Эти шаги идут после книги и перед завершением. Страна, писатель и книга сохраняют свои места.</p>
+          <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 12 }}>
+            {optionalNodeOrder.map((kind, index) => <li key={kind} data-optional-node-kind={kind} style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
+              <span style={{ minWidth: 0, flex: "1 1 100%", overflowWrap: "anywhere" }}>{index + 4}. {previewStepLabels.ru[kind]}</span>
+              <button className="button-secondary" type="button" aria-label={`Переместить шаг «${previewStepLabels.ru[kind]}» раньше`} aria-disabled={index === 0}
+                style={{ minHeight: 44, minWidth: 44 }} onClick={(event) => moveOptionalNode(kind, -1, event.currentTarget)}>Раньше</button>
+              <button className="button-secondary" type="button" aria-label={`Переместить шаг «${previewStepLabels.ru[kind]}» позже`} aria-disabled={index === optionalNodeOrder.length - 1}
+                style={{ minHeight: 44, minWidth: 44 }} onClick={(event) => moveOptionalNode(kind, 1, event.currentTarget)}>Позже</button>
+            </li>)}
+          </ol>
+          {Object.hasOwn(input, "optionalNodeOrder") && <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, marginTop: 12 }} onClick={restoreOptionalNodeOrder}>Вернуть обычный порядок</button>}
         </details>}
         <section className="panel site-copy-card" aria-labelledby={`journey-step-${step.key}`}>
           <header><h2 id={`journey-step-${step.key}`}>{step.number + (step.key === "checkpoint" ? Number(!!input.fact) + Number(!!input.activity) : 0)}. {step.title}</h2>

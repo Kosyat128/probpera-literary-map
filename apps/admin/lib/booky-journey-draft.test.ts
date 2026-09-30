@@ -1161,3 +1161,431 @@ describe("adult Booky journey draft local profile evaluation", () => {
     expect(exported.releaseReady).toBe(false);
   });
 });
+
+// Actual D228 downloaded activity and variant-bearing fact bytes, before authored order.
+const historicalOrderlessDownloads: readonly { input: JourneyDraftInput; catalog: JourneyDraftCatalog; sha256: string }[] = [
+  {
+    "input": {
+      "id": "synthetic-fact",
+      "version": 4,
+      "countryId": "country-a",
+      "writerId": "writer-a",
+      "workId": "work-a",
+      "ageRange": {
+        "min": 18,
+        "max": 65
+      },
+      "readingLevel": "plain",
+      "estimatedDurationMinutes": 10,
+      "copy": {
+        "ru": {
+          "title": "Маршрут с черновиком факта",
+          "description": "Синтетический текст и непроверенные ссылки для проверки формы.",
+          "nodes": {
+            "country": {
+              "title": "Начните со страны",
+              "body": "Откройте выбранную страну на глобусе."
+            },
+            "writer": {
+              "title": "Перейдите к писателю",
+              "body": "Откройте выбранного писателя."
+            },
+            "work": {
+              "title": "Откройте книгу",
+              "body": "Перейдите к выбранной книге в коллекции.",
+              "caption": "Авторская синтетическая подпись шага книги."
+            },
+            "checkpoint": {
+              "title": "Подведите итог",
+              "body": "Отметьте завершение этого маршрута."
+            }
+          }
+        },
+        "en": {
+          "title": "Journey with a draft fact",
+          "description": "Synthetic text and unverified references for checking the form.",
+          "nodes": {
+            "country": {
+              "title": "Start with the country",
+              "body": "Open the selected country on the globe."
+            },
+            "writer": {
+              "title": "Go to the writer",
+              "body": "Open the selected writer."
+            },
+            "work": {
+              "title": "Open the book",
+              "body": "Go to the selected book in the collection."
+            },
+            "checkpoint": {
+              "title": "Finish the journey",
+              "body": "Mark this journey as complete."
+            }
+          }
+        }
+      },
+      "fact": {
+        "copy": {
+          "ru": {
+            "title": "Синтетическая запись о книге",
+            "body": "Это вымышленный текст для проверки редактора.\nЭто не проверенный литературный факт.",
+            "caption": "Синтетическая подпись.\nИсточники не проверены.",
+            "reduced": "Короткая синтетическая запись; источники не проверены.",
+            "sources": [
+              {
+                "id": "synthetic-ru-one",
+                "url": "https://example.test/ru/unverified-work-note",
+                "accessedAt": "2026-09-29T10:15:00.000Z"
+              },
+              {
+                "id": "synthetic-ru-two",
+                "url": "https://example.test/ru/unverified-second-note",
+                "accessedAt": "2026-09-29T11:45:00.000Z"
+              }
+            ]
+          },
+          "en": {
+            "title": "Synthetic work note",
+            "body": "This is fictional text for checking the editor, not a verified literary fact.",
+            "caption": "Synthetic caption.\nSources have not been reviewed.",
+            "sources": [
+              {
+                "id": "synthetic-en-one",
+                "url": "https://example.test/en/unverified-work-note",
+                "accessedAt": "2026-09-28T09:30:00.000Z"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "catalog": {
+      "countries": [
+        {
+          "id": "country-a",
+          "label": {
+            "ru": "Тестовая страна А",
+            "en": "Synthetic country A"
+          },
+          "writers": [
+            {
+              "id": "writer-a",
+              "label": {
+                "ru": "Тестовый писатель А",
+                "en": "Synthetic writer A"
+              },
+              "works": [
+                {
+                  "id": "work-a",
+                  "label": {
+                    "ru": "Тестовая книга А",
+                    "en": "Synthetic work A"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "sha256": "2aa86516bbd1c90ee2732b5d2130290a77019ae498410e69a5b9b1d566f63d18"
+  },
+  {
+    "input": {
+      "id": "synthetic-activity",
+      "version": 3,
+      "countryId": "country-a",
+      "writerId": "writer-a",
+      "workId": "work-a",
+      "ageRange": {
+        "min": 18,
+        "max": 65
+      },
+      "readingLevel": "plain",
+      "estimatedDurationMinutes": 10,
+      "copy": {
+        "ru": {
+          "title": "Маршрут с заданием",
+          "description": "Черновик задания по текущему каталогу.",
+          "nodes": {
+            "country": {
+              "title": "Начните со страны",
+              "body": "Откройте выбранную страну на глобусе."
+            },
+            "writer": {
+              "title": "Перейдите к писателю",
+              "body": "Откройте выбранного писателя."
+            },
+            "work": {
+              "title": "Откройте книгу",
+              "body": "Перейдите к выбранной книге в коллекции."
+            },
+            "checkpoint": {
+              "title": "Подведите итог",
+              "body": "Отметьте завершение этого маршрута."
+            }
+          }
+        },
+        "en": {
+          "title": "Activity journey",
+          "description": "A task draft checked against the current catalog.",
+          "nodes": {
+            "country": {
+              "title": "Start with the country",
+              "body": "Open the selected country on the globe."
+            },
+            "writer": {
+              "title": "Go to the writer",
+              "body": "Open the selected writer."
+            },
+            "work": {
+              "title": "Open the book",
+              "body": "Go to the selected book in the collection."
+            },
+            "checkpoint": {
+              "title": "Finish the journey",
+              "body": "Mark this journey as complete."
+            }
+          }
+        }
+      },
+      "activity": {
+        "type": "match-work-author",
+        "choices": [
+          {
+            "countryId": "country-a",
+            "writerId": "writer-a"
+          },
+          {
+            "countryId": "country-b",
+            "writerId": "writer-c"
+          }
+        ],
+        "copy": {
+          "ru": {
+            "title": "Кто автор этой книги?",
+            "body": "Выберите имя автора среди предложенных вариантов."
+          },
+          "en": {
+            "title": "Who wrote this book?",
+            "body": "Choose the author's name from the options."
+          }
+        }
+      }
+    },
+    "catalog": {
+      "countries": [
+        {
+          "id": "country-a",
+          "label": {
+            "ru": "Тестовая страна А",
+            "en": "Synthetic country A"
+          },
+          "writers": [
+            {
+              "id": "writer-a",
+              "label": {
+                "ru": "Тестовый писатель А",
+                "en": "Synthetic writer A"
+              },
+              "works": [
+                {
+                  "id": "work-a",
+                  "label": {
+                    "ru": "Тестовая книга А",
+                    "en": "Synthetic work A"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "country-b",
+          "label": {
+            "ru": "Тестовая страна Б",
+            "en": "Synthetic country B"
+          },
+          "writers": [
+            {
+              "id": "writer-c",
+              "label": {
+                "ru": "Тестовый писатель В",
+                "en": "Synthetic writer C"
+              },
+              "works": []
+            }
+          ]
+        }
+      ]
+    },
+    "sha256": "e4a91f1919897785ae26abefc79cbddcefa8ba3da869d59db9a74529e7b6e3ff"
+  }
+];
+
+describe("adult Booky journey draft optional node ordering", () => {
+  it("preserves actual orderless activity and variant-bearing fact download bytes without serializing the new field", () => {
+    for (const fixture of historicalOrderlessDownloads) {
+      const exported = draft(fixture.input, fixture.catalog);
+      expect(contentTextHash(JSON.stringify(exported, null, 2) + "\n")).toBe(fixture.sha256);
+      expect(Object.prototype.hasOwnProperty.call(exported.authoringSource.input, "optionalNodeOrder")).toBe(false);
+      expect(parseBookyJourneyDraft(JSON.stringify(exported), fixture.catalog).ok).toBe(true);
+    }
+    const combined = draft(variantValue());
+    expect(combined.definitions[0].nodes.map(node => node.kind)).toEqual(["country", "writer", "work", "sourced-fact", "activity", "checkpoint"]);
+    expect(Object.prototype.hasOwnProperty.call(combined.authoringSource.input, "optionalNodeOrder")).toBe(false);
+    expect(Object.prototype.hasOwnProperty.call(draft().authoringSource.input, "optionalNodeOrder")).toBe(false);
+  });
+
+  it("validates both optional orders with the real dialogue, activity, fact and definition schemas while preserving base anchors", () => {
+    for (const optionalNodeOrder of [["sourced-fact", "activity"], ["activity", "sourced-fact"]] as const) {
+      const value = variantValue(); value.optionalNodeOrder = optionalNodeOrder;
+      const exported = draft(value);
+      expect(exported.dialogues).toHaveLength(12);
+      expect(exported.authoringSource.input.optionalNodeOrder).toEqual(optionalNodeOrder);
+      for (const definition of exported.definitions) {
+        expect(definition.nodes.map(node => node.kind)).toEqual(["country", "writer", "work", ...optionalNodeOrder, "checkpoint"]);
+        expect(definition.nodes.slice(0, 3).map(node => node.entity)).toEqual(draft().definitions[0].nodes.slice(0, 3).map(node => node.entity));
+        expect(definition.nodes[definition.nodes.length - 1].entity).toBeNull();
+        const factNode = definition.nodes.find(node => node.kind === "sourced-fact")!;
+        const activityNode = definition.nodes.find(node => node.kind === "activity")!;
+        expect(factNode.entity).toEqual(definition.nodes[2].entity);
+        expect(getBookyJourneyFactChecksum(factNode.fact, factNode.entity!, factNode.screen)).not.toBeNull();
+        expect(getBookyJourneyActivityChecksum(activityNode.activity)).not.toBeNull();
+        for (const node of definition.nodes) {
+          const record = exported.dialogues.find(item => item.payload.locale === definition.locale && item.payload.id === node.dialogue.id)!;
+          expect(node.dialogue.contentChecksum).toBe(getBookyDialogueContentChecksum(record.payload));
+          expect(record.checksum).toBe(getBookyDialogueChecksum({ payload: record.payload, review: record.review }));
+          expect(record.payload.context).toBe(bookyJourneyDialogueContext(definition.id, node));
+        }
+        expect(exported.definitionsChecksums.find(item => item.locale === definition.locale)!.checksum).toBe(getBookyJourneyChecksum(definition));
+      }
+      const registry = createBookyDialogueRegistry(exported.dialogues, {
+        canonicalEntityIds: [...new Set(exported.dialogues.flatMap(record => record.payload.entityIds))], approvedReviews: [],
+      });
+      expect(registry.size).toBe(12);
+      expect(registry.rejections).toEqual([]);
+      expect(parseBookyJourneyDraft(JSON.stringify(exported), catalog()).ok).toBe(true);
+    }
+  });
+
+  it("accepts exactly the enabled optional set and rejects empty, omitted-node or disabled-node orders", () => {
+    for (const [value, order] of [[factValue(), ["sourced-fact"]], [activityValue(), ["activity"]]] as const) {
+      value.optionalNodeOrder = order;
+      const exported = draft(value);
+      expect(exported.definitions[0].nodes.map(node => node.kind)).toEqual(["country", "writer", "work", ...order, "checkpoint"]);
+      expect(exported.authoringSource.input.optionalNodeOrder).toEqual(order);
+    }
+    for (const base of [input, factValue, activityValue, variantValue]) for (const order of [[], ["sourced-fact"], ["activity"], ["sourced-fact", "activity"]]) {
+      const value = base(), enabled = [value.fact ? "sourced-fact" : null, value.activity ? "activity" : null].filter(Boolean);
+      if (order.length > 0 && order.length === enabled.length && order.every(kind => enabled.includes(kind))) continue;
+      Object.assign(value, { optionalNodeOrder: order });
+      expect(errors(value)).toContain("optionalNodeOrder");
+    }
+  });
+
+  it("rejects malformed order arrays and accessors without invoking getters or accepting extra data", () => {
+    let getterCalls = 0;
+    const getter = () => { getterCalls++; throw new Error("order getter must not execute"); };
+    const malformed: unknown[] = [undefined, null, "activity", {}, [], ["activity", "activity"], ["sourced-fact", "sourced-fact"],
+      ["activity", "sourced-fact", "activity"], ["country", "activity"], ["sourced-fact", "checkpoint"], [null, "activity"],
+      [new String("activity"), "sourced-fact"], Array(2), [" activity", "sourced-fact"], ["Activity", "sourced-fact"]];
+    const changes: ((order: unknown[]) => void)[] = [
+      order => { delete order[0]; },
+      order => { Object.assign(order, { extra: true }); },
+      order => { Object.defineProperty(order, Symbol("extra"), { value: true }); },
+      order => { Object.defineProperty(order, "hidden", { value: true }); },
+      order => { Object.defineProperty(order, "0", { enumerable: true, get: getter }); },
+      order => { Object.defineProperty(order, "1", { value: "activity", enumerable: false }); },
+      order => { Object.setPrototypeOf(order, null); },
+    ];
+    for (const change of changes) { const order: unknown[] = ["sourced-fact", "activity"]; change(order); malformed.push(order); }
+    for (const order of malformed) { const value = variantValue(); Object.assign(value, { optionalNodeOrder: order }); expect(errors(value)).toContain("optionalNodeOrder"); }
+    for (const descriptor of [{ enumerable: true, get: getter }, { value: ["activity", "sourced-fact"], enumerable: false }]) {
+      const value = variantValue(); Object.defineProperty(value, "optionalNodeOrder", descriptor);
+      expect(errors(value)).toContain("optionalNodeOrder");
+    }
+    expect(getterCalls).toBe(0);
+  });
+
+  it("clones and freezes authored order and fresh reopened drafts independently of the caller array", () => {
+    const value = variantValue(), order: ("activity" | "sourced-fact")[] = ["activity", "sourced-fact"];
+    value.optionalNodeOrder = order;
+    const before = JSON.stringify(value), exported = draft(value), serialized = JSON.stringify(exported);
+    expect(JSON.stringify(value)).toBe(before);
+    expect(exported.authoringSource.input.optionalNodeOrder).not.toBe(order);
+    expect(Object.isFrozen(exported.authoringSource.input.optionalNodeOrder)).toBe(true);
+    const reopened = parseBookyJourneyDraft(serialized, catalog());
+    expect(reopened.ok).toBe(true);
+    if (!reopened.ok) return;
+    expect(reopened.input.optionalNodeOrder).toEqual(order);
+    expect(reopened.input.optionalNodeOrder).not.toBe(exported.authoringSource.input.optionalNodeOrder);
+    expect(Object.isFrozen(reopened.input.optionalNodeOrder)).toBe(true);
+    expect(JSON.stringify(reopened.draft)).toBe(serialized);
+    order.reverse();
+    expect(exported.authoringSource.input.optionalNodeOrder).toEqual(["activity", "sourced-fact"]);
+    expect(reopened.input.optionalNodeOrder).toEqual(["activity", "sourced-fact"]);
+    expect(Object.isFrozen(order)).toBe(false);
+  });
+
+  it("rebinds all source, payload, bilingual fact and definition checksums while preserving factual identity and main-copy hashes", () => {
+    const original = draft(variantValue()), value = variantValue(); value.optionalNodeOrder = ["activity", "sourced-fact"];
+    const changed = draft(value);
+    expect(changed.authoringSourceChecksum).not.toBe(original.authoringSourceChecksum);
+    for (const record of changed.dialogues) {
+      const prior = original.dialogues.find(item => item.payload.id === record.payload.id && item.payload.locale === record.payload.locale)!;
+      expect(record.payload.copy).toEqual(prior.payload.copy);
+      expect(record.payload.factualSources).toEqual(prior.payload.factualSources);
+      expect(record.payload.provenance.copySha256).toBe(prior.payload.provenance.copySha256);
+      expect(record.payload.context).toBe(prior.payload.context);
+      expect(record.payload.provenance.sourceSha256).toBe(changed.authoringSourceChecksum);
+      expect(record.review.contentChecksum).not.toBe(prior.review.contentChecksum);
+      expect(record.review.status).toBe("draft");
+    }
+    for (const definition of changed.definitions) {
+      const fact = definition.nodes.find(node => node.kind === "sourced-fact")!;
+      for (const binding of fact.fact!.dialogues) expect(binding.contentChecksum).toBe(factRecord(changed, binding.locale).review.contentChecksum);
+      expect(definition.nodes.find(node => node.kind === "activity")!.activity).toEqual(original.definitions[0].nodes.find(node => node.kind === "activity")!.activity);
+      expect(getBookyJourneyChecksum(definition)).not.toBe(getBookyJourneyChecksum(original.definitions.find(item => item.locale === definition.locale)!));
+    }
+    expect([changed.humanReviewed, changed.childApproved, changed.narrationApproved, changed.releaseReady]).toEqual([false, false, false, false]);
+    for (const entries of [changed.journeyApprovals, changed.dialogueApprovals, changed.currentVersions, changed.availability]) expect(entries).toEqual([]);
+  });
+
+  it("rejects source-order and independently rehashed derived ordering tampering through full regeneration", () => {
+    const value = variantValue(); value.optionalNodeOrder = ["activity", "sourced-fact"];
+    const serialized = JSON.stringify(draft(value));
+    for (const change of [
+      (changed: Mutable<BookyJourneyDraft>) => { changed.authoringSource.input.optionalNodeOrder!.reverse(); changed.authoringSourceChecksum = contentRecordHash(changed.authoringSource); },
+      (changed: Mutable<BookyJourneyDraft>) => { delete changed.authoringSource.input.optionalNodeOrder; changed.authoringSourceChecksum = contentRecordHash(changed.authoringSource); },
+      (changed: Mutable<BookyJourneyDraft>) => {
+        for (const definition of changed.definitions) [definition.nodes[3], definition.nodes[4]] = [definition.nodes[4], definition.nodes[3]];
+        changed.definitionsChecksums = changed.definitions.map(definition => ({ locale: definition.locale, checksum: getBookyJourneyChecksum(definition)! }));
+      },
+      (changed: Mutable<BookyJourneyDraft>) => { [changed.dialogues[3], changed.dialogues[4]] = [changed.dialogues[4], changed.dialogues[3]]; },
+      (changed: Mutable<BookyJourneyDraft>) => { Object.assign(changed, { releaseReady: true }); },
+    ]) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized); change(changed);
+      expect(importErrors(JSON.stringify(changed))).toContain("file");
+    }
+  });
+
+  it("preserves strict order-field errors and rejects stale current canonical anchors and activity choices on reopen", () => {
+    const value = variantValue(); value.optionalNodeOrder = ["activity", "sourced-fact"];
+    const serialized = JSON.stringify(draft(value));
+    for (const invalid of [null, [], ["activity"], ["activity", "activity"], ["activity", "sourced-fact", "checkpoint"], ["writer", "sourced-fact"]]) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized);
+      Object.assign(changed.authoringSource.input, { optionalNodeOrder: invalid });
+      expect(importErrors(JSON.stringify(changed))).toContain("optionalNodeOrder");
+    }
+    for (const entity of ["country", "writer", "work", "choice"] as const) {
+      const current = catalog(), country = current.countries[0], writer = country.writers[0];
+      (entity === "country" ? country : entity === "writer" ? writer : entity === "work" ? writer.works[0] : country.writers[1]).label.en += " changed";
+      expect(importErrors(serialized, current)).toContain("file");
+    }
+    const removedWork = catalog(); removedWork.countries[0].writers[0].works = [];
+    expect(importErrors(serialized, removedWork)).toContain("workId");
+    const removedChoice = catalog() as Mutable<JourneyDraftCatalog>; removedChoice.countries[0].writers.pop();
+    expect(parseBookyJourneyDraft(serialized, removedChoice).ok).toBe(false);
+  });
+});

@@ -32,6 +32,7 @@ export type JourneyDraftInput = {
   }>;
   activity?: JourneyDraftActivityInput;
   fact?: JourneyDraftFactInput;
+  optionalNodeOrder?: readonly ("sourced-fact" | "activity")[];
 };
 export type JourneyDraftActivityInput = {
   type: "match-work-author";
@@ -151,6 +152,21 @@ function nodeCopySnapshot(copy: JourneyDraftNodeCopy): JourneyDraftNodeCopy {
 function payloadCopy(copy: JourneyDraftNodeCopy): BookyDialoguePayload["copy"] {
   return { title: copy.title, body: copy.body, caption: copy.caption ?? copy.title, reduced: copy.reduced ?? copy.title };
 }
+function optionalNodeOrderInput(value: unknown, hasFact: boolean, hasActivity: boolean): ("sourced-fact" | "activity")[] | null {
+  try {
+    if (!Array.isArray(value) || Object.getPrototypeOf(value) !== Array.prototype
+      || value.length < 1 || value.length > 2 || Reflect.ownKeys(value).length !== value.length + 1) return null;
+    const order: ("sourced-fact" | "activity")[] = [];
+    for (let index = 0; index < value.length; index++) {
+      const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+      if (!descriptor?.enumerable || !("value" in descriptor)
+        || (descriptor.value !== "sourced-fact" && descriptor.value !== "activity") || order.includes(descriptor.value)) return null;
+      order.push(descriptor.value);
+    }
+    return order.length === Number(hasFact) + Number(hasActivity)
+      && order.includes("sourced-fact") === hasFact && order.includes("activity") === hasActivity ? order : null;
+  } catch { return null; }
+}
 function activityInput(value: unknown): JourneyDraftActivityInput | null {
   try {
     if (!ownDataKeys(value, ["type", "choices", "copy"]) || value.type !== "match-work-author"
@@ -264,6 +280,13 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
     fail("fact", "Факт должен содержать исходные тексты RU/EN и от одного до шестнадцати источников каждого языка: уникальный ID, HTTPS URL без учётных данных и дату UTC в формате YYYY-MM-DDTHH:mm:ss.sssZ.");
     return rejected();
   }
+  const orderDescriptor = Object.getOwnPropertyDescriptor(input, "optionalNodeOrder");
+  const optionalNodeOrder = orderDescriptor?.enumerable && "value" in orderDescriptor
+    ? optionalNodeOrderInput(orderDescriptor.value, !!fact, !!activity) : undefined;
+  if (orderDescriptor && !optionalNodeOrder) {
+    fail("optionalNodeOrder", "Порядок должен содержать каждый включённый необязательный шаг ровно один раз: sourced-fact и/или activity, без лишних полей и вычисляемых свойств.");
+    return rejected();
+  }
   if (!catalog || !Array.isArray(catalog.countries)) {
     fail("catalog", "Канонический каталог недоступен.");
     return rejected();
@@ -362,6 +385,7 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         ru: { ...nodeCopySnapshot(fact.copy.ru), sources: fact.copy.ru.sources.map(source => ({ ...source })) },
         en: { ...nodeCopySnapshot(fact.copy.en), sources: fact.copy.en.sources.map(source => ({ ...source })) },
       } } } : {}),
+      ...(optionalNodeOrder ? { optionalNodeOrder: [...optionalNodeOrder] } : {}),
     },
     selection: { country: selected(country), writer: selected(writer), work: selected(work),
       ...(activity ? { activityChoices: activitySelections.map(choice => ({ country: selected(choice.country), writer: selected(choice.writer) })) } : {}),
@@ -439,8 +463,9 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
     }
   }
   const nodeKinds: readonly ((typeof NODE_KINDS)[number] | "activity" | "sourced-fact")[] = [
-    "country", "writer", "work", ...(factSpec ? ["sourced-fact" as const] : []),
-    ...(activitySpec ? ["activity" as const] : []), "checkpoint",
+    "country", "writer", "work", ...(optionalNodeOrder ?? [
+      ...(factSpec ? ["sourced-fact" as const] : []), ...(activitySpec ? ["activity" as const] : []),
+    ]), "checkpoint",
   ];
   for (const locale of LOCALES) {
     const nodes: BookyJourneyNode[] = [];
@@ -534,13 +559,16 @@ export function parseBookyJourneyDraft(text: string, catalog: JourneyDraftCatalo
       "readingLevel", "estimatedDurationMinutes", "copy"];
     const hasActivity = record(input) && Object.prototype.hasOwnProperty.call(input, "activity");
     const hasFact = record(input) && Object.prototype.hasOwnProperty.call(input, "fact");
-    if (!exactKeys(input, [...inputFields, ...(hasActivity ? ["activity"] : []), ...(hasFact ? ["fact"] : [])]) || !exactKeys(input.ageRange, ["min", "max"])
+    const hasOrder = record(input) && Object.prototype.hasOwnProperty.call(input, "optionalNodeOrder");
+    if (!exactKeys(input, [...inputFields, ...(hasActivity ? ["activity"] : []), ...(hasFact ? ["fact"] : []), ...(hasOrder ? ["optionalNodeOrder"] : [])]) || !exactKeys(input.ageRange, ["min", "max"])
       || !exactKeys(input.copy, LOCALES))
       return rejected("authoringSource.input", "Исходная форма черновика содержит лишние или отсутствующие поля.");
     if (hasActivity && !activityInput(input.activity))
       return rejected("activity", "Задание содержит неверные, лишние или отсутствующие поля либо неполные тексты RU/EN.");
     if (hasFact && !factInput(input.fact))
       return rejected("fact", "Факт содержит неверные, лишние или отсутствующие тексты RU/EN либо источники.");
+    if (hasOrder && !optionalNodeOrderInput(input.optionalNodeOrder, hasFact, hasActivity))
+      return rejected("optionalNodeOrder", "Порядок необязательных шагов не соответствует включённым факту и заданию либо содержит лишние или отсутствующие поля.");
     for (const locale of LOCALES) {
       const copy = input.copy[locale];
       if (!exactKeys(copy, ["title", "description", "nodes"]) || !exactKeys(copy.nodes, NODE_KINDS))

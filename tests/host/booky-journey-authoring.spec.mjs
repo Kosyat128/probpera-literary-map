@@ -1029,6 +1029,7 @@ test('optional bilingual work fact preserves authored source metadata through st
   expect(Object.hasOwn(draft.authoringSource.input.copy.ru.nodes.work, 'reduced')).toBe(false);
   expect(Object.hasOwn(draft.authoringSource.input.fact.copy.en, 'reduced')).toBe(false);
   expect(Object.hasOwn(draft.authoringSource.input, 'activity')).toBe(false);
+  expect(Object.hasOwn(draft.authoringSource.input, 'optionalNodeOrder')).toBe(false);
   expect(draft.definitions).toHaveLength(2); expect(draft.dialogues).toHaveLength(10);
   for (const definition of draft.definitions) {
     expect(definition.audience).toBe('adult'); expect(definition.ageRange).toEqual({ min: 18, max: 65 });
@@ -1132,8 +1133,8 @@ test('optional bilingual work fact preserves authored source metadata through st
   const factCopyText = preview.locator('[data-booky-preview-copy]');
   await expect(factCopyView).toHaveValue('body');
   const overflow = () => page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
-  async function capture(filename, scope) {
-    await factStep.scrollIntoViewIfNeeded(); const p = testInfo.outputPath(filename); await page.screenshot({ path: p });
+  async function capture(filename, scope, anchor) {
+    await anchor.evaluate(node => node.scrollIntoView({ block: 'start' })); const p = testInfo.outputPath(filename); await page.screenshot({ path: p });
     screenshots.push({ filename, sha256: sha(await fs.readFile(p)), viewport: page.viewportSize(), scope });
   }
   async function verifySources(locale) {
@@ -1157,7 +1158,6 @@ test('optional bilingual work fact preserves authored source metadata through st
   await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   for (const control of [factOpener, factEnabled.locator('..'), factTitleRu, sourceField('ID источника', 1, 'ru'), sourceField('HTTPS URL источника', 1, 'ru'), sourceField('Дата обращения к источнику', 1, 'ru'), previous, next])
     expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
-  await capture('booky-journey-fact-ru-320.png', 'Actual local sourced-fact preview after native reopen, RU320 short-text view; explicitly authored synthetic reduced copy and unverified source references, never fetched or attested.');
   await preview.getByRole('button', { name: 'English', exact: true }).tap();
   await expect(factCopyView).toHaveValue('reduced'); await expect(factCopyText).toHaveText(copy.en.title);
   await factCopyView.selectOption('body');
@@ -1174,9 +1174,9 @@ test('optional bilingual work fact preserves authored source metadata through st
   await factCopyView.selectOption('caption'); expect(await factCopyText.evaluate(node => node.textContent)).toBe(copy.en.caption);
   expect(await factCopyText.evaluate(node => getComputedStyle(node).whiteSpace)).toBe('pre-wrap');
   expect((await factCopyView.boundingBox()).height).toBeGreaterThanOrEqual(44); expect(await overflow()).toBe(false);
-  await capture('booky-journey-fact-en-320.png', 'Same selected-work draft fact in EN320 caption view; independent authored multiline caption, source ID/HTTPS URL/manual UTC date and explicit review notice.');
   await activityOpener.tap();
-  await page.getByLabel('Добавить задание «Книга и автор»', { exact: true }).check();
+  const combinedActivityEnabled = page.getByLabel('Добавить задание «Книга и автор»', { exact: true });
+  await combinedActivityEnabled.check();
   await page.getByLabel('Автор · вариант 1', { exact: true }).selectOption(JSON.stringify(['country-a', 'writer-a']));
   await page.getByLabel('Автор · вариант 2', { exact: true }).selectOption(JSON.stringify(['country-b', 'writer-c']));
   await previewButton.tap(); await expect(preview).toBeVisible(); await expect(stepStatus).toContainText(/^(?:Шаг 1 из 6|Step 1 of 6)/);
@@ -1204,8 +1204,136 @@ test('optional bilingual work fact preserves authored source metadata through st
   expect(answerCalls[0].actualHelperCalled).toBe(true); expect(answerCalls[0].actualResult.correct).toBe(true);
   expect(answerCalls[0].actualResult.draftChecksum).toBe(validationCalls[0].actualResult.draftChecksum);
   await previous.tap(); await expect(factStep).toBeVisible(); await expect(page.locator('[data-booky-activity-verdict]')).toHaveCount(0);
-  expect(downloads).toHaveLength(1); expect(screenshots).toHaveLength(2);
-  expect(await page.evaluate(() => window.__factExportBlobs.length)).toBe(1);
+  const orderPanel = page.locator('[data-booky-optional-order]');
+  const orderRows = orderPanel.locator('[data-optional-node-kind] > span');
+  const factEarlier = orderPanel.getByRole('button', { name: 'Переместить шаг «Факт» раньше', exact: true });
+  const activityEarlier = orderPanel.getByRole('button', { name: 'Переместить шаг «Задание» раньше', exact: true });
+  const activityLater = orderPanel.getByRole('button', { name: 'Переместить шаг «Задание» позже', exact: true });
+  await expect(orderPanel).not.toHaveAttribute('open', ''); await orderPanel.locator('summary').tap();
+  await expect(orderRows).toHaveText(['4. Факт', '5. Задание']);
+  await expect(factEarlier).toHaveAttribute('aria-disabled', 'true');
+  await expect(activityLater).toHaveAttribute('aria-disabled', 'true');
+  for (const control of [orderPanel.locator('summary'), ...await orderPanel.getByRole('button').all()]) {
+    const bounds = await control.boundingBox(); expect(bounds.height).toBeGreaterThanOrEqual(44); expect(bounds.width).toBeGreaterThanOrEqual(44);
+  }
+  expect(await overflow()).toBe(false);
+  await overview.locator('[data-preview-step-choice="activity"]').tap();
+  await activityStep.locator('[data-answer-choice-id="choice-2"]').tap();
+  await page.evaluate(() => { window.__answerHoldNext = true; });
+  await activityStep.getByRole('button', { name: 'Проверить ответ', exact: true }).tap();
+  await expect(activityStep.locator('[data-booky-activity-answer-pending]')).toBeVisible();
+  const heldOrderVerdict = await page.evaluate(() => window.__answerHeld.index);
+  await factEarlier.focus(); await page.keyboard.press('Enter');
+  await expect(factEarlier).toBeFocused(); await expect(activityStep.locator('[data-booky-activity-answer-pending]')).toBeVisible();
+  await expect(stepStatus).toContainText('Шаг 5 из 6 · Задание');
+  await activityEarlier.focus(); await page.keyboard.press('Enter');
+  await expect(activityEarlier).toBeFocused(); await expect(activityEarlier).toHaveAttribute('aria-disabled', 'true');
+  await expect(orderRows).toHaveText(['4. Задание', '5. Факт']); await expect(preview).toHaveCount(0);
+  expect(await overflow()).toBe(false);
+  await capture('booky-journey-fact-ru-320.png', 'Actual optional-order editor in RU320 after trusted keyboard move: Activity precedes Fact, the focused Earlier control remains visible, and editing has closed the local preview. Fixed base anchors, synthetic authored content; no publication or graph acceptance.', orderPanel);
+  await expect(page.getByRole('textbox', { name: 'Текст факта (RU)', exact: true })).toHaveValue(copy.ru.body);
+  await expect(sourceField('HTTPS URL источника', 2, 'ru')).toHaveValue(copy.ru.sources[1].url);
+  await expect(page.getByLabel('Автор · вариант 2', { exact: true })).toHaveValue(JSON.stringify(['country-b', 'writer-c']));
+  await page.evaluate(index => { if (window.__answerHeld?.index !== index) throw new Error('Unexpected held order reply'); window.__answerHeld.release(); }, heldOrderVerdict);
+  await expect.poll(() => page.evaluate(index => window.__activityAnswerCalls[index].completed, heldOrderVerdict)).toBe(true);
+  await expect(preview).toHaveCount(0); await expect(page.locator('[data-booky-activity-verdict]')).toHaveCount(0);
+  expect(downloads).toHaveLength(1);
+  await previewButton.tap(); await expect(preview).toBeVisible();
+  await overview.locator('summary').tap();
+  await expect(overview.getByRole('button')).toHaveText(['1. Страна', '2. Писатель', '3. Книга', '4. Задание', '5. Факт', '6. Завершение']);
+  await overview.locator('[data-preview-step-choice="activity"]').tap();
+  await expect(stepStatus).toContainText('Шаг 4 из 6 · Задание');
+  await activityStep.locator('[data-answer-choice-id="choice-2"]').tap();
+  await activityStep.getByRole('button', { name: 'Проверить ответ', exact: true }).tap();
+  await expect(activityStep.locator('[data-booky-activity-verdict]')).toHaveAttribute('data-verdict', 'correct');
+  const reversedDownloadEvent = page.waitForEvent('download'); await downloadButton.tap();
+  const reversedDownload = await reversedDownloadEvent; expect(await reversedDownload.failure()).toBeNull();
+  const reversedPath = testInfo.outputPath('synthetic-activity-first-draft.json'); await reversedDownload.saveAs(reversedPath);
+  const reversedBytes = await fs.readFile(reversedPath), reversedDraft = JSON.parse(reversedBytes.toString('utf8'));
+  expect(await page.evaluate(() => window.__factExportBlobs[1].text())).toBe(reversedBytes.toString('utf8'));
+  expect(reversedDraft.authoringSource.input.optionalNodeOrder).toEqual(['activity', 'sourced-fact']);
+  expect(reversedDraft.authoringSource.input.fact).toEqual({ copy }); expect(reversedDraft.dialogues).toHaveLength(12);
+  for (const definition of reversedDraft.definitions) {
+    expect(definition.nodes.map(node => node.kind)).toEqual(['country', 'writer', 'work', 'activity', 'sourced-fact', 'checkpoint']);
+    expect(definition.nodes[4].entity).toEqual({ kind: 'work', countryId: 'country-a', writerId: 'writer-a', workId: 'work-a' });
+    for (const binding of definition.nodes[4].fact.dialogues)
+      expect(binding.contentChecksum).toBe(reversedDraft.dialogues.find(record => record.payload.locale === binding.locale && record.payload.id === binding.id).review.contentChecksum);
+  }
+  await previewButton.tap(); await overview.locator('summary').tap(); await overview.locator('[data-preview-step-choice="activity"]').tap();
+  const preservedReversedPreview = await preview.innerText();
+  const rehashedOrderTamper = await page.evaluate(original => {
+    const forged = structuredClone(original), hash = window.__copyVariantRecordHash;
+    for (const definition of forged.definitions) {
+      [definition.nodes[3], definition.nodes[4]] = [definition.nodes[4], definition.nodes[3]];
+      forged.definitionsChecksums.find(binding => binding.locale === definition.locale).checksum = hash(definition);
+    }
+    return forged;
+  }, reversedDraft);
+  expect(rehashedOrderTamper.authoringSource).toEqual(reversedDraft.authoringSource);
+  expect(rehashedOrderTamper.definitionsChecksums).not.toEqual(reversedDraft.definitionsChecksums);
+  const wrongOptionalSet = structuredClone(reversedDraft); wrongOptionalSet.authoringSource.input.optionalNodeOrder = ['activity'];
+  for (const [filename, invalid] of [['rehashed-derived-order.json', rehashedOrderTamper], ['missing-enabled-optional-step.json', wrongOptionalSet]]) {
+    await upload(filename, Buffer.from(JSON.stringify(invalid))); await expect(page.getByRole('alert')).toBeVisible();
+    expect(await preview.innerText()).toBe(preservedReversedPreview); await expect(orderRows).toHaveText(['4. Задание', '5. Факт']);
+    await expect(sourceField('ID источника', 2, 'ru')).toHaveValue(copy.ru.sources[1].id); expect(downloads).toHaveLength(2);
+  }
+  await upload('valid-activity-first-draft.json', reversedBytes); await expect(preview).toHaveCount(0);
+  await expect(openDraft).toHaveValue(''); await expect(orderRows).toHaveText(['4. Задание', '5. Факт']);
+  await expect(factVariantField('ru', 'caption')).toHaveValue(copy.ru.caption);
+  await expect(page.getByLabel('Автор · вариант 2', { exact: true })).toHaveValue(JSON.stringify(['country-b', 'writer-c']));
+  await previewButton.tap(); await preview.getByRole('button', { name: 'English', exact: true }).tap();
+  await overview.locator('summary').tap();
+  await expect(overview.getByRole('button')).toHaveText(['1. Country', '2. Writer', '3. Work', '4. Activity', '5. Fact', '6. Finish']);
+  await overview.locator('[data-preview-step-choice="sourced-fact"]').tap(); await expect(stepStatus).toContainText('Step 5 of 6 · Fact');
+  await verifySources('en');
+  await overview.locator('[data-preview-step-choice="activity"]').tap(); await expect(stepStatus).toContainText('Step 4 of 6 · Activity');
+  await activityStep.locator('[data-answer-choice-id="choice-2"]').tap();
+  await activityStep.getByRole('button', { name: 'Check answer', exact: true }).tap();
+  await expect(activityStep.locator('[data-booky-activity-verdict]')).toHaveAttribute('data-verdict', 'correct');
+  await expect(overview).toHaveAttribute('open', '');
+  await expect(overview.locator('[data-preview-step-choice="activity"]')).toHaveAttribute('aria-current', 'step');
+  expect(await overflow()).toBe(false);
+  await capture('booky-journey-fact-en-320.png', 'Actual reopened reverse-order draft preview in EN320: the open six-node overview shows Activity fourth and Fact fifth, with Activity current and a verdict from the actual current semantic helper through mocked transport. Local synthetic admin preview; no authenticated-server, runtime-admission or graph-acceptance claim.', stepStatus);
+  await activityLater.focus(); await page.keyboard.press('Enter'); await expect(activityLater).toBeFocused();
+  await expect(activityLater).toHaveAttribute('aria-disabled', 'true');
+  await expect(orderRows).toHaveText(['4. Факт', '5. Задание']); await expect(preview).toHaveCount(0);
+  await expect(orderPanel.getByRole('button', { name: 'Вернуть обычный порядок', exact: true })).toHaveCount(0);
+  const defaultDownloadEvent = page.waitForEvent('download'); await downloadButton.tap();
+  const defaultDownload = await defaultDownloadEvent; expect(await defaultDownload.failure()).toBeNull();
+  const defaultPath = testInfo.outputPath('synthetic-default-combined-draft.json'); await defaultDownload.saveAs(defaultPath);
+  const defaultBytes = await fs.readFile(defaultPath), defaultDraft = JSON.parse(defaultBytes.toString('utf8'));
+  expect(await page.evaluate(() => window.__factExportBlobs[2].text())).toBe(defaultBytes.toString('utf8'));
+  expect(Object.hasOwn(defaultDraft.authoringSource.input, 'optionalNodeOrder')).toBe(false);
+  for (const definition of defaultDraft.definitions)
+    expect(definition.nodes.map(node => node.kind)).toEqual(['country', 'writer', 'work', 'sourced-fact', 'activity', 'checkpoint']);
+  expect(await page.evaluate(value => window.__copyVariantRecordHash(value), defaultDraft)).toBe(validationCalls[0].actualResult.draftChecksum);
+  await activityEarlier.tap(); await orderPanel.getByRole('button', { name: 'Вернуть обычный порядок', exact: true }).tap();
+  await expect(orderRows).toHaveText(['4. Факт', '5. Задание']);
+  await expect(orderPanel.getByRole('button', { name: 'Вернуть обычный порядок', exact: true })).toHaveCount(0);
+  await activityEarlier.tap(); await factEnabled.uncheck();
+  await expect(orderRows).toHaveText(['4. Задание']);
+  await expect(orderPanel.getByRole('button', { name: 'Вернуть обычный порядок', exact: true })).toHaveCount(0);
+  await expect(page.getByLabel('Автор · вариант 2', { exact: true })).toHaveValue(JSON.stringify(['country-b', 'writer-c']));
+  await previewButton.tap(); await expect(stepStatus).toContainText('Шаг 1 из 5 · Страна');
+  await upload('restore-combined-before-removing-activity.json', reversedBytes); await combinedActivityEnabled.uncheck();
+  await expect(orderRows).toHaveText(['4. Факт']);
+  await expect(orderPanel.getByRole('button', { name: 'Вернуть обычный порядок', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('textbox', { name: 'Текст факта (RU)', exact: true })).toHaveValue(copy.ru.body);
+  await expect(sourceField('HTTPS URL источника', 2, 'ru')).toHaveValue(copy.ru.sources[1].url);
+  await previewButton.tap(); for (let index = 0; index < 3; index++) await next.tap(); await verifySources('ru');
+  const finalValidationCalls = await page.evaluate(() => window.__activityValidationCalls);
+  const finalAnswerCalls = await page.evaluate(() => window.__activityAnswerCalls);
+  expect(finalAnswerCalls).toHaveLength(4); expect(finalAnswerCalls[heldOrderVerdict].hold).toBe(true);
+  for (const call of finalAnswerCalls) {
+    expect(call.actualHelperCalled).toBe(true); expect(call.actualResult.ok).toBe(true); expect(call.actualResult.correct).toBe(true);
+  }
+  expect(finalAnswerCalls[heldOrderVerdict].actualResult.draftChecksum).toBe(validationCalls[0].actualResult.draftChecksum);
+  expect(finalAnswerCalls[2].actualResult.draftChecksum).not.toBe(validationCalls[0].actualResult.draftChecksum);
+  expect(finalAnswerCalls[2].actualResult.draftChecksum).toBe(await page.evaluate(value => window.__copyVariantRecordHash(value), reversedDraft));
+  expect(finalAnswerCalls[3].actualResult.draftChecksum).toBe(finalAnswerCalls[2].actualResult.draftChecksum);
+  for (const call of finalValidationCalls) { expect(call.actualHelperCalled).toBe(true); expect(call.actualResult.ok).toBe(true); }
+  expect(downloads).toHaveLength(3); expect(screenshots).toHaveLength(2);
+  expect(await page.evaluate(() => window.__factExportBlobs.length)).toBe(3);
   const storageWrites = await page.evaluate(() => window.__factStorageWrites); expect(storageWrites).toEqual([]);
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
   await testInfo.attach('booky-journey-fact-evidence', { contentType: 'application/json', body: JSON.stringify({
@@ -1227,9 +1355,16 @@ test('optional bilingual work fact preserves authored source metadata through st
     factFiveNodeOverviewRuEnVerified: true, combinedSixNodeOverviewUsesActualDefinitionOrder: true,
     trustedOverviewFactAndActivityJumpsStayLocal: true, combinedOverviewControlsMinimum44CssPx: true,
     combinedCurrentCreditedAuthorCheckUsesActualHelper: true, mockedServerActionTransport: true,
+    optionalOrderStartsCollapsedWithFixedBaseAnchors: true, trustedKeyboardReorderPreservesFocusAndMinimum44CssPx: true,
+    unchangedBoundaryOrderKeepsPendingAnswer: true, changedOrderInvalidatesPreviewAndRejectsHeldAnswer: true, heldOrderVerdictCallIndex: heldOrderVerdict,
+    bothOptionalOrdersUseActualDefinitionOrderInRuEnPreview: true, nativeCombinedOrderExportAndImportVerified: true,
+    optionalOrderRuControlsAndEnReopenedReversePreviewCaptured: true,
+    rehashedDerivedOrderAndWrongEnabledSetCannotReplaceInputOrPreview: true,
+    returningDefaultOmitsOwnOrderAndRestoresOriginalWholeDraftHash: true, changingOptionalPresenceClearsCustomOrderAndPreservesRemainingAuthoredFields: true,
     authenticatedAdminServerTested: false, installedDeviceTested: false, answerCheckDoesNotAdvanceStep: true,
     storageWrites, downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length },
-    validationCalls, answerCalls, sourceInputs: fixture.sourceInputs, screenshots, errors, externalRequests,
+    combinedExports: [{ path: reversedPath, sha256: sha(reversedBytes), bytes: reversedBytes.length }, { path: defaultPath, sha256: sha(defaultBytes), bytes: defaultBytes.length }],
+    validationCalls: finalValidationCalls, answerCalls: finalAnswerCalls, sourceInputs: fixture.sourceInputs, screenshots, errors, externalRequests,
     productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
   }, null, 2) });
 });
