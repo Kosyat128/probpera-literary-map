@@ -93,6 +93,11 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   const errors = [], externalRequests = [], downloads = [], screenshots = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('download', value => downloads.push(value.suggestedFilename()));
+  await page.addInitScript(() => {
+    window.__previewProfileStorageWrites = [];
+    const nativeStore = Storage.prototype.setItem;
+    Storage.prototype.setItem = function(key, value) { window.__previewProfileStorageWrites.push({ key, local: this === localStorage }); return nativeStore.call(this, key, value); };
+  });
   await page.route('**/*', async route => {
     const url = new URL(route.request().url());
     if (url.origin !== origin) { externalRequests.push(url.origin); return route.abort(); }
@@ -179,9 +184,38 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await previewCopyView.selectOption('reduced'); await expect(previewCopy).toHaveText('Откройте книгу');
   await expect(overview.locator('[data-preview-step-choice="work"]')).toHaveAttribute('aria-current','step');
   await previewCopyView.selectOption('body'); await expect(previewCopy).toHaveText('Перейдите к выбранной книге в коллекции.');
-  await preview.scrollIntoViewIfNeeded();
+  const profilePanel=preview.locator('[data-booky-preview-profile]');
+  const profileReport=preview.locator('[data-booky-preview-profile-report]');
+  await expect(profilePanel).not.toHaveAttribute('open',''); await profilePanel.locator('summary').tap();
+  const profileEnabledRu=profilePanel.getByRole('checkbox',{name:'Сравнить взрослый профиль',exact:true});
+  await expect(profileEnabledRu).not.toBeChecked(); await expect(profileReport).toHaveCount(0);
+  await profileEnabledRu.check();
+  const profileAgeRu=profilePanel.getByLabel('Возраст для предпросмотра',{exact:true});
+  const profileLevelRu=profilePanel.getByRole('combobox',{name:'Уровень чтения для предпросмотра',exact:true});
+  await expect(profileAgeRu).toHaveValue(''); await expect(profileLevelRu).toHaveValue('');
+  await expect(profileReport).toHaveAttribute('data-profile-status','invalid');
+  await expect(profileReport).toContainText('Укажите целый возраст от 18 до 120 лет и выберите уровень чтения.');
+  await profileLevelRu.selectOption('plain');
+  for(const [age,status] of [['18','matches'],['65','matches'],['66','outside'],['17','invalid'],['18.5','invalid'],['','invalid'],['30','matches']]) {
+    await profileAgeRu.fill(age); await expect(profileReport).toHaveAttribute('data-profile-status',status);
+    await expect(overview.locator('[data-preview-step-choice="work"]')).toHaveAttribute('aria-current','step');
+    await expect(previewCopyView).toHaveValue('body'); await expect(previewCopy).toHaveText('Перейдите к выбранной книге в коллекции.');
+  }
+  await profileLevelRu.selectOption('developing');
+  await expect(profileReport).toHaveAttribute('data-profile-status','outside');
+  await expect(profileReport).toContainText('Уровень чтения отличается от заданного в черновике.');
+  await profileLevelRu.selectOption('plain'); await expect(profileReport).toHaveAttribute('data-profile-status','matches');
+  for(const control of [profilePanel.locator('summary'),profileEnabledRu.locator('..'),profileAgeRu,profileLevelRu])
+    expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
+  await profilePanel.locator('summary').scrollIntoViewIfNeeded();
+  await profilePanel.locator('summary').evaluate(node=>window.scrollBy(0,node.getBoundingClientRect().top-12));
+  for(const bounds of [await profilePanel.boundingBox(),await profileReport.boundingBox()]) {
+    expect(bounds).toBeTruthy(); expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.y).toBeGreaterThanOrEqual(0);
+    expect(bounds.x+bounds.width).toBeLessThanOrEqual(321); expect(bounds.y+bounds.height).toBeLessThanOrEqual(844);
+  }
   expect(await overflow()).toBe(false);
-  await capture('booky-journey-preview-ru-320.png','Actual local authoring preview, RU work step at 320px; not production route admission.');
+  await capture('booky-journey-preview-ru-320.png','Actual local RU320 work-step preview with expanded adult profile age30/plain and matching draft-condition feedback; no runtime admission.');
+  await profileEnabledRu.uncheck(); await expect(profileReport).toHaveCount(0); await profilePanel.locator('summary').tap();
   await next.tap();
   await expect(next).toBeDisabled();
   await expect(preview.locator('[data-preview-step="checkpoint"]')).toContainText('Отметьте завершение этого маршрута.');
@@ -200,10 +234,30 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await expect(preview.locator('[data-preview-step="work"]')).toContainText('Screen: Collection');
   await expect(preview.getByRole('button',{name:'Previous step',exact:true})).toBeVisible();
   await expect(preview.getByRole('button',{name:'Next step',exact:true})).toBeVisible();
+  await expect(profilePanel.locator('summary')).toHaveText('Preview profile'); await profilePanel.locator('summary').tap();
+  const profileEnabledEn=profilePanel.getByRole('checkbox',{name:'Compare an adult profile',exact:true});
+  await profileEnabledEn.check(); await expect(profileReport).toHaveAttribute('data-profile-status','matches');
+  await expect(profileReport).toContainText('Age and reading level match the draft conditions.');
+  const profileAgeEn=profilePanel.getByLabel('Preview age',{exact:true});
+  const profileLevelEn=profilePanel.getByRole('combobox',{name:'Preview reading level',exact:true});
+  await profileAgeEn.fill('66'); await expect(profileReport).toHaveAttribute('data-profile-status','outside');
+  await expect(profileReport).toContainText('This age is outside the draft range.');
+  await profilePanel.locator('summary').scrollIntoViewIfNeeded();
+  await profilePanel.locator('summary').evaluate(node=>window.scrollBy(0,node.getBoundingClientRect().top-12));
+  for(const bounds of [await profilePanel.boundingBox(),await profileReport.boundingBox()]) {
+    expect(bounds).toBeTruthy(); expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.y).toBeGreaterThanOrEqual(0);
+    expect(bounds.x+bounds.width).toBeLessThanOrEqual(321); expect(bounds.y+bounds.height).toBeLessThanOrEqual(844);
+  }
+  expect(await overflow()).toBe(false);
+  await capture('booky-journey-preview-en-320.png','Actual local EN320 work-step preview with expanded adult profile age66/plain and outside draft-range feedback; no runtime admission.');
+  await profileAgeEn.fill('30'); await profileLevelEn.selectOption('fluent');
+  await expect(profileReport).toHaveAttribute('data-profile-status','outside');
+  await expect(profileReport).toContainText('The reading level differs from the draft.');
+  await profileLevelEn.selectOption('plain'); await expect(profileReport).toHaveAttribute('data-profile-status','matches');
+  await profileEnabledEn.uncheck(); await expect(profileReport).toHaveCount(0); await profilePanel.locator('summary').tap();
   await expect(preview.locator('[data-preview-step="work"]')).toContainText('Synthetic work A');
   await expect(preview.locator('[data-preview-step="work"]')).toContainText('Go to the selected book in the collection.');
   await preview.scrollIntoViewIfNeeded();
-  await capture('booky-journey-preview-en-320.png','Actual local authoring preview, same work step in EN at 320px.');
   for(const control of [previous,next,preview.getByRole('button',{name:'English',exact:true})])expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
   await page.getByLabel('Название маршрута (RU)',{exact:true}).fill('Тестовый маршрут обновлён');
   await expect(preview).toHaveCount(0);
@@ -225,6 +279,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   expect(sha(bytes)).toBe('7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5');
   expect(Object.hasOwn(draft.authoringSource.input.copy.ru.nodes.work,'caption')).toBe(false);
   expect(Object.hasOwn(draft.authoringSource.input.copy.ru.nodes.work,'reduced')).toBe(false);
+  expect(Object.hasOwn(draft.authoringSource.input,'previewProfile')).toBe(false);
   expect(await page.evaluate(() => window.__activityValidationCalls)).toEqual([]);
   expect(draft.definitions).toHaveLength(2); expect(draft.dialogues).toHaveLength(8);
   expect(draft.definitions.map(d => d.locale).sort()).toEqual(['en', 'ru']);
@@ -287,6 +342,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   expect(await overflow()).toBe(false);
   await capture('booky-journey-editor-ru-1280.png', 'Actual editor component, same authored state, desktop upper form.');
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
+  const profileStorageWrites=await page.evaluate(()=>window.__previewProfileStorageWrites); expect(profileStorageWrites).toEqual([]);
   await testInfo.attach('booky-journey-editor-evidence', { contentType: 'application/json', body: JSON.stringify({
     pass: true, actualEditorComponent: true, actualEditorStyles: true, actualDraftCompiler: true,
     syntheticCatalog: true, authenticatedAdminServerTested: false, installedDeviceTested: false,
@@ -294,6 +350,9 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     optionalStepOverviewStartsCollapsed:true, actualFourNodeOverviewRuEnVerified:true, currentStepAriaCurrentVerified:true,
     trustedKeyboardAndTouchJumpOnlyLocalPreview:true, overviewControlsMinimum44CssPx:true, overviewWrapHasNo320Overflow:true, sequentialPreviewControlsRetained:true, downloads,
     omittedCopyVariantsUseTitleFallback:true, previewCopyViewRuEnLabelsVerified:true, clearedCopyVariantFieldsDeleteOwnKeysAndPreserveOriginalExportBytes:true,
+    actualDraftProfileConditionHelper:true, ordinaryPreviewStartsWithCollapsedDisabledAdultScenario:true, explicitAgeAndLevelInitiallyBlank:true,
+    adultProfileBoundaryInvalidAgeAndReadingMismatchVerified:true, profileReportRuEnParityVerified:true,
+    previewScenarioKeepsDraftStepCopyViewAndOriginalExportBytes:true, previewProfileStorageWrites:profileStorageWrites,
     exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length }, sourceInputs: fixture.sourceInputs,
     screenshots, errors, externalRequests, productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
   }, null, 2) });
@@ -674,6 +733,44 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(activityReduced).toHaveValue('');
   await previewButton.tap(); for (let index = 0; index < 3; index++) await next.tap();
   await expect(preview.locator('[data-booky-preview-copy-view]')).toHaveValue('body');
+  const profilePanel = preview.locator('[data-booky-preview-profile]');
+  const profileReport = preview.locator('[data-booky-preview-profile-report]');
+  const profileEnabled = profilePanel.getByRole('checkbox', { name: 'Сравнить взрослый профиль', exact: true });
+  await expect(profilePanel).not.toHaveAttribute('open', ''); await profilePanel.locator('summary').tap();
+  await expect(profileEnabled).not.toBeChecked(); await profileEnabled.check();
+  const profileAge = profilePanel.getByLabel('Возраст для предпросмотра', { exact: true });
+  const profileLevel = profilePanel.getByRole('combobox', { name: 'Уровень чтения для предпросмотра', exact: true });
+  await expect(profileAge).toHaveValue(''); await expect(profileLevel).toHaveValue('');
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'invalid');
+  await correctAnswer.tap(); await expect(answerCheckRu).toHaveAttribute('aria-disabled', 'true');
+  const callsBeforeInvalidProfile = await page.evaluate(() => window.__activityAnswerCalls.length);
+  await answerCheckRu.focus(); await answerCheckRu.press('Enter'); await expect(answerCheckRu).toBeFocused();
+  expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(callsBeforeInvalidProfile);
+  await expect(verdict).toHaveCount(0);
+  await profileAge.fill('30'); await profileLevel.selectOption('plain');
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
+  await correctAnswer.tap();
+  await page.evaluate(() => { window.__answerHoldNext = true; });
+  await answerCheckRu.tap();
+  const heldProfileVerdict = await answerHeldIndex();
+  await profileAge.fill('30'); await profileLevel.selectOption('plain');
+  await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  const callsBeforeOutsideProfile = await page.evaluate(() => window.__activityAnswerCalls.length);
+  await profileAge.fill('66');
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'outside');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
+  await expect(preview.locator('[data-booky-preview-copy-view]')).toHaveValue('body');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await correctAnswer.tap(); await expect(answerCheckRu).toHaveAttribute('aria-disabled', 'true');
+  await answerCheckRu.focus(); await answerCheckRu.press('Enter'); await expect(answerCheckRu).toBeFocused();
+  expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(callsBeforeOutsideProfile);
+  await releaseAnswer(heldProfileVerdict);
+  await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'outside');
+  await profileEnabled.uncheck(); await expect(profileReport).toHaveCount(0);
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   await correctAnswer.tap();
   await answerCheckRu.tap();
   await expect(verdict).toHaveAttribute('data-verdict', 'correct');
@@ -685,6 +782,10 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
   await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
+  await expect(profilePanel).not.toHaveAttribute('open', ''); await profilePanel.locator('summary').tap();
+  await profileEnabled.check(); await profileAge.fill('30'); await profileLevel.selectOption('plain');
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
+  await profilePanel.locator('summary').tap();
   await wrongAnswer.tap();
   await answerCheckRu.tap();
   await expect(verdict).toHaveAttribute('data-verdict', 'wrong');
@@ -704,6 +805,8 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await capture('booky-journey-activity-ru-320.png', 'Actual local adult activity preview after native reopen, explicit wrong writer A and current semantic evaluation, RU320; calm wrong feedback, synthetic corpus and mocked action transport.');
   await preview.getByRole('button', { name: 'English', exact: true }).tap();
   await expect(activityStep).toHaveAttribute('lang', 'en');
+  await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
+  await expect(profileReport).toContainText('Age and reading level match the draft conditions.');
   await expect(activityStep).toContainText('Who wrote this book?');
   await expect(choices).toContainText('Synthetic writer A'); await expect(choices).toContainText('Synthetic writer C');
   await expect(verdict).toHaveCount(0); await expect(wrongAnswer).toHaveAttribute('aria-pressed', 'false');
@@ -741,13 +844,13 @@ test('optional adult RU EN author task uses current semantic validation and pres
   expect(validationCalls.filter(call => call.actualHelperCalled).length).toBeGreaterThanOrEqual(8);
   expect(validationCalls.every(call => call.completed)).toBe(true);
   const answerCalls = await page.evaluate(() => window.__activityAnswerCalls);
-  expect(answerCalls.filter(call => call.hold)).toHaveLength(5);
+  expect(answerCalls.filter(call => call.hold)).toHaveLength(6);
   expect(answerCalls.filter(call => call.wrongChecksum)).toHaveLength(1);
   expect(answerCalls.filter(call => call.wrongChoice)).toHaveLength(1);
   expect(answerCalls.filter(call => call.failSession)).toHaveLength(1);
   expect(answerCalls.filter(call => call.failNetwork)).toHaveLength(1);
   expect(answerCalls.every(call => call.completed)).toBe(true);
-  for (const index of [heldStepVerdict, heldChoiceVerdict, heldLocaleVerdict, heldEditVerdict, heldVariantEditVerdict]) {
+  for (const index of [heldStepVerdict, heldChoiceVerdict, heldLocaleVerdict, heldEditVerdict, heldVariantEditVerdict, heldProfileVerdict]) {
     expect(answerCalls[index].actualHelperCalled).toBe(true); expect(answerCalls[index].actualResult.correct).toBe(true);
   }
   expect(answerCalls.filter(call => call.actualHelperCalled && call.actualResult.ok && call.actualResult.correct === false).length).toBeGreaterThanOrEqual(2);
@@ -772,6 +875,9 @@ test('optional adult RU EN author task uses current semantic validation and pres
     differentStepJumpClearsAnswerAndRejectsLateVerdict: true, heldStepVerdictCallIndex: heldStepVerdict,
     copyVariantEditRejectsLateAnswerAndNativeImportRestoresOmission: true, heldVariantEditVerdictCallIndex: heldVariantEditVerdict,
     sameCopyViewKeepsVerdictAndDifferentCopyViewClearsAnswerWithoutMovingStep: true,
+    actualDraftProfileConditionHelper: true, invalidAndOutsideProfilesBlockKeyboardCheckWithoutHelperRequest: true,
+    sameExplicitProfileKeepsPendingAnswer: true, newerOutsideProfileRejectsHeldAnswer: true, heldProfileVerdictCallIndex: heldProfileVerdict,
+    returningToOrdinaryPreviewRestoresExplicitAnswerCheck: true, previewProfileScenarioHasNoStoredReaderPolicy: true,
     failedSessionOrNetworkCannotShowVerdict: true, localizedCalmAriaLiveFeedbackVerified: true,
     answerCheckDoesNotAdvanceStep: true, answerStateStorageWrites: storageWrites,
     downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length }, validationCalls, answerCalls,

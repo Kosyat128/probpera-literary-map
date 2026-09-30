@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
-import { BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput, type BookyJourneyDraft } from "@/lib/booky-journey-draft";
+import { BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, evaluateBookyJourneyDraftPreviewProfile, parseBookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput, type BookyJourneyDraft } from "@/lib/booky-journey-draft";
 
 import { evaluateBookyJourneyDraftActivityAction, validateBookyJourneyDraftActivityAction } from "@/app/(dashboard)/journeys/actions";
 import { contentRecordHash } from "../../../src/planet/contentExportHash";
@@ -10,6 +10,7 @@ type Locale = "ru" | "en";
 type NodeKind = "country" | "writer" | "work" | "checkpoint";
 type CopyKind = NodeKind | "activity" | "sourced-fact";
 type PreviewCopyView = "body" | "caption" | "reduced";
+type PreviewProfile = Readonly<{ enabled: boolean; age: string; readingLevel: string }>;
 type PreviewAnswer = Readonly<{ choiceId: string | null; verdict: boolean | null; pending: boolean; error: string }>;
 const emptyAnswer = (choiceId: string | null = null): PreviewAnswer => ({ choiceId, verdict: null, pending: false, error: "" });
 const locales = ["ru", "en"] as const;
@@ -51,6 +52,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [notice, setNotice] = useState("");
   const [preview, setPreview] = useState<{ draft: BookyJourneyDraft; locale: Locale; step: number } | null>(null);
   const [previewCopyView, setPreviewCopyView] = useState<PreviewCopyView>("body");
+  const [previewProfile, setPreviewProfile] = useState<PreviewProfile>({ enabled: false, age: "", readingLevel: "" });
   const [answer, setAnswer] = useState<PreviewAnswer>(emptyAnswer);
   const previewOwner = useRef(preview), answerOwner = useRef(answer);
   previewOwner.current = preview; answerOwner.current = answer;
@@ -68,6 +70,10 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const work = writer?.works.find((item) => item.id === input.workId);
   const available = catalog.countries.length > 0;
   const previewDefinition = preview?.draft.definitions.find((definition) => definition.locale === preview.locale);
+  const previewProfileResult = previewProfile.enabled && previewDefinition ? evaluateBookyJourneyDraftPreviewProfile(previewDefinition, {
+    age: previewProfile.age === "" ? NaN : Number(previewProfile.age), readingLevel: previewProfile.readingLevel,
+  }) : null;
+  const previewProfileMatches = !previewProfile.enabled || previewProfileResult?.status === "matches";
   const previewNode = previewDefinition?.nodes[preview?.step ?? 0];
   const previewChoices = previewNode?.kind === "activity" ? previewNode.activity?.choices ?? [] : [];
   const previewDialogue = preview?.draft.dialogues.find((record) => record.payload.locale === preview.locale
@@ -136,9 +142,15 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     beginOperation();
     setPreviewCopyView(view);
   }
+  function updatePreviewProfile(change: Partial<PreviewProfile>) {
+    const next = { ...previewProfile, ...change };
+    if (next.enabled === previewProfile.enabled && next.age === previewProfile.age && next.readingLevel === previewProfile.readingLevel) return;
+    beginOperation();
+    setPreviewProfile(next);
+  }
   async function checkAnswer() {
     const candidate = preview, choiceId = answer.choiceId;
-    if (answer.pending || !candidate || previewNode?.kind !== "activity" || !choiceId || !previewChoices.some((choice) => choice.id === choiceId)) return;
+    if (answer.pending || !previewProfileMatches || !candidate || previewNode?.kind !== "activity" || !choiceId || !previewChoices.some((choice) => choice.id === choiceId)) return;
     const sequence = beginOperation(true), draftChecksum = contentRecordHash(candidate.draft);
     setAnswer({ choiceId, verdict: null, pending: true, error: "" });
     const report = (stale = false) => setAnswer({ choiceId, verdict: null, pending: false, error: candidate.locale === "ru"
@@ -538,6 +550,38 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             ? previewDefinition.readingLevel === "plain" ? "Простой" : previewDefinition.readingLevel === "developing" ? "Развивающийся" : "Свободный"
             : previewDefinition.readingLevel === "plain" ? "Plain" : previewDefinition.readingLevel === "developing" ? "Developing" : "Fluent"
         } · {preview.locale === "ru" ? "Оценка" : "Estimate"}: {previewDefinition.overview?.estimatedDurationMinutes} {preview.locale === "ru" ? "мин" : "min"}</p>
+        <details data-booky-preview-profile lang={preview.locale} style={{ minWidth: 0 }}>
+          <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>{preview.locale === "ru" ? "Профиль предпросмотра" : "Preview profile"}</summary>
+          <p>{preview.locale === "ru" ? "Сравнение использует возраст и уровень чтения, заданные для этого черновика." : "This comparison uses the age and reading level declared in this draft."}</p>
+          <label style={{ display: "flex", alignItems: "center", gap: 10, minHeight: 44 }}>
+            <input type="checkbox" checked={previewProfile.enabled} onChange={(event) => updatePreviewProfile({ enabled: event.target.checked })} />
+            {preview.locale === "ru" ? "Сравнить взрослый профиль" : "Compare an adult profile"}
+          </label>
+          {previewProfile.enabled && <div className="site-copy-locales">
+            <label className="field"><span>{preview.locale === "ru" ? "Возраст для предпросмотра" : "Preview age"}</span>
+              <input type="number" min={18} max={120} step={1} value={previewProfile.age} style={{ minHeight: 44 }}
+                onChange={(event) => updatePreviewProfile({ age: event.target.value })} /></label>
+            <label className="field"><span>{preview.locale === "ru" ? "Уровень чтения для предпросмотра" : "Preview reading level"}</span>
+              <select value={previewProfile.readingLevel} style={{ minHeight: 44 }} onChange={(event) => updatePreviewProfile({ readingLevel: event.target.value })}>
+                <option value="">{preview.locale === "ru" ? "Выберите уровень" : "Choose a level"}</option>
+                <option value="plain">{preview.locale === "ru" ? "Простой" : "Plain"}</option>
+                <option value="developing">{preview.locale === "ru" ? "Развивающийся" : "Developing"}</option>
+                <option value="fluent">{preview.locale === "ru" ? "Свободный" : "Fluent"}</option>
+              </select>
+            </label>
+          </div>}
+        </details>
+        {previewProfile.enabled && previewProfileResult && <p id="journey-preview-profile-report" data-booky-preview-profile-report data-profile-status={previewProfileResult.status}
+          role="status" aria-live="polite" lang={preview.locale}>
+          {previewProfileResult.status === "invalid"
+            ? preview.locale === "ru" ? "Укажите целый возраст от 18 до 120 лет и выберите уровень чтения." : "Enter a whole age from 18 to 120 and choose a reading level."
+            : previewProfileResult.status === "matches"
+              ? preview.locale === "ru" ? "Возраст и уровень чтения совпадают с условиями черновика." : "Age and reading level match the draft conditions."
+              : [
+                previewProfileResult.ageMatches === false ? preview.locale === "ru" ? "Этот возраст не входит в диапазон черновика." : "This age is outside the draft range." : "",
+                previewProfileResult.readingLevelMatches === false ? preview.locale === "ru" ? "Уровень чтения отличается от заданного в черновике." : "The reading level differs from the draft." : "",
+              ].filter(Boolean).join(" ")}
+        </p>}
         <p role="status" aria-live="polite" lang={preview.locale}>{preview.locale === "ru" ? `Шаг ${preview.step + 1} из ${previewDefinition.nodes.length}` : `Step ${preview.step + 1} of ${previewDefinition.nodes.length}`} · {previewStepLabels[preview.locale][previewNode.kind]}</p>
         <details data-booky-journey-step-overview lang={preview.locale} style={{ minWidth: 0 }}>
           <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>
@@ -595,7 +639,8 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             </ol>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               <button className="button" type="button" lang={preview.locale} style={{ minHeight: 44, minWidth: 44 }}
-                disabled={!answer.choiceId} aria-disabled={answer.pending || !answer.choiceId} aria-busy={answer.pending} onClick={checkAnswer}>
+                disabled={!answer.choiceId} aria-disabled={answer.pending || !answer.choiceId || !previewProfileMatches} aria-busy={answer.pending}
+                aria-describedby={previewProfile.enabled ? "journey-preview-profile-report" : undefined} onClick={checkAnswer}>
                 {preview.locale === "ru" ? "Проверить ответ" : "Check answer"}</button>
               <button className="button-secondary" type="button" lang={preview.locale} style={{ minHeight: 44, minWidth: 44 }} onClick={() => beginOperation()}>
                 {preview.locale === "ru" ? "Сбросить ответ" : "Reset answer"}</button>

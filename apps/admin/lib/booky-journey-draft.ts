@@ -79,6 +79,11 @@ export type JourneyDraftResult =
 export type JourneyDraftParseResult =
   | Readonly<{ ok: true; input: JourneyDraftInput; draft: BookyJourneyDraft }>
   | Readonly<{ ok: false; errors: readonly JourneyDraftError[] }>;
+export type JourneyDraftPreviewProfileEvaluation = Readonly<{
+  status: "matches" | "outside" | "invalid";
+  ageMatches: boolean | null;
+  readingLevelMatches: boolean | null;
+}>;
 
 export const BOOKY_JOURNEY_DRAFT_MAX_BYTES = 524288;
 
@@ -109,6 +114,23 @@ function ownDataKeys(value: unknown, fields: readonly string[]): value is Record
     return !!descriptor?.enumerable && "value" in descriptor;
   });
 }
+
+/** Local adult preview only; matching conditions do not admit or approve a journey. */
+export function evaluateBookyJourneyDraftPreviewProfile(
+  definition: BookyJourneyDefinition, scenario: unknown,
+): JourneyDraftPreviewProfileEvaluation {
+  const invalid = (): JourneyDraftPreviewProfileEvaluation => freeze({ status: "invalid" as const, ageMatches: null, readingLevelMatches: null });
+  try {
+    if (!ownDataKeys(scenario, ["age", "readingLevel"]) || !integer(scenario.age, 18, 120)
+      || typeof scenario.readingLevel !== "string" || !["plain", "developing", "fluent"].includes(scenario.readingLevel)) return invalid();
+    const age = scenario.age as number;
+    const ageMatches = age >= definition.ageRange.min && age <= definition.ageRange.max;
+    const readingLevelMatches = scenario.readingLevel === definition.readingLevel;
+    const status = ageMatches && readingLevelMatches ? "matches" as const : "outside" as const;
+    return freeze({ status, ageMatches, readingLevelMatches });
+  } catch { return invalid(); }
+}
+
 function nodeCopyKeys(value: unknown, extraFields: readonly string[] = []): value is Record<string, unknown> {
   try {
     const optional = ["caption", "reduced"].filter(field => !!value && Object.prototype.hasOwnProperty.call(value, field));

@@ -9,7 +9,7 @@ import { getBookyJourneyActivityChecksum } from "../../../src/host/bookyJourneyA
 import { getBookyJourneyFactChecksum, parseBookyJourneyFact } from "../../../src/host/bookyJourneyFact";
 import { contentRecordHash, contentTextHash } from "../../../src/planet/contentExportHash";
 import {
-  BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft,
+  BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft, evaluateBookyJourneyDraftPreviewProfile,
   type BookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput,
 } from "./booky-journey-draft";
 
@@ -1055,5 +1055,109 @@ describe("adult Booky journey draft optional copy variants", () => {
       expect(parseBookyJourneyDraft(JSON.stringify(changed), catalog()).ok).toBe(false);
     }
     expect(parseBookyJourneyDraft(serialized, catalog()).ok).toBe(true);
+  });
+});
+
+describe("adult Booky journey draft local profile evaluation", () => {
+  it("matches the compiled age bounds inclusively and distinguishes an outside adult age from an invalid age", () => {
+    const value = input(); value.ageRange = { min: 18, max: 65 };
+    const definition = draft(value).definitions[0];
+    for (const age of [18, 30, 65]) expect(evaluateBookyJourneyDraftPreviewProfile(definition, { age, readingLevel: "plain" }))
+      .toEqual({ status: "matches", ageMatches: true, readingLevelMatches: true });
+    for (const age of [66, 120]) expect(evaluateBookyJourneyDraftPreviewProfile(definition, { age, readingLevel: "plain" }))
+      .toEqual({ status: "outside", ageMatches: false, readingLevelMatches: true });
+    for (const age of [17, 18.5, 121]) expect(evaluateBookyJourneyDraftPreviewProfile(definition, { age, readingLevel: "plain" }))
+      .toEqual({ status: "invalid", ageMatches: null, readingLevelMatches: null });
+    value.ageRange = { min: 30, max: 30 };
+    const oneAge = draft(value).definitions[1];
+    expect(evaluateBookyJourneyDraftPreviewProfile(oneAge, { age: 30, readingLevel: "plain" }).status).toBe("matches");
+    for (const age of [29, 31]) expect(evaluateBookyJourneyDraftPreviewProfile(oneAge, { age, readingLevel: "plain" }).status).toBe("outside");
+  });
+
+  it("requires the exact compiled reading level and reports each adult condition independently", () => {
+    for (const readingLevel of ["plain", "developing", "fluent"] as const) {
+      const value = input(); value.readingLevel = readingLevel; value.ageRange = { min: 26, max: 40 };
+      for (const definition of draft(value).definitions) for (const candidate of ["plain", "developing", "fluent"] as const) {
+        expect(evaluateBookyJourneyDraftPreviewProfile(definition, { age: 30, readingLevel: candidate })).toEqual({
+          status: candidate === readingLevel ? "matches" : "outside", ageMatches: true, readingLevelMatches: candidate === readingLevel,
+        });
+        expect(evaluateBookyJourneyDraftPreviewProfile(definition, { age: 50, readingLevel: candidate })).toEqual({
+          status: "outside", ageMatches: false, readingLevelMatches: candidate === readingLevel,
+        });
+      }
+    }
+  });
+
+  it("rejects malformed scenarios without coercion or accessor execution and returns immutable invalid results", () => {
+    const definition = draft().definitions[0];
+    let getterCalls = 0;
+    const getter = () => { getterCalls++; throw new Error("profile getter must not execute"); };
+    const invalid: unknown[] = [null, undefined, [], {}, "30", { age: 30 }, { readingLevel: "plain" },
+      { age: "30", readingLevel: "plain" }, { age: new Number(30), readingLevel: "plain" },
+      { age: NaN, readingLevel: "plain" }, { age: Infinity, readingLevel: "plain" }, { age: true, readingLevel: "plain" },
+      { age: 30, readingLevel: "Plain" }, { age: 30, readingLevel: " plain" }, { age: 30, readingLevel: "" },
+      { age: 30, readingLevel: null }, { age: 30, readingLevel: new String("plain") },
+      { age: 30, readingLevel: "plain", approved: true }, Object.create({ age: 30, readingLevel: "plain" }),
+    ];
+    for (const change of [
+      (scenario: Record<string, unknown>) => { Object.defineProperty(scenario, "age", { enumerable: true, get: getter }); },
+      (scenario: Record<string, unknown>) => { Object.defineProperty(scenario, "readingLevel", { enumerable: true, get: getter }); },
+      (scenario: Record<string, unknown>) => { Object.defineProperty(scenario, "age", { value: 30, enumerable: false }); },
+      (scenario: Record<string, unknown>) => { Object.defineProperty(scenario, Symbol("extra"), { value: true }); },
+    ]) {
+      const scenario = { age: 30, readingLevel: "plain" }; change(scenario); invalid.push(scenario);
+    }
+    invalid.push(new Proxy({}, { ownKeys() { throw new Error("unreadable profile"); } }));
+    for (const scenario of invalid) {
+      const result = evaluateBookyJourneyDraftPreviewProfile(definition, scenario);
+      expect(result).toEqual({ status: "invalid", ageMatches: null, readingLevelMatches: null });
+      expect(Object.isFrozen(result)).toBe(true);
+    }
+    expect(getterCalls).toBe(0);
+    const plainData = Object.assign(Object.create(null), { age: 30, readingLevel: "plain" });
+    expect(evaluateBookyJourneyDraftPreviewProfile(definition, plainData).status).toBe("matches");
+  });
+
+  it("uses each newly compiled definition and leaves scenario, authoring data and serialized draft bytes unchanged", () => {
+    const value = variantValue(); value.ageRange = { min: 18, max: 65 }; value.copy.ru.nodes.work.caption = "Подпись";
+    const scenario = { age: 30, readingLevel: "plain" }, exported = draft(value);
+    const before = JSON.stringify({ value, scenario, exported });
+    for (const definition of exported.definitions) {
+      const result = evaluateBookyJourneyDraftPreviewProfile(definition, scenario);
+      expect(result.status).toBe("matches");
+      expect(Object.isFrozen(result)).toBe(true);
+    }
+    expect(JSON.stringify({ value, scenario, exported })).toBe(before);
+    value.ageRange = { min: 40, max: 65 };
+    value.readingLevel = "fluent";
+    for (const definition of draft(value).definitions) expect(evaluateBookyJourneyDraftPreviewProfile(definition, scenario))
+      .toEqual({ status: "outside", ageMatches: false, readingLevelMatches: false });
+    expect(evaluateBookyJourneyDraftPreviewProfile(exported.definitions[0], scenario).status).toBe("matches");
+    expect(parseBookyJourneyDraft(JSON.stringify(exported), catalog()).ok).toBe(true);
+    expect(Object.isFrozen(scenario)).toBe(false);
+  });
+
+  it("agrees with authored dialogue conditions in both locales while a matching profile confers no runtime admission", () => {
+    const value = variantValue(); value.ageRange = { min: 26, max: 65 }; value.readingLevel = "developing";
+    const exported = draft(value), scenario = { age: 40, readingLevel: "developing" };
+    const registry = createBookyDialogueRegistry(exported.dialogues, {
+      canonicalEntityIds: [...new Set(exported.dialogues.flatMap(record => record.payload.entityIds))], approvedReviews: [],
+    });
+    for (const definition of exported.definitions) {
+      expect(evaluateBookyJourneyDraftPreviewProfile(definition, scenario)).toEqual({ status: "matches", ageMatches: true, readingLevelMatches: true });
+      for (const record of exported.dialogues.filter(record => record.payload.locale === definition.locale)) {
+        expect(record.payload.ageRange).toEqual(definition.ageRange);
+        expect(record.payload.readingLevel).toBe(definition.readingLevel);
+        expect(registry.resolve({ id: record.payload.id, locale: definition.locale, audience: "adult", age: scenario.age,
+          readingLevel: "developing", intent: record.payload.intent, screen: record.payload.screens[0], context: record.payload.context,
+          entityIds: record.payload.entityIds, now: "2026-10-01T12:00:00.000Z" })).toBeNull();
+      }
+      expect(compileBookyJourney(definition, { audience: "adult", age: scenario.age, locale: definition.locale,
+        readingLevel: "developing", now: "2026-10-01T12:00:00.000Z", connectivity: "online", completedPrerequisites: [], availability: [],
+      }, { currentVersions: [], approvedReviews: [], dialogueRegistry: registry, publicCountries: [], publicBooks: [] })).toBeNull();
+    }
+    expect(exported.dialogueApprovals).toEqual([]);
+    expect(exported.journeyApprovals).toEqual([]);
+    expect(exported.releaseReady).toBe(false);
   });
 });
