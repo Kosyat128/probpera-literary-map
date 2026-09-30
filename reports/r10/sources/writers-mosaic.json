@@ -1,0 +1,784 @@
+{
+  "sourceId": "writers-mosaic",
+  "name": "WritersMosaic",
+  "entryUrl": "https://writersmosaic.org.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:20.074Z",
+  "requests": [
+    {
+      "url": "https://writersmosaic.org.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 234607,
+      "sha256": "70c360b59be6a252213b096333dfb0a69ca3a72d7f3ddbd3c71dd0022aef7f39",
+      "accessedAt": "2026-09-29T20:39:22.876Z"
+    },
+    {
+      "url": "https://writersmosaic.org.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 234607,
+      "sha256": "abb3676011aaaaa50f1051583a95a11b3d4ece9a1f21adf7d9189454cff585ea",
+      "accessedAt": "2026-09-29T20:39:26.673Z"
+    },
+    {
+      "url": "https://writersmosaic.org.uk/my-hit-list/meredith-davis-cultural-highlights/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 145137,
+      "sha256": "0bed8a68c4d1295d0024e9fd32f1bbcb5a0621d0a83e1e708419716a9683d555",
+      "accessedAt": "2026-09-29T20:39:28.358Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://writersmosaic.org.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accessedAt": "2026-09-29T20:39:20.571Z",
+    "disallowed": []
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links",
+  "endpoint": {
+    "id": "writers-mosaic",
+    "name": "WritersMosaic",
+    "url": "https://writersmosaic.org.uk/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "writers-mosaic",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://writersmosaic.org.uk"
+    ],
+    "linkPattern": "^\\/close\\x2dup\\/[^/]+\\/?$|^\\/content\\x2dcategories\\/[^/]+\\/?$|^\\/content\\/[^/]+\\/?$|^\\/my\\x2dhit\\x2dlist\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/limited\\x2dseries\\/stay\\x2din\\x2dyour\\x2dlane\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://writersmosaic.org.uk/my-hit-list/meredith-davis-cultural-highlights/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:28.368Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 26,
+  "literaryCandidateCount": 26,
+  "sample": {
+    "sourceId": "writers-mosaic",
+    "source": {
+      "name": "WritersMosaic",
+      "url": "https://writersmosaic.org.uk/my-hit-list/meredith-davis-cultural-highlights/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Meredith Davis’ cultural highlights",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:26.762Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://writersmosaic.org.uk/my-hit-list/meredith-davis-cultural-highlights/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 145137,
+      "sha256": "0bed8a68c4d1295d0024e9fd32f1bbcb5a0621d0a83e1e708419716a9683d555",
+      "accessedAt": "2026-09-29T20:39:28.358Z",
+      "headline": "Meredith Davis' cultural highlights | WritersMosaic Magazine",
+      "excerpt": "The writer, producer and events host on the sensorially immersive experience of Edward George's lecture 'The Strangeness of Dub', the book The Grass Arena by John Healy, the must-see documentary Summer of Soul and Mu jazz bar in London.by Meredith Davis8th July 2026 Meredith Davis Meredith Davis is a writer, producer and events host based in London. Her work has been published in Frieze, WORMS Mag",
+      "publishedDates": [
+        {
+          "value": "2026-07-08T07:00:36+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-07-08T07:00:36+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-07-08T07:00:36+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://writersmosaic.org.uk/my-hit-list/meredith-davis-cultural-highlights/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:28.368Z",
+  "foundItems": [
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/my-hit-list/meredith-davis-cultural-highlights/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meredith Davis’ cultural highlights",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/close-up/jason-arday/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jason Arday (9 May, 1985 – 14 August, 2026)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/close-up/inside-the-writersmosaic-literary-residency/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Inside the WritersMosaic Literary Residency",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/close-up/a-tribute-to-bonnie-greer/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A tribute to Bonnie Greer",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/content-categories/interview/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In Conversation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/content/ebony-reid-in-conversation-with-lemara-lindsay-prince/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ebony Reid: 'I needed to showcase those lighter moments, the difficulties of wanting to escape trap life and then documenting the reasons why they can't escape it.'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/content/basma-ghalayini-in-conversation-with-john-siddique/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Basma Ghalayini: 'Because we're continually being bombed and occupied, there's curfews, there's strikes, we can't just stop every time something like this happens or we'll never do anything.'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/content/jarred-mcginnis-in-conversation-with-colin-grant/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jarred McGinnis: 'I made a contract with the reader to be honest with them'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/content/tishani-doshi-in-conversation-with-vayu-naidu/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tishani Doshi: 'Girls are coming out of the woods, / wrapped in cloaks and hoods, / carrying iron bars and candles / and a multitude of scars'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/content/nels-abbey-in-conversation-with-jonny-wright/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nels Abbey: 'I have a people pleasing-element inside me that I don't want to offend people, but when it comes to these things, I think I have a responsibility to say what needs to be said.'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/content/foday-mannah-in-conversation-with-bashabi-fraser/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Foday Mannah: 'Growing up in Sierra Leone... if you can convince people that I am a proxy to a higher power, that is significant power to yield.'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/my-hit-list/naneh-hovhannisyan-cultural-highlights/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Naneh Hovhannisyan’s cultural highlights",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/my-hit-list/tahmima-anam-cultural-highlights/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tahmima Anam’s cultural highlights",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/my-hit-list/sasha-darvas-cultural-highlights/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sasha Darvas’ cultural highlights",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/my-hit-list/rafaella-sero-cultural-highlights/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Raffaella Sero’s cultural highlights",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/limited-series/stay-in-your-lane/the-prescience-of-staying-power-in-praise-of-peter-fryer/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The prescience of Staying Power: in praise of Peter Fryer",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/limited-series/stay-in-your-lane/reading-for-carnival/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reading for Carnival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/limited-series/stay-in-your-lane/scuffing-the-lines/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scuffing the lines",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/limited-series/stay-in-your-lane/cul-de-sacs-of-the-mind/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cul-de-sacs of the mind",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/limited-series/stay-in-your-lane/on-finding-kinship-in-difference/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On finding kinship in difference",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/limited-series/stay-in-your-lane/a-matter-of-survival/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A matter of survival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/limited-series/stay-in-your-lane/not-another-poem-about-my-father/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Not another poem about my father",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/close-up/my-tomorrow-is-today/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "My tomorrow is today",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/close-up/ballet-black-at-25/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ballet Black at 25",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/close-up/from-fruity-to-raffell/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From Fruity to Raffell",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "source": {
+        "name": "WritersMosaic",
+        "url": "https://writersmosaic.org.uk/original-series/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Original series",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:26.762Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "70c360b59be6a252213b096333dfb0a69ca3a72d7f3ddbd3c71dd0022aef7f39"
+}

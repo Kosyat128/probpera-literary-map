@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "RU"
   ],
-  "attemptedAt": "2026-09-26T17:31:56.429Z",
+  "attemptedAt": "2026-09-29T20:34:13.200Z",
   "requests": [
     {
       "url": "https://www.mann-ivanov-ferber.ru/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 558296,
-      "sha256": "9be3423a42f528d75b814f24a2b7bf0ee54778816bdf894b3e3ec6e94ec35c63",
-      "accessedAt": "2026-09-26T17:31:57.272Z"
+      "bytes": 558782,
+      "sha256": "8e6e56c1096f5898f412bacc66f74ba36b56094faac0220fbf701bbc6e3d982e",
+      "accessedAt": "2026-09-29T20:34:13.743Z"
     }
   ],
   "status": "blocked",
@@ -27,7 +27,7 @@
     "contentType": "text/plain",
     "bytes": 1627,
     "sha256": "f33ffe79d0fdf95b13d431b27f263b0e801b36c8a975e434e5a44b9a579702b5",
-    "accessedAt": "2026-09-26T17:31:56.927Z",
+    "accessedAt": "2026-09-29T20:34:13.515Z",
     "disallowed": [
       "*?",
       "/login/",

@@ -1,0 +1,16 @@
+{
+  "sourceId": "bookpage",
+  "name": "BookPage",
+  "entryUrl": "https://www.bookpage.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:18.634Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://www.bookpage.com/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

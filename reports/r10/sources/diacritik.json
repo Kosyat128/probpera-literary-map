@@ -1,0 +1,16 @@
+{
+  "sourceId": "diacritik",
+  "name": "Diacritik",
+  "entryUrl": "https://diacritik.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:44.104Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "private_destination",
+  "robots": {
+    "url": "https://diacritik.com/robots.txt",
+    "error": "private_destination",
+    "disallowed": []
+  }
+}

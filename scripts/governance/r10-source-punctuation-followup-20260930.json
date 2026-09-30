@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-SOURCE-PUNCTUATION-FOLLOWUP-20260930",
+  "baselineCommitSha": "afa8afe5b4918530d1ed003b0de7707482ab5c8b",
+  "authorization": {
+    "basis": "Owner requested fixing all mandatory lint errors while preserving exact evidence and historical acceptance hashes.",
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "scope": "Seven exact checker, CLI fixture and forward-read fragments. The 242 protected source literal fields keep exact SHA-bound punctuation; own prose and unknown fields retain ordinary enforcement. Historical packets and calendar evidence unchanged.",
+  "allowedProjectionPaths": [
+    "scripts/normalize-short-hyphens.mjs",
+    "scripts/lib/cms-exact-source-punctuation.test.mjs",
+    "scripts/lib/reviewed-undici-security-followup.mjs",
+    "scripts/lib/reviewed-undici-security-followup.test.mjs"
+  ],
+  "sourceBaselines": {
+    "scripts/normalize-short-hyphens.mjs": "db128465139866906544fd7fb26b0fd7b5a54420588b3cb53fef7b04bd2328dc",
+    "scripts/lib/cms-exact-source-punctuation.test.mjs": "6bc029f4d33f2156afc54e68c03280deab928070156e3be5365bb7361ae25057",
+    "scripts/lib/reviewed-undici-security-followup.mjs": "4d91d871baae16e1c48769eeab386cef6209ca2a18ee6278e18221216ba2c7cb",
+    "scripts/lib/reviewed-undici-security-followup.test.mjs": "5c506d6a5f9b9330978d0a1f9558884a688dc2a906471ba8ca9a4c758776a812"
+  },
+  "reviewedSources": {
+    "scripts/normalize-short-hyphens.mjs": "636e13ad77788d7f7c5e114c61bb93c681d639c5c7e6d0508085f2e22f5edcce",
+    "scripts/lib/cms-exact-source-punctuation.test.mjs": "fa3ff7a436737ac26d88281b77770403a353ce765432cd188a8dd7a4269baf80",
+    "scripts/lib/reviewed-undici-security-followup.mjs": "b46231f13050e0545bb9e02bbeee7997c698a23121de2a733de4f545c49429ba",
+    "scripts/lib/reviewed-undici-security-followup.test.mjs": "491fe7d9a0223af1498b52849ecaa509a0d60eb405bf88002df4f98f586a44df"
+  },
+  "projections": [
+    {
+      "id": "r10-punctuation-import",
+      "path": "scripts/normalize-short-hyphens.mjs",
+      "before": "import { normalizeShortHyphens } from \"./lib/short-hyphens.mjs\";\n",
+      "after": "import { normalizeShortHyphens } from \"./lib/short-hyphens.mjs\";\nimport { normalizeR10ExactSourcePunctuation } from \"./lib/r10-exact-source-punctuation.mjs\";\n"
+    },
+    {
+      "id": "r10-punctuation-literal-read",
+      "path": "scripts/normalize-short-hyphens.mjs",
+      "before": "  const normalized = normalizeCmsExactSourcePunctuation(path.relative(projectRoot, absolutePath), source, getCmsExactSourceNotes)\n",
+      "after": "  const normalized = normalizeR10ExactSourcePunctuation(path.relative(projectRoot, absolutePath), source)\n    ?? normalizeCmsExactSourcePunctuation(path.relative(projectRoot, absolutePath), source, getCmsExactSourceNotes)\n"
+    },
+    {
+      "id": "r10-punctuation-cli-fixture",
+      "path": "scripts/lib/cms-exact-source-punctuation.test.mjs",
+      "before": "      \"scripts/lib/short-hyphen-exact-source.mjs\", \"scripts/lib/cms-exact-source-punctuation.mjs\",\n",
+      "after": "      \"scripts/lib/short-hyphen-exact-source.mjs\", \"scripts/lib/cms-exact-source-punctuation.mjs\",\n      \"scripts/lib/r10-exact-source-punctuation.mjs\",\n"
+    },
+    {
+      "id": "r10-punctuation-forward-import",
+      "path": "scripts/lib/reviewed-undici-security-followup.mjs",
+      "before": "import { readFileSync } from 'node:fs';\n",
+      "after": "import { readFileSync } from 'node:fs';\nimport { projectReviewedR10SourcePunctuation } from './reviewed-r10-source-punctuation.mjs';\n"
+    },
+    {
+      "id": "r10-punctuation-forward-read",
+      "path": "scripts/lib/reviewed-undici-security-followup.mjs",
+      "before": "  let projected=source.replace(/\\r\\n?/gu,'\\n');",
+      "after": "  let projected=projectReviewedR10SourcePunctuation(relativePath,source);"
+    },
+    {
+      "id": "r10-punctuation-test-forward-import",
+      "path": "scripts/lib/reviewed-undici-security-followup.test.mjs",
+      "before": "import {readFileSync} from 'node:fs';\n",
+      "after": "import {readFileSync} from 'node:fs';\nimport {projectReviewedR10SourcePunctuation} from './reviewed-r10-source-punctuation.mjs';\n"
+    },
+    {
+      "id": "r10-punctuation-test-forward-read",
+      "path": "scripts/lib/reviewed-undici-security-followup.test.mjs",
+      "before": "const read=path=>readFileSync(path,'utf8').replace(/\\r\\n?/gu,'\\n');",
+      "after": "const read=path=>projectReviewedR10SourcePunctuation(path,readFileSync(path,'utf8'));"
+    }
+  ],
+  "additions": [
+    {
+      "path": "scripts/lib/r10-exact-source-punctuation.mjs",
+      "sha256Lf": "9564d373ea3b2cb352e82877d86da5ba08cec217b2600c2fb3d9d3b7b73da287"
+    },
+    {
+      "path": "scripts/lib/reviewed-r10-source-punctuation.mjs",
+      "sha256Lf": "c65f79c90ffed34b130fb0996f11adf51240f2ccec6b39d7c4e6bdba12c13ec1"
+    },
+    {
+      "path": "scripts/governance/r10-exact-source-punctuation-20260930.json",
+      "sha256Lf": "907affe0379040ab2cdf22aed1ed8ae5d4c0aec52758c304ff0093f6e97df532"
+    }
+  ],
+  "immutableCalendarEvidence": {
+    "path": "reports/r10/calendar/scoped-wikidata-evidence.json",
+    "sha256Lf": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06"
+  }
+}

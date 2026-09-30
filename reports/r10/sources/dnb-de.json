@@ -8,39 +8,63 @@
   "coverageCountryCodes": [
     "DE"
   ],
-  "attemptedAt": "2026-09-26T17:29:07.646Z",
+  "attemptedAt": "2026-09-29T20:33:42.625Z",
   "requests": [
     {
       "url": "https://www.dnb.de/DE/Home/home_node.html",
       "status": 200,
       "contentType": "text/html;charset=utf-8",
-      "bytes": 84386,
-      "sha256": "f3c37d8d5742e0f24d57f06948525e6bdfa10a46e25729ae04dbd13fdd56b399",
-      "accessedAt": "2026-09-26T17:29:08.385Z"
-    },
-    {
-      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/ReinerKunze/20260929ReinerKunzeAusstellungseroeffnung_event.html",
-      "status": 200,
-      "contentType": "text/html;charset=utf-8",
-      "bytes": 51303,
-      "sha256": "5ce04ce1f48fb60c6d2799ab6b9c2a2e4910a61941e0b816513709ec41adb835",
-      "accessedAt": "2026-09-26T17:29:08.826Z"
-    },
-    {
-      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/Papierschoepfen/20260929Papierschoepfen_event.html",
-      "status": 200,
-      "contentType": "text/html;charset=utf-8",
-      "bytes": 45215,
-      "sha256": "340cf24f8d4ccb4308bb511e66d4d27b9599d91238dd336bf18571cc561ca046",
-      "accessedAt": "2026-09-26T17:29:08.994Z"
+      "bytes": 87778,
+      "sha256": "0ca7c3b3f0c2dd6df698602bd0f1b8b1bcbe81332fdb51324dfa50e149b0a2b5",
+      "accessedAt": "2026-09-29T20:33:44.723Z"
     },
     {
       "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/GoetheVR/20260930GoetheVR_event.html",
       "status": 200,
       "contentType": "text/html;charset=utf-8",
       "bytes": 44308,
-      "sha256": "dac7f8b937163c17f512a96be7aa25bc41bdb70e1d4c13f971ac2aeebacdd009",
-      "accessedAt": "2026-09-26T17:29:09.362Z"
+      "sha256": "5ea40f57760972284a9359a595eaa730d02834eeb08449aa4cf7974134e0945d",
+      "accessedAt": "2026-09-29T20:33:45.352Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/MusikAmMittagDMA/20261001MusikAmMittag.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 44222,
+      "sha256": "0c19177611963b3d8f2a785cbb2da2543f33b6bb5d1436d3497148f7234f5639",
+      "accessedAt": "2026-09-29T20:33:45.684Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/Exil-FuehrungDEA/20261001ExilfuehrungDea.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 46389,
+      "sha256": "a3cdc207efa27eed64a2cb5eccda5b35f6b807931a01d40697c8f2c2c86bc7e8",
+      "accessedAt": "2026-09-29T20:33:46.329Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/BibliotheksfuehrungF/20261001_bibliotheksfuehrungF_event.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 45879,
+      "sha256": "2ed6171f3d2b6ce3603c4d17c70ec54c1ca407985e75b348c40ad686f8e5d2d1",
+      "accessedAt": "2026-09-29T20:33:46.612Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/Kober/20261001KoberPraesentation_event.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 46230,
+      "sha256": "0276378c820d5517d8fde79eec19b7e2f0811d9c87909686fde23caea88d32ef",
+      "accessedAt": "2026-09-29T20:33:47.075Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Ueber-uns/DBSM/dbsm_node.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 78276,
+      "sha256": "e57551b6f41ebb3cbaf527d55a784b7b46cbd3d9c2f0372d77d4317d8d9813fb",
+      "accessedAt": "2026-09-29T20:33:48.820Z"
     }
   ],
   "status": "blocked",
@@ -51,7 +75,7 @@
     "contentType": "text/plain;charset=utf-8",
     "bytes": 356,
     "sha256": "87df89ff02bb48a139bc6018f8475492db0750b688db8c577cb3ea4931e6bfa4",
-    "accessedAt": "2026-09-26T17:29:08.027Z",
+    "accessedAt": "2026-09-29T20:33:44.200Z",
     "disallowed": [
       "/SiteGlobals/",
       "/DE/Service/",

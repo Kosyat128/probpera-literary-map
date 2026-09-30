@@ -1,0 +1,39 @@
+name: Native literary news quality
+
+on:
+  pull_request:
+    paths:
+      - "scripts/workers/literary-news-*.mjs"
+      - "scripts/lib/literary-news-*.mjs"
+      - "scripts/wrangler.literary-news*.jsonc"
+      - "scripts/sync-literary-news-delivery-media.mjs"
+      - "data/news/**"
+      - ".github/workflows/*literary-news*.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-literary-news-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  native-news:
+    name: Native news bundle verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Verify preparation, delivery and licensed media boundaries
+        run: npx vitest run scripts/lib/literary-news-preparation-fence.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
+      - name: Verify public and native Worker bundles
+        run: |
+          node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news.jsonc --outdir .tmp/literary-news-worker
+          node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-preparation.jsonc --outdir .tmp/literary-news-preparation
+          node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-delivery.jsonc --outdir .tmp/literary-news-delivery

@@ -1,0 +1,2642 @@
+{
+  "sourceId": "en-attendant-nadeau",
+  "name": "En attendant Nadeau",
+  "entryUrl": "https://www.en-attendant-nadeau.fr/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:43.946Z",
+  "requests": [
+    {
+      "url": "https://www.en-attendant-nadeau.fr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 190693,
+      "sha256": "00100d7da26bdb38cab84d7707f524f41fb4665f570adb34fccb38dfd111dfca",
+      "accessedAt": "2026-09-29T20:39:45.340Z"
+    },
+    {
+      "url": "https://www.en-attendant-nadeau.fr/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1117658,
+      "sha256": "a1a4c81823a6b34842108f51c58c01c7c952ed5a94a32c984f4143c8f3e4ee0b",
+      "accessedAt": "2026-09-29T20:39:47.642Z"
+    },
+    {
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/02/une-fiction-a-la-hauteur-du-present-noham-selcer/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 214628,
+      "sha256": "535238c6c2a143e8acc453168b36ed6c4381677f34425ef3fe28c1980f5474a6",
+      "accessedAt": "2026-09-29T20:39:48.783Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.en-attendant-nadeau.fr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 326,
+    "sha256": "3d01c8cd0f9712c0c1625b60ac6e53cf14e9d3ac92d161b42cc5559bd428dc01",
+    "accessedAt": "2026-09-29T20:39:45.092Z",
+    "disallowed": [
+      "/wp-login.php",
+      "/*/comments",
+      "*/trackback",
+      "/*/feed",
+      "/cgi-bin",
+      "/*.php$",
+      "/*.inc$",
+      "/*.gz",
+      "/*.cgi",
+      "/tag/"
+    ]
+  },
+  "endpoint": {
+    "id": "en-attendant-nadeau",
+    "name": "En attendant Nadeau",
+    "url": "https://www.en-attendant-nadeau.fr/feed/",
+    "format": "rss",
+    "language": "fr-FR",
+    "region": "global",
+    "sourceFamilyId": "en-attendant-nadeau",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.en-attendant-nadeau.fr"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.en-attendant-nadeau.fr/2026/09/02/une-fiction-a-la-hauteur-du-present-noham-selcer/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:48.791Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 1000,
+  "literaryCandidateCount": 1000,
+  "sample": {
+    "sourceId": "en-attendant-nadeau",
+    "source": {
+      "name": "En attendant Nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/02/une-fiction-a-la-hauteur-du-present-noham-selcer/",
+      "language": "fr-FR"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Une fiction à la hauteur du présent",
+    "publishedAt": "2026-09-01T22:09:40.000Z",
+    "description": "Rentrée littéraire 2026 - Avec Midgar, Noham Selcer frappe fort et juste. Une fiction qui s’emploie à faire quelque chose de nos représentations et de nos mythologies nouvelles. Politique, poétique, son roman détonne et s'impose comme une belle réussite. Cet article Une fiction à la hauteur du présent est apparu en premier sur En attendant Nadeau.",
+    "discoveredAt": "2026-09-29T20:39:47.670Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/02/une-fiction-a-la-hauteur-du-present-noham-selcer/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 214628,
+      "sha256": "535238c6c2a143e8acc453168b36ed6c4381677f34425ef3fe28c1980f5474a6",
+      "accessedAt": "2026-09-29T20:39:48.783Z",
+      "headline": "Midgar de Noham Selcer : Une fiction à la hauteur du présent - En attendant Nadeau",
+      "excerpt": "Avec Midgar, Noham Selcer frappe fort et juste. Il propose une fiction qui s’emploie à faire quelque chose de la réalité, des sentiments et des distorsions que nous lui imprimons. Il démontre avec une efficacité remarquable que la littérature a encore à voir avec le réel, le politique, la pensée. Ambitieux et inventif, il nous rappelle que les livres jouent un rôle majeur dans ce que nous faisons ",
+      "publishedDates": [
+        {
+          "value": "2026-09-01T22:09:40+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-01T22:09:40+00:00",
+          "method": "jsonld.datePublished",
+          "type": "ScholarlyArticle"
+        },
+        {
+          "value": "2026-09-01T22:09:40+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.en-attendant-nadeau.fr/2026/09/02/une-fiction-a-la-hauteur-du-present-noham-selcer/",
+      "language": "fr-FR",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:48.791Z",
+  "foundItems": [
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/02/une-fiction-a-la-hauteur-du-present-noham-selcer/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Une fiction à la hauteur du présent",
+      "publishedAt": "2026-09-01T22:09:40.000Z",
+      "description": "Rentrée littéraire 2026 - Avec Midgar, Noham Selcer frappe fort et juste. Une fiction qui s’emploie à faire quelque chose de nos représentations et de nos mythologies nouvelles. Politique, poétique, son roman détonne et s'impose comme une belle réussite. Cet article Une fiction à la hauteur du présent est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/07/28/coach-house-books-ledition-de-ruelle/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Coach House Books : l’édition de ruelle",
+      "publishedAt": "2026-07-28T20:03:22.000Z",
+      "description": "Le lecteur est invité à faire un détour par Toronto dans l'Ontario, pour visiter la maison d’édition Coach House Books, fondée en 1965. Et découvrir à cette occasion « un paradoxe constitutif des lettres canadiennes ». Cet article Coach House Books : l’édition de ruelle est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/la-malediction-des-colons/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La malédiction des colons",
+      "publishedAt": "2026-09-22T19:59:00.000Z",
+      "description": "Rentrée littéraire 2026 - La réédition de C'était notre terre conclut la fresque impressionnante en cinq romans que Mathieu Belezi a consacrée à l'Algérie. Son écriture incandescente et polyphonique dit très justement la malédiction coloniale, ici pendant la guerre. Cet article La malédiction des colons est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/08/une-histoire-a-hauteur-de-delire-raphael-gallien/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "« Une histoire à hauteur de délire »",
+      "publishedAt": "2026-09-08T19:57:11.000Z",
+      "description": "À en perdre la raison constitue un apport majeur et inédit à l’histoire de la psychiatrie du XXe siècle. Mais Raphaël Gallien y propose aussi une réflexion stimulante sur l’histoire de Madagascar et les subjectivités en situation coloniale. Cet article « Une histoire à hauteur de délire » est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/18/fictions-de-bibliotheques/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fictions de bibliothèques",
+      "publishedAt": "2026-08-18T20:00:29.000Z",
+      "description": "Une bibliothèque imaginaire peut être la première étape d’un long voyage de lectrice. Elle sera suivie de beaucoup d’autres, dans le monde réel, de Buenos Aires à Oxford. Jusqu’à cette bibliothèque parisienne ressemblant trait pour trait à la bibliothèque rêvée. Cet article Fictions de bibliothèques est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/18/livre-et-camera-des-freres-ennemis/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Livre et caméra : frères ennemis ?",
+      "publishedAt": "2026-08-17T22:00:29.000Z",
+      "description": "Mario Soldati a été écrivain, scénariste et réalisateur. Dans Cinématographe, il fait le récit de ses diverses vies avec beaucoup d’humour, d’érudition et de passion – et un peu d'impertinence. Cet article Livre et caméra : frères ennemis ? est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/11/rentree-litteraire-2026-laudace-et-les-crises/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rentrée littéraire 2026 : l’audace et les crises",
+      "publishedAt": "2026-08-11T20:00:00.000Z",
+      "description": "Rentrée littéraire 2026 - Dans les publications d'août et septembre, certaines maisons d'édition n'hésitent pas à prendre des risques en privilégiant des choix littéraires forts. Et autrices et auteurs se saisissent de nos crises contemporaines, liant l'intime et le collectif grâce à des formes variées capables de rendre compte de ces bouleversements. Premier panorama subjectif. Cet article Rentr…",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/11/la-bibliotheque-ou-la-nouvelle-zad/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La bibliothèque ou la nouvelle ZAD",
+      "publishedAt": "2026-08-11T19:59:49.000Z",
+      "description": "À une époque où le livre se dématérialise sous nos yeux, part en fumée ou est banni des écoles, il est urgent de faire de chaque bibliothèque une zone à défendre. À commencer par lui redonner ce caractère d’évidence qu’elle a pu avoir pour le lecteur. Cet article La bibliothèque ou la nouvelle ZAD est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/11/le-livre-et-nous/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le livre et nous",
+      "publishedAt": "2026-08-11T19:58:30.000Z",
+      "description": "Ici ou là-bas, en France ou en Argentine, les livres s’évaporent. Mais comme on ne se sent à l’abri que dans leur compagnie, il faut les imaginer triompher à la fois des plateformes numériques et des boucheries bovines. Cet article Le livre et nous est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/11/quelques-pensees-en-vrac-sur-les-livres/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Quelques pensées en vrac sur les livres",
+      "publishedAt": "2026-08-11T19:57:16.000Z",
+      "description": "Certains confient leur livre (numérique) à une application pour qu’elle le lise à leur place. D’autres embauchent un designer de bibliothèque pour avoir l’air cultivé. Heureusement, même en Amérique, l’amour des livres se perpétue vaille que vaille ! Cet article Quelques pensées en vrac sur les livres est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/11/24-fevrier-2022-litterature-ukrainienne/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "24 février 2022 : quel impact sur le monde éditorial français ?",
+      "publishedAt": "2026-08-11T19:55:40.000Z",
+      "description": "Depuis le déclenchement de la guerre, la littérature ukrainienne a pris une place différente en France. Reconnaissance, militance, réévaluation, engagement : c'est « une armée pacifiste de poètes » qui se rassemble. Cet article 24 février 2022 : quel impact sur le monde éditorial français ? est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/11/le-livre-egare-jean-martet/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le livre égaré",
+      "publishedAt": "2026-08-11T19:52:41.000Z",
+      "description": "On ne possède pas les livres. Ils viennent d’un autre endroit, d’un autre temps et s’en vont ailleurs. Il faut les saisir au passage, comme ici, en poète, on explore la bibliothèque paternelle et l'on plonge dans un ouvrage singulier : Les bâtisseurs de royaumes. Cet article Le livre égaré est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/11/le-livre-des-anges/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Livre des anges",
+      "publishedAt": "2026-08-11T19:50:09.000Z",
+      "description": "Poète et éditrice, Cole Swensen vit en Californie. Avec une brièveté stupéfiante et une certaine grâce, elle nous fait parvenir de l'autre côté du monde un fort bienvenu éloge du livre. Cet article Le Livre des anges est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/04/pathologies-livresques/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pathologies livresques",
+      "publishedAt": "2026-08-04T20:01:04.000Z",
+      "description": "Les livres inspirent la sympathie, jusqu’à l’amour. Vient pourtant le moment où l’amour démesuré que nous leur portons prend une forme pathologique, ou se renverse en méfiance. La diversité des livres engendre une grande diversité de folies. Petit inventaire. Cet article Pathologies livresques est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/04/ce-que-font-certains-livres-juan-jose-saer/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ce que font certains livres",
+      "publishedAt": "2026-08-04T20:00:44.000Z",
+      "description": "La folie du livre peut prendre une forme douce, elle est alors durable. C’est ce qui arrive quand une poignée d’amis se passionnent pour un auteur discret mais fondamental : en l’occurrence, le grand écrivain argentin Juan José Saer. Cet article Ce que font certains livres est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/04/un-livre-du-passe-a-venir-plomb/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un livre du passé à venir",
+      "publishedAt": "2026-08-04T19:59:21.000Z",
+      "description": "On a écrit des livres sur des sujets divers, pas un ne semble avoir échappé à notre désir d’écrire. Mais un livre prend un plaisir particulier à parler de livres. Ici, il s’agit d’écrire au sujet d’un livre évoquant des livres. Transmissions en abyme. Cet article Un livre du passé à venir est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/08/04/le-livre-parietal-de-fernando-oreste-nannetti/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le livre pariétal de Fernando Oreste Nannetti",
+      "publishedAt": "2026-08-04T19:57:11.000Z",
+      "description": "Découvrez une forme très rare de livre : le livre pariétal d’Oreste Fernando Nannetti, écrit sur les murs d’un hôpital psychiatrique, au siècle dernier. Un cas qui a nourri de nombreuses œuvres et qui inspire les notes qui suivent. Cet article Le livre pariétal de Fernando Oreste Nannetti est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/07/28/linquietante-valse-des-concentrations-dans-ledition/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Valse des concentrations dans l’édition",
+      "publishedAt": "2026-07-28T20:09:06.000Z",
+      "description": "L’édition française traverse une zone de turbulence, peut-être plus sérieuse que les précédentes. Pour en avoir une vision claire, il est utile d’élargir le cadre et d’inscrire les mouvements actuels dans un panorama plus général. Exercice urgent pour penser la réalité et ses contraintes avec le plus de lucidité possible. Cet article Valse des concentrations dans l’édition est apparu en premier s…",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/07/28/ledition-independante-en-danger-entretien-avec-sylvain-bertrand/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’édition indépendante en sursis : entretien avec les éditions du commun",
+      "publishedAt": "2026-07-28T20:08:00.000Z",
+      "description": "La crise touchant le distributeur Makassar menace l'existence de nombreux éditeurs indépendants. Elle révèle aussi le caractère délétère de la concentration éditoriale. État des lieux avec Sylvain Bertrand, fondateur des éditions du commun. Cet article L’édition indépendante en sursis : entretien avec les éditions du commun est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/07/25/la-litterature-palestinienne-en-israel-editer-sous-domination-coloniale/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La littérature palestinienne en Israël, éditer sous domination coloniale",
+      "publishedAt": "2026-07-24T22:04:00.000Z",
+      "description": "Saison Méditerranée 2026 - Écrire et publier en arabe en Israël ne consiste pas seulement à essayer de faire vivre la langue d'une minorité. La géographie du livre révèle de profondes inégalités et fragilités dans un État organisé autour de la souveraineté de l’hébreu moderne. Cet article La littérature palestinienne en Israël, éditer sous domination coloniale est apparu en premier sur En attenda…",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/07/21/lediteur-lent-rencontre-avec-les-editions-loie-de-cravan/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "« L’éditeur lent » : entretien avec L’Oie de Cravan",
+      "publishedAt": "2026-07-21T20:10:42.000Z",
+      "description": "Il y a trente-quatre ans naissait une oie étrange, de l’autre côté de l’Atlantique : L’Oie de Cravan. C’est le nom d’une maison d’édition montréalaise, indépendante, cousue main, attentive à la beauté de ses livres et à la poésie, où qu’elle se trouve. Cet article « L’éditeur lent » : entretien avec L’Oie de Cravan est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/07/21/objectif-livre/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Objectif livre",
+      "publishedAt": "2026-07-21T20:09:04.000Z",
+      "description": "Les livres s’offrent à notre lecture, c’est entendu. Mais pas seulement ! Ils sont faits aussi pour être regardés, saisis, feuilletés, admirés comme des tableaux ou manipulés comme des dispositifs. Polymorphes, ils servent aussi parfois de presse-papier. Cet article Objectif livre est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/07/21/lamour-et-la-haine-des-livres/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’amour et la haine des livres",
+      "publishedAt": "2026-07-21T20:02:13.000Z",
+      "description": "Certains livres ont une façon intense d’être présents, pas étonnant alors si les souvenirs qui s’y rattachent sont précis : une coquille dans les Œuvres complètes d’Isidore Ducasse, la marque d’un clou dans un livre ayant servi de marteau. Cet article L’amour et la haine des livres est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/07/14/que-faisons-nous-des-livres/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Que faisons-nous des livres ?",
+      "publishedAt": "2026-07-14T20:08:00.000Z",
+      "description": "Que devient un livre entre les mains des critiques ? Répondre à cette question suppose de comprendre le fonctionnement d’un comité éditorial. Celui d'En attendant Nadeau né d'une aventure collective en 2016 à la suite de La Quinzaine littéraire de Maurice Nadeau. Cet article Que faisons-nous des livres ? est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/07/14/etats-du-livre/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "États du livre",
+      "publishedAt": "2026-07-14T20:00:00.000Z",
+      "description": "Explorons la manière dont nous lisons, dont nous percevons les livres. Manières de réfléchir leur place dans nos vies et le poids que la lecture y occupe. Essayons de porter des regards ouverts, variés et lucides sur ce que nous en fabriquons. Cet article États du livre est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/06/27/traverser-la-mediterranee-entre-esclaves-et-rentiers-entretien-avec-camille-schmoll/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Traverser la Méditerranée : entretien avec Camille Schmoll",
+      "publishedAt": "2026-06-26T22:00:14.000Z",
+      "description": "Saison Méditerranée 2026 - La géographe Camille Schmoll travaille particulièrement sur les migrations des femmes en Méditerranée. Elle nous explique comment cette mer est devenue un espace de haute tension et de violence, tout en demeurant constamment sillonnée par des bateaux de toutes sortes. Cet article Traverser la Méditerranée : entretien avec Camille Schmoll est apparu en premier sur En att…",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/06/20/revues-mediterranee/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Méditerranée en revues",
+      "publishedAt": "2026-06-19T22:00:16.000Z",
+      "description": "Saison Méditerranée 2026 - Les éditions Motifs d’Alger publient deux revues bilingues, aussi importantes l’une que l’autre : Fassl et La Place. Quant à la revue Kometa, elle donne pour titre à son dernier numéro : « Si la Palestine était le centre du monde ». Cet article La Méditerranée en revues est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/06/16/marivaudages-melancoliques/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Marivaudages mélancoliques",
+      "publishedAt": "2026-06-16T19:55:18.000Z",
+      "description": "Dans Tourne, roue magique, de Dawn Powell, chaque chapitre contient une épopée miniature pleine de parfums, de couleurs et de musique. Ce roman d'atmosphère, drôle et mélancolique, est à découvrir sans délai. Cet article Marivaudages mélancoliques est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/06/16/barberousse-terreur-de-la-mediterranee/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La terreur de la Méditerranée",
+      "publishedAt": "2026-06-15T22:00:59.000Z",
+      "description": "Saison Méditerranée 2026 - L’historien Nicolas Vatin nous fait découvrir La geste de Hayr ed-Dîn Barberousse. Un ouvrage impressionnant qui nous plonge dans vie du marin de légende. Cet article La terreur de la Méditerranée est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/06/08/faire-face-a-la-nouvelle-peste-brune/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Faire face à la nouvelle peste brune",
+      "publishedAt": "2026-06-07T22:00:28.000Z",
+      "description": "Dans ses livres, Michel Feher s’emploie à montrer les ressorts de l’extrême droitisation du monde. Dans Redevenir juif, il réagit à ce qu'il considère comme une opération de « blanchiment réciproque ». Cet article Faire face à la nouvelle peste brune est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/06/02/le-livre-des-peurs-benoit-colboc/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le livre des peurs",
+      "publishedAt": "2026-06-02T19:59:00.000Z",
+      "description": "Avec peu à peur, Benoit Colboc nous impressionne puissamment. Un recueil qui touche au nu de la vie avec une inventivité et une lucidité remarquables. Il y réfléchit la place de la poésie dans l'existence et affirme qu'elle nous aide à la changer. Cet article Le livre des peurs est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/06/02/avenir-poesie/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Petit abécédaire de l’avenir éditorial de la poésie",
+      "publishedAt": "2026-06-02T19:57:00.000Z",
+      "description": "Où en est la poésie ? Où va-t-elle ? Le Marché de la Poésie est le bon moment pour faire le point sur l'édition du genre. Sous forme de citations de celles et ceux qui le font vivre et grandir. Cet article Petit abécédaire de l’avenir éditorial de la poésie est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/06/01/edition/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Éditer, rééditer, réitérer",
+      "publishedAt": "2026-05-31T22:00:31.000Z",
+      "description": "Dans Édition, Frantz Olivié fait part de son expérience d'éditeur indépendant chez Anacharsis. Il témoigne de la situation difficile du secteur, en proie à la marchandisation, mais aussi de sa foi dans le livre. Cet article Éditer, rééditer, réitérer est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/05/30/entretien-avec-kenza-sefrioui/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Une éditrice engagée : entretien avec Kenza Sefrioui",
+      "publishedAt": "2026-05-29T22:00:30.000Z",
+      "description": "Saison Méditerranée 2026 - Kenza Sefrioui est journaliste culturelle, critique littéraire et éditrice à Casablanca. Entretien sur le travail des éditions En Toutes Lettres, notamment sur la formation à l'écriture d'investigation et à la traduction au Maroc. Cet article Une éditrice engagée : entretien avec Kenza Sefrioui est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/05/12/un-tapuscrit-de-cahier-dun-retour-au-pays-natal-aime-cesaire/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Une nouvelle archive de « Cahier d’un retour au pays natal »",
+      "publishedAt": "2026-05-12T20:00:13.000Z",
+      "description": "On fait souvent des trouvailles exceptionnelles dans les archives. Découvrir à la Bibliothèque de l'Alcazar de Marseille une version dactylographiée antérieure à celle publiée de Cahier d’un retour au pays natal d'Aimé Césaire fait lire autrement un poème phare. C'est une très belle surprise. Cet article Une nouvelle archive de « Cahier d’un retour au pays natal » est apparu en premier sur En att…",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/04/04/les-gouttes-magiques-dune-science-fiction-feministe/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gouttes magiques d’une science-fiction féministe",
+      "publishedAt": "2026-04-03T22:00:53.000Z",
+      "description": "Dans Elles rêveront dans le jardin, l'écrivaine mexicaine Gabriela Damián Miravete réussit à mêler la dystopie à l’utopie. Les douze nouvelles qui composent le recueil imaginent avec subtilité des remèdes aux maux actuels ou à ceux du passé colonial mexicain. Cet article Gouttes magiques d’une science-fiction féministe est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/04/03/dj-portrait-de-lartiste-en-animale-nocturne/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le tedium et la transe",
+      "publishedAt": "2026-04-02T22:00:38.000Z",
+      "description": "Anne F. Garréta possède une qualité rare, celle de marier les contraires. Elle le prouve à nouveau dans un livre désordonné et sidérant, DJ. Portrait de l’artiste en animale nocturne. Cet article Le tedium et la transe est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/03/03/livres-jumeaux/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Livres jumeaux",
+      "publishedAt": "2026-03-03T20:56:00.000Z",
+      "description": "En publiant un roman intitulé Petit fruit et Les aimants, un recueil de dessins, Marion Fayolle impose une écriture et un univers stimulants qui se jouent des identités avec subtilité. Cet article Livres jumeaux est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/02/24/comment-medee-sest-redimee-a-aztlan/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Médée rédimée à Aztlán",
+      "publishedAt": "2026-02-24T20:59:16.000Z",
+      "description": "Mexico Médée est un récit choral en six nouvelles entrelacées de l'écrivaine et activiste Dahlia de la Cerda. Une tragédie contemporaine dans un Mexique mythique où résonnent les voix des mères en quête de leurs enfants victimes du narcotrafic. Cet article Médée rédimée à Aztlán est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/02/10/des-nouvelles-de-lautre-allemagne/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Des nouvelles de l’autre Allemagne",
+      "publishedAt": "2026-02-10T20:56:48.000Z",
+      "description": "L'intérêt pour l'ex-Allemagne de l'Est ne faiblit pas. La preuve : le roman de Charlotte Gneuss Les jeux heureux de l’enfance et la somme précieuse que l'historien Nicolas Offenstadt vient de consacrer à la RDA. Cet article Des nouvelles de l’autre Allemagne est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/01/20/paralleles-le-color-field-avec-la-peinture-medievale/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le color field et la peinture médiévale",
+      "publishedAt": "2026-01-20T20:54:57.000Z",
+      "description": "L'exposition « Chromoscope. Un regard sur le mouvement color field » propose une confrontation audacieuse entre le Moyen Âge et l'époque contemporaine. Notre appréhension des œuvres d'art des deux périodes s'en trouve affinée. Cet article Le color field et la peinture médiévale est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/01/06/une-rentree-sauvage/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La rentrée littéraire d’hiver 2026 : une rentrée sauvage",
+      "publishedAt": "2026-01-06T21:00:35.000Z",
+      "description": "La rentrée littéraire d'hiver semble prendre le contre-pied de celle de septembre. En voici un tour d'horizon qui traverse des livres d'une grande diversité. On y perçoit une vraie audace et une inventivité irriguant des textes forts qui nous confrontent aux duretés de la société qu'on essaie de nous imposer. Cet article La rentrée littéraire d’hiver 2026 : une rentrée sauvage est apparu en premi…",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/12/30/histoire-de-franklin-jacobs-le-bonheur/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Une guerre trop réelle pour la fiction ?",
+      "publishedAt": "2025-12-30T20:58:42.000Z",
+      "description": "Le roman d'Yves et Ada Rémy comme celui de Paul Kawczak nous racontent la Seconde Guerre mondiale à hauteur d'enfance. Ils nous questionnent sur les modalités du récit, les liens qui l'obligent au réel, inventant des formes hybrides dérangeantes et stimulantes. Cet article Une guerre trop réelle pour la fiction ? est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/12/30/un-grand-livre-de-vieelise-marienstras/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un grand livre de vie",
+      "publishedAt": "2025-12-30T20:54:00.000Z",
+      "description": "Dans Mémoires sans mémoire, Élise Marienstras explore un passé qui fait se relier XXe et XXIe siècle. Elle trouve un équilibre émouvant dans le récit et invite à une immense traversée autobiographique et familiale. Cet article Un grand livre de vie est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/12/26/corsaire-melancolique/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Corsaire mélancolique",
+      "publishedAt": "2025-12-25T23:00:00.000Z",
+      "description": "Dans Vie imaginaire, Natalia Ginzburg parle de films, de livres et de différents sujets politiques ou de société et poursuit une réflexion très personnelle sur l’imagination et la créativité. Ce recueil de chroniques prolonge richement ses œuvres précédentes. Cet article Corsaire mélancolique est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/12/23/rrose-ou-la-couleur-de-ledition/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rrose ou la couleur de l’édition",
+      "publishedAt": "2025-12-23T20:58:51.000Z",
+      "description": "Les petits ouvrages des éditions VillaRrose témoignent autant du goût du beau que d’un attrait pour les curiosités de la nature. Ils allient avec bonheur les sciences naturelles, le dessin et l’art contemporain. Cet article Rrose ou la couleur de l’édition est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/12/20/leternite-et-un-livre/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’éternité et un livre",
+      "publishedAt": "2025-12-19T23:01:05.000Z",
+      "description": "En racontant, dans Journal intime du pancréas, le cancer qui allait l'emporter à l’été 2016, le grand écrivain hongrois Péter Esterházy dépasse le strict récit intime de la maladie, pour penser la vie à l’aune de l’expérience de la littérature et invente une forme nouvelle et ardue d’autobiographie. Cet article L’éternité et un livre est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/12/16/entre-conteneur-code-barre-et-livreur/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Entre conteneur, code-barre et livreur",
+      "publishedAt": "2025-12-16T20:56:26.000Z",
+      "description": "Comment opère la révolution logistique ? Dans quelle mesure le conteneur est-il le symbole de cette transformation ? Delphine Mercier et Michel Peraldi répondent à ces questions dans La logistique et ses monstres. Cet article Entre conteneur, code-barre et livreur est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/12/09/vincent-bontems-fictions-scientifiques/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La fiction face aux dangers de l’IA",
+      "publishedAt": "2025-12-09T20:55:46.000Z",
+      "description": "Dans ses Fictions scientifiques, Vincent Bontems invite à une appropriation ludique et savante des fictions borgésiennes pour penser autrement notre rapport à l'intelligence artificielle. Cet article La fiction face aux dangers de l’IA est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/12/08/lheroique-queer-balance-son-son-gaiamen/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’héroïque queer balance son son",
+      "publishedAt": "2025-12-07T23:00:53.000Z",
+      "description": "Gaiamen est un poème polyphonique issu de la traduction sonore anglophone que David Melnick a donnée de l'Iliade. Proposition orgiaque et poétique, le texte de Vincent Broqua avale son lecteur ou sa lectrice. Cet article L’héroïque queer balance son son est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/11/29/predire-le-passe/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prédire le passé",
+      "publishedAt": "2025-11-28T23:00:01.000Z",
+      "description": "Judith Schalansky a un talent très singulier qui l’autorise à braver la vraisemblance et à exploiter la puissance d’évocation que recèle un objet, un habit, une image, une couleur. En témoigne aujourd'hui Le bleu ne te va pas, un roman enchanteur. Cet article Prédire le passé est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/11/14/utopiales-2025-diversites-en-resistance/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Utopiales 2025 : diversités en résistance",
+      "publishedAt": "2025-11-13T23:00:00.000Z",
+      "description": "Le succès du festival de science-fiction des Utopiales à Nantes ne se dément pas. Entre forêts et villes, mécanique quantique et édition, comics et climat, le thème « Singularités » a donné lieu à l'expression d'une diversité joyeuse mais inquiète. Cet article Utopiales 2025 : diversités en résistance est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/11/04/les-combats-de-fiction-cie-entretien-avec-bernard-comment/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les combats de Fiction & Cie : entretien avec Bernard Comment",
+      "publishedAt": "2025-11-04T20:58:43.000Z",
+      "description": "La collection « Fiction & Cie » des éditions du Seuil vient de célébrer ses cinquante ans. Bernard Comment, qui la dirige depuis 2004, évoque son histoire et son actualité, ce qui la distingue et s'y joue vraiment, en esquisse l'avenir avec lucidité. Cet article Les combats de Fiction & Cie : entretien avec Bernard Comment est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/11/04/edmond-thomas-le-faiseur-de-livres/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Edmond Thomas, le faiseur de livres",
+      "publishedAt": "2025-11-04T20:57:01.000Z",
+      "description": "L'éditeur et imprimeur Edmond Thomas est mort le 18 octobre. Plein chant. Histoire d’un éditeur de labeur recueille la parole rare d’un artiste dont l’œuvre est un trésor à chérir et à sauvegarder. Cet article Edmond Thomas, le faiseur de livres est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/11/04/fictions-ou-essais-nunez-ihimaera-doblin-zernik-meyer/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "En bref : fictions ou essais ?",
+      "publishedAt": "2025-11-04T20:56:00.000Z",
+      "description": "Essai ou fiction ? Voilà la question dynamique et infinie qui porte un roman de Sigrid Nunez, un conte de Witi Ihimaera, un inédit d'Alfred Döblin, un récit de voyage de Clélia Zernik et une histoire de la marche d'Andreas Mayer. Cet article En bref : fictions ou essais ? est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/10/31/anti-ecolos-les-nouveaux-marchands-de-doute/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anti-écolos : les nouveaux marchands de doute",
+      "publishedAt": "2025-10-30T23:00:49.000Z",
+      "description": "Quelle est la nature exacte de la contre-offensive réactionnaire qui s'en prend à l'écologie ? Telle est la question qu'examine un ouvrage collectif salutaire, Greenbacklash. Qui veut la peau de l’écologie ?. Cet article Anti-écolos : les nouveaux marchands de doute est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/10/28/mazan/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’affaire Pelicot, le temps des livres",
+      "publishedAt": "2025-10-28T21:07:43.000Z",
+      "description": "Le procès des viols de Mazan s’est clos le 19 décembre dernier. Déjà quatorze livres ont été consacrés à l’affaire. Cependant, la plupart, plutôt qu’analyser les faits, communient dans l’émotion et blâment le patriarcat. Cet article L’affaire Pelicot, le temps des livres est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/10/21/valzer-se-met-en-route-inedit-laszlo-krasznahorkai/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un inédit de László Krasznahorkai : « Valzer se met en route »",
+      "publishedAt": "2025-10-21T20:00:00.000Z",
+      "description": "László Krasznahorkai vient de recevoir le Prix Nobel de littérature. Pour célébrer cet événement, nous publions grâce à sa générosité et celle de sa traductrice Joëlle Dufeuilly, un récit inédit en français. Un texte fort, étonnant et un regard d'une effarante lucidité. Cet article Un inédit de László Krasznahorkai : « Valzer se met en route » est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/09/04/road-novel-au-feminin/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Road novel au féminin",
+      "publishedAt": "2025-09-03T22:00:13.000Z",
+      "description": "Avec Erreur de jugement, la romancière argentine Ariana Harwicz nous plonge dans l'esprit d'une narratrice hors norme qui dynamite les conventions sociales et littéraires. Le couple, la maternité, la justice, la ruralité... s'en trouvent bouleversés. Cet article Road novel au féminin est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/08/26/entre-autofiction-et-genealogie/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Entre autofiction et généalogie",
+      "publishedAt": "2025-08-26T19:59:10.000Z",
+      "description": "Avec Kolkhoze, Emmanuel Carrère rend hommage à sa mère. De ce portrait, ressort autant l'amour du fils qu'un certain aveuglement et une tendance à arrondir les angles. Cet article Entre autofiction et généalogie est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/08/14/grete-weil-a-la-frontiere-de-la-fiction-et-du-temoignage/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Grete Weil, à la frontière de la fiction et du témoignage",
+      "publishedAt": "2025-08-13T22:00:39.000Z",
+      "description": "Il était grand temps de découvrir Grete Weil, une des plus importantes écrivaines allemandes de la Shoah. Écrit dans des circonstances tragiques, Le chemin de la frontière est le premier de ses romans à être traduit en français. Cet article Grete Weil, à la frontière de la fiction et du témoignage est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/08/12/rentree-litteraire-tour-dhorizon/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rentrée littéraire 2025 : tour d’horizon",
+      "publishedAt": "2025-08-12T20:02:00.000Z",
+      "description": "En guise d'introduction à cette rentrée 2025, nous vous proposons un panorama général en 107 livres, dont on espère qu'il donnera l'envie d'aller creuser, chercher, fouiller dans nombre de ces romans. Cet article Rentrée littéraire 2025 : tour d’horizon est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/08/04/terriens-sous-surveillance/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Terriens sous surveillance ?",
+      "publishedAt": "2025-08-03T22:00:18.000Z",
+      "description": "Le cinquième diamant d'Éric Faye est un roman de science-fiction original qui entrecroise l'imagination et une documentation réelle. Une expérience riche et surprenante. Cet article Terriens sous surveillance ? est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/07/29/a-louest-rien-de-nouveau/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "À l’Ouest, rien de nouveau ?",
+      "publishedAt": "2025-07-29T19:58:09.000Z",
+      "description": "Un homme promène son chien Winston qui s'entête à courir vers l'Ouest. Une déambulation sur une plage du Calvados qui fait revivre un passé guerrier qui ne passe jamais vraiment. Cet article À l’Ouest, rien de nouveau ? est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/06/27/bourdieu-panofsky/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bourdieu, éditeur de Panofsky",
+      "publishedAt": "2025-06-26T22:00:59.000Z",
+      "description": "En 1967, Pierre Bourdieu publie dans sa collection des éditions de Minuit le premier livre de l'historien de l'art Erwin Panofsky. Les chercheurs Étienne Anheim et Paul Pasquali font « l'archéologie intellectuelle » de ce moment. Cet article Bourdieu, éditeur de Panofsky est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2025/06/20/les-meditations-anticartesiennes-de-claude-romano/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Méditations anti-cartésiennes",
+      "publishedAt": "2025-06-19T22:00:58.000Z",
+      "description": "Comment appartenir au monde alors que les menaces conjuguées de l’IA et du changement climatique semblent nous condamner à nous diriger vers le transhumanisme ? C'est la grave question que Claude Romano affronte avec détermination dans son nouvel essai. Cet article Méditations anti-cartésiennes est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/29/histoire-de-la-folie-en-amerique/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Histoire de la folie en Amérique",
+      "publishedAt": "2026-09-29T20:00:38.000Z",
+      "description": "Rentrée littéraire 2026 - La passion du roman possède Gustavo Faverón Patriau qui, avec Les lieux souterrains, relève avec ardeur et audace le défi lancé par Borges ou Bolaño. On gagnera à le suivre dans le labyrinthe de son histoire de la folie en Amérique. Cet article Histoire de la folie en Amérique est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/29/assignes-a-lesclavage-miranda-spieler/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Assignés à l’esclavage",
+      "publishedAt": "2026-09-29T19:59:29.000Z",
+      "description": "Esclaves à Paris. Vies cachées et histoires fugitives, de l'historienne américaine Miranda Spieler, est un modèle d'écriture de l'histoire, appelé à devenir une référence incontournable. Cet article Assignés à l’esclavage est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/29/desarrois-dune-emigree/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les désarrois d’une émigrée",
+      "publishedAt": "2026-09-29T19:59:20.000Z",
+      "description": "Rentrée littéraire 2026 - La romancière roumaine Lavinia Braniste raconte dans Camping l'histoire d'une émigrée ordinaire. Le récit d'une errance fondamentale que le livre transmet magnifiquement. Cet article Les désarrois d’une émigrée est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/29/lautre-nadja/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’autre Nadja",
+      "publishedAt": "2026-09-29T19:59:00.000Z",
+      "description": "Cent ans après leur rencontre, paraît une nouvelle édition des lettres que Nadja a adressées à André Breton. Leur publication n’a pas seulement un intérêt littéraire, elle invite à s’interroger sur le sort réservé aux femmes en situation de détresse sociale et psychique. Cet article L’autre Nadja est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/29/tribulations-en-chinafrique/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tribulations en Chinafrique",
+      "publishedAt": "2026-09-29T19:58:50.000Z",
+      "description": "Rentrée littéraire 2026 - Un corps indocile, le second roman d’Osvalde Lewat, met à nu les intrications entre des destinées individuelles et les systèmes de domination socio-économiques qui les conditionnent. Cette vaste fresque sociale est particulièrement réussie. Cet article Tribulations en Chinafrique est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/29/notre-origine-humaine/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "« Notre origine humaine »",
+      "publishedAt": "2026-09-29T19:57:22.000Z",
+      "description": "Rentrée littéraire 2026 - Avec De la terre des pleurs un grand vent s’éleva, les exilés, tout à coup, existent pour nous qui ne faisons bien souvent que passer à côté d'eux. Jane Sautière fait surgir des visages, des prénoms, des bribes d’histoires, et nous ramène ainsi à notre condition humaine. Cet article « Notre origine humaine » est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/29/seul-le-reve/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Seul le rêve",
+      "publishedAt": "2026-09-29T19:57:17.000Z",
+      "description": "Rentrée littéraire 2026 - Dans Debout dans tes rêves, Abdellah Taïa explore la solitude dans une langue fluide et sans pathos. Il questionne le lien social à partir de la position de ses deux personnages principaux, un étudiant venu du Maroc en France et un enfant des quartiers aisés. Cet article Seul le rêve est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/29/un-arabe-qui-boit-selim-derkaoui/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un Arabe qui boit",
+      "publishedAt": "2026-09-29T19:55:00.000Z",
+      "description": "Dans L’Arabe du samedi soir, Selim Derkaoui raconte avec une grande sensibilité une histoire de déni et d'aveuglement. Ceux du racisme qui brise les corps des jeunes hommes noirs et arabes dans les rares espaces où ils peuvent se défouler : l’ivresse et la nuit. Cet article Un Arabe qui boit est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/29/tentations-eugenistes-americaines/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tentations eugénistes américaines",
+      "publishedAt": "2026-09-28T22:00:46.000Z",
+      "description": "Rentrée littéraire 2026 - Dans son premier roman, Mon corps donné pour vous, Marouane Essadek retrace l'histoire de l’eugénisme aux États-Unis au début du vingtième siècle, à travers une jeune Américaine devenue malgré elle l'enjeu de débats scientifiques et juridiques. Cet article Tentations eugénistes américaines est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/28/poesie-des-amerindiens-americains-oublies/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poésie des Amérindiens, Américains oubliés",
+      "publishedAt": "2026-09-27T22:00:18.000Z",
+      "description": "Olivier Penot-Lacassagne a composé une précieuse anthologie de poèmes amérindiens contemporains. À l'écoute de voix rares, ce livre est une mosaïque de mondes, d'existences et d'imaginaires. Cet article Poésie des Amérindiens, Américains oubliés est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/26/son-of-a-preacher-man/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Son of a Preacher Man",
+      "publishedAt": "2026-09-25T22:00:35.000Z",
+      "description": "Rentrée littéraire 2026 - Les révérentes, premier roman de l'écrivaine américaine Addie E. Citchens, raconte la chute du fils d'un riche pasteur de manière à la fois tragique, comique et sensuelle. On assiste là à la naissance d'un grand talent. Cet article Son of a Preacher Man est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/26/changer-le-cours-de-leau/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Changer le cours de l’eau",
+      "publishedAt": "2026-09-25T22:00:31.000Z",
+      "description": "Rentrée littéraire 2026 - Dans son premier ouvrage, Les porteuses d'eau, Sasha Bonét explore l'histoire de sa famille, de l'Amérique et du racisme. Elle campe la lignée de femmes dont elle est issue, en particulier sa grand-mère, avec tendresse, respect et lucidité. Cet article Changer le cours de l’eau est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/26/derriere-le-voile-de-poussiere-les-lumieres/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Derrière le voile de poussière, les lumières",
+      "publishedAt": "2026-09-25T22:00:00.000Z",
+      "description": "Rentrée littéraire 2026 - Quand vient la tempête est un roman subtil et envoûtant, dense et flamboyant. À travers l'objectif d'une photographe qui immortalise les effets du Dust Bowl sur les populations rurales, Karen Russell y entremêle les destins avec maestria. Cet article Derrière le voile de poussière, les lumières est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/26/annie-dillard/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Annie Dillard",
+      "publishedAt": "2026-09-25T22:00:00.000Z",
+      "description": "L'écrivaine américaine Annie Dillard est morte le 15 septembre. Poète, essayiste et romancière, elle laisse une œuvre de taille modeste mais remarquable. Cet article Annie Dillard est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/25/survivances-de-la-revolte/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mémoires marranes",
+      "publishedAt": "2026-09-24T22:00:51.000Z",
+      "description": "En histoire, Enzo Traverso exclut la linéarité chronologique, ne craint pas les discontinuités et les ruptures, et met l’accent sur les moments d’émancipation. Il le prouve une nouvelle fois avec Survivances de la révolte. Essai sur la dialectique de la mémoire. Cet article Mémoires marranes est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/24/un-engagement-envers-le-reel/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un engagement envers le réel",
+      "publishedAt": "2026-09-23T22:00:00.000Z",
+      "description": "Anthologie réunissant de nombreux articles de la critique algérienne Mouny Berrah, Les 2 Écrans est un livre ample et généreux, appelé à devenir incontournable sur le cinéma arabe post-indépendances. Cet article Un engagement envers le réel est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/les-fantomes-de-jean-philippe-toussaint/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les fantômes de Jean-Philippe Toussaint",
+      "publishedAt": "2026-09-22T20:00:00.000Z",
+      "description": "Rentrée littéraire 2026 - Avec La hantise, Jean-Philippe Toussaint nous offre un vrai-faux roman d’espionnage en même temps qu’une variation sensible sur les fantômes qui nous habitent. Un livre d'une délicatesse et d'une légèreté virtuoses. Cet article Les fantômes de Jean-Philippe Toussaint est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/une-journee-tragique/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Une journée tragique",
+      "publishedAt": "2026-09-22T19:58:36.000Z",
+      "description": "Rentrée littéraire 2026 - Dans Halte au feu, Stéphane Giusti revient sur la fusillade du 26 mars 1962 à Alger, où une manifestation de pieds-noirs opposés à l'indépendance se solda par quarante-neuf morts mitraillés par l'armée. Un roman-mémoire particulièrement émouvant. Cet article Une journée tragique est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/guerre-algerie/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Autopsie d’un massacre",
+      "publishedAt": "2026-09-22T19:57:00.000Z",
+      "description": "Un massacre en Kabylie. Algérie, 1956 porte sur l’assassinat par trois compagnies de l’armée française de soixante-quinze Algériens. Un ouvrage précieux dans un contexte de révisionnisme historique insidieux du fait colonial et de ses violences. Cet article Autopsie d’un massacre est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/entretien-avec-hollie-mcnish/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Entretien avec Hollie McNish : Dire tous les mots",
+      "publishedAt": "2026-09-22T19:55:08.000Z",
+      "description": "Rentrée littéraire 2026 - La poétesse Hollie McNish nous parle de son dernier ouvrage, Je me demande pourquoi on ne peut pas dire non, tout simplement. Un livre libérateur dont la langue mordante déculpabilise le corps féminin et réhabilite les mots pour le dire. Cet article Entretien avec Hollie McNish : Dire tous les mots est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/retrouver-sa-voix/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Retrouver sa voix",
+      "publishedAt": "2026-09-22T19:54:23.000Z",
+      "description": "Rentrée littéraire 2026 - La romancière et essayiste québécoise Martine Delvaux offre un hymne à la fois sombre et lumineux à celles qu'on appelle les « divas ». Ces chanteuses qui permettent à d'autres femmes de faire entendre une voix. Cet article Retrouver sa voix est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/lamie-sur-la-photo/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’amie sur la photo",
+      "publishedAt": "2026-09-22T19:53:44.000Z",
+      "description": "Rentrée littéraire 2026 - Dans La meilleure, Emmanuelle Lambert exhume quelques photos de famille sans jamais tomber dans les lieux communs. Avec sensibilité et humour, elle nous offre un magnifique livre d'amitié. Cet article L’amie sur la photo est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/voyages-supplementaires-du-bois-filteau-chiba-ayurzana-azoulay-deleuze/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Voyages supplémentaires",
+      "publishedAt": "2026-09-22T19:53:42.000Z",
+      "description": "Notre chronique « En bref » s'arrête sur des romans de W.E.B. Du Bois et Gün G. Ayurzana, sur des poèmes de la Québécoise Gabrielle Filteau-Chiba, sur l'histoire potentielle du monde juif musulman qu'envisage Ariella Aïsha Azoulay. Et enfin sur l'ouvrage qu'Élie During et Dork Zabunyan consacrent à Gilles Deleuze. Cet article Voyages supplémentaires est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/celine-righi-au-chevet-des-fantomes/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Céline Righi au chevet des fantômes",
+      "publishedAt": "2026-09-22T19:51:00.000Z",
+      "description": "Rentrée littéraire 2026 - Chaque personnage de La chambre fougère a sa manière d'habiter le monde sensible. Ce roman de Céline Righi possède la douceur mélancolique des fins d'automne et la persistance des histoires que l'on garde longtemps en soi. Cet article Céline Righi au chevet des fantômes est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/au-dela-des-emoticons/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Au-delà des émoticons",
+      "publishedAt": "2026-09-21T22:00:11.000Z",
+      "description": "C’est peu dire que les émotions ont le vent en poupe en philosophie. De Hume puis de la phénoménologie jusqu'à des travaux très récents, trois ouvrages nous aident à penser cet état de la philosophie aujourd’hui. Cet article Au-delà des émoticons est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/21/enrique-vila-matas-un-canon-de-chambre-noire/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un fantôme de bibliothèque",
+      "publishedAt": "2026-09-20T22:00:36.000Z",
+      "description": "Rentrée Littéraire 2026 –Avec Un canon de chambre noire, Enrique Vila-Matas poursuit son entreprise littéraire érudite et fantaisiste inimitable. Éloge des textes et des personnages, de nos bibliothèques, il défend une littérature qui fait vraiment jouer un rôle au lecteur. Cet article Un fantôme de bibliothèque est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/19/philippe-jaenada-au-carre/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jaenada au carré",
+      "publishedAt": "2026-09-18T22:02:00.000Z",
+      "description": "Rentrée littéraire 2026 – Plus qu'une simple enquête, L’inconnue du quai de Javel est un livre qui redonne du volume et du dynamisme à une œuvre. Philippe Jaeneda rend justice à une jeune femme bouleversante et nous invite à lire ses livres avec la lucidité qu’il faut. Une expérience jouissive ! Cet article Jaenada au carré est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/19/une-ville-irlandaise-apres-le-krach-entretien-avec-paul-murray/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "« J’écris sur des rêveurs » : entretien avec Paul Murray",
+      "publishedAt": "2026-09-18T22:00:37.000Z",
+      "description": "Rentrée Littéraire 2026 – Dans La piqûre d'abeille, Paul Murray décrit le quotidien tragique d'une petite ville des Midlands d'Irlande et raconte les effets du krach de 2008. Un roman perspicace et poétique de haute volée. Cet article « J’écris sur des rêveurs » : entretien avec Paul Murray est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/18/larchitecte-ideal-la-maison-dete-masashi-matsuie/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’architecte idéal",
+      "publishedAt": "2026-09-17T22:00:03.000Z",
+      "description": "Rentrée Littéraire 2026 – La maison d’été de Masashi Matsuie est un livre passionnant sur l’architecture. En lui conférant une dimension humaine, le roman explore comment les artistes nous fascinent et nous confrontent à l’idéal. Cet article L’architecte idéal est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/17/dans-les-limbes-des-conteneurs-eden/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dans les limbes des conteneurs",
+      "publishedAt": "2026-09-16T22:00:54.000Z",
+      "description": "Rentrée Littéraire 2026 – Dans son nouveau roman, Pierre Ducrozet nous fait vivre le voyage du jeune Éden vers un continent que l'oppression ne pourrait atteindre. Souffrir l'enfer pour que commence enfin quelque chose ! Cet article Dans les limbes des conteneurs est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/15/sculpter-une-vie-dartiste-feliza-bursztyn/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sculpter une vie d’artiste",
+      "publishedAt": "2026-09-15T19:59:09.000Z",
+      "description": "Rentrée Littéraire 2026 – Après avoir raconté la vie du cinéaste Sergio Cabrera, Juan Gabriel Vásquez se plonge dans celle de la sculptrice colombienne Feliza Bursztyn. Les noms de Feliza poursuit une entreprise d’écriture biographique d'une grande ambition. Cet article Sculpter une vie d’artiste est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/15/les-musees-face-aux-enjeux-environnementaux/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les musées face aux enjeux environnementaux",
+      "publishedAt": "2026-09-15T19:57:38.000Z",
+      "description": "Quatre-vingts professionnels des musées témoignent dans Musée et écologie de ce qui se fait à leur échelle en matière d'écologie. Adeptes de nouvelles orientations et de nouvelles pratiques, ils partent à la recherche d’une écosophie plus que nécessaire. Cet article Les musées face aux enjeux environnementaux est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/15/venus-de-la-butte-agnes-clancier-valadon/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vénus de la Butte",
+      "publishedAt": "2026-09-15T19:57:00.000Z",
+      "description": "Rentrée Littéraire 2026 – Dans Suzanne Valadon l'insoumise, Agnès Clancier montre comment une femme longtemps enfermée dans la position d’objet finit par imposer sa propre vision du monde. Sa peinture ne représente plus un corps offert au regard masculin, mais un corps habité de l’intérieur. Cet article Vénus de la Butte est apparu en premier sur En attendant Nadeau.",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "en-attendant-nadeau",
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/15/lune-et-lautre-irene-gerard/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’une et l’autre",
+      "publishedAt": "2026-09-15T19:56:26.000Z",
+      "description": "Rentrée Littéraire 2026 – D’une année partagée avec Irène Gérard, femme « neuroatypique » qui a peint des centaines de toiles sans titre ni signature, Joy Sorman tire un récit qui oscille entre la fascination et l’empathie. Deux présences côte à côte, une manière subtile de raconter l'autre et de penser le geste artistique. Cet article L’une et l’autre est apparu en premier sur En attendant Nadea…",
+      "discoveredAt": "2026-09-29T20:39:47.670Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a1a4c81823a6b34842108f51c58c01c7c952ed5a94a32c984f4143c8f3e4ee0b"
+}

@@ -73,6 +73,8 @@ describe("bounded media and destination rights",()=>{
   it("downloads only allowlisted exact bytes and rejects redirects/error/oversize responses",async()=>{
     const f=await fixture(),fetchImpl=vi.fn(async()=>new Response(f.source,{headers:{"Content-Type":"image/png"}}));
     expect((await downloadNewsMediaAsset(f.asset,{registry:f.mediaOptions.registry,fetchImpl})).descriptor.sha256).toBe(f.descriptor.sha256);
+    expect(fetchImpl.mock.calls[0][1]).toMatchObject({redirect:"error",headers:{
+      "User-Agent":"ProbperaLiteraryNewsMedia/1.0 (+https://probpera.ru)"}});
     await expect(downloadNewsMediaAsset({...f.asset,sourceUrl:"https://other.example/photo"},{registry:f.mediaOptions.registry,fetchImpl})).rejects.toThrow("media_source_not_allowlisted");
     await expect(downloadNewsMediaAsset(f.asset,{registry:{downloadHosts:"other.publisher.example"},fetchImpl})).rejects.toThrow("media_source_not_allowlisted");
     await expect(downloadNewsMediaAsset({...f.asset,sourceSha256:"f".repeat(64)},{registry:f.mediaOptions.registry,fetchImpl})).rejects.toThrow("media_source_bytes_changed");
@@ -115,9 +117,10 @@ describe("bounded media and destination rights",()=>{
 });
 
 describe("native photo delivery without duplicate creates",()=>{
-  it("allows full-text fallback under the production policy even for stale stricter jobs",async()=>{
+  it("allows text when a photo is unavailable and preserves the deferred VK policy",async()=>{
     expect(socialConfiguration.destinations).toHaveLength(2);
     for(const configured of socialConfiguration.destinations){
+      // The owner now prioritizes photos and explicitly permits text without them.
       expect(configured.requirePhotoForNewPosts).toBe(false);expect(configured.mode).toBe("off");
       const legacy={platform:configured.platform,id:configured.id,requirePhotoForNewPosts:true};
       expect(newsNewPostRequiresPhoto(legacy)).toBe(false);
@@ -130,9 +133,9 @@ describe("native photo delivery without duplicate creates",()=>{
       const native=createNewsSocialTransport({mode:"live",telegramToken:"fixture",vkToken:"fixture",fetchImpl});
       expect((await dispatchNewsJob({store,key,transport:{...native,preflight:vi.fn()},now:()=>now})).reason)
         .toBe("destination_not_enabled_or_history_gap");
-      expect(await native.send({destination:{...legacy,mode:"on"},prepared:text,remoteId:null}))
-        .toMatchObject({kind:"accepted",remoteId:"17",remoteMediaKind:"text"});
-      expect(fetchImpl.mock.calls[0][0]).toContain(legacy.platform==="telegram"?"/sendMessage":"/wall.post");
+      const outcome=await native.send({destination:{...legacy,mode:"on"},prepared:text,remoteId:null});
+      expect(outcome).toMatchObject({kind:"accepted",remoteId:"17",remoteMediaKind:"text"});
+      expect(fetchImpl.mock.calls[0][0]).toContain(configured.platform==="telegram"?"/sendMessage":"/wall.post");
     }
   });
   it.each(["held", "oversized", "revoked", "missing"])("requires a photo for a new opted-in post after %s without consuming a slot",async scenario=>{
@@ -295,7 +298,7 @@ describe("native photo delivery without duplicate creates",()=>{
       expect(stored.dispatchStartedAt).toBeFalsy();
       await f.store.seed("destination:vk:-456",{mode:"on",paused:false,historyReconciled:true});
       if(scenario==="rate") expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+61000)})).reason).toBe("destination_pacing");
-      expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+(scenario==="rate"?1800000:61000))})).status).toBe("sent_current");
+      expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+(scenario==="rate"?3600000:61000))})).status).toBe("sent_current");
       expect(uploadImpl).toHaveBeenCalledTimes(1);expect(fetchImpl.mock.calls.filter(([url])=>url.endsWith("photos.saveWallPhoto"))).toHaveLength(1);
     }
   });

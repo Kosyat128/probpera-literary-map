@@ -1,0 +1,16 @@
+{
+  "sourceId": "librerantes",
+  "name": "Librerantes",
+  "entryUrl": "https://www.librerantes.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:42.314Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "getaddrinfo ENOTFOUND www.librerantes.com",
+  "robots": {
+    "url": "https://www.librerantes.com/robots.txt",
+    "error": "getaddrinfo ENOTFOUND www.librerantes.com",
+    "disallowed": []
+  }
+}

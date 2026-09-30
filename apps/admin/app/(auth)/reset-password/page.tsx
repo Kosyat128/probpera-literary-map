@@ -1,6 +1,7 @@
 import { redirect } from "@/lib/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { updatePasswordAction } from "./actions";
+import { authServiceError, guardedAuthRequest } from "@/lib/auth-service-error";
 
 export default async function ResetPasswordPage({
   searchParams,
@@ -9,7 +10,9 @@ export default async function ResetPasswordPage({
 }) {
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
-  const { data } = (await supabase?.auth.getUser()) || { data: { user: null } };
+  const result = supabase ? await guardedAuthRequest(() => supabase.auth.getUser()) : { data: { user: null }, error: null };
+  if (result.error && authServiceError(result.error)) redirect(`/login?error=${encodeURIComponent(authServiceError(result.error)!)}`);
+  const data = "data" in result ? result.data : { user: null };
 
   if (!data.user) {
     redirect(

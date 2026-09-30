@@ -8,31 +8,63 @@
   "coverageCountryCodes": [
     "SI"
   ],
-  "attemptedAt": "2026-09-26T17:28:37.490Z",
+  "attemptedAt": "2026-09-29T20:33:14.187Z",
   "requests": [
     {
       "url": "https://www.gzs.si/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 104474,
-      "sha256": "1abf327050833ff0b0ac6abb5ca2a16655013cf066d72df6c8d1190c1ed9663e",
-      "accessedAt": "2026-09-26T17:28:39.307Z"
+      "bytes": 105696,
+      "sha256": "20046c79144bd09fde4570eb3282533e33bf0d9bf636f0a0baf3e4d12374efdc",
+      "accessedAt": "2026-09-29T20:33:16.846Z"
     },
     {
       "url": "https://www.gzs.si/medijska_zbornica",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 106919,
-      "sha256": "9684e257b41091f81cb4885a1cdf5c1e3f5d2a9b7411058bc5e3cf971de1d893",
-      "accessedAt": "2026-09-26T17:28:40.532Z"
+      "sha256": "8c1308b06da8e5e6b3ca59dbab6c29a99372bee48e5d5fb5e4f4490468e4a55e",
+      "accessedAt": "2026-09-29T20:33:18.839Z"
     },
     {
       "url": "https://www.gzs.si/skupne_naloge/stalisca_in_komentarji/vsebina/Klju%C4%8Dna-stali%C5%A1%C4%8Da-GZS",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 82475,
-      "sha256": "5cbada8d58fbb766c356ed9e06fbe0e94a6391a66cc1009116ed013a10be1ebd",
-      "accessedAt": "2026-09-26T17:28:41.124Z"
+      "bytes": 82553,
+      "sha256": "80ce4cec3b679568549b8dcbc76af3a0a119d57daf1f2c221befb9ce9678636a",
+      "accessedAt": "2026-09-29T20:33:19.643Z"
+    },
+    {
+      "url": "https://www.gzs.si/skupne_naloge/dogodki",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 97949,
+      "sha256": "fd1df0a8b620fd73b52116746bb6998005be436c9294a74123a01da067bee299",
+      "accessedAt": "2026-09-29T20:33:23.940Z"
+    },
+    {
+      "url": "https://www.gzs.si/skupne_naloge/informacije_in_pomoc",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 137736,
+      "sha256": "4c5933c766b32e0a2467da7a4d903983edd1482e7b1389e307e4f9773a206db1",
+      "accessedAt": "2026-09-29T20:33:25.408Z"
+    },
+    {
+      "url": "https://www.gzs.si/projektnopovezovanje",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1884087,
+      "sha256": "08b93193f663c606e27412b90495f616622b5086439ada85b6596774f3787919",
+      "accessedAt": "2026-09-29T20:33:28.862Z"
+    },
+    {
+      "url": "https://www.gzs.si/zbornica_racunovodskih_servisov",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 210293,
+      "sha256": "04857c2d54e97216a2bb274da6ef2ced04eb50a2ea6ffa626ec3210c300764d7",
+      "accessedAt": "2026-09-29T20:33:30.444Z"
     }
   ],
   "status": "blocked",
@@ -42,5 +74,5 @@
     "error": "http_406",
     "disallowed": []
   },
-  "detailAttemptError": "response_too_large"
+  "detailAttemptError": "external_redirect:https://clip2go.gzs.si"
 }

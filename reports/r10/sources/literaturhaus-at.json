@@ -1,0 +1,16 @@
+{
+  "sourceId": "literaturhaus-at",
+  "name": "Literaturhaus Wien",
+  "entryUrl": "https://www.literaturhaus.at/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:37.979Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.literaturhaus.at/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "sourceId": "litprom",
+  "name": "Litprom",
+  "entryUrl": "https://www.litprom.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:36.944Z",
+  "requests": [
+    {
+      "url": "https://litprom.de/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 40868,
+      "sha256": "a63ca80a0612d290e8c5a762d2ab72fc5c09ec5b642fbdf1c3a4c4df02ec9d72",
+      "accessedAt": "2026-09-29T20:39:38.173Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.litprom.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=UTF-8",
+    "bytes": 45,
+    "sha256": "e9a1ecd396626364478bf1f7d2df86e632ba441436e6bdc7222d5ee7177b594a",
+    "accessedAt": "2026-09-29T20:39:37.431Z",
+    "disallowed": []
+  }
+}

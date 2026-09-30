@@ -1,0 +1,392 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-27T14:01:26.491Z",
+  "sourceReviewSha256": "53615a7dae752cd49fd0114e0f66117ad78c5d6fd0f597aba248e0bf84539f4a",
+  "cachedSnapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+  "patches": [
+    {
+      "id": "r10-russian:russia:fyodor_tyutchev:birthDate:72943cf4c166",
+      "writerKey": "russia:fyodor_tyutchev",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1803-12-05",
+      "evidence": {
+        "value": "1803-12-05",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q37217",
+        "claimIds": [
+          "Q37217$49714C3D-A78F-4765-AD40-6A3F5B05A9EB"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q37217&oldid=2534621558",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-julian-claim-with-institutional-gregorian-source",
+        "originalCalendarModel": "http://www.wikidata.org/entity/Q1985786",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/8283/fedor-tyutchev",
+            "checkedAt": "2026-09-27T14:01:23.673Z",
+            "finding": "05 декабря 1803",
+            "sourceDocumentSha256": "e975e035b9fd0697541a14f1562ae844d7adc8a10a2a44829954f9552044f987"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:fyodor_tyutchev:deathDate:76c330f0a826",
+      "writerKey": "russia:fyodor_tyutchev",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1873-07-27",
+      "evidence": {
+        "value": "1873-07-27",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q37217",
+        "claimIds": [
+          "Q37217$81DEA7AD-D055-4B1C-8071-C657A2800CD4"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q37217&oldid=2534621558",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-julian-claim-with-institutional-gregorian-source",
+        "originalCalendarModel": "http://www.wikidata.org/entity/Q1985786",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/8283/fedor-tyutchev",
+            "checkedAt": "2026-09-27T14:01:23.673Z",
+            "finding": "27 июля 1873",
+            "sourceDocumentSha256": "e975e035b9fd0697541a14f1562ae844d7adc8a10a2a44829954f9552044f987"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:afanasiy_fet:birthDate:427e4bcfa090",
+      "writerKey": "russia:afanasiy_fet",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1820-12-05",
+      "evidence": {
+        "value": "1820-12-05",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q314212",
+        "claimIds": [
+          "Q314212$b13dca0a-407c-b039-dfb2-3cef8db06014"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q314212&oldid=2517374350",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-julian-claim-with-institutional-gregorian-source",
+        "originalCalendarModel": "http://www.wikidata.org/entity/Q1985786",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.prlib.ru/history/2071338",
+            "checkedAt": "2026-09-27T14:01:22.166Z",
+            "finding": "5 декабря) 1820",
+            "sourceDocumentSha256": "e4dc6c6d31a07457cffc357b6bf030958a3a1c3eda68366f3e7cffab5962f5cb"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:afanasiy_fet:deathDate:b4e338e75d52",
+      "writerKey": "russia:afanasiy_fet",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1892-12-03",
+      "evidence": {
+        "value": "1892-12-03",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q314212",
+        "claimIds": [
+          "Q314212$d97eeb1a-4ff2-00e7-9f25-e6846b90a2f5"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q314212&oldid=2517374350",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-julian-claim-with-institutional-gregorian-source",
+        "originalCalendarModel": "http://www.wikidata.org/entity/Q1985786",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.prlib.ru/history/2071338",
+            "checkedAt": "2026-09-27T14:01:22.166Z",
+            "finding": "3 декабря) 1892",
+            "sourceDocumentSha256": "e4dc6c6d31a07457cffc357b6bf030958a3a1c3eda68366f3e7cffab5962f5cb"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:maxim_gorky:birthDate:7cc9940dca8e",
+      "writerKey": "russia:maxim_gorky",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1868-03-28",
+      "evidence": {
+        "value": "1868-03-28",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q12706",
+        "claimIds": [
+          "Q12706$d9867328-4542-a5db-ede6-270606e385f4"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q12706&oldid=2534852023",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-julian-claim-with-institutional-gregorian-source",
+        "originalCalendarModel": "http://www.wikidata.org/entity/Q1985786",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.prlib.ru/history/1916692",
+            "checkedAt": "2026-09-27T14:01:22.907Z",
+            "finding": "28) марта 1868",
+            "sourceDocumentSha256": "8dff30114cb01329262f189d5746b60901d695c2a2732f1cf957b6861a3e0aa4"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:maxim_gorky:deathDate:81495e30495b",
+      "writerKey": "russia:maxim_gorky",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1936-06-18",
+      "evidence": {
+        "value": "1936-06-18",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q12706",
+        "claimIds": [
+          "q12706$086E2D51-2795-47BD-8A0A-85338EE2AE2F"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q12706&oldid=2534852023",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.prlib.ru/history/1916692",
+            "checkedAt": "2026-09-27T14:01:22.907Z",
+            "finding": "18 июня 1936",
+            "sourceDocumentSha256": "8dff30114cb01329262f189d5746b60901d695c2a2732f1cf957b6861a3e0aa4"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:alexander_kuprin:birthDate:faef4b3540c8",
+      "writerKey": "russia:alexander_kuprin",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1870-09-07",
+      "evidence": {
+        "value": "1870-09-07",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q271457",
+        "claimIds": [
+          "Q271457$5A0590FB-5468-40B8-9DC8-C45D05979ADC"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q271457&oldid=2534033073",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-julian-claim-with-institutional-gregorian-source",
+        "originalCalendarModel": "http://www.wikidata.org/entity/Q1985786",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/8191/aleksandr-kuprin",
+            "checkedAt": "2026-09-27T14:01:23.278Z",
+            "finding": "07 сентября 1870",
+            "sourceDocumentSha256": "b44a5a46c5a9867ceb5bbcbcc04e2dd27b767f42ebd962da5fc7b9bc1f053a97"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:andrei_bely:birthDate:d0cb4736021c",
+      "writerKey": "russia:andrei_bely",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1880-10-26",
+      "evidence": {
+        "value": "1880-10-26",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q212632",
+        "claimIds": [
+          "Q212632$740E9251-4B0D-4220-AF4C-09DBA55A18C9"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q212632&oldid=2525277473",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/8134/andrei-belyi",
+            "checkedAt": "2026-09-27T14:01:24.815Z",
+            "finding": "26 октября 1880",
+            "sourceDocumentSha256": "e8e7a600227435159ff03d4b93aac8c858168d97d5eeb20b4215d8c439f43168"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:yevgeny_zamyatin:birthDate:61de38d9f32e",
+      "writerKey": "russia:yevgeny_zamyatin",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1884-02-01",
+      "evidence": {
+        "value": "1884-02-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q204868",
+        "claimIds": [
+          "Q204868$ead0e8fe-4fbb-1aec-ed9b-0c3c88fccee5"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q204868&oldid=2530143008",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-julian-claim-with-institutional-gregorian-source",
+        "originalCalendarModel": "http://www.wikidata.org/entity/Q1985786",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/events/911924/pogovorim-o-zamyatine-e-i",
+            "checkedAt": "2026-09-27T14:01:24.888Z",
+            "finding": "1 февраля] 1884",
+            "sourceDocumentSha256": "7734e998432d1da4f97f575d1599e82d2736414df7b12ed4a5113de5994b1c55"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:yevgeny_zamyatin:deathDate:29db6534a231",
+      "writerKey": "russia:yevgeny_zamyatin",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1937-03-10",
+      "evidence": {
+        "value": "1937-03-10",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q204868",
+        "claimIds": [
+          "q204868$8F89C506-0645-4F36-95AF-8C85C11F6A82"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q204868&oldid=2530143008",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/events/911924/pogovorim-o-zamyatine-e-i",
+            "checkedAt": "2026-09-27T14:01:24.888Z",
+            "finding": "10 марта 1937",
+            "sourceDocumentSha256": "7734e998432d1da4f97f575d1599e82d2736414df7b12ed4a5113de5994b1c55"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:vladimir_mayakovsky:birthDate:5bb71ec7d80f",
+      "writerKey": "russia:vladimir_mayakovsky",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1893-07-19",
+      "evidence": {
+        "value": "1893-07-19",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q132964",
+        "claimIds": [
+          "Q132964$5b440935-b521-4d91-b065-94d03289c998"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q132964&oldid=2533408306",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/8266/vladimir-mayakovskii",
+            "checkedAt": "2026-09-27T14:01:24.930Z",
+            "finding": "19 июля 1893",
+            "sourceDocumentSha256": "4f011ca9ab29d38c14cbdfafa415419888fb1902e19da4022eaaafec161c21a1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:varlam_shalamov:birthDate:9daf9de9f34a",
+      "writerKey": "russia:varlam_shalamov",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1907-06-18",
+      "evidence": {
+        "value": "1907-06-18",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q220816",
+        "claimIds": [
+          "Q220816$B406FBFE-E1EF-40BC-A494-79F5980749C8"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q220816&oldid=2534249158",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/9884/varlam-shalamov",
+            "checkedAt": "2026-09-27T14:01:26.464Z",
+            "finding": "18 июня 1907",
+            "sourceDocumentSha256": "247466819b68f04fe773e9b198ad333278a1f9671b27e350ab682176ed21d68f"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian:russia:alexander_tvardovsky:birthDate:2e6e271d12ec",
+      "writerKey": "russia:alexander_tvardovsky",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1910-06-21",
+      "evidence": {
+        "value": "1910-06-21",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q362828",
+        "claimIds": [
+          "Q362828$ADA909D8-4E6B-4B94-92C5-1EF8D3973662"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q362828&oldid=2536112581",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/catalog/muzyka_o_rodine/ru/item/person/tvardovskiy-aleksandr-trifonovich",
+            "checkedAt": "2026-09-27T14:01:25.019Z",
+            "finding": "21.06.1910",
+            "sourceDocumentSha256": "3966d4a1346d0624d2bd9406302242e145d42249da120b1ac1b32c5042718b88"
+          }
+        ]
+      }
+    }
+  ]
+}

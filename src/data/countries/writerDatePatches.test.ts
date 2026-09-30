@@ -2,13 +2,18 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { countries, editorialCatalogCountries } from './index';
-import { applyWriterDatePatches, writerDatePatches, type WriterDatePatch } from './writerDatePatches';
+import { applyWriterDatePatches, writerDatePatches as canonicalWriterDatePatches, type WriterDatePatch } from './writerDatePatches';
 import { applyCmsWriterProfileOverrides } from '../cms/editorialOverrides';
 import { selectCalendarEvents, calendarEventsForMonth } from '../../components/LiteraryCalendar';
 import { parseWriterDate } from '../../utils/writerDates';
 import type { Country } from './types';
-import registry from './generated/curatedWriterQids.generated.json';
 import supplemental from './generated/writerDatePatches.r10-supplemental.json';
+import russian from './generated/writerDatePatches.r10-russian.json';
+import popular from './generated/writerDatePatches.r10-popular.json';
+import scoped from './generated/writerDatePatches.r10-scoped.json';
+import { calendarWriterQid } from './calendarWriterIdentities';
+import { applyCalendarWriterDatePatches, calendarWriterDatePatches } from './calendarWriterDatePatches';
+const writerDatePatches = [...canonicalWriterDatePatches, ...calendarWriterDatePatches];
 
 const rawText=readFileSync(new URL('../../../reports/r10/calendar/wikidata-date-evidence.json', import.meta.url),'utf8');
 const raw=JSON.parse(rawText);
@@ -20,9 +25,16 @@ const cachedHash=createHash('sha256').update(cachedText).digest('hex');
 const cachedEntities=new Map(cached.entities.map((e: {qid:string})=>[e.qid,e])) as Map<string,any>;
 const sourceReview=JSON.parse(readFileSync(new URL('../../../reports/r10/calendar/supplemental-source-review.json', import.meta.url),'utf8'));
 const supplementalIds=new Set(supplemental.patches.map(p=>p.id));
+const russianIds=new Set(russian.patches.map(p=>p.id));
+const popularIds=new Set(popular.patches.map(p=>p.id));
+const scopedIds=new Set(scoped.patches.map(p=>p.id));
+const scopedText=readFileSync(new URL('../../../reports/r10/calendar/scoped-wikidata-evidence.json',import.meta.url),'utf8');
+const scopedHash=createHash('sha256').update(scopedText).digest('hex');
+const scopedEntities=new Map(JSON.parse(scopedText).entities.map((e:{qid:string})=>[e.qid,e])) as Map<string,any>;
+const russianReview=JSON.parse(readFileSync(new URL('../../../reports/r10/calendar/russian-source-review.json',import.meta.url),'utf8'));
 const writerMap=(source:Country[])=>new Map<string, Country["writers"][number]>(source.flatMap(c=>c.writers.map(w=>[`${c.id}:${w.id}`,w] as const)));
 const baseline=writerMap(editorialCatalogCountries);
-const effective=writerMap(countries);
+const effective=writerMap(applyCalendarWriterDatePatches(countries).countries);
 const nonDate=(writer:object)=>Object.fromEntries(Object.entries(writer).filter(([key])=>!['birthDate','deathDate','dateEvidence'].includes(key)));
 
 describe('R10 guarded date facts on the production country/calendar path',()=>{
@@ -38,17 +50,28 @@ describe('R10 guarded date facts on the production country/calendar path',()=>{
       if(!writerDatePatches.some(other=>other.writerKey===p.writerKey&&other.field===opposite))expect(w[opposite]).toBe(baseline.get(p.writerKey)?.[opposite]);
       expect(parseWriterDate(p.appliedValue)?.precision).toBe('day');
       const isSupplemental=supplementalIds.has(p.id);
-      expect(p.evidence.snapshotSha256).toBe(isSupplemental?cachedHash:snapshotHash);
-      expect((registry.writers as Record<string,{wikidataId:string}>)[p.writerKey].wikidataId).toBe(p.evidence.wikidataId);
+      const isRussian=russianIds.has(p.id);
+      const isPopular=popularIds.has(p.id);
+      const isScoped=scopedIds.has(p.id);
+      const isCached=isSupplemental||isRussian||isPopular;
+      expect(p.evidence.snapshotSha256).toBe(isScoped?scopedHash:isCached?cachedHash:snapshotHash);
+      expect(calendarWriterQid(baseline.get(p.writerKey)!,p.writerKey)).toBe(p.evidence.wikidataId);
       const property=p.field==='birthDate'?'P569':'P570';
-      const e=(isSupplemental?cachedEntities:entities).get(p.evidence.wikidataId)!;
+      const e=(isScoped?scopedEntities:isCached?cachedEntities:entities).get(p.evidence.wikidataId)!;
       expect(p.evidence.sourceUrl).toContain(`oldid=${e.lastrevid}`);
       for(const claimId of p.evidence.claimIds){
-        if(isSupplemental){
+        if(isCached||isScoped){
           const claim=e.claims[property].find((c:any)=>c.claimId===claimId);
-          expect(claim).toMatchObject({referenced:true,time:`+${p.appliedValue}T00:00:00Z`,precision:11,calendarmodel:p.evidence.calendarModel});
+          expect(claim).toMatchObject({referenced:true,precision:11});
           expect(claim.referenceCount).toBeGreaterThan(0);
           expect(claim.rank).not.toBe('deprecated');
+          if(isRussian&&p.evidence.method==='referenced-julian-claim-with-institutional-gregorian-source'){
+            expect(claim.calendarmodel).toBe('http://www.wikidata.org/entity/Q1985786');
+            const old=claim.time.slice(1,11);
+            expect(Number(old.slice(0,4))).toBeGreaterThanOrEqual(1800);
+            expect(Number(old.slice(0,4))).toBeLessThan(1900);
+            expect(new Date(Date.parse(`${old}T00:00:00Z`)+12*86_400_000).toISOString().slice(0,10)).toBe(p.appliedValue);
+          }else expect(claim).toMatchObject({time:`+${p.appliedValue}T00:00:00Z`,calendarmodel:p.evidence.calendarModel});
         } else {
           const claim=e.claims[property].find((c:any)=>c.id===claimId);
           expect(claim.references.length).toBeGreaterThan(0);
@@ -63,6 +86,16 @@ describe('R10 guarded date facts on the production country/calendar path',()=>{
         expect(review.wikidataId).toBe(p.evidence.wikidataId);
         expect(p.evidence.supportingSources).toEqual(review.sources);
         expect(review.sources.length).toBeGreaterThan(0);
+      }
+      if(isRussian){
+        expect(p.writerKey.startsWith('russia:')).toBe(true);
+        expect(p.evidence.retrievedAt).toBe(cached.retrievedAt);
+        const review=russianReview.ready.find((r:any)=>r.writerKey===p.writerKey&&r.field===p.field);
+        expect(review.proposedValue).toBe(p.appliedValue);
+        expect(p.evidence.supportingSources?.[0]).toMatchObject({
+          sourceUrl:review.sourceUrl,checkedAt:review.checkedAt,
+          sourceDocumentSha256:review.sourceDocumentSha256, finding:review.finding,
+        });
       }
       if(p.field==='deathDate')expect(p.appliedValue<='2026-09-26').toBe(true);
       if(w.birthDate&&w.deathDate&&parseWriterDate(w.birthDate)?.precision==='day'&&parseWriterDate(w.deathDate)?.precision==='day')expect(w.birthDate<=w.deathDate).toBe(true);
@@ -94,9 +127,9 @@ describe('R10 guarded date facts on the production country/calendar path',()=>{
     }
   });
   it('is idempotent and rollback restores only owned fields',()=>{
-    const first=applyWriterDatePatches(editorialCatalogCountries);
+    const first=applyWriterDatePatches(editorialCatalogCountries,writerDatePatches);
     expect(first.conflicts).toEqual([]);
-    const second=applyWriterDatePatches(first.countries);
+    const second=applyWriterDatePatches(first.countries,writerDatePatches);
     expect(second.applied).toEqual([]);
     expect(second.unchanged).toHaveLength(writerDatePatches.length);
     expect(second.countries).toEqual(first.countries);

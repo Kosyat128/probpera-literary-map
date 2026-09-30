@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "batchId": "current-news-photo-supply-20260929",
+  "preparedAt": "2026-09-29T20:49:44.909Z",
+  "scope": "Four distinct manually reviewed current literary publications/announcements. A future book-club event is an announcement. No deployment or dispatch.",
+  "records": [
+    {
+      "id": "tolstoy-ivan-ilyich-brazil-amazon-report-20260929",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29",
+      "verifiedAt": "2026-09-29T20:49:44.909Z",
+      "title": {
+        "ru": "Рецензия футболиста привлекла бразильских читателей к повести Льва Толстого",
+        "en": "A footballer’s review draws Brazilian readers to Leo Tolstoy’s “The Death of Ivan Ilyich”"
+      },
+      "summary": {
+        "ru": "По сообщению «Года литературы» от 29 сентября, повесть возглавила книжный рейтинг бразильского Amazon после видеообзора футболиста Густаво Скарпы. Речь идёт о рейтинге этой торговой площадки, а не обо всех продажах книг в Бразилии.",
+        "en": "GodLiteratury reports on September 29 that the novella topped Amazon Brazil’s book sales ranking after footballer Gustavo Scarpa’s video review. The report concerns this retailer’s ranking rather than all book sales in Brazil."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/29/pochemu-smert-ivana-ilicha-tolstogo-vyshla-na-pervoe-mesto-po-prodazham-v-brazilii",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "tolstoy-ivan-ilyich-brazil-amazon-report-20260929"
+    },
+    {
+      "id": "rumpus-min-jin-lee-october-book-club-20260929",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-26",
+      "publishedAt": "2026-09-29",
+      "verifiedAt": "2026-09-29T20:49:44.909Z",
+      "title": {
+        "ru": "Книжный клуб The Rumpus проведёт встречу с Мин Джин Ли 26 октября",
+        "en": "The Rumpus announces an October 26 book-club event with Min Jin Lee"
+      },
+      "summary": {
+        "ru": "The Rumpus объявил онлайн-встречу с автором American Hagwon на 26 октября, 19:00 по восточному времени США. Разговор проведёт Дебби Миллман; регистрация открыта. Это анонс будущей встречи.",
+        "en": "The Rumpus announces an online conversation with the author of American Hagwon for October 26 at 7 p.m. Eastern Time. Debbie Millman will host the discussion, and registration is open. This is an announcement of a future event."
+      },
+      "source": {
+        "name": "The Rumpus",
+        "url": "https://therumpus.net/2026/09/29/the-october-rumpus-book-club-american-hagwon-with-min-jin-lee/",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "rumpus-min-jin-lee-october-book-club-20260929"
+    },
+    {
+      "id": "arrigo-boito-ballatella-bilingual-publication-20260929",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29",
+      "verifiedAt": "2026-09-29T20:49:44.909Z",
+      "title": {
+        "ru": "«Год литературы» опубликовал стихотворение Арриго Бойто на двух языках",
+        "en": "Arrigo Boito’s “Ballatella” appears in a bilingual literary feature"
+      },
+      "summary": {
+        "ru": "В материале от 29 сентября помещены итальянский текст Ballatella и русский перевод. Редакция сопровождает стихотворение рассказом о поэте и либреттисте и о связи его литературной работы с музыкой.",
+        "en": "The September 29 feature presents the Italian text of Ballatella alongside a Russian translation. An introduction discusses the poet and librettist and the connection between his literary work and music."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/29/arrigo-bojto-ty-solnca-otrazhene",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "arrigo-boito-ballatella-bilingual-publication-20260929"
+    },
+    {
+      "id": "sukhovo-kobylin-basinsky-literary-essay-20260928",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-28",
+      "publishedAt": "2026-09-28",
+      "verifiedAt": "2026-09-29T20:49:44.909Z",
+      "title": {
+        "ru": "Опубликован литературный очерк об Александре Сухово-Кобылине",
+        "en": "A new literary essay examines Alexander Sukhovo-Kobylin"
+      },
+      "summary": {
+        "ru": "«Год литературы» опубликовал очерк Павла Басинского о русском драматурге. Автор обсуждает биографическую книгу Владислава Отрошенко «Драма снежной ночи», её работу с архивными материалами и интерес к судьбе Сухово-Кобылина.",
+        "en": "GodLiteratury publishes Pavel Basinsky’s essay about the Russian playwright. It discusses Vladislav Otroshenko’s biography Drama of a Snowy Night, its use of archival material, and interest in Sukhovo-Kobylin’s life."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/28/genij-ili-zlodej-pavel-basinskij-o-dramaturge-aleksandre-suhovo-kobyline",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "sukhovo-kobylin-basinsky-literary-essay-20260928"
+    }
+  ],
+  "recordSha256": "854f8609c44f9646742c7443f1aa87b5941eadcd8203dfbade1a4953da839110",
+  "evidence": [
+    {
+      "id": "tolstoy-ivan-ilyich-brazil-amazon-report-20260929",
+      "url": "https://godliteratury.ru/articles/2026/09/29/pochemu-smert-ivana-ilicha-tolstogo-vyshla-na-pervoe-mesto-po-prodazham-v-brazilii",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:12:37.822Z",
+      "responseSha256": "3663999a43aeafd66931d6a08436318b5f34fa031ea119254c08a88d8291eba0",
+      "facts": [
+        "GodLiteratury reports on September 29 that the novella topped Amazon Brazil’s book sales ranking after footballer Gustavo Scarpa’s video review. The report concerns this retailer’s ranking rather than all book sales in Brazil."
+      ],
+      "sourcePublishedEvidence": [
+        {
+          "value": "2026-09-29T18:46:00",
+          "method": "jsonld.datePublished"
+        }
+      ],
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:49:44.909Z",
+        "eventDateBasis": "source-publication-date-of-distinct-literary-report"
+      }
+    },
+    {
+      "id": "rumpus-min-jin-lee-october-book-club-20260929",
+      "url": "https://therumpus.net/2026/09/29/the-october-rumpus-book-club-american-hagwon-with-min-jin-lee/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:47:35.002Z",
+      "responseSha256": "36cbdd8d5896ad513af571622a5237744ff34b25cb241e30b3ff4dcfa84a578c",
+      "facts": [
+        "The Rumpus announces an online conversation with the author of American Hagwon for October 26 at 7 p.m. Eastern Time. Debbie Millman will host the discussion, and registration is open. This is an announcement of a future event."
+      ],
+      "sourcePublishedEvidence": [
+        {
+          "value": "2026-09-29T14:38:58+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-29T14:38:58+00:00",
+          "method": "jsonld.datePublished"
+        },
+        {
+          "value": "2026-09-29T14:38:58+00:00",
+          "method": "jsonld.datePublished"
+        }
+      ],
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:49:44.909Z",
+        "eventDateBasis": "explicit-future-event-date-in-source-body"
+      }
+    },
+    {
+      "id": "arrigo-boito-ballatella-bilingual-publication-20260929",
+      "url": "https://godliteratury.ru/articles/2026/09/29/arrigo-bojto-ty-solnca-otrazhene",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:47:35.244Z",
+      "responseSha256": "4f3bc9305a54173ce846e69c77c33d94f12fc86e4e406256178ffa816eb8da0c",
+      "facts": [
+        "The September 29 feature presents the Italian text of Ballatella alongside a Russian translation. An introduction discusses the poet and librettist and the connection between his literary work and music."
+      ],
+      "sourcePublishedEvidence": [
+        {
+          "value": "2026-09-29T12:32:00",
+          "method": "jsonld.datePublished"
+        }
+      ],
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:49:44.909Z",
+        "eventDateBasis": "source-publication-date-of-distinct-literary-report"
+      }
+    },
+    {
+      "id": "sukhovo-kobylin-basinsky-literary-essay-20260928",
+      "url": "https://godliteratury.ru/articles/2026/09/28/genij-ili-zlodej-pavel-basinskij-o-dramaturge-aleksandre-suhovo-kobyline",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:47:35.256Z",
+      "responseSha256": "ca42e5a127da64445834317985edf8eec1b8cf439359b4806eba07268c894f98",
+      "facts": [
+        "GodLiteratury publishes Pavel Basinsky’s essay about the Russian playwright. It discusses Vladislav Otroshenko’s biography Drama of a Snowy Night, its use of archival material, and interest in Sukhovo-Kobylin’s life."
+      ],
+      "sourcePublishedEvidence": [
+        {
+          "value": "2026-09-28T04:40:00",
+          "method": "jsonld.datePublished"
+        }
+      ],
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:49:44.909Z",
+        "eventDateBasis": "source-publication-date-of-distinct-literary-report"
+      }
+    }
+  ]
+}

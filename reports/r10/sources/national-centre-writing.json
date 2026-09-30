@@ -1,0 +1,300 @@
+{
+  "sourceId": "national-centre-writing",
+  "name": "National Centre for Writing",
+  "entryUrl": "https://nationalcentreforwriting.org.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:26.929Z",
+  "requests": [
+    {
+      "url": "https://nationalcentreforwriting.org.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 179717,
+      "sha256": "b19f8eed636073bcfe600824c0de1afb87eb2a7d68a3abf58f8b56443dcb0be8",
+      "accessedAt": "2026-09-29T20:39:27.408Z"
+    },
+    {
+      "url": "https://nationalcentreforwriting.org.uk/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 822,
+      "sha256": "7709859aec4ced559febf34a896043146a70f715e070bd967e5b5c7976e5262e",
+      "accessedAt": "2026-09-29T20:39:27.993Z"
+    },
+    {
+      "url": "https://nationalcentreforwriting.org.uk/events/on-tour-with-bad-betty-press-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 132838,
+      "sha256": "d0d33e6de11848cb7c9c3cb6ccde1edb65e1337eb1636e760f07257da6220669",
+      "accessedAt": "2026-09-29T20:39:28.965Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://nationalcentreforwriting.org.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 189,
+    "sha256": "d15aa571a8a050320967dcaa20bb8bddfbba206c036f63f4368e86d2811e8fdc",
+    "accessedAt": "2026-09-29T20:39:27.154Z",
+    "disallowed": []
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links",
+  "endpoint": {
+    "id": "national-centre-writing",
+    "name": "National Centre for Writing",
+    "url": "https://nationalcentreforwriting.org.uk/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "national-centre-writing",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://nationalcentreforwriting.org.uk"
+    ],
+    "linkPattern": "^\\/whats\\x2don\\/[^/]+\\/?$|^\\/get\\x2dinvolved\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/programmes\\/[^/]+\\/?$|^\\/events\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://nationalcentreforwriting.org.uk/events/on-tour-with-bad-betty-press-2026/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:28.971Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "national-centre-writing",
+    "source": {
+      "name": "National Centre for Writing",
+      "url": "https://nationalcentreforwriting.org.uk/events/on-tour-with-bad-betty-press-2026/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "More Information",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:28.047Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://nationalcentreforwriting.org.uk/events/on-tour-with-bad-betty-press-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 132838,
+      "sha256": "d0d33e6de11848cb7c9c3cb6ccde1edb65e1337eb1636e760f07257da6220669",
+      "accessedAt": "2026-09-29T20:39:28.965Z",
+      "headline": "On Tour with Bad Betty Press",
+      "excerpt": "Events On Tour with Bad Betty Press Thursday 8 October National Centre for Writing at Dragon Hall 18.30 - 21.00 £ 6.00 - £10.00 (pay what you wish) Join Bad Betty Press for a night of dynamic poetry and music, showcasing world-class artists and local favourites in a warm and inclusive setting. Book Now This popular night is a sure sell out so make sure you grab your tickets quickly! This October, ",
+      "publishedDates": [
+        {
+          "value": "2026-05-07T14:11:01+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://nationalcentreforwriting.org.uk/events/on-tour-with-bad-betty-press-2026/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:28.971Z",
+  "foundItems": [
+    {
+      "sourceId": "national-centre-writing",
+      "source": {
+        "name": "National Centre for Writing",
+        "url": "https://nationalcentreforwriting.org.uk/events/on-tour-with-bad-betty-press-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "More Information",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:28.047Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-centre-writing",
+      "source": {
+        "name": "National Centre for Writing",
+        "url": "https://nationalcentreforwriting.org.uk/programmes/on-sale-now-darkest-chapter-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "More Information",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:28.047Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-centre-writing",
+      "source": {
+        "name": "National Centre for Writing",
+        "url": "https://nationalcentreforwriting.org.uk/get-involved/translators/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "literary translators",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:28.047Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-centre-writing",
+      "source": {
+        "name": "National Centre for Writing",
+        "url": "https://nationalcentreforwriting.org.uk/get-involved/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers & Translators Support, advice & development Find out more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:28.047Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-centre-writing",
+      "source": {
+        "name": "National Centre for Writing",
+        "url": "https://nationalcentreforwriting.org.uk/norwich-unesco-city-of-literature/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Norwich City of Stories Explore England’s first UNESCO City of Literature Find out more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:28.047Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-centre-writing",
+      "source": {
+        "name": "National Centre for Writing",
+        "url": "https://nationalcentreforwriting.org.uk/programmes/start-your-story-browse-our-tutored-online-courses/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "More Information",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:28.047Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-centre-writing",
+      "source": {
+        "name": "National Centre for Writing",
+        "url": "https://nationalcentreforwriting.org.uk/programmes/browse-our-season-brochure/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "More Information",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:28.047Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "b19f8eed636073bcfe600824c0de1afb87eb2a7d68a3abf58f8b56443dcb0be8"
+}

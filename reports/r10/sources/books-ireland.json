@@ -1,0 +1,385 @@
+{
+  "sourceId": "books-ireland",
+  "name": "Books Ireland",
+  "entryUrl": "https://booksirelandmagazine.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:23.425Z",
+  "requests": [
+    {
+      "url": "https://booksirelandmagazine.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 258735,
+      "sha256": "1b54901859123360e621e3ef57209d9023dffceaf9c5261063ad98745fe61eed",
+      "accessedAt": "2026-09-29T20:39:25.013Z"
+    },
+    {
+      "url": "https://booksirelandmagazine.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml",
+      "bytes": 125783,
+      "sha256": "db24b425126beec8e0eb5b59f02a0b94f008c6e817701098a451549baf60029b",
+      "accessedAt": "2026-09-29T20:39:25.274Z"
+    },
+    {
+      "url": "https://booksirelandmagazine.com/fiction-editing-masterclass-with-author-niamh-mulvey/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 131205,
+      "sha256": "055884ebcd7275479dc16cfae3236fccde00473934402fa0550015a72bee06da",
+      "accessedAt": "2026-09-29T20:39:25.569Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://booksirelandmagazine.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 241,
+    "sha256": "b8721b2c332e87d4d1cdda815b29caaa3476d2b84ac5bf4965297dc35c1d18bb",
+    "accessedAt": "2026-09-29T20:39:24.774Z",
+    "disallowed": [
+      "/wp-admin/",
+      "*/wp-content/podscache/*",
+      "/wp-content/uploads/wpo/wpo-plugins-tables-list.json"
+    ]
+  },
+  "endpoint": {
+    "id": "books-ireland",
+    "name": "Books Ireland",
+    "url": "https://booksirelandmagazine.com/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "books-ireland",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://booksirelandmagazine.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://booksirelandmagazine.com/fiction-editing-masterclass-with-author-niamh-mulvey/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:25.579Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "books-ireland",
+    "source": {
+      "name": "Books Ireland",
+      "url": "https://booksirelandmagazine.com/fiction-editing-masterclass-with-author-niamh-mulvey/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Fiction editing masterclass with author Niamh Mulvey",
+    "publishedAt": "2026-09-21T14:00:13.000Z",
+    "description": "Author and industry expert Niamh Mulvey offers fiction masterclass in partnership with Publishing Ireland Are you a fiction editor? Would you like to sharpen your skills, and stay ahead of the game? In partnership with Publishing Ireland, author and industry expert Niamh Mulvey is running a Fiction Editing Masterclass this September. Niamh Mulvey is an... The post Fiction editing masterclass with…",
+    "discoveredAt": "2026-09-29T20:39:25.276Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://booksirelandmagazine.com/fiction-editing-masterclass-with-author-niamh-mulvey/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 131205,
+      "sha256": "055884ebcd7275479dc16cfae3236fccde00473934402fa0550015a72bee06da",
+      "accessedAt": "2026-09-29T20:39:25.569Z",
+      "headline": "Fiction editing masterclass with author Niamh Mulvey - Books Ireland",
+      "excerpt": "photo credit: Kate Elliott Author and industry expert Niamh Mulvey offers fiction masterclass in partnership with Publishing Ireland Are you a fiction editor? Would you like to sharpen your skills, and stay ahead of the game? In partnership with Publishing Ireland, author and industry expert Niamh Mulvey is running a Fiction Editing Masterclass this September. Niamh Mulvey is an author, freelance ",
+      "publishedDates": [
+        {
+          "value": "2026-09-21T15:00:13+01:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-21T15:00:13+01:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-21T15:00:13+01:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "canonical": "https://booksirelandmagazine.com/fiction-editing-masterclass-with-author-niamh-mulvey/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:25.579Z",
+  "foundItems": [
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/fiction-editing-masterclass-with-author-niamh-mulvey/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fiction editing masterclass with author Niamh Mulvey",
+      "publishedAt": "2026-09-21T14:00:13.000Z",
+      "description": "Author and industry expert Niamh Mulvey offers fiction masterclass in partnership with Publishing Ireland Are you a fiction editor? Would you like to sharpen your skills, and stay ahead of the game? In partnership with Publishing Ireland, author and industry expert Niamh Mulvey is running a Fiction Editing Masterclass this September. Niamh Mulvey is an... The post Fiction editing masterclass with…",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/an-post-bookshop-of-the-year-longlist-revealed/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "An Post Bookshop of the Year longlist revealed",
+      "publishedAt": "2026-09-29T10:16:36.000Z",
+      "description": "Twelve bookshops around Ireland have made the longlist for this year’s An Post Bookshop of the Year The longlist has been revealed of the twelve bookshops in the running to win Bookshop of the Year, at one of the biggest—not to mention one of the most glamorous—events of the literary calendar, the An Post Irish Books... The post An Post Bookshop of the Year longlist revealed appeared first on Boo…",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/poetry-happening-courtney-darby/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poetry Happening—Courtney Darby",
+      "publishedAt": "2026-09-28T08:07:48.000Z",
+      "description": "Courtney Darby reads ‘info-dumping as a form of intimacy in the Anthropocene’ ‘info-dumping as a form of intimacy in the Anthropocene’ (from Abridged 0-109: Never A Rose 2025) Courtney Darby will be taking part in Poetry Ireland Introductions at the Dublin Book Festival, Thursday 05 November The post Poetry Happening—Courtney Darby appeared first on Books Ireland.",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/nicole-flattery-wins-e20000-rooney-prize/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nicole Flattery wins €20,000 Rooney Prize",
+      "publishedAt": "2026-09-11T07:41:29.000Z",
+      "description": "Nicole Flattery wins €20,000 Rooney Prize Nicole Flattery is the 2026 winner of the Rooney Prize for Literature. She was awarded the prize at a gala dinner in Trinity College Dublin yesterday evening, which was attended by 150 guests from the world of Irish literature, including 22 previous winners. Established in 1976, the prize celebrates an outstanding... The post Nicole Flattery wins €20,000 …",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/tristan-rosenstock-reads-from-inis-mara-3/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tristan Rosenstock reads from Inis Mara 3",
+      "publishedAt": "2026-09-29T13:42:40.000Z",
+      "description": "We present an extract from Inis Mara 3, the third book in the popular series by Tristan Rosenstock, illustrated by Mark Wickham (LeabhairCOMHAR) Tá naimhde gránna Inis Mara, an Santóir agus Smugairle Rónán, ar ais arís agus plean nua acu chun éirí níos saibhre ná riamh. Ach is iad muintir Inis Mara – agus an t-oileán féin –... The post Tristan Rosenstock reads from Inis Mara 3 appeared first on B…",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/poems-which-pray-for-each-other-true-to-form-by-john-liddy/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poems which pray for each other—True to Form by John Liddy",
+      "publishedAt": "2026-09-23T15:10:38.000Z",
+      "description": "‘These poems converse with each other and pray for each other. Their very existence exalts survival.’ —True to Form, by John Liddy (Revival Press) by Hayden Murphy. Although not designated as a New & Selected Poems, this twelfth collection from poet John Liddy effectively functions as one; it complements, in separate ways, The Well (2007) and Madrid... The post Poems which pray for each other—Tru…",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/the-lit-returns-to-waterford-this-october/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Lit returns to Waterford this October",
+      "publishedAt": "2026-09-22T09:38:54.000Z",
+      "description": "Europe’s first youth-led festival The Lit returns to Waterford this October The Lit, Europe’s first youth-led festival of reading and writing returns to Waterford City this October. Curated by 28 young people from across Waterford City and county, activism is a strong theme in this year’s festival, which runs from the 9th-11th October. Kicking off... The post The Lit returns to Waterford this Oct…",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/a-stellar-year-in-irish-ya/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A stellar year in Irish YA",
+      "publishedAt": "2026-09-22T07:07:00.000Z",
+      "description": "Spoilt for choice—Ruth Ennis chooses four books for the young adults in your life by Ruth Ennis This year has been a remarkable one for young adult literature in Ireland. I’ve been reviewing for Books Ireland for four years now (and reading in this area for even longer than that!) and I don’t think I’ve... The post A stellar year in Irish YA appeared first on Books Ireland.",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/culture-night-at-the-national-library-of-ireland/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Culture Night at the National Library of Ireland",
+      "publishedAt": "2026-09-16T09:54:29.000Z",
+      "description": "The National Library is for everyone—and is open throughout the evening on Culture Night It’s that time of year again when Culture Night celebrates creativity and the arts across the country. Events and activities all across the island will be available to the public free of charge on Friday 18 September. The National Library of... The post Culture Night at the National Library of Ireland appeare…",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-ireland",
+      "source": {
+        "name": "Books Ireland",
+        "url": "https://booksirelandmagazine.com/catherine-gander-on-rukeyser/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘Rukeyser describes the reawakening of deep knowledge that a poem can evoke’—Catherine Gander",
+      "publishedAt": "2026-09-15T12:55:31.000Z",
+      "description": "From Beyond Ourselves: Contemporary Poets on Muriel Rukeyser, edited by Catherine Gander & Stefania Heim (West Virginia University Press) Muriel Rukeyser was an American 20th century poet. She was also a biographer, playwright, novelist, translator, ethnographer, and social justice activist. Threaded through all she did was the conviction that poetry is an animating force that connects... The pos…",
+      "discoveredAt": "2026-09-29T20:39:25.276Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "db24b425126beec8e0eb5b59f02a0b94f008c6e817701098a451549baf60029b"
+}

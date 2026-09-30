@@ -1,0 +1,4158 @@
+{
+  "checkedAt": "2026-09-29T20:18:46.644Z",
+  "scope": "Exact reviewed author portraits for currently eligible records, using verified Commons licenses. No provider uploads, sends or remote database writes.",
+  "candidateCount": 98,
+  "reports": [
+    {
+      "inspected": 8,
+      "requests": 17,
+      "cached": 0,
+      "approved": 3,
+      "held": 5,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "andrei-rubanov-tambov-literary-project-20260929",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "ast-nikolai-ostrovsky-122-anniversary-20260929",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "asymptote-kleopatra-olympiou-desperado-grandma-20260929",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "ekin-oklap-first-summer-interview-20260929",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "hannah-grace-icebreaker-netflix-cast-20260929",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "hernan-diaz-ply-literary-hub-profile-20260929",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "min-jin-lee-american-hagwon-writing-interview-20260929",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "scugnizzeria-vomero-giancarlo-siani-bookshop-20260929",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 8,
+      "requests": 19,
+      "cached": 0,
+      "approved": 2,
+      "held": 6,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "jamaica-kincaid-sjojungfrun-presentation-2026",
+          "status": "held",
+          "reason": "media_commons_metadata_incomplete"
+        },
+        {
+          "newsId": "madeline-cash-page-america-award-2026",
+          "status": "held",
+          "reason": "media_portrait_missing_or_ambiguous"
+        },
+        {
+          "newsId": "paulina-borsook-cyberselfish-reissue-announced-2026",
+          "status": "held",
+          "reason": "media_discovery_license_unsupported"
+        },
+        {
+          "newsId": "rivera-garza-kwon-literary-influences-2026",
+          "status": "held",
+          "reason": "media_subject_ambiguous"
+        },
+        {
+          "newsId": "rsl-sri-lanka-books-culture-days-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "viktor-likhonosov-krasnodar-square-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "asymptote-lianbin-ni-translation-interview-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 8,
+      "requests": 14,
+      "cached": 0,
+      "approved": 0,
+      "held": 8,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "geluck-chat-museum-ixelles-plan-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "history-of-a-town-rsl-stage-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "musicians-literary-prize-selection-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "rgali-sergei-markov-archive-feature-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "sanna-wani-lantern-daughterhood-essay-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "scam-recit-dessine-selection-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "ankara-press-cheryl-ntumy-seven-states-acquisition-2026",
+          "status": "held",
+          "reason": "media_portrait_missing_or_ambiguous"
+        },
+        {
+          "newsId": "nicolas-lunabba-gothenburg-bildning-award-2026",
+          "status": "held",
+          "reason": "media_portrait_missing_or_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 8,
+      "requests": 16,
+      "cached": 0,
+      "approved": 1,
+      "held": 7,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "poerio-goethe-iphigenia-attribution-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "radzinsky-eighteen-volume-collected-works-2026",
+          "status": "held",
+          "reason": "media_commons_metadata_incomplete"
+        },
+        {
+          "newsId": "tv5monde-un-pays-un-livre-announced-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "vanity-fair-literary-selection-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "asymptote-hossaini-war-ends-translation-2026",
+          "status": "held",
+          "reason": "media_discovery_license_unsupported"
+        },
+        {
+          "newsId": "european-literacy-coalition-brussels-launch-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "florent-oiseau-francoise-sagan-prize-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "john-green-signed-tip-in-record-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 8,
+      "requests": 19,
+      "cached": 0,
+      "approved": 3,
+      "held": 5,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "podium-entertainment-acquisition-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "wells-brynhild-first-russian-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "lilya-brik-mamm-literary-museum-loans-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "natalya-balayan-russian-fairy-tale-book-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "heather-cox-richardson-gitlin-auster-award-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+          "status": "held",
+          "reason": "media_discovery_license_unsupported"
+        },
+        {
+          "newsId": "bruno-montane-efimera-critical-feature-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 7,
+      "requests": 12,
+      "cached": 0,
+      "approved": 0,
+      "held": 7,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "dubravka-rebic-vladan-desnica-decision-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "ken-bugul-julie-huntington-asymptote-interview-2026",
+          "status": "held",
+          "reason": "media_subject_ambiguous"
+        },
+        {
+          "newsId": "bisg-brian-oleary-award-renaming-report-20260929",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "san-martin-digital-repository-agreement-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "asymptote-maria-messina-camilla-translation-2026",
+          "status": "held",
+          "reason": "media_dimensions_invalid"
+        },
+        {
+          "newsId": "parfenov-nabokov-namedni-tour-announced-2026",
+          "status": "held",
+          "reason": "media_commons_metadata_incomplete"
+        }
+      ]
+    },
+    {
+      "inspected": 8,
+      "requests": 10,
+      "cached": 0,
+      "approved": 0,
+      "held": 8,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "bnf-oulipo-season-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "richard-oram-wind-water-cleave-talk-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "sables-de-dune-french-edition-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "nizhny-novgorod-book-fair-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "slovakia-bibliography-days-seminars-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "lit-connect-jakarta-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "danish-pen-banned-books-opening-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "frankfurt-audio-business-centre-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 8,
+      "requests": 13,
+      "cached": 0,
+      "approved": 1,
+      "held": 7,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "frankfurt-comic-business-centre-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "aficionado-award-words-without-borders-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "frankfurt-book-to-screen-day-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "sarajevo-amer-tikvesa-literary-corner-2026",
+          "status": "held",
+          "reason": "media_portrait_missing_or_ambiguous"
+        },
+        {
+          "newsId": "lynne-campbell-fungi-language-song-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "stevenson-cevennes-illustrated-french-edition-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "litres-yasnaya-polyana-free-reading-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "svensk-bokkonst-awards-ceremony-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 8,
+      "requests": 12,
+      "cached": 0,
+      "approved": 1,
+      "held": 7,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "ubud-writers-readers-festival-2026",
+          "status": "held",
+          "reason": "media_subject_ambiguous"
+        },
+        {
+          "newsId": "weather-spirits-international-storytelling-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "kruzhkov-mukha-pukha-reading-theatre-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "degol-hailu-pillaging-the-dead-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "dublin-imprisoned-writer-gallagher-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "small-piece-night-student-anthology-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "european-authors-day-programme-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "erin-farley-lighthouse-lives-talk-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 7,
+      "requests": 10,
+      "cached": 0,
+      "approved": 1,
+      "held": 6,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "gianni-mura-fuoriclasse-winner-announcement-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "macdiarmid-thistle-centenary-talk-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "fil-editorial-merit-ekare-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "hiromi-kawakami-far-from-everywhere-2027",
+          "status": "held",
+          "reason": "media_subject_ambiguous"
+        },
+        {
+          "newsId": "devenir-un-monstre-quebec-release-2027",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "tara-westover-brothers-and-sisters-us-2027",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "nlo-venediktova-literary-haptics-podcast-20260912",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 8,
+      "requests": 17,
+      "cached": 0,
+      "approved": 2,
+      "held": 6,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "stanislaw-rosiek-polish-pen-editorial-award-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "jaume-cabre-feixes-first-russian-2026",
+          "status": "held",
+          "reason": "media_discovery_license_unsupported"
+        },
+        {
+          "newsId": "funmike-ogaosun-shipikisha-cover-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+          "status": "held",
+          "reason": "media_portrait_missing_or_ambiguous"
+        },
+        {
+          "newsId": "katarina-wennstam-crimetime-honorary-award-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "lom-juan-guzman-memory-book-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "pen-index-victoria-amelina-fellowship-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "patrick-dewitt-dodge-city-russian-edition-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 8,
+      "requests": 17,
+      "cached": 0,
+      "approved": 1,
+      "held": 7,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "tolstoy-birthday-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "liu-cixin-direct-russian-translation-interview-2026",
+          "status": "held",
+          "reason": "media_discovery_license_unsupported"
+        },
+        {
+          "newsId": "yeats-a-vision-digitised-papers-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "shershenevich-drozdov-collection-exhibition-2026",
+          "status": "held",
+          "reason": "media_dimensions_invalid"
+        },
+        {
+          "newsId": "lom-plan-condor-illustrated-book-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "vladimir-dal-manuscripts-exhibition-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "wmf-martins-fontes-amazon-supply-announcement-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        },
+        {
+          "newsId": "jose-ruben-zamora-hermann-kesten-decision-2026",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    },
+    {
+      "inspected": 2,
+      "requests": 5,
+      "cached": 0,
+      "approved": 1,
+      "held": 1,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "marlon-james-disappearers-us-catalog-2026",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "nlo-tsyganov-stalin-era-philology-20260901",
+          "status": "held",
+          "reason": "media_subject_search_ambiguous"
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "key": "history:media:d4229d380cd5b9d3583ee18bc1494128a7fb9d53a1740dd703532ab427d645de",
+      "id": 1,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "andrei-rubanov-tambov-literary-project-20260929",
+        "semanticRevision": "d4229d380cd5b9d3583ee18bc1494128a7fb9d53a1740dd703532ab427d645de",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-d4229d380cd5b9d3583ee18bc1494128",
+          "status": "approved",
+          "newsIds": [
+            "andrei-rubanov-tambov-literary-project-20260929"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "345fe1446b7ef3a3f5cd4e599d656e311bd150835765e0734ff890a68c14bf35",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Andrei Rubanov (Q2846848), exact reviewed name in title.en; Wikidata P18 File:Андрей Рубанов.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Svklimkin",
+          "rightsholder": "Svklimkin",
+          "credit": "Архивный портрет: Andrei Rubanov. «Андрей Рубанов». © Svklimkin.  Wikimedia Commons: https://commons.wikimedia.org/?curid=91211081.",
+          "license": "CC-BY-SA-4.0",
+          "materialTitle": "Андрей Рубанов",
+          "materialUrl": "https://commons.wikimedia.org/?curid=91211081",
+          "copyrightNotice": "© Svklimkin",
+          "derivativeLicense": "CC-BY-SA-4.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg",
+          "licenseEvidenceSha256": "c07c8255a3cba38da38b7c46eef46549e3977c74c1f2de0d273fe797667ff9e1",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "7da22ee64e324defe08b16aaf1d6343f239ea7ec92ee8ee38eb3e295bcacbfb8",
+            "byteLength": 203573,
+            "mime": "image/jpeg",
+            "width": 1172,
+            "height": 1600,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q2846848",
+            "name": "Andrei Rubanov",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Andrei Rubanov"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Andrei Rubanov",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Andrei+Rubanov&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "b294e791b5ae67afab05761fed530dd70cc5f9a89eee0efb25d6fb6431d3211d"
+                }
+              ],
+              "entitySha256": "fb6d82bcf0eff43d445df11ed8a44b05f1e5cb29a91a81b3405ecef8946a0608"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q2846848&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "fb6d82bcf0eff43d445df11ed8a44b05f1e5cb29a91a81b3405ecef8946a0608",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3A%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9+%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "c07c8255a3cba38da38b7c46eef46549e3977c74c1f2de0d273fe797667ff9e1",
+          "fileTitle": "File:Андрей Рубанов.jpg",
+          "metadata": {
+            "Artist": "Svklimkin",
+            "LicenseShortName": "CC BY-SA 4.0",
+            "UsageTerms": "Creative Commons Attribution-Share Alike 4.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:e0cdc6b7f8c4c37a595f7b77b0189a4138f9109078867b5d0ed8e742a450d94f",
+      "id": 2,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "ast-nikolai-ostrovsky-122-anniversary-20260929",
+        "semanticRevision": "e0cdc6b7f8c4c37a595f7b77b0189a4138f9109078867b5d0ed8e742a450d94f",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-e0cdc6b7f8c4c37a595f7b77b0189a41",
+          "status": "approved",
+          "newsIds": [
+            "ast-nikolai-ostrovsky-122-anniversary-20260929"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/N_Ostrovskiy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "3cc56aa59074a6fc360fb4149bfae7d6a1f2b89ed047bf5f3b828e6a6cae51a0",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Nikolai Ostrovsky (Q271853), exact reviewed name in title.en; Wikidata P18 File:N Ostrovskiy.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Unknown authorUnknown author",
+          "rightsholder": "Unknown authorUnknown author",
+          "credit": "Портрет: Nikolai Ostrovsky. Unknown authorUnknown author. Wikimedia Commons.",
+          "license": "public-domain",
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg",
+          "licenseEvidenceSha256": "512e3ca39b3c1ac77f8ee8af73358a32fef24a552b0f337619121dc69924384a",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "579620520ede151d353ba4083918255b26cba868224488ac8b1fd7202ab9eec9",
+            "byteLength": 38559,
+            "mime": "image/jpeg",
+            "width": 471,
+            "height": 720,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q271853",
+            "name": "Nikolai Ostrovsky",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Nikolai Ostrovsky"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Nikolai Ostrovsky",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Nikolai+Ostrovsky&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "6f9bc993b68b51dccef937710f18477c298e9ab0057ec815b6c522d7d71a4dc8"
+                }
+              ],
+              "entitySha256": "896e9ddfc466317cc48e14079797d17559ba0dcf3610e73e476692d2445a9472"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q271853&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "896e9ddfc466317cc48e14079797d17559ba0dcf3610e73e476692d2445a9472",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AN+Ostrovskiy.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "512e3ca39b3c1ac77f8ee8af73358a32fef24a552b0f337619121dc69924384a",
+          "fileTitle": "File:N Ostrovskiy.jpg",
+          "metadata": {
+            "Artist": "Unknown authorUnknown author",
+            "LicenseShortName": "Public domain",
+            "UsageTerms": "Public domain",
+            "Copyrighted": "False",
+            "LicenseUrl": ""
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:f7d0e31622e6877a468b65ff83b06cc13e1935fd5af5f85805ce911667a6f8f4",
+      "id": 3,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "asymptote-kleopatra-olympiou-desperado-grandma-20260929",
+        "semanticRevision": "f7d0e31622e6877a468b65ff83b06cc13e1935fd5af5f85805ce911667a6f8f4",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:4d65d7ded32a19a8c0a481dd94101bda1958acb215c498736742e90a6440963a",
+      "id": 4,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "ekin-oklap-first-summer-interview-20260929",
+        "semanticRevision": "4d65d7ded32a19a8c0a481dd94101bda1958acb215c498736742e90a6440963a",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:2733bb7928d327241344865f3917cb2493adca3032f6dcb38eb80594fb71cf81",
+      "id": 5,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "hannah-grace-icebreaker-netflix-cast-20260929",
+        "semanticRevision": "2733bb7928d327241344865f3917cb2493adca3032f6dcb38eb80594fb71cf81",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:a3dad3b9edb4d8ca942c56a8540c2172fbeedf430edf124376312c7ade2eaee3",
+      "id": 6,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "hernan-diaz-ply-literary-hub-profile-20260929",
+        "semanticRevision": "a3dad3b9edb4d8ca942c56a8540c2172fbeedf430edf124376312c7ade2eaee3",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:565d99330f63261c54c82a23b6d414c535a08df5ebc591c4b8361010891b9e1c",
+      "id": 7,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "min-jin-lee-american-hagwon-writing-interview-20260929",
+        "semanticRevision": "565d99330f63261c54c82a23b6d414c535a08df5ebc591c4b8361010891b9e1c",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-565d99330f63261c54c82a23b6d414c5",
+          "status": "approved",
+          "newsIds": [
+            "min-jin-lee-american-hagwon-writing-interview-20260929"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/2018-us-nationalbookfestival-min-jin-lee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "8d0ef6648151210dc543d56a2637bc5ad8920e3a9f11fa4d42991abf2c46d14c",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Lee Min Jin (Q13563026), exact reviewed name in title.ru; Wikidata P18 File:2018-us-nationalbookfestival-min-jin-lee.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Fuzheado",
+          "rightsholder": "Fuzheado",
+          "credit": "Архивный портрет: Lee Min Jin. «2018-us-nationalbookfestival-min-jin-lee». © Fuzheado.  Wikimedia Commons: https://commons.wikimedia.org/?curid=72309976.",
+          "license": "CC-BY-SA-4.0",
+          "materialTitle": "2018-us-nationalbookfestival-min-jin-lee",
+          "materialUrl": "https://commons.wikimedia.org/?curid=72309976",
+          "copyrightNotice": "© Fuzheado",
+          "derivativeLicense": "CC-BY-SA-4.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg",
+          "licenseEvidenceSha256": "d8b0bfdcf048dc9b61b9fe8a05c398ea4fe65eb3e0894c7636f95a91ec4a9bdb",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "606e2cd29d75f15eb548d629a70b16d49abfd1bda4de36027be19fd5533a0035",
+            "byteLength": 113284,
+            "mime": "image/jpeg",
+            "width": 1067,
+            "height": 1600,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q13563026",
+            "name": "Lee Min Jin",
+            "matchedField": "title.ru",
+            "evidence": {
+              "method": "exact-reviewed-writer-name",
+              "matchedName": "Мин Джин Ли",
+              "nameLocale": "ru",
+              "nameKind": "canonical-label",
+              "registryKeys": [
+                "usa:min_jin_lee"
+              ],
+              "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q13563026&oldid=2533925117",
+              "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+              "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+              "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+              "headlineAnchored": true,
+              "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q13563026&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+          "entitySha256": "45d6a527ded889d1ac27feb69d3bc886ed72ee3cf485d911eac5e85c3d14800c",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3A2018-us-nationalbookfestival-min-jin-lee.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "d8b0bfdcf048dc9b61b9fe8a05c398ea4fe65eb3e0894c7636f95a91ec4a9bdb",
+          "fileTitle": "File:2018-us-nationalbookfestival-min-jin-lee.jpg",
+          "metadata": {
+            "Artist": "Fuzheado",
+            "LicenseShortName": "CC BY-SA 4.0",
+            "UsageTerms": "Creative Commons Attribution-Share Alike 4.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:250c6c165a4d0375c2bd17bf7a3a580f447d1c45d41a41656d850505c0ce12a5",
+      "id": 8,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "scugnizzeria-vomero-giancarlo-siani-bookshop-20260929",
+        "semanticRevision": "250c6c165a4d0375c2bd17bf7a3a580f447d1c45d41a41656d850505c0ce12a5",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:1ff397edb910df4b53cf4e48816b46e7b6a0f64943e3b603798cea1787a14d13",
+      "id": 9,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "jamaica-kincaid-sjojungfrun-presentation-2026",
+        "semanticRevision": "1ff397edb910df4b53cf4e48816b46e7b6a0f64943e3b603798cea1787a14d13",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_commons_metadata_incomplete"
+      }
+    },
+    {
+      "key": "history:media:314ace19a0cd576a0b5077750fb359381c58d209801d0ee6b96860e18facdfcd",
+      "id": 10,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "madeline-cash-page-america-award-2026",
+        "semanticRevision": "314ace19a0cd576a0b5077750fb359381c58d209801d0ee6b96860e18facdfcd",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_portrait_missing_or_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:990738f39bacc1d4f5301f6c616fe52179bec4e676784af814be433427bd0976",
+      "id": 11,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "paulina-borsook-cyberselfish-reissue-announced-2026",
+        "semanticRevision": "990738f39bacc1d4f5301f6c616fe52179bec4e676784af814be433427bd0976",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_discovery_license_unsupported"
+      }
+    },
+    {
+      "key": "history:media:b053d193e25ec3f2ad03f18ba7569a77a8852fee1920e1600112685d915e225d",
+      "id": 12,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "rivera-garza-kwon-literary-influences-2026",
+        "semanticRevision": "b053d193e25ec3f2ad03f18ba7569a77a8852fee1920e1600112685d915e225d",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:abbe98cef25b673f09f23f0fc84e4dda973cd15701e6226f43b59b2980cb7487",
+      "id": 13,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "rsl-sri-lanka-books-culture-days-2026",
+        "semanticRevision": "abbe98cef25b673f09f23f0fc84e4dda973cd15701e6226f43b59b2980cb7487",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:7cfd0f303bf2c7194b41fa8fee45b8607fdcca064923755e7c76c7630a8c0574",
+      "id": 14,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "viktor-likhonosov-krasnodar-square-2026",
+        "semanticRevision": "7cfd0f303bf2c7194b41fa8fee45b8607fdcca064923755e7c76c7630a8c0574",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-7cfd0f303bf2c7194b41fa8fee45b860",
+          "status": "approved",
+          "newsIds": [
+            "viktor-likhonosov-krasnodar-square-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Viktor_Likhonosov.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "6162b8249b84146b27e0a81a8c12b3624523c0a08c94630d9c260ecac33095b0",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Viktor Likhonosov (Q4264242), exact reviewed name in title.en; Wikidata P18 File:Viktor Likhonosov.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+          "rightsholder": "Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+          "credit": "Архивный портрет: Viktor Likhonosov. «Viktor Likhonosov». © Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара. Krd.ru Wikimedia Commons: https://commons.wikimedia.org/?curid=70791056.",
+          "license": "CC-BY-4.0",
+          "materialTitle": "Viktor Likhonosov",
+          "materialUrl": "https://commons.wikimedia.org/?curid=70791056",
+          "copyrightNotice": "© Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+          "derivativeLicense": "CC-BY-4.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Viktor%20Likhonosov.jpg",
+          "licenseEvidenceSha256": "4706a93b641c00d6632ddbc49803e7772a6da4d498ab065b3541cdf825e1b992",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Viktor%20Likhonosov.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "2a69cdda9a5b9e9c73fe9ed6cca7b6a43f3334eef12901a08149af0c5e442aa8",
+            "byteLength": 22390,
+            "mime": "image/jpeg",
+            "width": 322,
+            "height": 480,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q4264242",
+            "name": "Viktor Likhonosov",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Viktor Likhonosov"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Viktor Likhonosov",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Viktor+Likhonosov&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "df6e2dd68134d7b29b76643103efa3fcad1679c8b8f64e04d1f764fa8c0c3b3d"
+                }
+              ],
+              "entitySha256": "e5a443b3c4859ae48bb01a413ac7086238cf1e973919908c94132b1f28dffd54"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q4264242&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "e5a443b3c4859ae48bb01a413ac7086238cf1e973919908c94132b1f28dffd54",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AViktor+Likhonosov.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "4706a93b641c00d6632ddbc49803e7772a6da4d498ab065b3541cdf825e1b992",
+          "fileTitle": "File:Viktor Likhonosov.jpg",
+          "metadata": {
+            "Artist": "Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+            "LicenseShortName": "CC BY 4.0",
+            "UsageTerms": "Creative Commons Attribution 4.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by/4.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:c62ab2d86d1c2e053bcf996276d43640e74d6e09b51b7a751d37f195514025ea",
+      "id": 15,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+        "semanticRevision": "c62ab2d86d1c2e053bcf996276d43640e74d6e09b51b7a751d37f195514025ea",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-c62ab2d86d1c2e053bcf996276d43640",
+          "status": "approved",
+          "newsIds": [
+            "vladislav-otroshenko-solzhenitsyn-prize-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Vladislav_Otroshenko.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "8e68624055922d655d62cc424ceeead83aea79b06005b3db3bec117d20fa5475",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Vladislav Otroshenko (Q4340068), exact reviewed name in title.en; Wikidata P18 File:Vladislav Otroshenko.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Rodrigo Fernandez",
+          "rightsholder": "Rodrigo Fernandez",
+          "credit": "Архивный портрет: Vladislav Otroshenko. «Vladislav Otroshenko». © Rodrigo Fernandez.  Wikimedia Commons: https://commons.wikimedia.org/?curid=15699506.",
+          "license": "CC-BY-SA-3.0",
+          "materialTitle": "Vladislav Otroshenko",
+          "materialUrl": "https://commons.wikimedia.org/?curid=15699506",
+          "copyrightNotice": "© Rodrigo Fernandez",
+          "derivativeLicense": "CC-BY-SA-3.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Vladislav%20Otroshenko.jpg",
+          "licenseEvidenceSha256": "540b1fb471c40ec15355c0c5ddbf297a5b1c26df57f72561517043212370bba2",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Vladislav%20Otroshenko.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "d094ea1b36065743bcd7902fd7c8c79e81ee9713acdd694c80fbe586aaf55252",
+            "byteLength": 151280,
+            "mime": "image/jpeg",
+            "width": 1200,
+            "height": 1600,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q4340068",
+            "name": "Vladislav Otroshenko",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Vladislav Otroshenko"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Vladislav Otroshenko",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Vladislav+Otroshenko&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "30bfa9b3e2ddf8894530afb6a77d1159eed46c296be98cd6b01116f09ad6419d"
+                }
+              ],
+              "entitySha256": "6ed0e9000bbe1dce95abb3a3962cfbbf10c13b8646d43b734d11f68ce5f612d6"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q4340068&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "6ed0e9000bbe1dce95abb3a3962cfbbf10c13b8646d43b734d11f68ce5f612d6",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AVladislav+Otroshenko.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "540b1fb471c40ec15355c0c5ddbf297a5b1c26df57f72561517043212370bba2",
+          "fileTitle": "File:Vladislav Otroshenko.jpg",
+          "metadata": {
+            "Artist": "Rodrigo Fernandez",
+            "LicenseShortName": "CC BY-SA 3.0",
+            "UsageTerms": "Creative Commons Attribution-Share Alike 3.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:a7cef3e4748e56a89cab91a0e06a607ec6bdc0e496b732d1b815b50dcb27c420",
+      "id": 16,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "asymptote-lianbin-ni-translation-interview-2026",
+        "semanticRevision": "a7cef3e4748e56a89cab91a0e06a607ec6bdc0e496b732d1b815b50dcb27c420",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:4c1036dbf02f984099e272f77026538f5b6d9a611e69a3a94995a071d12774cc",
+      "id": 17,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "geluck-chat-museum-ixelles-plan-2026",
+        "semanticRevision": "4c1036dbf02f984099e272f77026538f5b6d9a611e69a3a94995a071d12774cc",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:555bd12fdc701c76b331ddcae775c190e6ff60b582d3e147ff2d1854ea5258c6",
+      "id": 18,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "history-of-a-town-rsl-stage-2026",
+        "semanticRevision": "555bd12fdc701c76b331ddcae775c190e6ff60b582d3e147ff2d1854ea5258c6",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:eea123f3297c32ca4cc4a1fe777e8cac82dcd608b6539abcdf0e34337bb5ac73",
+      "id": 19,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "musicians-literary-prize-selection-2026",
+        "semanticRevision": "eea123f3297c32ca4cc4a1fe777e8cac82dcd608b6539abcdf0e34337bb5ac73",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:fdca9f54faab5055fc1145c4f8e9256e4394a99a4e9b2c5d5387b147bf6ae109",
+      "id": 20,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "rgali-sergei-markov-archive-feature-2026",
+        "semanticRevision": "fdca9f54faab5055fc1145c4f8e9256e4394a99a4e9b2c5d5387b147bf6ae109",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:468e7d835509519cc865a245f984090ed72eb293b26d018835b7465ba5052713",
+      "id": 21,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "sanna-wani-lantern-daughterhood-essay-2026",
+        "semanticRevision": "468e7d835509519cc865a245f984090ed72eb293b26d018835b7465ba5052713",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:2fc2f338ebe5e433120d6844e55c63ef4c178fa5bc16ff25ef9fb0d2be32504d",
+      "id": 22,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "scam-recit-dessine-selection-2026",
+        "semanticRevision": "2fc2f338ebe5e433120d6844e55c63ef4c178fa5bc16ff25ef9fb0d2be32504d",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:188295a162fa54b3c2c1903b883c4c14591f576e4bab77201f1d49c9bfda2bb2",
+      "id": 23,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "ankara-press-cheryl-ntumy-seven-states-acquisition-2026",
+        "semanticRevision": "188295a162fa54b3c2c1903b883c4c14591f576e4bab77201f1d49c9bfda2bb2",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_portrait_missing_or_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:5a1ab1bb8f61db95cd55bd94c4ad81af28fae37cf3f3c291f9040dbb7d1b5e30",
+      "id": 24,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "nicolas-lunabba-gothenburg-bildning-award-2026",
+        "semanticRevision": "5a1ab1bb8f61db95cd55bd94c4ad81af28fae37cf3f3c291f9040dbb7d1b5e30",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_portrait_missing_or_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:55ad39a120da4a2afbcaf88cbb0ace39d8c1632e97068b4cdcc3dce7edf5cc0f",
+      "id": 25,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "poerio-goethe-iphigenia-attribution-2026",
+        "semanticRevision": "55ad39a120da4a2afbcaf88cbb0ace39d8c1632e97068b4cdcc3dce7edf5cc0f",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:c5f6a285de0346aeddd636a563aaa612ed87d333e2593a6fe79e20480358be45",
+      "id": 26,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "radzinsky-eighteen-volume-collected-works-2026",
+        "semanticRevision": "c5f6a285de0346aeddd636a563aaa612ed87d333e2593a6fe79e20480358be45",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_commons_metadata_incomplete"
+      }
+    },
+    {
+      "key": "history:media:6185e41a9ae23065ebb96127a36289c0b67bbd5b61b81abea3cbf0355ac533cb",
+      "id": 27,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "tv5monde-un-pays-un-livre-announced-2026",
+        "semanticRevision": "6185e41a9ae23065ebb96127a36289c0b67bbd5b61b81abea3cbf0355ac533cb",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:ab9d3e9c4ced215f6391a79d43219fade70b40f941598160cb0c9841fd9cbeda",
+      "id": 28,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "vanity-fair-literary-selection-2026",
+        "semanticRevision": "ab9d3e9c4ced215f6391a79d43219fade70b40f941598160cb0c9841fd9cbeda",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:1de764d492dede7d008a167b873bb95a6ec204055a083e246458c01cc5bfa412",
+      "id": 29,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "asymptote-hossaini-war-ends-translation-2026",
+        "semanticRevision": "1de764d492dede7d008a167b873bb95a6ec204055a083e246458c01cc5bfa412",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_discovery_license_unsupported"
+      }
+    },
+    {
+      "key": "history:media:be11456695293de7fa0f6f82cc0785ce2bce0514b6f16f948b87acef1f461453",
+      "id": 30,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "european-literacy-coalition-brussels-launch-2026",
+        "semanticRevision": "be11456695293de7fa0f6f82cc0785ce2bce0514b6f16f948b87acef1f461453",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:5614925a54c088ad54033b531d58affbbc6c07b03db377a3d8f097dc89855265",
+      "id": 31,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "florent-oiseau-francoise-sagan-prize-2026",
+        "semanticRevision": "5614925a54c088ad54033b531d58affbbc6c07b03db377a3d8f097dc89855265",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-5614925a54c088ad54033b531d58affb",
+          "status": "approved",
+          "newsIds": [
+            "florent-oiseau-francoise-sagan-prize-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/35/Florent_Oiseau_%28born_1990%29_in_the_video_%27Florent_Oiseau_-_Ma_gloire%27.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "f0e1881f558d2fff3db13d2d62b39d49bc9dacc4a7b080622b5661cf17058619",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Florent Oiseau (Q124736629), exact reviewed name in title.en; Wikidata P18 File:Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'.png. This is a portrait, not a photograph of the news event.",
+          "author": "librairie mollat",
+          "rightsholder": "librairie mollat",
+          "credit": "Архивный портрет: Florent Oiseau. «Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'». © librairie mollat. librairie mollat Wikimedia Commons: https://commons.wikimedia.org/?curid=192445488.",
+          "license": "CC-BY-4.0",
+          "materialTitle": "Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'",
+          "materialUrl": "https://commons.wikimedia.org/?curid=192445488",
+          "copyrightNotice": "© librairie mollat",
+          "derivativeLicense": "CC-BY-4.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Florent%20Oiseau%20(born%201990)%20in%20the%20video%20'Florent%20Oiseau%20-%20Ma%20gloire'.png",
+          "licenseEvidenceSha256": "99bef1612bf38562ac573c0bc3b0492c929428d0e04462d6cc3e9ff67c550dab",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Florent%20Oiseau%20(born%201990)%20in%20the%20video%20'Florent%20Oiseau%20-%20Ma%20gloire'.png"
+            }
+          ],
+          "derivative": {
+            "sha256": "eb7f52785614a2f311710306b16c1d33df437beb7e7879001a39ab784d6d3c6a",
+            "byteLength": 26923,
+            "mime": "image/jpeg",
+            "width": 584,
+            "height": 592,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q124736629",
+            "name": "Florent Oiseau",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Florent Oiseau"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Florent Oiseau",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Florent+Oiseau&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "6a4e63e24ac6d4df627382732eada56211f1ee0fe7728c6eadd7c0e154d640dc"
+                }
+              ],
+              "entitySha256": "868a2da2ba7303cf8f40e5f21c6f3fc0e2fd39320dc9b489868784fe34b18037"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q124736629&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "868a2da2ba7303cf8f40e5f21c6f3fc0e2fd39320dc9b489868784fe34b18037",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AFlorent+Oiseau+%28born+1990%29+in+the+video+%27Florent+Oiseau+-+Ma+gloire%27.png&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "99bef1612bf38562ac573c0bc3b0492c929428d0e04462d6cc3e9ff67c550dab",
+          "fileTitle": "File:Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'.png",
+          "metadata": {
+            "Artist": "librairie mollat",
+            "LicenseShortName": "CC BY 4.0",
+            "UsageTerms": "Creative Commons Attribution 4.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by/4.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:7815d4ccd5271c7a5e413da7226d8f734a65270cf7acf6bfe0ec90310753a28e",
+      "id": 32,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "john-green-signed-tip-in-record-2026",
+        "semanticRevision": "7815d4ccd5271c7a5e413da7226d8f734a65270cf7acf6bfe0ec90310753a28e",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:f6327380973ff3b2e477bc4bc1cf53481eb0197e2f13555985e2e6007283eb11",
+      "id": 33,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "podium-entertainment-acquisition-2026",
+        "semanticRevision": "f6327380973ff3b2e477bc4bc1cf53481eb0197e2f13555985e2e6007283eb11",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:c4df3b2588fe4c64e63cf937a8cad5c21d4005a5f2509424844013aa55c43f07",
+      "id": 34,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "wells-brynhild-first-russian-2026",
+        "semanticRevision": "c4df3b2588fe4c64e63cf937a8cad5c21d4005a5f2509424844013aa55c43f07",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-c4df3b2588fe4c64e63cf937a8cad5c2",
+          "status": "approved",
+          "newsIds": [
+            "wells-brynhild-first-russian-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/H.G._Wells_by_Beresford.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "fa4b0340d07288f998849b72bbafc28163b67dc670c945491beb2d60a825c220",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of H. G. Wells (Q42511), exact reviewed name in title.en; Wikidata P18 File:H.G. Wells by Beresford.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "George Charles Beresford",
+          "rightsholder": "George Charles Beresford",
+          "credit": "Портрет: H. G. Wells. George Charles Beresford. Wikimedia Commons.",
+          "license": "public-domain",
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:H.G.%20Wells%20by%20Beresford.jpg",
+          "licenseEvidenceSha256": "a701bb4edd9a64612a87e24d091da0dff44a42b3077e460389d165fcee18a78b",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:H.G.%20Wells%20by%20Beresford.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "3424a7d016d9262564349ba6ea182de3114a3d32c7b572f0f4e0475ebb6968b0",
+            "byteLength": 63030,
+            "mime": "image/jpeg",
+            "width": 573,
+            "height": 800,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q42511",
+            "name": "H. G. Wells",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-reviewed-writer-name",
+              "matchedName": "H. G. Wells",
+              "nameLocale": "en",
+              "nameKind": "canonical-label",
+              "registryKeys": [
+                "england:h_g_wells"
+              ],
+              "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q42511&oldid=2533474685",
+              "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+              "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+              "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+              "headlineAnchored": true,
+              "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q42511&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+          "entitySha256": "118b990b560534f18259c0bbad73a6829f70308ee45fc1914fefa4b5be890ce2",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AH.G.+Wells+by+Beresford.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "a701bb4edd9a64612a87e24d091da0dff44a42b3077e460389d165fcee18a78b",
+          "fileTitle": "File:H.G. Wells by Beresford.jpg",
+          "metadata": {
+            "Artist": "George Charles Beresford",
+            "LicenseShortName": "Public domain",
+            "UsageTerms": "Public domain",
+            "Copyrighted": "False",
+            "LicenseUrl": ""
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:aaefa5d6ea1dea58eb58876f6625afb34b32203a35749207de05f2e782b93a3c",
+      "id": 35,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+        "semanticRevision": "aaefa5d6ea1dea58eb58876f6625afb34b32203a35749207de05f2e782b93a3c",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:54224b36c72ab6690106945342f5d7c53027e647504d58731a9b95dbc8dbb60d",
+      "id": 36,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "lilya-brik-mamm-literary-museum-loans-2026",
+        "semanticRevision": "54224b36c72ab6690106945342f5d7c53027e647504d58731a9b95dbc8dbb60d",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-54224b36c72ab6690106945342f5d7c5",
+          "status": "approved",
+          "newsIds": [
+            "lilya-brik-mamm-literary-museum-loans-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/1928_LYuB_editing_film.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "347b42593a4b27fdc531fcfd75d5a415c3ce81a7839f5884fbacf019172ebdc1",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Lilya Brik (Q260537), exact reviewed name in title.en; Wikidata P18 File:1928 LYuB editing film.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Unknown authorUnknown author",
+          "rightsholder": "Unknown authorUnknown author",
+          "credit": "Портрет: Lilya Brik. Unknown authorUnknown author. Wikimedia Commons.",
+          "license": "public-domain",
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:1928%20LYuB%20editing%20film.jpg",
+          "licenseEvidenceSha256": "615c37b439ba2bc40fcbb72aaf8a27bad46ebf4f2dea62d77e08a8ccb55bfcff",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:1928%20LYuB%20editing%20film.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "68bcf89beba25a91165e503881e3a4b3f38d7b4364aff78c8f2881f7ffffded8",
+            "byteLength": 18680,
+            "mime": "image/jpeg",
+            "width": 265,
+            "height": 326,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q260537",
+            "name": "Lilya Brik",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Lilya Brik"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Lilya Brik",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Lilya+Brik&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "edcadb7d12551e792009cf35b0abdfbbda42e912d43598168aabb44a59a4d6ce"
+                }
+              ],
+              "entitySha256": "dbc31845984f943e04c468e59707c3e299ea32959a65fae779ed4935f48e8442"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q260537&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "dbc31845984f943e04c468e59707c3e299ea32959a65fae779ed4935f48e8442",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3A1928+LYuB+editing+film.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "615c37b439ba2bc40fcbb72aaf8a27bad46ebf4f2dea62d77e08a8ccb55bfcff",
+          "fileTitle": "File:1928 LYuB editing film.jpg",
+          "metadata": {
+            "Artist": "Unknown authorUnknown author",
+            "LicenseShortName": "Public domain",
+            "UsageTerms": "Public domain",
+            "Copyrighted": "False",
+            "LicenseUrl": ""
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:bc78129894f761b94f72db2aa82b67ef1cdf0efcf9988ec98d65cc9410b6878a",
+      "id": 37,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "natalya-balayan-russian-fairy-tale-book-2026",
+        "semanticRevision": "bc78129894f761b94f72db2aa82b67ef1cdf0efcf9988ec98d65cc9410b6878a",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:0ad7617215178f4071e32b52de6c46ffada04ed7509a96d7702ac66b2a5fb858",
+      "id": 38,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "heather-cox-richardson-gitlin-auster-award-2026",
+        "semanticRevision": "0ad7617215178f4071e32b52de6c46ffada04ed7509a96d7702ac66b2a5fb858",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-0ad7617215178f4071e32b52de6c46ff",
+          "status": "approved",
+          "newsIds": [
+            "heather-cox-richardson-gitlin-auster-award-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/76/Heather_Cox_Richardson_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "f018027da4fd9c68aeaea1661bce5a4eb33204e1df56a0b852d2b8866ed7c76f",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Heather Cox Richardson (Q24321994), exact reviewed name in title.en; Wikidata P18 File:Heather Cox Richardson 2016.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Peter Stevens",
+          "rightsholder": "Peter Stevens",
+          "credit": "Архивный портрет: Heather Cox Richardson. «Heather Cox Richardson 2016». © Peter Stevens.  Wikimedia Commons: https://commons.wikimedia.org/?curid=99204042.",
+          "license": "CC-BY-2.0",
+          "materialTitle": "Heather Cox Richardson 2016",
+          "materialUrl": "https://commons.wikimedia.org/?curid=99204042",
+          "copyrightNotice": "© Peter Stevens",
+          "derivativeLicense": "CC-BY-2.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Heather%20Cox%20Richardson%202016.jpg",
+          "licenseEvidenceSha256": "c4f157f3c17c5d4b62ecfd12c907681fcdb113bf7e4c099ac773e6afe937366f",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Heather%20Cox%20Richardson%202016.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "281c58d7ae738fb7f91e4335f14c5af5fa6ab4c13dbe1cfad835cd15e0ba6ef4",
+            "byteLength": 243214,
+            "mime": "image/jpeg",
+            "width": 1600,
+            "height": 1363,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q24321994",
+            "name": "Heather Cox Richardson",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Heather Cox Richardson"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Heather Cox Richardson",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Heather+Cox+Richardson&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "2ed93142d7156c934c829a2c921cf6564f21149dfe1472feb2618be317057055"
+                }
+              ],
+              "entitySha256": "91251b3fbcba4beb0c584c3418a0b7feec2fe48fc9ae95bb434215275f282aa8"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q24321994&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "91251b3fbcba4beb0c584c3418a0b7feec2fe48fc9ae95bb434215275f282aa8",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AHeather+Cox+Richardson+2016.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "c4f157f3c17c5d4b62ecfd12c907681fcdb113bf7e4c099ac773e6afe937366f",
+          "fileTitle": "File:Heather Cox Richardson 2016.jpg",
+          "metadata": {
+            "Artist": "Peter Stevens",
+            "LicenseShortName": "CC BY 2.0",
+            "UsageTerms": "Creative Commons Attribution 2.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by/2.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:57f3dc6698f4d948a21149c9987a74104d478afadcbcf9efecfe8e9a95f771ea",
+      "id": 39,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+        "semanticRevision": "57f3dc6698f4d948a21149c9987a74104d478afadcbcf9efecfe8e9a95f771ea",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_discovery_license_unsupported"
+      }
+    },
+    {
+      "key": "history:media:7a13ccfc4955ed0847652422b1609031bdf1ddaf3997a93d2ae682684a6e2957",
+      "id": 40,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "bruno-montane-efimera-critical-feature-2026",
+        "semanticRevision": "7a13ccfc4955ed0847652422b1609031bdf1ddaf3997a93d2ae682684a6e2957",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:e0110324971c76daf2f3595900db11d399aa635d33a2dbc5948b32e192d9b636",
+      "id": 41,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "dubravka-rebic-vladan-desnica-decision-2026",
+        "semanticRevision": "e0110324971c76daf2f3595900db11d399aa635d33a2dbc5948b32e192d9b636",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:dbcb785e44b4e6840ae074de36004ce7a345cbf64b717c0f1a8a4b1cc1c0521d",
+      "id": 42,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "ken-bugul-julie-huntington-asymptote-interview-2026",
+        "semanticRevision": "dbcb785e44b4e6840ae074de36004ce7a345cbf64b717c0f1a8a4b1cc1c0521d",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:cf55b7912ad48dc7a199a4fbfb74389b414d9fcb6cf02b4b20d3f4a8435c2ab7",
+      "id": 43,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "bisg-brian-oleary-award-renaming-report-20260929",
+        "semanticRevision": "cf55b7912ad48dc7a199a4fbfb74389b414d9fcb6cf02b4b20d3f4a8435c2ab7",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:0132f131d92df23990d8358f0a39f4c0e91d600e360c1b09398ef30aaa9c6184",
+      "id": 44,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+        "semanticRevision": "0132f131d92df23990d8358f0a39f4c0e91d600e360c1b09398ef30aaa9c6184",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:8b11207285d1bb36ee58da198e0e76b0d469e60c42dfa1b28acde6cd5e32a9f9",
+      "id": 45,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "san-martin-digital-repository-agreement-2026",
+        "semanticRevision": "8b11207285d1bb36ee58da198e0e76b0d469e60c42dfa1b28acde6cd5e32a9f9",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:3242a19252419d3aa982de38e17b9c275cbb88436a3d3e5a2fbe64d542e8e4ec",
+      "id": 46,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "asymptote-maria-messina-camilla-translation-2026",
+        "semanticRevision": "3242a19252419d3aa982de38e17b9c275cbb88436a3d3e5a2fbe64d542e8e4ec",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_dimensions_invalid"
+      }
+    },
+    {
+      "key": "history:media:6c24da68b3e7ce6831bea38634320da94a93267b9a843fdfe791ed1639d17ed8",
+      "id": 47,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "parfenov-nabokov-namedni-tour-announced-2026",
+        "semanticRevision": "6c24da68b3e7ce6831bea38634320da94a93267b9a843fdfe791ed1639d17ed8",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_commons_metadata_incomplete"
+      }
+    },
+    {
+      "key": "history:media:4f2585536e6f90cd1ccb66aeef07cf5b378bd9a3bae34664990c08616bca0bb3",
+      "id": 48,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "bnf-oulipo-season-2026",
+        "semanticRevision": "4f2585536e6f90cd1ccb66aeef07cf5b378bd9a3bae34664990c08616bca0bb3",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:057be3672f213a5f84398e58030efcadbef025b24062266234d69c28680a9afc",
+      "id": 49,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "richard-oram-wind-water-cleave-talk-2026",
+        "semanticRevision": "057be3672f213a5f84398e58030efcadbef025b24062266234d69c28680a9afc",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:ca76cf884adb6f39193e9fc789ae0aca7ad3c1b5e6f84cfdcb35f1826c081b72",
+      "id": 50,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "sables-de-dune-french-edition-2026",
+        "semanticRevision": "ca76cf884adb6f39193e9fc789ae0aca7ad3c1b5e6f84cfdcb35f1826c081b72",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:f976ac450701c4f8b7e47ec5d53c8bc10dff139bc37b2c8e1e7ac20d9912cce4",
+      "id": 51,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "nizhny-novgorod-book-fair-2026",
+        "semanticRevision": "f976ac450701c4f8b7e47ec5d53c8bc10dff139bc37b2c8e1e7ac20d9912cce4",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:e669c83e7dc65afb330a684753c6d2f983a044934722a715d644156a6d2bc7c3",
+      "id": 52,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "slovakia-bibliography-days-seminars-2026",
+        "semanticRevision": "e669c83e7dc65afb330a684753c6d2f983a044934722a715d644156a6d2bc7c3",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:d5fd70cebfdea6c481869d4aa1e2bb56c444289d8905e625f8792d5cea7ad1f7",
+      "id": 53,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "lit-connect-jakarta-2026",
+        "semanticRevision": "d5fd70cebfdea6c481869d4aa1e2bb56c444289d8905e625f8792d5cea7ad1f7",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:3215cb508d8b54bf740fc57536bb39c694f64b0106ff5b2f3adb5cffaf097316",
+      "id": 54,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "danish-pen-banned-books-opening-2026",
+        "semanticRevision": "3215cb508d8b54bf740fc57536bb39c694f64b0106ff5b2f3adb5cffaf097316",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:57862647ae0e0020fe132e22e294104db76d1d59a3321e719dc4bc0a51831d20",
+      "id": 55,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "frankfurt-audio-business-centre-2026",
+        "semanticRevision": "57862647ae0e0020fe132e22e294104db76d1d59a3321e719dc4bc0a51831d20",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:63d816761da45fea45fa84ddcd028d9f12ba242d5782513b3936e57cd3c999fb",
+      "id": 56,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "frankfurt-comic-business-centre-2026",
+        "semanticRevision": "63d816761da45fea45fa84ddcd028d9f12ba242d5782513b3936e57cd3c999fb",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:c5554c10ba88bb3cace0e1a17ba2af0c48a253dba70bf69dc9121356429d9b53",
+      "id": 57,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "aficionado-award-words-without-borders-2026",
+        "semanticRevision": "c5554c10ba88bb3cace0e1a17ba2af0c48a253dba70bf69dc9121356429d9b53",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:0f68668bcc90c8755ab2e7c69c5942686f67e531e504f0a6fb45e82d3a6384e2",
+      "id": 58,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "frankfurt-book-to-screen-day-2026",
+        "semanticRevision": "0f68668bcc90c8755ab2e7c69c5942686f67e531e504f0a6fb45e82d3a6384e2",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:2fdeca23c9a63433ef40b56d1e1003b63cbf37c1745e009962fcd25a1ca35050",
+      "id": 59,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "sarajevo-amer-tikvesa-literary-corner-2026",
+        "semanticRevision": "2fdeca23c9a63433ef40b56d1e1003b63cbf37c1745e009962fcd25a1ca35050",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_portrait_missing_or_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:7fa02fba525c2fca7cc1b48a01fa8eec9fd5bc77ad7c6f879c422e5d7cbb4af9",
+      "id": 60,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "lynne-campbell-fungi-language-song-2026",
+        "semanticRevision": "7fa02fba525c2fca7cc1b48a01fa8eec9fd5bc77ad7c6f879c422e5d7cbb4af9",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:fee7574dd6fb66d66d931099fa2e6bb59658bb569caf82e64c2680133d6a7f86",
+      "id": 61,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "stevenson-cevennes-illustrated-french-edition-2026",
+        "semanticRevision": "fee7574dd6fb66d66d931099fa2e6bb59658bb569caf82e64c2680133d6a7f86",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-fee7574dd6fb66d66d931099fa2e6bb5",
+          "status": "approved",
+          "newsIds": [
+            "stevenson-cevennes-illustrated-french-edition-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "04f39254c322cf498d206b4146696e4c8e113d2b5e90fada2b5bcf2c72994d7e",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Robert Louis Stevenson (Q1512), exact reviewed name in summary.en; Wikidata P18 File:Robert Louis Stevenson by Henry Walter Barnett bw.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Henry Walter Barnett",
+          "rightsholder": "Henry Walter Barnett",
+          "credit": "Портрет: Robert Louis Stevenson. Henry Walter Barnett. Wikimedia Commons.",
+          "license": "public-domain",
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Robert%20Louis%20Stevenson%20by%20Henry%20Walter%20Barnett%20bw.jpg",
+          "licenseEvidenceSha256": "6cc286438e8ca7c328fe5842732fc436430497598dab0a42d4c690bb3e5b9e34",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Robert%20Louis%20Stevenson%20by%20Henry%20Walter%20Barnett%20bw.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "adfff79a1b57dbccbc690dd7eab79b93ce9efbcfa54ddc5da76db7e027e3c9cd",
+            "byteLength": 73245,
+            "mime": "image/jpeg",
+            "width": 1066,
+            "height": 1422,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q1512",
+            "name": "Robert Louis Stevenson",
+            "matchedField": "summary.en",
+            "evidence": {
+              "method": "exact-reviewed-writer-name",
+              "matchedName": "Robert Louis Stevenson",
+              "nameLocale": "en",
+              "nameKind": "canonical-label",
+              "registryKeys": [
+                "england:robert_louis_stevenson"
+              ],
+              "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1512&oldid=2536735698",
+              "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+              "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+              "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+              "headlineAnchored": true,
+              "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1512&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+          "entitySha256": "96ff5878c93e57c5dfea55c8e8cc0106daf7643c21872e91a97f89e759e418c3",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3ARobert+Louis+Stevenson+by+Henry+Walter+Barnett+bw.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "6cc286438e8ca7c328fe5842732fc436430497598dab0a42d4c690bb3e5b9e34",
+          "fileTitle": "File:Robert Louis Stevenson by Henry Walter Barnett bw.jpg",
+          "metadata": {
+            "Artist": "Henry Walter Barnett",
+            "LicenseShortName": "Public domain",
+            "UsageTerms": "Public domain",
+            "Copyrighted": "False",
+            "LicenseUrl": ""
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:cdb48dd24dc55c0563f456449958b37b4466f24ec905281658a1ff480290fac1",
+      "id": 62,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "litres-yasnaya-polyana-free-reading-2026",
+        "semanticRevision": "cdb48dd24dc55c0563f456449958b37b4466f24ec905281658a1ff480290fac1",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:6c7d51018735720df651f845fdb5246ad81f9d0b7f57573dacaa406bdf7dbe43",
+      "id": 63,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "svensk-bokkonst-awards-ceremony-2026",
+        "semanticRevision": "6c7d51018735720df651f845fdb5246ad81f9d0b7f57573dacaa406bdf7dbe43",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:6933ca7875f51f6126537b5f333379f1e259e85e44184faf425aa620573efaa6",
+      "id": 64,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "ubud-writers-readers-festival-2026",
+        "semanticRevision": "6933ca7875f51f6126537b5f333379f1e259e85e44184faf425aa620573efaa6",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:0d8c9f2818cc5e60fb9ae70b20d182b9bc31c0c624a66a0c3afd76eaa2f7b5a0",
+      "id": 65,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "weather-spirits-international-storytelling-2026",
+        "semanticRevision": "0d8c9f2818cc5e60fb9ae70b20d182b9bc31c0c624a66a0c3afd76eaa2f7b5a0",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:3158b858fa58d94a3c42eaefc9925305b534f4c4b38f173eefe092842b027cb7",
+      "id": 66,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "kruzhkov-mukha-pukha-reading-theatre-2026",
+        "semanticRevision": "3158b858fa58d94a3c42eaefc9925305b534f4c4b38f173eefe092842b027cb7",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-3158b858fa58d94a3c42eaefc9925305",
+          "status": "approved",
+          "newsIds": [
+            "kruzhkov-mukha-pukha-reading-theatre-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "fe69b5f50cf007c786b6c71460ea04d044a630d2965ebfae571e4815271f1a30",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Grigory Kruzhkov (Q4242060), exact reviewed name in title.en; Wikidata P18 File:Григорий Кружков.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Svklimkin",
+          "rightsholder": "Svklimkin",
+          "credit": "Архивный портрет: Grigory Kruzhkov. «Григорий Кружков». © Svklimkin.  Wikimedia Commons: https://commons.wikimedia.org/?curid=76272855.",
+          "license": "CC-BY-SA-4.0",
+          "materialTitle": "Григорий Кружков",
+          "materialUrl": "https://commons.wikimedia.org/?curid=76272855",
+          "copyrightNotice": "© Svklimkin",
+          "derivativeLicense": "CC-BY-SA-4.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9%20%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg",
+          "licenseEvidenceSha256": "bd63f5b2f233155e0dbd5a0567b3a58e2d54672bf2dc1a86a90c429bb5814fc8",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9%20%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "d53d944a7375f66f0e3add51add591ebdd296de801954a437496a00ba6c900e4",
+            "byteLength": 126908,
+            "mime": "image/jpeg",
+            "width": 1600,
+            "height": 1094,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q4242060",
+            "name": "Grigory Kruzhkov",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Grigory Kruzhkov"
+              ],
+              "occupations": [
+                "Q49757",
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Grigory Kruzhkov",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Grigory+Kruzhkov&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "8bb2e56418fd74eb575e27cc327f74555a480269534b5c91cf2e6fe349772b43"
+                }
+              ],
+              "entitySha256": "f5a7bac6dc2feffb9215746dabfce0979aa54b78f83dc47ecdb734a1ff0dccb2"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q4242060&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "f5a7bac6dc2feffb9215746dabfce0979aa54b78f83dc47ecdb734a1ff0dccb2",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3A%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9+%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "bd63f5b2f233155e0dbd5a0567b3a58e2d54672bf2dc1a86a90c429bb5814fc8",
+          "fileTitle": "File:Григорий Кружков.jpg",
+          "metadata": {
+            "Artist": "Svklimkin",
+            "LicenseShortName": "CC BY-SA 4.0",
+            "UsageTerms": "Creative Commons Attribution-Share Alike 4.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:c6ea26d96b731fa7643b3aee303633f7ef7acdeba24aa24a2fbf47176820e194",
+      "id": 67,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "degol-hailu-pillaging-the-dead-2026",
+        "semanticRevision": "c6ea26d96b731fa7643b3aee303633f7ef7acdeba24aa24a2fbf47176820e194",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:cac0461d39b9bee430a6efdd0f0538963bad4683ea32a974c3821464467721d6",
+      "id": 68,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "dublin-imprisoned-writer-gallagher-2026",
+        "semanticRevision": "cac0461d39b9bee430a6efdd0f0538963bad4683ea32a974c3821464467721d6",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:0bcd344eab51f25c56d94ba4173b58546049a50158dede91182057efce8e5f18",
+      "id": 69,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "small-piece-night-student-anthology-2026",
+        "semanticRevision": "0bcd344eab51f25c56d94ba4173b58546049a50158dede91182057efce8e5f18",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:23a32ff7e937a8e30fd93167fb45c2779368674b28733f0af6404d9453316aee",
+      "id": 70,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "european-authors-day-programme-2026",
+        "semanticRevision": "23a32ff7e937a8e30fd93167fb45c2779368674b28733f0af6404d9453316aee",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:846cc942b9b3f18f2fd7d9f177214506af1a1dfa4914f4dfb28098447eca7641",
+      "id": 71,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "erin-farley-lighthouse-lives-talk-2026",
+        "semanticRevision": "846cc942b9b3f18f2fd7d9f177214506af1a1dfa4914f4dfb28098447eca7641",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:f53fcc400127309b5407e8a1145ab4d72afcdc42cd4436c6ef93a36e33f09eaf",
+      "id": 72,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "gianni-mura-fuoriclasse-winner-announcement-2026",
+        "semanticRevision": "f53fcc400127309b5407e8a1145ab4d72afcdc42cd4436c6ef93a36e33f09eaf",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:d35f27843ca435c33a34e33c75722e0c4d1d94588763e12bd97e3d539ffa0f50",
+      "id": 73,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "macdiarmid-thistle-centenary-talk-2026",
+        "semanticRevision": "d35f27843ca435c33a34e33c75722e0c4d1d94588763e12bd97e3d539ffa0f50",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:b1a275203bf51628f273b523b4708c450b4a2a70e91b4afa1f08ab22ed20655b",
+      "id": 74,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "fil-editorial-merit-ekare-2026",
+        "semanticRevision": "b1a275203bf51628f273b523b4708c450b4a2a70e91b4afa1f08ab22ed20655b",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:53ab8dca0886925a96e8b095f47c5cd2b7716eaf83eed02269095c64c1532ebb",
+      "id": 75,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "hiromi-kawakami-far-from-everywhere-2027",
+        "semanticRevision": "53ab8dca0886925a96e8b095f47c5cd2b7716eaf83eed02269095c64c1532ebb",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:353d13d087b1a4fe75fe94fb957433759f08dfee8d99c957b425d49b7ecc7f4a",
+      "id": 76,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "devenir-un-monstre-quebec-release-2027",
+        "semanticRevision": "353d13d087b1a4fe75fe94fb957433759f08dfee8d99c957b425d49b7ecc7f4a",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:6eed69a1152216a8fb8fc36ef5d615a68ad3d9e4a44246178916e42c80477376",
+      "id": 77,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "tara-westover-brothers-and-sisters-us-2027",
+        "semanticRevision": "6eed69a1152216a8fb8fc36ef5d615a68ad3d9e4a44246178916e42c80477376",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-6eed69a1152216a8fb8fc36ef5d615a6",
+          "status": "approved",
+          "newsIds": [
+            "tara-westover-brothers-and-sisters-us-2027"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/Tara_Westover_receives_the_National_Humanities_Medal_on_March_21%2C_2023%2C_in_the_East_Room_of_the_White_House_-_P20230321ES-0780_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "bdb64c05c348cd0968b749d478481bcefd8abeb5574d4f794a269901f7b53ae8",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Tara Westover (Q50345244), exact reviewed name in title.en; Wikidata P18 File:Tara Westover receives the National Humanities Medal on March 21, 2023, in the East Room of the White House - P20230321ES-0780 (cropped).jpg. This is a portrait, not a photograph of the news event.",
+          "author": "The White House",
+          "rightsholder": "The White House",
+          "credit": "Портрет: Tara Westover. The White House. Wikimedia Commons.",
+          "license": "public-domain",
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Tara%20Westover%20receives%20the%20National%20Humanities%20Medal%20on%20March%2021%2C%202023%2C%20in%20the%20East%20Room%20of%20the%20White%20House%20-%20P20230321ES-0780%20(cropped).jpg",
+          "licenseEvidenceSha256": "c6b3bb6dc09e01aa0b8783acf2895e82bee4a309c40057a90562e6daa0d1d4cf",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Tara%20Westover%20receives%20the%20National%20Humanities%20Medal%20on%20March%2021%2C%202023%2C%20in%20the%20East%20Room%20of%20the%20White%20House%20-%20P20230321ES-0780%20(cropped).jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "f38a344ff5e9cf722b78786fed395cdad08a01f00dc774e62326020347327fbe",
+            "byteLength": 174641,
+            "mime": "image/jpeg",
+            "width": 801,
+            "height": 1069,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q50345244",
+            "name": "Tara Westover",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Tara Westover"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Tara Westover",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Tara+Westover&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "500c739e0e992b807720a96c174d0253f8aeb1873c9e6f17744cf6bccd780ff0"
+                }
+              ],
+              "entitySha256": "10de1743e425cdc94a99cf4c3f8640a028c487bbb85cea2ecf4a876a2f789200"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q50345244&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "10de1743e425cdc94a99cf4c3f8640a028c487bbb85cea2ecf4a876a2f789200",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3ATara+Westover+receives+the+National+Humanities+Medal+on+March+21%2C+2023%2C+in+the+East+Room+of+the+White+House+-+P20230321ES-0780+%28cropped%29.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "c6b3bb6dc09e01aa0b8783acf2895e82bee4a309c40057a90562e6daa0d1d4cf",
+          "fileTitle": "File:Tara Westover receives the National Humanities Medal on March 21, 2023, in the East Room of the White House - P20230321ES-0780 (cropped).jpg",
+          "metadata": {
+            "Artist": "The White House",
+            "LicenseShortName": "Public domain",
+            "UsageTerms": "Public domain",
+            "Copyrighted": "False",
+            "LicenseUrl": ""
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:5400e07dcbdf41b469b95878bb986c1042c55dc2bd42a0f119db962e96d665d7",
+      "id": 78,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "nlo-venediktova-literary-haptics-podcast-20260912",
+        "semanticRevision": "5400e07dcbdf41b469b95878bb986c1042c55dc2bd42a0f119db962e96d665d7",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:7bd3f07f19d2628755dba3015303e266b708c24935c50fc1a74c485f2382b3b7",
+      "id": 79,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "stanislaw-rosiek-polish-pen-editorial-award-2026",
+        "semanticRevision": "7bd3f07f19d2628755dba3015303e266b708c24935c50fc1a74c485f2382b3b7",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-7bd3f07f19d2628755dba3015303e266",
+          "status": "approved",
+          "newsIds": [
+            "stanislaw-rosiek-polish-pen-editorial-award-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/03/Stanis%C5%82aw_Rosiek.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "41e7dd0fef2dfeaa146d7b54cecf84b5220a6070f60f321be81eeab26b7d1011",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Stanisław Rosiek (Q9342946), exact reviewed name in title.en; Wikidata P18 File:Stanisław Rosiek.JPG. This is a portrait, not a photograph of the news event.",
+          "author": "Artur Andrzej",
+          "rightsholder": "Artur Andrzej",
+          "credit": "Архивный портрет: Stanisław Rosiek. «Stanisław Rosiek». © Artur Andrzej.  Wikimedia Commons: https://commons.wikimedia.org/?curid=46433461.",
+          "license": "CC-BY-SA-4.0",
+          "materialTitle": "Stanisław Rosiek",
+          "materialUrl": "https://commons.wikimedia.org/?curid=46433461",
+          "copyrightNotice": "© Artur Andrzej",
+          "derivativeLicense": "CC-BY-SA-4.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Stanis%C5%82aw%20Rosiek.JPG",
+          "licenseEvidenceSha256": "99704ac17bbfca944c5c9a574ecaebc605deccdca4540983869d552ad112b5b3",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Stanis%C5%82aw%20Rosiek.JPG"
+            }
+          ],
+          "derivative": {
+            "sha256": "ca9d4ebe081494d033872b42d58434c2f12ee749344a7f1b6f91f381a7ecb525",
+            "byteLength": 282575,
+            "mime": "image/jpeg",
+            "width": 1200,
+            "height": 1600,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q9342946",
+            "name": "Stanisław Rosiek",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Stanisław Rosiek"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Stanisław Rosiek",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Stanis%C5%82aw+Rosiek&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "bf865f9ace98453e9e8308148fb3bb75a854e6c795e74d97268d67c9a7a4173f"
+                }
+              ],
+              "entitySha256": "3339809073a41e4efb6d0cf883c9e085cc0dac139e1db8e38e8948764a2b40cd"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q9342946&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "3339809073a41e4efb6d0cf883c9e085cc0dac139e1db8e38e8948764a2b40cd",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AStanis%C5%82aw+Rosiek.JPG&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "99704ac17bbfca944c5c9a574ecaebc605deccdca4540983869d552ad112b5b3",
+          "fileTitle": "File:Stanisław Rosiek.JPG",
+          "metadata": {
+            "Artist": "Artur Andrzej",
+            "LicenseShortName": "CC BY-SA 4.0",
+            "UsageTerms": "Creative Commons Attribution-Share Alike 4.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:f6cbd9b9bcc0bff8ed7ad8d427bbae8b51062160f5e886b1e141e0886b3a0133",
+      "id": 80,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "jaume-cabre-feixes-first-russian-2026",
+        "semanticRevision": "f6cbd9b9bcc0bff8ed7ad8d427bbae8b51062160f5e886b1e141e0886b3a0133",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_discovery_license_unsupported"
+      }
+    },
+    {
+      "key": "history:media:03fef4acb6be250b7b752dd7d41262a587f6c9944a56271314dbc40c9d065c98",
+      "id": 81,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "funmike-ogaosun-shipikisha-cover-2026",
+        "semanticRevision": "03fef4acb6be250b7b752dd7d41262a587f6c9944a56271314dbc40c9d065c98",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:be7a7d9a0836fb3dd022c71c9a0fcbd6fa1a2d2266da1e6939417e7f54c9b234",
+      "id": 82,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+        "semanticRevision": "be7a7d9a0836fb3dd022c71c9a0fcbd6fa1a2d2266da1e6939417e7f54c9b234",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_portrait_missing_or_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:95e531cf9d56ede093e3bd72abe90bc0565c9d4df1d424405c8354f3a2f447b7",
+      "id": 83,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "katarina-wennstam-crimetime-honorary-award-2026",
+        "semanticRevision": "95e531cf9d56ede093e3bd72abe90bc0565c9d4df1d424405c8354f3a2f447b7",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-95e531cf9d56ede093e3bd72abe90bc0",
+          "status": "approved",
+          "newsIds": [
+            "katarina-wennstam-crimetime-honorary-award-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Katarina_Wennstam_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "a8c26efcc24ef09ee9382b0ffa5c690e6fb31a7081b5552aae5f441c7c72e0ee",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Katarina Wennstam (Q4990307), exact reviewed name in title.en; Wikidata P18 File:Katarina Wennstam 01.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Bengt Oberger",
+          "rightsholder": "Bengt Oberger",
+          "credit": "Архивный портрет: Katarina Wennstam. «Katarina Wennstam 01». © Bengt Oberger.  Wikimedia Commons: https://commons.wikimedia.org/?curid=51938357.",
+          "license": "CC-BY-SA-4.0",
+          "materialTitle": "Katarina Wennstam 01",
+          "materialUrl": "https://commons.wikimedia.org/?curid=51938357",
+          "copyrightNotice": "© Bengt Oberger",
+          "derivativeLicense": "CC-BY-SA-4.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Katarina%20Wennstam%2001.jpg",
+          "licenseEvidenceSha256": "aeb9adf8cf6bcb4d00bfda0f4ec7bca5501bd3fc793b6d5869796e17ba98bf46",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Katarina%20Wennstam%2001.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "f5394bdbfd390375a1ce45e5fe9ed892167609f2b9ae96728daaad98c2ab5da7",
+            "byteLength": 317994,
+            "mime": "image/jpeg",
+            "width": 1537,
+            "height": 1600,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q4990307",
+            "name": "Katarina Wennstam",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Katarina Wennstam"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Katarina Wennstam",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Katarina+Wennstam&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "ad24b07547a2b19017fc6dc16ce4b305edbb779c4af8ae2f611f1de02a52a3f3"
+                }
+              ],
+              "entitySha256": "af1fabae6bbd9cdb9d0bd7e0c88fdd8f99df519880b9d4b58b51c1d0f5f3c51a"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q4990307&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "af1fabae6bbd9cdb9d0bd7e0c88fdd8f99df519880b9d4b58b51c1d0f5f3c51a",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AKatarina+Wennstam+01.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "aeb9adf8cf6bcb4d00bfda0f4ec7bca5501bd3fc793b6d5869796e17ba98bf46",
+          "fileTitle": "File:Katarina Wennstam 01.jpg",
+          "metadata": {
+            "Artist": "Bengt Oberger",
+            "LicenseShortName": "CC BY-SA 4.0",
+            "UsageTerms": "Creative Commons Attribution-Share Alike 4.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:5d340d0194fc50b7a48359f5c3f156ee42221ccf9e89a7c97a3069f3ccb066c6",
+      "id": 84,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "lom-juan-guzman-memory-book-2026",
+        "semanticRevision": "5d340d0194fc50b7a48359f5c3f156ee42221ccf9e89a7c97a3069f3ccb066c6",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:7a5038f2a069b917ffb4a215126a3a35a8a73341cd064f8b876022f65127d263",
+      "id": 85,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "pen-index-victoria-amelina-fellowship-2026",
+        "semanticRevision": "7a5038f2a069b917ffb4a215126a3a35a8a73341cd064f8b876022f65127d263",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:f28a0fe1a39c1f684f3a0f50d58afa541e7da1c9b5b09b336e23d9c417c2f880",
+      "id": 86,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "patrick-dewitt-dodge-city-russian-edition-2026",
+        "semanticRevision": "f28a0fe1a39c1f684f3a0f50d58afa541e7da1c9b5b09b336e23d9c417c2f880",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:9398d30e893aabd401cb6ddc8e74b4a8d7dcc726d281a7567449bd8d14a9718d",
+      "id": 87,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "tolstoy-birthday-2026",
+        "semanticRevision": "9398d30e893aabd401cb6ddc8e74b4a8d7dcc726d281a7567449bd8d14a9718d",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-9398d30e893aabd401cb6ddc8e74b4a8",
+          "status": "approved",
+          "newsIds": [
+            "tolstoy-birthday-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "6f8d1d8df13c20e0c2ffe1f993e922b4d6ec7ecbb9255b4d73043e8b7497fb1b",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Leo Tolstoy (Q7243), exact reviewed name in title.en; Wikidata P18 File:L.N.Tolstoy Prokudin-Gorsky.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Sergei Prokudin-Gorskii",
+          "rightsholder": "Sergei Prokudin-Gorskii",
+          "credit": "Портрет: Leo Tolstoy. Sergei Prokudin-Gorskii. Wikimedia Commons.",
+          "license": "public-domain",
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg",
+          "licenseEvidenceSha256": "1b12300ba74118ee61e80d4e3bba95fe099d68a3213b5dd231d48e1570b837ff",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "388d84042592ca289414a8e569c494ed45c0c53ede202afa8da9f7b2b7f5571c",
+            "byteLength": 398840,
+            "mime": "image/jpeg",
+            "width": 1156,
+            "height": 1600,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q7243",
+            "name": "Leo Tolstoy",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-reviewed-writer-name",
+              "matchedName": "Leo Tolstoy",
+              "nameLocale": "en",
+              "nameKind": "canonical-label",
+              "registryKeys": [
+                "russia:tolstoy"
+              ],
+              "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q7243&oldid=2536542491",
+              "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+              "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+              "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+              "headlineAnchored": true,
+              "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7243&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+          "entitySha256": "58f6215c9048f56bdc6d687f2a6afb3c877f72f7a2d470c23b91f6cfa000a160",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AL.N.Tolstoy+Prokudin-Gorsky.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "1b12300ba74118ee61e80d4e3bba95fe099d68a3213b5dd231d48e1570b837ff",
+          "fileTitle": "File:L.N.Tolstoy Prokudin-Gorsky.jpg",
+          "metadata": {
+            "Artist": "Sergei Prokudin-Gorskii",
+            "LicenseShortName": "Public domain",
+            "UsageTerms": "Public domain",
+            "Copyrighted": "False",
+            "LicenseUrl": ""
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:0f203e919f58648a7d6afb5f235886b43296172c4f702f61b4ee56b7130cc040",
+      "id": 88,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "liu-cixin-direct-russian-translation-interview-2026",
+        "semanticRevision": "0f203e919f58648a7d6afb5f235886b43296172c4f702f61b4ee56b7130cc040",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_discovery_license_unsupported"
+      }
+    },
+    {
+      "key": "history:media:e0f9dad7b9ddb2f011cea09d5e361c4de3d6c6b3eee98723f9be653fd0bdf1c2",
+      "id": 89,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "yeats-a-vision-digitised-papers-2026",
+        "semanticRevision": "e0f9dad7b9ddb2f011cea09d5e361c4de3d6c6b3eee98723f9be653fd0bdf1c2",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:d94111a7a93fb7c02a9b98225abaa942f298ff8cb9be617e0a44fb9e5b944cc4",
+      "id": 90,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "shershenevich-drozdov-collection-exhibition-2026",
+        "semanticRevision": "d94111a7a93fb7c02a9b98225abaa942f298ff8cb9be617e0a44fb9e5b944cc4",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_dimensions_invalid"
+      }
+    },
+    {
+      "key": "history:media:a4dae9ca37ad9602e4528abc194accf9889caf85f7eff4743d5eedbe2b2edfae",
+      "id": 91,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "lom-plan-condor-illustrated-book-2026",
+        "semanticRevision": "a4dae9ca37ad9602e4528abc194accf9889caf85f7eff4743d5eedbe2b2edfae",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:11f5fe7e689656281d34b29a0c46e32a7ced1a942be7759cc092d2624316ebc3",
+      "id": 92,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "vladimir-dal-manuscripts-exhibition-2026",
+        "semanticRevision": "11f5fe7e689656281d34b29a0c46e32a7ced1a942be7759cc092d2624316ebc3",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:fc73448229e26cbf91d36a089ecee46fa7ed9272cea5c8036185418487c648ad",
+      "id": 93,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "wmf-martins-fontes-amazon-supply-announcement-2026",
+        "semanticRevision": "fc73448229e26cbf91d36a089ecee46fa7ed9272cea5c8036185418487c648ad",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:eefa1a677de63314e06695098ef94b904ee8e6814bcc17f4300b0885b454c63e",
+      "id": 94,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "jose-ruben-zamora-hermann-kesten-decision-2026",
+        "semanticRevision": "eefa1a677de63314e06695098ef94b904ee8e6814bcc17f4300b0885b454c63e",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:569a84b9280b2173d419c2eaba498f4dfe7d965e5d811bd8234ceb63101dfec2",
+      "id": 95,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "marlon-james-disappearers-us-catalog-2026",
+        "semanticRevision": "569a84b9280b2173d419c2eaba498f4dfe7d965e5d811bd8234ceb63101dfec2",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-29T20:18:46.644Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-569a84b9280b2173d419c2eaba498f4d",
+          "status": "approved",
+          "newsIds": [
+            "marlon-james-disappearers-us-catalog-2026"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/85/Marlon_james_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "f460abf621847d060a1d85f9d2e8343e31e658d08c2546c87fc545dbd8a252c6",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Marlon James (Q16211564), exact reviewed name in title.en; Wikidata P18 File:Marlon james 2014.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Larry D. Moore",
+          "rightsholder": "Larry D. Moore",
+          "credit": "Архивный портрет: Marlon James. «Marlon james 2014». © Larry D. Moore. Larry D. Moore Wikimedia Commons: https://commons.wikimedia.org/?curid=36692595.",
+          "license": "CC-BY-4.0",
+          "materialTitle": "Marlon james 2014",
+          "materialUrl": "https://commons.wikimedia.org/?curid=36692595",
+          "copyrightNotice": "© Larry D. Moore",
+          "derivativeLicense": "CC-BY-4.0",
+          "additionalRestrictions": false,
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Marlon%20james%202014.jpg",
+          "licenseEvidenceSha256": "33ee34c29251e96878dba9e5d41961149f0c795d885d93fca6aa714baa80df35",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:18:46.644Z",
+          "validUntil": "2026-10-29T20:18:46.644Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Marlon%20james%202014.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "dcd0a20594babd6c27868f20dafda3cb1695f35ec5416cf2d7fad8e0009422b7",
+            "byteLength": 58795,
+            "mime": "image/jpeg",
+            "width": 472,
+            "height": 709,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q16211564",
+            "name": "Marlon James",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-reviewed-writer-name",
+              "matchedName": "Marlon James",
+              "nameLocale": "en",
+              "nameKind": "canonical-label",
+              "registryKeys": [
+                "jamaica:marlon_james"
+              ],
+              "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q16211564&oldid=2533928479",
+              "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+              "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+              "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+              "headlineAnchored": true,
+              "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q16211564&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+          "entitySha256": "ca28464c2583b638268a456d9dd80e9a3ba7fe0251012943dae7759298c6a355",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AMarlon+james+2014.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "33ee34c29251e96878dba9e5d41961149f0c795d885d93fca6aa714baa80df35",
+          "fileTitle": "File:Marlon james 2014.jpg",
+          "metadata": {
+            "Artist": "Larry D. Moore",
+            "LicenseShortName": "CC BY 4.0",
+            "UsageTerms": "Creative Commons Attribution 4.0",
+            "Copyrighted": "True",
+            "LicenseUrl": "https://creativecommons.org/licenses/by/4.0"
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:adbfcca832b79fa08b128aa1d4ae55049c76341132dee7a97afbfc7c00504366",
+      "id": 96,
+      "state": {
+        "schemaVersion": 1,
+        "discoveryPolicy": "portrait-open-license-v3",
+        "newsId": "nlo-tsyganov-stalin-era-philology-20260901",
+        "semanticRevision": "adbfcca832b79fa08b128aa1d4ae55049c76341132dee7a97afbfc7c00504366",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:18:46.644Z",
+        "nextCheckAt": "2026-10-13T20:18:46.644Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    }
+  ],
+  "assets": [
+    {
+      "id": "jason-reynolds-loc-2020",
+      "status": "approved",
+      "newsIds": [
+        "kokila-jason-reynolds-lamplighters-son-acquisition-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/20200116SM679.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "sourceSha256": "4268b6612e80fcf764e6c7bdb53574030dfc55069b45ed5dc2ab1860461dbb56",
+      "subject": "portrait",
+      "entityEvidence": "Jason Reynolds; archival image dated 2020-01-16; the exact author named in 'Kokila acquires Jason Reynolds’s The Lamplighter’s Son'. Editorial portrait of the named author, not an image of the 2026 acquisition event or the book cover. Commons notes possible personality rights; do not imply endorsement.",
+      "author": "Shawn Miller",
+      "rightsholder": "Library of Congress (CC0 public-domain dedication)",
+      "credit": "Джейсон Рейнольдс, архивный портрет, 2020. Фото: Shawn Miller / Library of Congress. CC0. Wikimedia Commons.",
+      "license": "CC0",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg",
+      "licenseEvidenceSha256": "6e5453a822b15b0f990728bc37c4da083b8a6c4e121b5ce2ea66e85466c4248b",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-26T19:12:42.243Z",
+      "validUntil": "2026-10-26T19:12:42.243Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg"
+        },
+        {
+          "platform": "vk",
+          "destinationId": "-231377018",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "d00296d95546d7043fee07ce968b540a5b21367781f0b4f6aea7803e6ab704a4",
+        "byteLength": 295307,
+        "mime": "image/jpeg",
+        "width": 1071,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "millay-genthe-1914",
+      "status": "approved",
+      "newsIds": [
+        "serapis-millay-anthology-presented-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "sourceSha256": "36d407dd450a34282dcdb5356c8209224292d1494e9c878e84b9f4943270539c",
+      "subject": "portrait",
+      "entityEvidence": "Edna St. Vincent Millay; archival image dated 1914; the exact author named in 'Eterna Cadencia presents a Spanish-language Edna St. Vincent Millay anthology'. Portrait of the anthology's poet, not the new Spanish edition's cover. No crop, colorization or invented book-art reconstruction.",
+      "author": "Arnold Genthe (1869-1942)",
+      "rightsholder": "Public domain: Arnold Genthe photograph; Library of Congress Genthe Collection",
+      "credit": "Эдна Сент-Винсент Миллей, архивный портрет, 1914. Фото: Arnold Genthe / Library of Congress, agc.7a10216. Public domain. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg",
+      "licenseEvidenceSha256": "3e56bd066feaf93ce2432713951299186e9f2497975498dd702264e3d3361662",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-26T19:12:42.243Z",
+      "validUntil": "2026-10-26T19:12:42.243Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg"
+        },
+        {
+          "platform": "vk",
+          "destinationId": "-231377018",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "59a05207b3f99f31b26fc81c75abb50b0dcbc118d9009f89398655dc22265d0b",
+        "byteLength": 231578,
+        "mime": "image/jpeg",
+        "width": 1348,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "george-w-bush-official-2003",
+      "status": "approved",
+      "newsIds": [
+        "george-w-bush-call-of-freedom-us-2027"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/George-W-Bush.jpeg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "sourceSha256": "59207a3f480eb56547b4e38c6e82ecb6871a3a37c5dcce6c682207fa8c8a75b4",
+      "subject": "portrait",
+      "entityEvidence": "George W. Bush; archival image dated 2003-01-14; the exact author named in 'Crown announces George W. Bush’s The Call of Freedom'. Portrait of the named book author, not the new cover or a 2027 event photo. Editorial use only; no government endorsement or official-service claim.",
+      "author": "Eric Draper",
+      "rightsholder": "Public domain: official Executive Office of the President photograph",
+      "credit": "Джордж У. Буш, официальный архивный портрет, 2003. Фото: Eric Draper / White House. Public domain. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg",
+      "licenseEvidenceSha256": "13109f119ee6d9638d65926283e50f507a95f282d5a50e2f79bd1f471bb893fd",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-26T19:12:42.243Z",
+      "validUntil": "2026-10-26T19:12:42.243Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg"
+        },
+        {
+          "platform": "vk",
+          "destinationId": "-231377018",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg"
+        }
+      ],
+      "derivative": {
+        "sha256": "c289e7e096c6a5405bba500f0105c603f308c5668c51a92470c76f14743c93e3",
+        "byteLength": 234800,
+        "mime": "image/jpeg",
+        "width": 1209,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-d4229d380cd5b9d3583ee18bc1494128",
+      "status": "approved",
+      "newsIds": [
+        "andrei-rubanov-tambov-literary-project-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "345fe1446b7ef3a3f5cd4e599d656e311bd150835765e0734ff890a68c14bf35",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Andrei Rubanov (Q2846848), exact reviewed name in title.en; Wikidata P18 File:Андрей Рубанов.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Svklimkin",
+      "rightsholder": "Svklimkin",
+      "credit": "Архивный портрет: Andrei Rubanov. «Андрей Рубанов». © Svklimkin.  Wikimedia Commons: https://commons.wikimedia.org/?curid=91211081.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "Андрей Рубанов",
+      "materialUrl": "https://commons.wikimedia.org/?curid=91211081",
+      "copyrightNotice": "© Svklimkin",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg",
+      "licenseEvidenceSha256": "c07c8255a3cba38da38b7c46eef46549e3977c74c1f2de0d273fe797667ff9e1",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "7da22ee64e324defe08b16aaf1d6343f239ea7ec92ee8ee38eb3e295bcacbfb8",
+        "byteLength": 203573,
+        "mime": "image/jpeg",
+        "width": 1172,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-e0cdc6b7f8c4c37a595f7b77b0189a41",
+      "status": "approved",
+      "newsIds": [
+        "ast-nikolai-ostrovsky-122-anniversary-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/N_Ostrovskiy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "3cc56aa59074a6fc360fb4149bfae7d6a1f2b89ed047bf5f3b828e6a6cae51a0",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Nikolai Ostrovsky (Q271853), exact reviewed name in title.en; Wikidata P18 File:N Ostrovskiy.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Unknown authorUnknown author",
+      "rightsholder": "Unknown authorUnknown author",
+      "credit": "Портрет: Nikolai Ostrovsky. Unknown authorUnknown author. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg",
+      "licenseEvidenceSha256": "512e3ca39b3c1ac77f8ee8af73358a32fef24a552b0f337619121dc69924384a",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "579620520ede151d353ba4083918255b26cba868224488ac8b1fd7202ab9eec9",
+        "byteLength": 38559,
+        "mime": "image/jpeg",
+        "width": 471,
+        "height": 720,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-565d99330f63261c54c82a23b6d414c5",
+      "status": "approved",
+      "newsIds": [
+        "min-jin-lee-american-hagwon-writing-interview-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/2018-us-nationalbookfestival-min-jin-lee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "8d0ef6648151210dc543d56a2637bc5ad8920e3a9f11fa4d42991abf2c46d14c",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Lee Min Jin (Q13563026), exact reviewed name in title.ru; Wikidata P18 File:2018-us-nationalbookfestival-min-jin-lee.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Fuzheado",
+      "rightsholder": "Fuzheado",
+      "credit": "Архивный портрет: Lee Min Jin. «2018-us-nationalbookfestival-min-jin-lee». © Fuzheado.  Wikimedia Commons: https://commons.wikimedia.org/?curid=72309976.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "2018-us-nationalbookfestival-min-jin-lee",
+      "materialUrl": "https://commons.wikimedia.org/?curid=72309976",
+      "copyrightNotice": "© Fuzheado",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg",
+      "licenseEvidenceSha256": "d8b0bfdcf048dc9b61b9fe8a05c398ea4fe65eb3e0894c7636f95a91ec4a9bdb",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "606e2cd29d75f15eb548d629a70b16d49abfd1bda4de36027be19fd5533a0035",
+        "byteLength": 113284,
+        "mime": "image/jpeg",
+        "width": 1067,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-7cfd0f303bf2c7194b41fa8fee45b860",
+      "status": "approved",
+      "newsIds": [
+        "viktor-likhonosov-krasnodar-square-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Viktor_Likhonosov.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "6162b8249b84146b27e0a81a8c12b3624523c0a08c94630d9c260ecac33095b0",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Viktor Likhonosov (Q4264242), exact reviewed name in title.en; Wikidata P18 File:Viktor Likhonosov.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+      "rightsholder": "Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+      "credit": "Архивный портрет: Viktor Likhonosov. «Viktor Likhonosov». © Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара. Krd.ru Wikimedia Commons: https://commons.wikimedia.org/?curid=70791056.",
+      "license": "CC-BY-4.0",
+      "materialTitle": "Viktor Likhonosov",
+      "materialUrl": "https://commons.wikimedia.org/?curid=70791056",
+      "copyrightNotice": "© Официальный Интернет-портал администрации муниципального образования город Краснодар и городской Думы Краснодара",
+      "derivativeLicense": "CC-BY-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Viktor%20Likhonosov.jpg",
+      "licenseEvidenceSha256": "4706a93b641c00d6632ddbc49803e7772a6da4d498ab065b3541cdf825e1b992",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Viktor%20Likhonosov.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "2a69cdda9a5b9e9c73fe9ed6cca7b6a43f3334eef12901a08149af0c5e442aa8",
+        "byteLength": 22390,
+        "mime": "image/jpeg",
+        "width": 322,
+        "height": 480,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-c62ab2d86d1c2e053bcf996276d43640",
+      "status": "approved",
+      "newsIds": [
+        "vladislav-otroshenko-solzhenitsyn-prize-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Vladislav_Otroshenko.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "8e68624055922d655d62cc424ceeead83aea79b06005b3db3bec117d20fa5475",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Vladislav Otroshenko (Q4340068), exact reviewed name in title.en; Wikidata P18 File:Vladislav Otroshenko.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Rodrigo Fernandez",
+      "rightsholder": "Rodrigo Fernandez",
+      "credit": "Архивный портрет: Vladislav Otroshenko. «Vladislav Otroshenko». © Rodrigo Fernandez.  Wikimedia Commons: https://commons.wikimedia.org/?curid=15699506.",
+      "license": "CC-BY-SA-3.0",
+      "materialTitle": "Vladislav Otroshenko",
+      "materialUrl": "https://commons.wikimedia.org/?curid=15699506",
+      "copyrightNotice": "© Rodrigo Fernandez",
+      "derivativeLicense": "CC-BY-SA-3.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Vladislav%20Otroshenko.jpg",
+      "licenseEvidenceSha256": "540b1fb471c40ec15355c0c5ddbf297a5b1c26df57f72561517043212370bba2",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Vladislav%20Otroshenko.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "d094ea1b36065743bcd7902fd7c8c79e81ee9713acdd694c80fbe586aaf55252",
+        "byteLength": 151280,
+        "mime": "image/jpeg",
+        "width": 1200,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-5614925a54c088ad54033b531d58affb",
+      "status": "approved",
+      "newsIds": [
+        "florent-oiseau-francoise-sagan-prize-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/35/Florent_Oiseau_%28born_1990%29_in_the_video_%27Florent_Oiseau_-_Ma_gloire%27.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "f0e1881f558d2fff3db13d2d62b39d49bc9dacc4a7b080622b5661cf17058619",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Florent Oiseau (Q124736629), exact reviewed name in title.en; Wikidata P18 File:Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'.png. This is a portrait, not a photograph of the news event.",
+      "author": "librairie mollat",
+      "rightsholder": "librairie mollat",
+      "credit": "Архивный портрет: Florent Oiseau. «Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'». © librairie mollat. librairie mollat Wikimedia Commons: https://commons.wikimedia.org/?curid=192445488.",
+      "license": "CC-BY-4.0",
+      "materialTitle": "Florent Oiseau (born 1990) in the video 'Florent Oiseau - Ma gloire'",
+      "materialUrl": "https://commons.wikimedia.org/?curid=192445488",
+      "copyrightNotice": "© librairie mollat",
+      "derivativeLicense": "CC-BY-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Florent%20Oiseau%20(born%201990)%20in%20the%20video%20'Florent%20Oiseau%20-%20Ma%20gloire'.png",
+      "licenseEvidenceSha256": "99bef1612bf38562ac573c0bc3b0492c929428d0e04462d6cc3e9ff67c550dab",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Florent%20Oiseau%20(born%201990)%20in%20the%20video%20'Florent%20Oiseau%20-%20Ma%20gloire'.png"
+        }
+      ],
+      "derivative": {
+        "sha256": "eb7f52785614a2f311710306b16c1d33df437beb7e7879001a39ab784d6d3c6a",
+        "byteLength": 26923,
+        "mime": "image/jpeg",
+        "width": 584,
+        "height": 592,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-c4df3b2588fe4c64e63cf937a8cad5c2",
+      "status": "approved",
+      "newsIds": [
+        "wells-brynhild-first-russian-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/H.G._Wells_by_Beresford.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "fa4b0340d07288f998849b72bbafc28163b67dc670c945491beb2d60a825c220",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of H. G. Wells (Q42511), exact reviewed name in title.en; Wikidata P18 File:H.G. Wells by Beresford.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "George Charles Beresford",
+      "rightsholder": "George Charles Beresford",
+      "credit": "Портрет: H. G. Wells. George Charles Beresford. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:H.G.%20Wells%20by%20Beresford.jpg",
+      "licenseEvidenceSha256": "a701bb4edd9a64612a87e24d091da0dff44a42b3077e460389d165fcee18a78b",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:H.G.%20Wells%20by%20Beresford.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "3424a7d016d9262564349ba6ea182de3114a3d32c7b572f0f4e0475ebb6968b0",
+        "byteLength": 63030,
+        "mime": "image/jpeg",
+        "width": 573,
+        "height": 800,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-54224b36c72ab6690106945342f5d7c5",
+      "status": "approved",
+      "newsIds": [
+        "lilya-brik-mamm-literary-museum-loans-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/1928_LYuB_editing_film.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "347b42593a4b27fdc531fcfd75d5a415c3ce81a7839f5884fbacf019172ebdc1",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Lilya Brik (Q260537), exact reviewed name in title.en; Wikidata P18 File:1928 LYuB editing film.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Unknown authorUnknown author",
+      "rightsholder": "Unknown authorUnknown author",
+      "credit": "Портрет: Lilya Brik. Unknown authorUnknown author. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:1928%20LYuB%20editing%20film.jpg",
+      "licenseEvidenceSha256": "615c37b439ba2bc40fcbb72aaf8a27bad46ebf4f2dea62d77e08a8ccb55bfcff",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:1928%20LYuB%20editing%20film.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "68bcf89beba25a91165e503881e3a4b3f38d7b4364aff78c8f2881f7ffffded8",
+        "byteLength": 18680,
+        "mime": "image/jpeg",
+        "width": 265,
+        "height": 326,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-0ad7617215178f4071e32b52de6c46ff",
+      "status": "approved",
+      "newsIds": [
+        "heather-cox-richardson-gitlin-auster-award-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/76/Heather_Cox_Richardson_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "f018027da4fd9c68aeaea1661bce5a4eb33204e1df56a0b852d2b8866ed7c76f",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Heather Cox Richardson (Q24321994), exact reviewed name in title.en; Wikidata P18 File:Heather Cox Richardson 2016.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Peter Stevens",
+      "rightsholder": "Peter Stevens",
+      "credit": "Архивный портрет: Heather Cox Richardson. «Heather Cox Richardson 2016». © Peter Stevens.  Wikimedia Commons: https://commons.wikimedia.org/?curid=99204042.",
+      "license": "CC-BY-2.0",
+      "materialTitle": "Heather Cox Richardson 2016",
+      "materialUrl": "https://commons.wikimedia.org/?curid=99204042",
+      "copyrightNotice": "© Peter Stevens",
+      "derivativeLicense": "CC-BY-2.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Heather%20Cox%20Richardson%202016.jpg",
+      "licenseEvidenceSha256": "c4f157f3c17c5d4b62ecfd12c907681fcdb113bf7e4c099ac773e6afe937366f",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Heather%20Cox%20Richardson%202016.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "281c58d7ae738fb7f91e4335f14c5af5fa6ab4c13dbe1cfad835cd15e0ba6ef4",
+        "byteLength": 243214,
+        "mime": "image/jpeg",
+        "width": 1600,
+        "height": 1363,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-fee7574dd6fb66d66d931099fa2e6bb5",
+      "status": "approved",
+      "newsIds": [
+        "stevenson-cevennes-illustrated-french-edition-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "04f39254c322cf498d206b4146696e4c8e113d2b5e90fada2b5bcf2c72994d7e",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Robert Louis Stevenson (Q1512), exact reviewed name in summary.en; Wikidata P18 File:Robert Louis Stevenson by Henry Walter Barnett bw.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Henry Walter Barnett",
+      "rightsholder": "Henry Walter Barnett",
+      "credit": "Портрет: Robert Louis Stevenson. Henry Walter Barnett. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Robert%20Louis%20Stevenson%20by%20Henry%20Walter%20Barnett%20bw.jpg",
+      "licenseEvidenceSha256": "6cc286438e8ca7c328fe5842732fc436430497598dab0a42d4c690bb3e5b9e34",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Robert%20Louis%20Stevenson%20by%20Henry%20Walter%20Barnett%20bw.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "adfff79a1b57dbccbc690dd7eab79b93ce9efbcfa54ddc5da76db7e027e3c9cd",
+        "byteLength": 73245,
+        "mime": "image/jpeg",
+        "width": 1066,
+        "height": 1422,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-3158b858fa58d94a3c42eaefc9925305",
+      "status": "approved",
+      "newsIds": [
+        "kruzhkov-mukha-pukha-reading-theatre-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "fe69b5f50cf007c786b6c71460ea04d044a630d2965ebfae571e4815271f1a30",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Grigory Kruzhkov (Q4242060), exact reviewed name in title.en; Wikidata P18 File:Григорий Кружков.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Svklimkin",
+      "rightsholder": "Svklimkin",
+      "credit": "Архивный портрет: Grigory Kruzhkov. «Григорий Кружков». © Svklimkin.  Wikimedia Commons: https://commons.wikimedia.org/?curid=76272855.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "Григорий Кружков",
+      "materialUrl": "https://commons.wikimedia.org/?curid=76272855",
+      "copyrightNotice": "© Svklimkin",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9%20%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg",
+      "licenseEvidenceSha256": "bd63f5b2f233155e0dbd5a0567b3a58e2d54672bf2dc1a86a90c429bb5814fc8",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9%20%D0%9A%D1%80%D1%83%D0%B6%D0%BA%D0%BE%D0%B2.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "d53d944a7375f66f0e3add51add591ebdd296de801954a437496a00ba6c900e4",
+        "byteLength": 126908,
+        "mime": "image/jpeg",
+        "width": 1600,
+        "height": 1094,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-6eed69a1152216a8fb8fc36ef5d615a6",
+      "status": "approved",
+      "newsIds": [
+        "tara-westover-brothers-and-sisters-us-2027"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/Tara_Westover_receives_the_National_Humanities_Medal_on_March_21%2C_2023%2C_in_the_East_Room_of_the_White_House_-_P20230321ES-0780_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "bdb64c05c348cd0968b749d478481bcefd8abeb5574d4f794a269901f7b53ae8",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Tara Westover (Q50345244), exact reviewed name in title.en; Wikidata P18 File:Tara Westover receives the National Humanities Medal on March 21, 2023, in the East Room of the White House - P20230321ES-0780 (cropped).jpg. This is a portrait, not a photograph of the news event.",
+      "author": "The White House",
+      "rightsholder": "The White House",
+      "credit": "Портрет: Tara Westover. The White House. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Tara%20Westover%20receives%20the%20National%20Humanities%20Medal%20on%20March%2021%2C%202023%2C%20in%20the%20East%20Room%20of%20the%20White%20House%20-%20P20230321ES-0780%20(cropped).jpg",
+      "licenseEvidenceSha256": "c6b3bb6dc09e01aa0b8783acf2895e82bee4a309c40057a90562e6daa0d1d4cf",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Tara%20Westover%20receives%20the%20National%20Humanities%20Medal%20on%20March%2021%2C%202023%2C%20in%20the%20East%20Room%20of%20the%20White%20House%20-%20P20230321ES-0780%20(cropped).jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "f38a344ff5e9cf722b78786fed395cdad08a01f00dc774e62326020347327fbe",
+        "byteLength": 174641,
+        "mime": "image/jpeg",
+        "width": 801,
+        "height": 1069,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-7bd3f07f19d2628755dba3015303e266",
+      "status": "approved",
+      "newsIds": [
+        "stanislaw-rosiek-polish-pen-editorial-award-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/03/Stanis%C5%82aw_Rosiek.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "41e7dd0fef2dfeaa146d7b54cecf84b5220a6070f60f321be81eeab26b7d1011",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Stanisław Rosiek (Q9342946), exact reviewed name in title.en; Wikidata P18 File:Stanisław Rosiek.JPG. This is a portrait, not a photograph of the news event.",
+      "author": "Artur Andrzej",
+      "rightsholder": "Artur Andrzej",
+      "credit": "Архивный портрет: Stanisław Rosiek. «Stanisław Rosiek». © Artur Andrzej.  Wikimedia Commons: https://commons.wikimedia.org/?curid=46433461.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "Stanisław Rosiek",
+      "materialUrl": "https://commons.wikimedia.org/?curid=46433461",
+      "copyrightNotice": "© Artur Andrzej",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Stanis%C5%82aw%20Rosiek.JPG",
+      "licenseEvidenceSha256": "99704ac17bbfca944c5c9a574ecaebc605deccdca4540983869d552ad112b5b3",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Stanis%C5%82aw%20Rosiek.JPG"
+        }
+      ],
+      "derivative": {
+        "sha256": "ca9d4ebe081494d033872b42d58434c2f12ee749344a7f1b6f91f381a7ecb525",
+        "byteLength": 282575,
+        "mime": "image/jpeg",
+        "width": 1200,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-95e531cf9d56ede093e3bd72abe90bc0",
+      "status": "approved",
+      "newsIds": [
+        "katarina-wennstam-crimetime-honorary-award-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Katarina_Wennstam_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "a8c26efcc24ef09ee9382b0ffa5c690e6fb31a7081b5552aae5f441c7c72e0ee",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Katarina Wennstam (Q4990307), exact reviewed name in title.en; Wikidata P18 File:Katarina Wennstam 01.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Bengt Oberger",
+      "rightsholder": "Bengt Oberger",
+      "credit": "Архивный портрет: Katarina Wennstam. «Katarina Wennstam 01». © Bengt Oberger.  Wikimedia Commons: https://commons.wikimedia.org/?curid=51938357.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "Katarina Wennstam 01",
+      "materialUrl": "https://commons.wikimedia.org/?curid=51938357",
+      "copyrightNotice": "© Bengt Oberger",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Katarina%20Wennstam%2001.jpg",
+      "licenseEvidenceSha256": "aeb9adf8cf6bcb4d00bfda0f4ec7bca5501bd3fc793b6d5869796e17ba98bf46",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Katarina%20Wennstam%2001.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "f5394bdbfd390375a1ce45e5fe9ed892167609f2b9ae96728daaad98c2ab5da7",
+        "byteLength": 317994,
+        "mime": "image/jpeg",
+        "width": 1537,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-9398d30e893aabd401cb6ddc8e74b4a8",
+      "status": "approved",
+      "newsIds": [
+        "tolstoy-birthday-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "6f8d1d8df13c20e0c2ffe1f993e922b4d6ec7ecbb9255b4d73043e8b7497fb1b",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Leo Tolstoy (Q7243), exact reviewed name in title.en; Wikidata P18 File:L.N.Tolstoy Prokudin-Gorsky.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Sergei Prokudin-Gorskii",
+      "rightsholder": "Sergei Prokudin-Gorskii",
+      "credit": "Портрет: Leo Tolstoy. Sergei Prokudin-Gorskii. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg",
+      "licenseEvidenceSha256": "1b12300ba74118ee61e80d4e3bba95fe099d68a3213b5dd231d48e1570b837ff",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "388d84042592ca289414a8e569c494ed45c0c53ede202afa8da9f7b2b7f5571c",
+        "byteLength": 398840,
+        "mime": "image/jpeg",
+        "width": 1156,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-569a84b9280b2173d419c2eaba498f4d",
+      "status": "approved",
+      "newsIds": [
+        "marlon-james-disappearers-us-catalog-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/85/Marlon_james_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "f460abf621847d060a1d85f9d2e8343e31e658d08c2546c87fc545dbd8a252c6",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Marlon James (Q16211564), exact reviewed name in title.en; Wikidata P18 File:Marlon james 2014.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Larry D. Moore",
+      "rightsholder": "Larry D. Moore",
+      "credit": "Архивный портрет: Marlon James. «Marlon james 2014». © Larry D. Moore. Larry D. Moore Wikimedia Commons: https://commons.wikimedia.org/?curid=36692595.",
+      "license": "CC-BY-4.0",
+      "materialTitle": "Marlon james 2014",
+      "materialUrl": "https://commons.wikimedia.org/?curid=36692595",
+      "copyrightNotice": "© Larry D. Moore",
+      "derivativeLicense": "CC-BY-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Marlon%20james%202014.jpg",
+      "licenseEvidenceSha256": "33ee34c29251e96878dba9e5d41961149f0c795d885d93fca6aa714baa80df35",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Marlon%20james%202014.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "dcd0a20594babd6c27868f20dafda3cb1695f35ec5416cf2d7fad8e0009422b7",
+        "byteLength": 58795,
+        "mime": "image/jpeg",
+        "width": 472,
+        "height": 709,
+        "profile": "literary-news-photo-v1"
+      }
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import {
   createAdminCspNonce,
 } from "@/lib/content-security-policy";
 import { adminEnv, isSupabaseConfigured } from "@/lib/env";
+import { logAuthFailure } from "@/lib/auth-service-error";
 
 // Next.js 16 keeps middleware.ts specifically for Edge-runtime deployments.
 // OpenNext Cloudflare does not yet support the Node-runtime proxy.ts convention.
@@ -99,7 +100,14 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  await supabase.auth.getUser();
+  try {
+    const { error } = await supabase.auth.getUser();
+    if (error && error.name !== "AuthSessionMissingError") logAuthFailure("middleware_session", error);
+  } catch (error) {
+    // Session and staff gates still validate access in the protected layout.
+    // A provider/network outage must not crash the login/recovery pages.
+    logAuthFailure("middleware_session", error);
+  }
   return response;
 }
 

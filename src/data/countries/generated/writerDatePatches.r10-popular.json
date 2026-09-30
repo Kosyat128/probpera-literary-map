@@ -1,0 +1,196 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-29T20:01:22.303Z",
+  "sourceReviewSha256": "0e3eb7cea9b2ae0ce050e6f1c8763bd7fb407f9d6ff519b102548c3546e229c5",
+  "cachedSnapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+  "priorOverlayHashes": [
+    {
+      "sourcePath": "src/data/countries/generated/writerDatePatches.r10.json",
+      "sha256": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080"
+    },
+    {
+      "sourcePath": "src/data/countries/generated/writerDatePatches.r10-supplemental.json",
+      "sha256": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217"
+    },
+    {
+      "sourcePath": "src/data/countries/generated/writerDatePatches.r10-russian.json",
+      "sha256": "50822fa4fe3e530fc80950228c3002bc9feb789b043d65709b4067473982d39b"
+    }
+  ],
+  "patches": [
+    {
+      "id": "r10-popular:russia:mikhail_zoshchenko:birthDate:5b686a2fbfe1",
+      "writerKey": "russia:mikhail_zoshchenko",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1894-08-09",
+      "evidence": {
+        "value": "1894-08-09",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q360507",
+        "claimIds": [
+          "Q360507$9B4BDA4D-7CB7-4E80-A7AC-A3B13D8FCFB2"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q360507&oldid=2532104250",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/9974/mikhail-zoshenko",
+            "checkedAt": "2026-09-29T20:01:21.925Z",
+            "finding": "09 августа 1894",
+            "sourceDocumentSha256": "34e7214819e344fa56b65a7c8621336d1d90f0f57762038da890cbb0131c4536"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-popular:russia:vasily_grossman:birthDate:91edd18b39b3",
+      "writerKey": "russia:vasily_grossman",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1905-12-12",
+      "evidence": {
+        "value": "1905-12-12",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q313767",
+        "claimIds": [
+          "Q313767$54F38127-7BFA-4A11-B6B4-68FE60AE1226"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q313767&oldid=2531742724",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://rgbs.ru/tiflology/pubs/vasilij-semenovich-grossman/",
+            "checkedAt": "2026-09-29T20:01:21.503Z",
+            "finding": "12 декабря 1905",
+            "sourceDocumentSha256": "30ea8c15b7cb4f16991aac598eaa1daf50b7b250edd6e1daa056f7387267419c"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-popular:russia:karamzin:birthDate:aa4fe441494e",
+      "writerKey": "russia:karamzin",
+      "field": "birthDate",
+      "expectedOld": "",
+      "expectedEvidence": null,
+      "appliedValue": "1766-12-12",
+      "evidence": {
+        "value": "1766-12-12",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q191598",
+        "claimIds": [
+          "Q191598$A8F7D8CF-55BC-4767-9CDB-8F1D4B7EA00B"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q191598&oldid=2533930752",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.prlib.ru/node/619713",
+            "checkedAt": "2026-09-29T20:01:21.584Z",
+            "finding": "1 (12) декабря 1766",
+            "sourceDocumentSha256": "710eeee2fd38a9ed1d76092acafb60b3f2ad74976014ccab8ce2949abd5f3447"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-popular:usa:daniel_keyes:birthDate:d30e8d4b5cd4",
+      "writerKey": "usa:daniel_keyes",
+      "field": "birthDate",
+      "expectedOld": "1927",
+      "expectedEvidence": null,
+      "appliedValue": "1927-08-09",
+      "evidence": {
+        "value": "1927-08-09",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q185714",
+        "claimIds": [
+          "Q185714$D3AFF514-4FFA-46D4-BBA8-84F9BB355B9D"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q185714&oldid=2534931596",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.orrt.org/keyes/",
+            "checkedAt": "2026-09-29T20:01:22.298Z",
+            "finding": "Born: August 9, 1927",
+            "sourceDocumentSha256": "c6ecd9b3226764174883fb3b27aea3ec504560dcaa32a1cff2cbcd7f53e09692"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-popular:england:frederick_forsyth:birthDate:4ae520fd968d",
+      "writerKey": "england:frederick_forsyth",
+      "field": "birthDate",
+      "expectedOld": "1938",
+      "expectedEvidence": null,
+      "appliedValue": "1938-08-25",
+      "evidence": {
+        "value": "1938-08-25",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q249197",
+        "claimIds": [
+          "q249197$A65A2E4D-31E0-4037-8719-192ADC42FDD8"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q249197&oldid=2534060174",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/",
+            "checkedAt": "2026-09-29T20:01:22.250Z",
+            "finding": "August 25, 1938",
+            "sourceDocumentSha256": "d534f50817df89b28f5f0ed72749c24fffdf1b65c239f672949d014700edf51f"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-popular:england:frederick_forsyth:deathDate:701f093394e8",
+      "writerKey": "england:frederick_forsyth",
+      "field": "deathDate",
+      "expectedOld": "2025",
+      "expectedEvidence": null,
+      "appliedValue": "2025-06-09",
+      "evidence": {
+        "value": "2025-06-09",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q249197",
+        "claimIds": [
+          "Q249197$7510526d-40d0-28d4-16b5-77cd3588f5d9"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q249197&oldid=2534060174",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/",
+            "checkedAt": "2026-09-29T20:01:22.250Z",
+            "finding": "died on Monday, June 9, 2025",
+            "sourceDocumentSha256": "d534f50817df89b28f5f0ed72749c24fffdf1b65c239f672949d014700edf51f"
+          }
+        ]
+      }
+    }
+  ]
+}

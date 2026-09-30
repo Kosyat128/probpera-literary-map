@@ -6,6 +6,7 @@ import {
 } from "@/lib/admin-mfa-policy";
 import { isSupabaseConfigured } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { authServiceError, logAuthFailure } from "@/lib/auth-service-error";
 
 export type StaffRole = "owner" | "admin" | "editor";
 
@@ -25,6 +26,7 @@ export type StaffSession = {
   role: StaffRole | null;
   mfa: StaffMfaState;
   membershipError?: string;
+  authError?: string;
 };
 
 const emptyMfaState = (): StaffMfaState => ({
@@ -60,12 +62,13 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
     } = await supabase.auth.getUser();
 
     if (userError) {
-      console.error("Admin auth: user session check failed", userError);
+      if (userError.name !== "AuthSessionMissingError") logAuthFailure("session_check", userError);
       return {
         configured: true,
         user: null,
         role: null,
         mfa: emptyMfaState(),
+        authError: authServiceError(userError) || undefined,
       };
     }
 
@@ -85,7 +88,7 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
       .maybeSingle();
 
     if (membershipError) {
-      console.error("Admin auth: role check failed", membershipError);
+      logAuthFailure("membership_check", membershipError);
       return {
         configured: true,
         user: {
@@ -94,7 +97,8 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
         },
         role: null,
         mfa: emptyMfaState(),
-        membershipError: membershipError.message,
+        membershipError: authServiceError(membershipError) || "Не удалось проверить редакционную роль. Повторите попытку позже.",
+        authError: authServiceError(membershipError) || undefined,
       };
     }
 
@@ -109,6 +113,9 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
         (assurance?.currentLevel as AdminAuthenticatorAssuranceLevel) || null;
       const nextLevel =
         (assurance?.nextLevel as AdminAuthenticatorAssuranceLevel) || null;
+      if (!["aal1", "aal2"].includes(currentLevel || "") || !["aal1", "aal2"].includes(nextLevel || "")) {
+        throw new Error("mfa_assurance_unavailable");
+      }
       mfa = {
         currentLevel,
         nextLevel,
@@ -119,9 +126,8 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
         }),
       };
     } catch (error) {
-      const message =
-        error instanceof Error ? error.message : "Не удалось проверить MFA";
-      console.error("Admin auth: MFA assurance check failed", error);
+      const message = authServiceError(error) || "Не удалось проверить защиту учётной записи. Повторите попытку позже.";
+      logAuthFailure("mfa_assurance_check", error);
       mfa = {
         ...emptyMfaState(),
         checkError: message,
@@ -138,14 +144,15 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
       mfa,
     };
   } catch (error) {
-    console.error("Admin auth: unexpected session check error", error);
+    logAuthFailure("session_check", error);
     return {
       configured: true,
       user: null,
       role: null,
       mfa: emptyMfaState(),
       membershipError:
-        error instanceof Error ? error.message : "Ошибка инициализации сессии",
+        "Не удалось проверить редакционную роль. Повторите попытку позже.",
+      authError: authServiceError(error) || "Не удалось проверить сессию. Повторите попытку позже.",
     };
   }
 });
@@ -158,6 +165,7 @@ export async function requireStaff(
     !session.user ||
     !session.role ||
     session.mfa.required ||
+    session.mfa.checkError ||
     !allowedRoles.includes(session.role)
   ) {
     return null;

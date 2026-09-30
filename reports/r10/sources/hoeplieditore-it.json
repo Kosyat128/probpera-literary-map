@@ -8,7 +8,7 @@
   "coverageCountryCodes": [
     "IT"
   ],
-  "attemptedAt": "2026-09-26T17:27:42.111Z",
+  "attemptedAt": "2026-09-29T20:32:34.238Z",
   "requests": [
     {
       "url": "https://www.hoeplieditore.it/",
@@ -16,7 +16,7 @@
       "contentType": "text/html; charset=utf-8",
       "bytes": 38052,
       "sha256": "44aa477e49a326cadc696ba86c2e0f8243ebc47436e21d409161ef880a23da70",
-      "accessedAt": "2026-09-26T17:27:42.908Z"
+      "accessedAt": "2026-09-29T20:32:35.250Z"
     }
   ],
   "status": "blocked",
@@ -27,7 +27,7 @@
     "contentType": "text/plain; charset=utf-8",
     "bytes": 83,
     "sha256": "24076b4821cacd78eabb9153baa32961001450c6e13103cde34c71855a443a9d",
-    "accessedAt": "2026-09-26T17:27:42.485Z",
+    "accessedAt": "2026-09-29T20:32:34.793Z",
     "disallowed": [
       "/backend/"
     ]

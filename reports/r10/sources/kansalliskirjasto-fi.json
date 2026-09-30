@@ -8,39 +8,31 @@
   "coverageCountryCodes": [
     "FI"
   ],
-  "attemptedAt": "2026-09-26T17:29:06.171Z",
+  "attemptedAt": "2026-09-29T20:33:41.483Z",
   "requests": [
     {
       "url": "https://www.kansalliskirjasto.fi/en",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 202381,
-      "sha256": "980566aa021b9200d51503aff8b8929ca7b0d9224c69ad3eb74c9f4a2432d070",
-      "accessedAt": "2026-09-26T17:22:55.447Z"
+      "bytes": 202389,
+      "sha256": "d3a86bd46b1663d45238a6e99102c82af81410d81fea61a70cdf0f1a36bb525b",
+      "accessedAt": "2026-09-29T20:33:41.848Z"
     },
     {
-      "url": "https://www.kansalliskirjasto.fi/en/e-library",
+      "url": "https://www.kansalliskirjasto.fi/en/news",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 191421,
-      "sha256": "5a280e8dbc3a589ce6972efdd01b041ef15af0257f198709ba5ed7c2339ad7e7",
-      "accessedAt": "2026-09-26T17:29:07.130Z"
+      "bytes": 187693,
+      "sha256": "cb20c4c7339875998348474d2c872c8c2624006273bce3485ead85e6bd274348",
+      "accessedAt": "2026-09-29T20:33:41.989Z"
     },
     {
-      "url": "https://www.kansalliskirjasto.fi/en/events",
+      "url": "https://www.kansalliskirjasto.fi/en/news",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 196088,
-      "sha256": "3fd7334c735272e4efecaa03b087bd28403d1abccc7b68f205a26bb268c4f799",
-      "accessedAt": "2026-09-26T17:29:07.443Z"
-    },
-    {
-      "url": "https://www.kansalliskirjasto.fi/en/about-us/duties-and-strategy/library-policies",
-      "status": 200,
-      "contentType": "text/html; charset=utf-8",
-      "bytes": 193160,
-      "sha256": "51a9b25b19f8168393c7e1322b317cf64a99cd7c51d18fbb7031f3791f84b3ef",
-      "accessedAt": "2026-09-26T17:29:07.625Z"
+      "bytes": 187694,
+      "sha256": "a8a585ff48cf365df17278816afe3ffe8a4581fda99b3694233a56033c7341ad",
+      "accessedAt": "2026-09-29T20:33:42.150Z"
     }
   ],
   "status": "blocked",
@@ -51,7 +43,7 @@
     "contentType": "text/plain",
     "bytes": 2141,
     "sha256": "8e8cb58d810473a52cce903be5ffb73d948eef981bbd101cffbf8dc2c02fcf4e",
-    "accessedAt": "2026-09-26T17:29:06.586Z",
+    "accessedAt": "2026-09-29T20:33:41.737Z",
     "disallowed": [
       "/core/",
       "/profiles/",
@@ -89,9 +81,5 @@
       "/index.php/media/oembed",
       "/index.php/*/media/oembed"
     ]
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:55.058Z",
-    "sourceDocumentSha256": "980566aa021b9200d51503aff8b8929ca7b0d9224c69ad3eb74c9f4a2432d070"
   }
 }

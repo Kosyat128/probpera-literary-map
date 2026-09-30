@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { adminEnv } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { authServiceError, guardedAuthRequest, logAuthFailure } from "@/lib/auth-service-error";
 
 function safeNextPath(value: string | null) {
   if (!value || !value.startsWith("/") || value.startsWith("//")) {
@@ -30,12 +31,13 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(target);
   }
 
-  const { error } = await supabase.auth.exchangeCodeForSession(code);
+  const { error } = await guardedAuthRequest(() => supabase.auth.exchangeCodeForSession(code));
   if (error) {
+    logAuthFailure("recovery_callback", error);
     const target = adminUrl("/login");
     target.searchParams.set(
       "error",
-      "Не удалось подтвердить ссылку восстановления. Запросите новую ссылку."
+      authServiceError(error) || "Не удалось подтвердить ссылку восстановления. Запросите новую ссылку."
     );
     return NextResponse.redirect(target);
   }

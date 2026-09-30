@@ -1,12 +1,13 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import reviewed from "../../data/news/reviewed.json" with { type: "json" };
 import { parseNewsFeed } from "../../src/news/feed.ts";
-import worker, { handleNewsRequest } from "../workers/literary-news-worker.mjs";
+import worker, { handleNewsRequest, LiteraryNewsPublicReader } from "../workers/literary-news-worker.mjs";
 import { buildNewsIngestion } from "./literary-news-ingestion.mjs";
 import { selectReviewed } from "./literary-news-reviewed.mjs";
 import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 import { NEWS_HELD_QUEUE_KEY, NEWS_SOURCE_STATE_KEY, NEWS_STATE_MAX_BYTES, parseNewsSourceState, pendingNewsSourceState } from "./literary-news-state.mjs";
 import { NOBEL_PROFILE_KEY } from "./literary-news-nobel-profile.mjs";
+import { DAILY_NEWS_PROFILE_KEY } from './literary-news-daily-profile.mjs';
 
 const CURRENT = new Date("2026-09-05T12:00:00Z");
 const EARLIER = "2026-09-05T10:00:00.000Z";
@@ -103,7 +104,7 @@ describe("public literary news Worker", () => {
     expect(response.headers.get("x-probpera-news-release")).toBe(SHA);
     expect(response.headers.get("cache-control")).toBe("no-store");
     expect(response.headers.get("x-content-type-options")).toBe("nosniff");
-    expect(env.NEWS_STATE.get.mock.calls).toEqual([[NEWS_SOURCE_STATE_KEY,"stream"],[NOBEL_PROFILE_KEY,"stream"]]);
+    expect(env.NEWS_STATE.get.mock.calls).toEqual([[NEWS_SOURCE_STATE_KEY,"stream"],[NOBEL_PROFILE_KEY,"stream"],[DAILY_NEWS_PROFILE_KEY,"stream"]]);
     expect(feed).toMatchObject({ mode: "reviewed", timeZone: "Asia/Tokyo", lastCheckedAt: EARLIER, pendingCount: 2 });
     expect(feed.items.length).toBeGreaterThan(0);
     expect(feed.items.every((item) => item.verification === "confirmed" && item.title.ru && item.title.en)).toBe(true);
@@ -159,9 +160,12 @@ describe("public literary news Worker", () => {
   });
 
   it("the real fetch entry accepts a Workers execution context", async () => {
-    const response = await worker.fetch(request(), environment(), { waitUntil() {} });
+    const env = environment(), reader = new LiteraryNewsPublicReader({}, env);
+    env.NEWS_PUBLIC_READER = { idFromName: vi.fn(()=>'fixed-public-reader'), get: vi.fn(()=>reader) };
+    const response = await worker.fetch(request(), env, { waitUntil() {} });
     expect(response.status).toBe(200);
     expect((await response.json()).mode).toBe("reviewed");
+    expect(env.NEWS_PUBLIC_READER.idFromName).toHaveBeenCalledWith('literary-news-public-reader');
   });
 });
 

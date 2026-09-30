@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-29T20:15:49.134Z",
+  "sourceReviewSha256": "5bc8e6449d7be2db3c89323cbab3dffb9bf6851394ad0595a1d85071c06d6b97",
+  "scope": "Calendar date identities only",
+  "writers": {
+    "usa:george_saunders": {
+      "wikidataId": "Q1251926",
+      "expectedNames": [
+        "Джордж Сондерс",
+        "Джордж Сондерс"
+      ],
+      "identitySourceUrl": "https://artsandsciences.syracuse.edu/people/faculty/saunders-george/",
+      "identityFinding": "George Saunders; Lincoln in the Bardo",
+      "checkedAt": "2026-09-29T20:15:50.243Z",
+      "sourceDocumentSha256": "34a5610a03e21b9f33ab7389da87a70f0d7aa581544c8b514389cfecc3d41538"
+    },
+    "usa:dan_brown": {
+      "wikidataId": "Q7345",
+      "expectedNames": [
+        "Дэн Браун",
+        "Дэн Браун"
+      ],
+      "identitySourceUrl": "https://danbrown.com/about/",
+      "identityFinding": "Dan Brown; Da Vinci Code",
+      "checkedAt": "2026-09-29T20:15:49.501Z",
+      "sourceDocumentSha256": "858c1fa1a28a101abc93d16a620d38bde5e6e388e0bf4f6f9cffd7955120f683"
+    },
+    "usa:andy_weir": {
+      "wikidataId": "Q18590295",
+      "expectedNames": [
+        "Энди Вейр",
+        "Энди Вейр"
+      ],
+      "identitySourceUrl": "https://andyweirauthor.com/",
+      "identityFinding": "Andy Weir; Martian",
+      "checkedAt": "2026-09-29T20:15:49.545Z",
+      "sourceDocumentSha256": "b143b4b201a03d41cd94ce07c3d1dc6c3041820b0ea0f9b7c517b6ff4a584552"
+    },
+    "usa:n_k_jemisin": {
+      "wikidataId": "Q2427544",
+      "expectedNames": [
+        "Н. К. Джемисин",
+        "Нора Кейта Джемисин"
+      ],
+      "identitySourceUrl": "https://nebulas.sfwa.org/grand-masters/n-k-jemisin/",
+      "identityFinding": "N. K. Jemisin; Nora Keita",
+      "checkedAt": "2026-09-29T20:15:50.671Z",
+      "sourceDocumentSha256": "501e4570d4ba1eb539770bed63e9114cb269515d70b239f8a81ccc56f44fabda"
+    },
+    "england:ronald_delderfield": {
+      "wikidataId": "Q438569",
+      "expectedNames": [
+        "Рональд Делдерфилд",
+        "Рональд Делдерфилд"
+      ],
+      "identitySourceUrl": "https://www.bdcmuseum.org.uk/explore/item/97450/",
+      "identityFinding": "R. F. Delderfield; Ben Gunn",
+      "checkedAt": "2026-09-29T20:15:50.773Z",
+      "sourceDocumentSha256": "9fe4b4f4293548e8dd78c6d6d691bd5c1fb9926c3bb978a167e71221046639e3"
+    }
+  }
+}

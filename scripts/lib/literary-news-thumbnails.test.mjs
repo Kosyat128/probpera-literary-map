@@ -7,6 +7,14 @@ const item = reviewed.find(row => row.kind === "news");
 const entry = {sourceUrl:item.source.url,imageUrl:"https://images.publisher.org/article-cover.jpg",
   alt:item.title,displayOnly:true,socialReuseApproved:false,method:"og:image",sourceDocumentSha256:"a".repeat(64)};
 describe("article-specific display thumbnails",()=>{
+  it('accepts deterministic metadata from an independently validated daily profile and binds it to its source document',()=>{
+    const record = { ...item, id: 'dynamic-fixture', provenance: { reviewKind: 'machineReviewed',
+      sourceEvidence: { documentSha256: entry.sourceDocumentSha256, thumbnail: entry } } };
+    expect(newsArticleThumbnail(record, {})?.url).toBe(entry.imageUrl);
+    for (const altered of [{ ...record, provenance: { ...record.provenance, reviewKind: 'held' } },
+      { ...record, provenance: { ...record.provenance, sourceEvidence: { ...record.provenance.sourceEvidence, documentSha256: 'b'.repeat(64) } } }])
+      expect(newsArticleThumbnail(altered, {})).toBeNull();
+  });
   it("requires the exact source article and refuses generic or unproven metadata",()=>{
     expect(newsArticleThumbnail(item,{[item.id]:entry})?.url).toBe(entry.imageUrl);
     for(const change of [{sourceUrl:item.source.url+"/different-article"},{method:"site-logo"},

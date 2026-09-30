@@ -1,0 +1,269 @@
+{
+  "sourceId": "national-book-review",
+  "name": "The National Book Review",
+  "entryUrl": "https://www.thenationalbookreview.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:41:39.703Z",
+  "requests": [
+    {
+      "url": "https://www.thenationalbookreview.com/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 248001,
+      "sha256": "51c9fb506ff8b9768fd7bec8fbbce08d15b16298ece8ed8530f48cdd6f4df65c",
+      "accessedAt": "2026-09-29T20:41:40.414Z"
+    },
+    {
+      "url": "https://www.thenationalbookreview.com/features/2026/9/23/hot-five-a-thrilling-new-book-from-scott-turow-a-cbs-anchors-memoir-and-more",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 148016,
+      "sha256": "45021da5ffde484c84fe13683fe941a2a2790c04422d608a1649b6416ff94169",
+      "accessedAt": "2026-09-29T20:41:40.786Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.thenationalbookreview.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 1520,
+    "sha256": "ab1e3583fde177e459d04d5fa851414e87a43b24bafd54d80330c90485199b59",
+    "accessedAt": "2026-09-29T20:41:40.236Z",
+    "disallowed": [
+      "/config",
+      "/search",
+      "/account$",
+      "/account/",
+      "/commerce/digital-download/",
+      "/api/",
+      "/static/",
+      "/*?author=*",
+      "/*&author=*",
+      "/*?tag=*",
+      "/*&tag=*",
+      "/*?month=*",
+      "/*&month=*",
+      "/*?view=*",
+      "/*&view=*",
+      "/*?format=json",
+      "/*&format=json",
+      "/*?format=page-context",
+      "/*&format=page-context",
+      "/*?format=main-content",
+      "/*&format=main-content",
+      "/*?format=json-pretty",
+      "/*&format=json-pretty",
+      "/*?format=ical",
+      "/*&format=ical",
+      "/*?reversePaginate=*",
+      "/*&reversePaginate=*"
+    ]
+  },
+  "endpoint": {
+    "id": "national-book-review",
+    "name": "The National Book Review",
+    "url": "https://www.thenationalbookreview.com/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "national-book-review",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.thenationalbookreview.com"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/features\\/2026\\/9\\/23\\/[^/]+\\/?$|^\\/features\\/2026\\/2\\/3\\/[^/]+\\/?$|^\\/features\\/2025\\/12\\/31\\/[^/]+\\/?$|^\\/features\\/2025\\/11\\/26\\/[^/]+\\/?$|^\\/features\\/2025\\/10\\/27\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.thenationalbookreview.com/features/2026/9/23/hot-five-a-thrilling-new-book-from-scott-turow-a-cbs-anchors-memoir-and-more"
+    ],
+    "verifiedAt": "2026-09-29T20:41:40.793Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 5,
+  "literaryCandidateCount": 5,
+  "sample": {
+    "sourceId": "national-book-review",
+    "source": {
+      "name": "The National Book Review",
+      "url": "https://www.thenationalbookreview.com/features/2026/9/23/hot-five-a-thrilling-new-book-from-scott-turow-a-cbs-anchors-memoir-and-more",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "HOT FIVE: A Thrilling New Book from Scott Turow, a CBS Anchor's Memoir, and More",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:41:40.514Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.thenationalbookreview.com/features/2026/9/23/hot-five-a-thrilling-new-book-from-scott-turow-a-cbs-anchors-memoir-and-more",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 148016,
+      "sha256": "45021da5ffde484c84fe13683fe941a2a2790c04422d608a1649b6416ff94169",
+      "accessedAt": "2026-09-29T20:41:40.786Z",
+      "headline": "HOT FIVE: A Thrilling New Book from Scott Turow, a CBS Anchor's Memoir, and More — The National Book Review",
+      "excerpt": "1. Presumed Guilty by Scott Turow (Grand Central)“The bard of the litigious age” departs from Kindle County, the fictional place he has made famous, but revives his iconic protagonist lawyer Rusty Sabich, who was falsely convicted then exonerated of a crime. Now in paperback, the latest in Turow’s Presumed Innocent series of legal thrillers, Sabich is now a retiree seeking refuge in an idyllic reg",
+      "publishedDates": [
+        {
+          "value": "2026-09-23T19:46:09-0400",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.thenationalbookreview.com/features/2026/9/23/hot-five-a-thrilling-new-book-from-scott-turow-a-cbs-anchors-memoir-and-more",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:41:40.793Z",
+  "foundItems": [
+    {
+      "sourceId": "national-book-review",
+      "source": {
+        "name": "The National Book Review",
+        "url": "https://www.thenationalbookreview.com/features/2026/9/23/hot-five-a-thrilling-new-book-from-scott-turow-a-cbs-anchors-memoir-and-more",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "HOT FIVE: A Thrilling New Book from Scott Turow, a CBS Anchor's Memoir, and More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.514Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-review",
+      "source": {
+        "name": "The National Book Review",
+        "url": "https://www.thenationalbookreview.com/features/2026/2/3/qampa-a-novel-about-life-in-a-chicago-condo-and-dreams-of-a-better-path-for-gaza",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A: A Novel About Life in a Chicago Condo, and Dreams of a Better Path for Gaza",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.514Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-review",
+      "source": {
+        "name": "The National Book Review",
+        "url": "https://www.thenationalbookreview.com/features/2025/12/31/review-elizabeth-mccracken-tells-us-how-to-write-fiction",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "REVIEW: Elizabeth McCracken Tells Us How to Write Fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.514Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-review",
+      "source": {
+        "name": "The National Book Review",
+        "url": "https://www.thenationalbookreview.com/features/2025/11/26/qampa-a-new-book-explores-the-troubled-history-of-thanksgiving",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A: This Book Explores 'The Troubled History of Thanksgiving'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.514Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-review",
+      "source": {
+        "name": "The National Book Review",
+        "url": "https://www.thenationalbookreview.com/features/2025/10/27/putting-the-boo-in-books-7-scary-reads-for-halloween",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Putting the “Boo” in \"Books\": 7 Scary Reads for Halloween",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.514Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "51c9fb506ff8b9768fd7bec8fbbce08d15b16298ece8ed8530f48cdd6f4df65c"
+}

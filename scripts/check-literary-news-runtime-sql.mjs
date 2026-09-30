@@ -70,7 +70,10 @@ try {
       },
       compareAppend:(key,expected,state,guard)=>cas(expected,state,key,guard),
       async list(prefix) {
-        return (await db.query("select distinct on(entity_id) id,metadata as state from public.admin_audit_log where entity_type='literary_news_runtime' and entity_id like $1 order by entity_id,id desc",[prefix+"%"])).rows;
+        // The primitive CAS rejection fixtures above intentionally lack complete
+        // social-job shapes. Keep their rows intact while isolating this scenario
+        // to its two destinations and its own durable admissions.
+        return (await db.query("select distinct on(entity_id) id,metadata as state from public.admin_audit_log where entity_type='literary_news_runtime' and entity_id like $1 and (entity_id like '%:telegram:-10098765' or entity_id like '%:vk:-98765' or entity_id in ('admission:news:jsonb-delivery','admission:news:jsonb-photo')) order by entity_id,id desc",[prefix+"%"])).rows;
       },
     };
     await reconcileNewsSnapshot(store,await snapshot([item]),[],current);
@@ -141,9 +144,9 @@ try {
       const runtimeTransport={...transport,preflight:async()=>({ok:true,providerAccountId:"42"})};
       assert.equal((await dispatchNewsJob({store,key,transport:runtimeTransport,now:()=>current})).reason,"destination_pacing");
       assert.equal(calls.filter(method=>["sendPhoto","wall.post"].includes(method)).length,0);
-      const nextSlot=new Date(current.getTime()+1800000);
+      const nextSlot=new Date(current.getTime()+3600000);
       assert.equal((await dispatchNewsJob({store,key,transport:runtimeTransport,now:()=>nextSlot})).status,"sent_current");
-      checks.push(`JSONB ${destination.platform} durable pacing blocks a second create until the next 30-minute slot`);
+      checks.push(`JSONB ${destination.platform} durable pacing blocks a second create until the next hourly slot`);
       assert.equal((await store.read(key)).state.remoteMediaKind,"photo");
       assert.equal((await store.read(key)).state.mediaCache.providerAccountId,"42");
       assert.equal((await store.read(key)).state.mediaCache.sha256,normalized.descriptor.sha256);

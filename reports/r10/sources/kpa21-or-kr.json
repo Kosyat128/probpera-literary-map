@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "KR"
   ],
-  "attemptedAt": "2026-09-26T17:28:45.999Z",
+  "attemptedAt": "2026-09-29T20:33:28.721Z",
   "requests": [
     {
       "url": "https://www.kpa21.or.kr/",
       "status": 200,
       "contentType": "text/html",
       "bytes": 1580,
-      "sha256": "d9e5624a4fe34383e6a280a1a6e4cf2b0f06d07c3fa093ee32d5ef6b06400811",
-      "accessedAt": "2026-09-26T17:28:47.616Z"
+      "sha256": "597514ae69cac83dfda167decf091c9e589268bc8b37bfd1c9be19b6f3359f94",
+      "accessedAt": "2026-09-29T20:33:30.926Z"
     }
   ],
   "status": "blocked",
@@ -26,8 +26,8 @@
     "status": 200,
     "contentType": "text/html",
     "bytes": 1590,
-    "sha256": "17a8f27f9e7be749e02a5f35e4e949724f11a9cdae7f9739dc5e16b4dc853fe3",
-    "accessedAt": "2026-09-26T17:28:47.291Z",
+    "sha256": "152280a26e492b7b106af1840fe23ee60ce2572207df393228ec98a8ce3521c2",
+    "accessedAt": "2026-09-29T20:33:30.653Z",
     "disallowed": []
   }
 }

@@ -1,0 +1,422 @@
+{
+  "sourceId": "boersenblatt",
+  "name": "Börsenblatt",
+  "entryUrl": "https://www.boersenblatt.net/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:34.940Z",
+  "requests": [
+    {
+      "url": "https://www.boersenblatt.net/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 416398,
+      "sha256": "d5d2ff9d77eff6e50846bee9b35a3616345cf45d9bd3351f49562cbbe4d7f084",
+      "accessedAt": "2026-09-29T20:39:35.721Z"
+    },
+    {
+      "url": "https://www.boersenblatt.net/thema/alle-news-aus-der-buchbranche",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 114043,
+      "sha256": "6001856fa206fa8f11b775eacc1d532cc764e7ac4d7ec36a41c652faf0f87ef3",
+      "accessedAt": "2026-09-29T20:39:35.960Z"
+    },
+    {
+      "url": "https://www.boersenblatt.net/news/boersenverein/vorlesewettbewerb-2026/27-deutschlands-bestes-vorlesetalent-gesucht-442525",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102993,
+      "sha256": "a302e749beed0690d934edce2985f2a7d041b0624aaf2e9807363180ae3b259a",
+      "accessedAt": "2026-09-29T20:39:36.938Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.boersenblatt.net/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1594,
+    "sha256": "3200f655bd0e859a4fb1a7237cc64d4cec38824f6f5ee914c37d0b9de0f9c554",
+    "accessedAt": "2026-09-29T20:39:35.546Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register/",
+      "/user/password/",
+      "/user/login/",
+      "/user/logout/",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password/",
+      "/index.php/user/register/",
+      "/index.php/user/login/",
+      "/index.php/user/logout/"
+    ]
+  },
+  "endpoint": {
+    "id": "boersenblatt",
+    "name": "Börsenblatt",
+    "url": "https://www.boersenblatt.net/thema/alle-news-aus-der-buchbranche",
+    "format": "html",
+    "language": "de",
+    "region": "global",
+    "sourceFamilyId": "boersenblatt",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.boersenblatt.net"
+    ],
+    "linkPattern": "^\\/home\\/[^/]+\\/?$|^\\/thema\\/[^/]+\\/?$|^\\/news\\/.+|^\\/service\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.boersenblatt.net/news/boersenverein/vorlesewettbewerb-2026/27-deutschlands-bestes-vorlesetalent-gesucht-442525"
+    ],
+    "verifiedAt": "2026-09-29T20:39:36.943Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 11,
+  "literaryCandidateCount": 11,
+  "sample": {
+    "sourceId": "boersenblatt",
+    "source": {
+      "name": "Börsenblatt",
+      "url": "https://www.boersenblatt.net/news/boersenverein/vorlesewettbewerb-2026/27-deutschlands-bestes-vorlesetalent-gesucht-442525",
+      "language": "de"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Vorlesewettbewerb 2026/27: Deutschlands bestes Vorlesetalent gesucht",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:35.984Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.boersenblatt.net/news/boersenverein/vorlesewettbewerb-2026/27-deutschlands-bestes-vorlesetalent-gesucht-442525",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102993,
+      "sha256": "a302e749beed0690d934edce2985f2a7d041b0624aaf2e9807363180ae3b259a",
+      "accessedAt": "2026-09-29T20:39:36.938Z",
+      "headline": "Vorlesewettbewerb 2026/27: Deutschlands bestes Vorlesetalent gesucht",
+      "excerpt": "Stiftung Buchkultur und Leseförderung des Börsenvereins Vorlesewettbewerb 2026/27: Deutschlands bestes Vorlesetalent gesucht 29. September 2026 Pressemitteilung des BörsenvereinsDer Vorlesewettbewerb des Deutschen Buchhandels geht in eine neue Runde. Er startet im Oktober an den Schulen und führt über mehrere regionale Ebenen bis zum Bundesfinale im Europa-Park im Juni 2027. © Börsenverein Komment",
+      "publishedDates": [
+        {
+          "value": "2026-09-29T10:01:12+0200",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "canonical": "https://www.boersenblatt.net/news/boersenverein/vorlesewettbewerb-2026/27-deutschlands-bestes-vorlesetalent-gesucht-442525",
+      "language": "de",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:36.943Z",
+  "foundItems": [
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/news/boersenverein/vorlesewettbewerb-2026/27-deutschlands-bestes-vorlesetalent-gesucht-442525",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vorlesewettbewerb 2026/27: Deutschlands bestes Vorlesetalent gesucht",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/news/bestseller/lady-di-buch-schnellt-sofort-auf-den-ersten-platz-442521",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lady Di-Buch schnellt sofort auf den ersten Platz",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/news/theater-hoerspiel-kinderbuch-maja-nielsen-442609",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Theater, Hörspiel, Kinderbuch: Maja Nielsen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/news/neues-bezugsmodell-im-buchhandel-442519",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Neues Bezugsmodell im Buchhandel",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/news/verlage-news/drei-autorinnen-und-airbrushtattoos-442795",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Drei Autorinnen und Airbrushtattoos",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/news/angebote-fuer-young-professionals-auf-der-fbm26-442619",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Angebote für Young Professionals auf der FBM26",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/news/auszeichnung-fuer-sebastian-guggolz-442613",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Auszeichnung für Sebastian Guggolz",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/news/wie-lesen-die-menschen-deutschland-442611",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wie lesen die Menschen in Deutschland?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/news/malkowski-preis-fuer-dorothea-gruenzweig-442523",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Malkowski-Preis für Dorothea Grünzweig",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/home/buch-oder-smartphone-442517",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Buch oder Smartphone?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "boersenblatt",
+      "source": {
+        "name": "Börsenblatt",
+        "url": "https://www.boersenblatt.net/thema/alle-news-aus-der-buchbranche",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Direkt zum Inhalt",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:35.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "6001856fa206fa8f11b775eacc1d532cc764e7ac4d7ec36a41c652faf0f87ef3"
+}

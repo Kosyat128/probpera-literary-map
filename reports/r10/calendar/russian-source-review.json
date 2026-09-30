@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-27T14:01:26.491Z",
+  "scope": "Exact Russian writer dates corroborated by institutional pages; unresolved dates remain held.",
+  "ready": [
+    {
+      "writerKey": "russia:fyodor_tyutchev",
+      "field": "birthDate",
+      "proposedValue": "1803-12-05",
+      "sourceUrl": "https://www.culture.ru/persons/8283/fedor-tyutchev",
+      "checkedAt": "2026-09-27T14:01:23.673Z",
+      "sourceDocumentSha256": "e975e035b9fd0697541a14f1562ae844d7adc8a10a2a44829954f9552044f987",
+      "finding": "05 декабря 1803",
+      "headline": "Федор Тютчев"
+    },
+    {
+      "writerKey": "russia:fyodor_tyutchev",
+      "field": "deathDate",
+      "proposedValue": "1873-07-27",
+      "sourceUrl": "https://www.culture.ru/persons/8283/fedor-tyutchev",
+      "checkedAt": "2026-09-27T14:01:23.673Z",
+      "sourceDocumentSha256": "e975e035b9fd0697541a14f1562ae844d7adc8a10a2a44829954f9552044f987",
+      "finding": "27 июля 1873",
+      "headline": "Федор Тютчев"
+    },
+    {
+      "writerKey": "russia:afanasiy_fet",
+      "field": "birthDate",
+      "proposedValue": "1820-12-05",
+      "sourceUrl": "https://www.prlib.ru/history/2071338",
+      "checkedAt": "2026-09-27T14:01:22.166Z",
+      "sourceDocumentSha256": "e4dc6c6d31a07457cffc357b6bf030958a3a1c3eda68366f3e7cffab5962f5cb",
+      "finding": "5 декабря) 1820",
+      "headline": "Родился выдающийся русский поэт, переводчик, мемуарист Афанасий Афанасьевич Фет"
+    },
+    {
+      "writerKey": "russia:afanasiy_fet",
+      "field": "deathDate",
+      "proposedValue": "1892-12-03",
+      "sourceUrl": "https://www.prlib.ru/history/2071338",
+      "checkedAt": "2026-09-27T14:01:22.166Z",
+      "sourceDocumentSha256": "e4dc6c6d31a07457cffc357b6bf030958a3a1c3eda68366f3e7cffab5962f5cb",
+      "finding": "3 декабря) 1892",
+      "headline": "Родился выдающийся русский поэт, переводчик, мемуарист Афанасий Афанасьевич Фет"
+    },
+    {
+      "writerKey": "russia:maxim_gorky",
+      "field": "birthDate",
+      "proposedValue": "1868-03-28",
+      "sourceUrl": "https://www.prlib.ru/history/1916692",
+      "checkedAt": "2026-09-27T14:01:22.907Z",
+      "sourceDocumentSha256": "8dff30114cb01329262f189d5746b60901d695c2a2732f1cf957b6861a3e0aa4",
+      "finding": "28) марта 1868",
+      "headline": "Родился русский, советский писатель Максим Горький"
+    },
+    {
+      "writerKey": "russia:maxim_gorky",
+      "field": "deathDate",
+      "proposedValue": "1936-06-18",
+      "sourceUrl": "https://www.prlib.ru/history/1916692",
+      "checkedAt": "2026-09-27T14:01:22.907Z",
+      "sourceDocumentSha256": "8dff30114cb01329262f189d5746b60901d695c2a2732f1cf957b6861a3e0aa4",
+      "finding": "18 июня 1936",
+      "headline": "Родился русский, советский писатель Максим Горький"
+    },
+    {
+      "writerKey": "russia:alexander_kuprin",
+      "field": "birthDate",
+      "proposedValue": "1870-09-07",
+      "sourceUrl": "https://www.culture.ru/persons/8191/aleksandr-kuprin",
+      "checkedAt": "2026-09-27T14:01:23.278Z",
+      "sourceDocumentSha256": "b44a5a46c5a9867ceb5bbcbcc04e2dd27b767f42ebd962da5fc7b9bc1f053a97",
+      "finding": "07 сентября 1870",
+      "headline": "Александр Куприн"
+    },
+    {
+      "writerKey": "russia:andrei_bely",
+      "field": "birthDate",
+      "proposedValue": "1880-10-26",
+      "sourceUrl": "https://www.culture.ru/persons/8134/andrei-belyi",
+      "checkedAt": "2026-09-27T14:01:24.815Z",
+      "sourceDocumentSha256": "e8e7a600227435159ff03d4b93aac8c858168d97d5eeb20b4215d8c439f43168",
+      "finding": "26 октября 1880",
+      "headline": "Андрей Белый"
+    },
+    {
+      "writerKey": "russia:yevgeny_zamyatin",
+      "field": "birthDate",
+      "proposedValue": "1884-02-01",
+      "sourceUrl": "https://www.culture.ru/events/911924/pogovorim-o-zamyatine-e-i",
+      "checkedAt": "2026-09-27T14:01:24.888Z",
+      "sourceDocumentSha256": "7734e998432d1da4f97f575d1599e82d2736414df7b12ed4a5113de5994b1c55",
+      "finding": "1 февраля] 1884",
+      "headline": "Поговорим о Замятине Е.И."
+    },
+    {
+      "writerKey": "russia:yevgeny_zamyatin",
+      "field": "deathDate",
+      "proposedValue": "1937-03-10",
+      "sourceUrl": "https://www.culture.ru/events/911924/pogovorim-o-zamyatine-e-i",
+      "checkedAt": "2026-09-27T14:01:24.888Z",
+      "sourceDocumentSha256": "7734e998432d1da4f97f575d1599e82d2736414df7b12ed4a5113de5994b1c55",
+      "finding": "10 марта 1937",
+      "headline": "Поговорим о Замятине Е.И."
+    },
+    {
+      "writerKey": "russia:vladimir_mayakovsky",
+      "field": "birthDate",
+      "proposedValue": "1893-07-19",
+      "sourceUrl": "https://www.culture.ru/persons/8266/vladimir-mayakovskii",
+      "checkedAt": "2026-09-27T14:01:24.930Z",
+      "sourceDocumentSha256": "4f011ca9ab29d38c14cbdfafa415419888fb1902e19da4022eaaafec161c21a1",
+      "finding": "19 июля 1893",
+      "headline": "Владимир Маяковский"
+    },
+    {
+      "writerKey": "russia:varlam_shalamov",
+      "field": "birthDate",
+      "proposedValue": "1907-06-18",
+      "sourceUrl": "https://www.culture.ru/persons/9884/varlam-shalamov",
+      "checkedAt": "2026-09-27T14:01:26.464Z",
+      "sourceDocumentSha256": "247466819b68f04fe773e9b198ad333278a1f9671b27e350ab682176ed21d68f",
+      "finding": "18 июня 1907",
+      "headline": "Варлам Шаламов"
+    },
+    {
+      "writerKey": "russia:alexander_tvardovsky",
+      "field": "birthDate",
+      "proposedValue": "1910-06-21",
+      "sourceUrl": "https://www.culture.ru/catalog/muzyka_o_rodine/ru/item/person/tvardovskiy-aleksandr-trifonovich",
+      "checkedAt": "2026-09-27T14:01:25.019Z",
+      "sourceDocumentSha256": "3966d4a1346d0624d2bd9406302242e145d42249da120b1ac1b32c5042718b88",
+      "finding": "21.06.1910",
+      "headline": ""
+    }
+  ],
+  "held": []
+}

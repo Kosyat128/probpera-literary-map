@@ -1,0 +1,694 @@
+{
+  "schemaVersion": 1,
+  "batchId": "current-news-reviewed-20260929",
+  "preparedAt": "2026-09-29T20:08:14.168Z",
+  "scope": "Fifteen manually reviewed distinct current literary reports with their actual source dates. No deployment or social dispatch.",
+  "records": [
+    {
+      "id": "asymptote-kleopatra-olympiou-desperado-grandma-20260929",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29T13:00:37.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Asymptote опубликовал рассказ Клеопатры Олимпиу в авторском переводе",
+        "en": "Asymptote publishes Kleopatra Olympiou’s “Desperado Grandma” in her own translation"
+      },
+      "summary": {
+        "ru": "В рубрике Translation Tuesday появился рассказ кипрской писательницы Клеопатры Олимпиу. Английскую версию «Desperado Grandma» автор перевела с греческого сама; публикация сопровождается коротким представлением писательницы.",
+        "en": "Translation Tuesday features a story by Cypriot writer Kleopatra Olympiou. She translated “Desperado Grandma” from Greek into English herself; the publication includes a short introduction to the writer."
+      },
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/29/translation-tuesday-desperado-grandma-by-kleopatra-olympiou/",
+        "language": "en",
+        "title": "Translation Tuesday: “Desperado Grandma” by Kleopatra Olympiou"
+      },
+      "verification": "confirmed",
+      "region": "asia",
+      "eventKey": "asymptote-kleopatra-olympiou-desperado-grandma-20260929"
+    },
+    {
+      "id": "bisg-brian-oleary-award-renaming-report-20260929",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-16",
+      "publishedAt": "2026-09-29T12:27:17.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Отраслевую премию BISG назвали в честь Брайана О’Лири",
+        "en": "BISG’s Industry Champion Award is renamed in honor of Brian F. O’Leary"
+      },
+      "summary": {
+        "ru": "Publishing Perspectives сообщил о новом названии Industry Champion Award. Премия отмечает вклад в книжную отрасль; переименование было объявлено на юбилейном форуме BISG 16 сентября. Лауреатом 2026 года стала Крис Климанн.",
+        "en": "Publishing Perspectives reports the new name of the Industry Champion Award. The award recognizes service to the book industry; the renaming was announced at BISG’s anniversary forum on September 16. Kris Kliemann is the 2026 recipient."
+      },
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/u-s-based-bisg-renames-top-industry-award-to-honor-former-executive-director/",
+        "language": "en-US",
+        "title": "U.S.-Based BISG Renames Top Industry Award to Honor Former Executive Director"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "bisg-brian-oleary-award-renaming-report-20260929"
+    },
+    {
+      "id": "min-jin-lee-american-hagwon-writing-interview-20260929",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29T11:05:00.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Мин Джин Ли рассказала о работе над American Hagwon",
+        "en": "Min Jin Lee discusses her writing process ahead of “American Hagwon”"
+      },
+      "summary": {
+        "ru": "Electric Literature опубликовал интервью с автором «Патинко» перед выходом нового романа American Hagwon. Мин Джин Ли рассказала о регулярной работе, многочисленных черновиках и сотрудничестве с редакторами.",
+        "en": "Electric Literature publishes an interview with the author of Pachinko ahead of her new novel American Hagwon. Min Jin Lee discusses regular writing, repeated drafts, and working with editors."
+      },
+      "source": {
+        "name": "Electric Literature",
+        "url": "https://electricliterature.com/min-jin-lee-reads-a-chapter-from-the-bible-every-day-before-she-writes/",
+        "language": "en-US",
+        "title": "Min Jin Lee Reads a Chapter From the Bible Every Day Before She Writes"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "min-jin-lee-american-hagwon-writing-interview-20260929"
+    },
+    {
+      "id": "nigerian-anthology-stories-they-forgot-call-20260929",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29T09:36:17.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Для новой антологии нигерийских рассказов открыт приём рукописей",
+        "en": "Submissions open for “Stories They Forgot to Tell”, an anthology of Nigerian short stories"
+      },
+      "summary": {
+        "ru": "Редакторы Ндука Отионо и Фунми Гаджи принимают ранее не опубликованные рассказы нигерийских авторов объёмом 3000-5000 слов до 15 декабря 2026 года. По сообщению Brittle Paper, антологию планирует выпустить Narrative Landscape Press в 2027 году.",
+        "en": "Editors Nduka Otiono and Funmi Gaji seek previously unpublished stories of 3,000-5,000 words by Nigerian writers through December 15, 2026. Brittle Paper reports that Narrative Landscape Press plans to publish the anthology in 2027."
+      },
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/call-for-submissions-stories-they-forgot-to-tell-a-new-anthology-of-nigerian-short-stories-submit-by-december-15-2026/",
+        "language": "en-US",
+        "title": "Call for Submissions: Stories They Forgot to Tell, a New Anthology of Nigerian Short Stories | Submit by December 15, 2026"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "nigerian-anthology-stories-they-forgot-call-20260929"
+    },
+    {
+      "id": "literary-arts-portland-october-programme-20260929",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29T03:40:15.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Literary Arts представила октябрьскую программу в Портленде",
+        "en": "Literary Arts announces its October programme in Portland"
+      },
+      "summary": {
+        "ru": "В программе - обсуждение книжных запретов с писательницей Кэт Уинтерс 6 октября и вечер чтения незавершённых текстов One Page Wednesday 7 октября. Организация также объявила встречи с авторами и занятия по писательскому мастерству.",
+        "en": "The programme includes a discussion of book bans with writer Cat Winters on October 6 and a One Page Wednesday reading of works in progress on October 7. Literary Arts also announces author events and writing classes."
+      },
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/09/october-events-writing-classes/",
+        "language": "en",
+        "title": "October Events & Writing Classes"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "literary-arts-portland-october-programme-20260929"
+    },
+    {
+      "id": "ast-tristan-iseut-bilingual-weekly-releases-20260929",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "АСТ представило двуязычное издание «Тристана и Изольды» в новинках недели",
+        "en": "AST features a bilingual “Tristan et Iseut” edition in its weekly releases"
+      },
+      "summary": {
+        "ru": "В подборку издательства вошёл текст Жозефа Бедье на французском языке с русским переводом Александра Веселовского и иллюстрациями Роберта Энгельса. Строки оригинала и перевода расположены рядом для сопоставления.",
+        "en": "The publisher’s weekly selection includes Joseph Bédier’s French text with Alexander Veselovsky’s Russian translation and illustrations by Robert Engels. The original and translated lines are placed alongside each other for comparison."
+      },
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/novinki-nedeli-kniga-zaklinaniy-garri-pottera-babushkiny-retsepty-i-biografiya-bitlz/",
+        "language": "ru-RU",
+        "title": "29.09.2026 г. Книги Новинки недели: книга заклинаний Гарри Поттера, бабушкины рецепты и биография «Битлз» Книги на иностранных языках, манхва, сборники рецептов, темное фэнтези, азиатские новеллы, увлекательный научпоп, современная проза, поэзия, уютные детективы."
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "ast-tristan-iseut-bilingual-weekly-releases-20260929"
+    },
+    {
+      "id": "hernan-diaz-ply-literary-hub-profile-20260929",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Эрнан Диас представил новый роман Ply в интервью Literary Hub",
+        "en": "Hernan Diaz discusses his new novel “Ply” with Literary Hub"
+      },
+      "summary": {
+        "ru": "В опубликованном 29 сентября интервью автор «Доверия» рассказал о третьем романе и работе с научными консультантами. По сообщению Literary Hub, Ply выходит на этой неделе; действие книги разворачивается в изменившемся городе будущего.",
+        "en": "In an interview published on September 29, the author of Trust discusses his third novel and consulting scientists. Literary Hub reports that Ply is being released this week; it is set in a transformed city of the future."
+      },
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/hernan-diazs-new-novel-isnt-a-dystopia-trust-him/",
+        "language": "en",
+        "title": "Hernan Diaz's New Novel Isn’t a Dystopia—Trust Him"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "hernan-diaz-ply-literary-hub-profile-20260929"
+    },
+    {
+      "id": "hachette-international-management-reorganisation-20260929",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29T15:35:00.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Hachette объявила изменения руководства с января 2027 года",
+        "en": "Hachette announces management changes effective January 2027"
+      },
+      "summary": {
+        "ru": "По сообщению ActuaLitté, с 1 января Кэти Эспинер возглавит Hachette UK, а Бен Севьер - Hachette Book Group в США. Дэвид Шелли станет международным советником группы и исполнительным председателем обеих компаний. Это объявленные будущие назначения.",
+        "en": "ActuaLitté reports that Katie Espiner will lead Hachette UK and Ben Sevier will lead Hachette Book Group in the US from January 1. David Shelley will become a global adviser and executive chair of both companies. These are announced future appointments."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134291/edition/hachette-livre-reorganise-sa-gouvernance-internationale-a-partir-de-2027",
+        "language": "fr",
+        "title": "Hachette Livre réorganise sa gouvernance internationale à partir de 2027"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "hachette-international-management-reorganisation-20260929"
+    },
+    {
+      "id": "babelica-independent-publishers-2026-review-20260929",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-29T12:22:37.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Publishing Perspectives подвёл итоги онлайн-ярмарки Babelica",
+        "en": "Publishing Perspectives reports on the Babelica online book fair"
+      },
+      "summary": {
+        "ru": "Материал посвящён ярмарке Международного альянса независимых издателей, прошедшей 21-22 сентября. Программа включала обсуждения и две сессии продажи прав: на детские книги и на взрослую художественную и нехудожественную литературу.",
+        "en": "The report covers the International Alliance of Independent Publishers’ fair, held on September 21-22. The programme included discussions and two rights-market sessions: one for children’s books and one for adult fiction and nonfiction."
+      },
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/with-babelica-a-network-of-independent-publishers-looks-to-increase-bibliodiversity/",
+        "language": "en-US",
+        "title": "With Babelica, A Network of Independent Publishers Looks to Increase Bibliodiversity"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "babelica-independent-publishers-2026-review-20260929"
+    },
+    {
+      "id": "ekin-oklap-first-summer-interview-20260929",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29T11:00:00.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Экин Оклап рассказала о дебютном романе First Summer",
+        "en": "Ekin Oklap discusses her debut novel “First Summer”"
+      },
+      "summary": {
+        "ru": "Electric Literature опубликовал разговор с переводчицей Орхана Памука о её собственном романе. Автор рассказала о подростковой дружбе, памяти и том, как переводческая работа помогает ей выбирать слова и ритм повествования.",
+        "en": "Electric Literature publishes a conversation with Orhan Pamuk’s translator about her own novel. Oklap discusses teenage friendship, memory, and how translation informs her choices of words and narrative rhythm."
+      },
+      "source": {
+        "name": "Electric Literature",
+        "url": "https://electricliterature.com/first-summer-reminds-us-that-teenage-relationships-never-fade-away/",
+        "language": "en-US",
+        "title": "FIRST SUMMER Reminds Us That Teenage Relationships Never Fade Away"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "ekin-oklap-first-summer-interview-20260929"
+    },
+    {
+      "id": "brittle-paper-african-campus-novels-20260929",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29T09:20:49.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Brittle Paper представил семь африканских романов об университетской жизни",
+        "en": "Brittle Paper publishes a reading list of seven African campus novels"
+      },
+      "summary": {
+        "ru": "В новую подборку вошли Honey & Spice Болу Бабалолы, And Then He Sang a Lullaby Стивена Буоро и другие книги о студенчестве. Это опубликованный 29 сентября список для чтения; дата материала не означает, что все книги вышли сегодня.",
+        "en": "The new reading list includes Bolu Babalola’s Honey & Spice, Stephen Buoro’s And Then He Sang a Lullaby, and other books about student life. The list was published on September 29; that date does not mean every book is a new release."
+      },
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/missing-hillman-college-already-here-are-7-african-books-to-take-you-back-to-campus/",
+        "language": "en-US",
+        "title": "Missing Hillman College Already? Here Are 7 African Books to Take You Back to Campus"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "brittle-paper-african-campus-novels-20260929"
+    },
+    {
+      "id": "scugnizzeria-vomero-giancarlo-siani-bookshop-20260929",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29T00:43:48.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Книжный проект La Scugnizzeria открыл магазин в районе Вомеро",
+        "en": "La Scugnizzeria opens a bookshop in Naples’ Vomero district"
+      },
+      "summary": {
+        "ru": "Il Libraio сообщил о третьем магазине культурного проекта Розарио Эспозито Ла Россы и Маддалены Сторнаюоло. Новое пространство в Неаполе посвящено журналисту Джанкарло Сиани и расположено на piazzetta Durante, 1.",
+        "en": "Il Libraio reports the third bookshop in Rosario Esposito La Rossa and Maddalena Stornaiuolo’s cultural project. The new Naples location honors journalist Giancarlo Siani and is at piazzetta Durante 1."
+      },
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/librerie/scugnizzeria-libreria-vomero-1508849/",
+        "language": "it",
+        "title": "“La Scugnizzeria” sbarca al Vomero: la nuova libreria è dedicata a Giancarlo Siani"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "scugnizzeria-vomero-giancarlo-siani-bookshop-20260929"
+    },
+    {
+      "id": "andrei-rubanov-tambov-literary-project-20260929",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Андрей Рубанов опубликовал впечатления о литературной поездке в Тамбов",
+        "en": "Andrei Rubanov publishes an account of his literary trip to Tambov"
+      },
+      "summary": {
+        "ru": "«Год Литературы» представил текст участника проекта «Большая страна - Большая книга». Писатель рассказал о Тамбове и связях города с Гавриилом Державиным; это авторский рассказ о состоявшейся поездке.",
+        "en": "God Literatury publishes an account by a participant in the “Big Country - Big Book” project. Rubanov writes about Tambov and the city’s connection with Gavrila Derzhavin, describing a trip that has already taken place."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/29/andrej-rubanov-snova-zdorovo-poklon-iz-tambova",
+        "language": "ru",
+        "title": "Андрей Рубанов: «Снова-здорово, поклон из Тамбова»"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "andrei-rubanov-tambov-literary-project-20260929"
+    },
+    {
+      "id": "ast-nikolai-ostrovsky-122-anniversary-20260929",
+      "category": "anniversaries",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "АСТ отметило 122-летие со дня рождения Николая Островского",
+        "en": "AST marks the 122nd anniversary of Nikolai Ostrovsky’s birth"
+      },
+      "summary": {
+        "ru": "29 сентября издательство опубликовало материал об авторе «Как закалялась сталь» и «Рождённых бурей». Заметка рассказывает о биографии писателя и истории двух романов; это памятная дата, а не анонс новой книги.",
+        "en": "On September 29, the publisher releases a feature on the author of How the Steel Was Tempered and Born of the Storm. It covers the writer’s life and the history of the two novels; this is an anniversary feature."
+      },
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/nikolay-ostrovskiy-klassik-sotsrealizma/",
+        "language": "ru-RU",
+        "title": "29.09.2026 г. Авторы Николай Островский: биография и книги К 122-летию со дня рождения автора романов «Как закалялась сталь» и «Рожденные бурей»."
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "ast-nikolai-ostrovsky-122-anniversary-20260929"
+    },
+    {
+      "id": "hannah-grace-icebreaker-netflix-cast-20260929",
+      "category": "adaptations",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-29T15:33:00.000Z",
+      "verifiedAt": "2026-09-29T20:08:14.168Z",
+      "title": {
+        "ru": "Для экранизации Icebreaker Ханны Грейс объявлены главные исполнители",
+        "en": "Lead actors announced for the adaptation of Hannah Grace’s “Icebreaker”"
+      },
+      "summary": {
+        "ru": "По сообщению ActuaLitté, Дейзи Джелли и Коннор Саймос сыграют главных героев сериала Netflix по спортивному роману Icebreaker. Автор книги участвует в проекте как исполнительный продюсер. Дата выхода и число эпизодов пока не объявлены.",
+        "en": "ActuaLitté reports that Daisy Jelley and Connor Simos will play the leads in Netflix’s series based on the sports romance Icebreaker. Hannah Grace is an executive producer. A release date and episode count have not yet been announced."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134293/adaptation/icebreaker-le-phenomene-booktok-de-hannah-grace-adapte-en-serie-par-netflix",
+        "language": "fr",
+        "title": "Icebreaker : le phénomène BookTok de Hannah Grace adapté en série par Netflix"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "hannah-grace-icebreaker-netflix-cast-20260929"
+    }
+  ],
+  "recordSha256": "b22ecf610885baab7d393a8d9ccdfe3244b6ab7896c8b38b5ab01bdee03a8086",
+  "evidence": [
+    {
+      "id": "asymptote-kleopatra-olympiou-desperado-grandma-20260929",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/29/translation-tuesday-desperado-grandma-by-kleopatra-olympiou/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:22.882Z",
+      "responseSha256": "a98c73b2bffbff810256593d01e285f975078991a62e6846040e49aea123688a",
+      "facts": [
+        "Translation Tuesday features a story by Cypriot writer Kleopatra Olympiou. She translated “Desperado Grandma” from Greek into English herself; the publication includes a short introduction to the writer."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T13:00:37.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "bisg-brian-oleary-award-renaming-report-20260929",
+      "url": "https://publishingperspectives.com/2026/09/u-s-based-bisg-renames-top-industry-award-to-honor-former-executive-director/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:22.575Z",
+      "responseSha256": "1b9ac65a02739453733ef9624b8f58d4d9fa3d18171271e801c05059cbd8ccbc",
+      "facts": [
+        "Publishing Perspectives reports the new name of the Industry Champion Award. The award recognizes service to the book industry; the renaming was announced at BISG’s anniversary forum on September 16. Kris Kliemann is the 2026 recipient."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T12:27:17.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "explicit-event-date-in-source-body",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "min-jin-lee-american-hagwon-writing-interview-20260929",
+      "url": "https://electricliterature.com/min-jin-lee-reads-a-chapter-from-the-bible-every-day-before-she-writes/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:24.119Z",
+      "responseSha256": "6b2d0b4cbd8d37d61cae33f18ab0da90b48c48f36f3e08f560986d2f3efa1843",
+      "facts": [
+        "Electric Literature publishes an interview with the author of Pachinko ahead of her new novel American Hagwon. Min Jin Lee discusses regular writing, repeated drafts, and working with editors."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T11:05:00.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "nigerian-anthology-stories-they-forgot-call-20260929",
+      "url": "https://brittlepaper.com/2026/09/call-for-submissions-stories-they-forgot-to-tell-a-new-anthology-of-nigerian-short-stories-submit-by-december-15-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:22.992Z",
+      "responseSha256": "f7db0c5dfce2bec3582bae2c838039fa90ac8faeeacdfa845f94e41f22ac07dd",
+      "facts": [
+        "Editors Nduka Otiono and Funmi Gaji seek previously unpublished stories of 3,000-5,000 words by Nigerian writers through December 15, 2026. Brittle Paper reports that Narrative Landscape Press plans to publish the anthology in 2027."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T09:36:17.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "literary-arts-portland-october-programme-20260929",
+      "url": "https://literary-arts.org/2026/09/october-events-writing-classes/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:23.199Z",
+      "responseSha256": "b9515270f8161257bfd2412b638e650a8cb74bd660cb838d340abdc443a1b0f2",
+      "facts": [
+        "The programme includes a discussion of book bans with writer Cat Winters on October 6 and a One Page Wednesday reading of works in progress on October 7. Literary Arts also announces author events and writing classes."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T03:40:15.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "ast-tristan-iseut-bilingual-weekly-releases-20260929",
+      "url": "https://ast.ru/news/novinki-nedeli-kniga-zaklinaniy-garri-pottera-babushkiny-retsepty-i-biografiya-bitlz/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:24.226Z",
+      "responseSha256": "d59603e25d0ca5220f9cb70348e27675ac3dcadb3c30d0e7104fd5fd838fa276",
+      "facts": [
+        "The publisher’s weekly selection includes Joseph Bédier’s French text with Alexander Veselovsky’s Russian translation and illustrations by Robert Engels. The original and translated lines are placed alongside each other for comparison."
+      ],
+      "sourcePublishedEvidence": [
+        {
+          "value": "2026-09-29T16:00:00+0300",
+          "method": "jsonld.datePublished"
+        }
+      ],
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "hernan-diaz-ply-literary-hub-profile-20260929",
+      "url": "https://lithub.com/hernan-diazs-new-novel-isnt-a-dystopia-trust-him/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:24.181Z",
+      "responseSha256": "2140b4147d376131592b5ec32940eda2db495378acb11ff7fadb0f58b2238274",
+      "facts": [
+        "In an interview published on September 29, the author of Trust discusses his third novel and consulting scientists. Literary Hub reports that Ply is being released this week; it is set in a transformed city of the future."
+      ],
+      "sourcePublishedEvidence": [
+        {
+          "value": "2026-09-29T09:10:44+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "hachette-international-management-reorganisation-20260929",
+      "url": "https://actualitte.com/article/134291/edition/hachette-livre-reorganise-sa-gouvernance-internationale-a-partir-de-2027",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:24.551Z",
+      "responseSha256": "919a2299aeca70b9fe3a8de0d70f5e72aaa5a0e6cdfbdbc431030424273fbe5e",
+      "facts": [
+        "ActuaLitté reports that Katie Espiner will lead Hachette UK and Ben Sevier will lead Hachette Book Group in the US from January 1. David Shelley will become a global adviser and executive chair of both companies. These are announced future appointments."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T15:35:00.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "babelica-independent-publishers-2026-review-20260929",
+      "url": "https://publishingperspectives.com/2026/09/with-babelica-a-network-of-independent-publishers-looks-to-increase-bibliodiversity/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:24.537Z",
+      "responseSha256": "9cd3d6fda93dee82029db8d0997a40657828096d3ee556f0d23184b8cd237f13",
+      "facts": [
+        "The report covers the International Alliance of Independent Publishers’ fair, held on September 21-22. The programme included discussions and two rights-market sessions: one for children’s books and one for adult fiction and nonfiction."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T12:22:37.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "explicit-event-date-in-source-body",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "ekin-oklap-first-summer-interview-20260929",
+      "url": "https://electricliterature.com/first-summer-reminds-us-that-teenage-relationships-never-fade-away/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:24.905Z",
+      "responseSha256": "ce122e936859eed8f8438247549226e5cf4673bdbfcc97e5fddeef099badcce8",
+      "facts": [
+        "Electric Literature publishes a conversation with Orhan Pamuk’s translator about her own novel. Oklap discusses teenage friendship, memory, and how translation informs her choices of words and narrative rhythm."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T11:00:00.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "brittle-paper-african-campus-novels-20260929",
+      "url": "https://brittlepaper.com/2026/09/missing-hillman-college-already-here-are-7-african-books-to-take-you-back-to-campus/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:25.470Z",
+      "responseSha256": "47fdfbd82fcb3634bdc72f940b0d83fb2623744a4800a40493ffcbb4f7a39d05",
+      "facts": [
+        "The new reading list includes Bolu Babalola’s Honey & Spice, Stephen Buoro’s And Then He Sang a Lullaby, and other books about student life. The list was published on September 29; that date does not mean every book is a new release."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T09:20:49.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "scugnizzeria-vomero-giancarlo-siani-bookshop-20260929",
+      "url": "https://www.illibraio.it/news/librerie/scugnizzeria-libreria-vomero-1508849/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:25.073Z",
+      "responseSha256": "4084ca8da6ee0d265e35b70a85e5a11ce6a830a559398462e71fca33209d8947",
+      "facts": [
+        "Il Libraio reports the third bookshop in Rosario Esposito La Rossa and Maddalena Stornaiuolo’s cultural project. The new Naples location honors journalist Giancarlo Siani and is at piazzetta Durante 1."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T00:43:48.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "andrei-rubanov-tambov-literary-project-20260929",
+      "url": "https://godliteratury.ru/articles/2026/09/29/andrej-rubanov-snova-zdorovo-poklon-iz-tambova",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:25.931Z",
+      "responseSha256": "097b397d1791613830fe346b4ea6d29cce328cfbee48c012124dfbd1c113df10",
+      "facts": [
+        "God Literatury publishes an account by a participant in the “Big Country - Big Book” project. Rubanov writes about Tambov and the city’s connection with Gavrila Derzhavin, describing a trip that has already taken place."
+      ],
+      "sourcePublishedEvidence": [
+        {
+          "value": "2026-09-29T17:27:00",
+          "method": "jsonld.datePublished"
+        }
+      ],
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "ast-nikolai-ostrovsky-122-anniversary-20260929",
+      "url": "https://ast.ru/news/nikolay-ostrovskiy-klassik-sotsrealizma/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:25.723Z",
+      "responseSha256": "dbf05dcbe307abf17249fef853e72dbc35d76c64bd6a964aa06fd53f1632934f",
+      "facts": [
+        "On September 29, the publisher releases a feature on the author of How the Steel Was Tempered and Born of the Storm. It covers the writer’s life and the history of the two novels; this is an anniversary feature."
+      ],
+      "sourcePublishedEvidence": [
+        {
+          "value": "2026-09-29T15:10:00+0300",
+          "method": "jsonld.datePublished"
+        }
+      ],
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    },
+    {
+      "id": "hannah-grace-icebreaker-netflix-cast-20260929",
+      "url": "https://actualitte.com/article/134293/adaptation/icebreaker-le-phenomene-booktok-de-hannah-grace-adapte-en-serie-par-netflix",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-29T20:04:26.095Z",
+      "responseSha256": "e2d161f07946dbcfbf10755f454cbbf22910d7ee2ce1702bb33dadf11766672d",
+      "facts": [
+        "ActuaLitté reports that Daisy Jelley and Connor Simos will play the leads in Netflix’s series based on the sports romance Icebreaker. Hannah Grace is an executive producer. A release date and episode count have not yet been announced."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "bounded-production-feed-parser",
+        "value": "2026-09-29T15:33:00.000Z"
+      },
+      "review": {
+        "method": "manual-factual-and-bilingual-review-of-fetched-article",
+        "reviewedAt": "2026-09-29T20:08:14.168Z",
+        "eventDateBasis": "dated-source-publication-of-report-or-announcement",
+        "limitation": "A report or announcement is not evidence that a future appointment, event or book release has happened."
+      }
+    }
+  ]
+}

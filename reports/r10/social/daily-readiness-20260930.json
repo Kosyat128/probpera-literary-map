@@ -1,0 +1,1482 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-29T21:20:27.005Z",
+  "day": "2026-09-30",
+  "timeZone": "Europe/Moscow",
+  "publication": "local_preparation",
+  "destination": {
+    "platform": "telegram",
+    "id": "-1002791579809"
+  },
+  "target": {
+    "minimum": 10,
+    "maximum": 15,
+    "timeZone": "Europe/Moscow"
+  },
+  "scope": "Photo readiness is not destination activation or a send receipt. Seven-day freshness uses source publication dates, never collector observation times.",
+  "counts": {
+    "currentFeedItems": 230,
+    "sourcePublishedToday": 0,
+    "unknownSourcePublicationDates": 31,
+    "photoReady": 23,
+    "recentPhotoReady": 10,
+    "acceptedFirstPostsToday": 0,
+    "firstPostDatesUnknown": 0,
+    "minimumSupplyDeficit": 0,
+    "targetSupplyDeficit": 5
+  },
+  "heldReasons": {
+    "no_destination_licensed_asset": 207
+  },
+  "outcomes": [
+    {
+      "newsId": "andrei-rubanov-tambov-literary-project-20260929",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "auto-d4229d380cd5b9d3583ee18bc1494128",
+      "captionLength": 716,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-29"
+    },
+    {
+      "newsId": "arrigo-boito-ballatella-bilingual-publication-20260929",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "manual-arrigo-boito-amisani-portrait-20260929",
+      "captionLength": 503,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-29"
+    },
+    {
+      "newsId": "ast-nikolai-ostrovsky-122-anniversary-20260929",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "auto-e0cdc6b7f8c4c37a595f7b77b0189a41",
+      "captionLength": 411,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-29"
+    },
+    {
+      "newsId": "ast-tristan-iseut-bilingual-weekly-releases-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "asymptote-kleopatra-olympiou-desperado-grandma-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "brittle-paper-african-campus-novels-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "ekin-oklap-first-summer-interview-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "hachette-international-management-reorganisation-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "hannah-grace-icebreaker-netflix-cast-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "hernan-diaz-ply-literary-hub-profile-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "literary-arts-portland-october-programme-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "min-jin-lee-american-hagwon-writing-interview-20260929",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "auto-565d99330f63261c54c82a23b6d414c5",
+      "captionLength": 731,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-29T11:05:00.000Z"
+    },
+    {
+      "newsId": "nigerian-anthology-stories-they-forgot-call-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "scugnizzeria-vomero-giancarlo-siani-bookshop-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "tolstoy-ivan-ilyich-brazil-amazon-report-20260929",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "auto-9398d30e893aabd401cb6ddc8e74b4a8",
+      "captionLength": 450,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-29"
+    },
+    {
+      "newsId": "sukhovo-kobylin-basinsky-literary-essay-20260928",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "auto-e7f46cb68b505b8317fc697c64416466",
+      "captionLength": 443,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-28"
+    },
+    {
+      "newsId": "jamaica-kincaid-sjojungfrun-presentation-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "nonna-gruffalo-italian-edition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "lithuania-ekultura-digital-heritage-finalist-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "livres-en-vignes-awards-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "madeline-cash-page-america-award-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "noon-strugatsky-trailer-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "paulina-borsook-cyberselfish-reissue-announced-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "rivera-garza-kwon-literary-influences-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "rsl-sri-lanka-books-culture-days-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "sharjah-filbo-guest-honour-announced-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "stephen-wright-black-moon-making-feature-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "viktor-likhonosov-krasnodar-square-2026",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "auto-7cfd0f303bf2c7194b41fa8fee45b860",
+      "captionLength": 805,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-25"
+    },
+    {
+      "newsId": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "auto-c62ab2d86d1c2e053bcf996276d43640",
+      "captionLength": 724,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-25"
+    },
+    {
+      "newsId": "vromans-book-soup-hoffman-ownership-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "asymptote-lianbin-ni-translation-interview-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "chooseco-cyoa-unbound-adult-imprint-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "ens-editions-first-alef-prize-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "geluck-chat-museum-ixelles-plan-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "history-of-a-town-rsl-stage-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "musicians-literary-prize-selection-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "omnibird-panz-design-awards-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "rgali-sergei-markov-archive-feature-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "sam-a-miller-still-lost-interview-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "sanna-wani-lantern-daughterhood-essay-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "scam-recit-dessine-selection-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "scariest-book-2027-preorder-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "utopiales-comics-shortlist-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "ankara-press-cheryl-ntumy-seven-states-acquisition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "cordoba-books-education-programme-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "esther-teillard-vocation-prize-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "nicolas-lunabba-gothenburg-bildning-award-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "poerio-goethe-iphigenia-attribution-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "radzinsky-eighteen-volume-collected-works-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "tv5monde-un-pays-un-livre-announced-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "vanity-fair-literary-selection-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "asymptote-hossaini-war-ends-translation-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "babelica-independent-publishers-2026-review-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "european-literacy-coalition-brussels-launch-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "florent-oiseau-francoise-sagan-prize-2026",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "auto-5614925a54c088ad54033b531d58affb",
+      "captionLength": 736,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-22T18:00:00.000Z"
+    },
+    {
+      "newsId": "john-green-signed-tip-in-record-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "jung-critical-edition-video-introduction-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "pen-america-alim-aliiev-literary-interview-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "podium-entertainment-acquisition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "wells-brynhild-first-russian-2026",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "auto-c4df3b2588fe4c64e63cf937a8cad5c2",
+      "captionLength": 439,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-22"
+    },
+    {
+      "newsId": "darlowo-morze-literatury-first-festival-report-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "lilya-brik-mamm-literary-museum-loans-2026",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "auto-54224b36c72ab6690106945342f5d7c5",
+      "captionLength": 472,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-21"
+    },
+    {
+      "newsId": "natalya-balayan-russian-fairy-tale-book-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "pesnyary-minsk-moscow-exhibition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "slovak-literary-fund-incunabula-publications-award-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "peter-stamm-cuando-oscurece-rebon-review-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "heather-cox-richardson-gitlin-auster-award-2026",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "auto-0ad7617215178f4071e32b52de6c46ff",
+      "captionLength": 753,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-21"
+    },
+    {
+      "newsId": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "pen-catala-eritrean-writers-audio-postcards-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "viking-beth-brower-emma-lion-rights-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "bruno-montane-efimera-critical-feature-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "chebatkov-dovlatov-foreigner-reading-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "dayton-literary-peace-prize-winners-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "ditan-beijing-book-market-opening-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "dubravka-rebic-vladan-desnica-decision-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "ken-bugul-julie-huntington-asymptote-interview-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "kvinnsam-periodicals-svenska-tidningar-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "novosibirsk-book-projects-seminar-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "rsl-multilingual-literary-evening-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "vernadsky-dnipro-digitised-periodicals-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "bisg-brian-oleary-award-renaming-report-20260929",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "chisinau-cosbuc-bacovia-exhibition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "kokila-jason-reynolds-lamplighters-son-acquisition-2026",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "jason-reynolds-loc-2020",
+      "captionLength": 546,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-17"
+    },
+    {
+      "newsId": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "pen-belarus-three-writers-released-20260916",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "san-martin-digital-repository-agreement-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "serapis-millay-anthology-presented-2026",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "millay-genthe-1914",
+      "captionLength": 561,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-16"
+    },
+    {
+      "newsId": "hafiz-alontsev-rsl-presentation-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "lucashenko-eddie-blanket-french-edition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "richard-oram-wind-water-cleave-talk-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "sables-de-dune-french-edition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "bogota-children-book-festival-bookshop-call-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "montevideo-international-book-fair-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "nizhny-novgorod-book-fair-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "slovakia-bibliography-days-seminars-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "turkey-childrens-editing-workshop-deadline-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "liechtenstein-helena-brehm-poetry-workshop-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "lit-connect-jakarta-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "luxembourg-unfinished-peace-archive-exhibition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "piedmont-independent-book-tour-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "pistoia-deans-rag-books-exhibition-closing-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "yesenin-konstantinovo-poetry-festival-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "chile-library-140-words-contest-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "danish-pen-banned-books-opening-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "frankfurt-rights-meeting-40-reception-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "ilcl-limited-colour-picture-books-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "frankfurt-audio-business-centre-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "frankfurt-book-fair-2026-announcement",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "frankfurt-comic-business-centre-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "aficionado-award-words-without-borders-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "brisbane-writers-festival-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "kill-jackie-series-premiere-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "nobel-literature-announcement-schedule-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "frankfurt-book-to-screen-day-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "marie-dorleans-grand-est-award-presentation-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "pen-belarus-writers-frankfurt-panel-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "childrens-detective-reading-conference-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "sarajevo-amer-tikvesa-literary-corner-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "lynne-campbell-fungi-language-song-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "stevenson-cevennes-illustrated-french-edition-2026",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "auto-fee7574dd6fb66d66d931099fa2e6bb5",
+      "captionLength": 541,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-25T06:00:00.000Z"
+    },
+    {
+      "newsId": "litres-yasnaya-polyana-free-reading-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "norwegian-pen-ossietzky-nominations-deadline-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "bugojanska-vaza-short-story-deadline-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "svensk-bokkonst-awards-ceremony-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "ayad-akhtar-portland-lecture-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "ubud-writers-readers-festival-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "weather-spirits-international-storytelling-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "saluzzo-medieval-book-festival-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "kruzhkov-mukha-pukha-reading-theatre-2026",
+      "status": "photo_ready",
+      "freshness": "publication_date_unknown",
+      "assetId": "auto-3158b858fa58d94a3c42eaefc9925305",
+      "captionLength": 760,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": null
+    },
+    {
+      "newsId": "rumpus-min-jin-lee-october-book-club-20260929",
+      "status": "photo_ready",
+      "freshness": "published_within_seven_days",
+      "assetId": "auto-565d99330f63261c54c82a23b6d414c5",
+      "captionLength": 752,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-29"
+    },
+    {
+      "newsId": "steven-veerapen-witches-talk-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "british-library-agatha-christie-exhibition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "chekhodal-short-fiction-call-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "degol-hailu-pillaging-the-dead-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "dublin-imprisoned-writer-gallagher-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "shida-bazyar-wilhelm-raabe-presentation-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "small-piece-night-student-anthology-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "european-authors-day-programme-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "erin-farley-lighthouse-lives-talk-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "shanghai-childrens-book-fair-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "gianni-mura-fuoriclasse-winner-announcement-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "adeb-namur-publishing-future-colloquium-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "ake-arts-book-festival-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "macdiarmid-thistle-centenary-talk-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "slovakia-power-story-library-webinar-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "turin-italiano-al-mondo-translators-conference-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "daniil-granin-prize-second-season-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "guadalajara-international-book-fair-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "fil-editorial-merit-ekare-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "tiktok-book-awards-mexico-ceremony-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "isabel-wilkerson-portland-lecture-2027",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "hiromi-kawakami-far-from-everywhere-2027",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "taipei-book-exhibition-czech-guest-2027",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "ben-rhodes-portland-lecture-2027",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "kiki-third-english-edition-announcement",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "george-w-bush-call-of-freedom-us-2027",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "george-w-bush-official-2003",
+      "captionLength": 547,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-17"
+    },
+    {
+      "newsId": "devenir-un-monstre-quebec-release-2027",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "tara-westover-brothers-and-sisters-us-2027",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "auto-6eed69a1152216a8fb8fc36ef5d615a6",
+      "captionLength": 509,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-17"
+    },
+    {
+      "newsId": "asymptote-maria-messina-camilla-translation-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "isbn-agencies-madrid-meeting-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "parfenov-nabokov-namedni-tour-announced-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "li-juan-my-altay-russian-announcement-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "mama-read-draw-family-awards-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "nlo-venediktova-literary-haptics-podcast-20260912",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "ouest-france-quai-bulles-finalists-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "stanislaw-rosiek-polish-pen-editorial-award-2026",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "auto-7bd3f07f19d2628755dba3015303e266",
+      "captionLength": 777,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-14T00:36:58.000Z"
+    },
+    {
+      "newsId": "china-publishing-development-report-2025-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "jaume-cabre-feixes-first-russian-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "nuestra-tierra-radio-animation-season2-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "funmike-ogaosun-shipikisha-cover-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "katarina-wennstam-crimetime-honorary-award-2026",
+      "status": "photo_ready",
+      "freshness": "older_publication",
+      "assetId": "auto-95e531cf9d56ede093e3bd72abe90bc0",
+      "captionLength": 767,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": "2026-09-10"
+    },
+    {
+      "newsId": "lithuania-italian-literature-reading-lists-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "lom-juan-guzman-memory-book-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "pen-index-victoria-amelina-fellowship-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "vernadsky-world-literature-ukrainian-exhibition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "patrick-dewitt-dodge-city-russian-edition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "tolstoy-birthday-2026",
+      "status": "photo_ready",
+      "freshness": "publication_date_unknown",
+      "assetId": "auto-9398d30e893aabd401cb6ddc8e74b4a8",
+      "captionLength": 386,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": null
+    },
+    {
+      "newsId": "gorodets-norwegian-folk-tales-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "liu-cixin-direct-russian-translation-interview-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "nli-redevelopment-tender-approved-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "taiwan-picture-book-creation-support-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "yeats-a-vision-digitised-papers-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "shershenevich-drozdov-collection-exhibition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "callao-colibri-childrens-book-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "bulgaria-chaika-periodical-restored-exhibition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "lom-plan-condor-illustrated-book-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "pazderka-soukup-rudolf-medek-prize-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "russian-book-market-conference-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "vladimir-dal-manuscripts-exhibition-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "svenska-tidningar-remote-search-restored-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "wmf-martins-fontes-amazon-supply-announcement-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "published_within_seven_days"
+    },
+    {
+      "newsId": "jose-ruben-zamora-hermann-kesten-decision-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "louise-erdrich-everybody-reads-selection-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "marlon-james-disappearers-us-catalog-2026",
+      "status": "photo_ready",
+      "freshness": "publication_date_unknown",
+      "assetId": "auto-569a84b9280b2173d419c2eaba498f4d",
+      "captionLength": 667,
+      "nativeMethod": "sendPhoto",
+      "sourcePublishedAt": null
+    },
+    {
+      "newsId": "ndl-rare-books-fulltext-75000-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "nlo-tsyganov-stalin-era-philology-20260901",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "gioconda-belli-fil-prize-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "jorge-basadre-library-awards-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "padura-liber-award-decision-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "whisper-man-netflix-release-20260828",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "lom-gaza-two-books-presentation-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "scarlett-robinson-kean-mahy-illustration-prize-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "canadian-publisher-certification-expanded-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "nbf-presents-fall-2026-announced",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "finland-publishers-first-half-sales-report-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "goslitmuz-people-of-december-publication-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "guernsey-medieval-fragments-research-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "tacna-national-legal-deposit-centre-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "university-press-waheed-akin-olajide-obituary-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "wingston-gonzalez-plia-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "fred-vargas-unique-lueur-corpus-rights-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "indonesia-rights-fellowship-recipients-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "charles-spencer-swan-song-us-announcement-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "maren-baudet-lackner-aquatics-translation-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "tawada-where-europe-begins-russian-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "new-zealand-childrens-book-awards-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "nlo-zenkin-scholars-french-literature-20260818",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "phillip-lopate-washington-irving-sketch-book-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "publication_date_unknown"
+    },
+    {
+      "newsId": "nlo-anya-fyodorova-conversation-20260813",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "german-book-prize-longlist-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "libro-fm-ebook-beta-announcement-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "oratia-maori-picture-books-ibby-unesco-collection-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "bakwa-12-lost-manuscript-issue-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "our-strange-duet-audiobook-cast-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "joel-dicker-prime-video-three-novels-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "princeton-cashmere-licensing-partnership-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "booker-longlist-2026",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    },
+    {
+      "newsId": "international-booker-funding-20260702",
+      "status": "photo_held",
+      "reason": "no_destination_licensed_asset",
+      "freshness": "older_publication"
+    }
+  ]
+}

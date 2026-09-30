@@ -9,7 +9,7 @@ export default async function LoginPage({
   searchParams: Promise<{ error?: string; success?: string }>;
 }) {
   const session = await getStaffSession();
-  if (session.user && session.role) {
+  if (session.user && session.role && !session.mfa.checkError) {
     if (session.mfa.required) redirect("/mfa");
     redirect("/dashboard");
   }
@@ -47,12 +47,12 @@ export default async function LoginPage({
         )}
         {session.user && !session.role && (
           <p className="form-message">
-            Учётная запись {session.user.email} подтверждена, но редакционная
-            роль ей не назначена. Выйдите и войдите под учётной записью
-            владельца либо добавьте пользователя в команду редакции.
+            {session.membershipError || `Учётная запись ${session.user.email} подтверждена, но редакционная роль ей не назначена. Выйдите и войдите под учётной записью владельца либо добавьте пользователя в команду редакции.`}
           </p>
         )}
         {query.error && <p className="form-message">{query.error}</p>}
+        {session.authError && !query.error && <p className="form-message">{session.authError}</p>}
+        {session.mfa.checkError && !query.error && <p className="form-message">{session.mfa.checkError}</p>}
         {query.success && (
           <p className="form-message form-success">{query.success}</p>
         )}

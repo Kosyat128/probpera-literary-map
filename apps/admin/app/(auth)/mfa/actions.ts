@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import { redirect, withAdminBasePath } from "@/lib/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { authServiceError, guardedAuthRequest, logAuthFailure } from "@/lib/auth-service-error";
 
 const challengeSchema = z.object({
   factorId: z.string().uuid(),
@@ -26,16 +27,18 @@ export async function verifyAdminMfaAction(formData: FormData) {
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect(withAdminBasePath("/login"));
 
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser();
+  const userResult = await guardedAuthRequest(() => supabase.auth.getUser());
+  const userError = userResult.error;
+  const user = "data" in userResult ? userResult.data.user : null;
+  if (userError && authServiceError(userError)) redirect(mfaUrl(authServiceError(userError)!));
   if (userError || !user) redirect(withAdminBasePath("/login"));
 
-  const { data: factors, error: factorsError } =
-    await supabase.auth.mfa.listFactors();
+  const factorsResult = await guardedAuthRequest(() => supabase.auth.mfa.listFactors());
+  const factors = "data" in factorsResult ? factorsResult.data : null;
+  const factorsError = factorsResult.error;
   if (factorsError) {
-    redirect(mfaUrl("Не удалось проверить подключённые факторы. Повторите вход."));
+    logAuthFailure("mfa_factors", factorsError);
+    redirect(mfaUrl(authServiceError(factorsError) || "Не удалось проверить подключённые факторы. Повторите вход."));
   }
 
   const factor = factors?.totp?.find(
@@ -45,19 +48,20 @@ export async function verifyAdminMfaAction(formData: FormData) {
     redirect(mfaUrl("Выбранный TOTP-фактор не найден или ещё не подтверждён."));
   }
 
-  const { data: challenge, error: challengeError } =
-    await supabase.auth.mfa.challenge({ factorId: factor.id });
+  const challengeResult = await guardedAuthRequest(() => supabase.auth.mfa.challenge({ factorId: factor.id }));
+  const challenge = "data" in challengeResult ? challengeResult.data : null;
+  const challengeError = challengeResult.error;
   if (challengeError || !challenge?.id) {
-    redirect(mfaUrl("Не удалось создать MFA-проверку. Попробуйте ещё раз."));
+    redirect(mfaUrl(authServiceError(challengeError) || "Не удалось создать MFA-проверку. Попробуйте ещё раз."));
   }
 
-  const { error: verifyError } = await supabase.auth.mfa.verify({
+  const { error: verifyError } = await guardedAuthRequest(() => supabase.auth.mfa.verify({
     factorId: factor.id,
     challengeId: challenge.id,
     code: parsed.data.code,
-  });
+  }));
   if (verifyError) {
-    redirect(mfaUrl("Код не принят. Проверьте время на устройстве и повторите ввод."));
+    redirect(mfaUrl(authServiceError(verifyError) || "Код не принят. Проверьте время на устройстве и повторите ввод."));
   }
 
   redirect(withAdminBasePath("/dashboard"));

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-CALENDAR-GOVERNANCE-INTEGRATION-20260929",
+  "baselineCommitSha": "439bb70954d3773279f2d342ba1d2df2b5d17ccf",
+  "historicalPinsChanged": false,
+  "authorization": {
+    "userAuthorized": true,
+    "userAuthorizedAt": "2026-09-29",
+    "userInstruction": "Разрешаю применить этот пакет проверки",
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "scope": "Only the exact seven reviewed integration fragments in three historical read-boundary files. Existing historical attestations, expected hashes and all negative drift assertions are retained.",
+  "allowedProjectionPaths": [
+    "scripts/lib/reviewed-r10-delta.mjs",
+    "scripts/lib/reviewed-r10-delta.test.mjs",
+    "scripts/lib/stage5-content-data-lock.test.mjs"
+  ],
+  "sourceBaselines": {
+    "scripts/lib/reviewed-r10-delta.mjs": "638fa25fb62c8c5d79c07d88d3ff711dc8ce50529531f0b441379b6bd77e77de",
+    "scripts/lib/reviewed-r10-delta.test.mjs": "28d9a893f1fc6760a80bee151e438d965d878b818825f350c420df50ba874c9a",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "bb4f119a8e6d8d1aece5e30b8e5a5809019ae500caf681b94b8bdc0d3904460a"
+  },
+  "reviewedSources": {
+    "scripts/lib/reviewed-r10-delta.mjs": "8c023c07377a072a2eb4c348e90a63c99e585cde858db1ce8de7d92c4e49171d",
+    "scripts/lib/reviewed-r10-delta.test.mjs": "270ae6c55e00930483cfe71b4d43cbc8a650948c4a1492935aa61d18bcc1a6cf",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "fd12a0b906c80ff7a5d248b26741365e6815133d3ae78339639b6407da6a04bd"
+  },
+  "projections": [
+    {
+      "id": "calendar-governance-reader-scripts/lib/reviewed-r10-delta.mjs-1",
+      "path": "scripts/lib/reviewed-r10-delta.mjs",
+      "before": "import { readFileSync } from \"node:fs\";",
+      "after": "import { readFileSync } from \"node:fs\";\nimport { projectReviewedCalendarFollowup } from \"./reviewed-calendar-followup.mjs\";"
+    },
+    {
+      "id": "calendar-governance-reader-scripts/lib/reviewed-r10-delta.mjs-2",
+      "path": "scripts/lib/reviewed-r10-delta.mjs",
+      "before": "  return Boolean(entry && r10DeltaSha256(source)===entry.sha256Lf);",
+      "after": "  if (!entry) return false;\n  try { return r10DeltaSha256(projectReviewedCalendarFollowup(relativePath,source))===entry.sha256Lf; }\n  catch { return false; }"
+    },
+    {
+      "id": "calendar-governance-reader-scripts/lib/reviewed-r10-delta.mjs-3",
+      "path": "scripts/lib/reviewed-r10-delta.mjs",
+      "before": "  let projected=source.replace(/\\r\\n?/gu,\"\\n\");",
+      "after": "  let projected=projectReviewedCalendarFollowup(relativePath,source);"
+    },
+    {
+      "id": "calendar-governance-reader-scripts/lib/reviewed-r10-delta.test.mjs-1",
+      "path": "scripts/lib/reviewed-r10-delta.test.mjs",
+      "before": "import { readFileSync } from \"node:fs\";",
+      "after": "import { readFileSync } from \"node:fs\";\nimport { projectReviewedCalendarFollowup } from \"./reviewed-calendar-followup.mjs\";"
+    },
+    {
+      "id": "calendar-governance-reader-scripts/lib/reviewed-r10-delta.test.mjs-2",
+      "path": "scripts/lib/reviewed-r10-delta.test.mjs",
+      "before": "const read=path=>readFileSync(path,\"utf8\").replace(/\\r\\n?/gu,\"\\n\");",
+      "after": "const read=path=>projectReviewedCalendarFollowup(path,readFileSync(path,\"utf8\"));"
+    },
+    {
+      "id": "calendar-governance-reader-scripts/lib/stage5-content-data-lock.test.mjs-1",
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "before": "import { createHash } from \"node:crypto\";",
+      "after": "import { createHash } from \"node:crypto\";\nimport { isReviewedCalendarAddition, reviewedCalendarAdditionPaths } from \"./reviewed-calendar-followup.mjs\";"
+    },
+    {
+      "id": "calendar-governance-reader-scripts/lib/stage5-content-data-lock.test.mjs-2",
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "before": "          if (reviewedR10AdditionPaths.has(relativePath) &&",
+      "after": "          if (reviewedCalendarAdditionPaths.has(relativePath) &&\n            isReviewedCalendarAddition(relativePath, readFileSync(absolutePath, \"utf8\"))) return false;\n          if (reviewedR10AdditionPaths.has(relativePath) &&"
+    }
+  ]
+}

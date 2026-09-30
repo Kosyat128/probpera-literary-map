@@ -8,13 +8,13 @@
   "coverageCountryCodes": [
     "UA"
   ],
-  "attemptedAt": "2026-09-26T17:28:28.931Z",
+  "attemptedAt": "2026-09-29T20:33:10.747Z",
   "requests": [],
   "status": "blocked",
   "reason": "http_500",
   "robots": {
     "url": "https://www.upba.org.ua/robots.txt",
-    "error": "This operation was aborted",
+    "error": "http_500",
     "disallowed": []
   }
 }

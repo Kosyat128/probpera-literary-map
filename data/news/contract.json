@@ -2,7 +2,7 @@
   "version": 2,
   "editorialTimeZone": "Europe/Moscow",
   "maxSources": 250,
-  "maxItems": 5000,
+  "maxItems": 6500,
   "maxSourceStateBytes": 524288,
   "maxHeldItems": 25000,
   "maxHeldBytes": 20971520,

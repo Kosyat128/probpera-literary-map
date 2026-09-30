@@ -1,0 +1,612 @@
+{
+  "sourceId": "estandarte",
+  "name": "Estandarte",
+  "entryUrl": "https://www.estandarte.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:42.548Z",
+  "requests": [
+    {
+      "url": "https://www.estandarte.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 57812,
+      "sha256": "1220ba771f07389073a9d981b6419388e4ee909dd9410bf0293f85630f5be679",
+      "accessedAt": "2026-09-29T20:39:43.607Z"
+    },
+    {
+      "url": "https://www.estandarte.com/noticias",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 61229,
+      "sha256": "103d09fe8ddf148a68b2e0acbff34c51837bce902581b055296b33c1f7420af1",
+      "accessedAt": "2026-09-29T20:39:43.853Z"
+    },
+    {
+      "url": "https://www.estandarte.com/noticias/autores/santa-teresa-libros-en-los-quinientos-anos-de-su-nacimiento_3026.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 80748,
+      "sha256": "6ff1cae1966a5a85fc95415c903e5e71ab19eaee688cb3796d13550b2c6d1f38",
+      "accessedAt": "2026-09-29T20:39:44.095Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.estandarte.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 606,
+    "sha256": "01c3fd5f20f02a76cc1962bb7cae8319b785bc03d5302c3786a0d57c4db64d13",
+    "accessedAt": "2026-09-29T20:39:43.273Z",
+    "disallowed": [
+      "/buscar/",
+      "/recursos/",
+      "/enlaces/",
+      "/sorteos.html",
+      "/que_es_estandarte.html",
+      "/politica.html",
+      "/contacta.html",
+      "/antiguo/",
+      "/newsletter/",
+      "/boletines/",
+      "/enviar/",
+      "/antiguo/"
+    ]
+  },
+  "endpoint": {
+    "id": "estandarte",
+    "name": "Estandarte",
+    "url": "https://www.estandarte.com/noticias",
+    "format": "html",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "estandarte",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.estandarte.com"
+    ],
+    "linkPattern": "^\\/noticias\\/.+|^\\/[^/]{12,}\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.estandarte.com/noticias/autores/santa-teresa-libros-en-los-quinientos-anos-de-su-nacimiento_3026.html"
+    ],
+    "verifiedAt": "2026-09-29T20:39:44.102Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 19,
+  "literaryCandidateCount": 19,
+  "sample": {
+    "sourceId": "estandarte",
+    "source": {
+      "name": "Estandarte",
+      "url": "https://www.estandarte.com/noticias/autores/santa-teresa-libros-en-los-quinientos-anos-de-su-nacimiento_3026.html",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Libros sobre Santa Teresa de Jesús",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:43.863Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.estandarte.com/noticias/autores/santa-teresa-libros-en-los-quinientos-anos-de-su-nacimiento_3026.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 80748,
+      "sha256": "6ff1cae1966a5a85fc95415c903e5e71ab19eaee688cb3796d13550b2c6d1f38",
+      "accessedAt": "2026-09-29T20:39:44.095Z",
+      "headline": "Libros sobre Santa Teresa de Jesús",
+      "excerpt": "Portada > Noticias > Autores > Libros sobre Santa Teresa de Jesús Libros sobre Santa Teresa de Jesús Se reeditó 'El libro de la vida' y se ha escrito (mucho) sobre Santa Teresa. 29 de septiembre de 2026. Estandarte Qué: Libros sobre Santa Teresa de Jesús. Respondía a muchos nombres —Teresa de Cepeda y Ahumada, Teresa de Ávila, más tarde Santa Teresa de Jesús para nosotros— y fue muchas mujeres: la",
+      "publishedDates": [
+        {
+          "value": "2015-03-28 18:55:41",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "canonical": "https://www.estandarte.com/noticias/autores/santa-teresa-libros-en-los-quinientos-anos-de-su-nacimiento_3026.html",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:44.102Z",
+  "foundItems": [
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/autores/santa-teresa-libros-en-los-quinientos-anos-de-su-nacimiento_3026.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Libros sobre Santa Teresa de Jesús",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/varios/el-duelo-que-habla-mas-alla-del-viaje-del-heroe_5269.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Repensando las narrativas de dolor y pérdida en la literatura y el cine contemporáneo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/varios/neurociencia-de-la-lectura-menos-estres-y-mas-concentracion-analisi_5499.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La neurobiología y la literatura: cómo la lectura reescribe tu cerebro y silencia el estrés",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/varios/las-mejores-portadas-del-libro-de-george-orwell_2592.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Las mejores portadas de 1984",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/idioma-espanol/la-serendipia-significado-y-usos-de-esos-hallazgos-casuales_4904.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "¿Qué significa serendipia?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/libros/comic/sin-novedad-en-el-frente-el-personal-comic-de-patricia-breccia_5077.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sin novedad en el frente: Patricia Breccia convirtió su infierno personal en un tebeo maestro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/idioma-espanol/euroorden-euroorden-o-eurorden_2357.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Euroorden: ni euro-orden ni eurorden",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/autores/biografia-de-antonio-buero-vallejo_3980.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Antonio Buero Vallejo, vida y legado del gran dramaturgo español",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/autores/la-biografia-de-miguel-de-cervantes-y-saavedra_4179.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Miguel de Cervantes Saavedra, vida y obra del genio del Siglo de Oro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/idioma-espanol/durmiendo-o-dormiendo_2095.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "¿Durmiendo o dormiendo? Aprende la forma correcta del gerundio de «dormir»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/autores/biografia-de-miguel-de-unamuno_3974.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Miguel de Unamuno: vida, pensamiento y obras del intelectual clave de la Generación del 98",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/idioma-espanol/cuanto-mas-o-contra-mas-cuanto-menos-o-contra-menos_1709.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "¿Cuanto más o contra más?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/idioma-espanol/la-expresion-dar-vela-en-un-entierro_4914.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "¿Quién te ha dado vela en este entierro?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/varios/las-mil-caras-del-senor-darcy-orgullo-y-prejuicio-en-el-cine_5222.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fitzwilliam Darcy (el señor Darcy) y sus mil caras en el cine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/idioma-espanol/en-torno-o-entorno-junto-o-separado_2381.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "En torno o entorno: cuándo se escribe junto o separado",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/varios/el-cozy-mystery-el-subgenero-sin-violencia-explicita-y-dosis-de-humor_5104.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El cozy mystery o cozy crime, el subgénero amable",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/autores/la-vida-de-mary-shelley-la-novelista-mundialmente-conocida_5153.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La vida y obras de Mary Shelley, la escritora mundialmente conocida por dar vida a Frankenstein",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/idioma-espanol/el-billion-ingles-no-es-igual-que-el-billon-espanol_459.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Diferencia entre billion inglés y billón español",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "estandarte",
+      "source": {
+        "name": "Estandarte",
+        "url": "https://www.estandarte.com/noticias/libros/infantil-y-juvenil/resena-de-una-vez-de-morris-gleitzman-inocencia-y-holocausto_5536.html",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "'Una vez' de Morris Gleitzman, cuando la imaginación es el único refugio frente al horror",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:43.863Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "103d09fe8ddf148a68b2e0acbff34c51837bce902581b055296b33c1f7420af1"
+}

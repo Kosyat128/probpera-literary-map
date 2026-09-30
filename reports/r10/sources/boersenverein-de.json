@@ -8,60 +8,40 @@
   "coverageCountryCodes": [
     "DE"
   ],
-  "attemptedAt": "2026-09-26T17:27:52.674Z",
+  "attemptedAt": "2026-09-29T20:32:36.214Z",
   "requests": [
     {
       "url": "https://www.boersenverein.de/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 302009,
-      "sha256": "bd2f7d07ea8c8cf49119a16947cfbbfec6c21727d772cc05b7f3b0332c80fbfe",
-      "accessedAt": "2026-09-26T17:21:25.650Z"
+      "bytes": 300376,
+      "sha256": "11e7a8a8e3aa715c30fc48c5e21f4cea912750ee37646312a4324bc9f302ace0",
+      "accessedAt": "2026-09-29T20:32:37.344Z"
     },
     {
-      "url": "https://www.boersenverein.de/politik-recht/positionen/e-book-leihe/",
+      "url": "https://www.boersenverein.de/beratung-service/barrierefreiheit/aktuelles/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 281397,
-      "sha256": "428b68abfea4b87c301606b38cc783e213a5915f23a9d478f01f282de82b947b",
-      "accessedAt": "2026-09-26T17:27:55.532Z"
-    },
-    {
-      "url": "https://www.boersenverein.de/politik-positionen/buchpreisbindung/",
-      "status": 200,
-      "contentType": "text/html; charset=utf-8",
-      "bytes": 277771,
-      "sha256": "a841ad6de667956e7a61f54c8ba0d520c473d733b3b18eb467969afdc0d51b16",
-      "accessedAt": "2026-09-26T17:27:58.371Z"
-    },
-    {
-      "url": "https://www.boersenverein.de/politik-recht/positionen/was-buchhandlungen-leisten/",
-      "status": 200,
-      "contentType": "text/html; charset=utf-8",
-      "bytes": 274096,
-      "sha256": "558efe8c7e6647de2c44d593a072d8a71465f4e33d8e3050f9e9652dce06de77",
-      "accessedAt": "2026-09-26T17:28:00.924Z"
+      "bytes": 289086,
+      "sha256": "9bacde2be9280c16ab8730bcefb4192f25dcdb2015a766f0da18b8b97eb33250",
+      "accessedAt": "2026-09-29T20:32:40.211Z"
     }
   ],
   "status": "blocked",
-  "reason": "detail_not_verified",
+  "reason": "runtime_parser_no_literary_item",
   "robots": {
     "url": "https://www.boersenverein.de/robots.txt",
     "status": 200,
     "contentType": "text/plain; charset=utf-8",
     "bytes": 155,
     "sha256": "338a23c788a257029cec2cf409cc05b1fd359262bec905fd0b4d32b5ebd5c894",
-    "accessedAt": "2026-09-26T17:27:53.180Z",
+    "accessedAt": "2026-09-29T20:32:36.738Z",
     "disallowed": [
       "/typo3/",
       "/typo3_src/",
       "/impressum/",
       "/datenschutz/"
     ]
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:21:24.338Z",
-    "sourceDocumentSha256": "bd2f7d07ea8c8cf49119a16947cfbbfec6c21727d772cc05b7f3b0332c80fbfe"
   },
   "feedAttemptError": "http_403"
 }

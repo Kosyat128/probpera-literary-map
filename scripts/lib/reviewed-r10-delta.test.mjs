@@ -1,9 +1,11 @@
 import { readFileSync } from "node:fs";
+import { projectReviewedCalendarFollowup } from "./reviewed-calendar-followup.mjs";
+import { projectReviewedUndiciSecurityFollowup } from "./reviewed-undici-security-followup.mjs";
 import { execFileSync } from "node:child_process";
 import { describe, expect, it } from "vitest";
 import { r10DeltaAttestation as packet, r10DeltaSha256 as sha, projectReviewedR10Delta, isReviewedR10Addition, reviewedR10AdditionPaths } from "./reviewed-r10-delta.mjs";
 
-const read=path=>readFileSync(path,"utf8").replace(/\r\n?/gu,"\n");
+const read=path=>projectReviewedCalendarFollowup(path,projectReviewedUndiciSecurityFollowup(path,readFileSync(path,"utf8")));
 const historical=path=>execFileSync("git",["-c",`safe.directory=${process.cwd()}`,"show",`${packet.baselineSourceCommitSha}:${path}`],{encoding:"utf8",maxBuffer:5*1024*1024}).replace(/\r\n?/gu,"\n");
 function beforeCmsExternalIds(value) {
   const {cmsExternalIdFollowUp,...prior}=value;

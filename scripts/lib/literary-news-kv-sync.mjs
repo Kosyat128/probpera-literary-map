@@ -1,6 +1,7 @@
 import { setTimeout as delay } from "node:timers/promises";
 import { createHash } from "node:crypto";
 import limits from "../../data/news/contract.json" with { type: "json" };
+import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LIMITS } from "./literary-news-daily-profile.mjs";
 export const NEWS_STATE_KEY = "literary-news:v1:source-state";
 export const NEWS_QUEUE_KEY = "literary-news:v1:held-queue";
 export const NEWS_GENERATION_KEY = "literary-news:v2:ingestion";
@@ -26,8 +27,8 @@ export function parseNewsGeneration(text) {
   return {previousState:entries[0].value,previousQueue:entries[1].value};
 }
 
-async function boundedText(response) {
-  if (Number(response.headers.get("content-length")) > MAX_BYTES) throw new Error("News storage response exceeds its limit");
+async function boundedText(response, maxBytes = MAX_BYTES) {
+  if (Number(response.headers.get("content-length")) > maxBytes) throw new Error("News storage response exceeds its limit");
   if (!response.body) throw new Error("News storage returned an empty response");
   const reader = response.body.getReader();
   const decoder = new TextDecoder();
@@ -38,7 +39,7 @@ async function boundedText(response) {
       const chunk = await reader.read();
       if (chunk.done) break;
       bytes += chunk.value.byteLength;
-      if (bytes > MAX_BYTES) throw new Error("News storage response exceeds its limit");
+      if (bytes > maxBytes) throw new Error("News storage response exceeds its limit");
       text += decoder.decode(chunk.value, { stream: true });
     }
     return text + decoder.decode();
@@ -55,7 +56,7 @@ export function createNewsStorageClient({ accountId, apiToken, fetchImpl = fetch
   if (!/^[a-f0-9]{32}$/i.test(accountId || "") || !apiToken?.trim()) {
     throw new Error("News storage credentials are not configured");
   }
-  async function request(path, options = {}) {
+  async function request(path, options = {}, maxBytes = MAX_BYTES) {
     // Credentials are sent only to the literal Cloudflare host. Account and key
     // values can change the path, never the destination, scheme or authority.
     const endpoint = new URL("https://api.cloudflare.com");
@@ -64,12 +65,12 @@ export function createNewsStorageClient({ accountId, apiToken, fetchImpl = fetch
       ...options, redirect: "manual", signal: AbortSignal.timeout(30_000),
       headers: { Authorization: `Bearer ${apiToken}`, ...options.headers },
     });
-    return { response, text: await boundedText(response) };
+    return { response, text: await boundedText(response, maxBytes) };
   }
   const client = {
     async read(key) {
-      if (![NEWS_STATE_KEY, NEWS_QUEUE_KEY, NEWS_GENERATION_KEY, NEWS_APPROVED_PROFILE_KEY].includes(key)) throw new Error("Unexpected news storage key");
-      const { response, text } = await request(`/values/${encodeURIComponent(key)}`);
+      if (![NEWS_STATE_KEY, NEWS_QUEUE_KEY, NEWS_GENERATION_KEY, NEWS_APPROVED_PROFILE_KEY, DAILY_NEWS_PROFILE_KEY].includes(key)) throw new Error("Unexpected news storage key");
+      const { response, text } = await request(`/values/${encodeURIComponent(key)}`, {}, key === DAILY_NEWS_PROFILE_KEY ? DAILY_NEWS_LIMITS.profileBytes : MAX_BYTES);
       if (response.status === 404) {
         let payload;
         try { payload = JSON.parse(text); } catch { /* Invalid errors must fail closed. */ }
@@ -113,6 +114,8 @@ export function createNewsStorageClient({ accountId, apiToken, fetchImpl = fetch
       if (!response.ok || JSON.parse(text)?.success !== true) throw new Error("News generation commit unconfirmed");
     },
     async readApprovedProfile() { return client.read(NEWS_APPROVED_PROFILE_KEY); },
+    // Read-only: the collector cannot commit a daily profile or its private ledger.
+    async readDailyApprovedProfile() { return client.read(DAILY_NEWS_PROFILE_KEY); },
     async writeApprovedProfile(value) {
       const {validateNobelApprovedPayload} = await import("./literary-news-nobel-profile.mjs");
       const body = JSON.stringify(await validateNobelApprovedPayload(value));

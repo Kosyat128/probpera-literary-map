@@ -1,0 +1,57 @@
+{
+  "sourceId": "granta",
+  "name": "Granta",
+  "entryUrl": "https://granta.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:41:39.704Z",
+  "requests": [
+    {
+      "url": "https://granta.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 177586,
+      "sha256": "e682cb286a5b8663a5f3f12c3fe2b32b6ca2003d86a5b94e4710ac56e0362f01",
+      "accessedAt": "2026-09-29T20:41:40.854Z"
+    },
+    {
+      "url": "https://granta.com/making-cuba-great-again/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 175387,
+      "sha256": "04781e5554c9f07f086e89eb7c7f8a3fe41e972d4b9eece8c98c14417f8ae8b2",
+      "accessedAt": "2026-09-29T20:41:42.230Z"
+    },
+    {
+      "url": "https://granta.com/picture-me-crying/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 189948,
+      "sha256": "68f092f84f63a6d53d67c61beddf282a8820482e6b4e0e042e31249157e71a37",
+      "accessedAt": "2026-09-29T20:41:43.608Z"
+    },
+    {
+      "url": "https://granta.com/things-on-places/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 187902,
+      "sha256": "4246eedd1cfb8161812c3101bf33c9a8c197e07afcc07d3665c20373ed694b1e",
+      "accessedAt": "2026-09-29T20:41:44.522Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://granta.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 252,
+    "sha256": "e9f13b9cedf9c0ed44442c84b31891b79f058c0c6c5d5ce052c91143c2efbcf2",
+    "accessedAt": "2026-09-29T20:41:39.922Z",
+    "disallowed": [
+      "/wp-content/plugins/",
+      "/search/"
+    ]
+  },
+  "detailAttemptError": "http_403"
+}

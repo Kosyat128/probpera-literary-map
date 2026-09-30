@@ -8,39 +8,79 @@
   "coverageCountryCodes": [
     "HU"
   ],
-  "attemptedAt": "2026-09-26T17:28:37.590Z",
+  "attemptedAt": "2026-09-29T20:33:14.961Z",
   "requests": [
     {
       "url": "https://mkke.hu/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 31157,
-      "sha256": "e15e53016b8f7dc1a2cca41f3ba093f55938f621ae6bf8e8ffce5a44aee29e0b",
-      "accessedAt": "2026-09-26T17:22:21.587Z"
+      "sha256": "966c4e5b90a4654707a7f95b1f376327c587e2cf562f24cf6550d35c33d48ffa",
+      "accessedAt": "2026-09-29T20:33:17.173Z"
     },
     {
       "url": "https://mkke.hu/hirek_esemenyek/szep_magyar_konyv_2025_palyazati_felhivas",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 23223,
-      "sha256": "75ab2eca4f1cd09824359290570b3902cd4843d2870483a088f821e2345d0430",
-      "accessedAt": "2026-09-26T17:28:39.549Z"
+      "sha256": "ca17e7c4772ecf96ae944ac51e9983f32e47b440961f9e5be1d59f38c0e5994b",
+      "accessedAt": "2026-09-29T20:33:17.669Z"
     },
     {
       "url": "https://mkke.hu/hirek_esemenyek/david_szalay_booker_dijas_iro_nyitja_meg_a_97_unnepi_konyvhetet",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 20462,
-      "sha256": "ec50398c51b7becff760fabb514c4381bca552a74208915e178fd660a50e6081",
-      "accessedAt": "2026-09-26T17:28:40.195Z"
+      "sha256": "134763e2d927f06d84d8d05f55744e8d8022b559478b60c9e586e6ff4d3be5f2",
+      "accessedAt": "2026-09-29T20:33:18.078Z"
     },
     {
       "url": "https://mkke.hu/hirek_esemenyek/jelentkezesi_felhivas_a_31_budapesti_nemzetkozi_konyvfesztivalra",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 24140,
-      "sha256": "f8ecbca03e5e2a7e1dbe261268f86a820d40d591828a974fd4d0cc8623b2fb95",
-      "accessedAt": "2026-09-26T17:28:40.704Z"
+      "sha256": "48cd24f6b47717f5bb9be27140122500704ceddbe1e26f6ad2ee37742e904d63",
+      "accessedAt": "2026-09-29T20:33:18.651Z"
+    },
+    {
+      "url": "https://mkke.hu/hirek_esemenyek/jelentkezesi_felhivas_a_97_unnepi_konyvhetre",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23103,
+      "sha256": "3fdce77c6790a4f29e5a2c602be8b7e7de59731ca8ee1fa9f7c72881e29c9095",
+      "accessedAt": "2026-09-29T20:33:19.324Z"
+    },
+    {
+      "url": "https://mkke.hu/hirek_esemenyek/eletenek_80_eveben_elhunyt_kolosi_tamas",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 21974,
+      "sha256": "cf81b6cfb5f0ab78bbe578bbccf4308d269740eae5b413496ca7a98602039f52",
+      "accessedAt": "2026-09-29T20:33:19.771Z"
+    },
+    {
+      "url": "https://mkke.hu/hirek_esemenyek/jelentkezesi_felhivas_a_96_unnepi_konyvhetre",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23062,
+      "sha256": "12f18aa734cb93a10ecd7372f6fad0da27848c23a9c947664e6ddcd03da4e79c",
+      "accessedAt": "2026-09-29T20:33:20.306Z"
+    },
+    {
+      "url": "https://mkke.hu/hirek_esemenyek/szep_magyar_konyv_2024_palyazati_felhivas",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23242,
+      "sha256": "3bd8edf4e9d23534b055ffb503c4c1268ee8770023f2517a37f9f8f3f9b93e0c",
+      "accessedAt": "2026-09-29T20:33:20.838Z"
+    },
+    {
+      "url": "https://mkke.hu/hirek_esemenyek/az_mkke_kozlemenye_a_29_budapesti_nemzetkozi_konyvfesztivalrol",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 22067,
+      "sha256": "4bf61c558e67a279594747dbd8059a85893d9b7e76f00c9bd704dddd4a6e715c",
+      "accessedAt": "2026-09-29T20:33:21.249Z"
     }
   ],
   "status": "blocked",
@@ -49,9 +89,5 @@
     "url": "https://www.mkke.hu/robots.txt",
     "error": "http_404",
     "disallowed": []
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:18.658Z",
-    "sourceDocumentSha256": "e15e53016b8f7dc1a2cca41f3ba093f55938f621ae6bf8e8ffce5a44aee29e0b"
   }
 }

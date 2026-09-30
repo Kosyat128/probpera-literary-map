@@ -1,0 +1,337 @@
+{
+  "sourceId": "short-story-day-africa",
+  "name": "Short Story Day Africa",
+  "entryUrl": "https://shortstorydayafrica.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:52.927Z",
+  "requests": [
+    {
+      "url": "https://shortstorydayafrica.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 128154,
+      "sha256": "2f1f0fdd8cc168f4aa377e863bf516a38c50928de1a53d43fcc56ad595324791",
+      "accessedAt": "2026-09-29T20:39:55.281Z"
+    },
+    {
+      "url": "https://shortstorydayafrica.org/?feed=rss2",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 108485,
+      "sha256": "ab99409ba876e0aa0af0f35aedc831041c1d0714438f76865287c86ebc2ea3a0",
+      "accessedAt": "2026-09-29T20:39:55.857Z"
+    },
+    {
+      "url": "https://shortstorydayafrica.org/?p=14",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 87848,
+      "sha256": "6a367096fe07e332a01d662193d5b624b8c27051f3ff77345ffa00b3ad2c5c58",
+      "accessedAt": "2026-09-29T20:39:56.598Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://shortstorydayafrica.org/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "short-story-day-africa",
+    "name": "Short Story Day Africa",
+    "url": "https://shortstorydayafrica.org/?feed=rss2",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "short-story-day-africa",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://shortstorydayafrica.org"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://shortstorydayafrica.org/?p=14"
+    ],
+    "verifiedAt": "2026-09-29T20:39:56.638Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "short-story-day-africa",
+    "source": {
+      "name": "Short Story Day Africa",
+      "url": "https://shortstorydayafrica.org/?p=14",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Disruption: The winners of the SSDA Prize 2020/21 Announced!",
+    "publishedAt": "2021-06-21T11:50:00.000Z",
+    "description": "These are exciting times for Short Story Day Africa, in spite of the challenges we’re all facing. A publishing partnership with Catalyst Press has brought fresh new opportunities to the project that widens the reach of our small team: an extended publishing family that opens up even more platforms for the writers we love and […]",
+    "discoveredAt": "2026-09-29T20:39:55.858Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://shortstorydayafrica.org/?p=14",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 87848,
+      "sha256": "6a367096fe07e332a01d662193d5b624b8c27051f3ff77345ffa00b3ad2c5c58",
+      "accessedAt": "2026-09-29T20:39:56.598Z",
+      "headline": "Disruption: The winners of the SSDA Prize 2020/21 Announced!",
+      "excerpt": "Post author:Sharn Post published:June 21, 2021 Post category:Uncategorized Post comments:0 Comments These are exciting times for Short Story Day Africa, in spite of the challenges we’re all facing. A publishing partnership with Catalyst Press has brought fresh new opportunities to the project that widens the reach of our small team: an extended publishing family that opens up even more platforms f",
+      "publishedDates": [],
+      "canonical": "https://shortstorydayafrica.org/?p=14",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:56.638Z",
+  "foundItems": [
+    {
+      "sourceId": "short-story-day-africa",
+      "source": {
+        "name": "Short Story Day Africa",
+        "url": "https://shortstorydayafrica.org/?p=14",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Disruption: The winners of the SSDA Prize 2020/21 Announced!",
+      "publishedAt": "2021-06-21T11:50:00.000Z",
+      "description": "These are exciting times for Short Story Day Africa, in spite of the challenges we’re all facing. A publishing partnership with Catalyst Press has brought fresh new opportunities to the project that widens the reach of our small team: an extended publishing family that opens up even more platforms for the writers we love and […]",
+      "discoveredAt": "2026-09-29T20:39:55.858Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "short-story-day-africa",
+      "source": {
+        "name": "Short Story Day Africa",
+        "url": "https://shortstorydayafrica.org/?p=12",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Captive: New short fiction from Africa – cover reveal!",
+      "publishedAt": "2023-05-05T10:21:08.000Z",
+      "description": "On 22 March 2023 the cover for the next Short Story Day Africa anthology was revealed in Brittle Paper: https://brittlepaper.com/2023/03/cover-reveal-captive-new-short-fiction-from-africa-edited-by-rachel-zadok-and-helen-moffett/ Edited by Rachel Zadok and Helen Moffett, Captive is a collaboration between Catalyst Press and Short Story Day Africa featuring stories by 12 emerging writers from Afri…",
+      "discoveredAt": "2026-09-29T20:39:55.858Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "short-story-day-africa",
+      "source": {
+        "name": "Short Story Day Africa",
+        "url": "https://shortstorydayafrica.org/?p=15",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Disruption: Announcing The Longlist Of The 2019 Short Story Day Africa Prize",
+      "publishedAt": "2020-10-08T11:12:48.000Z",
+      "description": "[Originally announced exclusively on The Johannesburg Review of Books] The longlist for the seventh annual Short Story Day Africa Prize has been announced! The prize was founded in 2013, and is open to any African citizen or African person living in the diaspora. SSDA awards prize money of US$800 (about R13,500) for first place, $200 […]",
+      "discoveredAt": "2026-09-29T20:39:55.858Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "short-story-day-africa",
+      "source": {
+        "name": "Short Story Day Africa",
+        "url": "https://shortstorydayafrica.org/?p=17",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Disruption: An update on the 2019 Short Story Day Africa Prize",
+      "publishedAt": "2020-07-16T17:09:43.000Z",
+      "description": "Thank you to everyone who submitted to the 2019 Short Story Day Africa Prize, Disruption. We’re grateful that writers from across Africa and the diaspora continue to trust us with your stories. We apologise for the delay in announcing the longlist and bringing out the book. This year has proved, somewhat ironically, to be incredibly […]",
+      "discoveredAt": "2026-09-29T20:39:55.858Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "short-story-day-africa",
+      "source": {
+        "name": "Short Story Day Africa",
+        "url": "https://shortstorydayafrica.org/?p=18",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Get Terra Incognita with The African Speculative Fiction StoryBundle",
+      "publishedAt": "2020-05-28T18:16:17.000Z",
+      "description": "The African Speculative Fiction StoryBundle curated by Ivor W. Hartmann We’re so happy to share that our speculative fiction collection, Terra Incognita, has been chosen by Ivor W Hartmann to be included in the African Speculative Fiction Bundle. This StoryBundle is available until 12 June 2020, and a portion of all proceeds will go to […]",
+      "discoveredAt": "2026-09-29T20:39:55.858Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "short-story-day-africa",
+      "source": {
+        "name": "Short Story Day Africa",
+        "url": "https://shortstorydayafrica.org/?p=21",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hotel Africa: Announcing the Winners of the 2018 Short Story Day Africa Prize",
+      "publishedAt": "2019-08-05T06:00:00.000Z",
+      "description": "As we explained in our (long) shortlist announcement, choosing winners for the 2018 Short Story Day Africa award was almost impossible, and not just in the usual sense – how to choose between a crisp apple and a sensually scented orange – but in terms of the democratic voting system adopted by the judges, which […]",
+      "discoveredAt": "2026-09-29T20:39:55.858Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "short-story-day-africa",
+      "source": {
+        "name": "Short Story Day Africa",
+        "url": "https://shortstorydayafrica.org/?p=13",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the 12 writers selected for Inkubator Africa/UK!",
+      "publishedAt": "2022-05-13T08:02:44.000Z",
+      "description": "View fullsize The 12 writers selected for the first Short Story Day Africa Inkubator project have been announced! 〰️ The 12 writers selected for the first Short Story Day Africa Inkubator project have been announced! 〰️ The 12 writers selected for the first Short Story Day Africa Inkubator project have been announced! 〰️ Inkubator Africa/UK […]",
+      "discoveredAt": "2026-09-29T20:39:55.858Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "short-story-day-africa",
+      "source": {
+        "name": "Short Story Day Africa",
+        "url": "https://shortstorydayafrica.org/?p=19",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘The story always came first’: Editing Fellows report on their experience",
+      "publishedAt": "2019-10-25T11:08:49.000Z",
+      "description": "“This Fellowship has disabused any notions that I may have unconsciously held about writing being solitary work.” Agazit Abate, 2019 SSDA Editing Fellow Hotel Africa, the sixth Short Story Day Africa anthology, is safely uploaded onto the web (you can get the ebook here if you’re in Africa) and off to the printers, so it’s […]",
+      "discoveredAt": "2026-09-29T20:39:55.858Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "short-story-day-africa",
+      "source": {
+        "name": "Short Story Day Africa",
+        "url": "https://shortstorydayafrica.org/?p=20",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "SSDA response to allegations against “All Our Lives”",
+      "publishedAt": "2019-09-03T17:00:05.000Z",
+      "description": "We have been approached for comment on allegations levelled at Tochukwu Okafor, winner of our 2017 SSDA award for his story in ID. We have worked with him for several years, both in our Flow Workshops, and during the editing process for two of our anthologies. Our team has supported his journey over the years […]",
+      "discoveredAt": "2026-09-29T20:39:55.858Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ab99409ba876e0aa0af0f35aedc831041c1d0714438f76865287c86ebc2ea3a0"
+}

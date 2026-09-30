@@ -1,0 +1,20 @@
+{
+  "sourceId": "reactor",
+  "name": "Reactor",
+  "entryUrl": "https://reactormag.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:15.836Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://reactormag.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 73,
+    "sha256": "9d51f201d458df72de05e7c044de35557f22837be1e7066760b2a8232be166b4",
+    "accessedAt": "2026-09-29T20:39:16.379Z",
+    "disallowed": []
+  }
+}

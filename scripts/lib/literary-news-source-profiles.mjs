@@ -23,14 +23,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://global.penguinrandomhouse.com"
 ],
-  "linkPattern": new RegExp("^/"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://global.penguinrandomhouse.com/announcements/celebrating-our-2026-national-book-award-longlisters/"
 ],
   "verifiedAt": "2026-09-26T17:27:26.341Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -50,10 +50,6 @@ export const R10_SOURCE_PROFILES = [
   "name": "NobelPrize.org",
   "url": "https://www.nobelprize.org/press-release/",
   "format": "html",
-  "pagination": {
-    "allowedPathPattern": /^\/press-release\/page\/[1-9][0-9]{0,3}\/$/,
-    "nextSelector": "link[rel~=next][href]"
-  },
   "language": "en-US",
   "region": "europe",
   "sourceFamilyId": "nobel",
@@ -72,13 +68,17 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.nobelprize.org"
 ],
-  "linkPattern": new RegExp("^\\/press-release\\/[^/]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/"
 ],
   "verifiedAt": "2026-09-26T17:27:26.152Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/press-release\\/[^/]+\\/?$", ""),
+  "pagination": {
+  "allowedPathPattern": new RegExp("^\\/press-release\\/page\\/[1-9][0-9]{0,3}\\/$", ""),
+  "nextSelector": "link[rel~=next][href]"
+},
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -116,13 +116,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.deutscher-buchpreis.de"
 ],
-  "linkPattern": new RegExp("^\\/news\\/eintrag\\/[^/]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.deutscher-buchpreis.de/news/eintrag/die-buchpreisbloggerinnen-2026/"
 ],
   "verifiedAt": "2026-09-26T17:27:27.062Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/eintrag\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -160,13 +160,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.buchmesse.de"
 ],
-  "linkPattern": new RegExp("^\\/en\\/press\\/press-releases\\/[^/]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026"
 ],
   "verifiedAt": "2026-09-26T17:27:26.558Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/en\\/press\\/press-releases\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -204,13 +204,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://bokmassan.se"
 ],
-  "linkPattern": new RegExp("^\\/\\d{4}\\/\\d{2}\\/[^/]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/"
 ],
   "verifiedAt": "2026-09-26T17:27:26.662Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/\\d{4}\\/\\d{2}\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -248,13 +248,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.bl.uk"
 ],
-  "linkPattern": new RegExp("^\\/about\\/press\\/releases\\/[^/]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.bl.uk/about/press/releases/british-library-announces-2026-food-season-awards-winners"
 ],
   "verifiedAt": "2026-09-26T17:27:27.645Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/about\\/press\\/releases\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -292,13 +292,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.bnf.fr"
 ],
-  "linkPattern": new RegExp("^\\/fr\\/agenda\\/[^/]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.bnf.fr/fr/agenda/les-mercredis-de-loulipo"
 ],
   "verifiedAt": "2026-09-26T17:33:24.840Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/fr\\/agenda\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -336,13 +336,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://goslitmuz.ru"
 ],
-  "linkPattern": new RegExp("^\\/news\\/[^/]+\\/\\d+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://goslitmuz.ru/news/gmirli/22413/"
 ],
   "verifiedAt": "2026-09-26T17:33:24.525Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/[^/]+\\/\\d+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -380,7 +380,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://ypmuseum.ru"
 ],
-  "linkPattern": new RegExp("^\\/event\\/\\d+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "articleContainer": ".slide",
   "titleSelector": ".event-title",
@@ -389,6 +388,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:33:24.701Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/event\\/\\d+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -426,14 +426,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.nationalbook.org"
 ],
-  "linkPattern": new RegExp("^\\/(?!all-story\\/|national-book-awards\\/|other-prizes-honors\\/|lifetime-achievement\\/|programs\\/|public-programs\\/|events-calendar\\/|adventure\\/|donor-advised-funds\\/|leave-a-literary-legacy\\/|strategic-plan-|bridge-to-|donor-privacy-policy\\/|mission-history\\/|foundation-board-of-directors\\/|make-a-stock-donation\\/|contact\\/|about\\/|privacy-policy\\/|adventure-)[a-z0-9][a-z0-9-]+\\/?$"),
-  "keywordPattern": new RegExp("announc|award|honore|literary|championing books", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-translated-literature/"
 ],
   "verifiedAt": "2026-09-26T17:27:28.702Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/(?!all-story\\/|national-book-awards\\/|other-prizes-honors\\/|lifetime-achievement\\/|programs\\/|public-programs\\/|events-calendar\\/|adventure\\/|donor-advised-funds\\/|leave-a-literary-legacy\\/|strategic-plan-|bridge-to-|donor-privacy-policy\\/|mission-history\\/|foundation-board-of-directors\\/|make-a-stock-donation\\/|contact\\/|about\\/|privacy-policy\\/|adventure-)[a-z0-9][a-z0-9-]+\\/?$", ""),
+  "keywordPattern": new RegExp("announc|award|honore|literary|championing books", "iu"),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -471,13 +471,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://brooklynbookfestival.org"
 ],
-  "linkPattern": new RegExp("^\\/event\\/[^/]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://brooklynbookfestival.org/event/2026-bobi-honoree-amitav-ghosh-in-conversation-with-nathaniel-rich/"
 ],
   "verifiedAt": "2026-09-26T17:33:26.921Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/event\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -515,14 +515,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://penguinrandomhouselibrary.com"
 ],
-  "linkPattern": new RegExp("^/"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://penguinrandomhouselibrary.com/2026/09/25/simply-read-more-help-patrons-find-their-audiobook-even-more-fall-2026-must-listens/"
 ],
   "verifiedAt": "2026-09-26T17:27:29.872Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -560,14 +560,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://pen.org"
 ],
-  "linkPattern": new RegExp("^/"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://pen.org/florida-600-banned-books/"
 ],
   "verifiedAt": "2026-09-26T17:27:29.197Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -605,14 +605,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://literary-arts.org"
 ],
-  "linkPattern": new RegExp("^/"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://literary-arts.org/2026/03/2025-portland-book-festival-audiobook/"
 ],
   "verifiedAt": "2026-09-26T17:27:30.785Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -650,13 +650,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://aaww.org"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://aaww.org/into-the-ocean/"
 ],
   "verifiedAt": "2026-09-26T17:27:32.554Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -695,13 +695,13 @@ export const R10_SOURCE_PROFILES = [
   "https://ubudwritersfestival.com",
   "https://www.ubudwritersfestival.com"
 ],
-  "linkPattern": new RegExp("^\\/news\\/[^/?#]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-reveals-main-program-2025-four-days-of-conversations-from-booker-prize-winners-to-emerging-voices"
 ],
   "verifiedAt": "2026-09-26T17:27:33.149Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/[^/?#]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -740,7 +740,6 @@ export const R10_SOURCE_PROFILES = [
   "https://ccbookfair.com",
   "https://www.ccbookfair.com"
 ],
-  "linkPattern": new RegExp("^\\/en\\/index\\/news-center\\/news\\/detail(?:!|%21)[^/?#]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "articleContainer": ".card-item",
   "titleSelector": "h3.title",
@@ -749,6 +748,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:27:33.952Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/en\\/index\\/news-center\\/news\\/detail(?:!|%21)[^/?#]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -786,14 +786,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://akefestival.org"
 ],
-  "linkPattern": new RegExp("^/"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://akefestival.org/ake-festivals-book-chats-are-second-to-none/"
 ],
   "verifiedAt": "2026-09-26T17:27:37.434Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -831,14 +831,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://kenyapublishers.org"
 ],
-  "linkPattern": new RegExp("^/"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://kenyapublishers.org/2026/05/06/meru-regional-book-fair-2026/"
 ],
   "verifiedAt": "2026-09-26T17:27:39.178Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -849,6 +849,52 @@ export const R10_SOURCE_PROFILES = [
 },
   "sourceClass": "existing",
   "evidenceReport": "reports/r10/sources/kenya-publishers-association.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "fil-guadalajara",
+  "name": "FIL Guadalajara",
+  "url": "https://fil.com.mx/prensa/recientes.asp?ids=1",
+  "format": "html",
+  "language": "es",
+  "region": "latin-america",
+  "sourceFamilyId": "fil-guadalajara",
+  "countryCodes": [
+  "MX"
+],
+  "coverageCountryCodes": [
+  "MX"
+],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://fil.com.mx",
+  "https://www.fil.com.mx"
+],
+  "parserVersion": "r10-source-profile-1",
+  "encoding": "windows-1252",
+  "exampleArticleUrls": [
+  "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1"
+],
+  "verifiedAt": "2026-09-27T14:10:04.549Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-27. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/prensa\\/boletin\\.asp$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "repository:scripts/lib/literary-news-sources.mjs",
+  "organisation": "FIL Guadalajara",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "FIL Guadalajara",
+  "status": "organisation_country"
+},
+  "sourceClass": "existing",
+  "evidenceReport": "reports/r10/sources/fil-guadalajara.json",
   "autoPublication": false,
   "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
   "refreshIntervalSeconds": 7200
@@ -876,13 +922,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://bwf.org.au"
 ],
-  "linkPattern": new RegExp("^\\/news\\/articles\\/[^/?#]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2025-microfiction-competition"
 ],
   "verifiedAt": "2026-09-26T17:27:40.214Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/articles\\/[^/?#]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -920,13 +966,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.nzbookawards.nz"
 ],
-  "linkPattern": new RegExp("^\\/new-zealand-book-awards-for-children-and-young-adults\\/news\\/[^/?#]+\\/[0-9]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/emerging-voices-recognised-alongside-established-writers-in-2026-childrens-book-awards-shortlist/53438?pageNum=1"
 ],
   "verifiedAt": "2026-09-26T17:27:42.108Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/new-zealand-book-awards-for-children-and-young-adults\\/news\\/[^/?#]+\\/[0-9]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -964,13 +1010,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://wordchristchurch.co.nz"
 ],
-  "linkPattern": new RegExp("^\\/news\\/[^/?#]+\\/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://wordchristchurch.co.nz/news/2026-launch-gallery"
 ],
   "verifiedAt": "2026-09-26T17:27:42.327Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/[^/?#]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "repository:scripts/lib/literary-news-sources.mjs",
@@ -1008,14 +1054,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://federacioneditores.org"
 ],
-  "linkPattern": new RegExp("^/"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://federacioneditores.org/liber-2025-debate-la-sostenibilidad-del-sector-del-libro-en-un-contexto-de-innovacion-tecnologica/"
 ],
   "verifiedAt": "2026-09-26T17:27:48.392Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1053,14 +1099,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.mabopa.com.my"
 ],
-  "linkPattern": new RegExp("^/"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.mabopa.com.my/2020/05/03/world_book_day_-_international_publishers_authors_and_booksellers_statement/"
 ],
   "verifiedAt": "2026-09-26T17:27:47.985Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1098,14 +1144,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://aseanbookpublishers.org"
 ],
-  "linkPattern": new RegExp("^/"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://aseanbookpublishers.org/singapore-book-bazaar/"
 ],
   "verifiedAt": "2026-09-26T17:27:49.148Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1143,20 +1189,20 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.anel.qc.ca"
 ],
-  "linkPattern": new RegExp("^/dossiers-et-enjeux/[^/]+/?$|^/[^/]{12,}/?$|^/dossiers-et-enjeux/projets/[^/]+/?$|^/dossiers-et-enjeux/projets/strongprix-litteraires-des-enseignant-e-s-de-francais-2024-strong/[^/]+/?$|^/dossiers-et-enjeux/innovation-technologie/[^/]+/?$|^/dossiers-et-enjeux/droit-dauteur/[^/]+/?$"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.anel.qc.ca/dossiers-et-enjeux/innovation-technologie/commercialiser-des-livres-numeriques-accessibles-en-europe-en-2025/"
 ],
   "verifiedAt": "2026-09-26T17:27:49.584Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/dossiers-et-enjeux\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/dossiers-et-enjeux\\/projets\\/[^/]+\\/?$|^\\/dossiers-et-enjeux\\/projets\\/strongprix-litteraires-des-enseignant-e-s-de-francais-2024-strong\\/[^/]+\\/?$|^\\/dossiers-et-enjeux\\/innovation-technologie\\/[^/]+\\/?$|^\\/dossiers-et-enjeux\\/droit-dauteur\\/[^/]+\\/?$", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
   "organisation": "ANEL",
   "statement": "Organisation country is distinct from the country of each covered event.",
-  "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers \u2013 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
+  "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers – 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
   "status": "organisation_country"
 },
   "sourceClass": "publishing-association",
@@ -1188,14 +1234,14 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.kiwi-verlag.de"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/buch/[^/]+/?$|^/buch/literatur-unterhaltung/[^/]+/?$|^/verlag/[^/]+/?$|^/magazin/ausgezeichnet/[^/]+/?$"),
-  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.kiwi-verlag.de/magazin/ausgezeichnet/shida-bazyar-erhaelt-den-wilhelm-raabe-literaturpreis-2026"
 ],
   "verifiedAt": "2026-09-26T17:27:49.323Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/buch\\/[^/]+\\/?$|^\\/buch\\/literatur-unterhaltung\\/[^/]+\\/?$|^\\/verlag\\/[^/]+\\/?$|^\\/magazin\\/ausgezeichnet\\/[^/]+\\/?$", ""),
+  "keywordPattern": new RegExp("(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)", "iu"),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1233,13 +1279,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://press.princeton.edu"
 ],
-  "linkPattern": new RegExp("^/books/hardcover/9780691284439/[^/]+/?$|^/imprints/[^/]+/?$|^/ideas/[^/]+/?$|^/our-authors/[^/]+/?$|^/[^/]{12,}/?$|^/news/.+"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://press.princeton.edu/news/bartz-v-anthropic"
 ],
   "verifiedAt": "2026-09-26T17:27:49.783Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/books\\/hardcover\\/9780691284439\\/[^/]+\\/?$|^\\/imprints\\/[^/]+\\/?$|^\\/ideas\\/[^/]+\\/?$|^\\/our-authors\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/news\\/.+", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1277,13 +1323,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://turkyaybir.org.tr"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://turkyaybir.org.tr/2025-yili-turkiye-kitap-pazari-raporu/"
 ],
   "verifiedAt": "2026-09-26T17:27:55.924Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1321,13 +1367,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.sne.fr"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/actu/[^/]+/?$|^/evenement_sne/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/"
 ],
   "verifiedAt": "2026-09-26T17:27:51.430Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/actu\\/[^/]+\\/?$|^\\/evenement_sne\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1365,13 +1411,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://publishers.org"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://publishers.org/a-conversation-with-kimberly-kay-hoang-author-of-the-2023-prose-awards-r-r-hawkins-award-winner-spiderweb-capitalism-how-global-elites-exploit-frontier-markets/"
 ],
   "verifiedAt": "2026-09-26T17:27:53.459Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1409,13 +1455,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.publishers.org.uk"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.publishers.org.uk/publishers-association-industry-insights-publishing-in-2025/"
 ],
   "verifiedAt": "2026-09-26T17:27:54.250Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1453,13 +1499,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://apnetafrica.org"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://apnetafrica.org/jill-says-mattis-nailed-it-in-his-resignation-letter/"
 ],
   "verifiedAt": "2026-09-26T17:27:54.628Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1497,13 +1543,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.bolognachildrensbookfair.com"
 ],
-  "linkPattern": new RegExp("^/focus-on/centro-traduttori/world-directory-of-childrens-book-translators/[^/]+/?$|^/eventi/eventi-bolognabookplus/[^/]+/?$|^/mostre/illustrations-and-books-on-the-move/[^/]+/?$|^/mostre/the-braw-amazing-bookshelf/[^/]+/?$|^/premi/bolognaragazzi-awards/[^/]+/?$|^/premi/bolognaragazzi-crossmedia-awards/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-crossmedia-awards/10693.html"
 ],
   "verifiedAt": "2026-09-26T17:27:56.761Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/focus-on\\/centro-traduttori\\/world-directory-of-childrens-book-translators\\/[^/]+\\/?$|^\\/eventi\\/eventi-bolognabookplus\\/[^/]+\\/?$|^\\/mostre\\/illustrations-and-books-on-the-move\\/[^/]+\\/?$|^\\/mostre\\/the-braw-amazing-bookshelf\\/[^/]+\\/?$|^\\/premi\\/bolognaragazzi-awards\\/[^/]+\\/?$|^\\/premi\\/bolognaragazzi-crossmedia-awards\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1541,13 +1587,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://universitypressplc.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://universitypressplc.com/2025/12/12/university-press-plc-wins-prestigious-sectoral-leadership-award-at-the-pearl-2025-awards/"
 ],
   "verifiedAt": "2026-09-26T17:28:00.248Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1585,19 +1631,19 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://publishers.ca"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://publishers.ca/acp-awards-notice-2026/"
 ],
   "verifiedAt": "2026-09-26T17:28:05.007Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
   "organisation": "Association Nationale des Editeurs de Livres",
   "statement": "Organisation country is distinct from the country of each covered event.",
-  "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers \u2013 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
+  "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers – 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
   "status": "organisation_country"
 },
   "sourceClass": "publishing-association",
@@ -1629,19 +1675,19 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://pubcouncil.ca"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://pubcouncil.ca/canadian-publishing-industry-condemns-implementation-of-alberta-book-ban/"
 ],
   "verifiedAt": "2026-09-26T17:28:05.086Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
   "organisation": "Association Nationale des Editeurs de Livres",
   "statement": "Organisation country is distinct from the country of each covered event.",
-  "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers \u2013 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
+  "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers – 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
   "status": "organisation_country"
 },
   "sourceClass": "publishing-association",
@@ -1673,13 +1719,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://camlibro.com.co"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/"
 ],
   "verifiedAt": "2026-09-26T17:28:09.166Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1717,13 +1763,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://shbsh.al"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://shbsh.al/wp2/2020/11/03/ne-vigjilje-te-panairit-te-23-te-librit/"
 ],
   "verifiedAt": "2026-09-26T17:28:13.287Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1761,13 +1807,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://publishers.org.nz"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://publishers.org.nz/poetry-community-powers-national-poetry-day-2026/"
 ],
   "verifiedAt": "2026-09-26T17:28:18.450Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1805,13 +1851,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.ikapi.org"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.ikapi.org/2026/08/15/usulan-penerima-ikapi-awards-2026-telah-dibuka/"
 ],
   "verifiedAt": "2026-09-26T17:28:15.259Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1849,13 +1895,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://pubat.or.th"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://pubat.or.th/100-annual-book-and-cover-design-2026/"
 ],
   "verifiedAt": "2026-09-26T17:28:25.027Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1893,13 +1939,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.pac.org.cn"
 ],
-  "linkPattern": new RegExp("^/yaowensudi/[^/]+/?$|^/hangyedongtai/[^/]+/?$|^/xiehuidongtai/[^/]+/?$|^/tongzhi/[^/]+/?$|^/zhongyaojiaoliu/[^/]+/?$|^/special/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.pac.org.cn/special/2026beijingtushudinghuohui.html"
 ],
   "verifiedAt": "2026-09-26T17:28:26.084Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/yaowensudi\\/[^/]+\\/?$|^\\/hangyedongtai\\/[^/]+\\/?$|^\\/xiehuidongtai\\/[^/]+\\/?$|^\\/tongzhi\\/[^/]+\\/?$|^\\/zhongyaojiaoliu\\/[^/]+\\/?$|^\\/special\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1937,13 +1983,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://bookunion.ru"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/news/.+"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/"
 ],
   "verifiedAt": "2026-09-26T17:28:25.628Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/news\\/.+", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1981,13 +2027,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://kustantajat.fi"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://kustantajat.fi/kustantajien-neljannesvuositilasto-painetun-kirjan-myynti-hienoisessa-laskussa-digissa-selvaa-kasvua"
 ],
   "verifiedAt": "2026-09-26T17:28:32.099Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -1998,6 +2044,51 @@ export const R10_SOURCE_PROFILES = [
 },
   "sourceClass": "publishing-association",
   "evidenceReport": "reports/r10/sources/publishers-fi.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "publishingireland-com",
+  "name": "Irish Book Publishers’ Association",
+  "url": "https://www.publishingireland.com/news/",
+  "format": "html",
+  "language": "en-GB",
+  "region": "europe",
+  "sourceFamilyId": "publishingireland-com",
+  "countryCodes": [
+  "IE"
+],
+  "coverageCountryCodes": [
+  "IE"
+],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.publishingireland.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.publishingireland.com/little-beetle-press-launches-new-international-literary-and-creative-festival/"
+],
+  "verifiedAt": "2026-09-27T14:07:15.822Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-27. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/publication_category\\/[^/]+\\/?$|^\\/\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_membership_directory",
+  "url": "https://internationalpublishers.org/about/",
+  "organisation": "Irish Book Publishers’ Association",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Irish Book Publishers’ Association25 Denzille LaneDublin 2Irelandwww.publishingireland.com",
+  "status": "organisation_country"
+},
+  "sourceClass": "publishing-association",
+  "evidenceReport": "reports/r10/sources/publishingireland-com.json",
   "autoPublication": false,
   "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
   "refreshIntervalSeconds": 7200
@@ -2025,13 +2116,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://apel.pt"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://apel.pt/2026/09/11/festa-do-livro-em-belem-2026/"
 ],
   "verifiedAt": "2026-09-26T17:28:37.484Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -2069,13 +2160,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.egyptianpublishers.org"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.egyptianpublishers.org/%d8%a7%d9%81%d8%aa%d8%aa%d8%a7%d8%ad-%d9%85%d8%b9%d8%b1%d8%b6-%d8%b3%d9%88%d9%87%d8%a7%d8%ac-%d8%a7%d9%84%d8%a3%d9%88%d9%84-%d9%84%d9%84%d9%83%d8%aa%d8%a7%d8%a8/"
 ],
   "verifiedAt": "2026-09-26T17:28:39.866Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -2113,13 +2204,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.adeb.be"
 ],
-  "linkPattern": new RegExp("^/fr/adeb/[^/]+/?$|^/fr/[^/]+/?$|^/fr/infos/presse/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre"
 ],
   "verifiedAt": "2026-09-26T17:28:49.412Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/fr\\/adeb\\/[^/]+\\/?$|^\\/fr\\/[^/]+\\/?$|^\\/fr\\/infos\\/presse\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -2157,13 +2248,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://cul.com.uy"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026/"
 ],
   "verifiedAt": "2026-09-26T17:28:57.591Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_membership_directory",
   "url": "https://internationalpublishers.org/about/",
@@ -2174,6 +2265,96 @@ export const R10_SOURCE_PROFILES = [
 },
   "sourceClass": "publishing-association",
   "evidenceReport": "reports/r10/sources/cul-com-uy.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "kbr-be",
+  "name": "Royal Library of Belgium",
+  "url": "https://www.kbr.be/en/news/",
+  "format": "html",
+  "language": "en-US",
+  "region": "europe",
+  "sourceFamilyId": "kbr-be",
+  "countryCodes": [
+  "BE"
+],
+  "coverageCountryCodes": [
+  "BE"
+],
+  "topics": [
+  "heritage",
+  "discoveries",
+  "festivals",
+  "releases"
+],
+  "articleOrigins": [
+  "https://www.kbr.be"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.kbr.be/en/reopening-kbr-museum-may-23-2025/"
+],
+  "verifiedAt": "2026-09-27T14:07:20.608Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-27. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/en\\/collections\\/[^/]+\\/?$|^\\/en\\/agenda\\/[^/]+\\/?$|^\\/en\\/agenda\\/self\\x2dguided\\x2dworkshop\\x2dwriting\\x2dwith\\x2da\\x2dquill\\x2dpainting\\x2dwith\\x2dpigments\\x2d7\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/en\\/locatie\\/[^/]+\\/?$|^\\/en\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_national_library_directory",
+  "url": "https://www.cenl.org/library/koninklijke-bibliotheek-van-belgie-bibliotheque-royale-de-belgique/",
+  "organisation": "Royal Library of Belgium",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Koninklijke Bibliotheek van België / Royal Library of Belgium",
+  "status": "organisation_country"
+},
+  "sourceClass": "library",
+  "evidenceReport": "reports/r10/sources/kbr-be.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "nub-ba",
+  "name": "National and University Library of Bosnia and Herzegovina",
+  "url": "https://nub.ba/novosti",
+  "format": "html",
+  "language": "bs",
+  "region": "europe",
+  "sourceFamilyId": "nub-ba",
+  "countryCodes": [
+  "BA"
+],
+  "coverageCountryCodes": [
+  "BA"
+],
+  "topics": [
+  "heritage",
+  "discoveries",
+  "festivals",
+  "releases"
+],
+  "articleOrigins": [
+  "https://nub.ba"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://nub.ba/o-knjizevnosti-sjecanju-i-identitetu-odrzana-promocija-romana-sandro-elvedina-nezirovica"
+],
+  "verifiedAt": "2026-09-29T20:33:40.592Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_national_library_directory",
+  "url": "https://www.cenl.org/library/nacionalna-i-univerzitetska-biblioteka/",
+  "organisation": "National and University Library of Bosnia and Herzegovina",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Nacionalna i univerzitetska biblioteka / National and University Library of Bosnia and Herzegovina",
+  "status": "organisation_country"
+},
+  "sourceClass": "library",
+  "evidenceReport": "reports/r10/sources/nub-ba.json",
   "autoPublication": false,
   "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
   "refreshIntervalSeconds": 7200
@@ -2201,13 +2382,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.nkp.cz"
 ],
-  "linkPattern": new RegExp("^/o-knihovne/[^/]+/?$|^/o-knihovne/organizacni-struktura/[^/]+/?$|^/sluzby/[^/]+/?$|^/[^/]{12,}/?$|^/o-knihovne/aktuality/[^/]+/?$|^/stitky/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.nkp.cz/o-knihovne/aktuality/cena-rudolfa-medka-pro-rok-2026"
 ],
   "verifiedAt": "2026-09-26T17:29:06.145Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/o-knihovne\\/[^/]+\\/?$|^\\/o-knihovne\\/organizacni-struktura\\/[^/]+\\/?$|^\\/sluzby\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/o-knihovne\\/aktuality\\/[^/]+\\/?$|^\\/stitky\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-the-czech-republic-narodni-knihovna-ceske-republiky/",
@@ -2245,13 +2426,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://oszk.hu"
 ],
-  "linkPattern": new RegExp("^/en/[^/]+/?$|^/en/news/.+|^/[^/]{12,}/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324"
 ],
   "verifiedAt": "2026-09-26T17:29:09.168Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/en\\/[^/]+\\/?$|^\\/en\\/news\\/.+|^\\/[^/]{12,}\\/?$", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-hungary-orszagos-szechenyi-konyvtar-oszk/",
@@ -2289,13 +2470,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.nli.ie"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/learn/[^/]+/?$|^/collections/our-collections/[^/]+/?$|^/collections/using-our-collections/[^/]+/?$|^/news-stories/news/[^/]+/?$|^/exhibitions-events/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins"
 ],
   "verifiedAt": "2026-09-26T17:29:10.658Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/learn\\/[^/]+\\/?$|^\\/collections\\/our-collections\\/[^/]+\\/?$|^\\/collections\\/using-our-collections\\/[^/]+\\/?$|^\\/news-stories\\/news\\/[^/]+\\/?$|^\\/exhibitions-events\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-ireland/",
@@ -2333,13 +2514,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.landesbibliothek.li"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/"
 ],
   "verifiedAt": "2026-09-26T17:29:11.958Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-liechtenstein/",
@@ -2377,13 +2558,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.lnb.lt"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.lnb.lt/naujienos/15114-nordic-libraries-together-2026-ka-parsivezame-is-oslo"
 ],
   "verifiedAt": "2026-09-26T17:29:12.568Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/martynas-mazvydas-national-library-of-lithuania/",
@@ -2421,13 +2602,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://bnl.public.lu"
 ],
-  "linkPattern": new RegExp("^/fr/fonds/[^/]+/?$|^/fr/offres-numeriques/[^/]+/?$|^/fr/infrastructures/[^/]+/?$|^/fr/a-la-une/agenda/2026/[^/]+/?$|^/fr/services/[^/]+/?$|^/fr/support/aide-contact/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html"
 ],
   "verifiedAt": "2026-09-26T17:29:13.149Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/fr\\/fonds\\/[^/]+\\/?$|^\\/fr\\/offres-numeriques\\/[^/]+\\/?$|^\\/fr\\/infrastructures\\/[^/]+\\/?$|^\\/fr\\/a-la-une\\/agenda\\/2026\\/[^/]+\\/?$|^\\/fr\\/services\\/[^/]+\\/?$|^\\/fr\\/support\\/aide-contact\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-luxembourg/",
@@ -2465,13 +2646,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.bnrm.md"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.bnrm.md/?p=7522"
 ],
   "verifiedAt": "2026-09-26T17:29:13.765Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-the-republic-of-moldova-biblioteca-nationala-a-republicii-moldova/",
@@ -2509,13 +2690,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.nb-cg.me"
 ],
-  "linkPattern": new RegExp("^/en/about-us/[^/]+/?$|^/en/catalogues/[^/]+/?$|^/en/collections/[^/]+/?$|^/en/our-publications/[^/]+/?$|^/en/events/.+|^/en/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald"
 ],
   "verifiedAt": "2026-09-26T17:29:13.534Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/en\\/about-us\\/[^/]+\\/?$|^\\/en\\/catalogues\\/[^/]+\\/?$|^\\/en\\/collections\\/[^/]+\\/?$|^\\/en\\/our-publications\\/[^/]+\\/?$|^\\/en\\/events\\/.+|^\\/en\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-montenegro-djurdje-crnojevic-cetinje-naciocalna-biblioteka-crne-gore-djurdje-crnojevic-cetinje/",
@@ -2553,13 +2734,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.bn.org.pl"
 ],
-  "linkPattern": new RegExp("^/o-nas/[^/]+/?$|^/[^/]{12,}/?$|^/dla-bibliotekarzy/[^/]+/?$|^/aktualnosci/.+"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html"
 ],
   "verifiedAt": "2026-09-26T17:29:14.741Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/o-nas\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/dla-bibliotekarzy\\/[^/]+\\/?$|^\\/aktualnosci\\/.+", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-poland-biblioteka-narodowa/",
@@ -2597,13 +2778,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://nb.rs"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/"
 ],
   "verifiedAt": "2026-09-26T17:29:18.627Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-serbia/",
@@ -2641,13 +2822,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://snk.sk"
 ],
-  "linkPattern": new RegExp("^/en/[^/]+/?$|^/en/novinky/.+"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://snk.sk/en/novinky/bibliograficke-dni-2026"
 ],
   "verifiedAt": "2026-09-26T17:29:17.137Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/en\\/[^/]+\\/?$|^\\/en\\/novinky\\/.+", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/slovak-national-library-slovenska-narodna-kni/",
@@ -2685,13 +2866,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.kb.se"
 ],
-  "linkPattern": new RegExp("^//[^/]+/?$|^/om-oss/nyheter/nyhetsarkiv/[^/]+/?$|^/om-oss/evenemang/evenemang/[^/]+/?$|^/for-bibliotekssektorn/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html"
 ],
   "verifiedAt": "2026-09-26T17:29:18.026Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/\\/[^/]+\\/?$|^\\/om-oss\\/nyheter\\/nyhetsarkiv\\/[^/]+\\/?$|^\\/om-oss\\/evenemang\\/evenemang\\/[^/]+\\/?$|^\\/for-bibliotekssektorn\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/national-library-of-sweden-kungliga-biblioteket/",
@@ -2729,13 +2910,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://nbuv.gov.ua"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://nbuv.gov.ua/node/7320"
 ],
   "verifiedAt": "2026-09-26T17:29:19.516Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_national_library_directory",
   "url": "https://www.cenl.org/library/v-vernadsky-national-library-of-ukraine/",
@@ -2772,13 +2953,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.pen-international.org"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/news/.+"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026"
 ],
   "verifiedAt": "2026-09-26T17:29:21.792Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/news\\/.+", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -2815,13 +2996,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://penclubedobrasil.org.br"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://penclubedobrasil.org.br/oscar-de-alencar-araripe-lanca-novo-livro-dia-28-03-2025-na-livraria-da-travessa-ipanema/"
 ],
   "verifiedAt": "2026-09-26T17:29:24.135Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -2856,13 +3037,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://penbelarus.org"
 ],
-  "linkPattern": new RegExp("^/en/2026/03/04/[^/]+/?$|^/en/[^/]+/?$|^/en/2026/07/31/[^/]+/?$|^/en/2026/09/17/[^/]+/?$|^/en/2026/03/03/[^/]+/?$|^/en/2026/09/16/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html"
 ],
   "verifiedAt": "2026-09-26T17:29:23.958Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/en\\/2026\\/03\\/04\\/[^/]+\\/?$|^\\/en\\/[^/]+\\/?$|^\\/en\\/2026\\/07\\/31\\/[^/]+\\/?$|^\\/en\\/2026\\/09\\/17\\/[^/]+\\/?$|^\\/en\\/2026\\/03\\/03\\/[^/]+\\/?$|^\\/en\\/2026\\/09\\/16\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -2899,13 +3080,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://penbih.ba"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://penbih.ba/2026/09/izlozba-adnadina-jasarevica-8-9-2026/"
 ],
   "verifiedAt": "2026-09-26T17:29:28.065Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -2942,13 +3123,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.pencatala.cat"
 ],
-  "linkPattern": new RegExp("^/programes/[^/]+/?$|^/[^/]{12,}/?$|^/programes/traduccio/[^/]+/?$|^/noticia/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/"
 ],
   "verifiedAt": "2026-09-26T17:29:29.649Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/programes\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/programes\\/traduccio\\/[^/]+\\/?$|^\\/noticia\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -2985,13 +3166,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://danskpen.dk"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/"
 ],
   "verifiedAt": "2026-09-26T17:29:30.327Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -3002,6 +3183,50 @@ export const R10_SOURCE_PROFILES = [
 },
   "sourceClass": "writers-association",
   "evidenceReport": "reports/r10/sources/pen-dk.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "englishpen-org",
+  "name": "English PEN",
+  "url": "https://www.englishpen.org/news/",
+  "format": "html",
+  "language": "en-GB",
+  "region": "europe",
+  "sourceFamilyId": "englishpen-org",
+  "countryCodes": [
+  "GB"
+],
+  "coverageCountryCodes": [
+  "GB"
+],
+  "topics": [
+  "publishing",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.englishpen.org"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.englishpen.org/posts/news/jacqueline-rose-awarded-pen-pinter-prize-2026/"
+],
+  "verifiedAt": "2026-09-29T20:33:55.876Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/posts\\/news\\/[^/]+\\/?$|^\\/posts\\/events\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_PEN_centre_directory",
+  "url": "https://pen.org/the-pen-world/",
+  "organisation": "English PEN",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "English PEN",
+  "status": "organisation_country"
+},
+  "sourceClass": "writers-association",
+  "evidenceReport": "reports/r10/sources/englishpen-org.json",
   "autoPublication": false,
   "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
   "refreshIntervalSeconds": 7200
@@ -3028,13 +3253,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://pen-deutschland.de"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/"
 ],
   "verifiedAt": "2026-09-26T17:29:33.133Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -3071,13 +3296,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://irishpen.com"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/become-a-member/[^/]+/?$|^/\\d{4}/\\d{2}/(?:\\d{2}/)?[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/"
 ],
   "verifiedAt": "2026-09-26T17:29:33.351Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/become-a-member\\/[^/]+\\/?$|^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -3112,13 +3337,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://pen-kurd.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://pen-kurd.com/pen-international-calls-for-an-end-to-book-bans-on-world-book-day-2025/"
 ],
   "verifiedAt": "2026-09-26T17:29:32.551Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -3155,13 +3380,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://norskpen.no"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/"
 ],
   "verifiedAt": "2026-09-26T17:29:40.420Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -3198,13 +3423,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://penclub.com.pl"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://penclub.com.pl/2026/09/14/literatura-zakazana-na-festiwalu-lublin-miasto-literatury/"
 ],
   "verifiedAt": "2026-09-26T17:29:36.397Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -3241,13 +3466,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://scottishpen.org"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/campaign/[^/]+/?$|^//[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://scottishpen.org/scottish-poets-respond-to-israels-genocide-in-gaza/"
 ],
   "verifiedAt": "2026-09-26T17:29:37.052Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/campaign\\/[^/]+\\/?$|^\\/\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -3284,13 +3509,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.penslovenia-zdruzenje.si"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/pen/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.penslovenia-zdruzenje.si/mediji-o-mladem-pen-u"
 ],
   "verifiedAt": "2026-09-26T17:29:37.211Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/pen\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -3327,13 +3552,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://pen.org.au"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://pen.org.au/poet-ali-asadollahi-arrested-in-iran-during-protests/"
 ],
   "verifiedAt": "2026-09-26T17:29:37.759Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_PEN_centre_directory",
   "url": "https://pen.org/the-pen-world/",
@@ -3371,13 +3596,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://godliteratury.ru"
 ],
-  "linkPattern": new RegExp("^/gl-projects/[^/]+/?$|^/articles/.+"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://godliteratury.ru/articles/2026/09/23/opublikovan-korotkij-spisok-bukerovskoj-premii-2026-goda"
 ],
   "verifiedAt": "2026-09-26T17:29:38.382Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/gl-projects\\/[^/]+\\/?$|^\\/articles\\/.+", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "archive:source_probe_notes.json",
@@ -3415,13 +3640,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.publishersweekly.com"
 ],
-  "linkPattern": new RegExp("^/pw/by-topic/industry-news/financial-reporting/article/[^/]+/?$|^/pw/by-topic/industry-news/publisher-news/article/[^/]+/?$|^/pw/by-topic/industry-news/bookselling/article/[^/]+/?$|^/pw/by-topic/industry-news/book-deals/article/[^/]+/?$|^/pw/by-topic/industry-news/religion/article/[^/]+/?$|^/pw/by-topic/industry-news/tip-sheet/article/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101236-2026-national-book-award-longlists-announced.html"
 ],
   "verifiedAt": "2026-09-26T17:29:40.374Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/pw\\/by-topic\\/industry-news\\/financial-reporting\\/article\\/[^/]+\\/?$|^\\/pw\\/by-topic\\/industry-news\\/publisher-news\\/article\\/[^/]+\\/?$|^\\/pw\\/by-topic\\/industry-news\\/bookselling\\/article\\/[^/]+\\/?$|^\\/pw\\/by-topic\\/industry-news\\/book-deals\\/article\\/[^/]+\\/?$|^\\/pw\\/by-topic\\/industry-news\\/religion\\/article\\/[^/]+\\/?$|^\\/pw\\/by-topic\\/industry-news\\/tip-sheet\\/article\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "archive:source_probe_notes.json",
@@ -3459,13 +3684,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://publishingperspectives.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://publishingperspectives.com/2026/09/from-hilarious-to-the-discomfiting-the-u-k-s-booker-prize-announces-the-2026-shortlist/"
 ],
   "verifiedAt": "2026-09-26T17:29:40.363Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "archive:source_probe_notes.json",
@@ -3503,13 +3728,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://ast.ru"
 ],
-  "linkPattern": new RegExp("^/news/.+|^/authors/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://ast.ru/news/evropeyskiy-den-yazykov-2026/"
 ],
   "verifiedAt": "2026-09-26T17:29:41.539Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+|^\\/authors\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "archive:source_probe_notes.json",
@@ -3547,13 +3772,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://admarginem.ru"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://admarginem.ru/2026/07/31/yazyk-kak-mesto-vstrechi/"
 ],
   "verifiedAt": "2026-09-26T17:29:41.910Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "archive:source_probe_notes.json",
@@ -3591,13 +3816,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://samokatbook.ru"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/news/.+|^/meropriyatiya/v-moskve/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://samokatbook.ru/news/bukvy-i-znaki-festival-lyubvi-k-knigam-i-rodnomu-gorodu-v-vyborge/"
 ],
   "verifiedAt": "2026-09-26T17:29:41.564Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/news\\/.+|^\\/meropriyatiya\\/v-moskve\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "archive:source_probe_notes.json",
@@ -3635,7 +3860,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.ndl.go.jp"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/en/[^/]+/?$|^/en/news/.+"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -3643,6 +3867,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:29:47.733Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/en\\/[^/]+\\/?$|^\\/en\\/news\\/.+", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.ndl.go.jp/en/news/news_index",
@@ -3680,7 +3905,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.bibliotecanacional.gob.cl"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$|^/bajo-la-lupa/[^/]+/?$|^/noticias/.+"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -3688,6 +3912,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:29:46.801Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/bajo-la-lupa\\/[^/]+\\/?$|^\\/noticias\\/.+", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.bibliotecanacional.gob.cl/noticias",
@@ -3725,7 +3950,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.gob.pe"
 ],
-  "linkPattern": new RegExp("^/institucion/bnp/tema/[^/]+/?$|^/institucion/bnp/pages/[^/]+/?$|^/institucion/bnp/colecciones/[^/]+/?$|^/[^/]{12,}/?$|^/institucion/bnp/noticias/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -3733,6 +3957,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:29:48.003Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/institucion\\/bnp\\/tema\\/[^/]+\\/?$|^\\/institucion\\/bnp\\/pages\\/[^/]+\\/?$|^\\/institucion\\/bnp\\/colecciones\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/institucion\\/bnp\\/noticias\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.gob.pe/institucion/bnp/noticias",
@@ -3771,13 +3996,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://brittlepaper.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://brittlepaper.com/2026/09/18-year-old-nigerian-american-poet-daniel-umemezie-becomes-the-us-2026-national-youth-poet-laureate/"
 ],
   "verifiedAt": "2026-09-26T17:29:48.521Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://brittlepaper.com/",
@@ -3813,13 +4038,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.asymptotejournal.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.asymptotejournal.com/blog/2026/09/14/whats-new-in-translation-september-2026/"
 ],
   "verifiedAt": "2026-09-26T17:29:49.656Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.asymptotejournal.com/about/",
@@ -3857,13 +4082,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://bakwamagazine.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://bakwamagazine.com/featured-content/on-territoriality-and-african-literature/"
 ],
   "verifiedAt": "2026-09-26T17:29:51.561Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://bakwamagazine.com/news/",
@@ -3902,13 +4127,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://cassavarepublic.biz"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://cassavarepublic.biz/the-mercy-step-is-shortlisted-for-the-womens-prize-for-fiction/"
 ],
   "verifiedAt": "2026-09-26T17:30:00.094Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://cassavarepublic.biz/blog-2/",
@@ -3946,13 +4171,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://modjajibooks.co.za"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://modjajibooks.co.za/modjaji-books-launches-a-call-for-our-woordeloos-anthology-celebrating-southern-african-women-poets/"
 ],
   "verifiedAt": "2026-09-26T17:29:59.720Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://modjajibooks.co.za/topics/imprint-africa/",
@@ -3963,6 +4188,49 @@ export const R10_SOURCE_PROFILES = [
 },
   "sourceClass": "publisher",
   "evidenceReport": "reports/r10/sources/modjaji.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "doek",
+  "name": "Doek!",
+  "url": "https://doeklitmag.com/feed/",
+  "format": "rss",
+  "language": "en-GB",
+  "region": "africa",
+  "sourceFamilyId": "doek",
+  "countryCodes": [
+    "NA"
+  ],
+  "coverageCountryCodes": [
+    "NA"
+  ],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://doeklitmag.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://doeklitmag.com/that-sweet-faraway-place-where-dreams-are-made/"
+  ],
+  "verifiedAt": "2026-09-29T20:34:06.614Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://doeklitmag.com/",
+    "organisation": "Doek!",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Doek!",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-media",
+  "evidenceReport": "reports/r10/sources/doek.json",
   "autoPublication": false,
   "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
   "refreshIntervalSeconds": 7200
@@ -3990,7 +4258,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.tibe.org.tw"
 ],
-  "linkPattern": new RegExp("^/tw/download/[^/]+/?$|^/tw/news_detail/19/[^/]+/?$|^/tw/news_detail/6/[^/]+/?$|^/tw/news_detail/7/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -3998,6 +4265,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:31:45.202Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/tw\\/download\\/[^/]+\\/?$|^\\/tw\\/news_detail\\/19\\/[^/]+\\/?$|^\\/tw\\/news_detail\\/6\\/[^/]+\\/?$|^\\/tw\\/news_detail\\/7\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.tibe.org.tw/",
@@ -4035,7 +4303,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://sibf.or.kr"
 ],
-  "linkPattern": new RegExp("^/en/page/[^/]+/?$|^/en/62_en/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -4043,6 +4310,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:31:49.665Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/en\\/page\\/[^/]+\\/?$|^\\/en\\/62_en\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://sibf.or.kr/en/",
@@ -4079,13 +4347,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://femrite.org"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://femrite.org/2025/10/24/her-humility-carried-more-power-than-her-authority/"
 ],
   "verifiedAt": "2026-09-26T17:31:54.454Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://femrite.org/",
@@ -4123,13 +4391,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://amabooksbyo.blogspot.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://amabooksbyo.blogspot.com/2026/03/interview-with-university-of-georgia.html"
 ],
   "verifiedAt": "2026-09-26T17:31:54.226Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://amabooksbyo.blogspot.com/",
@@ -4167,13 +4435,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://loatad.org"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://loatad.org/2025/12/10/apply-to-the-2026-west-africa-road-residency/"
 ],
   "verifiedAt": "2026-09-26T17:31:57.542Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://loatad.org/",
@@ -4211,13 +4479,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://jaladaafrica.org"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://jaladaafrica.org/2025/05/29/jalada-africa-joins-the-world-to-mourn-ngugi-wa-thiongo-1938-2025/"
 ],
   "verifiedAt": "2026-09-26T17:31:57.611Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://jaladaafrica.org/",
@@ -4255,13 +4523,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://actualitte.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://actualitte.com/article/134130/prix-litteraires/booker-prize-2026-ils-ne-sont-plus-que-6-en-lice"
 ],
   "verifiedAt": "2026-09-26T17:32:08.365Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://actualitte.com/",
@@ -4299,7 +4567,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.livreshebdo.fr"
 ],
-  "linkPattern": new RegExp("^/tag_menu/[^/]+/?$|^/article/[^/]+/?$|^/livres/[^/]+/?$|^/auteur/[^/]+/?$|^/page/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -4307,6 +4574,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:32:04.052Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/tag_menu\\/[^/]+\\/?$|^\\/article\\/[^/]+\\/?$|^\\/livres\\/[^/]+\\/?$|^\\/auteur\\/[^/]+\\/?$|^\\/page\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.livreshebdo.fr/",
@@ -4344,13 +4612,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.dosdoce.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.dosdoce.com/2026/09/23/el-85-de-los-productores-de-audiolibros-usan-ia-pero-los-ahorros-de-costos-reales-estan-muy-por-debajo-de-la-exageracion-de-la-industria/"
 ],
   "verifiedAt": "2026-09-26T17:32:03.140Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.dosdoce.com/",
@@ -4388,13 +4656,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.elboomeran.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.elboomeran.com/neruda-y-asturias-manteles-largos/"
 ],
   "verifiedAt": "2026-09-26T17:32:08.622Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.elboomeran.com/",
@@ -4432,13 +4700,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.illibraio.it"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://www.illibraio.it/news/editoria/festival-letterari-2026-1484967/"
 ],
   "verifiedAt": "2026-09-26T17:32:06.224Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.illibraio.it/",
@@ -4476,7 +4744,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://www.salonelibro.it"
 ],
-  "linkPattern": new RegExp("^/news/.+"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -4484,6 +4751,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:32:10.079Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://www.salonelibro.it/",
@@ -4521,7 +4789,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://eternacadencia.com.ar"
 ],
-  "linkPattern": new RegExp("^/blog/.+|^/p/-iquest-por-que-son-tan-lindos-los-caballos-/159178/[^/]+/?$|^/p/al-norte-la-montana-al-sur-el-lago-al-oeste-el-camino-al-este-el-rio/190434/[^/]+/?$|^/p/la-casa-de-las-almas/129933/[^/]+/?$|^/p/modernidad-explosiva/177699/[^/]+/?$|^/p/hacia-donde-se-pone-el-sol/175882/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -4529,6 +4796,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:32:12.063Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/blog\\/.+|^\\/p\\/-iquest-por-que-son-tan-lindos-los-caballos-\\/159178\\/[^/]+\\/?$|^\\/p\\/al-norte-la-montana-al-sur-el-lago-al-oeste-el-camino-al-este-el-rio\\/190434\\/[^/]+\\/?$|^\\/p\\/la-casa-de-las-almas\\/129933\\/[^/]+\\/?$|^\\/p\\/modernidad-explosiva\\/177699\\/[^/]+\\/?$|^\\/p\\/hacia-donde-se-pone-el-sol\\/175882\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://eternacadencia.com.ar/",
@@ -4566,7 +4834,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://lom.cl"
 ],
-  "linkPattern": new RegExp("^/blogs/agenda/[^/]+/?$|^/blogs/blog/[^/]+/?$|^/pages/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -4574,6 +4841,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:32:11.562Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/blogs\\/agenda\\/[^/]+\\/?$|^\\/blogs\\/blog\\/[^/]+\\/?$|^\\/pages\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://lom.cl/",
@@ -4611,7 +4879,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://lithub.com"
 ],
-  "linkPattern": new RegExp("^/[^/]{12,}/?$"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -4619,6 +4886,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:32:12.706Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://lithub.com/",
@@ -4656,13 +4924,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://electricliterature.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://electricliterature.com/7-experimental-books-that-reimagine-how-trauma-is-told/"
 ],
   "verifiedAt": "2026-09-26T17:32:15.199Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://electricliterature.com/",
@@ -4700,7 +4968,6 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://wordswithoutborders.org"
 ],
-  "linkPattern": new RegExp("^/read/type/[^/]+/?$|^/events/.+|^/read/article/2026-09/[^/]+/?$|^/read/article/2019-11/[^/]+/?$|^/read/article/2004-11/[^/]+/?$|^/read/collection/[^/]+/?$"),
   "parserVersion": "r10-source-profile-1",
   "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
   "exampleArticleUrls": [
@@ -4708,6 +4975,7 @@ export const R10_SOURCE_PROFILES = [
 ],
   "verifiedAt": "2026-09-26T17:32:13.738Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/read\\/type\\/[^/]+\\/?$|^\\/events\\/.+|^\\/read\\/article\\/2026-09\\/[^/]+\\/?$|^\\/read\\/article\\/2019-11\\/[^/]+\\/?$|^\\/read\\/article\\/2004-11\\/[^/]+\\/?$|^\\/read\\/collection\\/[^/]+\\/?$", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://wordswithoutborders.org/",
@@ -4745,13 +5013,13 @@ export const R10_SOURCE_PROFILES = [
   "articleOrigins": [
   "https://commonwealthfoundation.com"
 ],
-  "linkPattern": new RegExp("^/"),
   "parserVersion": "r10-source-profile-1",
   "exampleArticleUrls": [
   "https://commonwealthfoundation.com/cwprize-longlist-2026/"
 ],
   "verifiedAt": "2026-09-26T17:32:14.719Z",
   "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/", ""),
   "countryEvidence": {
   "method": "official_organisation_identity",
   "url": "https://commonwealthfoundation.com/",
@@ -4762,6 +5030,1282 @@ export const R10_SOURCE_PROFILES = [
 },
   "sourceClass": "literary-institution",
   "evidenceReport": "reports/r10/sources/commonwealth-foundation.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "the-rumpus",
+  "name": "The Rumpus",
+  "url": "https://therumpus.net/sections/news/",
+  "format": "html",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "the-rumpus",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://therumpus.net"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://therumpus.net/2026/09/29/the-october-rumpus-book-club-american-hagwon-with-min-jin-lee/"
+],
+  "verifiedAt": "2026-09-29T20:39:18.543Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://therumpus.net/",
+  "organisation": "The Rumpus",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "The Rumpus",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/the-rumpus.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "ploughshares",
+  "name": "Ploughshares",
+  "url": "https://pshares.org/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "ploughshares",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://pshares.org"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://pshares.org/ps/tommy-orange-an-introduction-to-the-best-short-stories-2026/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:18.612Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://pshares.org/blog/",
+    "organisation": "Ploughshares",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Ploughshares",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/ploughshares.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "kenyon-review",
+  "name": "The Kenyon Review",
+  "url": "https://kenyonreview.org/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "kenyon-review",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://kenyonreview.org"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://kenyonreview.org/2019/10/poetry-for-people-who-hate-poetry-october-2/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:19.185Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://kenyonreview.org/",
+    "organisation": "The Kenyon Review",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "The Kenyon Review",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/kenyon-review.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "national-book-review",
+  "name": "The National Book Review",
+  "url": "https://www.thenationalbookreview.com/",
+  "format": "html",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "national-book-review",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.thenationalbookreview.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.thenationalbookreview.com/features/2026/9/23/hot-five-a-thrilling-new-book-from-scott-turow-a-cbs-anchors-memoir-and-more"
+],
+  "verifiedAt": "2026-09-29T20:41:40.793Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/features\\/2026\\/9\\/23\\/[^/]+\\/?$|^\\/features\\/2026\\/2\\/3\\/[^/]+\\/?$|^\\/features\\/2025\\/12\\/31\\/[^/]+\\/?$|^\\/features\\/2025\\/11\\/26\\/[^/]+\\/?$|^\\/features\\/2025\\/10\\/27\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.thenationalbookreview.com/",
+  "organisation": "The National Book Review",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "The National Book Review",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/national-book-review.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "writers-mosaic",
+  "name": "WritersMosaic",
+  "url": "https://writersmosaic.org.uk/",
+  "format": "html",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "writers-mosaic",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://writersmosaic.org.uk"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://writersmosaic.org.uk/my-hit-list/meredith-davis-cultural-highlights/"
+],
+  "verifiedAt": "2026-09-29T20:39:28.368Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/my\\x2dhit\\x2dlist\\/[^/]+\\/?$|^\\/close\\x2dup\\/[^/]+\\/?$|^\\/content\\x2dcategories\\/[^/]+\\/?$|^\\/content\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://writersmosaic.org.uk/",
+  "organisation": "WritersMosaic",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "WritersMosaic",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/writers-mosaic.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "books-ireland",
+  "name": "Books Ireland",
+  "url": "https://booksirelandmagazine.com/feed/",
+  "format": "rss",
+  "language": "en-GB",
+  "region": "global",
+  "sourceFamilyId": "books-ireland",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://booksirelandmagazine.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://booksirelandmagazine.com/fiction-editing-masterclass-with-author-niamh-mulvey/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:25.579Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://booksirelandmagazine.com/",
+    "organisation": "Books Ireland",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Books Ireland",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/books-ireland.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "publishing-scotland",
+  "name": "Publishing Scotland",
+  "url": "https://www.publishingscotland.org/feed/",
+  "format": "rss",
+  "language": "en-GB",
+  "region": "global",
+  "sourceFamilyId": "publishing-scotland",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.publishingscotland.org"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.publishingscotland.org/2026/09/the-gaelic-literature-awards-2026-winners-announced/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:24.642Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.publishingscotland.org/",
+    "organisation": "Publishing Scotland",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Publishing Scotland",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/publishing-scotland.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "scottish-book-trust",
+  "name": "Scottish Book Trust",
+  "url": "https://www.scottishbooktrust.com/about/latest-news/",
+  "format": "html",
+  "language": "en-GB",
+  "region": "global",
+  "sourceFamilyId": "scottish-book-trust",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.scottishbooktrust.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.scottishbooktrust.com/news/50-word-fiction-winners-august-2026-young-writers/"
+],
+  "verifiedAt": "2026-09-29T20:39:27.169Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.scottishbooktrust.com/",
+  "organisation": "Scottish Book Trust",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Scottish Book Trust",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/scottish-book-trust.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "new-writing-north",
+  "name": "New Writing North",
+  "url": "https://newwritingnorth.com/feed/",
+  "format": "rss",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "new-writing-north",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://newwritingnorth.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://newwritingnorth.com/durham-book-festival-2026/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:26.927Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://newwritingnorth.com/",
+    "organisation": "New Writing North",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "New Writing North",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/new-writing-north.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "national-centre-writing",
+  "name": "National Centre for Writing",
+  "url": "https://nationalcentreforwriting.org.uk/",
+  "format": "html",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "national-centre-writing",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://nationalcentreforwriting.org.uk"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://nationalcentreforwriting.org.uk/events/on-tour-with-bad-betty-press-2026/"
+],
+  "verifiedAt": "2026-09-29T20:39:28.971Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/events\\/.+|^\\/programmes\\/[^/]+\\/?$|^\\/get\\x2dinvolved\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://nationalcentreforwriting.org.uk/",
+  "organisation": "National Centre for Writing",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "National Centre for Writing",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/national-centre-writing.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "literature-wales",
+  "name": "Literature Wales",
+  "url": "https://www.literaturewales.org/news/",
+  "format": "html",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "literature-wales",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.literaturewales.org"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.literaturewales.org/lw-news/applications-for-wales-book-of-the-year-2027-now-open/"
+],
+  "verifiedAt": "2026-09-29T20:39:29.952Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/lw\\x2dnews\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/what\\x2dcan\\x2dliterature\\x2dwales\\x2ddo\\x2dfor\\x2dyou\\/[^/]+\\/?$|^\\/our\\x2dprojects\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.literaturewales.org/",
+  "organisation": "Literature Wales",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Literature Wales",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/literature-wales.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "books-from-scotland",
+  "name": "Books from Scotland",
+  "url": "https://booksfromscotland.com/",
+  "format": "html",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "books-from-scotland",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://booksfromscotland.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://booksfromscotland.com/2026/07/the-book-according-to-lin-anderson/"
+],
+  "verifiedAt": "2026-09-29T20:41:40.557Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://booksfromscotland.com/",
+  "organisation": "Books from Scotland",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Books from Scotland",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/books-from-scotland.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "prochtenie",
+  "name": "Прочтение",
+  "url": "https://prochtenie.org/news",
+  "format": "html",
+  "language": "ru",
+  "region": "global",
+  "sourceFamilyId": "prochtenie",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://prochtenie.org"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://prochtenie.org/news/31455"
+],
+  "verifiedAt": "2026-09-29T20:39:30.207Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://prochtenie.org/",
+  "organisation": "Прочтение",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Прочтение",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/prochtenie.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "literaturnaya-gazeta",
+  "name": "Литературная газета",
+  "url": "https://lgz.ru/news/",
+  "format": "html",
+  "language": "ru",
+  "region": "global",
+  "sourceFamilyId": "literaturnaya-gazeta",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://lgz.ru"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://lgz.ru/news/premiya-solzheniczyna-u-otroshenko/"
+],
+  "verifiedAt": "2026-09-29T20:39:31.496Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://lgz.ru/",
+  "organisation": "Литературная газета",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Литературная газета",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/literaturnaya-gazeta.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "literaturnaya-rossiya",
+  "name": "Литературная Россия",
+  "url": "https://litrossia.ru/feed/",
+  "format": "rss",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "literaturnaya-rossiya",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://litrossia.ru"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://litrossia.ru/item/zhizn-poeta-bez-prikras/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:31.388Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://litrossia.ru/",
+    "organisation": "Литературная Россия",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Литературная Россия",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/literaturnaya-rossiya.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "books-publishing-au",
+  "name": "Books+Publishing",
+  "url": "https://www.booksandpublishing.com.au/category/news/local-news/",
+  "format": "html",
+  "language": "en-AU",
+  "region": "global",
+  "sourceFamilyId": "books-publishing-au",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.booksandpublishing.com.au"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.booksandpublishing.com.au/articles/2026/09/28/341315/panz-book-design-awards-2026-winners/"
+],
+  "verifiedAt": "2026-09-29T20:39:38.588Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/articles\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.booksandpublishing.com.au/",
+  "organisation": "Books+Publishing",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Books+Publishing",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/books-publishing-au.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "buchmarkt",
+  "name": "BuchMarkt",
+  "url": "https://buchmarkt.de/feed/",
+  "format": "rss",
+  "language": "de",
+  "region": "global",
+  "sourceFamilyId": "buchmarkt",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://buchmarkt.de"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://buchmarkt.de/2026/09/28/ebuch-bringt-neues-magazin-hallo-2027-heraus/"
+  ],
+  "verifiedAt": "2026-09-29T20:41:42.627Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://buchmarkt.de/",
+    "organisation": "BuchMarkt",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "BuchMarkt",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/buchmarkt.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "literaturcafe",
+  "name": "literaturcafe.de",
+  "url": "https://www.literaturcafe.de/feed/podcast/",
+  "format": "rss",
+  "language": "de",
+  "region": "global",
+  "sourceFamilyId": "literaturcafe",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.literaturcafe.de"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.literaturcafe.de/bachmannpreis-podcast-2026-3-buchtipps-vor-dem-doppeljubilaeum-kavouras-piekar-und-sebauer/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:37.971Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.literaturcafe.de/",
+    "organisation": "literaturcafe.de",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "literaturcafe.de",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/literaturcafe.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "boersenblatt",
+  "name": "Börsenblatt",
+  "url": "https://www.boersenblatt.net/thema/alle-news-aus-der-buchbranche",
+  "format": "html",
+  "language": "de",
+  "region": "global",
+  "sourceFamilyId": "boersenblatt",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.boersenblatt.net"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.boersenblatt.net/news/boersenverein/vorlesewettbewerb-2026/27-deutschlands-bestes-vorlesetalent-gesucht-442525"
+],
+  "verifiedAt": "2026-09-29T20:39:36.943Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+|^\\/home\\/[^/]+\\/?$|^\\/thema\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.boersenblatt.net/",
+  "organisation": "Börsenblatt",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Börsenblatt",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/boersenblatt.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "buchkultur",
+  "name": "Buchkultur",
+  "url": "https://www.buchkultur.net/feed/",
+  "format": "rss",
+  "language": "de",
+  "region": "global",
+  "sourceFamilyId": "buchkultur",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.buchkultur.net"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.buchkultur.net/ganz-wien-packt-das-lesefieber/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:42.306Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.buchkultur.net/",
+    "organisation": "Buchkultur",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Buchkultur",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/buchkultur.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "minima-moralia",
+  "name": "minima&moralia",
+  "url": "https://minimaetmoralia.it/feed/",
+  "format": "rss",
+  "language": "it-IT",
+  "region": "global",
+  "sourceFamilyId": "minima-moralia",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://minimaetmoralia.it"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://minimaetmoralia.it/interviste/diventare-se-stessi-contro-cio-che-abbiamo-ereditato-intervista-a-douglas-stuart/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:42.544Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.minimaetmoralia.it/",
+    "organisation": "minima&moralia",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "minima&moralia",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/minima-moralia.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "sololibri",
+  "name": "SoloLibri",
+  "url": "https://www.sololibri.net/spip.php?page=backend",
+  "format": "rss",
+  "language": "it",
+  "region": "global",
+  "sourceFamilyId": "sololibri",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.sololibri.net"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.sololibri.net/Lo-Sbilico-finalista-Premio-Campiello-2026.html"
+  ],
+  "verifiedAt": "2026-09-29T20:39:41.470Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.sololibri.net/",
+    "organisation": "SoloLibri",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "SoloLibri",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/sololibri.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "letture-org",
+  "name": "Letture.org",
+  "url": "https://www.letture.org/feed",
+  "format": "rss",
+  "language": "it-IT",
+  "region": "global",
+  "sourceFamilyId": "letture-org",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.letture.org"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.letture.org/nella-mente-di-un-intellettuale-medievale-brunetto-latini-e-il-suo-mondo-gianluca-briguglia"
+  ],
+  "verifiedAt": "2026-09-29T20:39:42.953Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.letture.org/",
+    "organisation": "Letture.org",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Letture.org",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/letture-org.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "zenda-libros",
+  "name": "Zenda",
+  "url": "https://www.zendalibros.com/feed/",
+  "format": "rss",
+  "language": "es",
+  "region": "global",
+  "sourceFamilyId": "zenda-libros",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.zendalibros.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.zendalibros.com/juan-jose-millas-ganador-del-xvii-premio-jose-luis-sampedro-2026/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:43.943Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.zendalibros.com/",
+    "organisation": "Zenda",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Zenda",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/zenda-libros.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "estandarte",
+  "name": "Estandarte",
+  "url": "https://www.estandarte.com/noticias",
+  "format": "html",
+  "language": "es",
+  "region": "global",
+  "sourceFamilyId": "estandarte",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.estandarte.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.estandarte.com/noticias/autores/santa-teresa-libros-en-los-quinientos-anos-de-su-nacimiento_3026.html"
+],
+  "verifiedAt": "2026-09-29T20:39:44.102Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/noticias\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.estandarte.com/",
+  "organisation": "Estandarte",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Estandarte",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/estandarte.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "placer-lectura",
+  "name": "El Placer de la Lectura",
+  "url": "https://elplacerdelalectura.com/feed",
+  "format": "rss",
+  "language": "es",
+  "region": "global",
+  "sourceFamilyId": "placer-lectura",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://elplacerdelalectura.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://elplacerdelalectura.com/2026/09/julia-navarro-recomienda-la-ultima-novela-historica-de-lorenzo-silva-es-un-libro-total-es-una-biografia-una-novela-un-libro-de-historia-y-un-ensayo-2.html"
+  ],
+  "verifiedAt": "2026-09-29T20:39:44.772Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://elplacerdelalectura.com/",
+    "organisation": "El Placer de la Lectura",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "El Placer de la Lectura",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/placer-lectura.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "en-attendant-nadeau",
+  "name": "En attendant Nadeau",
+  "url": "https://www.en-attendant-nadeau.fr/feed/",
+  "format": "rss",
+  "language": "fr-FR",
+  "region": "global",
+  "sourceFamilyId": "en-attendant-nadeau",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.en-attendant-nadeau.fr"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.en-attendant-nadeau.fr/2026/09/02/une-fiction-a-la-hauteur-du-present-noham-selcer/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:48.791Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.en-attendant-nadeau.fr/",
+    "organisation": "En attendant Nadeau",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "En attendant Nadeau",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/en-attendant-nadeau.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "le-litteraire",
+  "name": "Le Litteraire",
+  "url": "https://www.lelitteraire.com/feed/",
+  "format": "rss",
+  "language": "fr-FR",
+  "region": "global",
+  "sourceFamilyId": "le-litteraire",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.lelitteraire.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.lelitteraire.com/jean-pierre-otte-sinfonia-la-delivrante/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:45.773Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.lelitteraire.com/",
+    "organisation": "Le Litteraire",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Le Litteraire",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/le-litteraire.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "recours-poeme",
+  "name": "Recours au Poème",
+  "url": "https://www.recoursaupoeme.fr/feed/",
+  "format": "rss",
+  "language": "fr-FR",
+  "region": "global",
+  "sourceFamilyId": "recours-poeme",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.recoursaupoeme.fr"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.recoursaupoeme.fr/lotir-le-ciel-a-9-rien-du-pire-disabelle-levesque-ou-lexperience-du-vol-arriere-2/"
+  ],
+  "verifiedAt": "2026-09-29T20:39:46.174Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.recoursaupoeme.fr/",
+    "organisation": "Recours au Poème",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Recours au Poème",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/recours-poeme.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "short-story-day-africa",
+  "name": "Short Story Day Africa",
+  "url": "https://shortstorydayafrica.org/?feed=rss2",
+  "format": "rss",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "short-story-day-africa",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://shortstorydayafrica.org"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://shortstorydayafrica.org/?p=14"
+  ],
+  "verifiedAt": "2026-09-29T20:39:56.638Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://shortstorydayafrica.org/",
+    "organisation": "Short Story Day Africa",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Short Story Day Africa",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/short-story-day-africa.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "poets-writers",
+  "name": "Poets & Writers",
+  "url": "https://www.pw.org/",
+  "format": "html",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "poets-writers",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.pw.org"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.pw.org/content/the_new_nonfiction_2026"
+],
+  "verifiedAt": "2026-09-29T20:42:42.287Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/content\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.pw.org/",
+  "organisation": "Poets & Writers",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Poets & Writers",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/poets-writers.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "poets-org",
+  "name": "Academy of American Poets",
+  "url": "https://poets.org/",
+  "format": "html",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "poets-org",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://poets.org"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://poets.org/september-2026-poem-day-guest-editor-maya-c-popa"
+],
+  "verifiedAt": "2026-09-29T20:42:42.295Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/[^/]{12,}\\/?$|^\\/academy\\x2damerican\\x2dpoets\\/[^/]+\\/?$|^\\/node\\/[^/]+\\/?$|^\\/poem\\/[^/]+\\/?$|^\\/poet\\/[^/]+\\/?$|^\\/index\\x252ephp\\/poem\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://poets.org/",
+  "organisation": "Academy of American Poets",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Academy of American Poets",
+  "status": "organisation_country"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/poets-org.json",
   "autoPublication": false,
   "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
   "refreshIntervalSeconds": 7200
@@ -5428,7 +6972,7 @@ export const R10_SOURCE_GEOGRAPHY = {
       "url": "https://internationalpublishers.org/about/",
       "organisation": "ANEL",
       "statement": "Organisation country is distinct from the country of each covered event.",
-      "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers \u2013 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
+      "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers – 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
       "status": "organisation_country"
     }
   },
@@ -5836,7 +7380,7 @@ export const R10_SOURCE_GEOGRAPHY = {
       "url": "https://internationalpublishers.org/about/",
       "organisation": "Cámara Argentina del LibroAv. Belgrano",
       "statement": "Organisation country is distinct from the country of each covered event.",
-      "excerpt": "Cámara Argentina del LibroAv. Belgrano 1580 \u2013 Piso 4°C1093AAQ Buenos AiresArgentinawww.editores.org.ar",
+      "excerpt": "Cámara Argentina del LibroAv. Belgrano 1580 – Piso 4°C1093AAQ Buenos AiresArgentinawww.editores.org.ar",
       "status": "organisation_country"
     }
   },
@@ -5853,7 +7397,7 @@ export const R10_SOURCE_GEOGRAPHY = {
       "url": "https://internationalpublishers.org/about/",
       "organisation": "Association Nationale des Editeurs de Livres",
       "statement": "Organisation country is distinct from the country of each covered event.",
-      "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers \u2013 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
+      "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers – 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
       "status": "organisation_country"
     }
   },
@@ -5870,7 +7414,7 @@ export const R10_SOURCE_GEOGRAPHY = {
       "url": "https://internationalpublishers.org/about/",
       "organisation": "Association Nationale des Editeurs de Livres",
       "statement": "Organisation country is distinct from the country of each covered event.",
-      "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers \u2013 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
+      "excerpt": "Association Nationale des Editeurs de Livres2514 Boulevard Rosemont. Montréal H1Y1K4. Québecwww.anel.qc.ca Assn. of Canadian Publishers – 174 Spadina Avenue. Suite 306. Toronto ON M5T 2C2.www.publishe",
       "status": "organisation_country"
     }
   },
@@ -6006,7 +7550,7 @@ export const R10_SOURCE_GEOGRAPHY = {
       "url": "https://internationalpublishers.org/about/",
       "organisation": "Cámara Nacional de la Industria EditorialHolanda No.",
       "statement": "Organisation country is distinct from the country of each covered event.",
-      "excerpt": "Cámara Nacional de la Industria EditorialHolanda No.13Col. San Diego \u2013 ChurubuscoCP 04120Delegación Coyoacán- México D.F.Mexicowww.caniem.com",
+      "excerpt": "Cámara Nacional de la Industria EditorialHolanda No.13Col. San Diego – ChurubuscoCP 04120Delegación Coyoacán- México D.F.Mexicowww.caniem.com",
       "status": "organisation_country"
     }
   },
@@ -6278,7 +7822,7 @@ export const R10_SOURCE_GEOGRAPHY = {
       "url": "https://internationalpublishers.org/about/",
       "organisation": "Emirates Publishers AssociationPO Box",
       "statement": "Organisation country is distinct from the country of each covered event.",
-      "excerpt": "Emirates Publishers AssociationPO Box 5424Shj Al Qasba \u2013 Block D 1st FloorSharjahUnited Arab Emirateswww.epa.org.ae",
+      "excerpt": "Emirates Publishers AssociationPO Box 5424Shj Al Qasba – Block D 1st FloorSharjahUnited Arab Emirateswww.epa.org.ae",
       "status": "organisation_country"
     }
   },
@@ -7009,7 +8553,7 @@ export const R10_SOURCE_GEOGRAPHY = {
       "url": "https://www.cenl.org/library/national-university-library-of-iceland/",
       "organisation": "National and University Library of Iceland",
       "statement": "Organisation country is distinct from the country of each covered event.",
-      "excerpt": "Landsbókasafn Íslands \u2013 Háskólabókasafn / National and University Library of Iceland",
+      "excerpt": "Landsbókasafn Íslands – Háskólabókasafn / National and University Library of Iceland",
       "status": "organisation_country"
     }
   },
@@ -7143,9 +8687,9 @@ export const R10_SOURCE_GEOGRAPHY = {
     "countryEvidence": {
       "method": "official_national_library_directory",
       "url": "https://www.cenl.org/library/malta-libraries-the-national-library-of-malta/",
-      "organisation": "Malta Libraries \u2013 The National Library of Malta",
+      "organisation": "Malta Libraries – The National Library of Malta",
       "statement": "Organisation country is distinct from the country of each covered event.",
-      "excerpt": "Bibljoteka Nazzjonali ta’ Malta / Malta Libraries \u2013 The National Library of Malta",
+      "excerpt": "Bibljoteka Nazzjonali ta’ Malta / Malta Libraries – The National Library of Malta",
       "status": "organisation_country"
     }
   },
@@ -9012,6 +10556,734 @@ export const R10_SOURCE_GEOGRAPHY = {
       "organisation": "Commonwealth Foundation",
       "statement": "Organisation country is distinct from the country of each covered event.",
       "excerpt": "Commonwealth Foundation",
+      "status": "organisation_country"
+    }
+  },
+  "reactor": {
+    "sourceFamilyId": "reactor",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://reactormag.com/",
+      "organisation": "Reactor",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Reactor",
+      "status": "organisation_country"
+    }
+  },
+  "book-riot": {
+    "sourceFamilyId": "book-riot",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://bookriot.com/",
+      "organisation": "Book Riot",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Book Riot",
+      "status": "organisation_country"
+    }
+  },
+  "the-rumpus": {
+    "sourceFamilyId": "the-rumpus",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://therumpus.net/",
+      "organisation": "The Rumpus",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "The Rumpus",
+      "status": "organisation_country"
+    }
+  },
+  "the-millions": {
+    "sourceFamilyId": "the-millions",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://themillions.com/",
+      "organisation": "The Millions",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "The Millions",
+      "status": "organisation_country"
+    }
+  },
+  "los-angeles-review-books": {
+    "sourceFamilyId": "los-angeles-review-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://lareviewofbooks.org/",
+      "organisation": "Los Angeles Review of Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Los Angeles Review of Books",
+      "status": "organisation_country"
+    }
+  },
+  "paris-review": {
+    "sourceFamilyId": "paris-review",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.theparisreview.org/blog/",
+      "organisation": "The Paris Review",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "The Paris Review",
+      "status": "organisation_country"
+    }
+  },
+  "ploughshares": {
+    "sourceFamilyId": "ploughshares",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://pshares.org/blog/",
+      "organisation": "Ploughshares",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Ploughshares",
+      "status": "organisation_country"
+    }
+  },
+  "kenyon-review": {
+    "sourceFamilyId": "kenyon-review",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://kenyonreview.org/",
+      "organisation": "The Kenyon Review",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "The Kenyon Review",
+      "status": "organisation_country"
+    }
+  },
+  "chicago-review-books": {
+    "sourceFamilyId": "chicago-review-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://chireviewofbooks.com/",
+      "organisation": "Chicago Review of Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Chicago Review of Books",
+      "status": "organisation_country"
+    }
+  },
+  "bookpage": {
+    "sourceFamilyId": "bookpage",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.bookpage.com/",
+      "organisation": "BookPage",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "BookPage",
+      "status": "organisation_country"
+    }
+  },
+  "national-book-review": {
+    "sourceFamilyId": "national-book-review",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.thenationalbookreview.com/",
+      "organisation": "The National Book Review",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "The National Book Review",
+      "status": "organisation_country"
+    }
+  },
+  "five-books": {
+    "sourceFamilyId": "five-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://fivebooks.com/",
+      "organisation": "Five Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Five Books",
+      "status": "organisation_country"
+    }
+  },
+  "granta": {
+    "sourceFamilyId": "granta",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://granta.com/",
+      "organisation": "Granta",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Granta",
+      "status": "organisation_country"
+    }
+  },
+  "writers-mosaic": {
+    "sourceFamilyId": "writers-mosaic",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://writersmosaic.org.uk/",
+      "organisation": "WritersMosaic",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "WritersMosaic",
+      "status": "organisation_country"
+    }
+  },
+  "books-ireland": {
+    "sourceFamilyId": "books-ireland",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://booksirelandmagazine.com/",
+      "organisation": "Books Ireland",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Books Ireland",
+      "status": "organisation_country"
+    }
+  },
+  "publishing-scotland": {
+    "sourceFamilyId": "publishing-scotland",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.publishingscotland.org/",
+      "organisation": "Publishing Scotland",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Publishing Scotland",
+      "status": "organisation_country"
+    }
+  },
+  "scottish-book-trust": {
+    "sourceFamilyId": "scottish-book-trust",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.scottishbooktrust.com/",
+      "organisation": "Scottish Book Trust",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Scottish Book Trust",
+      "status": "organisation_country"
+    }
+  },
+  "new-writing-north": {
+    "sourceFamilyId": "new-writing-north",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://newwritingnorth.com/",
+      "organisation": "New Writing North",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "New Writing North",
+      "status": "organisation_country"
+    }
+  },
+  "national-centre-writing": {
+    "sourceFamilyId": "national-centre-writing",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://nationalcentreforwriting.org.uk/",
+      "organisation": "National Centre for Writing",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "National Centre for Writing",
+      "status": "organisation_country"
+    }
+  },
+  "literature-wales": {
+    "sourceFamilyId": "literature-wales",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.literaturewales.org/",
+      "organisation": "Literature Wales",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Literature Wales",
+      "status": "organisation_country"
+    }
+  },
+  "books-from-scotland": {
+    "sourceFamilyId": "books-from-scotland",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://booksfromscotland.com/",
+      "organisation": "Books from Scotland",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Books from Scotland",
+      "status": "organisation_country"
+    }
+  },
+  "gorky-media": {
+    "sourceFamilyId": "gorky-media",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://gorky.media/",
+      "organisation": "Горький",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Горький",
+      "status": "organisation_country"
+    }
+  },
+  "prochtenie": {
+    "sourceFamilyId": "prochtenie",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://prochtenie.org/",
+      "organisation": "Прочтение",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Прочтение",
+      "status": "organisation_country"
+    }
+  },
+  "literaturnaya-gazeta": {
+    "sourceFamilyId": "literaturnaya-gazeta",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://lgz.ru/",
+      "organisation": "Литературная газета",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Литературная газета",
+      "status": "organisation_country"
+    }
+  },
+  "literaturnaya-rossiya": {
+    "sourceFamilyId": "literaturnaya-rossiya",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://litrossia.ru/",
+      "organisation": "Литературная Россия",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Литературная Россия",
+      "status": "organisation_country"
+    }
+  },
+  "polka-academy": {
+    "sourceFamilyId": "polka-academy",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://polka.academy/",
+      "organisation": "Полка",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Полка",
+      "status": "organisation_country"
+    }
+  },
+  "sydney-review-books": {
+    "sourceFamilyId": "sydney-review-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://sydneyreviewofbooks.com/",
+      "organisation": "Sydney Review of Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Sydney Review of Books",
+      "status": "organisation_country"
+    }
+  },
+  "australian-book-review": {
+    "sourceFamilyId": "australian-book-review",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.australianbookreview.com.au/",
+      "organisation": "Australian Book Review",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Australian Book Review",
+      "status": "organisation_country"
+    }
+  },
+  "books-publishing-au": {
+    "sourceFamilyId": "books-publishing-au",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.booksandpublishing.com.au/",
+      "organisation": "Books+Publishing",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Books+Publishing",
+      "status": "organisation_country"
+    }
+  },
+  "literaturkritik": {
+    "sourceFamilyId": "literaturkritik",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://literaturkritik.de/",
+      "organisation": "literaturkritik.de",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "literaturkritik.de",
+      "status": "organisation_country"
+    }
+  },
+  "buchmarkt": {
+    "sourceFamilyId": "buchmarkt",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://buchmarkt.de/",
+      "organisation": "BuchMarkt",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "BuchMarkt",
+      "status": "organisation_country"
+    }
+  },
+  "literaturcafe": {
+    "sourceFamilyId": "literaturcafe",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.literaturcafe.de/",
+      "organisation": "literaturcafe.de",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "literaturcafe.de",
+      "status": "organisation_country"
+    }
+  },
+  "boersenblatt": {
+    "sourceFamilyId": "boersenblatt",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.boersenblatt.net/",
+      "organisation": "Börsenblatt",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Börsenblatt",
+      "status": "organisation_country"
+    }
+  },
+  "buchkultur": {
+    "sourceFamilyId": "buchkultur",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.buchkultur.net/",
+      "organisation": "Buchkultur",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Buchkultur",
+      "status": "organisation_country"
+    }
+  },
+  "litprom": {
+    "sourceFamilyId": "litprom",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.litprom.de/",
+      "organisation": "Litprom",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Litprom",
+      "status": "organisation_country"
+    }
+  },
+  "literaturhaus-at": {
+    "sourceFamilyId": "literaturhaus-at",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.literaturhaus.at/",
+      "organisation": "Literaturhaus Wien",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Literaturhaus Wien",
+      "status": "organisation_country"
+    }
+  },
+  "minima-moralia": {
+    "sourceFamilyId": "minima-moralia",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.minimaetmoralia.it/",
+      "organisation": "minima&moralia",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "minima&moralia",
+      "status": "organisation_country"
+    }
+  },
+  "doppiozero": {
+    "sourceFamilyId": "doppiozero",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.doppiozero.com/",
+      "organisation": "Doppiozero",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Doppiozero",
+      "status": "organisation_country"
+    }
+  },
+  "sololibri": {
+    "sourceFamilyId": "sololibri",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.sololibri.net/",
+      "organisation": "SoloLibri",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "SoloLibri",
+      "status": "organisation_country"
+    }
+  },
+  "letture-org": {
+    "sourceFamilyId": "letture-org",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.letture.org/",
+      "organisation": "Letture.org",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Letture.org",
+      "status": "organisation_country"
+    }
+  },
+  "zenda-libros": {
+    "sourceFamilyId": "zenda-libros",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.zendalibros.com/",
+      "organisation": "Zenda",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Zenda",
+      "status": "organisation_country"
+    }
+  },
+  "librerantes": {
+    "sourceFamilyId": "librerantes",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.librerantes.com/",
+      "organisation": "Librerantes",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Librerantes",
+      "status": "organisation_country"
+    }
+  },
+  "estandarte": {
+    "sourceFamilyId": "estandarte",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.estandarte.com/",
+      "organisation": "Estandarte",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Estandarte",
+      "status": "organisation_country"
+    }
+  },
+  "placer-lectura": {
+    "sourceFamilyId": "placer-lectura",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://elplacerdelalectura.com/",
+      "organisation": "El Placer de la Lectura",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "El Placer de la Lectura",
+      "status": "organisation_country"
+    }
+  },
+  "en-attendant-nadeau": {
+    "sourceFamilyId": "en-attendant-nadeau",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.en-attendant-nadeau.fr/",
+      "organisation": "En attendant Nadeau",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "En attendant Nadeau",
+      "status": "organisation_country"
+    }
+  },
+  "diacritik": {
+    "sourceFamilyId": "diacritik",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://diacritik.com/",
+      "organisation": "Diacritik",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Diacritik",
+      "status": "organisation_country"
+    }
+  },
+  "le-litteraire": {
+    "sourceFamilyId": "le-litteraire",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.lelitteraire.com/",
+      "organisation": "Le Litteraire",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Le Litteraire",
+      "status": "organisation_country"
+    }
+  },
+  "recours-poeme": {
+    "sourceFamilyId": "recours-poeme",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.recoursaupoeme.fr/",
+      "organisation": "Recours au Poème",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Recours au Poème",
+      "status": "organisation_country"
+    }
+  },
+  "literandra": {
+    "sourceFamilyId": "literandra",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://literandra.com/",
+      "organisation": "Literandra",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Literandra",
+      "status": "organisation_country"
+    }
+  },
+  "afrocritik": {
+    "sourceFamilyId": "afrocritik",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.afrocritik.com/",
+      "organisation": "Afrocritik",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Afrocritik",
+      "status": "organisation_country"
+    }
+  },
+  "open-book-festival": {
+    "sourceFamilyId": "open-book-festival",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://openbookfestival.co.za/",
+      "organisation": "Open Book Festival",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Open Book Festival",
+      "status": "organisation_country"
+    }
+  },
+  "short-story-day-africa": {
+    "sourceFamilyId": "short-story-day-africa",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://shortstorydayafrica.org/",
+      "organisation": "Short Story Day Africa",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Short Story Day Africa",
+      "status": "organisation_country"
+    }
+  },
+  "poets-writers": {
+    "sourceFamilyId": "poets-writers",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.pw.org/",
+      "organisation": "Poets & Writers",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Poets & Writers",
+      "status": "organisation_country"
+    }
+  },
+  "poetry-society-uk": {
+    "sourceFamilyId": "poetry-society-uk",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://poetrysociety.org.uk/",
+      "organisation": "The Poetry Society",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "The Poetry Society",
+      "status": "organisation_country"
+    }
+  },
+  "poetry-ireland": {
+    "sourceFamilyId": "poetry-ireland",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.poetryireland.ie/",
+      "organisation": "Poetry Ireland",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Poetry Ireland",
+      "status": "organisation_country"
+    }
+  },
+  "poets-org": {
+    "sourceFamilyId": "poets-org",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://poets.org/",
+      "organisation": "Academy of American Poets",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Academy of American Poets",
       "status": "organisation_country"
     }
   }

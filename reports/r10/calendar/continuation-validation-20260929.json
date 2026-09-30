@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "deploy": false,
+  "whitespaceDiffCheck": "PASS",
+  "focusedTests": {
+    "passed": 28,
+    "failed": 0,
+    "files": 4,
+    "command": "npx vitest run src/data/countries/writerDatePatches.test.ts src/data/countries/writerCalendarIdentities.test.ts src/utils/writerDates.test.ts src/components/LiteraryCalendar.test.ts"
+  },
+  "typescript": "PASS",
+  "verifiedAt": "2026-09-29T21:05:42.673Z",
+  "commit": false,
+  "overlayChecks": "PASS",
+  "databaseWrite": false,
+  "releaseAcceptance": false,
+  "productionSelectorAudit": "PASS",
+  "governance": {
+    "command": "npx vitest run scripts/lib/reviewed-calendar-followup.test.mjs scripts/lib/reviewed-r10-delta.test.mjs scripts/lib/stage5-content-data-lock.test.mjs src/components/stage5Governance.test.ts scripts/repository-governance.source.test.mjs",
+    "passed": 76,
+    "failed": 0,
+    "files": 5,
+    "independentCalendarFollowupTestsPassed": 11,
+    "reviewedR10Delta": {
+      "passed": 33,
+      "failed": 0
+    },
+    "stage5ContentLock": {
+      "passed": 22,
+      "failed": 0
+    },
+    "integrationApplied": true,
+    "approvalReviewRejected": false,
+    "historicalPinsChanged": false,
+    "unappliedDiffCheck": "PASS",
+    "userAuthorizedAt": "2026-09-29",
+    "approvalReviewRejectedInitially": true
+  },
+  "canonicalCountryProfilesUnchanged": true,
+  "calendarOnlyWriterClones": true,
+  "scopeRegression": {
+    "passed": 154,
+    "failed": 0,
+    "files": 7,
+    "legacyCorrectionsAdditionalPassed": 13
+  }
+}

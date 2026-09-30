@@ -8,45 +8,13 @@
   "coverageCountryCodes": [
     "NG"
   ],
-  "attemptedAt": "2026-09-26T17:27:42.330Z",
-  "requests": [
-    {
-      "url": "https://acenaventures.wordpress.com/advert-2/",
-      "status": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "bytes": 80606,
-      "sha256": "cd4e27f33a5faa8e4ae64bd749a5924f0ea32c2f30b3f6698e37f5b321f27909",
-      "accessedAt": "2026-09-26T17:27:42.969Z"
-    },
-    {
-      "url": "https://acenaventures.wordpress.com/feed/",
-      "status": 200,
-      "contentType": "application/rss+xml; charset=UTF-8",
-      "bytes": 1705,
-      "sha256": "fd88adfac8519df660388243663e380859ea9a6e6d7d73509f822bd0c7ef1be5",
-      "accessedAt": "2026-09-26T17:27:43.161Z"
-    }
-  ],
+  "attemptedAt": "2026-09-29T20:32:34.238Z",
+  "requests": [],
   "status": "blocked",
-  "reason": "runtime_parser_no_literary_item",
+  "reason": "private_destination",
   "robots": {
     "url": "https://acenaventures.wordpress.com/robots.txt",
-    "status": 200,
-    "contentType": "text/plain; charset=utf-8",
-    "bytes": 654,
-    "sha256": "0b20ccf126aa6918ab006fd1a5d81508442ba02568561eca37913c67fb3276cd",
-    "accessedAt": "2026-09-26T17:27:42.835Z",
-    "disallowed": [
-      "/wp-admin/",
-      "/wp-login.php",
-      "/wp-signup.php",
-      "/press-this.php",
-      "/remote-login.php",
-      "/activate/",
-      "/cgi-bin/",
-      "/mshots/v1/",
-      "/next/",
-      "/public.api/"
-    ]
+    "error": "private_destination",
+    "disallowed": []
   }
 }

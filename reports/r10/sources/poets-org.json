@@ -1,0 +1,401 @@
+{
+  "sourceId": "poets-org",
+  "name": "Academy of American Poets",
+  "entryUrl": "https://poets.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:42:39.867Z",
+  "requests": [
+    {
+      "url": "https://poets.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 71700,
+      "sha256": "39720a51f6bcf6110e16e12e6c2511f0c1d97270378ccc11e05bb4386b879d64",
+      "accessedAt": "2026-09-29T20:42:41.521Z"
+    },
+    {
+      "url": "https://poets.org/september-2026-poem-day-guest-editor-maya-c-popa",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 57241,
+      "sha256": "b3c2d99cd3840ace28e127bc90d60cef2a934e8bbab0dc5c046b005008a69428",
+      "accessedAt": "2026-09-29T20:42:42.289Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://poets.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1506,
+    "sha256": "a04e2f32eb50d6234427355cf2b6077e899fcbb67f7331e393145d16110e28af",
+    "accessedAt": "2026-09-29T20:42:40.940Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed",
+      "/admin",
+      "/comment/reply",
+      "/node/add",
+      "/search",
+      "/index.php/admin",
+      "/index.php/comment/reply",
+      "/index.php/node/add",
+      "/index.php/search"
+    ]
+  },
+  "endpoint": {
+    "id": "poets-org",
+    "name": "Academy of American Poets",
+    "url": "https://poets.org/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "poets-org",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://poets.org"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/academy\\x2damerican\\x2dpoets\\/[^/]+\\/?$|^\\/poem\\/[^/]+\\/?$|^\\/poet\\/[^/]+\\/?$|^\\/index\\x252ephp\\/poem\\/[^/]+\\/?$|^\\/node\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://poets.org/september-2026-poem-day-guest-editor-maya-c-popa"
+    ],
+    "verifiedAt": "2026-09-29T20:42:42.295Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "poets-org",
+    "source": {
+      "name": "Academy of American Poets",
+      "url": "https://poets.org/september-2026-poem-day-guest-editor-maya-c-popa",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "September 2026 Poem-a-Day Guest Editor Maya C. Popa",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:42:41.546Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://poets.org/september-2026-poem-day-guest-editor-maya-c-popa",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 57241,
+      "sha256": "b3c2d99cd3840ace28e127bc90d60cef2a934e8bbab0dc5c046b005008a69428",
+      "accessedAt": "2026-09-29T20:42:42.289Z",
+      "headline": "September 2026 Poem-a-Day Guest Editor Maya C. Popa",
+      "excerpt": "In 2026, the Academy of American Poets invited twelve poets to each curate a month of poems. In this short Q&A, Maya C. Popa discusses her curatorial approach and her own creative workPoets.org: Welcome to the Guest Editor Q&A, hosted by the Academy of American Poets. I’m Mary Sutton, editorial director, and I’m here today with the Guest Editor for September, which is National Translation Month, M",
+      "publishedDates": [
+        {
+          "value": "Fri, 08/21/2026 - 12:11",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://poets.org/september-2026-poem-day-guest-editor-maya-c-popa",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:42:42.295Z",
+  "foundItems": [
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/september-2026-poem-day-guest-editor-maya-c-popa",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "September 2026 Poem-a-Day Guest Editor Maya C. Popa",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/poem-day-guest-editors-2026",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poem-a-Day Guest Editors in 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/academy-american-poets/seminars",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "literary seminars",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/poetry-near-you",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "poetry near you",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/node/54216",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wallace Stevens Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/materials-teachers",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "materials for teachers",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/poem/battle-hymn-amergin",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Battle Hymn of Amergin",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/poet/amergin-gluingel",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Amergin Glúingel",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/poem/do-not-go-gentle-good-night",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Do not go gentle into that good night",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-org",
+      "source": {
+        "name": "Academy of American Poets",
+        "url": "https://poets.org/index%2ephp/poem/how-do-i-love-thee-sonnet-43",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How Do I Love Thee? (Sonnet 43)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "39720a51f6bcf6110e16e12e6c2511f0c1d97270378ccc11e05bb4386b879d64"
+}

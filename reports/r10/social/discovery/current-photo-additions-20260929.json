@@ -1,0 +1,117 @@
+{
+  "checkedAt": "2026-09-29T20:49:54.403Z",
+  "scope": "Real matching author portraits and verified Commons licenses; no uploads, destination changes or dispatch.",
+  "inspected": 2,
+  "requests": 2,
+  "cached": 0,
+  "approved": 0,
+  "held": 2,
+  "pending": 0,
+  "outcomes": [
+    {
+      "newsId": "arrigo-boito-ballatella-bilingual-publication-20260929",
+      "status": "held",
+      "reason": "media_subject_search_ambiguous"
+    },
+    {
+      "newsId": "sukhovo-kobylin-basinsky-literary-essay-20260928",
+      "status": "held",
+      "reason": "media_subject_search_ambiguous"
+    }
+  ],
+  "assets": [
+    {
+      "id": "auto-565d99330f63261c54c82a23b6d414c5",
+      "status": "approved",
+      "newsIds": [
+        "min-jin-lee-american-hagwon-writing-interview-20260929",
+        "rumpus-min-jin-lee-october-book-club-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/2018-us-nationalbookfestival-min-jin-lee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "8d0ef6648151210dc543d56a2637bc5ad8920e3a9f11fa4d42991abf2c46d14c",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Lee Min Jin (Q13563026), exact reviewed name in title.ru; Wikidata P18 File:2018-us-nationalbookfestival-min-jin-lee.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Fuzheado",
+      "rightsholder": "Fuzheado",
+      "credit": "Архивный портрет: Lee Min Jin. «2018-us-nationalbookfestival-min-jin-lee». © Fuzheado.  Wikimedia Commons: https://commons.wikimedia.org/?curid=72309976.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "2018-us-nationalbookfestival-min-jin-lee",
+      "materialUrl": "https://commons.wikimedia.org/?curid=72309976",
+      "copyrightNotice": "© Fuzheado",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg",
+      "licenseEvidenceSha256": "d8b0bfdcf048dc9b61b9fe8a05c398ea4fe65eb3e0894c7636f95a91ec4a9bdb",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "606e2cd29d75f15eb548d629a70b16d49abfd1bda4de36027be19fd5533a0035",
+        "byteLength": 113284,
+        "mime": "image/jpeg",
+        "width": 1067,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-9398d30e893aabd401cb6ddc8e74b4a8",
+      "status": "approved",
+      "newsIds": [
+        "tolstoy-birthday-2026",
+        "tolstoy-ivan-ilyich-brazil-amazon-report-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "6f8d1d8df13c20e0c2ffe1f993e922b4d6ec7ecbb9255b4d73043e8b7497fb1b",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Leo Tolstoy (Q7243), exact reviewed name in title.en; Wikidata P18 File:L.N.Tolstoy Prokudin-Gorsky.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Sergei Prokudin-Gorskii",
+      "rightsholder": "Sergei Prokudin-Gorskii",
+      "credit": "Портрет: Leo Tolstoy. Sergei Prokudin-Gorskii. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg",
+      "licenseEvidenceSha256": "1b12300ba74118ee61e80d4e3bba95fe099d68a3213b5dd231d48e1570b837ff",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:18:46.644Z",
+      "validUntil": "2026-10-29T20:18:46.644Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "388d84042592ca289414a8e569c494ed45c0c53ede202afa8da9f7b2b7f5571c",
+        "byteLength": 398840,
+        "mime": "image/jpeg",
+        "width": 1156,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    }
+  ]
+}

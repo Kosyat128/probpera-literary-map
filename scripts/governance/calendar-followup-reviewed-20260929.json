@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-CALENDAR-FOLLOWUP-20260929",
+  "baselineCommitSha": "439bb70954d3773279f2d342ba1d2df2b5d17ccf",
+  "scope": "Exact-date additions for existing writers, including preserved Russian fields and name-guarded calendar-only identities. Only the separately user-authorized seven integration fragments alter historical read boundaries. Historical pins, identity registry, old overlays and release controls remain unchanged.",
+  "historicalPinsChanged": false,
+  "authorization": {
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "integration": {
+    "applied": true,
+    "status": "user-authorized",
+    "userAuthorizedAt": "2026-09-29",
+    "attestationPath": "scripts/governance/calendar-governance-integration-reviewed-20260929.json"
+  },
+  "calendar": {
+    "preservedRussianFields": 13,
+    "newFields": 12,
+    "packetFields": 25,
+    "annualEventsBefore": 2314,
+    "annualEventsAfter": 2339,
+    "canonicalCountryProfilesUnchanged": true,
+    "scope": "Derived calendar-only writer clones"
+  },
+  "allowedProjectionPaths": [
+    "src/data/countries/types.ts",
+    "src/data/countries/writerDatePatches.ts",
+    "src/components/LiteraryCalendar.tsx"
+  ],
+  "sourceBaselines": {
+    "src/data/countries/types.ts": "3cd59605923f2a55e96ab41d6b7e6ded93684508e2993471e0e8004677284a8e",
+    "src/data/countries/writerDatePatches.ts": "3119c1ebf63cff9f285580bdca015f2ed5cacc253d9bc88e025afa83fed427d5",
+    "src/components/LiteraryCalendar.tsx": "602b75c07aea22ebf59c45c3a97f5cc26a5b93fac938a7b06eaafa91ae9e839f"
+  },
+  "reviewedSources": {
+    "src/data/countries/types.ts": "a370341df9ca674163b87bdb98964379df2e75310e9859b8f65d08cd9b3362bd",
+    "src/data/countries/writerDatePatches.ts": "add662990646c627aa1c65430c52764f39f2cf86d4d2d6058596ad25df54204b",
+    "src/components/LiteraryCalendar.tsx": "2a3486df3452e90dc167a1592b138c7ea6fe1ace6263758e3161c58bd021e587"
+  },
+  "additions": [
+    {
+      "path": "src/data/countries/calendarWriterIdentities.ts",
+      "sha256Lf": "9f39aed4e8ebcba48938dbc9c0cb8894c71cd3538dcdfc65ff6e4a170a931f23"
+    },
+    {
+      "path": "src/data/countries/calendarWriterDatePatches.ts",
+      "sha256Lf": "39ae4fb22a6cbaa5d1c67346aa3e0d455f023e9e0bdfc79ae7b1000f1900d533"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-russian.json",
+      "sha256Lf": "50822fa4fe3e530fc80950228c3002bc9feb789b043d65709b4067473982d39b"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-popular.json",
+      "sha256Lf": "cd30e980e5e64b0a8ad9439ad5803d742e1d61a3a8ea38f03ce2adad9f5e057d"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-scoped.json",
+      "sha256Lf": "f743df78ae59f92dd9f4eec9ab2ce3a0727633f2d9edfc858f9918cfbf79c3fe"
+    },
+    {
+      "path": "src/data/countries/generated/writerCalendarIdentities.r10-popular.json",
+      "sha256Lf": "199b30aac5b00b9b46b3ef7748e5780e201659520381efc2a4ea783d22946e08"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-followup.mjs",
+      "sha256Lf": "4ff5c807185398ea383192e08fdd6b39fa2ff59a7a852b9fda3989f12d519170"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-followup.d.mts",
+      "sha256Lf": "786a27b9498d98888384bffb82a4c56e09e57a39fc7b9bb0ba4bf4e339fccafc"
+    },
+    {
+      "path": "src/data/countries/writerCalendarIdentities.test.ts",
+      "sha256Lf": "63fef235bc3b40ca54db68fff471a8592f990e0f163e5e74979b5a1f34135950"
+    }
+  ],
+  "supportingSources": [
+    {
+      "path": "scripts/build-russian-calendar-dates-r10.mjs",
+      "sha256Lf": "a59449184e57fc3cecd8ebba6ef0b5f98ff0610709f5ffa1c62e622dfc50cb33"
+    },
+    {
+      "path": "scripts/build-popular-calendar-dates-r10.mjs",
+      "sha256Lf": "920b7ac7a0234bab3408bb270614b9faf65920f39cf776cbf7de647585b28288"
+    },
+    {
+      "path": "scripts/build-scoped-calendar-dates-r10.mjs",
+      "sha256Lf": "b9355f8a3b1e8271331ec18363fca80eab4298248ac5427a27398358641e0dd4"
+    },
+    {
+      "path": "scripts/audit-russian-calendar-r10.mjs",
+      "sha256Lf": "ab7e3038b4844147a7b278053001057dd76c952539713324ce9fa58224cf292e"
+    },
+    {
+      "path": "scripts/audit-popular-calendar-r10.mjs",
+      "sha256Lf": "7e24575430f69c0b4afd295a6681dcea43a6a28601d2962dd97db5dfa58947d4"
+    },
+    {
+      "path": "reports/r10/calendar/russian-source-review.json",
+      "sha256Lf": "53615a7dae752cd49fd0114e0f66117ad78c5d6fd0f597aba248e0bf84539f4a"
+    },
+    {
+      "path": "reports/r10/calendar/popular-source-review.json",
+      "sha256Lf": "0e3eb7cea9b2ae0ce050e6f1c8763bd7fb407f9d6ff519b102548c3546e229c5"
+    },
+    {
+      "path": "reports/r10/calendar/scoped-source-review.json",
+      "sha256Lf": "5bc8e6449d7be2db3c89323cbab3dffb9bf6851394ad0595a1d85071c06d6b97"
+    },
+    {
+      "path": "reports/r10/calendar/scoped-wikidata-evidence.json",
+      "sha256Lf": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06"
+    },
+    {
+      "path": "src/data/countries/writerDatePatches.test.ts",
+      "sha256Lf": "e6163882f95efaed8cf130c460b8eb4ce97a8a3f4885570218bbe11167946146"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460"
+    },
+    {
+      "path": "scripts/lib/reviewed-r10-delta.mjs",
+      "sha256Lf": "638fa25fb62c8c5d79c07d88d3ff711dc8ce50529531f0b441379b6bd77e77de"
+    },
+    {
+      "path": "scripts/lib/reviewed-r10-delta.test.mjs",
+      "sha256Lf": "28d9a893f1fc6760a80bee151e438d965d878b818825f350c420df50ba874c9a"
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "sha256Lf": "bb4f119a8e6d8d1aece5e30b8e5a5809019ae500caf681b94b8bdc0d3904460a"
+    },
+    {
+      "path": "src/data/countries/generated/curatedWriterQids.generated.json",
+      "sha256Lf": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61"
+    },
+    {
+      "path": "src/data/countries/generated/writerFacts.wikidata.json",
+      "sha256Lf": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10.json",
+      "sha256Lf": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-supplemental.json",
+      "sha256Lf": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217"
+    }
+  ],
+  "projections": [
+    {
+      "id": "calendar-exact-evidence-type",
+      "path": "src/data/countries/types.ts",
+      "before": "  method: \"referenced-wikidata-statement\";\n  supportingSources?: Array<{ sourceUrl: string; checkedAt: string; finding: string }>;",
+      "after": "  method: \"referenced-wikidata-statement\" | \"referenced-julian-claim-with-institutional-gregorian-source\";\n  originalCalendarModel?: \"http://www.wikidata.org/entity/Q1985786\";\n  supportingSources?: Array<{ sourceUrl: string; checkedAt: string; finding: string; sourceDocumentSha256?: string }>;"
+    },
+    {
+      "id": "calendar-guarded-overlay-imports",
+      "path": "src/data/countries/writerDatePatches.ts",
+      "before": "import identityRegistry from \"./generated/curatedWriterQids.generated.json\";",
+      "after": "import { calendarWriterQid } from \"./calendarWriterIdentities\";"
+    },
+    {
+      "id": "calendar-existing-identity-cas",
+      "path": "src/data/countries/writerDatePatches.ts",
+      "before": "        const identity = (identityRegistry.writers as Record<string, { wikidataId: string }>)[key];\n        if (identity?.wikidataId !== patch.evidence.wikidataId) {",
+      "after": "        if (calendarWriterQid(writer, key) !== patch.evidence.wikidataId) {"
+    },
+    {
+      "id": "calendar-julian-institutional-guard",
+      "path": "src/data/countries/writerDatePatches.ts",
+      "before": "          !patch.evidence.claimIds.length\n        )) {",
+      "after": "          !patch.evidence.claimIds.length ||\n          (patch.evidence.method === \"referenced-julian-claim-with-institutional-gregorian-source\" &&\n            (patch.evidence.originalCalendarModel !== \"http://www.wikidata.org/entity/Q1985786\" ||\n              !patch.evidence.supportingSources?.length))\n        )) {"
+    },
+    {
+      "id": "calendar-scoped-identity-import",
+      "path": "src/components/LiteraryCalendar.tsx",
+      "before": "import curatedWriterQids from \"../data/countries/generated/curatedWriterQids.generated.json\";",
+      "after": "import { calendarWriterQid } from \"../data/countries/calendarWriterIdentities\";\nimport { applyCalendarWriterDatePatches, calendarWriterDatePatches, type WriterDatePatch } from \"../data/countries/calendarWriterDatePatches\";"
+    },
+    {
+      "id": "calendar-scoped-identity-selection",
+      "path": "src/components/LiteraryCalendar.tsx",
+      "before": "  const registry = curatedWriterQids.writers as Record<string, { wikidataId: string }>;\n  const qid = registry[`${countryId}:${writer.id}`]?.wikidataId;",
+      "after": "  const qid = calendarWriterQid(writer, `${countryId}:${writer.id}`);"
+    },
+    {
+      "id": "calendar-derived-overlay-parameter",
+      "path": "src/components/LiteraryCalendar.tsx",
+      "before": "  translate: (value: string) => string = value => value\n): CalendarEvent[] {",
+      "after": "  translate: (value: string) => string = value => value,\n  patches: readonly WriterDatePatch[] = calendarWriterDatePatches\n): CalendarEvent[] {"
+    },
+    {
+      "id": "calendar-only-writer-clones",
+      "path": "src/components/LiteraryCalendar.tsx",
+      "before": "  for (const country of countries) for (const writer of country.writers) {",
+      "after": "  for (const country of applyCalendarWriterDatePatches(countries, patches).countries) for (const writer of country.writers) {"
+    }
+  ]
+}

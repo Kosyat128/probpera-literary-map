@@ -8,23 +8,23 @@
   "coverageCountryCodes": [
     "SE"
   ],
-  "attemptedAt": "2026-09-26T17:29:37.054Z",
+  "attemptedAt": "2026-09-29T20:33:55.880Z",
   "requests": [
     {
       "url": "https://www.svenskapen.se/",
       "status": 200,
       "contentType": "text/html;charset=utf-8",
-      "bytes": 301804,
-      "sha256": "3e0530d6ec6d3e306ef2af40f2df4885c25ff9a980fb0e575e550a0f10da0a8f",
-      "accessedAt": "2026-09-26T17:29:37.921Z"
+      "bytes": 297321,
+      "sha256": "0785e760ef04f73622b0a1dff02dddaf4570b7f72a0fa0f5448f3727bc1ed534",
+      "accessedAt": "2026-09-29T20:33:56.808Z"
     },
     {
       "url": "https://www.svenskapen.se/senaste-nytt",
       "status": 200,
       "contentType": "text/html;charset=utf-8",
-      "bytes": 201047,
-      "sha256": "d1e8d3049ae80feffc263661e485d9a54d9964e7cfe7bbc8d2696417e0487820",
-      "accessedAt": "2026-09-26T17:29:38.773Z"
+      "bytes": 200903,
+      "sha256": "525f42ef83171ca2be311732e231468d5c8c31952f67baf2b8f0fb891150d62a",
+      "accessedAt": "2026-09-29T20:33:57.141Z"
     }
   ],
   "status": "blocked",
@@ -35,7 +35,7 @@
     "contentType": "text/plain;charset=utf-8",
     "bytes": 1508,
     "sha256": "230bc3f9cc73decf177bdb4d7d582dff60d23b5af0fd040ec635382aad5bd802",
-    "accessedAt": "2026-09-26T17:29:37.678Z",
+    "accessedAt": "2026-09-29T20:33:56.614Z",
     "disallowed": [
       "/config",
       "/search",

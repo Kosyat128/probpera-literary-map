@@ -1,6 +1,6 @@
 {
   "sourceId": "maltalibraries-gov-mt",
-  "name": "Malta Libraries \u2013 The National Library of Malta",
+  "name": "Malta Libraries - The National Library of Malta",
   "entryUrl": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
   "countryCodes": [
     "MT"
@@ -8,39 +8,79 @@
   "coverageCountryCodes": [
     "MT"
   ],
-  "attemptedAt": "2026-09-26T17:29:12.040Z",
+  "attemptedAt": "2026-09-29T20:33:47.540Z",
   "requests": [
     {
       "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 19419,
-      "sha256": "bb4dc2da1351c9bbf3bb70f0ac11c8af29eee06a43ba295e11b50cbc42ff06e1",
-      "accessedAt": "2026-09-26T17:23:02.982Z"
+      "sha256": "6a545c81c6e5464fcd348a3ba3807ff2fe1d9a4f3cf87262215e2d50a7dc66e7",
+      "accessedAt": "2026-09-29T20:33:48.539Z"
     },
     {
       "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=ee473776-d093-46ed-a682-ed60f6938434",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 18823,
-      "sha256": "b2d67afff8cb2253a1dfe5cf1cdff4625fcf98c9ac9bcb3becb3ac866cd8d978",
-      "accessedAt": "2026-09-26T17:29:13.185Z"
+      "sha256": "7a7cc44a5785f6b8a680f76cf369056a6f31ca210193fd0581cb800621cc67ea",
+      "accessedAt": "2026-09-29T20:33:48.792Z"
     },
     {
       "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?v=f919856f-0756-4f97-b47d-f061203fb296",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 7683,
-      "sha256": "9fccf1eaa61c253df8e0061a65f3c3ff053b7f3410464c02013adc7290b63328",
-      "accessedAt": "2026-09-26T17:29:13.450Z"
+      "sha256": "708ae03296d1b488d0989756056c3b7ed5aeb11133f7f54cc9ce70ce95df81d2",
+      "accessedAt": "2026-09-29T20:33:48.991Z"
     },
     {
       "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=cfb971ca-7c2c-4bf1-be29-270ebf190834",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 18638,
-      "sha256": "a62637f9922ce4e38754d90997fe4bfe2f3a44073c8227381850ab9c11ee6d8f",
-      "accessedAt": "2026-09-26T17:29:13.698Z"
+      "sha256": "cc614dc2aaf2f98f401a3bfd125f350461fdbcf131e369523c220c3b5f58a7e7",
+      "accessedAt": "2026-09-29T20:33:49.197Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=c1442d12-1cf8-4fec-992e-34c2dcdafb03",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 19054,
+      "sha256": "d0d55678f71ffefc99b3e45b056148b8e447f99c2ea98bb862c311eac2c04261",
+      "accessedAt": "2026-09-29T20:33:49.400Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=ce23991e-5ce0-4369-8dbf-ffd0409feff2",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18834,
+      "sha256": "0f83915ee0fe6bc05d4ea325ca1ceb3d07b4267ccce61c9a36b25d0caeacfce9",
+      "accessedAt": "2026-09-29T20:33:49.602Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=25d43cfd-4859-4d8a-92de-a9918cf0d613",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18916,
+      "sha256": "d994f8dd7e2f723393fb9def15581093454ecd8b9ae8dfbc8d13b5350b02c6ca",
+      "accessedAt": "2026-09-29T20:33:49.822Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=c3ddb4c1-1623-4a32-9096-828dbf5765de",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18822,
+      "sha256": "e423d972c702865c24fcdf7abd73f61d90c1b6f0318ec337490b10e3297074fc",
+      "accessedAt": "2026-09-29T20:33:50.024Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=c62b7280-666e-4409-85bb-2dd9e80b513f",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18905,
+      "sha256": "c0364c648369f5ce8dde6126042e8e7bee0f333eec9b510d82550c984ecefee8",
+      "accessedAt": "2026-09-29T20:33:50.228Z"
     }
   ],
   "status": "blocked",
@@ -50,12 +90,8 @@
     "status": 200,
     "contentType": "text/html; charset=utf-8",
     "bytes": 19419,
-    "sha256": "9e3130f8f5016bd26ad669eb9be267eebb0e2f0313690fe662587f7fd9222f28",
-    "accessedAt": "2026-09-26T17:29:12.875Z",
+    "sha256": "0b42d29b57febebd50362f0401932df9fba5be5f1a5dca726d24b10b0d118597",
+    "accessedAt": "2026-09-29T20:33:48.334Z",
     "disallowed": []
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:23:00.694Z",
-    "sourceDocumentSha256": "bb4dc2da1351c9bbf3bb70f0ac11c8af29eee06a43ba295e11b50cbc42ff06e1"
   }
 }

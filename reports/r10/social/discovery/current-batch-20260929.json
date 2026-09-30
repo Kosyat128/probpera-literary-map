@@ -1,0 +1,536 @@
+{
+  "checkedAt": "2026-09-29T20:09:52.783Z",
+  "report": {
+    "inspected": 7,
+    "requests": 14,
+    "cached": 0,
+    "approved": 1,
+    "held": 6,
+    "pending": 0,
+    "outcomes": [
+      {
+        "newsId": "asymptote-kleopatra-olympiou-desperado-grandma-20260929",
+        "status": "held",
+        "reason": "media_subject_search_ambiguous"
+      },
+      {
+        "newsId": "min-jin-lee-american-hagwon-writing-interview-20260929",
+        "status": "held",
+        "reason": "media_discovery_license_unsupported"
+      },
+      {
+        "newsId": "hernan-diaz-ply-literary-hub-profile-20260929",
+        "status": "held",
+        "reason": "media_subject_search_ambiguous"
+      },
+      {
+        "newsId": "ekin-oklap-first-summer-interview-20260929",
+        "status": "held",
+        "reason": "media_subject_search_ambiguous"
+      },
+      {
+        "newsId": "andrei-rubanov-tambov-literary-project-20260929",
+        "status": "held",
+        "reason": "media_discovery_license_unsupported"
+      },
+      {
+        "newsId": "ast-nikolai-ostrovsky-122-anniversary-20260929",
+        "status": "approved",
+        "reason": "exact_reviewed_writer_p18"
+      },
+      {
+        "newsId": "hannah-grace-icebreaker-netflix-cast-20260929",
+        "status": "held",
+        "reason": "media_subject_search_ambiguous"
+      }
+    ]
+  },
+  "states": [
+    {
+      "key": "history:media:f7d0e31622e6877a468b65ff83b06cc13e1935fd5af5f85805ce911667a6f8f4",
+      "id": 1,
+      "state": {
+        "schemaVersion": 1,
+        "newsId": "asymptote-kleopatra-olympiou-desperado-grandma-20260929",
+        "semanticRevision": "f7d0e31622e6877a468b65ff83b06cc13e1935fd5af5f85805ce911667a6f8f4",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:09:46.193Z",
+        "nextCheckAt": "2026-10-13T20:09:46.193Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:565d99330f63261c54c82a23b6d414c535a08df5ebc591c4b8361010891b9e1c",
+      "id": 2,
+      "state": {
+        "schemaVersion": 1,
+        "newsId": "min-jin-lee-american-hagwon-writing-interview-20260929",
+        "semanticRevision": "565d99330f63261c54c82a23b6d414c535a08df5ebc591c4b8361010891b9e1c",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:09:46.193Z",
+        "nextCheckAt": "2026-10-13T20:09:46.193Z",
+        "reason": "media_discovery_license_unsupported"
+      }
+    },
+    {
+      "key": "history:media:a3dad3b9edb4d8ca942c56a8540c2172fbeedf430edf124376312c7ade2eaee3",
+      "id": 3,
+      "state": {
+        "schemaVersion": 1,
+        "newsId": "hernan-diaz-ply-literary-hub-profile-20260929",
+        "semanticRevision": "a3dad3b9edb4d8ca942c56a8540c2172fbeedf430edf124376312c7ade2eaee3",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:09:46.193Z",
+        "nextCheckAt": "2026-10-13T20:09:46.193Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:4d65d7ded32a19a8c0a481dd94101bda1958acb215c498736742e90a6440963a",
+      "id": 4,
+      "state": {
+        "schemaVersion": 1,
+        "newsId": "ekin-oklap-first-summer-interview-20260929",
+        "semanticRevision": "4d65d7ded32a19a8c0a481dd94101bda1958acb215c498736742e90a6440963a",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:09:46.193Z",
+        "nextCheckAt": "2026-10-13T20:09:46.193Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    },
+    {
+      "key": "history:media:d4229d380cd5b9d3583ee18bc1494128a7fb9d53a1740dd703532ab427d645de",
+      "id": 5,
+      "state": {
+        "schemaVersion": 1,
+        "newsId": "andrei-rubanov-tambov-literary-project-20260929",
+        "semanticRevision": "d4229d380cd5b9d3583ee18bc1494128a7fb9d53a1740dd703532ab427d645de",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:09:46.193Z",
+        "nextCheckAt": "2026-10-13T20:09:46.193Z",
+        "reason": "media_discovery_license_unsupported"
+      }
+    },
+    {
+      "key": "history:media:e0cdc6b7f8c4c37a595f7b77b0189a4138f9109078867b5d0ed8e742a450d94f",
+      "id": 6,
+      "state": {
+        "schemaVersion": 1,
+        "newsId": "ast-nikolai-ostrovsky-122-anniversary-20260929",
+        "semanticRevision": "e0cdc6b7f8c4c37a595f7b77b0189a4138f9109078867b5d0ed8e742a450d94f",
+        "status": "approved",
+        "checkedAt": "2026-09-29T20:09:46.193Z",
+        "nextCheckAt": "2026-10-29T20:09:46.193Z",
+        "reason": "exact_reviewed_writer_p18",
+        "asset": {
+          "id": "auto-e0cdc6b7f8c4c37a595f7b77b0189a41",
+          "status": "approved",
+          "newsIds": [
+            "ast-nikolai-ostrovsky-122-anniversary-20260929"
+          ],
+          "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/N_Ostrovskiy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "sourceSha256": "3cc56aa59074a6fc360fb4149bfae7d6a1f2b89ed047bf5f3b828e6a6cae51a0",
+          "subject": "portrait",
+          "entityEvidence": "Portrait of Nikolai Ostrovsky (Q271853), exact reviewed name in title.en; Wikidata P18 File:N Ostrovskiy.jpg. This is a portrait, not a photograph of the news event.",
+          "author": "Unknown authorUnknown author",
+          "rightsholder": "Unknown authorUnknown author",
+          "credit": "Портрет: Nikolai Ostrovsky. Unknown authorUnknown author. Wikimedia Commons.",
+          "license": "public-domain",
+          "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg",
+          "licenseEvidenceSha256": "512e3ca39b3c1ac77f8ee8af73358a32fef24a552b0f337619121dc69924384a",
+          "checkMethod": "license-page",
+          "checkedAt": "2026-09-29T20:09:46.193Z",
+          "validUntil": "2026-10-29T20:09:46.193Z",
+          "transformations": {
+            "resize": true,
+            "metadataRemoval": true,
+            "reencode": true,
+            "crop": false
+          },
+          "permissions": [
+            {
+              "platform": "telegram",
+              "destinationId": "-1002791579809",
+              "publish": true,
+              "providerProcessing": true,
+              "evidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg"
+            }
+          ],
+          "derivative": {
+            "sha256": "579620520ede151d353ba4083918255b26cba868224488ac8b1fd7202ab9eec9",
+            "byteLength": 38559,
+            "mime": "image/jpeg",
+            "width": 471,
+            "height": 720,
+            "profile": "literary-news-photo-v1"
+          }
+        },
+        "evidence": {
+          "subject": {
+            "qid": "Q271853",
+            "name": "Nikolai Ostrovsky",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "exact-fresh-wikidata-name-human-literary-occupation",
+              "queries": [
+                "Nikolai Ostrovsky"
+              ],
+              "occupations": [
+                "Q36180"
+              ],
+              "searches": [
+                {
+                  "query": "Nikolai Ostrovsky",
+                  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Nikolai+Ostrovsky&language=en&uselang=en&type=item&limit=5&format=json",
+                  "sha256": "6f9bc993b68b51dccef937710f18477c298e9ab0057ec815b6c522d7d71a4dc8"
+                }
+              ],
+              "entitySha256": "896e9ddfc466317cc48e14079797d17559ba0dcf3610e73e476692d2445a9472"
+            }
+          },
+          "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q271853&props=claims%7Clabels%7Caliases&languages=en&format=json",
+          "entitySha256": "896e9ddfc466317cc48e14079797d17559ba0dcf3610e73e476692d2445a9472",
+          "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AN+Ostrovskiy.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+          "commonsSha256": "512e3ca39b3c1ac77f8ee8af73358a32fef24a552b0f337619121dc69924384a",
+          "fileTitle": "File:N Ostrovskiy.jpg",
+          "metadata": {
+            "Artist": "Unknown authorUnknown author",
+            "LicenseShortName": "Public domain",
+            "UsageTerms": "Public domain",
+            "Copyrighted": "False",
+            "LicenseUrl": ""
+          }
+        }
+      }
+    },
+    {
+      "key": "history:media:2733bb7928d327241344865f3917cb2493adca3032f6dcb38eb80594fb71cf81",
+      "id": 7,
+      "state": {
+        "schemaVersion": 1,
+        "newsId": "hannah-grace-icebreaker-netflix-cast-20260929",
+        "semanticRevision": "2733bb7928d327241344865f3917cb2493adca3032f6dcb38eb80594fb71cf81",
+        "status": "held",
+        "checkedAt": "2026-09-29T20:09:46.193Z",
+        "nextCheckAt": "2026-10-13T20:09:46.193Z",
+        "reason": "media_subject_search_ambiguous"
+      }
+    }
+  ],
+  "assets": [
+    {
+      "id": "jason-reynolds-loc-2020",
+      "status": "approved",
+      "newsIds": [
+        "kokila-jason-reynolds-lamplighters-son-acquisition-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/20200116SM679.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "sourceSha256": "4268b6612e80fcf764e6c7bdb53574030dfc55069b45ed5dc2ab1860461dbb56",
+      "subject": "portrait",
+      "entityEvidence": "Jason Reynolds; archival image dated 2020-01-16; the exact author named in 'Kokila acquires Jason Reynolds’s The Lamplighter’s Son'. Editorial portrait of the named author, not an image of the 2026 acquisition event or the book cover. Commons notes possible personality rights; do not imply endorsement.",
+      "author": "Shawn Miller",
+      "rightsholder": "Library of Congress (CC0 public-domain dedication)",
+      "credit": "Джейсон Рейнольдс, архивный портрет, 2020. Фото: Shawn Miller / Library of Congress. CC0. Wikimedia Commons.",
+      "license": "CC0",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg",
+      "licenseEvidenceSha256": "6e5453a822b15b0f990728bc37c4da083b8a6c4e121b5ce2ea66e85466c4248b",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-26T19:12:42.243Z",
+      "validUntil": "2026-10-26T19:12:42.243Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg"
+        },
+        {
+          "platform": "vk",
+          "destinationId": "-231377018",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "d00296d95546d7043fee07ce968b540a5b21367781f0b4f6aea7803e6ab704a4",
+        "byteLength": 295307,
+        "mime": "image/jpeg",
+        "width": 1071,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "millay-genthe-1914",
+      "status": "approved",
+      "newsIds": [
+        "serapis-millay-anthology-presented-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "sourceSha256": "36d407dd450a34282dcdb5356c8209224292d1494e9c878e84b9f4943270539c",
+      "subject": "portrait",
+      "entityEvidence": "Edna St. Vincent Millay; archival image dated 1914; the exact author named in 'Eterna Cadencia presents a Spanish-language Edna St. Vincent Millay anthology'. Portrait of the anthology's poet, not the new Spanish edition's cover. No crop, colorization or invented book-art reconstruction.",
+      "author": "Arnold Genthe (1869-1942)",
+      "rightsholder": "Public domain: Arnold Genthe photograph; Library of Congress Genthe Collection",
+      "credit": "Эдна Сент-Винсент Миллей, архивный портрет, 1914. Фото: Arnold Genthe / Library of Congress, agc.7a10216. Public domain. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg",
+      "licenseEvidenceSha256": "3e56bd066feaf93ce2432713951299186e9f2497975498dd702264e3d3361662",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-26T19:12:42.243Z",
+      "validUntil": "2026-10-26T19:12:42.243Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg"
+        },
+        {
+          "platform": "vk",
+          "destinationId": "-231377018",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "59a05207b3f99f31b26fc81c75abb50b0dcbc118d9009f89398655dc22265d0b",
+        "byteLength": 231578,
+        "mime": "image/jpeg",
+        "width": 1348,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "george-w-bush-official-2003",
+      "status": "approved",
+      "newsIds": [
+        "george-w-bush-call-of-freedom-us-2027"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/George-W-Bush.jpeg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "sourceSha256": "59207a3f480eb56547b4e38c6e82ecb6871a3a37c5dcce6c682207fa8c8a75b4",
+      "subject": "portrait",
+      "entityEvidence": "George W. Bush; archival image dated 2003-01-14; the exact author named in 'Crown announces George W. Bush’s The Call of Freedom'. Portrait of the named book author, not the new cover or a 2027 event photo. Editorial use only; no government endorsement or official-service claim.",
+      "author": "Eric Draper",
+      "rightsholder": "Public domain: official Executive Office of the President photograph",
+      "credit": "Джордж У. Буш, официальный архивный портрет, 2003. Фото: Eric Draper / White House. Public domain. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg",
+      "licenseEvidenceSha256": "13109f119ee6d9638d65926283e50f507a95f282d5a50e2f79bd1f471bb893fd",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-26T19:12:42.243Z",
+      "validUntil": "2026-10-26T19:12:42.243Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg"
+        },
+        {
+          "platform": "vk",
+          "destinationId": "-231377018",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg"
+        }
+      ],
+      "derivative": {
+        "sha256": "c289e7e096c6a5405bba500f0105c603f308c5668c51a92470c76f14743c93e3",
+        "byteLength": 234800,
+        "mime": "image/jpeg",
+        "width": 1209,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-e0cdc6b7f8c4c37a595f7b77b0189a41",
+      "status": "approved",
+      "newsIds": [
+        "ast-nikolai-ostrovsky-122-anniversary-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/N_Ostrovskiy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "3cc56aa59074a6fc360fb4149bfae7d6a1f2b89ed047bf5f3b828e6a6cae51a0",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Nikolai Ostrovsky (Q271853), exact reviewed name in title.en; Wikidata P18 File:N Ostrovskiy.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Unknown authorUnknown author",
+      "rightsholder": "Unknown authorUnknown author",
+      "credit": "Портрет: Nikolai Ostrovsky. Unknown authorUnknown author. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg",
+      "licenseEvidenceSha256": "512e3ca39b3c1ac77f8ee8af73358a32fef24a552b0f337619121dc69924384a",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:09:46.193Z",
+      "validUntil": "2026-10-29T20:09:46.193Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:N%20Ostrovskiy.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "579620520ede151d353ba4083918255b26cba868224488ac8b1fd7202ab9eec9",
+        "byteLength": 38559,
+        "mime": "image/jpeg",
+        "width": 471,
+        "height": 720,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-565d99330f63261c54c82a23b6d414c5",
+      "status": "approved",
+      "newsIds": [
+        "min-jin-lee-american-hagwon-writing-interview-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/2018-us-nationalbookfestival-min-jin-lee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "8d0ef6648151210dc543d56a2637bc5ad8920e3a9f11fa4d42991abf2c46d14c",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Lee Min Jin (Q13563026), exact reviewed name in title.ru; Wikidata P18 File:2018-us-nationalbookfestival-min-jin-lee.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Fuzheado",
+      "rightsholder": "Fuzheado",
+      "credit": "Архивный портрет: Lee Min Jin. «2018-us-nationalbookfestival-min-jin-lee». © Fuzheado.  Wikimedia Commons: https://commons.wikimedia.org/?curid=72309976.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "2018-us-nationalbookfestival-min-jin-lee",
+      "materialUrl": "https://commons.wikimedia.org/?curid=72309976",
+      "copyrightNotice": "© Fuzheado",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg",
+      "licenseEvidenceSha256": "d8b0bfdcf048dc9b61b9fe8a05c398ea4fe65eb3e0894c7636f95a91ec4a9bdb",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:16:11.118Z",
+      "validUntil": "2026-10-29T20:16:11.118Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:2018-us-nationalbookfestival-min-jin-lee.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "606e2cd29d75f15eb548d629a70b16d49abfd1bda4de36027be19fd5533a0035",
+        "byteLength": 113284,
+        "mime": "image/jpeg",
+        "width": 1067,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "auto-d4229d380cd5b9d3583ee18bc1494128",
+      "status": "approved",
+      "newsIds": [
+        "andrei-rubanov-tambov-literary-project-20260929"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sourceSha256": "345fe1446b7ef3a3f5cd4e599d656e311bd150835765e0734ff890a68c14bf35",
+      "subject": "portrait",
+      "entityEvidence": "Portrait of Andrei Rubanov (Q2846848), exact reviewed name in title.en; Wikidata P18 File:Андрей Рубанов.jpg. This is a portrait, not a photograph of the news event.",
+      "author": "Svklimkin",
+      "rightsholder": "Svklimkin",
+      "credit": "Архивный портрет: Andrei Rubanov. «Андрей Рубанов». © Svklimkin.  Wikimedia Commons: https://commons.wikimedia.org/?curid=91211081.",
+      "license": "CC-BY-SA-4.0",
+      "materialTitle": "Андрей Рубанов",
+      "materialUrl": "https://commons.wikimedia.org/?curid=91211081",
+      "copyrightNotice": "© Svklimkin",
+      "derivativeLicense": "CC-BY-SA-4.0",
+      "additionalRestrictions": false,
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg",
+      "licenseEvidenceSha256": "c07c8255a3cba38da38b7c46eef46549e3977c74c1f2de0d273fe797667ff9e1",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-29T20:16:11.118Z",
+      "validUntil": "2026-10-29T20:16:11.118Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9%20%D0%A0%D1%83%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "7da22ee64e324defe08b16aaf1d6343f239ea7ec92ee8ee38eb3e295bcacbfb8",
+        "byteLength": 203573,
+        "mime": "image/jpeg",
+        "width": 1172,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    }
+  ],
+  "externalProviderWrites": 0,
+  "runtimeDatabaseWrites": 0,
+  "shareAlikeRecheck": {
+    "checkedAt": "2026-09-29T20:16:15.803Z",
+    "report": {
+      "inspected": 2,
+      "requests": 7,
+      "cached": 0,
+      "approved": 2,
+      "held": 0,
+      "pending": 0,
+      "outcomes": [
+        {
+          "newsId": "min-jin-lee-american-hagwon-writing-interview-20260929",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        },
+        {
+          "newsId": "andrei-rubanov-tambov-literary-project-20260929",
+          "status": "approved",
+          "reason": "exact_reviewed_writer_p18"
+        }
+      ]
+    }
+  }
+}

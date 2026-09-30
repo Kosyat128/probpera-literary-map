@@ -8,47 +8,87 @@
   "coverageCountryCodes": [
     "IS"
   ],
-  "attemptedAt": "2026-09-26T17:27:56.764Z",
+  "attemptedAt": "2026-09-29T20:32:39.762Z",
   "requests": [
     {
       "url": "https://fibut.is/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 116163,
-      "sha256": "719bc0a3da38198ef04aff9538565de40b346fac8f47662c6e980ef27370360d",
-      "accessedAt": "2026-09-26T17:27:58.527Z"
+      "bytes": 116161,
+      "sha256": "096c7b8170ce6deb89fb4c0a3a10124e555c3cb25d1d00c1d875e991af6d6cb9",
+      "accessedAt": "2026-09-29T20:32:40.391Z"
     },
     {
       "url": "https://fibut.is/index.php/home-single/feed/rss/frettir?format=feed",
       "status": 200,
       "contentType": "application/rss+xml; charset=utf-8",
       "bytes": 48786,
-      "sha256": "9ded29aabe9179e305ec7d906e89862a6cd1440dda8b5a6381f1aae3a1276071",
-      "accessedAt": "2026-09-26T17:27:58.699Z"
+      "sha256": "03adbd796866bd2042ac60f5f1da082782befd06b997b9d7c04d570dd95d168d",
+      "accessedAt": "2026-09-29T20:32:40.803Z"
     },
     {
       "url": "https://fibut.is/index.php/home-single/item/islensku-bokmenntaverdhlaunin-og-blodhdropinn-2025",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 58043,
-      "sha256": "d6f89f13ca8115ffd70c6e4e30362818f694d3a9050ef921f96b8e5f8499e612",
-      "accessedAt": "2026-09-26T17:27:58.941Z"
+      "bytes": 58042,
+      "sha256": "bb0522980f32195b9f56884ef0ddc9970355b34f005eb384d74164ab53adfab9",
+      "accessedAt": "2026-09-29T20:32:41.041Z"
     },
     {
       "url": "https://fibut.is/index.php/home-single/item/islensku-bokahoennunarverdhlaunin-2025-afhent-i-hoennunarsafni-islands",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 41563,
-      "sha256": "e344b368db48fa0b8c24c5c39bc9a555824dbc1e8c95c431846857b65fe5c3b7",
-      "accessedAt": "2026-09-26T17:27:59.171Z"
+      "bytes": 41562,
+      "sha256": "37c55dcacd50f480dc97ed750ef8b16c58da0256f8fe8e9b0f69496f9aee9372",
+      "accessedAt": "2026-09-29T20:32:41.254Z"
     },
     {
       "url": "https://fibut.is/index.php/home-single/item/tilnefningar-til-islensku-bokmenntaverdhlaunanna-og-blodhdropans-2025",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 53655,
-      "sha256": "917108d05a5a52b436da355749a28c22fc237d0b2a0a0a86042357b798a1360e",
-      "accessedAt": "2026-09-26T17:27:59.400Z"
+      "bytes": 53654,
+      "sha256": "4f0eea5a7562abab4e5ca187aec60c781a8fe17df153e2ddc6f490d5dc743d4c",
+      "accessedAt": "2026-09-29T20:32:41.482Z"
+    },
+    {
+      "url": "https://fibut.is/index.php/home-single/item/bokahatidhin-i-hoerpu-15-16-november-2025",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 41547,
+      "sha256": "0b2e7add68e1d35e6e41854e34ad96625d7a818f39417c320809066d3c3a0c29",
+      "accessedAt": "2026-09-29T20:32:41.752Z"
+    },
+    {
+      "url": "https://fibut.is/index.php/home-single/item/framlagning-boka-til-islensku-bokmenntaverdhlaunanna-og-blodhdropans-2",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 42232,
+      "sha256": "1546296e744416dc4507de99a74e9cb781e92946ca6bb1bd99cc3206c27f2fbd",
+      "accessedAt": "2026-09-29T20:32:42.021Z"
+    },
+    {
+      "url": "https://fibut.is/index.php/home-single/item/anna-lea-fridhriksdottir-nyr-formadhur-stjornar-felags-islenskra-bokautgefenda",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 40695,
+      "sha256": "2c92bf586464016f8e40ed75b43a9091b29724a9cce602c676cd956427e25ef9",
+      "accessedAt": "2026-09-29T20:32:42.260Z"
+    },
+    {
+      "url": "https://fibut.is/index.php/home-single/item/teiknisamkeppni",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 40168,
+      "sha256": "f8b35925eaa20a64de9a155665c6b4cdcf788d9a1b641c8d24920b94f5c5d6f6",
+      "accessedAt": "2026-09-29T20:32:42.492Z"
+    },
+    {
+      "url": "https://fibut.is/index.php/home-single/item/lokaskil-i-prentutgafu-bokatidhinda-5-oktober-2",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 41252,
+      "sha256": "6d71b1b125dd8c91dedead66541b00ac35139540012285927a31287cf2abbfdb",
+      "accessedAt": "2026-09-29T20:32:42.737Z"
     }
   ],
   "status": "blocked",
@@ -59,7 +99,7 @@
     "contentType": "text/plain",
     "bytes": 829,
     "sha256": "97c87f1e050ea0ead076373282f50734e90f71734b825931f9a4739ca0d5ace8",
-    "accessedAt": "2026-09-26T17:27:58.016Z",
+    "accessedAt": "2026-09-29T20:32:40.003Z",
     "disallowed": [
       "/administrator/",
       "/bin/",

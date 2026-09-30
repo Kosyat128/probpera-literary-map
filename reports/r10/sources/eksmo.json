@@ -8,7 +8,7 @@
   "coverageCountryCodes": [
     "RU"
   ],
-  "attemptedAt": "2026-09-26T17:29:40.367Z",
+  "attemptedAt": "2026-09-29T20:33:57.199Z",
   "requests": [],
   "status": "blocked",
   "reason": "challenge_document",
@@ -18,7 +18,7 @@
     "contentType": "text/plain",
     "bytes": 4953,
     "sha256": "8aff77f64e4fa2f05a7cc839c52224d86f6483d2d2b26b46318f6c3c96156b8f",
-    "accessedAt": "2026-09-26T17:29:40.774Z",
+    "accessedAt": "2026-09-29T20:33:57.457Z",
     "disallowed": [
       "/personal/",
       "/reviews/",

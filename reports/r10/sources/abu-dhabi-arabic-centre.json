@@ -8,23 +8,23 @@
   "coverageCountryCodes": [
     "AE"
   ],
-  "attemptedAt": "2026-09-26T17:31:45.206Z",
+  "attemptedAt": "2026-09-29T20:34:08.833Z",
   "requests": [
     {
       "url": "https://alc.ae/en/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 400808,
-      "sha256": "fbf95649ae14af1fa6e09627f1cc51094a3e917fdeee1e91f4cc107f9f2c8a93",
-      "accessedAt": "2026-09-26T17:31:47.050Z"
+      "bytes": 396043,
+      "sha256": "25c82236fec8adab1fe0bf577dc0470d864134669611f31c46c0b47d2d116b61",
+      "accessedAt": "2026-09-29T20:34:09.943Z"
     },
     {
       "url": "https://alc.ae/en/authors/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 252717,
-      "sha256": "550850e3df1db5ac193f78f204357320106d7041610628ffed73e12a38972907",
-      "accessedAt": "2026-09-26T17:31:50.503Z"
+      "bytes": 252718,
+      "sha256": "211f4523f1ab1a2972fc388d075654a0f03d5aea4b7d33d5192409371da163e0",
+      "accessedAt": "2026-09-29T20:34:12.203Z"
     }
   ],
   "status": "blocked",

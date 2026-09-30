@@ -1,9 +1,12 @@
 import reviewed from "../../data/news/reviewed.json" with { type: "json" };
 import withdrawals from "../../data/news/withdrawals.json" with { type: "json" };
 import { resolveNewsTimeZone } from "../lib/literary-news-reviewed.mjs";
-import { buildPublishedNewsFeed } from "../lib/literary-news-publication.mjs";
+import { buildPublishedNewsFeed,verifyPublishedNewsSnapshot } from "../lib/literary-news-publication.mjs";
 import { NEWS_SOURCE_STATE_KEY, NEWS_STATE_MAX_BYTES, parseNewsSourceState, pendingNewsSourceState } from "../lib/literary-news-state.mjs";
 import { NOBEL_PROFILE_KEY, nobelPublishedRecords, readNobelProfileText } from "../lib/literary-news-nobel-profile.mjs";
+import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LIMITS, dailyPublishedRecords, validateDailyNewsRecord } from '../lib/literary-news-daily-profile.mjs';
+import {newsJsonStream} from '../lib/literary-news-json.mjs';
+import {readNewsJsonArray} from '../lib/literary-news-json-reader.mjs';
 
 const FEED_PATH = "/api/literary-news/feed";
 // The canonical site reads this public feed from news.probpera.ru without
@@ -55,14 +58,14 @@ async function readSourceState(namespace) {
   }
 }
 
-/** Fixed reviewed data and one code-owned profile; no discovery or private queue reads. */
-export async function handleNewsRequest(request, env, current = new Date()) {
-  const headers = headersFor(env.NEWS_RELEASE_SHA);
+async function readDailyProfile(stream,current) {
+  return readNewsJsonArray(stream,{arrayKey:'records',maxBytes:DAILY_NEWS_LIMITS.profileBytes,
+    maxEntries:DAILY_NEWS_LIMITS.records,maxEntryBytes:6144,onEntry:record=>validateDailyNewsRecord(record,current)});
+}
+
+/** Build the single validated public graph without serializing an annual intermediate. */
+async function buildNewsProjection(request, env, current) {
   const url = new URL(request.url);
-  if (url.pathname !== FEED_PATH) return Response.json({ error: "not_found" }, { status: 404, headers });
-  if (request.method !== "GET") return Response.json({ error: "method_not_allowed" }, {
-    status: 405, headers: { ...headers, Allow: "GET" },
-  });
   let state = pendingNewsSourceState();
   try {
     // Read one fixed key. Private catalogs and held candidates are never read.
@@ -78,6 +81,12 @@ export async function handleNewsRequest(request, env, current = new Date()) {
   } catch {
     console.warn(JSON.stringify({event:"literary_news_nobel_profile_unavailable"}));
   }
+  try {
+    const stream = await env.NEWS_STATE.get(DAILY_NEWS_PROFILE_KEY, 'stream');
+    if (stream !== null) approvedProfile.push(...await dailyPublishedRecords(await readDailyProfile(stream,current), current));
+  } catch {
+    console.warn(JSON.stringify({ event: 'literary_news_daily_profile_unavailable' }));
+  }
   const timeZone = resolveNewsTimeZone(url.searchParams.get("timeZone"));
   try {
     // Human-reviewed records take precedence on either stable ID or semantic event key.
@@ -87,11 +96,94 @@ export async function handleNewsRequest(request, env, current = new Date()) {
         && authored.eventDate===item.eventDate && authored.source?.url===item.source.url))];
     const feed = await buildPublishedNewsFeed({ records, withdrawals, state, current, timeZone,
       release: env.NEWS_RELEASE_SHA, contractVersion: url.searchParams.get("contract") === "2" ? 2 : 1 });
-    return Response.json(feed, { headers });
+    // The response owns only the validated public projection. Release large private
+    // proof arrays before its streaming body is consumed; no record is truncated.
+    approvedProfile.length = 0;
+    records.length = 0;
+    return feed;
   } catch {
-    return Response.json({ error: "snapshot_unavailable" }, { status: 503, headers });
+    throw Error('public_snapshot_unavailable');
+  }
+}
+
+/** Fixed reviewed data and code-owned validated profiles; private findings remain private. */
+export async function handleNewsRequest(request, env, current = new Date()) {
+  const headers = headersFor(env.NEWS_RELEASE_SHA);
+  if (new URL(request.url).pathname !== FEED_PATH) return Response.json({ error: 'not_found' }, { status: 404, headers });
+  if (request.method !== 'GET') return Response.json({ error: 'method_not_allowed' }, {
+    status: 405, headers: { ...headers, Allow: 'GET' },
+  });
+  try { return new Response(newsJsonStream(await buildNewsProjection(request, env, current)), { headers }); }
+  catch { return Response.json({ error: 'snapshot_unavailable' }, { status: 503, headers }); }
+}
+
+/** Read-only coordinator: the existing handler validates the same three fixed KV keys.
+ * No private queue, ledger, provider client or writable binding operation is exposed. */
+export class LiteraryNewsPublicReader {
+  constructor(_state, env, {now=()=>new Date(),handler=handleNewsRequest}={}) {
+    this.env=env;this.now=now;this.handler=handler;this.pending=0;this.activeKey=null;
+    this.cached=null;this.loading=null;
+  }
+  async load(key,request,current){
+    if(this.cached?.key===key)return this.cached.value;
+    if(this.loading){
+      if(this.loading.key!==key)throw Error('public_snapshot_busy');
+      return this.loading.promise;
+    }
+    // Other variants are admitted only after all streams release the old graph.
+    // Drop the cache before loading its replacement, including on a failed load.
+    this.cached=null;
+    const loading=Promise.resolve().then(async()=>{
+      let value;
+      if(this.handler===handleNewsRequest)value=await buildNewsProjection(request,this.env,current);
+      else {
+        const response=await this.handler(request,this.env,current);
+        if(response.status!==200)throw Error('public_snapshot_unavailable');
+        value=await response.json();
+      }
+      const zone=resolveNewsTimeZone(new URL(request.url).searchParams.get('timeZone'));
+      if(value?.mode!=='reviewed'||value.timeZone!==zone||!Array.isArray(value.items)||!Array.isArray(value.sources)
+        ||value.generatedAt!==current.toISOString())throw Error('public_snapshot_invalid');
+      if(new URL(request.url).searchParams.get('contract')==='2')await verifyPublishedNewsSnapshot(value,{requireRelease:false});
+      const freeze=object=>{if(object&&typeof object==='object'){for(const child of Object.values(object))freeze(child);Object.freeze(object);}return object;};
+      this.cached={key,value:freeze(value)};return this.cached.value;
+    });
+    this.loading={key,promise:loading};
+    try{return await loading;}finally{if(this.loading?.promise===loading)this.loading=null;}
+  }
+  async fetch(request) {
+    const headers=headersFor(this.env.NEWS_RELEASE_SHA),url=new URL(request.url);
+    if(url.pathname!==FEED_PATH)return Response.json({error:'not_found'},{status:404,headers});
+    if(request.method!=='GET')return Response.json({error:'method_not_allowed'},{status:405,headers:{...headers,Allow:'GET'}});
+    const current=this.now(),zone=resolveNewsTimeZone(url.searchParams.get('timeZone'));
+    const key=[headers['X-Probpera-News-Release'],zone,url.searchParams.get('contract')==='2'?2:1,Math.floor(current.getTime()/30000)].join('|');
+    if(this.pending>=8||this.pending>0&&this.activeKey!==key)return Response.json({error:'snapshot_unavailable'},
+      {status:503,headers:{...headers,'Retry-After':'1'}});
+    this.pending++;this.activeKey=key;
+    let released=false;const release=()=>{if(!released){released=true;this.pending--;if(this.pending===0)this.activeKey=null;}};
+    try{
+      const value=await this.load(key,request,current);
+      return new Response(newsJsonStream(value,{onComplete:release}),{headers});
+    }catch{release();return Response.json({error:'snapshot_unavailable'},{status:503,headers});}
+  }
+}
+
+/** Keep route/method errors at the public boundary. Large approved-profile validation
+ * runs in the SQLite DO's CPU budget; the outer Worker streams its original response. */
+export async function handlePublicNewsRequest(request, env) {
+  const headers = headersFor(env.NEWS_RELEASE_SHA);
+  if (new URL(request.url).pathname !== FEED_PATH) return Response.json({ error: 'not_found' }, { status: 404, headers });
+  if (request.method !== 'GET') return Response.json({ error: 'method_not_allowed' }, {
+    status: 405, headers: { ...headers, Allow: 'GET' },
+  });
+  try {
+    if (!env.NEWS_PUBLIC_READER) throw Error('public_reader_unavailable');
+    const reader = env.NEWS_PUBLIC_READER.get(env.NEWS_PUBLIC_READER.idFromName('literary-news-public-reader'));
+    return await reader.fetch(request);
+  } catch {
+    return Response.json({ error: 'snapshot_unavailable' }, { status: 503, headers });
   }
 }
 
 /** @type {ExportedHandler<Env>} */
-export default { fetch(request, env) { return handleNewsRequest(request, env); } };
+export default { fetch(request, env) { return handlePublicNewsRequest(request, env); } };

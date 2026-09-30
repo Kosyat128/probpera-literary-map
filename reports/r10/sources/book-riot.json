@@ -1,0 +1,389 @@
+{
+  "sourceId": "book-riot",
+  "name": "Book Riot",
+  "entryUrl": "https://bookriot.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:15.841Z",
+  "requests": [
+    {
+      "url": "https://bookriot.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 210115,
+      "sha256": "25a5fa1cba6ae5e4613355536c880a7755b91684f2d32e029e881eaf9f2cd650",
+      "accessedAt": "2026-09-29T20:39:20.793Z"
+    },
+    {
+      "url": "https://bookriot.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 170802,
+      "sha256": "bc9562114c3a57e187d83ff22ba649e3aa5266c077b4a594ffef716f127f92ec",
+      "accessedAt": "2026-09-29T20:39:21.887Z"
+    },
+    {
+      "url": "https://bookriot.com/book-riots-deals-of-the-day-for-september-29-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 232997,
+      "sha256": "9e67a6ac93dffcd77ad320a10f3808fdd92eea6f3ee5dae0b25582633c8bb8c9",
+      "accessedAt": "2026-09-29T20:39:23.412Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Selected sample is an affiliate shopping/deal promotion; a real literary news representative is required before profile admission.",
+  "robots": {
+    "url": "https://bookriot.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 214,
+    "sha256": "f6095993a15afb30d85cc9c2712ad791ff350803deef57a8b35250840ac17cc6",
+    "accessedAt": "2026-09-29T20:39:16.315Z",
+    "disallowed": [
+      "/wp-login.php",
+      "/wp-admin/",
+      "/wp-content/plugins/",
+      "/?s=*",
+      "/search/",
+      "/search/_target*"
+    ]
+  },
+  "endpoint": {
+    "id": "book-riot",
+    "name": "Book Riot",
+    "url": "https://bookriot.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "book-riot",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://bookriot.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://bookriot.com/book-riots-deals-of-the-day-for-september-29-2026/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:23.423Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "book-riot",
+    "source": {
+      "name": "Book Riot",
+      "url": "https://bookriot.com/book-riots-deals-of-the-day-for-september-29-2026/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Book Riot’s Deals of the Day for September 29, 2026",
+    "publishedAt": "2026-09-29T13:00:00.000Z",
+    "description": "Women in ancient Pompeii, a library with the secrets to the universe, cutthroat ambition in the ballet world, and more of today's book deals.",
+    "discoveredAt": "2026-09-29T20:39:21.889Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bookriot.com/book-riots-deals-of-the-day-for-september-29-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 232997,
+      "sha256": "9e67a6ac93dffcd77ad320a10f3808fdd92eea6f3ee5dae0b25582633c8bb8c9",
+      "accessedAt": "2026-09-29T20:39:23.412Z",
+      "headline": "Book Riot's Deals of the Day for September 29, 2026",
+      "excerpt": "Today's Featured Book Deals <img width=\"157\" height=\"240\" src=\"https://bookriot.com/wp-content/uploads/2026/09/the-wolf-den.jpg.optimal.jpg\" class=\"attachment-160x240 size-160x240\" alt=\"The Wolf Den\" align=\"center\" style=\"max-width:160px;margin:0 auto;\" decoding=\"async\" srcset=\"https://bookriot.com/wp-content/uploads/2026/09/the-wolf-den.jpg.optimal.jpg 984w, https://bookriot.com/wp-content/upload",
+      "publishedDates": [
+        {
+          "value": "2026-09-29T13:00:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-29T13:00:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T13:00:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://bookriot.com/book-riots-deals-of-the-day-for-september-29-2026/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:23.423Z",
+  "foundItems": [
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/book-riots-deals-of-the-day-for-september-29-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Riot’s Deals of the Day for September 29, 2026",
+      "publishedAt": "2026-09-29T13:00:00.000Z",
+      "description": "Women in ancient Pompeii, a library with the secrets to the universe, cutthroat ambition in the ballet world, and more of today's book deals.",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/new-book-releases-september-29-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "6 of the Best New Book Releases Out September 29, 2026",
+      "publishedAt": "2026-09-29T10:10:00.000Z",
+      "description": "Works by Deesha Philyaw, Min Jin Lee, Hernan Diaz, Tomi Adeyemi, and more are all coming out this week!",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/the-independent-literary-media-scene/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "📚 The independent literary media scene",
+      "publishedAt": "2026-09-29T09:30:00.000Z",
+      "description": "You're invited to Book Riot's 15th birthday party.",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/zero-to-well-read-signal-awards/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zero to Well-Read is a Finalist in the Signal Awards!",
+      "publishedAt": "2026-09-29T16:09:07.000Z",
+      "description": "We're delighted to announce that Zero to Well-Read is a finalist for the Signal Awards in two categories: Best Arts & Culture Podcast and Best New Podcast!",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/utah-bans-44-books-statewide/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Utah Bans 7 More Books From All Public Schools; 44 Titles Now Banned Statewide",
+      "publishedAt": "2026-09-29T10:30:00.000Z",
+      "description": "Last week, a judge approved a lawsuit against Utah's state-sanctioned book bans. This week, the state banned seven more books.",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/what-is-healing-fiction/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What is “Healing Fiction”? (And Where to Get Started Reading It)",
+      "publishedAt": "2026-09-29T10:01:00.000Z",
+      "description": "Healing fiction books originated in Japan and South Korea, but they've become a global phenomena. Here's a brief intro to the genre.",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/poisons-potions-and-brews-in-fantasy-books/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poisons, Potions, and Brews in Fantasy Books",
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "description": "In these fantasy novels, witches’ brews, magical potions, and deadly poisons might just save the world—or end it.",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/queer-time-travel-romance-books/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "5 Queer Time Travel Romance Books",
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "description": "These queer time travel romance books include a sapphic love story about agents in a time war and an M/M romance inspired by 13 Going On 30.",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/the-love-hypothesis-sequel-and-adaptation-announced/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Love Hypothesis Sequel and Adaptation Announced",
+      "publishedAt": "2026-09-29T19:10:09.000Z",
+      "description": "After its buzzy film adaptation just came out on Prime Video, Ali Hazelwood's bestselling THE LOVE HYPOTHESIS has even more great news.",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/zero-to-well-read-east-of-eden/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Everything you need to know about EAST OF EDEN",
+      "publishedAt": "2026-09-29T14:42:36.000Z",
+      "description": "We're tackling Steinbeck's EAST OF EDEN just in time for the Netflix adaptation release this Thursday, October 1.",
+      "discoveredAt": "2026-09-29T20:39:21.889Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "bc9562114c3a57e187d83ff22ba649e3aa5266c077b4a594ffef716f127f92ec",
+  "technicalProbeStatus": "runtime_verified"
+}

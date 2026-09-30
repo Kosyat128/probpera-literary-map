@@ -1,0 +1,1027 @@
+{
+  "sourceId": "books-from-scotland",
+  "name": "Books from Scotland",
+  "entryUrl": "https://booksfromscotland.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:41:39.704Z",
+  "requests": [
+    {
+      "url": "https://booksfromscotland.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 135583,
+      "sha256": "8956e333e1d1656f24453da2221f2618d417c21a9c58a7e9d5c3282ef5010edc",
+      "accessedAt": "2026-09-29T20:41:40.239Z"
+    },
+    {
+      "url": "https://booksfromscotland.com/2026/07/the-book-according-to-lin-anderson/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 126620,
+      "sha256": "ac25094ae660a82e27e414639f0b507ab371b955425577ff659b62a12d3611ca",
+      "accessedAt": "2026-09-29T20:41:40.547Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://booksfromscotland.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 1855,
+    "sha256": "03e413dabba9b18b389f3f4f559626c53b640c4e423e3fab2f6624ed57c8adb9",
+    "accessedAt": "2026-09-29T20:41:40.071Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "books-from-scotland",
+    "name": "Books from Scotland",
+    "url": "https://booksfromscotland.com/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "books-from-scotland",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://booksfromscotland.com"
+    ],
+    "linkPattern": "^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$|^\\/book\\/[^/]+\\/?$|^\\/bfs\\x2dauthor\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/publisher\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://booksfromscotland.com/2026/07/the-book-according-to-lin-anderson/"
+    ],
+    "verifiedAt": "2026-09-29T20:41:40.557Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 36,
+  "literaryCandidateCount": 36,
+  "sample": {
+    "sourceId": "books-from-scotland",
+    "source": {
+      "name": "Books from Scotland",
+      "url": "https://booksfromscotland.com/2026/07/the-book-according-to-lin-anderson/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "The Book … According to ...",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:41:40.338Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://booksfromscotland.com/2026/07/the-book-according-to-lin-anderson/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 126620,
+      "sha256": "ac25094ae660a82e27e414639f0b507ab371b955425577ff659b62a12d3611ca",
+      "accessedAt": "2026-09-29T20:41:40.547Z",
+      "headline": "The Book ... According to Lin Anderson - Books from Scotland",
+      "excerpt": "The Book ... According to Lin Anderson - Books from Scotland <link rel=\"stylesheet\" href=\"https://booksfromscotland.com/wp-content/plugins/wp-views/vendor/toolset/blocks/public/css/style.css\"> SEARCH When autocomplete results are available use up and down arrows to review and enter to go to the desired page. Touch device users, explore by touch or with swipe gestures. NEVER MISS AN ISSUE! Sign up ",
+      "publishedDates": [
+        {
+          "value": "2026-07-30T10:13:41+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-07-30T10:13:41+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-07-30T10:13:41+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://booksfromscotland.com/2026/07/the-book-according-to-lin-anderson/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:41:40.557Z",
+  "foundItems": [
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/the-book-according-to-lin-anderson/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Book … According to ...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/author-profile-catherine-simpson/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author Profile: Catherine Simp...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/author-profile-christopher-rush/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author Profile: Christopher Ru...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/david-robinson-interviews-olga-wojtas/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "David Robinson Interviews Olga Wojtas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/something-like-happiness-by-tom-newlands/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Something Like Happiness by To...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/my-name-is-zayn-by-fidan-meikle/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "My Name is Zayn by Fidan Meikl...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/shorelines-a-q-a-with-alycia-pirmohamed/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Shorelines: A Q & A with ...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/a-year-in-the-water-by-beth-mcdonough/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Year in Water by Beth McDono...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/newes-of-witches-by-mairi-kidd/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Newes of Witches by Mairi Kidd",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/josephine-jay-reviews-the-shape-of-monsters-by-c-l-hellison/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Josephine Jay Reviews: The Sha...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/with-my-own-hand-a-q-a-with-ashley-douglas/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "With My Own Hand: A Q & A...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/chantelle-streete-reviews-stars-and-swipes-by-sophia-gravia/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chantelle Streete Reviews: Sta...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/seasonal-snacks-by-gabriella-english/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Seasonal Snacks by Gabriella E...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/black-lives-in-scotland-a-q-a-with-jeanette-r-davidson/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Black Lives in Scotland: A Q &...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/even-the-trees-by-roshni-gallagher/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Even the Trees by Roshni Galla...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/walking-with-history-the-autobiography-of-jimmy-reid/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Walking with History: The Auto...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/the-sound-of-a-smile-by-louise-greig/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Sound of a Smile by Louise...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/crossing-the-sound-by-peter-irvine/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Crossing the Sound by Peter Ir...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/a-wee-bit-zen-by-alan-spence/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Wee Bit Zen by Alan Spence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/07/on-the-bodies-of-strangers-by-hannah-stevens/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On the Bodies of Strangers by ...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/09/the-scottish-colourists-art-life-a-qa-with-alice-strang/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Scottish Colourists: Art & Life by Alice Strang",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/09/david-robinson-reviews-our-noble-selves-by-kate-atkinson/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "David Robinson Reviews: Our Noble Selves by Kate Atkinson",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/08/the-windhover-by-lorna-elcock/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Windhover by Lorna Elcock",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/2026/08/ayont-the-thistle-by-jim-mackintosh-alan-riach-and-james-robertson/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ayont the Thistle by Jim Mackintosh, Alan Riach and James Robertson",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/the-breakup-bookshop/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Breakup Bookshop",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/mondays-are-apple-green/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FEATURED Children's Book: Mondays Are Apple Green",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/shiver-the-lessons-of-the-lochs/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FEATURED Non-Fiction: Shiver: The Lessons of the Lochs",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/bfs-author/andrew-meehan/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FEATURED AUTHOR: Andrew Meehan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/the-scottish-colourists-art-life/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Scottish Colourists: Art & Life",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/scotsferatu-the-vampire-in-scottish-culture-and-folklore/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scotsferatu: The Vampire in Scottish Culture and Folklore",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/belling-the-leopard/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Belling the Leopard",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/scran-modern-scottish-food-inspired-by-tradition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scran: Modern Scottish Food Inspired by Tradition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/the-vanishing-earth-a-journey-through-the-last-days-of-abundance/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Vanishing Earth: A Journey Through the Last Days of Abundance",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/saunaland-scotlands-wild-sauna-culture/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Saunaland: Scotland’s Wild Sauna Culture",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/book/all-the-violet-tiaras-queering-the-greek-myths-3/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "All the Violet Tiaras: Queering the Greek Myths",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "books-from-scotland",
+      "source": {
+        "name": "Books from Scotland",
+        "url": "https://booksfromscotland.com/publisher/muddy-pearl/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FEATURED PUBLISHER:Muddy Pearl",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:41:40.338Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8956e333e1d1656f24453da2221f2618d417c21a9c58a7e9d5c3282ef5010edc"
+}

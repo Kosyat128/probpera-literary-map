@@ -1,0 +1,34 @@
+{
+  "sourceId": "paris-review",
+  "name": "The Paris Review",
+  "entryUrl": "https://www.theparisreview.org/blog/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:16.789Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://www.theparisreview.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 442,
+    "sha256": "796b79c1d768966bde19f32f7705d458736a8a2a056b357b9dc6bb0275aa7a6c",
+    "accessedAt": "2026-09-29T20:39:17.127Z",
+    "disallowed": [
+      "/blog/wp-admin/",
+      "/blog/wp-login.php",
+      "/blog/wp-includes/",
+      "/blog/wp-content/plugins/",
+      "/blog/wp-content/cache",
+      "/blog/wp-content/themes",
+      "/blog/wp-includes/js",
+      "/blog/trackback",
+      "*/trackback",
+      "/blog/tag/",
+      "/blog/author/",
+      "/blog/category/",
+      "/search"
+    ]
+  }
+}

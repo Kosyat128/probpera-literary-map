@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-CALENDAR-CODEQL-SECURITY-FOLLOWUP-20260930",
+  "baselineCommitSha": "afb2183c60a318d43ccab8fae2f8d10069f25437",
+  "scope": "Structural code fixes for the existing calendar builders: named source URL/regular-expression fields, literal identity/date/source allowlists, prototype-safe Map registry. Six exact backward-read fragments preserve historical packets, proofs, date overlays and all seven prior human-authorized integration fragments.",
+  "authorization": {
+    "basis": "Owner requested fixing all errors; this additive security packet is agent review within that scope.",
+    "packetSpecificHumanApprovalClaim": false,
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "historicalPinsChanged": false,
+  "calendarDataChanged": false,
+  "sourceAuthorityBytesChanged": false,
+  "calendarFields": 25,
+  "codeql": {
+    "baselineCheckRun": 109650123656,
+    "rules": [
+      "js/remote-property-injection",
+      "js/incomplete-hostname-regexp"
+    ],
+    "annotations": 4,
+    "rerunRequired": true
+  },
+  "allowedProjectionPaths": [
+    "scripts/build-popular-calendar-dates-r10.mjs",
+    "scripts/build-scoped-calendar-dates-r10.mjs",
+    "scripts/lib/reviewed-r10-source-punctuation.mjs",
+    "scripts/build-calendar-followup-attestation-r10.mjs",
+    "scripts/lib/r10-exact-source-punctuation.test.mjs"
+  ],
+  "sourceBaselines": {
+    "scripts/build-popular-calendar-dates-r10.mjs": "920b7ac7a0234bab3408bb270614b9faf65920f39cf776cbf7de647585b28288",
+    "scripts/build-scoped-calendar-dates-r10.mjs": "b9355f8a3b1e8271331ec18363fca80eab4298248ac5427a27398358641e0dd4",
+    "scripts/lib/reviewed-r10-source-punctuation.mjs": "c65f79c90ffed34b130fb0996f11adf51240f2ccec6b39d7c4e6bdba12c13ec1",
+    "scripts/build-calendar-followup-attestation-r10.mjs": "844cbf8d90b52e393a0aeebe2e2b12692e7a50bcd5f40f602d33ed35f973d658",
+    "scripts/lib/r10-exact-source-punctuation.test.mjs": "82265efb3d79c2101e14741b2b757a99338487c7a605a81092d82c4bbc732f10"
+  },
+  "sourceBaselineOrigins": {
+    "scripts/build-popular-calendar-dates-r10.mjs": "afb2183c60a318d43ccab8fae2f8d10069f25437",
+    "scripts/build-scoped-calendar-dates-r10.mjs": "afb2183c60a318d43ccab8fae2f8d10069f25437",
+    "scripts/lib/reviewed-r10-source-punctuation.mjs": "afb2183c60a318d43ccab8fae2f8d10069f25437",
+    "scripts/build-calendar-followup-attestation-r10.mjs": "afb2183c60a318d43ccab8fae2f8d10069f25437",
+    "scripts/lib/r10-exact-source-punctuation.test.mjs": "Existing forward-read bytes after independently reviewed prototype-safe test-fixture helpers; only two adapter fragments are reversed here."
+  },
+  "reviewedSources": {
+    "scripts/build-popular-calendar-dates-r10.mjs": "84fb807d8397eece8832395704169a0224a8bb204455c9db69c3744fd26d18bb",
+    "scripts/build-scoped-calendar-dates-r10.mjs": "112d09616ce0b79c0b18d3f3422177d4c6270f25bc3fae6cf39bf089757f6fe9",
+    "scripts/lib/reviewed-r10-source-punctuation.mjs": "f112b487cba1e40a15ccc2f40f46320cb2ba4d6638935a39ad752005e5f662bc",
+    "scripts/build-calendar-followup-attestation-r10.mjs": "aad501f2cf77b919ba7f86475e025d8863b6e318b9c8e856e51ce2d8fdad1bfb",
+    "scripts/lib/r10-exact-source-punctuation.test.mjs": "a82e6d540f70081e9e022dc162a695c7c2d3a685daa4867fd73016cde7fb6bfa"
+  },
+  "projections": [
+    {
+      "id": "build-popular-calendar-dates-r10.mjs:structural-1",
+      "path": "scripts/build-popular-calendar-dates-r10.mjs",
+      "before": "const existingPaths = ['r10', 'r10-supplemental', 'r10-russian'].map(id => `src/data/countries/generated/writerDatePatches.${id}.json`);\n\nconst candidates = [\n  ['russia:mikhail_zoshchenko', 'birthDate', '1894-08-09', 'https://www.culture.ru/persons/9974/mikhail-zoshenko', /0?9\\s+августа\\s+1894/i, 'Михаил Зощенко'],\n  ['russia:vasily_grossman', 'birthDate', '1905-12-12', 'https://rgbs.ru/tiflology/pubs/vasilij-semenovich-grossman/', /12\\s+декабря\\s+1905/i, 'Гроссман'],\n  ['russia:karamzin', 'birthDate', '1766-12-12', 'https://www.prlib.ru/node/619713', /1\\s*\\(12\\)\\s*декабря\\s+1766/i, 'Карамзин'],\n  ['usa:daniel_keyes', 'birthDate', '1927-08-09', 'https://www.orrt.org/keyes/', /Born:\\s*August\\s+9,?\\s+1927/i, 'Daniel Keyes'],\n  ['england:frederick_forsyth', 'birthDate', '1938-08-25', 'https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/', /August\\s+25,\\s+1938/i, 'Frederick Forsyth'],\n  ['england:frederick_forsyth', 'deathDate', '2025-06-09', 'https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/', /died\\s+on\\s+Monday,\\s+June\\s+9,\\s+2025/i, 'Frederick Forsyth'],\n];\n\nconst reviewedHeld = [\n  { writerKey: 'russia:andrei_platonov', field: 'birthDate', reason: 'Competing Gregorian birthday statements (28 August and 1 September); no silent resolution.', sourceUrl: 'https://www.wikidata.org/wiki/Q315147' },\n  { writerKey: 'russia:avvakum', field: 'birthDate', reason: 'Historical November date needs explicit calendar-style confirmation before conversion.', sourceUrl: 'https://avvakum.rusarchives.ru/predislovie' },\n",
+      "after": "const existingPaths = ['r10', 'r10-supplemental', 'r10-russian'].map(id => `src/data/countries/generated/writerDatePatches.${id}.json`);\n\nconst candidates = [\n  { writerKey: 'russia:mikhail_zoshchenko', field: 'birthDate', proposedValue: '1894-08-09', sourceUrl: 'https://www.culture.ru/persons/9974/mikhail-zoshenko', pattern: /0?9\\s+августа\\s+1894/i, identity: 'Михаил Зощенко' },\n  { writerKey: 'russia:vasily_grossman', field: 'birthDate', proposedValue: '1905-12-12', sourceUrl: 'https://rgbs.ru/tiflology/pubs/vasilij-semenovich-grossman/', pattern: /12\\s+декабря\\s+1905/i, identity: 'Гроссман' },\n  { writerKey: 'russia:karamzin', field: 'birthDate', proposedValue: '1766-12-12', sourceUrl: 'https://www.prlib.ru/node/619713', pattern: /1\\s*\\(12\\)\\s*декабря\\s+1766/i, identity: 'Карамзин' },\n  { writerKey: 'usa:daniel_keyes', field: 'birthDate', proposedValue: '1927-08-09', sourceUrl: 'https://www.orrt.org/keyes/', pattern: /Born:\\s*August\\s+9,?\\s+1927/i, identity: 'Daniel Keyes' },\n  { writerKey: 'england:frederick_forsyth', field: 'birthDate', proposedValue: '1938-08-25', sourceUrl: 'https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/', pattern: /August\\s+25,\\s+1938/i, identity: 'Frederick Forsyth' },\n  { writerKey: 'england:frederick_forsyth', field: 'deathDate', proposedValue: '2025-06-09', sourceUrl: 'https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/', pattern: /died\\s+on\\s+Monday,\\s+June\\s+9,\\s+2025/i, identity: 'Frederick Forsyth' },\n];\n\nexport function checkedPopularCalendarReviewRow(row) {\n  const candidate = candidates.find(item => item.writerKey === row?.writerKey && item.field === row?.field);\n  assert.ok(candidate && candidate.proposedValue === row.proposedValue && candidate.sourceUrl === row.sourceUrl,\n    'Unapproved popular calendar identity, field, date or source');\n  return row;\n}\n\nconst reviewedHeld = [\n  { writerKey: 'russia:andrei_platonov', field: 'birthDate', reason: 'Competing Gregorian birthday statements (28 August and 1 September); no silent resolution.', sourceUrl: 'https://www.wikidata.org/wiki/Q315147' },\n  { writerKey: 'russia:avvakum', field: 'birthDate', reason: 'Historical November date needs explicit calendar-style confirmation before conversion.', sourceUrl: 'https://avvakum.rusarchives.ru/predislovie' },\n"
+    },
+    {
+      "id": "build-popular-calendar-dates-r10.mjs:structural-2",
+      "path": "scripts/build-popular-calendar-dates-r10.mjs",
+      "before": "}\n\nif (process.argv.includes('--acquire')) {\n  const urls = [...new Set(candidates.map(c => c[3]))];\n  const pages = await pool(urls, async url => {\n    try {\n      const r = await boundedFetch(url, { timeout: 25000, maxBytes: 1_500_000 });\n",
+      "after": "}\n\nif (process.argv.includes('--acquire')) {\n  const urls = [...new Set(candidates.map(candidate => candidate.sourceUrl))];\n  const pages = await pool(urls, async url => {\n    try {\n      const r = await boundedFetch(url, { timeout: 25000, maxBytes: 1_500_000 });\n"
+    },
+    {
+      "id": "build-popular-calendar-dates-r10.mjs:structural-3",
+      "path": "scripts/build-popular-calendar-dates-r10.mjs",
+      "before": "  }, 3);\n  const byUrl = new Map(pages.map(p => [p.url, p]));\n  const ready = [], held = [...reviewedHeld];\n  for (const [writerKey, field, proposedValue, sourceUrl, pattern, identity] of candidates) {\n    const page = byUrl.get(sourceUrl), match = page.body?.match(pattern);\n    if (page.status !== 200 || !page.body?.includes(identity) || !match) {\n      held.push({ writerKey, field, proposedValue, sourceUrl, reason: page.error || 'Institutional identity/exact date not acquired' });\n",
+      "after": "  }, 3);\n  const byUrl = new Map(pages.map(p => [p.url, p]));\n  const ready = [], held = [...reviewedHeld];\n  for (const { writerKey, field, proposedValue, sourceUrl, pattern, identity } of candidates) {\n    const page = byUrl.get(sourceUrl), match = page.body?.match(pattern);\n    if (page.status !== 200 || !page.body?.includes(identity) || !match) {\n      held.push({ writerKey, field, proposedValue, sourceUrl, reason: page.error || 'Institutional identity/exact date not acquired' });\n"
+    },
+    {
+      "id": "build-popular-calendar-dates-r10.mjs:structural-4",
+      "path": "scripts/build-popular-calendar-dates-r10.mjs",
+      "before": "    const value = await readFile(sourcePath, 'utf8'); return { sourcePath, sha256: sha(value), patches: JSON.parse(value).patches };\n  }));\n  const seen = new Set(originalFiles.flatMap(s => s.patches.map(p => `${p.writerKey}:${p.field}`)));\n  const patches = review.ready.map(row => {\n    const key = `${row.writerKey}:${row.field}`;\n    assert.ok(!seen.has(key), `Date already owned: ${key}`); seen.add(key);\n    const h = held.find(x => x.writerKey === row.writerKey && x.field === row.field);\n",
+      "after": "    const value = await readFile(sourcePath, 'utf8'); return { sourcePath, sha256: sha(value), patches: JSON.parse(value).patches };\n  }));\n  const seen = new Set(originalFiles.flatMap(s => s.patches.map(p => `${p.writerKey}:${p.field}`)));\n  const patches = review.ready.map(untrusted => {\n    const row = checkedPopularCalendarReviewRow(untrusted);\n    const key = `${row.writerKey}:${row.field}`;\n    assert.ok(!seen.has(key), `Date already owned: ${key}`); seen.add(key);\n    const h = held.find(x => x.writerKey === row.writerKey && x.field === row.field);\n"
+    },
+    {
+      "id": "build-scoped-calendar-dates-r10.mjs:structural-1",
+      "path": "scripts/build-scoped-calendar-dates-r10.mjs",
+      "before": "  ['england:ronald_delderfield', 'Q438569', 'R. F. Delderfield', 'https://www.bdcmuseum.org.uk/explore/item/97450/', /Ben Gunn/i],\n];\n\nasync function loadBaseline() {\n  await mkdir('.tmp/scoped-calendar-r10', { recursive: true });\n  const target = '.tmp/scoped-calendar-r10/baseline.mjs';\n",
+      "after": "  ['england:ronald_delderfield', 'Q438569', 'R. F. Delderfield', 'https://www.bdcmuseum.org.uk/explore/item/97450/', /Ben Gunn/i],\n];\n\nconst approvedIdentities = new Map(candidates.map(([writerKey, wikidataId, , sourceUrl]) => [writerKey, { wikidataId, sourceUrl }]));\nexport function checkedScopedCalendarReviewRow(row) {\n  const identity = approvedIdentities.get(row?.writerKey);\n  assert.ok(identity && row.wikidataId === identity.wikidataId && row.sourceUrl === identity.sourceUrl,\n    'Unapproved scoped calendar identity or source');\n  assert.ok(Array.isArray(row.fields) && row.fields.length > 0 && row.fields.length <= 2\n    && new Set(row.fields.map(field => field?.field)).size === row.fields.length\n    && row.fields.every(field => field?.field === 'birthDate' || field?.field === 'deathDate'),\n  'Unapproved scoped calendar date field');\n  return row;\n}\n\nasync function loadBaseline() {\n  await mkdir('.tmp/scoped-calendar-r10', { recursive: true });\n  const target = '.tmp/scoped-calendar-r10/baseline.mjs';\n"
+    },
+    {
+      "id": "build-scoped-calendar-dates-r10.mjs:structural-2",
+      "path": "scripts/build-scoped-calendar-dates-r10.mjs",
+      "before": "  const registry = JSON.parse(await readFile('src/data/countries/generated/curatedWriterQids.generated.json', 'utf8')).writers;\n  const baseline = await loadBaseline();\n  const existing = (await Promise.all(['r10', 'r10-supplemental', 'r10-russian', 'r10-popular'].map(async id => JSON.parse(await readFile(`src/data/countries/generated/writerDatePatches.${id}.json`, 'utf8')).patches))).flat();\n  const seen = new Set(existing.map(p => `${p.writerKey}:${p.field}`)), writers = {}, patches = [];\n  for (const row of review.ready) {\n    assert.ok(!registry[row.writerKey] || registry[row.writerKey].wikidataId === row.wikidataId, 'Main reviewed identity conflicts');\n    const writer = baseline.get(row.writerKey); assert.ok(writer);\n    assert.deepEqual([writer.name, writer.fullName].filter(Boolean), row.expectedNames, 'Existing identity/name changed');\n    const entity = snapshot.entities.find(e => e.qid === row.wikidataId);\n    assert.ok(entity.human && entity.lastrevid);\n    writers[row.writerKey] = { wikidataId: row.wikidataId, expectedNames: row.expectedNames,\n      identitySourceUrl: row.sourceUrl, identityFinding: row.identityFinding, checkedAt: row.checkedAt, sourceDocumentSha256: row.sourceDocumentSha256 };\n    for (const field of row.fields) {\n      const key = `${row.writerKey}:${field.field}`; assert.ok(!seen.has(key)); seen.add(key);\n      assert.equal(writer[field.field] ?? null, field.expectedOld);\n",
+      "after": "  const registry = JSON.parse(await readFile('src/data/countries/generated/curatedWriterQids.generated.json', 'utf8')).writers;\n  const baseline = await loadBaseline();\n  const existing = (await Promise.all(['r10', 'r10-supplemental', 'r10-russian', 'r10-popular'].map(async id => JSON.parse(await readFile(`src/data/countries/generated/writerDatePatches.${id}.json`, 'utf8')).patches))).flat();\n  const seen = new Set(existing.map(p => `${p.writerKey}:${p.field}`)), writers = new Map(), patches = [];\n  for (const untrusted of review.ready) {\n    const row = checkedScopedCalendarReviewRow(untrusted);\n    assert.ok(!registry[row.writerKey] || registry[row.writerKey].wikidataId === row.wikidataId, 'Main reviewed identity conflicts');\n    const writer = baseline.get(row.writerKey); assert.ok(writer);\n    assert.deepEqual([writer.name, writer.fullName].filter(Boolean), row.expectedNames, 'Existing identity/name changed');\n    const entity = snapshot.entities.find(e => e.qid === row.wikidataId);\n    assert.ok(entity.human && entity.lastrevid);\n    writers.set(row.writerKey, { wikidataId: row.wikidataId, expectedNames: row.expectedNames,\n      identitySourceUrl: row.sourceUrl, identityFinding: row.identityFinding, checkedAt: row.checkedAt, sourceDocumentSha256: row.sourceDocumentSha256 });\n    for (const field of row.fields) {\n      const key = `${row.writerKey}:${field.field}`; assert.ok(!seen.has(key)); seen.add(key);\n      assert.equal(writer[field.field] ?? null, field.expectedOld);\n"
+    },
+    {
+      "id": "build-scoped-calendar-dates-r10.mjs:structural-3",
+      "path": "scripts/build-scoped-calendar-dates-r10.mjs",
+      "before": "        field: field.field, expectedOld: field.expectedOld, expectedEvidence: field.expectedEvidence, appliedValue: field.proposedValue, evidence });\n    }\n  }\n  const identity = { version: 1, evaluatedAt: review.evaluatedAt, sourceReviewSha256: sha(reviewText), scope: 'Calendar date identities only', writers };\n  const output = { version: 1, evaluatedAt: review.evaluatedAt, sourceReviewSha256: sha(reviewText),\n    scopedIdentitySha256: sha(json(identity)), snapshotSha256: sha(snapshotText), patches };\n  if (process.argv.includes('--write')) {\n",
+      "after": "        field: field.field, expectedOld: field.expectedOld, expectedEvidence: field.expectedEvidence, appliedValue: field.proposedValue, evidence });\n    }\n  }\n  const identity = { version: 1, evaluatedAt: review.evaluatedAt, sourceReviewSha256: sha(reviewText), scope: 'Calendar date identities only', writers: Object.fromEntries(writers) };\n  const output = { version: 1, evaluatedAt: review.evaluatedAt, sourceReviewSha256: sha(reviewText),\n    scopedIdentitySha256: sha(json(identity)), snapshotSha256: sha(snapshotText), patches };\n  if (process.argv.includes('--write')) {\n"
+    },
+    {
+      "id": "build-scoped-calendar-dates-r10.mjs:structural-4",
+      "path": "scripts/build-scoped-calendar-dates-r10.mjs",
+      "before": "    assert.equal(await readFile(identityPath, 'utf8'), json(identity), 'Scoped calendar identities stale');\n    assert.equal(await readFile(patchPath, 'utf8'), json(output), 'Scoped date patches stale');\n  }\n  console.log(JSON.stringify({ scopedWriterIdentities: Object.keys(writers).length, scopedDatePatches: patches.length }));\n}\n",
+      "after": "    assert.equal(await readFile(identityPath, 'utf8'), json(identity), 'Scoped calendar identities stale');\n    assert.equal(await readFile(patchPath, 'utf8'), json(output), 'Scoped date patches stale');\n  }\n  console.log(JSON.stringify({ scopedWriterIdentities: writers.size, scopedDatePatches: patches.length }));\n}\n"
+    },
+    {
+      "id": "calendar-security-forward-import",
+      "path": "scripts/lib/reviewed-r10-source-punctuation.mjs",
+      "before": "import { readFileSync } from \"node:fs\";\n",
+      "after": "import { readFileSync } from \"node:fs\";\nimport { projectReviewedCalendarSecurityFollowup } from \"./reviewed-calendar-security-followup.mjs\";\n"
+    },
+    {
+      "id": "calendar-security-forward-read",
+      "path": "scripts/lib/reviewed-r10-source-punctuation.mjs",
+      "before": "  let projected = source.replace(/\\r\\n?/gu, \"\\n\");",
+      "after": "  let projected = projectReviewedCalendarSecurityFollowup(relativePath, source);"
+    },
+    {
+      "id": "calendar-security-builder-import",
+      "path": "scripts/build-calendar-followup-attestation-r10.mjs",
+      "before": "import { projectReviewedUndiciSecurityFollowup } from './lib/reviewed-undici-security-followup.mjs';\n",
+      "after": "import { projectReviewedUndiciSecurityFollowup } from './lib/reviewed-undici-security-followup.mjs';\nimport { projectReviewedCalendarSecurityFollowup } from './lib/reviewed-calendar-security-followup.mjs';\n"
+    },
+    {
+      "id": "calendar-security-builder-read",
+      "path": "scripts/build-calendar-followup-attestation-r10.mjs",
+      "before": "const read=path=>lf(readFileSync(path,'utf8'));",
+      "after": "const read=path=>projectReviewedCalendarSecurityFollowup(path,readFileSync(path,'utf8'));"
+    },
+    {
+      "id": "calendar-security-test-import",
+      "path": "scripts/lib/r10-exact-source-punctuation.test.mjs",
+      "before": "import { readFileSync } from \"node:fs\";\n",
+      "after": "import { readFileSync } from \"node:fs\";\nimport { projectReviewedCalendarSecurityFollowup } from \"./reviewed-calendar-security-followup.mjs\";\n"
+    },
+    {
+      "id": "calendar-security-test-read",
+      "path": "scripts/lib/r10-exact-source-punctuation.test.mjs",
+      "before": "const read = path => readFileSync(path, \"utf8\");",
+      "after": "const read = path => projectReviewedCalendarSecurityFollowup(path, readFileSync(path, \"utf8\"));"
+    }
+  ],
+  "additions": [
+    {
+      "path": "scripts/lib/reviewed-calendar-security-followup.mjs",
+      "sha256Lf": "8017b4e815f5d662305478f679c56e37eb32b67c263af306b4616f8a0635231d"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/calendar-followup-reviewed-20260929.json",
+      "sha256Lf": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce",
+      "sha256Raw": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce"
+    },
+    {
+      "path": "scripts/governance/calendar-governance-integration-reviewed-20260929.json",
+      "sha256Lf": "212473e1965b1e18712dcbe26a0b107751284ecb80183205b6508b96cadd5450",
+      "sha256Raw": "212473e1965b1e18712dcbe26a0b107751284ecb80183205b6508b96cadd5450"
+    },
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "sha256Raw": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460"
+    },
+    {
+      "path": "scripts/governance/undici-security-followup-reviewed-20260930.json",
+      "sha256Lf": "6e38b20b86d86437cfacd9d9419641ce2c385a562704d6e76d35bbd3b2966ee8",
+      "sha256Raw": "6e38b20b86d86437cfacd9d9419641ce2c385a562704d6e76d35bbd3b2966ee8"
+    },
+    {
+      "path": "scripts/governance/r10-source-punctuation-followup-20260930.json",
+      "sha256Lf": "e1226489953b83ba3518f6239eedc6a676e74edbc4f8c5be2e62af143cba8f96",
+      "sha256Raw": "e1226489953b83ba3518f6239eedc6a676e74edbc4f8c5be2e62af143cba8f96"
+    },
+    {
+      "path": "scripts/governance/r10-exact-source-punctuation-20260930.json",
+      "sha256Lf": "907affe0379040ab2cdf22aed1ed8ae5d4c0aec52758c304ff0093f6e97df532",
+      "sha256Raw": "907affe0379040ab2cdf22aed1ed8ae5d4c0aec52758c304ff0093f6e97df532"
+    },
+    {
+      "path": "reports/r10/calendar/russian-source-review.json",
+      "sha256Lf": "53615a7dae752cd49fd0114e0f66117ad78c5d6fd0f597aba248e0bf84539f4a",
+      "sha256Raw": "53615a7dae752cd49fd0114e0f66117ad78c5d6fd0f597aba248e0bf84539f4a"
+    },
+    {
+      "path": "reports/r10/calendar/popular-source-review.json",
+      "sha256Lf": "0e3eb7cea9b2ae0ce050e6f1c8763bd7fb407f9d6ff519b102548c3546e229c5",
+      "sha256Raw": "0e3eb7cea9b2ae0ce050e6f1c8763bd7fb407f9d6ff519b102548c3546e229c5"
+    },
+    {
+      "path": "reports/r10/calendar/scoped-source-review.json",
+      "sha256Lf": "5bc8e6449d7be2db3c89323cbab3dffb9bf6851394ad0595a1d85071c06d6b97",
+      "sha256Raw": "5bc8e6449d7be2db3c89323cbab3dffb9bf6851394ad0595a1d85071c06d6b97"
+    },
+    {
+      "path": "reports/r10/calendar/scoped-wikidata-evidence.json",
+      "sha256Lf": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06",
+      "sha256Raw": "60279ade45be806631c75fdd9fec4ef5d1aed5f2c3d6a6a665d7f214dc25da06"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-russian.json",
+      "sha256Lf": "50822fa4fe3e530fc80950228c3002bc9feb789b043d65709b4067473982d39b",
+      "sha256Raw": "50822fa4fe3e530fc80950228c3002bc9feb789b043d65709b4067473982d39b"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-popular.json",
+      "sha256Lf": "cd30e980e5e64b0a8ad9439ad5803d742e1d61a3a8ea38f03ce2adad9f5e057d",
+      "sha256Raw": "cd30e980e5e64b0a8ad9439ad5803d742e1d61a3a8ea38f03ce2adad9f5e057d"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-scoped.json",
+      "sha256Lf": "f743df78ae59f92dd9f4eec9ab2ce3a0727633f2d9edfc858f9918cfbf79c3fe",
+      "sha256Raw": "f743df78ae59f92dd9f4eec9ab2ce3a0727633f2d9edfc858f9918cfbf79c3fe"
+    },
+    {
+      "path": "src/data/countries/generated/writerCalendarIdentities.r10-popular.json",
+      "sha256Lf": "199b30aac5b00b9b46b3ef7748e5780e201659520381efc2a4ea783d22946e08",
+      "sha256Raw": "199b30aac5b00b9b46b3ef7748e5780e201659520381efc2a4ea783d22946e08"
+    },
+    {
+      "path": "src/data/countries/generated/curatedWriterQids.generated.json",
+      "sha256Lf": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+      "sha256Raw": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61"
+    },
+    {
+      "path": "src/data/countries/generated/writerFacts.wikidata.json",
+      "sha256Lf": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+      "sha256Raw": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10.json",
+      "sha256Lf": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080",
+      "sha256Raw": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-supplemental.json",
+      "sha256Lf": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217",
+      "sha256Raw": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217"
+    }
+  ]
+}

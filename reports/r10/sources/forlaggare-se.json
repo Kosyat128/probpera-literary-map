@@ -8,36 +8,45 @@
   "coverageCountryCodes": [
     "SE"
   ],
-  "attemptedAt": "2026-09-26T17:28:26.087Z",
+  "attemptedAt": "2026-09-29T20:33:06.904Z",
   "requests": [
     {
       "url": "https://forlaggare.se/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 484994,
-      "sha256": "b5cc6cd4bdc867f5f26fc8503be8883b1b4937d818e675256aaefa1fd47448d5",
-      "accessedAt": "2026-09-26T17:28:28.337Z"
+      "bytes": 484566,
+      "sha256": "c5c3e4c8ee3ede64a950245270ad9e023f536cb709fe1e06cc276b591aba4222",
+      "accessedAt": "2026-09-29T20:33:09.267Z"
     },
     {
       "url": "https://forlaggare.se/feed/",
       "status": 200,
       "contentType": "application/rss+xml; charset=UTF-8",
       "bytes": 1107,
-      "sha256": "9bd9e2f8629505ed041fd00743e69ca398f91c54a4034d2f257e5a723b11f473",
-      "accessedAt": "2026-09-26T17:28:28.929Z"
+      "sha256": "fea890a2bf469636a89250443d6e696ba433c70674b567d127eaee33386cd845",
+      "accessedAt": "2026-09-29T20:33:09.781Z"
+    },
+    {
+      "url": "https://forlaggare.se/nyheter/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 281060,
+      "sha256": "d74bdaf2aa2bac780937c4870cfb3ea746ba6b0c52754b47b0016368672e5f2c",
+      "accessedAt": "2026-09-29T20:33:10.490Z"
     }
   ],
   "status": "blocked",
-  "reason": "runtime_parser_no_literary_item",
+  "reason": "no_literary_article_links",
   "robots": {
     "url": "https://forlaggare.se/robots.txt",
     "status": 200,
     "contentType": "text/plain; charset=utf-8",
     "bytes": 114,
     "sha256": "2a16321e174d15459ee66e37e2f0864e9a597334031ba2fe364f3d3c50a27cb5",
-    "accessedAt": "2026-09-26T17:28:27.146Z",
+    "accessedAt": "2026-09-29T20:33:08.056Z",
     "disallowed": [
       "/wp-admin/"
     ]
-  }
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links"
 }

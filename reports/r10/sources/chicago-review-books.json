@@ -1,0 +1,16 @@
+{
+  "sourceId": "chicago-review-books",
+  "name": "Chicago Review of Books",
+  "entryUrl": "https://chireviewofbooks.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:18.551Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "private_destination",
+  "robots": {
+    "url": "https://chireviewofbooks.com/robots.txt",
+    "error": "private_destination",
+    "disallowed": []
+  }
+}

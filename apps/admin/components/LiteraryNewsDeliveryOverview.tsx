@@ -6,7 +6,7 @@ import { formatNewsQueueDate as stamp } from "@/lib/literary-news-queue";
 
 const statusLabels: Record<NewsDeliveryStatus, string> = { pending: "Ожидают", inflight: "Запрос выполняется", sent_current: "Подтверждена текущая версия", correction_pending: "Ждут исправления", ambiguous: "Результат неизвестен", blocked: "Заблокированы", explicitly_closed: "Закрыты явно", unknown: "Неизвестное состояние" };
 const modeLabels: Record<string, string> = { off: "Выключено", shadow: "Без отправки", canary: "Пробная отправка", on: "Включено", unknown: "Не подтверждён" };
-const runLabels: Record<string, string> = { "--preview-local": "Локальный предпросмотр", "--shadow": "Проверка без отправки", "--capture": "Учёт опубликованных карточек", "--send": "Обработка отправок", "--preflight": "Проверка доступа" };
+const runLabels: Record<string, string> = { "native-cron": "Нативный планировщик", "--preview-local": "Локальный предпросмотр", "--shadow": "Проверка без отправки", "--capture": "Учёт опубликованных карточек", "--send": "Обработка отправок", "--preflight": "Проверка доступа" };
 const showTime = (value: string | null) => value ? <time dateTime={value}>{stamp(value)}</time> : "Нет подтверждения";
 
 export default function LiteraryNewsDeliveryOverview({ snapshot, page: requestedPage, query, canManage = false }: { canManage?: boolean; snapshot: LiteraryNewsRuntimeOverview; page?: string; query: { q?: string; source?: string; page?: string } }) {
@@ -33,6 +33,18 @@ export default function LiteraryNewsDeliveryOverview({ snapshot, page: requested
             <div><dt>Последняя подтверждённая доставка</dt><dd>{showTime(snapshot.lastDeliveryAt)}</dd></div>
             <div><dt>Начало наблюдаемой истории</dt><dd>{showTime(snapshot.historyObservedSince)}{snapshot.historyStatus === "gap_before_first_observation" && <>. До этой даты есть исторический пробел; старые публикации требуют сверки.</>}</dd></div>
           </dl>
+          <section aria-labelledby="news-daily-delivery">
+            <h3 id="news-daily-delivery">Подтверждённые новости за день</h3>
+            {snapshot.nativeDeliveryInvalid ? <p className="form-message form-error">Дневная сводка планировщика не прошла проверку. Количество отправок за сегодня неизвестно.</p>
+              : !snapshot.nativeDelivery ? <p>Подтверждённая дневная сводка нативного планировщика ещё не получена. Количество отправок за сегодня неизвестно.</p>
+                : !snapshot.nativeDelivery.isCurrentDay ? <p>Сводка за сегодня ещё не получена. Последние подтверждённые данные относятся к <time dateTime={snapshot.nativeDelivery.editorialDay}>{snapshot.nativeDelivery.editorialDay}</time>.</p>
+                  : <>
+                    <p>За <time dateTime={snapshot.nativeDelivery.editorialDay}>{snapshot.nativeDelivery.editorialDay}</time> по московскому времени подтверждено свежих новостей: <strong>{snapshot.nativeDelivery.freshCreates}</strong>. Из них с фото: <strong>{snapshot.nativeDelivery.freshPhotoCreates}</strong>, без фото: <strong>{snapshot.nativeDelivery.freshTextCreates}</strong>. Цель: {snapshot.nativeDelivery.minimum}-{snapshot.nativeDelivery.maximum} в день. До минимума осталось: <strong>{snapshot.nativeDelivery.deficitToMinimum}</strong>.</p>
+                    <p>Новые посты выходят примерно раз в час с 08:00 до 22:00 по московскому времени. Новости с фото получают приоритет.</p>
+                    <p>Других первых отправок за день: <strong>{snapshot.nativeDelivery.acknowledgedCreates - snapshot.nativeDelivery.freshCreates}</strong>. Подтверждений без известной даты первой отправки в истории: <strong>{snapshot.nativeDelivery.legacyReceiptsWithUnknownFirstDate}</strong>; они не включены в дневной результат.</p>
+                    <p className="catalog-summary">Сводка проверена: {showTime(snapshot.nativeDelivery.finishedAt)}. Правки ранее опубликованных сообщений не считаются новыми отправками.</p>
+                  </>}
+          </section>
           {snapshot.destinations.length === 0 ? <p>Сохранённые назначения каналов не найдены. Доставка не включена этим обзором.</p> : snapshot.destinations.map(destination => <article key={`${destination.platform}:${destination.id}`} style={{ marginBlock: 20, overflowWrap: "anywhere" }}>
             <h3>{destination.platform === "telegram" ? "Telegram" : "VK"} · {destination.id}</h3>
             <p>Режим: <strong>{modeLabels[destination.mode] || modeLabels.unknown}</strong>. Пауза: {destination.paused === true ? "включена" : destination.paused === false ? "выключена" : "не подтверждена"}. История: {destination.historyReconciled ? "отмечена как сверенная" : "сверка не подтверждена"}.</p>

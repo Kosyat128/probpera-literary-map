@@ -1,0 +1,100 @@
+{
+  "sourceId": "polka-academy",
+  "name": "Полка",
+  "entryUrl": "https://polka.academy/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:41:40.796Z",
+  "requests": [
+    {
+      "url": "https://polka.academy/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 254357,
+      "sha256": "5caaf119672d559383a45e8b8e800dc81c7ea0d090921382d308aa978ff2b0b8",
+      "accessedAt": "2026-09-29T20:41:41.882Z"
+    },
+    {
+      "url": "https://polka.academy/articles/549",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 794356,
+      "sha256": "831ca4b6b6aadb6f97502fd00900e924c09220d151d99c0eeec76677ee469889",
+      "accessedAt": "2026-09-29T20:41:42.709Z"
+    },
+    {
+      "url": "https://polka.academy/articles/653",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 908352,
+      "sha256": "942ce6ab6f6e2a9c2ad2c4f26eaf2b364d9870b3cdec4caccffec0d4aa0146c6",
+      "accessedAt": "2026-09-29T20:41:43.449Z"
+    },
+    {
+      "url": "https://polka.academy/articles/539",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 849450,
+      "sha256": "c61c262dc0b7d2d542c9e748fb0661f295c2483159ebd369f97b4bcbdbc9d1b2",
+      "accessedAt": "2026-09-29T20:41:44.107Z"
+    },
+    {
+      "url": "https://polka.academy/articles/535",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 491130,
+      "sha256": "572b7b35fee70d546dc5389332e20f076db54bd314aab2452d68dad033f1920e",
+      "accessedAt": "2026-09-29T20:41:44.599Z"
+    },
+    {
+      "url": "https://polka.academy/articles/510",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 580472,
+      "sha256": "f9bb1cc0980479d299209d4df4f3a961fbec7b1f6c5fc799d8eaa88fe6f9d85e",
+      "accessedAt": "2026-09-29T20:41:45.342Z"
+    },
+    {
+      "url": "https://polka.academy/articles/639",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 637328,
+      "sha256": "cbac2205e10af340380607fe480618f11e4d6c8ec5ab0a35f5efdeb895c1e053",
+      "accessedAt": "2026-09-29T20:41:46.082Z"
+    },
+    {
+      "url": "https://polka.academy/articles/529",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 518301,
+      "sha256": "57f03e67e67297aded7db03f9fb95257d053bdf176297c320986dffb5cd2b313",
+      "accessedAt": "2026-09-29T20:41:46.651Z"
+    },
+    {
+      "url": "https://polka.academy/articles/503",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 660681,
+      "sha256": "5989482cec9320371aab2eb086a5c04ea0ee59c2917aa3b262708f4b846383fe",
+      "accessedAt": "2026-09-29T20:41:47.152Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://polka.academy/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 153,
+    "sha256": "b4653e862dc0f41fc97470ddca3566d4e66d7e76863930f989ce02cb1b8d4499",
+    "accessedAt": "2026-09-29T20:41:41.333Z",
+    "disallowed": [
+      "*token=*",
+      "/*_openstat*",
+      "/*gclid=*",
+      "/*utm_source=*",
+      "*utm_medium=*",
+      "*utm_campaign=*"
+    ]
+  }
+}

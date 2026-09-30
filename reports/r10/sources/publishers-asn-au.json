@@ -8,26 +8,26 @@
   "coverageCountryCodes": [
     "AU"
   ],
-  "attemptedAt": "2026-09-26T17:28:11.965Z",
+  "attemptedAt": "2026-09-29T20:32:54.616Z",
   "requests": [
     {
       "url": "https://www.publishers.asn.au/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 126813,
-      "sha256": "9e2589db9e1bea0cdc21b244919128fa24fc17705d8bc8b63e18fddf2f9c9f41",
-      "accessedAt": "2026-09-26T17:21:52.586Z"
+      "bytes": 126859,
+      "sha256": "8b01e67efb045a070a2a322cece0c39cf2ce585a995b49b5a1eed58576f1b53c",
+      "accessedAt": "2026-09-29T20:32:57.156Z"
     }
   ],
   "status": "blocked",
-  "reason": "runtime_parser_no_literary_item",
+  "reason": "no_literary_article_links",
   "robots": {
     "url": "https://www.publishers.asn.au/robots.txt",
     "status": 200,
     "contentType": "text/plain",
     "bytes": 775,
     "sha256": "4ea91d894cd930652ecf7e541422bb6d9a12fba523f3a79f7834da46d507dc15",
-    "accessedAt": "2026-09-26T17:28:12.794Z",
+    "accessedAt": "2026-09-29T20:32:55.253Z",
     "disallowed": [
       "/OpenSearch.aspx",
       "/OptOut.aspx",
@@ -44,9 +44,5 @@
       "/iMisService",
       "/imisservice/"
     ]
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:21:50.074Z",
-    "sourceDocumentSha256": "9e2589db9e1bea0cdc21b244919128fa24fc17705d8bc8b63e18fddf2f9c9f41"
   }
 }

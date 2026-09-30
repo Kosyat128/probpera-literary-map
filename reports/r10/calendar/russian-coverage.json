@@ -1,0 +1,487 @@
+{
+  "version": 1,
+  "scope": "Reviewed Russia country writer corpus; annual birth and memorial events only",
+  "totalAnnualEvents": 2339,
+  "writerRows": 53,
+  "visibleBirths": 48,
+  "visibleMemorials": 48,
+  "newExactDates": 16,
+  "unresolvedFields": [
+    {
+      "writerKey": "russia:nestor",
+      "field": "birthDate",
+      "reason": "no-referenced-exact-claim"
+    },
+    {
+      "writerKey": "russia:nestor",
+      "field": "deathDate",
+      "reason": "no-referenced-exact-claim"
+    },
+    {
+      "writerKey": "russia:kirill-turovsky",
+      "field": "birthDate",
+      "reason": "existing-editorial-date-decision"
+    },
+    {
+      "writerKey": "russia:kirill-turovsky",
+      "field": "deathDate",
+      "reason": "existing-editorial-date-decision"
+    },
+    {
+      "writerKey": "russia:avvakum",
+      "field": "birthDate",
+      "reason": "existing-precision-needs-source-review"
+    },
+    {
+      "writerKey": "russia:avvakum",
+      "field": "deathDate",
+      "reason": "existing-precision-needs-source-review"
+    },
+    {
+      "writerKey": "russia:kantemir",
+      "field": "birthDate",
+      "reason": "existing-editorial-date-decision"
+    },
+    {
+      "writerKey": "russia:pelevin",
+      "field": "deathDate",
+      "reason": "no-referenced-exact-claim"
+    },
+    {
+      "writerKey": "russia:sergey_lukyanenko",
+      "field": "deathDate",
+      "reason": "no-referenced-exact-claim"
+    },
+    {
+      "writerKey": "russia:andrei_platonov",
+      "field": "birthDate",
+      "reason": "conflicting-exact-claims-or-calendar-models"
+    }
+  ],
+  "records": [
+    {
+      "id": "nestor",
+      "name": "Нестор Летописец",
+      "birthDate": "1056",
+      "deathDate": "1114",
+      "birthVisible": false,
+      "deathVisible": false
+    },
+    {
+      "id": "kirill-turovsky",
+      "name": "Кирилл Туровский",
+      "birthDate": "",
+      "deathDate": "",
+      "birthVisible": false,
+      "deathVisible": false
+    },
+    {
+      "id": "avvakum",
+      "name": "Протопоп Аввакум Петров",
+      "birthDate": "1620",
+      "deathDate": "1682",
+      "birthVisible": false,
+      "deathVisible": false
+    },
+    {
+      "id": "trediakovsky",
+      "name": "Василий Кириллович Тредиаковский",
+      "birthDate": "1703-03-05",
+      "deathDate": "1768-08-17",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "kantemir",
+      "name": "Антиох Дмитриевич Кантемир",
+      "birthDate": "",
+      "deathDate": "1744-04-11",
+      "birthVisible": false,
+      "deathVisible": true
+    },
+    {
+      "id": "lomonosov",
+      "name": "Михаил Васильевич Ломоносов",
+      "birthDate": "1711-11-19",
+      "deathDate": "1765-04-15",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "derzhavin",
+      "name": "Гавриил Романович Державин",
+      "birthDate": "1743-07-14",
+      "deathDate": "1816-07-20",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "fonvizin",
+      "name": "Денис Иванович Фонвизин",
+      "birthDate": "1745-04-14",
+      "deathDate": "1792-12-01",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "karamzin",
+      "name": "Николай Михайлович Карамзин",
+      "birthDate": "1766-12-12",
+      "deathDate": "1826-06-03",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "krylov",
+      "name": "Иван Андреевич Крылов",
+      "birthDate": "1769-02-13",
+      "deathDate": "1844-11-21",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "zhukovsky",
+      "name": "Василий Андреевич Жуковский",
+      "birthDate": "1783-02-09",
+      "deathDate": "1852-04-24",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "batushkov",
+      "name": "Константин Николаевич Батюшков",
+      "birthDate": "1787-05-29",
+      "deathDate": "1855-07-19",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "griboedov",
+      "name": "Александр Сергеевич Грибоедов",
+      "birthDate": "1795-01-15",
+      "deathDate": "1829-02-11",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "pushkin",
+      "name": "Александр Сергеевич Пушкин",
+      "birthDate": "1799-06-06",
+      "deathDate": "1837-02-10",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "fyodor_tyutchev",
+      "name": "Фёдор Иванович Тютчев",
+      "birthDate": "1803-12-05",
+      "deathDate": "1873-07-27",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "gogol",
+      "name": "Николай Васильевич Гоголь",
+      "birthDate": "1809-04-01",
+      "deathDate": "1852-02-21",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "goncharov",
+      "name": "Иван Александрович Гончаров",
+      "birthDate": "1812-06-18",
+      "deathDate": "1891-09-27",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "lermontov",
+      "name": "Михаил Юрьевич Лермонтов",
+      "birthDate": "1814-10-15",
+      "deathDate": "1841-07-27",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "turgenev",
+      "name": "Иван Сергеевич Тургенев",
+      "birthDate": "1818-11-09",
+      "deathDate": "1883-09-03",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "afanasiy_fet",
+      "name": "Афанасий Афанасьевич Фет",
+      "birthDate": "1820-12-05",
+      "deathDate": "1892-12-03",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "nekrasov",
+      "name": "Николай Алексеевич Некрасов",
+      "birthDate": "1821-12-10",
+      "deathDate": "1878-01-08",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "dostoevsky",
+      "name": "Фёдор Михайлович Достоевский",
+      "birthDate": "1821-11-11",
+      "deathDate": "1881-02-09",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "ostrovsky",
+      "name": "Александр Николаевич Островский",
+      "birthDate": "1823-04-12",
+      "deathDate": "1886-06-14",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "saltykov-shchedrin",
+      "name": "Михаил Евграфович Салтыков-Щедрин",
+      "birthDate": "1826-01-27",
+      "deathDate": "1889-05-10",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "tolstoy",
+      "name": "Лев Николаевич Толстой",
+      "birthDate": "1828-09-09",
+      "deathDate": "1910-11-20",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "leskov",
+      "name": "Николай Семёнович Лесков",
+      "birthDate": "1831-02-04",
+      "deathDate": "1895-03-05",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "chekhov",
+      "name": "Антон Павлович Чехов",
+      "birthDate": "1860-01-29",
+      "deathDate": "1904-07-15",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "maxim_gorky",
+      "name": "Максим Горький",
+      "birthDate": "1868-03-28",
+      "deathDate": "1936-06-18",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "alexander_kuprin",
+      "name": "Александр Иванович Куприн",
+      "birthDate": "1870-09-07",
+      "deathDate": "1938-08-25",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "buninin",
+      "name": "Иван Алексеевич Бунин",
+      "birthDate": "1870-10-22",
+      "deathDate": "1953-11-08",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "blok",
+      "name": "Александр Александрович Блок",
+      "birthDate": "1880-11-28",
+      "deathDate": "1921-08-07",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "andrei_bely",
+      "name": "Андрей Белый",
+      "birthDate": "1880-10-26",
+      "deathDate": "1934-01-08",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "yevgeny_zamyatin",
+      "name": "Евгений Иванович Замятин",
+      "birthDate": "1884-02-01",
+      "deathDate": "1937-03-10",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "akhmatova",
+      "name": "Анна Андреевна Ахматова",
+      "birthDate": "1889-06-23",
+      "deathDate": "1966-03-05",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "pasternak",
+      "name": "Борис Леонидович Пастернак",
+      "birthDate": "1890-01-29",
+      "deathDate": "1960-05-30",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "bulgakov",
+      "name": "Михаил Афанасьевич Булгаков",
+      "birthDate": "1891-05-15",
+      "deathDate": "1940-03-10",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "mandelstam",
+      "name": "Осип Эмильевич Мандельштам",
+      "birthDate": "1891-01-15",
+      "deathDate": "1938-12-27",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "tsvetaeva",
+      "name": "Марина Ивановна Цветаева",
+      "birthDate": "1892-10-08",
+      "deathDate": "1941-08-31",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "vladimir_mayakovsky",
+      "name": "Владимир Владимирович Маяковский",
+      "birthDate": "1893-07-19",
+      "deathDate": "1930-04-14",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "mikhail_zoshchenko",
+      "name": "Михаил Михайлович Зощенко",
+      "birthDate": "1894-08-09",
+      "deathDate": "1958-07-22",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "esenin",
+      "name": "Сергей Александрович Есенин",
+      "birthDate": "1895-10-03",
+      "deathDate": "1925-12-28",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "andrei_platonov",
+      "name": "Андрей Платонович Платонов",
+      "birthDate": null,
+      "deathDate": "1951-01-05",
+      "birthVisible": false,
+      "deathVisible": true
+    },
+    {
+      "id": "nabrakov",
+      "name": "Владимир Владимирович Набоков",
+      "birthDate": "1899-04-22",
+      "deathDate": "1977-07-02",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "vasily_grossman",
+      "name": "Василий Семёнович Гроссман",
+      "birthDate": "1905-12-12",
+      "deathDate": "1964-09-14",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "sholokhov",
+      "name": "Михаил Александрович Шолохов",
+      "birthDate": "1905-05-24",
+      "deathDate": "1984-02-21",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "varlam_shalamov",
+      "name": "Варлам Тихонович Шаламов",
+      "birthDate": "1907-06-18",
+      "deathDate": "1982-01-17",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "alexander_tvardovsky",
+      "name": "Александр Трифонович Твардовский",
+      "birthDate": "1910-06-21",
+      "deathDate": "1971-12-18",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "solzhenitsyn",
+      "name": "Александр Исаевич Солженицын",
+      "birthDate": "1918-12-11",
+      "deathDate": "2008-08-03",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "brodsky",
+      "name": "Иосиф Александрович Бродский",
+      "birthDate": "1940-05-24",
+      "deathDate": "1996-01-28",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "pelevin",
+      "name": "Виктор Олегович Пелевин",
+      "birthDate": "1962-11-22",
+      "deathDate": null,
+      "birthVisible": true,
+      "deathVisible": false
+    },
+    {
+      "id": "sergey_ivanovich_ozhegov",
+      "name": "Сергей Иванович Ожегов",
+      "birthDate": "1900-09-22",
+      "deathDate": "1964-12-15",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "robert_shtilmark",
+      "name": "Роберт Александрович Штильмарк",
+      "birthDate": "1909-04-03",
+      "deathDate": "1985-09-30",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "id": "sergey_lukyanenko",
+      "name": "Сергей Васильевич Лукьяненко",
+      "birthDate": "1968-04-11",
+      "deathDate": null,
+      "birthVisible": true,
+      "deathVisible": false
+    }
+  ]
+}

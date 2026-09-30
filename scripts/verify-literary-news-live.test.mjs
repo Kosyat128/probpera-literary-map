@@ -1,4 +1,5 @@
 import {describe,it,expect,vi} from "vitest";
+import limits from "../data/news/contract.json" with { type: "json" };
 import {readFileSync} from "node:fs";
 import {verifyLiteraryNewsFeed,runLiteraryNewsLiveVerification} from "./verify-literary-news-live.mjs";
 import {buildPublishedNewsFeed,newsDigest,newsSnapshotPayload,publicNewsItem} from "./lib/literary-news-publication.mjs";
@@ -68,11 +69,11 @@ describe("live release verifier compatibility and exactness",()=>{
     await expect(verifyLiteraryNewsFeed(await build(undefined,{timeZone:"UTC"}),options())).rejects.toThrow();
     await expect(verifyLiteraryNewsFeed(feed,options(undefined,{current:new Date(current.getTime()+301000)}))).rejects.toThrow("current");
   });
-  it("accepts all 5000 permitted records and rejects 5001 instead of truncating",async()=>{
-    const records=Array.from({length:5000},(_,index)=>item(index)),feed=await build(records);
+  it("accepts the configured capacity and rejects capacity plus one instead of truncating",async()=>{
+    const records=Array.from({length:limits.maxItems},(_,index)=>item(index)),feed=await build(records);
     await expect(verifyLiteraryNewsFeed(feed,options(records))).resolves.toBe(feed);
-    feed.items.push(publicNewsItem(item(5000)));await redigest(feed);
-    await expect(verifyLiteraryNewsFeed(feed,options([...records,item(5000)]))).rejects.toThrow("capacity");
+    feed.items.push(publicNewsItem(item(limits.maxItems)));await redigest(feed);
+    await expect(verifyLiteraryNewsFeed(feed,options([...records,item(limits.maxItems)]))).rejects.toThrow("capacity");
   });
   it("the actual CLI runner requires three legacy responses plus current complete v2",async()=>{
     const records=[item(1)],fetchImpl=vi.fn(async(url,init)=>{
@@ -81,7 +82,7 @@ describe("live release verifier compatibility and exactness",()=>{
       return Response.json(await build(records,{timeZone:query.get("timeZone"),contractVersion:query.get("contract")==="2"?2:1}),
         {headers:{"access-control-allow-origin":"https://probpera.ru","x-probpera-news-release":release}});
     });
-    const result=await runLiteraryNewsLiveVerification({args:["--expected-head",release],records,withdrawals:[],fetchImpl,now:()=>current,waitImpl:async()=>{}});
+    const result=await runLiteraryNewsLiveVerification({args:["--expected-head",release],env:{},records,withdrawals:[],fetchImpl,now:()=>current,waitImpl:async()=>{}});
     expect(result).toMatchObject({legacyZones:3,contractVersion:2,timeZone:"Europe/Moscow",release});
     expect(fetchImpl).toHaveBeenCalledTimes(5);
   });
@@ -91,7 +92,7 @@ describe("live release verifier compatibility and exactness",()=>{
       return Response.json(await build(records,{timeZone:query.get("timeZone"),contractVersion:1}),
         {headers:{"access-control-allow-origin":"https://probpera.ru","x-probpera-news-release":release}});
     });
-    await expect(runLiteraryNewsLiveVerification({args:[],records,withdrawals:[],fetchImpl,now:()=>current,waitImpl:async()=>{}})).rejects.toThrow("public_snapshot_incomplete");
+    await expect(runLiteraryNewsLiveVerification({args:[],env:{},records,withdrawals:[],fetchImpl,now:()=>current,waitImpl:async()=>{}})).rejects.toThrow("public_snapshot_incomplete");
     expect(fetchImpl.mock.calls.filter(([url])=>new URL(url).searchParams.get("contract")==="2")).toHaveLength(6);
     expect(fetchImpl.mock.calls.every(([,init])=>init.method===undefined)).toBe(true);
   });

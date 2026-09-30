@@ -1,0 +1,514 @@
+{
+  "sourceId": "minima-moralia",
+  "name": "minima&moralia",
+  "entryUrl": "https://www.minimaetmoralia.it/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:38.178Z",
+  "requests": [
+    {
+      "url": "https://minimaetmoralia.it/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 172724,
+      "sha256": "83f35eadfa93ba98c159ffd6ba2902f5c21d2d621e066c9e4afb2ba97e1d5432",
+      "accessedAt": "2026-09-29T20:39:40.151Z"
+    },
+    {
+      "url": "https://minimaetmoralia.it/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 184674,
+      "sha256": "50081d21edd5b4081588d4757767b7007814871771fddb925d1bfc77a4af4d4e",
+      "accessedAt": "2026-09-29T20:39:41.155Z"
+    },
+    {
+      "url": "https://minimaetmoralia.it/arte/lorecchio-e-locchio-del-mondo-se-una-preghiera-sonora-illumina-la-biennale-arte-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 222083,
+      "sha256": "cafdd3ac55c3b94db559ce2c3f43382cac77558bd4b7b0aa2569926276bdd1d5",
+      "accessedAt": "2026-09-29T20:39:41.896Z"
+    },
+    {
+      "url": "https://minimaetmoralia.it/interviste/diventare-se-stessi-contro-cio-che-abbiamo-ereditato-intervista-a-douglas-stuart/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 206101,
+      "sha256": "6830f055d6b2ec916c59a19b2c7f8bd80068d4e773e5fc6a75aab0d4d2f5229d",
+      "accessedAt": "2026-09-29T20:39:42.532Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.minimaetmoralia.it/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 92,
+    "sha256": "e298113a41bdc91ae56e5ba2ad8ed989335454f3629885e1cf62e1c20bd29eef",
+    "accessedAt": "2026-09-29T20:39:38.686Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "minima-moralia",
+    "name": "minima&moralia",
+    "url": "https://minimaetmoralia.it/feed/",
+    "format": "rss",
+    "language": "it-IT",
+    "region": "global",
+    "sourceFamilyId": "minima-moralia",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://minimaetmoralia.it"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://minimaetmoralia.it/interviste/diventare-se-stessi-contro-cio-che-abbiamo-ereditato-intervista-a-douglas-stuart/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:42.544Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 15,
+  "literaryCandidateCount": 15,
+  "sample": {
+    "sourceId": "minima-moralia",
+    "source": {
+      "name": "minima&moralia",
+      "url": "https://minimaetmoralia.it/interviste/diventare-se-stessi-contro-cio-che-abbiamo-ereditato-intervista-a-douglas-stuart/",
+      "language": "it-IT"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Diventare se stessi contro ciò che abbiamo ereditato. Intervista a Douglas Stuart",
+    "publishedAt": "2026-09-22T09:13:57.000Z",
+    "description": "Douglas Stuart è nato a Glasgow nel 1976. Ha studiato al Royal College of Art di Londra e, prima di dedicarsi alla letteratura, ha lavorato a lungo nella moda e nel textile design. Il suo esordio, Shuggie Bain, ha vinto il Booker Prize nel 2020. Due anni dopo è arrivato Young Mungo. Due romanzi che, […] L'articolo Diventare se stessi contro ciò che abbiamo ereditato. Intervista a Douglas Stuart p…",
+    "discoveredAt": "2026-09-29T20:39:41.158Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://minimaetmoralia.it/interviste/diventare-se-stessi-contro-cio-che-abbiamo-ereditato-intervista-a-douglas-stuart/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 206101,
+      "sha256": "6830f055d6b2ec916c59a19b2c7f8bd80068d4e773e5fc6a75aab0d4d2f5229d",
+      "accessedAt": "2026-09-29T20:39:42.532Z",
+      "headline": "Diventare se stessi contro ciò che abbiamo ereditato. Intervista a Douglas Stuart - Minima et Moralia",
+      "excerpt": "<img width=\"650\" height=\"483\" src=\"https://minimaetmoralia.it/wp-content/uploads/2026/09/image-5.png\" class=\"attachment-post-thumbnail size-post-thumbnail wp-post-image\" alt=\"\" decoding=\"async\" srcset=\"https://minimaetmoralia.it/wp-content/uploads/2026/09/image-5.png 650w, https://minimaetmoralia.it/wp-content/uploads/2026/09/image-5-300x223.png 300w, https://minimaetmoralia.it/wp-content/uploads/",
+      "publishedDates": [
+        {
+          "value": "2026-09-22T09:13:57+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-22T09:13:57+00:00",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-09-22T09:13:57+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://minimaetmoralia.it/interviste/diventare-se-stessi-contro-cio-che-abbiamo-ereditato-intervista-a-douglas-stuart/",
+      "language": "it-IT",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:42.544Z",
+  "foundItems": [
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/arte/lorecchio-e-locchio-del-mondo-se-una-preghiera-sonora-illumina-la-biennale-arte-2026/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’orecchio è l’occhio del mondo: se una preghiera sonora illumina la Biennale Arte 2026.",
+      "publishedAt": "2026-09-12T10:18:49.000Z",
+      "description": "Ricordo di essere uscita molto presto sabato, respirando l’aria mattutina che odora di pesci e caffè caldo. Il groviglio di calli si era dissolto in un umido deserto che pacifica la mente e la allena a non smettere mai di osservare, mirare, fermarsi, guardare, e poi gettare lontanissimo i ricordi appena collaudati. Durante la notte […] L'articolo L’orecchio è l’occhio del mondo: se una preghiera …",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/interviste/diventare-se-stessi-contro-cio-che-abbiamo-ereditato-intervista-a-douglas-stuart/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Diventare se stessi contro ciò che abbiamo ereditato. Intervista a Douglas Stuart",
+      "publishedAt": "2026-09-22T09:13:57.000Z",
+      "description": "Douglas Stuart è nato a Glasgow nel 1976. Ha studiato al Royal College of Art di Londra e, prima di dedicarsi alla letteratura, ha lavorato a lungo nella moda e nel textile design. Il suo esordio, Shuggie Bain, ha vinto il Booker Prize nel 2020. Due anni dopo è arrivato Young Mungo. Due romanzi che, […] L'articolo Diventare se stessi contro ciò che abbiamo ereditato. Intervista a Douglas Stuart p…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/poesia/ritrarre-la-poesia/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ritrarre la poesia",
+      "publishedAt": "2026-09-29T12:38:16.000Z",
+      "description": "Foto di Jr Korpa su Unsplash La scuola al centro dell’attenzione. Se l’obiettivo originario, da ben diciannove anni, della manifestazione letteraria romana Ritratti di Poesia, è quello di rendere la poesia accessibile a tutti, cioè una convinta e risoluta azione di controtendenza al malcostume di circoletti, bolle e consorterie asfittiche e in guerra fra loro, […] L'articolo Ritrarre la poesia pr…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/altro/la-morte-a-volte-un-poco-ti-sorride-le-nuove-poesie-di-luca-alvino/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“La morte a volte un poco ti sorride”, le nuove poesie di Luca Alvino",
+      "publishedAt": "2026-09-29T09:29:39.000Z",
+      "description": "Pubblichiamo, ringraziando editore e autore, alcune poesie dalla nuova raccolta di versi di Luca Alvino, intitolata La morte a volte un poco ti sorride e pubblicata da Interno Libri. Tutte le sere Verso le dieci, ormai, tutte le sere,raccolgo le compresse in tutta frettae le metto sul tavolo in cucina. Riempio fino all’orlo il mio […] L'articolo “La morte a volte un poco ti sorride”, le nuove poe…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/libri/contro-il-ricatto-dellorigine-la-regina-della-notte-di-lukas-barfuss/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Contro il ricatto dell’origine. La regina della notte di Lukas Bärfuss",
+      "publishedAt": "2026-09-28T08:58:51.000Z",
+      "description": "Il ritrovamento fortuito in una bancarella di una serie di dagherrotipi realizzati nel 1852 e 1853 raffiguranti i senzapatria trascinati davanti al penitenziario di Berna per essere schedati dalla polizia accende in Lukas Bärfuss la sensazione di avere tra le mani un album di famiglia, oggetto mai esistito in un’infanzia segnata dall’abbandono materno e da […] L'articolo Contro il ricatto dell’or…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/letteratura-italiana/soffro-dunque-sono-dentro-i-diari-di-guido-morselli/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Soffro dunque sono. Dentro i diari di Guido Morselli",
+      "publishedAt": "2026-09-25T07:20:25.000Z",
+      "description": "di Ludovico Cantisani “L’unico destino nobile di uno scrittore pubblicato è non ricevere la fama che merita. Ma il vero destino nobile è quello dello scrittore non pubblicato”, scriveva Fernando Pessoa nel Libro dell’inquietudine, non per nulla giunto ai lettori quattro decenni dopo la morte del poeta portoghese. “Scrivere significa rendere oggettivi i sogni, significa […] L'articolo Soffro dunqu…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/libri/un-estratto-da-il-partito-disarmato-di-daniele-petruccioli/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un estratto da “Il partito disarmato” di Daniele Petruccioli",
+      "publishedAt": "2026-09-24T09:06:50.000Z",
+      "description": "Pubblichiamo, ringraziando editore e autore, un estratto dal libro di Daniele Petruccioli Il partito disarmato, in libreria per Kalòs editore. di Daniele Petruccioli Mia si era alzata presto. Aveva dormito poco. Era inquieta. Sapeva che ai compagni di Lotta continua questo fatto del separatismo non piaceva. Era nel servizio d’ordine. Lei così minuta, con quel […] L'articolo Un estratto da “Il par…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/altro/la-biblioteca-come-harem-e-la-modalita-intellettuale-del-desiderio/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La biblioteca come harem e la modalità intellettuale del desiderio",
+      "publishedAt": "2026-09-23T08:23:34.000Z",
+      "description": "Foto di Pierre Bamin su Unsplash La mia biblioteca è il mio harem. Alcune sono state semplici infatuazioni, cotte, sbandate, flirt di una stagione. Qualcuna dura da più di quarant’anni. Ma c’è una gerarchia, un ordo amoris, per usare un’espressione che viene dalla teologia medievale prima che dalla critica letteraria, e non è solo mentale. […] L'articolo La biblioteca come harem e la modalità int…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/libri/w-o-di-cio-che-rimane-di-unamicizia/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "W., o di ciò che rimane di un’amicizia",
+      "publishedAt": "2026-09-21T09:37:42.000Z",
+      "description": "di Girolamo Grammatico La sinossi di W., il romanzo d’esordio di Tiemen Hiemstra, potrebbe stare in poche righe.Olaf e W. vivono un’amicizia adolescenziale intensissima. Crescono insieme, si cercano, discutono, ridono, viaggiano, diventano adulti quasi guardandosi l’uno attraverso gli occhi dell’altro. Poi, durante gli anni universitari, W. scompare senza salutare nessuno. A Olaf rimangono due co…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/libri/il-sistema-binario-delloblio-linevitabile-accade-di-alessandro-gazzoli/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il sistema binario dell’oblio. L’inevitabile accade di Alessandro Gazzoli",
+      "publishedAt": "2026-09-14T08:46:17.000Z",
+      "description": "Il pianeta Plutone ha una luna immane. Si chiama Caronte, ed è talmente grande che il baricentro delle due orbite non cade dentro il pianeta, come succede nelle altre ‘coppie’ del sistema solare, ma nello spazio vuoto che li separa. Per questa ragione molti astronomi si rifiutano di riferirsi a loro come fossero un corpo […] L'articolo Il sistema binario dell’oblio. L’inevitabile accade di Alessa…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/approfondimenti/roma-citta-promessa/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Roma città promessa",
+      "publishedAt": "2026-09-13T06:31:00.000Z",
+      "description": "di Stefano Crescenzi «Sì, te vai con la macchina, io te raggiungo cor coso». A fine 2021 la battuta dell’armadillo a Zerocalcare in Strappare lungo i bordi era ovunque: Instagram, TikTok, nei gruppi WhatsApp di mia madre con le sue amiche, a dimostrare che se c’è qualcosa che davvero unisce le generazioni è l’indolenza. Colpisce […] L'articolo Roma città promessa proviene da Minima et Moralia.",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/narrativa/mi-manca-david-foster-wallace/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mi manca David Foster Wallace",
+      "publishedAt": "2026-09-12T08:04:00.000Z",
+      "description": "di Domitilla S. Da un po’ di tempo, ormai, sogno un mondo con David Foster Wallace. Non sto parlando dei suoi libri. Ovviamente rimpiango i romanzi e i reportage che avremmo potuto leggere se lui avesse continuato a vivere e scrivere. Chiaramente, leggendo il Re Pallido mi sono chiesta cosa ne sarebbe stato di quella […] L'articolo Mi manca David Foster Wallace proviene da Minima et Moralia.",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/libri/adolfo-bioy-casares-diario-della-guerra-al-maiale/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adolfo Bioy Casares, Diario della guerra al maiale",
+      "publishedAt": "2026-09-09T08:37:50.000Z",
+      "description": "Pubblichiamo un pezzo uscito su Tuttolibri, che ringraziamo. «Uno scrittore di racconti che ha un minimo di apprezzamento per il proprio lavoro leggerà Cortázar e Bioy Casares», sosteneva Roberto Bolaño in un decalogo indirizzato agli scrittori o aspiranti tali, e senz’altro estenderei il consiglio di Bolaño anche a chi non abbia alcuna intenzione di scrivere […] L'articolo Adolfo Bioy Casares, D…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/libri/dentro-il-processo-dove-abita-il-dolore-di-helen-garner/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dentro il processo. Dove abita il dolore di Helen Garner",
+      "publishedAt": "2026-09-04T07:52:21.000Z",
+      "description": "Il processo giudiziario da sempre è un campo da gioco entro il quale la letteratura si muove e, per mano di scrittori e scrittrici di talento, si esalta. Da Capote a Tom Wolfe a Carrère a Maggie Nelson, giusto per fare pochi nomi e osservare tre modi di raccontare un certo tipo di orrore, un […] L'articolo Dentro il processo. Dove abita il dolore di Helen Garner proviene da Minima et Moralia.",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minima-moralia",
+      "source": {
+        "name": "minima&moralia",
+        "url": "https://minimaetmoralia.it/altro/quello-che-resta-su-misurare-il-vuoto-di-caterina-villa/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Quello che resta. Su “Misurare il vuoto” di Caterina Villa",
+      "publishedAt": "2026-09-03T09:13:07.000Z",
+      "description": "Una roulotte senza ruote, ferma sulle rive del Trasimeno. Nessuno sa con certezza a chi appartenga. Nessuno sa come sia finita lì. Chi ne sente il bisogno può entrare, sedersi, passare qualche ora da solo. Quando qualcuno ne chiede la rimozione, trovare il proprietario diventa necessario. Da questo luogo prende forma Misurare il vuoto (Lindau), il primo […] L'articolo Quello che resta. Su “Misura…",
+      "discoveredAt": "2026-09-29T20:39:41.158Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "50081d21edd5b4081588d4757767b7007814871771fddb925d1bfc77a4af4d4e"
+}

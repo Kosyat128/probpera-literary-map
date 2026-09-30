@@ -1,0 +1,381 @@
+{
+  "sourceId": "zenda-libros",
+  "name": "Zenda",
+  "entryUrl": "https://www.zendalibros.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:41.472Z",
+  "requests": [
+    {
+      "url": "https://www.zendalibros.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 219082,
+      "sha256": "720540eded1130a73d12a70576243729a0704a262822695ca8a8ee5f158fddd4",
+      "accessedAt": "2026-09-29T20:39:42.793Z"
+    },
+    {
+      "url": "https://www.zendalibros.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 119386,
+      "sha256": "9341252f0dfe86bf44fbc1f3af45db584808eee8ac6bff6f4f81187d3ae6f335",
+      "accessedAt": "2026-09-29T20:39:43.687Z"
+    },
+    {
+      "url": "https://www.zendalibros.com/juan-jose-millas-ganador-del-xvii-premio-jose-luis-sampedro-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 195231,
+      "sha256": "b649c7fa611f3be2c0a80e4bae37b71164ece211c4d5b95e69ea8328c68a226b",
+      "accessedAt": "2026-09-29T20:39:43.932Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.zendalibros.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 61,
+    "sha256": "6bca19f8f93014196cf6259638ed55d15e11fb40fc323857cc6b42cd790c8197",
+    "accessedAt": "2026-09-29T20:39:42.201Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "zenda-libros",
+    "name": "Zenda",
+    "url": "https://www.zendalibros.com/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "zenda-libros",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.zendalibros.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.zendalibros.com/juan-jose-millas-ganador-del-xvii-premio-jose-luis-sampedro-2026/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:43.943Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "zenda-libros",
+    "source": {
+      "name": "Zenda",
+      "url": "https://www.zendalibros.com/juan-jose-millas-ganador-del-xvii-premio-jose-luis-sampedro-2026/",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Juan José Millás, ganador del XVII Premio José Luis Sampedro 2026",
+    "publishedAt": "2026-09-29T11:23:45.000Z",
+    "description": "El jurado ha estado presidido por Sara Hernández, alcaldesa de Getafe, y Luis José Domínguez Iglesias, concejal de Cultura y Convivencia de Getafe, y compuesto por representantes del Ministerio de Cultura de España, Instituto Cervantes, Universidad Carlos III de Madrid, Dirección General de Patrimonio Cultural de la Comunidad de Madrid y Ámbito Cultural de El... Leer más La entrada Juan José Mill…",
+    "discoveredAt": "2026-09-29T20:39:43.689Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.zendalibros.com/juan-jose-millas-ganador-del-xvii-premio-jose-luis-sampedro-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 195231,
+      "sha256": "b649c7fa611f3be2c0a80e4bae37b71164ece211c4d5b95e69ea8328c68a226b",
+      "accessedAt": "2026-09-29T20:39:43.932Z",
+      "headline": "Juan José Millás, ganador del XVII Premio José Luis Sampedro 2026",
+      "excerpt": "<img src=\"https://cdn.zendalibros.com/wp-content/uploads/2026/09/image002.jpg\" alt=\"Juan José Millás, ganador del XVII Premio José Luis Sampedro 2026\" width=\"1373\" height=\"924\" /> El jurado del Premio José Luis Sampedro 2026 ha concedido por unanimidad el galardón a Juan José Millás. Recibirá el premio en el marco del Festival Getafe Negro, que este año se celebrará del 14 al 25 de octubre, y su n",
+      "publishedDates": [
+        {
+          "value": "2026-09-29T11:23:45+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-29T11:23:45+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-29T13:23:45",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.zendalibros.com/juan-jose-millas-ganador-del-xvii-premio-jose-luis-sampedro-2026/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:43.943Z",
+  "foundItems": [
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/juan-jose-millas-ganador-del-xvii-premio-jose-luis-sampedro-2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Juan José Millás, ganador del XVII Premio José Luis Sampedro 2026",
+      "publishedAt": "2026-09-29T11:23:45.000Z",
+      "description": "El jurado ha estado presidido por Sara Hernández, alcaldesa de Getafe, y Luis José Domínguez Iglesias, concejal de Cultura y Convivencia de Getafe, y compuesto por representantes del Ministerio de Cultura de España, Instituto Cervantes, Universidad Carlos III de Madrid, Dirección General de Patrimonio Cultural de la Comunidad de Madrid y Ámbito Cultural de El... Leer más La entrada Juan José Mill…",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/un-libro-que-no-se-agota/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un libro que no se agota",
+      "publishedAt": "2026-09-29T04:00:54.000Z",
+      "description": "Revisitar el texto que ya existe es, además, lo que se hace en las páginas de Canal. En el fragmento 56, el yo poético comparte que la primera vez que escribió sobre su hermano fue veinte años después de su muerte, en el texto «Dirección prohibida», y añade: No he dejado de reescribirlo desde entonces.... Leer más La entrada Un libro que no se agota aparece primero en Zenda.",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/zenda-recomienda-hijos-de-la-radiacion-de-joe-dunthorne/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zenda recomienda: Hijos de la radiación, de Joe Dunthorne",
+      "publishedAt": "2026-09-29T04:00:58.000Z",
+      "description": "La propia editorial apunta, a propósito del libro: “Mucho antes de Hiroshima, Chernóbil, las zonas de exclusión y el reloj del apocalipsis, el mundo vivió una era dorada de la radiación. Al compás de los avances científicos, los hogares se llenaron de productos radiactivos que prometían curar dolencias, alargar la vida y realzar la belleza.... Leer más La entrada Zenda recomienda: Hijos de la rad…",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/gps-erroneo-vuelvase/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "GPS erróneo. ¡Vuélvase!",
+      "publishedAt": "2026-09-29T04:00:48.000Z",
+      "description": "En el corazón de los Picos de Europa, entre iglesias medievales, leyendas ancestrales y pueblos aislados, aparece el cadáver de un artista. La semejanza con una muerte ocurrida meses antes hace temer que un asesino en serie esté actuando en la zona. En este making of Carmen Macedo explica cómo escribió La Osa de Ándara... Leer más La entrada GPS erróneo. ¡Vuélvase! aparece primero en Zenda.",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/5-poemas-de-monologo-con-una-difunta-de-emilio-jose-serrano-loba/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "5 poemas de Monólogo con una difunta, de Emilio José Serrano Loba",
+      "publishedAt": "2026-09-29T04:00:08.000Z",
+      "description": "Hay rotos que no se recuperan. Se quedan fijos en la memoria y, desde ella, impregnan la experiencia entera del mundo. La mente herida intenta reorganizar lo vivido, volverlo habitable, mientras busca una cicatriz que nunca termina de asentarse. Monólogo con una difunta nace de ese forcejeo. Construido en actos, como si el yo poético... Leer más La entrada 5 poemas de Monólogo con una difunta, de…",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/de-boinas-hormas-y-paletos/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "De boinas, hormas y paletos",
+      "publishedAt": "2026-09-29T04:00:06.000Z",
+      "description": "Pasaban su existencia a la intemperie, faenando en labores de una dureza extraordinaria. Recolectaban esparto, con el que se elaboraban canastos, cuerdas y suelas de calzado. Cogían espliego, que llevaban a los alambiques, en los que se destilaba su esencia, muy apreciada en cosmética y farmacia. Levantaban hormas, muros de piedra seca, con las que... Leer más La entrada De boinas, hormas y palet…",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/brigado-dellafuente-y-lo-biblico/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Brigado», Dellafuente y lo bíblico",
+      "publishedAt": "2026-09-29T04:00:01.000Z",
+      "description": "Si nos detenemos en el terreno de lo bíblico, el Espíritu Santo conforma la tercera persona de la Santísima Trinidad, y es quien guía a Dios en tres cosas: poder, fuerza y acción. La canción «Espíritu Santo» dice: «Quiero matar a la versión de mí que tú estás alabando, Alhamdulillah, Espíritu Santo», que concuerda con... Leer más La entrada «Brigado», Dellafuente y lo bíblico aparece primero en Z…",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/la-historia-intima-del-amor-de-lorca/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La historia íntima del amor de Lorca",
+      "publishedAt": "2026-09-28T22:53:54.000Z",
+      "description": "Lo que ahora Menchón ha expuesto para el cine actual es La voz quebrada, más de una hora de cine en la que se encuentran Lorca, su amor, su música, el latido terrible de su asesinato y los numerosos amigos que con él iban haciendo una España distinta, republicana, alegre y posible. Lo mandaron matar... Leer más La entrada La historia íntima del amor de Lorca aparece primero en Zenda.",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/29-de-septiembre-de-1936-el-atropello-de-alfonso-carlos/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "29 de septiembre de 1936: El atropello de Alfonso Carlos",
+      "publishedAt": "2026-09-28T22:11:59.000Z",
+      "description": "Para conmemorar el 90º aniversario de la Guerra Civil, José Ángel Mañas recrea en Zenda, día por día en esta sección, lo que aconteció en 1936, quizá el año más trascendental de toda la historia reciente de España. La entrada 29 de septiembre de 1936: El atropello de Alfonso Carlos aparece primero en Zenda.",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "zenda-libros",
+      "source": {
+        "name": "Zenda",
+        "url": "https://www.zendalibros.com/adultas-contemporaneas/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adultas contemporáneas",
+      "publishedAt": "2026-09-28T22:08:42.000Z",
+      "description": "Hoy en día, a las adultas contemporáneas se les presume formación. Han estudiado una carrera, algunas dos; un máster, algunas un doctorado, y la mayoría sabe idiomas. Pero nada es suficiente. Porque ahora a las adultas contemporáneas se les exige estar en continua formación. Así que la adulta contemporánea debe hacer nuevos cursos, escuchar podcasts,... Leer más La entrada Adultas contemporáneas …",
+      "discoveredAt": "2026-09-29T20:39:43.689Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "9341252f0dfe86bf44fbc1f3af45db584808eee8ac6bff6f4f81187d3ae6f335"
+}

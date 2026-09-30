@@ -1,0 +1,686 @@
+{
+  "sourceId": "poets-writers",
+  "name": "Poets & Writers",
+  "entryUrl": "https://www.pw.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:42:39.862Z",
+  "requests": [
+    {
+      "url": "https://www.pw.org/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 102653,
+      "sha256": "1702330a492cb7517a26bdea3f2195ea1c71cb164e00a539da3a278adb6b9a6d",
+      "accessedAt": "2026-09-29T20:42:41.247Z"
+    },
+    {
+      "url": "https://www.pw.org/content/the_new_nonfiction_2026",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 75686,
+      "sha256": "84edc2409001609df81d8a7e8a7a2ba1837552faabea53b3ad2fdbf378bb01c9",
+      "accessedAt": "2026-09-29T20:42:42.279Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.pw.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2293,
+    "sha256": "f6f2c8ba21a7759b26f1b7e07d69e815135190049df86adf9aacb3801bc8e9c7",
+    "accessedAt": "2026-09-29T20:42:40.381Z",
+    "disallowed": [
+      "/includes/",
+      "/misc/",
+      "/modules/",
+      "/profiles/",
+      "/scripts/",
+      "/themes/",
+      "/files/verification/",
+      "/CHANGELOG.txt",
+      "/cron.php",
+      "/INSTALL.mysql.txt",
+      "/INSTALL.pgsql.txt",
+      "/INSTALL.sqlite.txt",
+      "/install.php",
+      "/INSTALL.txt",
+      "/LICENSE.txt",
+      "/MAINTAINERS.txt",
+      "/update.php",
+      "/UPGRADE.txt",
+      "/xmlrpc.php",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips/",
+      "/node/add/",
+      "/search/",
+      "/user/register/",
+      "/user/password/",
+      "/user/login/",
+      "/user/logout/",
+      "/user/reset/",
+      "/blog/37556/",
+      "/?q=admin/",
+      "/?q=comment/reply/",
+      "/?q=filter/tips/",
+      "/?q=node/add/",
+      "/?q=search/",
+      "/?q=user/password/",
+      "/?q=user/register/",
+      "/?q=user/login/",
+      "/?q=user/logout/",
+      "/?q=user/resest/"
+    ]
+  },
+  "endpoint": {
+    "id": "poets-writers",
+    "name": "Poets & Writers",
+    "url": "https://www.pw.org/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "poets-writers",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.pw.org"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/content\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.pw.org/content/the_new_nonfiction_2026"
+    ],
+    "verifiedAt": "2026-09-29T20:42:42.287Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 21,
+  "literaryCandidateCount": 21,
+  "sample": {
+    "sourceId": "poets-writers",
+    "source": {
+      "name": "Poets & Writers",
+      "url": "https://www.pw.org/content/the_new_nonfiction_2026",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "The New Nonfiction 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:42:41.308Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.pw.org/content/the_new_nonfiction_2026",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 75686,
+      "sha256": "84edc2409001609df81d8a7e8a7a2ba1837552faabea53b3ad2fdbf378bb01c9",
+      "accessedAt": "2026-09-29T20:42:42.279Z",
+      "headline": "The New Nonfiction 2026",
+      "excerpt": "subscribe by Staff Feature From the September/October 2026 issue ofPoets & Writers Magazine Our ninth annual look at the authors of some of the year’s best debut nonfiction features insightful stories of innovative, bold, and capacious memoirs, essay collections, and hybrid works. Nita Noveno describes finding her context as a writer, teacher, and daughter of immigrants. Phill Branch details his j",
+      "publishedDates": [
+        {
+          "value": "2026-08-19T00:00:00-04:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-08-19T00:00:00-0400",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.pw.org/content/the_new_nonfiction_2026",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:42:42.287Z",
+  "foundItems": [
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/the_new_nonfiction_2026",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The New Nonfiction 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/writing-prompts-exercises?genre=37",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Creative Nonfiction Prompts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/writing-prompts-exercises?genre=32",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fiction Prompts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/literary_magazines",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Magazines640+",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/literary_places",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Places630+",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/literary_agents",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Agents220+",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/page_one_where_new_and_noteworthy_books_begin_135",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Page One: Where New and Noteworthy Books Begin",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/poetry_and_public_lands",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poetry and Public Lands",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/ten_questions_for_tomas_moniz",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ten Questions for Tomas Moniz",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/breaking_the_rules_when_to_ignore_good_advice",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Breaking the Rules: When to Ignore Good Advice",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/writing-prompts-exercises",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writing Prompts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/small_presses",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Small Presses230+",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/conferences_and_residencies",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers Retreats200+",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/review_outlets",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Review Outlets50+",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/triage_by_claudia_rankine",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Triage by Claudia Rankine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/telling_the_truth_slant_the_circuitous_course",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Telling the Truth Slant: The Circuitous Course",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/radically_entertaining_a_profile_of_deesha_philyaw",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Radically Entertaining: A Profile of Deesha Philyaw",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/creating_without_fear_how_to_quiet_the_inner_critic_through_generative_writing",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Creating Without Fear: How to Quiet the Inner Critic Through Generative Writing",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/redefining_canon_from_the_outside",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Redefining Canon From the Outside",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/content/one_writers_education_a_profile_of_min_jin_lee",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "One Writer’s Education: A Profile of Min Jin Lee",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "poets-writers",
+      "source": {
+        "name": "Poets & Writers",
+        "url": "https://www.pw.org/buy-classifieds",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Buy Classifieds",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:42:41.308Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "1702330a492cb7517a26bdea3f2195ea1c71cb164e00a539da3a278adb6b9a6d"
+}

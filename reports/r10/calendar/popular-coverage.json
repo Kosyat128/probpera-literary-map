@@ -1,0 +1,568 @@
+{
+  "version": 1,
+  "canonicalCountryProfilesUnchanged": true,
+  "calendarOnlyWriterClones": true,
+  "evaluatedAt": "2026-09-29T20:15:49.134Z",
+  "scope": "Prepared local calendar date packet; no database write, publication, release, or new writer records.",
+  "before": {
+    "annualEvents": 2314,
+    "visible2026": 2312,
+    "visible2028": 2314,
+    "byCountry": {
+      "russia": {
+        "writerRows": 53,
+        "birthdays": 36,
+        "memorials": 44
+      },
+      "usa": {
+        "writerRows": 81,
+        "birthdays": 66,
+        "memorials": 54
+      },
+      "england": {
+        "writerRows": 72,
+        "birthdays": 58,
+        "memorials": 56
+      }
+    }
+  },
+  "resumedBefore": {
+    "annualEvents": 2327,
+    "visible2026": 2325,
+    "visible2028": 2327,
+    "byCountry": {
+      "russia": {
+        "writerRows": 53,
+        "birthdays": 45,
+        "memorials": 48
+      },
+      "usa": {
+        "writerRows": 81,
+        "birthdays": 66,
+        "memorials": 54
+      },
+      "england": {
+        "writerRows": 72,
+        "birthdays": 58,
+        "memorials": 56
+      }
+    }
+  },
+  "after": {
+    "annualEvents": 2339,
+    "visible2026": 2337,
+    "visible2028": 2339,
+    "byCountry": {
+      "russia": {
+        "writerRows": 53,
+        "birthdays": 48,
+        "memorials": 48
+      },
+      "usa": {
+        "writerRows": 81,
+        "birthdays": 71,
+        "memorials": 54
+      },
+      "england": {
+        "writerRows": 72,
+        "birthdays": 60,
+        "memorials": 58
+      }
+    }
+  },
+  "preservedRussianFields": 13,
+  "newFieldsThisContinuation": 12,
+  "packetExactFields": 25,
+  "packetNewUniqueEvents": 25,
+  "packetByCountry": {
+    "russia": 16,
+    "usa": 5,
+    "england": 4
+  },
+  "checks": {
+    "expectedOld": "PASS",
+    "chronology": "PASS",
+    "replay": "PASS",
+    "rollback": "PASS",
+    "cmsWins": "PASS",
+    "noNonDateChanges": "PASS",
+    "productionSelector": "PASS",
+    "ruEnParity": "PASS",
+    "priorDateOverlaysPreserved": "PASS"
+  },
+  "sources": {
+    "exactInstitutionalDates": 6,
+    "scopedIdentitySources": 5,
+    "scopedDates": 6,
+    "scopedDateLimitation": "Official profiles corroborate existing writer identity. Exact days additionally rely on pinned independent referenced Wikidata statements; a source profile is not misrepresented as direct day evidence."
+  },
+  "held": [
+    {
+      "writerKey": "russia:andrei_platonov",
+      "field": "birthDate",
+      "reason": "Competing Gregorian birthday statements (28 August and 1 September); no silent resolution.",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q315147"
+    },
+    {
+      "writerKey": "russia:avvakum",
+      "field": "birthDate",
+      "reason": "Historical November date needs explicit calendar-style confirmation before conversion.",
+      "sourceUrl": "https://avvakum.rusarchives.ru/predislovie"
+    },
+    {
+      "writerKey": "russia:avvakum",
+      "field": "deathDate",
+      "reason": "14 April 1682 is a historical old-style date; cached Gregorian tagging cannot establish the modern-calendar day.",
+      "sourceUrl": "https://avvakum.rusarchives.ru/predislovie"
+    },
+    {
+      "writerKey": "russia:kantemir",
+      "field": "birthDate",
+      "reason": "Institutional year statements differ (1708/1709); retain the existing withheld date.",
+      "sourceUrl": "https://t.me/s/prlib?before=2937"
+    },
+    {
+      "writerKey": "usa:isaac_asimov",
+      "field": "birthDate",
+      "reason": "2 January 1920 is the chosen birthday; the exact actual birth date is unknown.",
+      "sourceUrl": "https://asimovonline.com/asimov_home_page.html"
+    },
+    {
+      "writerKey": "usa:ralph_ellison",
+      "field": "birthDate",
+      "reason": "The autobiographical 1914 year conflicts with later biographical 1913 findings; retain the withheld date.",
+      "sourceUrl": "https://who.library.vanderbilt.edu/media/ralph-ellison-autobiography"
+    },
+    {
+      "writerKey": "usa:isaac_bashevis_singer",
+      "field": "birthDate",
+      "reason": "Competing exact dates 1903-11-21 and 1904-07-14; no silent choice of a preferred claim.",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q75612"
+    },
+    {
+      "writerKey": "usa:william_bradford",
+      "field": "birthDate",
+      "reason": "Baptism and old/new-style date require dedicated primary-record review; no substitution for a confirmed birth date.",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1210370"
+    },
+    {
+      "writerKey": "usa:ransom_riggs",
+      "wikidataId": "Q7293486",
+      "sourceUrl": "https://www.simonandschuster.com/books/Miss-Peregrines-Home-for-Peculiar-Children/Ransom-Riggs/Miss-Peregrines-Peculiar-Children/9781594744761",
+      "reason": "http_403"
+    },
+    {
+      "writerKey": "england:celia_rees",
+      "wikidataId": "Q448421",
+      "sourceUrl": "https://www.bloomsbury.com/uk/pirates-9781526632302/",
+      "reason": "http_403"
+    }
+  ],
+  "target": {
+    "correctedBaseline": 2237,
+    "cumulativeNewUniqueEvents": 102,
+    "remainingFrom1000Additional": 898
+  },
+  "addedDates": [
+    {
+      "writerKey": "russia:fyodor_tyutchev",
+      "field": "birthDate",
+      "value": "1803-12-05",
+      "writerName": "Фёдор Иванович Тютчев",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q37217&oldid=2534621558",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/8283/fedor-tyutchev",
+          "checkedAt": "2026-09-27T14:01:23.673Z",
+          "finding": "05 декабря 1803",
+          "sourceDocumentSha256": "e975e035b9fd0697541a14f1562ae844d7adc8a10a2a44829954f9552044f987"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:fyodor_tyutchev",
+      "field": "deathDate",
+      "value": "1873-07-27",
+      "writerName": "Фёдор Иванович Тютчев",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q37217&oldid=2534621558",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/8283/fedor-tyutchev",
+          "checkedAt": "2026-09-27T14:01:23.673Z",
+          "finding": "27 июля 1873",
+          "sourceDocumentSha256": "e975e035b9fd0697541a14f1562ae844d7adc8a10a2a44829954f9552044f987"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:afanasiy_fet",
+      "field": "birthDate",
+      "value": "1820-12-05",
+      "writerName": "Афанасий Афанасьевич Фет",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q314212&oldid=2517374350",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.prlib.ru/history/2071338",
+          "checkedAt": "2026-09-27T14:01:22.166Z",
+          "finding": "5 декабря) 1820",
+          "sourceDocumentSha256": "e4dc6c6d31a07457cffc357b6bf030958a3a1c3eda68366f3e7cffab5962f5cb"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:afanasiy_fet",
+      "field": "deathDate",
+      "value": "1892-12-03",
+      "writerName": "Афанасий Афанасьевич Фет",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q314212&oldid=2517374350",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.prlib.ru/history/2071338",
+          "checkedAt": "2026-09-27T14:01:22.166Z",
+          "finding": "3 декабря) 1892",
+          "sourceDocumentSha256": "e4dc6c6d31a07457cffc357b6bf030958a3a1c3eda68366f3e7cffab5962f5cb"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:maxim_gorky",
+      "field": "birthDate",
+      "value": "1868-03-28",
+      "writerName": "Максим Горький",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q12706&oldid=2534852023",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.prlib.ru/history/1916692",
+          "checkedAt": "2026-09-27T14:01:22.907Z",
+          "finding": "28) марта 1868",
+          "sourceDocumentSha256": "8dff30114cb01329262f189d5746b60901d695c2a2732f1cf957b6861a3e0aa4"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:maxim_gorky",
+      "field": "deathDate",
+      "value": "1936-06-18",
+      "writerName": "Максим Горький",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q12706&oldid=2534852023",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.prlib.ru/history/1916692",
+          "checkedAt": "2026-09-27T14:01:22.907Z",
+          "finding": "18 июня 1936",
+          "sourceDocumentSha256": "8dff30114cb01329262f189d5746b60901d695c2a2732f1cf957b6861a3e0aa4"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:alexander_kuprin",
+      "field": "birthDate",
+      "value": "1870-09-07",
+      "writerName": "Александр Иванович Куприн",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q271457&oldid=2534033073",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/8191/aleksandr-kuprin",
+          "checkedAt": "2026-09-27T14:01:23.278Z",
+          "finding": "07 сентября 1870",
+          "sourceDocumentSha256": "b44a5a46c5a9867ceb5bbcbcc04e2dd27b767f42ebd962da5fc7b9bc1f053a97"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:andrei_bely",
+      "field": "birthDate",
+      "value": "1880-10-26",
+      "writerName": "Андрей Белый",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q212632&oldid=2525277473",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/8134/andrei-belyi",
+          "checkedAt": "2026-09-27T14:01:24.815Z",
+          "finding": "26 октября 1880",
+          "sourceDocumentSha256": "e8e7a600227435159ff03d4b93aac8c858168d97d5eeb20b4215d8c439f43168"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:yevgeny_zamyatin",
+      "field": "birthDate",
+      "value": "1884-02-01",
+      "writerName": "Евгений Иванович Замятин",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q204868&oldid=2530143008",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/events/911924/pogovorim-o-zamyatine-e-i",
+          "checkedAt": "2026-09-27T14:01:24.888Z",
+          "finding": "1 февраля] 1884",
+          "sourceDocumentSha256": "7734e998432d1da4f97f575d1599e82d2736414df7b12ed4a5113de5994b1c55"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:yevgeny_zamyatin",
+      "field": "deathDate",
+      "value": "1937-03-10",
+      "writerName": "Евгений Иванович Замятин",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q204868&oldid=2530143008",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/events/911924/pogovorim-o-zamyatine-e-i",
+          "checkedAt": "2026-09-27T14:01:24.888Z",
+          "finding": "10 марта 1937",
+          "sourceDocumentSha256": "7734e998432d1da4f97f575d1599e82d2736414df7b12ed4a5113de5994b1c55"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:vladimir_mayakovsky",
+      "field": "birthDate",
+      "value": "1893-07-19",
+      "writerName": "Владимир Владимирович Маяковский",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q132964&oldid=2533408306",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/8266/vladimir-mayakovskii",
+          "checkedAt": "2026-09-27T14:01:24.930Z",
+          "finding": "19 июля 1893",
+          "sourceDocumentSha256": "4f011ca9ab29d38c14cbdfafa415419888fb1902e19da4022eaaafec161c21a1"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:varlam_shalamov",
+      "field": "birthDate",
+      "value": "1907-06-18",
+      "writerName": "Варлам Тихонович Шаламов",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q220816&oldid=2534249158",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/9884/varlam-shalamov",
+          "checkedAt": "2026-09-27T14:01:26.464Z",
+          "finding": "18 июня 1907",
+          "sourceDocumentSha256": "247466819b68f04fe773e9b198ad333278a1f9671b27e350ab682176ed21d68f"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:alexander_tvardovsky",
+      "field": "birthDate",
+      "value": "1910-06-21",
+      "writerName": "Александр Трифонович Твардовский",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q362828&oldid=2536112581",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/catalog/muzyka_o_rodine/ru/item/person/tvardovskiy-aleksandr-trifonovich",
+          "checkedAt": "2026-09-27T14:01:25.019Z",
+          "finding": "21.06.1910",
+          "sourceDocumentSha256": "3966d4a1346d0624d2bd9406302242e145d42249da120b1ac1b32c5042718b88"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:mikhail_zoshchenko",
+      "field": "birthDate",
+      "value": "1894-08-09",
+      "writerName": "Михаил Михайлович Зощенко",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q360507&oldid=2532104250",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/9974/mikhail-zoshenko",
+          "checkedAt": "2026-09-29T20:01:21.925Z",
+          "finding": "09 августа 1894",
+          "sourceDocumentSha256": "34e7214819e344fa56b65a7c8621336d1d90f0f57762038da890cbb0131c4536"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:vasily_grossman",
+      "field": "birthDate",
+      "value": "1905-12-12",
+      "writerName": "Василий Семёнович Гроссман",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q313767&oldid=2531742724",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://rgbs.ru/tiflology/pubs/vasilij-semenovich-grossman/",
+          "checkedAt": "2026-09-29T20:01:21.503Z",
+          "finding": "12 декабря 1905",
+          "sourceDocumentSha256": "30ea8c15b7cb4f16991aac598eaa1daf50b7b250edd6e1daa056f7387267419c"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:karamzin",
+      "field": "birthDate",
+      "value": "1766-12-12",
+      "writerName": "Николай Михайлович Карамзин",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q191598&oldid=2533930752",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.prlib.ru/node/619713",
+          "checkedAt": "2026-09-29T20:01:21.584Z",
+          "finding": "1 (12) декабря 1766",
+          "sourceDocumentSha256": "710eeee2fd38a9ed1d76092acafb60b3f2ad74976014ccab8ce2949abd5f3447"
+        }
+      ]
+    },
+    {
+      "writerKey": "usa:daniel_keyes",
+      "field": "birthDate",
+      "value": "1927-08-09",
+      "writerName": "Дэниел Киз",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q185714&oldid=2534931596",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.orrt.org/keyes/",
+          "checkedAt": "2026-09-29T20:01:22.298Z",
+          "finding": "Born: August 9, 1927",
+          "sourceDocumentSha256": "c6ecd9b3226764174883fb3b27aea3ec504560dcaa32a1cff2cbcd7f53e09692"
+        }
+      ]
+    },
+    {
+      "writerKey": "england:frederick_forsyth",
+      "field": "birthDate",
+      "value": "1938-08-25",
+      "writerName": "Фредерик Форсайт",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q249197&oldid=2534060174",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/",
+          "checkedAt": "2026-09-29T20:01:22.250Z",
+          "finding": "August 25, 1938",
+          "sourceDocumentSha256": "d534f50817df89b28f5f0ed72749c24fffdf1b65c239f672949d014700edf51f"
+        }
+      ]
+    },
+    {
+      "writerKey": "england:frederick_forsyth",
+      "field": "deathDate",
+      "value": "2025-06-09",
+      "writerName": "Фредерик Форсайт",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q249197&oldid=2534060174",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/",
+          "checkedAt": "2026-09-29T20:01:22.250Z",
+          "finding": "died on Monday, June 9, 2025",
+          "sourceDocumentSha256": "d534f50817df89b28f5f0ed72749c24fffdf1b65c239f672949d014700edf51f"
+        }
+      ]
+    },
+    {
+      "writerKey": "usa:george_saunders",
+      "field": "birthDate",
+      "value": "1958-12-02",
+      "writerName": "Джордж Сондерс",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1251926&oldid=2549812951",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://artsandsciences.syracuse.edu/people/faculty/saunders-george/",
+          "checkedAt": "2026-09-29T20:15:50.243Z",
+          "finding": "George Saunders; Lincoln in the Bardo",
+          "sourceDocumentSha256": "34a5610a03e21b9f33ab7389da87a70f0d7aa581544c8b514389cfecc3d41538"
+        }
+      ]
+    },
+    {
+      "writerKey": "usa:dan_brown",
+      "field": "birthDate",
+      "value": "1964-06-22",
+      "writerName": "Дэн Браун",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q7345&oldid=2550920936",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://danbrown.com/about/",
+          "checkedAt": "2026-09-29T20:15:49.501Z",
+          "finding": "Dan Brown; Da Vinci Code",
+          "sourceDocumentSha256": "858c1fa1a28a101abc93d16a620d38bde5e6e388e0bf4f6f9cffd7955120f683"
+        }
+      ]
+    },
+    {
+      "writerKey": "usa:andy_weir",
+      "field": "birthDate",
+      "value": "1972-06-16",
+      "writerName": "Энди Вейр",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q18590295&oldid=2546517593",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://andyweirauthor.com/",
+          "checkedAt": "2026-09-29T20:15:49.545Z",
+          "finding": "Andy Weir; Martian",
+          "sourceDocumentSha256": "b143b4b201a03d41cd94ce07c3d1dc6c3041820b0ea0f9b7c517b6ff4a584552"
+        }
+      ]
+    },
+    {
+      "writerKey": "usa:n_k_jemisin",
+      "field": "birthDate",
+      "value": "1972-09-19",
+      "writerName": "Н. К. Джемисин",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q2427544&oldid=2546105568",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://nebulas.sfwa.org/grand-masters/n-k-jemisin/",
+          "checkedAt": "2026-09-29T20:15:50.671Z",
+          "finding": "N. K. Jemisin; Nora Keita",
+          "sourceDocumentSha256": "501e4570d4ba1eb539770bed63e9114cb269515d70b239f8a81ccc56f44fabda"
+        }
+      ]
+    },
+    {
+      "writerKey": "england:ronald_delderfield",
+      "field": "birthDate",
+      "value": "1912-02-12",
+      "writerName": "Рональд Делдерфилд",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q438569&oldid=2530344748",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.bdcmuseum.org.uk/explore/item/97450/",
+          "checkedAt": "2026-09-29T20:15:50.773Z",
+          "finding": "R. F. Delderfield; Ben Gunn",
+          "sourceDocumentSha256": "9fe4b4f4293548e8dd78c6d6d691bd5c1fb9926c3bb978a167e71221046639e3"
+        }
+      ]
+    },
+    {
+      "writerKey": "england:ronald_delderfield",
+      "field": "deathDate",
+      "value": "1972-06-24",
+      "writerName": "Рональд Делдерфилд",
+      "newUniqueEvent": true,
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q438569&oldid=2530344748",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.bdcmuseum.org.uk/explore/item/97450/",
+          "checkedAt": "2026-09-29T20:15:50.773Z",
+          "finding": "R. F. Delderfield; Ben Gunn",
+          "sourceDocumentSha256": "9fe4b4f4293548e8dd78c6d6d691bd5c1fb9926c3bb978a167e71221046639e3"
+        }
+      ]
+    }
+  ]
+}

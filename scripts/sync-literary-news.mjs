@@ -2,8 +2,9 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
-import { createNewsStorageClient, syncNewsStorage } from "./lib/literary-news-kv-sync.mjs";
+import { createNewsStorageClient } from "./lib/literary-news-kv-sync.mjs";
 import { syncNobelProfile } from "./lib/literary-news-nobel-profile.mjs";
+import { syncDailyAwareNewsStorage } from "./lib/literary-news-approved-queue.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const output = path.join(root, ".tmp", "literary-news-sync");
@@ -13,11 +14,15 @@ const storage = createNewsStorageClient({
   apiToken: process.env.CLOUDFLARE_API_TOKEN,
 });
 
-const state = await syncNewsStorage({
+// A failed private approval read prevents queue/generation mutations.
+const state = await syncDailyAwareNewsStorage({
   storage,
-  async collect({ previousState, previousQueue }) {
+  async collect({ previousState, previousQueue, approvedReview }) {
+    const approvedReviewPath = approvedReview === null ? null : path.join(output, "approved-review.json");
+    if (approvedReviewPath) await writeFile(approvedReviewPath, JSON.stringify(approvedReview), "utf8");
     const bulkPath = path.join(output, "bulk.json");
     const args = ["scripts/refresh-literary-news.mjs", `--output=${bulkPath}`];
+    if (approvedReviewPath) args.push(`--approved-review-path=${approvedReviewPath}`);
     if (previousState !== null) {
       const statePath = path.join(output, "previous-state.json");
       const queuePath = path.join(output, "previous-queue.json");

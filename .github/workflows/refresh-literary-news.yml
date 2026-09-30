@@ -3,7 +3,7 @@ name: Refresh literary news sources
 on:
   workflow_dispatch:
   schedule:
-    - cron: "7,37 * * * *"
+    - cron: "37 5,11,17 * * *"
   push:
     branches: [main]
     paths:

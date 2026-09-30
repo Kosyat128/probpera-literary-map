@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-09-29T20:59:01.518Z",
+  "apiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AArrigo+Boito+ritratto.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+  "metadataSha256": "07c8003550ece37668cd5ca21403ae5292d55f2933320f066fc9c6155624c78e",
+  "fileTitle": "File:Arrigo Boito ritratto.jpg",
+  "imageDescription": "Arrigo Boito in un ritratto di Giuseppe Amisani (Milano, Conservatorio Giuseppe Verdi).",
+  "artist": "Giuseppe Amisani",
+  "copyrighted": "False",
+  "license": "Public domain",
+  "asset": {
+    "id": "manual-arrigo-boito-amisani-portrait-20260929",
+    "status": "approved",
+    "newsIds": [
+      "arrigo-boito-ballatella-bilingual-publication-20260929"
+    ],
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Arrigo_Boito_ritratto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "sourceSha256": "04f05200ac4b4a35579c0c239cec74e8498e349b339c6eed2e3dc6fb0698f577",
+    "subject": "portrait",
+    "entityEvidence": "Portrait of Arrigo Boito by Giuseppe Amisani. The current GodLiteratury article explicitly includes this painter’s Boito portrait; Commons title, ImageDescription, named Artist and public-domain metadata independently match. This is an archival portrait, not a photograph of the current event.",
+    "author": "Giuseppe Amisani",
+    "rightsholder": "Public domain",
+    "credit": "Архивный портрет Арриго Бойто: Джузеппе Амисани. Общественное достояние. Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Arrigo_Boito_ritratto.jpg.",
+    "license": "public-domain",
+    "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Arrigo_Boito_ritratto.jpg",
+    "licenseEvidenceSha256": "07c8003550ece37668cd5ca21403ae5292d55f2933320f066fc9c6155624c78e",
+    "checkMethod": "license-page",
+    "checkedAt": "2026-09-29T20:59:01.518Z",
+    "validUntil": "2026-10-29T20:59:01.518Z",
+    "transformations": {
+      "resize": true,
+      "metadataRemoval": true,
+      "reencode": true,
+      "crop": false
+    },
+    "permissions": [
+      {
+        "platform": "telegram",
+        "destinationId": "-1002791579809",
+        "publish": true,
+        "providerProcessing": true,
+        "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Arrigo_Boito_ritratto.jpg"
+      }
+    ],
+    "derivative": {
+      "sha256": "c9520948cb7bac9a9ca2df9223e4720015d2baff15614ca5d69a0d7c6eac4304",
+      "byteLength": 105993,
+      "mime": "image/jpeg",
+      "width": 600,
+      "height": 835,
+      "profile": "literary-news-photo-v1"
+    }
+  }
+}

@@ -31,14 +31,14 @@ const transport=()=>({preflight:async()=>({ok:true}),send:vi.fn(async()=>({kind:
 const batch=async(store,t,time)=>dispatchNewsBatch({store,jobs:(await store.list('post:')).map(r=>r.state),transport:t,now:()=>time});
 
 describe('gradual news publication through the real dispatcher',()=>{
-  it('sends one create per 30 minutes across restarts and never catches up in a burst',async()=>{
+  it('sends one create per hour across restarts and never catches up in a burst',async()=>{
     const store=await setup(),t=transport();
     await batch(store,t,start);expect(t.send).toHaveBeenCalledTimes(1);
     const restarted=client(store.journal);
-    await batch(restarted,t,new Date(start.getTime()+29*60000));expect(t.send).toHaveBeenCalledTimes(1);
-    await batch(restarted,t,new Date(start.getTime()+30*60000));expect(t.send).toHaveBeenCalledTimes(2);
-    await batch(restarted,t,new Date(start.getTime()+8*3600000));expect(t.send).toHaveBeenCalledTimes(3);
-    await batch(restarted,t,new Date(start.getTime()+8*3600000));expect(t.send).toHaveBeenCalledTimes(3);
+    await batch(restarted,t,new Date(start.getTime()+58*60000));expect(t.send).toHaveBeenCalledTimes(1);
+    await batch(restarted,t,new Date(start.getTime()+60*60000));expect(t.send).toHaveBeenCalledTimes(2);
+    await batch(restarted,t,new Date(start.getTime()+6*3600000));expect(t.send).toHaveBeenCalledTimes(3);
+    await batch(restarted,t,new Date(start.getTime()+6*3600000));expect(t.send).toHaveBeenCalledTimes(3);
   });
   it('two different jobs racing in the same channel create only one post',async()=>{
     const store=await setup(),t=transport();

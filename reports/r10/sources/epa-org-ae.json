@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "AE"
   ],
-  "attemptedAt": "2026-09-26T17:28:32.112Z",
+  "attemptedAt": "2026-09-29T20:33:12.127Z",
   "requests": [
     {
       "url": "https://www.epa.org.ae/",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
       "bytes": 92736,
-      "sha256": "d2e11d91806be8725649d864d38bdd7878168032d2a57d8dec5da96baa2e3c63",
-      "accessedAt": "2026-09-26T17:22:15.091Z"
+      "sha256": "3b8d5ac175440be2d06384e2cfd8b74af7ed4afaa2a2ff2c0b0cf1f223856e45",
+      "accessedAt": "2026-09-29T20:33:13.703Z"
     }
   ],
   "status": "blocked",
@@ -27,11 +27,7 @@
     "contentType": "text/plain",
     "bytes": 109,
     "sha256": "64ac59198b3225437b4c7f23b9ca334a1ec7c3dc8efd05b0ed60e7592d897c6b",
-    "accessedAt": "2026-09-26T17:28:33.018Z",
+    "accessedAt": "2026-09-29T20:33:13.191Z",
     "disallowed": []
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:13.445Z",
-    "sourceDocumentSha256": "d2e11d91806be8725649d864d38bdd7878168032d2a57d8dec5da96baa2e3c63"
   }
 }

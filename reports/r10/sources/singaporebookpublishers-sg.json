@@ -8,55 +8,35 @@
   "coverageCountryCodes": [
     "SG"
   ],
-  "attemptedAt": "2026-09-26T17:28:44.775Z",
+  "attemptedAt": "2026-09-29T20:33:27.906Z",
   "requests": [
     {
       "url": "https://singaporebookpublishers.sg/",
       "status": 200,
       "contentType": "text/html",
-      "bytes": 254361,
-      "sha256": "f204830c440fac990eb742915af028d7e99031d6e908c87fd5e85b3d697925a1",
-      "accessedAt": "2026-09-26T17:22:36.898Z"
+      "bytes": 254238,
+      "sha256": "7f73cb1776731dd384b9ce9784ed34e6afbc51626d8165636dbb88fabf83d025",
+      "accessedAt": "2026-09-29T20:33:31.227Z"
     },
     {
-      "url": "https://singaporebookpublishers.sg/singapore-book-awards/",
+      "url": "https://singaporebookpublishers.sg/newsroom/",
       "status": 200,
       "contentType": "text/html",
-      "bytes": 483428,
-      "sha256": "04786415fe0e82cb3554d77f61d17b6ad23ae736e9242fc97a91ce3b6c72cd6f",
-      "accessedAt": "2026-09-26T17:29:02.534Z"
-    },
-    {
-      "url": "https://singaporebookpublishers.sg/singapore-book-data/",
-      "status": 200,
-      "contentType": "text/html",
-      "bytes": 104329,
-      "sha256": "8a0744116c9b46b1080217ed0b49f06dfaba905252e20d3f05ef6041996cdca4",
-      "accessedAt": "2026-09-26T17:29:03.788Z"
-    },
-    {
-      "url": "https://singaporebookpublishers.sg/vision-mission/",
-      "status": 200,
-      "contentType": "text/html",
-      "bytes": 95333,
-      "sha256": "61fc5ad86a3b0e0f67008acf2d26c4c2dae17f649b51e7814fedff6bb4f19acb",
-      "accessedAt": "2026-09-26T17:29:04.128Z"
+      "bytes": 117622,
+      "sha256": "52f5cc5da50cd232c09c5aa7ce4d587d3d08d096b7c5b07df3a67b3ee3e853ee",
+      "accessedAt": "2026-09-29T20:33:44.921Z"
     }
   ],
   "status": "blocked",
-  "reason": "detail_not_verified",
+  "reason": "runtime_parser_no_literary_item",
   "robots": {
     "url": "https://singaporebookpublishers.sg/robots.txt",
     "status": 200,
     "contentType": "text/plain; charset=utf-8",
     "bytes": 184,
     "sha256": "0e910fdeebfa046ebeeabd8a74e655d92a4969e245ca805b675030ab3fa611d3",
-    "accessedAt": "2026-09-26T17:28:48.180Z",
+    "accessedAt": "2026-09-29T20:33:30.312Z",
     "disallowed": []
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:30.523Z",
-    "sourceDocumentSha256": "f204830c440fac990eb742915af028d7e99031d6e908c87fd5e85b3d697925a1"
   },
   "feedAttemptError": "This operation was aborted"
 }

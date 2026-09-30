@@ -1,0 +1,342 @@
+{
+  "sourceId": "the-rumpus",
+  "name": "The Rumpus",
+  "entryUrl": "https://therumpus.net/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:15.842Z",
+  "requests": [
+    {
+      "url": "https://therumpus.net/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 288656,
+      "sha256": "e6e1dea62786aa6a6e50c209dd908cf293aab49f42735ec38a9bb90e7bc1311e",
+      "accessedAt": "2026-09-29T20:39:17.038Z"
+    },
+    {
+      "url": "https://therumpus.net/sections/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 217075,
+      "sha256": "76002c27e626fd9b5bfc4f36b860ea07d16b59ad1ffa2f26daf6003b86e5b3d8",
+      "accessedAt": "2026-09-29T20:39:17.859Z"
+    },
+    {
+      "url": "https://therumpus.net/2026/09/29/the-october-rumpus-book-club-american-hagwon-with-min-jin-lee/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 220460,
+      "sha256": "36cbdd8d5896ad513af571622a5237744ff34b25cb241e30b3ff4dcfa84a578c",
+      "accessedAt": "2026-09-29T20:39:18.532Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://therumpus.net/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 566,
+    "sha256": "635133f223328c076a3366f725f84790bfe343954088bf752113a18651d07a62",
+    "accessedAt": "2026-09-29T20:39:16.479Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/",
+      "/wp-json/",
+      "/?rest_route="
+    ]
+  },
+  "endpoint": {
+    "id": "the-rumpus",
+    "name": "The Rumpus",
+    "url": "https://therumpus.net/sections/news/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "the-rumpus",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://therumpus.net"
+    ],
+    "linkPattern": "^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://therumpus.net/2026/09/29/the-october-rumpus-book-club-american-hagwon-with-min-jin-lee/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:18.543Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 8,
+  "literaryCandidateCount": 8,
+  "sample": {
+    "sourceId": "the-rumpus",
+    "source": {
+      "name": "The Rumpus",
+      "url": "https://therumpus.net/2026/09/29/the-october-rumpus-book-club-american-hagwon-with-min-jin-lee/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "The October Rumpus Book Club: “American Hagwon” with Min Jin Lee",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:17.879Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://therumpus.net/2026/09/29/the-october-rumpus-book-club-american-hagwon-with-min-jin-lee/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 220460,
+      "sha256": "36cbdd8d5896ad513af571622a5237744ff34b25cb241e30b3ff4dcfa84a578c",
+      "accessedAt": "2026-09-29T20:39:18.532Z",
+      "headline": "The October Rumpus Book Club: “American Hagwon” with Min Jin Lee",
+      "excerpt": "News The October Rumpus Book Club: “American Hagwon” with Min Jin Lee By The Rumpus • September 29, 2026 The October installment of the relaunch The Rumpus Book Club* will be on October 26th at 7pm ET. Host Debbie Millman will be speaking with New York Times best-selling author Min Jin Lee about her brand new book American Hagwon. You can register for the book club here. In American Hagwon, Min Ji",
+      "publishedDates": [
+        {
+          "value": "2026-09-29T14:38:58+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-29T14:38:58+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T14:38:58+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://therumpus.net/2026/09/29/the-october-rumpus-book-club-american-hagwon-with-min-jin-lee/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:18.543Z",
+  "foundItems": [
+    {
+      "sourceId": "the-rumpus",
+      "source": {
+        "name": "The Rumpus",
+        "url": "https://therumpus.net/2026/09/29/the-october-rumpus-book-club-american-hagwon-with-min-jin-lee/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The October Rumpus Book Club: “American Hagwon” with Min Jin Lee",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.879Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "the-rumpus",
+      "source": {
+        "name": "The Rumpus",
+        "url": "https://therumpus.net/2026/09/25/today-the-september-rumpus-book-club-selection-the-odyssey-with-emily-wilson/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rescheduled: The September Rumpus Book Club Selection: “The Odyssey” with Emily Wilson",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.879Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "the-rumpus",
+      "source": {
+        "name": "The Rumpus",
+        "url": "https://therumpus.net/2026/09/01/the-september-rumpus-book-club-selection-the-odyssey-with-emily-wilson/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The September Rumpus Book Club Selection: “The Odyssey” with Emily Wilson",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.879Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "the-rumpus",
+      "source": {
+        "name": "The Rumpus",
+        "url": "https://therumpus.net/2026/08/10/the-august-rumpus-book-club-selection-audition-by-katie-kitamura/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The August Rumpus Book Club Selection: “Audition” by Katie Kitamura",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.879Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "the-rumpus",
+      "source": {
+        "name": "The Rumpus",
+        "url": "https://therumpus.net/2026/07/20/the-july-rumpus-book-club-selection-magician-by-tracy-lynne-oliver/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The July Rumpus Book Club Selection: Magician by Tracy Lynne Oliver",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.879Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "the-rumpus",
+      "source": {
+        "name": "The Rumpus",
+        "url": "https://therumpus.net/2026/06/16/the-rumpus-book-club-is-back/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Rumpus Book Club Is Back",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.879Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "the-rumpus",
+      "source": {
+        "name": "The Rumpus",
+        "url": "https://therumpus.net/2026/08/20/cover-reveal-oppo-by-christopher-beha/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cover Reveal: Oppo by Christopher Beha",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.879Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "the-rumpus",
+      "source": {
+        "name": "The Rumpus",
+        "url": "https://therumpus.net/2026/07/02/the-rumpus-initiatives-cycle-1-winners/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Rumpus Initiatives Cycle 1 Winners",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:17.879Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "76002c27e626fd9b5bfc4f36b860ea07d16b59ad1ffa2f26daf6003b86e5b3d8"
+}

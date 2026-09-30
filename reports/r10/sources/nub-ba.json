@@ -8,54 +8,419 @@
   "coverageCountryCodes": [
     "BA"
   ],
-  "attemptedAt": "2026-09-26T17:29:01.461Z",
+  "attemptedAt": "2026-09-29T20:33:38.458Z",
   "requests": [
     {
       "url": "https://nub.ba/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 57221,
-      "sha256": "b170647b11ef764b177450c8ab053c8be62103cb7ef09c64d6ef34f8c6cec7c9",
-      "accessedAt": "2026-09-26T17:22:51.387Z"
+      "bytes": 57132,
+      "sha256": "adcfb541843a5f013713f6d038ecbb2b5bd51e896d9b5cca49339b8134b90e06",
+      "accessedAt": "2026-09-29T20:33:40.041Z"
     },
     {
-      "url": "https://nub.ba/pravilnik-o-koristenju-gradje",
+      "url": "https://nub.ba/novosti",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 19263,
-      "sha256": "afe5cca43676916b12bcee5a8e1112b1c747aef83de03c6b389cc4eb0986fde0",
-      "accessedAt": "2026-09-26T17:29:02.748Z"
+      "bytes": 41259,
+      "sha256": "03cd63839d8377296ab2f2b94a2b8138979117d7c4ae2bf1756db908eadf274b",
+      "accessedAt": "2026-09-29T20:33:40.310Z"
     },
     {
-      "url": "https://nub.ba/sektor-za-usluzivanje-korisnika",
+      "url": "https://nub.ba/o-knjizevnosti-sjecanju-i-identitetu-odrzana-promocija-romana-sandro-elvedina-nezirovica/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 21960,
-      "sha256": "20142d376923e37ae965e3a66a9142b455ea3fbf466b0b44eb52f7f700a68492",
-      "accessedAt": "2026-09-26T17:29:02.894Z"
-    },
-    {
-      "url": "https://nub.ba/za-bibliotekare",
-      "status": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "bytes": 19795,
-      "sha256": "7ecbe11455b02408778ffff7024a3bccb39f1a1b856f8b9e98b2e084257411b0",
-      "accessedAt": "2026-09-26T17:29:03.040Z"
+      "bytes": 20578,
+      "sha256": "59b0b2447645631f94e826d2df641a58c638e051ec0da91cc98979236a422615",
+      "accessedAt": "2026-09-29T20:33:40.590Z"
     }
   ],
-  "status": "blocked",
-  "reason": "detail_not_verified",
+  "status": "runtime_verified",
+  "reason": null,
   "robots": {
     "url": "https://nub.ba/robots.txt",
     "status": 200,
     "contentType": "text/plain; charset=UTF-8",
     "bytes": 22,
     "sha256": "44f3f8eafdf064cf69acb05f23ee4dfc9ab5b3d67d81c64246bc29f7e438789a",
-    "accessedAt": "2026-09-26T17:29:02.209Z",
+    "accessedAt": "2026-09-29T20:33:39.241Z",
     "disallowed": []
   },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:49.730Z",
-    "sourceDocumentSha256": "b170647b11ef764b177450c8ab053c8be62103cb7ef09c64d6ef34f8c6cec7c9"
-  }
+  "endpoint": {
+    "id": "nub-ba",
+    "name": "National and University Library of Bosnia and Herzegovina",
+    "url": "https://nub.ba/novosti",
+    "format": "html",
+    "language": "bs",
+    "region": "europe",
+    "sourceFamilyId": "nub-ba",
+    "countryCodes": [
+      "BA"
+    ],
+    "coverageCountryCodes": [
+      "BA"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://nub.ba"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://nub.ba/o-knjizevnosti-sjecanju-i-identitetu-odrzana-promocija-romana-sandro-elvedina-nezirovica"
+    ],
+    "verifiedAt": "2026-09-29T20:33:40.592Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 12,
+  "literaryCandidateCount": 12,
+  "sample": {
+    "sourceId": "nub-ba",
+    "source": {
+      "name": "National and University Library of Bosnia and Herzegovina",
+      "url": "https://nub.ba/o-knjizevnosti-sjecanju-i-identitetu-odrzana-promocija-romana-sandro-elvedina-nezirovica",
+      "language": "bs"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "O književnosti, sjećanju i identitetu: održana promocija romana „Sandro“ Elvedina Nezirovića",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:33:40.327Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://nub.ba/o-knjizevnosti-sjecanju-i-identitetu-odrzana-promocija-romana-sandro-elvedina-nezirovica/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 20578,
+      "sha256": "59b0b2447645631f94e826d2df641a58c638e051ec0da91cc98979236a422615",
+      "accessedAt": "2026-09-29T20:33:40.590Z",
+      "headline": "O književnosti, sjećanju i identitetu: održana promocija romana „Sandro“ Elvedina Nezirovića",
+      "excerpt": "O književnosti, sjećanju i identitetu: održana promocija romana „Sandro“ Elvedina Nezirovića 07.09.2026 • Novosti ❮❯ U Nacionalnoj i univerzitetskoj biblioteci Bosne i Hercegovine u srijedu, 2. septembra 2026. godine, održana je promocija romana „Sandro“ Elvedina Nezirovića, kojom je započela saradnja NUBBiH i Književnog kornera kroz program književnih razgovora i promocija savremene književnosti.",
+      "publishedDates": [],
+      "canonical": "https://nub.ba/o-knjizevnosti-sjecanju-i-identitetu-odrzana-promocija-romana-sandro-elvedina-nezirovica/",
+      "language": "bs",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:33:40.592Z",
+  "foundItems": [
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/o-knjizevnosti-sjecanju-i-identitetu-odrzana-promocija-romana-sandro-elvedina-nezirovica",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "O književnosti, sjećanju i identitetu: održana promocija romana „Sandro“ Elvedina Nezirovića",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/sandro-elvedina-nezirovica-otvara-novi-program-saradnje-nubbih-i-knjizevnog-kornera",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "„Sandro“ Elvedina Nezirovića otvara novi program saradnje NUBBiH i Književnog kornera",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/poziv-za-dostavljanje-autorske-poezije-postani-dio-knjizevne-edicije",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Poziv za dostavljanje autorske poezije - postani dio književne edicije",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/posjeta-ucenika-2-razreda-osnovne-skole-isak-samokovlija",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Posjeta učenika 2. razreda Osnovne škole „Isak Samokovlija“",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/predstavnica-nubbih-na-obiljezavanju-40-godina-austrijskih-biblioteka",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Predstavnica NUBBiH na obilježavanju 40 godina Austrijskih biblioteka",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/umijece-komuniciranja-razgovor-o-vjestini-koja-povezuje-ljude-i-oblikuje-odnose",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "„Umijeće komuniciranja“: Razgovor o vještini koja povezuje ljude i oblikuje odnose",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/zira-group-donirala-it-i-kancelarijsku-opremu-nacionalnoj-i-univerzitetskoj-biblioteci-bosne-i-hercegovine",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ZIRA Group donirala IT i kancelarijsku opremu Nacionalnoj i univerzitetskoj biblioteci Bosne i Hercegovine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/besplatan-upis-u-nacionalnu-i-univerzitetsku-biblioteku-bih",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Besplatan upis u Nacionalnu i univerzitetsku biblioteku BiH",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/umijece-komuniciranja-nova-knjiga-o-vjestini-koja-oblikuje-poslovne-odnose-i-svakodnevni-zivot",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "„Umijeće komuniciranja“ nova knjiga o vještini koja oblikuje poslovne odnose i svakodnevni život",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/posjeta-g-anglea-palmierija-nacionalnoj-i-univerzitetskoj-biblioteci-bosne-i-hercegovine",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Posjeta g. Anglea Palmierija Nacionalnoj i univerzitetskoj biblioteci Bosne i Hercegovine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/politika-privatnosti",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Politika privatnosti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nub-ba",
+      "source": {
+        "name": "National and University Library of Bosnia and Herzegovina",
+        "url": "https://nub.ba/politika-kolacica",
+        "language": "bs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Politika kolačića",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:33:40.327Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "03cd63839d8377296ab2f2b94a2b8138979117d7c4ae2bf1756db908eadf274b"
 }

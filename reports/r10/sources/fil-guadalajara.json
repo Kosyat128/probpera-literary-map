@@ -8,7 +8,7 @@
   "coverageCountryCodes": [
     "MX"
   ],
-  "attemptedAt": "2026-09-26T17:27:33.955Z",
+  "attemptedAt": "2026-09-27T14:10:02.008Z",
   "requests": [
     {
       "url": "https://fil.com.mx/prensa/recientes.asp?ids=1",
@@ -16,7 +16,7 @@
       "contentType": "text/html",
       "bytes": 56269,
       "sha256": "8ad4ffd8281c87b364503677a9de3ef90283cea09120e1e8cd9880b45370ef66",
-      "accessedAt": "2026-09-26T17:20:15.703Z"
+      "accessedAt": "2026-09-27T14:10:03.927Z"
     },
     {
       "url": "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1",
@@ -24,34 +24,367 @@
       "contentType": "text/html",
       "bytes": 57697,
       "sha256": "24453a109e2d50298cb1225e3da380a09dbc91d8852a2317ecaca7060b2c3cd3",
-      "accessedAt": "2026-09-26T17:27:39.157Z"
-    },
-    {
-      "url": "https://fil.com.mx/prensa/boletin.asp?id=3347&ids=1",
-      "status": 200,
-      "contentType": "text/html",
-      "bytes": 54381,
-      "sha256": "2c47055188f1e660b19a6f59ed63c45a240f10e14a34161ecb21894fd8d123fe",
-      "accessedAt": "2026-09-26T17:27:40.265Z"
-    },
-    {
-      "url": "https://fil.com.mx/prensa/boletin.asp?id=3344&ids=1",
-      "status": 200,
-      "contentType": "text/html",
-      "bytes": 61567,
-      "sha256": "9beed1289d6b228af0ced36f1813256406864663fe1831881f8bd6545f7dc209",
-      "accessedAt": "2026-09-26T17:27:41.159Z"
+      "accessedAt": "2026-09-27T14:10:04.539Z"
     }
   ],
-  "status": "blocked",
-  "reason": "detail_not_verified",
+  "status": "runtime_verified",
+  "reason": null,
   "robots": {
     "url": "https://fil.com.mx/robots.txt",
     "error": "http_404",
     "disallowed": []
   },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:20:13.364Z",
-    "sourceDocumentSha256": "8ad4ffd8281c87b364503677a9de3ef90283cea09120e1e8cd9880b45370ef66"
-  }
+  "endpoint": {
+    "id": "fil-guadalajara",
+    "name": "FIL Guadalajara",
+    "url": "https://fil.com.mx/prensa/recientes.asp?ids=1",
+    "format": "html",
+    "language": "es",
+    "region": "latin-america",
+    "sourceFamilyId": "fil-guadalajara",
+    "countryCodes": [
+      "MX"
+    ],
+    "coverageCountryCodes": [
+      "MX"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://fil.com.mx",
+      "https://www.fil.com.mx"
+    ],
+    "linkPattern": "^\\/prensa\\/boletin\\.asp$",
+    "parserVersion": "r10-source-profile-1",
+    "encoding": "windows-1252",
+    "exampleArticleUrls": [
+      "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1"
+    ],
+    "verifiedAt": "2026-09-27T14:10:04.549Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-27. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 11,
+  "literaryCandidateCount": 11,
+  "sample": {
+    "sourceId": "fil-guadalajara",
+    "source": {
+      "name": "FIL Guadalajara",
+      "url": "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1",
+      "language": "es"
+    },
+    "region": "latin-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Wingston González, poeta guatemalteco garífuna, obtiene el Premio de Literaturas Indígenas de América 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-27T14:10:03.989Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 57697,
+      "sha256": "24453a109e2d50298cb1225e3da380a09dbc91d8852a2317ecaca7060b2c3cd3",
+      "accessedAt": "2026-09-27T14:10:04.539Z",
+      "headline": "Prensa",
+      "excerpt": "Aa+ Aa- Prensa Comunicado Guadalajara, Jalisco, a 25 de agosto de 2026 Wingston González, poeta guatemalteco garífuna, obtiene el Premio de Literaturas Indígenas de América 2026 En su obra Un poquito más allá, el autor busca reflexionar sobre la espiritualidad, la filosofía y la resistencia política del pueblo garífuna en Centroamérica Con un trabajo literario que destaca la herencia lingüística, ",
+      "publishedDates": [],
+      "canonical": "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-27T14:10:04.549Z",
+  "foundItems": [
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wingston González, poeta guatemalteco garífuna, obtiene el Premio de Literaturas Indígenas de América 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3347&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "TikTok entregará los Book Awards México en la FIL",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3344&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Conceden a la nicaragüense Gioconda Belli, por unanimidad, el Premio FIL de Literatura en Lenguas Romances 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3348&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Buenos Aires será Invitada de Honor de la FIL Guadalajara 2027",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3346&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lectores celebrarán 40 años de la FIL con sus libros favoritos",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3316&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "953 mil visitantes florecieron en la FIL Guadalajara",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3350&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Con más de 1,200 fotografías, los lectores celebran cuatro décadas de la FIL en Casa Zuno",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3349&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "​​​​​​​“Mi mayor orgullo es ser periodista”: José Luis Martínez S.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3345&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El Homenaje al Mérito Editorial de la FIL es para Ediciones Ekaré",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3343&ids=1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FIL Niños abre su registro de talleres para escuelas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fil-guadalajara",
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ver las noticias sobre la FIL",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-27T14:10:03.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8ad4ffd8281c87b364503677a9de3ef90283cea09120e1e8cd9880b45370ef66"
 }

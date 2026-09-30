@@ -8,39 +8,79 @@
   "coverageCountryCodes": [
     "RU"
   ],
-  "attemptedAt": "2026-09-26T17:31:57.547Z",
+  "attemptedAt": "2026-09-29T20:34:13.211Z",
   "requests": [
     {
       "url": "https://individuum.ru/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 52565,
-      "sha256": "14b1b22408cf4eaaf04abb794108ba71464056581ed43dbd43df076426fb572c",
-      "accessedAt": "2026-09-26T17:31:58.452Z"
+      "sha256": "6fd84ab36224fb15f43e6a912b57a46cef4b7f4fb54cbc7dc0a1f42743ac072d",
+      "accessedAt": "2026-09-29T20:34:13.606Z"
     },
     {
       "url": "https://individuum.ru/books/pesni-dzhinnov/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 19371,
-      "sha256": "39be4fecb075518db47decfe5f656041ba8cc21b4b7b54b7bde10a4d0be3d926",
-      "accessedAt": "2026-09-26T17:31:58.717Z"
+      "bytes": 19982,
+      "sha256": "131208fa35ad27dceb683cedd879b3dab8db930e3e5dd06721dda47621cc160e",
+      "accessedAt": "2026-09-29T20:34:13.800Z"
     },
     {
       "url": "https://individuum.ru/books/povest-ob-uzhase-istoriya-goticheskogo-romana/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 21722,
-      "sha256": "9e59b6da23826b4b805f2053a22ee1788834017c8498f9801b27a0aef76c8c0d",
-      "accessedAt": "2026-09-26T17:31:58.892Z"
+      "bytes": 21885,
+      "sha256": "56daf7ba560842a2c8dbfc1d5dbe6d349d96f6c677cbe2635960418d65c499ac",
+      "accessedAt": "2026-09-29T20:34:13.943Z"
     },
     {
       "url": "https://individuum.ru/books/brazhniki-i-bludnitsy-podarochnoe-izdanie/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 21241,
-      "sha256": "fe7cad474a5604b66765624f65e17a4cad6bce9ad8bf46e7ef3117c87e4890f4",
-      "accessedAt": "2026-09-26T17:31:59.206Z"
+      "bytes": 20177,
+      "sha256": "18da3c55a6b9009b387d669d682660bce980b5fa77d0cb9eaba8f697a3871c63",
+      "accessedAt": "2026-09-29T20:34:14.090Z"
+    },
+    {
+      "url": "https://individuum.ru/books/vypuskayte-demonov-kak-risovat-s-udovolstviem/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 19894,
+      "sha256": "fb281c03cd40952f4e445d99c68ff41d7a32d576f174cc9f723b40b6252a2cdd",
+      "accessedAt": "2026-09-29T20:34:14.197Z"
+    },
+    {
+      "url": "https://individuum.ru/books/dver-v-dver-kak-natsisty-i-evrei-okazalis-sosedyami-po-emigratsii-v-argentine/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 21511,
+      "sha256": "e465e26dd73b9d6aabd9d88df21a6d5162c7c77bdd8edec4a16339d4d5a244ea",
+      "accessedAt": "2026-09-29T20:34:14.304Z"
+    },
+    {
+      "url": "https://individuum.ru/books/koreyskiy-pleylist-kak-k-pop-pomogaet-ponyat-sovremennyy-mir/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 21001,
+      "sha256": "bace3c4b40b0969373c138cccc436d73c9d604f4135966da6db7c22ab1abd2f0",
+      "accessedAt": "2026-09-29T20:34:14.456Z"
+    },
+    {
+      "url": "https://individuum.ru/books/kolumbusshtrasse-semeynaya-istoriya-1935-1945/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 23404,
+      "sha256": "07a5e3742f0a5742a48095879e3ec9483dcd958bbdf282c29cadd9a7626d23c2",
+      "accessedAt": "2026-09-29T20:34:14.576Z"
+    },
+    {
+      "url": "https://individuum.ru/books/dendrarium-pyat-sadov-zaklyuchennogo-degtyaryeva/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 21574,
+      "sha256": "ce393e495e247c6b02f3e41e842c85149a113995897de399c0b9048f0d3aa40b",
+      "accessedAt": "2026-09-29T20:34:14.696Z"
     }
   ],
   "status": "blocked",
@@ -51,7 +91,7 @@
     "contentType": "text/plain",
     "bytes": 1015,
     "sha256": "646c3507e269e88d4e1cc1f8738e35d2281a6e310c07177905214f5118360ff5",
-    "accessedAt": "2026-09-26T17:31:58.278Z",
+    "accessedAt": "2026-09-29T20:34:13.498Z",
     "disallowed": [
       "*/index.php",
       "/bitrix/",

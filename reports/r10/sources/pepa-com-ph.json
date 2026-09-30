@@ -8,15 +8,15 @@
   "coverageCountryCodes": [
     "PH"
   ],
-  "attemptedAt": "2026-09-26T17:28:15.262Z",
+  "attemptedAt": "2026-09-29T20:32:57.202Z",
   "requests": [
     {
       "url": "https://pepa.com.ph/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 212727,
-      "sha256": "762e402a3c5061406823c075c3abfa0045364af6223e6a09b85482d306b3e49d",
-      "accessedAt": "2026-09-26T17:28:18.579Z"
+      "sha256": "01f3caec9e1dd98182877c02c956f0126e7e929815c491e4fcc1502620ea6266",
+      "accessedAt": "2026-09-29T20:33:01.089Z"
     },
     {
       "url": "https://pepa.com.ph/feed/",
@@ -24,42 +24,269 @@
       "contentType": "application/rss+xml; charset=UTF-8",
       "bytes": 13716,
       "sha256": "cacf5ebd2c8015b20c65d0e6c84fc417f28bf8102cf8843079586d3b03e80806",
-      "accessedAt": "2026-09-26T17:28:19.874Z"
+      "accessedAt": "2026-09-29T20:33:02.387Z"
     },
     {
       "url": "https://pepa.com.ph/2021/08/25/imported-birds-from-j-d-poortvliet/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 61559,
-      "sha256": "7c1326d4ef7bbe3e5eb84c080e72c5179fae091896613164fe52a6edd069af54",
-      "accessedAt": "2026-09-26T17:28:20.600Z"
+      "sha256": "e31be4982bb1725cba09b9cb4033ecbdf8129f0699ccae3f0d79e5cd68474b12",
+      "accessedAt": "2026-09-29T20:33:03.127Z"
     },
     {
       "url": "https://pepa.com.ph/2021/01/05/henry-tan/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 64821,
-      "sha256": "f518a1e45a1e08eb9709f554be3e32cdea888c2c72ab0c2ff9264999e0899408",
-      "accessedAt": "2026-09-26T17:28:21.365Z"
+      "sha256": "1e6a89dea72d912181e0cef9fed1d5a41eeef2157ed273025458dc088bf2de20",
+      "accessedAt": "2026-09-29T20:33:03.913Z"
     },
     {
       "url": "https://pepa.com.ph/2020/11/09/upcoming-auction-original-pipa-birds-and-direct-child-from-imported-birds-of-kerby-chua-and-christopher-chua-ching/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 65799,
-      "sha256": "1859c746d862551354f45a209f673315b1f243eaaf14414cc5e89cef77a7e730",
-      "accessedAt": "2026-09-26T17:28:22.085Z"
+      "sha256": "8ff9a8224741ea8969187341780b56da3396e26220aa366bd97a3154ac786013",
+      "accessedAt": "2026-09-29T20:33:04.687Z"
+    },
+    {
+      "url": "https://pepa.com.ph/2020/10/15/incoming-auction-luis-chiu/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 93336,
+      "sha256": "b64e7baf937b8fa7192998af9a970304ad15d4f90e97730dfd80e9fde2583945",
+      "accessedAt": "2026-09-29T20:33:05.513Z"
+    },
+    {
+      "url": "https://pepa.com.ph/2020/08/29/10-most-expensive-pigeon-sold-in-europe/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 71263,
+      "sha256": "dbb321b258c6b68a4b06c7b7cf79f5a76da78c2afb5f28e3d460dd615261db7b",
+      "accessedAt": "2026-09-29T20:33:06.305Z"
     }
   ],
-  "status": "blocked",
-  "reason": "detail_not_verified",
+  "status": "editorial_profile_held",
+  "reason": "Directory domain now exposes pigeon-trading articles; publishing organisation and literary relevance are not verified.",
   "robots": {
     "url": "https://www.pepa.com.ph/robots.txt",
     "status": 200,
     "contentType": "text/plain",
     "bytes": 31,
     "sha256": "cde34ae71325970b29ea4797b3be208e696b21a7e46b45de094ea1b5867dbab4",
-    "accessedAt": "2026-09-26T17:28:15.504Z",
+    "accessedAt": "2026-09-29T20:32:57.965Z",
     "disallowed": []
-  }
+  },
+  "endpoint": {
+    "id": "pepa-com-ph",
+    "name": "Philippine Educational Publishers’ Association",
+    "url": "https://pepa.com.ph/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "asia",
+    "sourceFamilyId": "pepa-com-ph",
+    "countryCodes": [
+      "PH"
+    ],
+    "coverageCountryCodes": [
+      "PH"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://pepa.com.ph"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://pepa.com.ph/2020/08/29/10-most-expensive-pigeon-sold-in-europe/"
+    ],
+    "verifiedAt": "2026-09-29T20:33:06.312Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 5,
+  "literaryCandidateCount": 5,
+  "sample": {
+    "sourceId": "pepa-com-ph",
+    "source": {
+      "name": "Philippine Educational Publishers’ Association",
+      "url": "https://pepa.com.ph/2020/08/29/10-most-expensive-pigeon-sold-in-europe/",
+      "language": "en-US"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "10 most expensive pigeon sold in Europe",
+    "publishedAt": "2020-08-29T13:11:29.000Z",
+    "description": "1. Armando-sold €1,252,000 original owner : Joel verschoot 2. New general-sold €404,000. Original owner:Kurt & Raf Platteeuw 3.New Bliksem-sold €376,000. The post 10 most expensive pigeon sold in Europe appeared first on PEPA.",
+    "discoveredAt": "2026-09-29T20:33:02.390Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://pepa.com.ph/2020/08/29/10-most-expensive-pigeon-sold-in-europe/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 71263,
+      "sha256": "dbb321b258c6b68a4b06c7b7cf79f5a76da78c2afb5f28e3d460dd615261db7b",
+      "accessedAt": "2026-09-29T20:33:06.305Z",
+      "headline": "10 most expensive pigeon sold in Europe",
+      "excerpt": "News 10 most expensive pigeon sold in Europe October 30, 2020 Posted by PEPA 1. Armando-sold €1,252,000 original owner : Joel verschoot 2. New general-sold €404,000. Original owner:Kurt & Raf Platteeuw 3.New Bliksem-sold €376,000. Original owner:Gaby vandenabeele 4. Golden Prince-sold €360,000. Original owner: Gino Clicque 5. Bolt-sold €310,000. Original owner: Leo Heremans 6. Safier Kweekkoppel-s",
+      "publishedDates": [
+        {
+          "value": "2020-08-29T13:11:29+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2020-08-29T13:11:29+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://pepa.com.ph/2020/08/29/10-most-expensive-pigeon-sold-in-europe/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:33:06.312Z",
+  "foundItems": [
+    {
+      "sourceId": "pepa-com-ph",
+      "source": {
+        "name": "Philippine Educational Publishers’ Association",
+        "url": "https://pepa.com.ph/2021/08/25/imported-birds-from-j-d-poortvliet/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "IMPORTED BIRDS FROM J.D POORTVLIET",
+      "publishedAt": "2021-08-25T08:13:22.000Z",
+      "description": "The post IMPORTED BIRDS FROM J.D POORTVLIET appeared first on PEPA.",
+      "discoveredAt": "2026-09-29T20:33:02.390Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pepa-com-ph",
+      "source": {
+        "name": "Philippine Educational Publishers’ Association",
+        "url": "https://pepa.com.ph/2021/01/05/henry-tan/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "HENRY TAN-AUCTION ENDED",
+      "publishedAt": "2021-01-05T04:42:48.000Z",
+      "description": "The post HENRY TAN-AUCTION ENDED appeared first on PEPA.",
+      "discoveredAt": "2026-09-29T20:33:02.390Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pepa-com-ph",
+      "source": {
+        "name": "Philippine Educational Publishers’ Association",
+        "url": "https://pepa.com.ph/2020/11/09/upcoming-auction-original-pipa-birds-and-direct-child-from-imported-birds-of-kerby-chua-and-christopher-chua-ching/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Auction Ended–Original PIPA birds and direct child from imported birds of Kerby Chua and Christopher Chua Ching",
+      "publishedAt": "2020-11-09T06:34:56.000Z",
+      "description": "The post Auction Ended–Original PIPA birds and direct child from imported birds of Kerby Chua and Christopher Chua Ching appeared first on PEPA.",
+      "discoveredAt": "2026-09-29T20:33:02.390Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pepa-com-ph",
+      "source": {
+        "name": "Philippine Educational Publishers’ Association",
+        "url": "https://pepa.com.ph/2020/10/15/incoming-auction-luis-chiu/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "AUCTION ENDED-LUIS CHIU",
+      "publishedAt": "2020-10-15T04:09:07.000Z",
+      "description": "Some Parents of Auction Birds The post AUCTION ENDED-LUIS CHIU appeared first on PEPA.",
+      "discoveredAt": "2026-09-29T20:33:02.390Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pepa-com-ph",
+      "source": {
+        "name": "Philippine Educational Publishers’ Association",
+        "url": "https://pepa.com.ph/2020/08/29/10-most-expensive-pigeon-sold-in-europe/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "10 most expensive pigeon sold in Europe",
+      "publishedAt": "2020-08-29T13:11:29.000Z",
+      "description": "1. Armando-sold €1,252,000 original owner : Joel verschoot 2. New general-sold €404,000. Original owner:Kurt & Raf Platteeuw 3.New Bliksem-sold €376,000. The post 10 most expensive pigeon sold in Europe appeared first on PEPA.",
+      "discoveredAt": "2026-09-29T20:33:02.390Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "cacf5ebd2c8015b20c65d0e6c84fc417f28bf8102cf8843079586d3b03e80806",
+  "technicalProbeStatus": "runtime_verified"
 }

@@ -1,0 +1,648 @@
+{
+  "sourceId": "five-books",
+  "name": "Five Books",
+  "entryUrl": "https://fivebooks.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:19.186Z",
+  "requests": [
+    {
+      "url": "https://fivebooks.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 753220,
+      "sha256": "ee5d1ae2c3f23930363c859b8847ca54fc4be844310fa07a4915d7b8c58838ee",
+      "accessedAt": "2026-09-29T20:39:19.844Z"
+    },
+    {
+      "url": "https://fivebooks.com/best-books/great-actors-read-great-novels/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 309050,
+      "sha256": "8c863b44e0f4605f98b5b68f094ea835397defb5b15994c88c57ea0b928df17c",
+      "accessedAt": "2026-09-29T20:39:20.765Z"
+    },
+    {
+      "url": "https://fivebooks.com/most-recommended-books/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 379263,
+      "sha256": "9404aec79c51c202bd9ce664b00ca384ca5c439d8804e22bd8a09923b6527037",
+      "accessedAt": "2026-09-29T20:39:21.314Z"
+    },
+    {
+      "url": "https://fivebooks.com/reader-lists/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 207002,
+      "sha256": "bcf91c62e6ed2aa31dae7f864526acd2eb81fd5dad9f5f759105e97ae039a1d6",
+      "accessedAt": "2026-09-29T20:39:22.310Z"
+    },
+    {
+      "url": "https://fivebooks.com/Terms-of-Service/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 154971,
+      "sha256": "c2661005a397bc85c9f94618edc2e92a3b024b43d9b911102608508a80a3d481",
+      "accessedAt": "2026-09-29T20:39:23.121Z"
+    },
+    {
+      "url": "https://fivebooks.com/books/best-books-of-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 486258,
+      "sha256": "757b81db44177004197c74fb40db48de6e42285228c0047dd1a3b03f80b203bc",
+      "accessedAt": "2026-09-29T20:39:23.371Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Selected sample is a year/category book-list landing page rather than a separately identified article.",
+  "robots": {
+    "url": "https://fivebooks.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 291,
+    "sha256": "313c43ba05c325f75491ce2e800e7c6dd7d2d6b7d55227a893072a16f7a58847",
+    "accessedAt": "2026-09-29T20:39:19.558Z",
+    "disallowed": [
+      "/wp/wp-admin/",
+      "/?s=",
+      "/page/*/?s=",
+      "/search/"
+    ]
+  },
+  "endpoint": {
+    "id": "five-books",
+    "name": "Five Books",
+    "url": "https://fivebooks.com/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "five-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://fivebooks.com"
+    ],
+    "linkPattern": "^\\/books\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://fivebooks.com/books/best-books-of-2025/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:23.393Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 20,
+  "literaryCandidateCount": 20,
+  "sample": {
+    "sourceId": "five-books",
+    "source": {
+      "name": "Five Books",
+      "url": "https://fivebooks.com/books/best-books-of-2025/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Best Books of 2025",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-29T20:39:20.004Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://fivebooks.com/books/best-books-of-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 486258,
+      "sha256": "757b81db44177004197c74fb40db48de6e42285228c0047dd1a3b03f80b203bc",
+      "accessedAt": "2026-09-29T20:39:23.371Z",
+      "headline": "The Best Books of 2025",
+      "excerpt": "The Best Novels of 2025: The Booker Prize Shortlist, recommended by Ayọ̀bámi Adébáyọ̀ Read 1 Flashlight: A Novel by Susan Choi Read 2 The Loneliness of Sonia and Sunny: A Novel by Kiran Desai Read 3 Audition: A Novel by Katie Kitamura Read 4 The Rest of Our Lives by Benjamin Markovits Read 5 The Land in Winter by Andrew Miller Read 6 Flesh: A Novel by David Szalay We spoke to Ayọ̀bámi Adébáyọ̀, th",
+      "publishedDates": [],
+      "canonical": "https://fivebooks.com/books/best-books-of-2025/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:23.393Z",
+  "foundItems": [
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/audiobook-highlights-great-actors-read-great-books/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Actors Read Great Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/most-recommended-books",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Most Recommended Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/reader-lists",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Recent Reader Lists",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/Terms-of-Service",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Terms of Service",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/best-books-of-2025/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Best Books of 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/booker-prize/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Booker Prize (fiction)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/baillie-gifford-prize/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Baillie Gifford Prize (nonfiction)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/walter-scott-prize-for-historical-fiction/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Walter Scott Prize (historical fiction)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/american-literature/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "American Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/best-books-of-2024/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BEST BOOKS OF 2024",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/best-books-of-2023/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BEST BOOKS OF 2023",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/best-audiobooks-for-kids/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Best Audiobooks for Kids",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/ft-schroders-business-book-year/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Financial Times (nonfiction)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/wolfson-prize/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wolfson Prize (history)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/nbcc-shortlists/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NBCC Awards (biography & memoir)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/pushkin-house-book-prize/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pushkin House Prize (Russia)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/the-arthur-c-clarke-award-for-science-fiction/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Arthur C Clarke Prize (sci fi)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/classics/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Classical Studies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/book-recommendations-from-schoolteachers/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "High School Teachers Recommendations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "five-books",
+      "source": {
+        "name": "Five Books",
+        "url": "https://fivebooks.com/books/royal-society-book-prizes/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Royal Society (science)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-29T20:39:20.004Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ee5d1ae2c3f23930363c859b8847ca54fc4be844310fa07a4915d7b8c58838ee",
+  "technicalProbeStatus": "runtime_verified"
+}

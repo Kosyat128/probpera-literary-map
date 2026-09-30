@@ -1,0 +1,380 @@
+{
+  "sourceId": "literaturnaya-rossiya",
+  "name": "Литературная Россия",
+  "entryUrl": "https://litrossia.ru/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:29.953Z",
+  "requests": [
+    {
+      "url": "https://litrossia.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 480562,
+      "sha256": "058f9fda57ceb4f73825f8a520f984ffb5f39a37cd3bf7699c306203277273a1",
+      "accessedAt": "2026-09-29T20:39:31.022Z"
+    },
+    {
+      "url": "https://litrossia.ru/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=utf-8",
+      "bytes": 26405,
+      "sha256": "505dacc39dc3d489e01b23118182123669ebd60337970fe74f90f16a4a9502e5",
+      "accessedAt": "2026-09-29T20:39:31.181Z"
+    },
+    {
+      "url": "https://litrossia.ru/item/zhizn-poeta-bez-prikras/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 449110,
+      "sha256": "04049325503748e84c1faa2708a30fe2127feac8063b360c186d4a907b6671f1",
+      "accessedAt": "2026-09-29T20:39:31.349Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://litrossia.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 174,
+    "sha256": "576d82495c21ac3fbb70f51753243e1edb1b30b52ab39fe4266e33c42987a162",
+    "accessedAt": "2026-09-29T20:39:30.362Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-content/",
+      "/wp-includes/"
+    ]
+  },
+  "endpoint": {
+    "id": "literaturnaya-rossiya",
+    "name": "Литературная Россия",
+    "url": "https://litrossia.ru/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "literaturnaya-rossiya",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://litrossia.ru"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://litrossia.ru/item/zhizn-poeta-bez-prikras/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:31.388Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "literaturnaya-rossiya",
+    "source": {
+      "name": "Литературная Россия",
+      "url": "https://litrossia.ru/item/zhizn-poeta-bez-prikras/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Жизнь поэта без прикрас",
+    "publishedAt": "2026-09-25T06:30:08.000Z",
+    "description": "17 мая, «под знаком чемодана», родился поэт Николай Зиновьев – автор известных шлягеров «Дельтаплан», «Паромщик», «Зелёный свет». Многие песни на его стихи звучат и сегодня. А почему под знаком чемодана, вы узнаете, посмотрев спектакль-исповедь супруги ушедшего от нас поэта – «В разрыве облаков». Актриса театра и кино Елена Борзова, лауреат Госпремии СССР, снялась в 80 кинопроектах, предлагает зр…",
+    "discoveredAt": "2026-09-29T20:39:31.182Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://litrossia.ru/item/zhizn-poeta-bez-prikras/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 449110,
+      "sha256": "04049325503748e84c1faa2708a30fe2127feac8063b360c186d4a907b6671f1",
+      "accessedAt": "2026-09-29T20:39:31.349Z",
+      "headline": "Жизнь поэта без прикрас",
+      "excerpt": "№ 2026 / 38, 25.09.2026 17 мая, «под знаком чемодана», родился поэт – Николай Зиновьев. Почему под знаком чемодана, вы узнаете, посмотрев спектакль-исповедь супруги ушедшего от нас поэта – «В разрыве облаков». Первое своё произведение Миколка напишет в пять лет, посвятив его папе. Но всю жизнь его будет волновать одна Комета, под именем Галлея, с которой он пересечётся в момент формирования распад",
+      "publishedDates": [
+        {
+          "value": "2026-09-25T06:30:08+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-25T06:30:08+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://litrossia.ru/item/zhizn-poeta-bez-prikras/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:31.388Z",
+  "foundItems": [
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/zhizn-poeta-bez-prikras/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Жизнь поэта без прикрас",
+      "publishedAt": "2026-09-25T06:30:08.000Z",
+      "description": "17 мая, «под знаком чемодана», родился поэт Николай Зиновьев – автор известных шлягеров «Дельтаплан», «Паромщик», «Зелёный свет». Многие песни на его стихи звучат и сегодня. А почему под знаком чемодана, вы узнаете, посмотрев спектакль-исповедь супруги ушедшего от нас поэта – «В разрыве облаков». Актриса театра и кино Елена Борзова, лауреат Госпремии СССР, снялась в 80 кинопроектах, предлагает зр…",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/kak-napisat-i-zashhitit-kursovuju-bez-problem-ot-temy-do-vystupleniya/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Как написать и защитить курсовую без проблем: от темы до выступления",
+      "publishedAt": "2026-09-25T07:09:56.000Z",
+      "description": "За годы работы со студенческими текстами чаще всего встречается одна и та же ошибка: курсовую пытаются писать как набор отдельных частей. Сначала введение, затем теория, потом «практичка», а перед сдачей всё это срочно соединяют. Рабочий подход другой. Тема курсовой, цель исследования, задачи, главы, выводы и защитная речь должны составлять одну цепочку. Тогда правок от научного руководителя мень…",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/ave-mariya/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Аве Мария",
+      "publishedAt": "2026-09-25T06:00:43.000Z",
+      "description": "Над материнскою могилой К мирам без меры и числа Крутая власть земли немилой Траву забвенья вознесла. // С травой поборешься всесильной, Направив заросли под нож, И в жизнь из тишины могильной Струю печали унесёшь. // Свою судьбу, свою виновность, Напрасный дар, пустой успех И материнскую готовность Восстать внезапно против всех...",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/bufernaya-zona/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Буферная зона",
+      "publishedAt": "2026-09-25T05:30:08.000Z",
+      "description": "Гюнтер затянулся, выдохнул дым и сказал: – Знаешь, есть такой синдром. Называется «синдромом эмигранта». Или, если по-научному, когнитивный диссонанс жертвы. – Скриптор приподнял голову, посмотрел на него. – Суть одна, – продолжил Гюнтер. – Чтобы не сойти с ума от тоски или неправильности своего выбора, человек начинает ненавидеть то, что оставил. Он поливает грязью свою родину, её порядки, её лю…",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/energiya-naroda-kak-potencial-razvitiya/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Энергия народа как потенциал развития",
+      "publishedAt": "2026-09-25T04:00:55.000Z",
+      "description": "Валентин Катаев был учеником Академика российской словесности, впоследствии – лауреата Нобеля – Бунина. «Валя, опишите птичку, которая сидит на ветке. Валя, опишите девочку, которая идёт мимо нас». Девочку звали Клавдия Заремба, впоследствии – пламенная большевичка. По приказу партии она сдала в руки ЧК своего возлюбленного белогвардейца... Почти до самого конца своей творческой деятельности тала…",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/svet-vo-tme/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Свет во тьме",
+      "publishedAt": "2026-09-25T03:00:58.000Z",
+      "description": "Название отсылает нас к почти исчезнувшей профессии, но у Виноградовой фонарщик – это не человек со стремянкой и маслом, а скорее метафора творца, хранителя памяти и проводника сквозь непроглядную ночь. Поэтесса исследует темноту, которая в её стихах лишена однозначного зла. Тьма для автора – это пространство тишины, первозданного хаоса или личной скорби. Фонарь выступает инструментом очеловечива…",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/neprostaya-prostaya-zhizn/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Непростая простая жизнь",
+      "publishedAt": "2026-09-25T02:30:31.000Z",
+      "description": "Один известный современный российский историк искусства считает, что искусство со времён Возрождения говорит о полном провале – «поражении» человека, который оно «раскрашивает» в красивые цвета. Мне не хотелось бы так думать, хотя современные человеческие «безумства», готовые вылиться в Третью мировую, заставляют отнестись к этому мнению серьёзно. Но вот интересно, посмотрела на небольшие графиче…",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/ya-dro/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Я»-дро",
+      "publishedAt": "2026-09-25T02:00:02.000Z",
+      "description": "Конец XIX – начало XX веков. Старые мифы рухнули, новые лишь пробивались в умах философов, поэтов – по сути, все они были революционерами. Нельзя сказать – вот философия, вот поэзия, вот революция. То, что у Соловьёва было философией, у Блока стало поэзией, у Фёдорова – проектом об «общем деле», у Хлебникова – звёздным языком. Мистические течения вытесняли религиозные догмы, человек вдруг стал ми…",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/ostajotsya-pesok-zolotoj/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Остаётся песок золотой…",
+      "publishedAt": "2026-09-25T00:00:19.000Z",
+      "description": "Есть поэты, которые, подобно резчикам по дереву или кости, месяцами, если не годами вытачивают, шлифуют, кропотливо доводят до ума свою поделку. А есть другие – пишут запоем, и причём обо всём, что в этот момент, как говорится, Бог на душу положит. А там, дескать, время разберётся: чему оставаться и жить в книгах, а что за ненадобностью пойдёт в мусорное ведро. Глеб Яковлевич Горбовский (1931-201…",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturnaya-rossiya",
+      "source": {
+        "name": "Литературная Россия",
+        "url": "https://litrossia.ru/item/derevnya-kotoroj-bolshe-net/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Деревня, которой больше нет",
+      "publishedAt": "2026-09-24T23:00:36.000Z",
+      "description": "У нас ведь есть грандиозная традиция «деревенщиков»... Те герои могли быть несчастными, пьющими, ободранными, но у них имелся фундамент. Они были нужны своей земле. У них были работа, соседи, бытовой космос и память, которую невозможно было аннулировать. А сегодняшняя литература упорно продолжает возить нас по музею. Это ведь дичайшая аберрация зрения: считать, что современная деревня просто «исп…",
+      "discoveredAt": "2026-09-29T20:39:31.182Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "505dacc39dc3d489e01b23118182123669ebd60337970fe74f90f16a4a9502e5"
+}

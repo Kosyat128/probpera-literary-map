@@ -1,0 +1,45 @@
+{
+  "sourceId": "australian-book-review",
+  "name": "Australian Book Review",
+  "entryUrl": "https://www.australianbookreview.com.au/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:31.391Z",
+  "requests": [
+    {
+      "url": "https://www.australianbookreview.com.au/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 172973,
+      "sha256": "7e4eea4cd00bc333da24f24b2534ff9c52b0bdec811ad202f7bb15fa03fbd3a4",
+      "accessedAt": "2026-09-29T20:39:34.810Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.australianbookreview.com.au/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 2109,
+    "sha256": "e90822acec9965321369bb0bf563811ad940a83f3d5099a586d95ff76976cec7",
+    "accessedAt": "2026-09-29T20:39:32.921Z",
+    "disallowed": [
+      "/administrator/",
+      "/bin/",
+      "/cache/",
+      "/cli/",
+      "/includes/",
+      "/installation/",
+      "/language/",
+      "/layouts/",
+      "/libraries/",
+      "/logs/",
+      "/tmp/",
+      "/*author",
+      "/*feed",
+      "/*format=feed",
+      "/*tag"
+    ]
+  }
+}

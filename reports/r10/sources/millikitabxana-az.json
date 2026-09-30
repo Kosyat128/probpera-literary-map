@@ -8,39 +8,87 @@
   "coverageCountryCodes": [
     "AZ"
   ],
-  "attemptedAt": "2026-09-26T17:28:59.791Z",
+  "attemptedAt": "2026-09-29T20:33:34.065Z",
   "requests": [
     {
       "url": "https://www.millikitabxana.az/en/",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 56855,
-      "sha256": "78b0ccd220d0e12c5a7c49cffe1bd9cc9f64c8ee991ba5d3484617bbb897889c",
-      "accessedAt": "2026-09-26T17:22:49.080Z"
+      "bytes": 56852,
+      "sha256": "966e88830ffa96697016b89e631c6b7960e7b872e249b57594548efb544331df",
+      "accessedAt": "2026-09-29T20:33:35.003Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 58377,
+      "sha256": "f50d22edf9bf1ea4144515ea1aa7a6f0cda3084480adbf89b5d0063829fd75e3",
+      "accessedAt": "2026-09-29T20:33:35.482Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 58083,
+      "sha256": "578dd360f24bb0f44672c03c2c80dc4d1a2f1f058c4e86b9ba842368a8f0278e",
+      "accessedAt": "2026-09-29T20:33:35.870Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news/5-may_ellilerin_mudafie-gunu",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 56939,
+      "sha256": "74f65e83bc927066094358f08f5d51449a2ea2ac0a383220beda141da2676256",
+      "accessedAt": "2026-09-29T20:33:36.568Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news/18_aprel-tarixi_abideler",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 57079,
+      "sha256": "89a15e61e04582528e8018f6bf76d89dc2339af8a25973b68768b1718609c6cf",
+      "accessedAt": "2026-09-29T20:33:36.981Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news/professor-hikmet-babaoglu",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 55838,
+      "sha256": "119dcdd700114283fd64f8ec3986a99b90d17c0f3498494a25d898df0551a9dc",
+      "accessedAt": "2026-09-29T20:33:37.283Z"
     },
     {
       "url": "https://www.millikitabxana.az/en/news/milli-kitabxananin-nezdinde-fealiyyet-gosteren-achiq-kitabxanada-1-iyun---ushaqlarin-beynelxalq-mudafiesi-gunune-hesr-edilmish-tedbir-kechirilib",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 61707,
-      "sha256": "4b1fab107461b41ebfc95a2fe0752dd70919135edd6610c7e1e7dc7344f971e6",
-      "accessedAt": "2026-09-26T17:29:00.840Z"
+      "sha256": "6da1f5de585334b78574bdead58619eb59787dfd47ba0467d97b45863685e1b0",
+      "accessedAt": "2026-09-29T20:33:37.599Z"
     },
     {
       "url": "https://www.millikitabxana.az/en/news/28-may--musteqillik-gunu-elektron-layiheler",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
       "bytes": 53691,
-      "sha256": "32a8a6c1716af93ed679b28b4d8dc823149a87937d1b10446bccd536513ef626",
-      "accessedAt": "2026-09-26T17:29:01.185Z"
+      "sha256": "fac1614deddcfcb0396a403fe7a60cfa3f7fd3e9fa5cf566772500c4bcea0003",
+      "accessedAt": "2026-09-29T20:33:37.868Z"
     },
     {
-      "url": "https://www.millikitabxana.az/en/news/tagiyev-neft-bedii-filminin-numayishi",
+      "url": "https://www.millikitabxana.az/en/news/shehersalma-ve-memarliq-ili--elektron-melumat-bazasi",
       "status": 200,
       "contentType": "text/html; charset=UTF-8",
-      "bytes": 54974,
-      "sha256": "5ae32f324e91942ee95ac363fe806a537230a7e04e37e9464e81f294d147769c",
-      "accessedAt": "2026-09-26T17:29:01.514Z"
+      "bytes": 57325,
+      "sha256": "a9c27c91b5333ceb9a117f6d8c88c06125a3797eddc1f9f87df4f20bc48674bb",
+      "accessedAt": "2026-09-29T20:33:38.132Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news/ferrux-rustemov",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 54197,
+      "sha256": "0034cd4eab442f43640abc9b879fd93851429cb0882a09ba4d5189fd2a40f1f4",
+      "accessedAt": "2026-09-29T20:33:38.454Z"
     }
   ],
   "status": "blocked",
@@ -51,11 +99,7 @@
     "contentType": "text/plain",
     "bytes": 23,
     "sha256": "3a125e84a637dc3f5442bb6949fa200056f37db4627b4c2a3addc55bbb89b703",
-    "accessedAt": "2026-09-26T17:29:00.397Z",
+    "accessedAt": "2026-09-29T20:33:34.487Z",
     "disallowed": []
-  },
-  "cacheReplayOf": {
-    "attemptedAt": "2026-09-26T17:22:47.799Z",
-    "sourceDocumentSha256": "78b0ccd220d0e12c5a7c49cffe1bd9cc9f64c8ee991ba5d3484617bbb897889c"
   }
 }

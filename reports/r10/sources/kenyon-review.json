@@ -1,0 +1,388 @@
+{
+  "sourceId": "kenyon-review",
+  "name": "The Kenyon Review",
+  "entryUrl": "https://kenyonreview.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-29T20:39:17.629Z",
+  "requests": [
+    {
+      "url": "https://kenyonreview.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 208922,
+      "sha256": "24b60a33262db6a7fae308d12cdefaf0ad74367bf4beb47e7e50c9c95ba19d69",
+      "accessedAt": "2026-09-29T20:39:18.434Z"
+    },
+    {
+      "url": "https://kenyonreview.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 13467,
+      "sha256": "07481c34e5a0e138ca4376cf90cd1d704e2cb69666723fcb56f1bed469a9c9b5",
+      "accessedAt": "2026-09-29T20:39:18.545Z"
+    },
+    {
+      "url": "https://kenyonreview.org/2019/10/poetry-for-people-who-hate-poetry-october-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 182532,
+      "sha256": "f6f4a88032d353a122c4ee4c51ae80626432a29425989dbaeb0f3a859c07c8d9",
+      "accessedAt": "2026-09-29T20:39:19.176Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://kenyonreview.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 347,
+    "sha256": "2056e300c40169e1113cc7961b61e49284ac9ac33bb5457ffaffac27c2bab8ce",
+    "accessedAt": "2026-09-29T20:39:18.272Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "kenyon-review",
+    "name": "The Kenyon Review",
+    "url": "https://kenyonreview.org/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "kenyon-review",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://kenyonreview.org"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://kenyonreview.org/2019/10/poetry-for-people-who-hate-poetry-october-2/"
+    ],
+    "verifiedAt": "2026-09-29T20:39:19.185Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-29. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "kenyon-review",
+    "source": {
+      "name": "The Kenyon Review",
+      "url": "https://kenyonreview.org/2019/10/poetry-for-people-who-hate-poetry-october-2/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Poetry for People Who Hate Poetry – October",
+    "publishedAt": "2019-10-18T13:53:19.000Z",
+    "description": "In the beginning was the Word, I read again, and the Word was with God, and the Word was God. Whatever your theology, that’s a sublime lede. We call this […] The post Poetry for People Who Hate Poetry – October appeared first on The Kenyon Review.",
+    "discoveredAt": "2026-09-29T20:39:18.546Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://kenyonreview.org/2019/10/poetry-for-people-who-hate-poetry-october-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 182532,
+      "sha256": "f6f4a88032d353a122c4ee4c51ae80626432a29425989dbaeb0f3a859c07c8d9",
+      "accessedAt": "2026-09-29T20:39:19.176Z",
+      "headline": "Poetry for People Who Hate Poetry - October « Kenyon Review Blog",
+      "excerpt": "Poetry for People Who Hate Poetry – October By Dave Lucas In the beginning was the Word, I read again, and the Word was with God, and the Word was God. Whatever your theology, that’s a sublime lede. We call this anonymous text the Gospel of John. Tradition attributes it to the Apostle John or John of Patmos, but the author identifies himself only as a disciple “whom Jesus loved.” No one asked me, ",
+      "publishedDates": [
+        {
+          "value": "2019-10-18T13:53:19+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2019-10-18T13:53:19+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2019-10-18T13:53:19+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://kenyonreview.org/2019/10/poetry-for-people-who-hate-poetry-october-2/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-29T20:39:19.185Z",
+  "foundItems": [
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2019/10/poetry-for-people-who-hate-poetry-october-2/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poetry for People Who Hate Poetry – October",
+      "publishedAt": "2019-10-18T13:53:19.000Z",
+      "description": "In the beginning was the Word, I read again, and the Word was with God, and the Word was God. Whatever your theology, that’s a sublime lede. We call this […] The post Poetry for People Who Hate Poetry – October appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2020/09/puritanism-old-and-new-in-conversation-with-marly-youmans-on-her-new-novel/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Puritanism, Old and New: In Conversation with Marly Youmans on her New Novel",
+      "publishedAt": "2020-09-11T19:37:39.000Z",
+      "description": "Marly Youmans, author of several books of poetry and fiction, released her new novel, Charis in the World of Wonders, just as the country was going into pandemic lockdown. I […] The post Puritanism, Old and New: In Conversation with Marly Youmans on her New Novel appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2024/05/2024-summer-reading-recommendations/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Kenyon Review‘s 2024 Summer Reading Recommendations",
+      "publishedAt": "2024-05-29T04:21:35.000Z",
+      "description": "Again this summer, The Kenyon Review shares staff reading recommendations! Interested in purchasing any of these titles? We encourage you to do so through our Bookshop.org page! The post <i>The Kenyon Review</i>‘s 2024 Summer Reading Recommendations appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2023/12/the-kenyon-reviews-2023-winter-reading-recommendations/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Kenyon Review’s 2023 Winter Reading Recommendations",
+      "publishedAt": "2023-12-13T07:29:00.000Z",
+      "description": "We’re pleased to share this winter’s Kenyon Review winter reading recommendations from workshop faculty, editors, and staff. Click here to purchase these books on the KR Bookshop.org page. The post The Kenyon Review’s 2023 Winter Reading Recommendations appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2023/06/2023-summer-reading-recommendations/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Kenyon Review‘s 2023 Summer Reading Recommendations",
+      "publishedAt": "2023-06-22T15:50:45.000Z",
+      "description": "It pleases us to share this summer’s Kenyon Review summer reading recommendations. Click here to purchase the books that appear here on the KR Bookshop.org page. The post <i>The Kenyon Review</i>‘s 2023 Summer Reading Recommendations appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2021/08/from-the-caves-thea-prieto/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From the Caves–Thea Prieto",
+      "publishedAt": "2021-08-10T18:42:00.000Z",
+      "description": "With the Covid-19 pandemic, there have obviously been dozens of books that haven’t received the shine they might have under normal circumstances. One new release that I hope gets all […] The post From the Caves–Thea Prieto appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2019/10/reading-marjorie-welish-2/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reading Marjorie Welish",
+      "publishedAt": "2019-10-18T22:52:16.000Z",
+      "description": "When Rabo Karabekian, the great abstract expressionist painter and narrator of Kurt Vonnegut’s novel Bluebeard, describes what he loves about his art, he does not talk about expressing grand ideas […] The post Reading Marjorie Welish appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2019/10/reading-marjorie-welish/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reading Marjorie Welish",
+      "publishedAt": "2019-10-18T22:43:12.000Z",
+      "description": "When Rabo Karabekian, the great abstract expressionist painter and narrator of Kurt Vonnegut’s novel Bluebeard, describes what he loves about his art, he does not talk about expressing grand ideas […] The post Reading Marjorie Welish appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2019/10/monstering-the-essay/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Monstering the Essay",
+      "publishedAt": "2019-10-14T13:33:18.000Z",
+      "description": "This is the second in a series, Adventures in Composition and the Essay. Last year I taught a hybrid creative writing class and a monster-themed composition class at Fordham. My […] The post Monstering the Essay appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenyon-review",
+      "source": {
+        "name": "The Kenyon Review",
+        "url": "https://kenyonreview.org/2019/10/the-most-essential-item-in-the-writers-toolbox-a-conversation-with-lise-funderburg/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Most Essential Item in the Writer’s Toolbox: A Conversation With Lise Funderburg",
+      "publishedAt": "2019-10-03T10:06:37.000Z",
+      "description": "After reflecting on her origins in ingenious ways in her own work, Lise Funderburg has now edited the book, Apple, Tree: Writers on Their Parents. In this project, she curates […] The post The Most Essential Item in the Writer’s Toolbox: A Conversation With Lise Funderburg appeared first on The Kenyon Review.",
+      "discoveredAt": "2026-09-29T20:39:18.546Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "07481c34e5a0e138ca4376cf90cd1d704e2cb69666723fcb56f1bed469a9c9b5"
+}
