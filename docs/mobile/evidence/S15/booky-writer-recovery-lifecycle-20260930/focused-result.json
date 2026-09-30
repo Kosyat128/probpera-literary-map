@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T10:33:34.062Z",
+  "status": "WRITER_RECOVERY_LIFECYCLE_FOCUSED_BROWSER_EVIDENCE",
+  "pass": true,
+  "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+  "checkpoint": "b04fbd2574fb8da8ac830b63127df924dd684fe1",
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/entry.json",
+    "sha256": "9749cfd4163aa3b879844e7856e262fe4e58f68c46e7d468f481893f5d9e0170"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/source-manifests/bb1c90e3d6f492ee.json",
+    "sha256": "bb1c90e3d6f492ee0150d9bdaac0069f6ecd3dfbc1416f77c799ca22ca34eacd",
+    "fileCount": 1665
+  },
+  "changedSourcePaths": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "protectedInputsVerified": true,
+  "runtimeUnchanged": true,
+  "fixtureOnly": true,
+  "browserCases": 2,
+  "captures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+      "sha256": "5a6fff97dd4ae34a20c1d3143162169965737c8d05eb11b3d886bc403e8dc572",
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-c3674814d7db54cc38f911f503c4c93fe2b6d71b.json",
+        "sha256": "5a6fff97dd4ae34a20c1d3143162169965737c8d05eb11b3d886bc403e8dc572"
+      },
+      "test": "Booky explicit writer filter recovery ru"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+      "sha256": "9140fe49fa08b0611f524759027900818c6fb9c8d6f175b7131e0b020fc3dac4",
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-d987cb4da23bde046f29d95c7faededcae746454.json",
+        "sha256": "9140fe49fa08b0611f524759027900818c6fb9c8d6f175b7131e0b020fc3dac4"
+      },
+      "test": "Booky explicit writer filter recovery en"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "Booky explicit writer filter recovery ru",
+      "scenario": "booky-writer-filter-recovery-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativePickerEquivalent": false,
+        "controlledPickerSetup": true,
+        "pendingAuthorCommitVerified": true,
+        "manualCurrentStatusRepairVerified": true,
+        "ordinaryRestrictionsPreserved": true,
+        "explicitRecoveryTrustedTouch": true,
+        "allBooksSelected": true,
+        "writerAndSortPreserved": true,
+        "renderedResultsAcknowledged": true,
+        "savedContentPreserved": true,
+        "preferencesAndGlobePreserved": true,
+        "readerDeferralExercised": true,
+        "newerUserEditIntegrationExercised": false
+      },
+      "currentOnlyRecovery": {
+        "kind": "reader-close-restores-current-history",
+        "requestId": 5,
+        "readerBookKey": "russia:dostoevsky:crime-and-punishment",
+        "checks": [
+          {
+            "name": "trusted real book owns the reader before a current recovery is admitted",
+            "pass": true
+          },
+          {
+            "name": "reader deferral neither dispatches recovery nor changes the current book or semantic progress",
+            "pass": true
+          },
+          {
+            "name": "real current-view change discards only the obsolete request before a fresh explicit writer request",
+            "pass": true
+          }
+        ],
+        "historyBoundary": {
+          "prior": {
+            "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+            "context": {
+              "version": 1,
+              "shelfId": "all",
+              "search": {
+                "query": "",
+                "scope": "library"
+              },
+              "filters": {
+                "quickPreset": "custom",
+                "authorKey": "russia:dostoevsky",
+                "countryIds": [],
+                "genreIds": [],
+                "audienceIds": [],
+                "periods": [],
+                "originalLanguageIds": [],
+                "editorialStatuses": [],
+                "coverModes": [],
+                "articleRelations": [],
+                "savedOnly": false,
+                "sort": "title"
+              },
+              "viewMode": "catalog",
+              "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+              "pageIndex": 0,
+              "scroll": {
+                "x": 0,
+                "y": 0
+              },
+              "selectedBookKey": null,
+              "inspectionOpen": false,
+              "focusOrigin": null
+            }
+          },
+          "close": {
+            "detailKey": "russia:dostoevsky:crime-and-punishment",
+            "shelfChanged": false,
+            "book": "russia:dostoevsky:crime-and-punishment"
+          },
+          "restored": {
+            "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+            "context": {
+              "version": 1,
+              "shelfId": "all",
+              "search": {
+                "query": "",
+                "scope": "library"
+              },
+              "filters": {
+                "quickPreset": "custom",
+                "authorKey": "russia:dostoevsky",
+                "countryIds": [],
+                "genreIds": [],
+                "audienceIds": [],
+                "periods": [],
+                "originalLanguageIds": [],
+                "editorialStatuses": [],
+                "coverModes": [],
+                "articleRelations": [],
+                "savedOnly": false,
+                "sort": "title"
+              },
+              "viewMode": "catalog",
+              "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+              "pageIndex": 0,
+              "scroll": {
+                "x": 0,
+                "y": 0
+              },
+              "selectedBookKey": null,
+              "inspectionOpen": false,
+              "focusOrigin": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "test": "Booky explicit writer filter recovery en",
+      "scenario": "booky-writer-filter-recovery-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativePickerEquivalent": false,
+        "controlledPickerSetup": true,
+        "pendingAuthorCommitVerified": true,
+        "ordinaryRestrictionsPreserved": true,
+        "explicitRecoveryTrustedTouch": true,
+        "allBooksSelected": true,
+        "writerAndSortPreserved": true,
+        "renderedResultsAcknowledged": true,
+        "savedContentPreserved": true,
+        "preferencesAndGlobePreserved": true,
+        "readerDeferralExercised": true,
+        "newerUserEditIntegrationExercised": true
+      },
+      "currentOnlyRecovery": {
+        "kind": "newer-trusted-facet-edit-during-reader-deferral",
+        "requestId": 5,
+        "readerBookKey": "russia:dostoevsky:crime-and-punishment",
+        "checks": [
+          {
+            "name": "trusted real book owns the reader before a current recovery is admitted",
+            "pass": true
+          },
+          {
+            "name": "reader deferral neither dispatches recovery nor changes the current book or semantic progress",
+            "pass": true
+          },
+          {
+            "name": "real current-view change discards only the obsolete request before a fresh explicit writer request",
+            "pass": true
+          },
+          {
+            "name": "a newer trusted facet edit invalidates deferred recovery while its reader is still owned",
+            "pass": true
+          }
+        ],
+        "historyBoundary": {
+          "prior": {
+            "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+            "context": {
+              "version": 1,
+              "shelfId": "all",
+              "search": {
+                "query": "",
+                "scope": "library"
+              },
+              "filters": {
+                "quickPreset": "custom",
+                "authorKey": "russia:dostoevsky",
+                "countryIds": [],
+                "genreIds": [],
+                "audienceIds": [],
+                "periods": [],
+                "originalLanguageIds": [],
+                "editorialStatuses": [],
+                "coverModes": [],
+                "articleRelations": [],
+                "savedOnly": false,
+                "sort": "title"
+              },
+              "viewMode": "catalog",
+              "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+              "pageIndex": 0,
+              "scroll": {
+                "x": 0,
+                "y": 0
+              },
+              "selectedBookKey": null,
+              "inspectionOpen": false,
+              "focusOrigin": null
+            }
+          },
+          "close": {
+            "detailKey": "russia:dostoevsky:crime-and-punishment",
+            "shelfChanged": false,
+            "book": "russia:dostoevsky:crime-and-punishment"
+          },
+          "restored": {
+            "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+            "context": {
+              "version": 1,
+              "shelfId": "all",
+              "search": {
+                "query": "",
+                "scope": "library"
+              },
+              "filters": {
+                "quickPreset": "custom",
+                "authorKey": "russia:dostoevsky",
+                "countryIds": [],
+                "genreIds": [],
+                "audienceIds": [],
+                "periods": [],
+                "originalLanguageIds": [],
+                "editorialStatuses": [],
+                "coverModes": [],
+                "articleRelations": [],
+                "savedOnly": false,
+                "sort": "title"
+              },
+              "viewMode": "catalog",
+              "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+              "pageIndex": 0,
+              "scroll": {
+                "x": 0,
+                "y": 0
+              },
+              "selectedBookKey": null,
+              "inspectionOpen": false,
+              "focusOrigin": null
+            }
+          }
+        }
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/visual-review.json",
+    "sha256": "96b6f99ce346a0a88efdb0ddab46ce5097bc791d3147067f8a1160de415f7844"
+  },
+  "inspectedImageCount": 4,
+  "totalCapturedImageCount": 4,
+  "run": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/browser-a3/result.json",
+    "sha256": "74edf63282bc487319b5a23251c7041959cdd3ea7aaf0fc411c699085299e6a4"
+  },
+  "execution": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/browser-a3/execution.json",
+    "sha256": "23028f18cdf4b4ca0d341f0e2ed42ac41e2ada77d0a6bcb771ccaa40b73c95f5"
+  },
+  "rawReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/browser-a3/playwright.json",
+    "sha256": "156d89cda6c26f5d4261076544f9259cc4085d86938061627415dc1b9c960370"
+  },
+  "sourceApplyReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/source-apply-receipt.json",
+    "sha256": "45ccbbbed746ee64da1628a0080badccb88f8b4ded71ce8134db1e658fe804d3"
+  },
+  "acceptedDesign": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+      "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+    },
+    "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+    "checkpoint": "a139bbbe3d3dd27255773147e79312dda5faf4e4"
+  },
+  "d212": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+      "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+    },
+    "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+    "checkpoint": "b04fbd2574fb8da8ac830b63127df924dd684fe1"
+  },
+  "retainedValidation": {
+    "designResult": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+      "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+    },
+    "designSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+    "attributedToCurrentFixture": false,
+    "pwaRebuilt": false,
+    "androidRebuilt": false,
+    "unitRerun": false,
+    "staticRerun": false
+  },
+  "productionDefectIdentified": false,
+  "globalCheckpointUpdated": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "limitations": [
+    "Four fresh images cover the existing empty/recovered views before the new lifecycle extension. Reader deferral and newer-edit conclusions rely on causal runtime assertions and authenticated native-app source traces.",
+    "This is fixture-only focused browser evidence. Prior TS/unit/PWA/APK evidence retains its original source and build identity; no fresh build validation or installed-device/stage/release acceptance is claimed."
+  ]
+}

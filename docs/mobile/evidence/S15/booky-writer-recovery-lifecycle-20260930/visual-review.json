@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T10:33:16.723Z",
+  "pass": true,
+  "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/source-manifests/bb1c90e3d6f492ee.json",
+    "sha256": "bb1c90e3d6f492ee0150d9bdaac0069f6ecd3dfbc1416f77c799ca22ca34eacd",
+    "fileCount": 1665
+  },
+  "inspectedCount": 4,
+  "totalCapturedCount": 4,
+  "scope": "Direct review of the selected final RU/EN writer-filter recovery captures, showing the empty collection offer and resulting writer collection, localized controls and visible filtering context. Every configured capture is authenticated; only the explicit selected images are claimed as directly reviewed.",
+  "limitations": [
+    "This review directly inspects 4 of 4 final captures.",
+    "Static images cannot establish trusted input, ordinary filter preservation, reader ownership, request cancellation or rendered acknowledgement; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/review-receipt-bound.json",
+    "sha256": "17339077eb5fba3e3eab726384485296647374ef4bfd234a89b9adcd1b8068b3"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "RU 390x844: collection header, archive hierarchy and single rounded Booky sheet readable without stacked overlapping dialogs.",
+        "Recovery offer fits inside its card with the explicit writer button. The lower sheet is bounded/scrollable; no claim all content fits simultaneously.",
+        "These captures precede the added real-reader lifecycle; static frames do not prove ownership, cancellation, progress persistence or device acceptance."
+      ],
+      "bytes": 64266,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "RU 390x844: collection header, archive hierarchy and single rounded Booky sheet readable without stacked overlapping dialogs.",
+        "Recovery acknowledgement, collection help and introduction button have distinct spacing and readable labels.",
+        "These captures precede the added real-reader lifecycle; static frames do not prove ownership, cancellation, progress persistence or device acceptance."
+      ],
+      "bytes": 64497,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "EN 320x844: localized heading and actions fit the narrow mobile sheet; Stop and Close move to the next row when needed.",
+        "Recovery offer fits inside its card with the explicit writer button. The lower sheet is bounded/scrollable; no claim all content fits simultaneously.",
+        "These captures precede the added real-reader lifecycle; static frames do not prove ownership, cancellation, progress persistence or device acceptance."
+      ],
+      "bytes": 57300,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "EN 320x844: localized heading and actions fit the narrow mobile sheet; Stop and Close move to the next row when needed.",
+        "Recovery acknowledgement, collection help and introduction button have distinct spacing and readable labels.",
+        "These captures precede the added real-reader lifecycle; static frames do not prove ownership, cancellation, progress persistence or device acceptance."
+      ],
+      "bytes": 58857,
+      "width": 320,
+      "height": 844
+    }
+  ],
+  "releaseReady": false
+}

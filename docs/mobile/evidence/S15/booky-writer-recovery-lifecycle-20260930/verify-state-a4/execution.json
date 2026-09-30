@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "verificationProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/metadata-continuation-root-a1/verify-checkpoint.mjs",
+    "sha256": "d1bb259e6e57ddcd6da747959defd61794319e9cbef1c11e8c1d6fa69049f85e"
+  },
+  "continuationBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/metadata-continuation-root-a1/binding.json",
+    "sha256": "54e5e2d8e89a5412ab24918cc1ab84f15a3078de4c254084cc633afcc18c8ae0"
+  },
+  "priorFailedVerification": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/verify-state-a3/result.json",
+    "sha256": "3fae24f376521d1a9f9fdd97918d071502c7f21a1ca5f32704247ae7bec36299"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-state.mjs"
+  ],
+  "startedAt": "2026-09-30T12:04:52.711Z",
+  "finishedAt": "2026-09-30T12:05:25.600Z",
+  "durationMs": 32888,
+  "exitCode": 0,
+  "error": null,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/verify-state-a4/stdout.log",
+    "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/verify-state-a4/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "applicationChecksRun": false,
+  "oldCasesRun": false,
+  "testsRun": false,
+  "buildsRun": false
+}

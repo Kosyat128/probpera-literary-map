@@ -1,0 +1,954 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T10:53:01.629Z",
+  "stage": "S15",
+  "status": "BOOKY_WRITER_RECOVERY_LIFECYCLE_FOCUSED_VALIDATION",
+  "pass": true,
+  "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+  "runtimeSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "buildSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+    "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+    "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/entry.json",
+    "sha256": "9749cfd4163aa3b879844e7856e262fe4e58f68c46e7d468f481893f5d9e0170"
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/scope.json",
+    "sha256": "adc829d37b84d1caeff7219392f9100aeb92fc0b442d358713a6f20e9b8266a6"
+  },
+  "checkpointBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/checkpoint-review-a7/bound-a3/binding.json",
+    "sha256": "418f4f600141afebccada20b81789164bda70d5a07e14cf7117b12fdafe41d2e"
+  },
+  "checkpointHelper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/checkpoint-review-a7/record-checkpoint.mjs",
+    "sha256": "3eb529e7319ee9ee421d121f4af7c5fb249e1d738329145f9cb2f4388f93a723"
+  },
+  "sourceCommitReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/source-commit.json",
+    "sha256": "9d404edd2c0883b1e39b62edcee9e84eb2da96592737bdc557fedb2293cf1892"
+  },
+  "sourceApplyReceipt": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/source-apply-receipt.json",
+    "sha256": "45ccbbbed746ee64da1628a0080badccb88f8b4ded71ce8134db1e658fe804d3"
+  },
+  "originalFixtureBeforeSha256": "d4e1cc8b68fc10c2df0e71bd6c8accb469c728f52cd3ae8e817ee15a9faa2494",
+  "originalSourceApplyReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-apply-receipt.json",
+    "sha256": "fd81e4672a299b6cdd43975e164f9d74e1ff9b3a6b838bf0f84b4a7973e8119b"
+  },
+  "originalFixtureBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/fixture-source-binding.json",
+    "sha256": "f5e3703c54100912bdfebfcd4fab4ee978f7e783da64bd190ac2a62454436fe7"
+  },
+  "priorImmediateSourceApplyReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-apply-receipt.json",
+    "sha256": "5c3fdab6aedd3061eed4371d67e087acd2bf0dd071e140594e95001c86d1bb5d"
+  },
+  "priorSourceApplyChain": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-apply-receipt.json",
+      "sha256": "fd81e4672a299b6cdd43975e164f9d74e1ff9b3a6b838bf0f84b4a7973e8119b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-apply-receipt.json",
+      "sha256": "5c3fdab6aedd3061eed4371d67e087acd2bf0dd071e140594e95001c86d1bb5d"
+    }
+  ],
+  "incrementalSourceApply": true,
+  "priorFailedAttempts": [
+    {
+      "diagnosticOnly": true,
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "fixtureSha256": "67a328e4c724fdce384b505f64a41af40a4c53b94303898ecfebf87c75898802",
+      "entry": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/entry.json",
+        "sha256": "1d79e1ed4d8a3a5ff27b4465eee77388667db8823334706d7cce3358c0e8e04f"
+      },
+      "result": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/browser-a1/result.json",
+        "sha256": "7028ea9d2a9a1de1c9bfc23beb96ac3c9deb6a27dd9f34d090ba846176c28b03"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/browser-a1/execution.json",
+        "sha256": "d8d6088cf34bcb5170907f504c858afac03a360bde7ac69aaaee163c9166944d"
+      },
+      "rawReport": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/browser-a1/playwright.json",
+        "sha256": "caca8e9f6369abfec553307285b27cb4f08787ec9860b3a0698fc4d12dc3bb5b"
+      },
+      "sourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-manifests/ec97eb746e694de4.json",
+        "sha256": "ec97eb746e694de41def6288189a5621bc6d8764631bd910ec2c938d13b8654e",
+        "fileCount": 1665
+      },
+      "preservedFailure": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/history-parser-correction-a2/failed-browser-a1.json",
+        "sha256": "c1661bb5018058b396aea9efeb19a7d9867f2529c6eb9149efacc2d4b23ff69a"
+      },
+      "sourceApplyReceipt": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-apply-receipt.json",
+        "sha256": "fd81e4672a299b6cdd43975e164f9d74e1ff9b3a6b838bf0f84b4a7973e8119b"
+      }
+    },
+    {
+      "diagnosticOnly": true,
+      "pass": false,
+      "attempt": "a2",
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "fixtureSha256": "911320ba6fea791554d9d052cc4b43b951981f4b3c0d4adfa582ef2f0b389dc5",
+      "entry": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/entry.json",
+        "sha256": "04d62da0306b0b9b39e4ed4a96bbf43bb652c7496fadb530ebe9813b9c7dbd91"
+      },
+      "result": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/result.json",
+        "sha256": "3d492896a41c1fddc52afcacb45fb24d0a245fb32175ab029f739232f834c17a"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/execution.json",
+        "sha256": "e3595beac18580303199e3e54c7d7ac2b11c539241fa56919b4b3645aa3d5bd1"
+      },
+      "rawReport": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/playwright.json",
+        "sha256": "0327184c9cbc89fe2d6fc16c77c830dd335fa37342c5d8adaa48f96ba7e4f81e"
+      },
+      "sourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-manifests/bbfd70269dc6f2ae.json",
+        "sha256": "bbfd70269dc6f2aeeedcb30547882ce781a875598c299dc14c99fbb623793dd4",
+        "fileCount": 1665
+      },
+      "sourceApplyReceipt": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-apply-receipt.json",
+        "sha256": "5c3fdab6aedd3061eed4371d67e087acd2bf0dd071e140594e95001c86d1bb5d"
+      }
+    }
+  ],
+  "actualBindingProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review-a3/bind-successor.mjs",
+    "sha256": "c172230f5f15a3682dc03ef593d3213271152b3dee3ad157d95a290114b2c2da"
+  },
+  "priorBindingCorrections": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review-a2/bind-successor-a3-correction.json",
+      "sha256": "ec7e99055d2d61dae730b972b60ff375f9622e6fea1fd28cf982cc405fdef9d5"
+    }
+  ],
+  "focusedAssessment": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/focused-result.json",
+    "sha256": "7cc1bc9a03629cef364cc384ae3bc89471d6642e8f3b4dd601f09504f5008665"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/source-manifests/bb1c90e3d6f492ee.json",
+    "sha256": "bb1c90e3d6f492ee0150d9bdaac0069f6ecd3dfbc1416f77c799ca22ca34eacd",
+    "fileCount": 1665
+  },
+  "observedSourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/source-manifests/bb1c90e3d6f492ee.json",
+    "sha256": "bb1c90e3d6f492ee0150d9bdaac0069f6ecd3dfbc1416f77c799ca22ca34eacd",
+    "fileCount": 1665
+  },
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1664,
+  "unchangedTrackedInputCount": 1664,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "runtimeUnchanged": true,
+  "fixtureOnly": true,
+  "browserCases": 2,
+  "actualAppCaseCount": 2,
+  "captures": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/captures/ru.json",
+      "sha256": "5a6fff97dd4ae34a20c1d3143162169965737c8d05eb11b3d886bc403e8dc572",
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-c3674814d7db54cc38f911f503c4c93fe2b6d71b.json",
+        "sha256": "5a6fff97dd4ae34a20c1d3143162169965737c8d05eb11b3d886bc403e8dc572"
+      },
+      "test": "Booky explicit writer filter recovery ru",
+      "originalSource": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+        "sha256": "5a6fff97dd4ae34a20c1d3143162169965737c8d05eb11b3d886bc403e8dc572",
+        "attachment": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-c3674814d7db54cc38f911f503c4c93fe2b6d71b.json",
+          "sha256": "5a6fff97dd4ae34a20c1d3143162169965737c8d05eb11b3d886bc403e8dc572"
+        },
+        "test": "Booky explicit writer filter recovery ru"
+      }
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/captures/en.json",
+      "sha256": "9140fe49fa08b0611f524759027900818c6fb9c8d6f175b7131e0b020fc3dac4",
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-d987cb4da23bde046f29d95c7faededcae746454.json",
+        "sha256": "9140fe49fa08b0611f524759027900818c6fb9c8d6f175b7131e0b020fc3dac4"
+      },
+      "test": "Booky explicit writer filter recovery en",
+      "originalSource": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+        "sha256": "9140fe49fa08b0611f524759027900818c6fb9c8d6f175b7131e0b020fc3dac4",
+        "attachment": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-d987cb4da23bde046f29d95c7faededcae746454.json",
+          "sha256": "9140fe49fa08b0611f524759027900818c6fb9c8d6f175b7131e0b020fc3dac4"
+        },
+        "test": "Booky explicit writer filter recovery en"
+      }
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "Booky explicit writer filter recovery ru",
+      "scenario": "booky-writer-filter-recovery-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativePickerEquivalent": false,
+        "controlledPickerSetup": true,
+        "pendingAuthorCommitVerified": true,
+        "manualCurrentStatusRepairVerified": true,
+        "ordinaryRestrictionsPreserved": true,
+        "explicitRecoveryTrustedTouch": true,
+        "allBooksSelected": true,
+        "writerAndSortPreserved": true,
+        "renderedResultsAcknowledged": true,
+        "savedContentPreserved": true,
+        "preferencesAndGlobePreserved": true,
+        "readerDeferralExercised": true,
+        "newerUserEditIntegrationExercised": false
+      },
+      "currentOnlyRecovery": {
+        "kind": "reader-close-restores-current-history",
+        "requestId": 5,
+        "readerBookKey": "russia:dostoevsky:crime-and-punishment",
+        "checks": [
+          {
+            "name": "trusted real book owns the reader before a current recovery is admitted",
+            "pass": true
+          },
+          {
+            "name": "reader deferral neither dispatches recovery nor changes the current book or semantic progress",
+            "pass": true
+          },
+          {
+            "name": "real current-view change discards only the obsolete request before a fresh explicit writer request",
+            "pass": true
+          }
+        ],
+        "historyBoundary": {
+          "prior": {
+            "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+            "context": {
+              "version": 1,
+              "shelfId": "all",
+              "search": {
+                "query": "",
+                "scope": "library"
+              },
+              "filters": {
+                "quickPreset": "custom",
+                "authorKey": "russia:dostoevsky",
+                "countryIds": [],
+                "genreIds": [],
+                "audienceIds": [],
+                "periods": [],
+                "originalLanguageIds": [],
+                "editorialStatuses": [],
+                "coverModes": [],
+                "articleRelations": [],
+                "savedOnly": false,
+                "sort": "title"
+              },
+              "viewMode": "catalog",
+              "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+              "pageIndex": 0,
+              "scroll": {
+                "x": 0,
+                "y": 0
+              },
+              "selectedBookKey": null,
+              "inspectionOpen": false,
+              "focusOrigin": null
+            }
+          },
+          "close": {
+            "detailKey": "russia:dostoevsky:crime-and-punishment",
+            "shelfChanged": false,
+            "book": "russia:dostoevsky:crime-and-punishment"
+          },
+          "restored": {
+            "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+            "context": {
+              "version": 1,
+              "shelfId": "all",
+              "search": {
+                "query": "",
+                "scope": "library"
+              },
+              "filters": {
+                "quickPreset": "custom",
+                "authorKey": "russia:dostoevsky",
+                "countryIds": [],
+                "genreIds": [],
+                "audienceIds": [],
+                "periods": [],
+                "originalLanguageIds": [],
+                "editorialStatuses": [],
+                "coverModes": [],
+                "articleRelations": [],
+                "savedOnly": false,
+                "sort": "title"
+              },
+              "viewMode": "catalog",
+              "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+              "pageIndex": 0,
+              "scroll": {
+                "x": 0,
+                "y": 0
+              },
+              "selectedBookKey": null,
+              "inspectionOpen": false,
+              "focusOrigin": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "test": "Booky explicit writer filter recovery en",
+      "scenario": "booky-writer-filter-recovery-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativePickerEquivalent": false,
+        "controlledPickerSetup": true,
+        "pendingAuthorCommitVerified": true,
+        "ordinaryRestrictionsPreserved": true,
+        "explicitRecoveryTrustedTouch": true,
+        "allBooksSelected": true,
+        "writerAndSortPreserved": true,
+        "renderedResultsAcknowledged": true,
+        "savedContentPreserved": true,
+        "preferencesAndGlobePreserved": true,
+        "readerDeferralExercised": true,
+        "newerUserEditIntegrationExercised": true
+      },
+      "currentOnlyRecovery": {
+        "kind": "newer-trusted-facet-edit-during-reader-deferral",
+        "requestId": 5,
+        "readerBookKey": "russia:dostoevsky:crime-and-punishment",
+        "checks": [
+          {
+            "name": "trusted real book owns the reader before a current recovery is admitted",
+            "pass": true
+          },
+          {
+            "name": "reader deferral neither dispatches recovery nor changes the current book or semantic progress",
+            "pass": true
+          },
+          {
+            "name": "real current-view change discards only the obsolete request before a fresh explicit writer request",
+            "pass": true
+          },
+          {
+            "name": "a newer trusted facet edit invalidates deferred recovery while its reader is still owned",
+            "pass": true
+          }
+        ],
+        "historyBoundary": {
+          "prior": {
+            "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+            "context": {
+              "version": 1,
+              "shelfId": "all",
+              "search": {
+                "query": "",
+                "scope": "library"
+              },
+              "filters": {
+                "quickPreset": "custom",
+                "authorKey": "russia:dostoevsky",
+                "countryIds": [],
+                "genreIds": [],
+                "audienceIds": [],
+                "periods": [],
+                "originalLanguageIds": [],
+                "editorialStatuses": [],
+                "coverModes": [],
+                "articleRelations": [],
+                "savedOnly": false,
+                "sort": "title"
+              },
+              "viewMode": "catalog",
+              "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+              "pageIndex": 0,
+              "scroll": {
+                "x": 0,
+                "y": 0
+              },
+              "selectedBookKey": null,
+              "inspectionOpen": false,
+              "focusOrigin": null
+            }
+          },
+          "close": {
+            "detailKey": "russia:dostoevsky:crime-and-punishment",
+            "shelfChanged": false,
+            "book": "russia:dostoevsky:crime-and-punishment"
+          },
+          "restored": {
+            "url": "https://booky-support.test/?country=russia&writer=dostoevsky#atlas",
+            "context": {
+              "version": 1,
+              "shelfId": "all",
+              "search": {
+                "query": "",
+                "scope": "library"
+              },
+              "filters": {
+                "quickPreset": "custom",
+                "authorKey": "russia:dostoevsky",
+                "countryIds": [],
+                "genreIds": [],
+                "audienceIds": [],
+                "periods": [],
+                "originalLanguageIds": [],
+                "editorialStatuses": [],
+                "coverModes": [],
+                "articleRelations": [],
+                "savedOnly": false,
+                "sort": "title"
+              },
+              "viewMode": "catalog",
+              "focusedBookKey": "russia:dostoevsky:crime-and-punishment",
+              "pageIndex": 0,
+              "scroll": {
+                "x": 0,
+                "y": 0
+              },
+              "selectedBookKey": null,
+              "inspectionOpen": false,
+              "focusOrigin": null
+            }
+          }
+        }
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/visual-review.json",
+    "sha256": "96b6f99ce346a0a88efdb0ddab46ce5097bc791d3147067f8a1160de415f7844"
+  },
+  "inspectedImageCount": 4,
+  "totalCapturedImageCount": 4,
+  "visualReviewScope": "Direct review of the selected final RU/EN writer-filter recovery captures, showing the empty collection offer and resulting writer collection, localized controls and visible filtering context. Every configured capture is authenticated; only the explicit selected images are claimed as directly reviewed.",
+  "visualReviewLimitations": [
+    "This review directly inspects 4 of 4 final captures.",
+    "Static images cannot establish trusted input, ordinary filter preservation, reader ownership, request cancellation or rendered acknowledgement; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "runs": {
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/browser-a3/result.json",
+      "sha256": "74edf63282bc487319b5a23251c7041959cdd3ea7aaf0fc411c699085299e6a4",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/browser-a3/execution.json",
+        "sha256": "23028f18cdf4b4ca0d341f0e2ed42ac41e2ada77d0a6bcb771ccaa40b73c95f5"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/browser-a3/playwright.json",
+        "sha256": "156d89cda6c26f5d4261076544f9259cc4085d86938061627415dc1b9c960370"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "attempts": {
+    "browser": "a3"
+  },
+  "unitCount": 0,
+  "unitRerun": false,
+  "unitSuitesRerun": false,
+  "staticRerun": false,
+  "browserRerun": true,
+  "priorSelectedCasesRerun": false,
+  "buildsRebuilt": false,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
+    "sha256": "62bbb224b378d0fa378f7d918afd89bcbbb8e4b3d816216c510695970f551fd0"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/android-a1/result.json",
+    "sha256": "c27d2e127c610f40aff350e75ebb815c0007b37694fc4a4161dfa2f9d5a5762f"
+  },
+  "pwaBuildId": "ff3c9f551938b9b4f4540bc567100f0133f543300b7d14ea7aca81687e3af4d9",
+  "androidBuildId": "00a6bcaa9b042491593608f517851d1d7961d804c3af37c531de7b852fcf6183",
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
+        "sha256": "62bbb224b378d0fa378f7d918afd89bcbbb8e4b3d816216c510695970f551fd0"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/pwa/pwa-ff3c9f55/artifact.json",
+        "sha256": "47a331cbc04d8954564ed1c0a8b2ae2231eecc01f6a838384b377c02ab904370"
+      },
+      "apk": null,
+      "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+      "buildId": "ff3c9f551938b9b4f4540bc567100f0133f543300b7d14ea7aca81687e3af4d9",
+      "sourceInventoryDifferences": [
+        {
+          "path": "src/host/bookyNavigationDrafts.ts",
+          "artifactSourceSha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4",
+          "currentSourceSha256": "462ef334186954535c87a8a4b94e6b709888bbf1acfa6a6832357eec883880fe",
+          "kind": "unimported-D212-provenance",
+          "fixtureOnlyInput": false,
+          "unimportedProvenanceInput": true
+        }
+      ],
+      "capturedInputsOutsidePrimaryEnvelope": [
+        {
+          "path": "data/book-canon-source-registry.json",
+          "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+          "currentInput": {
+            "path": "data/book-canon-source-registry.json",
+            "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+          },
+          "authentication": {
+            "kind": "supplemental-archive-envelope",
+            "currentSupplementalInputs": [
+              {
+                "path": "data/book-canon-source-registry.json",
+                "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+              }
+            ],
+            "originalD213SupplementalInputs": [
+              {
+                "path": "data/book-canon-source-registry.json",
+                "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+              }
+            ]
+          },
+          "originalD213BuildResult": {
+            "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
+            "sha256": "62bbb224b378d0fa378f7d918afd89bcbbb8e4b3d816216c510695970f551fd0"
+          },
+          "originalD213BuildSourceInputsSha256": "e66523c8d18d24fe7af9d7c98645eb30ee750aa2ae632626c3c2bad87c882549",
+          "priorD212Result": {
+            "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+            "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+          },
+          "priorD212ArtifactManifest": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/pwa/pwa-ff3c9f55/artifact.json",
+            "sha256": "47a331cbc04d8954564ed1c0a8b2ae2231eecc01f6a838384b377c02ab904370"
+          },
+          "primarySourceInputCountUnchanged": 1665,
+          "protectedInputCountUnchanged": 1664,
+          "runtimePayloadRehashed": false
+        },
+        {
+          "path": "index.html",
+          "sha256": "ce34a0b7619651211f542f1e9578522cfe6598636eb1f7349c1ea370e6f5e6d8",
+          "currentInput": {
+            "path": "index.html",
+            "sha256": "ce34a0b7619651211f542f1e9578522cfe6598636eb1f7349c1ea370e6f5e6d8"
+          },
+          "authentication": {
+            "kind": "retained-build-only-envelope",
+            "originalD213GitSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+            "originalD213GitSha256": "228d45a9ba978f016b61e8d0edbce0496613118759f81f9e8c01bd55f228a637",
+            "capturedAndCurrentRawSourceSha256": "ce34a0b7619651211f542f1e9578522cfe6598636eb1f7349c1ea370e6f5e6d8",
+            "normalizedCurrentSourceSha256": "228d45a9ba978f016b61e8d0edbce0496613118759f81f9e8c01bd55f228a637",
+            "currentRawMatchesGitBlob": false,
+            "normalizationApplied": true,
+            "normalization": "worktree-UTF8-CRLF-to-LF-only",
+            "currentWorktreeCrlfPairs": 88
+          },
+          "originalD213BuildResult": {
+            "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
+            "sha256": "62bbb224b378d0fa378f7d918afd89bcbbb8e4b3d816216c510695970f551fd0"
+          },
+          "originalD213BuildSourceInputsSha256": "e66523c8d18d24fe7af9d7c98645eb30ee750aa2ae632626c3c2bad87c882549",
+          "priorD212Result": {
+            "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+            "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+          },
+          "priorD212ArtifactManifest": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/pwa/pwa-ff3c9f55/artifact.json",
+            "sha256": "47a331cbc04d8954564ed1c0a8b2ae2231eecc01f6a838384b377c02ab904370"
+          },
+          "primarySourceInputCountUnchanged": 1665,
+          "protectedInputCountUnchanged": 1664,
+          "runtimePayloadRehashed": false
+        },
+        {
+          "path": "vite.pwa.config.ts",
+          "sha256": "bbf109e25d8135024d241b3759272bce99c40b34385de915ddfe89bd544c4637",
+          "currentInput": {
+            "path": "vite.pwa.config.ts",
+            "sha256": "bbf109e25d8135024d241b3759272bce99c40b34385de915ddfe89bd544c4637"
+          },
+          "authentication": {
+            "kind": "retained-build-only-envelope",
+            "originalD213GitSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+            "originalD213GitSha256": "bbf109e25d8135024d241b3759272bce99c40b34385de915ddfe89bd544c4637",
+            "capturedAndCurrentRawSourceSha256": "bbf109e25d8135024d241b3759272bce99c40b34385de915ddfe89bd544c4637",
+            "normalizedCurrentSourceSha256": "bbf109e25d8135024d241b3759272bce99c40b34385de915ddfe89bd544c4637",
+            "currentRawMatchesGitBlob": true,
+            "normalizationApplied": false,
+            "normalization": null,
+            "currentWorktreeCrlfPairs": 0
+          },
+          "originalD213BuildResult": {
+            "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/pwa-a1/result.json",
+            "sha256": "62bbb224b378d0fa378f7d918afd89bcbbb8e4b3d816216c510695970f551fd0"
+          },
+          "originalD213BuildSourceInputsSha256": "e66523c8d18d24fe7af9d7c98645eb30ee750aa2ae632626c3c2bad87c882549",
+          "priorD212Result": {
+            "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+            "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+          },
+          "priorD212ArtifactManifest": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/pwa/pwa-ff3c9f55/artifact.json",
+            "sha256": "47a331cbc04d8954564ed1c0a8b2ae2231eecc01f6a838384b377c02ab904370"
+          },
+          "primarySourceInputCountUnchanged": 1665,
+          "protectedInputCountUnchanged": 1664,
+          "runtimePayloadRehashed": false
+        }
+      ],
+      "primarySourceInputCount": 1665,
+      "protectedInputCount": 1664,
+      "unchangedOtherCapturedSourceInputs": true,
+      "contextProvenanceRepairIncluded": false,
+      "fixtureLifecycleExtensionIncluded": false,
+      "runtimePayloadRehashed": false,
+      "retainedPayloadAuthentication": {
+        "result": {
+          "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+          "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+        },
+        "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+        "priorRuntimePayloadRehashed": true,
+        "performedAgain": false
+      },
+      "rebuilt": false
+    },
+    {
+      "kind": "android",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/android-a1/result.json",
+        "sha256": "c27d2e127c610f40aff350e75ebb815c0007b37694fc4a4161dfa2f9d5a5762f"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/android/android-00a6bcaa/runtime/artifact.json",
+        "sha256": "85ce4582b53f788ce477d58c78f7ad45b241db716be15e486172be3d541276fe"
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/android/android-00a6bcaa/app-dev-debug.apk",
+        "bytes": 70289893,
+        "sha256": "079b615f22e91760156d9aa03853bb8d609920c58191e02525b6685db4eca93d"
+      },
+      "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+      "buildId": "00a6bcaa9b042491593608f517851d1d7961d804c3af37c531de7b852fcf6183",
+      "sourceInventoryDifferences": [
+        {
+          "path": "src/host/bookyNavigationDrafts.ts",
+          "artifactSourceSha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4",
+          "currentSourceSha256": "462ef334186954535c87a8a4b94e6b709888bbf1acfa6a6832357eec883880fe",
+          "kind": "unimported-D212-provenance",
+          "fixtureOnlyInput": false,
+          "unimportedProvenanceInput": true
+        }
+      ],
+      "capturedInputsOutsidePrimaryEnvelope": [
+        {
+          "path": "data/book-canon-source-registry.json",
+          "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+          "currentInput": {
+            "path": "data/book-canon-source-registry.json",
+            "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+          },
+          "authentication": {
+            "kind": "supplemental-archive-envelope",
+            "currentSupplementalInputs": [
+              {
+                "path": "data/book-canon-source-registry.json",
+                "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+              }
+            ],
+            "originalD213SupplementalInputs": [
+              {
+                "path": "data/book-canon-source-registry.json",
+                "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+              }
+            ]
+          },
+          "originalD213BuildResult": {
+            "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/android-a1/result.json",
+            "sha256": "c27d2e127c610f40aff350e75ebb815c0007b37694fc4a4161dfa2f9d5a5762f"
+          },
+          "originalD213BuildSourceInputsSha256": "853849b69ab35c1417754cf957447652fd8399c2aaa750453eec7a15b00cd895",
+          "priorD212Result": {
+            "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+            "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+          },
+          "priorD212ArtifactManifest": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-design-a5-evidence/attempt-a1/android/android-00a6bcaa/runtime/artifact.json",
+            "sha256": "85ce4582b53f788ce477d58c78f7ad45b241db716be15e486172be3d541276fe"
+          },
+          "primarySourceInputCountUnchanged": 1665,
+          "protectedInputCountUnchanged": 1664,
+          "runtimePayloadRehashed": false
+        }
+      ],
+      "primarySourceInputCount": 1665,
+      "protectedInputCount": 1664,
+      "unchangedOtherCapturedSourceInputs": true,
+      "contextProvenanceRepairIncluded": false,
+      "fixtureLifecycleExtensionIncluded": false,
+      "runtimePayloadRehashed": false,
+      "retainedPayloadAuthentication": {
+        "result": {
+          "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+          "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+        },
+        "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+        "priorRuntimePayloadRehashed": true,
+        "performedAgain": false
+      },
+      "rebuilt": false
+    }
+  ],
+  "retainedValidation": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/result.json",
+      "sha256": "fd16252efc8d92936fcdd484a03496a62e905b86831c9305c5ae10237903c99c"
+    },
+    "sourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+    "runs": {
+      "static": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/static-a1/result.json",
+        "sha256": "0f3f05bd73a3eb9dc2514f0dd1cb0b9493cadf37fb7592176aacd2fd91506ca1",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/static-a1/execution.json",
+          "sha256": "09a1d5692b5a00c9ed096e2353df094005ef25a17d6efe4bde7ebab46ce218ec"
+        },
+        "tests": null,
+        "rawReport": null
+      },
+      "browser": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/browser-a1/result.json",
+        "sha256": "4263570f3e5d75fc7897480f1af2cd5800e3209f5f84a1140b7bb3a7e74cfc5b",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/browser-a1/execution.json",
+          "sha256": "28368675ab888131d1651ecd07f0a802c3662e92a0546c521234ae45b3967641"
+        },
+        "tests": {
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "flaky": 0
+        },
+        "rawReport": {
+          "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/browser-a1/playwright.json",
+          "sha256": "ad53951164fd07c90d5176a72f0c1a67b34b78a7d3b3c917c5a1db9d5694c903"
+        }
+      }
+    },
+    "browserCases": 5,
+    "visualReview": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-design-20260930-a5/visual-review.json",
+      "sha256": "83609384113b8a466e9079f6a548b3ac0cf23b61c9398ef9d6024859e2d76f02"
+    },
+    "retainedRuntimeUnitEvidence": {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+        "sha256": "2ac37e81256befc1ea80532d0837ca076b7bc158ce6c33427cf542fbd0a38267"
+      },
+      "unit": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+        "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/execution.json",
+        "sha256": "1fbc244dfc0553e5365fccb2494cb9306a89a3db83adfdc498d5e0491ae0639a"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/vitest.json",
+        "sha256": "281319773b4d2a6fc097582e3fdca78c1beb01acf05d669f3578229a50db556c"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+        "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+        "fileCount": 1665
+      },
+      "dependencyProof": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+        "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+      },
+      "count": 120,
+      "currentSuitesRerun": false,
+      "originalManifestOnly": true
+    },
+    "retainedUnitCount": 120,
+    "rerun": false,
+    "attributedToCurrentFixture": false
+  },
+  "retainedProvenanceValidation": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/result.json",
+      "sha256": "0f8dc2783f7452a77533a5cbc3b3ee80f52acb2da698dd26660ad8f55825e9f3"
+    },
+    "sourceCommit": "6dff109a78c7a678362689c80c569184128de00f",
+    "sourceManifest": {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/source-manifests/23e33fb6a438e46f.json",
+      "sha256": "3842ab835529ccc493d6864bf0151105906d8aa2e251639623c7fed6b8979949",
+      "fileCount": 1665
+    },
+    "unitCount": 17,
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit-a1/result.json",
+      "sha256": "d4d6c8ca2c47be3adf1f1036dcd3d5544d1c6c067008ec861f99bb1820397f43",
+      "execution": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit-a1/execution.json",
+        "sha256": "26a52068bb046f3e962d2b62f3afc2f46aa4ae79c15f676f75e88d703f9348e0"
+      },
+      "rawReport": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/unit-a1/vitest.json",
+        "sha256": "3e0cdc805def804afc2c536b6b6d7efa0f8ed2b2990eccc386f296ca10a2803e"
+      },
+      "tests": {
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0
+      },
+      "actualProducer": {
+        "correction": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/tool-correction.json",
+          "sha256": "beaf0b8ea9435b19bfaed94a63b1d7efc114f53942e072c36e55644e7b7a8822"
+        },
+        "helper": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/check-d212.mjs",
+          "sha256": "d3bebb15a3d4810141853e58b2004fd2fdc5217ae9df611be0372d8a9d36a2d4"
+        }
+      }
+    },
+    "inventory": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/inventory-a1/result.json",
+      "sha256": "fd3344153d645e53d0fd391b08113508da1ec53e311a057673fb9c206c6c6d08",
+      "execution": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/inventory-a1/execution.json",
+        "sha256": "8f327edc9e46afba0ec3321f7c3e54ca4e1828b7c046d27d25f25c58f581bc95"
+      },
+      "rawReport": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-refresh-20260930/inventory-a1/inventory.json",
+        "sha256": "f349a4975296e06d04b4f052cb4b252ddb13b6e739092fd0f91de7c78cdac6c7"
+      },
+      "tests": null,
+      "actualProducer": {
+        "correction": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/tool-correction.json",
+          "sha256": "beaf0b8ea9435b19bfaed94a63b1d7efc114f53942e072c36e55644e7b7a8822"
+        },
+        "helper": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-refresh-review/helpers-final-design-a5-tools-a2/check-d212.mjs",
+          "sha256": "d3bebb15a3d4810141853e58b2004fd2fdc5217ae9df611be0372d8a9d36a2d4"
+        }
+      }
+    },
+    "rerun": false,
+    "attributedToCurrentFixture": false
+  },
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "stageChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decision": "D214",
+  "nextAction": "Continue the persisted S15 current-only interaction plan with the explicitly untested stale globe-controls focus callback. Extend only the same two RU/EN actual-App globe-guidance cases after their existing assertions/captures, using disclosed timing control of the single existing focus RAF and newer trusted user input. Verify that the released obsolete callback cannot steal current focus or replay a retired cue; retain canonical scene, progress, saved preferences and existing six-image budget. Change production only if a concrete failure is reproduced and reviewed. Preserve accepted D213 design/build attribution and completed D212 provenance and writer-recovery evidence; do not repeat units, TypeScript or builds for fixture-only work. All stage, editorial, child, device and release acceptance gates remain unchanged.",
+  "limitations": [
+    "Four fresh images cover the existing empty/recovered views before the new lifecycle extension. Reader deferral and newer-edit conclusions rely on causal runtime assertions and authenticated native-app source traces.",
+    "This is fixture-only focused browser evidence. Prior TS/unit/PWA/APK evidence retains its original source and build identity; no fresh build validation or installed-device/stage/release acceptance is claimed.",
+    "The RU Close assertion is conditioned on real observed history/detail markers and no shelfChanged flag; it does not claim every reader Close restores unrestricted filters.",
+    "D213 build captured-source drift admits only D212 declared provenance inputs plus this test fixture; the provenance repair and fixture extension are not included in those old builds. Previous D212 payload/APK byte authentication is retained and not relabelled as newly performed.",
+    "D212 17 units/inventory and the D213 retained120 unit chain keep their original manifests and source attribution. No old selected case or unit suite is rerun.",
+    "PLANETKA-005 remains IN_PROGRESS and UX-006 remains OPEN; full loading/empty/error/offline, editorial, device, accessibility, stage and release acceptance remains open."
+  ],
+  "productionDefectIdentified": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

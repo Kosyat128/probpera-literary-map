@@ -37,6 +37,14 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-writer-recovery-lifecycle-20260930:begin -->
+Latest source 25b20971917ba52426844a269a3fe557fa25eb52: the same two RU/EN writer recovery cases now assert real selected-reader deferral, actual history-conditioned own Close in RU and a newer trusted country-facet edit in EN, current-only invalidation and fresh explicit writer intent. Saved content, progress, preferences and the canonical globe remain exact. Only PLANETKA-005/UX-006 evidence changes; IN_PROGRESS/OPEN and every stage/criterion status remain unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json. D214. Two fresh actual-App cases and four direct-view images; the images precede the lifecycle extension, whose claims rely on authenticated runtime assertions/causal trace. Production runtime c55c7d0749404421807c0138145c0ea97a4e89a7 and D213 PWA ff3c9f551938b9b4f4540bc567100f0133f543300b7d14ea7aca81687e3af4d9 / ANDROID 00a6bcaa9b042491593608f517851d1d7961d804c3af37c531de7b852fcf6183 retain their actual original source/build attribution; D212 17 units/inventory stay separately at 6dff109a78c7a678362689c80c569184128de00f. No TS/unit or old-case rerun, rebuild, editorial/device/stage/release acceptance. S03.acceptance remains first unresolved.
+
+Next: Continue the persisted S15 current-only interaction plan with the explicitly untested stale globe-controls focus callback. Extend only the same two RU/EN actual-App globe-guidance cases after their existing assertions/captures, using disclosed timing control of the single existing focus RAF and newer trusted user input. Verify that the released obsolete callback cannot steal current focus or replay a retired cue; retain canonical scene, progress, saved preferences and existing six-image budget. Change production only if a concrete failure is reproduced and reviewed. Preserve accepted D213 design/build attribution and completed D212 provenance and writer-recovery evidence; do not repeat units, TypeScript or builds for fixture-only work. All stage, editorial, child, device and release acceptance gates remain unchanged.
+<!-- s15-booky-writer-recovery-lifecycle-20260930:end -->
+
 <!-- s15-booky-context-provenance-refresh-20260930:begin -->
 Latest source 6dff109a78c7a678362689c80c569184128de00f: only eight contextual draft source revisions advance 4→5, pinned to actual last-changed Controls c55c7d0749404421807c0138145c0ea97a4e89a7. Fourteen navigation records at revision 2, twelve support records and all 22 texts remain exact. All 34 records remain unapproved and unavailable. Only S15.PLANETKA-003 evidence changes; every stage and criterion status stays unchanged.
 

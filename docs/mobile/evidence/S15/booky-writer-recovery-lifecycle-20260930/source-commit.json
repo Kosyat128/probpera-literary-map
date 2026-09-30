@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "kind": "SOURCE_COMMIT_RECEIPT",
+  "startedAt": "2026-09-30T10:32:55.088Z",
+  "finishedAt": "2026-09-30T10:32:56.635Z",
+  "success": true,
+  "error": null,
+  "parent": "b04fbd2574fb8da8ac830b63127df924dd684fe1",
+  "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+  "changedPaths": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "entry": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/entry.json",
+    "sha256": "9749cfd4163aa3b879844e7856e262fe4e58f68c46e7d468f481893f5d9e0170"
+  },
+  "run": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/browser-a3/result.json",
+    "sha256": "74edf63282bc487319b5a23251c7041959cdd3ea7aaf0fc411c699085299e6a4"
+  },
+  "originalInspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/actual-four-view-a3.json",
+    "sha256": "940e1d3e6150f6b6b4189c44d8f1093c3bad6e9bd83b655991d61179c98e4e38"
+  },
+  "reviewReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/review-receipt-bound.json",
+    "sha256": "17339077eb5fba3e3eab726384485296647374ef4bfd234a89b9adcd1b8068b3"
+  },
+  "actualHead": "25b20971917ba52426844a269a3fe557fa25eb52",
+  "status": "",
+  "releaseReady": false
+}

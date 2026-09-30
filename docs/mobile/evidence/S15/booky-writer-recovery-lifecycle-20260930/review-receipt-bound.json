@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T10:32:25.800Z",
+  "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/source-manifests/bb1c90e3d6f492ee.json",
+    "sha256": "bb1c90e3d6f492ee0150d9bdaac0069f6ecd3dfbc1416f77c799ca22ca34eacd",
+    "fileCount": 1665
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "RU 390x844: collection header, archive hierarchy and single rounded Booky sheet readable without stacked overlapping dialogs.",
+        "Recovery offer fits inside its card with the explicit writer button. The lower sheet is bounded/scrollable; no claim all content fits simultaneously.",
+        "These captures precede the added real-reader lifecycle; static frames do not prove ownership, cancellation, progress persistence or device acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "RU 390x844: collection header, archive hierarchy and single rounded Booky sheet readable without stacked overlapping dialogs.",
+        "Recovery acknowledgement, collection help and introduction button have distinct spacing and readable labels.",
+        "These captures precede the added real-reader lifecycle; static frames do not prove ownership, cancellation, progress persistence or device acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "EN 320x844: localized heading and actions fit the narrow mobile sheet; Stop and Close move to the next row when needed.",
+        "Recovery offer fits inside its card with the explicit writer button. The lower sheet is bounded/scrollable; no claim all content fits simultaneously.",
+        "These captures precede the added real-reader lifecycle; static frames do not prove ownership, cancellation, progress persistence or device acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root",
+      "findings": [
+        "EN 320x844: localized heading and actions fit the narrow mobile sheet; Stop and Close move to the next row when needed.",
+        "Recovery acknowledgement, collection help and introduction button have distinct spacing and readable labels.",
+        "These captures precede the added real-reader lifecycle; static frames do not prove ownership, cancellation, progress persistence or device acceptance."
+      ]
+    }
+  ],
+  "sourceCommitBinding": {
+    "kind": "OWNED_SINGLE_FIXTURE_COMMIT",
+    "parent": "b04fbd2574fb8da8ac830b63127df924dd684fe1",
+    "originalInspectionReceipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/actual-four-view-a3.json",
+      "sha256": "940e1d3e6150f6b6b4189c44d8f1093c3bad6e9bd83b655991d61179c98e4e38"
+    }
+  }
+}

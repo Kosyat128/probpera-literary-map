@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed-writer-lifecycle-source-apply",
+  "createdAt": "2026-09-30T10:27:21.860Z",
+  "baseHead": "b04fbd2574fb8da8ac830b63127df924dd684fe1",
+  "sourceApplied": true,
+  "target": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+  "beforeSha256": "911320ba6fea791554d9d052cc4b43b951981f4b3c0d4adfa582ef2f0b389dc5",
+  "sha256": "ac0f72bb997f6362726b88228f3b836aa5b3ddbda30cf9ea6c5eb2af5e5998bc",
+  "editPlan": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/history-return-baseline-correction-a3/source-binding.json",
+    "sha256": "5db489fc6c9bbb44f8b3ee0d5b3337647498dd325a270e1b8de848f1df68dd78"
+  },
+  "editCount": 1,
+  "originalBodyRecoveredByteExact": true,
+  "inverseScope": "incremental-step-before-fixture",
+  "originalFixtureBeforeSha256": "d4e1cc8b68fc10c2df0e71bd6c8accb469c728f52cd3ae8e817ee15a9faa2494",
+  "originalSourceApplyReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-apply-receipt.json",
+    "sha256": "fd81e4672a299b6cdd43975e164f9d74e1ff9b3a6b838bf0f84b4a7973e8119b"
+  },
+  "originalFixtureBinding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/fixture-source-binding.json",
+    "sha256": "f5e3703c54100912bdfebfcd4fab4ee978f7e783da64bd190ac2a62454436fe7"
+  },
+  "priorFailedAttempt": {
+    "diagnosticOnly": true,
+    "pass": false,
+    "attempt": "a2",
+    "tests": {
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "fixtureSha256": "911320ba6fea791554d9d052cc4b43b951981f4b3c0d4adfa582ef2f0b389dc5",
+    "entry": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/entry.json",
+      "sha256": "04d62da0306b0b9b39e4ed4a96bbf43bb652c7496fadb530ebe9813b9c7dbd91"
+    },
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/result.json",
+      "sha256": "3d492896a41c1fddc52afcacb45fb24d0a245fb32175ab029f739232f834c17a"
+    },
+    "execution": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/execution.json",
+      "sha256": "e3595beac18580303199e3e54c7d7ac2b11c539241fa56919b4b3645aa3d5bd1"
+    },
+    "rawReport": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/playwright.json",
+      "sha256": "0327184c9cbc89fe2d6fc16c77c830dd335fa37342c5d8adaa48f96ba7e4f81e"
+    },
+    "sourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-manifests/bbfd70269dc6f2ae.json",
+      "sha256": "bbfd70269dc6f2aeeedcb30547882ce781a875598c299dc14c99fbb623793dd4",
+      "fileCount": 1665
+    },
+    "sourceApplyReceipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-apply-receipt.json",
+      "sha256": "5c3fdab6aedd3061eed4371d67e087acd2bf0dd071e140594e95001c86d1bb5d"
+    }
+  },
+  "priorFailedAttempts": [
+    {
+      "diagnosticOnly": true,
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "fixtureSha256": "67a328e4c724fdce384b505f64a41af40a4c53b94303898ecfebf87c75898802",
+      "entry": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/entry.json",
+        "sha256": "1d79e1ed4d8a3a5ff27b4465eee77388667db8823334706d7cce3358c0e8e04f"
+      },
+      "result": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/browser-a1/result.json",
+        "sha256": "7028ea9d2a9a1de1c9bfc23beb96ac3c9deb6a27dd9f34d090ba846176c28b03"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/browser-a1/execution.json",
+        "sha256": "d8d6088cf34bcb5170907f504c858afac03a360bde7ac69aaaee163c9166944d"
+      },
+      "rawReport": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/browser-a1/playwright.json",
+        "sha256": "caca8e9f6369abfec553307285b27cb4f08787ec9860b3a0698fc4d12dc3bb5b"
+      },
+      "sourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-manifests/ec97eb746e694de4.json",
+        "sha256": "ec97eb746e694de41def6288189a5621bc6d8764631bd910ec2c938d13b8654e",
+        "fileCount": 1665
+      },
+      "preservedFailure": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/history-parser-correction-a2/failed-browser-a1.json",
+        "sha256": "c1661bb5018058b396aea9efeb19a7d9867f2529c6eb9149efacc2d4b23ff69a"
+      },
+      "sourceApplyReceipt": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-apply-receipt.json",
+        "sha256": "fd81e4672a299b6cdd43975e164f9d74e1ff9b3a6b838bf0f84b4a7973e8119b"
+      }
+    },
+    {
+      "diagnosticOnly": true,
+      "pass": false,
+      "attempt": "a2",
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "fixtureSha256": "911320ba6fea791554d9d052cc4b43b951981f4b3c0d4adfa582ef2f0b389dc5",
+      "entry": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/entry.json",
+        "sha256": "04d62da0306b0b9b39e4ed4a96bbf43bb652c7496fadb530ebe9813b9c7dbd91"
+      },
+      "result": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/result.json",
+        "sha256": "3d492896a41c1fddc52afcacb45fb24d0a245fb32175ab029f739232f834c17a"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/execution.json",
+        "sha256": "e3595beac18580303199e3e54c7d7ac2b11c539241fa56919b4b3645aa3d5bd1"
+      },
+      "rawReport": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/playwright.json",
+        "sha256": "0327184c9cbc89fe2d6fc16c77c830dd335fa37342c5d8adaa48f96ba7e4f81e"
+      },
+      "sourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-manifests/bbfd70269dc6f2ae.json",
+        "sha256": "bbfd70269dc6f2aeeedcb30547882ce781a875598c299dc14c99fbb623793dd4",
+        "fileCount": 1665
+      },
+      "sourceApplyReceipt": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-apply-receipt.json",
+        "sha256": "5c3fdab6aedd3061eed4371d67e087acd2bf0dd071e140594e95001c86d1bb5d"
+      }
+    }
+  ],
+  "priorImmediateSourceApplyReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-apply-receipt.json",
+    "sha256": "5c3fdab6aedd3061eed4371d67e087acd2bf0dd071e140594e95001c86d1bb5d"
+  },
+  "sourceApplyChain": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-apply-receipt.json",
+      "sha256": "fd81e4672a299b6cdd43975e164f9d74e1ff9b3a6b838bf0f84b4a7973e8119b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-apply-receipt.json",
+      "sha256": "5c3fdab6aedd3061eed4371d67e087acd2bf0dd071e140594e95001c86d1bb5d"
+    }
+  ],
+  "actualBindingProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review-a3/bind-successor.mjs",
+    "sha256": "c172230f5f15a3682dc03ef593d3213271152b3dee3ad157d95a290114b2c2da"
+  },
+  "combinedOriginalInverseVerifiedByteExact": true,
+  "syntaxCheckPass": true,
+  "testsRun": false,
+  "browserRun": false
+}

@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T10:53:01.629Z",
+  "pass": true,
+  "kind": "SOURCE_ONLY_GLOBAL_CHECKPOINT",
+  "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+  "runtimeSourceCommit": "c55c7d0749404421807c0138145c0ea97a4e89a7",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json",
+    "sha256": "cc84efa6e7dc8c97ba0fae7423e3f34b56ee02f5bd162c1f3adedde2fce1585a"
+  },
+  "binding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/checkpoint-review-a7/bound-a3/binding.json",
+    "sha256": "418f4f600141afebccada20b81789164bda70d5a07e14cf7117b12fdafe41d2e"
+  },
+  "helper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/checkpoint-review-a7/record-checkpoint.mjs",
+    "sha256": "3eb529e7319ee9ee421d121f4af7c5fb249e1d738329145f9cb2f4388f93a723"
+  },
+  "documentPlan": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/checkpoint-review-a7/bound-a3/document-plan.json",
+    "sha256": "3d434f9306905de3bbcd70108851631e05ac7436a9af07da846873efd04efc2a"
+  },
+  "originalGlobals": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "e88a36892e6788832796534ca5401d82a210f68924bf321e4b1d15cef64237ed"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "649dcbf4c346e780d73eaa1943addd054f1374617ba337287c8d68246996749a"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "e2f387e4d0c530ad10ef6a9757646ec19633de8a4fa8840161f72723b8e1ffaa"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "6be2db1bbe1116d17bb6f82abf69c2954e00e8a4528812ca7c42dab7954b6446"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "a5fa6bce0c6094a9525607f9292b22a8db99a1dd88d490afc92453c4e93a0a6f"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "040f71cf940ab34dffd3f58ffe7947f4e40a80ca8f5ffa7146a6e78da5042e73"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "95424985efc9addfc043b1bec23ee47afc323e6e5546cd3649102ff450fc8260"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "4cce08bc7a1a715c7a68b14ea71759a5227a737550ad5f2d9d16647d3747ccb2"
+    }
+  ],
+  "agentsBefore": {
+    "path": "AGENTS.md",
+    "sha256": "4cce08bc7a1a715c7a68b14ea71759a5227a737550ad5f2d9d16647d3747ccb2"
+  },
+  "outputs": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "204ad9def824e1128010c002c72da3471e11730521f6420b646aa1297e360b31"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "0066388afbd46624e110d31a849dd5fbc98fb2bac5dae531e4f66e089a5a71f5"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "511689a70aee1bb258387151f3d728fa8e0d1d4a3b2557e3677b0974fba8cc75"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "aa62c34e19097cd0325dac636c1d9707c9b18a44c9591b4a6b650b90cc864972"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "01a72ba616abad1dc1e9f8fe6888f8db14a6b7b8ec13fdd79b29c8392aac2442"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "39a16914275f619f315be1c503d233786737acdb2e72e68bc916eba4f70ab12a"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "1cd41ab2f877b36e0c42f6030af86da947e938b74671da33770c0a4a828ed1e1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json",
+      "sha256": "cc84efa6e7dc8c97ba0fae7423e3f34b56ee02f5bd162c1f3adedde2fce1585a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/README.md",
+      "sha256": "c6c42908c98f435b88f4cf5373583e32159b2d7b5a30cd944ffffbf797ee4487"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/entry.json",
+      "sha256": "9749cfd4163aa3b879844e7856e262fe4e58f68c46e7d468f481893f5d9e0170"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/scope.json",
+      "sha256": "adc829d37b84d1caeff7219392f9100aeb92fc0b442d358713a6f20e9b8266a6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/source-apply-receipt.json",
+      "sha256": "45ccbbbed746ee64da1628a0080badccb88f8b4ded71ce8134db1e658fe804d3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/source-commit.json",
+      "sha256": "9d404edd2c0883b1e39b62edcee9e84eb2da96592737bdc557fedb2293cf1892"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/review-receipt-bound.json",
+      "sha256": "17339077eb5fba3e3eab726384485296647374ef4bfd234a89b9adcd1b8068b3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/visual-review.json",
+      "sha256": "96b6f99ce346a0a88efdb0ddab46ce5097bc791d3147067f8a1160de415f7844"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/focused-result.json",
+      "sha256": "7cc1bc9a03629cef364cc384ae3bc89471d6642e8f3b4dd601f09504f5008665"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/browser-a3/result.json",
+      "sha256": "74edf63282bc487319b5a23251c7041959cdd3ea7aaf0fc411c699085299e6a4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/browser-a3/execution.json",
+      "sha256": "23028f18cdf4b4ca0d341f0e2ed42ac41e2ada77d0a6bcb771ccaa40b73c95f5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/browser-a3/playwright.json",
+      "sha256": "156d89cda6c26f5d4261076544f9259cc4085d86938061627415dc1b9c960370"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/browser-a3/stdout.log",
+      "sha256": "0e5948fbeabb63d59afef49d5aa63391b95bf56081ff9d22c767f8ed29f27e93"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/browser-a3/stderr.log",
+      "sha256": "e8f00c3ac7b3aaf609d86efcb7f2b541ca93b0355facab8110b0df4cde61a898"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/source-manifests/bb1c90e3d6f492ee.json",
+      "sha256": "bb1c90e3d6f492ee0150d9bdaac0069f6ecd3dfbc1416f77c799ca22ca34eacd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/captures/ru.json",
+      "sha256": "5a6fff97dd4ae34a20c1d3143162169965737c8d05eb11b3d886bc403e8dc572"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/captures/en.json",
+      "sha256": "9140fe49fa08b0611f524759027900818c6fb9c8d6f175b7131e0b020fc3dac4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/images/booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "2c7885e6ea2c1dd5ddc9a56feb3710204b48b3cafefe412acd33cb2718a7e5d5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/images/booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "49fbc1307650198462b9c8cf2d423885eba2d4fe801355a4ab96324c8ffcddb0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/images/booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "7909b7d908986adadd3606e0525b3e02361bf75fc967770e759185ebd4c0381d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/images/booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "624d4b93f8e5fbd6ebb3d8a2016b46946f850b3d9658702717fd5e22e77f5211"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/helpers/commit-source.mjs",
+      "sha256": "3a6dd2e5e65ee07e453bbd015b4a973de07aa65436690ecc6e55c5b8d1f12d64"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/helpers/bind-checkpoint.mjs",
+      "sha256": "cd50629b3fb065ac35c6594c7b4df828251a1691f8fa8895792a48cb8dc9f135"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/helpers/finalize-notes.mjs",
+      "sha256": "265366df6dab08f2fee9e12bd954287cf29cfe2600ec53414f645363f462cee5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/helpers/verify-checkpoint.mjs",
+      "sha256": "32a2c2536e9db07e0978b016e40bbc5e8873fdd9ac4ea6b21102bcf47710a5cb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/helpers/commit-docs.mjs",
+      "sha256": "7c174fa05b765fa415ef93e3c7c4861e7cce995d13715557392072e7887c0d2d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/helpers/common.mjs",
+      "sha256": "28b4e660a8b7fe3226ef26536a42a3b0f2b8b97300ffeac538cd8b5a0e7dbe8e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/helpers/record-checkpoint.mjs",
+      "sha256": "3eb529e7319ee9ee421d121f4af7c5fb249e1d738329145f9cb2f4388f93a723"
+    }
+  ],
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "allStageAndCriterionStatusesUnchanged": true,
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "nextAction": "Continue the persisted S15 current-only interaction plan with the explicitly untested stale globe-controls focus callback. Extend only the same two RU/EN actual-App globe-guidance cases after their existing assertions/captures, using disclosed timing control of the single existing focus RAF and newer trusted user input. Verify that the released obsolete callback cannot steal current focus or replay a retired cue; retain canonical scene, progress, saved preferences and existing six-image budget. Change production only if a concrete failure is reproduced and reviewed. Preserve accepted D213 design/build attribution and completed D212 provenance and writer-recovery evidence; do not repeat units, TypeScript or builds for fixture-only work. All stage, editorial, child, device and release acceptance gates remain unchanged.",
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

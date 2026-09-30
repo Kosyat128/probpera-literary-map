@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/verify-state.mjs"
+  ],
+  "startedAt": "2026-09-30T10:53:04.941Z",
+  "finishedAt": "2026-09-30T10:53:05.039Z",
+  "durationMs": 97,
+  "exitCode": 0,
+  "error": "SyntaxError: Unexpected end of JSON input\n    at JSON.parse (<anonymous>)\n    at file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/checkpoint-review-a7/verify-checkpoint.mjs:21:61\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/verify-state-a3/stdout.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/verify-state-a3/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "applicationChecksRun": false,
+  "oldCasesRun": false,
+  "testsRun": false,
+  "buildsRun": false
+}

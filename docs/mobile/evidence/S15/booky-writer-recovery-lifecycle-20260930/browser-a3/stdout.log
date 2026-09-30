@@ -1,0 +1,8 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] tests\pwa\booky-writer-filter-recovery.spec.mjs:453:37 › Booky explicit writer filter recovery ru
+[2/2] tests\pwa\booky-writer-filter-recovery.spec.mjs:453:37 › Booky explicit writer filter recovery en
+  2 passed (1.7m)

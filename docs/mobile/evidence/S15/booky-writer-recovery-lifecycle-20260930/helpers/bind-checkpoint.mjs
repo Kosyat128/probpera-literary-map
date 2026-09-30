@@ -1,0 +1,26 @@
+// Bind only actual passing assessment/source receipts. All current IDs stay null.
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {cwd,packet,assessed,retained,ROOT,HERE,FOLDER,allGlobals,globals,targets,criterionTargets,read,ref,verify,fresh,json,gitText,lines,sha,csv} from './common.mjs';
+const [executionFolder,sourceCommit,decision,nextActionPath,...extra]=process.argv.slice(2);assert.equal(extra.length,0);assert.match(sourceCommit,/^[a-f0-9]{40}$/u);assert.match(decision,/^D[1-9][0-9]*$/u);assert.ok(nextActionPath,'Actual next ordered plan action is a mandatory CLI file');
+await cwd();const p=await packet(),c=await assessed(executionFolder,sourceCommit),history=await retained(c);assert.equal(gitText(['status','--porcelain','--untracked-files=all']),'');
+const originals=new Map(await Promise.all(allGlobals.map(async file=>[file,await fs.readFile(ROOT+'/'+file)])));
+const state=JSON.parse(originals.get(globals[0])),trace=JSON.parse(originals.get(globals[5]));assert.equal(state.headSha,c.entry.d212.sourceCommit);assert.equal(state.currentStageId,'S03');assert.equal(state.currentCriterionId,'S03.acceptance');assert.equal(state.resume.firstOpenCriterion,'S03.acceptance');assert.equal(state.verificationCache.s15BookyWriterRecoveryLifecycle,undefined);
+const stage=state.stages.find(s=>s.id==='S15');for(const [id,status]of [['PLANETKA-005','IN_PROGRESS'],['UX-006','OPEN']]){assert.equal(stage.criteria.find(r=>r.id==='S15.'+id).status,status);assert.equal(trace.requirements.find(r=>r.id===id).status,status);}
+const decisions=originals.get(globals[1]).toString('utf8'),numbers=[...decisions.matchAll(/^- D([0-9]+):/gmu)].map(m=>Number(m[1]));assert.ok(numbers.length);assert.equal(Number(decision.slice(1)),Math.max(...numbers)+1,'Actual next unused decision required');
+const nextActionBytes=await fs.readFile(nextActionPath),nextAction=nextActionBytes.toString('utf8').trim();assert.ok(nextAction.length>0&&nextAction.length<=8192);assert.equal(originals.get(globals[6]).toString('utf8').replaceAll('\r\n','\n'),await csv(trace));
+for(const file of [FOLDER,...['result.json','checkpoint.json'].map(n=>FOLDER+'/'+n)])await assert.rejects(fs.stat(ROOT+'/'+file),{code:'ENOENT'});
+const boundFolder=HERE+'/bound-'+c.attempt;await assert.rejects(fs.stat(boundFolder),{code:'ENOENT'});
+const originalGlobals=await Promise.all(allGlobals.map(ref)),helperInputs=p.files.filter(r=>/\.(mjs|json)$/u.test(r.path)&&!r.path.endsWith('/application-boundary.template.json'));
+const bindingInputs=[...originalGlobals,await ref(nextActionPath),c.focusRef,c.sourceCommitRef,await ref(executionFolder+'/entry.json'),await ref(executionFolder+'/visual-review.json'),await ref(HERE+'/proposal.json')];
+const copyFiles=[];const add=async(from,to)=>copyFiles.push({from:await ref(from),to});
+for(const n of ['entry.json','scope.json','source-apply-receipt.json','source-commit.json','review-receipt-bound.json','visual-review.json','focused-result.json'])await add(executionFolder+'/'+n,FOLDER+'/'+n);
+for(const n of ['result.json','execution.json','playwright.json','stdout.log','stderr.log'])await add(executionFolder+'/browser-'+c.attempt+'/'+n,FOLDER+'/browser-'+c.attempt+'/'+n);
+const manifestName=c.run.sourceManifest.sha256.slice(0,16)+'.json';await add(c.run.sourceManifest.path,FOLDER+'/source-manifests/'+manifestName);
+for(const capture of c.focus.captures){const language=capture.test.endsWith(' ru')?'ru':'en';await add(capture.path,FOLDER+'/captures/'+language+'.json');}
+for(const image of c.visual.images)await add(image.path,FOLDER+'/images/'+path.basename(image.path));
+for(const helper of p.files.filter(r=>/\.mjs$/u.test(r.path)))await add(helper.path,FOLDER+'/helpers/'+path.basename(helper.path));
+const binding={schemaVersion:1,recordedAt:new Date().toISOString(),status:'ACTUAL_ASSESSED_SOURCE_BOUND',sourceCommit,decision,nextAction:{text:nextAction,input:await ref(nextActionPath)},executionFolder,attempt:c.attempt,actualDesign:c.entry.acceptedDesign,actualD212:c.entry.d212,focusedAssessment:c.focusRef,sourceCommitReceipt:c.sourceCommitRef,sourceManifest:c.run.sourceManifest,protectedSourceManifest:c.entry.priorSourceManifest,sourceInputCount:1665,protectedInputCount:1664,changedSourcePaths:['tests/pwa/booky-writer-filter-recovery.spec.mjs'],newSourcePaths:[],requirementEvidenceTargets:targets,criterionEvidenceTargets:criterionTargets,originalGlobals,helperInputs,bindingInputs,copyFiles,retainedBuilds:history.retainedBuilds,retainedProvenanceValidation:history.provenance,canonicalFolder:FOLDER,unitCount:0,unitRerun:false,staticRerun:false,buildsRebuilt:false,stageAccepted:false,releaseReady:false};
+await fs.mkdir(boundFolder);for(const [file,bytes]of originals){const out=boundFolder+'/originals/'+file;await fs.mkdir(path.dirname(out),{recursive:true});await fs.writeFile(out,bytes,{flag:'wx'});assert.equal(sha(await fs.readFile(out)),sha(bytes));}
+await fresh(boundFolder+'/binding.json',binding);console.log(json({boundFolder,binding:await ref(boundFolder+'/binding.json'),sourceCommit,decision,canonicalFolder:FOLDER,sourceInputs:1665,protectedInputs:1664,canonicalWrites:false,testsRun:false}));

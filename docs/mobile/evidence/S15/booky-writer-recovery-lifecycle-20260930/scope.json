@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "status": "BOUND_AFTER_ACTUAL_FINAL_DESIGN_AND_D212",
+  "sourceFrozen": true,
+  "description": "Fixture-only real reader deferral and newer trusted facet edit, using the same two accepted writer-recovery cases and four visual captures.",
+  "changedPaths": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "browserFiles": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky explicit writer filter recovery ru",
+    "Booky explicit writer filter recovery en"
+  ],
+  "expectedBrowserTests": 2,
+  "expectedImages": 4,
+  "requiredVisualFilenames": [
+    "booky-writer-filter-recovery-ru-filtered-empty.png",
+    "booky-writer-filter-recovery-ru-recovered.png",
+    "booky-writer-filter-recovery-en-filtered-empty.png",
+    "booky-writer-filter-recovery-en-recovered.png"
+  ],
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-writer-filter-recovery-ru",
+      "flags": [
+        "ordinaryRestrictionsPreserved",
+        "explicitRecoveryTrustedTouch",
+        "allBooksSelected",
+        "writerAndSortPreserved",
+        "renderedResultsAcknowledged",
+        "savedContentPreserved",
+        "preferencesAndGlobePreserved",
+        "manualCurrentStatusRepairVerified",
+        "pendingAuthorCommitVerified"
+      ]
+    },
+    {
+      "scenario": "booky-writer-filter-recovery-en",
+      "flags": [
+        "ordinaryRestrictionsPreserved",
+        "explicitRecoveryTrustedTouch",
+        "allBooksSelected",
+        "writerAndSortPreserved",
+        "renderedResultsAcknowledged",
+        "savedContentPreserved",
+        "preferencesAndGlobePreserved",
+        "pendingAuthorCommitVerified"
+      ]
+    }
+  ],
+  "requiredCaptureValues": [
+    {
+      "scenario": "booky-writer-filter-recovery-ru",
+      "values": {
+        "controlledPickerSetup": true,
+        "nativePickerEquivalent": false,
+        "readerDeferralExercised": true,
+        "newerUserEditIntegrationExercised": false
+      }
+    },
+    {
+      "scenario": "booky-writer-filter-recovery-en",
+      "values": {
+        "controlledPickerSetup": true,
+        "nativePickerEquivalent": false,
+        "readerDeferralExercised": true,
+        "newerUserEditIntegrationExercised": true
+      }
+    }
+  ],
+  "requiredObservationChecks": [
+    {
+      "scenario": "booky-writer-filter-recovery-ru",
+      "observation": "writerFilterRecovery",
+      "checks": [
+        "ordinary writer requests preserve the conflicting view and nondefault sort",
+        "explicit trusted recovery opens All books and clears only restrictions",
+        "current canonical writer and title sort remain selected",
+        "rendered current-writer results receive visible applied acknowledgement",
+        "saved shelves favorites history and local storage remain exact",
+        "Booky route progress preferences and canonical globe remain exact",
+        "native picker setup is explicitly controlled and Booky activations are trusted touch",
+        "manual facet repair updates current rendered status without another Booky request",
+        "initial intervening render waits for its own filter batch before applied acknowledgement"
+      ]
+    },
+    {
+      "scenario": "booky-writer-filter-recovery-en",
+      "observation": "writerFilterRecovery",
+      "checks": [
+        "ordinary writer requests preserve the conflicting view and nondefault sort",
+        "explicit trusted recovery opens All books and clears only restrictions",
+        "current canonical writer and title sort remain selected",
+        "rendered current-writer results receive visible applied acknowledgement",
+        "saved shelves favorites history and local storage remain exact",
+        "Booky route progress preferences and canonical globe remain exact",
+        "native picker setup is explicitly controlled and Booky activations are trusted touch",
+        "initial intervening render waits for its own filter batch before applied acknowledgement"
+      ]
+    }
+  ],
+  "requiredLifecycleChecks": [
+    "trusted real book owns the reader before a current recovery is admitted",
+    "reader deferral neither dispatches recovery nor changes the current book or semantic progress",
+    "real current-view change discards only the obsolete request before a fresh explicit writer request"
+  ],
+  "requiredNewerEditCheck": "a newer trusted facet edit invalidates deferred recovery while its reader is still owned",
+  "criticalOwnerPaths": [
+    "src/App.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/BookDossierReader.tsx",
+    "src/books/bookArchiveAuthorRequest.ts",
+    "src/books/bookArchiveAuthorRecovery.ts",
+    "src/books/bookArchiveLocation.ts",
+    "src/books/bookArchiveFacets.ts",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts",
+    "src/host/NativePlanetPanel.tsx",
+    "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+    "src/host/bookyJourney.ts",
+    "src/host/bookyJourneyRuntime.ts",
+    "src/host/useBookyJourney.ts"
+  ],
+  "requestedChannel": "msedge",
+  "unitRerun": false,
+  "staticRerun": false,
+  "pwaRebuilt": false,
+  "androidRebuilt": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "expectedSourceInputs": [
+    {
+      "path": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+      "sha256": "ac0f72bb997f6362726b88228f3b836aa5b3ddbda30cf9ea6c5eb2af5e5998bc"
+    }
+  ],
+  "priorFailedAttempt": {
+    "diagnosticOnly": true,
+    "pass": false,
+    "attempt": "a2",
+    "tests": {
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "fixtureSha256": "911320ba6fea791554d9d052cc4b43b951981f4b3c0d4adfa582ef2f0b389dc5",
+    "entry": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/entry.json",
+      "sha256": "04d62da0306b0b9b39e4ed4a96bbf43bb652c7496fadb530ebe9813b9c7dbd91"
+    },
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/result.json",
+      "sha256": "3d492896a41c1fddc52afcacb45fb24d0a245fb32175ab029f739232f834c17a"
+    },
+    "execution": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/execution.json",
+      "sha256": "e3595beac18580303199e3e54c7d7ac2b11c539241fa56919b4b3645aa3d5bd1"
+    },
+    "rawReport": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/playwright.json",
+      "sha256": "0327184c9cbc89fe2d6fc16c77c830dd335fa37342c5d8adaa48f96ba7e4f81e"
+    },
+    "sourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-manifests/bbfd70269dc6f2ae.json",
+      "sha256": "bbfd70269dc6f2aeeedcb30547882ce781a875598c299dc14c99fbb623793dd4",
+      "fileCount": 1665
+    },
+    "sourceApplyReceipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-apply-receipt.json",
+      "sha256": "5c3fdab6aedd3061eed4371d67e087acd2bf0dd071e140594e95001c86d1bb5d"
+    }
+  },
+  "incrementalSourceApply": true,
+  "priorFailedAttempts": [
+    {
+      "diagnosticOnly": true,
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "fixtureSha256": "67a328e4c724fdce384b505f64a41af40a4c53b94303898ecfebf87c75898802",
+      "entry": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/entry.json",
+        "sha256": "1d79e1ed4d8a3a5ff27b4465eee77388667db8823334706d7cce3358c0e8e04f"
+      },
+      "result": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/browser-a1/result.json",
+        "sha256": "7028ea9d2a9a1de1c9bfc23beb96ac3c9deb6a27dd9f34d090ba846176c28b03"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/browser-a1/execution.json",
+        "sha256": "d8d6088cf34bcb5170907f504c858afac03a360bde7ac69aaaee163c9166944d"
+      },
+      "rawReport": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/browser-a1/playwright.json",
+        "sha256": "caca8e9f6369abfec553307285b27cb4f08787ec9860b3a0698fc4d12dc3bb5b"
+      },
+      "sourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-manifests/ec97eb746e694de4.json",
+        "sha256": "ec97eb746e694de41def6288189a5621bc6d8764631bd910ec2c938d13b8654e",
+        "fileCount": 1665
+      },
+      "preservedFailure": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/history-parser-correction-a2/failed-browser-a1.json",
+        "sha256": "c1661bb5018058b396aea9efeb19a7d9867f2529c6eb9149efacc2d4b23ff69a"
+      },
+      "sourceApplyReceipt": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a1/source-apply-receipt.json",
+        "sha256": "fd81e4672a299b6cdd43975e164f9d74e1ff9b3a6b838bf0f84b4a7973e8119b"
+      }
+    },
+    {
+      "diagnosticOnly": true,
+      "pass": false,
+      "attempt": "a2",
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "fixtureSha256": "911320ba6fea791554d9d052cc4b43b951981f4b3c0d4adfa582ef2f0b389dc5",
+      "entry": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/entry.json",
+        "sha256": "04d62da0306b0b9b39e4ed4a96bbf43bb652c7496fadb530ebe9813b9c7dbd91"
+      },
+      "result": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/result.json",
+        "sha256": "3d492896a41c1fddc52afcacb45fb24d0a245fb32175ab029f739232f834c17a"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/execution.json",
+        "sha256": "e3595beac18580303199e3e54c7d7ac2b11c539241fa56919b4b3645aa3d5bd1"
+      },
+      "rawReport": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/browser-a2/playwright.json",
+        "sha256": "0327184c9cbc89fe2d6fc16c77c830dd335fa37342c5d8adaa48f96ba7e4f81e"
+      },
+      "sourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-manifests/bbfd70269dc6f2ae.json",
+        "sha256": "bbfd70269dc6f2aeeedcb30547882ce781a875598c299dc14c99fbb623793dd4",
+        "fileCount": 1665
+      },
+      "sourceApplyReceipt": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a2/source-apply-receipt.json",
+        "sha256": "5c3fdab6aedd3061eed4371d67e087acd2bf0dd071e140594e95001c86d1bb5d"
+      }
+    }
+  ]
+}

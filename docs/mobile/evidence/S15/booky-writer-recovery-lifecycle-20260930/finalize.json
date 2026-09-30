@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30T10:53:02.955Z",
+  "pass": true,
+  "sourceCommit": "25b20971917ba52426844a269a3fe557fa25eb52",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/result.json",
+    "sha256": "cc84efa6e7dc8c97ba0fae7423e3f34b56ee02f5bd162c1f3adedde2fce1585a"
+  },
+  "checkpoint": {
+    "path": "docs/mobile/evidence/S15/booky-writer-recovery-lifecycle-20260930/checkpoint.json",
+    "sha256": "d8c39254de1f1e9876792312b2effa7e4f25c6057675dfa2c33a3313429b04a0"
+  },
+  "helper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/checkpoint-review-a7/finalize-notes.mjs",
+    "sha256": "265366df6dab08f2fee9e12bd954287cf29cfe2600ec53414f645363f462cee5"
+  },
+  "before": {
+    "path": "AGENTS.md",
+    "sha256": "4cce08bc7a1a715c7a68b14ea71759a5227a737550ad5f2d9d16647d3747ccb2"
+  },
+  "outputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "10e69b51261d45949a6b6383e78696047dbdd37f68947aee06bea2a07c5b941c"
+    }
+  ],
+  "scope": "Bounded writer lifecycle checkpoint note only",
+  "releaseReady": false
+}

@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-30T10:28:16.750Z",
+  "exitCode": 0,
+  "durationMs": 103956,
+  "requestedChannel": "msedge",
+  "artifactRoots": {
+    "temp": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/temp",
+    "profileRoot": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/profiles",
+    "browserOutput": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-evidence/attempt-a3/browser-a3"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/browser-a3/stdout.log",
+    "bytes": 265,
+    "sha256": "0e5948fbeabb63d59afef49d5aa63391b95bf56081ff9d22c767f8ed29f27e93"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-recovery-lifecycle-review/execution-review/bound-a3/browser-a3/stderr.log",
+    "bytes": 164,
+    "sha256": "e8f00c3ac7b3aaf609d86efcb7f2b541ca93b0355facab8110b0df4cde61a898"
+  }
+}
