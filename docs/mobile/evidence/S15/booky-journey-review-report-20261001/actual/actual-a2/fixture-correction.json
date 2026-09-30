@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "native-reopen-caption-view-fixture-setup",
+  "path": "tests/host/booky-journey-authoring.spec.mjs",
+  "beforeSha256": "ee03737b124b16bb2671c0c82da5f28bb652b2c203f1e2080f0c3b2bdd28d5dc",
+  "afterSha256": "2882146e2b04da19a39719cd78887e2abb1b8c1d0412d363de5302024cae94ed",
+  "setup": "  await expect(factCopyView).toHaveValue('body');\n  await factCopyView.selectOption('caption');\n  await expect(factCopyView).toHaveValue('caption');\n",
+  "original": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/proposed/tests/host/booky-journey-authoring.spec.mjs",
+    "sha256": "ee03737b124b16bb2671c0c82da5f28bb652b2c203f1e2080f0c3b2bdd28d5dc"
+  },
+  "corrected": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/fixed/tests/host/booky-journey-authoring.spec.mjs",
+    "sha256": "2882146e2b04da19a39719cd78887e2abb1b8c1d0412d363de5302024cae94ed"
+  },
+  "originalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/source-manifest.json",
+    "sha256": "f057794bbd417334f5d594dd764457ae15d927934bb73718be5499b482d22af5"
+  },
+  "finalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/source-manifest.json",
+    "sha256": "9b709f9b53a2b22258074ec8961b6f51ff9380052cdc2b525b67cf2ac05bc787"
+  },
+  "failedAttempt": {
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/checks-result.json",
+      "sha256": "aa60b08958c44d6955946e17e3442f72f9d564b2da93212221867e8cf9d482db"
+    },
+    "sourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/source-manifest.json",
+      "sha256": "f057794bbd417334f5d594dd764457ae15d927934bb73718be5499b482d22af5"
+    },
+    "typecheck": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/typecheck-result.json",
+      "sha256": "093adcc72420713216ca3e24f821fd9b6cab745e1da47f6e827eb22ccce5de5c"
+    },
+    "browser": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/browser-result.json",
+      "sha256": "2fd595dda8eff96b3a039b7002fc387d180d9a4be9e48c1414c649cdeed81a1b"
+    },
+    "browserReport": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/browser-report.json",
+      "sha256": "089c9a655f3c7a5250b84b1ec567946b18adc172f44b777833e200d98818e27b"
+    },
+    "browserPassed": 2,
+    "browserFailed": 1,
+    "captures": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+        "sha256": "c366e8236d8d2d230439138af2fe6169dc49f04cf52ff994ed3cfd2b062792a6"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+        "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+        "sha256": "cb799052319a4b6ba14cc346f20bb895f2bf812ff8c5bd7fa37e730589b677ee"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+        "sha256": "87edc987fdc11dff42fe2f23f39a728df5ce924ae564a3a5ab830d33f313ada8"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+        "sha256": "92a9a530e932669a7b7308fb35831f201044c57ba67ef8741ec84e85efae48f9"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/test-failed-1.png",
+        "sha256": "2614f31f2cb02465607fbcd2129f55cd5f89edfc51905673ab4ebb50e6fcf25d"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/test-failed-2.png",
+        "sha256": "94f33c5e2a1c456377b0dc72c87cdaa24731449f2bfa0415f6f49e26fac88f0f"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+        "sha256": "ea3f73cff3d6a851e4a0d683fcda66eab15a904004a472fd38ec1fc85ec110a8"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+        "sha256": "f0170dfa35150dc27a6c42144635766d91d10cf66b4757d9c5bb066ac50b9390"
+      }
+    ],
+    "diagnostics": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/error-context.md",
+        "sha256": "b2c85c938988e57a86ecddc2ca107300079a2b72039739ba820c414691949225"
+      }
+    ],
+    "diagnosticOnly": true,
+    "applicationDefectClaimed": false
+  },
+  "retainedCurrentTypecheck": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a1/typecheck-result.json",
+    "sha256": "093adcc72420713216ca3e24f821fd9b6cab745e1da47f6e827eb22ccce5de5c"
+  },
+  "preservedOwners": [
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "sha256": "4a109f9012e153024631526347a49da71e2761b4ed27eaf446ec49018a84b874"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "sha256": "eae1d1f0ddfe9ebce77fd2b0b0ae6fe1af8bcb6c3834cae5a70d553fcc19a5ea"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "sha256": "05a17d7c98e3027b4a935c5a72b1fb93d79abc75d6089a6bfac0882cc23c43e6"
+    }
+  ],
+  "onlyBrowserFixtureChanged": true,
+  "unchangedSourceInputCount": 2100,
+  "applicationOwnersByteEqualFinal": true,
+  "typecheckRerun": false,
+  "unitRerun": false,
+  "originalTypecheckManifestRetained": true,
+  "diagnosis": "Fresh preview resets copy view to body. Explicitly choose caption before selecting/checking the answer so same-pair report inspection can meaningfully preserve it.",
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/fix-and-browser.mjs",
+    "sha256": "f7611ec590578aa3b01efaf52670e42aee1d15d0a90088d69424e0281a858eea"
+  }
+}

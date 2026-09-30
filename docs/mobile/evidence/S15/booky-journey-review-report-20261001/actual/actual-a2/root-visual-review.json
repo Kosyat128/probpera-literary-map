@@ -1,0 +1,61 @@
+{
+  "pass": true,
+  "decision": "D232",
+  "directRootViews": 8,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/source-manifest.json",
+    "sha256": "9b709f9b53a2b22258074ec8961b6f51ff9380052cdc2b525b67cf2ac05bc787"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/browser-result.json",
+    "sha256": "e2184a85ffbfa3a741c1f72f6770a6484d81ba906fef0746e6e2e081dcc0cdc6"
+  },
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "c366e8236d8d2d230439138af2fe6169dc49f04cf52ff994ed3cfd2b062792a6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "8a2faacf6b817a19c6584f47ba325ca849719a97bd8b3597a1b71a2610697f19"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "87edc987fdc11dff42fe2f23f39a728df5ce924ae564a3a5ab830d33f313ada8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "bc88bd4809a1c41f4a765ca0d835cacecac36c9191ee0a15db610c088c5edeb5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "92a9a530e932669a7b7308fb35831f201044c57ba67ef8741ec84e85efae48f9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "ea3f73cff3d6a851e4a0d683fcda66eab15a904004a472fd38ec1fc85ec110a8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-review-report-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "f0170dfa35150dc27a6c42144635766d91d10cf66b4757d9c5bb066ac50b9390"
+    }
+  ],
+  "observations": [
+    "Desktop directly shows expanded localized review report with responsive RU and EN columns, step labels and Inspect controls.",
+    "EN320 native-reopened six-node reverse-order report directly shows fifth Fact row, authored caption/reduced presence, independent RU2/EN1 citation counts expressly unreviewed.",
+    "Native report is collapsed by default in RU320 preview and preserves existing profile and width controls.",
+    "RU optional-step order controls and current RU incorrect / EN correct answer previews retain readable focus and navigation."
+  ],
+  "limits": [
+    "Desktop image shows only the upper report rows; whole-route order is covered by browser assertions.",
+    "Narrow report image shows the Fact row and following Finish row; activity verdict is outside this image.",
+    "Synthetic admin component and mocked action transport; no authenticated staff session, source verification, installed device or stage acceptance.",
+    "Original a1 failure was fixture setup only; passing TypeScript remains at its original manifest."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}
