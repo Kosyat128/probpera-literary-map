@@ -1,0 +1,105 @@
+{
+  "pass": true,
+  "path": "tests/host/booky-journey-authoring.spec.mjs",
+  "beforeSha256": "51908b117ac3f588eab818d0e2e7e59467bd6834d95b2fe1a3acd924e13693b8",
+  "afterSha256": "4336d877a7a18f6d098d8b917ec70f11f2934110e8cc672e00dbdea909277696",
+  "originalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/source-manifest.json",
+    "sha256": "cb41b01c18ad47ebfa73fa2820ce7ce323ede2c7d2bc7f684c9a00931c6766e2"
+  },
+  "finalManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/source-manifest.json",
+    "sha256": "220e7f5224671269571bb4167be102f0a0642764ff28afe4d40bfb6a7e757ecf"
+  },
+  "failedChecks": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/checks-result.json",
+    "sha256": "cc2cb09c77cf16cfd1db497013c1782807c1f35fd1a24a03240b33c66934006f"
+  },
+  "failedBrowser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/browser-result.json",
+    "sha256": "de9945137b3c209067b641460918f455f2a9b72b405fd1efd2777e7238d59aa2"
+  },
+  "failedDiagnosticRefs": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/browser-report.json",
+      "sha256": "f017fb3a1a1be5a6ccbc70893ce4c4986461a9f85cff331a93927180b81ab3a8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/browser.stdout.log",
+      "sha256": "399dfd4c606ac937b9dd825b53ea71ee8455f7291296a6f5364cdd762256e686"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/browser.stderr.log",
+      "sha256": "a50c505472fab96f82717cd25849b5fb62fbb31c5cc59f8404a863d94b698ef0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/test-failed-1.png",
+      "sha256": "4740e8c5741d6c9a69bd2dd5ee3bfb1d186468dc60a660eabfc3d0839f7a06db"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "5d64027485ac8329a77ce2a2ca061ea48a6b915fd20071bd2f205a55c17e4fa6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "b97907c9738d59659440d6d94ad65ed1912362995b90150c7b782dd6e0cd3cd0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/test-failed-1.png",
+      "sha256": "cbfe8e24978993e211915e981d1822e00e0bee437ea02a232a8775cfd2e57f7a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/test-failed-2.png",
+      "sha256": "3d09a700a0caf487e7697e04e16c6191f68142113ac2afa2fa1ad5b292753417"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/error-context.md",
+      "sha256": "77731b8a460cc2a84ab7d6deda8f278d305ecf919bb799279d131dc911d8a039"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/error-context.md",
+      "sha256": "0e1f217b38970b3187942535f42b7a168a6a88cd1d6986248a4aa2a7109b6b41"
+    }
+  ],
+  "retainedCurrentTypecheck": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/typecheck-result.json",
+    "sha256": "397b9c62dcebebba3d4a8478ada3dd7560cf2697de183e38e45efc36e707cd7a"
+  },
+  "retainedCurrentUnit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/unit-result.json",
+    "sha256": "422bc4e98da1af86c785626324786da0d50cac052b1e2e63866018e16ada94da"
+  },
+  "preservedOwners": [
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "sha256": "9da1138c63c5ac359bbb2eb00062ba77c3470269d4c9979e08aceab01b43e96f"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "sha256": "d8194aafa18cf84122bf5530dca29c97aeeb9c0512036bcb7e7fd080f69196a0"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "sha256": "b64f22c366477da8188a2dce1651be337903babd67c3621b89a3e944d1a5a835"
+    }
+  ],
+  "applicationSourceUnchanged": true,
+  "typecheckRerun": false,
+  "unitRerun": false,
+  "helperUnitRerun": false,
+  "catalogSmokeRerun": false,
+  "supplementalProbeExecuted": false,
+  "reason": "Use three exact native AX combobox locators; relocate existing RU/EN preview captures to the expanded matching/outside adult profile controls and report. Preserve all application and core-test bytes.",
+  "originalApplyProducer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/apply-and-check.mjs",
+    "sha256": "7855c7d7c4b09c475c4752966a3b1f373fbdf1eb10ca875b29132340d3cf46d4"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/fix-and-browser.mjs",
+    "sha256": "8961546b439020c856737daf46d25ba967c0e187f8d962d61bc8bb98ba627a67"
+  }
+}

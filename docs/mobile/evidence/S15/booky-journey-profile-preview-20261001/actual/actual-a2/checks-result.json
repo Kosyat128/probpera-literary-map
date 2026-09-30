@@ -1,0 +1,336 @@
+{
+  "pass": true,
+  "decision": "D229",
+  "predecessorDocsCommit": "6aaafb5dffa21e801cb3bbd9a927df0f4283b451",
+  "predecessorResult": {
+    "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/result.json",
+    "sha256": "ba2d0b6b26ac91d4e8088b304867cb2da8e3139f3f41ff3eb0679ed0f88b9626"
+  },
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/source-manifest.json",
+    "sha256": "220e7f5224671269571bb4167be102f0a0642764ff28afe4d40bfb6a7e757ecf"
+  },
+  "sourceBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/source-before.json",
+    "sha256": "592d22a77c98a7a50c94ca36f69f416dc90fb3905d13d50db9ae1ef681d4db53"
+  },
+  "sourceAfter": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/source-after.json",
+    "sha256": "592d22a77c98a7a50c94ca36f69f416dc90fb3905d13d50db9ae1ef681d4db53"
+  },
+  "sourceInputsUnchanged": true,
+  "changedPaths": [
+    "apps/admin/components/BookyJourneyDraftEditor.tsx",
+    "apps/admin/lib/booky-journey-draft.test.ts",
+    "apps/admin/lib/booky-journey-draft.ts",
+    "tests/host/booky-journey-authoring.spec.mjs"
+  ],
+  "newPaths": [],
+  "protectedInputCount": 2097,
+  "proposalFiles": [
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "sha256": "9da1138c63c5ac359bbb2eb00062ba77c3470269d4c9979e08aceab01b43e96f"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "sha256": "d8194aafa18cf84122bf5530dca29c97aeeb9c0512036bcb7e7fd080f69196a0"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "sha256": "b64f22c366477da8188a2dce1651be337903babd67c3621b89a3e944d1a5a835"
+    },
+    {
+      "path": "tests/host/booky-journey-authoring.spec.mjs",
+      "sha256": "51908b117ac3f588eab818d0e2e7e59467bd6834d95b2fe1a3acd924e13693b8"
+    }
+  ],
+  "typecheck": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/typecheck-result.json",
+    "sha256": "397b9c62dcebebba3d4a8478ada3dd7560cf2697de183e38e45efc36e707cd7a"
+  },
+  "unit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/unit-result.json",
+    "sha256": "422bc4e98da1af86c785626324786da0d50cac052b1e2e63866018e16ada94da"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/browser-result.json",
+    "sha256": "0073313730a6851376a4e3187865500cf3cf0f8f2608cf41577369c9afde870c"
+  },
+  "captures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "014f84d694a904b6e4c40b6646c2ecb22c815eedbf958a5f00d896d9168d1861"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "cb6e4b420d490b399fe99dde686b4abe7a3bc5cd08d07d939dd9ffea318f05f3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "aaf1de1a750536a53dec1416c44d7458f0bbc29c8b55f4ece2e22037d7db6d2d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "5d64027485ac8329a77ce2a2ca061ea48a6b915fd20071bd2f205a55c17e4fa6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "b97907c9738d59659440d6d94ad65ed1912362995b90150c7b782dd6e0cd3cd0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "56d50c01b36f0c6d5b7398caefe986c2f13084122dcd44dba333e1aa5a601f52"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "91ecce7747341ac95200c46a4f57f6f1623608850d5509dea41a5c402cf766b8"
+    }
+  ],
+  "expectedCoreTests": 41,
+  "retainedHelper": {
+    "decision": "D226",
+    "passed": 18,
+    "rerun": false,
+    "unit": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a1/unit-result.json",
+      "sha256": "31227590a482ff1e776a53fad3b9276a256eb2b31759823bad98042cb1de12cb"
+    },
+    "report": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a1/unit-report.json",
+      "sha256": "8eeeebb4532d8e09cfab1c56fcc37cbb13f27ebfb26dea9f8284580768da0c9a"
+    },
+    "sourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a1/source-manifest.json",
+      "sha256": "b15d386b58589f87316b43beb43a91da17d07a7a5715cbb9f4f796630a9bd289"
+    },
+    "files": [
+      {
+        "path": "apps/admin/lib/booky-journey-activity-validation.test.ts",
+        "sha256": "4504553c8ac28ff745196ff4a2c1f3785974cc55658a94567a03152644711424"
+      },
+      {
+        "path": "apps/admin/lib/booky-journey-activity-validation.ts",
+        "sha256": "a048e731d68e5a0a2fa4e3524d4a4a72d97c431ae0b54011e444546455ae779e"
+      }
+    ],
+    "helperOwnBytesUnchanged": true,
+    "coreDependencyChanged": true,
+    "currentParserCoverageClaimed": false
+  },
+  "retainedAction": {
+    "decision": "D225",
+    "passed": 10,
+    "rerun": false,
+    "predecessorResult": {
+      "path": "docs/mobile/evidence/S15/booky-journey-answer-preview-20260930/result.json",
+      "sha256": "905bc5f112bb77c861725bc5108e5d3bac60fdc7d49da9e9d034ed73f7aa5737"
+    },
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-journey-answer-preview-20260930/actual/actual-a1/unit-result.json",
+      "sha256": "940f51e80e4a00385c997ba5e7d27514e3d3cd979aa6bfd80ec1325f67e547f1"
+    },
+    "report": {
+      "path": "docs/mobile/evidence/S15/booky-journey-answer-preview-20260930/actual/actual-a1/unit-report.json",
+      "sha256": "84f7f51c5d28d7f95fc05813bf3399cfe62e3dbf0fba14996d18a076f0da3aac"
+    },
+    "files": [
+      {
+        "path": "apps/admin/app/(dashboard)/journeys/actions.test.ts",
+        "sha256": "ecd958636aec1bd8b3f9b4c097c546502398301587544b2d6042c776d0b91426"
+      },
+      {
+        "path": "apps/admin/app/(dashboard)/journeys/actions.ts",
+        "sha256": "a4182503b80bf7acde559cdde73412fa8e59dd8e7cc45077881101c3fe6600ac"
+      },
+      {
+        "path": "apps/admin/lib/booky-journey-activity-validation.ts",
+        "sha256": "a048e731d68e5a0a2fa4e3524d4a4a72d97c431ae0b54011e444546455ae779e"
+      }
+    ],
+    "mockedActionCoverage": true,
+    "parserCoverageClaimed": false
+  },
+  "retainedHistoricalFactSmoke": {
+    "decision": "D226",
+    "rerun": false,
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-journey-fact-20261001/actual/actual-a2/fact-smoke-result.json",
+      "sha256": "9c411b7b8ee5705ebada165092ad257b28d510eb9f3ecb0afd924baf8dd498d8"
+    },
+    "sourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/source-manifest.json",
+      "sha256": "3a8786ad17ed5e192b9958997bc7f70209b7bb5f16daf19661ad5b52eec9da67"
+    },
+    "importManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/fact-smoke-source-manifest.json",
+      "sha256": "dde9ac87f2a622aa233cf3e6649a94ce82d58311a57728cdf7a42254b8c303db"
+    },
+    "historicalOnly": true,
+    "currentCoreCompatibilityClaimed": false,
+    "evaluatedWorkCount": 1,
+    "evaluatedChoiceCount": 2,
+    "syntheticCitationMetadata": true,
+    "factualClaimsVerified": false,
+    "sourcesFetched": false
+  },
+  "retainedD228Checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-copy-variants-review\\actual-a2\\checks-result.json",
+    "sha256": "58e6bb2f4db44fd36e35775f06e32eff546ce4937777749ceb862b042d56c418"
+  },
+  "retentionRefs": [
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-journey-copy-variants-20261001/result.json",
+      "sha256": "ba2d0b6b26ac91d4e8088b304867cb2da8e3139f3f41ff3eb0679ed0f88b9626"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-copy-variants-review\\actual-a2\\checks-result.json",
+      "sha256": "58e6bb2f4db44fd36e35775f06e32eff546ce4937777749ceb862b042d56c418"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a2/source-manifest.json",
+      "sha256": "0100554380b4bbf27fe26478b0709cde3311d15e18cf883d0b76679508a02356"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a2/source-before.json",
+      "sha256": "c499192e27228fc271a3f328c3af427dd59d7e42d5735a5ea6cd8ee2c3c0bbee"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a2/source-after.json",
+      "sha256": "c499192e27228fc271a3f328c3af427dd59d7e42d5735a5ea6cd8ee2c3c0bbee"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a2/typecheck-result.json",
+      "sha256": "756c1ef4e047715eaef6bb9ce2c53a3d9d613f83c62df444d8c08b12f06d8dbb"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a2/unit-result.json",
+      "sha256": "9f5c745c8ec6e2343a6b813dc2eca65fe28df61402a02b244de3b439979b7032"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a2/unit-report.json",
+      "sha256": "adbcb85bfd22a9fcea08d9d2c63a60cd85a24bd032bfa9e6f6295a4c9b9fc317"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/actual-a2/runtime-correction.json",
+      "sha256": "fbea3f2d3ddff114aaac04021ed56a095368710d68381948a97f6d9ed0f125f2"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-copy-variants-review\\actual-a1\\checks-result.json",
+      "sha256": "f6970da3d146d2604f67b67b156e0b182ae796b1ad9be0b260726c85144a762a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a1/unit-result.json",
+      "sha256": "31227590a482ff1e776a53fad3b9276a256eb2b31759823bad98042cb1de12cb"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a1/unit-report.json",
+      "sha256": "8eeeebb4532d8e09cfab1c56fcc37cbb13f27ebfb26dea9f8284580768da0c9a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a1/source-manifest.json",
+      "sha256": "b15d386b58589f87316b43beb43a91da17d07a7a5715cbb9f4f796630a9bd289"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-answer-preview-20260930/actual/actual-a1/unit-result.json",
+      "sha256": "940f51e80e4a00385c997ba5e7d27514e3d3cd979aa6bfd80ec1325f67e547f1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-answer-preview-20260930/actual/actual-a1/unit-report.json",
+      "sha256": "84f7f51c5d28d7f95fc05813bf3399cfe62e3dbf0fba14996d18a076f0da3aac"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-fact-20261001/actual/actual-a2/fact-smoke-result.json",
+      "sha256": "9c411b7b8ee5705ebada165092ad257b28d510eb9f3ecb0afd924baf8dd498d8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/fact-smoke-source-manifest.json",
+      "sha256": "dde9ac87f2a622aa233cf3e6649a94ce82d58311a57728cdf7a42254b8c303db"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/fact-smoke-source-before.json",
+      "sha256": "7da3678b20739e6b7ef06cadc54f9cb5b480ca974b5e9a134b81e495155d5eea"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/actual-a2/fact-smoke-source-after.json",
+      "sha256": "7da3678b20739e6b7ef06cadc54f9cb5b480ca974b5e9a134b81e495155d5eea"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-review/fact-smoke.mjs",
+      "sha256": "abc664777458a5547441c549534ec0d1985f1329da1f49b3337aeac0264f82c2"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-variants-review/fix-and-check.mjs",
+      "sha256": "a86005c68505ef9f161837530fe7180cd7ba14c981026ed947373bdd6a9f1017"
+    }
+  ],
+  "unitExecuted": false,
+  "helperUnitExecuted": false,
+  "catalogSmokeExecuted": false,
+  "mobileRuntimeUnchanged": true,
+  "mobileBuildExecuted": false,
+  "authenticatedAdminSession": false,
+  "liveSupabaseTested": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/fix-and-browser.mjs",
+    "sha256": "8961546b439020c856737daf46d25ba967c0e187f8d962d61bc8bb98ba627a67"
+  },
+  "fixtureCorrection": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/fixture-correction.json",
+    "sha256": "164632f2ccf73c9cce923da49c5643b052e12b3d69cd9204916c9716d14088a0"
+  },
+  "failedAttempt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/checks-result.json",
+    "sha256": "cc2cb09c77cf16cfd1db497013c1782807c1f35fd1a24a03240b33c66934006f"
+  },
+  "effectiveProposalFiles": [
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "sha256": "9da1138c63c5ac359bbb2eb00062ba77c3470269d4c9979e08aceab01b43e96f"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "sha256": "d8194aafa18cf84122bf5530dca29c97aeeb9c0512036bcb7e7fd080f69196a0"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "sha256": "b64f22c366477da8188a2dce1651be337903babd67c3621b89a3e944d1a5a835"
+    },
+    {
+      "path": "tests/host/booky-journey-authoring.spec.mjs",
+      "sha256": "4336d877a7a18f6d098d8b917ec70f11f2934110e8cc672e00dbdea909277696"
+    }
+  ],
+  "preservedOwners": [
+    {
+      "path": "apps/admin/components/BookyJourneyDraftEditor.tsx",
+      "sha256": "9da1138c63c5ac359bbb2eb00062ba77c3470269d4c9979e08aceab01b43e96f"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.test.ts",
+      "sha256": "d8194aafa18cf84122bf5530dca29c97aeeb9c0512036bcb7e7fd080f69196a0"
+    },
+    {
+      "path": "apps/admin/lib/booky-journey-draft.ts",
+      "sha256": "b64f22c366477da8188a2dce1651be337903babd67c3621b89a3e944d1a5a835"
+    }
+  ],
+  "retainedCurrentTypecheck": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/typecheck-result.json",
+    "sha256": "397b9c62dcebebba3d4a8478ada3dd7560cf2697de183e38e45efc36e707cd7a"
+  },
+  "retainedCurrentUnit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/unit-result.json",
+    "sha256": "422bc4e98da1af86c785626324786da0d50cac052b1e2e63866018e16ada94da"
+  },
+  "typecheckExecuted": false,
+  "typecheckRetainedAtOriginalManifest": true,
+  "unitRetainedAtOriginalManifest": true,
+  "supplementalProbeExecuted": false
+}

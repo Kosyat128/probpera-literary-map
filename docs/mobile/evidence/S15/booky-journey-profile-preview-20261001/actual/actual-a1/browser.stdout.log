@@ -1,0 +1,86 @@
+
+Running 3 tests using 1 worker
+FF·
+
+  1) tests\host\booky-journey-authoring.spec.mjs:92:1 › adult bilingual journey editor exports only a draft and clears dependent canonical selections 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })
+    Expected: ""
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" with timeout 10000ms
+      - waiting for locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })
+
+
+      193 |   const profileAgeRu=profilePanel.getByLabel('Возраст для предпросмотра',{exact:true});
+      194 |   const profileLevelRu=profilePanel.getByLabel('Уровень чтения для предпросмотра',{exact:true});
+    > 195 |   await expect(profileAgeRu).toHaveValue(''); await expect(profileLevelRu).toHaveValue('');
+          |                                                                            ^
+      196 |   await expect(profileReport).toHaveAttribute('data-profile-status','invalid');
+      197 |   await expect(profileReport).toContainText('Укажите целый возраст от 18 до 120 лет и выберите уровень чтения.');
+      198 |   await profileLevelRu.selectOption('plain');
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\host\booky-journey-authoring.spec.mjs:195:76
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-profile-preview-review\actual-a1\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-profile-preview-review\actual-a1\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-profile-preview-review\actual-a1\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-profile-preview-review\actual-a1\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests\host\booky-journey-authoring.spec.mjs:349:1 › optional adult RU EN author task uses current semantic validation and preserves edits through failed or obsolete operations 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })
+    Expected: ""
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" with timeout 10000ms
+      - waiting for locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })
+
+
+      729 |   const profileAge = profilePanel.getByLabel('Возраст для предпросмотра', { exact: true });
+      730 |   const profileLevel = profilePanel.getByLabel('Уровень чтения для предпросмотра', { exact: true });
+    > 731 |   await expect(profileAge).toHaveValue(''); await expect(profileLevel).toHaveValue('');
+          |                                                                        ^
+      732 |   await expect(profileReport).toHaveAttribute('data-profile-status', 'invalid');
+      733 |   await correctAnswer.tap(); await expect(answerCheckRu).toHaveAttribute('aria-disabled', 'true');
+      734 |   const callsBeforeInvalidProfile = await page.evaluate(() => window.__activityAnswerCalls.length);
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\host\booky-journey-authoring.spec.mjs:731:72
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-profile-preview-review\actual-a1\captures\booky-journey-authoring-op-df663-iled-or-obsolete-operations\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-profile-preview-review\actual-a1\captures\booky-journey-authoring-op-df663-iled-or-obsolete-operations\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-profile-preview-review\actual-a1\captures\booky-journey-authoring-op-df663-iled-or-obsolete-operations\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-profile-preview-review\actual-a1\captures\booky-journey-authoring-op-df663-iled-or-obsolete-operations\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-profile-preview-review\actual-a1\captures\booky-journey-authoring-op-df663-iled-or-obsolete-operations\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests\host\booky-journey-authoring.spec.mjs:92:1 › adult bilingual journey editor exports only a draft and clears dependent canonical selections 
+    tests\host\booky-journey-authoring.spec.mjs:349:1 › optional adult RU EN author task uses current semantic validation and preserves edits through failed or obsolete operations 
+  1 passed (38.1s)

@@ -1,0 +1,275 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-authoring-review\\playwright.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-authoring-review\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a1/captures",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-journey-authoring.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-profile-preview-review\\actual-a1\\browser-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-journey-authoring.spec.mjs",
+      "file": "booky-journey-authoring.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "adult bilingual journey editor exports only a draft and clears dependent canonical selections",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13910,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\nExpected: \u001b[32m\"\"\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\nExpected: \u001b[32m\"\"\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\u001b[22m\n\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs:195:76",
+                    "location": {
+                      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs",
+                      "column": 76,
+                      "line": 195
+                    },
+                    "snippet": "  193 |   const profileAgeRu=profilePanel.getByLabel('Возраст для предпросмотра',{exact:true});\n  194 |   const profileLevelRu=profilePanel.getByLabel('Уровень чтения для предпросмотра',{exact:true});\n> 195 |   await expect(profileAgeRu).toHaveValue(''); await expect(profileLevelRu).toHaveValue('');\n      |                                                                            ^\n  196 |   await expect(profileReport).toHaveAttribute('data-profile-status','invalid');\n  197 |   await expect(profileReport).toContainText('Укажите целый возраст от 18 до 120 лет и выберите уровень чтения.');\n  198 |   await profileLevelRu.selectOption('plain');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs",
+                        "column": 76,
+                        "line": 195
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\nExpected: \u001b[32m\"\"\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\u001b[22m\n\n\n  193 |   const profileAgeRu=profilePanel.getByLabel('Возраст для предпросмотра',{exact:true});\n  194 |   const profileLevelRu=profilePanel.getByLabel('Уровень чтения для предпросмотра',{exact:true});\n> 195 |   await expect(profileAgeRu).toHaveValue(''); await expect(profileLevelRu).toHaveValue('');\n      |                                                                            ^\n  196 |   await expect(profileReport).toHaveAttribute('data-profile-status','invalid');\n  197 |   await expect(profileReport).toContainText('Укажите целый возраст от 18 до 120 лет и выберите уровень чтения.');\n  198 |   await profileLevelRu.selectOption('plain');\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs:195:76"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T22:10:39.226Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-profile-preview-review\\actual-a1\\captures\\booky-journey-authoring-ad-edae1-endent-canonical-selections\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-profile-preview-review\\actual-a1\\captures\\booky-journey-authoring-ad-edae1-endent-canonical-selections\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-profile-preview-review\\actual-a1\\captures\\booky-journey-authoring-ad-edae1-endent-canonical-selections\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs",
+                    "column": 76,
+                    "line": 195
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fc102a1299349af6bda4-d3427d1b3c329bf0c8e9",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/host/booky-journey-authoring.spec.mjs",
+          "line": 92,
+          "column": 1
+        },
+        {
+          "title": "optional adult RU EN author task uses current semantic validation and preserves edits through failed or obsolete operations",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 15489,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\nExpected: \u001b[32m\"\"\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\nExpected: \u001b[32m\"\"\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\u001b[22m\n\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs:731:72",
+                    "location": {
+                      "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs",
+                      "column": 72,
+                      "line": 731
+                    },
+                    "snippet": "  729 |   const profileAge = profilePanel.getByLabel('Возраст для предпросмотра', { exact: true });\n  730 |   const profileLevel = profilePanel.getByLabel('Уровень чтения для предпросмотра', { exact: true });\n> 731 |   await expect(profileAge).toHaveValue(''); await expect(profileLevel).toHaveValue('');\n      |                                                                        ^\n  732 |   await expect(profileReport).toHaveAttribute('data-profile-status', 'invalid');\n  733 |   await correctAnswer.tap(); await expect(answerCheckRu).toHaveAttribute('aria-disabled', 'true');\n  734 |   const callsBeforeInvalidProfile = await page.evaluate(() => window.__activityAnswerCalls.length);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs",
+                        "column": 72,
+                        "line": 731
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\nExpected: \u001b[32m\"\"\u001b[39m\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-preview]').locator('[data-booky-preview-profile]').getByLabel('Уровень чтения для предпросмотра', { exact: true })\u001b[22m\n\n\n  729 |   const profileAge = profilePanel.getByLabel('Возраст для предпросмотра', { exact: true });\n  730 |   const profileLevel = profilePanel.getByLabel('Уровень чтения для предпросмотра', { exact: true });\n> 731 |   await expect(profileAge).toHaveValue(''); await expect(profileLevel).toHaveValue('');\n      |                                                                        ^\n  732 |   await expect(profileReport).toHaveAttribute('data-profile-status', 'invalid');\n  733 |   await correctAnswer.tap(); await expect(answerCheckRu).toHaveAttribute('aria-disabled', 'true');\n  734 |   const callsBeforeInvalidProfile = await page.evaluate(() => window.__activityAnswerCalls.length);\n    at D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs:731:72"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T22:10:54.336Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-profile-preview-review\\actual-a1\\captures\\booky-journey-authoring-op-df663-iled-or-obsolete-operations\\test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-profile-preview-review\\actual-a1\\captures\\booky-journey-authoring-op-df663-iled-or-obsolete-operations\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-profile-preview-review\\actual-a1\\captures\\booky-journey-authoring-op-df663-iled-or-obsolete-operations\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-profile-preview-review\\actual-a1\\captures\\booky-journey-authoring-op-df663-iled-or-obsolete-operations\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\booky-journey-authoring.spec.mjs",
+                    "column": 72,
+                    "line": 731
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fc102a1299349af6bda4-1696623111d008a3b518",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/host/booky-journey-authoring.spec.mjs",
+          "line": 349,
+          "column": 1
+        },
+        {
+          "title": "optional bilingual work fact preserves authored source metadata through strict local export and reopen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4885,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-30T22:11:11.143Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-fact-evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJwYXNzIjogdHJ1ZSwKICAiYWN0dWFsRWRpdG9yQ29tcG9uZW50IjogdHJ1ZSwKICAiYWN0dWFsRWRpdG9yU3R5bGVzIjogdHJ1ZSwKICAiYWN0dWFsRHJhZnRDb21waWxlciI6IHRydWUsCiAgImFjdHVhbERyYWZ0UGFyc2VyIjogdHJ1ZSwKICAic3ludGhldGljQ2F0YWxvZyI6IHRydWUsCiAgImF1dGhvcmVkU3ludGhldGljVW52ZXJpZmllZEZhY3QiOiB0cnVlLAogICJzb3VyY2VVcmxzRmV0Y2hlZCI6IGZhbHNlLAogICJzb3VyY2VzQXR0ZXN0ZWQiOiBmYWxzZSwKICAib3B0aW9uYWxGYWN0U3RhcnRzQ29sbGFwc2VkQmVmb3JlQWN0aXZpdHkiOiB0cnVlLAogICJpbml0aWFsRmFjdENvcHlBbmRTb3VyY2VGaWVsZHNCbGFuayI6IHRydWUsCiAgIm5vQXV0b21hdGljQWNjZXNzRGF0ZSI6IHRydWUsCiAgIm1pc3NpbmdGaWVsZHNQcmV2ZW50UHJldmlld0FuZERvd25sb2FkIjogdHJ1ZSwKICAic2VsZWN0ZWRXb3JrQW5jaG9yT25Db2xsZWN0aW9uIjogdHJ1ZSwKICAiYmlsaW5ndWFsRGVmaW5pdGlvbnMiOiAyLAogICJmYWN0T25seVNlbWFudGljTm9kZXNQZXJEZWZpbml0aW9uIjogNSwKICAidW5hcHByb3ZlZERpYWxvZ3VlRHJhZnRzIjogMTAsCiAgImluZGVwZW5kZW50UnVFblNvdXJjZXNQcmVzZXJ2ZWQiOiB0cnVlLAogICJvcmRlcmVkUnVFbkNvbnRlbnRCaW5kaW5nVmVyaWZpZWQiOiB0cnVlLAogICJuYXRpdmVCbG9iRXhwb3J0T2JzZXJ2ZWQiOiB0cnVlLAogICJuYXRpdmVGaWxlSW1wb3J0UmVzdG9yZXNFdmVyeVNvdXJjZVJvdyI6IHRydWUsCiAgImltcG9ydGVkTXVsdGlTb3VyY2VFZGl0c1ByZXNlcnZlT3RoZXJSb3dzIjogdHJ1ZSwKICAic291cmNlQWRkUmVtb3ZlVmVyaWZpZWQiOiB0cnVlLAogICJtYWxmb3JtZWRNaXNzaW5nU291cmNlQW5kRnVsbEVudmVsb3BlVGFtcGVyUHJlc2VydmVJbnB1dEFuZFByZXZpZXciOiB0cnVlLAogICJmYWN0UHJldmlld1Nob3dzT25seUN1cnJlbnRMb2NhbGVTb3VyY2VNZXRhZGF0YSI6IHRydWUsCiAgImRyYWZ0U291cmNlUmV2aWV3Tm90aWNlTG9jYWxpemVkIjogdHJ1ZSwKICAiYXV0aG9yZWRCYXNlQW5kRmFjdENvcHlWYXJpYW50c0V4cG9ydGVkQW5kTmF0aXZlSW1wb3J0ZWQiOiB0cnVlLAogICJvcHRpb25hbFZhcmlhbnRzU3RhcnRCbGFua0luQ29sbGFwc2VkTG9jYWxlRGV0YWlscyI6IHRydWUsCiAgImluZGVwZW5kZW50T3B0aW9uYWxFblJlZHVjZWRPbWlzc2lvblVzZXNDb21waWxlZFRpdGxlRmFsbGJhY2siOiB0cnVlLAogICJsb2NhbGl6ZWRFeHBsaWNpdENvcHlWaWV3S2VlcHNDdXJyZW50U2VtYW50aWNTdGVwIjogdHJ1ZSwKICAibXVsdGlsaW5lQ2FwdGlvbkFuZFNob3J0VGV4dFByZXZpZXdQcmVzZXJ2ZWQiOiB0cnVlLAogICJyZWhhc2hlZERlcml2ZWRDb3B5VmFyaWFudFRhbXBlckNhbm5vdFJlcGxhY2VJbnB1dE9yUHJldmlldyI6IHRydWUsCiAgImVuZ2xpc2hQcmV2aWV3Q29uZGl0aW9uc1N0ZXBMYWJlbHNSZWNvcmRTY3JlZW5BbmRTZXF1ZW50aWFsTmF2aWdhdGlvbkxvY2FsaXplZCI6IHRydWUsCiAgInNvdXJjZUxpbmtzSGF2ZUh0dHBzTm9vcGVuZXJOb3JlZmVycmVyIjogdHJ1ZSwKICAibmFycm93MzIwTGF5b3V0SGFzTm9Ib3Jpem9udGFsT3ZlcmZsb3ciOiB0cnVlLAogICJtaW5pbXVtQ29udHJvbEhpdEhlaWdodENzc1B4IjogNDQsCiAgImNvbWJpbmVkRmFjdFRoZW5BY3Rpdml0eVByZXZpZXdWZXJpZmllZCI6IHRydWUsCiAgImNvbWJpbmVkRHJhZnRBbnN3ZXJCb3VuZFRvU2FtZVdob2xlSGFzaCI6IHRydWUsCiAgImZhY3RGaXZlTm9kZU92ZXJ2aWV3UnVFblZlcmlmaWVkIjogdHJ1ZSwKICAiY29tYmluZWRTaXhOb2RlT3ZlcnZpZXdVc2VzQWN0dWFsRGVmaW5pdGlvbk9yZGVyIjogdHJ1ZSwKICAidHJ1c3RlZE92ZXJ2aWV3RmFjdEFuZEFjdGl2aXR5SnVtcHNTdGF5TG9jYWwiOiB0cnVlLAogICJjb21iaW5lZE92ZXJ2aWV3Q29udHJvbHNNaW5pbXVtNDRDc3NQeCI6IHRydWUsCiAgImNvbWJpbmVkQ3VycmVudENyZWRpdGVkQXV0aG9yQ2hlY2tVc2VzQWN0dWFsSGVscGVyIjogdHJ1ZSwKICAibW9ja2VkU2VydmVyQWN0aW9uVHJhbnNwb3J0IjogdHJ1ZSwKICAiYXV0aGVudGljYXRlZEFkbWluU2VydmVyVGVzdGVkIjogZmFsc2UsCiAgImluc3RhbGxlZERldmljZVRlc3RlZCI6IGZhbHNlLAogICJhbnN3ZXJDaGVja0RvZXNOb3RBZHZhbmNlU3RlcCI6IHRydWUsCiAgInN0b3JhZ2VXcml0ZXMiOiBbXSwKICAiZG93bmxvYWRzIjogWwogICAgInN5bnRoZXRpYy1mYWN0LXY0LWRyYWZ0Lmpzb24iCiAgXSwKICAiZXhwb3J0ZWREcmFmdCI6IHsKICAgICJwYXRoIjogIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDA5XFwyMFxcMDFhMGJkN2UtZTdiNS03MTExLWIzMTktZGIxYTYwNzQ2ZTk0XFxzMTUtYm9va3ktam91cm5leS1wcm9maWxlLXByZXZpZXctcmV2aWV3XFxhY3R1YWwtYTFcXGNhcHR1cmVzXFxib29reS1qb3VybmV5LWF1dGhvcmluZy1vcC1jM2QwNC1pY3QtbG9jYWwtZXhwb3J0LWFuZC1yZW9wZW5cXHN5bnRoZXRpYy1mYWN0LWRyYWZ0Lmpzb24iLAogICAgInNoYTI1NiI6ICIyYWE4NjUxNmJiZDFjOTBlZTI3MzJiNWQyMTMwMjkwYTc3MDE5YWU0OTg0MTBlNjlhNWI5YjFkNTY2ZjYzZDE4IiwKICAgICJieXRlcyI6IDI3ODg4CiAgfSwKICAidmFsaWRhdGlvbkNhbGxzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAiaG9sZCI6IGZhbHNlLAogICAgICAiZmFpbFNlc3Npb24iOiBmYWxzZSwKICAgICAgImZhaWxOZXR3b3JrIjogZmFsc2UsCiAgICAgICJ3cm9uZ0NoZWNrc3VtIjogZmFsc2UsCiAgICAgICJzdGFsZSI6IGZhbHNlLAogICAgICAidGl0bGVSdSI6ICLQnNCw0YDRiNGA0YPRgiDRgSDRh9C10YDQvdC+0LLQuNC60L7QvCDRhNCw0LrRgtCwIiwKICAgICAgImNob2ljZXMiOiBbCiAgICAgICAgewogICAgICAgICAgImNvdW50cnlJZCI6ICJjb3VudHJ5LWEiLAogICAgICAgICAgIndyaXRlcklkIjogIndyaXRlci1hIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgImNvdW50cnlJZCI6ICJjb3VudHJ5LWIiLAogICAgICAgICAgIndyaXRlcklkIjogIndyaXRlci1jIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImFjdHVhbEhlbHBlckNhbGxlZCI6IHRydWUsCiAgICAgICJjb21wbGV0ZWQiOiB0cnVlLAogICAgICAiYWN0dWFsUmVzdWx0IjogewogICAgICAgICJvayI6IHRydWUsCiAgICAgICAgImRyYWZ0Q2hlY2tzdW0iOiAiODliMjYxN2UxMGM2YzE0ZGMyODZkODA2Y2M1NDg5YmUzMTg5NDczNGQ3YWE1ODM1Mzk0NDhhNzI4YmMyYjUxNiIKICAgICAgfQogICAgfQogIF0sCiAgImFuc3dlckNhbGxzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAiY2hvaWNlSWQiOiAiY2hvaWNlLTIiLAogICAgICAiaG9sZCI6IGZhbHNlLAogICAgICAiZmFpbFNlc3Npb24iOiBmYWxzZSwKICAgICAgImZhaWxOZXR3b3JrIjogZmFsc2UsCiAgICAgICJ3cm9uZ0NoZWNrc3VtIjogZmFsc2UsCiAgICAgICJ3cm9uZ0Nob2ljZSI6IGZhbHNlLAogICAgICAidGl0bGVSdSI6ICLQnNCw0YDRiNGA0YPRgiDRgSDRh9C10YDQvdC+0LLQuNC60L7QvCDRhNCw0LrRgtCwIiwKICAgICAgImFjdHVhbEhlbHBlckNhbGxlZCI6IHRydWUsCiAgICAgICJjb21wbGV0ZWQiOiB0cnVlLAogICAgICAiYWN0dWFsUmVzdWx0IjogewogICAgICAgICJvayI6IHRydWUsCiAgICAgICAgImRyYWZ0Q2hlY2tzdW0iOiAiODliMjYxN2UxMGM2YzE0ZGMyODZkODA2Y2M1NDg5YmUzMTg5NDczNGQ3YWE1ODM1Mzk0NDhhNzI4YmMyYjUxNiIsCiAgICAgICAgImNob2ljZUlkIjogImNob2ljZS0yIiwKICAgICAgICAiY29ycmVjdCI6IHRydWUKICAgICAgfQogICAgfQogIF0sCiAgInNvdXJjZUlucHV0cyI6IFsKICAgIHsKICAgICAgInBhdGgiOiAiYXBwcy9hZG1pbi9hcHAvZ2xvYmFscy5jc3MiLAogICAgICAic2hhMjU2IjogIjY3OGU2ZmM3YzVlMmI3OGY3YjY5OTI5ZDRhMTNhNzIxMGM4ZWNkOTllZTE3MWQ3YmJhZDdhNzM1YmM3NzQwMWUiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2FwcC9zdHlsZXMvYmFzZS5jc3MiLAogICAgICAic2hhMjU2IjogIjA0MDM0MjA4MjBiMWUzYTM4ZDAzZjIwYjc3N2VmZWY4YjU0ODRjMTRmYzlmMGM5ZDYwYWE2NDMxYTNmNGY2YzQiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2FwcC9zdHlsZXMvZWRpdG9ycy5jc3MiLAogICAgICAic2hhMjU2IjogIjgwYjdjNTExNDYwMzA0OWYyZTFkODA2NzQyMDdjYmIyMDFhM2Q2ODA1OGI2MTVmZGNiM2ZmNzNlNmE5OTNkMDMiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2FwcC9zdHlsZXMvZm9ybXMuY3NzIiwKICAgICAgInNoYTI1NiI6ICJjYWE1NDVjNmMwYjk0ZGU3Mzk4NDFkNDUwYjVjZWVmMWJhNWMxNzJlY2NhOWQzYjUzYzU3OTA1MTgxMjUwYzdjIgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAiYXBwcy9hZG1pbi9hcHAvc3R5bGVzL2xheW91dC5jc3MiLAogICAgICAic2hhMjU2IjogIjY0NTUyZDI1OGUwZGQ0OTU0ZDFhYzAzZTI1YTQ5ZjY5ZDE3Yzc1NjI4ODhlNTc0NTExZjJlOTVjMTcxYzI4MWEiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2FwcC9zdHlsZXMvcmVzcG9uc2l2ZS5jc3MiLAogICAgICAic2hhMjU2IjogIjE1NGRiYzNjMjI1NjZiMGNjMTU1OGRhZGJmYTNjNDEwY2ZhYTFhNjRmNjA4Yjk2ZDBlNzU4ZDkzZWZjZjdkMDYiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2FwcC9zdHlsZXMvc2l0ZS1zdHVkaW8uY3NzIiwKICAgICAgInNoYTI1NiI6ICJmMTBhYmE3NmJlOTYyZDU4YjZjMmViN2FjNDY5OGNjZDY3M2RkMzU3MGQ0NTJiMWY2MzU0NDJhYWUyYmE2MWY1IgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAiYXBwcy9hZG1pbi9hcHAvc3R5bGVzL3RhYmxlcy5jc3MiLAogICAgICAic2hhMjU2IjogIjBjZGZmN2IzZDVjNzZmNmVmN2E5YTk4YjlhMjQ3ZTEyYTI3OGNkNjk0YTRkYmI3YmYzYWIwOWI5MjE1MTc5ZGEiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJhcHBzL2FkbWluL2FwcC9zdHlsZXMvdG9rZW5zLmNzcyIsCiAgICAgICJzaGEyNTYiOiAiOTMzNzhhNzFmNTg3Yjc4YjA4YjY3MDU5OTJmYzI4MGYyYmE5ODVkNWQ5NzEzOWNkYWZiNTE2MDVkNzFmNTVjNyIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImFwcHMvYWRtaW4vYXBwL3N0eWxlcy91dGlsaXRpZXMuY3NzIiwKICAgICAgInNoYTI1NiI6ICI3NTM4NWU1YWI4NWRhZDIyMjk5YjNlNzkwY2ZjOGQzMjAwNGVlMzFiYTE5OTAxNmJmZjk0YjcyYjhkODY2ZWIzIgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAiYXBwcy9hZG1pbi9jb21wb25lbnRzL0Jvb2t5Sm91cm5leURyYWZ0RWRpdG9yLnRzeCIsCiAgICAgICJzaGEyNTYiOiAiOWRhMTEzOGM2M2M1YWMzNTliYmIyZWIwMDA2MmJhNzdjMzQ3MDI2OWQ0Yzk5NzllMDhhY2VhYjAxYjQzZTk2ZiIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImFwcHMvYWRtaW4vbGliL2Jvb2t5LWpvdXJuZXktYWN0aXZpdHktdmFsaWRhdGlvbi50cyIsCiAgICAgICJzaGEyNTYiOiAiYTA0OGU3MzFkNjhlNWEwYTJmYTRlMzUyNGQ0YTRhNzJkOTdjNDMxYWUwYjU0MDExZTQ0NDU0NjQ1NWFlNzc5ZSIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImFwcHMvYWRtaW4vbGliL2Jvb2t5LWpvdXJuZXktZHJhZnQudHMiLAogICAgICAic2hhMjU2IjogImI2NGYyMmMzNjY0NzdkYTgxODhhMmRjZTE2NTFiZTMzNzkwM2JhYmQ2N2MzNjIxYjg5YTNlOTQ0ZDFhNWE4MzUiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvYm9va3MvYm9va0Rvc3NpZXJDb21waWxlci50cyIsCiAgICAgICJzaGEyNTYiOiAiMzI5NjYzNjBmN2RjYzRjOTM0ZTVlYzRhYzNiMjY2OTg1YWE2NWVkZDAzMDk4MDAzZGRlNWU5ZTM5NmNhNzAwZSIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ib29rcy9ib29rRG9zc2llckRlbGl2ZXJ5LnRzIiwKICAgICAgInNoYTI1NiI6ICIwNjUxNDk0NTU4YTQwNWMwY2QzYjViYmExYTc0MDJjZmE4MzVmNjhkZjM3M2IyZGIxYmNlMTc1OTU2M2IyNjc2IgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAic3JjL2Jvb2tzL2Jvb2tEb3NzaWVyRGVzaWduLnRzIiwKICAgICAgInNoYTI1NiI6ICIxZDg4NGNkZjRjMmJlYjI5MzhmZWM4YzA2MTY4YzEyN2E0YzJhMWI4MDVkZDM1OTViZjZjM2E4NzcyMjI5MTA3IgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAic3JjL2Jvb2tzL2Jvb2tEb3NzaWVyRG9jdW1lbnQudHMiLAogICAgICAic2hhMjU2IjogImVlYmRhYWM4OTdiZmY1Y2Q0OWNlOWEyN2I4ZGVmNzhiYTRkYzY1ZDgxNGVlNzI4ZDBlMWZhM2Q1NGNiZTk5YjYiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvYm9va3MvYm9va0Rvc3NpZXJSZWFkaW5nU3RlcHMudHMiLAogICAgICAic2hhMjU2IjogIjU0ZTIxOTgwMWVjZjlmODFkOGQzMGZiYmVhYjg1MDMxZDliMzlmNzY2OTdjOTdkZjE3OTBjM2UyOWExOTAyZmEiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvYm9va3MvYm9va0Rvc3NpZXJSaWdodHMudHMiLAogICAgICAic2hhMjU2IjogIjE4MTEzZWJmZjkyZTNmNTMzM2U5MjIyNzI2NDlkZmVkNTYyMmNkODdmNjZhMzYxZjlhMjcyZjA1ZmE0YmEwYjYiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvYm9va3MvYm9va0Rvc3NpZXJWYWxpZGF0aW9uLnRzIiwKICAgICAgInNoYTI1NiI6ICI4YzY3MTNlZDc2ZjU3NjM5MmFkMDQzNjM5NTNlZWU3YWJhNWEyNzVjZDljZDhiMWE5MjdjNGM1MDUzZDFmMzY2IgogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAic3JjL2Jvb2tzL2Jvb2tJbnNwZWN0aW9uUGFnZUxheW91dC50cyIsCiAgICAgICJzaGEyNTYiOiAiNzJjYzg4ZGZiNmUzMDUwZmQ0MThkNjUzOWM0MWY1OWU2NDNjMmRmNjhiOGYxYzU3ZmU4ZWJkNWViYmQ2MjIwOCIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ib29rcy9ib29rVHlwb2dyYXBoeS50cyIsCiAgICAgICJzaGEyNTYiOiAiZDQ5MmQ4ZmQzZmRmZDc1MTkzZjEyYTdmYTM5MDUyNmIyOWYzMDE4N2NiODc3NzI5OGE3Yzg0NzAwYWRmZTljYyIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9kYXRhL2Jvb2tMb2NhbGl6YXRpb24udHMiLAogICAgICAic2hhMjU2IjogIjFjYmIzMjIxZTYyMzEwZmU3NmZlMzI4NzQxZTMzMTZiOGYwNjIzZDAzZWE3N2M5OTRkMjVkNmNhNTI1NDU3NzMiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvaG9zdC9ib29reURpYWxvZ3VlUmVnaXN0cnkudHMiLAogICAgICAic2hhMjU2IjogIjMzMjllZDk0NDkzN2VmOGY3YjliODkyNjQxZWQ0MDI4NWExNjZjMzk0NGQ2ODE3ZGRkYTBiYzE0NWRhZmZhNjUiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvaG9zdC9ib29reURvc3NpZXJDaGFyYWN0ZXIudHMiLAogICAgICAic2hhMjU2IjogIjc0NmVkNzkxOTY3YzI1ZDY1NmNiNjAzYTYxYjUxOGM2MTFlNjg3NWU4NjhiNWZhMDY1OTVkOGI3ZGVjMDBkODciCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvaG9zdC9ib29reUpvdXJuZXkudHMiLAogICAgICAic2hhMjU2IjogImVkYTU4N2UzNjExZjg2YTBmZjAzYjFjMTZhZWE4OGExNmIwY2E0MTIwMTgyYTNmMmY5OTUyZDFjMTI4ZjNkNWEiCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvaG9zdC9ib29reUpvdXJuZXlBY3Rpdml0eS50cyIsCiAgICAgICJzaGEyNTYiOiAiNjAwZDA1NzQwN2ViOGVmZjEwNmQ5OGM4M2YzZTNmZTE2YzYzZjAyNmJlZmZmOTBlZGY2YWFhZTUxOTA5NmU2YiIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ob3N0L2Jvb2t5Sm91cm5leUNoYXJhY3Rlci50cyIsCiAgICAgICJzaGEyNTYiOiAiMDllOTBjNjNiMWMxOTM2NGM4ZjEzN2MyZWFkMzUyMjc0MjdhZjAzZWRhZDlmYTAzMDE1YmZjNGM0MjkyN2ZiNiIKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogInNyYy9ob3N0L2Jvb2t5Sm91cm5leUZhY3QudHMiLAogICAgICAic2hhMjU2IjogIjViYTAwMjk0YmJhODJiZjFkYzJhM2Q4NTg5MTExNjU2NWFmYzM5ODU5ZjFiOTRmY2FkZmE0OWFkNzY3ZWJjZDciCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJzcmMvcGxhbmV0L2NvbnRlbnRFeHBvcnRIYXNoLnRzIiwKICAgICAgInNoYTI1NiI6ICIwNWUyNGJmMDg5ZTU5YmY4MDE1ZTc0ZDhhZGM5Yjk2MTQ3YWJiYzY2NTU5NjkyMDkxN2U4Y2EyZmQ1ZGM3YzQ2IgogICAgfQogIF0sCiAgInNjcmVlbnNob3RzIjogWwogICAgewogICAgICAiZmlsZW5hbWUiOiAiYm9va3ktam91cm5leS1mYWN0LXJ1LTMyMC5wbmciLAogICAgICAic2hhMjU2IjogImI5NzkwN2M5NzM4ZDU5NjU5NDQwZDZkOTRhZDY1ZWQxOTEyMzYyOTk1YjkwMTUwYzdiNzgyZGQ2ZTBjZDNjZDAiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMzIwLAogICAgICAgICJoZWlnaHQiOiA4NDQKICAgICAgfSwKICAgICAgInNjb3BlIjogIkFjdHVhbCBsb2NhbCBzb3VyY2VkLWZhY3QgcHJldmlldyBhZnRlciBuYXRpdmUgcmVvcGVuLCBSVTMyMCBzaG9ydC10ZXh0IHZpZXc7IGV4cGxpY2l0bHkgYXV0aG9yZWQgc3ludGhldGljIHJlZHVjZWQgY29weSBhbmQgdW52ZXJpZmllZCBzb3VyY2UgcmVmZXJlbmNlcywgbmV2ZXIgZmV0Y2hlZCBvciBhdHRlc3RlZC4iCiAgICB9LAogICAgewogICAgICAiZmlsZW5hbWUiOiAiYm9va3ktam91cm5leS1mYWN0LWVuLTMyMC5wbmciLAogICAgICAic2hhMjU2IjogIjVkNjQwMjc0ODVhYzgzMjlhNzdjZTJhMmNhMDYxZWE0OGE2YjkxNWZkMjAwNzFiZDJmMjA1YTU1YzE3ZTRmYTYiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMzIwLAogICAgICAgICJoZWlnaHQiOiA4NDQKICAgICAgfSwKICAgICAgInNjb3BlIjogIlNhbWUgc2VsZWN0ZWQtd29yayBkcmFmdCBmYWN0IGluIEVOMzIwIGNhcHRpb24gdmlldzsgaW5kZXBlbmRlbnQgYXV0aG9yZWQgbXVsdGlsaW5lIGNhcHRpb24sIHNvdXJjZSBJRC9IVFRQUyBVUkwvbWFudWFsIFVUQyBkYXRlIGFuZCBleHBsaWNpdCByZXZpZXcgbm90aWNlLiIKICAgIH0KICBdLAogICJlcnJvcnMiOiBbXSwKICAiZXh0ZXJuYWxSZXF1ZXN0cyI6IFtdLAogICJwcm9kdWN0aW9uQWN0aW9uc1BlcmZvcm1lZCI6IGZhbHNlLAogICJzdGFnZUFjY2VwdGVkIjogZmFsc2UsCiAgInJlbGVhc2VSZWFkeSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fc102a1299349af6bda4-b4f829d7f9784c4f86c2",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/host/booky-journey-authoring.spec.mjs",
+          "line": 877,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T22:10:38.554Z",
+    "duration": 38065.976,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

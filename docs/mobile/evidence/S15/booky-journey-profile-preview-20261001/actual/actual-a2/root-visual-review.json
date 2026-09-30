@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "decision": "D229",
+  "recordedAt": "2026-09-30T22:20:57.8809108Z",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/source-manifest.json",
+    "sha256": "220e7f5224671269571bb4167be102f0a0642764ff28afe4d40bfb6a7e757ecf"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/browser-result.json",
+    "sha256": "0073313730a6851376a4e3187865500cf3cf0f8f2608cf41577369c9afde870c"
+  },
+  "directRootViews": 8,
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "014f84d694a904b6e4c40b6646c2ecb22c815eedbf958a5f00d896d9168d1861"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "cb6e4b420d490b399fe99dde686b4abe7a3bc5cd08d07d939dd9ffea318f05f3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "aaf1de1a750536a53dec1416c44d7458f0bbc29c8b55f4ece2e22037d7db6d2d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "5d64027485ac8329a77ce2a2ca061ea48a6b915fd20071bd2f205a55c17e4fa6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "b97907c9738d59659440d6d94ad65ed1912362995b90150c7b782dd6e0cd3cd0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "56d50c01b36f0c6d5b7398caefe986c2f13084122dcd44dba333e1aa5a601f52"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-profile-preview-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "91ecce7747341ac95200c46a4f57f6f1623608850d5509dea41a5c402cf766b8"
+    }
+  ],
+  "findings": [
+    "Directly inspected all eight original second-attempt images. RU matching age30/plain and EN outside age66/plain expanded profile controls and reports fit the320 viewport.",
+    "Native age keyboard focus outline remains visible; preview step overview wraps without overlap. Activity choices, verdicts and manual navigation are readable in both locales.",
+    "Authored RU reduced and EN multiline caption fact text and source metadata remain readable without horizontal overflow."
+  ],
+  "limitations": [
+    "Actual admin component under synthetic catalog and mocked action transport, not a mobile application or authenticated staff shell.",
+    "Desktop file-read error is an intentional fixture state. Narrow screenshots are partial scroll viewports; lower source entries and controls can be below the fold.",
+    "Synthetic citations are unverified; visual inspection does not grant full accessibility, graph, stage, installed-device or release acceptance."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}
