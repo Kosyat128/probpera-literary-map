@@ -218,10 +218,26 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     && record.payload.id === previewNode?.dialogue.id);
   const previewEntity = previewNode?.kind === "work" && previewNode.id !== "work"
     ? preview?.draft.authoringSource.selection.additionalWorks?.find((item) => item.nodeId === previewNode.id)?.work
-    : preview ? preview.draft.authoringSource.selection[previewNode?.kind === "country" ? "country" : previewNode?.kind === "writer" ? "writer" : "work"] : null;
+    : preview ? preview.draft.authoringSource.selection[previewNode?.entity?.kind === "country" ? "country" : previewNode?.entity?.kind === "writer" ? "writer" : "work"] : null;
   function previewNodeLabel(locale: Locale, id: string, kind: CopyKind | "character") {
     const additional = preview?.draft.authoringSource.selection.additionalWorks?.find((item) => item.nodeId === id);
+    if (kind === "sourced-fact") {
+      const entity = preview?.draft.definitions.find(definition => definition.locale === locale)?.nodes.find(node => node.id === id)?.entity;
+      if (entity?.kind === "country" || entity?.kind === "writer") {
+        const subject = preview!.draft.authoringSource.selection[entity.kind];
+        return (locale === "ru" ? entity.kind === "country" ? "Факт о стране · " : "Факт о писателе · "
+          : entity.kind === "country" ? "Country fact · " : "Writer fact · ") + (subject.label[locale] || (locale === "ru" ? "Название пока не подтверждено" : "Name is not confirmed"));
+      }
+    }
     return additional ? (locale === "ru" ? "Доп. книга · " : "Additional work · ") + additional.work.label[locale] : previewStepLabels[locale][kind];
+  }
+  function previewFactSubjectLabel(locale: Locale) {
+    const entity = preview?.draft.definitions.find(definition => definition.locale === locale)?.nodes.find(node => node.kind === "sourced-fact")?.entity;
+    if (!preview || !entity || !["country", "writer", "work"].includes(entity.kind)) return null;
+    const kind = entity.kind as "country" | "writer" | "work", selected = preview.draft.authoringSource.selection[kind];
+    return (locale === "ru" ? kind === "country" ? "Страна: " : kind === "writer" ? "Писатель: " : "Основная книга: "
+      : kind === "country" ? "Country: " : kind === "writer" ? "Writer: " : "Main work: ")
+      + (selected.label[locale] || (locale === "ru" ? "Название пока не подтверждено" : "Name is not confirmed"));
   }
   const reviewRows = preview && previewDefinition ? previewDefinition.nodes.map((node, step) => ({
     id: node.id, kind: node.kind, step,
@@ -421,6 +437,13 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     if (input.fact) update({ fact: { ...input.fact, copy: {
       ...input.fact.copy, [locale]: { ...input.fact.copy[locale], [field]: value },
     } } });
+  }
+  function updateFactSubject(subject: "country" | "writer" | "work") {
+    if (!input.fact || ((input.fact.subject ?? "work") === subject && !(subject === "work" && Object.hasOwn(input.fact, "subject")))) return;
+    const fact = { ...input.fact };
+    if (subject === "work") delete fact.subject;
+    else fact.subject = subject;
+    update({ fact });
   }
   function updateFactSource(locale: Locale, index: number, field: "id" | "url" | "accessedAt", value: string) {
     if (input.fact) update({ fact: { ...input.fact, copy: { ...input.fact.copy, [locale]: {
@@ -657,13 +680,21 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         {step.number > 1 && <p aria-hidden="true" style={{ textAlign: "center", margin: "0 0 14px" }}>↓</p>}
         {step.key === "checkpoint" && <details className="panel site-copy-card" aria-labelledby={draftFieldId("fact")}>
           <summary {...fieldProps("fact")} style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Необязательный факт · источники</summary>
-          <p>Добавьте собственный текст о выбранной книге и источники отдельно для RU и EN. Текст и источники ещё требуют проверки.</p>
+          <p>Добавьте собственный текст о выбранной стране, писателе или основной книге и источники отдельно для RU и EN. Текст и источники ещё требуют проверки.</p>
           <label style={{ display: "flex", alignItems: "center", gap: 10, minHeight: 44 }}>
             <input type="checkbox" checked={!!input.fact} onChange={(event) => toggleFact(event.target.checked)} />
-            Добавить факт об этой книге
+            Добавить факт с источниками
           </label>
           {input.fact && <div className="site-copy-grid" data-booky-fact-editor>
-            <p>Книга: {work?.label.ru || "Сначала выберите книгу"}</p>
+            <label className="field"><span>Объект факта</span>
+              <select {...fieldProps("fact.subject")} aria-describedby={[fieldProps("fact.subject")["aria-describedby"], draftFieldId("fact.subject") + "-help"].filter(Boolean).join(" ")}
+                style={{ minHeight: 44, width: "100%", minWidth: 0 }} value={input.fact.subject ?? "work"}
+                onChange={(event) => updateFactSubject(event.target.value as "country" | "writer" | "work")}>
+                <option value="work">Основная книга</option><option value="country">Страна</option><option value="writer">Писатель</option>
+              </select></label>
+            <p id={draftFieldId("fact.subject") + "-help"}>Факт остаётся после основной книги. Дополнительные книги не являются объектами этого факта.</p>
+            <p data-booky-fact-subject>{input.fact.subject === "country" ? "Страна: " : input.fact.subject === "writer" ? "Писатель: " : "Основная книга: "}{
+              (input.fact.subject === "country" ? country : input.fact.subject === "writer" ? writer : work)?.label.ru || "Сначала выберите объект маршрута"}</p>
             <div className="site-copy-locales">
               {locales.map((locale) => <div key={locale} className="site-copy-grid">
                 <label className="field"><span>Название факта ({locale.toUpperCase()})</span>
@@ -804,7 +835,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
               </select></label>{englishLabel(work?.label)}
             <details data-booky-additional-works aria-labelledby={draftFieldId("additionalWorks")} style={{ minWidth: 0 }}>
               <summary {...fieldProps("additionalWorks")} style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Дополнительные книги ({input.additionalWorks?.length ?? 0})</summary>
-              <p>До восьми книг выбранного писателя в вашем порядке, перед основной книгой. Факт, задание и завершение относятся к основной книге. При изменении выбора тексты сохраняются; недоступную ссылку исправьте или удалите.</p>
+              <p>До восьми книг выбранного писателя в вашем порядке, перед основной книгой. Задание и завершение относятся к основной книге; объект факта выбирается отдельно. При изменении выбора тексты сохраняются; недоступную ссылку исправьте или удалите.</p>
               {(input.additionalWorks ?? []).map((row, index) => <fieldset key={index} data-booky-additional-work={index}
                 style={{ minWidth: 0, margin: "12px 0", padding: 12 }}>
                 <legend>Дополнительная книга {index + 1}</legend>
@@ -900,6 +931,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {reviewRows.map((row) => <li key={row.id} data-review-node={row.id} style={{ minWidth: 0, padding: "10px 0", borderTop: "1px solid rgba(87, 54, 123, 0.2)" }}>
               <strong>{row.step + 1}. {previewNodeLabel(preview.locale, row.id, row.kind)}</strong>
+              {row.kind === "sourced-fact" && <p data-review-subject>{previewFactSubjectLabel(preview.locale)}</p>}
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 12, marginTop: 8 }}>
                 {row.copies.map((copy) => <div key={copy.locale} lang={copy.locale} data-review-locale={copy.locale} style={{ minWidth: 0, overflowWrap: "anywhere" }}>
                   <strong>{copy.locale.toUpperCase()}</strong>
@@ -1012,6 +1044,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <p data-booky-preview-copy={previewCopyView} style={{ whiteSpace: "pre-wrap" }}>{previewDialogue.payload.copy[previewCopyView]}</p>
           <details data-booky-copy-comparison data-comparison-node={previewNode.id} lang={preview.locale} style={{ minWidth: 0 }}>
             <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>{preview.locale === "ru" ? "Сравнить тексты RU и EN" : "Compare RU and EN copy"}</summary>
+            {previewNode.kind === "sourced-fact" && <p data-booky-comparison-subject>{previewFactSubjectLabel(preview.locale)}</p>}
             <p>{preview.locale === "ru" ? "Тексты текущего шага для сопоставления. Проверка перевода и редакционная проверка остаются отдельными." : "Current-step copy for comparison. Translation and editorial review remain separate."}</p>
             <div data-booky-comparison-columns style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: 16 }}>
               {comparisonCopies.map((copy) => <section key={copy.locale} lang={copy.locale} data-comparison-locale={copy.locale}
@@ -1088,7 +1121,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         </li>)}</ul>
       </div>}
       <p role="status" aria-live="polite">{validating ? "Проверка задания по текущему каталогу…" : notice}</p>
-      <p>JSON содержит два языковых маршрута и {input.fact && input.activity ? "двенадцать" : input.fact || input.activity ? "десять" : "восемь"} черновиков подсказок. Проверка формы не даёт редакционного одобрения.</p>
+      <p>JSON содержит два языковых маршрута и {8 + 2 * ((input.additionalWorks?.length ?? 0) + Number(!!input.fact) + Number(!!input.activity))} черновиков подсказок. Проверка формы не даёт редакционного одобрения.</p>
       <button className="button" type="submit" disabled={!available} aria-busy={validating}>Скачать черновик JSON</button>
     </section>
   </form>;

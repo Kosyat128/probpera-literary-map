@@ -46,6 +46,7 @@ export type JourneyDraftActivityInput = {
   copy: Record<"ru" | "en", JourneyDraftNodeCopy>;
 };
 export type JourneyDraftFactInput = {
+  subject?: "country" | "writer" | "work";
   copy: Record<"ru" | "en", JourneyDraftNodeCopy & {
     sources: readonly { id: string; url: string; accessedAt: string }[];
   }>;
@@ -255,7 +256,10 @@ function activityInput(value: unknown): JourneyDraftActivityInput | null {
 /** Citation metadata is structurally bound to draft copy, not verified here. */
 function factInput(value: unknown): JourneyDraftFactInput | null {
   try {
-    if (!ownDataKeys(value, ["copy"]) || !ownDataKeys(value.copy, LOCALES)) return null;
+    const hasSubject = !!value && Object.prototype.hasOwnProperty.call(value, "subject");
+    if (!ownDataKeys(value, ["copy", ...(hasSubject ? ["subject"] : [])])
+      || (hasSubject && !["country", "writer", "work"].includes(value.subject as string))
+      || !ownDataKeys(value.copy, LOCALES)) return null;
     for (const locale of LOCALES) {
       const copy = value.copy[locale];
       if (!nodeCopyInput(copy, ["sources"])
@@ -341,7 +345,7 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
   const fact = factDescriptor?.enumerable && "value" in factDescriptor
     ? factInput(factDescriptor.value) : undefined;
   if (factDescriptor && !fact) {
-    fail("fact", "Факт должен содержать исходные тексты RU/EN и от одного до шестнадцати источников каждого языка: уникальный ID, HTTPS URL без учётных данных и дату UTC в формате YYYY-MM-DDTHH:mm:ss.sssZ.");
+    fail("fact", "Факт должен содержать тексты RU/EN, необязательный объект country, writer или work и от одного до шестнадцати источников каждого языка: уникальный ID, HTTPS URL без учётных данных и дату UTC в формате YYYY-MM-DDTHH:mm:ss.sssZ.");
     return rejected();
   }
   const orderDescriptor = Object.getOwnPropertyDescriptor(input, "optionalNodeOrder");
@@ -476,7 +480,7 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         type: activity.type, choices: activity.choices.map(choice => ({ countryId: choice.countryId, writerId: choice.writerId })),
         copy: { ru: nodeCopySnapshot(activity.copy.ru), en: nodeCopySnapshot(activity.copy.en) },
       } } : {}),
-      ...(fact ? { fact: { copy: {
+      ...(fact ? { fact: { ...(Object.hasOwn(fact, "subject") ? { subject: fact.subject } : {}), copy: {
         ru: { ...nodeCopySnapshot(fact.copy.ru), sources: fact.copy.ru.sources.map(source => ({ ...source })) },
         en: { ...nodeCopySnapshot(fact.copy.en), sources: fact.copy.en.sources.map(source => ({ ...source })) },
       } } } : {}),
@@ -510,29 +514,32 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
   const dialogues: BookyDialogueRecord[] = [];
   let factSpec: BookyJourneyFactSpec | undefined;
   const factRecords: Partial<Record<"ru" | "en", BookyDialogueRecord>> = {};
+  const factSubject = fact?.subject ?? "work";
+  const factEntity = refs[factSubject]!;
+  const factScreen = factSubject === "work" ? "collection" as const : "globe" as const;
   if (fact) {
     // Context deliberately excludes the binding table. Valid transient hashes
     // let the existing helper bind identity/anchor before both payloads exist.
     // This table is replaced with real payload hashes before any output.
     const contextSpec: BookyJourneyFactSpec = {
-      schemaVersion: 1, id: `${input.id}.work-fact`, version: input.version,
+      schemaVersion: 1, id: `${input.id}.${factSubject}-fact`, version: input.version,
       dialogues: [
         { locale: "ru", id: `${input.id}.sourced-fact`, version: input.version, contentChecksum: "0".repeat(64) },
         { locale: "en", id: `${input.id}.sourced-fact`, version: input.version, contentChecksum: "0".repeat(64) },
       ],
     };
     const contextNode: BookyJourneyNode = {
-      id: "sourced-fact", kind: "sourced-fact", entity: refs.work, screen: "collection",
+      id: "sourced-fact", kind: "sourced-fact", entity: factEntity, screen: factScreen,
       dialogue: { id: `${input.id}.sourced-fact`, version: input.version, contentChecksum: "" }, fact: contextSpec,
     };
     const context = bookyJourneyDialogueContext(input.id, contextNode);
-    if (!context) { fail("fact", "Факт несовместим с контекстом выбранной книги."); return rejected(); }
+    if (!context) { fail("fact", "Факт несовместим с контекстом выбранного объекта."); return rejected(); }
     for (const locale of LOCALES) {
       const copy = authoringSource.input.fact!.copy[locale];
       const payload: BookyDialoguePayload = {
         id: contextNode.dialogue.id, version: input.version, locale, audience: "adult",
         ageRange: { ...authoringSource.input.ageRange }, readingLevel: input.readingLevel,
-        intent: "sourced-fact", screens: ["collection"], context, entityIds: [bookyJourneyEntityId(refs.work!)],
+        intent: "sourced-fact", screens: [factScreen], context, entityIds: [bookyJourneyEntityId(factEntity)],
         claimKind: "factual", factualSources: copy.sources.map(source => ({ ...source })),
         copy: payloadCopy(copy),
         narration: null, prohibitedTags: [],
@@ -556,9 +563,9 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         { ...contextSpec.dialogues[1], contentChecksum: factRecords.en!.review.contentChecksum },
       ],
     };
-    if (!getBookyJourneyFactChecksum(factSpec, refs.work!, "collection")
+    if (!getBookyJourneyFactChecksum(factSpec, factEntity, factScreen)
       || bookyJourneyDialogueContext(input.id, { ...contextNode, fact: factSpec }) !== context) {
-      fail("fact", "Не удалось связать тексты RU/EN с выбранной книгой."); return rejected();
+      fail("fact", "Не удалось связать тексты RU/EN с выбранным объектом."); return rejected();
     }
   }
   const nodeSteps: readonly { kind: (typeof NODE_KINDS)[number] | "activity" | "sourced-fact"; id: string; additionalIndex?: number }[] = [
@@ -575,7 +582,8 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         const record = factRecords[locale]!;
         dialogues.push(record);
         nodes.push({
-          id: kind, kind, entity: refs.work, screen: "collection", fact: factSpec!,
+          id: kind, kind, entity: { ...factEntity }, screen: factScreen,
+          fact: { ...factSpec!, dialogues: [{ ...factSpec!.dialogues[0] }, { ...factSpec!.dialogues[1] }] },
           dialogue: { id: record.payload.id, version: input.version, contentChecksum: record.review.contentChecksum },
         });
         continue;

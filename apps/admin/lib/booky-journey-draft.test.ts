@@ -1958,3 +1958,124 @@ describe("adult Booky journey draft additional canonical works", () => {
     }
   });
 });
+
+describe("adult Booky journey draft fact subjects", () => {
+  it("keeps omitted subjects byte-identical to existing downloads and restores omission after an explicit country writer or main-work subject", () => {
+    for (const fixture of historicalOrderlessDownloads) {
+      const value = structuredClone(fixture.input);
+      expect(contentTextHash(JSON.stringify(draft(value, fixture.catalog), null, 2) + "\n")).toBe(fixture.sha256);
+      if (!value.fact) continue;
+      const ordinary = draft(value, fixture.catalog);
+      expect(Object.hasOwn(ordinary.authoringSource.input.fact!, "subject")).toBe(false);
+      for (const subject of ["country", "writer", "work"] as const) {
+        value.fact.subject = subject;
+        const configured = draft(value, fixture.catalog);
+        expect(configured.authoringSource.input.fact?.subject).toBe(subject);
+        expect(configured.authoringSource.input.fact?.copy).toEqual(ordinary.authoringSource.input.fact?.copy);
+        expect(configured.authoringSourceChecksum).not.toBe(ordinary.authoringSourceChecksum);
+        if (subject === "work") {
+          expect(configured.definitions[0].nodes.find(node => node.kind === "sourced-fact")?.entity).toEqual(ordinary.definitions[0].nodes.find(node => node.kind === "sourced-fact")?.entity);
+          expect(factRecord(configured, "ru").payload.context).toBe(factRecord(ordinary, "ru").payload.context);
+        }
+        delete value.fact.subject;
+        expect(contentTextHash(JSON.stringify(draft(value, fixture.catalog), null, 2) + "\n")).toBe(fixture.sha256);
+      }
+    }
+  });
+
+  it("binds independent RU EN factual contexts to the selected country writer or final main work without changing extra order activity or checkpoint targets", () => {
+    for (const subject of ["country", "writer", "work"] as const) for (const optionalNodeOrder of [["sourced-fact", "activity"], ["activity", "sourced-fact"]] as const) {
+      const value = additionalWorkValue(variantValue()), canonical = additionalWorkCatalog(value);
+      value.fact!.subject = subject; value.optionalNodeOrder = optionalNodeOrder;
+      value.fact!.copy.ru.caption = "Явная подпись\nо выбранном объекте"; value.fact!.copy.en.reduced = "Explicit subject note";
+      const defaultValue = structuredClone(value); delete defaultValue.fact!.subject;
+      const ordinary = draft(defaultValue, canonical), exported = draft(value, canonical);
+      const entity = subject === "country" ? { kind: "country" as const, countryId: value.countryId }
+        : subject === "writer" ? { kind: "writer" as const, countryId: value.countryId, writerId: value.writerId }
+        : { kind: "work" as const, countryId: value.countryId, writerId: value.writerId, workId: value.workId };
+      const screen = subject === "work" ? "collection" : "globe";
+      for (const definition of exported.definitions) {
+        expect(definition.nodes.map(node => node.id)).toEqual(["country", "writer", "work-extra-1", "work-extra-2", "work", ...optionalNodeOrder, "checkpoint"]);
+        const node = definition.nodes.find(item => item.kind === "sourced-fact")!, record = factRecord(exported, definition.locale);
+        expect(node.entity).toEqual(entity); expect(node.screen).toBe(screen); expect(node.fact?.id).toBe(`test-route.${subject}-fact`);
+        expect(parseBookyJourneyFact(node.fact)).toEqual(node.fact); expect(getBookyJourneyFactChecksum(node.fact, entity, screen)).toBeTruthy();
+        expect(record.payload.context).toBe(`fact:${contentRecordHash({ journeyId: value.id, nodeId: "sourced-fact", factId: `test-route.${subject}-fact`, factVersion: value.version, entity, screen })}`);
+        expect(record.payload.context).toBe(bookyJourneyDialogueContext(value.id, node));
+        expect(record.payload.entityIds).toEqual([bookyJourneyEntityId(entity)]); expect(record.payload.screens).toEqual([screen]);
+        expect(record.payload.copy).toEqual(factRecord(ordinary, definition.locale).payload.copy);
+        expect(record.payload.factualSources).toEqual(value.fact!.copy[definition.locale].sources);
+        expect(record.payload.provenance.copySha256).toBe(factRecord(ordinary, definition.locale).payload.provenance.copySha256);
+        expect(record.payload.provenance.sourceSha256).toBe(exported.authoringSourceChecksum);
+        expect(getBookyDialogueContentChecksum(record.payload)).toBe(node.dialogue.contentChecksum);
+        for (const binding of node.fact!.dialogues) expect(binding.contentChecksum).toBe(factRecord(exported, binding.locale).review.contentChecksum);
+        expect(getBookyJourneyChecksum(definition)).toBe(exported.definitionsChecksums.find(binding => binding.locale === definition.locale)?.checksum);
+        expect(definition.nodes.find(item => item.kind === "activity")?.activity?.targetWork).toEqual({ kind: "work", countryId: value.countryId, writerId: value.writerId, workId: value.workId });
+        expect(definition.nodes.at(-1)?.entity).toBeNull();
+      }
+      for (const old of ordinary.dialogues) {
+        const next = exported.dialogues.find(record => record.payload.id === old.payload.id && record.payload.locale === old.payload.locale)!;
+        expect(next.payload.copy).toEqual(old.payload.copy); expect(next.payload.provenance.copySha256).toBe(old.payload.provenance.copySha256);
+        expect(next.payload.provenance.sourceSha256).not.toBe(old.payload.provenance.sourceSha256);
+        expect(next.review.contentChecksum).not.toBe(old.review.contentChecksum); expect(next.checksum).not.toBe(old.checksum);
+      }
+      const registry = createBookyDialogueRegistry(exported.dialogues, { canonicalEntityIds: [...new Set(exported.dialogues.flatMap(record => record.payload.entityIds))], approvedReviews: [] });
+      expect(registry.size).toBe(16); expect(registry.rejections).toEqual([]);
+      expect(parseBookyJourneyDraft(JSON.stringify(exported), canonical).ok).toBe(true);
+    }
+  });
+
+  it("rejects every non-enum subject and non-data hidden inherited or extra fact property without invoking subject getters or coercion", () => {
+    let getterCalls = 0, coercions = 0;
+    for (const subject of [undefined, null, "", " work", "WORK", "activity", "extra-work-1", 0, true, [], { toString() { coercions++; return "work"; } }]) {
+      const value = factValue(); Object.assign(value.fact!, { subject }); expect(errors(value)).toContain("fact");
+    }
+    for (const change of [
+      (fact: object) => { Object.defineProperty(fact, "subject", { enumerable: true, get() { getterCalls++; throw new Error("subject getter must not execute"); } }); },
+      (fact: object) => { Object.defineProperty(fact, "subject", { value: "country", enumerable: false }); },
+      (fact: object) => { Object.setPrototypeOf(fact, { subject: "country" }); },
+      (fact: object) => { Object.assign(fact, { subject: "country", additionalWorkId: "extra-work-1" }); },
+      (fact: object) => { Object.assign(fact, { subject: "writer" }); Object.defineProperty(fact, Symbol("extra"), { value: true }); },
+    ]) { const value = factValue(); change(value.fact!); expect(errors(value)).toContain("fact"); }
+    const plain = factValue(); Object.assign(plain, { fact: Object.assign(Object.create(null), plain.fact, { subject: "country" }) });
+    expect(draft(plain).authoringSource.input.fact?.subject).toBe("country");
+    expect(getterCalls).toBe(0); expect(coercions).toBe(0);
+  });
+
+  it("snapshots subjects without caller mutation and independently clones frozen fact bindings entities copy and sources in both locales and reopened inputs", () => {
+    const value = factValue(), canonical = catalog(); value.fact!.subject = "writer";
+    const before = JSON.stringify({ value, canonical }), exported = draft(value, canonical);
+    expect(JSON.stringify({ value, canonical })).toBe(before);
+    const ru = exported.definitions[0].nodes[3], en = exported.definitions[1].nodes[3];
+    expect(ru.entity).not.toBe(en.entity); expect(ru.fact).not.toBe(en.fact); expect(ru.fact!.dialogues).not.toBe(en.fact!.dialogues);
+    expect(ru.fact!.dialogues[0]).not.toBe(en.fact!.dialogues[0]);
+    expect(exported.authoringSource.input.fact).not.toBe(value.fact);
+    expect(exported.authoringSource.input.fact!.copy.ru.sources[0]).not.toBe(value.fact!.copy.ru.sources[0]);
+    for (const item of [exported.authoringSource.input.fact, ru.entity, en.entity, ru.fact, en.fact, ru.fact!.dialogues, en.fact!.dialogues[0]]) expect(Object.isFrozen(item)).toBe(true);
+    const reopened = parseBookyJourneyDraft(JSON.stringify(exported), canonical); expect(reopened.ok).toBe(true);
+    if (!reopened.ok) throw new Error("fact subject reopen failed");
+    expect(reopened.input.fact?.subject).toBe("writer"); expect(reopened.input.fact).not.toBe(exported.authoringSource.input.fact);
+    value.fact!.subject = "country"; value.fact!.copy.ru.sources[0].url = "https://example.org/changed"; canonical.countries[0].writers[0].label.en = "Changed writer";
+    expect(exported.authoringSource.input.fact?.subject).toBe("writer"); expect(reopened.input.fact?.subject).toBe("writer");
+    expect(factRecord(exported, "ru").payload.factualSources[0].url).toBe("https://example.org/ru/work");
+    expect(exported.authoringSource.selection.writer.label.en).toBe("Test writer"); expect(Object.isFrozen(value.fact)).toBe(false);
+    expect(parseBookyJourneyDraft(JSON.stringify(exported), canonical).ok).toBe(false);
+  });
+
+  it("rejects malformed imports and independently rehashed source subject entity screen context and bilingual fact-table tampering through full regeneration", () => {
+    const value = additionalWorkValue(variantValue()), canonical = additionalWorkCatalog(value); value.fact!.subject = "country";
+    const serialized = JSON.stringify(draft(value, canonical));
+    for (const subject of [null, "", "work-extra-1", "checkpoint", 4, {}]) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized); Object.assign(changed.authoringSource.input.fact!, { subject });
+      expect(parseBookyJourneyDraft(JSON.stringify(changed), canonical).ok).toBe(false);
+    }
+    for (const change of [
+      (changed: Mutable<BookyJourneyDraft>) => { changed.authoringSource.input.fact!.subject = "writer"; changed.authoringSourceChecksum = contentRecordHash(changed.authoringSource); },
+      (changed: Mutable<BookyJourneyDraft>) => { delete changed.authoringSource.input.fact!.subject; changed.authoringSourceChecksum = contentRecordHash(changed.authoringSource); },
+      (changed: Mutable<BookyJourneyDraft>) => { const node = changed.definitions[0].nodes.find(item => item.kind === "sourced-fact")!; node.entity = { kind: "work", countryId: value.countryId, writerId: value.writerId, workId: "extra-work-1" }; node.screen = "collection"; changed.definitionsChecksums[0].checksum = getBookyJourneyChecksum(changed.definitions[0])!; },
+      (changed: Mutable<BookyJourneyDraft>) => { const node = changed.definitions[0].nodes.find(item => item.kind === "sourced-fact")!; node.fact!.dialogues.reverse(); changed.definitionsChecksums[0].checksum = getBookyJourneyChecksum(changed.definitions[0])!; },
+      (changed: Mutable<BookyJourneyDraft>) => { const record = changed.dialogues.find(item => item.payload.intent === "sourced-fact" && item.payload.locale === "ru")!; record.payload.entityIds = [bookyJourneyEntityId({ kind: "writer", countryId: value.countryId, writerId: value.writerId })]; record.payload.context = factRecord(draft({ ...value, fact: { ...value.fact!, subject: "writer" } }, canonical), "ru").payload.context; record.review.contentChecksum = getBookyDialogueContentChecksum(record.payload)!; record.checksum = getBookyDialogueChecksum({ payload: record.payload, review: record.review })!; },
+    ]) { const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized); change(changed); expect(parseBookyJourneyDraft(JSON.stringify(changed), canonical).ok).toBe(false); }
+    expect(parseBookyJourneyDraft(serialized, canonical).ok).toBe(true);
+    expect(draft(value, canonical).journeyApprovals).toEqual([]); expect(draft(value, canonical).availability).toEqual([]);
+  });
+});
