@@ -4,7 +4,7 @@ import { mkdir, writeFile, realpath, readdir, lstat } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
 import { generatePublicLocalePages, publicLocaleCopyInput, publicLocaleSitemapXml } from "./public-locale-pages.mjs";
-import { createPublicLocaleReviewSnapshot, publicLocaleReviewDigest } from "./public-locale-review.mjs";
+import { createPublicLocaleReviewSnapshot, publicLocaleReviewDigest, MAX_PUBLIC_LOCALE_INVENTORY_ENTRIES } from "./public-locale-review.mjs";
 import { generatePlanetAccountPages } from "./account-pages.mjs";
 import { containedFile } from "./pwa-artifact.mjs";
 
@@ -61,7 +61,7 @@ export async function capturePublicLocaleSourceSnapshot({ directory = path.join(
     if (relativeDirectory.split("/").length > 24) throw new Error("Public build depth exceeds snapshot bound");
     for (const entry of await readdir(path.join(directory, relativeDirectory), { withFileTypes: true })) {
       const relative = [relativeDirectory, entry.name].filter(Boolean).join("/");
-      if (++count > 12_000) throw new Error("Public build entries exceed snapshot bound");
+      if (++count > MAX_PUBLIC_LOCALE_INVENTORY_ENTRIES) throw new Error("Public build entries exceed snapshot bound");
       const filename = path.join(directory, relative);
       if ((await lstat(filename)).isSymbolicLink() || await realpath(filename) !== filename) throw new Error("Linked public build input");
       if (entry.isDirectory()) { pending.push(relative); continue; }

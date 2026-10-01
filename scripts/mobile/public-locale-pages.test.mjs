@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { mkdtemp, mkdir, readFile, writeFile, realpath, rm, access, symlink, unlink } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -317,6 +318,23 @@ describe("actual public locale artifact writer", () => {
     expect(load(await readFile(path.join(directory, "en/index.html"), "utf8"))('meta[name="robots"]').attr("content")).toBe("noindex,follow");
     expect(load(await readFile(path.join(directory, "en/planet-account/index.html"), "utf8"))('meta[name="robots"]').attr("content")).toBe("noindex,nofollow");
   });
+
+  it("captures every actual contained content file beyond the former 4096-entry ceiling", async () => {
+    const directory = await completeOutput();
+    const contentDirectory = path.join(directory, "catalog-expanded"); await mkdir(contentDirectory);
+    const bytes = '{"synthetic":"expanded local capture"}';
+    const names = Array.from({ length: 4097 }, (_, index) => `catalog-expanded/${String(index).padStart(5, "0")}.json`);
+    for (let offset = 0; offset < names.length; offset += 64) {
+      await Promise.all(names.slice(offset, offset + 64).map(name => writeFile(path.join(directory, name), bytes)));
+    }
+    const snapshot = await capturePublicLocaleSourceSnapshot({ directory });
+    const actual = snapshot.content.filter(entry => entry.path.startsWith("catalog-expanded/"));
+    expect(actual.map(entry => entry.path)).toEqual(names);
+    const expectedDigest = createHash("sha256").update(bytes).digest("hex");
+    expect(actual.every(entry => entry.sha256 === expectedDigest && entry.bytes === Buffer.byteLength(bytes))).toBe(true);
+    expect(snapshot.content.map(entry => entry.path)).toContain("catalog.json");
+    expect(publicLocaleReviewDigest(snapshot)).toMatch(/^[a-f0-9]{64}$/u);
+  }, 60_000);
 
   it.each([
     ['meta[property="og:image"]', "./social-preview.webp"],

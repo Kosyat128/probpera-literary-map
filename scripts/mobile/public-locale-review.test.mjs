@@ -77,6 +77,58 @@ describe("source-bound public locale review consumption", () => {
     expect(evaluatePublicLocaleReview()).toMatchObject({ indexingAllowed: false, bodies: null });
   });
 
+  it("binds every entry in the observed current-build inventory shape without granting review authority", () => {
+    // Synthetic bytes at the actual D253 inventory counts; this is no editorial approval or artifact witness.
+    const entries = (count, prefix) => Array.from({ length: count }, (_, index) =>
+      file(`${prefix}/${String(index).padStart(5, "0")}.json`, `synthetic ${index}`));
+    const snapshot = createPublicLocaleReviewSnapshot({ builtHtml, assets: entries(1402, "assets"),
+      content: entries(7070, "catalog"), copy: fixture().snapshot.copy });
+    expect(snapshot.assets).toHaveLength(1402);
+    expect(snapshot.content).toHaveLength(7070);
+    const digest = publicLocaleReviewDigest(snapshot);
+    expect(evaluatePublicLocaleReview({ snapshot })).toMatchObject({
+      inputsSha256: digest, indexingAllowed: false, robots: "noindex,follow", diagnostics: ["review-missing"],
+    });
+    const changed = structuredClone(snapshot);
+    changed.content.at(-1).sha256 = "a".repeat(64);
+    expect(publicLocaleReviewDigest(changed)).not.toBe(digest);
+  });
+
+  it.each(["assets", "content"])("rejects a %s inventory above the existing writer entry bound", group => {
+    const snapshot = fixture().snapshot;
+    snapshot[group] = Array.from({ length: 12_001 }, (_, index) => file(`${group}/${index}.json`, "synthetic"));
+    expect(() => createPublicLocaleReviewSnapshot({ ...snapshot, builtHtml })).toThrow(`invalid-${group}-inventory`);
+    expect(() => publicLocaleReviewDigest(snapshot)).toThrow("invalid-review-array");
+  });
+
+  it("keeps the smaller copy inventory and declared file/total-byte limits", () => {
+    const copy = fixture().snapshot;
+    copy.copy = Array.from({ length: 257 }, (_, index) => file(`copy/${index}.json`, "synthetic"));
+    expect(() => createPublicLocaleReviewSnapshot({ ...copy, builtHtml })).toThrow("invalid-copy-inventory");
+    const oversizedFile = fixture().snapshot;
+    oversizedFile.assets[0].bytes = 512 * 1024 * 1024 + 1;
+    expect(() => createPublicLocaleReviewSnapshot({ ...oversizedFile, builtHtml })).toThrow("invalid-assets-record");
+    const oversizedTotal = fixture().snapshot;
+    oversizedTotal.content = Array.from({ length: 17 }, (_, index) => ({
+      ...file(`catalog/${index}.json`, "synthetic"), bytes: 512 * 1024 * 1024,
+    }));
+    expect(() => createPublicLocaleReviewSnapshot({ ...oversizedTotal, builtHtml })).toThrow("input-byte-limit");
+  });
+
+  it("keeps plain-JSON, accessor, depth, node and UTF-8 digest-byte guards", () => {
+    expect(() => publicLocaleReviewDigest(new Date())).toThrow("invalid-review-json");
+    const getter = vi.fn(() => "unsafe");
+    const array = [null]; Object.defineProperty(array, 0, { enumerable: true, get: getter });
+    expect(() => publicLocaleReviewDigest(array)).toThrow("invalid-review-accessor");
+    expect(getter).not.toHaveBeenCalled();
+    let nested = null;
+    for (let index = 0; index < 18; index++) nested = { child: nested };
+    expect(() => publicLocaleReviewDigest(nested)).toThrow("review-structure-limit");
+    const manyNodes = Array.from({ length: 11 }, () => Array(10_000).fill(null));
+    expect(() => publicLocaleReviewDigest(manyNodes)).toThrow("review-structure-limit");
+    expect(() => publicLocaleReviewDigest("é".repeat(2_100_000))).toThrow("review-byte-limit");
+  });
+
   it.each([undefined, true, "true", "", "f".repeat(64)])("rejects absent, boolean or mismatching provision %j", provisionedReviewSha256 => {
     const input = fixture();
     const result = evaluatePublicLocaleReview({ ...input, provisionedReviewSha256 });
@@ -165,6 +217,8 @@ describe("source-bound public locale review consumption", () => {
     ["mixed critical English text", review => { review.locales.en.body.heading = "Synthetic страница"; }],
     ["empty Russian body", review => { review.locales.ru.body.paragraphs = []; }],
     ["unbounded body", review => { review.locales.en.body.paragraphs = ["a".repeat(2001)]; }],
+    ["too many paragraphs", review => { review.locales.en.body.paragraphs = Array(13).fill("Synthetic paragraph."); }],
+    ["too many links", review => { review.locales.en.body.links = Array(4).fill({ path: "/en/#atlas", label: "Synthetic link" }); }],
     ["duplicate navigation target", review => { review.locales.en.body.links.push({ ...review.locales.en.body.links[0] }); }],
   ])("rejects %s as body input without returning a partially accepted locale", (_reason, mutate) => {
     expect(rejectedReview(mutate)).toMatchObject({ indexingAllowed: false, bodies: null, robots: "noindex,follow" });

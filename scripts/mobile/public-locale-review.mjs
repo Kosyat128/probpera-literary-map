@@ -6,6 +6,7 @@ const SHA256 = /^[a-f0-9]{64}$/u;
 const MAX_REVIEW_BYTES = 4 * 1024 * 1024;
 const MAX_FILE_BYTES = 512 * 1024 * 1024;
 const MAX_INVENTORY_BYTES = 8 * 1024 * 1024 * 1024;
+export const MAX_PUBLIC_LOCALE_INVENTORY_ENTRIES = 12_000;
 const INPUT_KEYS = ["schemaVersion", "contract", "origin", "locales", "builtHtml", "assets", "content", "copy"];
 
 function fail(code) { throw new Error(code); }
@@ -37,7 +38,7 @@ export function publicLocaleReviewDigest(value) {
     if (item === null || typeof item === "boolean" || typeof item === "string") return item;
     if (typeof item === "number" && Number.isFinite(item)) return item;
     if (Array.isArray(item)) {
-      if (item.length > 4096 || Object.keys(item).length !== item.length) fail("invalid-review-array");
+      if (item.length > MAX_PUBLIC_LOCALE_INVENTORY_ENTRIES || Object.keys(item).length !== item.length) fail("invalid-review-array");
       return Array.from({ length: item.length }, (_, index) => {
         const descriptor = Object.getOwnPropertyDescriptor(item, index);
         if (!descriptor || !Object.hasOwn(descriptor, "value")) fail("invalid-review-accessor");
@@ -86,7 +87,7 @@ function normalizeSnapshot(value) {
   const inventories = {};
   for (const group of ["assets", "content", "copy"]) {
     if (!Array.isArray(value[group]) || !value[group].length ||
-        value[group].length > (group === "copy" ? 256 : 4096)) fail(`invalid-${group}-inventory`);
+        value[group].length > (group === "copy" ? 256 : MAX_PUBLIC_LOCALE_INVENTORY_ENTRIES)) fail(`invalid-${group}-inventory`);
     inventories[group] = value[group].map(item => {
       const entry = digestRecord(item, true, `invalid-${group}-record`);
       // Windows paths are case-insensitive. Two spellings of the same input
