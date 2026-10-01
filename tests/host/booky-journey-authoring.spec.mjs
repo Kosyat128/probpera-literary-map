@@ -133,6 +133,19 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   }
   await previewButton.tap();
   await expect(preview).toHaveCount(0);
+  const searchPanel = kind => page.locator(`[data-booky-entity-search="${kind}"]`);
+  const searchQuery = kind => searchPanel(kind).locator('input[type="search"]');
+  for (const kind of ['country', 'writer', 'work']) await expect(searchPanel(kind)).not.toHaveAttribute('open', '');
+  await expect(searchQuery('country')).toBeEnabled(); await expect(searchQuery('writer')).toBeDisabled(); await expect(searchQuery('work')).toBeDisabled();
+  const initiallyInvalidCountry = page.getByRole('combobox', { name: 'Страна', exact: true });
+  await expect(initiallyInvalidCountry).toHaveAttribute('aria-invalid', 'true');
+  const initialCountryErrorIds = await initiallyInvalidCountry.getAttribute('aria-describedby'); expect(initialCountryErrorIds).toBeTruthy();
+  await searchPanel('country').locator('summary').focus(); await searchPanel('country').locator('summary').press('Enter');
+  await expect(searchPanel('country').getByRole('searchbox', { name: 'Поиск страны (RU / EN / ID)', exact: true })).toBeVisible();
+  await searchQuery('country').fill('country-a'); await expect(initiallyInvalidCountry).toHaveValue('');
+  await expect(initiallyInvalidCountry).toHaveAttribute('aria-invalid', 'true'); await expect(initiallyInvalidCountry).toHaveAttribute('aria-describedby', initialCountryErrorIds);
+  await searchPanel('country').getByRole('button', { name: 'Очистить поиск', exact: true }).tap();
+  await searchPanel('country').locator('summary').tap();
   for (const [label, value] of [
     ['Идентификатор маршрута', 'synthetic-journey'], ['Версия', '2'], ['Возраст от', '18'], ['Возраст до', '65'],
     ['Примерная длительность (мин)', '8'], ['Название маршрута (RU)', 'Тестовый маршрут'], ['Название маршрута (EN)', 'Synthetic journey'],
@@ -141,7 +154,9 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await page.getByLabel('Уровень чтения', { exact: true }).selectOption('plain');
   const country = page.getByLabel('Страна', { exact: true }), writer = page.getByLabel('Писатель', { exact: true }), work = page.getByLabel('Книга', { exact: true });
   await country.selectOption('country-a'); await writer.selectOption('writer-a'); await work.selectOption('work-a');
+  await searchPanel('work').locator('summary').tap(); await searchQuery('work').fill('work-a');
   await writer.selectOption('writer-b');
+  await expect(searchQuery('work')).toHaveValue(''); await expect(searchQuery('work')).toBeEnabled();
   await expect(work).toHaveValue('');
   await expect(work.locator('option[value="work-a"]')).toHaveCount(0);
   await work.selectOption('work-b');
@@ -152,11 +167,18 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await preview.getByRole('button', {name: /^(?:Следующий шаг|Next step)$/}).tap();
   await expect(preview.locator('[data-preview-step="writer"]')).toContainText('English title is not confirmed');
   await expect(preview.locator('[data-preview-step="writer"]')).not.toContainText('Тестовый писатель Б');
+  await searchPanel('country').locator('summary').tap(); await searchQuery('country').fill('SYNTHETIC COUNTRY');
+  await searchPanel('writer').locator('summary').tap(); await searchQuery('writer').fill('writer-b'); await searchQuery('work').fill('work-b');
   await country.selectOption('country-b');
+  await expect(searchQuery('country')).toHaveValue('SYNTHETIC COUNTRY');
+  await expect(searchQuery('writer')).toHaveValue(''); await expect(searchQuery('work')).toHaveValue('');
+  await expect(searchQuery('writer')).toBeEnabled(); await expect(searchQuery('work')).toBeDisabled();
   await expect(preview).toHaveCount(0);
   await expect(writer).toHaveValue(''); await expect(work).toHaveValue('');
   await expect(writer.locator('option[value="writer-a"]')).toHaveCount(0);
   await country.selectOption('country-a'); await writer.selectOption('writer-a'); await work.selectOption('work-a');
+  await searchPanel('country').getByRole('button', { name: 'Очистить поиск', exact: true }).tap();
+  for (const kind of ['country', 'writer', 'work']) await searchPanel(kind).locator('summary').tap();
   await page.evaluate(() => window.scrollTo(0, 0));
   const overflow = () => page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   expect(await overflow()).toBe(false);
@@ -164,6 +186,47 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     const p = testInfo.outputPath(filename); await page.screenshot({ path: p });
     screenshots.push({ filename, sha256: sha(await fs.readFile(p)), viewport: page.viewportSize(), scope });
   }
+  for (const [kind, select, expectedId, queries, total] of [
+    ['country', country, 'country-a', ['  ТЕСТОВАЯ СТРАНА А  ', 'SYNTHETIC COUNTRY A', ' COUNTRY-A '], 3],
+    ['writer', writer, 'writer-a', ['ТЕСТОВЫЙ ПИСАТЕЛЬ А', ' SYNTHETIC WRITER A ', 'WRITER-A'], 2],
+    ['work', work, 'work-a', ['ТЕСТОВАЯ КНИГА А', 'SYNTHETIC WORK A', ' WORK-A '], 1],
+  ]) {
+    const panel = searchPanel(kind), query = searchQuery(kind), result = panel.locator('[data-booky-search-result]');
+    await panel.locator('summary').tap();
+    const searchNames = { country: 'Поиск страны (RU / EN / ID)', writer: 'Поиск писателя (RU / EN / ID)', work: 'Поиск книги (RU / EN / ID)' };
+    await expect(panel.getByRole('searchbox', { name: searchNames[kind], exact: true })).toHaveCount(1); await expect(query).toHaveAttribute('id', /.+/);
+    const searchDescriptionIds = await query.getAttribute('aria-describedby'); expect(searchDescriptionIds).toBeTruthy();
+    expect(await query.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id => document.getElementById(id)))).toBe(true);
+    for (const value of queries) {
+      await query.fill(value); await expect(result).toHaveText('Совпадений: 1.');
+      await expect(select.locator('option')).toHaveCount(2); await expect(select).toHaveValue(expectedId);
+    }
+    await query.fill('нет-соответствия');
+    await expect(result).toHaveText('Совпадений: 0. Текущий выбор остаётся в списке и не входит в число совпадений.');
+    await expect(select.locator('option')).toHaveCount(2); await expect(select.locator(`option[value="${expectedId}"]`)).toHaveCount(1);
+    await expect(select).toHaveValue(expectedId); await query.press('Enter'); expect(downloads).toEqual([]);
+    for (const control of [panel.locator('summary'), query, panel.getByRole('button'), select]) {
+      const bounds = await control.boundingBox(); expect(bounds.height).toBeGreaterThanOrEqual(44);
+      expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.x + bounds.width).toBeLessThanOrEqual(321);
+    }
+    expect(await overflow()).toBe(false);
+    if (kind === 'country') {
+      await panel.locator('summary').evaluate(node => { node.scrollIntoView({ block: 'start' }); window.scrollBy(0, -12); });
+      for (const control of [panel.locator('summary'), query, result, select]) {
+        const bounds = await control.boundingBox(); expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844);
+      }
+      await capture('booky-journey-preview-ru-320.png', 'Actual 320px country selector with expanded local RU/EN/ID search: zero matching records and the unchanged selected country retained in the native list. Count explicitly excludes that selection; no automatic selection, requests, device or runtime acceptance.');
+    }
+    await panel.getByRole('button', { name: 'Очистить поиск', exact: true }).tap();
+    await expect(query).toHaveValue(''); await expect(result).toHaveText(`Совпадений: ${total}.`);
+    await expect(select.locator('option')).toHaveCount(total + 1); await expect(select).toHaveValue(expectedId);
+    await panel.locator('summary').tap();
+  }
+  await searchPanel('country').locator('summary').tap(); await searchQuery('country').fill('country-b');
+  await expect(searchPanel('country').locator('[data-booky-search-result]')).toHaveText('Совпадений: 1. Текущий выбор остаётся в списке и не входит в число совпадений.');
+  await expect(country.locator('option')).toHaveCount(3); await expect(country).toHaveValue('country-a');
+  await searchPanel('country').getByRole('button', { name: 'Очистить поиск', exact: true }).tap(); await searchPanel('country').locator('summary').tap();
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls, answer: window.__activityAnswerCalls }))).toEqual({ validation: [], answer: [] });
   const enCountryVariants = page.locator('[data-booky-copy-variants="country"][data-copy-locale="en"]');
   const invalidEnCaption = enCountryVariants.getByRole('textbox', { name: 'Caption “Country” (EN)', exact: true, includeHidden: true });
   await enCountryVariants.locator('summary').tap();
@@ -348,7 +411,6 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   expect(narrowFrameBounds.y).toBeGreaterThanOrEqual(0); expect(narrowFrameBounds.y).toBeLessThan(844);
   expect(narrowFrameBounds.x + narrowFrameBounds.width).toBeLessThanOrEqual(321);
   expect(await overflow()).toBe(false);
-  await capture('booky-journey-preview-ru-320.png','Actual local RU320 preview with open native320px width selector and visibly bounded current work frame; matching adult scenario remains unchanged, no platform certification or runtime admission.');
   await widthSummaryRu.press('Enter'); await profilePanel.locator('summary').tap(); await overviewSummary.tap();
   await profileEnabledRu.uncheck(); await expect(profileReport).toHaveCount(0); await profilePanel.locator('summary').tap();
   await next.tap();
@@ -439,6 +501,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   expect(Object.hasOwn(draft.authoringSource.input,'previewWidth')).toBe(false);
   expect(Object.hasOwn(draft.authoringSource.input,'reviewReport')).toBe(false);
   expect(Object.hasOwn(draft.authoringSource.input,'copyComparison')).toBe(false);
+  expect(Object.hasOwn(draft.authoringSource.input,'entityQueries')).toBe(false);
   expect(await page.evaluate(() => window.__activityValidationCalls)).toEqual([]);
   expect(draft.definitions).toHaveLength(2); expect(draft.dialogues).toHaveLength(8);
   expect(draft.definitions.map(d => d.locale).sort()).toEqual(['en', 'ru']);
@@ -461,6 +524,9 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await previewButton.tap();
   await reviewReport.locator('summary').tap(); const preservedReport = await reviewReport.innerText();
   await comparison.locator('summary').tap(); const preservedComparison = await comparison.innerText();
+  for (const kind of ['country', 'writer', 'work']) {
+    await searchPanel(kind).locator('summary').tap(); await searchQuery(kind).fill('preserve-' + kind);
+  }
   const tampered=structuredClone(draft);tampered.releaseReady=true;
   await upload('tampered-draft.json',Buffer.from(JSON.stringify(tampered)));
   await expect(page.getByRole('alert')).toBeVisible();
@@ -468,12 +534,16 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await expect(preview).toBeVisible();
   expect(await reviewReport.innerText()).toBe(preservedReport);
   expect(await comparison.innerText()).toBe(preservedComparison);
+  for (const kind of ['country', 'writer', 'work']) await expect(searchQuery(kind)).toHaveValue('preserve-' + kind);
   await upload('saved-draft.json');
   await expect(routeTitle).toHaveValue('Тестовый маршрут обновлён');
   await expect(page.getByLabel('Название маршрута (EN)',{exact:true})).toHaveValue('Synthetic journey');
   await expect(preview).toHaveCount(0);
   await expect(comparison).toHaveCount(0);
   await expect(country).toHaveValue('country-a');await expect(writer).toHaveValue('writer-a');await expect(work).toHaveValue('work-a');
+  for (const kind of ['country', 'writer', 'work']) {
+    await expect(searchQuery(kind)).toHaveValue(''); await searchPanel(kind).locator('summary').tap();
+  }
   await expect(openDraft).toHaveValue('');
   await page.evaluate(()=>{
     const original=File.prototype.text;
@@ -567,6 +637,11 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     comparisonTracksExistingBodyCaptionReducedViewAndAuthoredEqualsTitlePresence:true,
     narrowComparisonStacksAndDesktopComparisonUsesActualSideBySideColumns:true,
     comparisonSourceEditInvalidatesAndRejectedImportPreservesCurrentSnapshot:true, comparisonHasNoExportFieldStorageWriteOrValidationRequest:true,
+    localEntitySearchStartsCollapsedAndUsesOnlyExistingNativeSelectors:true, entitySearchRuEnAndIdTrimmedCaseInsensitiveMatchesVerified:true,
+    nonmatchingSelectedOptionRetainedAndExcludedFromExplicitResultCount:true, searchDoesNotAutomaticallySelectOrClearExistingInvalidAssociation:true,
+    nativeSearchControlsMinimum44CssPxAndNo320Overflow:true, searchInputEnterDoesNotSubmitOrExport:true,
+    parentSelectionResetsOnlyDescendantQueriesAndSuccessfulImportClearsQueries:true, rejectedImportPreservesQueries:true,
+    localSearchHasNoDraftExportFieldStorageWriteOrActivityRequest:true,
     localPreviewWidthStartsCollapsedAndAvailable:true, localizedNativeWidthChoicesRuEnVerified:true, actualPreviewFrameFitsParentAt320:true,
     actualDesktopFrameWidths320And768Verified:true, availableWidthRestoresActualParentWidth:true, widthControlsMinimum44CssPxAndKeyboardFocusVerified:true,
     widthSelectionPreservesWorkProfileAndCopyView:true, widthSelectionDoesNotChangeExportedBytesOrFormWidth:true, previewWidthHasNoStorageWrites:true, previewWidthMeasurements,
@@ -894,6 +969,22 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await answerCheckRu.tap();
   const heldWidthVerdict = await answerHeldIndex();
   const widthPendingCallCount = await page.evaluate(() => window.__activityAnswerCalls.length);
+  const pendingSearchPreview = { width: await activityFrame.getAttribute('data-preview-width'), view: await preview.locator('[data-booky-preview-copy-view]').inputValue(),
+    step: await stepStatus.innerText(), title: await routeTitle.inputValue() };
+  const callsBeforePendingSearch = await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }));
+  const downloadsBeforePendingSearch = downloads.length;
+  for (const [kind, value] of [['country', 'country-b'], ['writer', 'WRITER-B'], ['work', 'no-matching-work']]) {
+    const panel = page.locator(`[data-booky-entity-search="${kind}"]`), query = panel.locator('input[type="search"]');
+    await expect(panel).not.toHaveAttribute('open', ''); await panel.locator('summary').tap(); await query.fill(value); await query.press('Enter');
+    await expect(panel.locator('[data-booky-search-result]')).toContainText('Текущий выбор остаётся в списке и не входит в число совпадений.');
+    await expect(page.getByRole('combobox', { name: { country: 'Страна', writer: 'Писатель', work: 'Книга' }[kind], exact: true })).toHaveValue(kind + '-a');
+    await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+    await panel.getByRole('button', { name: 'Очистить поиск', exact: true }).tap(); await panel.locator('summary').tap();
+  }
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }))).toEqual(callsBeforePendingSearch);
+  expect(downloads).toHaveLength(downloadsBeforePendingSearch);
+  expect({ width: await activityFrame.getAttribute('data-preview-width'), view: await preview.locator('[data-booky-preview-copy-view]').inputValue(),
+    step: await stepStatus.innerText(), title: await routeTitle.inputValue() }).toEqual(pendingSearchPreview);
   await activityComparison.locator('summary').tap(); await activityComparison.locator('summary').tap();
   await expect(activityComparison).not.toHaveAttribute('open','');
   await inspectRuActivity.tap(); await expect(answerCheckRu).toHaveAttribute('aria-busy','true');
@@ -1194,6 +1285,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
     sameCopyViewKeepsVerdictAndDifferentCopyViewClearsAnswerWithoutMovingStep: true,
     previewWidthChangesAndSameSelectionPreserveChoiceVerdictAndPendingLease:true, actualHeldWidthReplyStillAppliesToCurrentBoundDraft:true,
     widthChangesDoNotRequestAnswerChecksOrAdvanceStep:true, heldWidthVerdictCallIndex:heldWidthVerdict,
+    localEntityQueriesAndClearPreserveHeldAnswerChoiceLeaseDraftStepWidthAndView:true, heldSearchReusesExistingWidthVerdictCallAndDoesNotAddRequestsOrDownloads:true,
     actualDraftProfileConditionHelper: true, invalidAndOutsideProfilesBlockKeyboardCheckWithoutHelperRequest: true,
     sameExplicitProfileKeepsPendingAnswer: true, newerOutsideProfileRejectsHeldAnswer: true, heldProfileVerdictCallIndex: heldProfileVerdict,
     returningToOrdinaryPreviewRestoresExplicitAnswerCheck: true, previewProfileScenarioHasNoStoredReaderPolicy: true,

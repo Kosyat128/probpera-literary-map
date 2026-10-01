@@ -8,6 +8,7 @@ import { contentRecordHash } from "../../../src/planet/contentExportHash";
 
 type Locale = "ru" | "en";
 type NodeKind = "country" | "writer" | "work" | "checkpoint";
+type EntityKind = "country" | "writer" | "work";
 type CopyKind = NodeKind | "activity" | "sourced-fact";
 type OptionalNodeKind = "sourced-fact" | "activity";
 type PreviewCopyView = "body" | "caption" | "reduced";
@@ -26,6 +27,13 @@ const previewStepLabels = {
   ru: { country: "Страна", writer: "Писатель", work: "Книга", "sourced-fact": "Факт", activity: "Задание", checkpoint: "Завершение", character: "Персонаж" },
   en: { country: "Country", writer: "Writer", work: "Work", "sourced-fact": "Fact", activity: "Activity", checkpoint: "Finish", character: "Character" },
 } as const;
+
+function entitySearchOptions<T extends { id: string; label: { ru: string; en: string } }>(items: readonly T[], query: string, selectedId: string) {
+  const term = query.trim().toLowerCase();
+  const matches = (item: T) => [item.label.ru, item.label.en, item.id].some((value) => value.toLowerCase().includes(term));
+  return { options: items.filter((item) => matches(item) || item.id === selectedId),
+    count: items.filter(matches).length, retainedSelected: items.some((item) => item.id === selectedId && !matches(item)) };
+}
 
 function initialCopy(): JourneyDraftInput["copy"] {
   return {
@@ -52,6 +60,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     copy: initialCopy(),
   }));
   const [errors, setErrors] = useState<readonly { field: string; message: string }[]>([]);
+  const [entityQueries, setEntityQueries] = useState({ country: "", writer: "", work: "" });
   const [notice, setNotice] = useState("");
   const [preview, setPreview] = useState<{ draft: BookyJourneyDraft; locale: Locale; step: number } | null>(null);
   const [previewCopyView, setPreviewCopyView] = useState<PreviewCopyView>("body");
@@ -80,6 +89,9 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const writer = country?.writers.find((item) => item.id === input.writerId);
   const work = writer?.works.find((item) => item.id === input.workId);
   const available = catalog.countries.length > 0;
+  const countrySearch = entitySearchOptions(catalog.countries, entityQueries.country, input.countryId);
+  const writerSearch = entitySearchOptions(country?.writers ?? [], entityQueries.writer, input.writerId);
+  const workSearch = entitySearchOptions(writer?.works ?? [], entityQueries.work, input.workId);
   const defaultOptionalNodeOrder: OptionalNodeKind[] = [...(input.fact ? ["sourced-fact" as const] : []), ...(input.activity ? ["activity" as const] : [])];
   const optionalNodeOrder = input.optionalNodeOrder ?? defaultOptionalNodeOrder;
   function draftErrorTarget(field: string): string | null {
@@ -138,6 +150,25 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       if (ancestor === formControl.current) break;
     }
     control.focus();
+  }
+  function entitySearchFields(kind: EntityKind, disabled: boolean, result: { count: number; retainedSelected: boolean }) {
+    const names = { country: "страны", writer: "писателя", work: "книги" };
+    const summaryNames = { country: "страну", writer: "писателя", work: "книгу" };
+    const searchId = errorPrefix + "-search-" + kind;
+    return <details data-booky-entity-search={kind} style={{ minWidth: 0 }}>
+      <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Найти {summaryNames[kind]} в списке</summary>
+      <label className="field"><span>Поиск {names[kind]} (RU / EN / ID)</span>
+        <input id={searchId} type="search" value={entityQueries[kind]} disabled={disabled} autoComplete="off" spellCheck={false}
+          aria-describedby={searchId + "-help " + searchId + "-result"} style={{ minHeight: 44 }}
+          onChange={(event) => { const value = event.target.value; setEntityQueries((current) => ({ ...current, [kind]: value })); }}
+          onKeyDown={(event) => { if (event.key === "Enter") event.preventDefault(); }} /></label>
+      <p id={searchId + "-help"}>Поиск по доступным названиям RU, EN и ID. Выбор меняется только в списке ниже.</p>
+      <p id={searchId + "-result"} data-booky-search-result role="status" aria-live="polite" style={{ overflowWrap: "anywhere" }}>
+        Совпадений: {result.count}.{result.retainedSelected && " Текущий выбор остаётся в списке и не входит в число совпадений."}
+      </p>
+      <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, maxWidth: "100%" }}
+        disabled={disabled || entityQueries[kind] === ""} onClick={() => setEntityQueries((current) => ({ ...current, [kind]: "" }))}>Очистить поиск</button>
+    </details>;
   }
   const previewDefinition = preview?.draft.definitions.find((definition) => definition.locale === preview.locale);
   const previewProfileResult = previewProfile.enabled && previewDefinition ? evaluateBookyJourneyDraftPreviewProfile(previewDefinition, {
@@ -405,6 +436,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       if (result.input.activity && !(await validateActivity(result.draft, sequence, true))) return;
       if (sequence !== operationSequence.current) return;
       setInput(result.input);
+      setEntityQueries({ country: "", writer: "", work: "" });
       setPreview(null);
       setErrors([]);
       setNotice("");
@@ -633,24 +665,33 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <header><h2 id={`journey-step-${step.key}`}>{step.number + (step.key === "checkpoint" ? Number(!!input.fact) + Number(!!input.activity) : 0)}. {step.title}</h2>
             <span className="badge">{step.key === "checkpoint" ? "Завершение" : "Канонический выбор"}</span></header>
           {step.key === "country" && <>
+            {entitySearchFields("country", !available, countrySearch)}
             <label className="field"><span id="journey-country-label">Страна</span>
-              <select {...fieldProps("countryId")} aria-labelledby="journey-country-label" value={input.countryId} disabled={!available} onChange={(event) => update({ countryId: event.target.value, writerId: "", workId: "" })}>
+              <select {...fieldProps("countryId")} aria-labelledby="journey-country-label" value={input.countryId} disabled={!available} style={{ minHeight: 44 }} onChange={(event) => {
+                if (event.target.value !== input.countryId) setEntityQueries((current) => ({ ...current, writer: "", work: "" }));
+                update({ countryId: event.target.value, writerId: "", workId: "" });
+              }}>
                 <option value="">Выберите страну</option>
-                {catalog.countries.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
+                {countrySearch.options.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(country?.label)}
           </>}
           {step.key === "writer" && <>
+            {entitySearchFields("writer", !country, writerSearch)}
             <label className="field"><span id="journey-writer-label">Писатель</span>
-              <select {...fieldProps("writerId")} aria-labelledby="journey-writer-label" value={input.writerId} disabled={!country} onChange={(event) => update({ writerId: event.target.value, workId: "" })}>
+              <select {...fieldProps("writerId")} aria-labelledby="journey-writer-label" value={input.writerId} disabled={!country} style={{ minHeight: 44 }} onChange={(event) => {
+                if (event.target.value !== input.writerId) setEntityQueries((current) => ({ ...current, work: "" }));
+                update({ writerId: event.target.value, workId: "" });
+              }}>
                 <option value="">{country ? "Выберите писателя" : "Сначала выберите страну"}</option>
-                {country?.writers.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
+                {writerSearch.options.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(writer?.label)}
           </>}
           {step.key === "work" && <>
+            {entitySearchFields("work", !writer, workSearch)}
             <label className="field"><span id="journey-work-label">Книга</span>
-              <select {...fieldProps("workId")} aria-labelledby="journey-work-label" value={input.workId} disabled={!writer} onChange={(event) => update({ workId: event.target.value })}>
+              <select {...fieldProps("workId")} aria-labelledby="journey-work-label" value={input.workId} disabled={!writer} style={{ minHeight: 44 }} onChange={(event) => update({ workId: event.target.value })}>
                 <option value="">{writer ? "Выберите книгу" : "Сначала выберите писателя"}</option>
-                {writer?.works.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
+                {workSearch.options.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(work?.label)}
           </>}
           {step.key === "checkpoint" && <p>Завершение связано с выбранной книгой. Новая сущность каталога не создаётся.</p>}
