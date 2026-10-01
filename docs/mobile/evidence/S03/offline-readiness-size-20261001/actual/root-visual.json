@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "decision": "ACCEPT_FUNCTIONAL_WITH_LAYOUT_FOLLOWUP",
+  "sourceCommit": "673421a5abc9c5414c1699b31a334b39045fbac1",
+  "runtimeResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-offline-readiness-runtime-review/actual-a3/result.json",
+    "sha256": "3deb27da214e5e9a0a4a5ebaacd6bffef4488959641da18754b3511bd21ddaff"
+  },
+  "directView": true,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "screenshots": [
+    {
+      "name": "pwa-offline-sizes-ru.png",
+      "sha256": "c47f277afbcd80a93a75d15f6a11ff058726ba6af632de0103acf9a1bfa8f954"
+    },
+    {
+      "name": "pwa-offline-sizes-en.png",
+      "sha256": "85d84e06cb89d34b9970a3b99599174529d3c2b166c3ed810c348b7bffafd2a6"
+    }
+  ],
+  "findings": [
+    "Actual verified totals and repaired-file count/size are visible in RU/EN; real one-file restoration and runtime locale metadata passed.",
+    "RU size units and numeric groups wrap awkwardly; retain them together and shorten labels.",
+    "The existing offline explanations occupy much of the mobile card. Retain their full text in accessible native details."
+  ],
+  "functionalAccepted": true,
+  "scopedLayoutAccepted": false,
+  "followUp": "D247: keep numeric values and units together; condense the retained offline explanations.",
+  "wholeAppVisualAcceptance": false,
+  "installedDevice": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

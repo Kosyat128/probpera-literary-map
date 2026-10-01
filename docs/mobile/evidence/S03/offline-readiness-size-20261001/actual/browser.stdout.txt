@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] [s03-msedge-390] › tests\pwa\controlled-pwa.spec.mjs:849:1 › verified offline sizes and runtime locale metadata follow real repair
+  1 passed (35.1s)

@@ -1,0 +1,9 @@
+{
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "--check",
+    "tests/pwa/controlled-pwa.spec.mjs"
+  ],
+  "exitCode": 0,
+  "pass": true
+}

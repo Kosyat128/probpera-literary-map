@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "decision": "D246",
+  "sourceCommit": "fee71f10fc3fa0163ce6c53b1a9b8e1595a458b2",
+  "base": "cc1f3cd86abdc4376548e30059502675ae0d06a5",
+  "owner": {
+    "path": "src/pwa/PwaDevicePanel.tsx",
+    "originalSha256": "5e3912e4a989a3135b691cde05d0949b9a21855d380b610b045468b71b609f7b",
+    "sha256": "7d35600e6534fc5f7952054df37a068863d1a225c1bde087928ffa2465d688bd"
+  },
+  "checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-size-review\\actual-a1\\checks.json",
+    "sha256": "e916335f2bc48fe0f054398aede2e3a0c27d79dbb74eb4c02314d47fbe379b06"
+  },
+  "typescriptPass": true,
+  "testsRepeated": false,
+  "buildsRepeated": false,
+  "browserValidated": false,
+  "clean": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

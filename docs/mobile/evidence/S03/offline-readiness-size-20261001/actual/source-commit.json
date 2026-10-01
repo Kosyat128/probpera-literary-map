@@ -1,0 +1,28 @@
+{
+  "pass": true,
+  "decision": "D246",
+  "base": "fee71f10fc3fa0163ce6c53b1a9b8e1595a458b2",
+  "sourceCommit": "673421a5abc9c5414c1699b31a334b39045fbac1",
+  "owner": {
+    "path": "tests/pwa/controlled-pwa.spec.mjs",
+    "originalSha256": "0bd4e12dfb6147dabc35416a3e10bade59e8cea2ed2914654de4d5ee7b6b31bb",
+    "sha256": "9990a2768876272e3a385ebba51e2c07ddaca2478906bf0b7c58035f7fbbef63"
+  },
+  "appOwner": {
+    "path": "src/pwa/PwaDevicePanel.tsx",
+    "sha256": "7d35600e6534fc5f7952054df37a068863d1a225c1bde087928ffa2465d688bd"
+  },
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-runtime-review\\source-a1\\current-source-manifest.json",
+    "sha256": "c0a16732f223ab0022b6b7895bfee4367ae71a1f880bbee1cf23b1e9fd53ef62"
+  },
+  "syntaxPass": true,
+  "syntaxInvocations": 1,
+  "typescriptRepeated": false,
+  "unitTestsRepeated": false,
+  "pwaBuildsRun": 0,
+  "browserTestsRun": 0,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "clean": true
+}
