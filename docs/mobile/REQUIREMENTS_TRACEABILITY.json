@@ -474,10 +474,11 @@
       "implementationFiles": [],
       "tests": [],
       "evidence": [
-        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json"
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
       ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed. D244 added bounded local working evidence: 141 passing tests in four files (six new package cases), one fresh QA PWA build/strict audit and one existing 390x844 offline reload/RU-EN case with five directly viewed screenshots, plus dry-run and explicit local package preparation. Original unit source f3fb and unchanged committed source3a71 manifests remain separate. The browser uses the same context; no process/profile reopen, OS installation, real purchase/provider, public metadata or full-content acceptance. ROOT found duplicated mobile notices and a partly obscured RU book header; D245 layout follow-up remains required. No criterion/status/cache or stage/release promotion."
     },
     {
       "id": "BIL-020",
@@ -2771,9 +2772,11 @@
       "status": "OPEN",
       "implementationFiles": [],
       "tests": [],
-      "evidence": [],
+      "evidence": [
+        "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. D244 added bounded local working evidence: 141 passing tests in four files (six new package cases), one fresh QA PWA build/strict audit and one existing 390x844 offline reload/RU-EN case with five directly viewed screenshots, plus dry-run and explicit local package preparation. Original unit source f3fb and unchanged committed source3a71 manifests remain separate. The browser uses the same context; no process/profile reopen, OS installation, real purchase/provider, public metadata or full-content acceptance. ROOT found duplicated mobile notices and a partly obscured RU book header; D245 layout follow-up remains required. No criterion/status/cache or stage/release promotion."
     },
     {
       "id": "CONTENT-008",
@@ -4086,9 +4089,11 @@
       "status": "OPEN",
       "implementationFiles": [],
       "tests": [],
-      "evidence": [],
+      "evidence": [
+        "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. D244 added bounded local working evidence: 141 passing tests in four files (six new package cases), one fresh QA PWA build/strict audit and one existing 390x844 offline reload/RU-EN case with five directly viewed screenshots, plus dry-run and explicit local package preparation. Original unit source f3fb and unchanged committed source3a71 manifests remain separate. The browser uses the same context; no process/profile reopen, OS installation, real purchase/provider, public metadata or full-content acceptance. ROOT found duplicated mobile notices and a partly obscured RU book header; D245 layout follow-up remains required. No criterion/status/cache or stage/release promotion."
     },
     {
       "id": "OMIN-024",
@@ -5441,10 +5446,11 @@
       "implementationFiles": [],
       "tests": [],
       "evidence": [
-        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/platform-availability.json"
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/platform-availability.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
       ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Added D243 bounded read-only OS/Android availability evidence. Checked PATH interfaces/known paths did not identify a ready isolated OS runner. The documented project Android SDK exists, but the two checked conventional emulator/avdmanager candidates were absent; no SDK/AVD inventory, adb, emulator/VM launch, installation, configuration change or APK payload read occurred. These findings do not establish universal absence of other SDK versions, AVDs or user VMs. PLATFORM-001 remains OPEN; no external-only blocker or device acceptance is inferred."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Added D243 bounded read-only OS/Android availability evidence. Checked PATH interfaces/known paths did not identify a ready isolated OS runner. The documented project Android SDK exists, but the two checked conventional emulator/avdmanager candidates were absent; no SDK/AVD inventory, adb, emulator/VM launch, installation, configuration change or APK payload read occurred. These findings do not establish universal absence of other SDK versions, AVDs or user VMs. PLATFORM-001 remains OPEN; no external-only blocker or device acceptance is inferred. D244 added bounded local working evidence: 141 passing tests in four files (six new package cases), one fresh QA PWA build/strict audit and one existing 390x844 offline reload/RU-EN case with five directly viewed screenshots, plus dry-run and explicit local package preparation. Original unit source f3fb and unchanged committed source3a71 manifests remain separate. The browser uses the same context; no process/profile reopen, OS installation, real purchase/provider, public metadata or full-content acceptance. ROOT found duplicated mobile notices and a partly obscured RU book header; D245 layout follow-up remains required. No criterion/status/cache or stage/release promotion."
     },
     {
       "id": "PLATFORM-002",

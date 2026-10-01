@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "23f72547b023298f3996bbabc349be348341d18f",
+  "headSha": "3a71b7d036f4f05b3f3595c0249512af3d998e99",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-01T13:46:20.331Z",
+  "updatedAt": "2026-10-01T16:04:54.151Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -418,21 +418,23 @@
           "id": "S03.acceptance",
           "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json"
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json",
+            "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Stage foundation acceptance; global requirements remain separate. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed. Added D243 bounded read-only OS/Android availability evidence. Checked PATH interfaces/known paths did not identify a ready isolated OS runner. The documented project Android SDK exists, but the two checked conventional emulator/avdmanager candidates were absent; no SDK/AVD inventory, adb, emulator/VM launch, installation, configuration change or APK payload read occurred. These findings do not establish universal absence of other SDK versions, AVDs or user VMs. PLATFORM-001 remains OPEN; no external-only blocker or device acceptance is inferred."
+          "notes": "Stage foundation acceptance; global requirements remain separate. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed. Added D243 bounded read-only OS/Android availability evidence. Checked PATH interfaces/known paths did not identify a ready isolated OS runner. The documented project Android SDK exists, but the two checked conventional emulator/avdmanager candidates were absent; no SDK/AVD inventory, adb, emulator/VM launch, installation, configuration change or APK payload read occurred. These findings do not establish universal absence of other SDK versions, AVDs or user VMs. PLATFORM-001 remains OPEN; no external-only blocker or device acceptance is inferred. D244 added bounded local working evidence: 141 passing tests in four files (six new package cases), one fresh QA PWA build/strict audit and one existing 390x844 offline reload/RU-EN case with five directly viewed screenshots, plus dry-run and explicit local package preparation. Original unit source f3fb and unchanged committed source3a71 manifests remain separate. The browser uses the same context; no process/profile reopen, OS installation, real purchase/provider, public metadata or full-content acceptance. ROOT found duplicated mobile notices and a partly obscured RU book header; D245 layout follow-up remains required. No criterion/status/cache or stage/release promotion."
         },
         {
           "id": "S03.BIL-019",
           "status": "OPEN",
           "evidence": [
-            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json"
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json",
+            "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "HTML lang SSR metadata canonical and hreflang are correct. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed."
+          "notes": "HTML lang SSR metadata canonical and hreflang are correct. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed. D244 added bounded local working evidence: 141 passing tests in four files (six new package cases), one fresh QA PWA build/strict audit and one existing 390x844 offline reload/RU-EN case with five directly viewed screenshots, plus dry-run and explicit local package preparation. Original unit source f3fb and unchanged committed source3a71 manifests remain separate. The browser uses the same context; no process/profile reopen, OS installation, real purchase/provider, public metadata or full-content acceptance. ROOT found duplicated mobile notices and a partly obscured RU book header; D245 layout follow-up remains required. No criterion/status/cache or stage/release promotion."
         },
         {
           "id": "S03.BIL-075",
@@ -493,10 +495,12 @@
         {
           "id": "S03.CONTENT-007",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Airplane-mode core. Canonical export/display comes before offline integrity and reviewed English equivalence."
+          "notes": "Airplane-mode core. Canonical export/display comes before offline integrity and reviewed English equivalence. D244 added bounded local working evidence: 141 passing tests in four files (six new package cases), one fresh QA PWA build/strict audit and one existing 390x844 offline reload/RU-EN case with five directly viewed screenshots, plus dry-run and explicit local package preparation. Original unit source f3fb and unchanged committed source3a71 manifests remain separate. The browser uses the same context; no process/profile reopen, OS installation, real purchase/provider, public metadata or full-content acceptance. ROOT found duplicated mobile notices and a partly obscured RU book header; D245 layout follow-up remains required. No criterion/status/cache or stage/release promotion."
         },
         {
           "id": "S03.MOD-030",
@@ -509,20 +513,23 @@
         {
           "id": "S03.OMIN-023",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Web/PWA automation deploys staging and validates entitlement/webhooks. Prepare and validate the Web/PWA staging package locally; the user's explicit no-deploy boundary overrides staging deployment wording."
+          "notes": "Web/PWA automation deploys staging and validates entitlement/webhooks. Prepare and validate the Web/PWA staging package locally; the user's explicit no-deploy boundary overrides staging deployment wording. D244 added bounded local working evidence: 141 passing tests in four files (six new package cases), one fresh QA PWA build/strict audit and one existing 390x844 offline reload/RU-EN case with five directly viewed screenshots, plus dry-run and explicit local package preparation. Original unit source f3fb and unchanged committed source3a71 manifests remain separate. The browser uses the same context; no process/profile reopen, OS installation, real purchase/provider, public metadata or full-content acceptance. ROOT found duplicated mobile notices and a partly obscured RU book header; D245 layout follow-up remains required. No criterion/status/cache or stage/release promotion."
         },
         {
           "id": "S03.PLATFORM-001",
           "status": "OPEN",
           "evidence": [
-            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/platform-availability.json"
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/platform-availability.json",
+            "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Installable paid Web/PWA with safe Service Worker. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance. Added D243 bounded read-only OS/Android availability evidence. Checked PATH interfaces/known paths did not identify a ready isolated OS runner. The documented project Android SDK exists, but the two checked conventional emulator/avdmanager candidates were absent; no SDK/AVD inventory, adb, emulator/VM launch, installation, configuration change or APK payload read occurred. These findings do not establish universal absence of other SDK versions, AVDs or user VMs. PLATFORM-001 remains OPEN; no external-only blocker or device acceptance is inferred."
+          "notes": "Installable paid Web/PWA with safe Service Worker. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance. Added D243 bounded read-only OS/Android availability evidence. Checked PATH interfaces/known paths did not identify a ready isolated OS runner. The documented project Android SDK exists, but the two checked conventional emulator/avdmanager candidates were absent; no SDK/AVD inventory, adb, emulator/VM launch, installation, configuration change or APK payload read occurred. These findings do not establish universal absence of other SDK versions, AVDs or user VMs. PLATFORM-001 remains OPEN; no external-only blocker or device acceptance is inferred. D244 added bounded local working evidence: 141 passing tests in four files (six new package cases), one fresh QA PWA build/strict audit and one existing 390x844 offline reload/RU-EN case with five directly viewed screenshots, plus dry-run and explicit local package preparation. Original unit source f3fb and unchanged committed source3a71 manifests remain separate. The browser uses the same context; no process/profile reopen, OS installation, real purchase/provider, public metadata or full-content acceptance. ROOT found duplicated mobile notices and a partly obscured RU book header; D245 layout follow-up remains required. No criterion/status/cache or stage/release promotion."
         }
       ],
       "lastGreenCommands": [
@@ -571,7 +578,33 @@
         "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/reconciliation-review.md",
         "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/reconciliation-result.json",
         "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/os-availability.json",
-        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/android-availability.json"
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/android-availability.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/result.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/checks.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/source-commit.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/runtime-result.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/root-visual.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/package-proof.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/source-manifest.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/current-source-manifest.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/vitest-report.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/vitest.stdout.log",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/vitest.stderr.log",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/strict-audit.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/strict-audit-execution.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/browser-report.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/browser-execution.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/local-validation.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/package-result.json",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/dryrun.stdout.log",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/dryrun.stderr.log",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/write.stdout.log",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/write.stderr.log",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-collection-ru-book.png",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-collection-en-book.png",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-collection-en-help.png",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-collection-ru-help.png",
+        "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-offline-collection-return.png"
       ],
       "externalBlockers": []
     },
@@ -12231,7 +12264,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "S03.acceptance: Prepare exactly one fresh source-bound controlled PWA QA candidate and a focused actual runtime RU/EN switch plus core-offline/cold-relaunch run for the existing BIL-019/075/077 and CONTENT-007 gaps. The retained D220 candidate cannot reopen authorized/offline operation: only its public authority remains, privateKeyPersisted is false and the original producer is closed. Authenticate and review the existing transport/license/authority harness, then use a separately bound temporary controlled QA authority for the fresh candidate; no production license, purchase, publication or reviewed-content authority is implied. Keep the actual passive13-request retained-candidate subset and bounded12-criterion/OS/Android audits; do not repeat them as runtime evidence. The fresh candidate/browser run is preparation pending at this checkpoint, not an already completed build or PASS. Actual OS/native installation needs a verified isolated runner; bounded checked-interface absence proves no universal VM/SDK absence and creates no owner-only blocker. Keep every criterion/global status, missing JSON-LD/sitemap/public-edge coverage and stage/release gate unchanged until actual scoped evidence is reviewed. No APK/store/OS side effect, fabricated device/full-offline/full-bilingual acceptance or new feature requirement.",
+    "nextAction": "D245 / S03.acceptance: Reduce the mobile saved-access and offline notices to one compact status presentation with accessible details, preserving expired/unconfirmed access gates, update/rollback controls and the canonical Canvas. Verify the selected book header and controls remain reachable. The D244 141 local tests and one 390x844 offline/RU-EN browser case passed at source3a71; all five direct photos show a layout follow-up, not complete visual acceptance. Preserve those original reports and manifests; do not rerun unchanged suites or the old D220 APK. All S03 criteria, public metadata, real commerce, reviewed content and installed-device gates remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -12415,7 +12448,8 @@
       "docs/mobile/evidence/S15/booky-journey-fact-subject-20261001/result.json",
       "docs/mobile/evidence/S15/booky-journey-workspace-20261001/result.json",
       "docs/mobile/evidence/S15/booky-journey-session-recovery-20261001/result.json",
-      "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json"
+      "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json",
+      "docs/mobile/evidence/S03/runtime-package-20261001/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -12544,7 +12578,8 @@
       "Retain actual D240 a1 core70/TypeScript at original0b4c through browser-only a2 only with exact2100 equality excluding solely browser, unchanged reports and no new-fixture/fresh-final-manifest claims. Fresh a2 browser3/eight root views and committed-source direct Next/client-secret bind final6c04. Keep failed a1 browser2/1+ten captures and recovery-guard preflight diagnostics separate from acceptance; authenticate exactly two native variant reveals and original9969 producer without app/core/TS reruns. D23965/TS at original2f027/last-compatible4d53, D23757 and D23049/proof are historical only after core changes; helper18/action10/factsmoke/D232 are historical, with no fresh parser claims. Six first-case/seven third-case native downloads preserve goldens, configured subject copies and main-work helper targets. Current RU Alpha/footer12, Country selector/boundary, EN main-work fact sources, RU author finder, EN modeled1/2 feedback and partial error/navigation captures retain their actual scopes; age66 input is off frame. Root copy acceptance is bounded UI only; preserved synthetic work prose does not become approved country/writer content. Continue accepted D241 explicit native unfinished workspace kind/schema1/input Save/Reopen, strict own-data512KiB actualUTF8 shape and exact raw strings/optional rows, four existing owners/fresh current70 plus meaningful tests (accepted static76 requires actual report), source-reset/held-save/import protections, original3/8/7held and committed-source Next. No autosave/storage/serverCAS/audit/full-recovery/device/stage claims or unrelated catalog/mobile/history checks; preserve36 unavailable dialogues/empty production/statuses/caches/gates.",
       "Preserve actual corrected D241 a2 unit76/report31ac/TS37c at original f328 through the metadata-only command-guard finalizer after exact unchanged2101 input verification; finalizer unit/typecheckExecutedfalse and no report/manifest rewrite or browser-fixture coverage. Fresh first browser3/eight current root views and committed-source Next/client-secret source3d5cd9 are actual. Original a1 TS2540/76/test2112/1bd4 is diagnostic only; authenticate exact one mutable type assertion to277a and current76, without an erasure-proof/rerun cycle. Preserve original0a2 outputFile guard and early admin CLI arity diagnostics separately from actual app successes. D24070/TS original0b4c/last6c04, D23965/TS, D23757, D23049/proof/helper18/action10/factsmoke/D232 remain historical with no current old-core/parser claims. Workspace raw input uses explicit version1 native files/512KiB actualUTF8 structural validation, exact unfinished strings/keys/rows, no storage/helper/network, unchanged compiled gates and existing held/save/rejection/success-reset semantics; native downloads8/2/7 and original7523 preserved. RUpreview current scope is workspace controls/status; Alpha/footer photograph is historical D240 only and current native-export footer assertion remains. No all-state/full-recovery/device/source/editorial acceptance. Continue accepted D242 only: default-off opt-in own-key sessionStorage raw copy,600ms source debounce, manual Restore/Delete, injected quota/read exceptions and held/cancellation safeguards, two owners/freshTS/browser/actual76 strict protected-byte retention, then source Next. After D242 reconcile existing12 S03.acceptance criteria; do not add further CMS feature stages or fabricate a fixed total D inventory. Keep36 unavailable dialogues/empty production/mobile bytes/statuses/caches/gates and no unrelated repeated checks.",
       "Preserve original D241a2 current core76/report31ac/f328 throughD242 only after exact2099 protected equality excluding the two current UI/browser owners; no unit rerun, report rewrite or new-UI coverage. D242 focusedTS/browser3/eight direct root views and committed-source Next/client-secret evidence are fresh and separately source-bound. Old D24137c TypeScript and its TS2540/command-finalization/early-admin-CLI diagnostic lineage remain immutable historical snapshots, never D242 current typecheck/UI coverage. All70/65/57/49/proof/helper18/action10/factsmoke/D232 historical bytes/claims remain unchanged. Session updating is defaultoff explicit opt-in only, ownkey temporary sessionStorage,600ms authored-input debounce and no-op/cancellation, manual validated Restore/Delete and once source reset, no presentation/profile/model/answer persistence or helper/network side effect. Quota/read failures are injected Storage API exceptions, not actual exhaustion/privacy/provider acceptance. RU current capture is session Restore/Delete; D241 workspace and earlier Alpha/footer photos are historical, footer-export assertion retained. Preserve original3/8/7held/downloads8/2/7/golden7523 and no whole-device/full-recovery/source/editorial acceptance. Next is first-open S03.acceptance12-criterion reconciliation and passive rawHTTP exact preserved D220 candidate; no new CMSfeature or finiteDcount. Do not recreate the retained candidate, invent JSON-LD/sitemap for its private shell, equate a Chrome profile with OS isolation/install, or close production/transaction/deletion/deployment/device gates with unrelated local QA. Preserve statuses/caches/mobile/runtime/36 unapproved dialogues/empty production and avoid unrelated repeated checks.",
-      "D243 recorded actual passive13-request retained D220 HTTP subset and frozen12-criterion/OS/Android availability audits. Preserve private noJSONLD/no-sitemap/QA404 boundaries, no runtime/installed/whole-closure acceptance, no repeated passive probe or rehash/rebuild of retained D220, and every status/commit/cache/gate. Continue S03 runtime locale/offline investigation without new CMS features or invented OS isolation."
+      "D243 recorded actual passive13-request retained D220 HTTP subset and frozen12-criterion/OS/Android availability audits. Preserve private noJSONLD/no-sitemap/QA404 boundaries, no runtime/installed/whole-closure acceptance, no repeated passive probe or rehash/rebuild of retained D220, and every status/commit/cache/gate. Continue S03 runtime locale/offline investigation without new CMS features or invented OS isolation.",
+      "D244 retains one 141-test local run, one QA PWA build/audit and one mobile offline/RU-EN case at3a71, separate original/current manifests and two local package CLI calls. Preserve these receipts as historical after any source change; no old APK, unchanged test or passive13-request rerun. Five photos require D245 compact-status layout follow-up; no visual/device/stage/release acceptance."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",

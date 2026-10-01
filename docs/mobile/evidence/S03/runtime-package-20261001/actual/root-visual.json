@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-focused-pwa-root-visual-review",
+  "decision": "ACCEPT_FUNCTIONAL_WITH_LAYOUT_FOLLOWUP",
+  "sourceCommit": "3a71b7d036f4f05b3f3595c0249512af3d998e99",
+  "runtimeResult": { "path": "actual-a1/result.json", "sha256": "f0711d7974e2e53ed7ea11f16cff7b6e785b3ff27b0ef71951c8ce5655268279" },
+  "viewport": { "width": 390, "height": 844 },
+  "reviewer": "ROOT",
+  "allFiveScreenshotsDirectlyViewed": true,
+  "screenshots": [
+    { "name": "pwa-collection-ru-book.png", "sha256": "be641377a11039de56ded37ae17c0c8b45c9298245d3abbbdeff287c53feac4b" },
+    { "name": "pwa-collection-en-book.png", "sha256": "f58467c6cba55add4353c5144d1e2bc09de358f0a9f447e2776a54a4f1da4c88" },
+    { "name": "pwa-collection-en-help.png", "sha256": "6bd24ae6f8545e3ae0381b9e4cf8a0c7dd2f0ccb5580f14c795810a88fb92b6a" },
+    { "name": "pwa-collection-ru-help.png", "sha256": "692eb7857966a1c7f223b6f1d9b1064b0f5fefe75a84ab7b590ff41beba4ebf1" },
+    { "name": "pwa-offline-collection-return.png", "sha256": "b5746c169efafa0fb3af964133a87775afcd941af719f68f2ac8017ecd0ac3c0" }
+  ],
+  "findings": [
+    "Saved-access and offline notices repeat related information in two separate cards, consuming substantial height in mobile collection, help and globe views.",
+    "The RU book screenshot shows the expanded book header partly obscured behind the notices; improve the notice layout and verify control visibility."
+  ],
+  "followUp": "D245: compact mobile status presentation and verify book controls remain reachable",
+  "visualAcceptanceComplete": false,
+  "installedDeviceValidated": false,
+  "browserProcessReopened": false,
+  "browserProfileReopened": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

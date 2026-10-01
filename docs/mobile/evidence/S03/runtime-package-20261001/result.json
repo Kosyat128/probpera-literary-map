@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "decision": "D244",
+  "kind": "s03-local-runtime-and-package-working-validation",
+  "pass": true,
+  "scope": "working-validation",
+  "sourceCommit": "3a71b7d036f4f05b3f3595c0249512af3d998e99",
+  "sourceFiles": [
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "scripts/mobile/prepare-pwa-staging.mjs",
+      "sha256": "169930a2c78d74128d4cdb3d1edd466f06c449365b9ac2358f8e5bf85b754e1f"
+    },
+    {
+      "path": "scripts/mobile/pwa-staging-package.mjs",
+      "sha256": "915b9e11dc306567819e1af5bf0d99308595647c08d678c765ece9f176559733"
+    },
+    {
+      "path": "scripts/mobile/pwa-staging-package.test.mjs",
+      "sha256": "1a8f3b5de47e90bffd6c4802e0eefd2b632b82a4a769860b168f585b2b2d1d6f"
+    }
+  ],
+  "criterionIds": [
+    "S03.acceptance",
+    "S03.BIL-019",
+    "S03.CONTENT-007",
+    "S03.PLATFORM-001",
+    "S03.OMIN-023"
+  ],
+  "requirementIds": [
+    "BIL-019",
+    "CONTENT-007",
+    "PLATFORM-001",
+    "OMIN-023"
+  ],
+  "recordedAt": "2026-10-01T16:04:54.151Z",
+  "copies": [
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\checks.json",
+        "sha256": "3d76c6a391ca1e9bcfec56bf7cff16fe223d431f6ceb4571a858f6054cff5ee2"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/checks.json",
+        "sha256": "3d76c6a391ca1e9bcfec56bf7cff16fe223d431f6ceb4571a858f6054cff5ee2"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\source-commit.json",
+        "sha256": "340205774b68b30afa8b999541de2942fc29d75156dbc36e5d78451b585313e2"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/source-commit.json",
+        "sha256": "340205774b68b30afa8b999541de2942fc29d75156dbc36e5d78451b585313e2"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\result.json",
+        "sha256": "f0711d7974e2e53ed7ea11f16cff7b6e785b3ff27b0ef71951c8ce5655268279"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/runtime-result.json",
+        "sha256": "f0711d7974e2e53ed7ea11f16cff7b6e785b3ff27b0ef71951c8ce5655268279"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\root-visual-a1.json",
+        "sha256": "ec54d45e958bd9a0e56812309d13a2f9891e0824e484d917781770204a9b19b0"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/root-visual.json",
+        "sha256": "ec54d45e958bd9a0e56812309d13a2f9891e0824e484d917781770204a9b19b0"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\package-proof.json",
+        "sha256": "9194875c7a6b4f6e60b398725fe3028f52deb9aaf41f21942d7abb6d61125e35"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/package-proof.json",
+        "sha256": "9194875c7a6b4f6e60b398725fe3028f52deb9aaf41f21942d7abb6d61125e35"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\source-manifest.json",
+        "sha256": "2aeba6102debc42419364c8b189296e45e146b220d22c0f260a6a6e6360a39e9"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/source-manifest.json",
+        "sha256": "2aeba6102debc42419364c8b189296e45e146b220d22c0f260a6a6e6360a39e9"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\current-source-manifest.json",
+        "sha256": "1f283028cda07520d753355ae52fbcbe4ef93f49f7ebf130b5e3038fa8f9d56a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/current-source-manifest.json",
+        "sha256": "1f283028cda07520d753355ae52fbcbe4ef93f49f7ebf130b5e3038fa8f9d56a"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\vitest-report.json",
+        "sha256": "0343fd89750799fd250c86b0deaa98a2f00bd8d052ac37adc1e4c65a3d21d994"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/vitest-report.json",
+        "sha256": "0343fd89750799fd250c86b0deaa98a2f00bd8d052ac37adc1e4c65a3d21d994"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\vitest.stdout.log",
+        "sha256": "e1449cfeabe6f818f28cbfc041cc5e082d58991a3757ba3ea88d44633f99e1e5"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/vitest.stdout.log",
+        "sha256": "e1449cfeabe6f818f28cbfc041cc5e082d58991a3757ba3ea88d44633f99e1e5"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\vitest.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/vitest.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\strict-audit.json",
+        "sha256": "7184a4a94902aac966637735233014b8646765dcb661b870e236db2c3a32eb70"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/strict-audit.json",
+        "sha256": "7184a4a94902aac966637735233014b8646765dcb661b870e236db2c3a32eb70"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\strict-audit-execution.json",
+        "sha256": "3de570ba41ea96c179c48fb4605545cbbeef0550f082ce980bc23369cb75adbc"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/strict-audit-execution.json",
+        "sha256": "3de570ba41ea96c179c48fb4605545cbbeef0550f082ce980bc23369cb75adbc"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\browser-playwright.json",
+        "sha256": "5376b40ce7bbcc267a692387b312c08db7b8486ba824c6e54432a2b1a9132cf4"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/browser-report.json",
+        "sha256": "5376b40ce7bbcc267a692387b312c08db7b8486ba824c6e54432a2b1a9132cf4"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\browser-execution.json",
+        "sha256": "c9cb763a995b4e869743d28cacea958e9ae7a6c6a0cc8adc96031d28a2f64531"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/browser-execution.json",
+        "sha256": "c9cb763a995b4e869743d28cacea958e9ae7a6c6a0cc8adc96031d28a2f64531"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-omin-local-staging-gap-assessment-review/actual-a1/local-validation.json",
+        "sha256": "9a7141d396111423fbf654281648c4c38eaa5de61fc3f7e6ffc19fb7b9577e91"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/local-validation.json",
+        "sha256": "9a7141d396111423fbf654281648c4c38eaa5de61fc3f7e6ffc19fb7b9577e91"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\package-result.json",
+        "sha256": "225bdde7536769d1f35104679fa97086836bfb104aa49f9f72770a590dd2af0d"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/package-result.json",
+        "sha256": "225bdde7536769d1f35104679fa97086836bfb104aa49f9f72770a590dd2af0d"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\dryrun.stdout.log",
+        "sha256": "5be06fb191f6fcb8220c0f5e5525ceb4975ce757c6a2c541605282cfb60bd834"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/dryrun.stdout.log",
+        "sha256": "5be06fb191f6fcb8220c0f5e5525ceb4975ce757c6a2c541605282cfb60bd834"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\dryrun.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/dryrun.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\write.stdout.log",
+        "sha256": "a9811f25efa7d54d02b1a0d32265d2e8b3491d854c36481376f76ebfe8c526fa"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/write.stdout.log",
+        "sha256": "a9811f25efa7d54d02b1a0d32265d2e8b3491d854c36481376f76ebfe8c526fa"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\write.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/write.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-collection-ru-book.png",
+        "sha256": "be641377a11039de56ded37ae17c0c8b45c9298245d3abbbdeff287c53feac4b"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-collection-ru-book.png",
+        "sha256": "be641377a11039de56ded37ae17c0c8b45c9298245d3abbbdeff287c53feac4b"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-collection-en-book.png",
+        "sha256": "f58467c6cba55add4353c5144d1e2bc09de358f0a9f447e2776a54a4f1da4c88"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-collection-en-book.png",
+        "sha256": "f58467c6cba55add4353c5144d1e2bc09de358f0a9f447e2776a54a4f1da4c88"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-collection-en-help.png",
+        "sha256": "6bd24ae6f8545e3ae0381b9e4cf8a0c7dd2f0ccb5580f14c795810a88fb92b6a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-collection-en-help.png",
+        "sha256": "6bd24ae6f8545e3ae0381b9e4cf8a0c7dd2f0ccb5580f14c795810a88fb92b6a"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-collection-ru-help.png",
+        "sha256": "692eb7857966a1c7f223b6f1d9b1064b0f5fefe75a84ab7b590ff41beba4ebf1"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-collection-ru-help.png",
+        "sha256": "692eb7857966a1c7f223b6f1d9b1064b0f5fefe75a84ab7b590ff41beba4ebf1"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-offline-collection-return.png",
+        "sha256": "b5746c169efafa0fb3af964133a87775afcd941af719f68f2ac8017ecd0ac3c0"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/runtime-package-20261001/actual/pwa-offline-collection-return.png",
+        "sha256": "b5746c169efafa0fb3af964133a87775afcd941af719f68f2ac8017ecd0ac3c0"
+      }
+    }
+  ],
+  "localTestsPassed": 141,
+  "newPackageTestsPassed": 6,
+  "localTestInvocations": 1,
+  "pwaBuildInvocations": 1,
+  "browserInvocations": 1,
+  "selectedExistingBrowserCases": 1,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "originalUnitRunSourceCommit": "f3fb51bc991093e3e2376036baa1ba6734040cde",
+  "sourceManifestFiles": 2141,
+  "declaredSourceRoots": [
+    "src",
+    "server",
+    "scripts",
+    "supabase/migrations",
+    "tests",
+    "package.json",
+    "package-lock.json",
+    "index.html",
+    "vite.config.ts",
+    "vite.pwa.config.ts",
+    "tsconfig.json",
+    "vitest.config.ts",
+    "data/book-canon-source-registry.json"
+  ],
+  "sourceManifestFilesUnchangedSinceOriginalTests": true,
+  "buildId": "220eb2e0f48405bffd380bc678bed275fb42ef2e4cca23487cb271edf0c3271d",
+  "localPackageInventoryFiles": 1442,
+  "packageCliInvocations": 2,
+  "rootVisualDecision": "ACCEPT_FUNCTIONAL_WITH_LAYOUT_FOLLOWUP",
+  "visualFollowUpRequired": true,
+  "ordinaryColdDocumentReload": true,
+  "browserProcessReopened": false,
+  "browserProfileReopened": false,
+  "runtimeHeadMetadataChecked": false,
+  "installedDeviceValidated": false,
+  "realPurchaseValidated": false,
+  "realProviderValidated": false,
+  "stagingValidated": false,
+  "productionActionsPerformed": false,
+  "fullContentAccepted": false,
+  "all12CriteriaRemainUnfinished": true,
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "D245 / S03.acceptance: Reduce the mobile saved-access and offline notices to one compact status presentation with accessible details, preserving expired/unconfirmed access gates, update/rollback controls and the canonical Canvas. Verify the selected book header and controls remain reachable. The D244 141 local tests and one 390x844 offline/RU-EN browser case passed at source3a71; all five direct photos show a layout follow-up, not complete visual acceptance. Preserve those original reports and manifests; do not rerun unchanged suites or the old D220 APK. All S03 criteria, public metadata, real commerce, reviewed content and installed-device gates remain open."
+}

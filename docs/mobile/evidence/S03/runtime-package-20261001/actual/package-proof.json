@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-local-package-execution-proof",
+  "pass": true,
+  "sourceCommit": "3a71b7d036f4f05b3f3595c0249512af3d998e99",
+  "buildId": "220eb2e0f48405bffd380bc678bed275fb42ef2e4cca23487cb271edf0c3271d",
+  "localOnly": true,
+  "packageDirectory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-staging-d244-a1",
+  "packageResult": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\package-result.json",
+    "sha256": "225bdde7536769d1f35104679fa97086836bfb104aa49f9f72770a590dd2af0d"
+  },
+  "originalPackageResult": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-staging-d244-a1\\result.json",
+    "sha256": "225bdde7536769d1f35104679fa97086836bfb104aa49f9f72770a590dd2af0d"
+  },
+  "validationReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-omin-local-staging-gap-assessment-review/actual-a1/local-validation.json",
+    "sha256": "9a7141d396111423fbf654281648c4c38eaa5de61fc3f7e6ffc19fb7b9577e91"
+  },
+  "dryRun": {
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\dryrun.stdout.log",
+      "sha256": "5be06fb191f6fcb8220c0f5e5525ceb4975ce757c6a2c541605282cfb60bd834"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\dryrun.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packageWritten": false,
+    "exitCode": 0
+  },
+  "write": {
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\write.stdout.log",
+      "sha256": "a9811f25efa7d54d02b1a0d32265d2e8b3491d854c36481376f76ebfe8c526fa"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\write.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packageWritten": true,
+    "exitCode": 0
+  },
+  "cliInvocations": 2,
+  "buildInvocations": 0,
+  "testInvocations": 0,
+  "copiedReportsByteVerified": true,
+  "localWorkerConfigurationVerified": true,
+  "inventoryFiles": 1442,
+  "packageSha256": "c35dd4323748ea04014f987c543e6cf92c828e650da3b67bc42c5537917161f1",
+  "fullPackagePayloadRehashedByReview": false,
+  "sourceClean": true,
+  "stagingValidated": false,
+  "providerValidated": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

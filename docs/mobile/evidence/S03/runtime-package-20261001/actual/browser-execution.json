@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\proposed\\pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 45174,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\browser-stdout.log",
+    "sha256": "1f5c4e48d678fcbf769946f8377114cb2cde17ba11f01f8cd46e3161aebf6601",
+    "bytes": 202
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-focused-runtime-qa-review\\actual-a1\\browser-stderr.log",
+    "sha256": "0974d360017c19f00b2a1dc5481191eacf191587db61b5ecdc2dcf2fcc72aa72",
+    "bytes": 164
+  }
+}

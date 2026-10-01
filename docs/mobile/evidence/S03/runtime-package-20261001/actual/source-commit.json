@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "decision": "D244",
+  "kind": "planet-local-packaging-source-commit",
+  "pass": true,
+  "base": "f3fb51bc991093e3e2376036baa1ba6734040cde",
+  "sourceCommit": "3a71b7d036f4f05b3f3595c0249512af3d998e99",
+  "predecessor": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json",
+    "sha256": "459a1fb6511ca564f5c15b34cf81a8fce30ef5c279bec45d9ee5dbea5ed71829"
+  },
+  "producer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\source-commit.mjs",
+    "sha256": "96722e1e81a2c9b741c899570cf0514bbca51cae34a09cb0cfc1cdd2b3cec059"
+  },
+  "common": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\guards.mjs",
+    "sha256": "47bb92ecb17b1bb8caeeb2bd4f7274f96ec46b1bf7ece3526163c20a4c00b0da"
+  },
+  "checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\checks.json",
+    "sha256": "3d76c6a391ca1e9bcfec56bf7cff16fe223d431f6ceb4571a858f6054cff5ee2"
+  },
+  "sourceBefore": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\source-before.json",
+    "sha256": "25f5ae10b79a7674a487e0b5e7024992434f7210460544b7b51b416aa8fec69b"
+  },
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\source-manifest.json",
+    "sha256": "2aeba6102debc42419364c8b189296e45e146b220d22c0f260a6a6e6360a39e9"
+  },
+  "currentSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\current-source-manifest.json",
+    "sha256": "1f283028cda07520d753355ae52fbcbe4ef93f49f7ebf130b5e3038fa8f9d56a"
+  },
+  "smokeReport": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\vitest-report.json",
+    "sha256": "0343fd89750799fd250c86b0deaa98a2f00bd8d052ac37adc1e4c65a3d21d994"
+  },
+  "smokeCommand": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "scripts/mobile/pwa-staging-package.test.mjs",
+    "server/planet/api.test.ts",
+    "server/planet/worker.test.ts",
+    "server/planet/integration.test.ts",
+    "--maxWorkers=1",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\vitest-report.json"
+  ],
+  "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "approvedCommand": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\approved-command.json",
+    "sha256": "076ab7b81b136336dbaa7615790480075412c4c0acb07ddc21c7d8d0cbb54ebf"
+  },
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\vitest.stdout.log",
+    "sha256": "e1449cfeabe6f818f28cbfc041cc5e082d58991a3757ba3ea88d44633f99e1e5"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\vitest.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "exitCode": 0,
+  "summary": {
+    "files": 4,
+    "suites": 10,
+    "passed": 141,
+    "packagingPassed": 6,
+    "assertions": [
+      {
+        "path": "server/planet/api.test.ts",
+        "passed": 56
+      },
+      {
+        "path": "server/planet/integration.test.ts",
+        "passed": 4
+      },
+      {
+        "path": "server/planet/worker.test.ts",
+        "passed": 75
+      },
+      {
+        "path": "scripts/mobile/pwa-staging-package.test.mjs",
+        "passed": 6
+      }
+    ]
+  },
+  "exactChangedPaths": [
+    "package.json",
+    "scripts/mobile/prepare-pwa-staging.mjs",
+    "scripts/mobile/pwa-staging-package.mjs",
+    "scripts/mobile/pwa-staging-package.test.mjs"
+  ],
+  "sourceFilesEqualToOriginalUnitManifest": true,
+  "originalUnitManifestRetained": true,
+  "originalUnitRunSourceCommit": "f3fb51bc991093e3e2376036baa1ba6734040cde",
+  "localOnly": true,
+  "testsRerun": false,
+  "appBuildExecuted": false,
+  "pwaBuildExecuted": false,
+  "stagingDeploymentExecuted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "clean": true
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "planet-local-preparation-validation",
+  "sourceCommit": "3a71b7d036f4f05b3f3595c0249512af3d998e99",
+  "artifact": { "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/dist-pwa/artifact.json", "sha256": "aba1fbc736f44e43d0d5ea1010164108ed91025aca2c61f526eef8cf78d3fade" },
+  "pwaReport": { "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-focused-runtime-qa-review/actual-a1/strict-audit.json", "sha256": "7184a4a94902aac966637735233014b8646765dcb661b870e236db2c3a32eb70" },
+  "sourceManifest": { "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-omin-local-staging-gap-assessment-review/actual-a1/source-manifest.json", "sha256": "2aeba6102debc42419364c8b189296e45e146b220d22c0f260a6a6e6360a39e9" },
+  "currentSourceManifest": { "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-omin-local-staging-gap-assessment-review/actual-a1/current-source-manifest.json", "sha256": "1f283028cda07520d753355ae52fbcbe4ef93f49f7ebf130b5e3038fa8f9d56a" },
+  "smokeReport": { "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\vitest-report.json", "sha256": "0343fd89750799fd250c86b0deaa98a2f00bd8d052ac37adc1e4c65a3d21d994" },
+  "smokeCommand": [
+    "node", "node_modules/vitest/vitest.mjs", "run",
+    "scripts/mobile/pwa-staging-package.test.mjs", "server/planet/api.test.ts", "server/planet/worker.test.ts", "server/planet/integration.test.ts",
+    "--maxWorkers=1", "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-omin-local-staging-gap-assessment-review\\actual-a1\\vitest-report.json"
+  ],
+  "exitCode": 0,
+  "stdout": { "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-omin-local-staging-gap-assessment-review/actual-a1/vitest.stdout.log", "sha256": "e1449cfeabe6f818f28cbfc041cc5e082d58991a3757ba3ea88d44633f99e1e5" },
+  "stderr": { "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-omin-local-staging-gap-assessment-review/actual-a1/vitest.stderr.log", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
+  "localOnly": true,
+  "stagingValidated": false,
+  "providerValidated": false
+}
