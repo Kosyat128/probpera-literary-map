@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "decision": "D245",
+  "pass": true,
+  "base": "08abc7267242a13f7aca9881cda505916d3cf94a",
+  "owners": [
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "originalSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "sha256": "ef41bed74e9e328e2f15a698fe9bb1982eaa751977de1b0a5df11eb6854a6ba0"
+    },
+    {
+      "path": "src/pwa/PwaEdition.tsx",
+      "originalSha256": "7d02ac0e9ac3e51c9a9afcacce3558cdc40749effc85d7304999d5ba91f396c4",
+      "sha256": "f79388cae2b0556ecc572ebe190021ed0a21610be38746732205c3f94f510e9d"
+    },
+    {
+      "path": "src/main.tsx",
+      "originalSha256": "111b797aeba148b16a3fe21b3ca64ca70d13b8b1939a07f8674b448afdecf69e",
+      "sha256": "3957d534405a8aab7b1d27044caead6b795838ee0c20aac70206c3d9f308e71d"
+    },
+    {
+      "path": "tests/pwa/offline-catalog.spec.mjs",
+      "originalSha256": "9e8e983044a26f0c73310a40def9b38b61fa442756e9c5f250e98b0b497ed3ad",
+      "sha256": "4bc630aa4996728d8f431d40ef77ca3035c6d327791105e6c8d31541ef4a9b72"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "originalSha256": "196f2fdb68498067a480bfbd1c0c8be8050ec4a585eb7529592d0b07d395bf9d",
+      "sha256": "0a4d3999e3d5e946e6510eaccb8b6d416edf120d3fbff65a6fafb7760af7f6d6"
+    },
+    {
+      "path": "src/pwa/PwaConnectivity.tsx",
+      "originalSha256": "a2be74242be199a2b6cb586401fbeb6c6e39fc9be8c1a9760c5c00784a0a5927",
+      "sha256": "4ed2018dfbabf654266672422d7030bd9af4e4baf43c800a479a9ac06ba78ed2"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "originalSha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31",
+      "sha256": "53e2a0f09e1290069cd7adda081f2b6e14310cb1184f0c4e87e1d0a6fd2485a4"
+    }
+  ],
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\source-manifest.json",
+    "sha256": "61138426b0d047581dc3d53bd3dddd9c6a746be117a9a83ee1ed5b02f93eca13"
+  },
+  "unit": {
+    "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "args": [
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "src/pwa/PwaAccessBoundary.test.tsx",
+      "--maxWorkers=1",
+      "--reporter=json",
+      "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\unit-report.json"
+    ],
+    "exitCode": 0,
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\unit.stdout.txt",
+      "sha256": "6c887f4f1cdeb3041718b56b994f07137bc42a2a2f181a445fab1e97a69f6018"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\unit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "typescript": {
+    "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "args": [
+      "node_modules/typescript/bin/tsc",
+      "--noEmit",
+      "-p",
+      "tsconfig.json"
+    ],
+    "exitCode": 0,
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "unitReport": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\unit-report.json",
+    "sha256": "d830f3c1519cb12f2f72e3f461a7288abfbf3c887dc81b0cc5281d294788f299"
+  },
+  "summary": {
+    "passed": 34,
+    "files": 1,
+    "typescriptPass": true
+  },
+  "failure": null,
+  "testInvocations": 1,
+  "typescriptInvocations": 1,
+  "pwaBuildInvocations": 0,
+  "packageTestsRerun": false,
+  "journeyTestsRerun": false,
+  "sourceInputsUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

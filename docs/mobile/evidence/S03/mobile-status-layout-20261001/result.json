@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-mobile-status-and-toolbar-working-validation",
+  "decision": "D245",
+  "pass": true,
+  "recordedAt": "2026-10-01T16:50:51.870Z",
+  "sourceCommit": "48ee38314f550acc89bbff1f75409bbeb1b26d0f",
+  "sourceOwners": [
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "originalSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "sha256": "ef41bed74e9e328e2f15a698fe9bb1982eaa751977de1b0a5df11eb6854a6ba0"
+    },
+    {
+      "path": "src/pwa/PwaEdition.tsx",
+      "originalSha256": "7d02ac0e9ac3e51c9a9afcacce3558cdc40749effc85d7304999d5ba91f396c4",
+      "sha256": "f79388cae2b0556ecc572ebe190021ed0a21610be38746732205c3f94f510e9d"
+    },
+    {
+      "path": "src/main.tsx",
+      "originalSha256": "111b797aeba148b16a3fe21b3ca64ca70d13b8b1939a07f8674b448afdecf69e",
+      "sha256": "3957d534405a8aab7b1d27044caead6b795838ee0c20aac70206c3d9f308e71d"
+    },
+    {
+      "path": "tests/pwa/offline-catalog.spec.mjs",
+      "originalSha256": "9e8e983044a26f0c73310a40def9b38b61fa442756e9c5f250e98b0b497ed3ad",
+      "sha256": "4bc630aa4996728d8f431d40ef77ca3035c6d327791105e6c8d31541ef4a9b72"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "originalSha256": "196f2fdb68498067a480bfbd1c0c8be8050ec4a585eb7529592d0b07d395bf9d",
+      "sha256": "0a4d3999e3d5e946e6510eaccb8b6d416edf120d3fbff65a6fafb7760af7f6d6"
+    },
+    {
+      "path": "src/pwa/PwaConnectivity.tsx",
+      "originalSha256": "a2be74242be199a2b6cb586401fbeb6c6e39fc9be8c1a9760c5c00784a0a5927",
+      "sha256": "4ed2018dfbabf654266672422d7030bd9af4e4baf43c800a479a9ac06ba78ed2"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "originalSha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31",
+      "sha256": "53e2a0f09e1290069cd7adda081f2b6e14310cb1184f0c4e87e1d0a6fd2485a4"
+    }
+  ],
+  "copies": [
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1/checks.json",
+        "sha256": "e601df5879488259246a760609dea808194b7fab36a8f800162274d3722399ee"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/checks.json",
+        "sha256": "e601df5879488259246a760609dea808194b7fab36a8f800162274d3722399ee"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1/source-commit.json",
+        "sha256": "11cf11329fb0c7e6869d8c934ef9e73af13684233a4b764e32c607f8a979ca22"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/source-commit.json",
+        "sha256": "11cf11329fb0c7e6869d8c934ef9e73af13684233a4b764e32c607f8a979ca22"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2/result.json",
+        "sha256": "b734e618b6041ab054090aedbe8c4e8a7f477e60e3c4eb4843ddad2749bafd12"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/runtime-result.json",
+        "sha256": "b734e618b6041ab054090aedbe8c4e8a7f477e60e3c4eb4843ddad2749bafd12"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review/root-visual-a2.json",
+        "sha256": "072be579b27f228bbdee53a807c93c0d3681ccfe750859382e0c1b6fba664123"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/root-visual.json",
+        "sha256": "072be579b27f228bbdee53a807c93c0d3681ccfe750859382e0c1b6fba664123"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\source-manifest.json",
+        "sha256": "61138426b0d047581dc3d53bd3dddd9c6a746be117a9a83ee1ed5b02f93eca13"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/source-manifest.json",
+        "sha256": "61138426b0d047581dc3d53bd3dddd9c6a746be117a9a83ee1ed5b02f93eca13"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\current-source-manifest.json",
+        "sha256": "cbdc03cd67e3bb14a49a7f9d5cc5f422a551aff5950ebfdf17b2e37bcabf2619"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/current-source-manifest.json",
+        "sha256": "cbdc03cd67e3bb14a49a7f9d5cc5f422a551aff5950ebfdf17b2e37bcabf2619"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\unit-report.json",
+        "sha256": "d830f3c1519cb12f2f72e3f461a7288abfbf3c887dc81b0cc5281d294788f299"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/unit-report.json",
+        "sha256": "d830f3c1519cb12f2f72e3f461a7288abfbf3c887dc81b0cc5281d294788f299"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\unit.stdout.txt",
+        "sha256": "6c887f4f1cdeb3041718b56b994f07137bc42a2a2f181a445fab1e97a69f6018"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/unit.stdout.txt",
+        "sha256": "6c887f4f1cdeb3041718b56b994f07137bc42a2a2f181a445fab1e97a69f6018"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\unit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/unit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-compact-review\\actual-a1\\typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\strict-audit.json",
+        "sha256": "198ce974cd20788bce32a8f31276c0c674941b65eb2d32d9bec8445ada573148"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/strict-audit.json",
+        "sha256": "198ce974cd20788bce32a8f31276c0c674941b65eb2d32d9bec8445ada573148"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\strict-audit-execution.json",
+        "sha256": "14df7c10cfaac5ca114028f4f48811ba26ae3e583181e93251924d52da99ee69"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/strict-audit-execution.json",
+        "sha256": "14df7c10cfaac5ca114028f4f48811ba26ae3e583181e93251924d52da99ee69"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\browser-playwright.json",
+        "sha256": "c70a68d073c6760bbabc13ff294445ca69c3101256e8702c460cb21cbe97a94a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/browser-report.json",
+        "sha256": "c70a68d073c6760bbabc13ff294445ca69c3101256e8702c460cb21cbe97a94a"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\browser-execution.json",
+        "sha256": "23650e2be8d4e5a3069c3e7ad2299769ade6e2c7a29795751b6b4c2d8f24441b"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/browser-execution.json",
+        "sha256": "23650e2be8d4e5a3069c3e7ad2299769ade6e2c7a29795751b6b4c2d8f24441b"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2/build-execution.json",
+        "sha256": "e36fff1be1b0f4a87e5438bd8d3641021e2e938a6bd8686536746c9fe908f6bc"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/build-execution.json",
+        "sha256": "e36fff1be1b0f4a87e5438bd8d3641021e2e938a6bd8686536746c9fe908f6bc"
+      }
+    },
+    {
+      "original": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-status-runtime-review/binding-a2.json",
+        "sha256": "39ee69c301bf9291c778ec8259e16560aab0db9bee6947cd088a2c805a695167"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/binding.json",
+        "sha256": "39ee69c301bf9291c778ec8259e16560aab0db9bee6947cd088a2c805a695167"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\strict-audit-stdout.log",
+        "sha256": "198ce974cd20788bce32a8f31276c0c674941b65eb2d32d9bec8445ada573148"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/strict-audit.stdout.txt",
+        "sha256": "198ce974cd20788bce32a8f31276c0c674941b65eb2d32d9bec8445ada573148"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\strict-audit-stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/strict-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\browser-stdout.log",
+        "sha256": "8a1424777f742ed26177825cfd6f668f4eb740684d01c55ee7e9b9e8000971c3"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/browser.stdout.txt",
+        "sha256": "8a1424777f742ed26177825cfd6f668f4eb740684d01c55ee7e9b9e8000971c3"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\browser-stderr.log",
+        "sha256": "ec2518738a08a75e64fcbb999629f28f3fe53043e5f64c6f51d573a55638708e"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/browser.stderr.txt",
+        "sha256": "ec2518738a08a75e64fcbb999629f28f3fe53043e5f64c6f51d573a55638708e"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-collection-ru-book.png",
+        "sha256": "47389be1ec4a729168d17aec03736de2f953e1be31a3f54fe9cfb48749ee4c77"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/pwa-collection-ru-book.png",
+        "sha256": "47389be1ec4a729168d17aec03736de2f953e1be31a3f54fe9cfb48749ee4c77"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-collection-en-book.png",
+        "sha256": "1ddd9896137cf576c80301b171fb2471e21d7945b22bc7777a14fb9fae0324db"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/pwa-collection-en-book.png",
+        "sha256": "1ddd9896137cf576c80301b171fb2471e21d7945b22bc7777a14fb9fae0324db"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-collection-en-help.png",
+        "sha256": "8afb5ed37455b8127be7efddcd95925cccd9d421220fe6900834c4d84535d4fe"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/pwa-collection-en-help.png",
+        "sha256": "8afb5ed37455b8127be7efddcd95925cccd9d421220fe6900834c4d84535d4fe"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-collection-ru-help.png",
+        "sha256": "e096871af28d781f0769869c722fa84c23280888ce5253142e02269394d086a2"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/pwa-collection-ru-help.png",
+        "sha256": "e096871af28d781f0769869c722fa84c23280888ce5253142e02269394d086a2"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-status-runtime-review\\actual-a2\\browser\\offline-catalog-canonical--49409-oad-and-locale-route-change-s03-msedge-390\\pwa-offline-collection-return.png",
+        "sha256": "bc0a3d23aa074c9df2a0685c68155693938d9f44226737b2be5aa60560bf3d61"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/mobile-status-layout-20261001/actual/pwa-offline-collection-return.png",
+        "sha256": "bc0a3d23aa074c9df2a0685c68155693938d9f44226737b2be5aa60560bf3d61"
+      }
+    }
+  ],
+  "localTestsPassed": 34,
+  "typescriptPass": true,
+  "localTestInvocations": 1,
+  "typescriptInvocations": 1,
+  "pwaBuildInvocations": 1,
+  "browserInvocations": 1,
+  "browserCases": 1,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "buildId": "0321d45ba719a7ac3d5b96272adfc551321eda94ec2362e0d08ab48f2eaed3b2",
+  "declaredSourceFiles": 2141,
+  "originalUnitSourceCommit": "08abc7267242a13f7aca9881cda505916d3cf94a",
+  "sourceFilesUnchangedSinceUnitTests": true,
+  "originalManifestRetained": true,
+  "scopedMobileLayoutAccepted": true,
+  "allFiveScreenshotsDirectlyViewed": true,
+  "wholeAppVisualAccepted": false,
+  "installedDeviceValidated": false,
+  "realPurchaseValidated": false,
+  "publicMetadataValidated": false,
+  "fullContentAccepted": false,
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "nextAction": "D246 / S03.acceptance: Improve the existing Before you travel offline-readiness UI using actual matching-build worker results: show verified base-file count and size after a complete check, and the files/bytes actually restored in the current repair attempt. Keep RU/EN, stale-build filtering and incomplete/unavailable states accurate; preserve SW protocol, license gates and the canonical scene. Requirement18 downloads UX includes package size. D24534 tests/TypeScript and one current QA build/mobile case/five photos passed at48ee and accept only compact-status/toolbar layout; retain original receipts without rerunning unchanged tests or rebuilding the old APK. Native install, provider/real commerce, public metadata and full content acceptance remain unfinished."
+}

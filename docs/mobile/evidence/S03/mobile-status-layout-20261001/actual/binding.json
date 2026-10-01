@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-focused-pwa-qa-binding",
+  "sourceCommit": "48ee38314f550acc89bbff1f75409bbeb1b26d0f",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-status-compact-review/actual-a1/current-source-manifest.json",
+    "sha256": "cbdc03cd67e3bb14a49a7f9d5cc5f422a551aff5950ebfdf17b2e37bcabf2619"
+  },
+  "helpers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-status-runtime-review/proposed/guard.mjs",
+      "sha256": "aa7202c8acaf4ba413779b078876144f27737795b8f7d8d2c48bdf1c3c4cd814"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-status-runtime-review/proposed/producer.mjs",
+      "sha256": "bf99c4b114a61321020114b6e109610dc58ffb15d4cc34bf3e375e1e95e08578"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-status-runtime-review/proposed/pwa.config.mjs",
+      "sha256": "f5a61cd7148c3175cdabff28edd4c7c3166c4e8b2ce1546c529f27b09a67663c"
+    }
+  ]
+}

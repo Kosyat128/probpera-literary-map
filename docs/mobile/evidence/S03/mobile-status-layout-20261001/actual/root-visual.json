@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "decision": "ACCEPT_SCOPED_MOBILE_LAYOUT",
+  "sourceCommit": "48ee38314f550acc89bbff1f75409bbeb1b26d0f",
+  "runtimeResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-status-runtime-review/actual-a2/result.json",
+    "sha256": "b734e618b6041ab054090aedbe8c4e8a7f477e60e3c4eb4843ddad2749bafd12"
+  },
+  "directView": true,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "screenshots": [
+    {
+      "name": "pwa-collection-ru-book.png",
+      "sha256": "47389be1ec4a729168d17aec03736de2f953e1be31a3f54fe9cfb48749ee4c77"
+    },
+    {
+      "name": "pwa-collection-en-book.png",
+      "sha256": "1ddd9896137cf576c80301b171fb2471e21d7945b22bc7777a14fb9fae0324db"
+    },
+    {
+      "name": "pwa-collection-en-help.png",
+      "sha256": "8afb5ed37455b8127be7efddcd95925cccd9d421220fe6900834c4d84535d4fe"
+    },
+    {
+      "name": "pwa-collection-ru-help.png",
+      "sha256": "e096871af28d781f0769869c722fa84c23280888ce5253142e02269394d086a2"
+    },
+    {
+      "name": "pwa-offline-collection-return.png",
+      "sha256": "bc0a3d23aa074c9df2a0685c68155693938d9f44226737b2be5aa60560bf3d61"
+    }
+  ],
+  "findings": [
+    "One compact offline/access card replaces two expanded notices in the book, help and globe views.",
+    "RU and EN selected-book headers and close controls remain inside the content viewport; the existing browser geometry assertions pass.",
+    "Help text remains readable in RU/EN; lower help and long book content use the existing scroll area.",
+    "No overlapping modal or duplicate Canvas is visible in these five captures."
+  ],
+  "scope": "D245 compact status and selected-book toolbar at one mobile viewport",
+  "scopedLayoutAccepted": true,
+  "wholeAppVisualAcceptance": false,
+  "installedDevice": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
