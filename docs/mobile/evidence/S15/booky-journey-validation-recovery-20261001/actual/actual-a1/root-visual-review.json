@@ -1,0 +1,57 @@
+{
+  "pass": true,
+  "decision": "D234",
+  "directRootViews": 8,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/source-manifest.json",
+    "sha256": "e560f5418bef5e5a0c2e8a9eeccf4913003bc3d1ca55b3369564476985e2cc9a"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/browser-result.json",
+    "sha256": "150e37190041b294bce2327f8c1e0645730595e52d6de84e4c1319aaef59aa7c"
+  },
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "e70730861244e9c64448e92fef4b6b8d1ad47d307d63794288916776a3e1cfd7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "c7d8b91fedf7f3c091b0603b93eac4f487e942581e8b9bac84ca91c856f46953"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "2540d12441816144c760bd7cf8f0cc7d10fb10a5cb0f1829afc9ce420a0fa277"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "5e75bb603431c972d21f51aa48edbaa96c13197d9ef92210797b5fa40b0734b5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "aabcbba7f57abd1a19930c48d98fb9f8a6beae73a46bd2844fcd3d1beeb5b416"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "92a9a530e932669a7b7308fb35831f201044c57ba67ef8741ec84e85efae48f9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "1cfd25823bf2f544d784a92f2119f1f13ed9bc9813fd7ba17721c5e13b56d6a0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "213467707f1ea31f306695e5e5aaba72f7f1a14f09edc2b3df5e01cff353525f"
+    }
+  ],
+  "observations": [
+    "Eight actual current admin-editor captures viewed directly by root.",
+    "RU 320 shows the actionable EN country-caption error summary with wrapping and no horizontal overlap; its lower portion extends below the screenshot.",
+    "Desktop current-copy comparison uses two columns; EN fact comparison at 320 uses one column. Other preview and answer controls retain their placement.",
+    "Age-range and aggregate fact/activity recovery, details opening, focus and value preservation are established by browser assertions, not claimed as all visible in these captures."
+  ],
+  "limitations": [
+    "Focused admin-component evidence; not installed mobile application or stage/release acceptance.",
+    "Captures do not show every error recovery action or the entire editor."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "booky-journey-validation-recovery-admin-build",
+  "pass": true,
+  "sourceCommit": "6cc9da5c32492dc274486932b5ed02e346437e78",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/source-manifest.json",
+    "sha256": "e560f5418bef5e5a0c2e8a9eeccf4913003bc3d1ca55b3369564476985e2cc9a"
+  },
+  "sourceCommitReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/actual-a1/actual-source-commit.json",
+    "sha256": "6bf8c640189dd065fb6605884664645d17b4b44c41f2c9b8f4f52fa9830a4c3b"
+  },
+  "durationMs": 37887,
+  "build": {
+    "exitCode": 0,
+    "signal": null,
+    "pass": true,
+    "spawnError": null,
+    "durationMs": 36668,
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\next\\dist\\bin\\next",
+      "build",
+      "--webpack"
+    ],
+    "cwd": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/apps/admin",
+    "stdout": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/admin-build-a1/next-build.stdout.log",
+      "sha256": "02bb0a2bbcf6806cf024470cb9ad0dfe7c8381e21fec96c5682e58fe271afb62"
+    },
+    "stderr": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/admin-build-a1/next-build.stderr.log",
+      "sha256": "44c4821749609f1bc4deb69ee3723d51484f8f5af61baf36f7fa00131757ba18"
+    }
+  },
+  "clientSecrets": {
+    "exitCode": 0,
+    "signal": null,
+    "pass": true,
+    "spawnError": null,
+    "durationMs": 543,
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\check-admin-client-secrets.mjs"
+    ],
+    "cwd": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/apps/admin",
+    "stdout": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/admin-build-a1/client-secrets.stdout.log",
+      "sha256": "b349f3fdcd8b5b3cfd5973b21b2857c65fefe9bb92ce3c94ee1ea14ae4ae848b"
+    },
+    "stderr": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/admin-build-a1/client-secrets.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "failure": null,
+  "sourceBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/admin-build-a1/source-before.json",
+    "sha256": "378c08a982954601fd829bbb38b3501ab03daba6d82d932b1519e6fe66c741b6"
+  },
+  "sourceAfter": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/admin-build-a1/source-after.json",
+    "sha256": "378c08a982954601fd829bbb38b3501ab03daba6d82d932b1519e6fe66c741b6"
+  },
+  "sourceInputsUnchanged": true,
+  "standaloneTypecheckExecuted": false,
+  "catalogGenerationExecuted": false,
+  "mobileBuildExecuted": false,
+  "deploymentExecuted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-validation-recovery-review/admin-build.mjs",
+    "sha256": "1eda15b9541d040215507bf50ac34463bab85123218cc7b2dcd376f81d9b4f18"
+  }
+}
