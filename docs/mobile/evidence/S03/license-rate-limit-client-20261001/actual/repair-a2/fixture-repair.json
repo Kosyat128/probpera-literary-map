@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "decision": "D252",
+  "attempt": "a2",
+  "reason": "test-response-body-reuse",
+  "changedPath": "src/platform/adapters/web/WebLicense.test.ts",
+  "originalProposal": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-client-review/proposed/src/platform/adapters/web/WebLicense.test.ts",
+    "sha256": "b14a5381ff61efcad5a30d6af19b48987782fbb94fd2a1503a1a23eb3be96219"
+  },
+  "correctedProposal": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-client-review/repair-a2/proposed/src/platform/adapters/web/WebLicense.test.ts",
+    "sha256": "94fca56e9f8e6be74720419d48a25f45a9e6b4d4b795a5913cb4091b3e05b648"
+  },
+  "before": ".mockImplementationOnce(() => old).mockResolvedValue(response(token));",
+  "after": ".mockImplementationOnce(() => old).mockImplementation(async () => response(token));",
+  "exactReplacementCount": 1,
+  "inverseSha256": "b14a5381ff61efcad5a30d6af19b48987782fbb94fd2a1503a1a23eb3be96219",
+  "assertionsUnchanged": true,
+  "productionUnchanged": true,
+  "canonicalWrites": false,
+  "testsExecuted": false,
+  "originalA1ChecksSha256": "50eb88136a4845c7e4b1bd634857ed335e0419c661f505a4f1a4f06654639115"
+}

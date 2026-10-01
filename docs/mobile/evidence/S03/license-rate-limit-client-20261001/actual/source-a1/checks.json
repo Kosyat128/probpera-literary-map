@@ -1,0 +1,82 @@
+{
+  "pass": false,
+  "decision": "D252",
+  "base": "eb3384e75a7d5894d0ccc7434e7f24c79521348b",
+  "recordedAt": "2026-10-01T20:36:09.115Z",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source-manifest.json",
+    "sha256": "ab8fab8afe4f178fd1d5dec2faca35551880431d7905c47861925781c778436f"
+  },
+  "sourceAfter": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source-after.json",
+    "sha256": "ab8fab8afe4f178fd1d5dec2faca35551880431d7905c47861925781c778436f"
+  },
+  "additionalSqlInputs": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459"
+    }
+  ],
+  "inputsUnchangedDuringChecks": true,
+  "tsc": {
+    "exitCode": 0,
+    "command": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\app-typescript-command.json",
+      "sha256": "3a125e3aae06de1b84d79acaee99aaff7d6d8744139d66ffb2dee8e097aabb0e"
+    },
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\app-typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\app-typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "test": {
+    "exitCode": 1,
+    "command": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest-command.json",
+      "sha256": "6a730064173d8ba49087cc787ba6ba5e88bbc8f9200e455d45d29654b936616e"
+    },
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest.stdout.txt",
+      "sha256": "3defbd3c0dc81d711f4e903e749fd97eca61b384a6d4d799960d2c47c053e192"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "report": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest-report.json",
+    "sha256": "9fc9d70512a9b9adae04901dfbb389f0944a7974b382600ee0ae5d2c275a254b"
+  },
+  "summary": {
+    "success": false,
+    "total": 139,
+    "passed": 138,
+    "failed": 1,
+    "pending": 0,
+    "todo": 0,
+    "suiteFiles": [
+      "server/planet/integration.test.ts",
+      "src/platform/adapters/web/WebLicense.test.ts",
+      "src/pwa/PwaAccessBoundary.test.tsx",
+      "src/pwa/PwaLicenseRuntime.test.ts"
+    ]
+  },
+  "appTypeScriptInvocations": 1,
+  "testInvocations": 1,
+  "oneConnectionLocalPostgres": true,
+  "localFixtureSqlExecuted": true,
+  "multiConnectionConcurrencyValidated": false,
+  "liveSupabaseValidated": false,
+  "providerValidated": false,
+  "appBuildExecuted": false,
+  "pwaBuildExecuted": false,
+  "nativeBuildExecuted": false,
+  "remoteDatabaseApplied": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

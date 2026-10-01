@@ -1,0 +1,25 @@
+{
+  "pass": true,
+  "base": "eb3384e75a7d5894d0ccc7434e7f24c79521348b",
+  "checkpoint": "ab21ac88918afc8b21ef63a0a2e3551421027ff0",
+  "clean": true,
+  "exactPaths": [
+    "server/planet/integration.test.ts",
+    "src/platform/adapters/web/WebLicense.test.ts",
+    "src/platform/adapters/web/WebLicense.ts",
+    "src/pwa/PwaAccessBoundary.test.tsx",
+    "src/pwa/PwaAccessBoundary.tsx",
+    "src/pwa/PwaLicenseRuntime.test.ts",
+    "src/pwa/pwaCopy.ts"
+  ],
+  "checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\checks.json",
+    "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+  },
+  "currentSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\current-source-manifest.json",
+    "sha256": "f5213ba30c30d7f0dba78cc846cd4277887472c83ae13f5468b2089d9b948541"
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

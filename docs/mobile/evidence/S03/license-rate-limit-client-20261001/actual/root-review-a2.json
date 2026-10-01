@@ -1,0 +1,82 @@
+{
+  "decision": "D252",
+  "pass": true,
+  "recordedAt": "2026-10-01T20:44:35.550Z",
+  "proposalManifestSha256": "f3b0c3aa986effcd6614f8ff941c49c186e2ca7e913a34e1c672be9c4b178f66",
+  "rootBindingSha256": "9d65d5413c75689bdd37390ba4a60db1a36c7102007e8bb5941c0035c1e31f75",
+  "owners": [
+    {
+      "path": "src/platform/adapters/web/WebLicense.ts",
+      "proposalPath": "src/platform/adapters/web/WebLicense.ts",
+      "originalSha256": "490398a3ed108fba036dd0f851fcb74fb3e288bbd71694cedd0c5a593f829089",
+      "proposedSha256": "ba6e6e0652943d35a1f04800509659f6686fbe7f8d1db26c7f98795032079a70"
+    },
+    {
+      "path": "src/platform/adapters/web/WebLicense.test.ts",
+      "proposalPath": "../repair-a2/proposed/src/platform/adapters/web/WebLicense.test.ts",
+      "originalSha256": "d2af3889aa8cd98afe2210e2bf9ceff2164ffd46a1201084626e572c8af894d3",
+      "proposedSha256": "94fca56e9f8e6be74720419d48a25f45a9e6b4d4b795a5913cb4091b3e05b648"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "proposalPath": "src/pwa/PwaAccessBoundary.tsx",
+      "originalSha256": "ef41bed74e9e328e2f15a698fe9bb1982eaa751977de1b0a5df11eb6854a6ba0",
+      "proposedSha256": "4d05da2c2ed6ae1cfec22abecbe51d0f071d5016dc1af3353d2bb3524a28221f"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.test.tsx",
+      "proposalPath": "src/pwa/PwaAccessBoundary.test.tsx",
+      "originalSha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910",
+      "proposedSha256": "fd447d0140c7ef9a6ee490d86841064570f28f03aa3203bbfe48ed5d1c5950a1"
+    },
+    {
+      "path": "src/pwa/pwaCopy.ts",
+      "proposalPath": "src/pwa/pwaCopy.ts",
+      "originalSha256": "577e114719579e69ec68f9aa4ac7ed63033aacd88ddc7a874fcf766a5a51d319",
+      "proposedSha256": "3d82503a9035eef1d7e35fc248bb65e0f95c1e50032e39efdb291718143bf2e1"
+    },
+    {
+      "path": "src/pwa/PwaLicenseRuntime.test.ts",
+      "proposalPath": "src/pwa/PwaLicenseRuntime.test.ts",
+      "originalSha256": "6503cdf473f0fa494b59fa534072099f56bb9bfd542522b8b4bb37bfdb348594",
+      "proposedSha256": "cb8f2c71323f49547e50bb7365e6a2b7f8380a58a3d207cc598a3d144f76ba26"
+    },
+    {
+      "path": "server/planet/integration.test.ts",
+      "proposalPath": "server/planet/integration.test.ts",
+      "originalSha256": "84ea03f6575bd1533e3b672358fad5332652fbca705d6522e62fae85d5bb5766",
+      "proposedSha256": "90fb7a0a9fe196734add7d53ef12d21aec7b72cee932156631950dcd16b6fb10"
+    }
+  ],
+  "fullChangedCodeAndFocusedFixturesReviewed": true,
+  "explicitClientScope": true,
+  "retryAfterReceiptMilliseconds": true,
+  "canonicalPositiveDeltaOnly": true,
+  "noInventedMalformedHeaderWait": true,
+  "supersededReplyFenced": true,
+  "noAutomaticRetry": true,
+  "noPersistentClientQuota": true,
+  "separateSignedOfflineVerification": true,
+  "signedExclusiveExpiryPreserved": true,
+  "ruEnCopyReviewed": true,
+  "serverSchemaUnchanged": true,
+  "actualProviderValidated": false,
+  "remoteDatabaseApplied": false,
+  "browserVisualVerified": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "reference": "https://www.rfc-editor.org/rfc/rfc9110.html#name-retry-after",
+  "fixtureOnlyRepairReviewed": true,
+  "exactFixtureInverse": true,
+  "allAssertionsUnchanged": true,
+  "allProductionOwnersUnchanged": true,
+  "originalReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-review.json",
+    "sha256": "4c98293e69714c6e687881e9134d7a840d9d37897478fd22d7804184b1aba3cf"
+  },
+  "originalAttemptChecks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\checks.json",
+    "sha256": "50eb88136a4845c7e4b1bd634857ed335e0419c661f505a4f1a4f06654639115"
+  }
+}

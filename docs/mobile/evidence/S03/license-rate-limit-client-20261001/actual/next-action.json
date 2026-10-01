@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "decision": "D252",
+  "sourceCommit": "ab21ac88918afc8b21ef63a0a2e3551421027ff0",
+  "expectedTests": 139,
+  "expectedSourceFiles": 2150,
+  "newTests": 14,
+  "suiteCounts": {
+    "src/platform/adapters/web/WebLicense.test.ts": 63,
+    "src/pwa/PwaAccessBoundary.test.tsx": 37,
+    "src/pwa/PwaLicenseRuntime.test.ts": 34,
+    "server/planet/integration.test.ts": 5
+  },
+  "nextAction": "D253 / S03.acceptance / S03.BIL-079: prepare one isolated current-source public Vite compile from the existing local retained snapshot without CMS export; bind compiled HTML, assets and runtime closure; use existing focused RU/EN public HTTP/runtime and localized 404 oracles and inspect any resulting captures. Preserve default noindex, editorial approval and all statuses; no provider activation, PWA/native rebuild or deployment.",
+  "artifacts": [
+    {
+      "name": "source-a2/apply.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\apply.json",
+      "sha256": "ec9b5e085052f8d6a1ffb19b1d03644102795f0d3c51e009ad7a10a16814c545"
+    },
+    {
+      "name": "source-a2/binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\binding.json",
+      "sha256": "9d65d5413c75689bdd37390ba4a60db1a36c7102007e8bb5941c0035c1e31f75"
+    },
+    {
+      "name": "source-a2/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-before.json",
+      "sha256": "fae309301a84daea827b6feb969fbf4bc098c0a3bf1fd88b3697c5a7bd0dfaef"
+    },
+    {
+      "name": "source-a2/source-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-manifest.json",
+      "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+    },
+    {
+      "name": "source-a2/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-after.json",
+      "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+    },
+    {
+      "name": "source-a2/current-source-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\current-source-manifest.json",
+      "sha256": "f5213ba30c30d7f0dba78cc846cd4277887472c83ae13f5468b2089d9b948541"
+    },
+    {
+      "name": "source-a2/extra-inputs-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\extra-inputs-before.json",
+      "sha256": "2043483f96b419b55eaf767f60935783385dd13b4c61eca8f7dfd2a084eabd5a"
+    },
+    {
+      "name": "source-a2/checks.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\checks.json",
+      "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+    },
+    {
+      "name": "source-a2/source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-commit.json",
+      "sha256": "ded17ea2fa2850f7fb42b9d3805afba64dea885f63acf9a8effe2eaca5b2377c"
+    },
+    {
+      "name": "source-a2/vitest-report.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\vitest-report.json",
+      "sha256": "33430b639d1af04bfc940b9f43053456bd3265c7d2c3cdb8e0de6b7d5e5d8646"
+    },
+    {
+      "name": "source-a2/app-typescript-command.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\app-typescript-command.json",
+      "sha256": "3a125e3aae06de1b84d79acaee99aaff7d6d8744139d66ffb2dee8e097aabb0e"
+    },
+    {
+      "name": "source-a2/app-typescript.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\app-typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-a2/app-typescript.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\app-typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-a2/vitest-command.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\vitest-command.json",
+      "sha256": "d5ddb9ef3b53d9a4ed104d6b3237901ea38780aba203b139ef542fbbc778042e"
+    },
+    {
+      "name": "source-a2/vitest.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\vitest.stdout.txt",
+      "sha256": "da0c1633a8d5acb6f3725ceab4067387c843caca7204dddc34b7ae62aecd259b"
+    },
+    {
+      "name": "source-a2/vitest.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\vitest.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-a2/source.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source.mjs",
+      "sha256": "7f4985bcd8922f170176a8169709e01d66d415a1b55753453ff20d511b6b1cfd"
+    },
+    {
+      "name": "source-a1/apply.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\apply.json",
+      "sha256": "4785fa969155819596a913100cbb0b1e589600d5daf36e98ed5d889b9a3d00f4"
+    },
+    {
+      "name": "source-a1/binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\binding.json",
+      "sha256": "9ccbf91fcbe0bc9bd7cccaaf74ed596038fd054e93dc89907b7434dcfaf23f5f"
+    },
+    {
+      "name": "source-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source-before.json",
+      "sha256": "fae309301a84daea827b6feb969fbf4bc098c0a3bf1fd88b3697c5a7bd0dfaef"
+    },
+    {
+      "name": "source-a1/source-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source-manifest.json",
+      "sha256": "ab8fab8afe4f178fd1d5dec2faca35551880431d7905c47861925781c778436f"
+    },
+    {
+      "name": "source-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source-after.json",
+      "sha256": "ab8fab8afe4f178fd1d5dec2faca35551880431d7905c47861925781c778436f"
+    },
+    {
+      "name": "source-a1/extra-inputs-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\extra-inputs-before.json",
+      "sha256": "2043483f96b419b55eaf767f60935783385dd13b4c61eca8f7dfd2a084eabd5a"
+    },
+    {
+      "name": "source-a1/checks.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\checks.json",
+      "sha256": "50eb88136a4845c7e4b1bd634857ed335e0419c661f505a4f1a4f06654639115"
+    },
+    {
+      "name": "source-a1/vitest-report.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest-report.json",
+      "sha256": "9fc9d70512a9b9adae04901dfbb389f0944a7974b382600ee0ae5d2c275a254b"
+    },
+    {
+      "name": "source-a1/app-typescript-command.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\app-typescript-command.json",
+      "sha256": "3a125e3aae06de1b84d79acaee99aaff7d6d8744139d66ffb2dee8e097aabb0e"
+    },
+    {
+      "name": "source-a1/app-typescript.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\app-typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-a1/app-typescript.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\app-typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-a1/vitest-command.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest-command.json",
+      "sha256": "6a730064173d8ba49087cc787ba6ba5e88bbc8f9200e455d45d29654b936616e"
+    },
+    {
+      "name": "source-a1/vitest.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest.stdout.txt",
+      "sha256": "3defbd3c0dc81d711f4e903e749fd97eca61b384a6d4d799960d2c47c053e192"
+    },
+    {
+      "name": "source-a1/vitest.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-a1/source.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source.mjs",
+      "sha256": "c2b9c6780aad78fa355e1b84246f43bfa95cfe58a561b1c5d4fb853d7ad03bc9"
+    },
+    {
+      "name": "manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\manifest.json",
+      "sha256": "f3b0c3aa986effcd6614f8ff941c49c186e2ca7e913a34e1c672be9c4b178f66"
+    },
+    {
+      "name": "root-binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-binding.json",
+      "sha256": "9ccbf91fcbe0bc9bd7cccaaf74ed596038fd054e93dc89907b7434dcfaf23f5f"
+    },
+    {
+      "name": "root-binding-a2.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-binding-a2.json",
+      "sha256": "9d65d5413c75689bdd37390ba4a60db1a36c7102007e8bb5941c0035c1e31f75"
+    },
+    {
+      "name": "root-review.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-review.json",
+      "sha256": "4c98293e69714c6e687881e9134d7a840d9d37897478fd22d7804184b1aba3cf"
+    },
+    {
+      "name": "root-review-a2.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-review-a2.json",
+      "sha256": "91aee31152700637bc3db0294e9aa8bc301528ff598fd387db588c7a6d686211"
+    },
+    {
+      "name": "review-freeze.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\review-freeze.mjs",
+      "sha256": "04bd33f277693d018a7f9b22660425b7a57e3cb015b6a389c59595adfe12c3c2"
+    },
+    {
+      "name": "review.md",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\review.md",
+      "sha256": "f898fe808844d15f632f80de9528922ec4fd912a90e3f7c6b889f357894eefe2"
+    },
+    {
+      "name": "source.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source.mjs",
+      "sha256": "c2b9c6780aad78fa355e1b84246f43bfa95cfe58a561b1c5d4fb853d7ad03bc9"
+    },
+    {
+      "name": "source-a2.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2.mjs",
+      "sha256": "7f4985bcd8922f170176a8169709e01d66d415a1b55753453ff20d511b6b1cfd"
+    },
+    {
+      "name": "repair-a2/fixture-repair.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\repair-a2\\fixture-repair.json",
+      "sha256": "d3f04d1c81c17bc89033fd7bc148869d2d7338a6abef2c7e26f814c99aecc677"
+    },
+    {
+      "name": "repair-a2/apply.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\repair-a2\\apply.mjs",
+      "sha256": "fb12a043a499bf81aeb0aa8d115b6e537e4f60aa9f03e73287b5116765cadf79"
+    }
+  ]
+}

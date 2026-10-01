@@ -1,0 +1,646 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-license-grant-client-cooldown-working-validation",
+  "decision": "D252",
+  "pass": true,
+  "recordedAt": "2026-10-01T21:02:02.393Z",
+  "sourceCommit": "ab21ac88918afc8b21ef63a0a2e3551421027ff0",
+  "copies": [
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\apply.json",
+        "sha256": "ec9b5e085052f8d6a1ffb19b1d03644102795f0d3c51e009ad7a10a16814c545"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/apply.json",
+        "sha256": "ec9b5e085052f8d6a1ffb19b1d03644102795f0d3c51e009ad7a10a16814c545"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\binding.json",
+        "sha256": "9d65d5413c75689bdd37390ba4a60db1a36c7102007e8bb5941c0035c1e31f75"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/binding.json",
+        "sha256": "9d65d5413c75689bdd37390ba4a60db1a36c7102007e8bb5941c0035c1e31f75"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-before.json",
+        "sha256": "fae309301a84daea827b6feb969fbf4bc098c0a3bf1fd88b3697c5a7bd0dfaef"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/source-before.json",
+        "sha256": "fae309301a84daea827b6feb969fbf4bc098c0a3bf1fd88b3697c5a7bd0dfaef"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-manifest.json",
+        "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/source-manifest.json",
+        "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-after.json",
+        "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/source-after.json",
+        "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\current-source-manifest.json",
+        "sha256": "f5213ba30c30d7f0dba78cc846cd4277887472c83ae13f5468b2089d9b948541"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/current-source-manifest.json",
+        "sha256": "f5213ba30c30d7f0dba78cc846cd4277887472c83ae13f5468b2089d9b948541"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\extra-inputs-before.json",
+        "sha256": "2043483f96b419b55eaf767f60935783385dd13b4c61eca8f7dfd2a084eabd5a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/extra-inputs-before.json",
+        "sha256": "2043483f96b419b55eaf767f60935783385dd13b4c61eca8f7dfd2a084eabd5a"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\checks.json",
+        "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/checks.json",
+        "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-commit.json",
+        "sha256": "ded17ea2fa2850f7fb42b9d3805afba64dea885f63acf9a8effe2eaca5b2377c"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/source-commit.json",
+        "sha256": "ded17ea2fa2850f7fb42b9d3805afba64dea885f63acf9a8effe2eaca5b2377c"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\vitest-report.json",
+        "sha256": "33430b639d1af04bfc940b9f43053456bd3265c7d2c3cdb8e0de6b7d5e5d8646"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/vitest-report.json",
+        "sha256": "33430b639d1af04bfc940b9f43053456bd3265c7d2c3cdb8e0de6b7d5e5d8646"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\app-typescript-command.json",
+        "sha256": "3a125e3aae06de1b84d79acaee99aaff7d6d8744139d66ffb2dee8e097aabb0e"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/app-typescript-command.json",
+        "sha256": "3a125e3aae06de1b84d79acaee99aaff7d6d8744139d66ffb2dee8e097aabb0e"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\app-typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/app-typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\app-typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/app-typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\vitest-command.json",
+        "sha256": "d5ddb9ef3b53d9a4ed104d6b3237901ea38780aba203b139ef542fbbc778042e"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/vitest-command.json",
+        "sha256": "d5ddb9ef3b53d9a4ed104d6b3237901ea38780aba203b139ef542fbbc778042e"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\vitest.stdout.txt",
+        "sha256": "da0c1633a8d5acb6f3725ceab4067387c843caca7204dddc34b7ae62aecd259b"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/vitest.stdout.txt",
+        "sha256": "da0c1633a8d5acb6f3725ceab4067387c843caca7204dddc34b7ae62aecd259b"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\vitest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/vitest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source.mjs",
+        "sha256": "7f4985bcd8922f170176a8169709e01d66d415a1b55753453ff20d511b6b1cfd"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2/source.mjs",
+        "sha256": "7f4985bcd8922f170176a8169709e01d66d415a1b55753453ff20d511b6b1cfd"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\apply.json",
+        "sha256": "4785fa969155819596a913100cbb0b1e589600d5daf36e98ed5d889b9a3d00f4"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/apply.json",
+        "sha256": "4785fa969155819596a913100cbb0b1e589600d5daf36e98ed5d889b9a3d00f4"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\binding.json",
+        "sha256": "9ccbf91fcbe0bc9bd7cccaaf74ed596038fd054e93dc89907b7434dcfaf23f5f"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/binding.json",
+        "sha256": "9ccbf91fcbe0bc9bd7cccaaf74ed596038fd054e93dc89907b7434dcfaf23f5f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source-before.json",
+        "sha256": "fae309301a84daea827b6feb969fbf4bc098c0a3bf1fd88b3697c5a7bd0dfaef"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/source-before.json",
+        "sha256": "fae309301a84daea827b6feb969fbf4bc098c0a3bf1fd88b3697c5a7bd0dfaef"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source-manifest.json",
+        "sha256": "ab8fab8afe4f178fd1d5dec2faca35551880431d7905c47861925781c778436f"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/source-manifest.json",
+        "sha256": "ab8fab8afe4f178fd1d5dec2faca35551880431d7905c47861925781c778436f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source-after.json",
+        "sha256": "ab8fab8afe4f178fd1d5dec2faca35551880431d7905c47861925781c778436f"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/source-after.json",
+        "sha256": "ab8fab8afe4f178fd1d5dec2faca35551880431d7905c47861925781c778436f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\extra-inputs-before.json",
+        "sha256": "2043483f96b419b55eaf767f60935783385dd13b4c61eca8f7dfd2a084eabd5a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/extra-inputs-before.json",
+        "sha256": "2043483f96b419b55eaf767f60935783385dd13b4c61eca8f7dfd2a084eabd5a"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\checks.json",
+        "sha256": "50eb88136a4845c7e4b1bd634857ed335e0419c661f505a4f1a4f06654639115"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/checks.json",
+        "sha256": "50eb88136a4845c7e4b1bd634857ed335e0419c661f505a4f1a4f06654639115"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest-report.json",
+        "sha256": "9fc9d70512a9b9adae04901dfbb389f0944a7974b382600ee0ae5d2c275a254b"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/vitest-report.json",
+        "sha256": "9fc9d70512a9b9adae04901dfbb389f0944a7974b382600ee0ae5d2c275a254b"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\app-typescript-command.json",
+        "sha256": "3a125e3aae06de1b84d79acaee99aaff7d6d8744139d66ffb2dee8e097aabb0e"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/app-typescript-command.json",
+        "sha256": "3a125e3aae06de1b84d79acaee99aaff7d6d8744139d66ffb2dee8e097aabb0e"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\app-typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/app-typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\app-typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/app-typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest-command.json",
+        "sha256": "6a730064173d8ba49087cc787ba6ba5e88bbc8f9200e455d45d29654b936616e"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/vitest-command.json",
+        "sha256": "6a730064173d8ba49087cc787ba6ba5e88bbc8f9200e455d45d29654b936616e"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest.stdout.txt",
+        "sha256": "3defbd3c0dc81d711f4e903e749fd97eca61b384a6d4d799960d2c47c053e192"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/vitest.stdout.txt",
+        "sha256": "3defbd3c0dc81d711f4e903e749fd97eca61b384a6d4d799960d2c47c053e192"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/vitest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source.mjs",
+        "sha256": "c2b9c6780aad78fa355e1b84246f43bfa95cfe58a561b1c5d4fb853d7ad03bc9"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a1/source.mjs",
+        "sha256": "c2b9c6780aad78fa355e1b84246f43bfa95cfe58a561b1c5d4fb853d7ad03bc9"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\manifest.json",
+        "sha256": "f3b0c3aa986effcd6614f8ff941c49c186e2ca7e913a34e1c672be9c4b178f66"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/manifest.json",
+        "sha256": "f3b0c3aa986effcd6614f8ff941c49c186e2ca7e913a34e1c672be9c4b178f66"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-binding.json",
+        "sha256": "9ccbf91fcbe0bc9bd7cccaaf74ed596038fd054e93dc89907b7434dcfaf23f5f"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/root-binding.json",
+        "sha256": "9ccbf91fcbe0bc9bd7cccaaf74ed596038fd054e93dc89907b7434dcfaf23f5f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-binding-a2.json",
+        "sha256": "9d65d5413c75689bdd37390ba4a60db1a36c7102007e8bb5941c0035c1e31f75"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/root-binding-a2.json",
+        "sha256": "9d65d5413c75689bdd37390ba4a60db1a36c7102007e8bb5941c0035c1e31f75"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-review.json",
+        "sha256": "4c98293e69714c6e687881e9134d7a840d9d37897478fd22d7804184b1aba3cf"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/root-review.json",
+        "sha256": "4c98293e69714c6e687881e9134d7a840d9d37897478fd22d7804184b1aba3cf"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-review-a2.json",
+        "sha256": "91aee31152700637bc3db0294e9aa8bc301528ff598fd387db588c7a6d686211"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/root-review-a2.json",
+        "sha256": "91aee31152700637bc3db0294e9aa8bc301528ff598fd387db588c7a6d686211"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\review-freeze.mjs",
+        "sha256": "04bd33f277693d018a7f9b22660425b7a57e3cb015b6a389c59595adfe12c3c2"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/review-freeze.mjs",
+        "sha256": "04bd33f277693d018a7f9b22660425b7a57e3cb015b6a389c59595adfe12c3c2"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\review.md",
+        "sha256": "f898fe808844d15f632f80de9528922ec4fd912a90e3f7c6b889f357894eefe2"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/review.md",
+        "sha256": "f898fe808844d15f632f80de9528922ec4fd912a90e3f7c6b889f357894eefe2"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source.mjs",
+        "sha256": "c2b9c6780aad78fa355e1b84246f43bfa95cfe58a561b1c5d4fb853d7ad03bc9"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source.mjs",
+        "sha256": "c2b9c6780aad78fa355e1b84246f43bfa95cfe58a561b1c5d4fb853d7ad03bc9"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2.mjs",
+        "sha256": "7f4985bcd8922f170176a8169709e01d66d415a1b55753453ff20d511b6b1cfd"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/source-a2.mjs",
+        "sha256": "7f4985bcd8922f170176a8169709e01d66d415a1b55753453ff20d511b6b1cfd"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\repair-a2\\fixture-repair.json",
+        "sha256": "d3f04d1c81c17bc89033fd7bc148869d2d7338a6abef2c7e26f814c99aecc677"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/repair-a2/fixture-repair.json",
+        "sha256": "d3f04d1c81c17bc89033fd7bc148869d2d7338a6abef2c7e26f814c99aecc677"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\repair-a2\\apply.mjs",
+        "sha256": "fb12a043a499bf81aeb0aa8d115b6e537e4f60aa9f03e73287b5116765cadf79"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-client-20261001/actual/repair-a2/apply.mjs",
+        "sha256": "fb12a043a499bf81aeb0aa8d115b6e537e4f60aa9f03e73287b5116765cadf79"
+      }
+    }
+  ],
+  "originalChecks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\checks.json",
+    "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+  },
+  "originalSourceCommitReceipt": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-commit.json",
+    "sha256": "ded17ea2fa2850f7fb42b9d3805afba64dea885f63acf9a8effe2eaca5b2377c"
+  },
+  "originalUnitSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-manifest.json",
+    "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+  },
+  "currentCommittedSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\current-source-manifest.json",
+    "sha256": "f5213ba30c30d7f0dba78cc846cd4277887472c83ae13f5468b2089d9b948541"
+  },
+  "unitAndCommittedFileRowsEqual": true,
+  "declaredSourceFiles": 2150,
+  "declaredSourceRoots": 13,
+  "additionalInputWitnesses": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459"
+    }
+  ],
+  "sqlSetupInputs": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260802_reader_journey.sql",
+      "sha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+      "sha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260728_cms_foundation.sql",
+      "sha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260905_literary_planet_web_license.sql",
+      "sha256": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20261001194458_planet_license_rate_limits.sql",
+      "sha256": "4d9ff9da155b9e1016c6c2b39f220bb1f36e61742d8c29fc99b90f0fdccdef82",
+      "newOwner": false
+    }
+  ],
+  "applicationSourcesChanged": true,
+  "applicationOwnerPaths": [
+    "server/planet/integration.test.ts",
+    "src/platform/adapters/web/WebLicense.test.ts",
+    "src/platform/adapters/web/WebLicense.ts",
+    "src/pwa/PwaAccessBoundary.test.tsx",
+    "src/pwa/PwaAccessBoundary.tsx",
+    "src/pwa/PwaLicenseRuntime.test.ts",
+    "src/pwa/pwaCopy.ts"
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "pass": false,
+      "checks": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\checks.json",
+        "sha256": "50eb88136a4845c7e4b1bd634857ed335e0419c661f505a4f1a4f06654639115"
+      },
+      "summary": {
+        "success": false,
+        "total": 139,
+        "passed": 138,
+        "failed": 1,
+        "pending": 0,
+        "todo": 0,
+        "suiteFiles": [
+          "server/planet/integration.test.ts",
+          "src/platform/adapters/web/WebLicense.test.ts",
+          "src/pwa/PwaAccessBoundary.test.tsx",
+          "src/pwa/PwaLicenseRuntime.test.ts"
+        ]
+      },
+      "report": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\vitest-report.json",
+        "sha256": "9fc9d70512a9b9adae04901dfbb389f0944a7974b382600ee0ae5d2c275a254b"
+      },
+      "sourceManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source-manifest.json",
+        "sha256": "ab8fab8afe4f178fd1d5dec2faca35551880431d7905c47861925781c778436f"
+      },
+      "binding": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\binding.json",
+        "sha256": "9ccbf91fcbe0bc9bd7cccaaf74ed596038fd054e93dc89907b7434dcfaf23f5f"
+      },
+      "producer": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\source.mjs",
+        "sha256": "c2b9c6780aad78fa355e1b84246f43bfa95cfe58a561b1c5d4fb853d7ad03bc9"
+      },
+      "appTypeScriptInvocations": 1,
+      "testInvocations": 1,
+      "currentCoverage": false
+    },
+    {
+      "attempt": 2,
+      "pass": true,
+      "checks": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\checks.json",
+        "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+      },
+      "summary": {
+        "success": true,
+        "total": 139,
+        "passed": 139,
+        "failed": 0,
+        "pending": 0,
+        "todo": 0,
+        "suiteFiles": [
+          "server/planet/integration.test.ts",
+          "src/platform/adapters/web/WebLicense.test.ts",
+          "src/pwa/PwaAccessBoundary.test.tsx",
+          "src/pwa/PwaLicenseRuntime.test.ts"
+        ]
+      },
+      "report": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\vitest-report.json",
+        "sha256": "33430b639d1af04bfc940b9f43053456bd3265c7d2c3cdb8e0de6b7d5e5d8646"
+      },
+      "sourceManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source-manifest.json",
+        "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+      },
+      "binding": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\binding.json",
+        "sha256": "9d65d5413c75689bdd37390ba4a60db1a36c7102007e8bb5941c0035c1e31f75"
+      },
+      "producer": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\source.mjs",
+        "sha256": "7f4985bcd8922f170176a8169709e01d66d415a1b55753453ff20d511b6b1cfd"
+      },
+      "appTypeScriptInvocations": 1,
+      "testInvocations": 1,
+      "currentCoverage": true
+    }
+  ],
+  "fixtureRepair": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\repair-a2\\fixture-repair.json",
+    "sha256": "d3f04d1c81c17bc89033fd7bc148869d2d7338a6abef2c7e26f814c99aecc677"
+  },
+  "fixtureOnlyRepair": true,
+  "productionAndAssertionsUnchangedDuringRepair": true,
+  "appTypeScriptInvocations": 2,
+  "focusedTestInvocations": 2,
+  "currentAttemptAppTypeScriptInvocations": 1,
+  "currentAttemptFocusedTestInvocations": 1,
+  "testFiles": 4,
+  "passedTests": 139,
+  "newTests": 14,
+  "failedTests": 0,
+  "skippedTests": 0,
+  "todoTests": 0,
+  "grantScope": "license/session",
+  "cooldownPerClientIdentity": true,
+  "retryAfterDerivedFromCanonicalResponse": true,
+  "preDeadlineOnlineFetchSuppressed": true,
+  "deadlinePermitsExplicitRecheck": true,
+  "noAutomaticRetryScheduler": true,
+  "staleOrAbortedRepliesCannotSetCooldown": true,
+  "signedOfflineProofIndependentlyVerified": true,
+  "rateLimitDoesNotImplyRevocation": true,
+  "expiryAndRevocationGatesPreserved": true,
+  "existingIdentityBootstrapImplementationUnchanged": true,
+  "durableServerBudgetImplementationUnchanged": true,
+  "existingDatabaseApiClientIntegrationChecked": true,
+  "newDatabaseMigrationAuthored": false,
+  "sqlSchemaChanged": false,
+  "oneConnectionLocalPostgres": true,
+  "multiConnectionConcurrencyValidated": false,
+  "liveSupabaseValidated": false,
+  "providerValidated": false,
+  "remoteDatabaseApplied": false,
+  "browserVisualVerified": false,
+  "applicationBuildsRun": 0,
+  "pwaBuildsRun": 0,
+  "nativeBuildsRun": 0,
+  "productionActionsPerformed": false,
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "D253 / S03.acceptance / S03.BIL-079: prepare one isolated current-source public Vite compile from the existing local retained snapshot without CMS export; bind compiled HTML, assets and runtime closure; use existing focused RU/EN public HTTP/runtime and localized 404 oracles and inspect any resulting captures. Preserve default noindex, editorial approval and all statuses; no provider activation, PWA/native rebuild or deployment."
+}

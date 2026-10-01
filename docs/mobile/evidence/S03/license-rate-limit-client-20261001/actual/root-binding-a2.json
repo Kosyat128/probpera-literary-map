@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "decision": "D252",
+  "base": "eb3384e75a7d5894d0ccc7434e7f24c79521348b",
+  "owners": [
+    {
+      "path": "src/platform/adapters/web/WebLicense.ts",
+      "proposalPath": "src/platform/adapters/web/WebLicense.ts",
+      "originalSha256": "490398a3ed108fba036dd0f851fcb74fb3e288bbd71694cedd0c5a593f829089",
+      "proposedSha256": "ba6e6e0652943d35a1f04800509659f6686fbe7f8d1db26c7f98795032079a70"
+    },
+    {
+      "path": "src/platform/adapters/web/WebLicense.test.ts",
+      "proposalPath": "../repair-a2/proposed/src/platform/adapters/web/WebLicense.test.ts",
+      "originalSha256": "d2af3889aa8cd98afe2210e2bf9ceff2164ffd46a1201084626e572c8af894d3",
+      "proposedSha256": "94fca56e9f8e6be74720419d48a25f45a9e6b4d4b795a5913cb4091b3e05b648"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "proposalPath": "src/pwa/PwaAccessBoundary.tsx",
+      "originalSha256": "ef41bed74e9e328e2f15a698fe9bb1982eaa751977de1b0a5df11eb6854a6ba0",
+      "proposedSha256": "4d05da2c2ed6ae1cfec22abecbe51d0f071d5016dc1af3353d2bb3524a28221f"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.test.tsx",
+      "proposalPath": "src/pwa/PwaAccessBoundary.test.tsx",
+      "originalSha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910",
+      "proposedSha256": "fd447d0140c7ef9a6ee490d86841064570f28f03aa3203bbfe48ed5d1c5950a1"
+    },
+    {
+      "path": "src/pwa/pwaCopy.ts",
+      "proposalPath": "src/pwa/pwaCopy.ts",
+      "originalSha256": "577e114719579e69ec68f9aa4ac7ed63033aacd88ddc7a874fcf766a5a51d319",
+      "proposedSha256": "3d82503a9035eef1d7e35fc248bb65e0f95c1e50032e39efdb291718143bf2e1"
+    },
+    {
+      "path": "src/pwa/PwaLicenseRuntime.test.ts",
+      "proposalPath": "src/pwa/PwaLicenseRuntime.test.ts",
+      "originalSha256": "6503cdf473f0fa494b59fa534072099f56bb9bfd542522b8b4bb37bfdb348594",
+      "proposedSha256": "cb8f2c71323f49547e50bb7365e6a2b7f8380a58a3d207cc598a3d144f76ba26"
+    },
+    {
+      "path": "server/planet/integration.test.ts",
+      "proposalPath": "server/planet/integration.test.ts",
+      "originalSha256": "84ea03f6575bd1533e3b672358fad5332652fbca705d6522e62fae85d5bb5766",
+      "proposedSha256": "90fb7a0a9fe196734add7d53ef12d21aec7b72cee932156631950dcd16b6fb10"
+    }
+  ],
+  "extraInputs": [
+    "supabase/schema.sql"
+  ],
+  "setupInputs": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260802_reader_journey.sql",
+      "sha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+      "sha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260728_cms_foundation.sql",
+      "sha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260905_literary_planet_web_license.sql",
+      "sha256": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20261001194458_planet_license_rate_limits.sql",
+      "sha256": "4d9ff9da155b9e1016c6c2b39f220bb1f36e61742d8c29fc99b90f0fdccdef82",
+      "newOwner": false
+    }
+  ],
+  "unchangedDependencies": [
+    {
+      "path": "src/pwa/PwaLicenseRuntime.ts",
+      "sha256": "02abe28132731ce592e2f18e6792d8a3240c391eceba88b0dd0049cf1bb16fb4"
+    },
+    {
+      "path": "src/pwa/accountAccess.ts",
+      "sha256": "b38a88bac60ac595bd6282ace0d574ea41692e276fe4fff617cebe66cb8916cf"
+    },
+    {
+      "path": "server/planet/api.ts",
+      "sha256": "5044ec9758be037026b045e39d1d067f5e37f05ca0687b4a08024aacfeafd55b"
+    },
+    {
+      "path": "server/planet/supabase.ts",
+      "sha256": "80782d90421472aa8c31bc2bb3336bd1afd086eb6a97953bfcd806610c4bb264"
+    },
+    {
+      "path": "server/planet/crypto.ts",
+      "sha256": "b7d252732ceab884a39f9cd31f23b6991298176d4aedf9860e4bc45f5cbaa8b0"
+    },
+    {
+      "path": "server/planet/licenseRateLimiterSupabase.ts",
+      "sha256": "4a14337495d98064197521c7d83a24f19ab78576ccf17810cf5e6c75947bc2a8"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-planet-payment-retry-context.mjs",
+      "sha256": "20f6a28a0f3c3ad6e62c1027c970badaa78e6d179b3d22bf416f3a9c70239b0d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    },
+    {
+      "path": "server/planet/tsconfig.json",
+      "sha256": "32b506ef684ed09d50d7f9f1fbc26507e5178babe1bcd439a68d291a373639d5"
+    },
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459"
+    },
+    {
+      "path": "supabase/migrations/20260802_reader_journey.sql",
+      "sha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5"
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+      "sha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418"
+    },
+    {
+      "path": "supabase/migrations/20260728_cms_foundation.sql",
+      "sha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22"
+    },
+    {
+      "path": "supabase/migrations/20260905_literary_planet_web_license.sql",
+      "sha256": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2"
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276"
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce"
+    },
+    {
+      "path": "supabase/migrations/20261001194458_planet_license_rate_limits.sql",
+      "sha256": "4d9ff9da155b9e1016c6c2b39f220bb1f36e61742d8c29fc99b90f0fdccdef82"
+    }
+  ],
+  "suites": [
+    "src/platform/adapters/web/WebLicense.test.ts",
+    "src/pwa/PwaAccessBoundary.test.tsx",
+    "src/pwa/PwaLicenseRuntime.test.ts",
+    "server/planet/integration.test.ts"
+  ],
+  "expectedTests": 139,
+  "expectedSuites": [
+    {
+      "path": "src/platform/adapters/web/WebLicense.test.ts",
+      "tests": 63
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.test.tsx",
+      "tests": 37
+    },
+    {
+      "path": "src/pwa/PwaLicenseRuntime.test.ts",
+      "tests": 34
+    },
+    {
+      "path": "server/planet/integration.test.ts",
+      "tests": 5
+    }
+  ],
+  "proposalManifestSha256": "f3b0c3aa986effcd6614f8ff941c49c186e2ca7e913a34e1c672be9c4b178f66",
+  "rootFullReview": true,
+  "fixtureRepair": {
+    "proof": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\repair-a2\\fixture-repair.json",
+      "sha256": "d3f04d1c81c17bc89033fd7bc148869d2d7338a6abef2c7e26f814c99aecc677"
+    },
+    "originalBinding": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\root-binding.json",
+      "sha256": "9ccbf91fcbe0bc9bd7cccaaf74ed596038fd054e93dc89907b7434dcfaf23f5f"
+    },
+    "originalAttemptChecks": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a1\\checks.json",
+      "sha256": "50eb88136a4845c7e4b1bd634857ed335e0419c661f505a4f1a4f06654639115"
+    },
+    "allProductionOwnersUnchanged": true,
+    "allAssertionsUnchanged": true
+  }
+}
