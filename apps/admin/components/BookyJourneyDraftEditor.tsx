@@ -16,6 +16,7 @@ type PreviewWidth = "available" | "320" | "768";
 type PreviewProfile = Readonly<{ enabled: boolean; age: string; readingLevel: string }>;
 type PreviewAnswer = Readonly<{ choiceId: string | null; verdict: boolean | null; pending: boolean; error: string }>;
 const emptyAnswer = (choiceId: string | null = null): PreviewAnswer => ({ choiceId, verdict: null, pending: false, error: "" });
+const sessionCopyKey = "booky-journey-workspace.session.v1";
 const locales = ["ru", "en"] as const;
 const steps = [
   { key: "country", title: "Страна", number: 1 },
@@ -79,6 +80,15 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [workspaceNotice, setWorkspaceNotice] = useState("");
   const workspaceReadSequence = useRef(0);
   const workspaceHelpId = errorPrefix + "-workspace-help", workspaceErrorId = errorPrefix + "-workspace-errors";
+  const [sessionCopyEnabled, setSessionCopyEnabled] = useState(false);
+  const [sessionCopyReady, setSessionCopyReady] = useState(false);
+  const [sessionCopyPresent, setSessionCopyPresent] = useState(false);
+  const [sessionCopyText, setSessionCopyText] = useState<string | null>(null);
+  const [sessionCopyError, setSessionCopyError] = useState("");
+  const [sessionCopyNotice, setSessionCopyNotice] = useState("");
+  const sessionCopySequence = useRef(0), sessionCopyTimer = useRef<number | null>(null);
+  const storedSessionCopy = useRef<string | null>(null);
+  const sessionCopyHelpId = errorPrefix + "-session-copy-help", sessionCopyErrorId = errorPrefix + "-session-copy-error";
   const operationSequence = useRef(0);
   const formControl = useRef<HTMLFormElement>(null);
   const fileControl = useRef<HTMLInputElement>(null);
@@ -95,6 +105,41 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     choiceKey(choice) === choiceKey({ countryId: item.country.id, writerId: item.writer.id })));
   const authorSearchId = errorPrefix + "-search-activity-authors";
   useEffect(() => () => { operationSequence.current += 1; workspaceReadSequence.current += 1; }, []);
+  useEffect(() => {
+    try {
+      const stored = window.sessionStorage.getItem(sessionCopyKey);
+      storedSessionCopy.current = stored;
+      setSessionCopyPresent(stored !== null);
+      if (stored !== null) {
+        const result = parseBookyJourneyWorkspace(stored);
+        if (result.ok) { setSessionCopyText(stored); setSessionCopyNotice("Найдена локальная копия формы. Восстановление заменит текущие поля."); }
+        else setSessionCopyError("Локальная копия не поддерживается или повреждена. Текущая форма сохранена; копию можно удалить.");
+      }
+    } catch { setSessionCopyError("Не удалось прочитать локальную копию. Текущая форма сохранена."); }
+    setSessionCopyReady(true);
+    return cancelSessionCopy;
+  }, []);
+  useEffect(() => {
+    cancelSessionCopy();
+    if (!sessionCopyEnabled || !sessionCopyReady) return;
+    const sequence = sessionCopySequence.current, result = createBookyJourneyWorkspace(input);
+    if (!result.ok) { setSessionCopyError("Локальная копия не обновлена: форма превышает допустимый размер или содержит неподдерживаемые поля. Предыдущая копия сохранена."); return; }
+    const text = JSON.stringify(result.workspace, null, 2) + "\n";
+    setSessionCopyError("");
+    if (text === storedSessionCopy.current) { setSessionCopyNotice("Локальная копия совпадает с текущей формой."); return; }
+    setSessionCopyNotice("Подготовка локальной копии…");
+    sessionCopyTimer.current = window.setTimeout(() => {
+      if (sequence !== sessionCopySequence.current) return;
+      sessionCopyTimer.current = null;
+      try {
+        window.sessionStorage.setItem(sessionCopyKey, text);
+        storedSessionCopy.current = text;
+        setSessionCopyPresent(true); setSessionCopyText(text); setSessionCopyError("");
+        setSessionCopyNotice("Локальная копия обновлена. Её можно восстановить или скачать форму в файл.");
+      } catch { setSessionCopyError("Не удалось обновить локальную копию: хранилище недоступно или заполнено. Форма и предыдущая копия сохранены."); }
+    }, 600);
+    return cancelSessionCopy;
+  }, [input, sessionCopyEnabled, sessionCopyReady]);
   useEffect(() => {
     const control = optionalOrderFocus.current;
     optionalOrderFocus.current = null;
@@ -267,6 +312,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   }) : [];
 
   function update(change: Partial<JourneyDraftInput>) {
+    cancelSessionCopy();
     operationSequence.current += 1;
     setImporting(false);
     setImportErrors([]);
@@ -318,6 +364,46 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     setAnswer((current) => emptyAnswer(keepAnswerChoice ? current.choiceId : null));
     if (fileControl.current) fileControl.current.value = "";
     return sequence;
+  }
+  function cancelSessionCopy() {
+    sessionCopySequence.current += 1;
+    if (sessionCopyTimer.current !== null) { window.clearTimeout(sessionCopyTimer.current); sessionCopyTimer.current = null; }
+  }
+  function toggleSessionCopy(enabled: boolean) {
+    if (enabled === sessionCopyEnabled) return;
+    cancelSessionCopy();
+    setSessionCopyEnabled(enabled);
+    if (!enabled) setSessionCopyNotice("Обновление локальной копии выключено. Копия не удаляется.");
+  }
+  function replaceWorkspaceInput(next: JourneyDraftInput) {
+    cancelSessionCopy();
+    beginOperation();
+    setInput(next);
+    setEntityQueries({ country: "", writer: "", work: "" }); setAuthorQuery(""); setModeledPrerequisites([]);
+    setPreview(null); setErrors([]); setNotice(""); setImportErrors([]); setImportNotice(""); setWorkspaceErrors([]);
+  }
+  function restoreSessionCopy() {
+    cancelSessionCopy();
+    try {
+      const stored = window.sessionStorage.getItem(sessionCopyKey);
+      if (stored === null) { setSessionCopyError("Локальная копия не найдена. Текущая форма сохранена."); return; }
+      const result = parseBookyJourneyWorkspace(stored);
+      if (!result.ok) { setSessionCopyError("Локальная копия не поддерживается или повреждена. Текущая форма сохранена."); return; }
+      replaceWorkspaceInput(result.workspace.input);
+      storedSessionCopy.current = stored;
+      setSessionCopyPresent(true); setSessionCopyText(stored); setSessionCopyError("");
+      setSessionCopyNotice("Форма восстановлена из локальной копии. Перед экспортом черновика проверьте маршрут.");
+      setWorkspaceNotice("");
+    } catch { setSessionCopyError("Не удалось прочитать локальную копию. Текущая форма сохранена."); }
+  }
+  function deleteSessionCopy() {
+    cancelSessionCopy(); setSessionCopyEnabled(false);
+    try {
+      window.sessionStorage.removeItem(sessionCopyKey);
+      storedSessionCopy.current = null;
+      setSessionCopyPresent(false); setSessionCopyText(null); setSessionCopyError("");
+      setSessionCopyNotice("Локальная копия удалена; её обновление выключено. Текущие поля сохранены.");
+    } catch { setSessionCopyError("Не удалось удалить локальную копию. Обновление выключено; текущая форма сохранена."); }
   }
   function chooseAnswer(choiceId: string) {
     if (!previewChoices.some((choice) => choice.id === choiceId)) return;
@@ -533,6 +619,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       }
       if (result.input.activity && !(await validateActivity(result.draft, sequence, true))) return;
       if (sequence !== operationSequence.current) return;
+      cancelSessionCopy();
       setInput(result.input);
       setEntityQueries({ country: "", writer: "", work: "" });
       setAuthorQuery("");
@@ -583,10 +670,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       if (sourceSequence !== operationSequence.current) { setWorkspaceNotice("Открытие рабочего файла отменено: форма или предпросмотр изменились."); return; }
       const result = parseBookyJourneyWorkspace(text);
       if (!result.ok) { setWorkspaceErrors(result.errors); return; }
-      beginOperation();
-      setInput(result.workspace.input);
-      setEntityQueries({ country: "", writer: "", work: "" }); setAuthorQuery(""); setModeledPrerequisites([]);
-      setPreview(null); setErrors([]); setNotice(""); setImportErrors([]); setImportNotice("");
+      replaceWorkspaceInput(result.workspace.input);
       setWorkspaceNotice("Форма открыта для продолжения. Перед экспортом черновика проверьте маршрут.");
     } catch {
       if (readSequence === workspaceReadSequence.current) setWorkspaceErrors([{ field: "workspace", message: "Не удалось прочитать рабочий файл. Текущая форма сохранена." }]);
@@ -670,7 +754,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         <ul>{importErrors.map((error, index) => <li key={`${error.field}-${index}`}>{error.message}</li>)}</ul>
       </div>}
       <details data-booky-workspace style={{ minWidth: 0 }}>
-        <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Форма для продолжения</summary>
+        <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Форма для продолжения{sessionCopyPresent && " · есть локальная копия"}</summary>
         <p id={workspaceHelpId}>Рабочий файл .workspace.json сохраняет незавершённые поля. Готовый черновик маршрута открывается и экспортируется отдельно.</p>
         <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, maxWidth: "100%", whiteSpace: "normal" }} onClick={saveWorkspace}>Сохранить форму для продолжения</button>
         <label className="field"><span>Открыть форму для продолжения</span>
@@ -680,6 +764,24 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         {workspaceErrors.length > 0 && <div id={workspaceErrorId} className="form-message" role="alert">
           <strong>Рабочий файл:</strong><ul>{workspaceErrors.map((error, index) => <li key={index}>{error.message}</li>)}</ul>
         </div>}
+        <div data-booky-session-copy style={{ minWidth: 0 }}>
+          <label htmlFor={errorPrefix + "-session-copy-enabled"} style={{ display: "flex", alignItems: "center", gap: 10, minHeight: 44 }}>
+            <input id={errorPrefix + "-session-copy-enabled"} type="checkbox" checked={sessionCopyEnabled} disabled={!sessionCopyReady}
+              aria-describedby={sessionCopyHelpId + (sessionCopyError ? " " + sessionCopyErrorId : "")}
+              onChange={(event) => toggleSessionCopy(event.target.checked)} />
+            Обновлять локальную копию формы
+          </label>
+          <p id={sessionCopyHelpId}>Локальная копия на время сеанса. Включение сохраняет текущие поля в браузере и обновляет их после правок.
+            Она может быть недоступна; для переноса и надёжного хранения скачайте рабочий файл. Предпросмотр и ответы в копию не входят.</p>
+          <p data-session-copy-status role="status" aria-live="polite">{sessionCopyNotice || "Обновление локальной копии выключено."}</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, maxWidth: "100%", whiteSpace: "normal" }}
+              disabled={!sessionCopyText} aria-describedby={sessionCopyHelpId + (sessionCopyError ? " " + sessionCopyErrorId : "")} onClick={restoreSessionCopy}>Восстановить локальную копию</button>
+            <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, maxWidth: "100%", whiteSpace: "normal" }}
+              disabled={!sessionCopyPresent && !sessionCopyEnabled && !sessionCopyError} aria-describedby={sessionCopyHelpId + (sessionCopyError ? " " + sessionCopyErrorId : "")} onClick={deleteSessionCopy}>Удалить локальную копию</button>
+          </div>
+          {sessionCopyError && <p id={sessionCopyErrorId} className="form-message" role="alert">{sessionCopyError}</p>}
+        </div>
       </details>
     </details>
 

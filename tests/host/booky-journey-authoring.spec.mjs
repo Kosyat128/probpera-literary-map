@@ -7,6 +7,7 @@ import { createHash } from 'node:crypto';
 const root = process.cwd();
 const origin = 'https://booky-journey-editor.test';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const sessionCopyKey = 'booky-journey-workspace.session.v1';
 const catalog = { countries: [
   { id: 'country-a', label: { ru: 'Тестовая страна А', en: 'Synthetic country A' }, writers: [
     { id: 'writer-a', label: { ru: 'Тестовый писатель А', en: 'Synthetic writer A' }, works: [
@@ -100,7 +101,21 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await page.addInitScript(() => {
     window.__previewProfileStorageWrites = [];
     const nativeStore = Storage.prototype.setItem;
-    Storage.prototype.setItem = function(key, value) { window.__previewProfileStorageWrites.push({ key, local: this === localStorage }); return nativeStore.call(this, key, value); };
+    const nativeRead = Storage.prototype.getItem;
+    window.__nativeSessionReserveStore = nativeStore;
+    Storage.prototype.setItem = function(key, value) {
+      const failed = key === 'booky-journey-workspace.session.v1' && Boolean(window.__sessionReserveFailWrite);
+      window.__sessionReserveFailWrite = false;
+      window.__previewProfileStorageWrites.push({ key, local: this === localStorage, value, failed });
+      if (failed) throw new DOMException('Synthetic session quota failure', 'QuotaExceededError');
+      return nativeStore.call(this, key, value);
+    };
+    Storage.prototype.getItem = function(key) {
+      if (key === 'booky-journey-workspace.session.v1' && window.__sessionReserveFailRead) {
+        window.__sessionReserveFailRead = false; throw new DOMException('Synthetic unavailable session storage', 'SecurityError');
+      }
+      return nativeRead.call(this, key);
+    };
   });
   await page.route('**/*', async route => {
     const url = new URL(route.request().url());
@@ -931,7 +946,60 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await saveWorkspace.focus(); await expect(saveWorkspace).toBeFocused();
   await workspaceSummary.evaluate(node => node.scrollIntoView({ block: 'start' }));
   for (const control of [saveWorkspace, openWorkspace]) { const bounds = await control.boundingBox(); expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844); }
-  await capture('booky-journey-preview-ru-320.png', 'Actual RU320 compact native workspace Save/Open area after successful reopening of a partially authored form. The actions and local continuation notice are visible; unknown IDs, unfinished source strings and row order are proved by behavior assertions, not all visible here. This file is neither a compiled route nor autosave, audit, editorial or device acceptance.');
+  const defaultOffSessionWrites = await page.evaluate(() => window.__previewProfileStorageWrites); expect(defaultOffSessionWrites).toEqual([]);
+  const sessionPanel = workspacePanel.locator('[data-booky-session-copy]');
+  const sessionEnabled = sessionPanel.getByRole('checkbox', { name: 'Обновлять локальную копию формы', exact: true });
+  const sessionRestore = sessionPanel.getByRole('button', { name: 'Восстановить локальную копию', exact: true });
+  const sessionDelete = sessionPanel.getByRole('button', { name: 'Удалить локальную копию', exact: true });
+  await expect(sessionEnabled).not.toBeChecked(); await expect(sessionRestore).toBeDisabled();
+  await sessionEnabled.focus(); await sessionEnabled.press('Space'); await expect(sessionEnabled).toBeFocused(); await expect(sessionEnabled).toBeChecked();
+  await expect.poll(() => page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBe(partialWorkspaceBytes.toString('utf8'));
+  await sessionEnabled.check();
+  expect(await page.evaluate(() => window.__previewProfileStorageWrites.length)).toBe(1);
+  const storedSessionInput = JSON.parse(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey));
+  expect(storedSessionInput).toEqual(partialSaved); expect(Object.keys(storedSessionInput)).toEqual(['kind', 'schemaVersion', 'input']);
+  await page.evaluate(() => { window.__sessionReserveFailRead = true; }); await sessionRestore.tap();
+  await expect(sessionPanel.getByRole('alert')).toContainText('прочитать'); await expect(routeTitle).toHaveValue(' Незавершённая форма ');
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBe(partialWorkspaceBytes.toString('utf8'));
+  await page.evaluate(() => { window.__sessionReserveFailWrite = true; }); await routeTitle.fill('Правка при недоступном хранилище');
+  await expect(sessionPanel.getByRole('alert')).toContainText('хранилище'); await expect(routeTitle).toHaveValue('Правка при недоступном хранилище');
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBe(partialWorkspaceBytes.toString('utf8'));
+  const preReloadSessionWrites = await page.evaluate(() => window.__previewProfileStorageWrites);
+  expect(preReloadSessionWrites.map(write => ({ key: write.key, local: write.local, failed: write.failed }))).toEqual([
+    { key: sessionCopyKey, local: false, failed: false }, { key: sessionCopyKey, local: false, failed: true },
+  ]);
+  await sessionEnabled.uncheck(); await expect(sessionEnabled).not.toBeChecked();
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBe(partialWorkspaceBytes.toString('utf8'));
+  await page.reload(); await expect(button).toBeVisible(); await expect(routeTitle).toHaveValue(''); await expect(country).toHaveValue(''); await expect(preview).toHaveCount(0);
+  await localFileSummary.tap(); await workspaceSummary.tap(); await expect(sessionEnabled).not.toBeChecked(); await expect(sessionRestore).toBeEnabled();
+  await expect(sessionPanel.locator('[data-session-copy-status]')).toContainText('Найдена локальная копия');
+  expect(await page.evaluate(() => window.__previewProfileStorageWrites)).toEqual([]);
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBe(partialWorkspaceBytes.toString('utf8'));
+  await routeTitle.fill('Новая форма до явного восстановления');
+  await sessionRestore.focus(); await expect(sessionRestore).toBeFocused();
+  for (const control of [sessionEnabled.locator('..'), sessionRestore, sessionDelete]) expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
+  expect(await sessionEnabled.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id => Boolean(document.getElementById(id))))).toBe(true);
+  await sessionPanel.evaluate(node => node.scrollIntoView({ block: 'start' })); expect(await overflow()).toBe(false);
+  for (const control of [sessionRestore, sessionDelete]) { const bounds = await control.boundingBox(); expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844); }
+  await capture('booky-journey-preview-ru-320.png', 'Actual RU320 local-session-copy recovery controls after reload: updating is off, a validated unfinished workspace is offered, and Restore has native focus beside Delete. The copy has not replaced the new form automatically. Snapshot does not establish server autosave, account isolation, CAS, audit, editorial or device acceptance.');
+  await sessionRestore.press('Enter'); await expect(routeTitle).toHaveValue(' Незавершённая форма '); await expect(country).toHaveValue('missing-country'); await expect(writer).toHaveValue('missing-writer'); await expect(work).toHaveValue('missing-main-work');
+  await expect(preview).toHaveCount(0); await expect(page.getByLabel('HTTPS URL источника 1 (RU)', { exact: true })).toHaveValue(' invalid URL ');
+  await rawFactPanel.locator(':scope > summary').tap();
+  await rawActivityPanel.locator(':scope > summary').tap();
+  await additionalPanel.locator(':scope > summary').tap();
+  await expect(additionalBody(0, 'ru')).toHaveValue(authoredAdditional[1].ru.body); await expect(additionalBody(1, 'en')).toHaveValue(authoredAdditional[0].en.body);
+  await expect(missingAuthorChoice).toHaveValue(JSON.stringify(['missing-country', 'unknown-answer-writer']));
+  await previewButton.tap(); await expect(preview).toHaveCount(0); await expect(page.locator('[data-booky-error-target="activity"]')).toHaveCount(1);
+  await sessionEnabled.check(); await expect(sessionPanel.locator('[data-session-copy-status]')).toContainText('совпадает');
+  expect(await page.evaluate(() => window.__previewProfileStorageWrites)).toEqual([]);
+  await routeTitle.fill('Удаление должно отменить ожидающую копию'); await sessionDelete.tap();
+  await expect(sessionEnabled).not.toBeChecked(); await expect(routeTitle).toHaveValue('Удаление должно отменить ожидающую копию');
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBeNull();
+  await page.reload(); await expect(button).toBeVisible();
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBeNull();
+  await localFileSummary.tap(); await workspaceSummary.tap(); await expect(sessionEnabled).not.toBeChecked(); await expect(sessionRestore).toBeDisabled();
+  const postReloadSessionWrites = await page.evaluate(() => window.__previewProfileStorageWrites); expect(postReloadSessionWrites).toEqual([]);
+  await rawWorkspaceUpload('manual-workspace-after-session-delete.json', partialWorkspaceBytes); await expect(routeTitle).toHaveValue(' Незавершённая форма ');
   await upload('strict-native-draft-after-workspace.json', extrasRemovedBytes); await expect(preview).toHaveCount(0); await expect(country).toHaveValue('country-a'); await expect(writer).toHaveValue('writer-a'); await expect(work).toHaveValue('work-a');
   await previewButton.tap(); await expect(preview).toBeVisible();
   const restoredWorkspaceDraftPromise = page.waitForEvent('download'); await button.tap(); const restoredWorkspaceDraftDownload = await restoredWorkspaceDraftPromise;
@@ -951,16 +1019,16 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     reviewReportStartsCollapsedAndFollowsActualFourNodeRoute:true, authoredCaptionEqualToTitleRemainsAuthored:true,
     omittedVariantsReportedAsTitleFallbackIndependentlyRuEn:true, atomicInspectSelectsActualNodeAndLocale:true,
     reportInspectHasNativeKeyboardFocusAndMinimum44CssPx:true, reportUsesFreshPreviewAndRejectedImportPreservesSnapshot:true,
-    reportHasNoExportFieldStorageWriteOrActivityRequest:true,
+    defaultOffReportHasNoExportFieldStorageWriteOrActivityRequest:true,
     currentNodeCopyComparisonStartsCollapsedAndUsesExactCompiledRuEnPayloads:true, independentComparisonLangAttributesVerified:true,
     comparisonTracksExistingBodyCaptionReducedViewAndAuthoredEqualsTitlePresence:true,
     narrowComparisonStacksAndDesktopComparisonUsesActualSideBySideColumns:true,
-    comparisonSourceEditInvalidatesAndRejectedImportPreservesCurrentSnapshot:true, comparisonHasNoExportFieldStorageWriteOrValidationRequest:true,
+    comparisonSourceEditInvalidatesAndRejectedImportPreservesCurrentSnapshot:true, defaultOffComparisonHasNoExportFieldStorageWriteOrValidationRequest:true,
     localEntitySearchStartsCollapsedAndUsesOnlyExistingNativeSelectors:true, entitySearchRuEnAndIdTrimmedCaseInsensitiveMatchesVerified:true,
     nonmatchingSelectedOptionRetainedAndExcludedFromExplicitResultCount:true, searchDoesNotAutomaticallySelectOrClearExistingInvalidAssociation:true,
     nativeSearchControlsMinimum44CssPxAndNo320Overflow:true, searchInputEnterDoesNotSubmitOrExport:true,
     parentSelectionResetsOnlyDescendantQueriesAndSuccessfulImportClearsQueries:true, rejectedImportPreservesQueries:true,
-    localSearchHasNoDraftExportFieldStorageWriteOrActivityRequest:true,
+    defaultOffLocalSearchHasNoDraftExportFieldStorageWriteOrActivityRequest:true,
     optionalPrerequisiteBlockStartsCollapsedAndUsesNativeIdVersionFields:true, directSelfReferenceHasExactAccessibleErrorRecoveryAndEditsClearIt:true,
     twoUnconfirmedPrerequisiteReferencesSurviveActualNativeExportAndReopen:true, independentlyRehashedSourceTamperingIsRejectedWithoutReplacingCurrentForm:true,
     removingEveryPrerequisiteDeletesOwnSourceKeyAndRestoresExactOriginalNativeDownloadBytes:true,
@@ -977,9 +1045,14 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     nativeWorkspaceSaveAndReopenPreserveUnfinishedStringsOwnOptionalKeysNumbersAndAuthoredRowOrder:true,
     unavailableCountryWriterMainAndAnswerChoiceIdsRemainVisibleWithoutSubstitution:true,
     wrongFormatOversizeEmptyMalformedAndReadFailureKeepCurrentFormAndPreview:true,
-    delayedWorkspaceReadCannotOverwriteNewSourceEdit:true, rawWorkspaceOperationsHaveNoSemanticHelperOrStorageRequest:true,
+    delayedWorkspaceReadCannotOverwriteNewSourceEdit:true, defaultOffRawWorkspaceOperationsHaveNoSemanticHelperOrStorageWrite:true,
     incompleteWorkspaceStillFailsActualPreviewAndCompiledExportGates:true, workspaceAndCompiledFileActionsRejectEachOthersFormats:true,
-    compactNative44WorkspaceSaveOpenFocusedRu320Captured:true, laterStrictDraftRestoresOriginal7523NativeBytes:true,
+    native44WorkspaceSaveOpenFocusVerified:true, laterStrictDraftRestoresOriginal7523NativeBytes:true,
+    sessionReserveDefaultOffHasNoWrites:true, explicitOptInStoresOnlyExactValidatedNativeWorkspace:true,
+    sessionReserveInjectedReadAndQuotaFailuresKeepFormAndPreviousCopy:true, disableRetainsSessionCopy:true,
+    reloadReadsWithoutApplyingOrOverwritingReserve:true, nativeExplicitRestoreRetainsPartialStringsOwnKeysRowOrderAndCompilerGates:true,
+    native44SessionRestoreDeleteAndFocusedRu320RecoveryOfferCaptured:true, deletionDisablesAndCancelsPendingWriteWithoutResurrectionAfterReload:true,
+    defaultOffSessionWrites, sessionReserveOptInWriteAttempts: preReloadSessionWrites.map(write => ({ key: write.key, local: write.local, failed: write.failed, sha256: sha(Buffer.from(write.value)) })), postReloadSessionWrites,
     prerequisiteExportedDraft: { path: prerequisiteExportedPath, sha256: sha(prerequisiteBytes), bytes: prerequisiteBytes.length },
     ordinaryPrerequisiteExportedDraft: { path: ordinaryPrerequisiteExportedPath, sha256: sha(ordinaryPrerequisiteBytes), bytes: ordinaryPrerequisiteBytes.length },
     restoredExportedDraft: { path: restoredExportedPath, sha256: sha(restoredBytes), bytes: restoredBytes.length },
@@ -989,10 +1062,10 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     strictAfterWorkspaceDraft: { path: restoredWorkspaceDraftPath, sha256: sha(restoredWorkspaceDraftBytes), bytes: restoredWorkspaceDraftBytes.length },
     localPreviewWidthStartsCollapsedAndAvailable:true, localizedNativeWidthChoicesRuEnVerified:true, actualPreviewFrameFitsParentAt320:true,
     actualDesktopFrameWidths320And768Verified:true, availableWidthRestoresActualParentWidth:true, widthControlsMinimum44CssPxAndKeyboardFocusVerified:true,
-    widthSelectionPreservesWorkProfileAndCopyView:true, widthSelectionDoesNotChangeExportedBytesOrFormWidth:true, previewWidthHasNoStorageWrites:true, previewWidthMeasurements,
+    widthSelectionPreservesWorkProfileAndCopyView:true, widthSelectionDoesNotChangeExportedBytesOrFormWidth:true, defaultOffPreviewWidthHasNoStorageWrites:true, previewWidthMeasurements,
     actualDraftProfileConditionHelper:true, ordinaryPreviewStartsWithCollapsedDisabledAdultScenario:true, explicitAgeAndLevelInitiallyBlank:true,
     adultProfileBoundaryInvalidAgeAndReadingMismatchVerified:true, profileReportRuEnParityVerified:true,
-    previewScenarioKeepsDraftStepCopyViewAndOriginalExportBytes:true, previewProfileStorageWrites:profileStorageWrites,
+    previewScenarioKeepsDraftStepCopyViewAndOriginalExportBytes:true, defaultOffProfileStorageWrites:defaultOffSessionWrites, laterDefaultOffStorageWrites:profileStorageWrites,
     exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length }, sourceInputs: fixture.sourceInputs,
     screenshots, errors, externalRequests, productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
   }, null, 2) });
@@ -1008,7 +1081,21 @@ test('optional adult RU EN author task uses current semantic validation and pres
     URL.createObjectURL = function(blob) { window.__draftExportBlobs.push(blob); return nativeCreate.call(URL, blob); };
     window.__draftStorageWrites = [];
     const nativeStore = Storage.prototype.setItem;
-    Storage.prototype.setItem = function(key, value) { window.__draftStorageWrites.push({ key, local: this === localStorage }); return nativeStore.call(this, key, value); };
+    const nativeRead = Storage.prototype.getItem;
+    window.__nativeSessionReserveStore = nativeStore;
+    Storage.prototype.setItem = function(key, value) {
+      const failed = key === 'booky-journey-workspace.session.v1' && Boolean(window.__sessionReserveFailWrite);
+      window.__sessionReserveFailWrite = false;
+      window.__draftStorageWrites.push({ key, local: this === localStorage, value, failed });
+      if (failed) throw new DOMException('Synthetic session quota failure', 'QuotaExceededError');
+      return nativeStore.call(this, key, value);
+    };
+    Storage.prototype.getItem = function(key) {
+      if (key === 'booky-journey-workspace.session.v1' && window.__sessionReserveFailRead) {
+        window.__sessionReserveFailRead = false; throw new DOMException('Synthetic unavailable session storage', 'SecurityError');
+      }
+      return nativeRead.call(this, key);
+    };
   });
   await page.route('**/*', async route => {
     const url = new URL(route.request().url());
@@ -1608,6 +1695,35 @@ test('optional adult RU EN author task uses current semantic validation and pres
       view: await preview.locator('[data-booky-preview-copy-view]').inputValue(), age: await profileAge.inputValue(), level: await profileLevel.inputValue(), title: await routeTitle.inputValue() }).toEqual(pendingWorkspacePresentation);
     expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }))).toEqual(pendingWorkspaceCalls);
   }
+  const defaultOffAnswerStorageWrites = await page.evaluate(() => window.__draftStorageWrites); expect(defaultOffAnswerStorageWrites).toEqual([]);
+  const pendingSessionPanel = pendingWorkspacePanel.locator('[data-booky-session-copy]');
+  const pendingSessionEnabled = pendingSessionPanel.getByRole('checkbox', { name: 'Обновлять локальную копию формы', exact: true });
+  const pendingSessionRestore = pendingSessionPanel.getByRole('button', { name: 'Восстановить локальную копию', exact: true });
+  const pendingSessionDelete = pendingSessionPanel.getByRole('button', { name: 'Удалить локальную копию', exact: true });
+  await expect(pendingSessionEnabled).not.toBeChecked();
+  const priorSessionCopy = structuredClone(pendingWorkspace); priorSessionCopy.input.copy.ru.title = 'Предыдущая локальная форма';
+  const priorSessionCopyText = JSON.stringify(priorSessionCopy, null, 2) + '\n';
+  // Seed an existing reserve and inject actual Storage API failure; no authored field or answer state changes.
+  await page.evaluate(({ key, text }) => { window.__nativeSessionReserveStore.call(sessionStorage, key, text); window.__sessionReserveFailWrite = true; }, { key: sessionCopyKey, text: priorSessionCopyText });
+  await pendingSessionEnabled.check(); await expect(pendingSessionPanel.getByRole('alert')).toContainText('хранилище');
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBe(priorSessionCopyText);
+  await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  await expect(firstModeledCompletion).toBeChecked(); await expect(secondModeledCompletion).toBeChecked();
+  await pendingSessionEnabled.uncheck(); await pendingSessionEnabled.check();
+  await expect.poll(() => page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBe(pendingWorkspaceBytes.toString('utf8'));
+  await pendingSessionEnabled.check(); await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true');
+  await page.evaluate(() => { window.__sessionReserveFailRead = true; }); await pendingSessionRestore.tap();
+  await expect(pendingSessionPanel.getByRole('alert')).toContainText('прочитать'); await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true');
+  const corruptSessionText = '{"kind":"booky-journey-workspace","schemaVersion":1,"input":null}';
+  // External corruption is a fixture input; the app must reject it without applying or rewriting it.
+  await page.evaluate(({ key, text }) => window.__nativeSessionReserveStore.call(sessionStorage, key, text), { key: sessionCopyKey, text: corruptSessionText });
+  await pendingSessionRestore.tap(); await expect(pendingSessionPanel.getByRole('alert')).toContainText('повреждена');
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBe(corruptSessionText);
+  await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  await page.evaluate(({ key, text }) => window.__nativeSessionReserveStore.call(sessionStorage, key, text), { key: sessionCopyKey, text: pendingWorkspaceBytes.toString('utf8') });
+  expect({ step: await stepStatus.innerText(), width: await activityFrame.getAttribute('data-preview-width'),
+    view: await preview.locator('[data-booky-preview-copy-view]').inputValue(), age: await profileAge.inputValue(), level: await profileLevel.inputValue(), title: await routeTitle.inputValue() }).toEqual(pendingWorkspacePresentation);
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }))).toEqual(pendingWorkspaceCalls);
   await expect(activityReview).not.toHaveAttribute('open',''); await activityReview.locator('summary').tap();
   const callsBeforeProfileInspect = await page.evaluate(() => ({validation:window.__activityValidationCalls.length,answer:window.__activityAnswerCalls.length}));
   await activityComparison.locator('summary').tap(); await activityComparison.locator('summary').tap();
@@ -1626,6 +1742,14 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true');
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
   await expect(firstModeledCompletion).toBeChecked(); await expect(secondModeledCompletion).toBeChecked();
+  const heldSessionWrites = await page.evaluate(() => window.__draftStorageWrites);
+  expect(heldSessionWrites.map(write => ({ key: write.key, local: write.local, failed: write.failed }))).toEqual([
+    { key: sessionCopyKey, local: false, failed: true }, { key: sessionCopyKey, local: false, failed: false },
+  ]);
+  expect(heldSessionWrites.every(write => write.value === pendingWorkspaceBytes.toString('utf8'))).toBe(true);
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBe(pendingWorkspaceBytes.toString('utf8'));
+  await pendingSessionDelete.tap(); await expect(pendingSessionEnabled).not.toBeChecked();
+  expect(await page.evaluate(key => sessionStorage.getItem(key), sessionCopyKey)).toBeNull(); await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true');
   await firstModeledCompletion.uncheck(); await expect(answerCheckRu).toHaveAttribute('aria-busy', 'false');
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false'); await expect(verdict).toHaveCount(0);
   await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'partial');
@@ -1759,7 +1883,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   expect(answerCalls.filter(call => call.actualHelperCalled && call.actualResult.ok && call.actualResult.correct === false).length).toBeGreaterThanOrEqual(2);
   expect(answerCalls.filter(call => call.actualHelperCalled && call.actualResult.ok && call.actualResult.correct === true).length).toBeGreaterThanOrEqual(3);
   const storageWrites = await page.evaluate(() => window.__draftStorageWrites);
-  expect(storageWrites).toEqual([]);
+  expect(storageWrites).toEqual(heldSessionWrites); expect(storageWrites.every(write => write.key === sessionCopyKey && write.local === false)).toBe(true);
   await testInfo.attach('booky-journey-activity-evidence', { contentType: 'application/json', body: JSON.stringify({
     pass: true, actualEditorComponent: true, actualEditorStyles: true, actualDraftCompiler: true, actualDraftParser: true,
     actualActivitySemanticHelper: true, actualActivityResolver: true, mockedServerActionTransport: true, syntheticCatalog: true,
@@ -1791,18 +1915,24 @@ test('optional adult RU EN author task uses current semantic validation and pres
     emptyChoiceRemainsEmptyAndRetainedNonmatchesExcludedFromHonestCount:true, duplicateAndMissingEnglishOptionsRemainDisabled:true,
     addAndRemoveChoiceKeepQueryAndRecomputeDuplicateAvailability:true, toggleAndSuccessfulImportClearAuthorQueryAndRejectedImportPreservesIt:true,
     authorSearchAndClearPreserveExistingValidationErrorsAndHeldAnswerLeaseWithoutNewRequestsOrDownloads:true,
-    authorSearchKeepsMainEntityQueriesIndependentAndHasNoExportFieldOrStorageWrite:true,
+    defaultOffAuthorSearchKeepsMainEntityQueriesIndependentAndHasNoExportFieldOrStorageWrite:true,
     actualDraftProfileConditionHelper: true, invalidAndOutsideProfilesBlockKeyboardCheckWithoutHelperRequest: true,
     sameExplicitProfileAndIdenticalModeledCompletionKeepPendingAnswer: true, changedExactPrerequisiteTupleSelectionRejectsHeldAnswer: true, heldProfileVerdictCallIndex: heldProfileVerdict,
     missingAndPartialCompletionsBlockNativeKeyboardCheckWithoutHelperCalls:true, combinedAgeLevelAndCompletionReportsDescribeGuardedCheck:true,
     modeledCompletionsUseExactCompiledReferencesAndDoNotReachStaffAnswerAction:true, outsideAgeRemainsIndependentlyBlockedWithoutHelperCalls:true,
     nativeWorkspaceSavePreservesExistingHeldProfileAnswerLeasePresentationAndModeledPrerequisites:true,
     rejectedWorkspaceFormatShapeAndOversizePreserveTheSamePendingLeaseWithoutHelperCalls:true,
+    sessionCopyDefaultOffAndManualWorkspaceSaveKeepTheSameHeldProfileLease:true,
+    injectedStorageQuotaFailureKeepsPreviousSeededReserveCurrentFormAndHeldAnswer:true,
+    sessionCopyEnableRetrySameValueAndFailedReadOrCorruptRestoreKeepHeldLease:true,
+    presentationProfileModeledCompletionWidthAndViewAreAbsentFromTheExactStoredWorkspace:true,
+    sessionCopyDeletionDisablesWritesWithoutClearingHeldAnswer:true, sessionCopyFixtureSeedAndCorruptionExplicit:true,
     successfulWorkspaceReopenClearsPreviewVerdictQueriesAndModeledKeysWithoutSemanticHelper:true,
     subsequentActualCompilerAndCreditedAuthorHelperRemainRequiredAfterWorkspaceRecovery:true,
     returningToOrdinaryPreviewRestoresExplicitAnswerCheck: true, previewProfileScenarioHasNoStoredReaderPolicy: true,
     failedSessionOrNetworkCannotShowVerdict: true, localizedCalmAriaLiveFeedbackVerified: true,
-    answerCheckDoesNotAdvanceStep: true, answerStateStorageWrites: storageWrites,
+    answerCheckDoesNotAdvanceStep: true, defaultOffAnswerStorageWrites,
+    optInAuthoringSessionWriteAttempts: storageWrites.map(write => ({ key: write.key, local: write.local, failed: write.failed, sha256: sha(Buffer.from(write.value)) })),
     downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length },
     heldAnswerWorkspace: { path: pendingWorkspacePath, sha256: sha(pendingWorkspaceBytes), bytes: pendingWorkspaceBytes.length }, validationCalls, answerCalls,
     sourceInputs: fixture.sourceInputs, screenshots, errors, externalRequests,
