@@ -1,6 +1,6 @@
 import {
   bookyJourneyDialogueContext, bookyJourneyEntityId, getBookyJourneyChecksum,
-  type BookyJourneyDefinition, type BookyJourneyNode,
+  type BookyJourneyDefinition, type BookyJourneyNode, type BookyJourneyPrerequisite,
 } from "../../../src/host/bookyJourney";
 import {
   getBookyDialogueChecksum, getBookyDialogueContentChecksum,
@@ -33,6 +33,7 @@ export type JourneyDraftInput = {
   activity?: JourneyDraftActivityInput;
   fact?: JourneyDraftFactInput;
   optionalNodeOrder?: readonly ("sourced-fact" | "activity")[];
+  prerequisites?: readonly BookyJourneyPrerequisite[];
 };
 export type JourneyDraftActivityInput = {
   type: "match-work-author";
@@ -167,6 +168,33 @@ function optionalNodeOrderInput(value: unknown, hasFact: boolean, hasActivity: b
       && order.includes("sourced-fact") === hasFact && order.includes("activity") === hasActivity ? order : null;
   } catch { return null; }
 }
+/** References only: shape and direct self-reference checks do not establish existence or completion. */
+function prerequisitesInput(value: unknown, routeId: unknown):
+  { ok: true; references: BookyJourneyPrerequisite[] } | { ok: false; errors: JourneyDraftError[] } {
+  const malformed = () => ({ ok: false as const, errors: [{ field: "prerequisites",
+    message: "Укажите от одной до шестнадцати ссылок с исходными полями ID и версии, без лишних полей и вычисляемых свойств." }] });
+  try {
+    if (!Array.isArray(value) || Object.getPrototypeOf(value) !== Array.prototype
+      || value.length < 1 || value.length > 16 || Reflect.ownKeys(value).length !== value.length + 1) return malformed();
+    const references: BookyJourneyPrerequisite[] = [], errors: JourneyDraftError[] = [], ids = new Set<string>();
+    for (let index = 0; index < value.length; index++) {
+      const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+      if (!descriptor?.enumerable || !("value" in descriptor) || !ownDataKeys(descriptor.value, ["id", "version"])) return malformed();
+      const id = Object.getOwnPropertyDescriptor(descriptor.value, "id")!.value;
+      const version = Object.getOwnPropertyDescriptor(descriptor.value, "version")!.value;
+      if (typeof id !== "string" || !/^[a-z][a-z0-9._:-]{0,95}$/.test(id))
+        errors.push({ field: `prerequisites.${index}.id`, message: "ID ссылки: от 1 до 96 строчных латинских букв, цифр, точек, дефисов, подчёркиваний или двоеточий; первая — буква." });
+      else {
+        if (id === routeId) errors.push({ field: `prerequisites.${index}.id`, message: "Маршрут не может ссылаться на себя как на предварительный." });
+        if (ids.has(id)) errors.push({ field: `prerequisites.${index}.id`, message: "ID предварительного маршрута уже указан; разные версии одного ID не создают отдельные ссылки." });
+        ids.add(id);
+      }
+      if (!integer(version, 1, 1_000_000)) errors.push({ field: `prerequisites.${index}.version`, message: "Версия ссылки должна быть целым числом от 1 до 1000000." });
+      if (typeof id === "string" && integer(version, 1, 1_000_000)) references.push({ id, version: version as number });
+    }
+    return errors.length ? { ok: false, errors } : { ok: true, references };
+  } catch { return malformed(); }
+}
 function activityInput(value: unknown): JourneyDraftActivityInput | null {
   try {
     if (!ownDataKeys(value, ["type", "choices", "copy"]) || value.type !== "match-work-author"
@@ -287,6 +315,16 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
     fail("optionalNodeOrder", "Порядок должен содержать каждый включённый необязательный шаг ровно один раз: sourced-fact и/или activity, без лишних полей и вычисляемых свойств.");
     return rejected();
   }
+  const prerequisitesDescriptor = Object.getOwnPropertyDescriptor(input, "prerequisites");
+  let prerequisites: BookyJourneyPrerequisite[] | undefined;
+  if (prerequisitesDescriptor) {
+    if (!prerequisitesDescriptor.enumerable || !("value" in prerequisitesDescriptor)) {
+      fail("prerequisites", "Ссылки на предварительные маршруты должны быть исходным полем, без вычисляемых или скрытых свойств."); return rejected();
+    }
+    const checked = prerequisitesInput(prerequisitesDescriptor.value, input.id);
+    if (!checked.ok) { checked.errors.forEach((error) => fail(error.field, error.message)); return rejected(); }
+    prerequisites = checked.references;
+  }
   if (!catalog || !Array.isArray(catalog.countries)) {
     fail("catalog", "Канонический каталог недоступен.");
     return rejected();
@@ -386,6 +424,7 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         en: { ...nodeCopySnapshot(fact.copy.en), sources: fact.copy.en.sources.map(source => ({ ...source })) },
       } } } : {}),
       ...(optionalNodeOrder ? { optionalNodeOrder: [...optionalNodeOrder] } : {}),
+      ...(prerequisites ? { prerequisites: prerequisites.map((reference) => ({ ...reference })) } : {}),
     },
     selection: { country: selected(country), writer: selected(writer), work: selected(work),
       ...(activity ? { activityChoices: activitySelections.map(choice => ({ country: selected(choice.country), writer: selected(choice.writer) })) } : {}),
@@ -515,7 +554,7 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
       ageRange: { ...authoringSource.input.ageRange }, readingLevel: input.readingLevel,
       title: authoringSource.input.copy[locale].title,
       overview: { description: authoringSource.input.copy[locale].description, estimatedDurationMinutes: input.estimatedDurationMinutes },
-      prerequisites: [], nodes,
+      prerequisites: prerequisites?.map((reference) => ({ ...reference })) ?? [], nodes,
     };
     const checksum = getBookyJourneyChecksum(definition);
     if (!checksum) { fail(`copy.${locale}`, "Маршрут не соответствует схеме канонического плана."); return rejected(); }
@@ -560,7 +599,8 @@ export function parseBookyJourneyDraft(text: string, catalog: JourneyDraftCatalo
     const hasActivity = record(input) && Object.prototype.hasOwnProperty.call(input, "activity");
     const hasFact = record(input) && Object.prototype.hasOwnProperty.call(input, "fact");
     const hasOrder = record(input) && Object.prototype.hasOwnProperty.call(input, "optionalNodeOrder");
-    if (!exactKeys(input, [...inputFields, ...(hasActivity ? ["activity"] : []), ...(hasFact ? ["fact"] : []), ...(hasOrder ? ["optionalNodeOrder"] : [])]) || !exactKeys(input.ageRange, ["min", "max"])
+    const hasPrerequisites = record(input) && Object.prototype.hasOwnProperty.call(input, "prerequisites");
+    if (!exactKeys(input, [...inputFields, ...(hasActivity ? ["activity"] : []), ...(hasFact ? ["fact"] : []), ...(hasOrder ? ["optionalNodeOrder"] : []), ...(hasPrerequisites ? ["prerequisites"] : [])]) || !exactKeys(input.ageRange, ["min", "max"])
       || !exactKeys(input.copy, LOCALES))
       return rejected("authoringSource.input", "Исходная форма черновика содержит лишние или отсутствующие поля.");
     if (hasActivity && !activityInput(input.activity))
@@ -569,6 +609,10 @@ export function parseBookyJourneyDraft(text: string, catalog: JourneyDraftCatalo
       return rejected("fact", "Факт содержит неверные, лишние или отсутствующие тексты RU/EN либо источники.");
     if (hasOrder && !optionalNodeOrderInput(input.optionalNodeOrder, hasFact, hasActivity))
       return rejected("optionalNodeOrder", "Порядок необязательных шагов не соответствует включённым факту и заданию либо содержит лишние или отсутствующие поля.");
+    if (hasPrerequisites) {
+      const checked = prerequisitesInput(input.prerequisites, input.id);
+      if (!checked.ok) return freeze({ ok: false as const, errors: checked.errors });
+    }
     for (const locale of LOCALES) {
       const copy = input.copy[locale];
       if (!exactKeys(copy, ["title", "description", "nodes"]) || !exactKeys(copy.nodes, NODE_KINDS))

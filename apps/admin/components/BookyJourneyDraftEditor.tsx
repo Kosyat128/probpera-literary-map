@@ -104,6 +104,9 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const optionalNodeOrder = input.optionalNodeOrder ?? defaultOptionalNodeOrder;
   function draftErrorTarget(field: string): string | null {
     if (field === "ageRange") return "ageRange.min";
+    if (field === "prerequisites") return field;
+    const prerequisite = /^prerequisites\.(\d+)\.(?:id|version)$/u.exec(field);
+    if (prerequisite) return input.prerequisites?.[Number(prerequisite[1])] ? field : null;
     if (field === "fact") return input.fact ? "fact" : null;
     if (["activity", "activity.auth", "activity.choices"].includes(field)) return input.activity ? "activity" : null;
     if (field === "optionalNodeOrder") return optionalNodeOrder.length ? "optionalNodeOrder" : null;
@@ -132,8 +135,11 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     const target = draftErrorTarget(field);
     const labels: Record<string, string> = { id: "Идентификатор маршрута", version: "Версия", "ageRange.min": "Возрастной диапазон",
       readingLevel: "Уровень чтения", estimatedDurationMinutes: "Примерная длительность", countryId: "Страна", writerId: "Писатель", workId: "Книга",
-      fact: "Необязательный факт · источники", activity: "Необязательное задание · выбрать автора", optionalNodeOrder: "Порядок необязательных шагов" };
+      fact: "Необязательный факт · источники", activity: "Необязательное задание · выбрать автора", optionalNodeOrder: "Порядок необязательных шагов",
+      prerequisites: "Предварительные маршруты · ссылки" };
     if (target && labels[target]) return labels[target];
+    const prerequisite = /^prerequisites\.(\d+)\.(id|version)$/u.exec(field);
+    if (prerequisite) return (prerequisite[2] === "id" ? "ID" : "Версия") + " предварительного маршрута " + (Number(prerequisite[1]) + 1);
     const choice = target && /^activity\.choices\.(\d+)$/u.exec(target);
     if (choice) return "Автор · вариант " + (Number(choice[1]) + 1);
     const route = /^copy\.(ru|en)\.(title|description)$/u.exec(field);
@@ -225,6 +231,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       if (Object.hasOwn(change, "activity") && change.activity === undefined) delete next.activity;
       if (Object.hasOwn(change, "fact") && change.fact === undefined) delete next.fact;
       if (Object.hasOwn(change, "optionalNodeOrder") && change.optionalNodeOrder === undefined) delete next.optionalNodeOrder;
+      if (Object.hasOwn(change, "prerequisites") && change.prerequisites === undefined) delete next.prerequisites;
       if (!!next.fact !== !!current.fact || !!next.activity !== !!current.activity) delete next.optionalNodeOrder;
       return next;
     });
@@ -557,6 +564,28 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <input {...fieldProps("estimatedDurationMinutes")} type="number" min={1} max={1440} step={1} value={input.estimatedDurationMinutes || ""} onChange={(event) => update({ estimatedDurationMinutes: Number(event.target.value) })} /></label>
       </div>
       <p><small>Условия задаёт редактор. Они не назначают возраст или уровень чтения пользователям.</small></p>
+      <details data-booky-prerequisites aria-labelledby={draftFieldId("prerequisites")} style={{ minWidth: 0 }}>
+        <summary {...fieldProps("prerequisites")} style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Предварительные маршруты · неподтверждённые ссылки</summary>
+        <p>Это ссылки на другие маршруты. Их существование и прохождение здесь не проверяются; редакционная проверка выполняется отдельно.</p>
+        {!input.prerequisites?.length && <p>Ссылки не заданы.</p>}
+        <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 12 }}>
+          {input.prerequisites?.map((reference, index) => <li key={index} className="site-copy-grid" style={{ minWidth: 0 }}>
+            <div className="site-copy-locales">
+              <label className="field"><span>ID предварительного маршрута {index + 1}</span>
+                <input {...fieldProps("prerequisites." + index + ".id")} value={reference.id} maxLength={96} autoComplete="off" spellCheck={false}
+                  style={{ minHeight: 44 }} onChange={(event) => update({ prerequisites: input.prerequisites!.map((item, i) => i === index ? { ...item, id: event.target.value } : item) })} /></label>
+              <label className="field"><span>Версия предварительного маршрута {index + 1}</span>
+                <input {...fieldProps("prerequisites." + index + ".version")} type="number" min={1} max={1000000} step={1} value={reference.version || ""}
+                  style={{ minHeight: 44 }} onChange={(event) => update({ prerequisites: input.prerequisites!.map((item, i) => i === index ? { ...item, version: Number(event.target.value) } : item) })} /></label>
+            </div>
+            <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, maxWidth: "100%" }} onClick={() => {
+              const remaining = input.prerequisites!.filter((_, i) => i !== index); update({ prerequisites: remaining.length ? remaining : undefined });
+            }}>Удалить ссылку {index + 1}</button>
+          </li>)}
+        </ol>
+        {(input.prerequisites?.length ?? 0) < 16 && <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, maxWidth: "100%", marginTop: 12 }}
+          onClick={() => update({ prerequisites: [...(input.prerequisites ?? []), { id: "", version: 1 }] })}>Добавить предварительный маршрут</button>}
+      </details>
       <div className="site-copy-locales">
         {locales.map((locale) => <div className="site-copy-grid" key={locale}>
           <label className="field"><span>Название маршрута ({locale.toUpperCase()})</span>

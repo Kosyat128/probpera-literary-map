@@ -215,7 +215,6 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
       for (const control of [panel.locator('summary'), query, result, select]) {
         const bounds = await control.boundingBox(); expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844);
       }
-      await capture('booky-journey-preview-ru-320.png', 'Actual 320px country selector with expanded local RU/EN/ID search: zero matching records and the unchanged selected country retained in the native list. Count explicitly excludes that selection; no automatic selection, requests, device or runtime acceptance.');
     }
     await panel.getByRole('button', { name: 'Очистить поиск', exact: true }).tap();
     await expect(query).toHaveValue(''); await expect(result).toHaveText(`Совпадений: ${total}.`);
@@ -620,6 +619,72 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   }
   expect(await overflow()).toBe(false);
   await capture('booky-journey-editor-ru-1280.png', 'Actual current Work RU/EN compiled-copy comparison at1280, showing both exact titles and full text in measured side-by-side columns inside the768px local preview frame. Opening this display keeps age30/plain, current step and body view. Human comparison only; no translation/editorial validation or device acceptance.');
+  await page.setViewportSize({ width: 320, height: 844 });
+  const prerequisitesPanel = page.locator('[data-booky-prerequisites]');
+  const prerequisiteField = (index, field) => prerequisitesPanel.getByRole(field === 'id' ? 'textbox' : 'spinbutton', {
+    name: `${field === 'id' ? 'ID' : 'Версия'} предварительного маршрута ${index}`, exact: true,
+  });
+  const addPrerequisite = prerequisitesPanel.getByRole('button', { name: 'Добавить предварительный маршрут', exact: true });
+  await expect(prerequisitesPanel).not.toHaveAttribute('open', '');
+  await prerequisitesPanel.locator('summary').tap(); await expect(prerequisitesPanel).toContainText('Ссылки не заданы.');
+  await addPrerequisite.tap(); await expect(preview).toHaveCount(0);
+  await expect(prerequisiteField(1, 'id')).toHaveValue(''); await expect(prerequisiteField(1, 'version')).toHaveValue('1');
+  await prerequisiteField(1, 'id').fill('synthetic-journey'); await previewButton.tap(); await expect(preview).toHaveCount(0);
+  const selfReferenceAction = page.locator('[data-booky-error-target="prerequisites.0.id"]');
+  await expect(selfReferenceAction).toHaveCount(1); await expect(prerequisiteField(1, 'id')).toHaveAttribute('aria-invalid', 'true');
+  const prerequisiteErrorIds = await prerequisiteField(1, 'id').getAttribute('aria-describedby'); expect(prerequisiteErrorIds).toBeTruthy();
+  expect(await prerequisiteField(1, 'id').evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id =>
+    document.getElementById(id)?.querySelector('[data-booky-error-target]')?.getAttribute('data-booky-error-target') === 'prerequisites.0.id'))).toBe(true);
+  await prerequisitesPanel.locator('summary').tap(); await selfReferenceAction.tap();
+  await expect(prerequisitesPanel).toHaveAttribute('open', ''); await expect(prerequisiteField(1, 'id')).toBeFocused();
+  await expect(prerequisiteField(1, 'id')).toHaveValue('synthetic-journey');
+  await prerequisiteField(1, 'id').fill('unresolved.route-v1'); await prerequisiteField(1, 'version').fill('2.5'); await previewButton.tap();
+  const versionReferenceAction = page.locator('[data-booky-error-target="prerequisites.0.version"]');
+  await expect(versionReferenceAction).toHaveCount(1); await expect(prerequisiteField(1, 'version')).toHaveAttribute('aria-invalid', 'true');
+  await versionReferenceAction.tap(); await expect(prerequisiteField(1, 'version')).toBeFocused(); await expect(prerequisiteField(1, 'version')).toHaveValue('2.5');
+  await prerequisiteField(1, 'version').fill('7'); await expect(versionReferenceAction).toHaveCount(0);
+  await expect(prerequisiteField(1, 'version')).not.toHaveAttribute('aria-invalid', 'true');
+  await expect(selfReferenceAction).toHaveCount(0); await expect(prerequisiteField(1, 'id')).not.toHaveAttribute('aria-invalid', 'true');
+  await addPrerequisite.tap(); await prerequisiteField(2, 'id').fill('unresolved.next');
+  await prerequisitesPanel.locator('summary').evaluate(node => { node.scrollIntoView({ block: 'start' }); window.scrollBy(0, -12); });
+  for (const control of [prerequisitesPanel.locator('summary'), prerequisiteField(1, 'id'), prerequisiteField(1, 'version'), prerequisiteField(2, 'id'), prerequisiteField(2, 'version'), addPrerequisite]) {
+    const bounds = await control.boundingBox(); expect(bounds.height).toBeGreaterThanOrEqual(44);
+    expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.x + bounds.width).toBeLessThanOrEqual(321);
+    expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844);
+  }
+  expect(await overflow()).toBe(false);
+  await capture('booky-journey-preview-ru-320.png', 'Actual 320px route-conditions form with two explicit prerequisite ID/version references, labelled as unconfirmed. These are configured references only; this image does not establish existence, completion, current versions, review, graph validation or runtime admission. It does not show all sixteen supported rows.');
+  await previewButton.tap(); await expect(preview).toBeVisible();
+  const prerequisiteDownloadPromise = page.waitForEvent('download'); await button.tap(); const prerequisiteDownload = await prerequisiteDownloadPromise;
+  expect(await prerequisiteDownload.failure()).toBeNull();
+  const prerequisiteExportedPath = testInfo.outputPath('synthetic-journey-prerequisites-draft.json'); await prerequisiteDownload.saveAs(prerequisiteExportedPath);
+  const prerequisiteBytes = await fs.readFile(prerequisiteExportedPath), prerequisiteDraft = JSON.parse(prerequisiteBytes.toString('utf8'));
+  const references = [{ id: 'unresolved.route-v1', version: 7 }, { id: 'unresolved.next', version: 1 }];
+  expect(prerequisiteDraft.authoringSource.input.prerequisites).toEqual(references);
+  expect(prerequisiteDraft.definitions.map(definition => definition.prerequisites)).toEqual([references, references]);
+  expect(prerequisiteDraft.authoringSourceChecksum).not.toBe(draft.authoringSourceChecksum);
+  for (const key of ['journeyApprovals', 'dialogueApprovals', 'currentVersions', 'availability']) expect(prerequisiteDraft[key]).toEqual([]);
+  expect(prerequisiteDraft.releaseReady).toBe(false);
+  const preservedPrerequisitePreview = await preview.innerText();
+  const tamperedPrerequisites = structuredClone(prerequisiteDraft); tamperedPrerequisites.authoringSource.input.prerequisites[0].version = 8;
+  tamperedPrerequisites.authoringSourceChecksum = await page.evaluate(source => window.__copyVariantRecordHash(source), tamperedPrerequisites.authoringSource);
+  await upload('rehashed-prerequisite-source.json', Buffer.from(JSON.stringify(tamperedPrerequisites)));
+  await expect(page.getByRole('alert')).toBeVisible(); expect(await preview.innerText()).toBe(preservedPrerequisitePreview);
+  await expect(prerequisiteField(1, 'id')).toHaveValue('unresolved.route-v1'); await expect(prerequisiteField(1, 'version')).toHaveValue('7');
+  await prerequisiteField(1, 'id').fill('unsaved.reference'); await expect(preview).toHaveCount(0);
+  await upload('native-prerequisite-draft.json', prerequisiteBytes);
+  await expect(prerequisiteField(1, 'id')).toHaveValue('unresolved.route-v1'); await expect(prerequisiteField(1, 'version')).toHaveValue('7');
+  await expect(prerequisiteField(2, 'id')).toHaveValue('unresolved.next'); await expect(preview).toHaveCount(0);
+  await prerequisitesPanel.getByRole('button', { name: 'Удалить ссылку 2', exact: true }).tap();
+  await prerequisitesPanel.getByRole('button', { name: 'Удалить ссылку 1', exact: true }).tap();
+  await expect(prerequisitesPanel).toContainText('Ссылки не заданы.'); await expect(prerequisiteField(1, 'id')).toHaveCount(0);
+  await previewButton.tap(); await expect(preview).toBeVisible();
+  const restoredDownloadPromise = page.waitForEvent('download'); await button.tap(); const restoredDownload = await restoredDownloadPromise;
+  expect(await restoredDownload.failure()).toBeNull();
+  const restoredExportedPath = testInfo.outputPath('synthetic-journey-after-prerequisite-removal.json'); await restoredDownload.saveAs(restoredExportedPath);
+  const restoredBytes = await fs.readFile(restoredExportedPath); expect(sha(restoredBytes)).toBe('7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5');
+  expect(Object.hasOwn(JSON.parse(restoredBytes.toString('utf8')).authoringSource.input, 'prerequisites')).toBe(false);
+  expect(downloads).toHaveLength(3); expect(await page.evaluate(() => window.__activityValidationCalls)).toEqual([]);
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
   const profileStorageWrites=await page.evaluate(()=>window.__previewProfileStorageWrites); expect(profileStorageWrites).toEqual([]);
   await testInfo.attach('booky-journey-editor-evidence', { contentType: 'application/json', body: JSON.stringify({
@@ -642,6 +707,12 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     nativeSearchControlsMinimum44CssPxAndNo320Overflow:true, searchInputEnterDoesNotSubmitOrExport:true,
     parentSelectionResetsOnlyDescendantQueriesAndSuccessfulImportClearsQueries:true, rejectedImportPreservesQueries:true,
     localSearchHasNoDraftExportFieldStorageWriteOrActivityRequest:true,
+    optionalPrerequisiteBlockStartsCollapsedAndUsesNativeIdVersionFields:true, directSelfReferenceHasExactAccessibleErrorRecoveryAndEditsClearIt:true,
+    twoUnconfirmedPrerequisiteReferencesSurviveActualNativeExportAndReopen:true, independentlyRehashedSourceTamperingIsRejectedWithoutReplacingCurrentForm:true,
+    removingEveryPrerequisiteDeletesOwnSourceKeyAndRestoresExactOriginalNativeDownloadBytes:true,
+    prerequisiteReferencesDoNotCreateReviewCompletionCurrentVersionOrAdmissionAuthority:true,
+    prerequisiteExportedDraft: { path: prerequisiteExportedPath, sha256: sha(prerequisiteBytes), bytes: prerequisiteBytes.length },
+    restoredExportedDraft: { path: restoredExportedPath, sha256: sha(restoredBytes), bytes: restoredBytes.length },
     localPreviewWidthStartsCollapsedAndAvailable:true, localizedNativeWidthChoicesRuEnVerified:true, actualPreviewFrameFitsParentAt320:true,
     actualDesktopFrameWidths320And768Verified:true, availableWidthRestoresActualParentWidth:true, widthControlsMinimum44CssPxAndKeyboardFocusVerified:true,
     widthSelectionPreservesWorkProfileAndCopyView:true, widthSelectionDoesNotChangeExportedBytesOrFormWidth:true, previewWidthHasNoStorageWrites:true, previewWidthMeasurements,

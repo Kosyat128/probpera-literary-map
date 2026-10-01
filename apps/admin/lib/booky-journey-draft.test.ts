@@ -1429,6 +1429,7 @@ describe("adult Booky journey draft optional node ordering", () => {
       const exported = draft(fixture.input, fixture.catalog);
       expect(contentTextHash(JSON.stringify(exported, null, 2) + "\n")).toBe(fixture.sha256);
       expect(Object.prototype.hasOwnProperty.call(exported.authoringSource.input, "optionalNodeOrder")).toBe(false);
+      expect(Object.prototype.hasOwnProperty.call(exported.authoringSource.input, "prerequisites")).toBe(false);
       expect(parseBookyJourneyDraft(JSON.stringify(exported), fixture.catalog).ok).toBe(true);
     }
     const combined = draft(variantValue());
@@ -1587,5 +1588,176 @@ describe("adult Booky journey draft optional node ordering", () => {
     expect(importErrors(serialized, removedWork)).toContain("workId");
     const removedChoice = catalog() as Mutable<JourneyDraftCatalog>; removedChoice.countries[0].writers.pop();
     expect(parseBookyJourneyDraft(serialized, removedChoice).ok).toBe(false);
+  });
+});
+
+describe("adult Booky journey draft prerequisite references", () => {
+  it("accepts one to sixteen explicit canonical references and the existing ID and version boundaries in both locales", () => {
+    for (const count of [1, 16]) {
+      const references = Array.from({ length: count }, (_, index) => ({ id: "required-" + index, version: index === count - 1 ? 1_000_000 : 1 }));
+      references[0].id = "a";
+      if (count === 16) {
+        references[1].id = "z" + ".".repeat(95);
+        references[2].id = "intro.route:v2_0-x";
+        references[3] = Object.assign(Object.create(null), { id: "plain-null-record", version: 3 });
+      }
+      const value = input(); value.prerequisites = references;
+      const exported = draft(value);
+      expect(exported.authoringSource.input.prerequisites).toEqual(references);
+      for (const definition of exported.definitions) {
+        expect(definition.prerequisites).toEqual(references);
+        expect(getBookyJourneyChecksum(definition)).not.toBeNull();
+      }
+      expect(parseBookyJourneyDraft(JSON.stringify(exported), catalog()).ok).toBe(true);
+    }
+  });
+
+  it("rejects invalid IDs and versions, direct self-reference, duplicate IDs even across versions, and count limits", () => {
+    for (const id of ["", "Bad", " bad", "bad ", "a/b", "a\nb", "a".repeat(97), "1wrong", "маршрут", null, new String("required")]) {
+      const value = input(); Object.assign(value, { prerequisites: [{ id, version: 1 }] });
+      expect(errors(value)).toContain("prerequisites.0.id");
+    }
+    for (const version of [0, -1, 1_000_001, 1.5, NaN, Infinity, null, "1", {}, undefined]) {
+      const value = input(); Object.assign(value, { prerequisites: [{ id: "required", version }] });
+      expect(errors(value)).toContain("prerequisites.0.version");
+    }
+    for (const version of [1, 3]) {
+      const value = input(); value.prerequisites = [{ id: value.id, version }];
+      expect(errors(value)).toContain("prerequisites.0.id");
+      value.prerequisites = [{ id: "required", version: 1 }, { id: "required", version }];
+      expect(errors(value)).toContain("prerequisites.1.id");
+    }
+    for (const references of [[], Array.from({ length: 17 }, (_, index) => ({ id: "required-" + index, version: 1 }))]) {
+      const value = input(); value.prerequisites = references;
+      expect(errors(value)).toContain("prerequisites");
+    }
+  });
+
+  it("rejects sparse or exotic arrays, non-data rows and unknown properties without invoking any authoring getters", () => {
+    let getterCalls = 0;
+    const getter = () => { getterCalls++; throw new Error("prerequisite getter must not execute"); };
+    const malformed: unknown[] = [undefined, null, "required", {}, Array(1), [null], [{ id: "required" }], [{ version: 1 }]];
+    const arrayChanges: ((references: unknown[]) => void)[] = [
+      references => { delete references[0]; },
+      references => { Object.assign(references, { extra: true }); },
+      references => { Object.defineProperty(references, "hidden", { value: true }); },
+      references => { Object.defineProperty(references, Symbol("extra"), { value: true }); },
+      references => { Object.defineProperty(references, "0", { enumerable: true, get: getter }); },
+      references => { Object.defineProperty(references, "0", { value: { id: "required", version: 1 }, enumerable: false }); },
+      references => { Object.setPrototypeOf(references, null); },
+    ];
+    for (const change of arrayChanges) { const references: unknown[] = [{ id: "required", version: 1 }]; change(references); malformed.push(references); }
+    const rowChanges: ((reference: Record<string, unknown>) => void)[] = [
+      reference => { Object.assign(reference, { completed: true }); },
+      reference => { Object.defineProperty(reference, "hidden", { value: true }); },
+      reference => { Object.defineProperty(reference, Symbol("extra"), { value: true }); },
+      reference => { Object.defineProperty(reference, "id", { enumerable: true, get: getter }); },
+      reference => { Object.defineProperty(reference, "version", { enumerable: true, get: getter }); },
+      reference => { Object.defineProperty(reference, "id", { value: "required", enumerable: false }); },
+      reference => { Object.setPrototypeOf(reference, { extra: true }); },
+    ];
+    for (const change of rowChanges) { const reference: Record<string, unknown> = { id: "required", version: 1 }; change(reference); malformed.push([reference]); }
+    malformed.push([Object.create({ id: "required", version: 1 })]);
+    for (const references of malformed) {
+      const value = input(); Object.assign(value, { prerequisites: references });
+      expect(errors(value)).toContain("prerequisites");
+    }
+    for (const descriptor of [{ enumerable: true, get: getter }, { value: [{ id: "required", version: 1 }], enumerable: false }]) {
+      const value = input(); Object.defineProperty(value, "prerequisites", descriptor);
+      expect(errors(value)).toContain("prerequisites");
+    }
+    expect(getterCalls).toBe(0);
+  });
+
+  it("clones and freezes every reference independently in source, both definitions and a reopened draft without mutating callers", () => {
+    const references = [{ id: "required", version: 1 }, { id: "other.route", version: 7 }], value = input();
+    value.prerequisites = references;
+    const before = JSON.stringify(value), exported = draft(value), serialized = JSON.stringify(exported);
+    expect(JSON.stringify(value)).toBe(before);
+    const groups = [exported.authoringSource.input.prerequisites!, ...exported.definitions.map(definition => definition.prerequisites)];
+    for (const group of groups) {
+      expect(group).toEqual(references); expect(group).not.toBe(references); expect(Object.isFrozen(group)).toBe(true);
+      for (let index = 0; index < group.length; index++) { expect(group[index]).not.toBe(references[index]); expect(Object.isFrozen(group[index])).toBe(true); }
+    }
+    expect(groups[0]).not.toBe(groups[1]); expect(groups[1]).not.toBe(groups[2]); expect(groups[1][0]).not.toBe(groups[2][0]);
+    const reopened = parseBookyJourneyDraft(serialized, catalog()); expect(reopened.ok).toBe(true);
+    if (!reopened.ok) return;
+    expect(reopened.input.prerequisites).toEqual(references); expect(reopened.input.prerequisites).not.toBe(groups[0]);
+    expect(Object.isFrozen(reopened.input.prerequisites)).toBe(true); expect(Object.isFrozen(reopened.input.prerequisites![0])).toBe(true);
+    references[0].id = "changed"; references[1].version = 9; references.push({ id: "later", version: 2 });
+    expect(JSON.stringify(exported)).toBe(serialized); expect(JSON.stringify(reopened.draft)).toBe(serialized);
+    expect(Object.isFrozen(references)).toBe(false); expect(Object.isFrozen(references[0])).toBe(false);
+    expect(draft(value).authoringSourceChecksum).not.toBe(exported.authoringSourceChecksum);
+  });
+
+  it("rebinds source, every dialogue, both factual payloads and definitions while preserving authored copy, citations and activity identity", () => {
+    const original = draft(variantValue()), value = variantValue(); value.prerequisites = [{ id: "required.route", version: 4 }];
+    const changed = draft(value);
+    expect(changed.authoringSourceChecksum).not.toBe(original.authoringSourceChecksum);
+    expect(changed.authoringSourceChecksum).toBe(contentRecordHash(changed.authoringSource));
+    for (const record of changed.dialogues) {
+      const prior = original.dialogues.find(item => item.payload.id === record.payload.id && item.payload.locale === record.payload.locale)!;
+      expect(record.payload.copy).toEqual(prior.payload.copy); expect(record.payload.factualSources).toEqual(prior.payload.factualSources);
+      expect(record.payload.context).toBe(prior.payload.context); expect(record.payload.provenance.copySha256).toBe(prior.payload.provenance.copySha256);
+      expect(record.payload.provenance.sourceSha256).toBe(changed.authoringSourceChecksum);
+      expect(record.review.contentChecksum).not.toBe(prior.review.contentChecksum); expect(getBookyDialogueContentChecksum(record.payload)).toBe(record.review.contentChecksum);
+      expect(getBookyDialogueChecksum({ payload: record.payload, review: record.review })).toBe(record.checksum);
+    }
+    for (const definition of changed.definitions) {
+      const prior = original.definitions.find(item => item.locale === definition.locale)!;
+      expect(getBookyJourneyChecksum(definition)).not.toBe(getBookyJourneyChecksum(prior));
+      expect(changed.definitionsChecksums.find(item => item.locale === definition.locale)!.checksum).toBe(getBookyJourneyChecksum(definition));
+      const fact = definition.nodes.find(node => node.kind === "sourced-fact")!;
+      expect(getBookyJourneyFactChecksum(fact.fact, fact.entity!, fact.screen)).not.toBeNull();
+      for (const binding of fact.fact!.dialogues) expect(binding.contentChecksum).toBe(factRecord(changed, binding.locale).review.contentChecksum);
+      expect(definition.nodes.find(node => node.kind === "activity")!.activity).toEqual(prior.nodes.find(node => node.kind === "activity")!.activity);
+    }
+  });
+
+  it("rejects malformed imports and independently rehashed source or derived prerequisite tampering through complete regeneration", () => {
+    const value = variantValue(); value.prerequisites = [{ id: "required.route", version: 4 }];
+    const serialized = JSON.stringify(draft(value));
+    for (const references of [null, [], [{ id: "required", version: 0 }], [{ id: value.id, version: 1 }], [{ id: "required", version: 1, completed: true }]]) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized); Object.assign(changed.authoringSource.input, { prerequisites: references });
+      expect(parseBookyJourneyDraft(JSON.stringify(changed), catalog()).ok).toBe(false);
+    }
+    for (const change of [
+      (changed: Mutable<BookyJourneyDraft>) => { changed.authoringSource.input.prerequisites![0].version++; changed.authoringSourceChecksum = contentRecordHash(changed.authoringSource); },
+      (changed: Mutable<BookyJourneyDraft>) => { delete changed.authoringSource.input.prerequisites; changed.authoringSourceChecksum = contentRecordHash(changed.authoringSource); },
+      (changed: Mutable<BookyJourneyDraft>) => {
+        for (const definition of changed.definitions) definition.prerequisites[0].version++;
+        changed.definitionsChecksums = changed.definitions.map(definition => ({ locale: definition.locale, checksum: getBookyJourneyChecksum(definition)! }));
+      },
+      (changed: Mutable<BookyJourneyDraft>) => { Object.assign(changed.definitions[0].prerequisites[0], { completed: true }); },
+      (changed: Mutable<BookyJourneyDraft>) => { Object.assign(changed, { releaseReady: true }); },
+    ]) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized); change(changed);
+      expect(importErrors(JSON.stringify(changed))).toContain("file");
+    }
+  });
+
+  it("deletes the optional source field to restore both actual legacy download goldens exactly after adding references", () => {
+    for (const fixture of historicalOrderlessDownloads) {
+      const value = structuredClone(fixture.input); value.prerequisites = [{ id: "required.route", version: 4 }];
+      expect(contentTextHash(JSON.stringify(draft(value, fixture.catalog), null, 2) + "\n")).not.toBe(fixture.sha256);
+      delete value.prerequisites;
+      const restored = draft(value, fixture.catalog);
+      expect(contentTextHash(JSON.stringify(restored, null, 2) + "\n")).toBe(fixture.sha256);
+      expect(Object.prototype.hasOwnProperty.call(restored.authoringSource.input, "prerequisites")).toBe(false);
+      expect(restored.definitions.every(definition => definition.prerequisites.length === 0)).toBe(true);
+    }
+  });
+
+  it("keeps unresolved references draft-only without changing adult profile matching or inventing availability and review authority", () => {
+    const value = input(), ordinary = draft(value); value.prerequisites = [{ id: "unresolved.other-route", version: 6 }];
+    const configured = draft(value);
+    for (const definition of configured.definitions) {
+      expect(definition.prerequisites).toEqual([{ id: "unresolved.other-route", version: 6 }]);
+      expect(evaluateBookyJourneyDraftPreviewProfile(definition, { age: 30, readingLevel: "plain" }))
+        .toEqual(evaluateBookyJourneyDraftPreviewProfile(ordinary.definitions.find(item => item.locale === definition.locale)!, { age: 30, readingLevel: "plain" }));
+    }
+    for (const entries of [configured.journeyApprovals, configured.dialogueApprovals, configured.currentVersions, configured.availability]) expect(entries).toEqual([]);
+    expect([configured.humanReviewed, configured.childApproved, configured.narrationApproved, configured.releaseReady]).toEqual([false, false, false, false]);
+    expect(configured.dialogues.every(record => record.review.status === "draft")).toBe(true);
   });
 });
