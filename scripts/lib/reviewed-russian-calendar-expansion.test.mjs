@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { projectReviewedNextSecurityFollowup } from './reviewed-next-security-followup.mjs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
@@ -6,7 +7,7 @@ import { checkedRussianExpansionReviewRow } from '../build-russian-calendar-expa
 import { russianCalendarExpansionAttestation as packet, russianCalendarExpansionSha256 as sha,
   projectReviewedRussianCalendarExpansion as project, isReviewedRussianCalendarExpansionAddition as addition } from './reviewed-russian-calendar-expansion.mjs';
 
-const read = path => readFileSync(path, 'utf8').replace(/\r\n?/gu, '\n');
+const read = path => projectReviewedNextSecurityFollowup(path, readFileSync(path, 'utf8'));
 const historical = path => execFileSync('git', ['-c', `safe.directory=${process.cwd()}`, 'show', `${packet.baselineCommitSha}:${path}`],
   { encoding: 'utf8', maxBuffer: 50 * 1024 * 1024 }).replace(/\r\n?/gu, '\n');
 const review = JSON.parse(read('reports/r10/calendar/russian-expansion-source-review-20261001.json'));

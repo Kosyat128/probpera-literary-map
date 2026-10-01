@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "checkedAt": "2026-10-01T21:40:25.009Z",
-  "scope": "Four reviewed source-specific detail extraction profiles; no factual gates or publication controls relaxed.",
+  "scope": "Five reviewed source-specific detail extraction profiles; no factual gates or publication controls relaxed.",
   "samples": [
     {
       "sourceId": "pen-deutschland-de",
@@ -105,6 +105,21 @@
       "detailTextSelector": ".entry-content",
       "articleHeadline": "Roger Chartier, cazador furtivo",
       "articleTextCharacters": 11356,
+      "reviewMethod": "agent_review_of_complete_captured_html_and_scoped_article_dom",
+      "publicationGranted": false
+    },
+    {
+      "sourceId": "placer-lectura",
+      "url": "https://elplacerdelalectura.com/2026/10/camila-fabbri-regresa-con-el-ano-de-la-serpiente-horror-domestico-y-tension-psicologica.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T21:34:02.225Z",
+      "responseSha256": "671ee9c45fc1420d7183b63693e54f25bda6b51ad7c89a7af82deb77a5b9daa3",
+      "documentBytes": 193841,
+      "retainedLocalInput": ".tmp/news-expanded-a-20261002/source-documents/034.bin",
+      "detailHeadlineSelector": ".inside-page-hero h1, .inside-page-hero h2",
+      "detailTextSelector": ".entry-content",
+      "articleHeadline": "Camila Fabbri regresa con El año de la serpiente: horror doméstico y tensión psicológica",
+      "articleTextCharacters": 5407,
       "reviewMethod": "agent_review_of_complete_captured_html_and_scoped_article_dom",
       "publicationGranted": false
     }

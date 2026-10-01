@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { projectReviewedNextSecurityFollowup } from './reviewed-next-security-followup.mjs';
 import { readFileSync } from 'node:fs';
 import { projectReviewedR10SourcePunctuation } from './reviewed-r10-source-punctuation.mjs';
 
@@ -11,7 +12,7 @@ export const undiciSecurityFollowupSha256=source=>createHash('sha256').update(so
 /** Reverse only the two lock entries and six exact read-boundary fragments.
  * Missing/duplicated fragments reject; unrelated bytes reach historical locks. */
 export function projectReviewedUndiciSecurityFollowup(relativePath,source) {
-  let projected=projectReviewedR10SourcePunctuation(relativePath,source);
+  let projected=projectReviewedR10SourcePunctuation(relativePath,projectReviewedNextSecurityFollowup(relativePath,source));
   const deltas=undiciSecurityFollowupAttestation.projections.filter(delta=>delta.path===relativePath);
   if(!deltas.length)return projected;
   if(undiciSecurityFollowupSha256(projected)===undiciSecurityFollowupAttestation.sourceBaselines[relativePath])return projected;

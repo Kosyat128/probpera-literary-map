@@ -54,14 +54,14 @@ export async function newsSemanticRevision(item) {
   const { id, title, summary, source, category, kind, eventDate, publishedAt, eventKey } = item;
   return newsSocialPayloadDigest({ id, title, summary, source, category, kind, eventDate, publishedAt, eventKey });
 }
-function telegramPhotoCaption({ title, summary, dateLine, source, credit }) {
+function telegramPhotoCaption({ title, summary, dateLine, source, credit }, visibleUrls = true) {
   let caption = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}\n\nИсточник: `;
   const entities = [{ type: "bold", offset: 0, length: title.length },
     { type: "text_link", offset: caption.length, length: source.name.length, url: source.url }];
-  caption += `${source.name}\n\n`;
+  caption += `${source.name}${visibleUrls ? `\n${source.url}` : ""}\n\n`;
   const brand = "Литературная повестка «Пробы пера»";
   entities.push({ type: "text_link", offset: caption.length, length: brand.length, url: NEWS_SECTION_URL });
-  caption += `${brand}\n\nИзображение: ${credit}`;
+  caption += `${brand}${visibleUrls ? `\n${NEWS_SECTION_URL}` : ""}\n\nИзображение: ${credit}`;
   return { caption, caption_entities: entities };
 }
 /** Exact native payload shared by preview and dispatch. No source HTML or invented details. */
@@ -83,7 +83,11 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
   const mediaPending = !media && resolution && resolution.status !== "held";
   if (!media && resolution) fallbackReason = `media_discovery_${resolution.status}:${resolution.reason || "asset_unavailable"}`;
   if (media) {
-    const telegram = telegramPhotoCaption({ title, summary, dateLine, source: item.source, credit: media.credit });
+    const captionInput = { title, summary, dateLine, source: item.source, credit: media.credit };
+    let telegram = telegramPhotoCaption(captionInput);
+    // Native clickable labels preserve both links and all facts when a long
+    // article URL would otherwise exceed Telegram's photo-caption limit.
+    if (telegram.caption.length > 1024) telegram = telegramPhotoCaption(captionInput, false);
     const caption = platform === "telegram" ? telegram.caption : `${text}\n\nИзображение: ${media.credit}`;
     if (caption.length > (platform === "telegram" ? 1024 : 16000)) {
       media = null; fallbackReason = "required_credit_or_caption_exceeds_limit";
@@ -93,7 +97,7 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
   }
   const textRevision = await newsSemanticRevision(item);
   // A template edit must update an already sent post at its existing remote ID.
-  const formatRevision = item.kind === "news" ? "news-without-event-date-v1" : undefined;
+  const formatRevision = "source-then-site-visible-links-v2";
   const messageRevision = formatRevision ? await newsSocialPayloadDigest({ textRevision, formatRevision }) : textRevision;
   // The durable identity is unchanged. A new asset or credit creates an edit revision.
   const revision = media ? await newsSocialPayloadDigest({ textRevision: messageRevision, media: {

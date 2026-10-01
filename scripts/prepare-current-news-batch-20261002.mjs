@@ -3,6 +3,7 @@
 // subsequent --check runs use the self-contained evidence report and require no network.
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
+import {load} from 'cheerio';
 import {parseArgs} from 'node:util';
 import {pathToFileURL} from 'node:url';
 import {mergeReviewedBatch} from './apply-literary-news-batch.mjs';
@@ -14,6 +15,14 @@ const batchId='current-news-reviewed-20261002';
 const reportFile=new URL(`../reports/r10/publication/${batchId}.json`,import.meta.url);
 const receiptFile=new URL(`../reports/r10/publication/${batchId}-review-preview.json`,import.meta.url);
 const hash=(value)=>createHash('sha256').update(typeof value==='string'?value:JSON.stringify(value)).digest('hex');
+// Evidence is plain text, never an HTML fragment for rendering. Parse any
+// retained markup structurally so malformed tags cannot survive a regex pass.
+export function articleEvidenceText(source){
+  if(typeof source!=='string')throw new Error('article_evidence_text_required');
+  const document=load(source);
+  document('script,style,noscript,template,svg,form').remove();
+  return document.root().text();
+}
 const row=(index,id,category,region,publishedDate,titleRu,titleEn,summaryRu,summaryEn,facts,proofQuotes,options={})=>({
   index,id,category,region,publishedDate,title:{ru:titleRu,en:titleEn},summary:{ru:summaryRu,en:summaryEn},facts,proofQuotes,...options,
 });
@@ -327,7 +336,7 @@ export async function prepareBatch({input,current=new Date()}){
     const sourceRow=input[r.index],detail=sourceRow?.evidence;
     if(!detail||detail.httpStatus!==200||!validTimestamp(detail.accessedAt)||!/^[a-f0-9]{64}$/u.test(detail.responseSha256||''))
       throw new Error(`source_response_unverified:${r.id}`);
-    const plain=detail.text.replace(/<[^>]+>/gu,'');
+    const plain=articleEvidenceText(detail.text);
     for(const quote of r.proofQuotes)if(!`${sourceRow.title}\n${detail.headline}\n${plain}`.includes(quote))throw new Error(`proof_quote_not_grounded:${r.id}:${quote}`);
     const basis=publicationBasis(sourceRow,r),publishedAt=r.dateOnly?r.publishedDate:basis.value;
     const record={id:r.id,category:r.category,kind:'news',eventDate:r.eventDate||r.publishedDate,publishedAt,

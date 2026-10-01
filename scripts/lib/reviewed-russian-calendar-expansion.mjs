@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { projectReviewedNextSecurityFollowup } from './reviewed-next-security-followup.mjs';
 import { readFileSync } from 'node:fs';
 
 // An additive agent evidence review; no human review or release acceptance.
@@ -11,7 +12,7 @@ export const reviewedRussianCalendarExpansionAdditionPaths = new Set(
 
 /** Reverse only exact new date-packet fragments; preserve every unrelated byte. */
 export function projectReviewedRussianCalendarExpansion(relativePath, source) {
-  let projected = source.replace(/\r\n?/gu, '\n');
+  let projected = projectReviewedNextSecurityFollowup(relativePath, source);
   const deltas = russianCalendarExpansionAttestation.projections.filter(delta => delta.path === relativePath);
   if (!deltas.length) return projected;
   if (deltas.every(delta => !projected.includes(delta.after)

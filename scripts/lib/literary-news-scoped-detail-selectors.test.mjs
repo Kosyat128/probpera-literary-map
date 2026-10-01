@@ -49,3 +49,14 @@ test('Letras Libres selects article content rather than earlier recommendation c
   assert.match(detail.text,/circulation of books/);assert.match(detail.text,/print culture/);
   assert.doesNotMatch(detail.text,/Username|password|most-read|subscription country|Unrelated sidebar/);
 });
+
+test('Placer de la Lectura keeps the hero headline instead of a nested heading about an older book',()=>{
+  const source={...LITERARY_NEWS_SOURCES.find(s=>s.id==='placer-lectura'),
+    detailHeadlineSelector:'.inside-page-hero h1, .inside-page-hero h2',detailTextSelector:'.entry-content'};
+  const detail=extractDailyNewsDetail(`<div class="inside-page-hero"><h1>Camila Fabbri returns with El año de la serpiente</h1></div>
+    <main><article><div class="entry-content"><p>The new novel is scheduled for October 7, 2026.</p>
+      <h1>El día que apagaron la luz: an older book</h1><p>A retrospective bibliography follows.</p></div></article></main>`,source.url,source);
+  assert.equal(detail.headline,'Camila Fabbri returns with El año de la serpiente');
+  assert.match(detail.text,/October 7, 2026/);assert.match(detail.text,/retrospective bibliography/);
+  assert.notEqual(detail.headline,'El día que apagaron la luz: an older book');
+});

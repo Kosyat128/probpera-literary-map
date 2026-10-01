@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-NEXT-SECURITY-FOLLOWUP-20261002",
+  "baselineCommitSha": "59350b6a5728b06403fcfa2d705528da57684ed6",
+  "historicalPinsChanged": false,
+  "authorization": {
+    "userAuthorized": true,
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "allowedProjectionPaths": [
+    "scripts/lib/reviewed-undici-security-followup.mjs",
+    "scripts/lib/reviewed-undici-security-followup.test.mjs",
+    "scripts/lib/reviewed-russian-calendar-expansion.mjs",
+    "scripts/lib/reviewed-russian-calendar-expansion.test.mjs",
+    "apps/admin/package.json",
+    "package-lock.json"
+  ],
+  "sourceBaselines": {
+    "scripts/lib/reviewed-undici-security-followup.mjs": "b46231f13050e0545bb9e02bbeee7997c698a23121de2a733de4f545c49429ba",
+    "scripts/lib/reviewed-undici-security-followup.test.mjs": "bf3afd8e62d19dc0a33b19ccc8827ed7e4aaceceec71164ccccb89e920d46324",
+    "scripts/lib/reviewed-russian-calendar-expansion.mjs": "e54536d9f103cd4aed10fb025c2c8c6281b4260aecb1375aa25c734cba1f3132",
+    "scripts/lib/reviewed-russian-calendar-expansion.test.mjs": "672ce29d89afd174cb57771f46a99a6272b322bf5df3ec6d4487714357aa7bb6",
+    "apps/admin/package.json": "782d32ba20266076c2fd0ba7b4cab62220520ed23bfbcf1544d6c90648843280",
+    "package-lock.json": "d39f63abece7398e39ac982bc946db227bb1c6c5085014b65208dc66a4ab71d5"
+  },
+  "reviewedSources": {
+    "scripts/lib/reviewed-undici-security-followup.mjs": "e495191da6be9edf8d345afc5a784bd2a017df7998c4a7e5e51069ea93db4c45",
+    "scripts/lib/reviewed-undici-security-followup.test.mjs": "ac1516b91d412bbd46aa3630387c939dd0300ca1b1315c00c5cf1be347bf1dd4",
+    "scripts/lib/reviewed-russian-calendar-expansion.mjs": "fc0d366251fc419c410ccb18bd3b0e269272f582591798a4f17cf65ba02b6593",
+    "scripts/lib/reviewed-russian-calendar-expansion.test.mjs": "17d0a68c0fb964cca85d9bc1baf90fccbb218fdbd26ed32930289316b1ea878c",
+    "apps/admin/package.json": "9c7011a27d6e2fd012c6dc7b46716b681b6950487c34c622c6025087aa616792",
+    "package-lock.json": "a843cb079f56ec07db5742fe41bfe2041e58523eabc711a6ca5a327904bd565c"
+  },
+  "projections": [
+    {
+      "id": "next-read-1",
+      "path": "scripts/lib/reviewed-undici-security-followup.mjs",
+      "before": "import { createHash } from 'node:crypto';",
+      "after": "import { createHash } from 'node:crypto';\nimport { projectReviewedNextSecurityFollowup } from './reviewed-next-security-followup.mjs';"
+    },
+    {
+      "id": "next-read-2",
+      "path": "scripts/lib/reviewed-undici-security-followup.mjs",
+      "before": "let projected=projectReviewedR10SourcePunctuation(relativePath,source);",
+      "after": "let projected=projectReviewedR10SourcePunctuation(relativePath,projectReviewedNextSecurityFollowup(relativePath,source));"
+    },
+    {
+      "id": "next-read-3",
+      "path": "scripts/lib/reviewed-undici-security-followup.test.mjs",
+      "before": "import {readFileSync} from 'node:fs';",
+      "after": "import {readFileSync} from 'node:fs';\nimport {projectReviewedNextSecurityFollowup} from './reviewed-next-security-followup.mjs';"
+    },
+    {
+      "id": "next-read-4",
+      "path": "scripts/lib/reviewed-undici-security-followup.test.mjs",
+      "before": "const read=path=>projectReviewedR10SourcePunctuation(path,projectReviewedRussianCalendarExpansion(path,readFileSync(path,'utf8')));",
+      "after": "const read=path=>projectReviewedR10SourcePunctuation(path,projectReviewedRussianCalendarExpansion(path,projectReviewedNextSecurityFollowup(path,readFileSync(path,'utf8'))));",
+      "earlierBeforeVariants": [
+        "const read=path=>projectReviewedR10SourcePunctuation(path,readFileSync(path,'utf8'));"
+      ]
+    },
+    {
+      "id": "next-read-5",
+      "path": "scripts/lib/reviewed-russian-calendar-expansion.mjs",
+      "before": "import { createHash } from 'node:crypto';",
+      "after": "import { createHash } from 'node:crypto';\nimport { projectReviewedNextSecurityFollowup } from './reviewed-next-security-followup.mjs';"
+    },
+    {
+      "id": "next-read-6",
+      "path": "scripts/lib/reviewed-russian-calendar-expansion.mjs",
+      "before": "let projected = source.replace(/\\r\\n?/gu, '\\n');",
+      "after": "let projected = projectReviewedNextSecurityFollowup(relativePath, source);"
+    },
+    {
+      "id": "next-read-7",
+      "path": "scripts/lib/reviewed-russian-calendar-expansion.test.mjs",
+      "before": "import { readFileSync } from 'node:fs';",
+      "after": "import { readFileSync } from 'node:fs';\nimport { projectReviewedNextSecurityFollowup } from './reviewed-next-security-followup.mjs';"
+    },
+    {
+      "id": "next-read-8",
+      "path": "scripts/lib/reviewed-russian-calendar-expansion.test.mjs",
+      "before": "const read = path => readFileSync(path, 'utf8').replace(/\\r\\n?/gu, '\\n');",
+      "after": "const read = path => projectReviewedNextSecurityFollowup(path, readFileSync(path, 'utf8'));"
+    },
+    {
+      "id": "next-package-9",
+      "path": "apps/admin/package.json",
+      "before": "    \"@tiptap/react\": \"3.30.5\",\n    \"@tiptap/starter-kit\": \"3.30.5\",\n    \"cheerio\": \"^1.2.0\",\n    \"next\": \"16.3.3\",\n    \"react\": \"^18.3.1\",\n    \"react-dom\": \"^18.3.1\",\n    \"sanitize-html\": \"^2.17.7\",\n",
+      "after": "    \"@tiptap/react\": \"3.30.5\",\n    \"@tiptap/starter-kit\": \"3.30.5\",\n    \"cheerio\": \"^1.2.0\",\n    \"next\": \"16.3.8\",\n    \"react\": \"^18.3.1\",\n    \"react-dom\": \"^18.3.1\",\n    \"sanitize-html\": \"^2.17.7\",\n"
+    },
+    {
+      "id": "next-package-10",
+      "path": "package-lock.json",
+      "before": "        \"@tiptap/react\": \"3.30.5\",\n        \"@tiptap/starter-kit\": \"3.30.5\",\n        \"cheerio\": \"^1.2.0\",\n        \"next\": \"16.3.3\",\n        \"react\": \"^18.3.1\",\n        \"react-dom\": \"^18.3.1\",\n        \"sanitize-html\": \"^2.17.7\",\n",
+      "after": "        \"@tiptap/react\": \"3.30.5\",\n        \"@tiptap/starter-kit\": \"3.30.5\",\n        \"cheerio\": \"^1.2.0\",\n        \"next\": \"16.3.8\",\n        \"react\": \"^18.3.1\",\n        \"react-dom\": \"^18.3.1\",\n        \"sanitize-html\": \"^2.17.7\",\n"
+    },
+    {
+      "id": "next-package-11",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/env\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/env/-/env-16.3.3.tgz\",\n      \"integrity\": \"sha512-U2eYQRwXj+dsqxV79zFqExDdatnNY/ZWc2nsJU1p/OgT7fd3dXwlF6OjYaFQCfMoeTA19PWq+wVmYgimVA+V+g==\",\n      \"license\": \"MIT\"\n    },\n    \"node_modules/@next/swc-darwin-arm64\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.3.3.tgz\",\n      \"integrity\": \"sha512-8Hiv32QJPwdV6KYJ8meR9SBA061tQqnIKTJDocvOXlEQqib0xMFpzArosuffFUUc0sslbh7QQ8a3Yey1QV8EIw==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/env\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/env/-/env-16.3.8.tgz\",\n      \"integrity\": \"sha512-Al9zqHVV7TJv0eFuOU4U7Lvv74PTih4Ch63sk2xCIpSTkE3udFnaOcnzP2lQVymiL7yS9Cj2iClUXlR3EQ5sEw==\",\n      \"license\": \"MIT\"\n    },\n    \"node_modules/@next/swc-darwin-arm64\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.3.8.tgz\",\n      \"integrity\": \"sha512-2JPRMh2nmQG5CiL7cXGL9AGwnPWJQ//cTtAUCT+w511QHk79SYz3LGv/pc5X643B/WEO0rvu3Yww0hqwt3kgeA==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n"
+    },
+    {
+      "id": "next-package-12",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-darwin-x64\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-16.3.3.tgz\",\n      \"integrity\": \"sha512-A1lgKgwVchRYmSe467zdwhxT9040dd8lH+o65sL5Jet8fjB4kegw/rDyPIpYVRb6jAqwXFOJpjIXJLxQKLiE3A==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-darwin-x64\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-16.3.8.tgz\",\n      \"integrity\": \"sha512-GZtCCOBKJ4leVIT/Th0llWKhD1ca92lzbQiS5R5ON9QkoiFnilFsebDae1JU2a3HWoKMEmEZWGs1AGLavVM72Q==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n"
+    },
+    {
+      "id": "next-package-13",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-linux-arm64-gnu\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-16.3.3.tgz\",\n      \"integrity\": \"sha512-bf0FIssMFueU2dm7vQEWWxk0c8UjKTdW0yzuh0sQsD8pf1+KCLDdaqhYZNMYGmXwEOiHAUzgBKudovIlcvvBjg==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-linux-arm64-gnu\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-16.3.8.tgz\",\n      \"integrity\": \"sha512-O659ygeQYqneJ1fBKMpFxIFqYkYswu8IAS1OCKK/4f3ZgJJm1dRz4fVJZRi/kLLWjnBKnebOePA4WNv+sV1pVA==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n"
+    },
+    {
+      "id": "next-package-14",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-linux-arm64-musl\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-16.3.3.tgz\",\n      \"integrity\": \"sha512-W7viwCk9JY/cAkdz/A273rd5bb3RgT/IHwR7Upv90tunjBWNtAAhGhoecHh+teRNRSinuAFmE+l7fwZ4YKkrXg==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-linux-arm64-musl\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-16.3.8.tgz\",\n      \"integrity\": \"sha512-dSjKSyWpzxoO1d3DIZZcP4XJcNaKeLmxQMFOiYl5vuBRMmweIqnAhty8tAmRsvTss779cK1FtYnDMj40e4TQlg==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n"
+    },
+    {
+      "id": "next-package-15",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-linux-x64-gnu\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-16.3.3.tgz\",\n      \"integrity\": \"sha512-0W46zw1N3ODpI6n0GeivHvvob1pooozgZVqy65k0mh4/7vr+FbY9+WpHzNVXjHipJf/A3FDheBG19H1s5A25rA==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-linux-x64-gnu\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-16.3.8.tgz\",\n      \"integrity\": \"sha512-lbqOuz3RPRcv+o9msNsJw5x4+Y1ZwPTs6vmL6DCf7i0fZfvng/F59wyeDwqHIvV0mK//RBy/jJkZ+nCKsSMXjQ==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n"
+    },
+    {
+      "id": "next-package-16",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-linux-x64-musl\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-16.3.3.tgz\",\n      \"integrity\": \"sha512-H4mBso8ZTMBPtdT0PN0pBx2ayTvQuTuvS6qT13d77yVFJXAPCxkyIhLTmdMaGTJs0krQYI/qpzdHijCeihXhbg==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-linux-x64-musl\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-16.3.8.tgz\",\n      \"integrity\": \"sha512-+316WswI8ScVgZeUd+1KGaXkHhaYQzCjvH/05TZSpJ8zBizb1a4G7DtO7F12jcBIqMOtsz9ji1t48fmKtzqsGA==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n"
+    },
+    {
+      "id": "next-package-17",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-win32-arm64-msvc\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-16.3.3.tgz\",\n      \"integrity\": \"sha512-cTMUJpcEGmeywofCUfhR+rSsoE33+rVPnPEYNTNdLNlsOeEg/vktOsKUSTb28vUGqD2jkm4Zaskcwn7OCI6FQg==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-win32-arm64-msvc\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-16.3.8.tgz\",\n      \"integrity\": \"sha512-ji0gd4kMYUxO+1fJBIbiBVRCjzG/lloiyCccnlebvb1ZJ5qXCPZqYg4Jl1DrrixnWNMKylzgpmMWx0yNDYXlzw==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n"
+    },
+    {
+      "id": "next-package-18",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-win32-x64-msvc\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.3.3.tgz\",\n      \"integrity\": \"sha512-2VR4cTBzHXaBjnGsuH6GyJjENzQOmHeAh11uY1iUhjm3j5dEUrVJuUj+VL78jaGi/Dik8xS76zEj18BsFhlVZQ==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-win32-x64-msvc\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.3.8.tgz\",\n      \"integrity\": \"sha512-WcTlaKt/TWkh5kUjdJcUmB1XgZ+1c6fz4Y9fDHL73YNSdGaUWjceeWrrlwF0nv19iABYWC4iAq1oX1w4Bn0vfg==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n"
+    },
+    {
+      "id": "next-package-19",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/next\": {\n      \"version\": \"16.3.3\",\n      \"resolved\": \"https://registry.npmjs.org/next/-/next-16.3.3.tgz\",\n      \"integrity\": \"sha512-tuRTx1nQ/yVw83cwJBo9F+njGUgMn3UHQycreWHB8XsStvvAh1AthbI8/4IpKnFaF58F+iSiHejYOlMQ/eq83g==\",\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@next/env\": \"16.3.3\",\n        \"@swc/helpers\": \"0.5.23\",\n        \"baseline-browser-mapping\": \"^2.9.19\",\n        \"caniuse-lite\": \"^1.0.30001579\",\n",
+      "after": "      }\n    },\n    \"node_modules/next\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/next/-/next-16.3.8.tgz\",\n      \"integrity\": \"sha512-U7QEZaTini6wKrb8A8hqLLqYQyCetegKjCpJOyxk642vWoMoU1x5PyZCJFvgYgiptA8xc5j/9xYlZFO7w9Sjmw==\",\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@next/env\": \"16.3.8\",\n        \"@swc/helpers\": \"0.5.23\",\n        \"baseline-browser-mapping\": \"^2.9.19\",\n        \"caniuse-lite\": \"^1.0.30001579\",\n"
+    },
+    {
+      "id": "next-package-20",
+      "path": "package-lock.json",
+      "before": "        \"node\": \">=20.9.0\"\n      },\n      \"optionalDependencies\": {\n        \"@next/swc-darwin-arm64\": \"16.3.3\",\n        \"@next/swc-darwin-x64\": \"16.3.3\",\n        \"@next/swc-linux-arm64-gnu\": \"16.3.3\",\n        \"@next/swc-linux-arm64-musl\": \"16.3.3\",\n        \"@next/swc-linux-x64-gnu\": \"16.3.3\",\n        \"@next/swc-linux-x64-musl\": \"16.3.3\",\n        \"@next/swc-win32-arm64-msvc\": \"16.3.3\",\n        \"@next/swc-win32-x64-msvc\": \"16.3.3\",\n        \"sharp\": \"^0.35.3\"\n      },\n      \"peerDependencies\": {\n        \"@opentelemetry/api\": \"^1.1.0\",\n",
+      "after": "        \"node\": \">=20.9.0\"\n      },\n      \"optionalDependencies\": {\n        \"@next/swc-darwin-arm64\": \"16.3.8\",\n        \"@next/swc-darwin-x64\": \"16.3.8\",\n        \"@next/swc-linux-arm64-gnu\": \"16.3.8\",\n        \"@next/swc-linux-arm64-musl\": \"16.3.8\",\n        \"@next/swc-linux-x64-gnu\": \"16.3.8\",\n        \"@next/swc-linux-x64-musl\": \"16.3.8\",\n        \"@next/swc-win32-arm64-msvc\": \"16.3.8\",\n        \"@next/swc-win32-x64-msvc\": \"16.3.8\",\n        \"sharp\": \"^0.35.4\"\n      },\n      \"peerDependencies\": {\n        \"@opentelemetry/api\": \"^1.1.0\",\n"
+    },
+    {
+      "id": "next-package-21",
+      "path": "package-lock.json",
+      "before": "        }\n      }\n    },\n    \"node_modules/next/node_modules/postcss\": {\n      \"version\": \"8.5.23\",\n      \"resolved\": \"https://registry.npmjs.org/postcss/-/postcss-8.5.23.tgz\",\n      \"integrity\": \"sha512-g50586zr4bZmwFiTlflMu8E0bDTb5I5gertgwAKmsdUlTQIhZtunzUlD1WSzwcVWPoAVpsrA6vlfCD7oXvRwgg==\",\n      \"funding\": [\n        {\n          \"type\": \"opencollective\",\n          \"url\": \"https://opencollective.com/postcss/\"\n        },\n        {\n          \"type\": \"tidelift\",\n          \"url\": \"https://tidelift.com/funding/github/npm/postcss\"\n        },\n        {\n          \"type\": \"github\",\n          \"url\": \"https://github.com/sponsors/ai\"\n        }\n      ],\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"nanoid\": \"^3.3.16\",\n        \"picocolors\": \"^1.1.1\",\n        \"source-map-js\": \"^1.2.1\"\n      },\n      \"engines\": {\n        \"node\": \"^10 || ^12 || >=14\"\n      }\n    },\n    \"node_modules/node-domexception\": {\n      \"version\": \"1.0.0\",\n      \"resolved\": \"https://registry.npmjs.org/node-domexception/-/node-domexception-1.0.0.tgz\",\n",
+      "after": "        }\n      }\n    },\n    \"node_modules/node-domexception\": {\n      \"version\": \"1.0.0\",\n      \"resolved\": \"https://registry.npmjs.org/node-domexception/-/node-domexception-1.0.0.tgz\",\n"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/dependency-security-reviewed-20260912.json",
+      "sha256Lf": "f1a8361822601a0d1b9761d1a6ebce7bb0a00a13c9d05a45a8055fa21718811c",
+      "jsonSha256": "a019f91983b719d33840260482ccc979f351b51f039ff53fe4ef1e20c13489d8"
+    },
+    {
+      "path": "scripts/governance/undici-security-followup-reviewed-20260930.json",
+      "sha256Lf": "6e38b20b86d86437cfacd9d9419641ce2c385a562704d6e76d35bbd3b2966ee8",
+      "jsonSha256": "bdfa16eeae3719d13585559b56f693bd50e44b15cedb84c19b19242456daa997"
+    },
+    {
+      "path": "scripts/governance/russian-calendar-expansion-reviewed-20261001.json",
+      "sha256Lf": "91461d8240e4ce2142ae99e0239f42b63e6f121442dd3ff4a1765122ebfe68b4",
+      "jsonSha256": "bc1330bda023dc1fe9172a6275230d51124d92c70475fe643c3e5d8dd9e9bd49"
+    },
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "jsonSha256": "7f277e58d5e0a46f7bc12a87e606304e63d05cf8a9c48781331d151cbbafef69"
+    }
+  ],
+  "evidence": {
+    "path": "reports/r10/next-security-reviewed-20261002.json",
+    "sha256Lf": "e594122acaa1abe28d1566586c9446a4d67db2975faa6a64be20944023429d8a"
+  },
+  "changedPackages": [
+    "apps/admin",
+    "node_modules/@next/env",
+    "node_modules/@next/swc-darwin-arm64",
+    "node_modules/@next/swc-darwin-x64",
+    "node_modules/@next/swc-linux-arm64-gnu",
+    "node_modules/@next/swc-linux-arm64-musl",
+    "node_modules/@next/swc-linux-x64-gnu",
+    "node_modules/@next/swc-linux-x64-musl",
+    "node_modules/@next/swc-win32-arm64-msvc",
+    "node_modules/@next/swc-win32-x64-msvc",
+    "node_modules/next",
+    "node_modules/next/node_modules/postcss"
+  ]
+}
