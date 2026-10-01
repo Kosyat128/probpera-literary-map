@@ -698,8 +698,64 @@ test('optional adult RU EN author task uses current semantic validation and pres
   const untranslatedOption = firstChoice.locator('option').filter({ hasText: 'Тестовый писатель Б' });
   await expect(untranslatedOption).toHaveAttribute('disabled', '');
   expect(await untranslatedOption.evaluate(option => option.disabled)).toBe(true);
+  const authorSearch = page.locator('[data-booky-author-search]');
+  const authorQuery = authorSearch.getByRole('searchbox', { name: 'Поиск авторов задания (RU / EN / ID)', exact: true });
+  const authorResult = authorSearch.locator('[data-booky-author-search-result]');
+  const clearAuthorQuery = authorSearch.getByRole('button', { name: 'Очистить поиск авторов', exact: true });
+  await expect(authorSearch).toHaveCount(1); await expect(authorQuery).toHaveValue(''); await expect(clearAuthorQuery).toBeDisabled();
+  await expect(authorResult).toHaveText('Совпадений: 4.');
+  const originalAuthorSearchId = await authorQuery.getAttribute('id'); expect(originalAuthorSearchId).toBeTruthy();
+  expect(await authorQuery.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id => document.getElementById(id)))).toBe(true);
+  for (const [query, count] of [
+    ['  ТЕСТОВЫЙ ПИСАТЕЛЬ В  ', 1], ['SYNTHETIC WRITER C', 1], [' WRITER-C ', 1],
+    ['ТЕСТОВАЯ СТРАНА А', 2], [' SYNTHETIC COUNTRY A ', 2], ['COUNTRY-A', 2], ['synthetic writer', 3],
+  ]) {
+    await authorQuery.fill(query); await expect(authorResult).toHaveText(`Совпадений: ${count}.`);
+    await expect(firstChoice.locator('option')).toHaveCount(count + 1); await expect(secondChoice.locator('option')).toHaveCount(count + 1);
+    await expect(firstChoice).toHaveValue(JSON.stringify(['', ''])); await expect(secondChoice).toHaveValue(JSON.stringify(['', '']));
+  }
+  expect(await firstChoice.locator('option').evaluateAll(options => options.map(option => option.value))).toEqual([
+    JSON.stringify(['', '']), JSON.stringify(['country-a', 'writer-a']), JSON.stringify(['country-b', 'writer-c']), JSON.stringify(['country-c', 'writer-d']),
+  ]);
+  await authorQuery.fill('WRITER-B'); await expect(authorResult).toHaveText('Совпадений: 1.');
+  await expect(untranslatedOption).toHaveAttribute('disabled', ''); await expect(untranslatedOption).toHaveText('Тестовый писатель Б · Тестовая страна А · EN пока не подтверждён');
+  await clearAuthorQuery.tap(); await expect(authorResult).toHaveText('Совпадений: 4.');
   await firstChoice.selectOption(JSON.stringify(['country-a', 'writer-a']));
   await secondChoice.selectOption(JSON.stringify(['country-c', 'writer-d']));
+  await authorQuery.fill('writer-a');
+  const duplicateFirstAuthor = secondChoice.locator('option[value=\'["country-a","writer-a"]\']');
+  await expect(duplicateFirstAuthor).toHaveAttribute('disabled', '');
+  await expect(firstChoice.locator('option[value=\'["country-a","writer-a"]\']')).not.toHaveAttribute('disabled', '');
+  await expect(secondChoice).toHaveValue(JSON.stringify(['country-c', 'writer-d']));
+  await authorQuery.fill('writer-c'); await page.getByRole('button', { name: 'Добавить вариант автора', exact: true }).tap();
+  const thirdChoice = page.getByRole('combobox', { name: 'Автор · вариант 3', exact: true });
+  await expect(authorQuery).toHaveValue('writer-c'); await expect(thirdChoice).toHaveValue(JSON.stringify(['', '']));
+  await thirdChoice.selectOption(JSON.stringify(['country-b', 'writer-c']));
+  for (const select of [firstChoice, secondChoice]) await expect(select.locator('option[value=\'["country-b","writer-c"]\']')).toHaveAttribute('disabled', '');
+  await page.getByRole('button', { name: 'Удалить вариант 3', exact: true }).tap(); await expect(thirdChoice).toHaveCount(0);
+  await expect(authorQuery).toHaveValue('writer-c');
+  for (const select of [firstChoice, secondChoice]) await expect(select.locator('option[value=\'["country-b","writer-c"]\']')).not.toHaveAttribute('disabled', '');
+  await authorQuery.fill('no-matching-author'); await authorQuery.focus(); await authorQuery.press('Enter'); await expect(authorQuery).toBeFocused();
+  await expect(authorResult).toHaveText('Совпадений: 0. Выбранные авторы вне результатов остаются в своих списках и не входят в число совпадений.');
+  await expect(firstChoice.locator('option')).toHaveCount(2); await expect(secondChoice.locator('option')).toHaveCount(2);
+  await expect(firstChoice).toHaveValue(JSON.stringify(['country-a', 'writer-a'])); await expect(secondChoice).toHaveValue(JSON.stringify(['country-c', 'writer-d']));
+  await authorQuery.evaluate(node => { node.closest('label').scrollIntoView({ block: 'start' }); window.scrollBy(0, -12); });
+  for (const control of [authorQuery, clearAuthorQuery, firstChoice, secondChoice]) {
+    const bounds = await control.boundingBox(); expect(bounds.height).toBeGreaterThanOrEqual(44);
+    expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.x + bounds.width).toBeLessThanOrEqual(321);
+    expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844);
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)).toBe(false);
+  const authorSearchScreenshot = testInfo.outputPath('booky-journey-activity-ru-320.png');
+  await page.screenshot({ path: authorSearchScreenshot });
+  screenshots.push({ filename: 'booky-journey-activity-ru-320.png', sha256: sha(await fs.readFile(authorSearchScreenshot)), viewport: page.viewportSize(),
+    scope: 'Actual 320px activity editor with one shared author search, zero matches and two unchanged selected authors retained in their native lists. The count excludes these selections; this image shows authoring controls, without answer-verdict, staff-session, editorial or runtime acceptance.' });
+  await activityEnabled.uncheck(); await expect(authorSearch).toHaveCount(0); await activityEnabled.check();
+  await expect(authorQuery).toHaveValue(''); await expect(authorQuery).toHaveAttribute('id', originalAuthorSearchId);
+  await expect(firstChoice).toHaveValue(JSON.stringify(['', ''])); await expect(secondChoice).toHaveValue(JSON.stringify(['', '']));
+  await firstChoice.selectOption(JSON.stringify(['country-a', 'writer-a'])); await secondChoice.selectOption(JSON.stringify(['country-c', 'writer-d']));
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls, answer: window.__activityAnswerCalls }))).toEqual({ validation: [], answer: [] });
+  expect(downloads).toEqual([]);
   const previewButton = page.getByRole('button', { name: 'Предпросмотр маршрута', exact: true });
   const downloadButton = page.getByRole('button', { name: 'Скачать черновик JSON', exact: true });
   const preview = page.locator('[data-booky-journey-preview]');
@@ -720,13 +776,18 @@ test('optional adult RU EN author task uses current semantic validation and pres
   const activityErrorAction = page.locator('[data-booky-error-target="activity"]');
   await expect(activityErrorAction).toHaveCount(1); await expect(activityOpener).toHaveAttribute('aria-invalid', 'true');
   const activityErrorIds = await activityOpener.getAttribute('aria-describedby'); expect(activityErrorIds).toBeTruthy();
+  await authorQuery.fill('writer-c'); await expect(activityOpener).toHaveAttribute('aria-invalid', 'true'); await expect(activityOpener).toHaveAttribute('aria-describedby', activityErrorIds);
   expect(await activityOpener.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id =>
     document.getElementById(id)?.querySelector('[data-booky-error-target]')?.getAttribute('data-booky-error-target') === 'activity'))).toBe(true);
   await activityOpener.tap(); await expect(activityOpener.locator('..')).not.toHaveAttribute('open', '');
   await activityErrorAction.tap(); await expect(activityOpener).toBeFocused(); await expect(activityOpener.locator('..')).toHaveAttribute('open', '');
   await expect(firstChoice).toHaveValue(JSON.stringify(['country-a', 'writer-a'])); await expect(secondChoice).toHaveValue(JSON.stringify(['country-c', 'writer-d']));
+  await expect(authorQuery).toHaveValue('writer-c');
+  await clearAuthorQuery.tap(); await expect(activityOpener).toHaveAttribute('aria-invalid', 'true'); await expect(activityOpener).toHaveAttribute('aria-describedby', activityErrorIds);
+  await authorQuery.fill('writer-c');
   expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }))).toEqual({ validation: 2, answer: 0 });
   await secondChoice.selectOption(JSON.stringify(['country-b', 'writer-c']));
+  await expect(authorQuery).toHaveValue('writer-c');
   await expect(activityErrorAction).toHaveCount(0); await expect(activityOpener).not.toHaveAttribute('aria-invalid', 'true');
   await expect(activityOpener).not.toHaveAttribute('aria-describedby', /.+/);
   await previewButton.tap();
@@ -774,6 +835,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   for (const record of draft.dialogues) expect(record.review).toMatchObject({ status: 'draft', reviewer: null, reviewedAt: null });
   for (const key of ['journeyApprovals', 'dialogueApprovals', 'currentVersions', 'availability']) expect(draft[key]).toEqual([]);
   expect(draft.releaseReady).toBe(false); expect(JSON.stringify(draft)).not.toMatch(/answerKey|correctChoice/);
+  expect(Object.hasOwn(draft.authoringSource.input, 'authorQuery')).toBe(false);
 
   const fileOpener = page.locator('summary').filter({ hasText: 'Открыть локальный черновик' });
   await expect(fileOpener.locator('..')).not.toHaveAttribute('open', '');
@@ -784,10 +846,12 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await previewButton.tap();
   await expect(preview).toBeVisible();
   const preservedPreview = await preview.innerText();
+  await authorQuery.fill('preserve-author-search');
   await upload('malformed-activity.json', Buffer.from('{'));
   await expect(page.getByRole('alert')).toBeVisible();
   await expect(routeTitle).toHaveValue('Правки перед импортом задания');
   expect(await preview.innerText()).toBe(preservedPreview);
+  await expect(authorQuery).toHaveValue('preserve-author-search');
   const beforeTamperCalls = await page.evaluate(() => window.__activityValidationCalls.length);
   const tampered = structuredClone(draft); tampered.authoringSource.input.activity.copy.ru.title = 'Подменённый вопрос';
   await upload('tampered-activity.json', Buffer.from(JSON.stringify(tampered)));
@@ -795,6 +859,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(routeTitle).toHaveValue('Правки перед импортом задания');
   expect(await preview.innerText()).toBe(preservedPreview);
   expect(await page.evaluate(() => window.__activityValidationCalls.length)).toBe(beforeTamperCalls);
+  await expect(authorQuery).toHaveValue('preserve-author-search');
   await page.evaluate(() => { window.__activityStaleNext = true; });
   await upload('stale-public-authorship-activity.json');
   await expect(page.getByRole('alert')).toContainText(semanticMessage);
@@ -802,6 +867,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   expect(await preview.innerText()).toBe(preservedPreview);
   const staleCall = await page.evaluate(() => window.__activityValidationCalls.at(-1));
   expect(staleCall.stale).toBe(true); expect(staleCall.actualHelperCalled).toBe(true); expect(staleCall.actualResult.ok).toBe(false);
+  await expect(authorQuery).toHaveValue('preserve-author-search');
 
   async function heldIndex() { await page.waitForFunction(() => window.__activityHeld); return page.evaluate(() => window.__activityHeld.index); }
   async function releaseHeld(index) {
@@ -855,6 +921,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(routeTitle).toHaveValue('Маршрут с заданием');
   await expect(page.getByLabel('Название маршрута (EN)', { exact: true })).toHaveValue('Activity journey');
   await expect(activityEnabled).toBeChecked();
+  await expect(authorQuery).toHaveValue('');
   await expect(firstChoice).toHaveValue(JSON.stringify(['country-a', 'writer-a']));
   await expect(secondChoice).toHaveValue(JSON.stringify(['country-b', 'writer-c']));
   await expect(preview).toHaveCount(0);
@@ -981,6 +1048,12 @@ test('optional adult RU EN author task uses current semantic validation and pres
     await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
     await panel.getByRole('button', { name: 'Очистить поиск', exact: true }).tap(); await panel.locator('summary').tap();
   }
+  await authorQuery.fill('no-pending-author-match'); await authorQuery.press('Enter');
+  await expect(authorResult).toHaveText('Совпадений: 0. Выбранные авторы вне результатов остаются в своих списках и не входят в число совпадений.');
+  await expect(firstChoice).toHaveValue(JSON.stringify(['country-a', 'writer-a'])); await expect(secondChoice).toHaveValue(JSON.stringify(['country-b', 'writer-c']));
+  await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  for (const kind of ['country', 'writer', 'work']) await expect(page.locator(`[data-booky-entity-search="${kind}"] input[type="search"]`)).toHaveValue('');
+  await clearAuthorQuery.tap(); await expect(authorQuery).toHaveValue('');
   expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }))).toEqual(callsBeforePendingSearch);
   expect(downloads).toHaveLength(downloadsBeforePendingSearch);
   expect({ width: await activityFrame.getAttribute('data-preview-width'), view: await preview.locator('[data-booky-preview-copy-view]').inputValue(),
@@ -1201,7 +1274,6 @@ test('optional adult RU EN author task uses current semantic validation and pres
     const p = testInfo.outputPath(filename); await page.screenshot({ path: p });
     screenshots.push({ filename, sha256: sha(await fs.readFile(p)), viewport: page.viewportSize(), scope });
   }
-  await capture('booky-journey-activity-ru-320.png', 'Actual local adult activity preview after native reopen, explicit wrong writer A and current semantic evaluation, RU320; calm wrong feedback, synthetic corpus and mocked action transport.');
   await preview.getByRole('button', { name: 'English', exact: true }).tap();
   await expect(activityStep).toHaveAttribute('lang', 'en');
   await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
@@ -1286,6 +1358,11 @@ test('optional adult RU EN author task uses current semantic validation and pres
     previewWidthChangesAndSameSelectionPreserveChoiceVerdictAndPendingLease:true, actualHeldWidthReplyStillAppliesToCurrentBoundDraft:true,
     widthChangesDoNotRequestAnswerChecksOrAdvanceStep:true, heldWidthVerdictCallIndex:heldWidthVerdict,
     localEntityQueriesAndClearPreserveHeldAnswerChoiceLeaseDraftStepWidthAndView:true, heldSearchReusesExistingWidthVerdictCallAndDoesNotAddRequestsOrDownloads:true,
+    oneSharedAuthorSearchUsesOnlyExistingLoadedWriterCountryLabelsAndIds:true, sharedAuthorSearchRuEnIdAndMultipleCountriesVerified:true,
+    emptyChoiceRemainsEmptyAndRetainedNonmatchesExcludedFromHonestCount:true, duplicateAndMissingEnglishOptionsRemainDisabled:true,
+    addAndRemoveChoiceKeepQueryAndRecomputeDuplicateAvailability:true, toggleAndSuccessfulImportClearAuthorQueryAndRejectedImportPreservesIt:true,
+    authorSearchAndClearPreserveExistingValidationErrorsAndHeldAnswerLeaseWithoutNewRequestsOrDownloads:true,
+    authorSearchKeepsMainEntityQueriesIndependentAndHasNoExportFieldOrStorageWrite:true,
     actualDraftProfileConditionHelper: true, invalidAndOutsideProfilesBlockKeyboardCheckWithoutHelperRequest: true,
     sameExplicitProfileKeepsPendingAnswer: true, newerOutsideProfileRejectsHeldAnswer: true, heldProfileVerdictCallIndex: heldProfileVerdict,
     returningToOrdinaryPreviewRestoresExplicitAnswerCheck: true, previewProfileScenarioHasNoStoredReaderPolicy: true,

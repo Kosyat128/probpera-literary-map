@@ -61,6 +61,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   }));
   const [errors, setErrors] = useState<readonly { field: string; message: string }[]>([]);
   const [entityQueries, setEntityQueries] = useState({ country: "", writer: "", work: "" });
+  const [authorQuery, setAuthorQuery] = useState("");
   const [notice, setNotice] = useState("");
   const [preview, setPreview] = useState<{ draft: BookyJourneyDraft; locale: Locale; step: number } | null>(null);
   const [previewCopyView, setPreviewCopyView] = useState<PreviewCopyView>("body");
@@ -79,6 +80,13 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [validating, setValidating] = useState(false);
   const choiceWriters = catalog.countries.flatMap((item) => item.writers.map((author) => ({ country: item, writer: author })));
   const choiceKey = (choice: { countryId: string; writerId: string }) => JSON.stringify([choice.countryId, choice.writerId]);
+  const authorSearchTerm = authorQuery.trim().toLowerCase();
+  const matchesAuthor = (item: (typeof choiceWriters)[number]) => [item.writer.label.ru, item.writer.label.en,
+    item.country.label.ru, item.country.label.en, item.writer.id, item.country.id].some((value) => value.toLowerCase().includes(authorSearchTerm));
+  const authorMatchCount = choiceWriters.filter(matchesAuthor).length;
+  const retainsAuthorSelection = choiceWriters.some((item) => !matchesAuthor(item) && input.activity?.choices.some((choice) =>
+    choiceKey(choice) === choiceKey({ countryId: item.country.id, writerId: item.writer.id })));
+  const authorSearchId = errorPrefix + "-search-activity-authors";
   useEffect(() => () => { operationSequence.current += 1; }, []);
   useEffect(() => {
     const control = optionalOrderFocus.current;
@@ -345,6 +353,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     }
   }
   function toggleActivity(enabled: boolean) {
+    setAuthorQuery("");
     update({ activity: enabled ? {
       type: "match-work-author", choices: [{ countryId: "", writerId: "" }, { countryId: "", writerId: "" }],
       copy: {
@@ -437,6 +446,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       if (sequence !== operationSequence.current) return;
       setInput(result.input);
       setEntityQueries({ country: "", writer: "", work: "" });
+      setAuthorQuery("");
       setPreview(null);
       setErrors([]);
       setNotice("");
@@ -613,6 +623,19 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           </label>
           {input.activity && <div className="site-copy-grid" data-booky-activity-editor>
             <p>Книга: {work?.label.ru || "Сначала выберите книгу"}</p>
+            <div data-booky-author-search style={{ minWidth: 0 }}>
+              <label className="field"><span>Поиск авторов задания (RU / EN / ID)</span>
+                <input id={authorSearchId} type="search" value={authorQuery} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }}
+                  aria-describedby={authorSearchId + "-help " + authorSearchId + "-result"}
+                  onChange={(event) => setAuthorQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") event.preventDefault(); }} /></label>
+              <p id={authorSearchId + "-help"}>Автор или страна: названия RU, EN и ID. Выбирайте автора в вариантах ниже.
+                Авторы без подтверждённого EN или уже выбранные в другом варианте недоступны.</p>
+              <p id={authorSearchId + "-result"} data-booky-author-search-result role="status" aria-live="polite" style={{ overflowWrap: "anywhere" }}>
+                Совпадений: {authorMatchCount}.{retainsAuthorSelection && " Выбранные авторы вне результатов остаются в своих списках и не входят в число совпадений."}
+              </p>
+              <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, maxWidth: "100%" }}
+                disabled={authorQuery === ""} onClick={() => setAuthorQuery("")}>Очистить поиск авторов</button>
+            </div>
             {input.activity.choices.map((choice, index) => <div key={index} className="site-copy-grid">
               <label className="field"><span id={`journey-choice-${index}`}>Автор · вариант {index + 1}</span>
                 <select {...fieldProps("activity.choices." + index)} aria-labelledby={`journey-choice-${index}`} value={choiceKey(choice)} onChange={(event) => {
@@ -621,7 +644,8 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                     ? { countryId: selected?.country.id || "", writerId: selected?.writer.id || "" } : item) } });
                 }}>
                   <option value={choiceKey({ countryId: "", writerId: "" })}>Выберите автора</option>
-                  {choiceWriters.map((item) => {
+                  {choiceWriters.filter((item) => matchesAuthor(item)
+                    || choiceKey(choice) === choiceKey({ countryId: item.country.id, writerId: item.writer.id })).map((item) => {
                     const key = choiceKey({ countryId: item.country.id, writerId: item.writer.id });
                     return <option key={key} value={key} disabled={!item.writer.label.en || input.activity?.choices.some((other, i) => i !== index && choiceKey(other) === key)}>
                       {item.writer.label.ru} · {item.country.label.ru}{!item.writer.label.en ? " · EN пока не подтверждён" : ""}
