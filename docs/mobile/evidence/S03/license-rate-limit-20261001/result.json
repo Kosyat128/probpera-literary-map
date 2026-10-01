@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-license-grant-rate-limit-working-validation",
+  "decision": "D251",
+  "pass": true,
+  "recordedAt": "2026-10-01T20:18:47.033Z",
+  "sourceCommit": "1430890a33e360e272da74943b17415d70575ef3",
+  "copies": [
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\apply.json",
+        "sha256": "4ae8b207239ffd18e9824214edf19a6f5da7a78fd482472e4ef5665344d16969"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/apply.json",
+        "sha256": "4ae8b207239ffd18e9824214edf19a6f5da7a78fd482472e4ef5665344d16969"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\binding.json",
+        "sha256": "87b5494ea29aa04f68a2d5ce3712fed21625ce53405c327281c3c519fa8569db"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/binding.json",
+        "sha256": "87b5494ea29aa04f68a2d5ce3712fed21625ce53405c327281c3c519fa8569db"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\cli-authoring-receipt.json",
+        "sha256": "28a52d8e8912edadde3ca06fb801c3015145719e40747d4d4429b666dd364036"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/cli-authoring-receipt.json",
+        "sha256": "28a52d8e8912edadde3ca06fb801c3015145719e40747d4d4429b666dd364036"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\source-before.json",
+        "sha256": "bf98b64118a72588be112c3fbd6fdfba6fd3302a617843ba95445f2e904382ec"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/source-before.json",
+        "sha256": "bf98b64118a72588be112c3fbd6fdfba6fd3302a617843ba95445f2e904382ec"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\source-manifest.json",
+        "sha256": "567594e26d3b1f75dd93f64f574d69ea7fadb41eaf5a54f20ad0595d538c05cf"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/source-manifest.json",
+        "sha256": "567594e26d3b1f75dd93f64f574d69ea7fadb41eaf5a54f20ad0595d538c05cf"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\source-after.json",
+        "sha256": "567594e26d3b1f75dd93f64f574d69ea7fadb41eaf5a54f20ad0595d538c05cf"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/source-after.json",
+        "sha256": "567594e26d3b1f75dd93f64f574d69ea7fadb41eaf5a54f20ad0595d538c05cf"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\current-source-manifest.json",
+        "sha256": "62bc413079ea80274683eab0c115a86f88cb5fa626df178cb4303f0dfc3f40f4"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/current-source-manifest.json",
+        "sha256": "62bc413079ea80274683eab0c115a86f88cb5fa626df178cb4303f0dfc3f40f4"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\extra-inputs-before.json",
+        "sha256": "11fb9ad2acbb0db7c8a7ddfc1409cd72c825f8664b64570e2dfe80d1d9360a21"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/extra-inputs-before.json",
+        "sha256": "11fb9ad2acbb0db7c8a7ddfc1409cd72c825f8664b64570e2dfe80d1d9360a21"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\checks.json",
+        "sha256": "c9354b153b3b31a6f8fcee9949a62eadf45fb9efb906b375e54aab712e878793"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/checks.json",
+        "sha256": "c9354b153b3b31a6f8fcee9949a62eadf45fb9efb906b375e54aab712e878793"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\source-commit.json",
+        "sha256": "f2bee514f0c01bd6f523dd2847f5ef36dc662968ad75011c2a48096a7967583c"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/source-commit.json",
+        "sha256": "f2bee514f0c01bd6f523dd2847f5ef36dc662968ad75011c2a48096a7967583c"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\vitest-report.json",
+        "sha256": "3ee1b4e13787cfb279a207449f0db393eb3e3ab257a304f1c1954412a36a8a70"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/vitest-report.json",
+        "sha256": "3ee1b4e13787cfb279a207449f0db393eb3e3ab257a304f1c1954412a36a8a70"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\server-typescript-command.json",
+        "sha256": "c8f0cfcbd4379e9b5cd29531bdfbaa966909b4760903c632ab4eeac7784b22b4"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/server-typescript-command.json",
+        "sha256": "c8f0cfcbd4379e9b5cd29531bdfbaa966909b4760903c632ab4eeac7784b22b4"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\server-typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/server-typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\server-typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/server-typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\vitest-command.json",
+        "sha256": "bae763270fa7bc70dfe7f395b219838b380658b08dd35cd8b834c55ef44bb9ae"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/vitest-command.json",
+        "sha256": "bae763270fa7bc70dfe7f395b219838b380658b08dd35cd8b834c55ef44bb9ae"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\vitest.stdout.txt",
+        "sha256": "17b19cab16641b1998787aaf863f3761b7c949bfcd962652658bb1b8c3d20418"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/vitest.stdout.txt",
+        "sha256": "17b19cab16641b1998787aaf863f3761b7c949bfcd962652658bb1b8c3d20418"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\vitest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/vitest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\source.mjs",
+        "sha256": "4bf2f69894e551d630406475c2cbba63341e99fdaba369d7499c1f4d6eef11ef"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source-a1/source.mjs",
+        "sha256": "4bf2f69894e551d630406475c2cbba63341e99fdaba369d7499c1f4d6eef11ef"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\proposal-manifest.json",
+        "sha256": "011ca9dd63beaa4b28b1469c54753f2d6aeaec8d3e0edd02b3bf82ad42e0a7e8"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/proposal-manifest.json",
+        "sha256": "011ca9dd63beaa4b28b1469c54753f2d6aeaec8d3e0edd02b3bf82ad42e0a7e8"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\root-binding.json",
+        "sha256": "87b5494ea29aa04f68a2d5ce3712fed21625ce53405c327281c3c519fa8569db"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/root-binding.json",
+        "sha256": "87b5494ea29aa04f68a2d5ce3712fed21625ce53405c327281c3c519fa8569db"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\root-review.json",
+        "sha256": "32d3b55b2c59702daea35e7f408f7b8da06e7d4f70cfd9bd49f4c4dcd753d81f"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/root-review.json",
+        "sha256": "32d3b55b2c59702daea35e7f408f7b8da06e7d4f70cfd9bd49f4c4dcd753d81f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\review-freeze.mjs",
+        "sha256": "99dafb2b2e3c07d634bf808bd9822c1958aac9cb195238c3a09df24f0232bf83"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/review-freeze.mjs",
+        "sha256": "99dafb2b2e3c07d634bf808bd9822c1958aac9cb195238c3a09df24f0232bf83"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\review.md",
+        "sha256": "cd5a6657afca03067ae71f44916b3ddc33632b5922da8bc30811ea5c121e3b0f"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/review.md",
+        "sha256": "cd5a6657afca03067ae71f44916b3ddc33632b5922da8bc30811ea5c121e3b0f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source.mjs",
+        "sha256": "4bf2f69894e551d630406475c2cbba63341e99fdaba369d7499c1f4d6eef11ef"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-20261001/actual/source.mjs",
+        "sha256": "4bf2f69894e551d630406475c2cbba63341e99fdaba369d7499c1f4d6eef11ef"
+      }
+    }
+  ],
+  "originalChecks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\checks.json",
+    "sha256": "c9354b153b3b31a6f8fcee9949a62eadf45fb9efb906b375e54aab712e878793"
+  },
+  "originalSourceCommitReceipt": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\source-commit.json",
+    "sha256": "f2bee514f0c01bd6f523dd2847f5ef36dc662968ad75011c2a48096a7967583c"
+  },
+  "originalUnitSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\source-manifest.json",
+    "sha256": "567594e26d3b1f75dd93f64f574d69ea7fadb41eaf5a54f20ad0595d538c05cf"
+  },
+  "currentCommittedSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\current-source-manifest.json",
+    "sha256": "62bc413079ea80274683eab0c115a86f88cb5fa626df178cb4303f0dfc3f40f4"
+  },
+  "unitAndCommittedFileRowsEqual": true,
+  "declaredSourceFiles": 2150,
+  "declaredSourceRoots": 13,
+  "additionalInputWitnesses": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-planet-payment-retry-context.mjs",
+      "sha256": "20f6a28a0f3c3ad6e62c1027c970badaa78e6d179b3d22bf416f3a9c70239b0d"
+    },
+    {
+      "path": "server/planet/crypto.ts",
+      "sha256": "b7d252732ceab884a39f9cd31f23b6991298176d4aedf9860e4bc45f5cbaa8b0"
+    },
+    {
+      "path": "server/planet/supabase.ts",
+      "sha256": "80782d90421472aa8c31bc2bb3336bd1afd086eb6a97953bfcd806610c4bb264"
+    },
+    {
+      "path": "server/planet/tsconfig.json",
+      "sha256": "32b506ef684ed09d50d7f9f1fbc26507e5178babe1bcd439a68d291a373639d5"
+    },
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459"
+    },
+    {
+      "path": "supabase/migrations/20260728_cms_foundation.sql",
+      "sha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22"
+    },
+    {
+      "path": "supabase/migrations/20260802_reader_journey.sql",
+      "sha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5"
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+      "sha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418"
+    },
+    {
+      "path": "supabase/migrations/20260905_literary_planet_web_license.sql",
+      "sha256": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2"
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276"
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce"
+    }
+  ],
+  "sqlSetupInputs": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260728_cms_foundation.sql",
+      "sha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260802_reader_journey.sql",
+      "sha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+      "sha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260905_literary_planet_web_license.sql",
+      "sha256": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20261001194458_planet_license_rate_limits.sql",
+      "sha256": "4d9ff9da155b9e1016c6c2b39f220bb1f36e61742d8c29fc99b90f0fdccdef82",
+      "newOwner": true
+    }
+  ],
+  "applicationSourcesChanged": true,
+  "applicationOwnerPaths": [
+    "server/planet/api.test.ts",
+    "server/planet/api.ts",
+    "server/planet/integration.test.ts",
+    "server/planet/licenseRateLimiter.integration.test.ts",
+    "server/planet/licenseRateLimiterSupabase.test.ts",
+    "server/planet/licenseRateLimiterSupabase.ts",
+    "server/planet/worker.test.ts",
+    "server/planet/worker.ts",
+    "supabase/migrations/20261001194458_planet_license_rate_limits.sql"
+  ],
+  "serverTypeScriptInvocations": 1,
+  "focusedTestInvocations": 1,
+  "testFiles": 5,
+  "passedTests": 165,
+  "newTests": 28,
+  "failedTests": 0,
+  "skippedTests": 0,
+  "todoTests": 0,
+  "mandatoryApiSettingsPreserved": 14,
+  "grantScope": "license/session",
+  "serverPolicyExplicit": true,
+  "productionPolicyDefaults": false,
+  "canonicalDatabaseClock": true,
+  "absentGrantPolicyFailsClosed503": true,
+  "exhaustedGrantBudget429": true,
+  "retryAfterServerBounded": true,
+  "verifiedEligibilityBeforeAdmission": true,
+  "successfulAdmissionBeforeSigning": true,
+  "subjectProductRouteIsolation": true,
+  "activePolicyChangeFailsClosedWithinWindow": true,
+  "durableDatabaseBudget": true,
+  "accountPaymentIdentityRoutesPreserved": true,
+  "deletionGuardReview": {
+    "normalizedOriginalSha256": "aa686579e616198930097f02946481531f328896186f6dbac0fa147af581e6d9",
+    "normalizedInverseSha256": "aa686579e616198930097f02946481531f328896186f6dbac0fa147af581e6d9",
+    "exactInverse": true,
+    "addedBodyLines": 2
+  },
+  "budgetAccountFkDelete": "CASCADE",
+  "financialAuditPolicyUnchanged": true,
+  "oneConnectionLocalPostgres": true,
+  "multiConnectionConcurrencyValidated": false,
+  "liveSupabaseValidated": false,
+  "providerValidated": false,
+  "localCliMigrationNameAuthored": true,
+  "remoteDatabaseApplied": false,
+  "applicationBuildsRun": 0,
+  "pwaBuildsRun": 0,
+  "nativeBuildsRun": 0,
+  "productionActionsPerformed": false,
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "D252 / S03.acceptance: implement the verified grant client 429 protocol gap after bounded review of current WebLicense client/cache/controller contracts. The server now returns grant-only 429 with Retry-After, but the current client discards it as network-unavailable and permits another immediate online check. Add an explicit identity/context-scoped cooldown derived only from the valid server header, preserving abort/generation fencing and clock/expiry rules; do not invent a provider threshold or grant permission from 429. Before the deadline repeated online checks must not fetch; at the deadline a fresh check may resume. Malformed headers must not create a permanent lock. Preserve valid independently verified offline proof, subject/key/signature binding and exclusive offlineUntil/expiry; 429 is not revocation and must not erase it. Add meaningful focused tests for cooldown/no-fetch, deadline recovery, malformed-header handling, context isolation and superseded/aborted replies. Keep scope on grant/session client behavior; no new account/bootstrap UX, server policy changes, SDK/provider activation, database apply, deploy or unrelated app/PWA/native builds. Preserve D251 evidence from 165/165 tests tied to source and unchanged S03/COMMERCE acceptance statuses; no live-provider, concurrency or release claim."
+}

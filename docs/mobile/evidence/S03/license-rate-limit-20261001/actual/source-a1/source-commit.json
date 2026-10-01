@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "base": "5a4f89b982a0445462380006fb44a1a82e9eeb25",
+  "checkpoint": "1430890a33e360e272da74943b17415d70575ef3",
+  "clean": true,
+  "exactPaths": [
+    "server/planet/api.test.ts",
+    "server/planet/api.ts",
+    "server/planet/integration.test.ts",
+    "server/planet/licenseRateLimiter.integration.test.ts",
+    "server/planet/licenseRateLimiterSupabase.test.ts",
+    "server/planet/licenseRateLimiterSupabase.ts",
+    "server/planet/worker.test.ts",
+    "server/planet/worker.ts",
+    "supabase/migrations/20261001194458_planet_license_rate_limits.sql"
+  ],
+  "checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\checks.json",
+    "sha256": "c9354b153b3b31a6f8fcee9949a62eadf45fb9efb906b375e54aab712e878793"
+  },
+  "currentSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\current-source-manifest.json",
+    "sha256": "62bc413079ea80274683eab0c115a86f88cb5fa626df178cb4303f0dfc3f40f4"
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

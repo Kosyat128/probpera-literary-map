@@ -1,0 +1,15 @@
+{
+  "version": "2.119.0",
+  "officialRelease": "https://github.com/supabase/cli/releases/tag/v2.119.0",
+  "exeSha256": "971f439cc4b774f43181593551e0e34e29f399d5e82cbe3508e87537ec13e29f",
+  "command": "migration new planet_license_rate_limits --workdir <isolated-authoring-root>",
+  "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\d251-migration-authoring",
+  "stdout": [
+    "{\"path\":\"C:\\\\Users\\\\User\\\\Documents\\\\ChatGPT\\\\Работа по сайту\\\\literary-planet-v12-work\\\\.tmp\\\\d251-migration-authoring\\\\supabase\\\\migrations\\\\20261001194458_planet_license_rate_limits.sql\",\"message\":\"Migration created\"}"
+  ],
+  "createdName": "20261001194458_planet_license_rate_limits.sql",
+  "createdPath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\d251-migration-authoring\\supabase\\migrations\\20261001194458_planet_license_rate_limits.sql",
+  "createdBytes": 0,
+  "remoteDatabaseConnected": false,
+  "remoteDatabaseApplied": false
+}

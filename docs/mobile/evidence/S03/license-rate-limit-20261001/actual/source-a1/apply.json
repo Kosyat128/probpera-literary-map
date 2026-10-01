@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "base": "5a4f89b982a0445462380006fb44a1a82e9eeb25",
+  "owners": [
+    {
+      "path": "server/planet/api.ts",
+      "proposalPath": "server/planet/api.ts",
+      "originalSha256": "d74dc1088db2eeb4a9775dbfb9ef77c7c0b57dd162c0d309c1eeb968174f39cc",
+      "proposedSha256": "5044ec9758be037026b045e39d1d067f5e37f05ca0687b4a08024aacfeafd55b"
+    },
+    {
+      "path": "server/planet/api.test.ts",
+      "proposalPath": "server/planet/api.test.ts",
+      "originalSha256": "89f082f09d00c52c031a13905ff58bb0ac349a569f2f2da99409e6bbd7605353",
+      "proposedSha256": "c1f3c9bbba2a1186112327aab205347da4f3bef0a873f1d6db1ff527c6a91365"
+    },
+    {
+      "path": "server/planet/worker.ts",
+      "proposalPath": "server/planet/worker.ts",
+      "originalSha256": "0b95441c50311f0fa9eb8965782674dc2e1cb6af7ba7ee9a0c0b4e56b7acdda5",
+      "proposedSha256": "5d1534634e68775eba530cb45a9e83329ede86da4558d29ff41d40a6b3a8f1f3"
+    },
+    {
+      "path": "server/planet/worker.test.ts",
+      "proposalPath": "server/planet/worker.test.ts",
+      "originalSha256": "d56074e0ef5c321a115e1b0f1290a6be9f5a5f62cbe0b4f8402ec9edc5144e29",
+      "proposedSha256": "134a7a0579e5b7527ab34399ed51e4b3ad93313d74e58edf6cb4639f2a409312"
+    },
+    {
+      "path": "server/planet/integration.test.ts",
+      "proposalPath": "server/planet/integration.test.ts",
+      "originalSha256": "f26f947e5c4a04a780b73150814f601384daaf9a8be740af60b5434da3e04335",
+      "proposedSha256": "84ea03f6575bd1533e3b672358fad5332652fbca705d6522e62fae85d5bb5766"
+    },
+    {
+      "path": "server/planet/licenseRateLimiterSupabase.ts",
+      "proposalPath": "server/planet/licenseRateLimiterSupabase.ts",
+      "originalSha256": null,
+      "proposedSha256": "4a14337495d98064197521c7d83a24f19ab78576ccf17810cf5e6c75947bc2a8"
+    },
+    {
+      "path": "server/planet/licenseRateLimiterSupabase.test.ts",
+      "proposalPath": "server/planet/licenseRateLimiterSupabase.test.ts",
+      "originalSha256": null,
+      "proposedSha256": "297b33c9f81aaaa53e69c200db31a63938290587e806127ecba034b1d450a9ac"
+    },
+    {
+      "path": "server/planet/licenseRateLimiter.integration.test.ts",
+      "proposalPath": "server/planet/licenseRateLimiter.integration.test.ts",
+      "originalSha256": null,
+      "proposedSha256": "8ad0af06851f9cdf0d71780ecaf6ca75abd44b49335e00c753484e1a5990eb92"
+    },
+    {
+      "path": "supabase/migrations/20261001194458_planet_license_rate_limits.sql",
+      "proposalPath": "license-rate-limit.sql",
+      "originalSha256": null,
+      "proposedSha256": "4d9ff9da155b9e1016c6c2b39f220bb1f36e61742d8c29fc99b90f0fdccdef82"
+    }
+  ],
+  "binding": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\root-binding.json",
+    "sha256": "87b5494ea29aa04f68a2d5ce3712fed21625ce53405c327281c3c519fa8569db"
+  },
+  "producer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source.mjs",
+    "sha256": "4bf2f69894e551d630406475c2cbba63341e99fdaba369d7499c1f4d6eef11ef"
+  },
+  "sourceBefore": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\source-before.json",
+    "sha256": "bf98b64118a72588be112c3fbd6fdfba6fd3302a617843ba95445f2e904382ec"
+  },
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\source-manifest.json",
+    "sha256": "567594e26d3b1f75dd93f64f574d69ea7fadb41eaf5a54f20ad0595d538c05cf"
+  },
+  "cliAuthoring": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-review\\source-a1\\cli-authoring-receipt.json",
+    "sha256": "28a52d8e8912edadde3ca06fb801c3015145719e40747d4d4429b666dd364036"
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}
