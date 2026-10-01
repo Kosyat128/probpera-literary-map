@@ -8,6 +8,8 @@ import { createCanonicalSupabaseServices } from "./supabase";
 import { createCanonicalLicenseRateLimiter } from "./licenseRateLimiterSupabase";
 import { createPwaLicenseRuntime } from "../../src/pwa/PwaLicenseRuntime";
 import { createPlanetAccountClient } from "../../src/pwa/accountAccess";
+import { createReaderDeletionProcessor } from "./deletionProcessor";
+import { createSupabaseReaderDeletionServices } from "./deletionProcessorSupabase";
 
 const origin = "https://probpera.ru";
 const issuer = origin + "/planet";
@@ -57,6 +59,12 @@ async function environment(rateLimit = 10000) {
     planet_revoke_web_sessions: { query: "select public.planet_revoke_web_sessions($1::uuid) as value", fields: ["p_user_id"] },
     planet_request_account_deletion: { query: "select public.planet_request_account_deletion($1::uuid,$2::uuid) as value", fields: ["p_user_id", "p_request_id"] },
     planet_get_account_deletion_status: { query: "select public.planet_get_account_deletion_status($1::uuid) as value", fields: ["p_user_id"] },
+    planet_claim_reader_deletion: { query: "select public.planet_claim_reader_deletion($1::uuid,$2::uuid,$3,$4::integer) as value",
+      fields: ["p_request_id", "p_lease_token", "p_policy_sha256", "p_lease_seconds"] },
+    planet_inspect_reader_deletion: { query: "select public.planet_inspect_reader_deletion($1::uuid,$2::uuid,$3::boolean) as value",
+      fields: ["p_request_id", "p_lease_token", "p_prepare"] },
+    planet_finish_reader_deletion: { query: "select public.planet_finish_reader_deletion($1::uuid,$2::uuid,$3,$4,$5::text[]) as value",
+      fields: ["p_request_id", "p_lease_token", "p_status", "p_evidence_sha256", "p_blocker_codes"] },
     planet_apply_verified_payment_event: { query: "select public.planet_apply_verified_payment_event($1,$2,$3,$4,$5::uuid,$6,$7,$8::timestamptz) as value",
       fields: ["p_provider", "p_event_id", "p_payload_sha256", "p_transaction_id", "p_user_id", "p_product_id", "p_status", "p_occurred_at"] },
     planet_enqueue_verified_payment_retry: { query: "select public.planet_enqueue_verified_payment_retry($1,$2,$3,$4,$5::uuid,$6,$7,$8::timestamptz) as value",
@@ -65,8 +73,9 @@ async function environment(rateLimit = 10000) {
       fields: ["p_subject", "p_product_id", "p_limit", "p_window_seconds"] },
   };
   const json = (value: unknown, status = 200) => new Response(JSON.stringify(value), { status, headers: { "Content-Type": "application/json" } });
-  // This fixture stands in for Supabase Auth HTTP only. JWT verification uses the
-  // actual SDK/WebCrypto; every ledger RPC executes the actual migration in PG.
+  const deletionHttp: { beforeAvatarRemoval?: () => Promise<void>; calls: string[] } = { calls: [] };
+  // Only Auth/Storage HTTP are controlled ports. JWT verification uses the real
+  // SDK/WebCrypto; every ledger/processor RPC executes current canonical SQL.
   const fetchSupabase: typeof fetch = async (input, init) => {
     const url = new URL(typeof input === "string" ? input : input instanceof URL ? input.href : input.url);
     expect(url.origin).toBe(project);
@@ -81,12 +90,34 @@ async function environment(rateLimit = 10000) {
       await db.query("delete from auth.sessions where user_id=$1::uuid", [subject]);
       return new Response(null, { status: 204 });
     }
+    if (url.pathname === "/storage/v1/object/avatars" && init?.method === "DELETE") {
+      expect(headers.get("authorization")).toBe("Bearer qa-service-role-fixture");
+      const { prefixes } = JSON.parse(String(init.body));
+      expect(prefixes).toEqual([`${subject}/avatar.webp`]);
+      deletionHttp.calls.push(url.pathname);
+      await deletionHttp.beforeAvatarRemoval?.();
+      // Controlled Storage port removes metadata only after its simulated blob
+      // removal; the product adapter still uses the genuine Storage SDK call.
+      for (const path of prefixes) await db.query("delete from storage.objects where bucket_id='avatars' and name=$1", [path]);
+      return json(prefixes.map((name: string) => ({ name })));
+    }
+    if (url.pathname === `/auth/v1/admin/users/${subject}` && init?.method === "DELETE") {
+      expect(headers.get("authorization")).toBe("Bearer qa-service-role-fixture");
+      expect(JSON.parse(String(init.body))).toEqual({ should_soft_delete: false });
+      deletionHttp.calls.push(url.pathname);
+      expect((await db.query("select status,processor_phase from public.planet_deletion_requests where user_id=$1::uuid", [subject])).rows[0])
+        .toEqual({ status: "processing", processor_phase: "auth-ready" });
+      // The actual canonical Auth deletion guard runs in this transaction.
+      await db.query("delete from auth.users where id=$1::uuid", [subject]);
+      return json({ id: subject, aud: "authenticated", role: "authenticated", app_metadata: {}, user_metadata: {}, created_at: "2026-10-02T00:00:00Z" });
+    }
     const name = url.pathname.replace("/rest/v1/rpc/", "");
     const operation = sql[name];
     if (!operation) throw new Error("Unexpected local fixture route");
     expect(headers.get("authorization")).toBe("Bearer qa-service-role-fixture");
     const args = JSON.parse(String(init?.body));
     expect(Object.keys(args).sort()).toEqual([...operation.fields].sort());
+    if (["planet_claim_reader_deletion", "planet_inspect_reader_deletion", "planet_finish_reader_deletion"].includes(name)) deletionHttp.calls.push(url.pathname);
     await db.exec("set role service_role");
     try {
       const value = (await db.query<{ value: unknown }>(operation.query, operation.fields.map(field => args[field]))).rows[0].value;
@@ -143,7 +174,8 @@ async function environment(rateLimit = 10000) {
   }
   const event = (patch: Partial<VerifiedPayment> = {}): VerifiedPayment => ({ eventId: crypto.randomUUID(), transactionId: crypto.randomUUID(), subject, product,
     status: "active", occurredAt: new Date(now * 1000).toISOString(), ...patch });
-  return { subject, sessionId, token, api, browser, payment, event, canonical };
+  return { subject, sessionId, token, api, browser, payment, event, canonical, deletionHttp,
+    deletionServices: createSupabaseReaderDeletionServices(canonicalOptions) };
 }
 
 // One PGlite connection: real SQL/ACL and complete protocol integration, not a
@@ -263,5 +295,87 @@ describe.sequential("account → verified event → canonical SQL → signed PWA
     expect(request).toEqual({ status: "requested", user_id: f.subject });
     expect((await f.canonical.ledger.access(f.subject, product)).accessBlocked).toBe(true);
     expect((await browser.runtime.bootstrap({ mode: "online" })).client).toBeNull();
+  });
+
+  it("composes a lost account acknowledgement with the real reader processor, durable completion and Auth denial", async () => {
+    const f = await environment(), purchase = f.event();
+    expect((await f.payment(purchase)).status).toBe(204);
+    await db.query("insert into public.reader_book_collections(user_id,id,name) values($1::uuid,'deletion-shelf','Private shelf')", [f.subject]);
+    await db.query("insert into public.reader_book_collection_items(user_id,collection_id,book_key,position) values($1::uuid,'deletion-shelf','fixture-book',1)", [f.subject]);
+    await db.query("insert into public.reader_progress(user_id,item_type,item_id) values($1::uuid,'book','fixture-book')", [f.subject]);
+    await db.query("insert into storage.objects(id,bucket_id,name,owner_id) values($1::uuid,'avatars',$2,$3)", [crypto.randomUUID(), `${f.subject}/avatar.webp`, f.subject]);
+    const browser = f.browser(), config = await browser.account.configuration();
+    await browser.account.bridge(config, f.token);
+    const boot = await browser.runtime.bootstrap({ mode: "online" });
+    expect(await boot.client!.check({ mode: "online" })).toMatchObject({ status: "authorized", claims: { sub: f.subject, product } });
+    const finance = async () => ({
+      event: (await db.query<{ value: unknown }>("select to_jsonb(e)-'user_id' as value from public.planet_payment_events e where provider='local-fixture' and event_id=$1", [purchase.eventId])).rows[0].value,
+      receipt: (await db.query<{ value: unknown }>("select to_jsonb(r)-'user_id' as value from public.planet_purchase_receipts r where provider='local-fixture' and transaction_id=$1", [purchase.transactionId])).rows[0].value,
+    });
+    const financeBefore = await finance();
+    const privateCounts = async () => (await db.query("select " +
+      "(select count(*)::integer from auth.sessions where user_id=$1::uuid) as sessions," +
+      "(select count(*)::integer from public.profiles where id=$1::uuid) as profiles," +
+      "(select count(*)::integer from public.reader_book_collections where user_id=$1::uuid) as shelves," +
+      "(select count(*)::integer from public.reader_book_collection_items where user_id=$1::uuid) as items," +
+      "(select count(*)::integer from public.reader_progress where user_id=$1::uuid) as progress," +
+      "(select count(*)::integer from public.planet_access_state where user_id=$1::uuid) as access," +
+      "(select count(*)::integer from public.planet_verified_payment_retries where user_id=$1::uuid) as retries," +
+      "(select count(*)::integer from public.planet_license_grant_budgets where user_id=$1::uuid) as budgets," +
+      "(select count(*)::integer from storage.objects where owner_id=$1::text) as avatars", [f.subject])).rows[0];
+    expect(await privateCounts()).toEqual({ sessions: 1, profiles: 1, shelves: 1, items: 1, progress: 1, access: 1, retries: 1, budgets: 1, avatars: 1 });
+    const requestId = crypto.randomUUID();
+    const lostAcknowledgement = createPlanetAccountClient({ origin, fetch: async (input, init) => {
+      const response = await browser.fetch(input, init);
+      if (String(input).endsWith("account/deletion-request")) {
+        expect(response.status).toBe(202); await response.body?.cancel();
+        throw new TypeError("Controlled account acknowledgement loss after actual SQL commit");
+      }
+      return response;
+    } });
+    await expect(lostAcknowledgement.requestDeletion(config, f.token, requestId)).rejects.toMatchObject({ reason: "unavailable" });
+    const fresh = f.browser();
+    expect(await fresh.account.deletionStatus(config, f.token)).toEqual({ requestId, status: "requested" });
+    expect((await db.query("select request_id,status,processor_phase from public.planet_deletion_requests where user_id=$1::uuid", [f.subject])).rows)
+      .toEqual([{ request_id: requestId, status: "requested", processor_phase: "pending" }]);
+    await expect(fresh.account.bridge(config, f.token)).rejects.toMatchObject({ reason: "denied" });
+    expect((await f.canonical.ledger.access(f.subject, product)).accessBlocked).toBe(true);
+    expect((await browser.runtime.bootstrap({ mode: "online" })).client).toBeNull();
+
+    let fenced = false;
+    f.deletionHttp.beforeAvatarRemoval = async () => {
+      expect(await fresh.account.deletionStatus(config, f.token)).toEqual({ requestId, status: "processing" });
+      expect((await db.query("select processor_phase from public.planet_deletion_requests where request_id=$1::uuid", [requestId])).rows[0])
+        .toEqual({ processor_phase: "fenced" });
+      await expect(db.query("update public.profiles set display_name='Stale reader edit' where id=$1::uuid", [f.subject])).rejects.toThrow(/PLANET_READER_DELETION_FENCED/u);
+      expect((await db.query("select display_name from public.profiles where id=$1::uuid", [f.subject])).rows[0])
+        .toEqual({ display_name: "Local fixture reader" });
+      fenced = true;
+    };
+    const processor = createReaderDeletionProcessor({ services: f.deletionServices, leaseSeconds: 60, maxStorageBatches: 2,
+      // Synthetic local policy reference; this test grants no legal approval.
+      policy: { version: "local-integration-fixture", reviewEvidenceSha256: "f".repeat(64), privateReaderData: "delete",
+        ownedAvatars: "delete", publicContributions: "block", paymentRecords: "retain-provider-records-unlinked" } });
+    expect(await processor.process(requestId)).toEqual({ status: "completed", codes: [] });
+    expect(fenced).toBe(true);
+    expect(f.deletionHttp.calls.filter(path => !path.startsWith("/rest/")))
+      .toEqual(["/storage/v1/object/avatars", `/auth/v1/admin/users/${f.subject}`]);
+    expect(f.deletionHttp.calls).toContain("/rest/v1/rpc/planet_finish_reader_deletion");
+    const terminal = (await db.query<{ status: string; user_id: string | null; processor_phase: string; processor_policy_sha256: string; evidence_sha256: string; completed_at: unknown; blocker_codes: string[] }>(
+      "select status,user_id,processor_phase,processor_policy_sha256,evidence_sha256,completed_at,blocker_codes from public.planet_deletion_requests where request_id=$1::uuid", [requestId])).rows[0];
+    expect(terminal).toMatchObject({ status: "completed", user_id: null, processor_phase: "auth-deleted", blocker_codes: [] });
+    expect(terminal.processor_policy_sha256).toMatch(/^[0-9a-f]{64}$/u); expect(terminal.evidence_sha256).toMatch(/^[0-9a-f]{64}$/u);
+    expect(terminal.completed_at).not.toBeNull();
+    expect(await rowCount("auth.users", f.subject)).toBe(0);
+    expect(await privateCounts()).toEqual({ sessions: 0, profiles: 0, shelves: 0, items: 0, progress: 0, access: 0, retries: 0, budgets: 0, avatars: 0 });
+    expect((await db.query("select user_id from public.planet_payment_events where provider='local-fixture' and event_id=$1", [purchase.eventId])).rows[0]).toEqual({ user_id: null });
+    expect((await db.query("select user_id from public.planet_purchase_receipts where provider='local-fixture' and transaction_id=$1", [purchase.transactionId])).rows[0]).toEqual({ user_id: null });
+    expect(await finance()).toEqual(financeBefore);
+    // Completion comes from service-only processor RPCs and a durable SQL audit.
+    // The original bearer cannot retrieve a terminal receipt or obtain a grant.
+    expect(await f.canonical.auth.verify(f.token)).toBeNull();
+    await expect(fresh.account.deletionStatus(config, f.token)).rejects.toMatchObject({ reason: "authentication" });
+    await expect(fresh.account.bridge(config, f.token)).rejects.toMatchObject({ reason: "authentication" });
+    expect((await fresh.runtime.bootstrap({ mode: "online" })).client).toBeNull();
   });
 });
