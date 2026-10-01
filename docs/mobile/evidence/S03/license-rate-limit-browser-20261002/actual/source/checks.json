@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "decision": "D254",
+  "base": "bca16f2eb6a088277c8bc7b8afbbba50a23ab252",
+  "recordedAt": "2026-10-01T22:56:55.580Z",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-manifest.json",
+    "sha256": "53f295a77ec8cee1860f07107fcb6980b4aba3f11d1a2d69fced11309a043c78"
+  },
+  "sourceAfter": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-after.json",
+    "sha256": "53f295a77ec8cee1860f07107fcb6980b4aba3f11d1a2d69fced11309a043c78"
+  },
+  "inputsUnchangedDuringChecks": true,
+  "syntax": [
+    {
+      "exitCode": 0,
+      "command": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-1-command.json",
+        "sha256": "31eacca2e8d8324559ca0b4b014c9802bcf390e5e9fdd79b13d585b2e80df1dc"
+      },
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-1.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "owner": "tests/pwa/offline-catalog.spec.mjs"
+    },
+    {
+      "exitCode": 0,
+      "command": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-2-command.json",
+        "sha256": "9794c587849a69d6d14732a3e043418b904fe80e1ac61c0d70c43bffd786d6c6"
+      },
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-2.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-2.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "owner": "tests/pwa/support/local-server.mjs"
+    },
+    {
+      "exitCode": 0,
+      "command": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-3-command.json",
+        "sha256": "d15b183020298b71b63d566647f83188a7afb43d3e7b62d4cea44d4345804a1c"
+      },
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-3.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-3.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "owner": "tests/pwa/support/local-server.test.mjs"
+    }
+  ],
+  "test": {
+    "exitCode": 0,
+    "command": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\vitest-command.json",
+      "sha256": "10330460da412274eb2ede257b2d36c011f1d67149f314f76ce4bfb5ebc0b032"
+    },
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\vitest.stdout.txt",
+      "sha256": "475137a836e176eac0f9ff8fdff4612af69fb9e923b093906bdc7f86ebf432ad"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\vitest.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "report": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\vitest-report.json",
+    "sha256": "5b07fd738d6ab926e02bd4d39b8c63639588176c54c2cacce37af5f67dfccedd"
+  },
+  "summary": {
+    "success": true,
+    "total": 13,
+    "passed": 13,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0,
+    "suiteFiles": [
+      "tests/pwa/support/local-server.test.mjs"
+    ],
+    "suiteStatusesPassed": true,
+    "assertionsPassed": true,
+    "assertionCount": 13
+  },
+  "syntaxInvocations": 3,
+  "testInvocations": 1,
+  "appTypeScriptInvocations": 0,
+  "appBuildExecuted": false,
+  "pwaBuildExecuted": false,
+  "nativeBuildExecuted": false,
+  "browserInvocations": 0,
+  "providerValidated": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

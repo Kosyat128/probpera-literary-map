@@ -1,0 +1,680 @@
+{
+  "schemaVersion": 1,
+  "decision": "D254",
+  "kind": "s03-license-rate-limit-browser-working-evidence",
+  "pass": true,
+  "sourceCommit": "403ade7fa3e35cd3292a4610ab8126bbe7627774",
+  "buildId": "f47915937aa758ddd6361d32c7771bd7dac5d7ca56c3d676f00b3760846f79bc",
+  "recordedAt": "2026-10-01T23:45:12.160Z",
+  "actualResult": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\result.json",
+    "sha256": "2f94cdcd057cb405dc3fb33d4030a340781cd7081c93216a1763a67c5e5ab966"
+  },
+  "sourceChecks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\checks.json",
+    "sha256": "6c903cc9b6f9f26b17e4d3e454f3f64b378abc15ba1d42df50d7b67fb9112f62"
+  },
+  "rootCaptureReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\root-capture-review-a1.json",
+    "sha256": "4e921dac24e73c98ac4aec42ca38a1fcdbf09fad16bdf21013ebb5571ce974b3"
+  },
+  "copies": [
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\apply.json",
+        "sha256": "f9964c54e875dd0e818ce1f4ccd765992918fe12fd4674274870edd3cbb9c4fc"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/apply.json",
+        "sha256": "f9964c54e875dd0e818ce1f4ccd765992918fe12fd4674274870edd3cbb9c4fc"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\binding.json",
+        "sha256": "97769530c787eaa03c9cfcd793477b0e66975add5ea2fdd057087c6c48e872e2"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/binding.json",
+        "sha256": "97769530c787eaa03c9cfcd793477b0e66975add5ea2fdd057087c6c48e872e2"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\checks.json",
+        "sha256": "6c903cc9b6f9f26b17e4d3e454f3f64b378abc15ba1d42df50d7b67fb9112f62"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/checks.json",
+        "sha256": "6c903cc9b6f9f26b17e4d3e454f3f64b378abc15ba1d42df50d7b67fb9112f62"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\current-source-manifest.json",
+        "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/current-source-manifest.json",
+        "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\proposal-manifest.json",
+        "sha256": "94f57955fa50f1ea79401e45976688af91b5a5759d20b9680d21cf72ea9b0eae"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/proposal-manifest.json",
+        "sha256": "94f57955fa50f1ea79401e45976688af91b5a5759d20b9680d21cf72ea9b0eae"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-after.json",
+        "sha256": "53f295a77ec8cee1860f07107fcb6980b4aba3f11d1a2d69fced11309a043c78"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/source-after.json",
+        "sha256": "53f295a77ec8cee1860f07107fcb6980b4aba3f11d1a2d69fced11309a043c78"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-before.json",
+        "sha256": "4c2d62bd4ea2907b13cefabf5f7ff3953ed51861f07281ac0e33d24387f0fcf6"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/source-before.json",
+        "sha256": "4c2d62bd4ea2907b13cefabf5f7ff3953ed51861f07281ac0e33d24387f0fcf6"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-commit.json",
+        "sha256": "cd9363ecd98b1e5d18b2069a7c9badbfaee9d548909d7a4c08dacd4321903544"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/source-commit.json",
+        "sha256": "cd9363ecd98b1e5d18b2069a7c9badbfaee9d548909d7a4c08dacd4321903544"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-manifest.json",
+        "sha256": "53f295a77ec8cee1860f07107fcb6980b4aba3f11d1a2d69fced11309a043c78"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/source-after.json",
+        "sha256": "53f295a77ec8cee1860f07107fcb6980b4aba3f11d1a2d69fced11309a043c78"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source.mjs",
+        "sha256": "81b2b08b417516dfc3c19c18a6e99e8ea9d032f14c4ecd44b10f9fd8cd9b9dc7"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/source.mjs",
+        "sha256": "81b2b08b417516dfc3c19c18a6e99e8ea9d032f14c4ecd44b10f9fd8cd9b9dc7"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-1-command.json",
+        "sha256": "31eacca2e8d8324559ca0b4b014c9802bcf390e5e9fdd79b13d585b2e80df1dc"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1-command.json",
+        "sha256": "31eacca2e8d8324559ca0b4b014c9802bcf390e5e9fdd79b13d585b2e80df1dc"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-1.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-2-command.json",
+        "sha256": "9794c587849a69d6d14732a3e043418b904fe80e1ac61c0d70c43bffd786d6c6"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-2-command.json",
+        "sha256": "9794c587849a69d6d14732a3e043418b904fe80e1ac61c0d70c43bffd786d6c6"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-2.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-2.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-3-command.json",
+        "sha256": "d15b183020298b71b63d566647f83188a7afb43d3e7b62d4cea44d4345804a1c"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-3-command.json",
+        "sha256": "d15b183020298b71b63d566647f83188a7afb43d3e7b62d4cea44d4345804a1c"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-3.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\syntax-3.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\vitest-command.json",
+        "sha256": "10330460da412274eb2ede257b2d36c011f1d67149f314f76ce4bfb5ebc0b032"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/vitest-command.json",
+        "sha256": "10330460da412274eb2ede257b2d36c011f1d67149f314f76ce4bfb5ebc0b032"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\vitest-report.json",
+        "sha256": "5b07fd738d6ab926e02bd4d39b8c63639588176c54c2cacce37af5f67dfccedd"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/vitest-report.json",
+        "sha256": "5b07fd738d6ab926e02bd4d39b8c63639588176c54c2cacce37af5f67dfccedd"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\vitest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\vitest.stdout.txt",
+        "sha256": "475137a836e176eac0f9ff8fdff4612af69fb9e923b093906bdc7f86ebf432ad"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/vitest.stdout.txt",
+        "sha256": "475137a836e176eac0f9ff8fdff4612af69fb9e923b093906bdc7f86ebf432ad"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\binding.json",
+        "sha256": "050456e766eab57f24aca2bf87080372c6390200979c7c7161c04e975085a73c"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/binding.json",
+        "sha256": "050456e766eab57f24aca2bf87080372c6390200979c7c7161c04e975085a73c"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser-command.json",
+        "sha256": "f2f14d30e2ce956f2913e8f6b5750ddf3c55d7827ca84af1b0bdfd9652de01f8"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/browser-command.json",
+        "sha256": "f2f14d30e2ce956f2913e8f6b5750ddf3c55d7827ca84af1b0bdfd9652de01f8"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser-execution.json",
+        "sha256": "973b13f142880c1e3f22fba59ecec88dec06bc06eeb64631f75e9a96390e8d75"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/browser-execution.json",
+        "sha256": "973b13f142880c1e3f22fba59ecec88dec06bc06eeb64631f75e9a96390e8d75"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser-observation.json",
+        "sha256": "b9d156e8028e44d107b8569a42db046b9d88ac33cf5dd86a7278bc4e05857535"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/browser-observation.json",
+        "sha256": "b9d156e8028e44d107b8569a42db046b9d88ac33cf5dd86a7278bc4e05857535"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser-playwright.json",
+        "sha256": "33a121aa7032a6f2cfb36b21dffcb1faf00eceae19b27f307364d21caf6b3718"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/browser-playwright.json",
+        "sha256": "33a121aa7032a6f2cfb36b21dffcb1faf00eceae19b27f307364d21caf6b3718"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser.stderr.txt",
+        "sha256": "da8bbb9787d00733eb032642154d797eef253f0551de49742f371ab00e59e55a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/browser.stderr.txt",
+        "sha256": "da8bbb9787d00733eb032642154d797eef253f0551de49742f371ab00e59e55a"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser.stdout.txt",
+        "sha256": "49042edd4810237020635e049b5a89eed686c8e98e723b48dcd743d0821b5ca7"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/browser.stdout.txt",
+        "sha256": "49042edd4810237020635e049b5a89eed686c8e98e723b48dcd743d0821b5ca7"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\build-execution.json",
+        "sha256": "60c289f024c10c55e356604326fb79e3b09b71de22be7eccd2c701b019b5adeb"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/build-execution.json",
+        "sha256": "60c289f024c10c55e356604326fb79e3b09b71de22be7eccd2c701b019b5adeb"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\current-package-source-manifest.json",
+        "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/current-source-manifest.json",
+        "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\local-validation.json",
+        "sha256": "cf9bebd711904a6b163742995fa8a4e0400a3a3973a33f47e7aa6b6050ec2da9"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/local-validation.json",
+        "sha256": "cf9bebd711904a6b163742995fa8a4e0400a3a3973a33f47e7aa6b6050ec2da9"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\original-smoke-source-manifest.json",
+        "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/current-source-manifest.json",
+        "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke-command.json",
+        "sha256": "2e160baa427ea185dd3a0a562fc1fe86a5967ed50ce51f67a22fbbd65a94a099"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/packaging-smoke-command.json",
+        "sha256": "2e160baa427ea185dd3a0a562fc1fe86a5967ed50ce51f67a22fbbd65a94a099"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke-execution.json",
+        "sha256": "998e278d0144fc6d39dff7622b715825d467d7016a31dd616b0a5aea6caa6cde"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/packaging-smoke-execution.json",
+        "sha256": "998e278d0144fc6d39dff7622b715825d467d7016a31dd616b0a5aea6caa6cde"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke-report.json",
+        "sha256": "7cfaae54a523713fa198c14e9fbd93850fc78f5284eab7d617eb298a9e3b484e"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/packaging-smoke-report.json",
+        "sha256": "7cfaae54a523713fa198c14e9fbd93850fc78f5284eab7d617eb298a9e3b484e"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke.stdout.txt",
+        "sha256": "a4caafb79a4aee39e4eec6f728e94dd293f32b8a5a04cf05dcdca9cfe8d06111"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/packaging-smoke.stdout.txt",
+        "sha256": "a4caafb79a4aee39e4eec6f728e94dd293f32b8a5a04cf05dcdca9cfe8d06111"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\result.json",
+        "sha256": "2f94cdcd057cb405dc3fb33d4030a340781cd7081c93216a1763a67c5e5ab966"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/result.json",
+        "sha256": "2f94cdcd057cb405dc3fb33d4030a340781cd7081c93216a1763a67c5e5ab966"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-dryrun-command.json",
+        "sha256": "1d2be7a112e4a9665a3f92fecbf53349e6fcfe2f0fcc4dcdef62da9b074e3534"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/staging-dryrun-command.json",
+        "sha256": "1d2be7a112e4a9665a3f92fecbf53349e6fcfe2f0fcc4dcdef62da9b074e3534"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-dryrun-execution.json",
+        "sha256": "2564b2fc4d1fd7ba38255e4225887f1bbd680a7243dfb8718216e65a67078554"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/staging-dryrun-execution.json",
+        "sha256": "2564b2fc4d1fd7ba38255e4225887f1bbd680a7243dfb8718216e65a67078554"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-dryrun.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-dryrun.stdout.txt",
+        "sha256": "13288230c8ca81e48c9c3c495f4e2f93ad7d9ea242e411509b9088fa45223c99"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/staging-dryrun.stdout.txt",
+        "sha256": "13288230c8ca81e48c9c3c495f4e2f93ad7d9ea242e411509b9088fa45223c99"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-write-command.json",
+        "sha256": "b4da3af9258dc312091ca7ccc3b0cf7effd84dbb83805e7ebe16219e59299c91"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/staging-write-command.json",
+        "sha256": "b4da3af9258dc312091ca7ccc3b0cf7effd84dbb83805e7ebe16219e59299c91"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-write-execution.json",
+        "sha256": "93c7a31d03af87bb04b7dedc4098692d77baa670b82e0e70842518400058ce3e"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/staging-write-execution.json",
+        "sha256": "93c7a31d03af87bb04b7dedc4098692d77baa670b82e0e70842518400058ce3e"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-write.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-write.stdout.txt",
+        "sha256": "655af00830f970c2f002212b67a29e85d5ee956a2ddaec7006582e24359bec7a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/staging-write.stdout.txt",
+        "sha256": "655af00830f970c2f002212b67a29e85d5ee956a2ddaec7006582e24359bec7a"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\strict-audit-command.json",
+        "sha256": "e49c6987889ce7c7941e7586ff25176a6149015c586676b913f05a9b8c27bac1"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/strict-audit-command.json",
+        "sha256": "e49c6987889ce7c7941e7586ff25176a6149015c586676b913f05a9b8c27bac1"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\strict-audit-execution.json",
+        "sha256": "5a6e7d809a977553553d9896bfb7c32143b4285c919070411f1c6fb4ab7c2cc8"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/strict-audit-execution.json",
+        "sha256": "5a6e7d809a977553553d9896bfb7c32143b4285c919070411f1c6fb4ab7c2cc8"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\strict-audit.json",
+        "sha256": "6d1ff036ab14ae53df0bd94a31e6a960e7d9b80dc6b872b27191b478846cbcfd"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/strict-audit.json",
+        "sha256": "6d1ff036ab14ae53df0bd94a31e6a960e7d9b80dc6b872b27191b478846cbcfd"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\strict-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/source/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\strict-audit.stdout.txt",
+        "sha256": "6d1ff036ab14ae53df0bd94a31e6a960e7d9b80dc6b872b27191b478846cbcfd"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/strict-audit.json",
+        "sha256": "6d1ff036ab14ae53df0bd94a31e6a960e7d9b80dc6b872b27191b478846cbcfd"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\producer.mjs",
+        "sha256": "bb9d8c4a9d61c6f5fb2d8589504bc37697483e871a9088c109eb589743c2cfeb"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/producer.mjs",
+        "sha256": "bb9d8c4a9d61c6f5fb2d8589504bc37697483e871a9088c109eb589743c2cfeb"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\pwa.config.mjs",
+        "sha256": "cabf21f2c1f4e496c4e224fba351fe257357f07d3c52c70b2a5559b550a92607"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/pwa.config.mjs",
+        "sha256": "cabf21f2c1f4e496c4e224fba351fe257357f07d3c52c70b2a5559b550a92607"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\root-binding.json",
+        "sha256": "050456e766eab57f24aca2bf87080372c6390200979c7c7161c04e975085a73c"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/binding.json",
+        "sha256": "050456e766eab57f24aca2bf87080372c6390200979c7c7161c04e975085a73c"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\root-capture-review-a1.json",
+        "sha256": "4e921dac24e73c98ac4aec42ca38a1fcdbf09fad16bdf21013ebb5571ce974b3"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/root-capture-review.json",
+        "sha256": "4e921dac24e73c98ac4aec42ca38a1fcdbf09fad16bdf21013ebb5571ce974b3"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\runtime-launch.stdout.txt",
+        "sha256": "7e25f5901a9d631d9534f6aee82bb8d7f754784c47bcccc8bf38777f76c2ad2d"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/launch.stdout.txt",
+        "sha256": "7e25f5901a9d631d9534f6aee82bb8d7f754784c47bcccc8bf38777f76c2ad2d"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\runtime-launch.stderr.txt",
+        "sha256": "e7d1243d9b3cb87ceff52f00bb215aff3429f530dc0c12bfb48b8ee2d0c9b48f"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/runtime/launch.stderr.txt",
+        "sha256": "e7d1243d9b3cb87ceff52f00bb215aff3429f530dc0c12bfb48b8ee2d0c9b48f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-staging-d254-a1\\result.json",
+        "sha256": "82c83a77842e59cdc905f41f8f2ea2299beb95fe1cf345eb337e2988134a9a1b"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/package/result.json",
+        "sha256": "82c83a77842e59cdc905f41f8f2ea2299beb95fe1cf345eb337e2988134a9a1b"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\dist-pwa\\artifact.json",
+        "sha256": "14a2d6217d41955e5c5d7f61a74b7897145a1154038959caa6233bded6aa6df5"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/artifact.json",
+        "sha256": "14a2d6217d41955e5c5d7f61a74b7897145a1154038959caa6233bded6aa6df5"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser\\offline-catalog-canonical--76f6e-ull-offline-browser-restart-d254-msedge-390\\pwa-rate-limit-saved-online.png",
+        "sha256": "e82ff8e0d5eac94ddb7c907b69585976a56c28dc7c2d405eab4b6088ade7b9a9"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/captures/pwa-rate-limit-saved-online.png",
+        "sha256": "e82ff8e0d5eac94ddb7c907b69585976a56c28dc7c2d405eab4b6088ade7b9a9"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser\\offline-catalog-canonical--76f6e-ull-offline-browser-restart-d254-msedge-390\\pwa-rate-limit-offline-ru.png",
+        "sha256": "8893e0027adb978536a1f02dee61b538295502541fda4f26135778d263461141"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/captures/pwa-rate-limit-offline-ru.png",
+        "sha256": "8893e0027adb978536a1f02dee61b538295502541fda4f26135778d263461141"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser\\offline-catalog-canonical--76f6e-ull-offline-browser-restart-d254-msedge-390\\pwa-rate-limit-offline-en.png",
+        "sha256": "93fe453fe4c7bc98456ed263b198d270c78fa144feee6aef4824a8a2d0b472b9"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/license-rate-limit-browser-20261002/actual/captures/pwa-rate-limit-offline-en.png",
+        "sha256": "93fe453fe4c7bc98456ed263b198d270c78fa144feee6aef4824a8a2d0b472b9"
+      }
+    }
+  ],
+  "affectedQaTestsPassed": 13,
+  "newQaTests": 3,
+  "packagingTestsPassed": 163,
+  "pwaCompilations": 1,
+  "browserCasesPassed": 1,
+  "persistentLaunches": 2,
+  "fullBrowserRestarts": 1,
+  "uniqueCapturesReviewed": 3,
+  "localPackageWritten": true,
+  "sameCandidatePackageVerified": true,
+  "installedDeviceAcceptance": false,
+  "providerValidated": false,
+  "fullAppVisualAcceptance": false,
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue S03.acceptance with the existing MOD-030 gap: compose the actual account client/API/SQL deletion request, lost-acknowledgement status recovery, processor job and account fences in one local integration case. Preserve reviewed disclosure defaults and all open acceptance criteria. Auth hard deletion does not permit an unauthenticated completed-status receipt. Installed-device PWA acceptance remains pending an isolated target."
+}

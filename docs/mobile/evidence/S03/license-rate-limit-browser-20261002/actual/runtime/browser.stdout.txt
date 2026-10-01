@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] [d254-msedge-390] › tests\pwa\offline-catalog.spec.mjs:643:1 › canonical 429 preserves saved access through early recheck and a full offline browser restart
+  1 passed (36.6s)

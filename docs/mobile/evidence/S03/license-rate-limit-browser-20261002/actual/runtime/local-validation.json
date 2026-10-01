@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "kind": "planet-local-preparation-validation",
+  "sourceCommit": "403ade7fa3e35cd3292a4610ab8126bbe7627774",
+  "artifact": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\dist-pwa\\artifact.json",
+    "sha256": "14a2d6217d41955e5c5d7f61a74b7897145a1154038959caa6233bded6aa6df5"
+  },
+  "pwaReport": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\strict-audit.json",
+    "sha256": "6d1ff036ab14ae53df0bd94a31e6a960e7d9b80dc6b872b27191b478846cbcfd"
+  },
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\original-smoke-source-manifest.json",
+    "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+  },
+  "currentSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\current-package-source-manifest.json",
+    "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+  },
+  "smokeReport": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke-report.json",
+    "sha256": "7cfaae54a523713fa198c14e9fbd93850fc78f5284eab7d617eb298a9e3b484e"
+  },
+  "smokeCommand": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "scripts/mobile/pwa-staging-package.test.mjs",
+    "server/planet/api.test.ts",
+    "server/planet/worker.test.ts",
+    "server/planet/integration.test.ts",
+    "--maxWorkers=1",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke-report.json"
+  ],
+  "exitCode": 0,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke.stdout.txt",
+    "sha256": "a4caafb79a4aee39e4eec6f728e94dd293f32b8a5a04cf05dcdca9cfe8d06111"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "localOnly": true,
+  "stagingValidated": false,
+  "providerValidated": false
+}

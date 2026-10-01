@@ -1,0 +1,22 @@
+{
+  "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "args": [
+    "scripts/mobile/prepare-pwa-staging.mjs",
+    "--expected-sha",
+    "403ade7fa3e35cd3292a4610ab8126bbe7627774",
+    "--build-id",
+    "f47915937aa758ddd6361d32c7771bd7dac5d7ca56c3d676f00b3760846f79bc",
+    "--dir",
+    "dist-pwa",
+    "--out",
+    ".tmp/pwa-staging-d254-a1",
+    "--receipt",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\local-validation.json",
+    "--receipt-sha256",
+    "cf9bebd711904a6b163742995fa8a4e0400a3a3973a33f47e7aa6b6050ec2da9",
+    "--validation-root",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review",
+    "--allow-qa"
+  ]
+}

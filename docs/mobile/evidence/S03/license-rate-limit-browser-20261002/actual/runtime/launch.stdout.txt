@@ -1,0 +1,85 @@
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1383 modules transformed.
+rendering chunks...
+computing gzip size...
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/index.html                                       4.34 kB │ gzip:   1.48 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/.vite/manifest.json                             18.52 kB │ gzip:   2.37 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/editorial-paper-DwbOovh5.webp            37.27 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/brush-orange-stage-B2wkl8IX.webp         46.57 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/brush-paper-split-zfVJ2vHM.webp          62.35 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/brush-violet-stage-WEaHRUQQ.webp         67.86 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/brush-paper-east-Dhu-9hco.webp           68.43 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/brush-paper-corners-ChpKv6VW.webp        75.40 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/countries-B1fL43Dn.geojson              305.05 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/section-prizes-DXUciBB7.webp            349.28 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/knizhulyk-green-v1-DiQNRUnt.png       1,895.60 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BrandHeartIcon-Df3ZTgSK.css               1.02 kB │ gzip:   0.49 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/PlanetAccountPage-C5lEMVM6.css            1.76 kB │ gzip:   0.68 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/ArticleBookReader-C3U9oGqS.css            6.31 kB │ gzip:   1.67 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BookShelfProgressRail-CdOKAbrW.css       15.68 kB │ gzip:   3.17 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/LiteraryGlobe-Ckumdx5m.css               17.39 kB │ gzip:   3.04 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/index-BB-0gWaR.css                      708.50 kB │ gzip: 115.76 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/authTurnstileToken-DJYlWq5M.js            0.16 kB │ gzip:   0.15 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BrandPlusIcon-h0rDlerA.js                 0.22 kB │ gzip:   0.20 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BrandArrowIcon-D12bhHa6.js                0.23 kB │ gzip:   0.21 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/qaSceneProbe-D7JI5dIz.js                  0.41 kB │ gzip:   0.32 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/nobelArticles-hOYqIHvT.js                 0.48 kB │ gzip:   0.35 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/supabase-CIqXIpn8.js                      1.00 kB │ gzip:   0.54 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/vite-preload-helper-C2MX7TZ4.js           1.12 kB │ gzip:   0.65 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/localization-oJ9JZHH5.js                  1.95 kB │ gzip:   0.68 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/useSubscriptions-Da6QJS6f.js              2.15 kB │ gzip:   1.04 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/articleSeries-B2xQHYGP.js                 2.64 kB │ gzip:   1.21 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/NobelArchiveStrip-C4VknApm.js             3.94 kB │ gzip:   1.90 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/countryLocalization-C7cYiO-a.js           3.98 kB │ gzip:   1.60 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/SectionsDirectory-PvH0ho6w.js             5.09 kB │ gzip:   2.38 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/bookMentions-B6Zq_TXn.js                  6.73 kB │ gzip:   2.84 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/GlobalSearch-Clx0eGFY.js                  8.05 kB │ gzip:   3.02 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/CmsHomepageContent-DJgEoYWt.js            8.26 kB │ gzip:   2.41 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/globalSearchRuntime-CpWsx6kC.js           9.19 kB │ gzip:   3.28 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/LiteraryCalendar-CNoQFih2.js              9.62 kB │ gzip:   3.66 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BookShelfSceneCanvas-Bj1hiMoA.js         10.15 kB │ gzip:   3.78 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BookShelfSceneCanvas-DEQccu4T.js         10.15 kB │ gzip:   3.78 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/ArticleLibrarySection-DTA_AXIg.js        11.16 kB │ gzip:   4.48 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BrandHeartIcon-CzmaBVZ1.js               13.86 kB │ gzip:   5.48 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/bookyModel-2krlJjIM.js                   21.18 kB │ gzip:   8.90 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BookShelfScene-EgLZ47iT.js               21.31 kB │ gzip:   8.10 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/PlanetAccountPage-C4343gEP.js            24.69 kB │ gzip:   8.79 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/WriterPanel-D5cznl4G.js                  30.22 kB │ gzip:   9.45 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/CommunityHub-Cjy0wzpF.js                 54.61 kB │ gzip:  16.76 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/completeShelfRenderer-D8-xnO9H.js        57.78 kB │ gzip:  19.93 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BookArchiveSection-DDnIUPwv.js          100.00 kB │ gzip:  30.58 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BookArchiveSection-DD322Zi_.js          100.00 kB │ gzip:  30.58 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/ArticleBookReader-LUqUNo7g.js           141.89 kB │ gzip:  47.60 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/react-vendor-BFfFeT-i.js                146.08 kB │ gzip:  47.23 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/BookShelfProgressRail-BKNgLniu.js       196.71 kB │ gzip:  61.53 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/supabase-vendor-C0Z0FS3K.js             216.82 kB │ gzip:  57.10 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/LiteraryGlobe-MGXDZ6jo.js               250.82 kB │ gzip:  88.22 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/ArticleReader-6OeSQZCl.js               253.61 kB │ gzip:  79.42 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/writer-portraits-data-ZDd9rYw-.js       500.03 kB │ gzip:  76.33 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/country-data-n-z-B6kBB-fK.js            508.63 kB │ gzip: 105.27 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/catalog-CReVXnhW.js                     607.12 kB │ gzip:  84.01 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/catalog-BnrLxdCC.js                     769.98 kB │ gzip: 224.86 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/country-data-a-m-C_afZbhK.js            789.51 kB │ gzip: 159.38 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/three-vendor-BWKpWZh9.js              1,100.45 kB │ gzip: 331.84 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/writer-biography-reviews-BMVRO21A.js  1,227.68 kB │ gzip: 393.63 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/index-F_fse9MX.js                     1,604.35 kB │ gzip: 433.04 kB
+.tmp/pwa-build-e77b39a3-bad7-4522-8931-4e95558cb62e/assets/book-catalog-CUS-317M.js              2,053.99 kB │ gzip: 187.59 kB
+✓ built in 11.65s
+{
+  "output": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\dist-pwa",
+  "previous": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-previous-ea9355bc-2a4c-423d-80c5-d2cba1fff9ef",
+  "buildId": "f47915937aa758ddd6361d32c7771bd7dac5d7ca56c3d676f00b3760846f79bc",
+  "essentialFiles": 1398,
+  "essentialBytes": 73083292,
+  "releaseReady": false
+}
+
+{
+  "pass": true,
+  "sourceCommit": "403ade7fa3e35cd3292a4610ab8126bbe7627774",
+  "buildId": "f47915937aa758ddd6361d32c7771bd7dac5d7ca56c3d676f00b3760846f79bc",
+  "captures": 3,
+  "failure": null
+}
+

@@ -1,0 +1,58 @@
+{
+  "pass": true,
+  "decision": "D254",
+  "base": "bca16f2eb6a088277c8bc7b8afbbba50a23ab252",
+  "owners": [
+    {
+      "target": "tests/pwa/offline-catalog.spec.mjs",
+      "original": {
+        "path": "original/tests/pwa/offline-catalog.spec.mjs",
+        "sha256": "e360242028a1f859ecc5fd0934e6d4a4ffd535e2ae588e7a0de143d46212f4de"
+      },
+      "proposed": {
+        "path": "proposed/tests/pwa/offline-catalog.spec.mjs",
+        "sha256": "6a55b1b2f79ebf6dfa44c3a0e3d4977f10ca0a686d1d67eb60d27119637b4a43"
+      }
+    },
+    {
+      "target": "tests/pwa/support/local-server.mjs",
+      "original": {
+        "path": "original/tests/pwa/support/local-server.mjs",
+        "sha256": "5961d3e61339bb8e44704d804acbad99041706645377c9f9bf28b6676f1c5c1e"
+      },
+      "proposed": {
+        "path": "proposed/tests/pwa/support/local-server.mjs",
+        "sha256": "e76cfdeec6ccc5119ccbbd6fc40a097e252191d44ae7e4dde6bd692d0edfb4c6"
+      }
+    },
+    {
+      "target": "tests/pwa/support/local-server.test.mjs",
+      "original": {
+        "path": "original/tests/pwa/support/local-server.test.mjs",
+        "sha256": "471a4c8845c89dba8e5c5b80b27fa8bdcefce3c931f36fd13a0a2e9305eddd66"
+      },
+      "proposed": {
+        "path": "proposed/tests/pwa/support/local-server.test.mjs",
+        "sha256": "0500b2614e7ef28bc85f9fd9bdb339170be2246a90f7605a9db642e07634cfea"
+      }
+    }
+  ],
+  "binding": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\root-binding.json",
+    "sha256": "97769530c787eaa03c9cfcd793477b0e66975add5ea2fdd057087c6c48e872e2"
+  },
+  "producer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source.mjs",
+    "sha256": "81b2b08b417516dfc3c19c18a6e99e8ea9d032f14c4ecd44b10f9fd8cd9b9dc7"
+  },
+  "sourceBefore": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-before.json",
+    "sha256": "4c2d62bd4ea2907b13cefabf5f7ff3953ed51861f07281ac0e33d24387f0fcf6"
+  },
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-manifest.json",
+    "sha256": "53f295a77ec8cee1860f07107fcb6980b4aba3f11d1a2d69fced11309a043c78"
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,18 @@
+{
+  "command": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke-command.json",
+    "sha256": "2e160baa427ea185dd3a0a562fc1fe86a5967ed50ce51f67a22fbbd65a94a099"
+  },
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 6928,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke.stdout.txt",
+    "sha256": "a4caafb79a4aee39e4eec6f728e94dd293f32b8a5a04cf05dcdca9cfe8d06111"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\packaging-smoke.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

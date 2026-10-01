@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "state": "FROZEN",
+  "decision": "D254",
+  "expectedBase": "bca16f2eb6a088277c8bc7b8afbbba50a23ab252",
+  "files": [
+    {
+      "target": "tests/pwa/offline-catalog.spec.mjs",
+      "original": {
+        "path": "original/tests/pwa/offline-catalog.spec.mjs",
+        "sha256": "e360242028a1f859ecc5fd0934e6d4a4ffd535e2ae588e7a0de143d46212f4de"
+      },
+      "proposed": {
+        "path": "proposed/tests/pwa/offline-catalog.spec.mjs",
+        "sha256": "6a55b1b2f79ebf6dfa44c3a0e3d4977f10ca0a686d1d67eb60d27119637b4a43"
+      }
+    },
+    {
+      "target": "tests/pwa/support/local-server.mjs",
+      "original": {
+        "path": "original/tests/pwa/support/local-server.mjs",
+        "sha256": "5961d3e61339bb8e44704d804acbad99041706645377c9f9bf28b6676f1c5c1e"
+      },
+      "proposed": {
+        "path": "proposed/tests/pwa/support/local-server.mjs",
+        "sha256": "e76cfdeec6ccc5119ccbbd6fc40a097e252191d44ae7e4dde6bd692d0edfb4c6"
+      }
+    },
+    {
+      "target": "tests/pwa/support/local-server.test.mjs",
+      "original": {
+        "path": "original/tests/pwa/support/local-server.test.mjs",
+        "sha256": "471a4c8845c89dba8e5c5b80b27fa8bdcefce3c931f36fd13a0a2e9305eddd66"
+      },
+      "proposed": {
+        "path": "proposed/tests/pwa/support/local-server.test.mjs",
+        "sha256": "0500b2614e7ef28bc85f9fd9bdb339170be2246a90f7605a9db642e07634cfea"
+      }
+    }
+  ],
+  "affectedSuites": [
+    "tests/pwa/support/local-server.test.mjs"
+  ],
+  "plannedTests": 13,
+  "plannedNewTests": 3,
+  "actualTests": null,
+  "browserCase": "canonical 429 preserves saved access through early recheck and a full offline browser restart",
+  "plannedBrowserCases": 1,
+  "plannedPersistentLaunches": 2,
+  "plannedBrowserRestarts": 1,
+  "plannedBrowserCaptures": 3,
+  "deltaProof": {
+    "path": "delta-proof.json",
+    "sha256": "826a2fbe5ed46115d17c1bbb18067c697729dcf5a08e23eedc370a8c630fed02"
+  },
+  "review": {
+    "path": "review.md",
+    "sha256": "5a7cac0e012bf1c8383ec563b97aa79f24afb3ea67d275214000e23fb93c92ef"
+  },
+  "executionOutline": {
+    "path": "execution-outline.json",
+    "sha256": "9befa50676e8655894d93152fd07a04a7328a745932132a7d554a6cb0bcb3d87"
+  },
+  "authorsExecutedProductCode": false,
+  "authorsExecutedTests": false,
+  "canonicalChangesByAuthors": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "preRunCorrections": {
+    "previousFrozenManifest": {
+      "path": "witness/proposal-manifest-eb0cfb.json",
+      "sha256": "eb0cfb0d07418ce34fe66bb9b2a85c5f5d070e08557e401a8afb8c3ae7eeb22e"
+    },
+    "requestFenceBeforeNavigation": true,
+    "heldReplyBarrierAfterImmutableSnapshot": true,
+    "actualExecutions": 0
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "decision": "D254",
+  "actualResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-browser-review/runtime/actual-a1/result.json",
+    "sha256": "2f94cdcd057cb405dc3fb33d4030a340781cd7081c93216a1763a67c5e5ab966"
+  },
+  "capturesReviewed": true,
+  "directViewDetail": "original",
+  "uniqueCaptures": 3,
+  "captures": [
+    {
+      "name": "pwa-rate-limit-saved-online.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser\\offline-catalog-canonical--76f6e-ull-offline-browser-restart-d254-msedge-390\\pwa-rate-limit-saved-online.png",
+      "sha256": "e82ff8e0d5eac94ddb7c907b69585976a56c28dc7c2d405eab4b6088ade7b9a9",
+      "bytes": 331334,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "name": "pwa-rate-limit-offline-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser\\offline-catalog-canonical--76f6e-ull-offline-browser-restart-d254-msedge-390\\pwa-rate-limit-offline-ru.png",
+      "sha256": "8893e0027adb978536a1f02dee61b538295502541fda4f26135778d263461141",
+      "bytes": 300691,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "name": "pwa-rate-limit-offline-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser\\offline-catalog-canonical--76f6e-ull-offline-browser-restart-d254-msedge-390\\pwa-rate-limit-offline-en.png",
+      "sha256": "93fe453fe4c7bc98456ed263b198d270c78fa144feee6aef4824a8a2d0b472b9",
+      "bytes": 314979,
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "visibleAccessCardsFitViewport": true,
+  "ruEnAccessCopyReadable": true,
+  "visibleCountryGlobeRetained": true,
+  "scope": "Three actual 390x844 captures of saved access online and cold offline RU/EN; functional access-card visual review only",
+  "observations": [
+    "Access details and selected Russia remain visible; no clipped status-card text in the three captures.",
+    "Existing caption over the textured globe has weak contrast; no full-app design acceptance is claimed."
+  ],
+  "fullAppVisualAcceptance": false,
+  "bookyVisualAcceptance": false,
+  "installedDeviceAcceptance": false,
+  "editorialApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

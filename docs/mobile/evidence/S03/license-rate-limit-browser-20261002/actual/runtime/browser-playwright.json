@@ -1,0 +1,122 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\pwa.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\pwa.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-browser-review/runtime/actual-a1/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "d254-msedge-390",
+        "name": "d254-msedge-390",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "offline-catalog.spec.mjs"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\browser-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "offline-catalog.spec.mjs",
+      "file": "offline-catalog.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "canonical 429 preserves saved access through early recheck and a full offline browser restart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "d254-msedge-390",
+              "projectName": "d254-msedge-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 35912,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-01T23:06:31.012Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "canonical-429-offline-cold-restart",
+                      "contentType": "application/json",
+                      "body": "ewogICJsb2NhbFFhT25seSI6IHRydWUsCiAgImJyb3dzZXJDaGFubmVsIjogIm1zZWRnZSIsCiAgInNvdXJjZUNvbW1pdCI6ICI0MDNhZGU3ZmEzZTM1Y2QzMjkyYTQ2MTBhYjgxMjZiYmU3NjI3Nzc0IiwKICAiYnVpbGRJZCI6ICJmNDc5MTU5MzdhYTc1OGRkZDYzNjFkMzJjNzc3MWJkN2RhYzVkN2NhNTZjM2Q2NzZmMDBiMzc2MDg0NmY3OWJjIiwKICAicGVyc2lzdGVudExhdW5jaGVzIjogMiwKICAicmVzdGFydHMiOiAxLAogICJ3YXJtU2Vzc2lvblBvc3RzIjogMiwKICAiZWFybHlSZXRyeUV4dHJhU2Vzc2lvblBvc3RzIjogMCwKICAib2ZmbGluZUxpY2Vuc2VSZXF1ZXN0cyI6IDAsCiAgImZpcnN0Q29udGV4dENsb3NlZCI6IHRydWUsCiAgInNhbWVEaXNwb3NhYmxlUHJvZmlsZSI6IHRydWUsCiAgIm9mZmxpbmVCZWZvcmVGaXJzdE5hdmlnYXRpb24iOiB0cnVlLAogICJsb2NhbGVzIjogWwogICAgewogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInNlbGVjdGVkQ291bnRyeSI6ICJydXNzaWEiLAogICAgICAic2F2ZWRWZXJpZmljYXRpb24iOiB0cnVlLAogICAgICAic2luZ2xlU2NlbmVXaXRoaW5SZW9wZW5lZERvY3VtZW50IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImxvY2FsZSI6ICJlbiIsCiAgICAgICJzZWxlY3RlZENvdW50cnkiOiAicnVzc2lhIiwKICAgICAgInNhdmVkVmVyaWZpY2F0aW9uIjogdHJ1ZSwKICAgICAgInNpbmdsZVNjZW5lV2l0aGluUmVvcGVuZWREb2N1bWVudCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAic2VsZWN0ZWRDb3VudHJ5IjogInJ1c3NpYSIsCiAgICAgICJzYXZlZFZlcmlmaWNhdGlvbiI6IHRydWUsCiAgICAgICJzaW5nbGVTY2VuZVdpdGhpblJlb3BlbmVkRG9jdW1lbnQiOiB0cnVlCiAgICB9CiAgXSwKICAidmFsaWRTYXZlZFByb29mQWZ0ZXI0MjkiOiB0cnVlLAogICJjb21wbGV0ZWQiOiB0cnVlLAogICJwcm9maWxlUmVtb3ZlZCI6IHRydWUsCiAgImFjdHVhbE9zSW5zdGFsbGF0aW9uIjogZmFsc2UsCiAgInJlYWxTdG9yZVB1cmNoYXNlIjogZmFsc2UsCiAgInByb2R1Y3Rpb25Qcm92aWRlciI6IGZhbHNlLAogICJzdGFnZUFjY2VwdGVkIjogZmFsc2UsCiAgInJlbGVhc2VSZWFkeSI6IGZhbHNlLAogICJlYXJseVJldHJ5SWRlbnRpdHlTdGF0dXMiOiAyMDAsCiAgImVhcmx5UmV0cnlPYnNlcnZhdGlvbk1zIjogNzMwLAogICJvZmZsaW5lTGljZW5zZVBvc3RBdHRlbXB0cyI6IDAsCiAgImJsb2NrZWRSZXF1ZXN0cyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-5a6d675862a7ce2e4dc6",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/offline-catalog.spec.mjs",
+          "line": 643,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-01T23:06:30.354Z",
+    "duration": 36636.558,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

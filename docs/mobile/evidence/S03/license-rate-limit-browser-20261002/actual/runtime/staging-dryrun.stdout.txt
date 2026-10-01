@@ -1,0 +1,49 @@
+{"target":"local-preparation","platform":"Web/PWA","profile":"SAFE_PAID_BILINGUAL_V1","expectedHead":"403ade7fa3e35cd3292a4610ab8126bbe7627774","buildId":"f47915937aa758ddd6361d32c7771bd7dac5d7ca56c3d676f00b3760846f79bc","dryRun":true}
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "planet-local-staging-package",
+  "target": "local-preparation",
+  "profile": "SAFE_PAID_BILINGUAL_V1",
+  "sourceBindingScope": [
+    "src",
+    "server",
+    "scripts",
+    "supabase/migrations",
+    "tests",
+    "package.json",
+    "package-lock.json",
+    "index.html",
+    "vite.config.ts",
+    "vite.pwa.config.ts",
+    "tsconfig.json",
+    "vitest.config.ts",
+    "data/book-canon-source-registry.json"
+  ],
+  "sourceCommit": "403ade7fa3e35cd3292a4610ab8126bbe7627774",
+  "buildId": "f47915937aa758ddd6361d32c7771bd7dac5d7ca56c3d676f00b3760846f79bc",
+  "localQaAuthority": true,
+  "validationReceipt": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\local-validation.json",
+    "sha256": "cf9bebd711904a6b163742995fa8a4e0400a3a3973a33f47e7aa6b6050ec2da9"
+  },
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\original-smoke-source-manifest.json",
+    "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+  },
+  "currentSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\current-package-source-manifest.json",
+    "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+  },
+  "localProtocolSmokeRetained": true,
+  "localSmokeOriginalSourceCommit": "403ade7fa3e35cd3292a4610ab8126bbe7627774",
+  "currentSourceFilesUnchangedSinceLocalSmoke": true,
+  "dryRun": true,
+  "packageWritten": false,
+  "stagingDeploymentExecuted": false,
+  "stagingEntitlementValidated": false,
+  "realProviderWebhookValidated": false,
+  "productionActionsAuthorized": false,
+  "releaseReady": false,
+  "stageAcceptanceClaimed": false
+}

@@ -1,0 +1,25 @@
+{
+  "pass": true,
+  "base": "bca16f2eb6a088277c8bc7b8afbbba50a23ab252",
+  "checkpoint": "403ade7fa3e35cd3292a4610ab8126bbe7627774",
+  "clean": true,
+  "exactPaths": [
+    "tests/pwa/offline-catalog.spec.mjs",
+    "tests/pwa/support/local-server.mjs",
+    "tests/pwa/support/local-server.test.mjs"
+  ],
+  "checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\checks.json",
+    "sha256": "6c903cc9b6f9f26b17e4d3e454f3f64b378abc15ba1d42df50d7b67fb9112f62"
+  },
+  "originalSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-manifest.json",
+    "sha256": "53f295a77ec8cee1860f07107fcb6980b4aba3f11d1a2d69fced11309a043c78"
+  },
+  "currentSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\current-source-manifest.json",
+    "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

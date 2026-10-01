@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "sourceCommit": "403ade7fa3e35cd3292a4610ab8126bbe7627774",
+  "buildId": "f47915937aa758ddd6361d32c7771bd7dac5d7ca56c3d676f00b3760846f79bc",
+  "durationMs": 20720,
+  "producer": "startPwaQaServer({buildQa:true}) -> build-pwa.mjs --qa-authority",
+  "buildInvocations": 1,
+  "origin": "http://127.0.0.1:64611",
+  "authorityPath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-qa\\d254-a1-authority.json",
+  "privateKeyPersisted": false
+}

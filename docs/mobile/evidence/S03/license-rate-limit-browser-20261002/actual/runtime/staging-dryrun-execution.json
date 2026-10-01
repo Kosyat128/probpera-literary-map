@@ -1,0 +1,18 @@
+{
+  "command": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-dryrun-command.json",
+    "sha256": "1d2be7a112e4a9665a3f92fecbf53349e6fcfe2f0fcc4dcdef62da9b074e3534"
+  },
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 7671,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-dryrun.stdout.txt",
+    "sha256": "13288230c8ca81e48c9c3c495f4e2f93ad7d9ea242e411509b9088fa45223c99"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-dryrun.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

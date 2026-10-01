@@ -1,0 +1,18 @@
+{
+  "command": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-write-command.json",
+    "sha256": "b4da3af9258dc312091ca7ccc3b0cf7effd84dbb83805e7ebe16219e59299c91"
+  },
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 12394,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-write.stdout.txt",
+    "sha256": "655af00830f970c2f002212b67a29e85d5ee956a2ddaec7006582e24359bec7a"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\staging-write.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "args": [
+    "--check",
+    "tests/pwa/offline-catalog.spec.mjs"
+  ]
+}

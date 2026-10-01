@@ -1,0 +1,18 @@
+{
+  "command": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\strict-audit-command.json",
+    "sha256": "e49c6987889ce7c7941e7586ff25176a6149015c586676b913f05a9b8c27bac1"
+  },
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 4902,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\strict-audit.stdout.txt",
+    "sha256": "6d1ff036ab14ae53df0bd94a31e6a960e7d9b80dc6b872b27191b478846cbcfd"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\actual-a1\\strict-audit.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

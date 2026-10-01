@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "kind": "d254-current-mobile-qa",
+  "bindingReady": true,
+  "sourceCommit": "403ade7fa3e35cd3292a4610ab8126bbe7627774",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\current-source-manifest.json",
+    "sha256": "64b77508075b37fe8dea5df99d6d3c91e8e9dc0758dc84c927f8b9c5113d223d"
+  },
+  "sourceChecks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\checks.json",
+    "sha256": "6c903cc9b6f9f26b17e4d3e454f3f64b378abc15ba1d42df50d7b67fb9112f62"
+  },
+  "sourceReceipt": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\source-a1\\source-commit.json",
+    "sha256": "cd9363ecd98b1e5d18b2069a7c9badbfaee9d548909d7a4c08dacd4321903544"
+  },
+  "expectedSmokeTests": 163,
+  "helpers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\producer.mjs",
+      "sha256": "bb9d8c4a9d61c6f5fb2d8589504bc37697483e871a9088c109eb589743c2cfeb"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-browser-review\\runtime\\pwa.config.mjs",
+      "sha256": "cabf21f2c1f4e496c4e224fba351fe257357f07d3c52c70b2a5559b550a92607"
+    }
+  ],
+  "tools": [
+    {
+      "path": "node_modules/esbuild/package.json",
+      "sha256": "9d0bc453f4e791553c4cc2298ba023b409241fd9801e494741666eb0f6051490"
+    },
+    {
+      "path": "node_modules/vitest/package.json",
+      "sha256": "caa41f04799bd42f3cfd100c4282e630d77ffc7deb1e7e4927794fcb7f137f34"
+    },
+    {
+      "path": "node_modules/vitest/vitest.mjs",
+      "sha256": "39db22f579acf5639bbb17a261408debbde03f4692c0c439e77e7f13aeba74d6"
+    },
+    {
+      "path": "node_modules/vite/package.json",
+      "sha256": "e5ed0f85215f871fe22a48987dcd77fcfbe14064a53c0c9f7f48186a6b7e2cf0"
+    },
+    {
+      "path": "node_modules/@playwright/test/package.json",
+      "sha256": "be51f784a5742a1aa075e0173f5f04f189a791cc30c40e3bb18be584f696764e"
+    },
+    {
+      "path": "node_modules/@playwright/test/cli.js",
+      "sha256": "79e23e6a249176295b8490567daa7717448a75866d6ea6f6b296ff3d23305c69"
+    },
+    {
+      "path": "node_modules/typescript/package.json",
+      "sha256": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6"
+    },
+    {
+      "path": "node_modules/sharp/package.json",
+      "sha256": "0f3a7e7eb4f22978dfde46e6c7c6ecf3b86b43e33c3d366de88b334b4610c3ff"
+    }
+  ],
+  "rootReview": {
+    "fullProducerConfigAndTemplateRead": true,
+    "filenameOnlyRefreezeChecked": true,
+    "onePwaCompilation": true,
+    "oneExistingMandatoryFourSuiteSmoke": true,
+    "exactOneBrowserCase": true,
+    "sameArtifactLocalPackageOnly": true
+  }
+}
