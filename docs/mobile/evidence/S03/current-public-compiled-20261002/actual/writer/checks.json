@@ -1,0 +1,138 @@
+{
+  "pass": true,
+  "decision": "D253",
+  "base": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+  "recordedAt": "2026-10-01T22:11:02.694Z",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\writer-fix\\source-a1\\source-manifest.json",
+    "sha256": "b5cc61c64ba42cff367e3bf1b7e948533bc83b24e7aab40e3773df3729c64eaa"
+  },
+  "sourceAfter": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\writer-fix\\source-a1\\source-after.json",
+    "sha256": "b5cc61c64ba42cff367e3bf1b7e948533bc83b24e7aab40e3773df3729c64eaa"
+  },
+  "inputsUnchangedDuringChecks": true,
+  "test": {
+    "exitCode": 0,
+    "command": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\writer-fix\\source-a1\\vitest-command.json",
+      "sha256": "9b3f15f2ad6a5314bc2369d5ee0414f6aef39e73073fb9131decfd1ddbe03c95"
+    },
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\writer-fix\\source-a1\\vitest.stdout.txt",
+      "sha256": "a83d229f9f89bfd613bb56572ce4ac66df59f58ae9e201ddf0b35020b5f9f5a5"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\writer-fix\\source-a1\\vitest.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "report": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\writer-fix\\source-a1\\vitest-report.json",
+    "sha256": "531aef2e60f28dcbd7398b4e24385397a367c162e5653c035362d68ecfa1b006"
+  },
+  "summary": {
+    "success": true,
+    "total": 107,
+    "passed": 107,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0,
+    "suiteFiles": [
+      "scripts/mobile/public-locale-pages.test.mjs",
+      "scripts/mobile/public-locale-review.test.mjs"
+    ],
+    "suiteStatusesPassed": true,
+    "assertionsPassed": true,
+    "assertionCount": 107
+  },
+  "testInvocations": 1,
+  "appTypeScriptInvocations": 0,
+  "retainedCompilation": {
+    "compiledSourceCommit": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+    "originalReport": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\compile.json",
+      "sha256": "a34bf5cd43c3dca6c68f029c626a43203a3a22fecfe23b4606a825ecb636a82a"
+    },
+    "originalSourceManifest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\source-before.json",
+      "sha256": "f0108882668e62fa5de6bca2a00b96ce9aea0a58cab5afe8e363f82625e34d83"
+    },
+    "dependencyManifest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\dependencies-before.json",
+      "sha256": "844c7792f68883522c826b44cf4fd9129ebf59b6adb9d8bbd536d297062fd98f"
+    },
+    "moduleCount": 1382,
+    "checkedStringIds": 6444,
+    "compilerConfig": {
+      "path": "vite.config.ts",
+      "sha256": "940a522685d7d756b068252832a5a6d4497cb2fdeb81377ae70887ce6b3347df"
+    },
+    "selectedCompileInputs": [
+      {
+        "path": "vite.config.ts",
+        "sha256": "940a522685d7d756b068252832a5a6d4497cb2fdeb81377ae70887ce6b3347df"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+      },
+      {
+        "path": "package.json",
+        "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+      },
+      {
+        "path": "vitest.config.ts",
+        "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+      },
+      {
+        "path": "scripts/mobile/pwa-staging-package.mjs",
+        "sha256": "915b9e11dc306567819e1af5bf0d99308595647c08d678c765ece9f176559733"
+      },
+      {
+        "path": "node_modules/vite/package.json",
+        "sha256": "e5ed0f85215f871fe22a48987dcd77fcfbe14064a53c0c9f7f48186a6b7e2cf0"
+      },
+      {
+        "path": "node_modules/typescript/package.json",
+        "sha256": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6"
+      },
+      {
+        "path": "node_modules/vitest/package.json",
+        "sha256": "caa41f04799bd42f3cfd100c4282e630d77ffc7deb1e7e4927794fcb7f137f34"
+      }
+    ],
+    "selectedInputsUnchanged": true,
+    "changedOwnersAbsentFromRecordedGraph": true,
+    "recordedConfigFileDependencies": [],
+    "recordedConfigDependenciesAloneProveFullClosure": false,
+    "recompiled": false,
+    "coversChangedNodeWriters": false,
+    "historicalAppTypecheck": {
+      "checks": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-license-rate-limit-client-review\\source-a2\\checks.json",
+        "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+      },
+      "sourceManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-client-review/source-a2/current-source-manifest.json",
+        "sha256": "f5213ba30c30d7f0dba78cc846cd4277887472c83ae13f5468b2089d9b948541"
+      },
+      "srcAndTsconfigRowsUnchanged": true,
+      "selectedInputsUnchanged": true,
+      "fullThirteenRootEqualityAfterFix": false,
+      "executed": false,
+      "currentApplicationTypecheckClaimed": false
+    }
+  },
+  "appBuildExecuted": false,
+  "pwaBuildExecuted": false,
+  "nativeBuildExecuted": false,
+  "browserInvocations": 0,
+  "providerValidated": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

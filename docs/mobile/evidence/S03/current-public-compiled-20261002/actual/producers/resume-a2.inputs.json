@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "kind": "resume-only-external-public-compile",
+  "expectedBase": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+  "priorAttempt": "actual-a1",
+  "nextAttempt": "actual-a2",
+  "originalGateSha256": "2006140b1b7394144987adbecfe3fc8f9394dbc274054808a143bd1ef6e069e7",
+  "repair": {
+    "path": "data/article-book-writer-identity-aliases.json",
+    "bytes": 2129,
+    "sha256": "8fa64e64f45cda8969165409b498fdaf27a3d5c8a70a6ada915d766282e79648"
+  },
+  "priorWitnesses": [
+    {
+      "name": "result.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/result.json",
+      "sha256": "3ef16b6a8dbac5c5894498023bf3a3e1f23ce464b24a11b0d56242a6dc0be927"
+    },
+    {
+      "name": "source-before.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/source-before.json",
+      "sha256": "f0108882668e62fa5de6bca2a00b96ce9aea0a58cab5afe8e363f82625e34d83"
+    },
+    {
+      "name": "source-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/source-after.json",
+      "sha256": "f0108882668e62fa5de6bca2a00b96ce9aea0a58cab5afe8e363f82625e34d83"
+    },
+    {
+      "name": "inputs-before.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/inputs-before.json",
+      "sha256": "6921ff5b08080138efe64b7ec769c10c221d1bb87b96ade10efbe13238ae2d96"
+    },
+    {
+      "name": "inputs-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/inputs-after.json",
+      "sha256": "6921ff5b08080138efe64b7ec769c10c221d1bb87b96ade10efbe13238ae2d96"
+    },
+    {
+      "name": "dependencies-before.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/dependencies-before.json",
+      "sha256": "844c7792f68883522c826b44cf4fd9129ebf59b6adb9d8bbd536d297062fd98f"
+    },
+    {
+      "name": "dependencies-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/dependencies-after.json",
+      "sha256": "844c7792f68883522c826b44cf4fd9129ebf59b6adb9d8bbd536d297062fd98f"
+    },
+    {
+      "name": "output-initial.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/output-initial.json",
+      "sha256": "6ac91cab38eae269a4e6457275b3b956f615a7df03de4b1ce88f44b8110efc30"
+    },
+    {
+      "name": "output-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/output-after.json",
+      "sha256": "6ac91cab38eae269a4e6457275b3b956f615a7df03de4b1ce88f44b8110efc30"
+    },
+    {
+      "name": "copied-inputs-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a1/copied-inputs-after.json",
+      "sha256": "181d5ff24ec1d533d6e52b094c387d998fae3885009463890d2e5860516a6e35"
+    }
+  ]
+}

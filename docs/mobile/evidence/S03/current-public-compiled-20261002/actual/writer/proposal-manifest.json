@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "state": "FROZEN",
+  "kind": "bounded-public-writer-inventory-fix-proposal",
+  "expectedBase": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+  "executionPerformedByAuthor": false,
+  "canonicalWritesPerformed": false,
+  "checksRunByAuthor": 0,
+  "files": [
+    {
+      "target": "scripts/mobile/public-locale-review.mjs",
+      "original": {
+        "path": "writer-fix/original/scripts/mobile/public-locale-review.mjs",
+        "sha256": "bfa7249f18c81f64139ea0957f6fc71097304c08b078e88457a9c2b407851076"
+      },
+      "proposed": {
+        "path": "proposed/scripts/mobile/public-locale-review.mjs",
+        "sha256": "917a83d533724d02acb2c10e0f2f8b03a835cb3b167df57f5316e09d7efe74a2",
+        "lines": 206
+      }
+    },
+    {
+      "target": "scripts/mobile/write-public-locale-pages.mjs",
+      "original": {
+        "path": "writer-fix/original/scripts/mobile/write-public-locale-pages.mjs",
+        "sha256": "d73e410dd45b3de02e62a01b6b881a0c6037c5638b6d4be48f37a2c69a7ed5af"
+      },
+      "proposed": {
+        "path": "proposed/scripts/mobile/write-public-locale-pages.mjs",
+        "sha256": "d6b50f1d09288568b3520ba6cada5bc49a088145e84f84ecfe8e73db8e55b533",
+        "lines": 232
+      }
+    },
+    {
+      "target": "scripts/mobile/public-locale-review.test.mjs",
+      "original": {
+        "path": "writer-fix/original/scripts/mobile/public-locale-review.test.mjs",
+        "sha256": "2e22ba55b5f1e8e396fedeab08c78506c076b0d61313e7118572b63fee0fe233"
+      },
+      "proposed": {
+        "path": "proposed/scripts/mobile/public-locale-review.test.mjs",
+        "sha256": "7b76a63de8441a234464831b7fdb6b5cf0fdc9f077e224d09ae33fea4ce1876b",
+        "lines": 252
+      }
+    },
+    {
+      "target": "scripts/mobile/public-locale-pages.test.mjs",
+      "original": {
+        "path": "writer-fix/original/scripts/mobile/public-locale-pages.test.mjs",
+        "sha256": "19e4d2cc0a149c41d60f96626437e56a5dce240766faf8c505ac444c6de532db"
+      },
+      "proposed": {
+        "path": "proposed/scripts/mobile/public-locale-pages.test.mjs",
+        "sha256": "a0ce3e7a1fa3262120d17cd48f33c138335ffc0c12b4fdb61dcb49bae4a28213",
+        "lines": 442
+      }
+    }
+  ],
+  "producerChangesReversedToExactOriginals": true,
+  "existingTestsReversedToExactOriginals": true,
+  "additionalExpandedCases": 8,
+  "affectedSuites": [
+    "scripts/mobile/public-locale-review.test.mjs",
+    "scripts/mobile/public-locale-pages.test.mjs"
+  ],
+  "retainedCompile": {
+    "path": "actual-a2/compile.json",
+    "sha256": "a34bf5cd43c3dca6c68f029c626a43203a3a22fecfe23b4606a825ecb636a82a",
+    "compiledSourceCommit": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+    "moduleCount": 1382,
+    "checkedStringModuleDependencyAndEmittedIds": 6444,
+    "changedOwnerMatches": [],
+    "scopes": [
+      "modules.id",
+      "modules.importedIds",
+      "modules.dynamicallyImportedIds",
+      "resolved.configFileDependencies",
+      "resolved.outputs.modules",
+      "resolved.outputs.imports",
+      "resolved.outputs.dynamicImports"
+    ]
+  },
+  "retainedAttemptReceipts": [
+    {
+      "path": "actual-a2/result.json",
+      "sha256": "72ed88f5adfb123b3eb17e4b445a132715fe3055bed8c5349297a97a06cf5341"
+    },
+    {
+      "path": "actual-a2/source-before.json",
+      "sha256": "f0108882668e62fa5de6bca2a00b96ce9aea0a58cab5afe8e363f82625e34d83"
+    },
+    {
+      "path": "actual-a2/source-after.json",
+      "sha256": "f0108882668e62fa5de6bca2a00b96ce9aea0a58cab5afe8e363f82625e34d83"
+    },
+    {
+      "path": "actual-a2/inputs-before.json",
+      "sha256": "bac4975b45f83c39e46f91a3733315d4d41a3d0d4c1b2ce53246f187c15989fd"
+    },
+    {
+      "path": "actual-a2/inputs-after.json",
+      "sha256": "bac4975b45f83c39e46f91a3733315d4d41a3d0d4c1b2ce53246f187c15989fd"
+    },
+    {
+      "path": "actual-a2/dependencies-before.json",
+      "sha256": "844c7792f68883522c826b44cf4fd9129ebf59b6adb9d8bbd536d297062fd98f"
+    },
+    {
+      "path": "actual-a2/dependencies-after.json",
+      "sha256": "844c7792f68883522c826b44cf4fd9129ebf59b6adb9d8bbd536d297062fd98f"
+    },
+    {
+      "path": "actual-a2/output-after.json",
+      "sha256": "65d930c448d83c1186ed290774f20d386c9bb2b0448f128272c99c18a0f5f334"
+    },
+    {
+      "path": "actual-a2/dossier-delivery.json",
+      "sha256": "59d4a7267374a2766ac4ecd861c1c9bbbec2b402c721f7cc9b82268b0855bf4c"
+    }
+  ],
+  "retainedArtifactDirectory": "actual-a1/project/dist",
+  "viteConfig": {
+    "path": "vite.config.ts",
+    "sha256": "940a522685d7d756b068252832a5a6d4497cb2fdeb81377ae70887ce6b3347df"
+  },
+  "appTypecheckQualification": {
+    "historicalReceiptPath": "s03-license-rate-limit-client-review/source-a2/checks.json",
+    "historicalReceiptSha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36",
+    "wholeThirteenRootEqualityAfterFixClaimed": false,
+    "tsconfigPath": "tsconfig.json",
+    "tsconfigSha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6",
+    "include": [
+      "src"
+    ],
+    "projectReferences": [],
+    "qualification": "Exact current src/imported inputs/tsconfig/package/lock/compiler plus all original source rows except the four explicit Node-only owners; original TSC evidence remains historical, no fresh invocation claimed"
+  },
+  "review": {
+    "path": "writer-inventory-fix-review.md",
+    "sha256": "c3ab008a91aa1e17cc6e29bdebfb5d53edf3196ccae14b6499aaecd4dfaab4d6"
+  },
+  "stageAccepted": false,
+  "releaseReady": false,
+  "providerActivated": false,
+  "publicDeployed": false,
+  "editorialApproved": false
+}

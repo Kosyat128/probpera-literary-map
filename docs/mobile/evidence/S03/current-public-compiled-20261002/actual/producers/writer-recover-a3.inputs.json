@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "writer-only-current-compiled-public-recovery",
+  "expectedSourceCommit": "535526f1154fe09d8e3177672d39ab9ebfd5b036",
+  "priorAttempt": "actual-a2",
+  "nextAttempt": "actual-a3",
+  "compiledSourceCommit": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+  "fixManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/writer-fix/proposal-manifest.json",
+    "sha256": "60172db3b163b9188faf2689f5414969190e354ec2bb88f3f0ed0979a6e2d6e2"
+  },
+  "priorWitnesses": [
+    {
+      "name": "result.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/result.json",
+      "sha256": "72ed88f5adfb123b3eb17e4b445a132715fe3055bed8c5349297a97a06cf5341"
+    },
+    {
+      "name": "source-before.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/source-before.json",
+      "sha256": "f0108882668e62fa5de6bca2a00b96ce9aea0a58cab5afe8e363f82625e34d83"
+    },
+    {
+      "name": "source-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/source-after.json",
+      "sha256": "f0108882668e62fa5de6bca2a00b96ce9aea0a58cab5afe8e363f82625e34d83"
+    },
+    {
+      "name": "inputs-before.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/inputs-before.json",
+      "sha256": "bac4975b45f83c39e46f91a3733315d4d41a3d0d4c1b2ce53246f187c15989fd"
+    },
+    {
+      "name": "inputs-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/inputs-after.json",
+      "sha256": "bac4975b45f83c39e46f91a3733315d4d41a3d0d4c1b2ce53246f187c15989fd"
+    },
+    {
+      "name": "dependencies-before.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/dependencies-before.json",
+      "sha256": "844c7792f68883522c826b44cf4fd9129ebf59b6adb9d8bbd536d297062fd98f"
+    },
+    {
+      "name": "dependencies-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/dependencies-after.json",
+      "sha256": "844c7792f68883522c826b44cf4fd9129ebf59b6adb9d8bbd536d297062fd98f"
+    },
+    {
+      "name": "output-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/output-after.json",
+      "sha256": "65d930c448d83c1186ed290774f20d386c9bb2b0448f128272c99c18a0f5f334"
+    },
+    {
+      "name": "dossier-delivery.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/dossier-delivery.json",
+      "sha256": "59d4a7267374a2766ac4ecd861c1c9bbbec2b402c721f7cc9b82268b0855bf4c"
+    },
+    {
+      "name": "compile.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/compile.json",
+      "sha256": "a34bf5cd43c3dca6c68f029c626a43203a3a22fecfe23b4606a825ecb636a82a"
+    },
+    {
+      "name": "copied-inputs-after.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/copied-inputs-after.json",
+      "sha256": "6aa0b69d341db498dbe6f0bc9b409c0fa6ff4ee2fcd1dd7bff163b2997c1baf1"
+    },
+    {
+      "name": "prerequisite-inputs.json",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/prerequisite-inputs.json",
+      "sha256": "6aa0b69d341db498dbe6f0bc9b409c0fa6ff4ee2fcd1dd7bff163b2997c1baf1"
+    }
+  ],
+  "writerFix": {
+    "checks": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/writer-fix/source-a1/checks.json",
+      "sha256": "36c70fdc5e1def6632b74b465e7061e54b1ed554217f123e4ae8f3d0b2558815"
+    },
+    "commit": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/writer-fix/source-a1/source-commit.json",
+      "sha256": "154a67d8e0e24b448ca409caf306037bf0952f714d703c3d4c82536c6be38442"
+    },
+    "currentSourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/writer-fix/source-a1/current-source-manifest.json",
+      "sha256": "673895d7db66d9aefd5311db4bad24e933e3627e94e1d96760b64a7e722d7e2c"
+    }
+  }
+}

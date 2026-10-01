@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "expectedBase": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+  "appTypecheck": {
+    "sourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-client-review/source-a2/source-manifest.json",
+      "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+    },
+    "receipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-client-review/source-a2/checks.json",
+      "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+    }
+  }
+}

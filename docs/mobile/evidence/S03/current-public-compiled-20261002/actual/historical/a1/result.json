@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "kind": "current-public-compiled-local-working-validation",
+  "sourceCommit": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+  "pass": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "editorialApproved": false,
+  "publicDeployed": false,
+  "productionEdgeAccepted": false,
+  "providerActivated": false,
+  "nativeInstalled": false,
+  "sourceRoots": [
+    "src",
+    "server",
+    "scripts",
+    "supabase/migrations",
+    "tests",
+    "package.json",
+    "package-lock.json",
+    "index.html",
+    "vite.config.ts",
+    "vite.pwa.config.ts",
+    "tsconfig.json",
+    "vitest.config.ts",
+    "data/book-canon-source-registry.json"
+  ],
+  "extraInputRoots": [
+    "public",
+    "apps/admin/catalog-assets",
+    "reports/public-image-delivery.json",
+    "playwright.config.mjs"
+  ],
+  "helperPins": [
+    {
+      "path": "gate.mjs",
+      "sha256": "2006140b1b7394144987adbecfe3fc8f9394dbc274054808a143bd1ef6e069e7"
+    },
+    {
+      "path": "compile.mjs",
+      "sha256": "735dd57b8494e5077c4c0bf98b4461f7ddbf65a4fa1b4a5be7dc808ab7008236"
+    },
+    {
+      "path": "public.config.mjs",
+      "sha256": "17409e546629d52ec6a8bb509fe0e3cb687bd95d2150d339ceedd4f71559e9e6"
+    },
+    {
+      "path": "public-fixtures.mjs",
+      "sha256": "13597bbd52a641a79473c98c37f02c9891f74398cc906f0d8f2a6da281a50458"
+    },
+    {
+      "path": "inputs.json",
+      "sha256": "83786ae07bd062d52555831a48dac562dc6d46802d96483cecb42c790acfb863"
+    }
+  ],
+  "appTypecheckReused": {
+    "sourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-client-review/source-a2/source-manifest.json",
+      "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+    },
+    "receipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-client-review/source-a2/checks.json",
+      "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+    }
+  },
+  "appTypechecksRun": 0,
+  "packageBuildRun": false,
+  "cmsExportsRun": 0,
+  "publicCompilesRun": 0,
+  "pwaBuildsRun": 0,
+  "nativeSandboxClaimed": false,
+  "dependencyAdminJunctionTraversed": false,
+  "commands": [
+    {
+      "name": "interface-catalog-check",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\export-interface-copy-catalog.mjs",
+        "--check"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\vite-cache",
+      "stdout": {
+        "path": "commands/interface-catalog-check.stdout.txt",
+        "sha256": "9e0f302bebc2d0e7eb04c064cd986dec950b5ac1bbc2034d4b94a0350999e84d"
+      },
+      "stderr": {
+        "path": "commands/interface-catalog-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 0
+    },
+    {
+      "name": "retained-image-check",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\prepare-public-images.mjs",
+        "--check"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\vite-cache",
+      "stdout": {
+        "path": "commands/retained-image-check.stdout.txt",
+        "sha256": "0a03740be8a543c968f1282da655f12c28befc9bafa0d62c8d205ca4379150d5"
+      },
+      "stderr": {
+        "path": "commands/retained-image-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 0
+    },
+    {
+      "name": "retained-globe-qa",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\project\\scripts\\qa-globe-alignment.mjs"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\vite-cache",
+      "stdout": {
+        "path": "commands/retained-globe-qa.stdout.txt",
+        "sha256": "337a55db50fd886600a487ad328203bd453bbc7aff70ba11ead43409c77f7428"
+      },
+      "stderr": {
+        "path": "commands/retained-globe-qa.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 0
+    },
+    {
+      "name": "mentions-compare",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\project\\scripts\\build-book-article-mentions.mjs"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\vite-cache",
+      "stdout": {
+        "path": "commands/mentions-compare.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "commands/mentions-compare.stderr.txt",
+        "sha256": "b901f0877c98a2d0051409c532227442e753c4d5f48bfb8cbf603538413b804c"
+      },
+      "exitCode": 1
+    }
+  ],
+  "raw": [],
+  "originalCaseSha256": "894843cc76aa7e5346fadbcc8f37f04f9362391c2f846552b061556d18997d9b",
+  "derivedCaseSha256": "6f24ef393e492f407c30ecaf4248cca1a7b35c6976969e9bab7036857f1d26db",
+  "testBodiesUnchanged": true,
+  "capturesReviewed": false,
+  "noindexPreserved": false,
+  "failure": {
+    "name": "AssertionError",
+    "message": "Prerequisite/run failed: mentions-compare\n\n1 !== 0\n"
+  },
+  "canonicalSourceAndDependenciesUnchanged": true
+}

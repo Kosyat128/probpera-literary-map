@@ -1,0 +1,6 @@
+
+Running 2 tests using 1 worker
+
+[1/2] [desktop-chromium] › ..\cases\public-locales.spec.mjs:6:1 › public RU/EN shells have matching metadata before JavaScript
+[2/2] [desktop-chromium] › ..\cases\public-locales.spec.mjs:27:1 › public locale switching keeps the globe and country while updating route metadata
+  2 passed (9.0s)

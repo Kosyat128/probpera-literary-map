@@ -1,0 +1,1510 @@
+{
+  "schemaVersion": 1,
+  "kind": "current-public-compiled-local-working-validation",
+  "attempt": "actual-a3",
+  "sourceCommit": "535526f1154fe09d8e3177672d39ab9ebfd5b036",
+  "compiledSourceCommit": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+  "resumedFrom": {
+    "attempt": "actual-a2",
+    "witnesses": [
+      {
+        "name": "result.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/result.json",
+        "sha256": "72ed88f5adfb123b3eb17e4b445a132715fe3055bed8c5349297a97a06cf5341"
+      },
+      {
+        "name": "source-before.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/source-before.json",
+        "sha256": "f0108882668e62fa5de6bca2a00b96ce9aea0a58cab5afe8e363f82625e34d83"
+      },
+      {
+        "name": "source-after.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/source-after.json",
+        "sha256": "f0108882668e62fa5de6bca2a00b96ce9aea0a58cab5afe8e363f82625e34d83"
+      },
+      {
+        "name": "inputs-before.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/inputs-before.json",
+        "sha256": "bac4975b45f83c39e46f91a3733315d4d41a3d0d4c1b2ce53246f187c15989fd"
+      },
+      {
+        "name": "inputs-after.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/inputs-after.json",
+        "sha256": "bac4975b45f83c39e46f91a3733315d4d41a3d0d4c1b2ce53246f187c15989fd"
+      },
+      {
+        "name": "dependencies-before.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/dependencies-before.json",
+        "sha256": "844c7792f68883522c826b44cf4fd9129ebf59b6adb9d8bbd536d297062fd98f"
+      },
+      {
+        "name": "dependencies-after.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/dependencies-after.json",
+        "sha256": "844c7792f68883522c826b44cf4fd9129ebf59b6adb9d8bbd536d297062fd98f"
+      },
+      {
+        "name": "output-after.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/output-after.json",
+        "sha256": "65d930c448d83c1186ed290774f20d386c9bb2b0448f128272c99c18a0f5f334"
+      },
+      {
+        "name": "dossier-delivery.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/dossier-delivery.json",
+        "sha256": "59d4a7267374a2766ac4ecd861c1c9bbbec2b402c721f7cc9b82268b0855bf4c"
+      },
+      {
+        "name": "compile.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/compile.json",
+        "sha256": "a34bf5cd43c3dca6c68f029c626a43203a3a22fecfe23b4606a825ecb636a82a"
+      },
+      {
+        "name": "copied-inputs-after.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/copied-inputs-after.json",
+        "sha256": "6aa0b69d341db498dbe6f0bc9b409c0fa6ff4ee2fcd1dd7bff163b2997c1baf1"
+      },
+      {
+        "name": "prerequisite-inputs.json",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/prerequisite-inputs.json",
+        "sha256": "6aa0b69d341db498dbe6f0bc9b409c0fa6ff4ee2fcd1dd7bff163b2997c1baf1"
+      }
+    ],
+    "priorResultPass": false,
+    "priorPublicCompilesRun": 1,
+    "priorCasesPassed": 0,
+    "projectReused": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\project",
+    "retainedOutputFiles": 8473,
+    "freshProjectClaimed": false
+  },
+  "retainedCompile": {
+    "name": "compile.json",
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/compile.json",
+    "sha256": "a34bf5cd43c3dca6c68f029c626a43203a3a22fecfe23b4606a825ecb636a82a",
+    "sourceCommit": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+    "executedInThisAttempt": false,
+    "changedNodeOwners": [
+      "scripts/mobile/public-locale-review.mjs",
+      "scripts/mobile/write-public-locale-pages.mjs",
+      "scripts/mobile/public-locale-review.test.mjs",
+      "scripts/mobile/public-locale-pages.test.mjs"
+    ],
+    "runtimeInputsEquivalent": true,
+    "recordedModuleIdsChecked": 6444,
+    "wholeThirteenRootEqualityClaimed": false
+  },
+  "reusedPrerequisites": [
+    {
+      "name": "interface-catalog-check",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\export-interface-copy-catalog.mjs",
+        "--check"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\vite-cache",
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\commands\\interface-catalog-check.stdout.txt",
+        "sha256": "9e0f302bebc2d0e7eb04c064cd986dec950b5ac1bbc2034d4b94a0350999e84d"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\commands\\interface-catalog-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 0,
+      "attempt": "actual-a1",
+      "executedInThisAttempt": false
+    },
+    {
+      "name": "retained-image-check",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\prepare-public-images.mjs",
+        "--check"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\vite-cache",
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\commands\\retained-image-check.stdout.txt",
+        "sha256": "0a03740be8a543c968f1282da655f12c28befc9bafa0d62c8d205ca4379150d5"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\commands\\retained-image-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 0,
+      "attempt": "actual-a1",
+      "executedInThisAttempt": false
+    },
+    {
+      "name": "retained-globe-qa",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\project\\scripts\\qa-globe-alignment.mjs"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\vite-cache",
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\commands\\retained-globe-qa.stdout.txt",
+        "sha256": "337a55db50fd886600a487ad328203bd453bbc7aff70ba11ead43409c77f7428"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\commands\\retained-globe-qa.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 0,
+      "attempt": "actual-a1",
+      "executedInThisAttempt": false
+    }
+  ],
+  "reusedCommands": [
+    {
+      "name": "mentions-compare",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\project\\scripts\\build-book-article-mentions.mjs"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\vite-cache",
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\commands\\mentions-compare.stdout.txt",
+        "sha256": "5a56ca59f597c5db14019b04bc0a7830e35d933d34647b7feea8860026045ef1"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\commands\\mentions-compare.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 0,
+      "attempt": "actual-a2",
+      "executedInThisAttempt": false
+    },
+    {
+      "name": "public-vite-compile",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\proposed\\compile.mjs",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\project\\dist",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\vite-cache",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\compile.json"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\vite-cache",
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\commands\\public-vite-compile.stdout.txt",
+        "sha256": "3d26bc5920d0c44a328cd8e01bbdbd5d861e1e4cadffe14a9bf0a07ed89ae27c"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\commands\\public-vite-compile.stderr.txt",
+        "sha256": "aa9b7207d2d2d42fbf4e013331ee76fc39b9b042505b38551893c1f60f35b63a"
+      },
+      "exitCode": 0,
+      "attempt": "actual-a2",
+      "executedInThisAttempt": false
+    },
+    {
+      "name": "public-article-postprocess",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\build-article-pages.mjs"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\vite-cache",
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\commands\\public-article-postprocess.stdout.txt",
+        "sha256": "e726e8acc60756286c99bbe4377680800bcd2a75493c9219b47a7d87e7f81584"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a2\\commands\\public-article-postprocess.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 0,
+      "attempt": "actual-a2",
+      "executedInThisAttempt": false
+    }
+  ],
+  "reusedDossierAudit": {
+    "name": "dossier-delivery.json",
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/actual-a2/dossier-delivery.json",
+    "sha256": "59d4a7267374a2766ac4ecd861c1c9bbbec2b402c721f7cc9b82268b0855bf4c",
+    "checked": 659,
+    "executedInThisAttempt": false
+  },
+  "nodeOnlyFix": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/writer-fix/proposal-manifest.json",
+    "sha256": "60172db3b163b9188faf2689f5414969190e354ec2bb88f3f0ed0979a6e2d6e2"
+  },
+  "changedNodeOwners": [
+    "scripts/mobile/public-locale-review.mjs",
+    "scripts/mobile/write-public-locale-pages.mjs",
+    "scripts/mobile/public-locale-review.test.mjs",
+    "scripts/mobile/public-locale-pages.test.mjs"
+  ],
+  "writerFixEvidence": {
+    "checks": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/writer-fix/source-a1/checks.json",
+      "sha256": "36c70fdc5e1def6632b74b465e7061e54b1ed554217f123e4ae8f3d0b2558815"
+    },
+    "commit": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/writer-fix/source-a1/source-commit.json",
+      "sha256": "154a67d8e0e24b448ca409caf306037bf0952f714d703c3d4c82536c6be38442"
+    },
+    "currentSourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-public-current-compiled-review/writer-fix/source-a1/current-source-manifest.json",
+      "sha256": "673895d7db66d9aefd5311db4bad24e933e3627e94e1d96760b64a7e722d7e2c"
+    }
+  },
+  "writerFixTestsReused": {
+    "passed": 107,
+    "total": 107,
+    "executedInThisAttempt": false
+  },
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "editorialApproved": false,
+  "publicDeployed": false,
+  "productionEdgeAccepted": false,
+  "providerActivated": false,
+  "nativeInstalled": false,
+  "sourceRoots": [
+    "src",
+    "server",
+    "scripts",
+    "supabase/migrations",
+    "tests",
+    "package.json",
+    "package-lock.json",
+    "index.html",
+    "vite.config.ts",
+    "vite.pwa.config.ts",
+    "tsconfig.json",
+    "vitest.config.ts",
+    "data/book-canon-source-registry.json"
+  ],
+  "extraInputRoots": [
+    "public",
+    "apps/admin/catalog-assets",
+    "reports/public-image-delivery.json",
+    "playwright.config.mjs",
+    "data/article-book-writer-identity-aliases.json"
+  ],
+  "helperPins": [
+    {
+      "path": "gate-writer-recover-a3.mjs",
+      "sha256": "180e0ad17cde30057009a660a9812092ea6e60f6e09b1b334ebb16a9394b504a"
+    },
+    {
+      "path": "gate-resume-a2.mjs",
+      "sha256": "7eae1bd12d81022e217b4c082df01b71564ac9d5149dd463e528c592aee4d434"
+    },
+    {
+      "path": "gate.mjs",
+      "sha256": "2006140b1b7394144987adbecfe3fc8f9394dbc274054808a143bd1ef6e069e7"
+    },
+    {
+      "path": "compile.mjs",
+      "sha256": "735dd57b8494e5077c4c0bf98b4461f7ddbf65a4fa1b4a5be7dc808ab7008236"
+    },
+    {
+      "path": "public.config.mjs",
+      "sha256": "17409e546629d52ec6a8bb509fe0e3cb687bd95d2150d339ceedd4f71559e9e6"
+    },
+    {
+      "path": "public-fixtures.mjs",
+      "sha256": "13597bbd52a641a79473c98c37f02c9891f74398cc906f0d8f2a6da281a50458"
+    },
+    {
+      "path": "inputs.json",
+      "sha256": "83786ae07bd062d52555831a48dac562dc6d46802d96483cecb42c790acfb863"
+    },
+    {
+      "path": "resume-a2.inputs.json",
+      "sha256": "16cd20425d05e46258b611d71aa930d08d12f79012f596273ea192ccde310b12"
+    },
+    {
+      "path": "writer-recover-a3.inputs.json",
+      "sha256": "740941e0a79ddb3b9fc07d8bbe35301b1c9cbe1f4afe6efe1feb9b1932648b58"
+    }
+  ],
+  "appTypecheckReused": {
+    "sourceManifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-client-review/source-a2/source-manifest.json",
+      "sha256": "eae4672ed838253ad1328049e03991c703b09cb9690b7f3402950c7bee34e875"
+    },
+    "receipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-license-rate-limit-client-review/source-a2/checks.json",
+      "sha256": "6dc02a07e443ceccb4f94d3326861991357b9020e8a7709f4c618407e053cc36"
+    }
+  },
+  "appTypechecksRun": 0,
+  "appTypecheckQualification": {
+    "include": [
+      "src"
+    ],
+    "exactAppInputEquivalence": true,
+    "historicalEvidenceOnly": true,
+    "excludedChangedNodeOwners": [
+      "scripts/mobile/public-locale-review.mjs",
+      "scripts/mobile/write-public-locale-pages.mjs",
+      "scripts/mobile/public-locale-review.test.mjs",
+      "scripts/mobile/public-locale-pages.test.mjs"
+    ],
+    "wholeThirteenRootEqualityClaimed": false,
+    "currentApplicationTypecheckClaimed": false
+  },
+  "packageBuildRun": false,
+  "cmsExportsRun": 0,
+  "publicCompilesRun": 0,
+  "pwaBuildsRun": 0,
+  "nativeSandboxClaimed": false,
+  "dependencyAdminJunctionTraversed": false,
+  "commands": [
+    {
+      "name": "public-locales-two-existing-cases",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\proposed\\public.config.mjs"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a3\\vite-cache",
+      "stdout": {
+        "path": "commands/public-locales-two-existing-cases.stdout.txt",
+        "sha256": "96f1a64f89426e6ae33abfd4fc593a463a7156d78c534e0d5abaccee9ee18e06"
+      },
+      "stderr": {
+        "path": "commands/public-locales-two-existing-cases.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 0
+    }
+  ],
+  "raw": [
+    {
+      "method": "GET",
+      "pathname": "/sitemap.xml",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "27513",
+        "content-type": "application/xml; charset=utf-8"
+      },
+      "bytes": 27513,
+      "sha256": "e2cf24f7f08b2bb0270e073361916cfd6dc2cd2159da9447bad57938c75c9c7e",
+      "bodyPath": "raw/response-0001.body"
+    },
+    {
+      "method": "GET",
+      "pathname": "/ru/",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "4741",
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bytes": 4741,
+      "sha256": "4644d5eb02dac22173bbf5f12f5b90fb8b6f0a67759ca922d4f737fc3a910e4c",
+      "bodyPath": "raw/response-0002.body"
+    },
+    {
+      "method": "GET",
+      "pathname": "/en/",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "4434",
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bytes": 4434,
+      "sha256": "258bf8e8b3f2b8328c79ecc0e4685b84d9eb4fb0b5d43353ae5854f668e2970f",
+      "bodyPath": "raw/response-0003.body"
+    },
+    {
+      "method": "GET",
+      "pathname": "/en/",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "4434",
+        "content-type": "text/html; charset=utf-8"
+      },
+      "bytes": 4434,
+      "sha256": "258bf8e8b3f2b8328c79ecc0e4685b84d9eb4fb0b5d43353ae5854f668e2970f",
+      "bodyPath": "raw/response-0004.body"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/vite-preload-helper-BXl3LOEh.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "1110",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 1110,
+      "sha256": "d887044e7c17fd90344fc4f74f53cac686584daf2a458ab2136d36f1946e9ab6"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/index-CWA_-9lr.css",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "708228",
+        "content-type": "text/css; charset=utf-8"
+      },
+      "bytes": 708228,
+      "sha256": "55a3575da8bb591f484774845c1f13609e6c85dab7b80782591d3547d7e332cc"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/react-vendor-BFfFeT-i.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "146076",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 146076,
+      "sha256": "bfee331d1fec4516c8ac008a1cbc5268b78841b541ab2dc693fa387b11eb6a51"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/book-catalog-CUS-317M.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "2053989",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 2053989,
+      "sha256": "a564e81105d5dd6396fc930cc99d741e98e3c69cfb793eaa87f9923c6d8ac008"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/index-VEMKFRBJ.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "1636886",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 1636886,
+      "sha256": "93e45bcc7a7d4ee4b74bc64a06525511c954ae71f8004b7069366f2428ea369b"
+    },
+    {
+      "method": "GET",
+      "pathname": "/fonts/editorial/onest-latin-variable.woff2",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "33760",
+        "content-type": "font/woff2"
+      },
+      "bytes": 33760,
+      "sha256": "052df74533250c2e0ca0c4bdd32de594e107d99c1648e63820ef9c6142067828"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/CmsHomepageContent-BNcgO_5h.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "8223",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 8223,
+      "sha256": "f1db463fb7cf95efc4eff20e5533a31e62bea25c4551875b3306c9399d0dda8c"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/catalog-DiafpZqg.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "607117",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 607117,
+      "sha256": "e6d084627dec6f638470bc7575b9ac03cf9e167c231ff60f9e6043c07d6ff112"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/SectionsDirectory-5csLR9BM.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "5042",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 5042,
+      "sha256": "cfc2cc83868ec569997206869b4e313912cdd45bf72f44ad8e84d96a5dd01ade"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/articleSeries-bfsT0q_2.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "2623",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 2623,
+      "sha256": "750fcb7b390f0dd9d2ee947282cd669a5b3781a7a234fe88a8af0bcaa7475019"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/catalog-Bw5WXeO6.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "769977",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 769977,
+      "sha256": "bb40763c0c47dc0abb48b5270c1e90733e07d73cf72bffcc32e5040fa1b6cf20"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/LiteraryCalendar-CDPRkjlt.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "9575",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 9575,
+      "sha256": "0297a48d1cf7511fcc091bc5338db620aa3b4f537aaa261759bc0eebea9c278a"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/writer-portraits-data-ZDd9rYw-.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "500029",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 500029,
+      "sha256": "f2440a9425dac791dca77dfc1d3172b86499f61081ab53abf6dc73135980ef45"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/writer-biography-reviews-BMVRO21A.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "1227678",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 1227678,
+      "sha256": "5bfe97420888e9a628d43f4d498ccbd2e8d9838589ba133da26775d6137deb4e"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/country-data-a-m-C_afZbhK.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "789513",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 789513,
+      "sha256": "ed13618f873cb9ddb630a0678a7a0559c0bf0a1af4eb2b9227cecd8790b64feb"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/country-data-n-z-B6kBB-fK.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "508626",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 508626,
+      "sha256": "7b0767f36760768bad1fa4add0c1bdea1399d2f0c27cd11102fa1e4a4e207859"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/countryLocalization-DFiXivTt.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "3978",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 3978,
+      "sha256": "f6f02960f30fd1b9ed397bbfe01181149d9ab8d535516bbd8bc9ba05396c80e8"
+    },
+    {
+      "method": "GET",
+      "pathname": "/brand/magazine-hero-wide.avif",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "141607",
+        "content-type": "image/avif"
+      },
+      "bytes": 141607,
+      "sha256": "cf58f94ef29aacc546c412f41459f5afc1d0b1e7f6c8e1e9e87a1880a0ce04ba"
+    },
+    {
+      "method": "GET",
+      "pathname": "/brand/probpera-logo.png",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "20811",
+        "content-type": "image/png"
+      },
+      "bytes": 20811,
+      "sha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/editorial-paper-DwbOovh5.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "37272",
+        "content-type": "image/webp"
+      },
+      "bytes": 37272,
+      "sha256": "b47d170befac71b0f2496a9d80dd68e5dd960fd41cb5fc45d48cf0a442cb9a68"
+    },
+    {
+      "method": "GET",
+      "pathname": "/brand/atlas-side-brushes.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "63832",
+        "content-type": "image/webp"
+      },
+      "bytes": 63832,
+      "sha256": "c31429f2306ea9f74b83d01bc0bd4a9a1cae02892765d214de4775cceca5c084"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/brush-paper-corners-ChpKv6VW.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "75400",
+        "content-type": "image/webp"
+      },
+      "bytes": 75400,
+      "sha256": "d6b5a8528a0e95ad555e4a3f93a886e2c7437f578023b6d2bcdea1b0cd6771df"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/brush-orange-stage-B2wkl8IX.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "46570",
+        "content-type": "image/webp"
+      },
+      "bytes": 46570,
+      "sha256": "3d16e63c8d74e2c7cb521a16a4e6ced5fc34d08590140b0d2c993d29eee0b493"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/BrandPlusIcon-h0rDlerA.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "217",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 217,
+      "sha256": "db8026e2cce6c41511e3cca0c58a191407a68ec7d314876f49bdd717e90ae0b7"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/LiteraryGlobe-Ckumdx5m.css",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "17385",
+        "content-type": "text/css; charset=utf-8"
+      },
+      "bytes": 17385,
+      "sha256": "152b72e63f4359fd9bde1034b0829be951c35c5e3fe32dd89324475c254f1ad7"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/LiteraryGlobe-CfUaNxzT.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "251036",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 251036,
+      "sha256": "30993618c3eba2a4ade0fde9050a6278b2e59cd5220999283b8de7dcff7b08e1"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/nobelArticles-DE4ldaY6.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "476",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 476,
+      "sha256": "1f0fad0cb2aef1825199eecdebe5983757c5c7657554ad88c23798e128e9b124"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/three-vendor-RLxCfliu.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "1100436",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 1100436,
+      "sha256": "7bbddce483d3b10d46cdc67d13b443bd6408d9db2283bb3666829b3241f6b5ac"
+    },
+    {
+      "method": "GET",
+      "pathname": "/brand/probpera-logo.png",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "20811",
+        "content-type": "image/png"
+      },
+      "bytes": 20811,
+      "sha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27"
+    },
+    {
+      "method": "GET",
+      "pathname": "/media/optimized/547dbf71daf35b279b98fc57-640w.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "64354",
+        "content-type": "image/webp"
+      },
+      "bytes": 64354,
+      "sha256": "4a2735fe7997f5c8a9198e094431a1c56096a18a708b3c1e659061b8015d2e9e"
+    },
+    {
+      "method": "GET",
+      "pathname": "/media/optimized/63e07838f083680d9592f9c9-640w.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "70564",
+        "content-type": "image/webp"
+      },
+      "bytes": 70564,
+      "sha256": "99fad8fa8e273a761573ab1f8f954df79b1ffbb749f858637207da73f34b13a0"
+    },
+    {
+      "method": "GET",
+      "pathname": "/media/optimized/e0939b1ac6666d9eb4ed7690-640w.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "35560",
+        "content-type": "image/webp"
+      },
+      "bytes": 35560,
+      "sha256": "3dc924bce46b2f0027522552897f179c1a07e8ef14b25991fffbb49531cb9253"
+    },
+    {
+      "method": "GET",
+      "pathname": "/media/optimized/eb714550da4c0319dee7dd5c-640w.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "169988",
+        "content-type": "image/webp"
+      },
+      "bytes": 169988,
+      "sha256": "096e465ccc0087c92f47d8c51d7224f541ae7d2c540d85cb467cce583a195df7"
+    },
+    {
+      "method": "GET",
+      "pathname": "/media/optimized/42b04487a942daf58d1ec190-500w.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "40952",
+        "content-type": "image/webp"
+      },
+      "bytes": 40952,
+      "sha256": "8f715a7ce2e879b3385add8d5fc8708866b4979f76d41b358a13f727f7134dbe"
+    },
+    {
+      "method": "GET",
+      "pathname": "/media/optimized/6491f7ecbf11c49b35520b00-640w.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "37612",
+        "content-type": "image/webp"
+      },
+      "bytes": 37612,
+      "sha256": "a56ab4b665957dae8e0a01a05c0ebcc317c8dddba90d7b54b9005952b1836776"
+    },
+    {
+      "method": "GET",
+      "pathname": "/media/optimized/cb72cc123fbfe6de6ca75f91-original.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "60308",
+        "content-type": "image/webp"
+      },
+      "bytes": 60308,
+      "sha256": "cb72cc123fbfe6de6ca75f91735ee66d3ae6088d814ee165b486007b10e4e12d"
+    },
+    {
+      "method": "GET",
+      "pathname": "/media/optimized/13e0cfcb67af30d058f448ec-640w.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "42284",
+        "content-type": "image/webp"
+      },
+      "bytes": 42284,
+      "sha256": "21a6463503aae1d8d3db99513cbc486c4787eee391538c1c32040383907ac409"
+    },
+    {
+      "method": "GET",
+      "pathname": "/fonts/editorial/onest-latin-ext-variable.woff2",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "28452",
+        "content-type": "font/woff2"
+      },
+      "bytes": 28452,
+      "sha256": "14e7d3079b75860e2ab50efc6c318c398fdb46ede9b56e625f12ae70a3c5d9a4"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/supabase-9Ra5MfP7.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "995",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 995,
+      "sha256": "3055e47cdd5d7b579be2a4a7ba81bc7d530ce71907489ebbda80b8a5d221f0e9"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/WriterPanel-_P5YAM6d.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "30287",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 30287,
+      "sha256": "e2a4d03d8ca618828e5b73d057eaaf6d12a4c3d56aa1b8d603ffb4fef513a118"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/useSubscriptions-Po3NmYe8.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "2152",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 2152,
+      "sha256": "9e707e7c3adb7c5bfcad81d8c541f559274f21e2125dfc807098e9b7c63cfd49"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/supabase-vendor-C0Z0FS3K.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "216820",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 216820,
+      "sha256": "57643c9b251680f571bda0e09597ad88105a3853d5605d1b7fc7ba47fc35e482"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/authTurnstileToken-DJYlWq5M.js",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "164",
+        "content-type": "text/javascript; charset=utf-8"
+      },
+      "bytes": 164,
+      "sha256": "94d145a709bd08d132c33f678d2f9a6efc79cabe949d018ebe7c8eb05397dd84"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/countries-B1fL43Dn.geojson",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "305051",
+        "content-type": "application/octet-stream"
+      },
+      "bytes": 305051,
+      "sha256": "402706b730069fb691d1ec6098e13d7d59670a1823d1ffb62546ff045df20279"
+    },
+    {
+      "method": "GET",
+      "pathname": "/textures/antique-world-1887.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "2901792",
+        "content-type": "image/webp"
+      },
+      "bytes": 2901792,
+      "sha256": "b498488cba930c48c5c68564ab8f355a50fe620f5aec15353225edcdf592a175"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/country-flags/ru.svg",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "238",
+        "content-type": "image/svg+xml"
+      },
+      "bytes": 238,
+      "sha256": "375a1fd45c4d0c0b0cd5e05a5322da90f30714b979b41771de847d92a8536fc9"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/writer-portraits/q5685.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "31470",
+        "content-type": "image/webp"
+      },
+      "bytes": 31470,
+      "sha256": "7a12b965b68f980ec040f64d783733b718788082665e0dd8de54bf6cd25534ff"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/writer-portraits/q7243.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "17768",
+        "content-type": "image/webp"
+      },
+      "bytes": 17768,
+      "sha256": "2f8f3a46c0b10e3ac736858980bdd0611240bdb99a4bf042a56d64f11d8102d2"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/writer-portraits/q991.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "17430",
+        "content-type": "image/webp"
+      },
+      "bytes": 17430,
+      "sha256": "516784608ec509dd304b6f3e097a16d1dc3686cbae2e76974e4d5b95bc68a253"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/writer-portraits/q320935.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "20054",
+        "content-type": "image/webp"
+      },
+      "bytes": 20054,
+      "sha256": "7e527399e543a74402f18fd8c9a5a3058fcc46387ac45f666fcfe76fb39fe640"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/writer-portraits/q45087.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "51960",
+        "content-type": "image/webp"
+      },
+      "bytes": 51960,
+      "sha256": "8e9f77ac518ffb34af3f2a163d4515c6dcab0f6f146fe5d66606ef23e11940e9"
+    },
+    {
+      "method": "GET",
+      "pathname": "/fonts/editorial/onest-cyrillic-variable.woff2",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "15860",
+        "content-type": "font/woff2"
+      },
+      "bytes": 15860,
+      "sha256": "68e5e01d6265bd68967746d4f5a9d18d0e6cbb5d15583c7082d6384ab1229b27"
+    },
+    {
+      "method": "GET",
+      "pathname": "/brand/probpera-logo.png",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "20811",
+        "content-type": "image/png"
+      },
+      "bytes": 20811,
+      "sha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/country-flags/ie.svg",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "296",
+        "content-type": "image/svg+xml"
+      },
+      "bytes": 296,
+      "sha256": "b1d4bcfb264ea54832b70cac316ff3268ea71742d2a5250fe2d14e249fc1b393"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/country-flags/co.svg",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "293",
+        "content-type": "image/svg+xml"
+      },
+      "bytes": 293,
+      "sha256": "bb9c71afe2ef9dfb518b3c0fa5803533133c06e52433dec742963d21f32f827b"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/country-flags/sk.svg",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "1170",
+        "content-type": "image/svg+xml"
+      },
+      "bytes": 1170,
+      "sha256": "18a942685a1ef5437bde0923abdfd650082b9b86e68b6a94e10b6833debf6b72"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/country-flags/pa.svg",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "654",
+        "content-type": "image/svg+xml"
+      },
+      "bytes": 654,
+      "sha256": "010870108d2132cd0410323710515be713432aba28f35b0b55d28910b72c5a4d"
+    },
+    {
+      "method": "GET",
+      "pathname": "/assets/country-flags/se.svg",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "227",
+        "content-type": "image/svg+xml"
+      },
+      "bytes": 227,
+      "sha256": "7a89949c4be31a4bfd8c3ee3490fdd6b8f756545b03ec9c525a615de3838cc9b"
+    },
+    {
+      "method": "GET",
+      "pathname": "/brand/probpera-logo.png",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "20811",
+        "content-type": "image/png"
+      },
+      "bytes": 20811,
+      "sha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27"
+    },
+    {
+      "method": "GET",
+      "pathname": "/brand/atlas-side-brushes-mobile.webp",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "22580",
+        "content-type": "image/webp"
+      },
+      "bytes": 22580,
+      "sha256": "863c5b7efc2f39421a59d6ae559b5d3fc9080869255a0d47ab6994bf3b847203"
+    },
+    {
+      "method": "GET",
+      "pathname": "/brand/magazine-hero-mobile.avif",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "144336",
+        "content-type": "image/avif"
+      },
+      "bytes": 144336,
+      "sha256": "304a0cb57ebd0736b26d82fe9a04739b5dc3da9b5a2ca2ac874e1e324caf73d3"
+    },
+    {
+      "method": "GET",
+      "pathname": "/brand/magazine-hero-wide.avif",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "141607",
+        "content-type": "image/avif"
+      },
+      "bytes": 141607,
+      "sha256": "cf58f94ef29aacc546c412f41459f5afc1d0b1e7f6c8e1e9e87a1880a0ce04ba"
+    },
+    {
+      "method": "GET",
+      "pathname": "/ru/structured-data.json",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "594",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "bytes": 594,
+      "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153",
+      "bodyPath": "raw/response-0067.body"
+    },
+    {
+      "method": "GET",
+      "pathname": "/ru/sitemap.preparation.json",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "1022",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "bytes": 1022,
+      "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674",
+      "bodyPath": "raw/response-0068.body"
+    },
+    {
+      "method": "GET",
+      "pathname": "/ru/__d253_missing__",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "cloudflare-cdn-cache-control": "no-store",
+        "content-language": "ru",
+        "content-type": "text/html; charset=utf-8",
+        "x-robots-tag": "noindex, follow"
+      },
+      "bytes": 3788,
+      "sha256": "2c1d33bfb004c04edaa77699772fcc738c26bdf14cb4863197c92690e0e5161b",
+      "bodyPath": "raw/response-0069.body"
+    },
+    {
+      "method": "HEAD",
+      "pathname": "/ru/__d253_missing__",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "cloudflare-cdn-cache-control": "no-store",
+        "content-language": "ru",
+        "content-type": "text/html; charset=utf-8",
+        "x-robots-tag": "noindex, follow"
+      },
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bodyPath": "raw/response-0070.body"
+    },
+    {
+      "method": "GET",
+      "pathname": "/en/structured-data.json",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "544",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "bytes": 544,
+      "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9",
+      "bodyPath": "raw/response-0071.body"
+    },
+    {
+      "method": "GET",
+      "pathname": "/en/sitemap.preparation.json",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "1022",
+        "content-type": "application/json; charset=utf-8"
+      },
+      "bytes": 1022,
+      "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb",
+      "bodyPath": "raw/response-0072.body"
+    },
+    {
+      "method": "GET",
+      "pathname": "/en/__d253_missing__",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "cloudflare-cdn-cache-control": "no-store",
+        "content-language": "en",
+        "content-type": "text/html; charset=utf-8",
+        "x-robots-tag": "noindex, follow"
+      },
+      "bytes": 3537,
+      "sha256": "83f55cfed35d7488eadf8604829caac039ec0d8e1277682305819090f46bbba1",
+      "bodyPath": "raw/response-0073.body"
+    },
+    {
+      "method": "HEAD",
+      "pathname": "/en/__d253_missing__",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "cloudflare-cdn-cache-control": "no-store",
+        "content-language": "en",
+        "content-type": "text/html; charset=utf-8",
+        "x-robots-tag": "noindex, follow"
+      },
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bodyPath": "raw/response-0074.body"
+    }
+  ],
+  "originalCaseSha256": "894843cc76aa7e5346fadbcc8f37f04f9362391c2f846552b061556d18997d9b",
+  "derivedCaseSha256": "6f24ef393e492f407c30ecaf4248cca1a7b35c6976969e9bab7036857f1d26db",
+  "testBodiesUnchanged": true,
+  "capturesReviewed": false,
+  "noindexPreserved": true,
+  "retainedOutputAuthenticated": true,
+  "writerManifest": {
+    "schemaVersion": 1,
+    "generatedBy": "public-locale-pages",
+    "releaseReady": false,
+    "requiredLocales": [
+      "ru",
+      "en"
+    ],
+    "files": [
+      "ru/index.html",
+      "ru/404.html",
+      "ru/structured-data.json",
+      "ru/sitemap.preparation.json",
+      "en/index.html",
+      "en/404.html",
+      "en/structured-data.json",
+      "en/sitemap.preparation.json",
+      "ru/planet-account/index.html",
+      "ru/delete-account/index.html",
+      "en/planet-account/index.html",
+      "en/delete-account/index.html"
+    ],
+    "artifacts": [
+      {
+        "path": "ru/index.html",
+        "sha256": "4644d5eb02dac22173bbf5f12f5b90fb8b6f0a67759ca922d4f737fc3a910e4c",
+        "indexable": false
+      },
+      {
+        "path": "ru/404.html",
+        "sha256": "2c1d33bfb004c04edaa77699772fcc738c26bdf14cb4863197c92690e0e5161b",
+        "indexable": false
+      },
+      {
+        "path": "ru/structured-data.json",
+        "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153",
+        "indexable": false
+      },
+      {
+        "path": "ru/sitemap.preparation.json",
+        "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674",
+        "indexable": false
+      },
+      {
+        "path": "en/index.html",
+        "sha256": "258bf8e8b3f2b8328c79ecc0e4685b84d9eb4fb0b5d43353ae5854f668e2970f",
+        "indexable": false
+      },
+      {
+        "path": "en/404.html",
+        "sha256": "83f55cfed35d7488eadf8604829caac039ec0d8e1277682305819090f46bbba1",
+        "indexable": false
+      },
+      {
+        "path": "en/structured-data.json",
+        "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9",
+        "indexable": false
+      },
+      {
+        "path": "en/sitemap.preparation.json",
+        "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb",
+        "indexable": false
+      },
+      {
+        "path": "ru/planet-account/index.html",
+        "sha256": "72c331af2be38de34f8d8c2bb592a384ac31cc65f0bd606e2eb7733a3b84e370",
+        "indexable": false
+      },
+      {
+        "path": "ru/delete-account/index.html",
+        "sha256": "48f445ca6f4c913d2850705373d29d079f498ee28b06726c5693e923a634a23f",
+        "indexable": false
+      },
+      {
+        "path": "en/planet-account/index.html",
+        "sha256": "5a217a1e3355dabd29af21a4f8b0a09ec0436b53ef34eb6ec9585640275fbfe7",
+        "indexable": false
+      },
+      {
+        "path": "en/delete-account/index.html",
+        "sha256": "1da674e8577140cfdcb674740c1899ee00020042e5faeae6bac4a44f2bb0ec4f",
+        "indexable": false
+      }
+    ],
+    "sitemap": {
+      "version": 1,
+      "reviewGate": {
+        "state": "OPEN",
+        "releaseReady": false,
+        "indexingAllowed": false,
+        "scope": "public-localized-homepages-only",
+        "reviewerAuthentication": "not-performed",
+        "diagnostics": [
+          "review-missing"
+        ],
+        "requiredEvidence": [
+          "reviewed-bilingual-critical-content",
+          "source-bound-editorial-review",
+          "validated-release-artifact"
+        ]
+      },
+      "entries": [],
+      "excluded": [
+        {
+          "url": "https://probpera.ru/ru/",
+          "locale": "ru",
+          "kind": "home",
+          "reason": "bilingual-release-gates-open"
+        },
+        {
+          "url": "https://probpera.ru/ru/404.html",
+          "locale": "ru",
+          "kind": "not-found",
+          "reason": "error-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/en/",
+          "locale": "en",
+          "kind": "home",
+          "reason": "bilingual-release-gates-open"
+        },
+        {
+          "url": "https://probpera.ru/en/404.html",
+          "locale": "en",
+          "kind": "not-found",
+          "reason": "error-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/ru/planet-account/",
+          "locale": "ru",
+          "kind": "account",
+          "reason": "private-account-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/ru/delete-account/",
+          "locale": "ru",
+          "kind": "account",
+          "reason": "private-account-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/en/planet-account/",
+          "locale": "en",
+          "kind": "account",
+          "reason": "private-account-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/en/delete-account/",
+          "locale": "en",
+          "kind": "account",
+          "reason": "private-account-page-never-indexable"
+        }
+      ]
+    },
+    "notFound": {
+      "ru": "/ru/404.html",
+      "en": "/en/404.html",
+      "hostStatusRoutingConfigured": false
+    },
+    "accountRoutes": [
+      {
+        "locale": "ru",
+        "mode": "access",
+        "pathname": "/ru/planet-account/",
+        "file": "ru/planet-account/index.html",
+        "canonical": "https://probpera.ru/ru/planet-account/",
+        "indexable": false
+      },
+      {
+        "locale": "ru",
+        "mode": "deletion",
+        "pathname": "/ru/delete-account/",
+        "file": "ru/delete-account/index.html",
+        "canonical": "https://probpera.ru/ru/delete-account/",
+        "indexable": false
+      },
+      {
+        "locale": "en",
+        "mode": "access",
+        "pathname": "/en/planet-account/",
+        "file": "en/planet-account/index.html",
+        "canonical": "https://probpera.ru/en/planet-account/",
+        "indexable": false
+      },
+      {
+        "locale": "en",
+        "mode": "deletion",
+        "pathname": "/en/delete-account/",
+        "file": "en/delete-account/index.html",
+        "canonical": "https://probpera.ru/en/delete-account/",
+        "indexable": false
+      }
+    ],
+    "checkedSitemaps": 1
+  },
+  "rootXmlGraphChecked": 1,
+  "captureAndNetworkEvidence": [
+    {
+      "name": "current public EN final",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a3\\playwright-output\\public-locales-public-loca-1c985-ile-updating-route-metadata-desktop-chromium\\attachments\\current-public-EN-final-d38afffba804948b5d678d7cec7151cf3ab5f9ea.png",
+      "bytes": 5508176,
+      "sha256": "ca6e4efc4bf7d4d176e4ebadb17947b7c194b0dcfd171029acc64a09a57ca486"
+    },
+    {
+      "name": "local network fence",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a3\\playwright-output\\public-locales-public-loca-1c985-ile-updating-route-metadata-desktop-chromium\\attachments\\local-network-fence-b4a221f13982abd64aae930ad7804735e35ee457.json",
+      "bytes": 100,
+      "sha256": "c8773863a5a4e0201d1e8d8fe82aba2fceecb5e548e65880755a870f768ddb2d"
+    }
+  ],
+  "existingCasesPassed": 2,
+  "artifactDirectory": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a1\\project\\dist",
+  "originalAttemptsRawEvidenceUnchanged": true,
+  "outputUnchangedAfterValidation": true,
+  "canonicalSourceAndDependenciesUnchanged": true
+}

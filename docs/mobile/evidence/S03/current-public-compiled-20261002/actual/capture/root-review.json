@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "kind": "root-direct-capture-review",
+  "sourceCommit": "535526f1154fe09d8e3177672d39ab9ebfd5b036",
+  "compiledSourceCommit": "e21887f3ad702e9d82839fe981bd4eaf9f23e9ea",
+  "capture": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-current-compiled-review\\actual-a3\\playwright-output\\public-locales-public-loca-1c985-ile-updating-route-metadata-desktop-chromium\\current-public-en-final.png",
+    "sha256": "ca6e4efc4bf7d4d176e4ebadb17947b7c194b0dcfd171029acc64a09a57ca486",
+    "originalWidth": 1280,
+    "originalHeight": 10767
+  },
+  "uniqueCapturesReviewed": 1,
+  "directViews": [
+    "high",
+    "original"
+  ],
+  "reviewed": true,
+  "scope": "Final EN desktop public locale after RU-to-EN switch with Russia selected and retained globe; visible country and globe inspected",
+  "lazyFullPageSectionsFullyLoaded": false,
+  "fullPublicSiteVisualAcceptance": false,
+  "mobileLayoutAcceptance": false,
+  "editorialApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
