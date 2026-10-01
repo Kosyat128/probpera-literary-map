@@ -1,0 +1,511 @@
+{
+  "sourceId": "gramedia-blog",
+  "name": "Gramedia",
+  "entryUrl": "https://www.gramedia.com/blog/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:40.442Z",
+  "requests": [
+    {
+      "url": "https://www.gramedia.com/blog/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 54909,
+      "sha256": "bdcd6528097635e796d1100331ff12a02d0e0966dcea4d7600a03ae68bb472f5",
+      "accessedAt": "2026-10-01T20:48:41.754Z"
+    },
+    {
+      "url": "https://www.gramedia.com/blog/rss/",
+      "status": 200,
+      "contentType": "text/xml; charset=utf-8",
+      "bytes": 286864,
+      "sha256": "874b22586cefddc95208c30aee71e334728b9b857a10f1fc780da65a41847123",
+      "accessedAt": "2026-10-01T20:48:42.334Z"
+    },
+    {
+      "url": "https://www.gramedia.com/blog/weekend-ini-kamu-kosong-gak-datang-ke-pesta-literasi-indonesia-2026-jakarta-yuk/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 59244,
+      "sha256": "a02cdb12941c52fdefb279ba8627c8ee98607a763e9c82124d3e0f01f6af4c7e",
+      "accessedAt": "2026-10-01T20:48:42.587Z"
+    },
+    {
+      "url": "https://www.gramedia.com/blog/obsesi-menjadi-penyelamat-dunia-peran-paling-ekstrem-tom-cruise-di-film-digger/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 63051,
+      "sha256": "8b82ca952446ac3727701372616fd877f4cdc1413ed3d8be62265a948ef37eff",
+      "accessedAt": "2026-10-01T20:48:42.833Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.gramedia.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 568,
+    "sha256": "1e602a96fd592a9807794f24f862941e9cc73c0146b562d2ee6252f7eeaf1ee4",
+    "accessedAt": "2026-10-01T20:48:41.134Z",
+    "disallowed": [
+      "/*?name"
+    ]
+  },
+  "endpoint": {
+    "id": "gramedia-blog",
+    "name": "Gramedia",
+    "url": "https://www.gramedia.com/blog/rss/",
+    "format": "rss",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "gramedia-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.gramedia.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.gramedia.com/blog/obsesi-menjadi-penyelamat-dunia-peran-paling-ekstrem-tom-cruise-di-film-digger/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:42.837Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 15,
+  "literaryCandidateCount": 15,
+  "sample": {
+    "sourceId": "gramedia-blog",
+    "source": {
+      "name": "Gramedia",
+      "url": "https://www.gramedia.com/blog/obsesi-menjadi-penyelamat-dunia-peran-paling-ekstrem-tom-cruise-di-film-digger/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Obsesi Menjadi Penyelamat Dunia: Peran Paling Ekstrem Tom Cruise di Film ‘Digger’!",
+    "publishedAt": "2026-10-01T08:39:33.000Z",
+    "description": "Dunia di ambang kehancuran, Tom Cruise datang sebagai penyelamat. Masalahnya? Ia juga punya andil dalam menciptakan bencana. Bongkar film Digger di sini!",
+    "discoveredAt": "2026-10-01T20:48:42.337Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.gramedia.com/blog/obsesi-menjadi-penyelamat-dunia-peran-paling-ekstrem-tom-cruise-di-film-digger/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 63051,
+      "sha256": "8b82ca952446ac3727701372616fd877f4cdc1413ed3d8be62265a948ef37eff",
+      "accessedAt": "2026-10-01T20:48:42.833Z",
+      "headline": "Obsesi Menjadi Penyelamat Dunia: Peran Paling Ekstrem Tom Cruise di Film ‘Digger’!",
+      "excerpt": "Obsesi Menjadi Penyelamat Dunia: Peran Paling Ekstrem Tom Cruise di Film ‘Digger’! 01 Oct 2026 Kalau dunia sedang di ambang kehancuran, kita mungkin berharap seseorang datang membawa solusi, Grameds.Ilmuwan atau tim penyelamat, misalnya. Seseorang yang punya rencana, data, dan setidaknya sedikit pengalaman menghadapi kiamat sebelum sarapan. 😮‍💨Tapi, bagaimana kalau orang yang paling ingin menyel",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T08:39:33.000Z",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-10-01T08:39:33.000Z",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.gramedia.com/blog/obsesi-menjadi-penyelamat-dunia-peran-paling-ekstrem-tom-cruise-di-film-digger/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:42.837Z",
+  "foundItems": [
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/weekend-ini-kamu-kosong-gak-datang-ke-pesta-literasi-indonesia-2026-jakarta-yuk/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bingung Weekend Ke Mana? Yuk, Piknik Seru di Pesta Literasi Indonesia 2026 di Urban Forest Cipete!",
+      "publishedAt": "2026-09-23T07:54:36.000Z",
+      "description": "Ada keseruan apa saja di Pesta Literasi Indonesia 2026 Jakarta? Cek selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/obsesi-menjadi-penyelamat-dunia-peran-paling-ekstrem-tom-cruise-di-film-digger/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Obsesi Menjadi Penyelamat Dunia: Peran Paling Ekstrem Tom Cruise di Film ‘Digger’!",
+      "publishedAt": "2026-10-01T08:39:33.000Z",
+      "description": "Dunia di ambang kehancuran, Tom Cruise datang sebagai penyelamat. Masalahnya? Ia juga punya andil dalam menciptakan bencana. Bongkar film Digger di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/hari-kopi-internasional-kenapa-1-oktober-jadi-harinya-para-pecinta-kopi/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hari Kopi Internasional: Kenapa 1 Oktober Jadi Harinya Para Pecinta Kopi?",
+      "publishedAt": "2026-10-01T07:20:47.000Z",
+      "description": "Bagaimana asal mula adanya hari kopi, dan apa yang sebenarnya dirayakan dalam momen ini? Cek selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/potret-1965-gerakan-30-september-wabah-cacar-dan-gejala-yang-sering-kita-abaikan/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Potret 1965: Gerakan 30 September, Wabah Cacar, dan Gejala yang Sering Kita Abaikan",
+      "publishedAt": "2026-09-30T09:07:18.000Z",
+      "description": "Apa yang terjadi ketika wabah cacar bertemu Indonesia tahun 1965? Mari menelusuri jejak penyakit dan gejala yang sering kita abaikan. Selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/september-segera-berakhir-saatnya-bangun-dan-perluas-referensi-bacaan-dari-nominasi-kusala-sastra-khatulistiwa/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "September Segera Berakhir! Saatnya Bangun dan Perluas Referensi Bacaan dari Nominasi Kusala Sastra Khatulistiwa",
+      "publishedAt": "2026-09-30T07:36:46.000Z",
+      "description": "Dari sekian banyak karya yang masuk nominasi, judul apa saja yang bisa kamu jadikan bacaan untuk menyambut Oktober? Simak selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/teror-psikologis-verity-anne-hathaway-dan-dakota-jonhson-siap-bikin-kamu-merinding-di-layar-lebar/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Teror Psikologis Verity: Anne Hathaway dan Dakota Johnson Siap Bikin Kamu Merinding di Layar Lebar!",
+      "publishedAt": "2026-09-30T02:01:00.000Z",
+      "description": "Bagaimana kalau kebenaran bukan yang kamu cari, tapi yang kamu harap tidak pernah tahu? Simak kisah Verity selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/merasa-hampa-di-balik-rutinitas-pelajaran-menemukan-keajaiban-hidup-di-the-life-impossible/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Merasa Hampa di Balik Rutinitas: Pelajaran Menemukan Keajaiban Hidup di 'The Life Impossible’",
+      "publishedAt": "2026-09-29T12:56:09.000Z",
+      "description": "Ketika hidup terasa seperti autopilot, sebuah surat wasiat membawa Grace ke Ibiza dan pada sesuatu yang jauh lebih mustahil dari dugaan. Bongkar selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/kamu-mahasiswa-yang-sering-keteteran-pas-lagi-nugas-mungkin-itu-tanda-buat-cobain-teknik-pomodoro/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kamu Mahasiswa yang Sering Keteteran Pas Lagi Nugas? Mungkin Itu Tanda Buat Cobain Teknik Pomodoro!",
+      "publishedAt": "2026-09-29T07:28:58.000Z",
+      "description": "Kenali informasi terkait teknik Pomodoro dan cara penerapannya dalam artikel ini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/moriarty-the-patriot-bagaimana-kalau-musuh-utama-di-cerita-sherlock-holmes-punya-cerita-sendiri/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Moriarty the Patriot: Bagaimana Kalau Musuh Utama Sherlock Holmes Punya Ceritanya Sendiri?",
+      "publishedAt": "2026-09-28T08:55:07.000Z",
+      "description": "Seperti apa kisah Moriarty saat menjadi karakter utama? Simak selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/ibu-bagaimana-aku-tanpamu-bawa-adaptasi-wedding-dress-dalam-versi-yang-lebih-kamu-mengerti/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ibu, Bagaimana Aku Tanpamu? Bawa Adaptasi Wedding Dress dalam Versi yang Lebih Kamu Mengerti",
+      "publishedAt": "2026-09-25T07:33:18.000Z",
+      "description": "Digawangi Herwin Novianto, film terbaru dari Falcon Pictures ini mengikuti hubungan Stella dan Rere, seorang ibu dan anak yang harus menghadapi kenyataan pahit ketika waktu mereka bersama ternyata hampir menemui batasnya. Simak selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/aksaya-patra-the-awakening-ketika-bandung-bondowoso-dan-roro-jonggrang-kembali-di-zaman-modern/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aksaya Patra: The Awakening, Ketika Bandung Bondowoso dan Roro Jonggrang Kembali di Zaman Modern!",
+      "publishedAt": "2026-09-24T08:03:30.000Z",
+      "description": "Roro Jonggrang dan Bandung Bondowoso hidup lagi di era modern, kira-kira mau ngapain? Simak selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/the-love-hypothesis-saat-cinta-dicoba-seperti-sebuah-eksperimen/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Love Hypothesis: Saat Cinta Dicoba Seperti Sebuah Eksperimen!",
+      "publishedAt": "2026-09-23T10:40:14.000Z",
+      "description": "Fake dating seharusnya punya aturan. Masalahnya, tidak ada aturan untuk perasaan yang mulai tumbuh. Bongkar selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/misteri-enam-enam-enam-ketika-urutan-pernikahan-berubah-menjadi-daftar-kematian/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Misteri ‘Enam Enam Enam’: Ketika Urutan Pernikahan Berubah Menjadi Daftar Kematian",
+      "publishedAt": "2026-09-22T12:10:22.000Z",
+      "description": "Enam sahabat. Satu urutan pernikahan. Ketika satu per satu mulai meninggal, coretan masa SMA berubah menjadi petunjuk kematian. Selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/resident-evil-zach-cregger-bawa-teror-baru-ke-raccoon-city-sudah-siap-ikut-masuk-survival-mode/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Resident Evil Zach Cregger Bawa Teror Baru ke Raccoon City! Sudah Siap Ikut Masuk Survival Mode?",
+      "publishedAt": "2026-09-22T07:15:44.000Z",
+      "description": "Resident Evil garapan Zach Cregger seperti punya cara sendiri untuk kembali membawa masuk penonton ke pintu menuju Raccoon City. Simak selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "source": {
+        "name": "Gramedia",
+        "url": "https://www.gramedia.com/blog/di-panggung-memesona-pas-di-rumah-ternyata-beda-cerita-ikuti-sisi-lain-kehidupan-idol-lewat-komik-tamons-b-side/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Di Panggung Memesona, Pas di Rumah Ternyata Beda Cerita! Ikuti Sisi Lain Kehidupan Idol lewat Komik Tamon’s B-Side",
+      "publishedAt": "2026-09-21T08:52:12.000Z",
+      "description": "Di atas panggung, Tamon dikenal sebagai sosok yang liar, menawan, percaya diri, dan sangat karismatik; begitu berada di rumah, persona tersebut seolah menghilang. Selengkapnya di sini!",
+      "discoveredAt": "2026-10-01T20:48:42.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "874b22586cefddc95208c30aee71e334728b9b857a10f1fc780da65a41847123"
+}

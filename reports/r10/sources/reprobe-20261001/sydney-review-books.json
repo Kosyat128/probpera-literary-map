@@ -1,0 +1,40 @@
+{
+  "sourceId": "sydney-review-books",
+  "name": "Sydney Review of Books",
+  "entryUrl": "https://sydneyreviewofbooks.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:44:55.043Z",
+  "requests": [
+    {
+      "url": "https://sydneyreviewofbooks.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 153670,
+      "sha256": "9f2914a7ad1a60de613b6e40b02d77bf5c886edfdb904e2b31f022f11b3605c9",
+      "accessedAt": "2026-10-01T20:44:55.682Z"
+    },
+    {
+      "url": "https://sydneyreviewofbooks.com/news-and-events",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 798031,
+      "sha256": "989a485e2bf74a982df0c404f5a67606212b9bec6562e196a1712386621a6490",
+      "accessedAt": "2026-10-01T20:44:55.850Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://sydneyreviewofbooks.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 73,
+    "sha256": "951106186a125729ca3b69fb516fffb493e61f442683ca538949210dab4fe339",
+    "accessedAt": "2026-10-01T20:44:55.580Z",
+    "disallowed": [
+      "/*?*refinementList",
+      "/*?*sortBy"
+    ]
+  }
+}

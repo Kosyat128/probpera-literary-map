@@ -1,0 +1,37 @@
+{
+  "sourceId": "sexto-piso",
+  "name": "Sexto Piso",
+  "entryUrl": "https://sextopiso.es/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:09.881Z",
+  "requests": [
+    {
+      "url": "https://sextopiso.es/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 59702,
+      "sha256": "0d86ca81c7b4eb191b64e784045eb9d98163998001460483831b86b038569372",
+      "accessedAt": "2026-10-01T20:48:11.020Z"
+    },
+    {
+      "url": "https://sextopiso.es/esp/items/10/Novedades/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 10335,
+      "sha256": "cca73d76aff8ed29759f551d3e6aa3f6b38b2ebc48929fea19148ad1df8fb3b4",
+      "accessedAt": "2026-10-01T20:48:11.464Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://sextopiso.es/robots.txt",
+    "status": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 59702,
+    "sha256": "0d86ca81c7b4eb191b64e784045eb9d98163998001460483831b86b038569372",
+    "accessedAt": "2026-10-01T20:48:10.688Z",
+    "disallowed": []
+  }
+}

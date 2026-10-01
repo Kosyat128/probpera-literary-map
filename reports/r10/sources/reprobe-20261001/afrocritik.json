@@ -1,0 +1,390 @@
+{
+  "sourceId": "afrocritik",
+  "name": "Afrocritik",
+  "entryUrl": "https://www.afrocritik.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:45:00.790Z",
+  "requests": [
+    {
+      "url": "https://afrocritik.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 343416,
+      "sha256": "3e2ab2387b40d2a08fff5c9532ad88ca47096a49c12e588f9b8216add61654fe",
+      "accessedAt": "2026-10-01T20:45:04.309Z"
+    },
+    {
+      "url": "https://afrocritik.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 163500,
+      "sha256": "10f5d6958e191b2583ba2739f2d5d01c7bf95abb341ec97529dfe3be2e9f93c9",
+      "accessedAt": "2026-10-01T20:45:06.287Z"
+    },
+    {
+      "url": "https://afrocritik.com/benimana-the-woman-who-poked-the-leopard-carissa-screening-2026-nbo-film-festival/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 225960,
+      "sha256": "8c71cf068a5b7321abaefa7aed67852801ab9c723cc5f81280e3f1830df3f183",
+      "accessedAt": "2026-10-01T20:45:07.090Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.afrocritik.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 460,
+    "sha256": "83a9939fa338654eb251ad8791995a331ea7265b895186a60dee51d54a1a4469",
+    "accessedAt": "2026-10-01T20:45:01.518Z",
+    "disallowed": [
+      "/?s=",
+      "/*?s=",
+      "/*?category=",
+      "/*?author=",
+      "/*&s=",
+      "/*&category=",
+      "/*&author=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "afrocritik",
+    "name": "Afrocritik",
+    "url": "https://afrocritik.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "afrocritik",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://afrocritik.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://afrocritik.com/benimana-the-woman-who-poked-the-leopard-carissa-screening-2026-nbo-film-festival/"
+    ],
+    "verifiedAt": "2026-10-01T20:45:07.107Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "afrocritik",
+    "source": {
+      "name": "Afrocritik",
+      "url": "https://afrocritik.com/benimana-the-woman-who-poked-the-leopard-carissa-screening-2026-nbo-film-festival/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "“Ben’Imana”, “The Woman Who Poked The Leopard”, “Carissa”, Others Set For Screening at the 2026 NBO Film Festival",
+    "publishedAt": "2026-09-25T10:26:02.000Z",
+    "description": "Now in its seventh year, the festival will feature three juried competitions, its first-ever filmmaker retrospective, supported by the European Union National Institutes for Culture, and an expanded industry programme that includes inaugural short film and documentary competitions. By Adedamola Jones Adedayo A slate of African titles is set to screen at the 2026 edition… The post “Ben’Imana”, “Th…",
+    "discoveredAt": "2026-10-01T20:45:06.291Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://afrocritik.com/benimana-the-woman-who-poked-the-leopard-carissa-screening-2026-nbo-film-festival/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 225960,
+      "sha256": "8c71cf068a5b7321abaefa7aed67852801ab9c723cc5f81280e3f1830df3f183",
+      "accessedAt": "2026-10-01T20:45:07.090Z",
+      "headline": "“Ben’Imana”, “The Woman Who Poked The Leopard”, “Carissa”, Others Set For Screening at the 2026 NBO Film Festival - Afrocritik",
+      "excerpt": "News <img alt='' src='https://afrocritik.com/wp-content/litespeed/avatar/29bcd758d4291385477c7cb5554fdfc9.jpg?ver=1790759298' srcset='https://afrocritik.com/wp-content/litespeed/avatar/2ed044c5318c5af636d4a57763278e72.jpg?ver=1790759298 2x' class='avatar avatar-80 photo lazyload' height='80' width='80' decoding='async'/> by The Editor September 25, 2026 <img alt='' src='https://afrocritik.com/wp-c",
+      "publishedDates": [
+        {
+          "value": "2026-09-25T10:26:02+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-25T10:26:02+00:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        },
+        {
+          "value": "2026-09-25T10:26:02+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://afrocritik.com/benimana-the-woman-who-poked-the-leopard-carissa-screening-2026-nbo-film-festival/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:45:07.107Z",
+  "foundItems": [
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/benimana-the-woman-who-poked-the-leopard-carissa-screening-2026-nbo-film-festival/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Ben’Imana”, “The Woman Who Poked The Leopard”, “Carissa”, Others Set For Screening at the 2026 NBO Film Festival",
+      "publishedAt": "2026-09-25T10:26:02.000Z",
+      "description": "Now in its seventh year, the festival will feature three juried competitions, its first-ever filmmaker retrospective, supported by the European Union National Institutes for Culture, and an expanded industry programme that includes inaugural short film and documentary competitions. By Adedamola Jones Adedayo A slate of African titles is set to screen at the 2026 edition… The post “Ben’Imana”, “Th…",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/sundance-institute-rami-jarboui-2026-documentary-fund-grantees/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sundance Institute Names Rami Jarboui Among 2026 Documentary Fund Grantees",
+      "publishedAt": "2026-09-30T07:31:53.000Z",
+      "description": "The 2026 Documentary Fund received applications from filmmakers around the world, with almost 65% of proposals coming from outside the United States, while Jarboui emerged as the sole African representative among the 19 selected projects. By Joseph Jonathan Tunisian filmmaker Rami Jarboui has been selected as one of the recipients of the Sundance Institute’s 2026… The post Sundance Institute Name…",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/arole-agarawu-african-poetry-prize-announces-inaugural-shortlist/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Arole Agarawu African Poetry Prize Announces Inaugural Shortlist",
+      "publishedAt": "2026-09-26T08:23:26.000Z",
+      "description": "Founded by Adedayo Agarau, the Arole Agarawu Foundation is focused on preserving African cultural heritage and promoting artistic excellence. By Emmanuel “Waziri” Okoro The inaugural Arole Agarawu African Poetry Prize has announced its 10-poet shortlist, selected from 356 submissions received from poets across 21 countries. The shortlist, announced by the Arole Agarawu Foundation on 14… The post …",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/justice-faruck-the-loud-silence-between-us-review/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Justice Faruck’s “The Loud Silence Between Us” Is A Novel of Noble Ideas and Faulty Execution",
+      "publishedAt": "2026-09-25T09:19:33.000Z",
+      "description": "The Loud Silence Between Us could have been an intimate story about a sheltered girl blooming into womanhood and navigating the perils of marriage and culture, but the novel’s gaze stays persistently outward and in motion, losing what could have been an emotionally resonant story. By Azubuike Obi The trials and travails of women, how… The post Justice Faruck’s “The Loud Silence Between Us” Is A N…",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/why-emerging-artistes-are-sampling-legacy-genres/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Why Emerging Nigerian Artistes Are Sampling Legacy Genres",
+      "publishedAt": "2026-09-30T07:10:57.000Z",
+      "description": "What sounds like nostalgia at first begins to look like something more deliberate: a generation of emerging Nigerian artistes searching the past for sounds that can help them stand out in the present. By Deborah Oyedijo For a new artiste trying to find space in an increasingly crowded Nigerian music scene, sounding contemporary is no… The post Why Emerging Nigerian Artistes Are Sampling Legacy Ge…",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/why-are-african-national-football-teams-playing-fewer-competitive-games-this-window/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Why Are African National Football Teams Playing Fewer Competitive Games This Window?",
+      "publishedAt": "2026-09-29T08:56:34.000Z",
+      "description": "CAF’s responsibility should extend beyond arranging fixtures; it should involve examining how that calendar serves the development and preparation of national teams. By Tuka Letura FIFA handed national teams something unusual with this break: a longer September\u2013October window, running from 21 September to 6 October, that replaces the two shorter breaks that used to occupy… The post Why Are Africa…",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/tola-odunsi-19-review/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“19” Review: Tola Odunsi’s Ambitious but Uneven Portrait of Cybercrime",
+      "publishedAt": "2026-09-28T06:47:27.000Z",
+      "description": "19 is a film with something worthwhile to say, and enough good filmmaking to make that argument worth hearing, but not enough dramatic precision to make it unforgettable. By Joseph Jonathan Tola Odunsi’s 19 is interested in a question more uncomfortable than why people commit cybercrime: what happens when a society makes the rewards of… The post “19” Review: Tola Odunsi’s Ambitious but Uneven Por…",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/awam-amkpa-the-man-died-review/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“The Man Died” Review: A Welcome Cinematic Contextualisation of Wole Soyinka’s Prison Memoir",
+      "publishedAt": "2026-09-28T05:45:37.000Z",
+      "description": "As an adaptation, The Man Died works because it appropriately combines references and contexts from Soyinka’s work with the requirements of cinematic storytelling. By Adedamola Jones Adedayo In 1967, during the early months of the Nigerian Civil War, Nobel Laureate, Wole Soyinka, was arrested and imprisoned by the Federal Military Government under General Yakubu Gowon.… The post “The Man Died” Re…",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/kweku-smoke-no-days-off-review/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“NO DAYS OFF” Review: Kweku Smoke Reflects on Hustle and Ambition on New Album",
+      "publishedAt": "2026-09-26T08:23:41.000Z",
+      "description": "As it stands, NO DAYS OFF offers a substantial amount of Smoke’s perspective but not quite enough musical variation through which to explore it. By Yinoluwa Olowofoyeku Kweku Smoke has built his career around motion. Born Paul Amankwah, the Ghanaian rapper emerged from Accra’s Hip-Hop scene with a sound rooted in Trap, Hiplife and street… The post “NO DAYS OFF” Review: Kweku Smoke Reflects on Hus…",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "afrocritik",
+      "source": {
+        "name": "Afrocritik",
+        "url": "https://afrocritik.com/four-african-screenwriters-selected-5th-edition-authentica-series-lab/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Four African Screenwriters Selected For 5th Edition of AuthenticA Series Lab",
+      "publishedAt": "2026-09-25T09:59:49.000Z",
+      "description": "AuthenticA Series Lab is currently having an eight-day residency in Ethiopia, which will end on 25th September, 2026 and will then be followed by virtual sessions lasting until 14th January, 2027. By Adedamola Jones Adedayo Four African screenwriters from Nigeria, Ghana, South Africa, and Cameroon have been selected for the fifth edition of the AuthenticA… The post Four African Screenwriters Sele…",
+      "discoveredAt": "2026-10-01T20:45:06.291Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "10f5d6958e191b2583ba2739f2d5d01c7bf95abb341ec97529dfe3be2e9f93c9"
+}

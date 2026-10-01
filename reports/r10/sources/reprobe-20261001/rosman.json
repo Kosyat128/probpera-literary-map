@@ -1,0 +1,453 @@
+{
+  "sourceId": "rosman",
+  "name": "Росмэн",
+  "entryUrl": "https://rosman.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-10-01T20:44:38.767Z",
+  "requests": [
+    {
+      "url": "https://rosman.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 120957,
+      "sha256": "66da2fc32f57f5edee8c8f45a6b1b50016ade6744779e90d8c2c9af07b9a2356",
+      "accessedAt": "2026-10-01T20:44:39.314Z"
+    },
+    {
+      "url": "https://rosman.ru/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 173707,
+      "sha256": "5601f63cc68f9f72ac71de2e6a2c96670d9add107f745ba57b8f488496d7b355",
+      "accessedAt": "2026-10-01T20:44:39.519Z"
+    },
+    {
+      "url": "https://rosman.ru/news/posle-shkoly/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 146832,
+      "sha256": "6c0e69179eeb055c54e7243756141b2c38b07ba05aecd1b8401a7ca4d75281f7",
+      "accessedAt": "2026-10-01T20:44:39.766Z"
+    },
+    {
+      "url": "https://rosman.ru/news/infiniti-nado-pro-eksklyuzivnaya-lineyka-dlya-tekh-kto-gotov-k-bolshim-turniram/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 131110,
+      "sha256": "1c85edc8a692dcbc2f0c8ed2197e92e84451445cb28eae5ef4e0b5c7d89d716d",
+      "accessedAt": "2026-10-01T20:44:39.972Z"
+    },
+    {
+      "url": "https://rosman.ru/news/vstrechayte-novinki-bebi-born-eshchye-bolshe-funktsiy-i-effektov/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 171977,
+      "sha256": "61dc50f70032b6bc5b44c1e05c7045788a6875cfb1fb5d83d74e5496410c9105",
+      "accessedAt": "2026-10-01T20:44:40.375Z"
+    },
+    {
+      "url": "https://rosman.ru/news/novyy-film-shchenyachiy-patrul-3-dinofilm-uzhe-v-kino/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 249489,
+      "sha256": "46d1f3e5dcf81d1dbf14bf29377a0cff6ba2672911cbe9bb1c140a7197454bd4",
+      "accessedAt": "2026-10-01T20:44:40.762Z"
+    },
+    {
+      "url": "https://rosman.ru/news/nauchnye-master-klassy-4m-v-kidzanii/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 323689,
+      "sha256": "9a3e61996b0ba8a9fbc41993e3914e8ac25c32c5206f65952eb878d296289bc2",
+      "accessedAt": "2026-10-01T20:44:41.190Z"
+    },
+    {
+      "url": "https://rosman.ru/news/gujitsu-goo-power/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 224114,
+      "sha256": "7aca7f9095417a9c56cfb702a6e7d1e7aaf23a196f3a5d8bba025994396123bd",
+      "accessedAt": "2026-10-01T20:44:41.565Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://rosman.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1629,
+    "sha256": "ffddd0db8c787a7483bb3f3a26a3f2aae2c54705b25ffa18ad536c02bdcab43c",
+    "accessedAt": "2026-10-01T20:44:39.085Z",
+    "disallowed": [
+      "/*?",
+      "/cgi-bin",
+      "/bitrix/",
+      "*bitrix_*=",
+      "/local/",
+      "/*index.php$",
+      "/news/momandbaby/",
+      "/auth/",
+      "*auth=",
+      "/personal/",
+      "*register=",
+      "*forgot_password=",
+      "*change_password=",
+      "*login=",
+      "*logout=",
+      "*/search/",
+      "*action=",
+      "*print=",
+      "*?new=Y",
+      "*?edit=",
+      "*?preview=",
+      "*backurl=",
+      "*back_url=",
+      "*back_url_admin=",
+      "*captcha",
+      "*/feed",
+      "*/rss",
+      "*?FILTER*=",
+      "*/filter/*",
+      "*?ei=",
+      "*?p=",
+      "*?q=",
+      "*?tags=",
+      "*B_ORDER=",
+      "*BRAND=",
+      "*CLEAR_CACHE=",
+      "*ELEMENT_ID=",
+      "*price_from=",
+      "*price_to=",
+      "*PROPERTY_TYPE=",
+      "*PROPERTY_WIDTH=",
+      "*PROPERTY_HEIGHT=",
+      "*PROPERTY_DIA=",
+      "*PROPERTY_OPENING_COUNT=",
+      "*PROPERTY_SELL_TYPE=",
+      "*PROPERTY_MAIN_TYPE=",
+      "*PROPERTY_PRICE[*]=",
+      "*S_LAST=",
+      "*SECTION_ID=",
+      "*SECTION[*]=",
+      "*SHOWALL=",
+      "*SHOW_ALL=",
+      "*SHOWBY=",
+      "*SORT=",
+      "*SPHRASE_ID=",
+      "/*PAGEN",
+      "*TYPE=",
+      "*utm*=",
+      "*openstat=",
+      "*from=",
+      "/upload/resize_cache/"
+    ]
+  },
+  "endpoint": {
+    "id": "rosman",
+    "name": "Росмэн",
+    "url": "https://rosman.ru/news/",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "rosman",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://rosman.ru"
+    ],
+    "linkPattern": "^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://rosman.ru/news/gujitsu-goo-power/"
+    ],
+    "verifiedAt": "2026-10-01T20:44:41.580Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "rosman",
+    "source": {
+      "name": "Росмэн",
+      "url": "https://rosman.ru/news/gujitsu-goo-power/",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Гуджитсу Гу Пауэр: новая сила героев Гу-вселенной!",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:44:39.541Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://rosman.ru/news/gujitsu-goo-power/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 224114,
+      "sha256": "7aca7f9095417a9c56cfb702a6e7d1e7aaf23a196f3a5d8bba025994396123bd",
+      "accessedAt": "2026-10-01T20:44:41.565Z",
+      "headline": "Гуджитсу Гу Пауэр: новая сила героев Гу-вселенной!",
+      "excerpt": "Главная...НовостиИгрушкиГуджитсу Гу Пауэр: новая сила героев Гу-вселенной! Гуджитсу Новинки Вы знали, что герои Гуджитсу умеют путешествовать между вселенными? Мы тоже не знали! Они путешествовали по разным мирам, попадали в разные передряги \u2013 и в итоге добрались до нашей вселенной. Только просто так сюда никто не приходит. Поэтому они прокачались и появились в новой коллекции Гуджитсу Гу Пауэр! С",
+      "publishedDates": [],
+      "canonical": "https://rosman.ru/news/gujitsu-goo-power/",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:41.580Z",
+  "foundItems": [
+    {
+      "sourceId": "rosman",
+      "source": {
+        "name": "Росмэн",
+        "url": "https://rosman.ru/news/posle-shkoly/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "После школы - время играть!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:39.541Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rosman",
+      "source": {
+        "name": "Росмэн",
+        "url": "https://rosman.ru/news/infiniti-nado-pro-eksklyuzivnaya-lineyka-dlya-tekh-kto-gotov-k-bolshim-turniram/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Инфинити Надо ПРО: эксклюзивная линейка для тех, кто готов к большим турнирам",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:39.541Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rosman",
+      "source": {
+        "name": "Росмэн",
+        "url": "https://rosman.ru/news/vstrechayte-novinki-bebi-born-eshchye-bolshe-funktsiy-i-effektov/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Встречайте новинки Беби Борн: ещё больше функций и эффектов!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:39.541Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rosman",
+      "source": {
+        "name": "Росмэн",
+        "url": "https://rosman.ru/news/novyy-film-shchenyachiy-patrul-3-dinofilm-uzhe-v-kino/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Новый фильм «Щенячий патруль 3: Динофильм» уже в кино!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:39.541Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rosman",
+      "source": {
+        "name": "Росмэн",
+        "url": "https://rosman.ru/news/nauchnye-master-klassy-4m-v-kidzanii/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Научные мастер-классы 4М в Кидзании",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:39.541Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rosman",
+      "source": {
+        "name": "Росмэн",
+        "url": "https://rosman.ru/news/gujitsu-goo-power/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Гуджитсу Гу Пауэр: новая сила героев Гу-вселенной!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:39.541Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rosman",
+      "source": {
+        "name": "Росмэн",
+        "url": "https://rosman.ru/news/dobro-pozhalovat-na-tusovku-palm-pals/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Добро пожаловать на тусовку Palm Pals!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:39.541Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rosman",
+      "source": {
+        "name": "Росмэн",
+        "url": "https://rosman.ru/news/new_mirrormi/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Встречайте новый бренд модных кукол - МиррорМи!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:39.541Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rosman",
+      "source": {
+        "name": "Росмэн",
+        "url": "https://rosman.ru/news/tren-etap-infiniti-nado-wsa/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Старт тренировочного этапа турнира Инфинити Надо в торговых точках по всей России",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:39.541Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5601f63cc68f9f72ac71de2e6a2c96670d9add107f745ba57b8f488496d7b355"
+}

@@ -1,0 +1,11 @@
+{
+  "sourceId": "observator-cultural",
+  "name": "Observator cultural",
+  "entryUrl": "https://www.observatorcultural.ro/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:57.743Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

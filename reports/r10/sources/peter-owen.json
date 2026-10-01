@@ -1,0 +1,16 @@
+{
+  "sourceId": "peter-owen",
+  "name": "Peter Owen",
+  "entryUrl": "https://www.peterowen.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:46.579Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "external_redirect:https://xoilaczvc.cc",
+  "robots": {
+    "url": "https://www.peterowen.com/robots.txt",
+    "error": "external_redirect:https://xoilaczvc.cc",
+    "disallowed": []
+  }
+}

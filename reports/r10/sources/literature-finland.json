@@ -1,0 +1,373 @@
+{
+  "sourceId": "literature-finland",
+  "name": "FILI",
+  "entryUrl": "https://fili.fi/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:02.737Z",
+  "requests": [
+    {
+      "url": "https://fili.fi/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 203862,
+      "sha256": "5244bc71eac7006f20bc2c136ad7eb18a08cfd8f2cf9cc7b01c01785ce96477c",
+      "accessedAt": "2026-10-01T20:52:03.116Z"
+    },
+    {
+      "url": "https://fili.fi/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 32887,
+      "sha256": "cee8c3d2d0074ee5ea6647a2791caef6b74f67ffff2ebd0a3000a300f32e9759",
+      "accessedAt": "2026-10-01T20:52:03.224Z"
+    },
+    {
+      "url": "https://fili.fi/filin-fellowship-ohjelma-vuonna-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 85806,
+      "sha256": "693372414037d237ba97cb24ce87d5ca2a1bd1d1a03cc7258b4635ffd15cb56a",
+      "accessedAt": "2026-10-01T20:52:03.305Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://fili.fi/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 128,
+    "sha256": "e09a05b1e4992382e1421a8bf06b2557c699f57f7f374dadf10946e17a36dabe",
+    "accessedAt": "2026-10-01T20:52:03.031Z",
+    "disallowed": [
+      "/fili2021b/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "literature-finland",
+    "name": "FILI",
+    "url": "https://fili.fi/feed/",
+    "format": "rss",
+    "language": "fi",
+    "region": "global",
+    "sourceFamilyId": "literature-finland",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://fili.fi"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://fili.fi/filin-fellowship-ohjelma-vuonna-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:52:03.315Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "literature-finland",
+    "source": {
+      "name": "FILI",
+      "url": "https://fili.fi/filin-fellowship-ohjelma-vuonna-2026/",
+      "language": "fi"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "FILIn fellowship-ohjelma 2026, vielä ehdit hakea 15.5. asti",
+    "publishedAt": "2026-05-08T07:00:00.000Z",
+    "description": "FILIn fellowship-ohjelma kääntäjille järjestetään vuonna 2026 Helsingin kirjamessujen aikaan 21.\u201323.10. Haku ohjelmaan käynnistyy maanantaina 30.3. ja päättyy perjantaina 15.5. Valintapäätöksistä [...]",
+    "discoveredAt": "2026-10-01T20:52:03.226Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://fili.fi/filin-fellowship-ohjelma-vuonna-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 85806,
+      "sha256": "693372414037d237ba97cb24ce87d5ca2a1bd1d1a03cc7258b4635ffd15cb56a",
+      "accessedAt": "2026-10-01T20:52:03.305Z",
+      "headline": "FILIn fellowship-ohjelma 2026, vielä ehdit hakea 15.5. asti",
+      "excerpt": "Etusivu • Ajankohtaista • Uutiset • FILIn fellowship-ohjelma 2026, vielä ehdit hakea 15.5. astiFILIn fellowship-ohjelma kääntäjille järjestetään vuonna 2026 Helsingin kirjamessujen aikaan 21.\u201323.10. Haku ohjelmaan käynnistyy maanantaina 30.3. ja päättyy perjantaina 15.5. Valintapäätöksistä ilmoitetaan viimeistään kesäkuussa. Ohjelma on maksuton, ja se on suunnattu Suomen kirjallisuutta muille kiel",
+      "publishedDates": [
+        {
+          "value": "2026-05-08T10:00:00+03:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://fili.fi/filin-fellowship-ohjelma-vuonna-2026/",
+      "language": "fi",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:03.315Z",
+  "foundItems": [
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/filin-fellowship-ohjelma-vuonna-2026/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FILIn fellowship-ohjelma 2026, vielä ehdit hakea 15.5. asti",
+      "publishedAt": "2026-05-08T07:00:00.000Z",
+      "description": "FILIn fellowship-ohjelma kääntäjille järjestetään vuonna 2026 Helsingin kirjamessujen aikaan 21.\u201323.10. Haku ohjelmaan käynnistyy maanantaina 30.3. ja päättyy perjantaina 15.5. Valintapäätöksistä [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/formula-bula-festivaalilla-pariisissa-12-suomalaista-sarjakuvataiteilijaa/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Formula Bula -festivaalilla Pariisissa 12 suomalaista sarjakuvataiteilijaa",
+      "publishedAt": "2026-09-25T16:15:00.000Z",
+      "description": "Suomalaisen sarjakuvan suurtapahtuma käynnistyi Pariisissa tänään! Peräti 12 sarjakuvataiteilijaa ja muita alan ammattilaisia on mukana Formula Bula -sarjakuvafestivaalilla viikonlopun aikana. [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/filin-ohjelma-helsingin-kirjamessuilla-22-25-10/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FILIn ohjelma Helsingin kirjamessuilla 22.-25.10.",
+      "publishedAt": "2026-09-25T11:00:57.000Z",
+      "description": "TORSTAI 22.10. Klo 14\u201314.30, Töölö-lavaMitä ei voi kääntää?Miten murretta, sanontoja ja kirosanoja käännetään? Tai vaikeita teemoja, jotka saattavat olla tabuja jossakin [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/suomalaisen-kirjallisuuden-syksy-vahvoja-naisia-rajaseutuja-ja-yksi-ihmissusi/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Suomalaisen kirjallisuuden syksy: vahvoja naisia, rajaseutuja ja yksi ihmissusi",
+      "publishedAt": "2026-09-11T11:09:50.000Z",
+      "description": "Uusi suomalainen kirjallisuus nostaa jälleen esiin moniäänisiä vahvoja naiskertojia; ainutlaatuisia identiteettejä ja tarinoita kulttuurien risteyskohdista ja rajaseuduilta \u2013 ja yhden [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/filissa-uusi-harjoittelija-japanista/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FILIssä uusi harjoittelija Japanista",
+      "publishedAt": "2026-09-01T10:57:19.000Z",
+      "description": "FILIssä on juuri aloittanut harjoittelijana Kotoha Yabuki Japanista. Hän on valmistunut vastikään Tokain yliopistosta pääaineenaan Pohjoismaiden tutkimus, vahvasti maustettuna suomen [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/ville-blafield-filiin-kehittamaan-kirjallisuusvientia/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ville Blåfield FILIin kehittämään kirjallisuusvientiä",
+      "publishedAt": "2026-06-15T06:00:00.000Z",
+      "description": "Kirjallisuuden vientikeskus FILIssä aloittaa uudessa työtehtävässä kehityspäällikkönä vapaa toimittaja, Helsingin Kirjamessujen ohjelmajohtaja ja tietokirjailija Ville Blåfield. Hänen vastuualueenaan on elokuusta [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/100-or-so-books-from-finland-julkaisussa-uusia-esittelyja/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Upeita kevään & kesän kirjoja 100 -kirjaa julkaisussa",
+      "publishedAt": "2026-06-09T07:00:00.000Z",
+      "description": "FILIn nettijulkaisusta 100 or So Books from Finland löydät nyt tuoreimmat päivitykset kevät- ja kesäkauden kansainvälisesti merkittävistä suomalaisista kirjoista [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/tilastokysely-kirjailijoille-ja-kaantajille/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tilastokysely kirjailijoille ja kääntäjille",
+      "publishedAt": "2026-05-13T13:28:17.000Z",
+      "description": "FILIssä kootaan jälleen tilastotietoa suomalaisten kirjailijoiden ja kirjojen sekä Suomen kirjallisuuden kääntäjien ulkomaiseen näkyvyyteen liittyen vuonna 2025. Facts & figures [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/44721/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Iida Turpeinen Helsingfors bokmässa i Stockholm -tapahtumassa 9.5.",
+      "publishedAt": "2026-05-05T08:38:43.000Z",
+      "description": "Upean Elolliset-romaanin kirjoittanut kirjailija Iida Turpeinen esiintyy Tukholmassa lauantaina 9.5. Tyge & Sessil -viinibaarissa klo 18-19 Helsingfors bokmässa i Stockholm [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "source": {
+        "name": "FILI",
+        "url": "https://fili.fi/kahdeksan-ulkomaista-kustantajaa-vierailulla-helsingissa-talla-viikolla/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kahdeksan ulkomaista kustantajaa vierailulla Helsingissä tällä viikolla",
+      "publishedAt": "2026-05-05T04:51:27.000Z",
+      "description": "FILI järjestää kaunokirjallisuuden Editors’ Week -vierailun 4.\u20137.5. Saamme vieraaksemme Helsinkiin kahdeksan ulkomaista kustantajaa: Lea Artmeyer (Unionsverlag, Sveitsi), Alice Canosi (Neri [...]",
+      "discoveredAt": "2026-10-01T20:52:03.226Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "cee8c3d2d0074ee5ea6647a2791caef6b74f67ffff2ebd0a3000a300f32e9759"
+}

@@ -1,0 +1,43 @@
+{
+  "sourceId": "fiponline-org",
+  "name": "Federation of Indian Publishers",
+  "entryUrl": "https://www.fiponline.org/",
+  "countryCodes": [
+    "IN"
+  ],
+  "coverageCountryCodes": [
+    "IN"
+  ],
+  "attemptedAt": "2026-10-01T20:43:08.564Z",
+  "requests": [
+    {
+      "url": "https://fiponline.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 130228,
+      "sha256": "c5ace3d73fa9fc7c442a51055886517cb29ace18a1d4127baf9866a8ea60e403",
+      "accessedAt": "2026-10-01T20:43:11.141Z"
+    },
+    {
+      "url": "https://fiponline.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 5159,
+      "sha256": "d8d261aefbabd34b7a78709e3315a374604cfade9d17d9b54f0eabab1ba6512f",
+      "accessedAt": "2026-10-01T20:43:11.740Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://fiponline.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 114,
+    "sha256": "d99564f8e8f73ff0a53a3803a231c09e7d7b5b8af50d4f824de70d4b26fee033",
+    "accessedAt": "2026-10-01T20:43:10.228Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

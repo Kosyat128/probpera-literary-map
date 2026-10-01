@@ -264,5 +264,80 @@
     "vk": "deferred_by_user",
     "delivered": 0
   },
-  "premergeValidation": "reports/r10/premerge-validation.json"
+  "premergeValidation": "reports/r10/premerge-validation.json",
+  "qualityContinuation20261001": {
+    "baseHead": "031821ae7917dcf16454c4877d9ca137a0299284",
+    "branch": "codex/news-quality-and-calendar-completion",
+    "status": "local_verification_before_integration",
+    "requestedArchiveTarget": [
+      600,
+      700
+    ],
+    "additionalSourceBaseline": 108,
+    "requiredVerifiedSourceTotal": 208,
+    "telegramDestination": "@probbaperra",
+    "vk": "deferred_by_user",
+    "productionDueQuery": {
+      "applied": true,
+      "baselineBodySha256": "511ced16e6d2e87dccfa8293a79a2480e3db633f65d8e762aabfa364be88173d",
+      "bodySha256": "a48057e3e8c5530e2c4cdace4a4c663363832376a8c3a401e4a105d2e12843d4",
+      "journalMutations": 0,
+      "securityInvoker": true,
+      "serviceRoleOnly": true,
+      "rollback": "reports/r10/social/due-query-rollback-20261001.sql"
+    },
+    "decisions": [
+      {
+        "reason": "Expired announcements could monopolize the bounded due page.",
+        "choice": "Match Moscow announcement eligibility before LIMIT20 while preserving remote corrections.",
+        "check": "11 isolated PostgreSQL cases plus exact production body hash and unchanged invoker/ACL.",
+        "rollback": "Guarded rollback artifact restores only this exact function version."
+      },
+      {
+        "reason": "Stale cached rights snapshots conflicted with current images; article extraction could use publisher branding.",
+        "choice": "Prefer current registry identities, reject duplicate conflicts before uploads, use scoped/code-owned article selectors and paragraph boundaries.",
+        "check": "Focused media and intake regressions passed; real-source selectors are separately probed.",
+        "rollback": "Revert the exact implementation commit; confirmed bytes and journal remain intact."
+      },
+      {
+        "reason": "New posts were overly short and failures in preparation were not visible.",
+        "choice": "Use supported two or three sentence summaries within existing440character limits, preserve independent fact/translation review, check checkpoints and delivery receipts twice daily.",
+        "check": "Grounding, provider stop, pacing and redacted operations tests pass.",
+        "rollback": "Disable native workers with existing exact-main workflow and restore Node fallback flag; no per-news approval."
+      }
+    ],
+    "sources": {
+      "registered": 223,
+      "currentHttpAvailable": 212,
+      "currentlyUnavailable": 5,
+      "sourceFamilies": 215,
+      "organisationCountries": 63,
+      "additionalAvailableFromBaseline": 104,
+      "evidence": "reports/r10/sources/completion-runtime-identified/runtime-verification.json",
+      "active": 222,
+      "verifiedProfiles": 217,
+      "availableSourceFamilies": 210,
+      "baseLanguages": 28,
+      "registrySha256": "ce818d189f227387b33ee074fe9ceacbdf9948801a83fefbe67cb9241cf58bca"
+    },
+    "content": {
+      "canonical": 284,
+      "eligibleLocal": 247,
+      "addedCurrentBatch": 26,
+      "requestedTargetReached": false
+    },
+    "calendar": {
+      "annualEvents": 2340,
+      "dateFields": 29,
+      "russianWriters": 53,
+      "russianBirthdays": 49,
+      "russianMemorials": 48,
+      "evidence": "reports/r10/calendar/russian-expansion-coverage-20261001.json"
+    },
+    "telegram": {
+      "nativePreparationActivation": "pending",
+      "nativeDeliveryActivation": "pending",
+      "actualDelivery": "Acknowledgements are checked separately from enabled schedules; Node fallback remains enabled until native activation."
+    }
+  }
 }

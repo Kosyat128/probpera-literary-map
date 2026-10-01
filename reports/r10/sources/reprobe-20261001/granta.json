@@ -1,0 +1,65 @@
+{
+  "sourceId": "granta",
+  "name": "Granta",
+  "entryUrl": "https://granta.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:44:52.091Z",
+  "requests": [
+    {
+      "url": "https://granta.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 259046,
+      "sha256": "65aa6e545626fbd75b34f824ba78d92d67e517bb8ac2e67b9ab1c5f7da06c87a",
+      "accessedAt": "2026-10-01T20:44:54.574Z"
+    },
+    {
+      "url": "https://granta.com/making-cuba-great-again/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 317271,
+      "sha256": "fa0d477d28df3e768102e5f546fd5f79c31a442cdb22a11a71b28f31ad734a11",
+      "accessedAt": "2026-10-01T20:44:55.991Z"
+    },
+    {
+      "url": "https://granta.com/first-year-sober-sentimentality/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 265977,
+      "sha256": "17b70fb8e938583cd7940e595c275f3876ef737af1cfb04d144e92143cb3dac9",
+      "accessedAt": "2026-10-01T20:44:57.449Z"
+    },
+    {
+      "url": "https://granta.com/year-of-the-rat-hill/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 292161,
+      "sha256": "9d873e4c4cdcb1ad1bdbf73c90b2f01b2747ed0cef8207303faab178338c0edd",
+      "accessedAt": "2026-10-01T20:44:58.341Z"
+    },
+    {
+      "url": "https://granta.com/he-trains-my-hands-for-war/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 271432,
+      "sha256": "5a862dc2ebfbaa82842488172b8250e3f3a3d85b4e9b2160105b336deb9a5580",
+      "accessedAt": "2026-10-01T20:44:59.430Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://granta.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 252,
+    "sha256": "e9f13b9cedf9c0ed44442c84b31891b79f058c0c6c5d5ce052c91143c2efbcf2",
+    "accessedAt": "2026-10-01T20:44:52.315Z",
+    "disallowed": [
+      "/wp-content/plugins/",
+      "/search/"
+    ]
+  },
+  "detailAttemptError": "http_403"
+}

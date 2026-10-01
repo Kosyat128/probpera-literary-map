@@ -1,0 +1,49 @@
+{
+  "sourceId": "nsk-hr",
+  "name": "National and University Library in Zagreb",
+  "entryUrl": "https://www.nsk.hr/",
+  "countryCodes": [
+    "HR"
+  ],
+  "coverageCountryCodes": [
+    "HR"
+  ],
+  "attemptedAt": "2026-10-01T20:43:52.191Z",
+  "requests": [
+    {
+      "url": "https://nsk.hr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 120880,
+      "sha256": "d696ee53f60fbd4de93e2f2506028716301e45405cd144c56500f102683c3fcd",
+      "accessedAt": "2026-10-01T20:43:54.215Z"
+    },
+    {
+      "url": "https://nsk.hr/znanstvenici-i-istrazivaci/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 105449,
+      "sha256": "ffa41a26bea9a190580ab84550d5b67839d6e815e8d0e42d7236495e39ecf7a6",
+      "accessedAt": "2026-10-01T20:43:55.083Z"
+    },
+    {
+      "url": "https://nsk.hr/posjetitelji-i-gradani/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91750,
+      "sha256": "925b922750e1ac10c0af024df262ad0b90f96cde124084b40b3bb0662d97e06d",
+      "accessedAt": "2026-10-01T20:43:55.587Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://nsk.hr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 164,
+    "sha256": "4d261b0c8f4a8fc195dbc57d20a4ecb03f142a626dd9c88749506310d0f00b32",
+    "accessedAt": "2026-10-01T20:43:53.390Z",
+    "disallowed": []
+  }
+}

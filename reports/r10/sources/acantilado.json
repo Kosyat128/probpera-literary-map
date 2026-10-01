@@ -1,0 +1,388 @@
+{
+  "sourceId": "acantilado",
+  "name": "Acantilado",
+  "entryUrl": "https://www.acantilado.es/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:50.284Z",
+  "requests": [
+    {
+      "url": "https://www.acantilado.es/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 198448,
+      "sha256": "a09d3b2ff8d44bcd9babd8c68b3e8739deb3cb7f44a45c3b77363c5b5f7f9ce1",
+      "accessedAt": "2026-10-01T20:47:51.074Z"
+    },
+    {
+      "url": "https://www.acantilado.es/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 60874,
+      "sha256": "41dc1212c69859f0e7d92d7b78ff4aef81ec7af328b56ddecbc09c1e654f71ff",
+      "accessedAt": "2026-10-01T20:47:51.279Z"
+    },
+    {
+      "url": "https://www.acantilado.es/jose-maria-mico-premio-internacional-alfonso-reyes-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 267300,
+      "sha256": "5510ac7dafc008c232653977d58fb4c76048c994f5b0ddb621f8888a3700040a",
+      "accessedAt": "2026-10-01T20:47:51.376Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.acantilado.es/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 445,
+    "sha256": "9e780b13d3d5b088786b40699db68c634030f16804f932e08710de7921426239",
+    "accessedAt": "2026-10-01T20:47:50.912Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "acantilado",
+    "name": "Acantilado",
+    "url": "https://www.acantilado.es/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "acantilado",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.acantilado.es"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.acantilado.es/jose-maria-mico-premio-internacional-alfonso-reyes-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:47:51.410Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "acantilado",
+    "source": {
+      "name": "Acantilado",
+      "url": "https://www.acantilado.es/jose-maria-mico-premio-internacional-alfonso-reyes-2026/",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "José María Micó, Premio Internacional Alfonso Reyes",
+    "publishedAt": "2026-08-26T09:53:00.000Z",
+    "description": "José María Micó ha sido galardonado con el Premio Internacional Alfonso Reyes 2026. “Con este reconocimiento, celebramos una trayectoria que, mediante la poesía, la investigación y la traducción, ha acercado […] La entrada José María Micó, Premio Internacional Alfonso Reyes aparece primero en ACANTILADO.",
+    "discoveredAt": "2026-10-01T20:47:51.282Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.acantilado.es/jose-maria-mico-premio-internacional-alfonso-reyes-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 267300,
+      "sha256": "5510ac7dafc008c232653977d58fb4c76048c994f5b0ddb621f8888a3700040a",
+      "accessedAt": "2026-10-01T20:47:51.376Z",
+      "headline": "José María Micó, Premio Internacional Alfonso Reyes | ACANTILADO",
+      "excerpt": "26/08/2026 José María Micó ha sido galardonado con el Premio Internacional Alfonso Reyes 2026. “Con este reconocimiento, celebramos una trayectoria que, mediante la poesía, la investigación y la traducción, ha acercado a nuevas generaciones obras fundamentales de la literatura universal. Su labor prolonga el espíritu humanista de Alfonso Reyes y confirma que el conocimiento y la palabra construyen",
+      "publishedDates": [
+        {
+          "value": "2026-08-26T09:53:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-08-26T09:53:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-08-26T09:53:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.acantilado.es/jose-maria-mico-premio-internacional-alfonso-reyes-2026/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:47:51.410Z",
+  "foundItems": [
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/jose-maria-mico-premio-internacional-alfonso-reyes-2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "José María Micó, Premio Internacional Alfonso Reyes",
+      "publishedAt": "2026-08-26T09:53:00.000Z",
+      "description": "José María Micó ha sido galardonado con el Premio Internacional Alfonso Reyes 2026. “Con este reconocimiento, celebramos una trayectoria que, mediante la poesía, la investigación y la traducción, ha acercado […] La entrada José María Micó, Premio Internacional Alfonso Reyes aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/acantilado-en-la-85-o-feria-del-libro-de-madrid/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Acantilado en la 85.º Feria del Libro de Madrid",
+      "publishedAt": "2026-05-21T09:49:11.000Z",
+      "description": "Acantilado participa en la octogésima quinta edición de la Feria del Libro de Madrid. Nos encontraréis en la caseta 279, del 29 de mayo al 14 de junio. Como cada […] La entrada Acantilado en la 85.º Feria del Libro de Madrid aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/los-encuentros-de-pamplona-bienal-internacional-de-cultura-arte-y-pensamiento/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Los Encuentros de Pamplona, Bienal Internacional de cultura, arte y pensamiento",
+      "publishedAt": "2026-09-29T08:58:40.000Z",
+      "description": "Los Encuentros de Pamplona celebran su tercera edición cuya programación central tendrá lugar del 2 al 12 de octubre en Pamplona. El comisariado del programa corre a cargo del pensador […] La entrada Los Encuentros de Pamplona, Bienal Internacional de cultura, arte y pensamiento aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/correspondencias-recomendacion-de-lecturas/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Correspondencias (recomendación de lecturas)",
+      "publishedAt": "2026-09-02T11:53:24.000Z",
+      "description": "Las cartas son un extraordinario testimonio de los profundos vínculos entre las personas, pero también la crónica de una época. Aquí algunas recomendaciones: Cartas cruzadas, de Émile Zola y Paul […] La entrada Correspondencias (recomendación de lecturas) aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/aurora-luque-premio-antorcha-de-honor/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aurora Luque, Premio Antorcha de Honor",
+      "publishedAt": "2026-07-14T08:05:14.000Z",
+      "description": "La poeta Aurora Luque ha sido galardonada con el III Premio Antorcha de Honor a la Trayectoria Poética. Concedido por el Ayuntamiento de Rincón de la Victoria y la Fundación […] La entrada Aurora Luque, Premio Antorcha de Honor aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/recomendacion-de-lecturas-para-dias-luminosos/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Recomendación de lecturas para días luminosos",
+      "publishedAt": "2026-07-14T06:30:37.000Z",
+      "description": "El verano es para grandes novelas en las que perderse sin mirar el reloj; para historias más breves, atravesadas por el amor y el recuerdo; para refrescarse mirando al mar, […] La entrada Recomendación de lecturas para días luminosos aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/consuelo-de-la-filosofia-recomendacion-de-lecturas/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Consuelo de la filosofía (recomendación de lecturas)",
+      "publishedAt": "2026-06-09T11:37:00.000Z",
+      "description": "La filosofía no sólo piensa el mundo, también puede orientarnos en el arte de vivir. El catálogo de Acantilado reúne clásicos y contemporáneos que invitan a esa conversación inagotable sobre […] La entrada Consuelo de la filosofía (recomendación de lecturas) aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/entrevista-a-silvia-bardelas-en-la-hora-cultural-de-rtve-video/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Entrevista a Silvia Bardelás en RTVE [vídeo]",
+      "publishedAt": "2026-03-25T09:58:22.000Z",
+      "description": "Silvia Bardelás, autora de Una conciencia nueva, en La hora cultural de RTVE. Recupera la entrevista aquí. El gran problema del ser humano moderno, afirma Silvia Bardelás, no es la […] La entrada Entrevista a Silvia Bardelás en RTVE [vídeo] aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/conversacion-con-laszlo-krasznahorkai-en-barcelona-video/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Conversación con László Krasznahorkai en Barcelona [vídeo]",
+      "publishedAt": "2026-02-26T10:18:06.000Z",
+      "description": "En su primera aparición pública fuera de Hungría tras recibir el Premio Nobel de Literatura, László Krasznahorkai visita el CCCB para repasar una trayectoria de más de tres décadas construyendo […] La entrada Conversación con László Krasznahorkai en Barcelona [vídeo] aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "source": {
+        "name": "Acantilado",
+        "url": "https://www.acantilado.es/en-memoria-de-bela-tarr/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "En memoria de Béla Tarr",
+      "publishedAt": "2026-01-08T15:13:27.000Z",
+      "description": "El cineasta húngaro Béla Tarr falleció el 6 de enero a los 70 años. Icono del cine europeo independiente, dirigió la película Sátántangó (1994), adaptación de la novela Tango satánico […] La entrada En memoria de Béla Tarr aparece primero en ACANTILADO.",
+      "discoveredAt": "2026-10-01T20:47:51.282Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "41dc1212c69859f0e7d92d7b78ff4aef81ec7af328b56ddecbc09c1e654f71ff"
+}

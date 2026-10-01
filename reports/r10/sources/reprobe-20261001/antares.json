@@ -1,0 +1,406 @@
+{
+  "sourceId": "antares",
+  "name": "Antares",
+  "entryUrl": "https://antares.am/",
+  "countryCodes": [
+    "AM"
+  ],
+  "coverageCountryCodes": [
+    "AM"
+  ],
+  "attemptedAt": "2026-10-01T20:44:34.401Z",
+  "requests": [
+    {
+      "url": "https://antares.am/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 257767,
+      "sha256": "f04777e790b47fee4eca95fe380ab6734a59cfcefcf7c9296b463b5297fce5d0",
+      "accessedAt": "2026-10-01T20:44:36.818Z"
+    },
+    {
+      "url": "https://antares.am/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 190185,
+      "sha256": "da33821dc5ddf292dcdbe29b91979dd618e12a4e5151d4f4896ee85282442e91",
+      "accessedAt": "2026-10-01T20:44:38.460Z"
+    },
+    {
+      "url": "https://antares.am/cytuarm/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 173227,
+      "sha256": "0e62a7f5a35e99303ace92ed61b16ba2970b80af0e5189795cf1a2facdaeda3a",
+      "accessedAt": "2026-10-01T20:44:40.366Z"
+    },
+    {
+      "url": "https://antares.am/politicarm/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 168855,
+      "sha256": "530d6a43751d193c6e13678bb30d8b69d3dd3bc5aff3d0abd5e70bf974e17603",
+      "accessedAt": "2026-10-01T20:44:42.099Z"
+    },
+    {
+      "url": "https://antares.am/instarm/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 169332,
+      "sha256": "da9550b4badfaba7bcd354eaeaf49aa44399a7a02876d2d108b17173715c601b",
+      "accessedAt": "2026-10-01T20:44:43.767Z"
+    },
+    {
+      "url": "https://antares.am/ideaarm/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 170958,
+      "sha256": "0d1e6cd63f155b5fe213ce5b7f36d6024b2d25c0dc43a78e0134656ed4d30c42",
+      "accessedAt": "2026-10-01T20:44:45.535Z"
+    },
+    {
+      "url": "https://antares.am/smmarm/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 175226,
+      "sha256": "bc84d7bebb2267d1c4a619bfe2eefa0d846fb07289425b0b38a8bb3d9294c8f8",
+      "accessedAt": "2026-10-01T20:44:47.362Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://antares.am/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 31,
+    "sha256": "cde34ae71325970b29ea4797b3be208e696b21a7e46b45de094ea1b5867dbab4",
+    "accessedAt": "2026-10-01T20:44:34.683Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "antares",
+    "name": "Antares",
+    "url": "https://antares.am/feed/",
+    "format": "rss",
+    "language": "hy-HY",
+    "region": "europe",
+    "sourceFamilyId": "antares",
+    "countryCodes": [
+      "AM"
+    ],
+    "coverageCountryCodes": [
+      "AM"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://antares.am"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://antares.am/smmarm/"
+    ],
+    "verifiedAt": "2026-10-01T20:44:47.368Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "antares",
+    "source": {
+      "name": "Antares",
+      "url": "https://antares.am/smmarm/",
+      "language": "hy-HY"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Տպագիր պաստառը՝ առաջին սոցիալական մեդիան",
+    "publishedAt": "2026-09-25T11:08:05.000Z",
+    "description": "Instagram-ի ու Facebook-ի լրահոսերից, թվային գովազդային վահանակներից և վիրալ TikTok-ներից շատ առաջ կար մեկ այլ միջոց, որը նույնքան ակտիվորեն պայքարում էր մարդկանց ուշադրության համար՝ տպագիր պաստառը։ Այն հայտնվում էր պատերին, խանութների ցուցափեղկերին, երկաթուղային կայարաններում, սրճարաններում, թատրոններում, փողոցների անկյուններում ու քաղաքային հրապարակներում։ Պաստառներն ազդարարում էին համերգների ո…",
+    "discoveredAt": "2026-10-01T20:44:38.463Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://antares.am/smmarm/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 175226,
+      "sha256": "bc84d7bebb2267d1c4a619bfe2eefa0d846fb07289425b0b38a8bb3d9294c8f8",
+      "accessedAt": "2026-10-01T20:44:47.362Z",
+      "headline": "Տպագիր պաստառը՝ առաջին սոցիալական մեդիան",
+      "excerpt": "Instagram-ի ու Facebook-ի լրահոսերից, թվային գովազդային վահանակներից և վիրալ TikTok-ներից շատ առաջ կար մեկ այլ միջոց, որը նույնքան ակտիվորեն պայքարում էր մարդկանց ուշադրության համար՝ տպագիր պաստառը։ Այն հայտնվում էր պատերին, խանութների ցուցափեղկերին, երկաթուղային կայարաններում, սրճարաններում, թատրոններում, փողոցների անկյուններում ու քաղաքային հրապարակներում։ Պաստառներն ազդարարում էին համերգների ու",
+      "publishedDates": [],
+      "canonical": "https://antares.am/smmarm/",
+      "language": "hy-HY",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:47.368Z",
+  "foundItems": [
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/cytuarm/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ինչպես տպագրությունն օգնեց ձևավորել ժամանակակից քաղաքները",
+      "publishedAt": "2026-10-01T13:41:56.000Z",
+      "description": "Պատկերացրեք՝ գալիս եք մի քաղաք, որտեղ տպագիր ոչինչ չկա։ Չկան փողոցների անվանումներով ցուցանակներ, քարտեզներ, թերթեր, խանութների ցուցանակներ, տրանսպորտի չվացուցակներ կամ հանրային հայտարարություններ։ Շենքերն ու ճանապարհները տեղում են, բայց կողմնորոշվելը, անհրաժեշտ հնարավորությունները գտնելն ու տեղական կանոնները հասկանալը շատ ավելի դժվար է։ Գրեթե ամեն ինչի մասին ստիպված եք հարցնել ուրիշներին։ Այս մտ…",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/politicarm/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Թղթի մի կտորի քաղաքական կյանքը",
+      "publishedAt": "2026-09-30T12:52:09.000Z",
+      "description": "Հանրահավաքից հետո մայթին քաղաքական թռուցիկ է ընկած։ Մեկն անցնում է վրայով։ Մյուսը վերցնում է այն։ Երեկոյան այն կարող է հայտնվել աղբամանում, ծալված՝ գրպանում, կամ փակցված լինել խոհանոցի սեղանի վերևում։ Բառերը չեն փոխվել, բայց թղթի դերը փոխվել է։ Այն դարձել է աղբ, անձնական իր կամ քաղաքական դիրքորոշման արտահայտություն։ Հենց սա է քաղաքական տպագրության պատմությունն այդքան հետաքրքիր […]",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/instarm/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Մինչև Instagram-ը․ ինչպես էին պաստառները մշակութային միտումներ ձևավորում",
+      "publishedAt": "2026-09-29T11:59:08.000Z",
+      "description": "Պատկերացրեք՝ քայլում եք քաղաքով և նույն դեմքը տեսնում թատրոնի մոտ փակցված պաստառին, կայարանի հարևանությամբ գտնվող ցանկապատին ու սրճարանի մուտքի մոտ։ Դեռ չգիտեք արտիստի անունը, բայց շաբաթվա վերջում արդեն ճանաչում եք նրան։ Իսկ երբ ընկերներն էլ սկսում են խոսել ներկայացման մասին, թվում է, թե բոլորն արդեն գիտեն մի բանի մասին, որը դուք դեռ չեք տեսել։ Ահա […]",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/ideaarm/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ինչպես տպագրությունը փոխեց գաղափարներ տարածելու իշխանությունը",
+      "publishedAt": "2026-09-28T09:26:14.000Z",
+      "description": "Պատկերացրեք՝ մի գաղափար ունեք, որը կարող է փոխել աշխարհը, բայց դրա մասին կարող եք պատմել միայն այն մարդկանց, ում անձամբ հանդիպում եք կամ նամակ գրում։ Պատմության մեծ մասում գաղափարները հենց այդպես էին տարածվում՝ բանավոր խոսքի, նամակների և ձեռքով արտագրված տեքստերի միջոցով։ Որևէ գրություն լայնորեն տարածելու համար անհրաժեշտ էին ժամանակ, գումար և մարդիկ, որոնք կարող էին […]",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/smmarm/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Տպագիր պաստառը՝ առաջին սոցիալական մեդիան",
+      "publishedAt": "2026-09-25T11:08:05.000Z",
+      "description": "Instagram-ի ու Facebook-ի լրահոսերից, թվային գովազդային վահանակներից և վիրալ TikTok-ներից շատ առաջ կար մեկ այլ միջոց, որը նույնքան ակտիվորեն պայքարում էր մարդկանց ուշադրության համար՝ տպագիր պաստառը։ Այն հայտնվում էր պատերին, խանութների ցուցափեղկերին, երկաթուղային կայարաններում, սրճարաններում, թատրոններում, փողոցների անկյուններում ու քաղաքային հրապարակներում։ Պաստառներն ազդարարում էին համերգների ո…",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/limarm/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Սահմանափակ թողարկման» հոգեբանությունը",
+      "publishedAt": "2026-09-24T12:19:18.000Z",
+      "description": "Ինչու է համարակալված տպագիր օրինակը դառնում ավելի արժեքավոր պարզապես այն պատճառով, որ քիչ է Պատկերացրեք՝ ձեր առջև կողք կողքի դրված են երկու գիրք։ Դրանք ունեն նույն տեքստը, նույն նկարազարդումները, թղթի նույն որակը և, գուցե, նույնիսկ նույն կազմը։ Մեկը սովորական տպաքանակից է, իսկ մյուսի առաջին էջին փոքրիկ նշում կա․ № 47՝ 300-ից։ Եվ հանկարծ դրանք այլևս […]",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/vvssarm/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ինչու է ֆիզիկական սեփականությունն այլ կերպ ընկալվում, քան թվայինը",
+      "publishedAt": "2026-09-23T13:22:53.000Z",
+      "description": "Մենք ապրում ենք մի ժամանակաշրջանում, երբ կարող ենք հազարավոր բաների տիրապետել՝ գրեթե առանց դրանց դիպչելու հնարավորության։ Մեր գրքերը կարող են պահվել էլեկտրոնային ընթերցիչում, լուսանկարները՝ ամպային պահոցում։ Երաժշտությունը հասանելի է սթրիմինգային հավելվածներում, ֆիլմերը՝ բաժանորդագրությամբ աշխատող հարթակներում, տոմսերը՝ թվային դրամապանակներում, իսկ փաստաթղթերը՝ ինչ-որ թղթապանակներում, որոնք հազվա…",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/ticketarm/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ինչու են մարդիկ պահում հին տոմսերը, նամակներն ու կտրոնները",
+      "publishedAt": "2026-09-22T13:44:42.000Z",
+      "description": "Մեկանգամյա տպագիր իրերի հուզական կյանքը Բացեք հին դարակը, վաղուց մոռացված տուփը կամ հազվադեպ օգտագործվող պայուսակի գրպանը, և գուցե այնտեղ հայտնաբերեք ձեր իսկ կյանքի փոքրիկ արխիվը։ Տարիներ առաջ կատարած ճանապարհորդությունից մնացած գնացքի տոմս։ Կտրոն մի ռեստորանից, որն արդեն գրեթե չեք հիշում։ Ձեռագիր նամակ։ Խունացած թանաքով թանգարանի տոմս։ Հատուկ մի վայր կատարած առաջին թռիչքի նստեցման կտրոնը։ Կինոյի…",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/blarm/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Դատարկ էջի հոգեբանությունը. Ինչու է թուղթը ստեղծագործական այլ փորձառություն ստեղծում, քան դատարկ թվային փաստաթուղթը",
+      "publishedAt": "2026-09-21T14:15:32.000Z",
+      "description": "Թղթի դատարկ էջն ու դատարկ թվային փաստաթուղթն առաջին հայացքից գրեթե նույնն են։ Երկուսի վրա էլ դեռ ոչինչ չկա։ Երկուսն էլ սպասում են բառերի, գծանկարների, հաշվարկների, ծրագրերի կամ գաղափարների։ Երկուսն էլ հնարավորություն են տալիս ստեղծելու մի բան, որը մի քանի րոպե առաջ գոյություն չուներ։ Սակայն հոգեբանական տեսանկյունից դրանց առաջացրած զգացողությունները կարող են բոլորովին տարբեր լինել։ Համակարգչով […]",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "antares",
+      "source": {
+        "name": "Antares",
+        "url": "https://antares.am/difarm-2/",
+        "language": "hy-HY"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ինչո՞ւ ենք թղթի վրա նշումներ անում այլ կերպ, քան էկրանին",
+      "publishedAt": "2026-09-18T13:36:12.000Z",
+      "description": "Ընդգծել նախադասությունը։ Շրջանակի մեջ վերցնել բառը։ Լուսանցքում գրել «կարևոր է»։ Սլաքով կապել երկու պարբերություն։ Հարցական նշան դնել այն մտքի կողքին, որի հետ համաձայն չենք։ Երբ որևէ բան կարդում ենք թղթի վրա, այս գործողությունները հաճախ գրեթե ինքնաբերաբար ենք անում։ Մարդուն տվեք տպագիր զեկույց և գրիչ, և ընդամենը մի քանի րոպե անց էջի վրա կարող է հայտնվել […]",
+      "discoveredAt": "2026-10-01T20:44:38.463Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "da33821dc5ddf292dcdbe29b91979dd618e12a4e5151d4f4896ee85282442e91"
+}

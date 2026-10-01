@@ -1,0 +1,48 @@
+{
+  "sourceId": "publishers-asn-au",
+  "name": "Australian Publishers Association Ltd",
+  "entryUrl": "https://www.publishers.asn.au/",
+  "countryCodes": [
+    "AU"
+  ],
+  "coverageCountryCodes": [
+    "AU"
+  ],
+  "attemptedAt": "2026-10-01T20:43:05.682Z",
+  "requests": [
+    {
+      "url": "https://www.publishers.asn.au/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 126813,
+      "sha256": "048fad9da683857a07e6ca2f03aa314310dceff00dafa2bafd7808ab5b069ef5",
+      "accessedAt": "2026-10-01T20:43:08.039Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.publishers.asn.au/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 775,
+    "sha256": "4ea91d894cd930652ecf7e541422bb6d9a12fba523f3a79f7834da46d507dc15",
+    "accessedAt": "2026-10-01T20:43:06.275Z",
+    "disallowed": [
+      "/OpenSearch.aspx",
+      "/OptOut.aspx",
+      "/Sitemap.aspx",
+      "/App_Browsers/",
+      "/App_Data/",
+      "/AsiCommon/",
+      "/bin/",
+      "/Core/",
+      "/iMISDBUpgrade/",
+      "/iParts/",
+      "/Old_App_Code/",
+      "/RadControls/",
+      "/iMisService",
+      "/imisservice/"
+    ]
+  }
+}

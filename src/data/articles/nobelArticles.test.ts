@@ -30,9 +30,13 @@ describe("Nobel article links", () => {
   });
 
   it("keeps the annual archive chronological and without empty years", () => {
-    expect(nobelYearArticles[0]?.year).toBe(1901);
-    expect(nobelYearArticles).toHaveLength(21);
-    expect(nobelYearArticles.some((entry) => entry.year === 1914)).toBe(false);
+    const years = nobelYearArticles.map((entry) => entry.year);
+    const establishedSeries = Array.from({ length: 23 }, (_, index) => 1901 + index)
+      .filter((year) => year !== 1914 && year !== 1918);
+    expect(years.filter((year) => year <= 1923)).toEqual(establishedSeries);
+    expect(years).toEqual([...years].sort((first, second) => first - second));
+    expect(new Set(years).size).toBe(years.length);
+    expect(years.some((year) => [1914, 1918, 1935, 1940, 1941, 1942, 1943].includes(year))).toBe(false);
   });
 
   it("connects every laureate represented by the 1901-1923 series", () => {

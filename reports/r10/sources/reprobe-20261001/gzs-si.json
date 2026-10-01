@@ -1,0 +1,78 @@
+{
+  "sourceId": "gzs-si",
+  "name": "Association of Slovenian PublishersKersnikova",
+  "entryUrl": "https://www.gzs.si/",
+  "countryCodes": [
+    "SI"
+  ],
+  "coverageCountryCodes": [
+    "SI"
+  ],
+  "attemptedAt": "2026-10-01T20:43:23.822Z",
+  "requests": [
+    {
+      "url": "https://www.gzs.si/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 105287,
+      "sha256": "a7f41499d92abc2fcb91b2be4d23b20935963637abafe558d3de3105653e4120",
+      "accessedAt": "2026-10-01T20:43:25.417Z"
+    },
+    {
+      "url": "https://www.gzs.si/medijska_zbornica",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 106887,
+      "sha256": "afe29ccb16516c4cec5a9930af9010a13762780bba330c914ba40dfc33ebbfd0",
+      "accessedAt": "2026-10-01T20:43:27.013Z"
+    },
+    {
+      "url": "https://www.gzs.si/skupne_naloge/stalisca_in_komentarji/vsebina/Klju%C4%8Dna-stali%C5%A1%C4%8Da-GZS",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 82475,
+      "sha256": "39d357797ef747bf49456ed204894176f3ee38241acf9788944aeec38e77096e",
+      "accessedAt": "2026-10-01T20:43:27.598Z"
+    },
+    {
+      "url": "https://www.gzs.si/skupne_naloge/dogodki",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 97949,
+      "sha256": "454da67eb4dc370666b5225e0931c0e54ab1bffec2b8089dc943b20cc71dfc5d",
+      "accessedAt": "2026-10-01T20:43:31.645Z"
+    },
+    {
+      "url": "https://www.gzs.si/skupne_naloge/informacije_in_pomoc",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 137808,
+      "sha256": "06d57355ffd6147cefb96d32f9e6301e6076ddfa7716602cb299a309963a9d8a",
+      "accessedAt": "2026-10-01T20:43:33.039Z"
+    },
+    {
+      "url": "https://www.gzs.si/projektnopovezovanje",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1884087,
+      "sha256": "4d50327d7446df826ccbbd81eb23897aa0e938b5b65440ede607f50dcee23bee",
+      "accessedAt": "2026-10-01T20:43:36.707Z"
+    },
+    {
+      "url": "https://www.gzs.si/zbornica_racunovodskih_servisov",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 210261,
+      "sha256": "07fd368fd29fecb7525c64172acef07cead7caa65fa6bd0be80fb63c05cc57bd",
+      "accessedAt": "2026-10-01T20:43:38.391Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.gzs.si/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  },
+  "detailAttemptError": "external_redirect:https://clip2go.gzs.si"
+}

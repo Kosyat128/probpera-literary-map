@@ -1,0 +1,77 @@
+{
+  "sourceId": "finitude",
+  "name": "Finitude",
+  "entryUrl": "https://www.finitude.fr/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:06.498Z",
+  "requests": [
+    {
+      "url": "https://www.finitude.fr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 370284,
+      "sha256": "237f39adacd128267cf1459e92a38caae91f7da266560e6d04deacc14e8a2584",
+      "accessedAt": "2026-10-01T20:48:08.408Z"
+    },
+    {
+      "url": "https://www.finitude.fr/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1072,
+      "sha256": "1f085d44758041fddf2f13cf5199d071dec5952c9d63a9bf81089c2f09b37fe0",
+      "accessedAt": "2026-10-01T20:48:08.769Z"
+    },
+    {
+      "url": "https://www.finitude.fr/produit/les-oublies-de-la-forge-mauve/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 326990,
+      "sha256": "80f58a2aa394228cdb644f24bc37459ce28fa8778f3e86fe54e8692f446d2442",
+      "accessedAt": "2026-10-01T20:48:08.987Z"
+    },
+    {
+      "url": "https://www.finitude.fr/produit/sur-lautre-rive/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 324410,
+      "sha256": "b8d81de198533339a7f3eb20839881b8f9611fbe2ed79e44c9e7e8abc68bf019",
+      "accessedAt": "2026-10-01T20:48:09.294Z"
+    },
+    {
+      "url": "https://www.finitude.fr/produit/les-morts-manquent-de-correction/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 361294,
+      "sha256": "bb7008440f0fb1d8708803949085e59898abfe61b5e10d0b779af47e9159df1d",
+      "accessedAt": "2026-10-01T20:48:09.473Z"
+    },
+    {
+      "url": "https://www.finitude.fr/produit/le-vent-dans-le-rosier/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 319094,
+      "sha256": "4d5a3bd02c1eb7a323e83e4ba6388ade89b5920c80c34891591926e143a11f5b",
+      "accessedAt": "2026-10-01T20:48:09.657Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.finitude.fr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 269,
+    "sha256": "ecc489612c2d05e4ad1e7077d7b6212be28830c78c65ee3d994651c3c73ea2d8",
+    "accessedAt": "2026-10-01T20:48:08.108Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links"
+}

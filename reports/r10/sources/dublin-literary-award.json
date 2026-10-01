@@ -1,0 +1,39 @@
+{
+  "sourceId": "dublin-literary-award",
+  "name": "Dublin Literary Award",
+  "entryUrl": "https://dublinliteraryaward.ie/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:45.498Z",
+  "requests": [
+    {
+      "url": "https://dublinliteraryaward.ie/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 132232,
+      "sha256": "b857429d32bad87349e8cfc178429244fb5b6668ff451286c3540ad0436c0427",
+      "accessedAt": "2026-10-01T20:48:46.644Z"
+    },
+    {
+      "url": "https://dublinliteraryaward.ie/features/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 101702,
+      "sha256": "2a14d413053cfebf32be8bf0ef3c2a9de276a6c66aa64527399b1092174d3ba1",
+      "accessedAt": "2026-10-01T20:48:46.758Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://dublinliteraryaward.ie/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 336,
+    "sha256": "e9b52a20961ed4170661228e57b5026cdaee84b6e737461e37e89de70146bf44",
+    "accessedAt": "2026-10-01T20:48:46.467Z",
+    "disallowed": [
+      "/wp-content/uploads/wpforms/"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "sourceId": "mizan",
+  "name": "Mizan",
+  "entryUrl": "https://mizan.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:40.667Z",
+  "requests": [
+    {
+      "url": "https://mizan.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 77001,
+      "sha256": "cc45349f64ad5843f393721e9306509083e019db905bc734447ebd0589109735",
+      "accessedAt": "2026-10-01T20:48:42.101Z"
+    },
+    {
+      "url": "https://mizan.com/artikel/ini-dia-tiga-novel-dee-lestari-yang-jadi-serial-netflix",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 395328,
+      "sha256": "7c3f1609fe2e3f9ae7f7c1f42e1f96b3be5dd3dca9c450c8d0e64fb8fe197747",
+      "accessedAt": "2026-10-01T20:48:42.880Z"
+    },
+    {
+      "url": "https://mizan.com/artikel/7-novel-klasik-dunia-yang-wajib-kamu-baca",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1209635,
+      "sha256": "12a5361932fc53682af33afd044e26f220490727d8c5deb13be4f5c8dc1ea7a9",
+      "accessedAt": "2026-10-01T20:48:43.496Z"
+    },
+    {
+      "url": "https://mizan.com/artikel/seni-merayu-tuhan-diadaptasi-catat-jadwal-tayangnya",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 152094,
+      "sha256": "aff85821faaa19903b828d1f4a1617e1e582f11df83402cb9fc8ebb0f362e179",
+      "accessedAt": "2026-10-01T20:48:43.885Z"
+    },
+    {
+      "url": "https://mizan.com/artikel/tertarik-belajar-filsafat-mulai-dari-sini",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1003626,
+      "sha256": "8adb278a188cd8031e38d4f42269b566eb0fa7d5e1a86175da4b36709f460f10",
+      "accessedAt": "2026-10-01T20:48:44.499Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://mizan.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 24,
+    "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "accessedAt": "2026-10-01T20:48:41.396Z",
+    "disallowed": []
+  }
+}

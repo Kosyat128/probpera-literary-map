@@ -1,0 +1,87 @@
+{
+  "sourceId": "hong-kong-literary-festival",
+  "name": "Hong Kong International Literary Festival",
+  "entryUrl": "https://www.festival.org.hk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:39.651Z",
+  "requests": [
+    {
+      "url": "https://www.festival.org.hk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 50315,
+      "sha256": "6c12285064c4b6284e3c6c5568cc8e249bdb8a2e9000fe93a69996f638a6f1cb",
+      "accessedAt": "2026-10-01T20:48:41.769Z"
+    },
+    {
+      "url": "https://www.festival.org.hk/latest-news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 52530,
+      "sha256": "e8ea9e5a29804689d1b2be9acaea3c15205ce3d2c6e0de74644bff07ef48f4a6",
+      "accessedAt": "2026-10-01T20:48:42.278Z"
+    },
+    {
+      "url": "https://www.festival.org.hk/programme/hong-kong-international-literary-festival-2027/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 42830,
+      "sha256": "7aa93126d5bff5e8785f00fb38bf859aedec2ce88a824669ea8ca8a4933ff80d",
+      "accessedAt": "2026-10-01T20:48:42.760Z"
+    },
+    {
+      "url": "https://www.festival.org.hk/programme/2027-young-readers-festival/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 42889,
+      "sha256": "ea3ec95f73fbb11d42e9617f5cf13b695c9d5dd3a9d44efa02978503ac309cb8",
+      "accessedAt": "2026-10-01T20:48:43.233Z"
+    },
+    {
+      "url": "https://www.festival.org.hk/programme/past-events/#hkilf",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 187282,
+      "sha256": "f3d0021ede2dfd148de270030f1aa62909b4748ef596161c6f429954564cfddf",
+      "accessedAt": "2026-10-01T20:48:44.332Z"
+    },
+    {
+      "url": "https://www.festival.org.hk/programme/off-festival/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 41268,
+      "sha256": "d7e099fe3305ac9f1e85ceb7d325728a2dd67da80a3cc2159ec9a620e331a5cd",
+      "accessedAt": "2026-10-01T20:48:44.759Z"
+    },
+    {
+      "url": "https://www.festival.org.hk/programme/past-events/#yrf",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 187282,
+      "sha256": "8a428980d5186e87218e63917ef3f16f52f76579ab3d93272ecf91eed068b691",
+      "accessedAt": "2026-10-01T20:48:46.001Z"
+    },
+    {
+      "url": "https://www.festival.org.hk/programme/past-events/#off-festival-events",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 187282,
+      "sha256": "e8198eea8be5d9b5f2f743ab74cfd9855a189701a07e4a63b9b9025ff5471178",
+      "accessedAt": "2026-10-01T20:48:47.130Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.festival.org.hk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 120,
+    "sha256": "13b26a077422c59eb957ccc14cb226ee0ebd42bf02b584cab3f71ad791a426cc",
+    "accessedAt": "2026-10-01T20:48:41.223Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

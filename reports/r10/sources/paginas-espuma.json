@@ -1,0 +1,103 @@
+{
+  "sourceId": "paginas-espuma",
+  "name": "Páginas de Espuma",
+  "entryUrl": "https://paginasdeespuma.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:08.449Z",
+  "requests": [
+    {
+      "url": "https://paginasdeespuma.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 440186,
+      "sha256": "8b7371e93843204d173559b9feed1688930befc4fef1c8a621b504c60ab6f6e9",
+      "accessedAt": "2026-10-01T20:48:10.528Z"
+    },
+    {
+      "url": "https://paginasdeespuma.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 70946,
+      "sha256": "4977d4913343ed91fe581e66a5b85312889af17e6d3e089326e8e03bedb2c9b7",
+      "accessedAt": "2026-10-01T20:48:11.519Z"
+    },
+    {
+      "url": "https://paginasdeespuma.com/la-posada-del-escripto-entrevista-a-miguel-garrido-de-vega/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 207463,
+      "sha256": "bd0fd2bfaae4fafcbd713b1d07f28781616a2f392e593df7fcb370759b11eaeb",
+      "accessedAt": "2026-10-01T20:48:12.476Z"
+    },
+    {
+      "url": "https://paginasdeespuma.com/canada-en-palabras-entrevista-a-manuel-vilas/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 207179,
+      "sha256": "fc001013417ac796a0acccf9d944d8acb17377940ccee97ea40933553432c460",
+      "accessedAt": "2026-10-01T20:48:13.526Z"
+    },
+    {
+      "url": "https://paginasdeespuma.com/letras-libres-entrevista-a-manuel-vilas/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 223902,
+      "sha256": "17101b407c174e487b77095fe29dbf881457b37751d4fbac3a20a6a082aaeade",
+      "accessedAt": "2026-10-01T20:48:14.466Z"
+    },
+    {
+      "url": "https://paginasdeespuma.com/valencia-plaza-resena-miembro-fantasma-y-personaje-secundario/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 213176,
+      "sha256": "2fefdd235681de19bced146a7acef927791cea4e5542fc3c66b1b03e9945c0d4",
+      "accessedAt": "2026-10-01T20:48:15.353Z"
+    },
+    {
+      "url": "https://paginasdeespuma.com/viajando-entre-letras-entrevista-a-tamara-silva-bernaschina/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 207298,
+      "sha256": "80d0f2de7e25910091985d04d2012b377c6c0faad06b35026b0b5c6c7e4470fb",
+      "accessedAt": "2026-10-01T20:48:16.374Z"
+    },
+    {
+      "url": "https://paginasdeespuma.com/the-cali-review-entrevista-a-fernanda-trias/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 221394,
+      "sha256": "8257a20cba3cccb4e69fbbebebdff34060bed7e4c87413dc4f4cce99915c2b61",
+      "accessedAt": "2026-10-01T20:48:17.322Z"
+    },
+    {
+      "url": "https://paginasdeespuma.com/el-manual-escribir-microrrelato-en-la-ventana/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 215529,
+      "sha256": "cd05978c99399c324d905149ef106a3368e9547b837ed7a1d834af770954bcf5",
+      "accessedAt": "2026-10-01T20:48:18.291Z"
+    },
+    {
+      "url": "https://paginasdeespuma.com/mundo-aspie-resena-miembro-fantasma/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 212847,
+      "sha256": "f9f6585288bed6e117ba5f0e37ea66a16ef1f4240727817e3e4dfb97fdb9b784",
+      "accessedAt": "2026-10-01T20:48:19.229Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://paginasdeespuma.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 120,
+    "sha256": "2ef3a1e599adb999a2beb837ca237eb61890e10d7ba9a49294598d45382fbc66",
+    "accessedAt": "2026-10-01T20:48:09.313Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

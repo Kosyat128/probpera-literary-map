@@ -1,0 +1,105 @@
+{
+  "sourceId": "nla-am",
+  "name": "National Library of Armenia",
+  "entryUrl": "https://nla.am/en_US",
+  "countryCodes": [
+    "AM"
+  ],
+  "coverageCountryCodes": [
+    "AM"
+  ],
+  "attemptedAt": "2026-10-01T20:43:44.010Z",
+  "requests": [
+    {
+      "url": "https://nla.am/en_US",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 225538,
+      "sha256": "3430c4a8249df9cc254198a5cf41b8901117b7f5f4b8032b567458379fcdcfb3",
+      "accessedAt": "2026-10-01T20:43:45.083Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/news",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 324917,
+      "sha256": "a87b59d651a17a928cdccad33daa2a85f5f5160e47d8287216586ee0193e954b",
+      "accessedAt": "2026-10-01T20:43:46.887Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/hayastani-azgayin-gradarany-ifla-wlic-2026-hamashkharhayin-hamazhvoghvovvoum",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 201249,
+      "sha256": "a2eba3ccd8d2b91231a6d9db187d952cc004bc8108bd224ede837d6a59d81c45",
+      "accessedAt": "2026-10-01T20:43:47.795Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/banber-hayastani-gradaranneri-2025-thvakani-arajin-hamar",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 199274,
+      "sha256": "8a6059882b077449f4fc3a3e1ff0e0a41113856ba9d4cfe24a2c61cdb7a6041d",
+      "accessedAt": "2026-10-01T20:43:48.515Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/haykakan-mijazgayin-arvoghjapahakan-cvoucahandes-2025",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 199301,
+      "sha256": "4af25fd98bb72ce21eb21f3ec4ece2d0457b04dbc7579b7000c531445e0e53cc",
+      "accessedAt": "2026-10-01T20:43:49.239Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/nerkayacnvoum-enq-banber-hayastani-gradaranneri-gitamethvodakan-handesi-2025-thvakani-arajin-thvogharkvoumy",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 200130,
+      "sha256": "8d1e55ad6936593fad07357d2ef18b4ae7bea5e75ed5f24759a2c4f487c2304f",
+      "accessedAt": "2026-10-01T20:43:49.942Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/patkeragirq-shnorhandes",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 200470,
+      "sha256": "bb587aac1de9a8b7ae60395073b7dd7df2af479e2478d22524322da5ff16a51a",
+      "accessedAt": "2026-10-01T20:43:50.626Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/grakan-handipvoumner",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 216176,
+      "sha256": "4b9e360e6ba49a69a7c20285987915c85b68dd7f0adef24601596c4da792bd50",
+      "accessedAt": "2026-10-01T20:43:51.447Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/bookmapofarmenia",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 247697,
+      "sha256": "aa14b18aae6b8d78d31b4e04431ad97bbc39bce28f9a2bf243ed36e2d04209dd",
+      "accessedAt": "2026-10-01T20:43:52.506Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/hay-iranakan-grakan-ev-mshakvouthayin-hamagvortsakcvouthyan-nvor-herankarner",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 199647,
+      "sha256": "f323569f81b9b6e54a988b9151b2fc84c256872f8b85e78b8008be7fa12c77ed",
+      "accessedAt": "2026-10-01T20:43:53.570Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://nla.am/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 24,
+    "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "accessedAt": "2026-10-01T20:43:44.469Z",
+    "disallowed": []
+  }
+}

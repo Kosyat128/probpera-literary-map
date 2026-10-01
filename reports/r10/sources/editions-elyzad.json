@@ -1,0 +1,40 @@
+{
+  "sourceId": "editions-elyzad",
+  "name": "Elyzad",
+  "entryUrl": "https://elyzad.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:17.511Z",
+  "requests": [
+    {
+      "url": "https://elyzad.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 44779,
+      "sha256": "da77aa161ee88c305685abaa6ae32c5f3ccb620f002d390600f0427bbb4068c7",
+      "accessedAt": "2026-10-01T20:52:19.017Z"
+    },
+    {
+      "url": "https://elyzad.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1023,
+      "sha256": "da89998bbd290a27d25e45c0d42367c278cb5547d607dc2d95ed1beef9cad821",
+      "accessedAt": "2026-10-01T20:52:20.596Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://elyzad.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 111,
+    "sha256": "bf0d5ed99f5b616a0c6b24754e8b1b99d5f09b19da3556a3184862ebcbef1eb6",
+    "accessedAt": "2026-10-01T20:52:18.547Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links"
+}

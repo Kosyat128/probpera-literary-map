@@ -1,0 +1,384 @@
+{
+  "sourceId": "archipelago-books",
+  "name": "Archipelago Books",
+  "entryUrl": "https://archipelagobooks.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:50.283Z",
+  "requests": [
+    {
+      "url": "https://archipelagobooks.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 231254,
+      "sha256": "8d8f488d53b782794817195cdc38217f8e0384efe57780db6eb95293831d617e",
+      "accessedAt": "2026-10-01T20:47:51.134Z"
+    },
+    {
+      "url": "https://archipelagobooks.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 10350,
+      "sha256": "143f2094cb477d1b8d6cb2869487be304e07b2f119e5122ba525ad271d4c63a3",
+      "accessedAt": "2026-10-01T20:47:51.214Z"
+    },
+    {
+      "url": "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 187618,
+      "sha256": "c1fe9f0ff39c1bd3702dfde20700499da86a388e72c59399a563b6ea0b4b494a",
+      "accessedAt": "2026-10-01T20:47:53.192Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://archipelagobooks.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 117,
+    "sha256": "cb3420b9b1f6fddb4c08ae26a43d24db499f6c4d33eca1981f671f61cca27f4e",
+    "accessedAt": "2026-10-01T20:47:50.891Z",
+    "disallowed": [
+      "/wp-content/uploads/woocommerce_uploads/*",
+      "/wp-content/uploads/gravity_forms/*"
+    ]
+  },
+  "endpoint": {
+    "id": "archipelago-books",
+    "name": "Archipelago Books",
+    "url": "https://archipelagobooks.org/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "archipelago-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://archipelagobooks.org"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/"
+    ],
+    "verifiedAt": "2026-10-01T20:47:53.200Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "archipelago-books",
+    "source": {
+      "name": "Archipelago Books",
+      "url": "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Mira Rosenthal receives the 2025 Found in Translation Award",
+    "publishedAt": "2025-04-03T15:51:30.000Z",
+    "description": "Congratulations are in order for translator Mira Rosenthal, who brought Tomasz Różycki’s moving collection To the Letter into English, published last January. Rosenthal has been awarded the 2025 Found in Translation Award, jointly presented by the Polish Book Institute, the […] The post Mira Rosenthal receives the 2025 Found in Translation Award appeared first on Archipelago Books.",
+    "discoveredAt": "2026-10-01T20:47:51.221Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 187618,
+      "sha256": "c1fe9f0ff39c1bd3702dfde20700499da86a388e72c59399a563b6ea0b4b494a",
+      "accessedAt": "2026-10-01T20:47:53.192Z",
+      "headline": "Archipelago Books",
+      "excerpt": "Jillian Kravatz April 3, 2025 Mira Rosenthal receives the 2025 Found in Translation Award Congratulations are in order for translator Mira Rosenthal, who brought Tomasz Różycki’s moving collection To the Letter into English, published last January. Rosenthal has been awarded the 2025 Found in Translation Award, jointly presented by the Polish Book Institute, the Polish Cultural Institute London, a",
+      "publishedDates": [
+        {
+          "value": "2025-04-03T15:51:30+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2025-04-03T15:51:30+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2025-04-03T15:51:30+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:47:53.200Z",
+  "foundItems": [
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mira Rosenthal receives the 2025 Found in Translation Award",
+      "publishedAt": "2025-04-03T15:51:30.000Z",
+      "description": "Congratulations are in order for translator Mira Rosenthal, who brought Tomasz Różycki’s moving collection To the Letter into English, published last January. Rosenthal has been awarded the 2025 Found in Translation Award, jointly presented by the Polish Book Institute, the […] The post Mira Rosenthal receives the 2025 Found in Translation Award appeared first on Archipelago Books.",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2025/03/christian-lehnert-wins-holderlin-prize/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Congratulations to Christian Lehnert, who has been honored with the 2025 Friedrich Hölderlin Prize",
+      "publishedAt": "2025-03-26T21:36:14.000Z",
+      "description": "We are delighted for theologian and poet Christian Lehnert, who has been selected for the Friedrich Hölderlin Prize this year. We are publishing a selection of Lehnert’s poetry, Wickerwork, translated and introduced by Richard Sieburth on April 29th. In their […] The post Congratulations to Christian Lehnert, who has been honored with the 2025 Friedrich Hölderlin Prize appeared first on Archipela…",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2025/04/joao-by-a-thread-makes-kirkus-best-picture-books-of-the-21st-century-list/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "João by a Thread makes Kirkus Best Picture Books of the 21st Century list",
+      "publishedAt": "2025-04-08T19:37:40.000Z",
+      "description": "We are delighted to announce that Elsewhere Editions title João by a Thread was named a Kirkus Best Picture Book of the 21st Century (so far). The post João by a Thread makes Kirkus Best Picture Books of the 21st Century list appeared first on Archipelago Books.",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2025/03/yasmeen-hanoosh-and-marilyn-booth-on-gender-conscious-translation/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Yasmeen Hanoosh and Marilyn Booth on Gender-Conscious Translation",
+      "publishedAt": "2025-03-24T15:07:44.000Z",
+      "description": "A perceptive conversation between Marilyn Booth, translator of Elias Khoury’s As Though She Were Sleeping, and Yasmeen Hanoosh, translator of Khoury’s first novel, On the Relations of the Circle (forthcoming from Archipelago), is live in Arablit as part of their “Between […] The post Yasmeen Hanoosh and Marilyn Booth on Gender-Conscious Translation appeared first on Archipelago Books.",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2026/04/remembering-wieslaw-mysliwski/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Remembering Wiesław Myśliwski",
+      "publishedAt": "2026-04-13T20:54:14.000Z",
+      "description": "We are deeply saddened by the loss of Wiesław Myśliwski. A beloved Polish novelist, essayist, and playwright, Myśliwski is the only writer to have twice received the Nike Prize, Poland’s most prestigious literary award: in 1997 for his novel […] The post Remembering Wiesław Myśliwski appeared first on Archipelago Books.",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2026/01/remembering-georges-borchardt/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Remembering Georges Borchardt",
+      "publishedAt": "2026-01-21T22:53:56.000Z",
+      "description": "Archipelago Books mourns the loss of Georges Borchardt, who made incomparable contributions to literature and publishing. Quoted below is an excerpt from an obituary in Publishers Weekly: Georges Borchardt, one of the most important literary agents for more than half […] The post Remembering Georges Borchardt appeared first on Archipelago Books.",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2025/07/mafalda-in-the-new-yorker/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mafalda in The New Yorker!",
+      "publishedAt": "2025-07-01T20:59:01.000Z",
+      "description": "What fantastic news that Mafalda has been written about in The New Yorker (online and in print)! The post Mafalda in The New Yorker! appeared first on Archipelago Books.",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2025/06/quinos-mafalda-is-finally-here/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Quino’s Mafalda is finally here!",
+      "publishedAt": "2025-06-10T16:48:24.000Z",
+      "description": "We are excited today to announce the official release of Quino’s Mafalda: Book One. The post Quino’s Mafalda is finally here! appeared first on Archipelago Books.",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2025/04/rest-in-peace-tim-mohr/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Remembering Tim Mohr",
+      "publishedAt": "2025-04-17T18:05:00.000Z",
+      "description": "We’re mourning the loss of Tim Mohr\u2014writer, DJ, inspired translator from German, and long-time friend of Archipelago\u2014who passed away on March 31st at his Brooklyn home. Vibrant, perceptive, and wickedly funny: Tim brought his whole self into his work as […] The post Remembering Tim Mohr appeared first on Archipelago Books.",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "source": {
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/2025/04/remembering-john-domini/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Remembering John Domini",
+      "publishedAt": "2025-04-10T18:12:07.000Z",
+      "description": "We are deeply saddened to learn of John Domini’s passing. A prolific critic, author, translator, and champion of small presses, John left an indelible mark on the literary world. John passed away on Thursday, March 27, in Morocco. He lived […] The post Remembering John Domini appeared first on Archipelago Books.",
+      "discoveredAt": "2026-10-01T20:47:51.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "143f2094cb477d1b8d6cb2869487be304e07b2f119e5122ba525ad271d4c63a3"
+}

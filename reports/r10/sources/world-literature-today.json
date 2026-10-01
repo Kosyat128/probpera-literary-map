@@ -1,0 +1,529 @@
+{
+  "sourceId": "world-literature-today",
+  "name": "World Literature Today",
+  "entryUrl": "https://www.worldliteraturetoday.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:47.646Z",
+  "requests": [
+    {
+      "url": "https://worldliteraturetoday.org/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 95775,
+      "sha256": "4b0d84979bbb72d0a5254a6fd30db28af42b45310ddc06b443154248af39b7ec",
+      "accessedAt": "2026-10-01T20:51:48.625Z"
+    },
+    {
+      "url": "https://worldliteraturetoday.org/weekly",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 64973,
+      "sha256": "a26d50214b4e416124dad584b854ff68855326ccb14555bb5e4c6b46112e7085",
+      "accessedAt": "2026-10-01T20:51:49.006Z"
+    },
+    {
+      "url": "https://worldliteraturetoday.org/blog/news-and-events/elizabeth-acevedo-wins-nsk-neustadt-prize-childrens-and-young-adult-literature",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 58198,
+      "sha256": "8e628d932015e27f4dce265134aa5d2e507313cbf0eb23c2f085e002ba7de095",
+      "accessedAt": "2026-10-01T20:51:49.501Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://worldliteraturetoday.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2141,
+    "sha256": "8e8cb58d810473a52cce903be5ffb73d948eef981bbd101cffbf8dc2c02fcf4e",
+    "accessedAt": "2026-10-01T20:51:48.318Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.md",
+      "/composer/Metapackage/README.txt",
+      "/composer/Plugin/ProjectMessage/README.md",
+      "/composer/Plugin/Scaffold/README.md",
+      "/composer/Plugin/VendorHardening/README.txt",
+      "/composer/Template/README.txt",
+      "/modules/README.txt",
+      "/sites/README.txt",
+      "/themes/README.txt",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/search?",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/search?",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed"
+    ]
+  },
+  "endpoint": {
+    "id": "world-literature-today",
+    "name": "World Literature Today",
+    "url": "https://worldliteraturetoday.org/weekly",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "world-literature-today",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://worldliteraturetoday.org"
+    ],
+    "linkPattern": "^\\/genre\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/blog\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://worldliteraturetoday.org/blog/news-and-events/elizabeth-acevedo-wins-nsk-neustadt-prize-childrens-and-young-adult-literature"
+    ],
+    "verifiedAt": "2026-10-01T20:51:49.506Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 15,
+  "literaryCandidateCount": 15,
+  "sample": {
+    "sourceId": "world-literature-today",
+    "source": {
+      "name": "World Literature Today",
+      "url": "https://worldliteraturetoday.org/blog/news-and-events/elizabeth-acevedo-wins-nsk-neustadt-prize-childrens-and-young-adult-literature",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Elizabeth Acevedo Wins NSK Neustadt Prize for Children’s and Young Adult Literature",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:51:49.035Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://worldliteraturetoday.org/blog/news-and-events/elizabeth-acevedo-wins-nsk-neustadt-prize-childrens-and-young-adult-literature",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 58198,
+      "sha256": "8e628d932015e27f4dce265134aa5d2e507313cbf0eb23c2f085e002ba7de095",
+      "accessedAt": "2026-10-01T20:51:49.501Z",
+      "headline": "Elizabeth Acevedo Wins NSK Neustadt Prize for Children’s and Young Adult Literature",
+      "excerpt": "Home | Blog | News and Events News and Events Elizabeth Acevedo Wins NSK Neustadt Prize for Children’s and Young Adult Literature September 29, 2026 by The Editors of WLT This page is available to subscribers. Click here to sign in or get access. World Literature Today, the University of Oklahoma’s award-winning magazine of international literature and culture, announced late Tuesday that Elizabet",
+      "publishedDates": [],
+      "canonical": "https://worldliteraturetoday.org/blog/news-and-events/elizabeth-acevedo-wins-nsk-neustadt-prize-childrens-and-young-adult-literature",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:49.506Z",
+  "foundItems": [
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/news-and-events/elizabeth-acevedo-wins-nsk-neustadt-prize-childrens-and-young-adult-literature",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Elizabeth Acevedo Wins NSK Neustadt Prize for Children’s and Young Adult Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/news-and-events/university-oklahoma-book-award-increased-50000",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University of Oklahoma Book Award Increased to $50,000",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/news-and-events/world-literature-todays-top-10-covers-exhibition-open-ou-editors-wlt",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "World Literature Today’s Top 10 Covers Exhibition to Open at OU",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/essay/love-and-beautiful-distance-charlotte-goff",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Love and Beautiful Distance",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/book-reviews/giving-voice-voiceless-and-powerless-monika-hercegs-closed-season-nicole-yurcaba",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Giving Voice to the Voiceless and Powerless: Monika Herceg’s Closed Season",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/book-reviews/caught-between-two-centuries-and-two-worlds-kiran-desais-loneliness-sonia-and",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Caught Between Two Centuries and Two Worlds: Kiran Desai’s The Loneliness of Sonia and Sunny",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/book-reviews/flight-wounded-birds-soubhagyakumar-misras-dva-suparna-rachita-swain",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Flight of Wounded Birds: Soubhagyakumar Misra’s Dva Suparna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/interviews/are-we-what-we-read-conversation-zheng-liu-xixuan-collins",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Are We What We Read? A Conversation with Zheng Liu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/essay/ark-peace-after-pharoah-sanders-philip-metres",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Ark of Peace (after Pharoah Sanders)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/poetry/absent-not-absent-bilingual-poem-tibet-tsering-woeser",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Absent, not Absent: A Bilingual Poem from Tibet",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/literary-tributes/sliman-mansour-palestines-beloved-painter-ibtisam-barakat",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sliman Mansour: Palestine’s Beloved Painter",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/interviews/interview-richard-heinberg-polycrisis-rob-vollmar",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Interview: Richard Heinberg on the Polycrisis",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/interviews/light-here-and-it-you-saumiya-balasubramaniam-writing-distance-home-and-grief",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“The Light Is Here and It Is with You”: Saumiya Balasubramaniam on Writing Distance, Home, and Grief",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/essay/noise-not-just-voice-marjane-satrapi-and-politics-being-heard-mahdiyeh-ezzati",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Noise, Not Just Voice: Marjane Satrapi and the Politics of Being Heard",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "source": {
+        "name": "World Literature Today",
+        "url": "https://worldliteraturetoday.org/blog/book-reviews/bearer-inherited-stigmas-egana-djabbarovas-my-dreadful-body-candice-louisa-daquin",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bearer of Inherited Stigmas: Egana Djabbarova’s My Dreadful Body",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:49.035Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a26d50214b4e416124dad584b854ff68855326ccb14555bb5e4c6b46112e7085"
+}

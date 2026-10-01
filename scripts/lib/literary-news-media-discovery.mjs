@@ -243,7 +243,11 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
   // Admissions outlive the current feed. Preserve their still-valid cached
   // portrait metadata, without preferring an old revision over a current item.
   const currentIds = new Set(items.map(item => item.id)), archived = [];
+  // Cached admissions can refer to an older snapshot of a manual asset. The
+  // current rights registry and current-item resolutions own those identities.
+  const suppliedAssetIds = new Set([...registry.assets, ...dynamic].map(asset => asset.id));
   for (const { state } of cached.values()) if (state?.status === "approved" && !currentIds.has(state.newsId)) {
+    if (suppliedAssetIds.has(state.asset?.id)) continue;
     try { if (destinations.every(d => checkedNewsMediaAsset(state.asset,d,state.newsId,now))) {
       fixedUrl(state.asset.sourceUrl,["upload.wikimedia.org"]); archived.push(state.asset);
     } } catch { /* Expired rights remain held; a missing JPEG never changes an approved post into text. */ }

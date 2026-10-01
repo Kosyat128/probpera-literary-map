@@ -1,0 +1,383 @@
+{
+  "sourceId": "saraband",
+  "name": "Saraband",
+  "entryUrl": "https://saraband.net/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:01.329Z",
+  "requests": [
+    {
+      "url": "https://saraband.net/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 272300,
+      "sha256": "bffb95554759517490e81f7bec84682ffbb41e9a719a2628f23713af9c1360ce",
+      "accessedAt": "2026-10-01T20:48:01.962Z"
+    },
+    {
+      "url": "https://saraband.net/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 122198,
+      "sha256": "b17f0f5ebc65380d3ffad7fbc0fee058451b1623b5dc47b9598e588a45a98955",
+      "accessedAt": "2026-10-01T20:48:02.079Z"
+    },
+    {
+      "url": "https://saraband.net/2026/03/04/debut-author-rozie-kellys-kingfisher-longlisted-for-the-womens-prize-for-fiction-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 268151,
+      "sha256": "9fd20c851487189640b50858c3435f123511104010f0610d516f1faf276885cb",
+      "accessedAt": "2026-10-01T20:48:04.432Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://saraband.net/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 876,
+    "sha256": "28096d23f82a547d37592440aa493e005c98b7e96f03b373ca4ae456a63d89f6",
+    "accessedAt": "2026-10-01T20:48:01.723Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "saraband",
+    "name": "Saraband",
+    "url": "https://saraband.net/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "saraband",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://saraband.net"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://saraband.net/2026/03/04/debut-author-rozie-kellys-kingfisher-longlisted-for-the-womens-prize-for-fiction-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:04.445Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "saraband",
+    "source": {
+      "name": "Saraband",
+      "url": "https://saraband.net/2026/03/04/debut-author-rozie-kellys-kingfisher-longlisted-for-the-womens-prize-for-fiction-2026/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Debut author Rozie Kelly’s Kingfisher longlisted for the Women’s Prize for Fiction 2026",
+    "publishedAt": "2026-03-04T14:14:57.000Z",
+    "description": "We’re absolutely delighted to announce that Rozie Kelly has been longlisted for the Women’s Prize for Fiction 2026, for her debut novel, Kingfisher. Rozie Kelly said ‘It’s an extraordinary honour, one that will take a while to absorb as reality. The books that have previously been longlisted in this prize are an incredible array of talent and... Read more » The post Debut author Rozie Kelly’s Kin…",
+    "discoveredAt": "2026-10-01T20:48:02.081Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://saraband.net/2026/03/04/debut-author-rozie-kellys-kingfisher-longlisted-for-the-womens-prize-for-fiction-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 268151,
+      "sha256": "9fd20c851487189640b50858c3435f123511104010f0610d516f1faf276885cb",
+      "accessedAt": "2026-10-01T20:48:04.432Z",
+      "headline": "Debut author Rozie Kelly’s Kingfisher longlisted for the Women’s Prize for Fiction 2026",
+      "excerpt": "Debut author Rozie Kelly’s Kingfisher longlisted for the Women’s Prize for Fiction 2026 Posted on March 4, 2026 We’re absolutely delighted to announce that Rozie Kelly has been longlisted for the Women’s Prize for Fiction 2026, for her debut novel, Kingfisher. Rozie Kelly said ‘It’s an extraordinary honour, one that will take a while to absorb as reality. The books that have previously been longli",
+      "publishedDates": [
+        {
+          "value": "2026-03-04T14:14:57+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-03-04T14:14:57+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-03-04T14:14:57+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://saraband.net/2026/03/04/debut-author-rozie-kellys-kingfisher-longlisted-for-the-womens-prize-for-fiction-2026/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:04.445Z",
+  "foundItems": [
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/03/04/debut-author-rozie-kellys-kingfisher-longlisted-for-the-womens-prize-for-fiction-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Debut author Rozie Kelly’s Kingfisher longlisted for the Women’s Prize for Fiction 2026",
+      "publishedAt": "2026-03-04T14:14:57.000Z",
+      "description": "We’re absolutely delighted to announce that Rozie Kelly has been longlisted for the Women’s Prize for Fiction 2026, for her debut novel, Kingfisher. Rozie Kelly said ‘It’s an extraordinary honour, one that will take a while to absorb as reality. The books that have previously been longlisted in this prize are an incredible array of talent and... Read more » The post Debut author Rozie Kelly’s Kin…",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/04/22/rozie-kelly-shortlisted-for-the-womens-prize-for-fiction-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rozie Kelly shortlisted for the Women’s Prize for Fiction 2026",
+      "publishedAt": "2026-04-22T13:12:36.000Z",
+      "description": "Rozie Kelly has been shortlisted for the 2026 Women’s Prize for Fiction for her debut novel, Kingfisher. Rozie Kelly said ‘I never imagined I would make it onto the shortlist, so I am floating on a cloud of disbelief, punctuated by joy. How wonderful to be included in conversation with all these brilliant women.’ Saraband... Read more » The post Rozie Kelly shortlisted for the Women’s Prize for F…",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/09/03/saraband-expands-award-nominated-inklings-series-with-four-new-titles-and-international-publishing-programme/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Saraband expands award-nominated Inklings series with four new titles and international publishing programme",
+      "publishedAt": "2026-09-03T13:43:50.000Z",
+      "description": "Saraband has announced a major expansion of the acclaimed Inklings collection, unveiling four new books while continuing the international rollout of the award-winning pocket-sized non-fiction list, acquired from 404 Ink. Following the transfer of the series to Saraband, the independent publisher has commissioned four new titles. They explore subjects ranging from Hijabi representation in the... …",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/06/24/saraband-to-publish-tender-and-sensual-second-novel-by-observer-best-debut-author-andres-n-ordorica/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Saraband to publish tender and sensual second novel by Observer Best Debut Author Andrés N. Ordorica",
+      "publishedAt": "2026-06-24T11:09:58.000Z",
+      "description": "Saraband is set to publish What the Light Would Say by Observer Best Debut and Barnes & Noble Discover Book Club author Andrés N. Ordorica, in May 2027. The novel centres on an unexpected romance that blossoms between a college student and a young soldier during the dying days of Don’t Ask, Don’t Tell. Saraband’s... Read more » The post Saraband to publish tender and sensual second novel by Obse…",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/09/23/hold-fast-by-catherine-simpson-longlisted-for-the-saltires-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hold Fast by Catherine Simpson longlisted for The Saltires 2026",
+      "publishedAt": "2026-09-23T13:29:09.000Z",
+      "description": "We’re delighted that Catherine Simpson has been longlisted for Non-Fiction Book of the Year at The Saltires, Scotland’s National Book Awards, for Hold Fast: Motherhood, my autistic daughter and me. On being longlisted, Catherine said ‘I am so delighted that my memoir Hold Fast has been longlisted for such a prestigious prize as the Saltire Awards. I hope this helps... Read more » The post Hold Fa…",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/04/28/qa-with-kingfisher-author-rozie-kelly-2/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A with Kingfisher author, Rozie Kelly",
+      "publishedAt": "2026-04-28T10:15:50.000Z",
+      "description": "We spoke to Women’s Prize shortlisted, and winner of the 2024 NorthBound Book Award, Rozie Kelly about her debut novel Kingfisher. How does it feel to have made it onto the Women’s Prize for Fiction shortlist? I’d say that about sixty percent of the time it feels like I’ve made it up \u2013 it’s so totally... Read more » The post Q&A with Kingfisher author, Rozie Kelly appeared first on Saraband.",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/09/23/guest-post-taking-the-leap-by-victoria-bennett/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Guest post - Taking the Leap by Victoria Bennett",
+      "publishedAt": "2026-09-23T08:03:40.000Z",
+      "description": "What does it mean to follow a creative path? And how can tarot, a deck of picture cards that was created nearly 600 years ago, support that journey? The Fool’s Leap is, in part, my response to those questions. When I first encountered tarot back in 1999, I didn’t know anything about it beyond teenage... Read more » The post Guest post \u2013 Taking the Leap by Victoria Bennett appeared first on Saraba…",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/08/03/national-year-of-reading/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Year of Reading",
+      "publishedAt": "2026-08-03T07:50:46.000Z",
+      "description": "The National Year of Reading launched in January and is a campaign to address the steep decline in reading amongst children, young people and adults. A Department for Education initiative, in collaboration with the National Literacy Trust, it invites people to ‘Go All In’ \u2013 if you’re into it, read into it and rediscover the... Read more » The post National Year of Reading appeared first on Saraba…",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/07/28/im-blue-youre-yellow-extract-from-earthworks-by-karen-lloyd/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I’m Blue: You’re Yellow - extract from Earthworks by Karen Lloyd",
+      "publishedAt": "2026-07-28T14:06:17.000Z",
+      "description": "While making wildflower meadows in inner cities feels like \u2013 and is \u2013 a radical act, the genesis of Everton Park’s meadows is very different: it began its life as an installation by visual artist Rebecca Chesney. Rebecca and I had met earlier in the year in her studio in Preston when she’d shown me... Read more » The post I’m Blue: You’re Yellow \u2013 extract from Earthworks by Karen Lloyd appeared f…",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "source": {
+        "name": "Saraband",
+        "url": "https://saraband.net/2026/07/01/miss-blaines-prefect-and-the-parcel-of-rogues-guest-post-by-olga-wojtas/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Miss Blaine’s Prefect and the Parcel of Rogues - guest post by Olga Wojtas",
+      "publishedAt": "2026-07-01T07:37:06.000Z",
+      "description": "Now that I’m the author of several novels and novellas, among them bestsellers and prize nominees, I feel I can safely disclose that a German publisher turned down my first book with the immortal words: “This is too zany for the Germans.” I fear my writing may be too zany for a lot of people:... Read more » The post Miss Blaine’s Prefect and the Parcel of Rogues \u2013 guest post by Olga Wojtas appear…",
+      "discoveredAt": "2026-10-01T20:48:02.081Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "b17f0f5ebc65380d3ffad7fbc0fee058451b1623b5dc47b9598e588a45a98955"
+}

@@ -1,0 +1,105 @@
+{
+  "sourceId": "atlas-contact",
+  "name": "Atlas Contact",
+  "entryUrl": "https://www.atlascontact.nl/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:19.264Z",
+  "requests": [
+    {
+      "url": "https://www.atlascontact.nl/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 77172,
+      "sha256": "e330cf7d32954b50666036d73f40bac4874e9f72aa08ded3bc9594804369d952",
+      "accessedAt": "2026-10-01T20:48:20.164Z"
+    },
+    {
+      "url": "https://www.atlascontact.nl/nieuws/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 73062,
+      "sha256": "5ffd855bdf8c02ceeaf51c7f4daf9d8614aae447155950bfa152a93696e5f613",
+      "accessedAt": "2026-10-01T20:48:20.779Z"
+    },
+    {
+      "url": "https://www.atlascontact.nl/calendar/jan-brokken-staat-op-7-oktober-met-twee-topmuzikanten-in-tivolivredenburg-utrecht/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 71499,
+      "sha256": "a4358706fb8d3433342292098e5d17a0c766af4906cb6e0bf9e8b094485a6c84",
+      "accessedAt": "2026-10-01T20:48:21.416Z"
+    },
+    {
+      "url": "https://www.atlascontact.nl/boeken/fondslijnen/lj-veen-klassiek/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 83764,
+      "sha256": "f1c870ef1baf6a4013391e72b5356fcedb358f4e748647514de051de921f30cd",
+      "accessedAt": "2026-10-01T20:48:22.037Z"
+    },
+    {
+      "url": "https://www.atlascontact.nl/boeken/fondslijnen/de-schrijfbibliotheek/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 83412,
+      "sha256": "79e5e0feae8e1030209e6dedac52531032c92c51a7e17e913b85a6ed94c079c3",
+      "accessedAt": "2026-10-01T20:48:22.685Z"
+    },
+    {
+      "url": "https://www.atlascontact.nl/boeken/fondslijnen/business-contact/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 68206,
+      "sha256": "b8dffca4fffd5e9c4e5c3d13e51b80b244c408bd9e6a7437d9061350c469847a",
+      "accessedAt": "2026-10-01T20:48:23.248Z"
+    },
+    {
+      "url": "https://www.atlascontact.nl/calendar/cobi-van-baars-bij-boekenvrienden/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 72810,
+      "sha256": "3de6a2b9597c669b582f9121ff1ad7005abf269f3afdce11e2d5453d52bc2e40",
+      "accessedAt": "2026-10-01T20:48:23.843Z"
+    },
+    {
+      "url": "https://www.atlascontact.nl/calendar/open-kauwenhuis-van-achilles-cools/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 72542,
+      "sha256": "019a7670acc72ee84458b02af1b6e610f778e270f85f5b6dc7fb6776b7c2328f",
+      "accessedAt": "2026-10-01T20:48:24.422Z"
+    },
+    {
+      "url": "https://www.atlascontact.nl/calendar/voorpremiere-youri-de-verfilming-van-in-het-huis-van-dichter-in-de-grote-zaal-van-tuschinski-amsterdam/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 72974,
+      "sha256": "e9300f88637f94b78f5ea8c41ba20bb88b75c5046091f868744e9a75b1d26095",
+      "accessedAt": "2026-10-01T20:48:24.978Z"
+    },
+    {
+      "url": "https://www.atlascontact.nl/calendar/reint-jan-renes-en-helga-van-leur-geven-lezing-over-alleen-als-jij-het-ook-doet-op-de-hogeschool-van-amsterdam-in-amsterdam/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 74185,
+      "sha256": "ba1920a7ed2e437e8a723eaa055735f53086987e6d0ec58ef4accf51e77b1e00",
+      "accessedAt": "2026-10-01T20:48:25.527Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.atlascontact.nl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 94,
+    "sha256": "ebbd577141a98a1b819643645d11726c72c77d98c3edbebf364dabee22469780",
+    "accessedAt": "2026-10-01T20:48:19.513Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-includes/",
+      "/wp-content/plugins/"
+    ]
+  }
+}

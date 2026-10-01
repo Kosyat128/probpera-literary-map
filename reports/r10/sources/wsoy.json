@@ -1,0 +1,341 @@
+{
+  "sourceId": "wsoy",
+  "name": "WSOY",
+  "entryUrl": "https://www.wsoy.fi/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:37.880Z",
+  "requests": [
+    {
+      "url": "https://www.wsoy.fi/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 116390,
+      "sha256": "ec21be8157d0a5623c34d91b12bbcf7157d562b5a43249ebbdcd1a4c10aa9b31",
+      "accessedAt": "2026-10-01T20:48:38.570Z"
+    },
+    {
+      "url": "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102247,
+      "sha256": "c9d1bc27c2eb931b2e76cff1069f7e2aa4b1eceec9302b225769c8a4fa48ac80",
+      "accessedAt": "2026-10-01T20:48:38.675Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.wsoy.fi/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 429,
+    "sha256": "a70c651de94dd2706da11e5edb8fbb71e6733d7393c9087fe16a178bdfce81f2",
+    "accessedAt": "2026-10-01T20:48:38.464Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "wsoy",
+    "name": "WSOY",
+    "url": "https://www.wsoy.fi/",
+    "format": "html",
+    "language": "fi",
+    "region": "global",
+    "sourceFamilyId": "wsoy",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.wsoy.fi"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/kirjat\\/[^/]+\\/?$|^\\/artikkelit\\/[^/]+\\/?$|^\\/tekija\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:38.679Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "wsoy",
+    "source": {
+      "name": "WSOY",
+      "url": "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/",
+      "language": "fi"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "WSOY:n syksyn 2026 kirjat on julkistettu",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:38.586Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102247,
+      "sha256": "c9d1bc27c2eb931b2e76cff1069f7e2aa4b1eceec9302b225769c8a4fa48ac80",
+      "accessedAt": "2026-10-01T20:48:38.675Z",
+      "headline": "WSOY:n syksyn 2026 kirjat on julkistettu",
+      "excerpt": "Takaisin uutisiin 15.4.2026 - Uutinen WSOY:n syksyn 2026 kirjat on julkistettu WSOY:n syksyn katalogi on kokonaisuudessaan katsottavissa täällä: https://issuu.com/kirja/docs/wsoy_syksy_2026 WSOY:n kotimaisen kaunokirjallisuuden syksy tarjoaa koko joukon odotettuja uutuuksia. Tommi Kinnusen Pitkä aukea on syvänkaunis romaani epävarmuuden voittamisesta ja rakkauden voimasta. Heikki Kännön Silmät yhd",
+      "publishedDates": [
+        {
+          "value": "2026-04-15T07:21:17+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/",
+      "language": "fi",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:38.679Z",
+  "foundItems": [
+    {
+      "sourceId": "wsoy",
+      "source": {
+        "name": "WSOY",
+        "url": "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WSOY:n syksyn 2026 kirjat on julkistettu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:38.586Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "wsoy",
+      "source": {
+        "name": "WSOY",
+        "url": "https://www.wsoy.fi/artikkelit/hanna-weseliuksen-pronominit-on-kaunokirjallisuuden-finlandia-palkintoehdokas-2025/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hanna Weseliuksen Pronominit on kaunokirjallisuuden Finlandia-palkintoehdokas 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:38.586Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "wsoy",
+      "source": {
+        "name": "WSOY",
+        "url": "https://www.wsoy.fi/kirjat/kaaos/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tutustu teokseen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:38.586Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "wsoy",
+      "source": {
+        "name": "WSOY",
+        "url": "https://www.wsoy.fi/kirjat/elina-karjalainen-pienella-pilvenhattaralla/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Elina Karjalainen - Pienellä pilvenhattaralla",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:38.586Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "wsoy",
+      "source": {
+        "name": "WSOY",
+        "url": "https://www.wsoy.fi/kirjat/johnin-poika-john/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Johnin poika John",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:38.586Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "wsoy",
+      "source": {
+        "name": "WSOY",
+        "url": "https://www.wsoy.fi/kirjat/latka-lauri-ja-kiekkotemppu/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lätkä-Lauri ja kiekkotemppu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:38.586Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "wsoy",
+      "source": {
+        "name": "WSOY",
+        "url": "https://www.wsoy.fi/artikkelit/pikkuli-kirjat-muuttavat-tana-vuonna-wsoylle/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pikkuli-kirjat muuttavat tänä vuonna WSOY:lle",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:38.586Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "wsoy",
+      "source": {
+        "name": "WSOY",
+        "url": "https://www.wsoy.fi/artikkelit/anna-paldarin-vapaavyohyke-topelius-ehdokkaana/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anna Paldarin Vapaavyöhyke Topelius-ehdokkaana",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:38.586Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "wsoy",
+      "source": {
+        "name": "WSOY",
+        "url": "https://www.wsoy.fi/tekija/tuomas-niskakangas/",
+        "language": "fi"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tuomas Niskakangas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:38.586Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ec21be8157d0a5623c34d91b12bbcf7157d562b5a43249ebbdcd1a4c10aa9b31"
+}

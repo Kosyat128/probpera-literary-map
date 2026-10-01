@@ -1,0 +1,403 @@
+{
+  "sourceId": "arsenal-pulp",
+  "name": "Arsenal Pulp Press",
+  "entryUrl": "https://arsenalpulp.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:22.043Z",
+  "requests": [
+    {
+      "url": "https://arsenalpulp.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 64155,
+      "sha256": "20df05fda32aefe52c907e8f4fe6aabcfa3555a85c4bf80f5a133a0005db5317",
+      "accessedAt": "2026-10-01T20:48:23.151Z"
+    },
+    {
+      "url": "https://arsenalpulp.com/News",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 41546,
+      "sha256": "aaca96311c087467c1f806a9389cedc898e9cd818f5da001a7ccffd2db5d0d91",
+      "accessedAt": "2026-10-01T20:48:23.396Z"
+    },
+    {
+      "url": "https://arsenalpulp.com/News/2026/BC-and-Yukon-Book-Prize-winners-Amber-Dawn-Lea-Taranto-and-L.E.-Fox",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 28122,
+      "sha256": "a5b1d129c110d6812fed0da50a90a8e6f0c18e7a28d0e136a632b6376a92d922",
+      "accessedAt": "2026-10-01T20:48:23.677Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://arsenalpulp.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 1926,
+    "sha256": "0c1baad8db099eba024dd1bd8e1b214308bb59255405822731cb28ae78646922",
+    "accessedAt": "2026-10-01T20:48:22.674Z",
+    "disallowed": [
+      "/wp-login.php",
+      "/xmlrpc.php",
+      "/content/download*",
+      "/cart/*",
+      "/*(offset)",
+      "/*SearchText=",
+      "/*SearchSort=",
+      "/*type[*]=",
+      "/*filter[*]="
+    ]
+  },
+  "endpoint": {
+    "id": "arsenal-pulp",
+    "name": "Arsenal Pulp Press",
+    "url": "https://arsenalpulp.com/News",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "arsenal-pulp",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://arsenalpulp.com"
+    ],
+    "linkPattern": "^\\/Categories\\/[^/]+\\/?$|^\\/News\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://arsenalpulp.com/News/2026/BC-and-Yukon-Book-Prize-winners-Amber-Dawn-Lea-Taranto-and-L.E.-Fox"
+    ],
+    "verifiedAt": "2026-10-01T20:48:23.679Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 11,
+  "literaryCandidateCount": 11,
+  "sample": {
+    "sourceId": "arsenal-pulp",
+    "source": {
+      "name": "Arsenal Pulp Press",
+      "url": "https://arsenalpulp.com/News/2026/BC-and-Yukon-Book-Prize-winners-Amber-Dawn-Lea-Taranto-and-L.E.-Fox",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "BC and Yukon Book Prize winners: Amber Dawn, Léa Taranto and L.E. Fox",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:23.409Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://arsenalpulp.com/News/2026/BC-and-Yukon-Book-Prize-winners-Amber-Dawn-Lea-Taranto-and-L.E.-Fox",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 28122,
+      "sha256": "a5b1d129c110d6812fed0da50a90a8e6f0c18e7a28d0e136a632b6376a92d922",
+      "accessedAt": "2026-10-01T20:48:23.677Z",
+      "headline": "BC and Yukon Book Prize winners: Amber Dawn, Léa Taranto and L.E. Fox",
+      "excerpt": "BC and Yukon Book Prize winners: Amber Dawn, Léa Taranto and L.E. Fox By Arsenal Pulp Date: September 20, 2026 Tags: Awards, Amber Dawn, Buzzkill Clamshell, Léa Taranto, A Drop in the Ocean, L.E. Fox, This Book Is a Knife Share this: What a trio! Amber Dawn (Buzzkill Clamshell), Léa Taranto (A Drop in the Ocean) and L.E. Fox (This Book is a Knife) were all named winners at the BC and Yukon Book Pr",
+      "publishedDates": [],
+      "canonical": "https://arsenalpulp.com/News/2026/BC-and-Yukon-Book-Prize-winners-Amber-Dawn-Lea-Taranto-and-L.E.-Fox",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:23.679Z",
+  "foundItems": [
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/BC-and-Yukon-Book-Prize-winners-Amber-Dawn-Lea-Taranto-and-L.E.-Fox",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BC and Yukon Book Prize winners: Amber Dawn, Léa Taranto and L.E. Fox",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/Cutting-Edge-Shot-in-Vancouver-featured-in-CBC-Books-Fall-2026-nonfiction-preview",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cutting Edge, Shot in Vancouver featured in CBC Books' Fall 2026 nonfiction preview",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/Confluence-on-CBC-Books-fall-fiction-preview",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Confluence on CBC Books' fall fiction preview",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/Never-Again-for-Anyone-on-CBC-Books-list-of-fall-books-for-younger-readers",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Never Again, for Anyone on CBC Books' list of fall books for younger readers",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/The-Case-of-David-Zimmerman-on-CBC-Books-Fall-Comics-Preview",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Case of David Zimmerman on CBC Books' Fall Comics Preview",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/WATCH-Eve-Lazarus-and-Aaron-Chapman-on-true-crime-and-Vancouver",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WATCH: Eve Lazarus and Aaron Chapman on true crime and Vancouver",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/First-title-to-be-published-under-Lindsay-Wong-s-9-Tailed-Fox-imprint-Fox-Fox-Flux-by-Phoenix-Poon",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "First title to be published under Lindsay Wong's 9-Tailed Fox imprint: Fox Fox Flux by Phoenix Poon",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/Lucas-Harari-illustrates-Publishers-Weekly-s-Fall-Adult-Comics-Preview-issue",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lucas Harari illustrates Publishers Weekly's Fall Adult Comics Preview issue",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/Pride-Sale-Extended",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pride Sale Extended!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/The-Case-of-David-Zimmerman-STARRED-review-in-Publishers-Weekly",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Case of David Zimmerman: STARRED review in Publishers Weekly",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "source": {
+        "name": "Arsenal Pulp Press",
+        "url": "https://arsenalpulp.com/News/2026/Arsenal-Pulp-Press-Reading-guides",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Arsenal Pulp Press: Reading guides",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:23.409Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "aaca96311c087467c1f806a9389cedc898e9cd818f5da001a7ccffd2db5d0d91"
+}

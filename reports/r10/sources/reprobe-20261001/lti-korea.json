@@ -1,0 +1,446 @@
+{
+  "sourceId": "lti-korea",
+  "name": "Literature Translation Institute of Korea",
+  "entryUrl": "https://www.ltikorea.or.kr/kr/board/press/boardList.do",
+  "countryCodes": [
+    "KR"
+  ],
+  "coverageCountryCodes": [
+    "KR"
+  ],
+  "attemptedAt": "2026-10-01T20:44:26.542Z",
+  "requests": [
+    {
+      "url": "https://www.ltikorea.or.kr/kr/board/press/boardList.do",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 319880,
+      "sha256": "c03f9fff121697101842e58212c34d4ce8a5811a952cc086ed1134c2d98b1c8f",
+      "accessedAt": "2026-10-01T20:44:32.898Z"
+    },
+    {
+      "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15838&pageIndex=1&searchCondition=&searchKeyword=",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 341890,
+      "sha256": "afc9f4e8c18e55901ce59d23788fc3029dd2707925e642e1df3010c27ba043a8",
+      "accessedAt": "2026-10-01T20:44:35.324Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.ltikorea.or.kr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 659,
+    "sha256": "2f624b645a37918cad918fc73fcdb86d4db80703d9d52487e6776e08ad2026cd",
+    "accessedAt": "2026-10-01T20:44:28.498Z",
+    "disallowed": [
+      "/withcms/",
+      "/search/"
+    ]
+  },
+  "endpoint": {
+    "id": "lti-korea",
+    "name": "Literature Translation Institute of Korea",
+    "url": "https://www.ltikorea.or.kr/kr/board/press/boardList.do",
+    "format": "html",
+    "language": "ko",
+    "region": "asia",
+    "sourceFamilyId": "lti-korea",
+    "countryCodes": [
+      "KR"
+    ],
+    "coverageCountryCodes": [
+      "KR"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.ltikorea.or.kr"
+    ],
+    "linkPattern": "^\\/kr\\/contents\\/business_trans_2\\/[^/]+\\/?$|^\\/kr\\/contents\\/business_trans_1_4\\/[^/]+\\/?$|^\\/kr\\/board\\/press\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15838&pageIndex=1&searchCondition=&searchKeyword="
+    ],
+    "verifiedAt": "2026-10-01T20:44:35.338Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 13,
+  "literaryCandidateCount": 13,
+  "sample": {
+    "sourceId": "lti-korea",
+    "source": {
+      "name": "Literature Translation Institute of Korea",
+      "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15838&pageIndex=1&searchCondition=&searchKeyword=",
+      "language": "ko"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "번역대학원대학교 설립추진위 공식 출범…2027년 개교 목표 박차",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:44:32.944Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15838&pageIndex=1&searchCondition=&searchKeyword=",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 341890,
+      "sha256": "afc9f4e8c18e55901ce59d23788fc3029dd2707925e642e1df3010c27ba043a8",
+      "accessedAt": "2026-10-01T20:44:35.324Z",
+      "headline": "한국문학번역원",
+      "excerpt": "한국문학번역원 | 알림광장 - 공지게시 - 보도자료 (상세) 본문 바로가기 이 누리집은 대한민국 공식 전자정부 누리집입니다. 공식 누리집 주소 확인하기 go.kr 주소를 사용하는 누리집은 대한민국 정부기관이 관리하는 누리집입니다.이밖에 or.kr 또는 .kr등 다른 도메인 주소를 사용하고 있다면 아래 URL에서 도메인 주소를 확인해 보세요 운영중인 공식 누리집보기 행사안내 ENG 한국문학번역원 로고 사업안내 사업안내 세계문학으로서의 한국문학의 장을 여는 중추 기관 사업안내전체보기 한국문학 번역출판지원 사업 해외출판사 번역출판 지원사업 샘플/시놉시스 지원사업 한국문학 해외진출 패키지 지원사업 해외 출판인 초청사업 한국문학번역상 운영 한국문학 담론 활성화 한국문학 번역인력 양성 번역아카데미 운영 해외 한국학대학",
+      "publishedDates": [],
+      "canonical": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15838&pageIndex=1&searchCondition=&searchKeyword=",
+      "language": "ko",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:35.338Z",
+  "foundItems": [
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15838&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "번역대학원대학교 설립추진위 공식 출범…2027년 개교 목표 박차",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardList.do",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "본문 바로가기",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=16012&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "실질적 저작권 수출 기반 다지는 한국문학…세계 출판시장 접점 확대",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=16005&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "중남미서 치솟는 한국문학 인기…메데진 도서문화축제 주빈국 참가",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15947&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "한국문학 번역의 현재와 미래 조망하는 세계번역가대회·홈커밍데이 개최",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15938&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "\"누구세요?\" 세계 작가들이 묻는 사람의 의미…서울국제작가축제 9월 개막",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15929&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "한국문학 해외 판매 5년간 358만 부 돌파…해외 독자 기반 성장 지속",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15901&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "K-문학의 현재와 미래를 조망하는‘한국문학, 끌림과 울림’포럼 개최",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15879&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "한불수교 140주년, ‘시간 너머의 한국문학’ 주제로 한국 고전·현대문학 탐색",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15871&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "번역원, 창립 30주년 기념식 개최…새로운 도약 위한 비전 공유",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/board/press/boardView.do;jsessionid=87E1BEC6507FA6AA19D54C0B88E58613?bbsIdx=15817&pageIndex=1&searchCondition=&searchKeyword=",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "번역원, 美서 ‘한국문학: 사랑과 미래의 언어’개최 및 LA타임스 도서 축제 참가",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/contents/business_trans_2/view.do",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "한국문학 번역출판지원 사업",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lti-korea",
+      "source": {
+        "name": "Literature Translation Institute of Korea",
+        "url": "https://www.ltikorea.or.kr/kr/contents/business_trans_1_4/view.do",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "한국문학 해외진출 패키지 지원사업",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:32.944Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "c03f9fff121697101842e58212c34d4ce8a5811a952cc086ed1134c2d98b1c8f"
+}

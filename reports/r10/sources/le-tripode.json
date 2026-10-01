@@ -1,0 +1,514 @@
+{
+  "sourceId": "le-tripode",
+  "name": "Le Tripode",
+  "entryUrl": "https://le-tripode.net/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:04.866Z",
+  "requests": [
+    {
+      "url": "https://le-tripode.net/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 258138,
+      "sha256": "607f2e928c512e2444955e787b92310abea4097b1ea628c36396d46f886406ea",
+      "accessedAt": "2026-10-01T20:48:09.145Z"
+    },
+    {
+      "url": "https://le-tripode.net/livre/charlotte-monsarrat/le-livre-de-seve",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 33033,
+      "sha256": "6bf7001b8f9cf63cf57483b4f48638a733be375ec073149b5988893c4bf186b8",
+      "accessedAt": "2026-10-01T20:48:09.518Z"
+    },
+    {
+      "url": "https://le-tripode.net/livre/hugo-pratt/javais-un-rendez-vous-seconde-edition",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 14323,
+      "sha256": "dcceb31686df2ad0c40bd9c1707821669c1e0592bc56b39009ee528a5b932dff",
+      "accessedAt": "2026-10-01T20:48:09.876Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://le-tripode.net/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "le-tripode",
+    "name": "Le Tripode",
+    "url": "https://le-tripode.net/",
+    "format": "html",
+    "language": "fr",
+    "region": "global",
+    "sourceFamilyId": "le-tripode",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://le-tripode.net"
+    ],
+    "linkPattern": "^\\/livre\\/charlotte\\x2dmonsarrat\\/[^/]+\\/?$|^\\/livre\\/isabelle\\x2dlouviot\\/[^/]+\\/?$|^\\/livre\\/hugo\\x2dpratt\\/[^/]+\\/?$|^\\/livre\\/edgar\\x2dhilsenrath\\/meteore\\/[^/]+\\/?$|^\\/livre\\/pierre\\x2dcendors\\/meteore\\/[^/]+\\/?$|^\\/livre\\/thierry\\x2ddecottignies\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://le-tripode.net/livre/hugo-pratt/javais-un-rendez-vous-seconde-edition"
+    ],
+    "verifiedAt": "2026-10-01T20:48:09.878Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 16,
+  "literaryCandidateCount": 16,
+  "sample": {
+    "sourceId": "le-tripode",
+    "source": {
+      "name": "Le Tripode",
+      "url": "https://le-tripode.net/livre/hugo-pratt/javais-un-rendez-vous-seconde-edition",
+      "language": "fr"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "J'avais un rendez-vous (seconde édition)",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:09.261Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://le-tripode.net/livre/hugo-pratt/javais-un-rendez-vous-seconde-edition",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 14323,
+      "sha256": "dcceb31686df2ad0c40bd9c1707821669c1e0592bc56b39009ee528a5b932dff",
+      "accessedAt": "2026-10-01T20:48:09.876Z",
+      "headline": "J'avais un rendez-vous (seconde édition)",
+      "excerpt": "J'avais un rendez-vous (seconde édition) | J'avais un rendez-vous (seconde édition) Beau-livre 224 pages 9782370553089 Prix: 29,00 € Parution: 18 novembre 2021 J'avais un rendez-vous (seconde édition) Hugo Pratt J’avais un rendez-vous est l'ultime livre d'Hugo Pratt, un ensemble de textes et de dessins qui racontent son dernier voyage dans le Pacifique, en 1992.Ce voyage fut pour lui l'occasion de",
+      "publishedDates": [],
+      "canonical": "https://le-tripode.net/livre/hugo-pratt/javais-un-rendez-vous-seconde-edition",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:09.878Z",
+  "foundItems": [
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/charlotte-monsarrat/le-livre-de-seve",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Livre de Sève",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/hugo-pratt/javais-un-rendez-vous-seconde-edition",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "J'avais un rendez-vous (seconde édition)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/thierry-decottignies/la-fiction-ouest",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Fiction Ouest",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/edgar-hilsenrath/meteore/retour-au-pays-de-jossel-wassermann",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Retour au pays de Jossel Wassermann",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/hugo-pratt/sonnets-erotiques",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sonnets érotiques",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/isabelle-louviot/elisee-reclus-penser-lhumain-et-la-terre-ne",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Élisée Reclus - Penser l'humain et la terre (NE)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/edgar-hilsenrath/meteore/terminus-berlin",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Terminus Berlin",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/hugo-pratt/lettres-dafrique",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lettres d'Afrique",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/thierry-decottignies/la-traversee-dun-lac",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Traversée d'un lac",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/edgar-hilsenrath/meteore/le-conte-de-la-derniere-pensee",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Conte de la dernière pensée",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/edgar-hilsenrath/meteore/les-aventures-de-ruben-jablonski",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les Aventures de Ruben Jablonski",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/hugo-pratt/javais-un-rendez-vous",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "J'avais un rendez-vous",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/pierre-cendors/meteore/archives-du-vent",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Archives du vent",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/hugo-pratt/voyages-avec-rimbaud-kipling-baffo",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Voyages avec Rimbaud, Kipling, Baffo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/edgar-hilsenrath/meteore/le-nazi-et-le-barbier",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Nazi et le Barbier",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "le-tripode",
+      "source": {
+        "name": "Le Tripode",
+        "url": "https://le-tripode.net/livre/edgar-hilsenrath/meteore/orgasme-a-moscou",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Orgasme à Moscou",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:09.261Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "607f2e928c512e2444955e787b92310abea4097b1ea628c36396d46f886406ea"
+}

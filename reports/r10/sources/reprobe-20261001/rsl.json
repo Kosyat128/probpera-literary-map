@@ -1,0 +1,511 @@
+{
+  "sourceId": "rsl",
+  "name": "Российская государственная библиотека",
+  "entryUrl": "https://www.rsl.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-10-01T20:44:20.159Z",
+  "requests": [
+    {
+      "url": "https://www.rsl.ru/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 580973,
+      "sha256": "2578d27d18f5362119881ba4d56f5a32bae1654c840a4cd44652ccb4161f4172",
+      "accessedAt": "2026-10-01T20:44:21.421Z"
+    },
+    {
+      "url": "https://www.rsl.ru/news?userTypeFilter=1",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 333789,
+      "sha256": "911b5d3d9e5dc1f5e9cd1ebaf162ce611c38940d2cd5c167d403d14e9bd6e3a8",
+      "accessedAt": "2026-10-01T20:44:21.931Z"
+    },
+    {
+      "url": "https://www.rsl.ru/news/afisha-na-oktyabr-2026",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 66029,
+      "sha256": "b4c47c26cd3d36f11456443e74ecc32b9c295289115d776c8e7cc947aef8ef52",
+      "accessedAt": "2026-10-01T20:44:22.120Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.rsl.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 515,
+    "sha256": "274027881f7b55d76478eca2bda427f394fb6004bba50c94a8e9d6120cca384f",
+    "accessedAt": "2026-10-01T20:44:20.645Z",
+    "disallowed": [
+      "/cgi-bin/",
+      "/search/",
+      "/auth/",
+      "/*?*",
+      "/*?utm_",
+      "/*?sid=",
+      "/*?_openstat",
+      "/*?from=",
+      "/*?print="
+    ]
+  },
+  "endpoint": {
+    "id": "rsl",
+    "name": "Российская государственная библиотека",
+    "url": "https://www.rsl.ru/news?userTypeFilter=1",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "rsl",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.rsl.ru"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/vizit\\x2dv\\x2dbiblioteku\\/[^/]+\\/?$|^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.rsl.ru/news/afisha-na-oktyabr-2026"
+    ],
+    "verifiedAt": "2026-10-01T20:44:22.126Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 15,
+  "literaryCandidateCount": 15,
+  "sample": {
+    "sourceId": "rsl",
+    "source": {
+      "name": "Российская государственная библиотека",
+      "url": "https://www.rsl.ru/news/afisha-na-oktyabr-2026",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "#афиша29.09.2026Афиша на октябрь 2026 годаВ октябре Ленинка приглашает на Библиодень в Химкинском комплексе, мастер\u2011класс в ЦВЛ, презентации книжных новинок, чтения русской классики с Евгением Чебатковым, посетить киноклуб и кинолекторий, побывать на концертах циклов «Музыкальные вечера в Доме Пашкова», «Открытая сцена», на музыкально\u2011поэтическом перформансе о Сергее Есенине.",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:44:21.955Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.rsl.ru/news/afisha-na-oktyabr-2026",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 66029,
+      "sha256": "b4c47c26cd3d36f11456443e74ecc32b9c295289115d776c8e7cc947aef8ef52",
+      "accessedAt": "2026-10-01T20:44:22.120Z",
+      "headline": "Афиша на октябрь 2026 года",
+      "excerpt": "НазадГлавнаяНовостиАфиша на октябрь 2026 года29 сентября 2026 годаАфиша на октябрь 2026 годаВ октябре Ленинка приглашает на Библиодень в Химкинском комплексе, мастер\u2011класс в ЦВЛ, презентации книжных новинок, чтения русской классики с Евгением Чебатковым, посетить киноклуб и кинолекторий, побывать на концертах циклов «Музыкальные вечера в Доме Пашкова», «Открытая сцена», на музыкально\u2011поэтическом п",
+      "publishedDates": [],
+      "canonical": "https://www.rsl.ru/news/afisha-na-oktyabr-2026",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:22.126Z",
+  "foundItems": [
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/afisha-na-oktyabr-2026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#афиша29.09.2026Афиша на октябрь 2026 годаВ октябре Ленинка приглашает на Библиодень в Химкинском комплексе, мастер\u2011класс в ЦВЛ, презентации книжных новинок, чтения русской классики с Евгением Чебатковым, посетить киноклуб и кинолекторий, побывать на концертах циклов «Музыкальные вечера в Доме Пашкова», «Открытая сцена», на музыкально\u2011поэтическом перформансе о Сергее Есенине.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/postupleniya-cpf-310819092026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#поступление18.09.2026Новые поступления в библиотеку с 31 августа по 19 сентябряЦентральный подсобный фонд постоянно пополняется новыми изданиями. Здесь читатель не ждёт выполнения заказа и не ищет книгу в каталоге, а сам берёт её с полки. Специалисты отобрали самые интересные издания, поступившие в ЦПФ в сентябре 2026 года.Подробнее",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/final-atomnyy-diktant-2026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#культурная_акция29.09.2026«Атомный диктант - 2026» завершился масштабным финалом в Ленинке в День атомщикаВ Российской государственной библиотеке 28 сентября состоялся масштабный финал международного просветительского проекта «Атомный диктант - 2026».",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/vesti-rgb-29092026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#вести_ргб29.09.2026Вести РГБ рассказывают обо всех главных событиях ЛенинкиКаждый месяц в главной библиотеке страны происходят сотни разных событий, которые редакция Вести РГБ собрала в информационный выпуск.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/desyat-let-muzyki-v-leninke-2026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#концерт29.09.2026Десять лет музыки в Ленинке: юбилейный концерт «Открытой сцены» - уже на видеоВ Российской государственной библиотеке 25 сентября начался новый сезон «Открытой сцены» - цикла лекций\u2011концертов, который библиотека проводит вместе с Московским музыкальным обществом. Вечер был посвящён десятилетию этого сотрудничества.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/drama-golovkova-vremya-geroev-2026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#киноклуб24.09.2026Драму Андрея Головкова обсудили в киноклубе «Время героев»Киноклуб «Время героев» в Российской государственной библиотеке продолжил свой цикл 23 сентября показом и обсуждением военной драмы Андрея Головкова «10 историй о любви и смерти». Можно ли сохранить любовь там, где смерть стала фоном? Фильм ставит вопрос - и даёт ответ.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/atomnyy-diktant-2026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#культурная_акция23.09.2026«Атомный диктант - 2026» завершится масштабным финалом в Ленинке в День атомщикаВ Российской государственной библиотеке 28 сентября состоится финал международного просветительского проекта «Атомный диктант - 2026». Около 400 человек одновременно пройдут диктант в стенах знаменитой Ленинки, увидят российский электромобиль «Атом» и первыми посмотрят специальный выпуск «Неновостей» с Марией Шаховой о путешествии в Саров.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/knigi-dlya-silnyh-duhom",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#свет30.09.2026Книги для сильных духомМинкультуры России совместно с Российской государственной библиотекой передало книги военнослужащим, которые проходят реабилитацию в санатории «Марфинский».",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/balayan",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#презентация21.09.2026Древние смыслы русской сказки: вечер Натальи Балаян в ЛенинкеНа творческом вечере в Ленинке писательница и психолог Наталья Балаян представила свою книгу «Русская сказка из древних времён и до наших дней».",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/dni-kultury-shri-lanki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#международное_сотрудничество25.09.2026В Ленинке открылись Дни культуры Шри\u2011ЛанкиВ Центре восточной литературы Российской государственной библиотеки состоялось торжественное открытие Дней культуры Шри\u2011Ланки. В мероприятии приняли участие представители Посольства и почётные гости из ведущих научных, образовательных и культурных центров.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/gorod-glupov-na-stsene-leninki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#салтыков-щедрин24.09.2026Город Глупов на сцене Ленинки: студенты Щукинского института сыграли «Историю одного города»В Российской государственной библиотеке состоялся литературно\u2011театральный вечер, посвящённый жизни и творчеству Михаила Евграфовича Салтыкова\u2011Щедрина.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/chebatkov-dovlatov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#чебатков22.09.2026Евгений Чебатков прочитал «Иностранку» Сергея Довлатова в ЛенинкеВ Российской государственной библиотеке 17 сентября состоялась восьмая встреча нового сезона совместного проекта РГБ и Евгения Чебаткова, посвящённого чтению произведений русских писателей.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/bibliotex-test",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#электронные_ресурсы18.09.2026Открыт тестовый доступ к коллекциям BiblioteX в сентябре и октябреЭлектронные книги на английском языке от BiblioteX Digital Library доступны читателям РГБ по 31 октября 2026 года.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/konferentsiya-bibliotechnogo-obshestva-kitaya-26",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#международное_сотрудничество22.09.2026Генеральный директор РГБ Вадим Дуда стал почётным гостем XXVI Ежегодной конференции Библиотечного общества КитаяВ городе Чэнду провинции Сычуань Китайской Народной Республики 16\u221218 сентября состоялась XXVI Ежегодная конференция Библиотечного общества Китая, организованная Библиотечным обществом Китая под руководством руководителя Национальной библиотеки Китая и президентом Библиотечного общества Китая Чэнь Ин и Народным правительством Чэнду при поддержке Н…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/zhenshiny-kompozitory-finisazh",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#концерт22.09.2026«Надежду» спели всем залом: торжественное закрытие выставки о женщинах\u2011композиторахВ Доме Пашкова 18 сентября состоялось закрытие выставки «Женщины\u2011композиторы XVII-XXI веков». Организаторами события выступили Российская государственная библиотека и Культурный фонд Александры Пахмутовой.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:21.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "911b5d3d9e5dc1f5e9cd1ebaf162ce611c38940d2cd5c167d403d14e9bd6e3a8"
+}

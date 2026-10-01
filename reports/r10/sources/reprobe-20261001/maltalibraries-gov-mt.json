@@ -1,0 +1,97 @@
+{
+  "sourceId": "maltalibraries-gov-mt",
+  "name": "Malta Libraries - The National Library of Malta",
+  "entryUrl": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
+  "countryCodes": [
+    "MT"
+  ],
+  "coverageCountryCodes": [
+    "MT"
+  ],
+  "attemptedAt": "2026-10-01T20:43:59.387Z",
+  "requests": [
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 19419,
+      "sha256": "bec85c0f879c363e16a9d080460bc364a5f2c86829d33ebe1cfd6920b9a05c51",
+      "accessedAt": "2026-10-01T20:44:00.375Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=ee473776-d093-46ed-a682-ed60f6938434",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18823,
+      "sha256": "def56395b759750e718a6d63da3866962a1ce673a4d95562a672500a6a3b6e8f",
+      "accessedAt": "2026-10-01T20:44:00.598Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?v=f919856f-0756-4f97-b47d-f061203fb296",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 7683,
+      "sha256": "539e97657a9db77837750ffed357182135d2710e9d837f1c6c3da29bcebb0c48",
+      "accessedAt": "2026-10-01T20:44:00.795Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=cfb971ca-7c2c-4bf1-be29-270ebf190834",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18638,
+      "sha256": "3fd42049efe7205fbf749aae4126872b8db1eed52b2a2f32c22a2797fb0ec26f",
+      "accessedAt": "2026-10-01T20:44:01.005Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=c1442d12-1cf8-4fec-992e-34c2dcdafb03",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 19054,
+      "sha256": "955e43565f211fb7e5001b1447fd06e6e79a134d407af083eed17f35207cc021",
+      "accessedAt": "2026-10-01T20:44:01.203Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=ce23991e-5ce0-4369-8dbf-ffd0409feff2",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18834,
+      "sha256": "168a8b05f07ffb1bdc310d2d3821e7753cc7b42bc08b204e04b257a27d5a000d",
+      "accessedAt": "2026-10-01T20:44:01.406Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=25d43cfd-4859-4d8a-92de-a9918cf0d613",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18916,
+      "sha256": "752516654f177b06a84168b792e292af381a74b4fa2e5e10e0829bedde8e9a47",
+      "accessedAt": "2026-10-01T20:44:01.616Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=c3ddb4c1-1623-4a32-9096-828dbf5765de",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18822,
+      "sha256": "c00a8a1c39ae5a534aef06ff6b23bb39feaf27083a76fa712075bdc49de9cb5c",
+      "accessedAt": "2026-10-01T20:44:01.829Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=c62b7280-666e-4409-85bb-2dd9e80b513f",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18905,
+      "sha256": "e897d2df64316e62865061202c0f863371c97205430cb664bc4d62900744b1e2",
+      "accessedAt": "2026-10-01T20:44:02.032Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 19419,
+    "sha256": "19aa7176a22560c34b3bbca6ba0092efee14f1c562d5d5b7fca9da03d6c68c67",
+    "accessedAt": "2026-10-01T20:44:00.187Z",
+    "disallowed": []
+  }
+}

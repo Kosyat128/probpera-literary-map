@@ -1,0 +1,369 @@
+{
+  "sourceId": "nationallibrary-bg",
+  "name": "St.St. Cyril and Methodius National Library",
+  "entryUrl": "https://nationallibrary.bg/",
+  "countryCodes": [
+    "BG"
+  ],
+  "coverageCountryCodes": [
+    "BG"
+  ],
+  "attemptedAt": "2026-10-01T20:43:49.304Z",
+  "requests": [
+    {
+      "url": "https://www.nationallibrary.bg/www/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 223743,
+      "sha256": "2055d3c5d25ec6a5d9ec71c4cb67eb359b44b443258ddfc5a86237a229b554dc",
+      "accessedAt": "2026-10-01T20:43:52.177Z"
+    },
+    {
+      "url": "https://www.nationallibrary.bg/www/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 19104,
+      "sha256": "36a7aa896c0e780f9e45ea68fc9b41e1c87c2d924e29f573011803a0f5544894",
+      "accessedAt": "2026-10-01T20:43:52.986Z"
+    },
+    {
+      "url": "https://www.nationallibrary.bg/www/2026/09/29/%d0%bd%d0%b0%d1%86%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d0%bd%d0%b0%d1%82%d0%b0-%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d0%be%d1%82%d0%ba%d1%80%d0%b8-%d0%bb%d0%b8%d1%82%d0%b5%d1%80-4/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 190905,
+      "sha256": "c70dc525c676c2bdcb343e0ba5b7eddd90ac1ab90dff6fb992f6315006a68077",
+      "accessedAt": "2026-10-01T20:43:54.140Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://nationallibrary.bg/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 19403,
+    "sha256": "8f7a262b9e7eded64d512c87682883681ce1d3b40c512fa06947b1f97db5d440",
+    "accessedAt": "2026-10-01T20:43:49.783Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-login.php",
+      "/?s=",
+      "/search/",
+      "/wp-content/plugins/",
+      "/readme.html",
+      "/refer/",
+      "/wp-content/cache",
+      "/wp-content/themes"
+    ]
+  },
+  "endpoint": {
+    "id": "nationallibrary-bg",
+    "name": "St.St. Cyril and Methodius National Library",
+    "url": "https://www.nationallibrary.bg/www/feed/",
+    "format": "rss",
+    "language": "bg-BG",
+    "region": "europe",
+    "sourceFamilyId": "nationallibrary-bg",
+    "countryCodes": [
+      "BG"
+    ],
+    "coverageCountryCodes": [
+      "BG"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.nationallibrary.bg"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.nationallibrary.bg/www/2026/09/29/%d0%bd%d0%b0%d1%86%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d0%bd%d0%b0%d1%82%d0%b0-%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d0%be%d1%82%d0%ba%d1%80%d0%b8-%d0%bb%d0%b8%d1%82%d0%b5%d1%80-4/"
+    ],
+    "verifiedAt": "2026-10-01T20:43:54.151Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "nationallibrary-bg",
+    "source": {
+      "name": "St.St. Cyril and Methodius National Library",
+      "url": "https://www.nationallibrary.bg/www/2026/09/29/%d0%bd%d0%b0%d1%86%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d0%bd%d0%b0%d1%82%d0%b0-%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d0%be%d1%82%d0%ba%d1%80%d0%b8-%d0%bb%d0%b8%d1%82%d0%b5%d1%80-4/",
+      "language": "bg-BG"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Националната библиотека откри литературен кът на Япония",
+    "publishedAt": "2026-09-29T12:20:40.000Z",
+    "description": "Материалът Националната библиотека откри литературен кът на Япония е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+    "discoveredAt": "2026-10-01T20:43:52.989Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.nationallibrary.bg/www/2026/09/29/%d0%bd%d0%b0%d1%86%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d0%bd%d0%b0%d1%82%d0%b0-%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d0%be%d1%82%d0%ba%d1%80%d0%b8-%d0%bb%d0%b8%d1%82%d0%b5%d1%80-4/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 190905,
+      "sha256": "c70dc525c676c2bdcb343e0ba5b7eddd90ac1ab90dff6fb992f6315006a68077",
+      "accessedAt": "2026-10-01T20:43:54.140Z",
+      "headline": "Националната библиотека откри литературен кът на Япония - Национална библиотека \"Св. св. Кирил и Методий\"",
+      "excerpt": "Литературен клуб „Писмена“ отбеляза своята десета годишнина25 септември 2026 г.Изложба „Раждането на модерната статистика“30 септември 2026 г. Литературен клуб „Писмена“ отбеляза своята десета годишнина25 септември 2026 г.Изложба „Раждането на модерната статистика“30 септември 2026 г. Националната библиотека „Св. св. Кирил и Методий“ (НБКМ) откри своя четиридесет и пети литературен и образователен",
+      "publishedDates": [
+        {
+          "value": "2026-09-29T12:20:40+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-29T12:20:40+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.nationallibrary.bg/www/2026/09/29/националната-библиотека-откри-литер-4/",
+      "language": "bg-BG",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:43:54.151Z",
+  "foundItems": [
+    {
+      "sourceId": "nationallibrary-bg",
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/29/%d0%bd%d0%b0%d1%86%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d0%bd%d0%b0%d1%82%d0%b0-%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d0%be%d1%82%d0%ba%d1%80%d0%b8-%d0%bb%d0%b8%d1%82%d0%b5%d1%80-4/",
+        "language": "bg-BG"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Националната библиотека откри литературен кът на Япония",
+      "publishedAt": "2026-09-29T12:20:40.000Z",
+      "description": "Материалът Националната библиотека откри литературен кът на Япония е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+      "discoveredAt": "2026-10-01T20:43:52.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nationallibrary-bg",
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/25/%d0%bb%d0%b8%d1%82%d0%b5%d1%80%d0%b0%d1%82%d1%83%d1%80%d0%b5%d0%bd-%d0%ba%d0%bb%d1%83%d0%b1-%d0%bf%d0%b8%d1%81%d0%bc%d0%b5%d0%bd%d0%b0-%d0%be%d1%82%d0%b1%d0%b5%d0%bb%d1%8f%d0%b7/",
+        "language": "bg-BG"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Литературен клуб „Писмена“ отбеляза своята десета годишнина",
+      "publishedAt": "2026-09-25T11:32:23.000Z",
+      "description": "Материалът Литературен клуб „Писмена“ отбеляза своята десета годишнина е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+      "discoveredAt": "2026-10-01T20:43:52.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nationallibrary-bg",
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/30/statistics/",
+        "language": "bg-BG"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Изложба „Раждането на модерната статистика“",
+      "publishedAt": "2026-09-30T06:52:29.000Z",
+      "description": "Материалът Изложба „Раждането на модерната статистика“ е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+      "discoveredAt": "2026-10-01T20:43:52.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nationallibrary-bg",
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/24/1-%d0%be%d0%ba%d1%82%d0%be%d0%bc%d0%b2%d1%80%d0%b8-%d1%86%d0%b5%d0%bd%d1%82%d1%80%d0%b0%d0%bb%d0%bd%d0%be-%d1%84%d0%be%d0%b0%d0%b9%d0%b5-%d1%82%d1%8a%d1%80%d0%b6%d0%b5%d1%81%d1%82%d0%b2%d0%b5%d0%bd/",
+        "language": "bg-BG"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "1 октомври / Централно фоайе Тържествено честване на 75 години Музикален отдел / Първи етаж 75 години музика, памет и духовност в Националната библиотека",
+      "publishedAt": "2026-09-24T09:56:03.000Z",
+      "description": "Материалът 1 октомври / Централно фоайе <br>Тържествено честване на 75 години Музикален отдел / Първи етаж <br>75 години музика, памет и духовност в Националната библиотека е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+      "discoveredAt": "2026-10-01T20:43:52.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nationallibrary-bg",
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/22/%d1%87%d0%b5%d1%81%d1%82%d0%b8%d1%82-%d0%bf%d1%80%d0%b0%d0%b7%d0%bd%d0%b8%d0%ba-%d0%bd%d0%b5%d0%b7%d0%b0%d0%b2%d0%b8%d1%81%d0%b8%d0%bc%d0%b0-%d0%b1%d1%8a%d0%bb%d0%b3%d0%b0%d1%80%d0%b8%d1%8f/",
+        "language": "bg-BG"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Честит празник, независима България!",
+      "publishedAt": "2026-09-21T21:01:00.000Z",
+      "description": "Материалът Честит празник, независима България! е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+      "discoveredAt": "2026-10-01T20:43:52.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nationallibrary-bg",
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/16/17-09-2026/",
+        "language": "bg-BG"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "17 септември - Денят на София",
+      "publishedAt": "2026-09-16T20:12:54.000Z",
+      "description": "Материалът 17 септември \u2013 Денят на София е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+      "discoveredAt": "2026-10-01T20:43:52.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nationallibrary-bg",
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/08/%d0%b8%d0%b7%d0%bb%d0%be%d0%b6%d0%b1%d0%b0-%d0%b0%d0%bd%d1%82%d0%be%d0%bd%d0%b8%d0%bd-%d0%b4%d0%b2%d0%be%d1%80%d0%b6%d0%b0%d0%ba-185-%d0%b3%d0%be%d0%b4%d0%b8%d0%bd%d0%b8-%d0%be%d1%82-%d1%80/",
+        "language": "bg-BG"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Изложба „Антонин Дворжак - 185 години от рождението на композитора, който покори света с музика“",
+      "publishedAt": "2026-09-08T10:03:03.000Z",
+      "description": "Материалът Изложба „Антонин Дворжак \u2013 185 години от рождението на композитора, който покори света с музика“ е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+      "discoveredAt": "2026-10-01T20:43:52.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nationallibrary-bg",
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/08/t-holloway/",
+        "language": "bg-BG"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "„Златен извор“: Плацебо - реклама-панацея : мехлемът и хапчетата на Томас Холоуей",
+      "publishedAt": "2026-09-08T07:13:16.000Z",
+      "description": "Материалът „Златен извор“: Плацебо \u2013 реклама\u2013панацея : мехлемът и хапчетата на Томас Холоуей е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+      "discoveredAt": "2026-10-01T20:43:52.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nationallibrary-bg",
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/06/%d0%bf%d0%be%d0%b7%d0%b4%d1%80%d0%b0%d0%b2-%d0%bf%d0%be-%d1%81%d0%bb%d1%83%d1%87%d0%b0%d0%b9-6-%d1%82%d0%b8-%d1%81%d0%b5%d0%bf%d1%82%d0%b5%d0%bc%d0%b2%d1%80%d0%b8-%d0%b4%d0%b5%d0%bd-%d0%bd/",
+        "language": "bg-BG"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Поздрав по случай 6-ти септември - Ден на Съединението на Княжество България с Източна Румелия (1885)",
+      "publishedAt": "2026-09-05T21:01:00.000Z",
+      "description": "Материалът Поздрав по случай 6-ти септември \u2013 Ден на Съединението на Княжество България с Източна Румелия (1885) е публикуван за пръв път на Национална библиотека \"Св. св. Кирил и Методий\".",
+      "discoveredAt": "2026-10-01T20:43:52.989Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "36a7aa896c0e780f9e45ea68fc9b41e1c87c2d924e29f573011803a0f5544894"
+}

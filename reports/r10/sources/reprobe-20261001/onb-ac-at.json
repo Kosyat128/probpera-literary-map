@@ -1,0 +1,52 @@
+{
+  "sourceId": "onb-ac-at",
+  "name": "Austrian National Library",
+  "entryUrl": "https://www.onb.ac.at/",
+  "countryCodes": [
+    "AT"
+  ],
+  "coverageCountryCodes": [
+    "AT"
+  ],
+  "attemptedAt": "2026-10-01T20:43:44.361Z",
+  "requests": [
+    {
+      "url": "https://www.onb.ac.at/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1475559,
+      "sha256": "6b33ee1465aa8baeb17a0f89bcc05b75121b00d484027464127c816d00d61b40",
+      "accessedAt": "2026-10-01T20:43:45.289Z"
+    },
+    {
+      "url": "https://www.onb.ac.at/presse",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1435118,
+      "sha256": "643d63ca99e0e4de869cbfd8daf13ab6d8086c6b43e09120ddbaa6bcfe00d9fd",
+      "accessedAt": "2026-10-01T20:43:46.302Z"
+    },
+    {
+      "url": "https://www.onb.ac.at/bibliothek/recherche-und-suchtipps/auskunft-beratung-auftragsrecherche",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1463609,
+      "sha256": "c6f4257ef62023dbe578446391345a7906a83175a23a0870e0b24643ae5a715c",
+      "accessedAt": "2026-10-01T20:43:47.432Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.onb.ac.at/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 333,
+    "sha256": "0a6bc867863185aef82df0d82bcdfe4f23be2c673a18c5d774b5423b0151a9b8",
+    "accessedAt": "2026-10-01T20:43:44.742Z",
+    "disallowed": [
+      "/mehr/blogs/",
+      "/en/more/blogs/"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "sourceId": "remue-net",
+  "name": "Remue.net",
+  "entryUrl": "https://remue.net/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:55.512Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

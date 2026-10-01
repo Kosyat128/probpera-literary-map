@@ -1,0 +1,451 @@
+{
+  "sourceId": "millikitabxana-az",
+  "name": "National Library of Azerbaijan",
+  "entryUrl": "https://www.millikitabxana.az/en/",
+  "countryCodes": [
+    "AZ"
+  ],
+  "coverageCountryCodes": [
+    "AZ"
+  ],
+  "attemptedAt": "2026-10-01T20:43:47.514Z",
+  "requests": [
+    {
+      "url": "https://www.millikitabxana.az/en/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 56820,
+      "sha256": "249ff1805ce32b43a9378d762387083b8beacd4d45e1032e2d5bbc39f55ee85a",
+      "accessedAt": "2026-10-01T20:43:48.467Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 58377,
+      "sha256": "074f72ab7ab99a4f573260f0f4d0befa7f8dc170e319149da5161e4a197eff1c",
+      "accessedAt": "2026-10-01T20:43:48.879Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 58083,
+      "sha256": "e87f39342e206719eaf3b1b6a2bc71cbd5ed0f11fbe1203a3fa9f528b7308330",
+      "accessedAt": "2026-10-01T20:43:49.298Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.millikitabxana.az/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 23,
+    "sha256": "3a125e84a637dc3f5442bb6949fa200056f37db4627b4c2a3addc55bbb89b703",
+    "accessedAt": "2026-10-01T20:43:47.959Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "millikitabxana-az",
+    "name": "National Library of Azerbaijan",
+    "url": "https://www.millikitabxana.az/en/news",
+    "format": "html",
+    "language": "en",
+    "region": "europe",
+    "sourceFamilyId": "millikitabxana-az",
+    "countryCodes": [
+      "AZ"
+    ],
+    "coverageCountryCodes": [
+      "AZ"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.millikitabxana.az"
+    ],
+    "linkPattern": "^\\/en\\/about\\x2dus\\/relationships\\/[^/]+\\/?$|^\\/en\\/publications\\/[^/]+\\/?$|^\\/en\\/page\\/[^/]+\\/?$|^\\/en\\/[^/]+\\/?$|^\\/en\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026"
+    ],
+    "verifiedAt": "2026-10-01T20:43:49.301Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 13,
+  "literaryCandidateCount": 13,
+  "sample": {
+    "sourceId": "millikitabxana-az",
+    "source": {
+      "name": "National Library of Azerbaijan",
+      "url": "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026",
+      "language": "en"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "An event dedicated to April 23 - World Book and Copyright Day was held at the National Library.",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:43:48.909Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 58083,
+      "sha256": "e87f39342e206719eaf3b1b6a2bc71cbd5ed0f11fbe1203a3fa9f528b7308330",
+      "accessedAt": "2026-10-01T20:43:49.298Z",
+      "headline": "An event dedicated to April 23 \u2013 World Book and Copyright Day was held at the National Library.",
+      "excerpt": "An event dedicated to April 23 \u2013 World Book and Copyright Day was held at the National Library. | Azerbaijan National Library E-catalog and library News | An event dedicated to April 23 \u2013 World Book and Copyright Day was held at the National Library. Back News An event dedicated to April 23 \u2013 World Book and Copyright Day was held at the National Library. 23-04-2026 Share See All News On April 23, ",
+      "publishedDates": [],
+      "canonical": "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:43:49.301Z",
+  "foundItems": [
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "An event dedicated to April 23 - World Book and Copyright Day was held at the National Library.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/5-may_ellilerin_mudafie-gunu",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "A virtual and traditional book exhibition titled “May 5 - International Day for the Protection of the Rights of Persons with Disabilities” has been presented to users at the National Library of Azerbaijan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/18_aprel-tarixi_abideler",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "At the National Library, a virtual and traditional book exhibition titled “April 18 - International Day for Monuments and Sites” has been presented to users.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/professor-hikmet-babaoglu",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The book exhibition titled “Professor Hikmat Babaoglu” has been presented to users at the National Library.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/milli-kitabxananin-nezdinde-fealiyyet-gosteren-achiq-kitabxanada-1-iyun---ushaqlarin-beynelxalq-mudafiesi-gunune-hesr-edilmish-tedbir-kechirilib",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "An event dedicated to International Children’s Day was held at the Open Library operating under the National Library of Azerbaijan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/28-may--musteqillik-gunu-elektron-layiheler",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The electronic projects dedicated to May 28 - Independence Day have been presented to users at the National Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/shehersalma-ve-memarliq-ili--elektron-melumat-bazasi",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "A presentation of the electronic database titled *“Year of Urban Planning and Architecture”* (in Azerbaijani and English) was held at the National Library.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/ferrux-rustemov",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Professor Farrukh Rustamov donated his book titled *“Azerbaijan State Pedagogical University and the First All-Union Turkological Congress”* to the National Library.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/beynelxalq-soz-ve-metbuat",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "A book exhibition titled “May 3 - International Day of Freedom of Speech and Press” has opened at the National Library of Azerbaijan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/atamnin-amanati-atalar-ehdi",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "A representative of the “Atamnın amanatı - Atalar əhdi” Public Association based in Astana, Republic of Kazakhstan, Aliya Sagimbayeva, visited the National Library as a guest.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/tagiyev-neft-bedii-filminin-numayishi",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "\"Azerbaijani Culture Days in Turkmenistan opened with a screening of the feature film 'Taghiyev: Oil\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/milli-kitabxanada--shehersalma-ve-memarliq-ili",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "As part of WUF-13, an event on the theme of the “Year of Urban Planning and Architecture” was held at the National Library.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "source": {
+        "name": "National Library of Azerbaijan",
+        "url": "https://www.millikitabxana.az/en/news/milli-kitabxanada-tecrubede",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Library staff of the Nakhchivan Autonomous Republic on an internship at the National Library.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:48.909Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "074f72ab7ab99a4f573260f0f4d0befa7f8dc170e319149da5161e4a197eff1c"
+}

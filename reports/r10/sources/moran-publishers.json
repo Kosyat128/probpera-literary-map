@@ -1,0 +1,163 @@
+{
+  "sourceId": "moran-publishers",
+  "name": "Moran Publishers",
+  "entryUrl": "https://moranpublishers.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:20.617Z",
+  "requests": [
+    {
+      "url": "https://moranpublishers.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 370833,
+      "sha256": "31fbd974465bfb6fe3caf3328c1a9c71068358b81325ecb7deaa2e14012e9e4a",
+      "accessedAt": "2026-10-01T20:52:24.009Z"
+    },
+    {
+      "url": "https://moranpublishers.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 5494,
+      "sha256": "df2b1f2be6dee7c850cd20afb3a7c78739e710c25230cdbfdd5035aa719f901d",
+      "accessedAt": "2026-10-01T20:52:25.214Z"
+    },
+    {
+      "url": "https://moranpublishers.com/every-agikuyu-boy-at-thirteen/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 268409,
+      "sha256": "097512c2f6f3c75bcb34c97732e903dd66f47b6e1c664023e4ba347bce6f6d44",
+      "accessedAt": "2026-10-01T20:52:26.345Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://moranpublishers.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 378,
+    "sha256": "e57d68f3f1813cf51605674b6700fbed7ebd0454c7ab768265a7d74f136cc8ae",
+    "accessedAt": "2026-10-01T20:52:22.262Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "moran-publishers",
+    "name": "Moran Publishers",
+    "url": "https://moranpublishers.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "moran-publishers",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://moranpublishers.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://moranpublishers.com/every-agikuyu-boy-at-thirteen/"
+    ],
+    "verifiedAt": "2026-10-01T20:52:26.398Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 1,
+  "literaryCandidateCount": 1,
+  "sample": {
+    "sourceId": "moran-publishers",
+    "source": {
+      "name": "Moran Publishers",
+      "url": "https://moranpublishers.com/every-agikuyu-boy-at-thirteen/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Every Agikuyu Boy At Thirteen",
+    "publishedAt": "2025-10-14T05:38:02.000Z",
+    "description": "Every Gikuyu Boy by Age of Thirteen \u2014 The Perfect Gift of Tradition and Growth As the holiday season draws near, many families prepare for one of the most meaningful transitions in a boy’s life \u2014 the journey into responsible manhood. Every Gikuyu Boy by Age of Thirteen captures this sacred passage with wisdom, humour, […] The post Every Agikuyu Boy At Thirteen first appeared on Moran (E.A.) Publi…",
+    "discoveredAt": "2026-10-01T20:52:25.217Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://moranpublishers.com/every-agikuyu-boy-at-thirteen/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 268409,
+      "sha256": "097512c2f6f3c75bcb34c97732e903dd66f47b6e1c664023e4ba347bce6f6d44",
+      "accessedAt": "2026-10-01T20:52:26.345Z",
+      "headline": "Every Agikuyu Boy At Thirteen - Moran (E.A.) Publishers Limited",
+      "excerpt": "Every Gikuyu Boy by Age of Thirteen \u2014 The Perfect Gift of Tradition and Growth As the holiday season draws near, many families prepare for one of the most meaningful transitions in a boy’s life \u2014 the journey into responsible manhood. Every Gikuyu Boy by Age of Thirteen captures this sacred passage with wisdom, humour, and dignity, making it the perfect companion for a boy undergoing circumcision t",
+      "publishedDates": [
+        {
+          "value": "2025-10-14T05:38:02+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2025-10-14T08:38:02+03:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        },
+        {
+          "value": "2025-10-14T08:38:02+03:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://moranpublishers.com/every-agikuyu-boy-at-thirteen/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:26.398Z",
+  "foundItems": [
+    {
+      "sourceId": "moran-publishers",
+      "source": {
+        "name": "Moran Publishers",
+        "url": "https://moranpublishers.com/every-agikuyu-boy-at-thirteen/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Every Agikuyu Boy At Thirteen",
+      "publishedAt": "2025-10-14T05:38:02.000Z",
+      "description": "Every Gikuyu Boy by Age of Thirteen \u2014 The Perfect Gift of Tradition and Growth As the holiday season draws near, many families prepare for one of the most meaningful transitions in a boy’s life \u2014 the journey into responsible manhood. Every Gikuyu Boy by Age of Thirteen captures this sacred passage with wisdom, humour, […] The post Every Agikuyu Boy At Thirteen first appeared on Moran (E.A.) Publi…",
+      "discoveredAt": "2026-10-01T20:52:25.217Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "df2b1f2be6dee7c850cd20afb3a7c78739e710c25230cdbfdd5035aa719f901d"
+}

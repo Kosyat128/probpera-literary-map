@@ -1,0 +1,52 @@
+{
+  "sourceId": "relogio-dagua",
+  "name": "Relógio d’Água",
+  "entryUrl": "https://relogiodagua.pt/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:21.146Z",
+  "requests": [
+    {
+      "url": "https://www.relogiodagua.pt/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 542773,
+      "sha256": "6d2e0b41088d877f2abb6e30dde576ba23695694061a82640c6597c3003ddeef",
+      "accessedAt": "2026-10-01T20:48:30.003Z"
+    },
+    {
+      "url": "https://www.relogiodagua.pt/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1714,
+      "sha256": "bd6dd4dfe110105bca2100a18e0bf4300762f5e254b34bea85cf977e3f4e681f",
+      "accessedAt": "2026-10-01T20:48:32.770Z"
+    },
+    {
+      "url": "https://www.relogiodagua.pt/hero/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 313709,
+      "sha256": "af5a571d0c2d2d03e1f25a1cef443883e92aee870fe4cf7c0cb6b51eb78a2f3f",
+      "accessedAt": "2026-10-01T20:48:36.056Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.relogiodagua.pt/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 325,
+    "sha256": "df37331d4ba8cbeb689a4a11aff2b6a008ebd57bf0994f146ee79f6dd92afaa0",
+    "accessedAt": "2026-10-01T20:48:24.472Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  }
+}

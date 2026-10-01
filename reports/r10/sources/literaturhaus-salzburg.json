@@ -1,0 +1,383 @@
+{
+  "sourceId": "literaturhaus-salzburg",
+  "name": "Literaturhaus Salzburg",
+  "entryUrl": "https://www.literaturhaus-salzburg.at/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:58.750Z",
+  "requests": [
+    {
+      "url": "https://www.literaturhaus-salzburg.at/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 211751,
+      "sha256": "4874072bb02d40db30b1799817d5e2ee943cf25c7fdffe53590fb28f2329352e",
+      "accessedAt": "2026-10-01T20:51:59.713Z"
+    },
+    {
+      "url": "https://www.literaturhaus-salzburg.at/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 41156,
+      "sha256": "95c020b98527f855b64a8d09ac66631f392a34ddacc84d6adfc416428de7cd15",
+      "accessedAt": "2026-10-01T20:51:59.798Z"
+    },
+    {
+      "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/salzburger-jugend-literaturwettbewerb/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 166020,
+      "sha256": "a4f97ab60fd210a26333aa182c5a50dd14ad250be410c502a9f2699af7ec8572",
+      "accessedAt": "2026-10-01T20:52:00.624Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.literaturhaus-salzburg.at/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 133,
+    "sha256": "98936af3cd3d9a7a43bf81983cb37dd444402804796747121921df94eaaa9db3",
+    "accessedAt": "2026-10-01T20:51:59.526Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "literaturhaus-salzburg",
+    "name": "Literaturhaus Salzburg",
+    "url": "https://www.literaturhaus-salzburg.at/feed/",
+    "format": "rss",
+    "language": "de",
+    "region": "global",
+    "sourceFamilyId": "literaturhaus-salzburg",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.literaturhaus-salzburg.at"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/salzburger-jugend-literaturwettbewerb/"
+    ],
+    "verifiedAt": "2026-10-01T20:52:00.634Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "literaturhaus-salzburg",
+    "source": {
+      "name": "Literaturhaus Salzburg",
+      "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/salzburger-jugend-literaturwettbewerb/",
+      "language": "de"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Barbi Marković erhält Helena-Adler-Preis für rebellische Literatur 2026",
+    "publishedAt": "2026-03-16T08:03:31.000Z",
+    "description": "Helena-Adler-Preis für rebellische Literatur 2026:Barbi Marković für „Stehlen, Schimpfen, Spielen“Am Sonntag, 15. März wurde der zweite Helena-Adler-Preis an Barbi Marković im Literaturhaus Salzburg verliehen....",
+    "discoveredAt": "2026-10-01T20:51:59.799Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/salzburger-jugend-literaturwettbewerb/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 166020,
+      "sha256": "a4f97ab60fd210a26333aa182c5a50dd14ad250be410c502a9f2699af7ec8572",
+      "accessedAt": "2026-10-01T20:52:00.624Z",
+      "headline": "Barbi Marković erhält Helena-Adler-Preis für rebellische Literatur 2026 - Literaturhaus Salzburg",
+      "excerpt": "Helena-Adler-Preis für rebellische Literatur 2026:Barbi Marković für „Stehlen, Schimpfen, Spielen“Am Sonntag, 15. März wurde der zweite Helena-Adler-Preis an Barbi Marković im Literaturhaus Salzburg verliehen. Nach einleitenden Worten vom Literaturhaus Leiter und Preismitinitiator Tomas Friedmann hielt Mia Eidlhuber (Der Standard), welche auch in der Jury saß, die Laudatio. Anschließend wurde die ",
+      "publishedDates": [
+        {
+          "value": "2026-03-16T09:03:31+01:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-03-16T09:03:31+01:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-03-16T09:03:31+01:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "canonical": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/salzburger-jugend-literaturwettbewerb/",
+      "language": "de",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:00.634Z",
+  "foundItems": [
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/salzburger-jugend-literaturwettbewerb/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Barbi Marković erhält Helena-Adler-Preis für rebellische Literatur 2026",
+      "publishedAt": "2026-03-16T08:03:31.000Z",
+      "description": "Helena-Adler-Preis für rebellische Literatur 2026:Barbi Marković für „Stehlen, Schimpfen, Spielen“Am Sonntag, 15. März wurde der zweite Helena-Adler-Preis an Barbi Marković im Literaturhaus Salzburg verliehen....",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/u20-poetry-slam-naechster-termin-14-10/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "U20 Poetry Slam: Nächster Termin 20.11.2026!",
+      "publishedAt": "2025-11-05T12:38:04.000Z",
+      "description": "Am 20. November 2026 können Talente ab 19.30 Uhr wieder ihr Können auf der Literaturhaus-Bühne vor Publikum zeigen, ein DJ legt Musik auf.Alle jungen...",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/35-jahre-literaturhaus/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "35 JAHRE LITERATURHAUS",
+      "publishedAt": "2026-09-02T14:23:19.000Z",
+      "description": "LAUT & LEISEIm Oktober 1991 wurde im denkmalgeschützten Eizenbergerhof im Salzburger Stadtteil Lehen das Literaturhaus Salzburg eröffnet \u2013 als fünftes Literaturhaus im deutschen Sprachraum...",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/monika-helfer/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Monika Helfer (1947-2026)",
+      "publishedAt": "2026-08-03T11:49:02.000Z",
+      "description": "Wir trauern um die österreichische Schriftstellerin Monika Helfer, die seit 1998 regelmäßig im Literaturhaus Salzburg mit ihren Büchern in Lesungen und Gesprächen aufgetreten ist...",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/europa-der-muttersprachen-2022/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literatur auf ARTE",
+      "publishedAt": "2026-07-01T11:23:15.000Z",
+      "description": "Der Fernsehsender ARTE ist der Kulturpartner des Netzwerks der Literaturhäuser. Eng vernetzt sorgen die Partner gemeinsam für den Erfolg anspruchsvoller Kulturformate \u2013 vor Ort...",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/literatur-fuer-den-fall/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literatur für den Fall",
+      "publishedAt": "2026-01-29T13:47:20.000Z",
+      "description": "NEUE TEXTE ONLINE! Zum Literatur-Blog Literatur für den Fall wird getragen von den Vereinen Literaturforum Leselampe und prolit. Es ist eine unmittelbare Reaktion...",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/einbruch-ins-literaturhaus-geklaert/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Künstlerische Gabe vom Literaturhaus Salzburg",
+      "publishedAt": "2025-11-17T12:43:59.000Z",
+      "description": "Im Oktober 2025 wurde beim Literaturhaus Salzburg die Skulptur „Incontro a due“ (Begegnung zu zweit) des italienischen Künstlers und Bildhauers Sandro Scarmiglia errichtet. Die...",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/krimi-fest-2022/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "peng! Krimifest im November",
+      "publishedAt": "2026-08-03T07:53:21.000Z",
+      "description": "Bald ist es wieder soweit - peng! - das Krimifest im Literaturhaus findet im November statt, der Kartenvorverkauf startet Mitte September. Hier schon mal...",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/no-sea-takimata-sanctus-est-3/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Stefan Zweig gehört zu Salzburg",
+      "publishedAt": "2026-06-26T07:26:00.000Z",
+      "description": "Warum die Zweig-Villa eine Chance als Kultur- und Erinnerungsort verdientDer weltberühmte Schriftsteller, Übersetzer, Humanist, Pazifist und Europäer Stefan Zweig (1881-1942) gehört zu den bedeutendsten...",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "source": {
+        "name": "Literaturhaus Salzburg",
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/artmann-ausstellung-bis-september-2022-verlaengert/",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "100. Ausgabe der Salzburger Kinderzeitung PLAUDERTASCHE",
+      "publishedAt": "2026-05-26T09:34:02.000Z",
+      "description": "Feierliche 100. Ausgabe der „Plaudertasche“Ein Meilenstein für die Kinderzeitung!Im Mai 2026 erschien die 100. Ausgabe der beliebten Salzburger Kinderzeitung. Seit ihrer Gründung im Jahr...",
+      "discoveredAt": "2026-10-01T20:51:59.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "95c020b98527f855b64a8d09ac66631f392a34ddacc84d6adfc416428de7cd15"
+}

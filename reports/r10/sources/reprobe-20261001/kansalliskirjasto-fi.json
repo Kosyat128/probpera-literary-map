@@ -1,0 +1,85 @@
+{
+  "sourceId": "kansalliskirjasto-fi",
+  "name": "The National Library of Finland",
+  "entryUrl": "https://www.kansalliskirjasto.fi/en",
+  "countryCodes": [
+    "FI"
+  ],
+  "coverageCountryCodes": [
+    "FI"
+  ],
+  "attemptedAt": "2026-10-01T20:43:54.154Z",
+  "requests": [
+    {
+      "url": "https://www.kansalliskirjasto.fi/en",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 200946,
+      "sha256": "36392d98d9a6d88f89809093463c3e74730d1817e98f42a76f54a8d140676e9c",
+      "accessedAt": "2026-10-01T20:43:54.557Z"
+    },
+    {
+      "url": "https://www.kansalliskirjasto.fi/en/news",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 187773,
+      "sha256": "e288aa43a76aec98ab0fd1e19efcf671c99a26de5830fc16888604b64b537afe",
+      "accessedAt": "2026-10-01T20:43:54.807Z"
+    },
+    {
+      "url": "https://www.kansalliskirjasto.fi/en/news",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 187773,
+      "sha256": "a8b155f7c72f24262ce7cb1d09b01954341cc0b8c4b8c3c2a5649023b0544c5c",
+      "accessedAt": "2026-10-01T20:43:54.995Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.kansalliskirjasto.fi/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2141,
+    "sha256": "8e8cb58d810473a52cce903be5ffb73d948eef981bbd101cffbf8dc2c02fcf4e",
+    "accessedAt": "2026-10-01T20:43:54.453Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.md",
+      "/composer/Metapackage/README.txt",
+      "/composer/Plugin/ProjectMessage/README.md",
+      "/composer/Plugin/Scaffold/README.md",
+      "/composer/Plugin/VendorHardening/README.txt",
+      "/composer/Template/README.txt",
+      "/modules/README.txt",
+      "/sites/README.txt",
+      "/themes/README.txt",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/search?",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/search?",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed"
+    ]
+  }
+}

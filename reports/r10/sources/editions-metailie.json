@@ -1,0 +1,384 @@
+{
+  "sourceId": "editions-metailie",
+  "name": "Editions Métailié",
+  "entryUrl": "https://editions-metailie.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:03.837Z",
+  "requests": [
+    {
+      "url": "https://editions-metailie.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 76978,
+      "sha256": "899203abe49220ad71b7c12a8328afe9d74a71fb65f6589011488c839c5c3cda",
+      "accessedAt": "2026-10-01T20:48:04.545Z"
+    },
+    {
+      "url": "https://editions-metailie.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 31826,
+      "sha256": "10bf9644f63f5ff38b414f086d69762f256bd846b9f2dd075e62c0445fe7dd2a",
+      "accessedAt": "2026-10-01T20:48:04.759Z"
+    },
+    {
+      "url": "https://editions-metailie.com/chronique/lhumanite/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 60903,
+      "sha256": "c8cba4629757ea2b5efaa4daa37e7619786bc5f6937515f7cd7714da8665e965",
+      "accessedAt": "2026-10-01T20:48:05.540Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://editions-metailie.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 125,
+    "sha256": "80c35dca260e8694e07cb674e0af2f4804b995ad29681f16862d01c32f34194b",
+    "accessedAt": "2026-10-01T20:48:04.326Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "detailAttemptError": "http_404",
+  "endpoint": {
+    "id": "editions-metailie",
+    "name": "Editions Métailié",
+    "url": "https://editions-metailie.com/feed/",
+    "format": "rss",
+    "language": "fr-FR",
+    "region": "global",
+    "sourceFamilyId": "editions-metailie",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://editions-metailie.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://editions-metailie.com/chronique/lhumanite/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:05.542Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "editions-metailie",
+    "source": {
+      "name": "Editions Métailié",
+      "url": "https://editions-metailie.com/chronique/lhumanite/",
+      "language": "fr-FR"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "L'Humanité",
+    "publishedAt": "2020-04-29T15:33:06.000Z",
+    "description": "\"Le maître de l'art du conte chilien, emprisonné sous Pinochet, combattant pour la défense des Indiens et de la forêt amazonienne, est mort en Espagne du Covid-19.\" Lire la suite de l'article ici",
+    "discoveredAt": "2026-10-01T20:48:04.760Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://editions-metailie.com/chronique/lhumanite/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 60903,
+      "sha256": "c8cba4629757ea2b5efaa4daa37e7619786bc5f6937515f7cd7714da8665e965",
+      "accessedAt": "2026-10-01T20:48:05.540Z",
+      "headline": "L'Humanité - Editions Métailié",
+      "excerpt": "\"Le maître de l'art du conte chilien, emprisonné sous Pinochet, combattant pour la défense des Indiens et de la forêt amazonienne, est mort en Espagne du Covid-19.\" Lire la suite de l'article ici",
+      "publishedDates": [
+        {
+          "value": "2020-04-29T17:33:06+02:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2020-04-29T17:33:06+02:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2020-04-29T17:33:06+02:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "canonical": "https://editions-metailie.com/chronique/lhumanite/",
+      "language": "fr-FR",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:05.542Z",
+  "foundItems": [
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/blog/hommage-a-luis-sepulveda/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hommage à Luis Sepúlveda",
+      "publishedAt": "2022-05-18T09:56:26.000Z",
+      "description": "\"Vendredi 13 mai à Gijón, dans les Asturies, le nom de Luis Sepúlveda a été donné à une grande bibliothèque, et à cette occasion ses amis s’étaient rassemblés pour lui rendre hommage, 2 ans après qu’il a été victime du Covid. Nous n’avions pas pu nous revoir depuis 2 ans et nous nous sommes retrouvés... Lire la suite",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/blog/liberation/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Libération",
+      "publishedAt": "2020-04-29T15:36:29.000Z",
+      "description": "\"L'écrivain chilien est mort jeudi du Covid-19 à 70 ans, en Espagne. Emprisonné sous Pinochet avant de fuir la dictature, il s'était ensuite illustré pour son engagement pour l'écologie et les Indiens.\" Lire la suite de l'article ici",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/blog/le-tour-de-france-dolivier-truc/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le tour de France d’Olivier Truc",
+      "publishedAt": "2014-07-01T15:39:48.000Z",
+      "description": "En 2013 et 2014, suite au succès du Dernier Lapon, Olivier Truc a été invité, convié, accueilli, primé, célébré… un peu partout en France ! Il a pris soin de photographier chaque personne croisée, un libraire devant sa vitrine, une bibliothécaire, un lecteur heureux, des étudiants curieux… Extraits de son périple. Renaud de la... Lire la suite",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/chronique/lhumanite/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L'Humanité",
+      "publishedAt": "2020-04-29T15:33:06.000Z",
+      "description": "\"Le maître de l'art du conte chilien, emprisonné sous Pinochet, combattant pour la défense des Indiens et de la forêt amazonienne, est mort en Espagne du Covid-19.\" Lire la suite de l'article ici",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/chronique/le-progres/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Progrès",
+      "publishedAt": "2020-04-29T15:29:44.000Z",
+      "description": "\"Figure emblématique de la culture chilienne, Luis Sepúlveda est décédé, emporté par le Covid-19 à l’âge de 70 ans.\" Lire la suite de l'article ici",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/chronique/le-monde/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Monde",
+      "publishedAt": "2020-04-29T15:26:18.000Z",
+      "description": "\"Lors de la soirée célébrant les 40 ans des éditions Métailié, le 21 octobre 2019, Luis Sepulveda, l'auteur fétiche de la maison, avait été très chaleureusement applaudi. Un lien particulier unissait le romancier et cinéaste chilien, né le 4 octobre 1949 à Ovalle, au nord de Santiago, et la maison fondée par Anne-Marie Métailié -... Lire la suite",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/chronique/la-croix-2/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Croix",
+      "publishedAt": "2020-04-29T13:13:08.000Z",
+      "description": "\"Luis Sepúlveda, la générosité pour les opprimés\" Lire l'article ici",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/chronique/le-graffiti-de-chiotte-ancetre-du-blog/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le graffiti de chiotte ancêtre du blog",
+      "publishedAt": "2014-04-21T21:16:44.000Z",
+      "description": "Le graffiti de chiotte ancêtre du blog SAMEDI Mon pingouin dans ta gueule Début des vacances, les enfants tournent déjà en rond ; on va au cinéma. Steven, de l'autre côté de l'Atlantique a pris la même décision. Il fait monter tout son petit monde dans son énorme 4X4 pour aller voir la Marche de... Lire la suite",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/chronique/la-croix/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LA CROIX",
+      "publishedAt": "2014-04-21T21:16:44.000Z",
+      "description": "LA CROIX, article du 25 juin 2010 : à lire ici",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "source": {
+        "name": "Editions Métailié",
+        "url": "https://editions-metailie.com/chronique/etudes/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ETUDES",
+      "publishedAt": "2014-04-21T21:16:44.000Z",
+      "description": "ETUDES, à lire ici",
+      "discoveredAt": "2026-10-01T20:48:04.760Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "10bf9644f63f5ff38b414f086d69762f256bd846b9f2dd075e62c0445fe7dd2a"
+}

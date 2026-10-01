@@ -1,0 +1,20 @@
+{
+  "sourceId": "nuk-uni-lj-si",
+  "name": "National and University Library of Slovenia",
+  "entryUrl": "https://www.nuk.uni-lj.si/eng/",
+  "countryCodes": [
+    "SI"
+  ],
+  "coverageCountryCodes": [
+    "SI"
+  ],
+  "attemptedAt": "2026-10-01T20:44:10.959Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.nuk.uni-lj.si/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

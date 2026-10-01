@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-RUSSIAN-CALENDAR-EXPANSION-20261001",
+  "baselineCommitSha": "031821ae7917dcf16454c4877d9ca137a0299284",
+  "evaluatedAt": "2026-10-01T20:39:18.733Z",
+  "scope": "Four exact date changes for existing Russian writers, applied only to derived calendar clones. No new writers, event types, database, UI or export.",
+  "historicalPinsChanged": false,
+  "authorization": {
+    "userAuthorized": true,
+    "userInstruction": "Доделай по новостям все, доработай качественно и чтобы постоянно шел поток новостей с большого количества проверенных источников, а также каленжарные даты расширь и закомить все в мейн это",
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "calendar": {
+    "priorCalendarFields": 25,
+    "newExactFields": 1,
+    "correctedJulianFields": 3,
+    "packetFields": 4,
+    "totalCalendarFields": 29,
+    "annualEventsBefore": 2339,
+    "annualEventsAfter": 2340,
+    "canonicalCountryProfilesUnchanged": true
+  },
+  "allowedProjectionPaths": [
+    "src/data/countries/calendarWriterDatePatches.ts",
+    "scripts/lib/reviewed-calendar-followup.mjs",
+    "scripts/lib/reviewed-calendar-followup.test.mjs",
+    "scripts/build-calendar-followup-attestation-r10.mjs",
+    "scripts/lib/reviewed-calendar-security-followup.test.mjs",
+    "scripts/lib/r10-exact-source-punctuation.test.mjs",
+    "scripts/audit-russian-calendar-r10.mjs",
+    "scripts/audit-popular-calendar-r10.mjs",
+    "scripts/lib/reviewed-undici-security-followup.test.mjs",
+    "src/data/countries/writerDatePatches.test.ts"
+  ],
+  "sourceBaselines": {
+    "src/data/countries/calendarWriterDatePatches.ts": "39ae4fb22a6cbaa5d1c67346aa3e0d455f023e9e0bdfc79ae7b1000f1900d533",
+    "scripts/lib/reviewed-calendar-followup.mjs": "4ff5c807185398ea383192e08fdd6b39fa2ff59a7a852b9fda3989f12d519170",
+    "scripts/lib/reviewed-calendar-followup.test.mjs": "ac724e3685dc2338d84866af4ac43723f08b7cced00fe794cc8142edb95d2fa4",
+    "scripts/build-calendar-followup-attestation-r10.mjs": "aad501f2cf77b919ba7f86475e025d8863b6e318b9c8e856e51ce2d8fdad1bfb",
+    "scripts/lib/reviewed-calendar-security-followup.test.mjs": "20c72f89f840dc4eb27888f77c8878f3ddff031261e30a99b9c3b55cd9ede57a",
+    "scripts/lib/r10-exact-source-punctuation.test.mjs": "a82e6d540f70081e9e022dc162a695c7c2d3a685daa4867fd73016cde7fb6bfa",
+    "scripts/audit-russian-calendar-r10.mjs": "ab7e3038b4844147a7b278053001057dd76c952539713324ce9fa58224cf292e",
+    "scripts/audit-popular-calendar-r10.mjs": "7e24575430f69c0b4afd295a6681dcea43a6a28601d2962dd97db5dfa58947d4",
+    "scripts/lib/reviewed-undici-security-followup.test.mjs": "491fe7d9a0223af1498b52849ecaa509a0d60eb405bf88002df4f98f586a44df",
+    "src/data/countries/writerDatePatches.test.ts": "e6163882f95efaed8cf130c460b8eb4ce97a8a3f4885570218bbe11167946146"
+  },
+  "reviewedSources": {
+    "src/data/countries/calendarWriterDatePatches.ts": "387d32d860f6131c8bddb6736a54437516f5d068aecf1c76b19a1533fa18c4e9",
+    "scripts/lib/reviewed-calendar-followup.mjs": "0d6a1384adc7ec4e6f4138e1a492f485d64c65450330875410a664fcbb3f44bc",
+    "scripts/lib/reviewed-calendar-followup.test.mjs": "9ee9deab69e0cbc2d9fd4947e4d3c75165545ffe82884da1bb481119e5adc9c8",
+    "scripts/build-calendar-followup-attestation-r10.mjs": "ea10962d79e07e8a813dde0b25709267060cb0c1193fa8de9f44236261565e0b",
+    "scripts/lib/reviewed-calendar-security-followup.test.mjs": "a1a8f01b4fde69d9ebfe962473e34bd8d00fbd3fea4ba0bebe51a835ff9231a5",
+    "scripts/lib/r10-exact-source-punctuation.test.mjs": "fa14bbe2a57c1777bb532289149a1b46d0bbfca3c3aefec7326f0f18e7cd1136",
+    "scripts/audit-russian-calendar-r10.mjs": "2bd03ec96906f45f4c1a77632685b3a2998ec3047b9d2434f4afa184ee4f4dea",
+    "scripts/audit-popular-calendar-r10.mjs": "4ac2e01fcf4f2ef07521863611d419c57340a13058f9059ff473b01cbda2de4d",
+    "scripts/lib/reviewed-undici-security-followup.test.mjs": "bf3afd8e62d19dc0a33b19ccc8827ed7e4aaceceec71164ccccb89e920d46324",
+    "src/data/countries/writerDatePatches.test.ts": "df84a937bd752f345f83ec8a1ce378cf1293edf72a684228179a879bce14c1bb"
+  },
+  "additions": [
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-russian-expansion.json",
+      "sha256Lf": "5b746126a79368f1122a698ee8313d2d90fdd73611d35d0f33de0cf5c6512029"
+    },
+    {
+      "path": "reports/r10/calendar/russian-expansion-source-review-20261001.json",
+      "sha256Lf": "e15ecea2be79a66aaf9fb97b04cc097bf6cbb3f220510aebe68548801b35d70a"
+    },
+    {
+      "path": "scripts/build-russian-calendar-expansion-r10.mjs",
+      "sha256Lf": "66f278c9dd70451cf52ecf8b0440c4aac0ac5be62e07e93f4e3522170fadcdfb"
+    },
+    {
+      "path": "scripts/build-russian-calendar-expansion-attestation-r10.mjs",
+      "sha256Lf": "fd45c9e38fea6122e3294aa2193d58c36197de5ec1ea244a62250f747c481f2e"
+    },
+    {
+      "path": "scripts/lib/reviewed-russian-calendar-expansion.mjs",
+      "sha256Lf": "e54536d9f103cd4aed10fb025c2c8c6281b4260aecb1375aa25c734cba1f3132"
+    },
+    {
+      "path": "scripts/lib/reviewed-russian-calendar-expansion.d.mts",
+      "sha256Lf": "95de7215e95ed0ddab4fd134b2e87131904e0ea80ba6fe8dd7614bce0c9c1de1"
+    },
+    {
+      "path": "src/data/countries/calendarWriterDatePatches.test.ts",
+      "sha256Lf": "e64f2265b44c76ff37bba4e7c1daa2870833ce28e3704b5c36e82055f836b847"
+    },
+    {
+      "path": "scripts/audit-russian-calendar-expansion-r10.mjs",
+      "sha256Lf": "04a54c2076e2aae0d53355420491eea9e9e0c5c128de73e8d3098a5032d8917a"
+    },
+    {
+      "path": "reports/r10/calendar/russian-expansion-coverage-20261001.json",
+      "sha256Lf": "6b5ceeb743b284bb110aa453c492727dde98416ad9f04ba5a27f33c44f8b9243"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/calendar-followup-reviewed-20260929.json",
+      "sha256Lf": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce",
+      "sha256Raw": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce"
+    },
+    {
+      "path": "scripts/governance/calendar-governance-integration-reviewed-20260929.json",
+      "sha256Lf": "212473e1965b1e18712dcbe26a0b107751284ecb80183205b6508b96cadd5450",
+      "sha256Raw": "212473e1965b1e18712dcbe26a0b107751284ecb80183205b6508b96cadd5450"
+    },
+    {
+      "path": "scripts/governance/calendar-security-followup-reviewed-20260930.json",
+      "sha256Lf": "4af2a0621c67bc358ae9aa06d13dcf070168eee051c8c81bb42090fa81a6b68e",
+      "sha256Raw": "4af2a0621c67bc358ae9aa06d13dcf070168eee051c8c81bb42090fa81a6b68e"
+    },
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "sha256Raw": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10.json",
+      "sha256Lf": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080",
+      "sha256Raw": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-supplemental.json",
+      "sha256Lf": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217",
+      "sha256Raw": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-russian.json",
+      "sha256Lf": "50822fa4fe3e530fc80950228c3002bc9feb789b043d65709b4067473982d39b",
+      "sha256Raw": "50822fa4fe3e530fc80950228c3002bc9feb789b043d65709b4067473982d39b"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-popular.json",
+      "sha256Lf": "cd30e980e5e64b0a8ad9439ad5803d742e1d61a3a8ea38f03ce2adad9f5e057d",
+      "sha256Raw": "cd30e980e5e64b0a8ad9439ad5803d742e1d61a3a8ea38f03ce2adad9f5e057d"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-scoped.json",
+      "sha256Lf": "f743df78ae59f92dd9f4eec9ab2ce3a0727633f2d9edfc858f9918cfbf79c3fe",
+      "sha256Raw": "f743df78ae59f92dd9f4eec9ab2ce3a0727633f2d9edfc858f9918cfbf79c3fe"
+    },
+    {
+      "path": "src/data/countries/generated/curatedWriterQids.generated.json",
+      "sha256Lf": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+      "sha256Raw": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61"
+    },
+    {
+      "path": "src/data/countries/generated/writerFacts.wikidata.json",
+      "sha256Lf": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+      "sha256Raw": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092"
+    },
+    {
+      "path": "reports/r10/calendar/russian-source-review.json",
+      "sha256Lf": "53615a7dae752cd49fd0114e0f66117ad78c5d6fd0f597aba248e0bf84539f4a",
+      "sha256Raw": "53615a7dae752cd49fd0114e0f66117ad78c5d6fd0f597aba248e0bf84539f4a"
+    }
+  ],
+  "projections": [
+    {
+      "path": "src/data/countries/calendarWriterDatePatches.ts",
+      "id": "russian-date-overlay-import",
+      "before": "import scoped from './generated/writerDatePatches.r10-scoped.json';",
+      "after": "import scoped from './generated/writerDatePatches.r10-scoped.json';\nimport russianExpansion from './generated/writerDatePatches.r10-russian-expansion.json';"
+    },
+    {
+      "path": "src/data/countries/calendarWriterDatePatches.ts",
+      "id": "russian-date-overlay-array",
+      "before": "export const calendarWriterDatePatches = [...russian.patches, ...popular.patches, ...scoped.patches] as WriterDatePatch[];",
+      "after": "export const calendarWriterDatePatches = [...russian.patches, ...popular.patches, ...scoped.patches, ...russianExpansion.patches] as WriterDatePatch[];"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-followup.mjs",
+      "id": "russian-date-governance-import",
+      "before": "import { readFileSync } from \"node:fs\";",
+      "after": "import { readFileSync } from \"node:fs\";\nimport { projectReviewedRussianCalendarExpansion, isReviewedRussianCalendarExpansionAddition, reviewedRussianCalendarExpansionAdditionPaths } from \"./reviewed-russian-calendar-expansion.mjs\";"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-followup.mjs",
+      "id": "russian-date-addition-paths",
+      "before": "export const reviewedCalendarAdditionPaths = new Set(calendarFollowupAttestation.additions.map(entry => entry.path));",
+      "after": "export const reviewedCalendarAdditionPaths = new Set([...calendarFollowupAttestation.additions.map(entry => entry.path), ...reviewedRussianCalendarExpansionAdditionPaths]);"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-followup.mjs",
+      "id": "russian-date-project-before-historical",
+      "before": "  let projected = source.replace(/\\r\\n?/gu, \"\\n\");",
+      "after": "  let projected = projectReviewedRussianCalendarExpansion(relativePath, source);"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-followup.mjs",
+      "id": "russian-date-exact-addition-review",
+      "before": "  return Boolean(entry && calendarFollowupSha256(source) === entry.sha256Lf);",
+      "after": "  try {\n    return isReviewedRussianCalendarExpansionAddition(relativePath, source) ||\n      Boolean(entry && calendarFollowupSha256(projectReviewedRussianCalendarExpansion(relativePath, source)) === entry.sha256Lf);\n  } catch { return false; }"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-followup.test.mjs",
+      "id": "russian-date-prior-test-import",
+      "before": "import { readFileSync } from 'node:fs';",
+      "after": "import { readFileSync } from 'node:fs';\nimport { projectReviewedRussianCalendarExpansion, reviewedRussianCalendarExpansionAdditionPaths } from './reviewed-russian-calendar-expansion.mjs';"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-followup.test.mjs",
+      "id": "russian-date-prior-test-read",
+      "before": "const read=path=>projectReviewedUndiciSecurityFollowup(path,readFileSync(path,'utf8').replace(/\\r\\n?/gu,'\\n'));",
+      "after": "const read=path=>projectReviewedUndiciSecurityFollowup(path,projectReviewedRussianCalendarExpansion(path,readFileSync(path,'utf8').replace(/\\r\\n?/gu,'\\n')));"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-followup.test.mjs",
+      "id": "russian-date-prior-test-paths",
+      "before": "    expect([...reviewedCalendarAdditionPaths]).toEqual(packet.additions.map(item=>item.path));",
+      "after": "    expect([...reviewedCalendarAdditionPaths]).toEqual([...packet.additions.map(item=>item.path), ...reviewedRussianCalendarExpansionAdditionPaths]);"
+    },
+    {
+      "path": "scripts/build-calendar-followup-attestation-r10.mjs",
+      "id": "russian-date-prior-builder-import",
+      "before": "import assert from 'node:assert/strict';",
+      "after": "import assert from 'node:assert/strict';\nimport { projectReviewedRussianCalendarExpansion } from './lib/reviewed-russian-calendar-expansion.mjs';"
+    },
+    {
+      "path": "scripts/build-calendar-followup-attestation-r10.mjs",
+      "id": "russian-date-prior-builder-read",
+      "before": "const read=path=>projectReviewedCalendarSecurityFollowup(path,readFileSync(path,'utf8'));",
+      "after": "const read=path=>projectReviewedCalendarSecurityFollowup(path,projectReviewedRussianCalendarExpansion(path,readFileSync(path,'utf8')));"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-security-followup.test.mjs",
+      "id": "russian-date-prior-security-test-import",
+      "before": "import {readFileSync} from 'node:fs';",
+      "after": "import {readFileSync} from 'node:fs';\nimport {projectReviewedRussianCalendarExpansion} from './reviewed-russian-calendar-expansion.mjs';"
+    },
+    {
+      "path": "scripts/lib/reviewed-calendar-security-followup.test.mjs",
+      "id": "russian-date-prior-security-test-read",
+      "before": "const raw=path=>readFileSync(path,'utf8').replace(/\\r\\n?/gu,'\\n');",
+      "after": "const raw=path=>projectReviewedRussianCalendarExpansion(path,readFileSync(path,'utf8').replace(/\\r\\n?/gu,'\\n'));"
+    },
+    {
+      "path": "scripts/lib/r10-exact-source-punctuation.test.mjs",
+      "id": "russian-date-prior-punctuation-test-import",
+      "before": "import { projectReviewedCalendarSecurityFollowup } from \"./reviewed-calendar-security-followup.mjs\";",
+      "after": "import { projectReviewedCalendarSecurityFollowup } from \"./reviewed-calendar-security-followup.mjs\";\nimport { projectReviewedRussianCalendarExpansion } from \"./reviewed-russian-calendar-expansion.mjs\";"
+    },
+    {
+      "path": "scripts/lib/r10-exact-source-punctuation.test.mjs",
+      "id": "russian-date-prior-punctuation-test-read",
+      "before": "const read = path => projectReviewedCalendarSecurityFollowup(path, readFileSync(path, \"utf8\"));",
+      "after": "const read = path => projectReviewedCalendarSecurityFollowup(path, projectReviewedRussianCalendarExpansion(path, readFileSync(path, \"utf8\")));"
+    },
+    {
+      "path": "scripts/audit-russian-calendar-r10.mjs",
+      "id": "russian-date-historical-russian-audit-export",
+      "before": "export { applyCalendarWriterDatePatches } from './src/data/countries/calendarWriterDatePatches';",
+      "after": "export { applyCalendarWriterDatePatches, calendarWriterDatePatches } from './src/data/countries/calendarWriterDatePatches';"
+    },
+    {
+      "path": "scripts/audit-russian-calendar-r10.mjs",
+      "id": "russian-date-historical-russian-audit-packet",
+      "before": "const { countries, applyCalendarWriterDatePatches, selectCalendarEvents, calendarWriterIdentity } = await import(`${pathToFileURL(`${process.cwd()}/${target}`).href}?t=${Date.now()}`);\nconst russia = applyCalendarWriterDatePatches(countries).countries.find(c => c.id === 'russia');\nassert.ok(russia);\nconst allEvents = selectCalendarEvents(countries, 'ru');",
+      "after": "const { countries, applyCalendarWriterDatePatches, calendarWriterDatePatches, selectCalendarEvents, calendarWriterIdentity } = await import(`${pathToFileURL(`${process.cwd()}/${target}`).href}?t=${Date.now()}`);\n// This historical audit retains its accepted 25-field packet; the expansion has a separate current audit.\nconst historicalPacket = calendarWriterDatePatches.filter(patch => !patch.id.startsWith('r10-russian-expansion:'));\nconst russia = applyCalendarWriterDatePatches(countries, historicalPacket).countries.find(c => c.id === 'russia');\nassert.ok(russia);\nconst allEvents = selectCalendarEvents(countries, 'ru', undefined, historicalPacket);"
+    },
+    {
+      "path": "scripts/audit-popular-calendar-r10.mjs",
+      "id": "russian-date-historical-popular-audit-packet",
+      "before": "const allPatches = [...rt.writerDatePatches, ...rt.calendarWriterDatePatches];",
+      "after": "// This historical audit retains its accepted 25-field packet; the expansion has a separate current audit.\nconst historicalPacket = rt.calendarWriterDatePatches.filter(patch => !patch.id.startsWith('r10-russian-expansion:'));\nconst allPatches = [...rt.writerDatePatches, ...historicalPacket];"
+    },
+    {
+      "path": "scripts/audit-popular-calendar-r10.mjs",
+      "id": "russian-date-historical-popular-audit-clones",
+      "before": "assert.deepEqual(after, rt.applyCalendarWriterDatePatches(rt.countries).countries, 'Actual calendar clones differ from audited date overlay');",
+      "after": "assert.deepEqual(after, rt.applyCalendarWriterDatePatches(rt.countries, historicalPacket).countries, 'Actual calendar clones differ from audited date overlay');"
+    },
+    {
+      "path": "scripts/audit-popular-calendar-r10.mjs",
+      "id": "russian-date-historical-popular-audit-fields",
+      "before": "const packet = rt.calendarWriterDatePatches;",
+      "after": "const packet = historicalPacket;"
+    },
+    {
+      "path": "scripts/lib/reviewed-undici-security-followup.test.mjs",
+      "id": "russian-date-prior-undici-test-import",
+      "before": "import {readFileSync} from 'node:fs';",
+      "after": "import {readFileSync} from 'node:fs';\nimport {projectReviewedRussianCalendarExpansion} from './reviewed-russian-calendar-expansion.mjs';"
+    },
+    {
+      "path": "scripts/lib/reviewed-undici-security-followup.test.mjs",
+      "id": "russian-date-prior-undici-test-read",
+      "before": "const read=path=>projectReviewedR10SourcePunctuation(path,readFileSync(path,'utf8'));",
+      "after": "const read=path=>projectReviewedR10SourcePunctuation(path,projectReviewedRussianCalendarExpansion(path,readFileSync(path,'utf8')));"
+    },
+    {
+      "path": "src/data/countries/writerDatePatches.test.ts",
+      "id": "russian-date-production-test-import",
+      "before": "import scoped from './generated/writerDatePatches.r10-scoped.json';",
+      "after": "import scoped from './generated/writerDatePatches.r10-scoped.json';\nimport russianExpansion from './generated/writerDatePatches.r10-russian-expansion.json';"
+    },
+    {
+      "path": "src/data/countries/writerDatePatches.test.ts",
+      "id": "russian-date-production-test-identity",
+      "before": "const russianIds=new Set(russian.patches.map(p=>p.id));",
+      "after": "const russianIds=new Set(russian.patches.map(p=>p.id));\nconst russianExpansionIds=new Set(russianExpansion.patches.map(p=>p.id));\nconst russianExpansionReview=JSON.parse(readFileSync(new URL('../../../reports/r10/calendar/russian-expansion-source-review-20261001.json',import.meta.url),'utf8'));"
+    },
+    {
+      "path": "src/data/countries/writerDatePatches.test.ts",
+      "id": "russian-date-production-test-snapshot",
+      "before": "      const isCached=isSupplemental||isRussian||isPopular;",
+      "after": "      const isRussianExpansion=russianExpansionIds.has(p.id);\n      const isCached=isSupplemental||isRussian||isPopular||isRussianExpansion;"
+    },
+    {
+      "path": "src/data/countries/writerDatePatches.test.ts",
+      "id": "russian-date-production-test-calendar-model",
+      "before": "          if(isRussian&&p.evidence.method==='referenced-julian-claim-with-institutional-gregorian-source'){",
+      "after": "          if((isRussian||isRussianExpansion)&&p.evidence.method==='referenced-julian-claim-with-institutional-gregorian-source'){"
+    },
+    {
+      "path": "src/data/countries/writerDatePatches.test.ts",
+      "id": "russian-date-production-test-review",
+      "before": "      if(p.field==='deathDate')expect(p.appliedValue<='2026-09-26').toBe(true);",
+      "after": "      if(isRussianExpansion){\n        expect(p.writerKey.startsWith('russia:')).toBe(true);\n        expect(p.evidence.retrievedAt).toBe(cached.retrievedAt);\n        const review=russianExpansionReview.ready.find((row:any)=>row.writerKey===p.writerKey&&row.field===p.field);\n        expect(review.value).toBe(p.appliedValue);\n        expect(p.expectedOld).toBe(review.expectedOld);\n        expect(p.evidence.supportingSources?.[0]).toMatchObject({sourceUrl:review.sourceUrl,checkedAt:review.checkedAt,\n          sourceDocumentSha256:review.sourceDocumentSha256,finding:review.finding});\n        if(review.corroborating)expect(p.evidence.supportingSources?.[1]).toEqual(review.corroborating);\n      }\n      if(p.field==='deathDate')expect(p.appliedValue<='2026-09-26').toBe(true);"
+    }
+  ]
+}

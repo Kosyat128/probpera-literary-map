@@ -1,0 +1,2623 @@
+{
+  "sourceId": "john-murray",
+  "name": "John Murray",
+  "entryUrl": "https://www.johnmurraypress.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:56:24.768Z",
+  "requests": [
+    {
+      "url": "https://www.johnmurraypress.co.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 283260,
+      "sha256": "f94bb0caa560208c6fe0cb55dfb6e75ebc7d6d348e6fc9fcd021a222660727d6",
+      "accessedAt": "2026-10-01T20:56:26.219Z"
+    },
+    {
+      "url": "https://www.johnmurraypress.co.uk/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1537374,
+      "sha256": "592852563af933b85b2e8d947f4373adb22d8f28cd65ee69dda55ed3c2a52682",
+      "accessedAt": "2026-10-01T20:56:27.662Z"
+    },
+    {
+      "url": "https://www.johnmurraypress.co.uk/crime-files/2026/02/17/30149680/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 172683,
+      "sha256": "c5e0a2ae538dff9947a7dcf31dccc0eed00e896d095e89a2bc8fad0f7658832f",
+      "accessedAt": "2026-10-01T20:56:28.447Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.johnmurraypress.co.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 141,
+    "sha256": "2004bd7edbb8c2ffc11ba81393ff9d99c36c342a2e2984bd14141a37ec1dc18a",
+    "accessedAt": "2026-10-01T20:56:25.304Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "john-murray",
+    "name": "John Murray",
+    "url": "https://www.johnmurraypress.co.uk/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "john-murray",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.johnmurraypress.co.uk"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.johnmurraypress.co.uk/crime-files/2026/02/17/30149680/"
+    ],
+    "verifiedAt": "2026-10-01T20:56:28.452Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 128,
+  "literaryCandidateCount": 124,
+  "sample": {
+    "sourceId": "john-murray",
+    "source": {
+      "name": "John Murray",
+      "url": "https://www.johnmurraypress.co.uk/crime-files/2026/02/17/30149680/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Bay Tales x CrimeFiles Book Bundle Prize Draw",
+    "publishedAt": "2026-02-17T22:22:04.000Z",
+    "description": "Enter the CrimeFiles x Bay Tales prize draw to be in with a chance of winning a stack of new and upcoming books from the Crime/Thriller reading community across Hodder & Stoughton, Headline and Quercus. T&C’s can be found here <a href=\"https://hachettebookgroup.formstack.com/forms/crime_files_x_bay_tales_prize_draw\" title=\"Online Form\">Online Form - Crime Files x Bay Tales Prize Draw</a>",
+    "discoveredAt": "2026-10-01T20:56:27.675Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.johnmurraypress.co.uk/crime-files/2026/02/17/30149680/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 172683,
+      "sha256": "c5e0a2ae538dff9947a7dcf31dccc0eed00e896d095e89a2bc8fad0f7658832f",
+      "accessedAt": "2026-10-01T20:56:28.447Z",
+      "headline": "Bay Tales x CrimeFiles Book Bundle Prize Draw",
+      "excerpt": "Enter the CrimeFiles x Bay Tales prize draw to be in with a chance of winning a stack of new and upcoming books from the Crime/Thriller reading community across Hodder & Stoughton, Headline and Quercus. T&C’s can be found here <a href=\"https://hachettebookgroup.formstack.com/forms/crime_files_x_bay_tales_prize_draw\" title=\"Online Form\">Online Form - Crime Files x Bay Tales Prize Draw</a> Share Fac",
+      "publishedDates": [
+        {
+          "value": "2026-02-17T22:22:04+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.hachette.co.uk/crime-files/2026/02/17/30149680/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:56:28.452Z",
+  "foundItems": [
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/crime-files/2026/02/17/30149680/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bay Tales x CrimeFiles Book Bundle Prize Draw",
+      "publishedAt": "2026-02-17T22:22:04.000Z",
+      "description": "Enter the CrimeFiles x Bay Tales prize draw to be in with a chance of winning a stack of new and upcoming books from the Crime/Thriller reading community across Hodder & Stoughton, Headline and Quercus. T&C’s can be found here <a href=\"https://hachettebookgroup.formstack.com/forms/crime_files_x_bay_tales_prize_draw\" title=\"Online Form\">Online Form - Crime Files x Bay Tales Prize Draw</a>",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/authors/2025/03/05/author-sue-hincenbergs-reveals-the-story-behind-the-retirement-plan-our-most-entertaining-debut-of-2025/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author Sue Hincenbergs Reveals The Story Behind The Retirement Plan - our MOST ENTERTAINING DEBUT of 2025",
+      "publishedAt": "2025-03-05T10:20:37.000Z",
+      "description": "Click to access BEHIND-THE-BOOK-THE-RETIREMENT-PLAN-1.pdf You can pre-order a copy of The Retirement Plan here. The Retirement Plan by Sue Hincenbergs Amazon Blackwell's Bookshop.org Foyles Hive Waterstones TGJones Wordery",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/2024/08/14/people-who-like-dogs-like-people-who-like-dogs-bookshop-book-cover-recreation-competition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "People Who Like Dogs Like People Who Like Dogs bookshop book cover recreation competition",
+      "publishedAt": "2024-08-14T14:35:14.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/crime-files/2026/03/03/crime-files-x-harrogate-prize-draw/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Crime Files x Harrogate Prize Draw",
+      "publishedAt": "2026-03-03T14:52:31.000Z",
+      "description": "Enter the Crime Files x Harrogate prize draw to be in with a chance of winning a stack of new and upcoming books from the Crime/Thriller reading community across Hodder & Stoughton, Headline and Quercus. T&C’s can be found here <a href=\"https://hachettebookgroup.formstack.com/forms/harrogate_x_crime_files_prize_draw\" title=\"Online Form\">Online Form - Harrogate x Crime Files Prize Draw</a>",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/audio-books/2025/06/16/27811312/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Benefactors - Audiobook and Order",
+      "publishedAt": "2025-06-16T13:11:27.000Z",
+      "description": "Follow the link below to listen to an exclusive extract from the audiobook of The Benefactors, which features clips of the first person anonymous interludes that make up the polyphonic novel. ORDER THE BENEFACTORS HERE: https://lnk.to/TheBenefactors In The Benefactors we meet Frankie, Miriam and Bronagh \u2013 very different women but all mothers to 18-year-old boys. Glamorous Frankie, now married to …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2025/03/13/mick-herron-zoe-boehm-reissues-prize-draw/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mick Herron Zoë Boehm reissues Prize Draw",
+      "publishedAt": "2025-03-13T15:29:42.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/2025/02/28/jmp-10k-prize-draw-tcs/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "JMP 10k Prize Draw T&C’s",
+      "publishedAt": "2025-02-28T09:48:58.000Z",
+      "description": "Terms and conditions",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/2025/01/15/john-murray-one-new-year-better-you-prize-competition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Murray One New Year Better You Prize Competition",
+      "publishedAt": "2025-01-15T15:47:00.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2024/11/19/win-robert-gold-books/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN Robert Gold Books!",
+      "publishedAt": "2024-11-19T12:44:56.000Z",
+      "description": "To celebrate the upcoming publication of Ten Seconds by bestselling author Robert Gold, we’re giving you the chance to win all three of his books in the Ben Haddley series; Twelve Secrets, Eleven Liars, and Ten Seconds. To enter, simply like, comment and share the post on the Crime Vault Facebook page. Start date: 25th November 2024 End date: 5th December 2024 TERMS & CONDITIONS 1. This is a comp…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2024/11/13/good-with-money-by-emma-edwards-pre-order-prize-draw/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Good With Money by Emma Edwards pre-order prize draw",
+      "publishedAt": "2024-11-13T16:56:03.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2024/10/15/win-a-spooktacular-bundle-of-books-for-halloween/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN a Spooktacular Bundle of Books for Halloween",
+      "publishedAt": "2024-10-15T10:18:52.000Z",
+      "description": "To celebrate the Crime Vault’s favourite time of year we’re offering you the chance to win a brilliant bundle of our most chilling books! To be in with a chance of winning simply like, comment and share the post on the Crime Vault post on Facebook. Open date: 15th October 2024 Closing date: 31st October 2024 TERMS & CONDITIONS 1. This is a competition for one person to win a bundle of books, incl…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2023/12/06/erin-green-shares-her-new-christmas-tradition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Erin Green shares her new Christmas tradition. . .",
+      "publishedAt": "2023-12-06T12:58:16.000Z",
+      "description": "For me, Christmas officially begins at home on Christmas Eve. All preparations such as gift wrapping, delivery drop-offs to friends, food shopping or last-minute bulk buying of big bottles of Baileys liqueur has to be completed by the 23rd. If it hasn’t crossed our doorstep by that date. . .we can live without it! Such measures came into play after ‘lockdown’, when I admitted that my love of Chri…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/10/18/john-murray-press-fiction-zine-giveaway-2024/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Murray Press Fiction Zine Giveaway 2024",
+      "publishedAt": "2023-10-18T10:58:39.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/cressida-cowell-posts/2023/05/17/how-to-train-your-dragon-20th-anniversary-edition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How to Train Your Dragon 20th Anniversary edition",
+      "publishedAt": "2023-05-17T09:08:11.000Z",
+      "description": "We are thrilled to reveal the roar-somely shiny, dragon-tastic 20th anniversary edition of How to Train Your Dragon! This very special deluxe hardback not only features the original story but lots of exclusive bonus content, including a brand-new short story How to Train Your Hogfly. The ideal gift for existing fans or those coming fresh to the series. This one hits bookshops on the 8th June and …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/giveaways/2023/01/27/jmp-fiction-zine-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "JMP fiction zine giveaway",
+      "publishedAt": "2023-01-27T14:45:08.000Z",
+      "description": "Terms and conditions",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2022/09/27/basic-books-anniversary-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Basic Books anniversary giveaway",
+      "publishedAt": "2022-09-27T09:41:36.000Z",
+      "description": "TERMS & CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/sceptre-books/terms-and-conditions/2022/09/02/what-if-2-prize-draw/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What If? 2 prize draw",
+      "publishedAt": "2022-09-02T13:01:14.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2022/07/08/on-creating-dialogue-books/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On Creating Dialogue Books",
+      "publishedAt": "2022-07-08T10:51:19.000Z",
+      "description": "In 2009, Dialogue Books was created as a bookshop in the back of a tearoom in Berlin when I was 27 years old. I’d moved to Berlin for love and a desire to make an independent bookshop work in the birthplace of the printing press. I had £5k to my name, very little German, and a dream to live a simple yet engaging life drinking red wine and talking to readers about literature. My journey started as…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/2022/02/04/social-work-books-resources/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Social Work Books & Resources",
+      "publishedAt": "2022-02-04T16:17:30.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/authors/2026/02/13/read-an-extract-from-let-the-bad-times-roll-by-alice-slater/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read an extract from Let The Bad Times Roll by Alice Slater",
+      "publishedAt": "2026-02-13T12:46:20.000Z",
+      "description": "Follow this link to read an extract from Let The Bad Times Roll by Alice Slater READ HERE Coming in paperback on the 2nd of April 2026 and available to pre-order here",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2025/06/03/mick-herron-fathers-day-competition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MICK HERRON FATHER’S DAY COMPETITION",
+      "publishedAt": "2025-06-03T10:54:15.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2025/05/29/we-are-giving-away-three-proofs-of-what-the-night-brings-by-mark-billingham/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "We are giving away three proofs of What the Night Brings by Mark Billingham!",
+      "publishedAt": "2025-05-29T08:14:37.000Z",
+      "description": "Ahead of hardback publication of the shocking new thriller from the No.1. Sunday Times bestselling author, we have three proofs to give away. ‘Billingham only gets better’ MICHAEL CONNELLY ‘Sensational, masterful, sharp and shocking’ CHRIS WHITAKER ‘The best Tom Thorne novel yet’ MICK HERRON ‘One of crime fiction’s finest’ KARIN SLAUGHTER The targeted murder of four officers is only the first in …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2025/05/13/the-meaning-of-life-competition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Meaning of Life Competition",
+      "publishedAt": "2025-05-13T13:41:19.000Z",
+      "description": "To celebrate the publication of The Meaning of Life by James Bailey, we are giving away a special bundle of titles! One lucky reader will be in for a chance of winning a copy of The Meaning of Life by James Bailey, Good To See You by Francesca Hornak, and See the Stars by Eleanor Ray. Simply fill in the form below! Opening date: 13th May 2025 Closing date: 27th May 2025 <a href=\"https://hachetteb…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2025/04/22/the-expanded-earth-by-mikey-please-competition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Expanded Earth by Mikey Please Competition",
+      "publishedAt": "2025-04-22T15:47:27.000Z",
+      "description": "To celebrate the publication of The Expanded Earth by Mikey Please, we are giving you the chance to win one of five signed and numbered art prints of a selection of the book’s illustrations. Dark, witty, and wildly ambitious, BAFTA award-winning filmmaker Mikey Please guides us into The Expanded Earth, a high-stakes adventure packed with jeopardy and life-affirming beauty - a story that ultimatel…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2025/03/14/win-win-win-2/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN WIN WIN",
+      "publishedAt": "2025-03-14T12:24:48.000Z",
+      "description": "To celebrate the publication of Nine Hidden Lives (out April 10th), we’re delighted to offer readers the chance to win a bundle of books from the Ben Harper series including Twelve Secrets, Eleven Liars and Nine Hidden Lives. To enter simply like, share and comment on the Facebook post on The Crime Vault. Opening date: 17th March 2025 Closing date: 9th April 2025 TERMS & CONDITIONS 1. This is a c…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2025/02/19/win-a-neom-wellness-giftset/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN a Neom Wellness Gift Set",
+      "publishedAt": "2025-02-19T16:44:39.000Z",
+      "description": "We’re offering you the chance to win a Neom Wellness Gift Set when you pre-order a copy of Adaptability by Denise Lewis. If you haven’t yet pre-ordered, click on the link to do so! https://geni.us/adaptabilitydenise To enter, simply upload your receipt and fill in the short form below. Opening date: 20th February 2025 Closing date: 13th March 2025 <a href=\"https://hachettebookgroup.formstack.com/…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2025/02/12/the-charlie-method-pre-order-competition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Charlie Method Pre-Order Competition",
+      "publishedAt": "2025-02-12T12:09:56.000Z",
+      "description": "This is a prize draw for one lucky reader to win a set of beautiful bound copies of Elle Kennedy’s books: The Graham Effect, The Dixon Rule, and The Charlie Method. Everyone who enters will get a set of The Charlie Method character cards, and be entered into the prize draw. Entries open to UK residents only, aged 18+ with a valid receipt for proof of pre-order of The Charlie Method uploaded. Open…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2025/02/10/win-a-100-dunelm-voucher/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Win a £100 Dunelm Voucher",
+      "publishedAt": "2025-02-10T17:17:54.000Z",
+      "description": "To celebrate the upcoming publication of Other People’s Houses by bestselling author Clare Mackintosh, we’re offering you the chance to win a £100 voucher from Dunelm. Simply pre-order a copy of Other People’s Houses and you could be in with the chance to win this cool homeware prize. Open date: 11th February 2025 Closing date: 27th February 2025 <a href=\"https://hachettebookgroup.formstack.com/f…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2025/02/04/win-1-of-10-proofs/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN 1 of 10 PROOFS",
+      "publishedAt": "2025-02-04T10:19:44.000Z",
+      "description": "We’re giving away 10 proofs of The Retirement Plan by Sue Hincenbergs. We’ve teamed up with Goldsboro Books to offer you the chance to win one of our gorgeous proofs. The Retirement Plan is one of our biggest debut launches for 2025. Expect to howl with laughter and fall in love with a whole cast of characters while solving a mystery or two. Prepare to be entertained! Plus, you can pre-order a si…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2025/01/21/ana-huang-merch-giveaway-to-first-18-entrees/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ana Huang Merch Giveaway to First 18 Entrees",
+      "publishedAt": "2025-01-21T10:51:51.000Z",
+      "description": "Want to be in for a chance of winning exclusive Ana Huang Kings of Sin merch? The first 18 entrees will receive a standee and bookmarks! Simply fill in the form below. Opening date: 21st January 2025 Closing date: 22nd January 2025 UK and 18+ only <a href=\"https://hachettebookgroup.formstack.com/forms/ana_huang_kings_of_sin_merch_2\" title=\"Online Form\">Online Form - Ana Huang Kings of Sin Merch 2…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2024/12/17/ana-huang-merch-giveaway-to-first-50-entrees/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ana Huang Merch Giveaway to First 50 Entrees",
+      "publishedAt": "2024-12-17T11:45:23.000Z",
+      "description": "THIS GIVEAWAY IS NOW CLOSED. Want to be in for a chance of winning exclusive Ana Huang Kings of Sin merch? The first 50 entrees will receive a standee and bookmarks! Simply fill in the form below. Opening date: 17th December 2024 Closing date: 19th December 2024 UK and 18+ only Terms and Conditions This Giveaway is being organised by Little, Brown Book Group (the ‘Publisher’), Carmelite House, 50…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2024/12/10/25826704/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bad Drunk by Millie Mackintosh and Dr Ellie Cannon Pre-Order Competition",
+      "publishedAt": "2024-12-10T10:25:25.000Z",
+      "description": "Pre-order a copy of Bad Drunk by Millie Mackintosh and Dr Ellie Cannon from any retailer and you’ll receive a free ticket to an exclusive webinar with Millie Mackintosh and Dr Ellie Cannon on 13th January from 7-8pm. Simply upload your proof of purchase and fill in the short form below. We’ll then send you an invitation to the event via email, one week before the event. Opening date: 11th Decembe…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2024/12/09/win-signed-copies-by-mark-billingham/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN SIGNED COPIES BY MARK BILLINGHAM",
+      "publishedAt": "2024-12-09T10:28:06.000Z",
+      "description": "To celebrate the upcoming paperback publication of The Wrong Hands by Mark Billingham, we’re giving away two signed copies from the Detective Miller series. To enter simply like, share and comment on the Crime Vault Facebook page for a chance to win. Start date: 1st January 2025 End date: 16th January TERMS & CONDITIONS 1. This is a competition for two people to win paperback copies of The Last D…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2024/11/11/win-a-pair-of-free-ray-ban-aviator-sunglasses/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Win a Pair of Free Ray-Ban Aviator Sunglasses!",
+      "publishedAt": "2024-11-11T15:27:32.000Z",
+      "description": "[THIS COMPETITION IS NOW CLOSED.] To celebrate the publication of Captain de Havilland’s Moth by Alexander Norman, we’re offering one lucky reader the chance to win a pair of Ray-Ban Aviator sunglasses. Simply fill in the form below and you’ll be in with a chance to win. Opening date: 1st Dec 2024 Closing date: 5th February 2025 UK and 18+ only. Captain de Havilland’s Moth by Alexander Norman Ama…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2024/10/07/win-a-neom-christmas-candle/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN a Neom Christmas Candle",
+      "publishedAt": "2024-10-07T14:30:37.000Z",
+      "description": "To celebrate the publication of A Christmas Duet by Debbie Macomber, we’re offering one lucky reader the chance to win a festive candle from Neom. Simply like, share and comment on the Facebook page and you’ll be in with a chance to win. Opening date: 7th October 2024 Closing date: 31st October 2024 Terms and Conditions 1. This giveaway offers one winner the chance to win a festive candle from Ne…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/09/30/wars-of-the-roses-averted-again/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wars of the Roses Averted - Again",
+      "publishedAt": "2024-09-30T15:08:01.000Z",
+      "description": "The final round of the Vitality County Championship still had a few things to settle, but the weather meant that some of the potential drama ebbed away. To stay up, Lancashire needed to win and hope that they could overhaul Nottinghamshire. Only 26 overs of play were possible in the first two days at Worcester, where the home side were put in to bat. Worcestershire were reduced to 56 for seven, b…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/09/30/lancashire-fight-on-as-surrey-complete-title-hat-trick/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lancashire Fight On as Surrey Complete Title Hat-trick",
+      "publishedAt": "2024-09-30T15:05:22.000Z",
+      "description": "By the final day of the penultimate round, all attention was focused on Old Trafford, where defeat for Somerset would hand the title to Surrey, while defeat for Lancashire would mean relegation to the Second Division \u2013 an ultimate high-stakes match. Lancashire, put in to bat, had folded to 140 all out in just 40 overs on the first day, but then struck back with similar force to dismiss the visito…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2024/09/20/win-tommy-fury-merchandise/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN Tommy Fury Merchandise!",
+      "publishedAt": "2024-09-20T09:21:44.000Z",
+      "description": "To celebrate the upcoming publication of Lightning Can Strike Twice, we’re offering fans the chance to win a hoodie, cap and t-shirt from Tommy’s official TNT range. To enter, simply pre-order a copy of Lightning Can Strike and fill in the short form below. Start date: 20th September 2024 Deadline: 9th October 2024 [hbg-formstack embed=\"%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22https%…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/09/19/somerset-spin-their-way-to-a-thrilling-win-over-surrey/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Somerset Spin their Way to a Thrilling Win over Surrey",
+      "publishedAt": "2024-09-19T11:30:17.000Z",
+      "description": "The top-of-the-table clash between champions Surrey and Somerset at Taunton more than lived up to its billing in a dramatic match that left all to play for with two games remaining in the Vitality County Championship. Surrey had a comfortable lead in the title race and a weather forecast that suggested it might be tricky to get a full four days of play, so they knew a draw would suit them perfect…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/09/11/spirited-sri-lanka-win-at-the-oval-against-lacklustre-england/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Spirited Sri Lanka Win at The Oval Against Lacklustre England",
+      "publishedAt": "2024-09-11T09:22:26.000Z",
+      "description": "For the third Test, at The Oval, England looked to complete a clean sweep for the summer, winning six out of six Tests. They made just one change from Lord’s giving a debut to 6’7” Josh Hull of Leicestershire, who came in for Matthew Potts. Since the start of last summer, the left-arm paceman has played just nine Championship games for his county, taking 11 wickets at an average of 84.54, picking…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competitions/2024/09/10/win-jenny-eclair-tour-tickets/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN Jenny Eclair Tour Tickets",
+      "publishedAt": "2024-09-10T14:49:37.000Z",
+      "description": "To celebrate the upcoming publication of Jenny Eclair's memoir Jokes, Jokes, Jokes, we’re offering readers the chance to win tickets to Jenny’s brand new live tour in 2025! We’ve got 10 tickets in total to giveaway. To enter, simply pre-order a copy of Jokes, Jokes, Jokes, and enter the short form here… Start date: 11th September 2024 Closing date: 3rd October 2024 [hbg-formstack embed=\"%3Cscript…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/competition/2024/09/10/win-a-signed-copy-of-beyond-the-throne-by-kristian-nairn-plus-game-of-thrones-merchandise/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WIN a Signed Copy of Beyond the Throne by Kristian Nairn plus Game of Thrones Merchandise",
+      "publishedAt": "2024-09-10T11:12:40.000Z",
+      "description": "To celebrate the publication of Beyond the Throne by Kristian Nairn, out 24th September 2024, we’re offering readers the chance to win a signed copy and Game of Thrones merchandise worth over £100! The merchandise includes the official ‘Winter is Coming’ baseball cap, tote bag and hoodie. Simply pre-order a copy of Beyond the Throne in hardback, audio or ebook and fill in the form below for a cha…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/08/28/smith-shines-as-sri-lanka-fight-hard/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Smith Shines as Sri Lanka Fight Hard",
+      "publishedAt": "2024-08-28T14:06:01.000Z",
+      "description": "After a three-week break to accommodate The Hundred, England returned to Test cricket, with Sri Lanka the new opposition at Old Trafford. In their warm-up game against an inexperienced England Lions side featuring two players making their first-class debuts, the tourists had lost by seven wickets, which did not bode well for their chances. However, England were missing two key players through inj…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/08/28/surrey-on-fire-thanks-to-burns/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Surrey on Fire thanks to Burns",
+      "publishedAt": "2024-08-28T14:04:45.000Z",
+      "description": "After a gap dating back to 3 July, the Vitality County Championship returned, to the relief of many who felt that a seven-week pause at the height of the summer was too long. But the break in the season had done nothing to slow down Surrey’s relentless march towards a third successive champions’ pennant. If they achieve the hat-trick, they will become the first side to do this since Yorkshire in …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/08/01/wood-speeds-england-to-whitewash/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wood Speeds England to Whitewash",
+      "publishedAt": "2024-08-01T14:12:15.000Z",
+      "description": "After England’s series-clinching win at Trent Bridge, the selectors went for an unchanged side at Edgbaston, though some felt it might have been an opportunity to give Dillon Pennington a run-out. West Indies, on the other hand, made one change to their side, leaving out Kevin Sinclair (with a fractured forearm) and bringing back Gudakesh Motie, after he recovered being unwell for the second Test…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/07/23/england-wrap-up-the-series-with-all-round-brilliance/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "England Wrap up the Series with All-round Brilliance",
+      "publishedAt": "2024-07-23T15:05:29.000Z",
+      "description": "The post-Anderson era began at Trent Bridge, where the West Indies were desperate to improve on their efforts at Lord’s \u2013 in truth, it would have been hard for them to do worse. Unsurprisingly, England made only one change to their line-up, with Mark Wood coming in for Jimmy Anderson \u2013 it was the first home Test since 2012 that neither Anderson nor Stuart Broad had played (though the latter had t…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/07/23/andersons-swansong-outshone-by-atkinsons-debut/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anderson’s Swansong Outshone by Atkinson’s Debut",
+      "publishedAt": "2024-07-23T15:04:13.000Z",
+      "description": "England’s home summer of cricket began with the first Rothesay Test at Lord’s, with the West Indies looking to overturn a winless run at the Home of Cricket dating back to 1988. For the home side, there were two debutants, as Jamie Smith of Surrey was chosen as wicket-keeper, ahead of both Jonny Bairstow and Smith’s county team-mate Ben Foakes. Ironically, Foakes is Surrey’s first-choice keeper, …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/07/04/ians-blog-4th-july/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ian’s Blog 4th July",
+      "publishedAt": "2024-07-04T11:07:19.000Z",
+      "description": "The Day County Championship Cricket Proved Unbeatable There was little doubt which ground was the centre of attention for most \u2013 and it wasn’t the one that saw the top two face each other for the first time this summer. Instead it was the usually unheralded Trafalgar Road in Southport, where Jimmy Anderson made his first appearance of the summer, after it was announced earlier in the season that …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/06/27/kimbers-record-breaking-blast-falls-agonisingly-short/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kimber’s Record-breaking Blast Falls Agonisingly Short",
+      "publishedAt": "2024-06-27T09:36:15.000Z",
+      "description": "After a break of four weeks for the Vitality Blast, league-leaders and champions Surrey had had plenty of time to recover from their terrible defeat at the end of May. A trip to Worcester was probably just the tonic they needed, and when they were asked to bat they took full advantage, though not before skipper Rory Burns was dismissed in the first over. Dan Lawrence, with a career-best 175, was …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/05/28/hampshire-stun-surrey-with-record-breaking-win/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hampshire Stun Surrey with Record-breaking Win",
+      "publishedAt": "2024-05-28T16:27:47.000Z",
+      "description": "As the Vitality County Championship reached its midway point before the end of May, Surrey went into their fixture at the Rose Bowl full of confidence off the back of four consecutive wins (including an innings win over these same opponents last month), looking to reinforce their stranglehold on the title. With a top six who were all England internationals it was no surprise that they chose to ba…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/05/22/crawley-heroics-cant-stop-somerset/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Crawley Heroics Can’t Stop Somerset",
+      "publishedAt": "2024-05-22T15:13:25.000Z",
+      "description": "While the seventh round of the Vitality County Championship may have produced many close-fought, tense outcomes, that was not the case at The Oval, where Worcestershire chose to field first and quickfire 84 from Dan Lawrence was vital to see Surrey up to a total of 213. It proved more than enough as Dan Worrall took Championship-best figures of six for 22 to dismiss the visitors for 128. With a l…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/05/16/worcestershire-pile-up-huge-score-in-tribute-to-baker/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Worcestershire Pile Up Huge Score in Tribute to Baker",
+      "publishedAt": "2024-05-16T15:14:29.000Z",
+      "description": "For the sixth round of the Vitality County Championship, attention inevitably focused on Canterbury, where Worcestershire were the visitors, still rocked by the tragically early death of Josh Baker. In tribute, the Worcestershire shirts now carry the number 33 (Baker’s squad number) under the county badge. At all matches this week, there was a minute’s silence held in Baker’s memory before the ac…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/05/13/surrey-prove-pope-is-a-catcher/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Surrey Prove Pope is a Catcher",
+      "publishedAt": "2024-05-13T13:45:03.000Z",
+      "description": "There were just seven fixtures scheduled for the fourth round of the Vitality County Championship, and again the weather played a considerable role in many of the games \u2013 this April has certainly raised more questions than usual about starting the season this early. As recently as 2018, the first Championship game did not start until 13 April, but 30 years ago it was as late as 28 April. But it w…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/05/09/cricket-mourns-the-loss-of-josh-baker/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cricket Mourns the Loss of Josh Baker",
+      "publishedAt": "2024-05-09T11:23:05.000Z",
+      "description": "Events on the pitch this week were completely overshadowed by the sad news from Worcestershire that their spin bowler Josh Baker had died, just a few days short of his 21st birthday. Baker, who last season scored the runs that secured his team promotion back to Division One, was a popular figure within the camp and the news left followers of the game stunned. He’d been playing for the county seco…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/04/24/essex-lay-down-early-marker-in-championship-race/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Essex Lay Down Early Marker in Championship Race",
+      "publishedAt": "2024-04-24T13:07:34.000Z",
+      "description": "With the Dukes ball available to their bowlers, Essex had no hesitation in asking Lancashire to bat at Chelmsford. The only side to have won a match in the first two rounds immediately showed why they will be formidable challengers for the title this summer. Only a quickfire 32 not out from Will Williams helped the visitors up to a meagre total of 146, with Shane Snater doing most of the early da…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/04/18/records-tumble-as-runfests-all-end-in-draws/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Records Tumble as Runfests All End in Draws",
+      "publishedAt": "2024-04-18T13:26:19.000Z",
+      "description": "The second round of the Vitality County Championship saw some heavy scoring, as the batters made the most of facing the Kookaburra ball. Sadly, on the final day, the weather turned and some intriguingly balanced matches petered out in draws. Essex were the only side to win in the first round of fixtures, and they welcomed Kent to Chelmsford and chose to bat. Dean Elgar made his maiden century for…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/04/09/northeast-sets-new-landmark-at-the-home-of-cricket/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Northeast Sets New Landmark at the Home of Cricket",
+      "publishedAt": "2024-04-09T15:45:31.000Z",
+      "description": "After one of the wettest winters on record, it was no surprise that four of the nine Vitality County Championship fixtures failed to yield any play on the first day, but at least the competition could welcome a new sponsor, replacing London Victoria. One game that did get underway soon enough was at Trent Bridge, where Essex were put in to bat. Dane Paterson picked up the first five-wicket haul o…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2024/04/04/has-bazball-changed-championship-run-rates/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Has Bazball Changed Championship Run Rates?",
+      "publishedAt": "2024-04-04T10:16:39.000Z",
+      "description": "In this year’s Foreword, I commented that bowlers seemed to have bowled fewer maidens in 2023 than in 2022 \u2013 without fully checking that the facts supported my assertion. But now I can confirm that this was correct, at least as far as Division One went. So why might this have been? Tallying up the bowling figures for the eight counties that played in both seasons, so we’re comparing like with lik…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2024/03/15/world-sleep-day-twitter-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "World Sleep Day Twitter Giveaway",
+      "publishedAt": "2024-03-15T14:52:46.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2024/03/08/jmp-x-she-made-it-iwd-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "JMP X She Made It IWD giveaway",
+      "publishedAt": "2024-03-08T18:30:58.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2024/01/22/john-murray-one-new-year-new-you-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Murray One ‘New Year, New You?’ Giveaway",
+      "publishedAt": "2024-01-22T12:34:52.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2024/01/17/sleepless-publication-day-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sleepless Publication Day Giveaway",
+      "publishedAt": "2024-01-17T17:39:17.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/cookbook-confidential-blog/2023/11/03/quebecois-mussel-chowder-with-wine-pairings-from-margaret-rand/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Québécois Mussel Chowder with Wine Pairings from Margaret Rand",
+      "publishedAt": "2023-11-03T16:59:49.000Z",
+      "description": "'A thick bowl of chowder is spot on in winter. The New England versions, studded with corn or based on tomatoes, seem better for late summer and early autumn eating, but this recipe, from Qu.bec, can be downed when there is two feet of snow on the ground.' - Diana Henry, author of Roast Figs, Sugar Snow serves 4 as a main course 1kg (2lb 4oz) mussels 500ml (18fl oz) dry cider 30g (1oz) butter 2 l…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/10/12/justinian-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Justinian Giveaway",
+      "publishedAt": "2023-10-12T10:37:26.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/10/03/surrey-retain-title-despite-rose-bowl-defeat/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Surrey Retain Title Despite Rose Bowl Defeat",
+      "publishedAt": "2023-10-03T09:22:02.000Z",
+      "description": "For title contenders Essex and Surrey, the season did not end on the pitch as either would have hoped, yet it was favourites and holders Surrey who emerged triumphant in the end, finishing 20 points clear of their nearest rivals. Essex knew they had to win to stand a chance of snatching the pennant, and a visit to already-relegated Northampton seemed to be the easiest of opportunities to pile on …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/headline-eternal-articles/he-eternalheartthrob/2023/09/26/meet-sebastian-miller-callahan/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Sebastian Miller-Callahan",
+      "publishedAt": "2023-09-26T15:28:04.000Z",
+      "description": "Name: Sebastian Miller-Callahan Sport: Baseball Body Type: Lithe and powerful Hair: Messy dark blond Eyes: Warm green His Look: On the field, jersey with the top buttons undone, wearing perfectly-smudged eyeblack. Off the field, ready to step into the kitchen in jeans and old t-shirts, a rag tossed over his shoulder Perfect Match: The “black cat” astrophysicist-in-training in need of a place to s…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/headline-eternal-articles/he-eternalheartthrob/2023/09/26/meet-cooper-callahan/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Cooper Callahan",
+      "publishedAt": "2023-09-26T15:26:22.000Z",
+      "description": "Name: Cooper Callahan Sport: Hockey Body Type: Broad shoulders, trim waist, all muscle Hair: Tousled dark brown\u2014and don’t forget the beard Eyes: Deep blue His Look: On the ice, a beast in his gear, with a sweater just begging to be torn off. Off the ice, a backwards baseball cap, casual clothes, and a roguish grin Perfect Match: The off-limits coach’s daughter in need of spice coaching\u2014and an app…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/headline-eternal-articles/he-eternalheartthrob/2023/09/26/meet-james-callahan/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet James Callahan",
+      "publishedAt": "2023-09-26T15:25:20.000Z",
+      "description": "Name: James Callahan Sport: American Football Body Type: Tall and built, with an excellent throwing arm Hair: Dark brown and thick Eyes: Ocean blue His Look: On the football field, tight pants, tighter jersey, ready to command the team as quarterback. Off the football field, classic jeans and t-shirts, and a photo-ready smile Perfect Match: The determined photographer who isn’t looking for love… …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/09/25/dawsons-hampshire-heroics-ease-surreys-path-to-title/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dawson’s Hampshire Heroics Ease Surrey’s Path to Title",
+      "publishedAt": "2023-09-25T15:13:15.000Z",
+      "description": "The Indian summer had to come to an end at some time, and the penultimate round of Championship fixtures were marred by poor weather, which made it difficult for teams to achieve conclusive results. At The Oval, title-chasing Surrey chose to field first against bottom side Northamptonshire. Karun Nair hit 150 to help the visitors up to an impressive total of 357, adding 114 for the eighth wicket …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/09/15/sussex-move-into-promotion-contention-after-a-seaside-rollercoaster/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sussex Move into Promotion Contention after a Seaside Rollercoaster",
+      "publishedAt": "2023-09-15T09:00:24.000Z",
+      "description": "With title-chasing Surrey and Essex both without a fixture, attention focused instead on the relegation battle in Division One, with the bottom three all in action. At Edgbaston, Warwickshire chose to field first and Northamptonshire’s overseas recruit Karun Nair delivered the runs he’d been brought in for, top scoring with 78 on his Championship debut. But his side could manage only a relatively…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/09/07/de-caires-efforts-in-vain/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "De Caires Efforts in Vain",
+      "publishedAt": "2023-09-07T13:35:23.000Z",
+      "description": "Surrey took another big step towards retaining their hold on the Championship pennant after a crushing victory over Warwickshire inside three days at The Oval. Put in to bat, they were grateful to Ben Foakes, who top-scored with 125 to help his team up to 396 all out; it was his third century of the season. Meanwhile, Ed Barnard took five for 66. In reply, the visitors, who were joined by West In…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/08/16/north-woods-seeded-proof-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "North Woods seeded proof giveaway",
+      "publishedAt": "2023-08-16T11:17:48.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/08/15/jm-one-x-sheldon-press-never-give-up-day-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "JM One X Sheldon Press ‘Never Give Up Day’ Giveaway",
+      "publishedAt": "2023-08-15T08:58:37.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/08/01/broad-signs-off-in-style/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Broad Signs Off In Style",
+      "publishedAt": "2023-08-01T10:06:14.000Z",
+      "description": "After the frustrations of Old Trafford, the two sides headed south to The Oval for the final Test of a truly compelling series, with Australia having retained the Ashes but knowing that a win or a draw would give them their first series victory in England since 2001. Despite Jimmy Anderson’s very modest return this series, he was retained in an unchanged side. Australia decided to bring in Todd M…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/08/01/two-99s-but-no-flakes-at-surrey/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Two 99s but No Flakes at Surrey",
+      "publishedAt": "2023-08-01T10:05:20.000Z",
+      "description": "Title contenders Essex wrapped up their victory over Hampshire at Southampton inside three days after they put the hosts in to bat. Jamie Porter did all the damage, taking five for 37 as the home side was rattled out for 120. Essex’s reply of 169 meant they had a solid lead in a low-scoring match, but when Porter worked his magic a second time, taking five for 46 to give him match figures of ten …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/07/24/rain-secures-the-ashes-for-the-aussies/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rain Secures the Ashes for the Aussies",
+      "publishedAt": "2023-07-24T14:55:47.000Z",
+      "description": "The two sides crossed the Pennines, knowing that the destination of the Ashes was still up for grabs. Australia made two changes, with Cameron Green returning after a hamstring problem for spinner Todd Murphy (Mitchell Marsh’s century at Headingley ensured he had to keep his place); in the other change, Josh Hazlewood came back for Scott Boland. For England, Jimmy Anderson returned to the side fo…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/07/24/surrey-and-essex-wins-keep-the-title-race-alive/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Surrey and Essex Wins Keep the Title Race Alive",
+      "publishedAt": "2023-07-24T14:53:51.000Z",
+      "description": "In the London derby at Lord’s, Surrey were put in to bat and Jamie Smith hit 138 to set the visitors on their way to a total of 433. Tom Helm finished with career-best figures of six for 110, but it’s been Middlesex’s batting that has been their problem this summer, and so it proved again as they were all out for 238 in reply. Following on, a career-best 46 not out from Ethan Bamber pushed his si…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/07/24/stokes-heroics-cant-quite-save-the-day/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Stokes Heroics Can’t Quite Save the Day",
+      "publishedAt": "2023-07-24T14:52:02.000Z",
+      "description": "After all the drama of Edgbaston, the two sides moved down to Lord’s gearing up for the next instalment of the Ashes. Australia made just one change to their line-up, Mitchell Starc coming in for Scott Boland, who had disappointed in the first Test. England’s dilemmas were increased by the injury to Moeen Ali’s spinning finger, and he hadn’t recovered sufficiently to be picked. Given how few wick…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/07/19/essex-close-gap-on-surrey-after-dramatic-away-day-at-blackpool/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Essex Close Gap on Surrey after Dramatic Away Day at Blackpool",
+      "publishedAt": "2023-07-19T09:53:30.000Z",
+      "description": "After their defeat against Lancashire, Surrey looked to get back to winning ways against Nottinghamshire at The Oval. Batting first, they made 355, with Jordan Clark top-scoring (107). Lyndon James was the main threat, taking a career-best six for 74, while Tom Moores took six catches behind the stumps. For Nottinghamshire, Kiwi Test star Will Young made his debut for the county, and became the 1…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/07/13/the-couples-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Couples giveaway",
+      "publishedAt": "2023-07-13T16:18:35.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/07/11/speak-of-the-devil-harrogate-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Speak of the Devil Harrogate giveaway",
+      "publishedAt": "2023-07-11T11:18:43.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2023/06/30/dawson-and-bell-drummond-shine-but-surrey-stumble/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dawson and Bell-Drummond Shine, but Surrey Stumble",
+      "publishedAt": "2023-06-30T09:34:04.000Z",
+      "description": "There was a surprise outcome at The Oval as runaway league leaders Surrey were pegged back by Lancashire, who recorded their second win in succession. The hosts chose to field first and will have been satisfied with their work to dismiss the away side for 274, with Jordan Clark and Sean Abbott both taking four wickets. In reply, Surrey relied on a mammoth tenth-wicket partnership of 130 between A…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/06/21/cummins-grit-sees-australia-home-in-edgbaston-thriller/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cummins Grit Sees Australia Home in Edgbaston Thriller",
+      "publishedAt": "2023-06-21T14:46:13.000Z",
+      "description": "Cummins Grit Sees Australia Home in Edgbaston Thriller Rarely can the Ashes have been contested between two sides in such good form, with Australia recently crowned world champions and England having won 11 of their previous 13 Tests. There was a huge sense of anticipation before the game started, and not just at a packed Edgbaston. For both teams the main selection question was over their pace l…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/06/21/501-up-as-surrey-go-for-double-top/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "501 Up as Surrey Go for Double Top",
+      "publishedAt": "2023-06-21T14:45:07.000Z",
+      "description": "501 Up as Surrey Go for Double Top The Spitfire Ground in Canterbury hosted one of the most remarkable matches in its long history this week. Kent chose to bat first but stumbled to 41 for five before Jordan Cox led a fightback with a fine innings of 133, adding 100 for the ninth wicket with Wes Agar (whose 51 was his highest score for the county), to help his side up to a respectable 301 all out…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2023/06/19/read-an-exclusive-extract-from-the-housekeepers-by-alex-hay/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read An Exclusive Extract from The Housekeepers by Alex Hay",
+      "publishedAt": "2023-06-19T09:56:50.000Z",
+      "description": "UPSTAIRS, MADAM IS PLANNING THE PARTY OF THE SEASON. DOWNSTAIRS, THE SERVANTS ARE PLOTTING THE HEIST OF THE CENTURY. When Mrs King, housekeeper to the most illustrious home in Mayfair, is suddenly dismissed after years of loyal service, she knows just who to recruit to help her take revenge. A black-market queen out to settle her scores. An actress desperate for a magnificent part. A seamstress d…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/cookbook-confidential-blog/2023/06/16/barbecuing-techniques-from-webers/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BARBECUING TECHNIQUES FROM WEBER’S",
+      "publishedAt": "2023-06-16T10:20:35.000Z",
+      "description": "Top Tips for Ultimate Barbecuing Success Here are some simple techniques that will help you take charge of the fire versus the fire taking charge of you. 1. Don’t start with a cold, dirty grate. A barbecue needs at least 15 minutes to get the grate hot enough to sear food properly. Preheat every time and always give the hot grate a thorough once-over with a stiff-bristle brush before adding food.…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/06/01/before-we-were-trans-paperback-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Before We Were Trans paperback giveaway",
+      "publishedAt": "2023-06-01T10:13:04.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2023/05/30/headline-eternal-influencer-sign-up/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Headline Eternal Influencer Sign-Up",
+      "publishedAt": "2023-05-30T16:24:44.000Z",
+      "description": "Whether you’re new to reading romance, or have been a fan for many years, we hope that you will love the spellbinding books that we are proud and excited to be publishing at Headline Eternal. We’re always looking for influencers who love romance as much as we do to share our books on their social platforms, whether that’s TikTok, Instagram or Twitter! If you would like to join our influencer mail…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2023/05/30/the-good-the-bad-and-the-history-chapter-sample/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Good, The Bad and The History Chapter Sample",
+      "publishedAt": "2023-05-30T11:27:04.000Z",
+      "description": "BOOK 14 IN THE CHRONICLES OF ST MARY’S SERIES, FROM THE MILLION-COPY BESTSELLER JODI TAYLOR. St Mary’s is under investigation. Their director has been shot and Max is Number One Suspect. Can things get any worse? We all know the answer to that one. Max needs to get away \u2013 fast \u2013 and a Brilliant Idea soon leads her to a full-scale uprising in twentieth-century China. If she can come by a historica…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/05/30/neon-roses-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Neon Roses Giveaway",
+      "publishedAt": "2023-05-30T09:46:13.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/05/26/john-murray-one-legacy-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Murray one legacy giveaway",
+      "publishedAt": "2023-05-26T09:35:27.000Z",
+      "description": "TERMS & CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2023/05/23/read-an-extract-from-the-keepsake-by-julie-brooks/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read an extract from The Keepsake by Julie Brooks",
+      "publishedAt": "2023-05-23T10:48:26.000Z",
+      "description": "A book of treasures. A wealth of secrets. The Keepsake is a thrilling dual-time novel, with a fascinating, complex woman at its heart, wealth of twists, turns and secrets, and an absolute book club treat, perfect for fans of Lucinda Riley, Rachel Rhys and Hannah Richell. Saturday: Pot-au-feu for luncheon. Father willed away inheritance. Betrayed by Edward. 1832. The morning after her father’s fun…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/uncategorized/2023/05/22/glamorgan-in-a-game-of-two-halves/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Glamorgan in a Game of Two Halves",
+      "publishedAt": "2023-05-22T14:23:39.000Z",
+      "description": "Surrey moved 25 points clear at the top after a ten-wicket win over neighbours Kent at The Oval inside three days. The away side was asked to bat first and they relied on an unbeaten 77 from Joey Evison and a Kent-best 43 from Michael Hogan to see them up to 278 all out. It was Surrey’s lower order that gave them a first-innings lead, with Sean Abbott making 78, his highest score for Surrey, and …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/john-murray-press/john-murray-press-tcs/2023/05/22/but-are-you-alive-giveaway/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "But Are You Alive? Giveaway",
+      "publishedAt": "2023-05-22T14:13:13.000Z",
+      "description": "TERMS AND CONDITIONS",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/bookends-news/2023/05/22/read-an-extract-from-hate-at-first-sight-by-lizzie-ohagan/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read an extract from Hate At First Sight by Lizzie O’Hagan",
+      "publishedAt": "2023-05-22T11:21:03.000Z",
+      "description": "THEY SAY IT’S A THIN LINE BETWEEN LOVE AND . . . HATE AT FIRST SIGHT. Kate hates feeling out of control. Her incessant need to overprepare has always served her well. Yet nothing could have prepared her for today. Not only is she being evicted from her flat . . . by her best friend, but now her boss has announced cost-cutting measures that will put her job in jeopardy. She may not love the compan…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/cookbook-confidential-blog/2023/05/19/elderflower-jellies/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Elderflower Jellies",
+      "publishedAt": "2023-05-19T16:53:27.000Z",
+      "description": "12g powdered gelatine 5 tablespoons warm water 150ml elderflower cordial 350ml cold water a few elderflowers or other edible flowers Serves 4 Sprinkle the gelatine over the warm water in a small saucepan. Stir well to dissolve. If the gelatine has not completely dissolved after a couple of minutes, then put over a low heat, stirring until the gelatine completely dissolves. Do not allow to boil. L…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/cookbook-confidential-blog/2023/05/19/fennel-sausage-hand-pies/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fennel Sausage Hand Pies",
+      "publishedAt": "2023-05-19T16:44:55.000Z",
+      "description": "If I were to make myself lunch for a day of travelling, I can’t think of anything I’d rather make than one of these pies. Crisp flaky pastry is generously filled with sausage, fennel, tomato and grated mozzarella. It’s the love child of a pizza and a sausage roll. - Ed Kimber, author of Small Batch Bakes 1 batch Flaky Pastry Flour, for dusting 200g grated mozzarella cheese 1 large egg, beaten FOR…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/cookbook-confidential-blog/2023/05/19/goats-cheese-filo-pies/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Goats Cheese & Filo Pies",
+      "publishedAt": "2023-05-19T16:29:24.000Z",
+      "description": "MAKES 8 100g pistachio nuts, finely chopped 400g soft goats’ cheese finely grated zest of 2 large unwaxed oranges 2 heaped teaspoons dried oregano 3 sheets of filo pastry 50g unsalted butter, melted, plus extra for greasing 1 tablespoon nigella seeds clear honey, for drizzling (optional) freshly ground black pepper Preheat the oven to 220C (200C fan), Gas Mark 7. Grease an 8-hole muffin tin with …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/cookbook-confidential-blog/2023/05/19/onion-samosas/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Onion Samosas",
+      "publishedAt": "2023-05-19T16:21:26.000Z",
+      "description": "'Super crispy on the outside and with a soft, sweet and spicy onion filling inside, these samosas are sold in Chennai on carts both large and small, beautifully displayed as a samosa mountain decorated with fresh chillies.' - Chetna Makan, author of Chai, Chaat and Chutney 1 tablespoon sunflower oil, plus extra for deep-frying 4 onions, finely chopped 1 teaspoon salt 1/2 teaspoon chilli powder 1 …",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "john-murray",
+      "source": {
+        "name": "John Murray",
+        "url": "https://www.johnmurraypress.co.uk/ians-blog/2023/05/15/lancashire-rue-rews-fine-form/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lancashire Rue Rew’s Fine Form",
+      "publishedAt": "2023-05-15T10:25:28.000Z",
+      "description": "Lancashire Rue Rew’s Fine Form Nottinghamshire cruised to victory by an innings inside three days at Northampton after they chose to field first. Ricardo Vasconcelos (62) provided lone resistance as the hosts were bowled out for 158, with Brett Hutton taking five for 37 (his third five-wicket haul of the summer). Joe Clarke (76) made the top score of the match, as Nottinghamshire replied with 255…",
+      "discoveredAt": "2026-10-01T20:56:27.675Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "592852563af933b85b2e8d947f4373adb22d8f28cd65ee69dda55ed3c2a52682"
+}

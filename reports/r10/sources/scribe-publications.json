@@ -1,0 +1,743 @@
+{
+  "sourceId": "scribe-publications",
+  "name": "Scribe Publications",
+  "entryUrl": "https://scribepublications.com.au/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:25.531Z",
+  "requests": [
+    {
+      "url": "https://scribepublications.com.au/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 590689,
+      "sha256": "7dc9e3ed6b830e050de1edcf132254b2d8459e76b1487faa9e851ed736994f1f",
+      "accessedAt": "2026-10-01T20:48:28.131Z"
+    },
+    {
+      "url": "https://scribepublications.com.au/news",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 539583,
+      "sha256": "2203a29c511fae76f9c902b138a0355b39ada34477f127a3d117af1335382fb5",
+      "accessedAt": "2026-10-01T20:48:28.604Z"
+    },
+    {
+      "url": "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 557759,
+      "sha256": "fc46a95cc750766205b55917c3a8dd1c94de97f56fa282a51d67d65d9ca0303c",
+      "accessedAt": "2026-10-01T20:48:28.893Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://scribepublications.com.au/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1248,
+    "sha256": "8fa3036c68bfcbd32365f6225d24333264093b7cd38d306e106b4dbdc934fd5b",
+    "accessedAt": "2026-10-01T20:48:27.892Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "scribe-publications",
+    "name": "Scribe Publications",
+    "url": "https://scribepublications.com.au/news",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "scribe-publications",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://scribepublications.com.au"
+    ],
+    "linkPattern": "^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award"
+    ],
+    "verifiedAt": "2026-10-01T20:48:28.910Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 25,
+  "literaryCandidateCount": 25,
+  "sample": {
+    "sourceId": "scribe-publications",
+    "source": {
+      "name": "Scribe Publications",
+      "url": "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Night of a Thousand Hells is longlisted for the 2026 Translated Literature National Book Award",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:28.679Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 557759,
+      "sha256": "fc46a95cc750766205b55917c3a8dd1c94de97f56fa282a51d67d65d9ca0303c",
+      "accessedAt": "2026-10-01T20:48:28.893Z",
+      "headline": "Night of a Thousand Hells is longlisted for the 2026 Translated Literature National Book Award",
+      "excerpt": "News/Night of a Thousand Hells is longlisted for the 2026 Translated Literature National Book AwardShare page 29 September, 2026Night of a Thousand Hells is longlisted for the 2026 Translated Literature National Book Award'Night of a Thousand Hells' bookIntan ParamadithaNight of a Thousand Hells by Intan Paramaditha, translated by Stephen Epstein and Tiffany Tsao, has been longlisted for the 2026 ",
+      "publishedDates": [],
+      "canonical": "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:28.910Z",
+  "foundItems": [
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Night of a Thousand Hells is longlisted for the 2026 Translated Literature National Book Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/the-pulling-is-shortlisted-for-the-2026-south-australian-literary-award-for-nonfiction",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Pulling is shortlisted for the 2026 SA Literary Award for Nonfiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/earthquake-is-shortlisted-for-the-2026-australian-political-book-of-the-year-award",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Earthquake is shortlisted for the 2026 Australian Political Book of the Year Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/earthquake-is-longlisted-for-the-2026-australian-political-book-of-the-year-award",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Earthquake is longlisted for the 2026 Australian Political Book of the Year Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/the-song-of-stork-and-dromedary-is-a-finalist-for-the-2026-cercador-prize",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Song of Stork and Dromedary is a Finalist for the 2026 Cercador Prize",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/october-new-releases-2026",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "October New Releases 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/september-new-releases-2026",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "September New Releases 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/the-old-vintage-melbourne-book-launch-at-brunetti-classico-carlton",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Old Vintage Melbourne book launch at Brunetti Classico Carlton",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/anjet-daanje-tells-the-story-behind-the-title-the-song-of-stork-and-dromedary",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anjet Daanje explains the title of her book ‘The Song of Stork and Dromedary’",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/laura-elizabeth-woollett-talks-about-hell-days",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Laura Elizabeth Woollett speaks about her nonfiction debut",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/scribes-major-international-fiction",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scribe's major international fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/scribes-major-australian-fiction",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scribe's major ANZ fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/scribes-major-nonfiction",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scribe's major Australian nonfiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/scribes-major-international-nonfiction",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scribe's major international nonfiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/what-bookstagram-is-asay",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What Bookstagram is saying about A Real Animal by Emeline Atwood",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/sentinels-in-the-media",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sentinels in the media",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/a-series-of-readings-from-the-song-of-stork-and-dromedary-by-david-mckay",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "David McKay's readings of The Song of Stork and Dromedary",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/an-extract-from-old-vintage-melbourne-a-culinary-chronicle",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "An extract from Old Vintage Melbourne: a culinary chronicle",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/giveaway-the-long-cloud-artwork-by-hector-mackenzie",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "GIVEAWAY: the long cloud + artwork by Hector MacKenzie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/testimonials-from-scribes-authors-part-two",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Testimonials - part two",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/testimonials-from-scribes-authors-part-one",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Testimonials - part one",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/celebrating-fifty-years-of-scribe",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celebrating fifty years of Scribe",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/what-writers-are-saying-about-hell-days-by-laura-elizabeth-woollett",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What writers are saying about Hell Days by Laura Elizabeth Woollett",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/the-song-of-stork-and-dromedary-reviews",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Song of Stork and Dromedary reviews",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "source": {
+        "name": "Scribe Publications",
+        "url": "https://scribepublications.com.au/news/cover-reveal-code-blue-by-jake-adelstein-and-amy-yoshida-plambeck",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "COVER REVEAL: Code Blue by Jake Adelstein, with Amy Yoshida-Plambeck",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:28.679Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "2203a29c511fae76f9c902b138a0355b39ada34477f127a3d117af1335382fb5"
+}

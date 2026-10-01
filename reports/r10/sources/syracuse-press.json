@@ -1,0 +1,368 @@
+{
+  "sourceId": "syracuse-press",
+  "name": "Syracuse University Press",
+  "entryUrl": "https://press.syr.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:41.451Z",
+  "requests": [
+    {
+      "url": "https://press.syr.edu/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 187166,
+      "sha256": "57ef4097aaaffa485afe5f93d9bba04aa8d6b0b8a627eaac192730002b695261",
+      "accessedAt": "2026-10-01T20:51:43.274Z"
+    },
+    {
+      "url": "https://press.syr.edu/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 37770,
+      "sha256": "f47488d1f428a781f28c292261d7c1d4c8978cdc8c98b93c0d774366710a75dc",
+      "accessedAt": "2026-10-01T20:51:43.613Z"
+    },
+    {
+      "url": "https://press.syr.edu/the-book-of-disappearance-is-longlisted-for-the-2025-international-booker-prize/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 165449,
+      "sha256": "c3f3a4acf8b7cef19e419c27e32c47eff976403a1dcd9d801d3304389274ed66",
+      "accessedAt": "2026-10-01T20:51:43.934Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://press.syr.edu/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 114,
+    "sha256": "30132a9b0fd5d5dcffbb59a872f432cdf21da766ff8bc1d470aa8872a5215193",
+    "accessedAt": "2026-10-01T20:51:42.340Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "syracuse-press",
+    "name": "Syracuse University Press",
+    "url": "https://press.syr.edu/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "syracuse-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://press.syr.edu"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://press.syr.edu/the-book-of-disappearance-is-longlisted-for-the-2025-international-booker-prize/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:43.941Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "syracuse-press",
+    "source": {
+      "name": "Syracuse University Press",
+      "url": "https://press.syr.edu/the-book-of-disappearance-is-longlisted-for-the-2025-international-booker-prize/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "“The Book of Disappearance” is longlisted for the 2025 International Booker Prize",
+    "publishedAt": "2025-03-04T20:41:58.000Z",
+    "description": "Ibtisam Azem’s novel The Book of Disappearance, translated from the Arabic by Sinan Antoon, has been longlisted for this year’s International Booker Prize. The prize, which is awarded annually, celebrates the best works of long-form fiction or collections of short stories translated into English and published in the UK and/or Ireland.",
+    "discoveredAt": "2026-10-01T20:51:43.615Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://press.syr.edu/the-book-of-disappearance-is-longlisted-for-the-2025-international-booker-prize/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 165449,
+      "sha256": "c3f3a4acf8b7cef19e419c27e32c47eff976403a1dcd9d801d3304389274ed66",
+      "accessedAt": "2026-10-01T20:51:43.934Z",
+      "headline": "“The Book of Disappearance” is longlisted for the 2025 International Booker Prize \u2013 Syracuse University Press",
+      "excerpt": "Ibtisam Azem’s novel The Book of Disappearance, translated from the Arabic by Sinan Antoon, has been longlisted for this year’s International Booker Prize. The prize, which is awarded annually, celebrates the best works of long-form fiction or collections of short stories translated into English and published in the UK and/or Ireland.",
+      "publishedDates": [],
+      "canonical": "https://press.syr.edu/the-book-of-disappearance-is-longlisted-for-the-2025-international-booker-prize/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:43.941Z",
+  "foundItems": [
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/the-book-of-disappearance-is-longlisted-for-the-2025-international-booker-prize/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“The Book of Disappearance” is longlisted for the 2025 International Booker Prize",
+      "publishedAt": "2025-03-04T20:41:58.000Z",
+      "description": "Ibtisam Azem’s novel The Book of Disappearance, translated from the Arabic by Sinan Antoon, has been longlisted for this year’s International Booker Prize. The prize, which is awarded annually, celebrates the best works of long-form fiction or collections of short stories translated into English and published in the UK and/or Ireland.",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/irish-bildungsroman-editors-interviewed-on-new-books-network/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Irish Bildungsroman” editors interviewed on New Books Network",
+      "publishedAt": "2025-03-04T20:34:40.000Z",
+      "description": "Gregory Castle, Sarah Townsend, and Matt Reznicek, editors of The Irish Bildungsroman were interviewed on New Books Network’s Literary Studies channel.",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/stateless-receives-usc-book-prize-honorable-mention-from-aseees/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Stateless” receives USC Book Prize Honorable Mention from ASEEES",
+      "publishedAt": "2024-09-20T14:14:13.000Z",
+      "description": "Congratulations to Talar Chahinian! Her recent book Stateless: The Politics of the Armenian Language in Exile received a 2024 University of California Book Prize Honorable Mention from the Association for Slavic, East European, and Eurasian Studies.",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/jewish-book-council-on-cafe-shira/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jew­ish Book Coun­cil praises Café Shi­ra",
+      "publishedAt": "2022-08-05T17:38:39.000Z",
+      "description": "“A one-of-a-kind book about a one-of-a-kind busi­ness in a one-of-a-kind city, Café Shi­ra presents a nuanced, humor­ous, and fas­ci­nat­ing pic­ture of human­i­ty set in a renowned café in the heart of Jerusalem. . . . Café Shi­ra is a point­ed and unusu­al look at the ways peo­ple live their lives. What shows on the sur­face can be a hint to, or a com­plete mis­di­rec­tion of, the emo­tions, th…",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/travels-in-america-syracuse-and-the-erie-canal/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘Travels in America,’ Syracuse, and the Erie Canal",
+      "publishedAt": "2025-04-28T14:30:00.000Z",
+      "description": "Selections from Basil Hall's journey to the Erie Canal through Central and western New York.",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/politics-as-worship-review-in-ijmes/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Politics as Worship” reviewed in IJMES",
+      "publishedAt": "2025-01-30T15:34:29.000Z",
+      "description": "Sumita Pahwa’s recent book Politics as Worship: Righteous Activism and the Egyptian Muslim Brothers was reviewed in the International Journal of Middle East Studies.",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/supressbooks-233-ministers-war-the/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Readers will find it fascinating.”",
+      "publishedAt": "2019-03-28T14:27:09.000Z",
+      "description": "Northeast Popular & American Culture Association's review of \"The Minister's War\"",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/diary-of-a-lonely-girl-featured-in-the-new-york-times-article/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Diary of a Lonely Girl featured in The New York Times",
+      "publishedAt": "2022-02-10T19:23:11.000Z",
+      "description": "Diary of a Lonely Girl, or The Battle against Free Love was featured in the New York Times article “How Yiddish Scholars Are Rescuing Women’s Novels From Obscurity” by Joseph Berger on Feb. 6, 2022 “In Diary of a Lonely Girl, or the Battle Against Free Love, a sendup of the socialists, anarchists and intellectuals who populated New York’s Lower East Side in the early 20th century, Miriam Karpilov…",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/adirondack-daily-enterprise-reviews-sketching-the-adirondacks/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adirondack Daily Enterprise reviews Sketching the Adirondacks",
+      "publishedAt": "2025-08-29T15:14:57.000Z",
+      "description": "Adirondack Daily Enterprise reviews Sketching the Adirondacks: Letters from the Wilderness by Edward I. Pitts “Today, travel through the Adirondacks is easy, summer traffic notwithstanding. This entertaining and instructive volume will convince any reader that it wasn’t always so.” Read full review",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "source": {
+        "name": "Syracuse University Press",
+        "url": "https://press.syr.edu/adirondack-photographers-reviewed-in-the-adirondack-daily-enterprise/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adirondack Photographers reviewed in The Adirondack Daily Enterprise",
+      "publishedAt": "2023-07-25T14:09:07.000Z",
+      "description": "Sally Svenson’s new book Adirondack Photographers, 1850-1950 was reviewed in The Adirondack Daily Enterprise. A list of everyone who toiled behind a camera during transition from the earliest days of photography through the ubiquity of the single-lens reflex camera.",
+      "discoveredAt": "2026-10-01T20:51:43.615Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f47488d1f428a781f28c292261d7c1d4c8978cdc8c98b93c0d774366710a75dc"
+}

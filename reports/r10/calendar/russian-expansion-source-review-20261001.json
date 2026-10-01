@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-10-01T20:39:18.733Z",
+  "scope": "Exact source-backed Russian calendar-only additions and Julian/Gregorian corrections; preserved canonical profiles.",
+  "ready": [
+    {
+      "writerKey": "russia:andrei_platonov",
+      "field": "birthDate",
+      "expectedOld": null,
+      "value": "1899-08-28",
+      "sourceUrl": "https://www.prlib.ru/history/2056240",
+      "checkedAt": "2026-10-01T20:39:17.406Z",
+      "sourceDocumentSha256": "cccbc2dad98681d28a9d45a33238458d49680449197a5fbdc79417b6a3ea9c86",
+      "finding": "16 (28) августа 1899",
+      "resolution": "The President Library explicitly distinguishes 16 August old style and 28 August modern style. Culture.RF independently corroborates 28 August; the competing cached 1 September claim is not selected.",
+      "corroborating": {
+        "sourceUrl": "https://www.culture.ru/persons/13775/andrei-platonov",
+        "checkedAt": "2026-10-01T20:39:17.162Z",
+        "sourceDocumentSha256": "ce4948cb2dd4942f79614bc6761aff4ed7299049e78004d0b60a454e2f886f9b",
+        "finding": "28 августа 1899"
+      }
+    },
+    {
+      "writerKey": "russia:gogol",
+      "field": "deathDate",
+      "expectedOld": "1852-02-21",
+      "value": "1852-03-04",
+      "sourceUrl": "https://www.culture.ru/persons/8127/nikolai-gogol",
+      "checkedAt": "2026-10-01T20:39:17.004Z",
+      "sourceDocumentSha256": "2654894b74f540504a45ea7d8f8a767e4b1b7040c440262b9f6d6be166562c2d",
+      "finding": "04 марта 1852",
+      "resolution": "Existing 21 February was the Julian day. The referenced preferred Julian statement converts to 4 March; the institutional modern-calendar page confirms 4 March."
+    },
+    {
+      "writerKey": "russia:pasternak",
+      "field": "birthDate",
+      "expectedOld": "1890-01-29",
+      "value": "1890-02-10",
+      "sourceUrl": "https://www.culture.ru/persons/9531/boris-pasternak",
+      "checkedAt": "2026-10-01T20:39:18.690Z",
+      "sourceDocumentSha256": "f65a0d2f1fa07d54341aae0343893a1680091487fe46fd58ef2216ed27db047e",
+      "finding": "10 февраля 1890",
+      "resolution": "Existing 29 January was the Julian day. Both referenced Julian-to-Gregorian and direct Gregorian claims agree with the institutional 10 February day."
+    },
+    {
+      "writerKey": "russia:leskov",
+      "field": "birthDate",
+      "expectedOld": "1831-02-04",
+      "value": "1831-02-16",
+      "sourceUrl": "https://www.culture.ru/persons/8216/nikolai-leskov",
+      "checkedAt": "2026-10-01T20:39:17.933Z",
+      "sourceDocumentSha256": "e79c8b5dfba4dfdd6c27e11be81011e26a2f2c725bc1b5769112c1c556bdae59",
+      "finding": "16 февраля 1831",
+      "resolution": "Existing 4 February was the Julian day. Both referenced Julian-to-Gregorian and direct Gregorian claims agree with the institutional 16 February day."
+    }
+  ],
+  "held": [],
+  "unresolved": [
+    {
+      "writerKey": "russia:nestor",
+      "reason": "Only year-level birth/death evidence; ecclesiastical commemoration is not an exact historical death day."
+    },
+    {
+      "writerKey": "russia:kirill-turovsky",
+      "reason": "Approximate lifetime and saint commemoration cannot be represented as exact birth/death dates."
+    },
+    {
+      "writerKey": "russia:avvakum",
+      "reason": "Institutional sources disagree on November birth day; cached Wikidata labels historical dates Gregorian. Calendar style remains unresolved.",
+      "sources": [
+        "https://avvakum.rusarchives.ru/letopis-zhizni-protopopa-avvakuma",
+        "https://inslav.ru/sites/default/files/editions/2020_materialy_virtmuzeya.pdf"
+      ]
+    },
+    {
+      "writerKey": "russia:kantemir",
+      "reason": "President Library and the national encyclopedia record competing 1708/1709 years; preserve uncertain birth.",
+      "sources": [
+        "https://www.prlib.ru/Great_Russia/cultural_XVIII/Kantemir",
+        "https://old.bigenc.ru/domestic_history/text/3794404"
+      ]
+    }
+  ]
+}

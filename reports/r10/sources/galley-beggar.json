@@ -1,0 +1,121 @@
+{
+  "sourceId": "galley-beggar",
+  "name": "Galley Beggar Press",
+  "entryUrl": "https://www.galleybeggar.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:00.961Z",
+  "requests": [
+    {
+      "url": "https://www.galleybeggar.co.uk/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 148799,
+      "sha256": "b1181ba0cd4bd8a55c586ed28ad6bdaaf8237dd0acb4f22c6b2de71172371653",
+      "accessedAt": "2026-10-01T20:48:01.629Z"
+    },
+    {
+      "url": "https://www.galleybeggar.co.uk/paperback-shop/we-that-are-young",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 86162,
+      "sha256": "98ea8be6d7715d2dbd1a0ed75843b2d0a8888e3fb05e548e1722b1e1c72361a4",
+      "accessedAt": "2026-10-01T20:48:02.115Z"
+    },
+    {
+      "url": "https://www.galleybeggar.co.uk/paperback-shop/a-girl-is-a-half-formed-thing",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 85646,
+      "sha256": "77db47438cac753741e1739aed783a09b94ef0cbd07f0e0f173b6d047b1c4640",
+      "accessedAt": "2026-10-01T20:48:02.425Z"
+    },
+    {
+      "url": "https://www.galleybeggar.co.uk/extract-telenovela",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 89773,
+      "sha256": "3863cea5e9040544093c0aacf30280f0d5da1855f29fadcdf8de815c0bcf1924",
+      "accessedAt": "2026-10-01T20:48:02.713Z"
+    },
+    {
+      "url": "https://www.galleybeggar.co.uk/paperback-shop/ritegxpqvavi286gp91sd0he23hzx4",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 85146,
+      "sha256": "c474ae0ef6c7b875e88db2e74e3f7955831ad958107a4ef95a828216a7b802a9",
+      "accessedAt": "2026-10-01T20:48:03.213Z"
+    },
+    {
+      "url": "https://www.galleybeggar.co.uk/extract-how-do-people-stay-the-same",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 77297,
+      "sha256": "6319b4a4aaf77523a20b151a80627013e45bb0c675b06e0307b23f78c05d8047",
+      "accessedAt": "2026-10-01T20:48:03.486Z"
+    },
+    {
+      "url": "https://www.galleybeggar.co.uk/paperback-shop/how-do-people-stay-the-same-pre-order",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 74423,
+      "sha256": "10cb46bbab551ef57c627804d674ea567ef3b56920b2f88944c6caf4cde383f2",
+      "accessedAt": "2026-10-01T20:48:03.563Z"
+    },
+    {
+      "url": "https://www.galleybeggar.co.uk/paperback-shop/telenovela",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 74318,
+      "sha256": "447ab8dea032a32f6b20fc0b9325604fb7b3e32cc02d171a2e8b5f6febe0c51a",
+      "accessedAt": "2026-10-01T20:48:03.644Z"
+    },
+    {
+      "url": "https://www.galleybeggar.co.uk/paperback-shop/waterblack-cover-tbc",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 69441,
+      "sha256": "5fe236d6a0a6e0c5623af47f93fe5abc26c0488357d47c10a2ff78fc58b57877",
+      "accessedAt": "2026-10-01T20:48:03.829Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.galleybeggar.co.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 1513,
+    "sha256": "ecf46f867b1578a735f02f95d23d2fec11f2a1ba1a908ed9f9538870e6a027a9",
+    "accessedAt": "2026-10-01T20:48:01.488Z",
+    "disallowed": [
+      "/config",
+      "/search",
+      "/account$",
+      "/account/",
+      "/commerce/digital-download/",
+      "/api/",
+      "/static/",
+      "/*?author=*",
+      "/*&author=*",
+      "/*?tag=*",
+      "/*&tag=*",
+      "/*?month=*",
+      "/*&month=*",
+      "/*?view=*",
+      "/*&view=*",
+      "/*?format=json",
+      "/*&format=json",
+      "/*?format=page-context",
+      "/*&format=page-context",
+      "/*?format=main-content",
+      "/*&format=main-content",
+      "/*?format=json-pretty",
+      "/*&format=json-pretty",
+      "/*?format=ical",
+      "/*&format=ical",
+      "/*?reversePaginate=*",
+      "/*&reversePaginate=*"
+    ]
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "sourceId": "duke-press-blog",
+  "name": "Duke University Press",
+  "entryUrl": "https://dukeupress.wordpress.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:56:28.012Z",
+  "requests": [
+    {
+      "url": "https://dukeupress.wordpress.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 310598,
+      "sha256": "340903f36eb2318d45b5d294a74bf53d65d5b127e36aa9af062c943f3d8badcb",
+      "accessedAt": "2026-10-01T20:56:29.352Z"
+    },
+    {
+      "url": "https://dukeupress.wordpress.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 128084,
+      "sha256": "c876bb44e7b33eeb76c61f3b7cd04895d31acc6073682edbdbd78e96899f11cc",
+      "accessedAt": "2026-10-01T20:56:29.565Z"
+    },
+    {
+      "url": "https://dukeupress.wordpress.com/2026/10/01/new-books-in-october-12/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 193661,
+      "sha256": "2f0ee97b424192023332fc00333d9e7fd0f18ea3560d834baaeec9ae52e858a4",
+      "accessedAt": "2026-10-01T20:56:30.248Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://dukeupress.wordpress.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 648,
+    "sha256": "c4bc9a545ceba043ee3f5e89573a2ccc89c632564c472fa8beb9f95922014de6",
+    "accessedAt": "2026-10-01T20:56:28.461Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-login.php",
+      "/wp-signup.php",
+      "/press-this.php",
+      "/remote-login.php",
+      "/activate/",
+      "/cgi-bin/",
+      "/mshots/v1/",
+      "/next/",
+      "/public.api/"
+    ]
+  },
+  "endpoint": {
+    "id": "duke-press-blog",
+    "name": "Duke University Press",
+    "url": "https://dukeupress.wordpress.com/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "duke-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://dukeupress.wordpress.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://dukeupress.wordpress.com/2026/10/01/new-books-in-october-12/"
+    ],
+    "verifiedAt": "2026-10-01T20:56:30.257Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "duke-press-blog",
+    "source": {
+      "name": "Duke University Press",
+      "url": "https://dukeupress.wordpress.com/2026/10/01/new-books-in-october-12/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "New Books in October",
+    "publishedAt": "2026-10-01T12:00:00.000Z",
+    "description": "Autumn is here, the semester is in full swing, and we’ve got some terrific new books delivering! Add some of these to your fall shopping list. Featuring interviews with eminent historians, journalists, and writers, Speaking of America brings together nineteen wide-ranging conversations from philanthropist and financier David M. Rubenstein’s long-running Congressional Dialogues series of interview…",
+    "discoveredAt": "2026-10-01T20:56:29.567Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://dukeupress.wordpress.com/2026/10/01/new-books-in-october-12/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 193661,
+      "sha256": "2f0ee97b424192023332fc00333d9e7fd0f18ea3560d834baaeec9ae52e858a4",
+      "accessedAt": "2026-10-01T20:56:30.248Z",
+      "headline": "New Books in October",
+      "excerpt": "Autumn is here, the semester is in full swing, and we’ve got some terrific new books delivering! Add some of these to your fall shopping list. Featuring interviews with eminent historians, journalists, and writers, Speaking of America brings together nineteen wide-ranging conversations from philanthropist and financier David M. Rubenstein’s long-running Congressional Dialogues series of interviews",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T12:00:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://dukeupress.wordpress.com/2026/10/01/new-books-in-october-12/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:56:30.257Z",
+  "foundItems": [
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/10/01/new-books-in-october-12/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New Books in October",
+      "publishedAt": "2026-10-01T12:00:00.000Z",
+      "description": "Autumn is here, the semester is in full swing, and we’ve got some terrific new books delivering! Add some of these to your fall shopping list. Featuring interviews with eminent historians, journalists, and writers, Speaking of America brings together nineteen wide-ranging conversations from philanthropist and financier David M. Rubenstein’s long-running Congressional Dialogues series of interview…",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/09/30/author-events-in-october-10/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author Events in October",
+      "publishedAt": "2026-09-30T12:00:00.000Z",
+      "description": "October is a great month to catch our authors at in-person and online events. Hope you can make it to some. October 1, 10 am EDT: Emily Lim Rogers, author of Sick Work, gives a hybrid talk at Duke University. Rubenstein Library Holsti-Anderson Family Assembly Room, 411 Chapel Drive, Durham, North Carolina October 1, 7 […]",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/09/28/preview-our-centennial-exhibit/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Preview Our Centennial Exhibit",
+      "publishedAt": "2026-09-28T12:00:00.000Z",
+      "description": "Our colleagues at the Duke University Libraries are hosting an exhibit celebrating our Centennial. It is on view in the Mary Duke Biddle Room in the Rubenstein Library until February 2027. If you aren’t able to view the exhibit in person, we invite you to read the text and see some pictures and to watch […]",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/09/26/dorothy-days-modernist-hospitality-the-weekly-read/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dorothy Day’s Modernist Hospitality | The Weekly Read",
+      "publishedAt": "2026-09-26T12:00:00.000Z",
+      "description": "The Weekly Read for September 26, 2026, is “Dorothy Day’s Modernist Hospitality” by Sean Weidman. The article was published in Twentieth-Century Literature Volume 71, issue 3, and was recently named runner-up for the Modernist Studies Association’s new Contingent and Independent Scholars Essay Prize. Read this article for free through December 31st. AbstractThis essay reads modernism […]",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/09/25/a-strategy-70-years-in-the-making-a-guest-post-by-mack-paul/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Strategy 70 Years in the Making: A Guest Post by Mack Paul",
+      "publishedAt": "2026-09-25T12:00:00.000Z",
+      "description": "Most accounts identify January 9, 1959 as the official start of Research Triangle Park (RTP). On that day, its founders announced they had secured funding to purchase land for the Park and construct a building for the Research Triangle Institute (RTI). This narrative feeds into a view that RTP exists largely as a real estate […]",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/09/19/remapping-the-global-the-weekly-read/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Remapping the Global | The Weekly Read",
+      "publishedAt": "2026-09-19T12:00:00.000Z",
+      "description": "The Weekly Read for September 19, 2026, is “Remapping the Global: Invisible Bodies and Extraction in Sim Chi Yin’s One Day We’ll Understand and Ian Teh’s Confluence” by Zhou Hau Liew. The article was published in Trans Asia Photography, issue 15:2. Read this article and the full issue for free, via open access. AbstractThis essay […]",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/09/15/new-titles-for-hispanic-heritage-month-5/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New Titles for Hispanic Heritage Month",
+      "publishedAt": "2026-09-15T12:00:00.000Z",
+      "description": "Hispanic Heritage Month takes place from September 15th to October 15th, and celebrates the generations of Hispanic Americans who have positively influenced and enriched our nation and society. As the month begins, we present some of our new and upcoming titles in Latinx studies to celebrate! Drawing on in-depth analysis of cultural production and interviews with […]",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/09/12/disaster-narratives-as-refusal-the-weekly-read/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Disaster Narratives as Refusal | The Weekly Read",
+      "publishedAt": "2026-09-12T12:00:00.000Z",
+      "description": "The Weekly Read for September 12, 2026, is “Disaster Narratives as Refusal: Flooding, Critique, and Care in Cap-Haïtien, Haiti” by Crystal Andrea Felima. The article was published in Small Axe: A Caribbean Journal of Criticism, number 80. Read this article for free through October 31, 2026. AbstractThis essay advances disaster narrative as refusal as a methodological, ethical, and […]",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/09/11/read-to-respond-twenty-five-years-in-a-post-9-11-world/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read to Respond: Twenty-Five Years in a Post-9/11 World",
+      "publishedAt": "2026-09-11T12:00:00.000Z",
+      "description": "Twenty-five years after September 11, 2001, the world continues to reckon with the political, cultural, and historical transformations that followed. From the War on Terror and the expansion of U.S. power to changing ideas about citizenship, race, gender, technology, memory, and national identity, the books, articles, and journal issues in this reading list examine the […]",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "source": {
+        "name": "Duke University Press",
+        "url": "https://dukeupress.wordpress.com/2026/09/10/duke-university-press-celebrates-fiftieth-anniversary-of-james-baldwins-little-man-little-man/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Duke University Press Celebrates Fiftieth Anniversary of James Baldwin’s Little Man, Little Man",
+      "publishedAt": "2026-09-10T12:00:00.000Z",
+      "description": "Little Man, Little Man is the only children’s book by acclaimed writer James Baldwin. Published in 1976 by Dial Press, the book quickly went out of print. Duke University Press (DUP) brought the book back into print to much acclaim in 2018. We are delighted to celebrate the 50th anniversary of this modern classic in […]",
+      "discoveredAt": "2026-10-01T20:56:29.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "c876bb44e7b33eeb76c61f3b7cd04895d31acc6073682edbdbd78e96899f11cc"
+}

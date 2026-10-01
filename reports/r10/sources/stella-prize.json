@@ -1,0 +1,368 @@
+{
+  "sourceId": "stella-prize",
+  "name": "Stella Prize",
+  "entryUrl": "https://stella.org.au/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:05.757Z",
+  "requests": [
+    {
+      "url": "https://stella.org.au/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 109622,
+      "sha256": "6eb2567bdc80020d04f2f89613fbcea9a922a42663d72145cf204e42acb7768e",
+      "accessedAt": "2026-10-01T20:52:08.922Z"
+    },
+    {
+      "url": "https://stella.org.au/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 434107,
+      "sha256": "751e8ab94da04fd852cdbad2c123a3a97fdcdefd0aab606c56b1d0bfa80a71bd",
+      "accessedAt": "2026-10-01T20:52:09.963Z"
+    },
+    {
+      "url": "https://stella.org.au/2026/09/book-of-the-month-pink-mountain-on-locust-island-september-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 150585,
+      "sha256": "5ee35ce0d1c370ce81fd9702ca360e7912f333810beefc74e972771b8255ba45",
+      "accessedAt": "2026-10-01T20:52:10.614Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://stella.org.au/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 114,
+    "sha256": "843cfe06a0f4adb2d98ae14a5d8f5afa4440ba956c15fc4b12d6a1d100c790b1",
+    "accessedAt": "2026-10-01T20:52:07.995Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "stella-prize",
+    "name": "Stella Prize",
+    "url": "https://stella.org.au/feed/",
+    "format": "rss",
+    "language": "en-AU",
+    "region": "global",
+    "sourceFamilyId": "stella-prize",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://stella.org.au"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://stella.org.au/2026/09/book-of-the-month-pink-mountain-on-locust-island-september-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:52:10.631Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "stella-prize",
+    "source": {
+      "name": "Stella Prize",
+      "url": "https://stella.org.au/2026/09/book-of-the-month-pink-mountain-on-locust-island-september-2026/",
+      "language": "en-AU"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Book of the Month - Pink Mountain on Locust Island - September 2026",
+    "publishedAt": "2026-09-07T06:50:03.000Z",
+    "description": "This month Stella celebrates Pink Mountain on Locust Island, shortlisted for the 2019 Stella Prize. We spoke with Jamie Marina Lau to reflect on the novel, and the roles of impulse and faith in the writing process. What are you reading at the moment? I’m mentoring at the moment so I’ve been all-in on my students’ manuscripts \u2013 which are brilliant, and that’ll be what I’m reading and absorbed in m…",
+    "discoveredAt": "2026-10-01T20:52:09.971Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://stella.org.au/2026/09/book-of-the-month-pink-mountain-on-locust-island-september-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 150585,
+      "sha256": "5ee35ce0d1c370ce81fd9702ca360e7912f333810beefc74e972771b8255ba45",
+      "accessedAt": "2026-10-01T20:52:10.614Z",
+      "headline": "Book of the Month \u2013 Pink Mountain on Locust Island \u2013 September 2026",
+      "excerpt": "Book of the Month \u2013 Pink Mountain on Locust Island \u2013 September 2026 \u2013 The Stella Prize <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700%7CArchivo%20Narrow:400,500,600,700,400italic,500italic,600italic,700italic%7CLato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic&#038;display=swap&#038;ver=1785817210\" /> Main Menu About About",
+      "publishedDates": [],
+      "canonical": "https://stella.org.au/2026/09/book-of-the-month-pink-mountain-on-locust-island-september-2026/",
+      "language": "en-AU",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:10.631Z",
+  "foundItems": [
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/09/book-of-the-month-pink-mountain-on-locust-island-september-2026/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book of the Month - Pink Mountain on Locust Island - September 2026",
+      "publishedAt": "2026-09-07T06:50:03.000Z",
+      "description": "This month Stella celebrates Pink Mountain on Locust Island, shortlisted for the 2019 Stella Prize. We spoke with Jamie Marina Lau to reflect on the novel, and the roles of impulse and faith in the writing process. What are you reading at the moment? I’m mentoring at the moment so I’ve been all-in on my students’ manuscripts \u2013 which are brilliant, and that’ll be what I’m reading and absorbed in m…",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/08/book-of-the-month-abandon-every-hope-august-2026/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book of the Month - Abandon Every Hope - August 2026",
+      "publishedAt": "2026-08-03T07:11:43.000Z",
+      "description": "This month Stella celebrates Abandon Every Hope: Essays for the Dead, shortlisted for the 2024 Stella Prize. We sat down with Hayley Singer to discuss how the book came together, and readers’ reactions to it. What are you reading at the moment? I am always reading multiple books because I learn so much from the dialogue that happens between texts. Right now, I’m reading Caroline Elkins Legacy of …",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/06/book-of-the-month-the-open-july-2026/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book of the Month - The Open - July 2026",
+      "publishedAt": "2026-06-30T04:50:40.000Z",
+      "description": "This month Stella celebrates The Open, longlisted for the 2022 Stella Prize. We sat down with Lucy Van to discuss the role of readers as collaborators, and the immortality of poetry. What are you reading at the moment? Right now, I’m reading Frank McNamara’s poem, ‘A Petition from The AA Co Flocks at Peel’s River in behalf of The Irish Bard.’ The reason I’m reading this is because I’m doing some …",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/06/2026-chair-of-judges-speech-2026-stella-prize-judge/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 Chair of Judges Speech - 2026 Stella Prize Judge",
+      "publishedAt": "2026-06-01T05:20:02.000Z",
+      "description": "From the 2026 Stella Prize Chair of Judges, Sophie Gee What an honor to be standing in this room of distinguished Australian women, non-binary folks, and a handful of men: a passionate community of writers, readers, creators, supporters and artistic visionaries. Everyone here tonight has made the choice to place writing at the center of their lives. To speak personally, my heart opened, my mind e…",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/05/book-of-the-month-rapture-june-2026/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book of the Month - Rapture - June 2026",
+      "publishedAt": "2026-05-27T23:57:35.000Z",
+      "description": "This month Stella celebrates Rapture, longlisted for the 2025 Stella Prize. We sat down with Emily to discuss character building in historical settings, and the monumental task of researching her novel. What are you reading at the moment? I’ve just finished reading an early copy of Mirandi Riwoe’s A Short History of Longans (out in July) which is exquisite, and I’m now deeply invested in Lily Kin…",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/03/book-of-the-month-the-hummingbird-effect-april-2026/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book of the Month - The Hummingbird Effect - April 2026",
+      "publishedAt": "2026-03-30T02:35:24.000Z",
+      "description": "This month Stella celebrates The Hummingbird Effect, longlisted for the 2024 Stella Prize. We sat down with Kate to discuss writing historical novels, piecing together oral, living and past histories. What are you reading at the moment? A random assortment of current reads of my towering TBR pile: Once We Were Wildlife \u2013 the new short story collection by Inga Simpson. I will read anything Simpson…",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/02/book-of-the-month-every-version-of-you-march-2026/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book of the Month - Every Version of You - March 2026",
+      "publishedAt": "2026-02-24T23:48:55.000Z",
+      "description": "This month Stella celebrates Every Version of You, longlisted for the 2023 Stella Prize. We sat down with Grace Chan to discuss the speculative fiction ecosphere in this technological interview for our blog. Read below. What are you reading at the moment? I’ve recently finished The Way Spring Arrives and Other Stories, a collection of translated Chinese speculative fiction stories by female and n…",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/06/2026-past-judges/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 Past Judges",
+      "publishedAt": "2026-06-17T03:07:45.000Z",
+      "description": "Sophie Gee (Chair) Sophie Gee is inaugural Vice Chancellor’s Fellow at the University of Sydney, co-leading the Campus Collaboration initiative, amplifying public trust in university communities and academic knowledge. Her focus is on the social impact of arts and humanities. She speaks worldwide at arts and literary festivals about why books and humanities matter more than ever. Sophie is also a…",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/05/lee-lais-2026-acceptance-speech/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lee Lai’s 2026 acceptance speech",
+      "publishedAt": "2026-05-13T13:05:14.000Z",
+      "description": "My business is more with pictures, rather than words, and so I’m nervous to give this speech, especially in a room with some of Australia’s most wonderful writers. But I’ll do my best. I’m honored tonight to be a visitor on the lands of the Jagera and Turrbal people, and I pay my respects to elders past and present. First Nations people are the original storytellers, all over the world. In the pl…",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "source": {
+        "name": "Stella Prize",
+        "url": "https://stella.org.au/2026/08/story-sessions-sydney/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Story Sessions: Sydney",
+      "publishedAt": "2026-08-19T04:08:37.000Z",
+      "description": "Stella Schools \u2013 Story Sessions: Sydney Meet the storytellers shaping Australia’s literary future: an exclusive opportunity for highschoolers to meet Stella Prizelisted authors BOOK YOUR FREE TICKETS THROUGH THIS LINK Date: Tuesday, 10 November 2026 Time: 10am-2pm Location: The University of Sydney, Camperdown/Darlington Campus Tickets: Available here, through Humanitix. This event is FREE to att…",
+      "discoveredAt": "2026-10-01T20:52:09.971Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "751e8ab94da04fd852cdbad2c123a3a97fdcdefd0aab606c56b1d0bfa80a71bd"
+}

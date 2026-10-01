@@ -7,14 +7,16 @@ const target = '.tmp/russian-calendar-r10/runtime.mjs';
 await mkdir('.tmp/russian-calendar-r10', { recursive: true });
 await build({ stdin: { contents: `
 export { countries } from './src/data/countries/index';
-export { applyCalendarWriterDatePatches } from './src/data/countries/calendarWriterDatePatches';
+export { applyCalendarWriterDatePatches, calendarWriterDatePatches } from './src/data/countries/calendarWriterDatePatches';
 export { selectCalendarEvents, calendarWriterIdentity } from './src/components/LiteraryCalendar';
 `, resolveDir: process.cwd() }, bundle: true, platform: 'node', packages: 'external', format: 'esm',
   target: 'node22', outfile: target, logLevel: 'silent' });
-const { countries, applyCalendarWriterDatePatches, selectCalendarEvents, calendarWriterIdentity } = await import(`${pathToFileURL(`${process.cwd()}/${target}`).href}?t=${Date.now()}`);
-const russia = applyCalendarWriterDatePatches(countries).countries.find(c => c.id === 'russia');
+const { countries, applyCalendarWriterDatePatches, calendarWriterDatePatches, selectCalendarEvents, calendarWriterIdentity } = await import(`${pathToFileURL(`${process.cwd()}/${target}`).href}?t=${Date.now()}`);
+// This historical audit retains its accepted 25-field packet; the expansion has a separate current audit.
+const historicalPacket = calendarWriterDatePatches.filter(patch => !patch.id.startsWith('r10-russian-expansion:'));
+const russia = applyCalendarWriterDatePatches(countries, historicalPacket).countries.find(c => c.id === 'russia');
 assert.ok(russia);
-const allEvents = selectCalendarEvents(countries, 'ru');
+const allEvents = selectCalendarEvents(countries, 'ru', undefined, historicalPacket);
 const eventKeys = new Set(allEvents.map(e => `${calendarWriterIdentity(e.writer, e.country.id)}:${e.kind}`));
 const records = russia.writers.map(w => {
   const identity = calendarWriterIdentity(w, russia.id);

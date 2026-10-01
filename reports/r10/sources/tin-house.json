@@ -1,0 +1,16 @@
+{
+  "sourceId": "tin-house",
+  "name": "Tin House",
+  "entryUrl": "https://tinhouse.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:58.024Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "external_redirect:https://zandoprojects.com",
+  "robots": {
+    "url": "https://tinhouse.com/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

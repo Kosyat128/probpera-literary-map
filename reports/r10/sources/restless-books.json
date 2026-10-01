@@ -1,0 +1,89 @@
+{
+  "sourceId": "restless-books",
+  "name": "Restless Books",
+  "entryUrl": "https://restlessbooks.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:58.673Z",
+  "requests": [
+    {
+      "url": "https://restlessbooks.org/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 449906,
+      "sha256": "868d03c10ef5241eadd5f7f5b8598a530be43e108e4e982f61fc82e077dc873b",
+      "accessedAt": "2026-10-01T20:47:59.208Z"
+    },
+    {
+      "url": "https://restlessbooks.org/yonder/p/necklace-of-seven-souls",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 213381,
+      "sha256": "f5b68017a12e16e974866118a621cc52864ce63bd87231fb3ef81cc297dbd2b4",
+      "accessedAt": "2026-10-01T20:47:59.495Z"
+    },
+    {
+      "url": "https://restlessbooks.org/bookstore/p/a-nation-wrestles-with-god",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 370188,
+      "sha256": "fee8662184553622b2142fbcff6746c57380b9968049065cd7ec684395dd22ef",
+      "accessedAt": "2026-10-01T20:47:59.672Z"
+    },
+    {
+      "url": "https://restlessbooks.org/bookstore/p/people-who-live-alone-talk-too-much",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 215157,
+      "sha256": "5b6621c49bab14d542ef17b66092349b2b961441c2ff9b72952bb581d0ef1f10",
+      "accessedAt": "2026-10-01T20:47:59.782Z"
+    },
+    {
+      "url": "https://restlessbooks.org/yonder/p/chop-chop",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 292136,
+      "sha256": "edd3cd11c4b2462f8b04d965a5b718aac0914c8fde10b99926e37768963bcc78",
+      "accessedAt": "2026-10-01T20:48:00.181Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://restlessbooks.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 1508,
+    "sha256": "0250d0ed18a4ed42ecefb2daa1d391c7bfa9ed9983e34759978705016e1840dc",
+    "accessedAt": "2026-10-01T20:47:59.004Z",
+    "disallowed": [
+      "/config",
+      "/search",
+      "/account$",
+      "/account/",
+      "/commerce/digital-download/",
+      "/api/",
+      "/static/",
+      "/*?author=*",
+      "/*&author=*",
+      "/*?tag=*",
+      "/*&tag=*",
+      "/*?month=*",
+      "/*&month=*",
+      "/*?view=*",
+      "/*&view=*",
+      "/*?format=json",
+      "/*&format=json",
+      "/*?format=page-context",
+      "/*&format=page-context",
+      "/*?format=main-content",
+      "/*&format=main-content",
+      "/*?format=json-pretty",
+      "/*&format=json-pretty",
+      "/*?format=ical",
+      "/*&format=ical",
+      "/*?reversePaginate=*",
+      "/*&reversePaginate=*"
+    ]
+  }
+}

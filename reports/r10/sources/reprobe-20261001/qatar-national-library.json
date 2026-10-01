@@ -1,0 +1,64 @@
+{
+  "sourceId": "qatar-national-library",
+  "name": "Qatar National Library",
+  "entryUrl": "https://www.qnl.qa/en",
+  "countryCodes": [
+    "QA"
+  ],
+  "coverageCountryCodes": [
+    "QA"
+  ],
+  "attemptedAt": "2026-10-01T20:44:32.395Z",
+  "requests": [
+    {
+      "url": "https://www.qnl.qa/en",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 79494,
+      "sha256": "c433fb6509c332d3ccb1f875bb5115dea63f820e8034fb0a29680df6761fb99c",
+      "accessedAt": "2026-10-01T20:44:33.671Z"
+    },
+    {
+      "url": "https://www.qnl.qa/en/events",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 104787,
+      "sha256": "7894f20978c81ed608b3ed329b71e19cc59cfc697c6db4c459205341f4fe6ba7",
+      "accessedAt": "2026-10-01T20:44:34.391Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.qnl.qa/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1596,
+    "sha256": "59dd4405e58de1cbeecce287637f449898f982e720f89dc769b29fd4b7dc2f04",
+    "accessedAt": "2026-10-01T20:44:33.088Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips/",
+      "/node/add/",
+      "/search/",
+      "/user/register/",
+      "/user/password/",
+      "/user/login/",
+      "/user/logout/",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips/",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password/",
+      "/index.php/user/register/",
+      "/index.php/user/login/",
+      "/index.php/user/logout/"
+    ]
+  }
+}

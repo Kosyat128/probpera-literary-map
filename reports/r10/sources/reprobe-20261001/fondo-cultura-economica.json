@@ -1,0 +1,33 @@
+{
+  "sourceId": "fondo-cultura-economica",
+  "name": "Fondo de Cultura Económica",
+  "entryUrl": "https://www.fondodeculturaeconomica.com/",
+  "countryCodes": [
+    "MX"
+  ],
+  "coverageCountryCodes": [
+    "MX"
+  ],
+  "attemptedAt": "2026-10-01T20:44:44.318Z",
+  "requests": [
+    {
+      "url": "https://www.fondodeculturaeconomica.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 112758,
+      "sha256": "3b2cd938d346d9e2ad8a71a26dc75c3f46ff926f98332607df5dad08b7ced00d",
+      "accessedAt": "2026-10-01T20:44:53.646Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.fondodeculturaeconomica.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 24,
+    "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "accessedAt": "2026-10-01T20:44:45.155Z",
+    "disallowed": []
+  }
+}

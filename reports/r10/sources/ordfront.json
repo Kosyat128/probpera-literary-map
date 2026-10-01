@@ -1,0 +1,1368 @@
+{
+  "sourceId": "ordfront",
+  "name": "Ordfront",
+  "entryUrl": "https://ordfrontforlag.se/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:38.222Z",
+  "requests": [
+    {
+      "url": "https://ordfrontforlag.se/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 143992,
+      "sha256": "1a2e1f2bc7b75380d557b08fca1a794d0cf27a20111c70d2ec39044ce25531c7",
+      "accessedAt": "2026-10-01T20:48:38.547Z"
+    },
+    {
+      "url": "https://ordfrontforlag.se/feed/podcast/ordfronten/",
+      "status": 200,
+      "contentType": "text/xml; charset=UTF-8",
+      "bytes": 82177,
+      "sha256": "4eb914762739883b4b87e198f81b3a3da0c21cf4f2e36f6519f0c2f093a46d21",
+      "accessedAt": "2026-10-01T20:48:39.484Z"
+    },
+    {
+      "url": "https://ordfrontforlag.se/podcast/kvinnor-skulle-inte-ens-ga-ut-pa-stan-ensamma-an-mindre-resa/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 370006,
+      "sha256": "572a4327c5e47c9911148128461539a67aff171f8a1bdd2f6114f04e92cf3716",
+      "accessedAt": "2026-10-01T20:48:39.616Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://ordfrontforlag.se/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 118,
+    "sha256": "26e629b2b05208ff7c24dd65db37859f9870828dd12b31a37cbec8958e25d002",
+    "accessedAt": "2026-10-01T20:48:38.451Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "ordfront",
+    "name": "Ordfront",
+    "url": "https://ordfrontforlag.se/feed/podcast/ordfronten/",
+    "format": "rss",
+    "language": "sv-SE",
+    "region": "global",
+    "sourceFamilyId": "ordfront",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://ordfrontforlag.se"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://ordfrontforlag.se/podcast/kvinnor-skulle-inte-ens-ga-ut-pa-stan-ensamma-an-mindre-resa/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:39.638Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 50,
+  "literaryCandidateCount": 50,
+  "sample": {
+    "sourceId": "ordfront",
+    "source": {
+      "name": "Ordfront",
+      "url": "https://ordfrontforlag.se/podcast/kvinnor-skulle-inte-ens-ga-ut-pa-stan-ensamma-an-mindre-resa/",
+      "language": "sv-SE"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "”Kvinnor skulle inte ens gå ut på stan ensamma - än mindre resa”",
+    "publishedAt": "2025-06-27T10:50:47.000Z",
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:39.488Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://ordfrontforlag.se/podcast/kvinnor-skulle-inte-ens-ga-ut-pa-stan-ensamma-an-mindre-resa/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 370006,
+      "sha256": "572a4327c5e47c9911148128461539a67aff171f8a1bdd2f6114f04e92cf3716",
+      "accessedAt": "2026-10-01T20:48:39.616Z",
+      "headline": "”Kvinnor skulle inte ens gå ut på stan ensamma \u2013 än mindre resa”",
+      "excerpt": "Ordfronten ”Kvinnor skulle inte ens gå ut på stan ensamma \u2013 än mindre resa” Spela upp avsnitt Pausa avnitt 1x 00:00 / 35:35 RSS-flöde Dela Länk Bädda in <blockquote class=\"wp-embedded-content\" data-secret=\"Ln7LPNTZ88\"><a href=\"https://ordfrontforlag.se/podcast/kvinnor-skulle-inte-ens-ga-ut-pa-stan-ensamma-an-mindre-resa/\">”Kvinnor skulle inte ens gå ut på stan ensamma \u2013 än mindre resa”</a></blockq",
+      "publishedDates": [],
+      "canonical": "https://ordfrontforlag.se/podcast/kvinnor-skulle-inte-ens-ga-ut-pa-stan-ensamma-an-mindre-resa/",
+      "language": "sv-SE",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:39.638Z",
+  "foundItems": [
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/kvinnor-skulle-inte-ens-ga-ut-pa-stan-ensamma-an-mindre-resa/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Kvinnor skulle inte ens gå ut på stan ensamma - än mindre resa”",
+      "publishedAt": "2025-06-27T10:50:47.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/vi-ville-verkligen-hjalpa-till-att-losa-mordgatan/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Vi ville verkligen hjälpa till att lösa mordgåtan”",
+      "publishedAt": "2025-06-24T10:15:24.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/mathias-bostrom-ger-sig-ut-pa-valjakt/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mathias Boström ger sig ut på valjakt",
+      "publishedAt": "2025-06-20T10:40:18.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/rymdindustrin-ar-rena-rama-vilda-vastern/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Rymdindustrin är rena rama vilda västern”",
+      "publishedAt": "2025-06-17T11:10:28.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/barn-som-far-illa-ar-ett-kansligt-amne-men-ocksa-ett-viktigt-amne-att-ta-upp/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Barn som far illa är ett känsligt ämne, men också ett viktigt ämne att ta upp”",
+      "publishedAt": "2025-06-13T11:34:06.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/det-som-var-helt-ar-inte-langre-det-det-har-gatt-sonder/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Det som var helt är inte längre det - det har gått sönder”",
+      "publishedAt": "2025-06-10T12:46:38.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/vilket-sorts-samhalle-later-folk-ga-hungriga/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Vilket sorts samhälle låter folk gå hungriga?”",
+      "publishedAt": "2025-06-06T11:46:01.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/for-vuxna-far-man-skriva-laskigare-och-hetare-karleksscener/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”För vuxna får man skriva läskigare, och hetare kärleksscener”",
+      "publishedAt": "2025-06-03T12:32:33.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/det-kanns-som-att-jag-har-forsokt-fanga-nagot-och-sagt-farval-till-det-pa-samma-gang/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Det känns som att jag har försökt fånga något och sagt farväl till det på samma gång”",
+      "publishedAt": "2025-05-30T12:25:37.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/svenska-samhallet-av-idag-har-fortfarande-fantomsmartor-fran-den-har-tiden/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Svenska samhället av idag har fortfarande fantomsmärtor från den här tiden”",
+      "publishedAt": "2025-05-27T13:45:12.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-har-bara-dragit-saker-till-sin-logiska-slutpunkt/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag har bara dragit saker till sin logiska slutpunkt”",
+      "publishedAt": "2025-05-23T12:40:48.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-ar-for-gammal-for-att-klistra-fast-mig-pa-e4an/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag är för gammal för att klistra fast mig på E4:an”",
+      "publishedAt": "2025-05-20T12:39:52.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/inte-mycket-har-skrivits-om-svensk-radikalhoger-och-dess-rotter-bakat/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Inte mycket har skrivits om svensk radikalhöger och dess rötter bakåt”",
+      "publishedAt": "2025-05-16T12:52:17.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-vill-skildra-hur-diasporan-utnyttjas-som-militar-resurs-av-auktoritara-regimer-och-av-oss-alla/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag vill skildra hur diasporan utnyttjas - som militär resurs av auktoritära regimer och av oss alla”",
+      "publishedAt": "2025-05-13T10:29:08.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-lamnade-over-grundproblemet-till-1400-talets-verklighet/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag lämnade över grundproblemet till 1400-talets verklighet”",
+      "publishedAt": "2025-05-09T13:21:46.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-ville-skriva-om-en-manniska-av-kott-och-blod/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag ville skriva om en människa av kött och blod”",
+      "publishedAt": "2025-05-07T11:17:55.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-kande-direkt-att-jag-inte-kunde-slappa-det-har-odet/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag kände direkt att jag inte kunde släppa det här ödet”",
+      "publishedAt": "2025-05-02T12:02:51.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/skiljelinjen-mellan-hamnd-och-rattvisa-ar-mindre-skarp-an-vi-tanker/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Skiljelinjen mellan hämnd och rättvisa är mindre skarp än vi tänker”",
+      "publishedAt": "2025-04-25T11:48:06.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-hade-fatt-for-mig-att-jag-var-misslyckad-som-romanskrivare-eftersom-jag-aldrig-kom-pa-det-briljanta-amnet/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag hade fått för mig att jag var misslyckad som romanskrivare eftersom jag aldrig kom på det briljanta ämnet”",
+      "publishedAt": "2025-04-18T11:28:55.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-gillar-inte-ordet-sallskapshund-det-ar-for-svagt/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag gillar inte ordet ’sällskapshund’, det är för svagt”",
+      "publishedAt": "2024-12-20T12:40:46.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-atererovrar-en-berattelse-som-jag-inte-fatt-genom-min-egen-familj/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag återerövrar en berättelse som jag inte fått genom min egen familj”",
+      "publishedAt": "2024-12-13T12:00:05.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/det-ar-lite-kul-att-ha-den-dar-makten-nu-bestammer-jag/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Det är lite kul att ha den där makten - nu bestämmer jag”",
+      "publishedAt": "2024-12-06T15:11:53.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/aven-folk-som-var-med-i-taltprojektet-sager-ah-fan-det-dar-visste-vi-inte/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Även folk som var med i Tältprojektet säger ’Åh fan, det där visste vi inte’”",
+      "publishedAt": "2024-11-29T12:27:02.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/vi-som-tvingas-lamna-vara-lander-ar-inga-lycksokare-vi-ar-overlevare/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Vi som tvingas lämna våra länder är inga lycksökare - vi är överlevare”",
+      "publishedAt": "2024-11-15T13:23:24.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-hamnade-pa-samma-rehab-som-jag-skickade-min-huvudkaraktar-till/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag hamnade på samma rehab som jag skickade min huvudkaraktär till”",
+      "publishedAt": "2024-11-08T12:27:17.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/barn-har-inte-sa-hoga-roster-det-ar-vi-vuxna-som-maste-varna-om-deras-fragor/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Barn har inte så höga röster, det är vi vuxna som måste värna om deras frågor”",
+      "publishedAt": "2024-11-01T14:20:37.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/det-saknades-en-bok-med-ett-bredare-perspektiv-pa-hur-vi-lar-oss-sprak/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Det saknades en bok med ett bredare perspektiv på hur vi lär oss språk”",
+      "publishedAt": "2024-10-25T12:13:59.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/hela-sverige-har-blivit-som-ett-stort-kravpolitiskt-klassrum/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Hela Sverige har blivit som ett stort kravpolitiskt klassrum”",
+      "publishedAt": "2024-10-18T12:23:11.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/problemen-sitter-i-vaggarna-i-kriminalvarden/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Problemen sitter i väggarna i kriminalvården”",
+      "publishedAt": "2024-10-11T11:37:38.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/vi-maste-borja-prata-med-varandra-aven-offer-och-forovare/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Vi måste börja prata med varandra - även offer och förövare”",
+      "publishedAt": "2024-10-04T12:35:25.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/barn-ska-fa-idrotta-pa-sina-villkor/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Barn ska få idrotta på sina villkor”",
+      "publishedAt": "2024-09-27T13:45:49.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/man-visste-att-om-dammen-brister-tar-den-allting/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Man visste att om dammen brister tar den allting”",
+      "publishedAt": "2024-09-20T10:52:38.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/man-ska-inte-underskatta-effekten-av-ett-bra-mellanmal/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Man ska inte underskatta effekten av ett bra mellanmål”",
+      "publishedAt": "2024-09-13T11:02:35.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/det-gar-inte-att-forsta-sapmi-idag-om-man-inte-har-koll-pa-historien/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Det går inte att förstå Sapmi idag om man inte har koll på historien”",
+      "publishedAt": "2024-09-06T11:56:02.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-tycker-om-att-soka-ytterligheterna/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag tycker om att söka ytterligheterna”",
+      "publishedAt": "2024-06-20T14:16:07.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-ville-skriva-om-den-dar-tiden-nar-allt-krackelerar/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag ville skriva om den där tiden när allt krackelerar”",
+      "publishedAt": "2024-06-14T15:13:15.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/en-diktvaxling-enligt-yxskaftsmodellen/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "En diktväxling enligt yxskaftsmodellen",
+      "publishedAt": "2024-06-07T14:06:11.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/vi-oser-ut-det-verkliga-livet-som-det-sa-vackert-heter/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Vi öser ut det verkliga livet, som det så vackert heter”",
+      "publishedAt": "2024-05-31T12:46:18.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/priset-for-natomedlemskapet-ar-en-varbold-i-svensk-debatt-och-den-tycker-jag-ska-petas-i/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Priset för Natomedlemskapet är en varböld i svensk debatt - och den tycker jag ska petas i”",
+      "publishedAt": "2024-05-24T11:24:18.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/att-oversatta-beata-umubyeyi-mairesse-var-det-mest-stimulerande-och-det-svaraste-jag-gjort/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Att översätta Beata Umubyeyi Mairesse var det mest stimulerande - och det svåraste jag gjort”",
+      "publishedAt": "2024-05-17T12:46:50.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/vi-maste-komma-ifran-att-samlag-ar-det-riktiga-sexet/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Vi måste komma ifrån att samlag är det ’riktiga’ sexet”",
+      "publishedAt": "2024-05-08T12:58:56.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/de-finska-krigsbarnens-historia-ar-ett-trauma-som-loper-genom-generationer/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”De finska krigsbarnens historia är ett trauma som löper genom generationer”",
+      "publishedAt": "2024-04-26T10:10:21.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/det-behover-inte-vara-biljakter-och-blodsplatter/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Det behöver inte vara biljakter och blodsplatter”",
+      "publishedAt": "2024-04-19T11:43:01.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/bilden-av-lukasjenka-som-landsfader-fick-sig-en-knack-2020/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Bilden av Lukasjenka som landsfader fick sig en knäck 2020”",
+      "publishedAt": "2024-04-12T11:46:28.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-hade-aldrig-overvagt-att-skriva-en-deckare/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag hade aldrig övervägt att skriva en deckare”",
+      "publishedAt": "2024-04-05T13:02:39.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/plotsligt-tornade-historien-in-och-forstorde-hela-mitt-upplagg/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Plötsligt törnade historien in och förstörde hela mitt upplägg”",
+      "publishedAt": "2024-03-22T13:17:51.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/jag-borjade-skriva-trots-att-jag-var-valdigt-generad/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Jag började skriva trots att jag var väldigt generad”",
+      "publishedAt": "2024-03-15T11:54:26.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/det-ar-magiskt-tankande-att-vi-ska-trassla-oss-ur-den-har-knipan-med-hjalp-av-teknik/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Det är magiskt tänkande att vi ska trassla oss ur den här knipan med hjälp av teknik”",
+      "publishedAt": "2024-03-08T14:50:48.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/man-kan-losa-otroligt-mycket-bara-genom-att-ha-koll-pa-sin-rost/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Man kan lösa otroligt mycket bara genom att ha koll på sin röst”",
+      "publishedAt": "2024-02-16T12:46:51.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "source": {
+        "name": "Ordfront",
+        "url": "https://ordfrontforlag.se/podcast/varen-1933-var-en-underskattad-brytpunkt-for-svensk-politik/",
+        "language": "sv-SE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "”Våren 1933 var en underskattad brytpunkt för svensk politik”",
+      "publishedAt": "2024-02-12T12:23:29.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:39.488Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "4eb914762739883b4b87e198f81b3a3da0c21cf4f2e36f6519f0c2f093a46d21"
+}

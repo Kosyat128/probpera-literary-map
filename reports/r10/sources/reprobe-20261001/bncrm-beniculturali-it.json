@@ -1,0 +1,20 @@
+{
+  "sourceId": "bncrm-beniculturali-it",
+  "name": "National Central Library of Rome",
+  "entryUrl": "https://www.bncrm.beniculturali.it/",
+  "countryCodes": [
+    "IT"
+  ],
+  "coverageCountryCodes": [
+    "IT"
+  ],
+  "attemptedAt": "2026-10-01T20:43:57.706Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.bncrm.beniculturali.it/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "sourceId": "chinesepen-org",
+  "name": "PEN China",
+  "entryUrl": "https://www.chinesepen.org/",
+  "countryCodes": [
+    "CN"
+  ],
+  "coverageCountryCodes": [
+    "CN"
+  ],
+  "attemptedAt": "2026-10-01T20:44:17.691Z",
+  "requests": [
+    {
+      "url": "https://www.chinesepen.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 195564,
+      "sha256": "343ca67efec87e9c8fcd9bd82762b8f95376a3203de3455158651274df0443d2",
+      "accessedAt": "2026-10-01T20:44:19.016Z"
+    },
+    {
+      "url": "https://www.chinesepen.org/feed",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 9147,
+      "sha256": "77394b2b1dbc1823d20a357644590c308a50f22f4b0359393084c5726974b2de",
+      "accessedAt": "2026-10-01T20:44:19.689Z"
+    },
+    {
+      "url": "https://www.chinesepen.org/blog/archives/209951",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 182644,
+      "sha256": "d0e11f6abdff914c81a11b374b7c8e2873c9d8ed2c048d5e509ffa1e44c5ed31",
+      "accessedAt": "2026-10-01T20:44:20.145Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.chinesepen.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 119,
+    "sha256": "01203c7d8a96575bdfa9c8bc28265a2708c94ee6883697f85c06076da1813782",
+    "accessedAt": "2026-10-01T20:44:18.078Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "chinesepen-org",
+    "name": "PEN China",
+    "url": "https://www.chinesepen.org/feed",
+    "format": "rss",
+    "language": "zh-Hans",
+    "region": "asia",
+    "sourceFamilyId": "chinesepen-org",
+    "countryCodes": [
+      "CN"
+    ],
+    "coverageCountryCodes": [
+      "CN"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.chinesepen.org"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.chinesepen.org/blog/archives/209951"
+    ],
+    "verifiedAt": "2026-10-01T20:44:20.155Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "chinesepen-org",
+    "source": {
+      "name": "PEN China",
+      "url": "https://www.chinesepen.org/blog/archives/209951",
+      "language": "zh-Hans"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "蔡咏梅：访莱比锡看共产主义运动的潮起潮落",
+    "publishedAt": "2026-10-01T15:23:43.000Z",
+    "description": "今夏7月，前往欧洲，到德国莱比锡参加《欧洲之声》主办的刘晓波殉难九周年纪念会和首届刘晓波人权奖颁奖会。 莱比锡 […]",
+    "discoveredAt": "2026-10-01T20:44:19.692Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.chinesepen.org/blog/archives/209951",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 182644,
+      "sha256": "d0e11f6abdff914c81a11b374b7c8e2873c9d8ed2c048d5e509ffa1e44c5ed31",
+      "accessedAt": "2026-10-01T20:44:20.145Z",
+      "headline": "蔡咏梅：访莱比锡看共产主义运动的潮起潮落",
+      "excerpt": "报道 游记 蔡咏梅：访莱比锡看共产主义运动的潮起潮落 作者cheer 10 月 1, 2026 严歌苓, 共产主义兴亡, 刘晓波, 刘晓波人权奖, 库纳, 廖天琪, 张展, 欧洲之声, 莱比锡, 蔡咏梅 今夏7月，前往欧洲，到德国莱比锡参加《欧洲之声》主办的刘晓波殉难九周年纪念会和首届刘晓波人权奖颁奖会。 莱比锡是一座文化底蕴深厚的历史名城，是德国音乐之都，是西方古典音乐之父巴哈渡过27年职业生涯的地方，是文学之乡，大文豪歌德青年求学的地方，他在这里获得不朽巨着《浮士德》的灵感。莱比锡也是一座曾饱经战火的城市，19世纪拿破崙战争关键的莱比锡一役在此惨烈开打，20世纪又遭受二战饱和空袭劫后余生。莱比锡也是一座英雄的城市，冷战时候落入共产极权铁幕后，率先发出要和平要自由的吶喊，为推倒柏林墙立下首功。 刘晓波殉难于2017年7月13日，今年是九週年。主办人和与会者多为刘晓波故人和支持中国人权运动",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T23:23:43+08:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.chinesepen.org/blog/archives/209951",
+      "language": "zh-Hans",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:20.155Z",
+  "foundItems": [
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209951",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "蔡咏梅：访莱比锡看共产主义运动的潮起潮落",
+      "publishedAt": "2026-10-01T15:23:43.000Z",
+      "description": "今夏7月，前往欧洲，到德国莱比锡参加《欧洲之声》主办的刘晓波殉难九周年纪念会和首届刘晓波人权奖颁奖会。 莱比锡 […]",
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209943",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "田牧：失去罗盘的德国--如何迷失了战略？",
+      "publishedAt": "2026-09-30T23:21:29.000Z",
+      "description": "德国正在经历二战结束以来少见的政治与社会震荡。 2026年9月，德国接连经历了数场联邦州议会选举，进一步撕开了 […]",
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209940",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "茉莉：中国文革与川普时代的镜像奇观--人性疯狂与历史荒诞卷土重来",
+      "publishedAt": "2026-09-30T01:05:09.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209930",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "周亚华：我 们 的 风 儿",
+      "publishedAt": "2026-09-29T00:26:16.000Z",
+      "description": "[…]",
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209924",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "蔡楚：我心中的李建华（一平）",
+      "publishedAt": "2026-09-28T00:27:27.000Z",
+      "description": "《又是一年秋风凉》 “阿柴作曲、沙哑大叔作词” 又是一年秋色染上夕阳 我们也渐渐变了模样 人的一生总有相逢 也 […]",
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209927",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "于大海：苍天已死，青天当立",
+      "publishedAt": "2026-09-27T01:01:00.000Z",
+      "description": "\u2014\u2014 在纽伦堡“文革60周年”研讨会上的发言 各位朋友，各位来宾： 大家好！ 很高兴有机会通过视频参加这次文革 […]",
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209921",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "严家祺：「文化大革命」对中国未来的影响",
+      "publishedAt": "2026-09-25T23:17:30.000Z",
+      "description": "二0二六年是 […]",
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209918",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "任铭：远东历史的时间轨迹与中日战争陷阱的形成",
+      "publishedAt": "2026-09-25T04:12:56.000Z",
+      "description": "1、1904年-1905年的日俄战争，日本阵亡10万人，以弱胜强，全歼俄国两支庞大的远洋舰队。导致沙皇殖民满洲 […]",
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209910",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "习近平“大内总管”女儿成爆料目标",
+      "publishedAt": "2026-09-23T23:05:44.000Z",
+      "description": "一篇有关习近平的左膀右臂\u2014\u2014栗战书家人在香港拥有巨额资产的文章悄然无声的登上了马云控股的《南华早报》，本来文章 […]",
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209906",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "史沫特莱：从苏联间谍到加盟中共隐蔽战线",
+      "publishedAt": "2026-09-22T22:08:56.000Z",
+      "description": "艾格尼丝·史沫特莱（Agnes Smedley；1892年2月\uff0d1950年5月），出生于美国矿工家庭，其在成长 […]",
+      "discoveredAt": "2026-10-01T20:44:19.692Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "77394b2b1dbc1823d20a357644590c308a50f22f4b0359393084c5726974b2de"
+}

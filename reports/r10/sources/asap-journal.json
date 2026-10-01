@@ -1,0 +1,466 @@
+{
+  "sourceId": "asap-journal",
+  "name": "ASAP/Journal",
+  "entryUrl": "https://asapjournal.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:50.884Z",
+  "requests": [
+    {
+      "url": "https://asapjournal.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 62781,
+      "sha256": "618cfdf484a4cada77ba7250533113ef959cebc3affe79464e4dab8fc9dec09e",
+      "accessedAt": "2026-10-01T20:51:52.308Z"
+    },
+    {
+      "url": "https://asapjournal.com/review/relation-as-practice-on-the-2026-whitney-biennial/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 65409,
+      "sha256": "27b3b2b01c27eb0402a9f2a6447d9d9e7953da2ecbcce4161502858d86897284",
+      "accessedAt": "2026-10-01T20:51:52.514Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://asapjournal.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 173,
+    "sha256": "9ef64240f1d0ed5c9062c7df9f66c5b417304349388ba03a88b196fa3c0419f8",
+    "accessedAt": "2026-10-01T20:51:51.667Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "asap-journal",
+    "name": "ASAP/Journal",
+    "url": "https://asapjournal.com/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "asap-journal",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://asapjournal.com"
+    ],
+    "linkPattern": "^\\/review\\/[^/]+\\/?$|^\\/cluster\\/[^/]+\\/?$|^\\/feature\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://asapjournal.com/review/relation-as-practice-on-the-2026-whitney-biennial/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:52.518Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 14,
+  "literaryCandidateCount": 14,
+  "sample": {
+    "sourceId": "asap-journal",
+    "source": {
+      "name": "ASAP/Journal",
+      "url": "https://asapjournal.com/review/relation-as-practice-on-the-2026-whitney-biennial/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Relation as Practice: On the 2026 Whitney Biennial",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:51:52.324Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://asapjournal.com/review/relation-as-practice-on-the-2026-whitney-biennial/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 65409,
+      "sha256": "27b3b2b01c27eb0402a9f2a6447d9d9e7953da2ecbcce4161502858d86897284",
+      "accessedAt": "2026-10-01T20:51:52.514Z",
+      "headline": "Relation as Practice: On the 2026 Whitney Biennial - ASAP/Review",
+      "excerpt": "Installation view of Whitney Biennial 2026 (Whitney Museum of American Art, New York, March 8\u2013August 23, 2026) featuring José Maceda and Aki Onda, Ugnayan, 1974/2026. Photograph by Darian DiCanno/BFA.com. © BFA 2026 Whitney Biennial 2026Whitney Museum of American Art, New YorkMarch 8 \u2013 August 23, 2026 Curated by Marcela Guerrero and Drew Sawyer In Emilie Louise Gossiaux’s ballpoint-pen-and-crayon ",
+      "publishedDates": [
+        {
+          "value": "2026-09-03T13:29:08+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://asapjournal.com/review/relation-as-practice-on-the-2026-whitney-biennial/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:52.518Z",
+  "foundItems": [
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/review/relation-as-practice-on-the-2026-whitney-biennial/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Relation as Practice: On the 2026 Whitney Biennial",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/review/review-cartographies-of-empire-the-road-novel-and-american-hegemony/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Review: Cartographies of Empire: The Road Novel and American Hegemony",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/review/review-of-coalition-literature-aesthetics-on-the-move-in-midcentury-us-multiethnic-writing-by-francisco-robles/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Review of Coalition Literature: Aesthetics on the Move in Midcentury US Multiethnic Writing by Francisco Robles",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/cluster/from-the-gaps-art-literature-and-abortion/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From the Gaps: Art, Literature, and Abortion",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/feature/ai-and-the-myth-of-the-author-genius/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "AI and the Myth of the Author Genius",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/review/jana-eulers-triptych-image-viewer-connections/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jana Euler’s Triptych - Image Viewer Connections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/review/a-false-brother-on-da-cortes-reconstruction-of-paul-theks-tomb/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A False Brother: On Da Corte’s Reconstruction of Paul Thek’s Tomb",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/review/uncanny-juxtaposition-when-sound-becomes-language-in-dial-a-poem-hong-kong-and-project-hail-mary/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Uncanny Juxtaposition / When Sound Becomes Language in Dial-A-Poem Hong Kong and Project Hail Mary",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/review/otherwise-relationality-review-of-critical-dreaming-feminist-performances-across-the-indigenous-americas/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Otherwise Relationality: Review of Critical Dreaming: Feminist Performances across the Indigenous Americas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/cluster/worldmaking-worldbreaking-reports-from-the-asap-16-gulf-coast-artist-showcase/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Worldmaking/Worldbreaking: Reports from the ASAP/16 Gulf Coast Artist Showcase",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/cluster/algorithms-and-the-occult/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Algorithms and the Occult",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/feature/the-smallest-unit-of-hope-searching-for-leonora-carringtons-giantess/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Smallest Unit of Hope: Searching for Leonora Carrington’s Giantess",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/feature/the-venice-biennale-a-fable/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Venice Biennale: A Fable",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asap-journal",
+      "source": {
+        "name": "ASAP/Journal",
+        "url": "https://asapjournal.com/feature/star-spangled-bangers-aaron-cobbetts-textile-politics/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Star Spangled Bangers: Aaron Cobbett’s Textile Politics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:52.324Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "618cfdf484a4cada77ba7250533113ef959cebc3affe79464e4dab8fc9dec09e"
+}

@@ -1,0 +1,393 @@
+{
+  "sourceId": "big-book-award",
+  "name": "Большая книга",
+  "entryUrl": "https://bigbook.ru/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:47.803Z",
+  "requests": [
+    {
+      "url": "https://bigbook.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 202120,
+      "sha256": "e004c4576615521f6f0855b40e48e9d6df724e24c6c4c44607d69fabdb7839c7",
+      "accessedAt": "2026-10-01T20:48:49.257Z"
+    },
+    {
+      "url": "https://bigbook.ru/novosti",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 194496,
+      "sha256": "d3955e9f52762f66b76426d49ba1aed1bbfabd0d9e230ee597b224842a4daa6f",
+      "accessedAt": "2026-10-01T20:48:50.475Z"
+    },
+    {
+      "url": "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 181693,
+      "sha256": "39ef07488f2a8440925f12394939f2634ebff676104eb22fb84a62ea687ec7a3",
+      "accessedAt": "2026-10-01T20:48:51.439Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://bigbook.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 65,
+    "sha256": "cd3bd729dba3fc3c6f57ce8272b99830ebc5fc9fcc0cc4bbc06f8902461e01f6",
+    "accessedAt": "2026-10-01T20:48:48.194Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "big-book-award",
+    "name": "Большая книга",
+    "url": "https://bigbook.ru/novosti",
+    "format": "html",
+    "language": "ru-RU",
+    "region": "global",
+    "sourceFamilyId": "big-book-award",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://bigbook.ru"
+    ],
+    "linkPattern": "^\\/eksperty\\/[^/]+\\/?$|^\\/novosti\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona"
+    ],
+    "verifiedAt": "2026-10-01T20:48:51.447Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 11,
+  "literaryCandidateCount": 11,
+  "sample": {
+    "sourceId": "big-book-award",
+    "source": {
+      "name": "Большая книга",
+      "url": "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona",
+      "language": "ru-RU"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Национальная литературная премия «Большая книга» объявила список финалистов XXI сезона",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:50.497Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 181693,
+      "sha256": "39ef07488f2a8440925f12394939f2634ebff676104eb22fb84a62ea687ec7a3",
+      "accessedAt": "2026-10-01T20:48:51.439Z",
+      "headline": "Национальная литературная премия «Большая книга» объявила список финалистов XXI сезона",
+      "excerpt": "Национальная литературная премия «Большая книга» объявила список финалистов XXI сезона - Национальная литературная премия «Большая книга» <div><img src=\"https://mc.yandex.ru/watch/93793344\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div> Поиск Национальная литературная премия «Большая книга» объявила список финалистов XXI сезона «Большая книга» Новости 03 июня 2026 3 июня 2026 года в пред",
+      "publishedDates": [],
+      "canonical": "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona",
+      "language": "ru-ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:51.447Z",
+  "foundItems": [
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Национальная литературная премия «Большая книга» объявила список финалистов XXI сезона",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/literaturno-prosvetitelskij-proekt-bolshaya-strana-bolshaya-kniga-na-knizhnom-festivale-chitaj-izhevsk",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литературно-просветительский проект «Большая страна - Большая книга» на книжном фестивале «Читай, Ижевск!»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/imena-finalistov-xxi-sezona-premii-bolshaya-kniga-budut-obyavleny-3-iyunya",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Имена финалистов XXI сезона премии «Большая книга» будут объявлены 3 июня",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/literaturno-prosvetitelskij-proekt-bolshaya-strana-bolshaya-kniga-otpravlyaetsya-v-tambovskuyu-oblast",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литературно-просветительский проект «Большая страна - Большая книга» отправляется в Тамбовскую область",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/ofitsialnoe-zayavlenie-premii-bolshaya-kniga",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Официальное заявление премии «Большая книга»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/literaturno-prosvetitelskij-proekt-bolshaya-strana-bolshaya-kniga-v-irkutskoj-oblasti",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литературно-просветительский проект «Большая страна - Большая книга» в Иркутской области",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/nagrazhdeny-laureaty-desyatogo-sezona-literaturnoj-premii-litsej",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Награждены лауреаты десятого сезона Литературной премии «Лицей»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/bolshaya-kniga-na-xii-knizhnom-festivale-krasnaya-ploshchad",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Большая книга» на XII книжном фестивале «Красная площадь»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/proekt-bolshaya-strana-bolshaya-kniga-provedjot-seriyu-vstrech-v-kostrome",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Проект «Большая страна - Большая книга» проведёт серию встреч в Костроме",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/novosti/otkryt-prijom-zayavok-na-premiyu-litblog-2",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Открыт приём заявок на премию «_Литблог»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "source": {
+        "name": "Большая книга",
+        "url": "https://bigbook.ru/eksperty/eksperty-premii-bolshaya-kniga",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Эксперты премии «Большая книга»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.497Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "d3955e9f52762f66b76426d49ba1aed1bbfabd0d9e230ee597b224842a4daa6f"
+}

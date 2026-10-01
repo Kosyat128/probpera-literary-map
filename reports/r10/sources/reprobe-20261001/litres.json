@@ -1,0 +1,56 @@
+{
+  "sourceId": "litres",
+  "name": "Литрес Журнал",
+  "entryUrl": "https://www.litres.ru/journal/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-10-01T20:44:22.130Z",
+  "requests": [
+    {
+      "url": "https://www.litres.ru/journal/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 169900,
+      "sha256": "3be1f4ba971c24e936010143d161e71d2a0ddb3d665bd7cecf9d54961a6aab14",
+      "accessedAt": "2026-10-01T20:44:22.628Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.litres.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2420,
+    "sha256": "d4b485d8434e97c254fed2dfb333d5d854626d84b0a3933f9edeea88e2815b22",
+    "accessedAt": "2026-10-01T20:44:22.424Z",
+    "disallowed": [
+      "*?*",
+      "/*/avtor/",
+      "/chitateli/",
+      "/static/",
+      "/gettrial/",
+      "/pub/t/",
+      "/download_book/",
+      "/*.exe",
+      "/pages/",
+      "/search/",
+      "/*/yandex-alice-book-card/",
+      "/foundation/",
+      "/payment/",
+      "/*/seo/",
+      "/my-books/",
+      "/audiobook/*/similar/",
+      "/audiobook/*/citata/",
+      "/selections/",
+      "*/similar/",
+      "*/comments/",
+      "/*paper_book=true",
+      "/?art_types=text_book"
+    ]
+  }
+}

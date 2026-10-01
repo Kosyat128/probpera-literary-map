@@ -1,0 +1,2308 @@
+{
+  "schemaVersion": 1,
+  "batchId": "current-news-reviewed-20261002",
+  "preparedAt": "2026-10-01T21:26:03.554Z",
+  "scope": "Add 26 source-backed current literary news items after root review; no canonical write, publication, social send or generated calendar news.",
+  "records": [
+    {
+      "id": "harari-laws-of-history-global-announcement-20261001",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-10-01T11:56:33.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Penguin Random House анонсировало The Laws of History Юваля Ноя Харари",
+        "en": "Penguin Random House announces Yuval Noah Harari’s The Laws of History"
+      },
+      "summary": {
+        "ru": "Penguin Random House объявило, что The Laws of History Юваля Ноя Харари выйдет 21 сентября 2027 года. В США Random House выпустит печатную и электронную версии, одновременно появится аудиокнига. Издатель также назвал Великобританию, Канаду, Испанию, Бразилию и Португалию среди территорий выпуска; анонс сделан 30 сентября.",
+        "en": "Penguin Random House has announced a September 21, 2027 global publication date for Yuval Noah Harari’s The Laws of History. Random House will publish the US hardcover and ebook, with a simultaneous audiobook. The publisher also names the UK, Canada, Spain, Brazil and Portugal among its territories; the announcement was made on September 30."
+      },
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/prh-to-publish-major-new-work-from-1-internationally-bestselling-author-of-sapiens-yuval-noah-harari/",
+        "language": "en-US",
+        "title": "PRH to Publish Major New Work From #1 Internationally Bestselling Author of SAPIENS Yuval Noah Harari"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "harari-laws-of-history-global-announcement-20261001"
+    },
+    {
+      "id": "liechtenstein-library-long-night-programme-20260930",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Библиотека Лихтенштейна представила литературную программу на 3 октября",
+        "en": "Liechtenstein’s national library announces its October 3 literary programme"
+      },
+      "summary": {
+        "ru": "На Ночь музеев 3 октября Национальная библиотека Лихтенштейна запланировала поэтическую мастерскую Хелены Брем с 18:00 до 19:30 и выставку 101 поэтического плаката Зигфрида Хёлльригля. В 20:00 он представит работу с ручной печатью и типографикой. Библиотека и кафе будут открыты до полуночи.",
+        "en": "For the October 3 Long Night of Museums, Liechtenstein’s national library has scheduled Helena Brehm’s poetry workshop from 18:00 to 19:30 and Siegfried Höllrigl’s exhibition of 101 poetry posters. At 20:00 he will present his hand-printing and typography work. The library and cafeteria will stay open until midnight."
+      },
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/programm-der-langen-nacht-der-museen-am-samstag-3-okt-2026/",
+        "language": "de",
+        "title": "Programm der Langen Nacht der Museen am Samstag, 3. Okt 2026"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "liechtenstein-library-long-night-programme-20260930"
+    },
+    {
+      "id": "serbia-stankovic-150-exhibition-opened-20260930",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30T13:31:15.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "В Белграде открылась выставка к 150-летию Борисава Станковича",
+        "en": "Belgrade opens an exhibition for Borisav Stanković’s 150th anniversary"
+      },
+      "summary": {
+        "ru": "30 сентября Национальная библиотека Сербии открыла выставку «Трагом људске душе» о жизни и литературном наследии Борисава Станковича. Её подготовили Мирослава и Томислав Симоновичи вместе с библиотекой «Бора Станкович» из Вране. Экспозиция приурочена к 150-летию писателя и будет работать до 2 ноября 2026 года.",
+        "en": "On September 30, Serbia’s national library opened Tragom ljudske duše, an exhibition on Borisav Stanković’s life and literary legacy. Miroslava and Tomislav Simonović prepared it with the Bora Stanković public library in Vranje. The exhibition marks the writer’s 150th birth anniversary and will remain open through November 2, 2026."
+      },
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/otvorena-je-izlozba-tragom-ljudske-duse/",
+        "language": "sr-RS",
+        "title": "Отворена је изложба \"Трагом људске душе\" - Народна библиотека Србије"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "serbia-stankovic-150-exhibition-opened-20260930"
+    },
+    {
+      "id": "de-bezige-bij-independence-interview-20261001",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-10-01T11:56:35.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Руководители De Bezige Bij рассказали о возвращении издательства к независимости",
+        "en": "De Bezige Bij’s directors discuss the publisher’s return to independence"
+      },
+      "summary": {
+        "ru": "В новом интервью Publishing Perspectives руководители нидерландского De Bezige Bij объяснили выход из группы WPG, завершённый в августе 2026 года. Издательство сохранило марки Thomas Rap и Cargo; около 40 сотрудников участвуют в распределении прибыли. В планах - новая марка для авторов из бывших нидерландских колоний, начиная с Суринама.",
+        "en": "In a new Publishing Perspectives interview, the Dutch publisher De Bezige Bij’s directors explain its exit from WPG, completed in August 2026. The house retained the Thomas Rap and Cargo imprints, and approximately 40 employees take part in profit sharing. It also plans an imprint for voices from former Dutch colonies, beginning with Surinamese authors."
+      },
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/10/dutch-publisher-de-bezige-bij-returns-to-its-independent-roots/",
+        "language": "en-US",
+        "title": "Dutch Publisher De Bezige Bij Returns to Its Independent Roots"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "de-bezige-bij-independence-interview-20261001"
+    },
+    {
+      "id": "digital-publishing-awards-12-finalists-20261001",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-10-01T12:33:02.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "В финал Digital Publishing Awards вышли 12 проектов из пяти стран",
+        "en": "Digital Publishing Awards shortlist 12 projects from five countries"
+      },
+      "summary": {
+        "ru": "В опубликованный шорт-лист Digital Publishing Awards вошли проекты из Египта, Германии, Индии, Великобритании и США. По сообщению Publishing Perspectives, жюри отобрало 12 финалистов из 42 заявок. Среди участников - индийская Ailaysa и египетская Nahdet Misr; победителей объявят на Франкфуртской книжной ярмарке.",
+        "en": "The Digital Publishing Awards shortlist includes 12 projects from Egypt, Germany, India, the UK and the US. Publishing Perspectives reports that an international jury selected them from 42 submissions. They include India’s Ailaysa and Egypt’s Nahdet Misr; winners will be announced at the Frankfurt Book Fair."
+      },
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/10/innovation-with-ai-abounds-the-international-digital-publishing-award-announces-12-finalists/",
+        "language": "en-US",
+        "title": "Innovation with AI Abounds: The International Digital Publishing Award Announces 12 Finalists"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "digital-publishing-awards-12-finalists-20261001"
+    },
+    {
+      "id": "global50-publishing-ranking-2026-report-20261001",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-10-01T12:12:48.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Опубликован рейтинг Global 50: Bertelsmann возглавил список издательских групп",
+        "en": "Global 50 ranks Bertelsmann first among publishing groups"
+      },
+      "summary": {
+        "ru": "Global 50 Publishing Ranking 2026 сравнивает 48 издательских групп по выручке за 2025 год. Лидером стал Bertelsmann с 5,93 млрд евро издательской выручки; совокупный показатель участников - 64,2 млрд евро. Publishing Perspectives сообщает о выходе исследования Рюдигера Вишенбарта и его партнёров; презентация намечена на 7 октября во Франкфурте.",
+        "en": "Global 50 Publishing Ranking 2026 compares 48 publishing groups by their 2025 publishing revenue. Bertelsmann ranks first with €5.93 billion, while the ranked groups together generated €64.2 billion. Publishing Perspectives reports the release of Rüdiger Wischenbart and partners’ research; a presentation is planned for October 7 in Frankfurt."
+      },
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/10/global-50-publishing-ranking-2026-announced-bertelsmann-takes-top-spot/",
+        "language": "en-US",
+        "title": "Global 50 Publishing Ranking 2026 Announced - Bertelsmann Takes Top Spot"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "global50-publishing-ranking-2026-report-20261001"
+    },
+    {
+      "id": "ncw-nine-emerging-translators-2026-27-20260930",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30T08:20:23.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Британский National Centre for Writing выбрал девять переводчиков для наставничества",
+        "en": "National Centre for Writing selects nine translators for 2026/27 mentorships"
+      },
+      "summary": {
+        "ru": "National Centre for Writing объявил участников Emerging Translator Mentorships на 2026/27 год. Девять начинающих литературных переводчиков будут шесть месяцев работать с опытными наставниками. В набор вошли переводчики с датского, нидерландского, итальянского, корейского и других языков; программа поддерживает перевод на английский недостаточно представленных литератур.",
+        "en": "The UK’s National Centre for Writing has announced its 2026/27 Emerging Translator Mentorships cohort. Nine early-career literary translators will work with experienced mentors for six months. Their languages include Danish, Dutch, Italian and Korean, among others. The programme supports literary translation into English, with a focus on underrepresented literatures."
+      },
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/the-u-k-national-centre-for-writing-announces-translators-selected-for-international-mentorship-program/",
+        "language": "en-US",
+        "title": "The U.K. National Centre for Writing Announces Translators Selected for International Mentorship Program"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "ncw-nine-emerging-translators-2026-27-20260930"
+    },
+    {
+      "id": "abuja-literature-ideas-festival-announcement-20260930",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30T05:09:23.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "В Абудже объявлен фестиваль литературы и идей 9-10 октября",
+        "en": "Abuja announces a Festival of Literature & Ideas for October 9-10"
+      },
+      "summary": {
+        "ru": "Book Buzz Foundation проведёт Abuja Festival of Literature & Ideas 9-10 октября 2026 года в The Nordic в районе Джаби. Brittle Paper сообщает о программе с нигерийскими авторами Ричардом Али и Хадизой Исма Эль-Руфаи. Учёный Симукай Чигуду представит мемуары Chasing Freedom; фестиваль получает софинансирование Европейского союза.",
+        "en": "Book Buzz Foundation will hold the Abuja Festival of Literature & Ideas on October 9-10, 2026, at The Nordic in Jabi. Brittle Paper reports a programme featuring Nigerian authors Richard Ali and Hadiza Isma El-Rufai. Academic Simukai Chigudu will discuss his memoir Chasing Freedom; the festival is co-funded by the European Union."
+      },
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/book-buzz-foundation-to-host-the-abuja-festival-of-literature-ideas-october-9-10-2026/",
+        "language": "en-US",
+        "title": "Book Buzz Foundation to Host the Abuja Festival of Literature & Ideas, October 9-10, 2026"
+      },
+      "verification": "confirmed",
+      "region": "africa",
+      "eventKey": "abuja-literature-ideas-festival-announcement-20260930"
+    },
+    {
+      "id": "elekere-inaugural-story-prize-shortlist-20260930",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30T05:02:33.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Élékéré Press объявило семь финалистов своей первой премии за рассказ",
+        "en": "Élékéré Press names seven finalists for its inaugural short-story prize"
+      },
+      "summary": {
+        "ru": "Élékéré Short Story Prize отобрала семь ранее не опубликованных рассказов из более чем 200 заявок. Тема первого конкурса - наследие; среди финалистов авторы из Нигерии, США и Зимбабве. Как сообщает Brittle Paper, победителя объявят 2 ноября 2026 года: он получит 500 долларов, а рассказ опубликуют на сайте издательства.",
+        "en": "The inaugural Élékéré Short Story Prize has shortlisted seven unpublished stories from more than 200 submissions. This year’s theme is inheritance, and finalists include writers from Nigeria, the US and Zimbabwe. Brittle Paper reports that the winner will be announced on November 2, 2026, receive $500 and have the story published on the press’s website."
+      },
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/elekere-press-announces-shortlist-for-its-inaugural-short-story-prize/",
+        "language": "en-US",
+        "title": "Élékéré Press Announces Shortlist for its Inaugural Short Story Prize"
+      },
+      "verification": "confirmed",
+      "region": "africa",
+      "eventKey": "elekere-inaugural-story-prize-shortlist-20260930"
+    },
+    {
+      "id": "onuzo-great-shaking-flatiron-rights-20260930",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30T05:00:24.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Flatiron приобрело права на The Great Shaking Чибунду Онузо",
+        "en": "Flatiron acquires North American rights to Chibundu Onuzo’s The Great Shaking"
+      },
+      "summary": {
+        "ru": "Brittle Paper сообщает, что редактор Кукува Фрейзер из Flatiron приобрела североамериканские права на новый роман Чибунду Онузо The Great Shaking. В антиутопическом будущем семья из бывшей Англии пытается переселиться в Нигерию. Источник ссылается на сведения о сделках Publishers Weekly за неделю 28 сентября; дата выхода книги пока не названа.",
+        "en": "Brittle Paper reports that Flatiron editor Kukuwa Fraser has acquired North American rights to Chibundu Onuzo’s new novel The Great Shaking. Set in a dystopian future, it follows a family from what was formerly England trying to move to Nigeria. The report cites Publishers Weekly’s deals roundup for the week of September 28; no publication date is given."
+      },
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/chibundu-onuzos-new-novel-the-great-shaking-acquired-by-flatiron/",
+        "language": "en-US",
+        "title": "Chibundu Onuzo’s New Novel The Great Shaking Acquired by Flatiron"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "onuzo-great-shaking-flatiron-rights-20260930"
+    },
+    {
+      "id": "maaza-mengiste-macarthur-fellowship-20261001",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-10-01T11:22:58.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Мааза Менгисте получила стипендию MacArthur 2026 года",
+        "en": "Maaza Mengiste receives a 2026 MacArthur Fellowship"
+      },
+      "summary": {
+        "ru": "Эфиопско-американская писательница Мааза Менгисте вошла в число 20 стипендиатов MacArthur 2026 года. Brittle Paper сообщает о гранте в 800 тысяч долларов: выплаты распределены на пять лет, ограничений по использованию средств нет. Автор Beneath the Lion’s Gaze и The Shadow King преподаёт английскую литературу в Уэслианском университете.",
+        "en": "Ethiopian American writer Maaza Mengiste is among 20 recipients of the 2026 MacArthur Fellowship. Brittle Paper reports an $800,000 grant, paid in quarterly instalments over five years, with no restrictions on its use. The author of Beneath the Lion’s Gaze and The Shadow King is a professor of English at Wesleyan University."
+      },
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/10/ethiopian-american-writer-maaza-mengiste-is-a-recipient-of-the-800000-2026-macarthur-genius-grant/",
+        "language": "en-US",
+        "title": "Ethiopian American Writer Maaza Mengiste Is a Recipient of the $800,000 2026 MacArthur Genius Grant"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "maaza-mengiste-macarthur-fellowship-20261001"
+    },
+    {
+      "id": "nigeria-66-years-fifteen-books-reading-list-20261001",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-10-01T18:00:38.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Brittle Paper представил 15 книг к 66-летию независимости Нигерии",
+        "en": "Brittle Paper selects 15 books for Nigeria’s 66th independence anniversary"
+      },
+      "summary": {
+        "ru": "К годовщине независимости Нигерии Brittle Paper опубликовал новый список из 15 книг о переменах в стране. В него вошли Small by Small Айка Аньи о работе врачом в 1990-е годы и Half of a Yellow Sun Чимаманды Нгози Адичи о Биафрской войне. Также представлена антология Sọ̀rọ̀sókè о протестах #EndSARS под редакцией Джумоке Вериссимо и Джеймса Йеку.",
+        "en": "For Nigeria’s independence anniversary, Brittle Paper has published a new reading list of 15 books about the country’s changing history. It includes Ike Anya’s Small by Small, about becoming a doctor in the 1990s, and Chimamanda Ngozi Adichie’s Half of a Yellow Sun, about the Biafran War. It also features the #EndSARS anthology Sọ̀rọ̀sókè, edited by Jumoke Verissimo and James Yeku."
+      },
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/10/66-years-of-nigeria-told-through-15-books/",
+        "language": "en-US",
+        "title": "66 Years of Nigeria Told Through 15 Books"
+      },
+      "verification": "confirmed",
+      "region": "africa",
+      "eventKey": "nigeria-66-years-fifteen-books-reading-list-20261001"
+    },
+    {
+      "id": "asymptote-bojanovic-dizdarevic-translation-interview-20261001",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-10-01T12:59:56.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Урош Боянович и Айла Диздаревич обсудили перевод поэзии для Asymptote",
+        "en": "Uros Bojanović and Ajla Dizdarević discuss translating poetry with Asymptote"
+      },
+      "summary": {
+        "ru": "Asymptote опубликовал разговор поэта Уроша Бояновича и переводчицы Айлы Диздаревич о сборнике Sam u vodi, переведённом на английский как Alone in the Water. Участники обсуждают сербохорватскую идентичность, отчуждение и память послевоенного общества. Боянович рассказывает, как английский перевод меняет интонации отдельных стихотворений.",
+        "en": "Asymptote publishes a conversation between poet Uros Bojanović and translator Ajla Dizdarević about Sam u vodi, translated into English as Alone in the Water. They discuss Serbo-Croatian identity, alienation and memory in a post-war society. Bojanović describes how individual poems acquired different tones in their first translation into another language."
+      },
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/10/01/the-violence-of-poetics-uros-bojanovic-and-ajla-dizdarevic-in-conversation/",
+        "language": "en",
+        "title": "The Violence of Poetics: Uros Bojanović and Ajla Dizdarević in Conversation - Asymptote Blog"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "asymptote-bojanovic-dizdarevic-translation-interview-20261001"
+    },
+    {
+      "id": "asymptote-helgadottir-september-book-club-20260930",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30T13:00:08.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Книжный клуб Asymptote выбрал роман Steinunn G. Helgadóttir",
+        "en": "Asymptote’s book club selects Steinunn G. Helgadóttir’s novel"
+      },
+      "summary": {
+        "ru": "Сентябрьской книгой клуба Asymptote стал The Strongest Woman in the World исландской писательницы Steinunn G. Helgadóttir. В материале указан перевод Лариссы Кайзер и издание Open Letter Books 2026 года. Участников клуба приглашают к обсуждению переведённой прозы и онлайн-встречам с авторами или переводчиками выбранных книг.",
+        "en": "Asymptote’s September book-club selection is The Strongest Woman in the World by Icelandic writer Steinunn G. Helgadóttir. The article identifies Larissa Kyzer’s translation and the 2026 Open Letter Books edition. Members are invited to discussions of translated fiction and online interviews with the authors or translators of the selected books."
+      },
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/30/announcing-our-september-book-club-selection-the-strongest-woman-in-the-world-by-steinunn-g-helgadottir/",
+        "language": "en",
+        "title": "Announcing Our September Book Club Selection: The Strongest Woman in the World by Steinunn G. Helgadóttir - Asymptote Blog"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "asymptote-helgadottir-september-book-club-20260930"
+    },
+    {
+      "id": "asymptote-five-tamil-translators-interview-20260928",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-28",
+      "publishedAt": "2026-09-28T13:00:08.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Пять тамильских переводчиков рассказали Asymptote о литературных ландшафтах",
+        "en": "Five Tamil translators discuss literary landscapes with Asymptote"
+      },
+      "summary": {
+        "ru": "В новом интервью Asymptote создатели Tamil Terrains объясняют, как древняя система литературных ландшафтов thinai работает в поэзии диаспоры. В разговоре участвуют редакторы Недра Родриго и Гита Сукумаран, переводчики из Малайзии, Индии и Сингапура. Антология вышла в Trace Press в 2025 году, а интервью опубликовано 28 сентября 2026-го.",
+        "en": "In a new Asymptote interview, the makers of Tamil Terrains explain how the ancient thinai framework of literary landscapes can inform diaspora poetry. Editors Nedra Rodrigo and Geetha Sukumaran speak alongside translators from Malaysia, India and Singapore. Trace Press published the anthology in 2025, and Asymptote published this interview on September 28, 2026."
+      },
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/28/red-earth-and-pouring-rain-an-interview-with-five-tamil-translators-on-thinai-and-transcreation/",
+        "language": "en",
+        "title": "Red Earth and Pouring Rain: An Interview with Five Tamil Translators on Thinai and Transcreation - Asymptote Blog"
+      },
+      "verification": "confirmed",
+      "region": "asia",
+      "eventKey": "asymptote-five-tamil-translators-interview-20260928"
+    },
+    {
+      "id": "publishing-scotland-free-sustainability-tools-20260928",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-28",
+      "publishedAt": "2026-09-28T14:17:38.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Publishing Scotland открыло бесплатные инструменты экологичного книгоиздания",
+        "en": "Publishing Scotland releases free sustainability tools for publishers"
+      },
+      "summary": {
+        "ru": "Publishing Scotland представило пакет бесплатных ресурсов для издателей: Sustainability Roadmap, инструкции по расчёту углеродного следа и Excel-шаблон Carbon Dashboard. К ним добавлены обучение и ежемесячные встречи Carbon Catchup. Отраслевая организация также анонсировала форум 27 октября в Эдинбурге с возможностью участия онлайн.",
+        "en": "Publishing Scotland has launched free resources for publishers: a Sustainability Roadmap, carbon-footprint guidelines and the Carbon Dashboard Excel template. The package also includes training and monthly Carbon Catchup support sessions. The trade body announces an Environmental Sustainability Forum on October 27 in Edinburgh, with online participation available."
+      },
+      "source": {
+        "name": "Publishing Scotland",
+        "url": "https://www.publishingscotland.org/2026/09/publishing-scotlands-sustainability-resources-provide-a-free-springboard-for-action/",
+        "language": "en-GB",
+        "title": "Publishing Scotland’s sustainability resources provide a free springboard for action"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "publishing-scotland-free-sustainability-tools-20260928"
+    },
+    {
+      "id": "academie-francaise-roman-first-selection-20261001",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Французская академия объявила первую подборку романов на премию 2026 года",
+        "en": "Académie française announces its first 2026 novel-prize selection"
+      },
+      "summary": {
+        "ru": "В первый список Grand Prix du roman Французской академии вошли 12 романов. ActuaLitté называет среди них Chronique d’un royaume perdu Ананды Деви и La Guerre éternelle Оливье Ролена. Следующий отбор сократит список до трёх книг: его объявят 15 октября, а победителя - 29 октября 2026 года.",
+        "en": "The Académie française’s first Grand Prix du roman selection contains 12 novels. ActuaLitté lists Ananda Devi’s Chronique d’un royaume perdu and Olivier Rolin’s La Guerre éternelle among them. A second selection, narrowing the list to three books, is planned for October 15, followed by the winner’s announcement on October 29, 2026."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134343/prix-litteraires/grand-prix-du-roman-de-l-academie-francaise-la-premiere-selection-2026",
+        "language": "fr",
+        "title": "Grand Prix du roman de l’Académie française : la première sélection 2026"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "academie-francaise-roman-first-selection-20261001"
+    },
+    {
+      "id": "meilleur-livre-etranger-second-selection-20261001",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Во второй список Prix du Meilleur Livre étranger вошли девять книг",
+        "en": "Prix du Meilleur Livre étranger narrows its 2026 selection to nine books"
+      },
+      "summary": {
+        "ru": "ActuaLitté опубликовал второй список французской премии Prix du Meilleur Livre étranger 2026: шесть художественных и три нехудожественных книги. Среди кандидатов - Lazar Нелио Бидерманна в переводе Роз Лабури и Le Soldat remémoré Анъет Данье в переводе Изабель Росселен. Премия рассматривает зарубежные книги, переведённые на французский язык.",
+        "en": "ActuaLitté publishes the second 2026 Prix du Meilleur Livre étranger selection: six fiction titles and three nonfiction books. Candidates include Nelio Biedermann’s Lazar, translated by Rose Labourie, and Anjet Daanje’s Le Soldat remémoré, translated by Isabelle Rosselin. The French prize recognizes works originally published abroad and translated into French."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134338/prix-litteraires/prix-du-meilleur-livre-etranger-2026-neuf-titres-dans-la-deuxieme-selection-une-autrice-repechee",
+        "language": "fr",
+        "title": "Prix du Meilleur Livre étranger 2026 : neuf titres dans la deuxième sélection, une autrice repêchée"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "meilleur-livre-etranger-second-selection-20261001"
+    },
+    {
+      "id": "eleuthera-forty-years-milan-event-20261001",
+      "category": "anniversaries",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-09-30T23:41:30.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Издательство Elèuthera анонсировало 40-летие с литературной встречей в Милане",
+        "en": "Elèuthera announces a Milan event for its 40th anniversary"
+      },
+      "summary": {
+        "ru": "Итальянское издательство Elèuthera отмечает 40 лет работы и приглашает на встречу 3 октября с 15:00 до 22:00 в миланском пространстве Scomodo на via Jean Jaurès, 22. Il Libraio сообщает о чтениях, дискуссиях и музыке. К мероприятию подготовлены две выставки издательства и архива G. Pinelli.",
+        "en": "Italian publisher Elèuthera is marking 40 years with an event on October 3, from 15:00 to 22:00, at Scomodo, via Jean Jaurès 22, Milan. Il Libraio reports a programme of readings, discussions and music. Two exhibitions by the publisher and the G. Pinelli archive are also planned for the occasion."
+      },
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/editoria/casa-editrice-eleuthera-1508736/",
+        "language": "it",
+        "title": "Verso l’isola dell’utopia (che ancora non c’è): i 40 anni della casa editrice elèuthera"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "eleuthera-forty-years-milan-event-20261001"
+    },
+    {
+      "id": "hazelwood-two-body-problem-sequel-report-20260930",
+      "category": "adaptations",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30T07:25:11.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Али Хейзелвуд анонсировала сиквел The Love Hypothesis с датой выхода в 2027 году",
+        "en": "Ali Hazelwood announces a 2027 sequel to The Love Hypothesis"
+      },
+      "summary": {
+        "ru": "По сообщению Il Libraio, Али Хейзелвуд объявила о выходе The two-body problem в США 2 февраля 2027 года. Продолжение The Love Hypothesis проследит жизнь героев после докторантуры. MRC разрабатывает экранизацию для Amazon MGM Studios. Материал от 30 сентября также сообщает, что фильм по первому роману появился на Prime Video 23 сентября.",
+        "en": "Il Libraio reports Ali Hazelwood’s announcement of The two-body problem, due in the US on February 2, 2027. The sequel to The Love Hypothesis will follow its protagonists after their doctorates, and MRC is developing an adaptation for Amazon MGM Studios. The September 30 article also reports that the first novel’s film arrived on Prime Video on September 23."
+      },
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/cinema/the-love-hypothesis-film-1507743/",
+        "language": "it",
+        "title": "\"The love hypothesis\", su Prime Video il film tratto dal romance di Ali Hazelwood"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "hazelwood-two-body-problem-sequel-report-20260930"
+    },
+    {
+      "id": "tiemen-hiemstra-w-italian-interview-20261001",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-10-01T01:43:26.000Z",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Тимен Химстра рассказал Il Libraio о романе W. и исчезновении его героя",
+        "en": "Tiemen Hiemstra discusses W. and its missing protagonist with Il Libraio"
+      },
+      "summary": {
+        "ru": "Il Libraio опубликовал интервью с нидерландским писателем Тименом Химстрой о дебютном романе W. Итальянское издание выпустило Adelphi в переводе Дафне Парис. Автор обсуждает дружбу, отсутствие и роль мемов: основное действие занимает 13 дней, а воспоминания Олафа возвращают читателя к исчезнувшему другу и отношениям внутри их компании.",
+        "en": "Il Libraio publishes an interview with Dutch writer Tiemen Hiemstra about his debut novel W. Adelphi publishes the Italian edition in Dafne Paris’s translation. Hiemstra discusses friendship, absence and memes: the main action spans 13 days, while Olaf’s memories return to his missing friend and the relationships within their circle."
+      },
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/dautore/w-tiemen-hiemstra-1507735/",
+        "language": "it",
+        "title": "Tra perdita, meme e filosofia: \"W.\" di Tiemen Hiemstra, un libro surreale \"per fare i conti con l'assenza\""
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "tiemen-hiemstra-w-italian-interview-20261001"
+    },
+    {
+      "id": "moscow-writers-bookshop-reopened-20260929",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-30",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "«Книжная лавка писателей» вновь открылась на Кузнецком Мосту",
+        "en": "Moscow’s Writers’ Bookshop reopens on Kuznetsky Most"
+      },
+      "summary": {
+        "ru": "29 сентября в Москве открылась «Книжная лавка писателей» по адресу Кузнецкий Мост, 18/7. «Год литературы» сообщает, что площадка вернулась Союзу писателей России и работает в сети «Достоевский». Помимо продажи книг, здесь предусмотрены кафе, поэтические чтения, лекции и авторские презентации.",
+        "en": "Moscow’s Writers’ Bookshop reopened on September 29 at Kuznetsky Most 18/7. God Literatury reports that the venue has returned to the Russian Writers’ Union and operates within the Dostoevsky bookshop network. Alongside bookselling, it provides for a café, poetry readings, lectures and author presentations."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/30/knizhnaia-lavka-pisatelej-vernulas-na-kuzneckij-most",
+        "language": "ru",
+        "title": "«Книжная лавка писателей» вернулась на Кузнецкий мост - Год Литературы"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "moscow-writers-bookshop-reopened-20260929"
+    },
+    {
+      "id": "staraya-russa-literary-kiosk-five-years-20261001",
+      "category": "anniversaries",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-10-01",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "Литературный киоск Старой Руссы отметил пять лет работы",
+        "en": "Staraya Russa’s literary kiosk marks five years of book sharing"
+      },
+      "summary": {
+        "ru": "Литературному киоску в Старой Руссе исполнилось пять лет. В репортаже «Года литературы» описана встреча читателей и дарителей книг на Воскресенской улице. Проект «Российской газеты» и газеты «Старая Русса» поддерживают волонтёры городской библиотеки: они проводят лекции и акции, а жители передают книги для свободного обмена.",
+        "en": "Staraya Russa’s literary kiosk has marked five years of operation. God Literatury reports a gathering of readers and book donors at the Voskresenskaya Street exchange point. The project by Rossiyskaya Gazeta and the Staraya Russa newspaper is supported by city-library volunteers, who organise lectures and reading activities while residents donate books for exchange."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/10/01/literaturnyj-kiosk-staroj-russy-otmetil-svoj-pervyj-iubilej",
+        "language": "ru",
+        "title": "Литературный киоск Старой Руссы отметил свой первый юбилей - Год Литературы"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "staraya-russa-literary-kiosk-five-years-20261001"
+    },
+    {
+      "id": "ast-sergey-aksakov-birth-anniversary-feature-20261001",
+      "category": "anniversaries",
+      "kind": "news",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "АСТ опубликовало материал о Сергее Аксакове к его дню рождения",
+        "en": "AST publishes a Sergey Aksakov feature for his birth anniversary"
+      },
+      "summary": {
+        "ru": "1 октября АСТ выпустило материал о Сергее Аксакове - писателе, театральном критике и цензоре. Издательство рассказывает о его оценке актёрского искусства Михаила Щепкина и Павла Мочалова, а также о книгах о рыбалке и охоте. Материал прослеживает путь от очерка «Буран» 1833 года к мемуарной прозе, включая «Детские годы Багрова-внука».",
+        "en": "On October 1, AST published a birth-anniversary feature on Sergey Aksakov as writer, theatre critic and censor. The publisher discusses his appreciation of actors Mikhail Shchepkin and Pavel Mochalov and his writing about fishing and hunting. The feature traces his career from the 1833 sketch Buran to memoir prose, including Childhood Years of Bagrov’s Grandson."
+      },
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/sergey-aksakov-pisatel-kritik-i-tsenzor/",
+        "language": "ru-RU",
+        "title": "Сергей Аксаков: книги, работа цензором, отношения с русскими классиками"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "ast-sergey-aksakov-birth-anniversary-feature-20261001"
+    },
+    {
+      "id": "tsarskoye-selo-four-rare-books-return-20260930",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "В «Царское Село» вернулись четыре книги императорской библиотеки",
+        "en": "Four imperial-library books return to Tsarskoye Selo"
+      },
+      "summary": {
+        "ru": "Музей-заповедник «Царское Село» получил четыре книги XVIII-XIX веков, утраченные при распродажах 1930-х годов. Как сообщает «Год литературы», коллекционер Сергей Мосунов приобрёл их на международных аукционах и передал музею. Один том происходит из библиотеки Павла I, три - из комнат Александра I и Елизаветы Алексеевны; книги покажут в дворцовых экспозициях.",
+        "en": "Tsarskoye Selo museum has received four eighteenth- and nineteenth-century books lost during the 1930s sales. God Literatury reports that collector Sergey Mosunov bought them at international auctions and donated them. One volume comes from Paul I’s library; three are from Alexander I and Elizabeth Alexeievna’s rooms. The books will be displayed in the palace exhibitions."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/30/v-carskoe-selo-vernulis-utrachennye-v-1930-h-godah-knigi",
+        "language": "ru",
+        "title": "В «Царское Село» вернулись утраченные в 1930-х годах книги - Год Литературы"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "tsarskoye-selo-four-rare-books-return-20260930"
+    },
+    {
+      "id": "lope-de-vega-gatomachia-russian-translation-excerpt-20260930",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "verifiedAt": "2026-10-01T21:26:03.554Z",
+      "title": {
+        "ru": "«Год литературы» представил полный русский перевод «Котомахии» Лопе де Веги",
+        "en": "God Literatury presents a complete Russian translation of Lope de Vega’s comic poem"
+      },
+      "summary": {
+        "ru": "Ко Дню переводчика «Год литературы» опубликовал фрагмент «Котомахии» Лопе де Веги в полном стихотворном переводе Александра Триандафилиди. Издание БСГ-Пресс 2026 года объёмом 226 страниц двуязычное; перевод сохраняет строфику испанской поэмы. Материал знакомит с новой русской версией пародийной «Илиады» о войне котов, впервые изданной автором в 1634 году.",
+        "en": "For International Translation Day, God Literatury publishes an excerpt of Lope de Vega’s comic war of cats in Alexander Triandafilidi’s complete Russian verse translation. The bilingual BSG-Press 2026 edition has 226 pages and preserves the Spanish poem’s verse forms. The article introduces the new Russian version of a poem that Lope originally published in 1634."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/30/koshachia-iliada-lope-de-vegi-vpervye-po-russki",
+        "language": "ru",
+        "title": "\"Кошачья Илиада\" Лопе де Веги - впервые по-русски - Год Литературы"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "lope-de-vega-gatomachia-russian-translation-excerpt-20260930"
+    }
+  ],
+  "recordSha256": "6404a12b9474c7b66ba4719f65c4bbc009fa153aebff1050a496eab86e865e7d",
+  "evidence": [
+    {
+      "id": "harari-laws-of-history-global-announcement-20261001",
+      "sourceId": "prh",
+      "url": "https://global.penguinrandomhouse.com/announcements/prh-to-publish-major-new-work-from-1-internationally-bestselling-author-of-sapiens-yuval-noah-harari/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:31.242Z",
+      "responseSha256": "a1808cbcdbf4a5f6172bda891416ffbfe518ad4ea0722c1eed788841a6642439",
+      "facts": [
+        "The publisher’s October 1 article explicitly dates the announcement September 30, 2026.",
+        "Global publication is planned for September 21, 2027; US hardcover, ebook and simultaneous audio are announced.",
+        "The publisher names the UK, Canada, Spain, Brazil and Portugal as additional territories."
+      ],
+      "proofQuotes": [
+        "September 21, 2027",
+        "it was announced on September 30, 2026",
+        "An audiobook edition will be released simultaneously"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-visible-article-date",
+        "value": "2026-10-01T11:56:33.000Z",
+        "metadata": [],
+        "visibleHeaderEvidence": [
+          "September 30, 2026",
+          "October 1, 2026",
+          "September 11, 2026"
+        ]
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "storyCountryCodes": [
+          "US",
+          "GB",
+          "CA",
+          "ES",
+          "BR",
+          "PT"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit announcement date in the publisher’s article; future publication remains future tense.",
+        "temporal": "announced-future-release",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": []
+    },
+    {
+      "id": "liechtenstein-library-long-night-programme-20260930",
+      "sourceId": "landesbibliothek-li",
+      "url": "https://www.landesbibliothek.li/programm-der-langen-nacht-der-museen-am-samstag-3-okt-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:58:43.984Z",
+      "responseSha256": "f075940c704ebc830be89c311c887eb0e7c16be30a2c088d71b033a3899b4cd5",
+      "facts": [
+        "The library’s direct programme is for Saturday October 3, 2026.",
+        "Helena Brehm’s poetry workshop is scheduled 18:00-19:30; Höllrigl’s exhibition and 20:00 presentation are listed.",
+        "The library and cafeteria are scheduled to remain open until midnight. The contradictory past registration deadline is omitted."
+      ],
+      "proofQuotes": [
+        "Samstag, 3. Okt 2026",
+        "Gedichte-Workshop mit Helena Brehm",
+        "18.00 bis 19.30 Uhr",
+        "bis Mitternacht"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "corroborated-publisher-article-calendar-date",
+        "value": "2026-09-30",
+        "metadata": [
+          {
+            "value": "2026-09-30T09:50:35+02:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "visibleHeaderEvidence": [],
+        "precision": "date-only; no timezone or midnight publication time inferred"
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "LI"
+        ],
+        "storyCountryCodes": [
+          "LI"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "future-programme",
+        "limitation": "Feed and article metadata disagree on UTC offset; only the corroborated September 30 publication date is retained. Registration deadline is inconsistent and unused.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": []
+    },
+    {
+      "id": "serbia-stankovic-150-exhibition-opened-20260930",
+      "sourceId": "nb-rs",
+      "url": "https://nb.rs/otvorena-je-izlozba-tragom-ljudske-duse/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:32.532Z",
+      "responseSha256": "d0d5cc0b797232cfb26cfda72d85d5f07657c1f6ff28cfb8c14b29efcff4309e",
+      "facts": [
+        "The National Library of Serbia reports the exhibition opened September 30, 2026.",
+        "Miroslava and Tomislav Simonović and the Bora Stanković public library in Vranje prepared the exhibition.",
+        "The exhibition marks 150 years since the writer’s birth and closes November 2, 2026."
+      ],
+      "proofQuotes": [
+        "30. септембра 2026. године",
+        "150 година",
+        "Изложба траје до 2. новембра 2026. године."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-09-30T13:31:15.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-30T13:31:15+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-30T13:31:15+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-30T13:31:15+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": [
+          "30/09/2026"
+        ]
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "RS"
+        ],
+        "storyCountryCodes": [
+          "RS"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "opened-exhibition",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://nb.rs/wp-content/uploads/2026/09/IMG_6260.jpeg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "de-bezige-bij-independence-interview-20261001",
+      "sourceId": "publishing-perspectives",
+      "url": "https://publishingperspectives.com/2026/10/dutch-publisher-de-bezige-bij-returns-to-its-independent-roots/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:31.956Z",
+      "responseSha256": "416e3c629188dc9f1197bc0821186ab3407c06808894f3f2b40ee560e16ec46f",
+      "facts": [
+        "Publishing Perspectives interviewed publishing director Romy van den Nieuwenhof and rights director Marijke Nagtegaal.",
+        "The article explicitly places the final exit in August, while the new interview was published October 1.",
+        "Thomas Rap and Cargo remain with the publisher; approximately 40 employees participate in profit sharing. A new imprint for former-colony voices is planned, beginning with Surinamese authors."
+      ],
+      "proofQuotes": [
+        "its final exit coming last August",
+        "Thomas Rap and Cargo",
+        "40 or so employees"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-10-01T11:56:35.000Z",
+        "metadata": [
+          {
+            "value": "2026-10-01T11:56:35+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-10-01T11:56:35+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-10-01T11:56:35+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "storyCountryCodes": [
+          "NL",
+          "SR"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-interview-about-earlier-change",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://publishingperspectives.com/wp-content/uploads/2026/09/Screen-Shot-2026-09-30-at-11.02.07-AM.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "digital-publishing-awards-12-finalists-20261001",
+      "sourceId": "publishing-perspectives",
+      "url": "https://publishingperspectives.com/2026/10/innovation-with-ai-abounds-the-international-digital-publishing-award-announces-12-finalists/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:32.046Z",
+      "responseSha256": "2c36ab12e2f8299fa7924dc769945a2c3685a82bef55694ccba8d429104de2e7",
+      "facts": [
+        "The headline and full shortlist identify 12 finalists; the article states there were 42 submissions.",
+        "The named finalist countries are Egypt, Germany, India, the UK and the US.",
+        "Ailaysa and Nahdet Misr are listed; winners are still to be announced at Frankfurt."
+      ],
+      "proofQuotes": [
+        "12 Finalists",
+        "Egypt, Germany, India, the U.K., and the U.S.",
+        "42 submissions"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-10-01T12:33:02.000Z",
+        "metadata": [
+          {
+            "value": "2026-10-01T12:33:02+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-10-01T12:33:02+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-10-01T12:33:02+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "storyCountryCodes": [
+          "EG",
+          "DE",
+          "IN",
+          "GB",
+          "US"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "The October 1 article says the shortlist was announced yesterday.",
+        "temporal": "shortlist-not-winners",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": []
+    },
+    {
+      "id": "global50-publishing-ranking-2026-report-20261001",
+      "sourceId": "publishing-perspectives",
+      "url": "https://publishingperspectives.com/2026/10/global-50-publishing-ranking-2026-announced-bertelsmann-takes-top-spot/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:32.404Z",
+      "responseSha256": "01276905bc06fb01d1c14f62af4e7531365e4c21f89eb1ea2587320785019aff",
+      "facts": [
+        "The 2026 ranking compares 48 groups using 2025 publishing revenue, not 2026 revenue.",
+        "Bertelsmann leads with €5.93 billion; combined ranked publishing revenue is €64.2 billion.",
+        "The report’s Frankfurt presentation is planned for October 7 at 12:00."
+      ],
+      "proofQuotes": [
+        "In 2025, the top 48 ranked publishing companies",
+        "€64.2 billion",
+        "€5.93 billion",
+        "Wednesday, October 7"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-10-01T12:12:48.000Z",
+        "metadata": [
+          {
+            "value": "2026-10-01T12:12:48+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-10-01T12:12:48+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-10-01T12:12:48+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "storyCountryCodes": [
+          "DE"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-report-on-2025-data",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://publishingperspectives.com/wp-content/uploads/2026/10/Global50Image-scaled.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "ncw-nine-emerging-translators-2026-27-20260930",
+      "sourceId": "publishing-perspectives",
+      "url": "https://publishingperspectives.com/2026/09/the-u-k-national-centre-for-writing-announces-translators-selected-for-international-mentorship-program/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:32.692Z",
+      "responseSha256": "8eaf7e67e1e434cf8991215e6f71e6bf141867f5c280f081b51c9f0479898ad5",
+      "facts": [
+        "NCW announced nine early-career literary translators for the 2026/27 programme.",
+        "Each mentorship lasts six months and supports literary translation into English.",
+        "The roster explicitly includes Danish, Dutch, Italian and Korean translation."
+      ],
+      "proofQuotes": [
+        "nine early-career literary translators",
+        "six months of focused development",
+        "Danish",
+        "Dutch",
+        "Italian",
+        "Korean"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-09-30T08:20:23.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-30T08:20:23+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-30T08:20:23+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-30T08:20:23+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "storyCountryCodes": [
+          "GB"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-cohort-announcement",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://publishingperspectives.com/wp-content/uploads/2026/09/Screen-Shot-2026-09-29-at-8.39.48-PM.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "abuja-literature-ideas-festival-announcement-20260930",
+      "sourceId": "brittle-paper",
+      "url": "https://brittlepaper.com/2026/09/book-buzz-foundation-to-host-the-abuja-festival-of-literature-ideas-october-9-10-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:32.660Z",
+      "responseSha256": "9cb2d3afd4b154045a7687ef6df456ece7cb875eb6f1b5d927cb3c8cc1c65f1e",
+      "facts": [
+        "The festival is planned for October 9-10, 2026 at The Nordic, Jabi, Abuja.",
+        "Book Buzz Foundation organises the event with EU co-funding.",
+        "Richard Ali, Hadiza Isma El-Rufai and Simukai Chigudu are in the announced programme; Chigudu will discuss Chasing Freedom."
+      ],
+      "proofQuotes": [
+        "October 9\u201310, 2026",
+        "The Nordic",
+        "co-funded by the European Union",
+        "Chasing Freedom"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-09-30T05:09:23.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-30T00:09:23-05:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [],
+        "storyCountryCodes": [
+          "NG"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "future-festival",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://web.s3.wisc.edu/brittle-paper/prod/uploads/2026/09/afli-sm.png",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "elekere-inaugural-story-prize-shortlist-20260930",
+      "sourceId": "brittle-paper",
+      "url": "https://brittlepaper.com/2026/09/elekere-press-announces-shortlist-for-its-inaugural-short-story-prize/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:33.787Z",
+      "responseSha256": "d64fcbda57ffe510b35553e0474a8c2e5bc1e1267063e6d69ab39f1c80ed407e",
+      "facts": [
+        "The inaugural prize shortlisted seven stories from more than 200 submissions.",
+        "The competition concerns unpublished short fiction by Black African and diaspora writers, on inheritance.",
+        "The winner will be announced November 2, receive $500 and be published on the publisher’s website."
+      ],
+      "proofQuotes": [
+        "seven writers shortlisted",
+        "more than 200 submissions",
+        "November 2, 2026",
+        "$500 cash prize"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-09-30T05:02:33.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-30T00:02:33-05:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [],
+        "storyCountryCodes": [
+          "NG",
+          "US",
+          "ZW"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "shortlist-not-winner",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://web.s3.wisc.edu/brittle-paper/prod/uploads/2026/09/elekere-sm.png",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "onuzo-great-shaking-flatiron-rights-20260930",
+      "sourceId": "brittle-paper",
+      "url": "https://brittlepaper.com/2026/09/chibundu-onuzos-new-novel-the-great-shaking-acquired-by-flatiron/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:33.169Z",
+      "responseSha256": "c96a9bb54e9c715fe37bf428e2fcee91d021d9b9c3abe5f88e7e20c86e1e64f9",
+      "facts": [
+        "Flatiron acquired North American rights through Kukuwa Fraser; the article attributes deal details to Publishers Weekly’s September 28 week roundup.",
+        "The dystopian novel follows a family seeking to immigrate from formerly England to Nigeria.",
+        "No publication date is supplied; rights acquisition is distinct from book publication."
+      ],
+      "proofQuotes": [
+        "has acquired North American rights to The Great Shaking",
+        "week of September 28, 2026",
+        "No publication date is given"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-09-30T05:00:24.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-30T00:00:24-05:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "visibleHeaderEvidence": [
+          "September 28, 2026"
+        ]
+      },
+      "geography": {
+        "sourceCountryCodes": [],
+        "storyCountryCodes": [
+          "NG",
+          "US",
+          "GB"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "rights-acquisition-not-release",
+        "limitation": "Deal details are explicitly attributed to Publishers Weekly by the reporting article; no publication date or acquisition day is inferred.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://web.s3.wisc.edu/brittle-paper/prod/uploads/2026/09/chibundu-onuzo-sm.png",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "maaza-mengiste-macarthur-fellowship-20261001",
+      "sourceId": "brittle-paper",
+      "url": "https://brittlepaper.com/2026/10/ethiopian-american-writer-maaza-mengiste-is-a-recipient-of-the-800000-2026-macarthur-genius-grant/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:33.268Z",
+      "responseSha256": "8b7f9b4c0720b2ba657fa0c7eada1005782d2d33c373e8d6441d219a6224e594",
+      "facts": [
+        "The article reports Mengiste is one of 20 recipients of the 2026 MacArthur Fellowship.",
+        "The grant is $800,000 in quarterly instalments over five years, unrestricted.",
+        "The source identifies her Ethiopian background, US base, Wesleyan post and two novels."
+      ],
+      "proofQuotes": [
+        "among 20",
+        "receive $800,000",
+        "quarterly installments over five years",
+        "no restrictions on how the funds are used"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-10-01T11:22:58.000Z",
+        "metadata": [
+          {
+            "value": "2026-10-01T06:22:58-05:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [],
+        "storyCountryCodes": [
+          "ET",
+          "US"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "fellowship-announcement",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://web.s3.wisc.edu/brittle-paper/prod/uploads/2026/09/mengiste-sm.png",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "nigeria-66-years-fifteen-books-reading-list-20261001",
+      "sourceId": "brittle-paper",
+      "url": "https://brittlepaper.com/2026/10/66-years-of-nigeria-told-through-15-books/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:33.294Z",
+      "responseSha256": "8928f33d9530801b1e64905ca61d533eb532640b11e9f8bad6da761759fe13b3",
+      "facts": [
+        "The October 1 article marks Nigeria’s 66th independence anniversary and selects 15 books.",
+        "Small by Small concerns becoming a doctor in 1990s Nigeria; Half of a Yellow Sun concerns the Biafran War.",
+        "Sọ̀rọ̀sókè is an #EndSARS anthology edited by Jumoke Verissimo and James Yeku. The publication date belongs to the new reading list, not to each book’s release."
+      ],
+      "proofQuotes": [
+        "66 Years of Nigeria Told Through 15 Books",
+        "becoming a doctor in 1990s Nigeria",
+        "Half of a Yellow Sun"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-10-01T18:00:38.000Z",
+        "metadata": [
+          {
+            "value": "2026-10-01T13:00:38-05:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [],
+        "storyCountryCodes": [
+          "NG"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-reading-selection-not-releases",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://web.s3.wisc.edu/brittle-paper/prod/uploads/2026/09/Independence-books-SM.png",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "asymptote-bojanovic-dizdarevic-translation-interview-20261001",
+      "sourceId": "asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/10/01/the-violence-of-poetics-uros-bojanovic-and-ajla-dizdarevic-in-conversation/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:58:44.084Z",
+      "responseSha256": "eafcfd202c633c0bfd36af95168e917ce793a2bb93046ab0a9b49c53fb512099",
+      "facts": [
+        "Asymptote’s October 1 joint interview is by Bojanović and Dizdarević.",
+        "Dizdarević translated Sam u vodi into English as Alone in the Water.",
+        "The poet is from Teslić, Bosnia and lives in Belgrade, Serbia; they discuss identity and changes of tone in translation."
+      ],
+      "proofQuotes": [
+        "Belgrade, Serbia",
+        "Teslić, Bosnia",
+        "Sam u vodi, or Alone in the Water",
+        "translate your poetry from Serbo-Croatian into English"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-visible-article-date",
+        "value": "2026-10-01T12:59:56.000Z",
+        "metadata": [],
+        "visibleHeaderEvidence": [
+          "October 1, 2026"
+        ]
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "SG"
+        ],
+        "storyCountryCodes": [
+          "BA",
+          "RS"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-translation-interview",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/10/dizdarevic%CC%81-bojanovic%CC%81.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "asymptote-helgadottir-september-book-club-20260930",
+      "sourceId": "asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/30/announcing-our-september-book-club-selection-the-strongest-woman-in-the-world-by-steinunn-g-helgadottir/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:58:44.279Z",
+      "responseSha256": "386da9b7623d8d4c2503d7a5f74de54ac51e548526fc1b0f8d0f0b70fa10a901",
+      "facts": [
+        "The September 30 article announces the September book-club selection.",
+        "The author is Icelandic; the translation is by Larissa Kyzer and the edition is Open Letter Books, 2026.",
+        "Members are offered book discussions and author/translator Zoom interviews."
+      ],
+      "proofQuotes": [
+        "Icelandic writer Steinunn G. Helgadóttir",
+        "translated from the Icelandic by Larissa Kyzer",
+        "Open Letter Books, 2026"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-visible-article-date",
+        "value": "2026-09-30T13:00:08.000Z",
+        "metadata": [],
+        "visibleHeaderEvidence": [
+          "September 30, 2026"
+        ]
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "SG"
+        ],
+        "storyCountryCodes": [
+          "IS",
+          "US"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-book-club-selection",
+        "limitation": "No official Russian title is supplied; the original title is retained. The publication day of the underlying book is not asserted.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/09/helgadottir.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "asymptote-five-tamil-translators-interview-20260928",
+      "sourceId": "asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/28/red-earth-and-pouring-rain-an-interview-with-five-tamil-translators-on-thinai-and-transcreation/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:58:44.828Z",
+      "responseSha256": "befbabc364c66d1121168368c07ed517709f77bc04874375eb03f543c9d92f5d",
+      "facts": [
+        "The article is a September 28 interview with five Tamil translators, including editors Rodrigo and Sukumaran.",
+        "Contributors are explicitly located in Malaysia, Tamil Nadu and Singapore.",
+        "Tamil Terrains is a 2025 Trace Press anthology, not a new October 2026 release."
+      ],
+      "proofQuotes": [
+        "Tamil Terrains (Trace Press, 2025)",
+        "Enbah Nilah from Malaysia",
+        "V. Iswarya from Tamil Nadu",
+        "Jayashree Panicker from Singapore"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-visible-article-date",
+        "value": "2026-09-28T13:00:08.000Z",
+        "metadata": [],
+        "visibleHeaderEvidence": [
+          "September 28, 2026"
+        ]
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "SG"
+        ],
+        "storyCountryCodes": [
+          "MY",
+          "IN",
+          "SG"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-interview-about-2025-anthology",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/09/tamil-translators.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "publishing-scotland-free-sustainability-tools-20260928",
+      "sourceId": "publishing-scotland",
+      "url": "https://www.publishingscotland.org/2026/09/publishing-scotlands-sustainability-resources-provide-a-free-springboard-for-action/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:34.695Z",
+      "responseSha256": "53588a205caea0f15fd1d868ab74a3dc67fe621dfe9a6fe9679fde140c677c9a",
+      "facts": [
+        "The Scottish trade body directly announces a freely available sustainability-resource package.",
+        "The package includes roadmap, footprint guidelines, Excel dashboard, training and monthly Carbon Catchup.",
+        "The upcoming forum is scheduled October 27 in Edinburgh and online."
+      ],
+      "proofQuotes": [
+        "freely available to all",
+        "The Carbon Dashboard, an excel template",
+        "monthly Carbon Catchup",
+        "27th October in Edinburgh or online"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-09-28T14:17:38.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-28T14:17:38+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-28T14:17:38+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-28T14:17:38+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [],
+        "storyCountryCodes": [
+          "GB"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "resource-launch-and-future-forum",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.publishingscotland.org/wp-content/uploads/2026/05/Roadmap-leader-image-scaled.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "academie-francaise-roman-first-selection-20261001",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134343/prix-litteraires/grand-prix-du-roman-de-l-academie-francaise-la-premiere-selection-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:36.675Z",
+      "responseSha256": "2abc33274d5a8fa0457b5ba8c563cd8cbe9a87b0d63c14696262917358c70e71",
+      "facts": [
+        "The article explicitly dates the first Académie française selection October 1, 2026 and lists 12 novels.",
+        "Devi and Rolin are included in the list.",
+        "A second selection is scheduled October 15, and the winner October 29."
+      ],
+      "proofQuotes": [
+        "Douze ouvrages",
+        "le 15 octobre",
+        "le 29 octobre",
+        "Chronique d’un royaume perdu",
+        "La Guerre éternelle"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "corroborated-publisher-article-calendar-date",
+        "value": "2026-10-01",
+        "metadata": [
+          {
+            "value": "2026-10-01T16:42",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": [
+          "01/10/2026",
+          "01/10/2026",
+          "13/08/2026",
+          "20/08/2026"
+        ],
+        "precision": "date-only; no timezone or midnight publication time inferred"
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "FR"
+        ],
+        "storyCountryCodes": [
+          "FR"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "first-selection-not-winner",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://actualitte.com/uploads/images/grand-prix-du-roman-de-l-academie-francaise-la-premiere-selection-2026-6abe708cb2a00167452547.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "meilleur-livre-etranger-second-selection-20261001",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134338/prix-litteraires/prix-du-meilleur-livre-etranger-2026-neuf-titres-dans-la-deuxieme-selection-une-autrice-repechee",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:36.343Z",
+      "responseSha256": "03d1570c687c1bbc9e2f5b83ab7f5c242f501213371b762d1bde42e12fd7483b",
+      "facts": [
+        "The new second selection contains nine titles: six fiction and three nonfiction.",
+        "Lazar is translated from German by Rose Labourie; Le Soldat remémoré from Dutch by Isabelle Rosselin.",
+        "The prize concerns foreign works translated into French; no winners are announced."
+      ],
+      "proofQuotes": [
+        "six en fiction et trois en non-fiction",
+        "Lazar",
+        "Rose Labourie",
+        "Le Soldat remémoré",
+        "Isabelle Rosselin"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "corroborated-publisher-article-calendar-date",
+        "value": "2026-10-01",
+        "metadata": [
+          {
+            "value": "2026-10-01T16:07",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": [
+          "01/10/2026",
+          "01/10/2026",
+          "20/08/2026",
+          "04/09/2026"
+        ],
+        "precision": "date-only; no timezone or midnight publication time inferred"
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "FR"
+        ],
+        "storyCountryCodes": [
+          "FR"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "second-selection-not-winner",
+        "limitation": "The article’s visible October 1 date and primary JSON-LD date agree; an unrelated August 20 book-catalogue date in another JSON-LD node is excluded.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://actualitte.com/uploads/images/prix-du-meilleur-livre-etranger-2026-neuf-titres-dans-la-deuxieme-selection-une-autrice-repechee-6abe68fcc5991195323194.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "eleuthera-forty-years-milan-event-20261001",
+      "sourceId": "il-libraio",
+      "url": "https://www.illibraio.it/news/editoria/casa-editrice-eleuthera-1508736/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:35.043Z",
+      "responseSha256": "eeadcc41f850ae78b1c9b9466716d4a6e3e64ba87f3c11bdfb83ab7cf0c1d8e6",
+      "facts": [
+        "The publisher was founded in 1986 and marks forty years in 2026.",
+        "The announced event is October 3, 15:00-22:00 at Scomodo, via Jean Jaurès 22, Milan.",
+        "Readings, discussions, music and two exhibitions are planned, not reported as already held."
+      ],
+      "proofQuotes": [
+        "nel lontano 1986",
+        "il 3 ottobre, dalle ore 15 alle 22",
+        "presso Scomodo",
+        "due mostre"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-09-30T23:41:30.000Z",
+        "metadata": [
+          {
+            "value": "2026-10-01 01:41:30",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "IT"
+        ],
+        "storyCountryCodes": [
+          "IT"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "future-anniversary-event",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": []
+    },
+    {
+      "id": "hazelwood-two-body-problem-sequel-report-20260930",
+      "sourceId": "il-libraio",
+      "url": "https://www.illibraio.it/news/cinema/the-love-hypothesis-film-1507743/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:35.331Z",
+      "responseSha256": "c03c260fc861f51a42f674bc079a6f7660ee6df11aad6dba036440ea80099459",
+      "facts": [
+        "Il Libraio reports the author’s announced US sequel release date February 2, 2027.",
+        "MRC is developing a film for Amazon MGM Studios; development is distinct from completed release.",
+        "The earlier film is reported released September 23, not September 30."
+      ],
+      "proofQuotes": [
+        "il 2 febbraio 2027",
+        "MRC sta sviluppando un film per Amazon MGM Studios",
+        "il 23 settembre è uscito il film"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-09-30T07:25:11.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-30T07:25:11+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-30 09:25:11",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "IT"
+        ],
+        "storyCountryCodes": [
+          "US",
+          "IT"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "future-sequel-and-adaptation-development",
+        "limitation": "The author’s announcement is attributed to Il Libraio’s current report; no exact social announcement day is inferred.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.illibraio.it/wp-content/uploads/2026/09/The-love-Hypothesis-Amazon-Prime-Video.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "tiemen-hiemstra-w-italian-interview-20261001",
+      "sourceId": "il-libraio",
+      "url": "https://www.illibraio.it/news/dautore/w-tiemen-hiemstra-1507735/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:35.943Z",
+      "responseSha256": "ae09ddc1ac206a5ed71537bc2f75536febf9e0f849f4f65b9b609a2878b0a66a",
+      "facts": [
+        "The October 1 article is an original interview with Dutch author Tiemen Hiemstra about W.",
+        "The Italian publisher is Adelphi and the translator Dafne Paris.",
+        "The central timeline is thirteen days, interwoven with Olaf’s memories of his missing friend."
+      ],
+      "proofQuotes": [
+        "scrittore dei Paesi Bassi",
+        "tredici giorni",
+        "Adelphi con la traduzione di Dafne Paris"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "publisher-feed-and-article-metadata",
+        "value": "2026-10-01T01:43:26.000Z",
+        "metadata": [
+          {
+            "value": "2026-10-01T01:43:26+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-10-01 03:43:26",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": []
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "IT"
+        ],
+        "storyCountryCodes": [
+          "NL",
+          "IT"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-author-interview",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.illibraio.it/wp-content/uploads/2026/10/W.-di-Tiemen-Hiemstra-credit-Matteo-Baldi.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "moscow-writers-bookshop-reopened-20260929",
+      "sourceId": "god-literatury",
+      "url": "https://godliteratury.ru/articles/2026/09/30/knizhnaia-lavka-pisatelej-vernulas-na-kuzneckij-most",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:36.705Z",
+      "responseSha256": "d4cfcdef17319979d64fcb2316cfbe1b4a3c6ed370955f7ce1d5ef3ae40fc9a9",
+      "facts": [
+        "The source explicitly dates the opening September 29 at Kuznetsky Most 18/7, Moscow.",
+        "The venue belongs to the Writers’ Union and is part of the Dostoevsky network.",
+        "Bookselling, café and literary events are described. Disputed historical property accusations are omitted."
+      ],
+      "proofQuotes": [
+        "29 сентября",
+        "Кузнецком Мосту, 18/7",
+        "Союзу писателей России",
+        "сети \"Достоевский\""
+      ],
+      "sourcePublishedEvidence": {
+        "method": "corroborated-publisher-article-calendar-date",
+        "value": "2026-09-30",
+        "metadata": [
+          {
+            "value": "2026-09-30T08:00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": [
+          "30.09.2026",
+          "30.09.2026",
+          "29.09.2026",
+          "30.09.2026"
+        ],
+        "precision": "date-only; no timezone or midnight publication time inferred"
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "RU"
+        ],
+        "storyCountryCodes": [
+          "RU"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Opening day is explicitly September 29 in the September 30 article.",
+        "temporal": "actual-bookshop-opening",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://glstatic.rg.ru/uploads/images/2026/09/30/skoron_825.jpg",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "staraya-russa-literary-kiosk-five-years-20261001",
+      "sourceId": "god-literatury",
+      "url": "https://godliteratury.ru/articles/2026/10/01/literaturnyj-kiosk-staroj-russy-otmetil-svoj-pervyj-iubilej",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:37.119Z",
+      "responseSha256": "2f882d575016907ff0da11bb9d6e769fa2bb2d6a9a0c8524598d523c6e0262ae",
+      "facts": [
+        "The October 1 report says the kiosk has operated for five years and that readers were celebrated yesterday.",
+        "It is a book-exchange point on Voskresenskaya Street supported by city-library volunteers.",
+        "Rossiyskaya Gazeta and the Staraya Russa newspaper organised the project; books are donated and events held."
+      ],
+      "proofQuotes": [
+        "работает в Старой Руссе уже пять лет",
+        "Вчера в киоске",
+        "на Воскресенской улице",
+        "сотрудники Старорусской городской библиотеки"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "corroborated-publisher-article-calendar-date",
+        "value": "2026-10-01",
+        "metadata": [
+          {
+            "value": "2026-10-01T10:29:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": [
+          "01.10.2026",
+          "30.09.2026",
+          "30.09.2026",
+          "29.09.2026"
+        ],
+        "precision": "date-only; no timezone or midnight publication time inferred"
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "RU"
+        ],
+        "storyCountryCodes": [
+          "RU"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "The explicitly October 1 report says the celebration occurred yesterday.",
+        "temporal": "reported-anniversary-gathering",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://glstatic.rg.ru/uploads/images/2026/10/01/img_9260_56f_8ca.jpg",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "ast-sergey-aksakov-birth-anniversary-feature-20261001",
+      "sourceId": "ast",
+      "url": "https://ast.ru/news/sergey-aksakov-pisatel-kritik-i-tsenzor/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T20:56:37.126Z",
+      "responseSha256": "25bba491c08fb3eb7442df0470ca9fdf298f72c789bcf8f78ec39932c545b3fa",
+      "facts": [
+        "AST’s visible October 1 article is a newly published biographical feature tied to the writer’s birthday.",
+        "It discusses Aksakov’s theatre criticism and appreciation of Shchepkin and Mochalov.",
+        "It covers fishing/hunting writing, the 1833 sketch Buran and Childhood Years of Bagrov’s Grandson; this is not a generated calendar entry or new book claim."
+      ],
+      "proofQuotes": [
+        "Михаила Щепкина и Павла Мочалова",
+        "«Записок об уженье рыбы»",
+        "«Записок ружейного охотника Оренбургской губернии»"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "corroborated-publisher-article-calendar-date",
+        "value": "2026-10-01",
+        "metadata": [
+          {
+            "value": "2026-10-01T18:00:00+0300",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": [
+          "01.10.2026",
+          "01.10.2026",
+          "28.09.2026",
+          "01.10.2026"
+        ],
+        "precision": "date-only; no timezone or midnight publication time inferred"
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "RU"
+        ],
+        "storyCountryCodes": [
+          "RU"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-publisher-anniversary-feature",
+        "limitation": "The article’s compact +0300 offset is not passed off as an ISO timestamp. Only the corroborated visible October 1 date is retained.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://ast.ru/upload/resize_cache/iblock/928/n10kwu3bnh79ic64lziflumu3pkm86z1/600_315_2/astrahov_1200.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "tsarskoye-selo-four-rare-books-return-20260930",
+      "sourceId": "god-literatury",
+      "url": "https://godliteratury.ru/articles/2026/09/30/v-carskoe-selo-vernulis-utrachennye-v-1930-h-godah-knigi",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T21:04:45.136Z",
+      "responseSha256": "62fe14962e11f64b976774af8a4fb9e7645ec9fd95d30c44e8e5f1d252407d92",
+      "facts": [
+        "Four eighteenth- and nineteenth-century books bearing imperial-library stamps returned after loss in 1930s sales.",
+        "Sergey Mosunov bought them at international auctions and donated them to the museum.",
+        "One volume comes from Paul I’s memorial library; three from Alexander I and Elizabeth Alexeievna’s rooms. Future display is explicitly planned."
+      ],
+      "proofQuotes": [
+        "четыре книги XVIII\u2013XIX века",
+        "Сергею Мосунову",
+        "на международных аукционах",
+        "будут представлены в экспозициях"
+      ],
+      "sourcePublishedEvidence": {
+        "method": "corroborated-publisher-article-calendar-date",
+        "value": "2026-09-30",
+        "metadata": [
+          {
+            "value": "2026-09-30T13:58:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": [
+          "30.09.2026",
+          "30.09.2026",
+          "30.09.2026",
+          "29.09.2026"
+        ],
+        "precision": "date-only; no timezone or midnight publication time inferred"
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "RU"
+        ],
+        "storyCountryCodes": [
+          "RU",
+          "FR"
+        ],
+        "basis": "The Russian museum received books printed in Metz and Paris; France refers to the documented books’ production, not the donor’s nationality."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "actual-heritage-return",
+        "limitation": "Current article reviewed directly; no publication or event time is inferred from capture time.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://glstatic.rg.ru/uploads/images/2026/09/30/dsc01734_604.jpg",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "lope-de-vega-gatomachia-russian-translation-excerpt-20260930",
+      "sourceId": "god-literatury",
+      "url": "https://godliteratury.ru/articles/2026/09/30/koshachia-iliada-lope-de-vegi-vpervye-po-russki",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T21:04:45.538Z",
+      "responseSha256": "87091f8802b0271bf9d6fbaf11f82b642bcb3f99228a75d739269b5473f6aea6",
+      "facts": [
+        "The September 30 article publishes an excerpt of a complete verse translation by Alexander Triandafilidi.",
+        "The bibliographic line names BSG-Press, 2026, 226 pages; the text describes a bilingual edition by OGI under the BSG-Press brand.",
+        "Lope’s original was published in 1634; no unverified exact day of the Russian book’s release is supplied."
+      ],
+      "proofQuotes": [
+        "в полном эквиритмичном переводе",
+        "Александр Триандафилиди",
+        "М: БСГ-Пресс, 2026 \u2014 226 стр."
+      ],
+      "sourcePublishedEvidence": {
+        "method": "corroborated-publisher-article-calendar-date",
+        "value": "2026-09-30",
+        "metadata": [
+          {
+            "value": "2026-09-30T08:37:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "visibleHeaderEvidence": [
+          "30.09.2026",
+          "29.09.2026",
+          "29.09.2026",
+          "30.09.2026"
+        ],
+        "precision": "date-only; no timezone or midnight publication time inferred"
+      },
+      "geography": {
+        "sourceCountryCodes": [
+          "RU"
+        ],
+        "storyCountryCodes": [
+          "ES",
+          "RU"
+        ],
+        "basis": "Countries explicitly identified in the article’s organisation, location, participant or publication-territory facts; distinct from source-host geography."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_article",
+        "reviewedAt": "2026-10-01T21:26:03.554Z",
+        "eventDateBasis": "Explicit publication date of this announcement, interview, selection or report; future action is stated separately in future tense.",
+        "temporal": "new-translation-feature",
+        "limitation": "The source’s official Russian book title is used. No translated poetry is reproduced in the evidence or summaries; the exact new book release day is unknown.",
+        "bodyRetrieved": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "exactReleaseDayNotInferred": true,
+        "sourceTitleNormalization": "short-hyphen display policy; exact source proof quotes retain original punctuation"
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://glstatic.rg.ru/uploads/images/2026/09/30/lope-de-vega-%E2%80%94-kotomahiyaoblozhka-933x1383_e14.jpg",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "source-article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    }
+  ]
+}

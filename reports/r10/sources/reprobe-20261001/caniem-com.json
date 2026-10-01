@@ -1,0 +1,20 @@
+{
+  "sourceId": "caniem-com",
+  "name": "Cámara Nacional de la Industria EditorialHolanda No.",
+  "entryUrl": "https://www.caniem.com/",
+  "countryCodes": [
+    "MX"
+  ],
+  "coverageCountryCodes": [
+    "MX"
+  ],
+  "attemptedAt": "2026-10-01T20:43:04.285Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.caniem.com/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

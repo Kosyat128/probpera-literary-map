@@ -1,0 +1,37 @@
+{
+  "sourceId": "wallstein",
+  "name": "Wallstein",
+  "entryUrl": "https://www.wallstein-verlag.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:13.773Z",
+  "requests": [
+    {
+      "url": "https://www.wallstein-verlag.de/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 273136,
+      "sha256": "36c7720453deb50fece07d04ce9ab25a59fce72176af3d73c791b18b1bff3c31",
+      "accessedAt": "2026-10-01T20:48:14.377Z"
+    },
+    {
+      "url": "https://www.wallstein-verlag.de/presse.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 22658,
+      "sha256": "fc13de00b8b73f9297c577e417e4ca87a9bcaeae95b5d36199e08fbcd6d7be0c",
+      "accessedAt": "2026-10-01T20:48:14.533Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.wallstein-verlag.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 75,
+    "sha256": "53c57de86ed7e59781f60d3d407e00a8020dc9bff7fd716312077e7a16b88c9e",
+    "accessedAt": "2026-10-01T20:48:14.118Z",
+    "disallowed": []
+  }
+}

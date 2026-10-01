@@ -1,0 +1,44 @@
+{
+  "sourceId": "peirene-press",
+  "name": "Peirene Press",
+  "entryUrl": "https://www.peirenepress.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:00.808Z",
+  "requests": [
+    {
+      "url": "https://www.peirenepress.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 185147,
+      "sha256": "f9b45c5aab98e4b80866ae464b2a8ea4ebe6e948f06ccd29422790d30959442b",
+      "accessedAt": "2026-10-01T20:48:01.562Z"
+    },
+    {
+      "url": "https://www.peirenepress.com/events/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 166663,
+      "sha256": "60a568c13d245a0fc6c23a6a3325be8f013c158bfb7ee3c2330860e55bcff907",
+      "accessedAt": "2026-10-01T20:48:02.379Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.peirenepress.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 448,
+    "sha256": "eb84273a7a272e443a68e4c03b91e6253d1069c8d639200eacb4c19010ec1855",
+    "accessedAt": "2026-10-01T20:48:01.349Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  }
+}

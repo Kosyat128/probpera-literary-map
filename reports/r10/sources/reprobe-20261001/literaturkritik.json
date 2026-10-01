@@ -1,0 +1,523 @@
+{
+  "sourceId": "literaturkritik",
+  "name": "literaturkritik.de",
+  "entryUrl": "https://literaturkritik.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:44:59.078Z",
+  "requests": [
+    {
+      "url": "https://literaturkritik.de/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 33537,
+      "sha256": "61d82201a6b72a27c51e66b963efff82dd9045ff5263b2818599e75a733ec83b",
+      "accessedAt": "2026-10-01T20:44:59.468Z"
+    },
+    {
+      "url": "https://literaturkritik.de/#",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 33592,
+      "sha256": "8e6094ceccebb31f03f3defbe867815640a2ece804c5f869730021c906883f45",
+      "accessedAt": "2026-10-01T20:44:59.549Z"
+    },
+    {
+      "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=52",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 39863,
+      "sha256": "d86c3670808818ec25af176ce237c4d32fb687344f2f2c759ea1417059517f58",
+      "accessedAt": "2026-10-01T20:44:59.655Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://literaturkritik.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 807,
+    "sha256": "b91f4e31152ae84289589d826ada4425e99852c4a641effdbc7ac1c0de10735c",
+    "accessedAt": "2026-10-01T20:44:59.388Z",
+    "disallowed": [
+      "/devel/",
+      "/test/",
+      "/phpMyAdmin/",
+      "/db_update.sql"
+    ]
+  },
+  "endpoint": {
+    "id": "literaturkritik",
+    "name": "literaturkritik.de",
+    "url": "https://literaturkritik.de/#",
+    "format": "html",
+    "language": "de-DE",
+    "region": "global",
+    "sourceFamilyId": "literaturkritik",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://literaturkritik.de"
+    ],
+    "linkPattern": "^\\/public\\/neue_buecher\\.php$|^\\/public\\/rezension\\.php$|^\\/\\/[^/]+\\/?$|^\\/public\\/rezensionen\\/[^/]+\\/?$|^\\/public\\/inhalt2\\.php$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://literaturkritik.de/public/inhalt2.php?ausgabe=52"
+    ],
+    "verifiedAt": "2026-10-01T20:44:59.659Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 16,
+  "literaryCandidateCount": 16,
+  "sample": {
+    "sourceId": "literaturkritik",
+    "source": {
+      "name": "literaturkritik.de",
+      "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=52",
+      "language": "de-DE"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Literatur und Medizin in Deutschland",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:44:59.565Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=52",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 39863,
+      "sha256": "d86c3670808818ec25af176ce237c4d32fb687344f2f2c759ea1417059517f58",
+      "accessedAt": "2026-10-01T20:44:59.655Z",
+      "headline": "Walter Müller-Seidel: Literatur und Medizin in Deutschland. Zur Geschichte des humanen Denkens im wissenschaftlichen Zeitalter (1795-1945)",
+      "excerpt": "Walter Müller-Seidel: Literatur und Medizin in Deutschland. Zur Geschichte des humanen Denkens im wissenschaftlichen Zeitalter (1795-1945) - Hg. von Thomas Anz Skip to navigation (Press Enter) Skip to main content (Press Enter) Walter Müller-Seidel: Literatur und Medizin in Deutschland. Zur Geschichte des humanen Denkens im wissenschaftlichen Zeitalter (1795-1945) Suche für AbonnentenHg. von Thoma",
+      "publishedDates": [],
+      "canonical": "https://literaturkritik.de/public/inhalt2.php?ausgabe=52",
+      "language": "de-DE",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:59.659Z",
+  "foundItems": [
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=52",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literatur und Medizin in Deutschland",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/rezensionen/aktuelleRezensionen.php",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Weitere neue Artikel in literaturkritik.de hier",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=26",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literatur, Kunst und Wissenschaft im Ersten Weltkrieg",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=51",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "in der deutschen Literaturwissenschaft",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=30",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mein Shakespeare",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=40",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wolfgang Koeppen,",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=68",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Friedrich Dürrenmatt",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=69",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Thomas Bernhard",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=79",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ingeborg Bachmann",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=74",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eine Schatzkiste fürs Leben",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=58",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Heide Tarnowski: überallundnirgends.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=57",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "\"Es geht nicht um Christa Wolf.\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=55",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Robert de Montesquiou und Marcel Proust",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=86",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eine KI tut was?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=87",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Terror, Trials, Temporalities",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturkritik",
+      "source": {
+        "name": "literaturkritik.de",
+        "url": "https://literaturkritik.de/public/inhalt2.php?ausgabe=84",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Über Franz Kafka",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:59.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8e6094ceccebb31f03f3defbe867815640a2ece804c5f869730021c906883f45"
+}

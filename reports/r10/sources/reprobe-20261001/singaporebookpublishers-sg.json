@@ -1,0 +1,42 @@
+{
+  "sourceId": "singaporebookpublishers-sg",
+  "name": "Singapore Book Publishers",
+  "entryUrl": "https://www.singaporebookpublishers.sg/",
+  "countryCodes": [
+    "SG"
+  ],
+  "coverageCountryCodes": [
+    "SG"
+  ],
+  "attemptedAt": "2026-10-01T20:43:38.453Z",
+  "requests": [
+    {
+      "url": "https://singaporebookpublishers.sg/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 254238,
+      "sha256": "7f73cb1776731dd384b9ce9784ed34e6afbc51626d8165636dbb88fabf83d025",
+      "accessedAt": "2026-10-01T20:43:42.930Z"
+    },
+    {
+      "url": "https://singaporebookpublishers.sg/newsroom/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 117622,
+      "sha256": "52f5cc5da50cd232c09c5aa7ce4d587d3d08d096b7c5b07df3a67b3ee3e853ee",
+      "accessedAt": "2026-10-01T20:43:56.427Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://singaporebookpublishers.sg/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 184,
+    "sha256": "0e910fdeebfa046ebeeabd8a74e655d92a4969e245ca805b675030ab3fa611d3",
+    "accessedAt": "2026-10-01T20:43:41.730Z",
+    "disallowed": []
+  },
+  "feedAttemptError": "This operation was aborted"
+}

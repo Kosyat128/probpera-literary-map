@@ -1,0 +1,373 @@
+{
+  "sourceId": "impedimenta",
+  "name": "Impedimenta",
+  "entryUrl": "https://impedimenta.es/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:07.658Z",
+  "requests": [
+    {
+      "url": "https://impedimenta.es/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 323276,
+      "sha256": "46481ba3e4aabefe3504e413444184d04478bc63b83b638f51da31332d5e0cda",
+      "accessedAt": "2026-10-01T20:48:09.378Z"
+    },
+    {
+      "url": "https://impedimenta.es/feed",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 49686,
+      "sha256": "fa831a67f66a40b084bd3be383870f65d35e716b8be18acaf83700ed116c562d",
+      "accessedAt": "2026-10-01T20:48:09.728Z"
+    },
+    {
+      "url": "https://impedimenta.es/archivos/38218",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 308572,
+      "sha256": "8d8898ff01074cab725457169e17b0ad8611771ee384210541be318996e2b839",
+      "accessedAt": "2026-10-01T20:48:10.496Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://impedimenta.es/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 317,
+    "sha256": "355eed9ea0a3d22c6477b36f22aa55cf799c393036a7a2962e4e5910d448d84a",
+    "accessedAt": "2026-10-01T20:48:08.251Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "impedimenta",
+    "name": "Impedimenta",
+    "url": "https://impedimenta.es/feed",
+    "format": "rss",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "impedimenta",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://impedimenta.es"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://impedimenta.es/archivos/38218"
+    ],
+    "verifiedAt": "2026-10-01T20:48:10.505Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "impedimenta",
+    "source": {
+      "name": "Impedimenta",
+      "url": "https://impedimenta.es/archivos/38218",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Soy jefa de Cultura, he leído 14 libros en septiembre y estas son las 4 novelas que voy a recomendar a mis amigas más lectoras - ELLE - 30 de septiembre 2026",
+    "publishedAt": "2026-10-01T09:26:18.000Z",
+    "description": "Nada menos que 14 libros he podido leer en este mes de septiembre (quedarse en casa leyendo es la mejor manera de paliar la cuesta y no hacer gastos extra) en el que han pasado por mis manos obras de lo más variadas. He leído algunas novelas españolas -algo decepcionantes, la verdad-; ensayos científicos sobre […]",
+    "discoveredAt": "2026-10-01T20:48:09.730Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://impedimenta.es/archivos/38218",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 308572,
+      "sha256": "8d8898ff01074cab725457169e17b0ad8611771ee384210541be318996e2b839",
+      "accessedAt": "2026-10-01T20:48:10.496Z",
+      "headline": "Soy jefa de Cultura, he leído 14 libros en septiembre y estas son las 4 novelas que voy a recomendar a mis amigas más lectoras \u2013 ELLE \u2013 30 de septiembre 2026 \u2013 Impedimenta",
+      "excerpt": "Soy jefa de Cultura, he leído 14 libros en septiembre y estas son las 4 novelas que voy a recomendar a mis amigas más lectoras \u2013 ELLE \u2013 30 de septiembre 2026 \u2013 Impedimenta <style>.woocommerce-product-gallery{ opacity: 1 !important; }</style> Nada menos que 14 libros he podido leer en este mes de septiembre (quedarse en casa leyendo es la mejor manera de paliar la cuesta y no hacer gastos extra) en",
+      "publishedDates": [],
+      "canonical": "https://impedimenta.es/archivos/38218",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:10.505Z",
+  "foundItems": [
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38218",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Soy jefa de Cultura, he leído 14 libros en septiembre y estas son las 4 novelas que voy a recomendar a mis amigas más lectoras - ELLE - 30 de septiembre 2026",
+      "publishedAt": "2026-10-01T09:26:18.000Z",
+      "description": "Nada menos que 14 libros he podido leer en este mes de septiembre (quedarse en casa leyendo es la mejor manera de paliar la cuesta y no hacer gastos extra) en el que han pasado por mis manos obras de lo más variadas. He leído algunas novelas españolas -algo decepcionantes, la verdad-; ensayos científicos sobre […]",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38216",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Soy jefa de Cultura, he leído 14 libros en septiembre y estas son las 4 novelas que voy a recomendar a mis amigas más lectoras - ELLE - 30 de septiembre de 2026",
+      "publishedAt": "2026-10-01T09:23:30.000Z",
+      "description": "Autores de todas partes del mundo para una selección literaria con la que no fallarás. Nada menos que 14 libros he podido leer en este mes de septiembre (quedarse en casa leyendo es la mejor manera de paliar la cuesta y no hacer gastos extra) en el que han pasado por mis manos obras de […]",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38208",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tatiana Tibuleac regresa a la novela: Me siento como si estuviera despertando de una larga borrachera - El Cultural - 30 de septiembre de 2026",
+      "publishedAt": "2026-09-30T11:05:39.000Z",
+      "description": "Tras su superventas ‘El verano en que mi madre tuvo los ojos verdes’, la escritora moldava vuelve con ‘Cuando seas feliz, golpea tú primero’. En esta ocasión, honra el recuerdo de su padre, recientemente fallecido. Como si de una bomba intimista, doliente y seductora se tratara, en 2019 El verano en que mi madre tuvo los […]",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38201",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Los mejores libros que se publican en octubre - ElDiario.es - 28 de septiembre de 2026",
+      "publishedAt": "2026-09-29T10:29:28.000Z",
+      "description": "Octubre llega cargado de novedades literarias: nuevas novelas de Santiago Lorenzo, Alana S. Portero y Camila Fabbri, el regreso de Han Kang y el debut de Pedro Almodóvar como novelista. Después de un mes de septiembre intenso en cuanto a novedades editoriales, octubre toma el relevo sin bajar el pulso. En las próximas semanas llegan […]",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38224",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cuando seas feliz, golpea tú primero - La Región - 30 de septiembre de 2026",
+      "publishedAt": "2026-10-01T09:39:07.000Z",
+      "description": "Cuando seas feliz, golpea tú primeroTatiana TíbuleacEditorial Impedimenta Mila malviveen Parísen medio de trabajos precarios y una inclinación peligrosa hacia el alcoholismo. No obstante, la reconciliación con la memoria parece ser la salida del laberinto.",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38220",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El Boomerang - 30 de septiembre de 2026",
+      "publishedAt": "2026-10-01T09:34:26.000Z",
+      "description": "Jon Bilbao lleva años construyendo un mundo literario con una casa en el centro: una vivienda familiar en un pueblo marinero del norte, visible desde la otra orilla de la ría, que se alza sobre un macizo calcáreo lleno de cuevas. Esta es tu casa reúne nueve relatos que orbitan alrededor de esa casa y de quienes […]",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38213",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Falso nocturno - Shopping y Style - 30 de septiembre de 2026",
+      "publishedAt": "2026-09-30T11:12:18.000Z",
+      "description": "Recomendación de «Falso nocturno» de Mariana Sández: «A veces, perderse es la única forma de encon- trarse. Es lo que le ocurre a la protagonista de esta espléndida novela, que reflexiona sobre la ex- tranjería, la identidad y la nostalgia.»",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38206",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La crítica andaluza otorga sus galardones en Granada - Ideal - 30 de septiembre de 2026",
+      "publishedAt": "2026-09-30T10:53:33.000Z",
+      "description": "La Asociación Andaluza de Escritores y Críticos Literarios, presidida por la catedrática de la Universidad de Granada Remedios Sánchez, ha vuelto a elegir Granada y la Alhambra para celebrar la fiesta anual que supone la entrega de los premios que cada año otorga. Unos galardones que cimentan su prestigio en su absoluta independencia de intereses comerciales […]",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38204",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Lo fantástico nos permite ver la realidad cotidiana con ojos nuevos» - El Diario Montañés - 9 de septiembre de 2026",
+      "publishedAt": "2026-09-29T10:46:05.000Z",
+      "description": "El narrador presenta hoy en Gil, ‘Esta es tu casa’, nueve relatos en los que convierte su vivienda familiar de Ribadesella en territorio de ficción Jon Bilbao (Asturias, 1972) ha convertido una casa real en territorio de ficción. La vivienda familiar de Ribadesella en la que creció, levantada en una ladera frente a la ría […]",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "source": {
+        "name": "Impedimenta",
+        "url": "https://impedimenta.es/archivos/38199",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El padre y la patria de Tatiana Ţîbuleac siguen cicatrizando - The Objective - 28 de septiembre de 2026",
+      "publishedAt": "2026-09-29T10:21:05.000Z",
+      "description": "Cuando seas feliz, golpea tú primero (Impedimenta) es una novela dura. Para los personajes y para el lector. Y todo indica que también para su autora. Con El verano en que mi madre tuvo los ojos verdes (2016; Impedimenta), Tatiana Ţîbuleac (Chisináu, Moldavia, 1978) sorprendió a todo el cotarro editorial con un éxito descomunal para una novela muy literaria, con toques líricos […]",
+      "discoveredAt": "2026-10-01T20:48:09.730Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "fa831a67f66a40b084bd3be383870f65d35e716b8be18acaf83700ed116c562d"
+}

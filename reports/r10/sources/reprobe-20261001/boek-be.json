@@ -1,0 +1,20 @@
+{
+  "sourceId": "boek-be",
+  "name": "Flemish Publishers AssociationHet Huis van het BoekTe Boelaerlei",
+  "entryUrl": "https://www.boek.be/",
+  "countryCodes": [
+    "BE"
+  ],
+  "coverageCountryCodes": [
+    "BE"
+  ],
+  "attemptedAt": "2026-10-01T20:43:41.243Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.boek.be/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "sourceId": "miles-franklin",
+  "name": "Miles Franklin Literary Award",
+  "entryUrl": "https://www.milesfranklin.com.au/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:04.872Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

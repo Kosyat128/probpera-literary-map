@@ -1,0 +1,77 @@
+{
+  "sourceId": "hanser",
+  "name": "Hanser",
+  "entryUrl": "https://www.hanser-literaturverlage.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:11.468Z",
+  "requests": [
+    {
+      "url": "https://www.hanser-literaturverlage.de/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 433699,
+      "sha256": "3a70f00e0e7696beac6c87ea233ba999a640a616eb098013d1a914b91de51869",
+      "accessedAt": "2026-10-01T20:48:12.723Z"
+    },
+    {
+      "url": "https://www.hanser-literaturverlage.de/service/presse-c-49",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 173461,
+      "sha256": "28fecc42af27940e2e0f9d428930876cc534964fec06ff02582e00286c2ba723",
+      "accessedAt": "2026-10-01T20:48:13.717Z"
+    },
+    {
+      "url": "https://www.hanser-literaturverlage.de/kundenservice-c-23?etcc_cmp_onsite=Ribbon_Keine+Versandkosten+in+DACH&etcc_cu=onsite&etcc_med_onsite=Website",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 212399,
+      "sha256": "cc16d51977821dbaa9b02bbed90c76ee2b98b241edad12b3e4a6a4af60ed24b1",
+      "accessedAt": "2026-10-01T20:48:13.967Z"
+    },
+    {
+      "url": "https://www.hanser-literaturverlage.de/kundenservice-c-23?etcc_cmp_onsite=Ribbon_Schnelle+Lieferung&etcc_cu=onsite&etcc_med_onsite=Website",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 212392,
+      "sha256": "4d6fc857033d8d6c858a5fce4f8793a73d2242a8d2e997091d2948f7134500df",
+      "accessedAt": "2026-10-01T20:48:14.126Z"
+    },
+    {
+      "url": "https://www.hanser-literaturverlage.de/verlage-c-33?etcc_cmp_onsite=Ribbon_Kauf+direkt+beim+Verlag&etcc_cu=onsite&etcc_med_onsite=Website",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 140263,
+      "sha256": "93e149ca5f85007776c34145ae233f462bff0fb3bd72843a89b737d03e1cb8bb",
+      "accessedAt": "2026-10-01T20:48:14.279Z"
+    },
+    {
+      "url": "https://www.hanser-literaturverlage.de/veranstaltungen-c-34",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 335573,
+      "sha256": "19451e1ad75a0bc591b698c3a64765fafa734e4b6d9983007d093a7ccd6a611f",
+      "accessedAt": "2026-10-01T20:48:14.483Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.hanser-literaturverlage.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 570,
+    "sha256": "ac3f8d193da8f917ba830c24c7ee0627f78ea7eb8570130e09e15dc845b773c0",
+    "accessedAt": "2026-10-01T20:48:11.751Z",
+    "disallowed": [
+      "/api/",
+      "/shop/",
+      "/search",
+      "/search/",
+      "/forms/",
+      "/en",
+      "/en/"
+    ]
+  }
+}

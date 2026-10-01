@@ -1,0 +1,368 @@
+{
+  "sourceId": "toronto-press",
+  "name": "University of Toronto Press",
+  "entryUrl": "https://utorontopress.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:45.088Z",
+  "requests": [
+    {
+      "url": "https://utorontopress.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 99492,
+      "sha256": "3dad75b9d484d0484449a0f633743c0257ddcdd0e22fdaae0e3320faedecd493",
+      "accessedAt": "2026-10-01T20:51:45.505Z"
+    },
+    {
+      "url": "https://utorontopress.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 60717,
+      "sha256": "9f1b04825862dc736916b77f20f47114dbeb5135427e02819c141aa2f798d382",
+      "accessedAt": "2026-10-01T20:51:46.039Z"
+    },
+    {
+      "url": "https://utorontopress.com/awards-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 112151,
+      "sha256": "0353fbe45dd9d021a63bc07014b33a155c7d73ebfa037c9a4752a92d25f52341",
+      "accessedAt": "2026-10-01T20:51:46.110Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://utorontopress.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 118,
+    "sha256": "42ac3b7718172cab821e2788e4e655c5af49f45f935f36434e853eeffa962e81",
+    "accessedAt": "2026-10-01T20:51:45.433Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "toronto-press",
+    "name": "University of Toronto Press",
+    "url": "https://utorontopress.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "toronto-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://utorontopress.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://utorontopress.com/awards-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:46.113Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "toronto-press",
+    "source": {
+      "name": "University of Toronto Press",
+      "url": "https://utorontopress.com/awards-2026/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Explore Our Award-Winning Titles: Where Scholarship Meets Excellence",
+    "publishedAt": "2026-07-28T18:35:49.000Z",
+    "description": "La corónica International Book Award Samuel and Ronnie Heyman Prize NextGen Indie Book Award Morman History Association Best First Book Award Canadian Sociology Book Award Canadian Sociology Book Award, Honourble mention Mary W. Klinger Book Award Ann Saddlemyer Award Canadian Historical Association’s Neil Sutherland prize",
+    "discoveredAt": "2026-10-01T20:51:46.041Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://utorontopress.com/awards-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 112151,
+      "sha256": "0353fbe45dd9d021a63bc07014b33a155c7d73ebfa037c9a4752a92d25f52341",
+      "accessedAt": "2026-10-01T20:51:46.110Z",
+      "headline": "Explore Our Award-Winning Titles: Where Scholarship Meets Excellence",
+      "excerpt": "Explore Our Award-Winning Titles: Where Scholarship Meets Excellence La corónica International Book Award Samuel and Ronnie Heyman Prize NextGen Indie Book Award Morman History Association Best First Book Award Canadian Sociology Book Award Canadian Sociology Book Award, Honourble mention Mary W. Klinger Book Award Ann Saddlemyer Award Canadian Historical Association’s Neil Sutherland prize",
+      "publishedDates": [],
+      "canonical": "https://utorontopress.com/awards-2026/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:46.113Z",
+  "foundItems": [
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/awards-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Explore Our Award-Winning Titles: Where Scholarship Meets Excellence",
+      "publishedAt": "2026-07-28T18:35:49.000Z",
+      "description": "La corónica International Book Award Samuel and Ronnie Heyman Prize NextGen Indie Book Award Morman History Association Best First Book Award Canadian Sociology Book Award Canadian Sociology Book Award, Honourble mention Mary W. Klinger Book Award Ann Saddlemyer Award Canadian Historical Association’s Neil Sutherland prize",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/university-of-toronto-press-and-peking-university-press-announce-new-scholarly-book-series-on-the-history-of-chinese-confucianism/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University of Toronto Press and Peking University Press Announce New Scholarly Book Series on the History of Chinese Confucianism",
+      "publishedAt": "2026-09-28T15:37:16.000Z",
+      "description": "Toronto, Canada and Beijing, China \u2013 September 28, 2026 \u2014 University of Toronto Press (UTP) and Peking University Press (PUP) are pleased to announce a new partnership to publish a series of scholarly books dedicated to the history, development, and global influence of Chinese Confucianism. The collaborative series will bring together leading scholars to examine Confucian thought […]",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/university-of-toronto-press-and-paradigm-publishing-services-launch-first-of-its-kind-dual-access-model-for-scholarly-ebooks/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University of Toronto Press and Paradigm Publishing Services Launch First-of-its-Kind Dual-Access Model for Scholarly eBooks",
+      "publishedAt": "2026-09-22T20:04:19.000Z",
+      "description": "New collaboration provides libraries and researchers with greater flexibility, discoverability, and continuity of access across two trusted platforms. Toronto, ON \u2013 September 23, 2026\u2014 University of Toronto Press (UTP) and Paradigm Publishing Services are pleased to announce a new collaboration that will provide libraries subscribing to UTP eBook collection with access to their licensed content […",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/university-of-toronto-press-and-emmanuel-college-partner-to-launch-new-scholarly-journal-dedicated-to-buddhist-spiritual-care/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University of Toronto Press and Emmanuel College Partner to Launch New Scholarly Journal Dedicated to Buddhist Spiritual Care",
+      "publishedAt": "2026-09-16T09:00:00.000Z",
+      "description": "Toronto, ON \u2013 September 16, 2026 \u2014 University of Toronto Press (UTP) and Emmanuel College of Victoria University, Toronto School of Theology, are very pleased to announce a new strategic partnership to develop a scholarly journal dedicated to the growing field of Buddhist spiritual care. The International Journal of Buddhist Spiritual Care will serve as […]",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/the-university-of-toronto-bookstore-launches-the-new-u-of-t-and-hello-kitty-collection-across-all-three-campuses-today/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The University of Toronto Bookstore Launches the New U of T and Hello Kitty® Collection Across All Three Campuses Today",
+      "publishedAt": "2026-09-04T07:00:00.000Z",
+      "description": "TORONTO, ON (September 4, 2026): The University of Toronto Bookstore launched the U of T and Hello Kitty® collection today, now available in-store at all three U of T campus bookstore locations: St. George, Scarborough, and Mississauga. The collection marks the U of T Bookstore’s latest expansion into lifestyle and character-driven retail, reflecting growing demand […]",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/sociologist-scott-schiemans-new-book-i-want-m-o-r-e-why-your-job-still-matters-challenges-the-just-a-paycheck-mindset-reshaping-work-in-the-u-s-and-canada/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sociologist Scott Schieman’s New Book, I Want M.O.R.E.: Why Your Job Still Matters, Challenges the ‘Just a Paycheck’ Mindset Reshaping Work in the U.S. and Canada",
+      "publishedAt": "2026-07-13T03:00:00.000Z",
+      "description": "Drawing on decades of national survey data and thousands of interviews, the book argues that the widespread belief that “a job is just a way of earning money” is both increasingly common and incomplete. TORONTO, CA \u2014 July 13, 2026 \u2014 If you suddenly stopped working, what would you miss most? For decades, sociologist Scott […]",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/water-on-wall-street-why-the-world-needs-to-rethink-how-we-value-water/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Water on Wall Street: Why the World Needs to Rethink How We Value Water",
+      "publishedAt": "2026-09-16T04:00:00.000Z",
+      "description": "Toronto, ON \u2013 September 16, 2026 \u2013 In 2010, the United Nations declared access to clean drinking water a human right. Fifteen years later, billions of people still lack reliable access, while the water that is available is wasted, polluted, and undervalued. Water on Wall Street: Human Rights, Pricing, and Trading (University of Toronto Press, […]",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/breast-cancers-top-researchers-answer-to-the-questions-patients-have-most/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Breast Cancer’s Top Researchers Answer to the Questions Patients Have Most",
+      "publishedAt": "2026-07-14T03:00:00.000Z",
+      "description": "Two of Canada’s leading breast cancer experts deliver the book every newly diagnosed patient needs Ten Questions to Ask My Doctor About My Breast CancerBy Dr. Steven Narod and Dr. Katarzyna JerzakOn sale August 11, 2026 | University of Toronto Press TORONTO, CA \u2014 July 14, 2026 \u2014 University of Toronto Press announces the forthcoming […]",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/the-higher-education-satire-every-faculty-member-has-been-waiting-for/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Higher Education Satire Every Faculty Member Has Been Waiting For",
+      "publishedAt": "2026-07-13T03:00:00.000Z",
+      "description": "Bedtime Stories for Academics turns beloved myths and folklore into sharp, loving portraits of the modern university. Toronto, ON \u2013 July 13, 2026 \u2013 Rumpelstiltskin chairs the promotion and tenure board. Goldilocks faces three peer reviewers (too harsh, too vague, and just plain confusing). Huck Finn fakes his own death to avoid writing one more […]",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "source": {
+        "name": "University of Toronto Press",
+        "url": "https://utorontopress.com/the-artery-behind-1-in-10-sudden-deaths-gets-an-owners-manual-and-a-message-we-can-keep-you-safe/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The artery behind 1 in 10 sudden deaths gets an owner’s manual, and a message: “We can keep you safe”",
+      "publishedAt": "2026-07-09T03:00:00.000Z",
+      "description": "Aortic aneurysm can be detected, managed, and subdued \u2014 life-saving guidance from one of the world’s leading aortic surgeons and the patient advocate who lived it TORONTO, ON \u2013 July 9, 2026 \u2013 What do Albert Einstein, Lucille Ball, John Ritter, Jonathan Larson, and Grant Wahl all have in common? Each suffered from aortic aneurysm […]",
+      "discoveredAt": "2026-10-01T20:51:46.041Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "9f1b04825862dc736916b77f20f47114dbeb5135427e02819c141aa2f798d382"
+}

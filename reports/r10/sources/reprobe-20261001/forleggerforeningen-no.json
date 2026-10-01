@@ -1,0 +1,97 @@
+{
+  "sourceId": "forleggerforeningen-no",
+  "name": "Norske ForleggerforeningØvre Vollgate",
+  "entryUrl": "https://www.forleggerforeningen.no/",
+  "countryCodes": [
+    "NO"
+  ],
+  "coverageCountryCodes": [
+    "NO"
+  ],
+  "attemptedAt": "2026-10-01T20:43:15.232Z",
+  "requests": [
+    {
+      "url": "https://forleggerforeningen.no/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 106389,
+      "sha256": "bc582952e50923daab50590d48b7fdd93ead067bbb4d294c0788e68277cf0344",
+      "accessedAt": "2026-10-01T20:43:19.156Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/kalenderhendelser/hosten-2026-presentasjonsmote-for-sma-forlag/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 67170,
+      "sha256": "a996ee7cc79fd043c99a6f46bfd20a63aef67ec643840c6e023f83ba3817478e",
+      "accessedAt": "2026-10-01T20:43:20.002Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/nyhetsarkiv/alarmerende-og-uakseptabelt/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 73788,
+      "sha256": "beab4fa2e50381dd422fb1eb9d1f4613a447227538605661eb8aacfc3a3f4ecb",
+      "accessedAt": "2026-10-01T20:43:20.727Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/kalenderhendelser/hostmote-forente-forlag-og-tiden-forlag/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 61798,
+      "sha256": "ee1f9a74eff1072670454833bd8978e7bc6f6fdc294444507f84f202929b972a",
+      "accessedAt": "2026-10-01T20:43:21.459Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/kalenderhendelser/brageprisen/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 61090,
+      "sha256": "bb655165ea37c4f757b9f8f30eb4fd32648dd8a04f982fe707032e70d292e6fd",
+      "accessedAt": "2026-10-01T20:43:22.157Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/om-oss/utvalg/allmennbokutvalget/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 69892,
+      "sha256": "c579a096e514037b04abc36f58c5d172f260c209a62ec39589543c362fd2d2e6",
+      "accessedAt": "2026-10-01T20:43:22.949Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/om-oss/utvalg/hoyskoleutvalget/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 69277,
+      "sha256": "08047b14df090e0dd4af72f1b21abcec093f4a556e6ea9699d4a5444a7811661",
+      "accessedAt": "2026-10-01T20:43:23.630Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/om-oss/utvalg/juridisk-utvalg/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 69496,
+      "sha256": "b1872d173d345cd8e98dd6fdcb827a3607c4ecb860897fe91b57e8043d444185",
+      "accessedAt": "2026-10-01T20:43:24.338Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/om-oss/utvalg/laeremiddelutvalget/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 69662,
+      "sha256": "332d9fd0db79209a99d484381070edba7b562cf411ecc6a4f84567917acfd68d",
+      "accessedAt": "2026-10-01T20:43:25.050Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://forleggerforeningen.no/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 180,
+    "sha256": "051da9a1cafed69ac8baaade8b870808902c018cc3980016d7c892b49e7a8693",
+    "accessedAt": "2026-10-01T20:43:17.591Z",
+    "disallowed": []
+  }
+}

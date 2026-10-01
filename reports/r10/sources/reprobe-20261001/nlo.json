@@ -1,0 +1,106 @@
+{
+  "sourceId": "nlo",
+  "name": "Новое литературное обозрение / НЛО Медиа",
+  "entryUrl": "https://nlobooks.ru/nlomedia/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-10-01T20:44:22.621Z",
+  "requests": [
+    {
+      "url": "https://nlobooks.ru/nlomedia/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 166580,
+      "sha256": "dc4d9d5c1322730429e212ad8c7e733e3dbb90226fe2f044dfd7acbfcb1bdc7b",
+      "accessedAt": "2026-10-01T20:44:23.196Z"
+    },
+    {
+      "url": "https://nlobooks.ru/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 134631,
+      "sha256": "a6e0f45ec3c2741d3a5e83a26c3bb4820acf22df40cb59b3dfc1a20c10cd243d",
+      "accessedAt": "2026-10-01T20:44:23.403Z"
+    },
+    {
+      "url": "https://nlobooks.ru/news/konstantin-mikhaylovich-polivanov-25-dekabrya-1959-15-avgusta-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 133067,
+      "sha256": "1f9425d7b59e7a4a38097193d517d01ae68b94dd73be5c463488a056b369b487",
+      "accessedAt": "2026-10-01T20:44:23.713Z"
+    },
+    {
+      "url": "https://nlobooks.ru/news/sem-knig-nlo-voshli-v-long-list-premii-imeni-b-a-grushina/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 150317,
+      "sha256": "5e1f9a2c855d96a7ec57bb03736f537cc461f65dd454b6e1865edb4a2e4a0688",
+      "accessedAt": "2026-10-01T20:44:24.135Z"
+    },
+    {
+      "url": "https://nlobooks.ru/news/na-yandeks-knigakh-vyshla-audiokniga-dmitriya-krymova-novyy-kurs-razgovory-s-samim-soboy/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 133203,
+      "sha256": "16306898899651ad4ce07bacbbd40bac0cc2db55decb61255abb380c2ad60fbf",
+      "accessedAt": "2026-10-01T20:44:24.416Z"
+    },
+    {
+      "url": "https://nlobooks.ru/news/nlo-vpervye-publikuet-polnyy-korpus-perepiski-viktora-shklovskogo-borisa-eykhenbauma-i-yuriya-tynyan/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 136453,
+      "sha256": "5ff9ed7a6089de8ee2b64672ae853612a8592505f982b5cdc5cfbffd4b9f9fe7",
+      "accessedAt": "2026-10-01T20:44:24.609Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://nlobooks.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1007,
+    "sha256": "7bef59a7b1bf897342c752183a3ab7a5700e510106f3891a52ddd1c7de244798",
+    "accessedAt": "2026-10-01T20:44:22.967Z",
+    "disallowed": [
+      "*/index.php",
+      "/bitrix/",
+      "/*show_include_exec_time=",
+      "/*show_page_exec_time=",
+      "/*show_sql_stat=",
+      "/*bitrix_include_areas=",
+      "/*clear_cache=",
+      "/*clear_cache_session=",
+      "/*ADD_TO_COMPARE_LIST",
+      "/*ORDER_BY",
+      "/*PAGEN",
+      "/*?print=",
+      "/*&print=",
+      "/*print_course=",
+      "/*?action=",
+      "/*&action=",
+      "/*register=",
+      "/*forgot_password=",
+      "/*change_password=",
+      "/*login=",
+      "/*logout=",
+      "/*auth=",
+      "/*backurl=",
+      "/*back_url=",
+      "/*BACKURL=",
+      "/*BACK_URL=",
+      "/*back_url_admin=",
+      "/*?utm_source=",
+      "/*?bxajaxid=",
+      "/*&bxajaxid=",
+      "/*?view_result=",
+      "/*&view_result="
+    ]
+  }
+}

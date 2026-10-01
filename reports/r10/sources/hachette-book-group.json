@@ -1,0 +1,1348 @@
+{
+  "sourceId": "hachette-book-group",
+  "name": "Hachette Book Group",
+  "entryUrl": "https://www.hachettebookgroup.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:56:26.752Z",
+  "requests": [
+    {
+      "url": "https://www.hachettebookgroup.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 549926,
+      "sha256": "1b9606682370a30dc179b18610ff1163710171c07284dbf80d7a40b5931c031d",
+      "accessedAt": "2026-10-01T20:56:29.180Z"
+    },
+    {
+      "url": "https://www.hachettebookgroup.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1071125,
+      "sha256": "85e2c2dff4ba7635b3f6cba2e30af53d193bae8c7ec0f20fd854e9d9f5f75925",
+      "accessedAt": "2026-10-01T20:56:33.161Z"
+    },
+    {
+      "url": "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 290372,
+      "sha256": "49c676d6e4a8878b243e45f683d22c5a440a9b2fa4eeef78e38b8f99bc0f09ed",
+      "accessedAt": "2026-10-01T20:56:33.996Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.hachettebookgroup.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 141,
+    "sha256": "34de38831e0e4ae3c5a244e38e1535e3ee482d35273e59f0422a2f99fa206259",
+    "accessedAt": "2026-10-01T20:56:27.787Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "hachette-book-group",
+    "name": "Hachette Book Group",
+    "url": "https://www.hachettebookgroup.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "hachette-book-group",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.hachettebookgroup.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/"
+    ],
+    "verifiedAt": "2026-10-01T20:56:34.007Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 49,
+  "literaryCandidateCount": 49,
+  "sample": {
+    "sourceId": "hachette-book-group",
+    "source": {
+      "name": "Hachette Book Group",
+      "url": "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Hachette Book Group Named Finalist in Ragan’s 2026 Zenith Awards for Raising Readers Social Impact Campaign",
+    "publishedAt": "2026-09-28T13:34:55.000Z",
+    "description": "New York, NY (September 2026) \u2014 Hachette Book Group is proud to announce that it has been named a finalist in Ragan’s 2026 Zenith Awards in the Corporate Social Responsibility category for Raising Readers, HBG’s social impact campaign addressing the alarming decline in children reading for fun and entertainment, the single biggest predictor of a child’s future success. Ragan’s Zenith Awards honor…",
+    "discoveredAt": "2026-10-01T20:56:33.168Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 290372,
+      "sha256": "49c676d6e4a8878b243e45f683d22c5a440a9b2fa4eeef78e38b8f99bc0f09ed",
+      "accessedAt": "2026-10-01T20:56:33.996Z",
+      "headline": "Hachette Book Group Named Finalist in Ragan’s 2026 Zenith Awards for Raising Readers Social Impact Campaign",
+      "excerpt": "New York, NY (September 2026) \u2014 Hachette Book Group is proud to announce that it has been named a finalist in Ragan’s 2026 Zenith Awards in the Corporate Social Responsibility category for Raising Readers, HBG’s social impact campaign addressing the alarming decline in children reading for fun and entertainment, the single biggest predictor of a child’s future success. Ragan’s Zenith Awards honor ",
+      "publishedDates": [
+        {
+          "value": "2026-09-28T13:34:55+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:56:34.007Z",
+  "foundItems": [
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hachette Book Group Named Finalist in Ragan’s 2026 Zenith Awards for Raising Readers Social Impact Campaign",
+      "publishedAt": "2026-09-28T13:34:55.000Z",
+      "description": "New York, NY (September 2026) \u2014 Hachette Book Group is proud to announce that it has been named a finalist in Ragan’s 2026 Zenith Awards in the Corporate Social Responsibility category for Raising Readers, HBG’s social impact campaign addressing the alarming decline in children reading for fun and entertainment, the single biggest predictor of a child’s future success. Ragan’s Zenith Awards honor…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/basic-books/october-2026-bbg-ebook-deals/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "October 2026 BBG eBook Deals",
+      "publishedAt": "2026-10-01T04:00:00.000Z",
+      "description": "October 2026 BBG eBook Deals from Basic Books Group We're excited to share that many of our bestselling titles are on sale this month in digital formats! Select your preferred third-party eBook retailer using the buttons below to purchase these titles for under $3! * $1.99 or $2.99 promo price only available from October 1, 2026\u2013October 31, 2026 on US orders only from non-HBG third party ebook re…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/orbit-loot-october-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Orbit Loot: October 2026",
+      "publishedAt": "2026-10-01T04:00:00.000Z",
+      "description": "Enter for a chance to win hardcover deluxe editions of The Licanius Trilogy by James Islington! This promotion is not currently available. Learn more about the titles featured in this sweepstakes! The Licanius Trilogy View title 2217259 View title 2217263 View title 2217261",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/basic-books/new-business-books-from-the-basic-books-group/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New Business Books from The Basic Books Group",
+      "publishedAt": "2026-09-21T19:32:49.000Z",
+      "description": "Explore 5 new books offering fresh perspectives on leadership, management, workplace culture, technology, and the future of business.",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/hachette-book-group-hosts-second-annual-changing-the-story-festival-highlighting-inclusion-as-a-driver-of-publishing-success/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hachette Book Group Hosts Second Annual Changing the Story Festival Highlighting Inclusion as a Driver of Publishing Success",
+      "publishedAt": "2026-09-14T13:35:42.000Z",
+      "description": "Pictured L-R: Photo 1-Carrie Bloxson, David Shelley, Sara Munjack; Photo 2-Carrie Bloxson, Amina Iro; Photo 3- Sruti Swaminathan, Sara Munjack; Photo 4- HBG employees Celebration featured a keynote from HBG author of The Perilous Fight former NFL quarterback and civil rights activist Colin Kaepernick as well as Sruti Swaminathan, Senior Staff Attorney, ACLU, LGBTQ Rights. NEW YORK (September 14, …",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/union-square-co-announces-singularity-a-bold-new-novella-program-dedicated-to-high-impact-one-sitting-fiction/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UNION SQUARE & CO. ANNOUNCES “SINGULARITY”: A BOLD NEW NOVELLA PROGRAM DEDICATED TO HIGH-IMPACT, ONE-SITTING FICTION",
+      "publishedAt": "2026-09-02T14:13:13.000Z",
+      "description": "The curated line bypasses traditional page counts to champion narrative velocity across genres, kicking off September 2026 with titles from Harlan Ellison, Adam Cesare, and more. NEW YORK, NY (August 31, 2026) \u2013 Union Square & Co., an imprint of the Grand Central Publishing Group and the Hachette Book Group, announced the launch of Singularity, an ambitious new novella program that will publish 1…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/christine-ball-joins-hachette-book-group-as-president-and-publisher-grand-central-publishing/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Christine Ball joins Hachette Book Group as President and Publisher, Grand Central Publishing",
+      "publishedAt": "2026-09-29T14:37:33.000Z",
+      "description": "Emily Meehan promoted to President and Publisher, Union Square and Co. Ball and Meehan appointed to HBG’s Executive Management Board New York, NY (September 29, 2026) \u2014 Hachette Book Group (HBG) announced today two new appointments to their Executive Management Board. In November, Christine Ball will join the company as President and Publisher of Grand Central Publishing, replacing Ben Sevier fol…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/hachette-book-group-announces-key-promotions/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hachette Book Group Announces Key Promotions",
+      "publishedAt": "2026-09-29T14:29:04.000Z",
+      "description": "New York, NY (September 29, 2026) \u2014 Hachette Book Group (HBG) today announced the promotion effective January 1, 2027, of Ben Sevier to CEO, Hachette Book Group, and Richard Kitson to President & Chief Operating Officer, Global English Language, Hachette. Sevier and Kitson will continue to report into David Shelley who as of January 1, 2027, will become Executive Chair of Hachette UK and Hachette…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/basic-books/hispanic-heritage-month-basic-books-group/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "6 Books in Honor of Hispanic Heritage Month",
+      "publishedAt": "2026-09-23T20:34:39.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/little-brown-young-readers/lbyr-blog/books-to-read-to-your-dog/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Books to Read to Your Dog",
+      "publishedAt": "2026-09-22T15:34:09.000Z",
+      "description": "Have you met Snickerdoodle yet? Snickerdoodle is the star of his very own picture book from bestselling author and illustrator Victoria Kann. He’s a newly adopted puppy and he’s trying very hard to be the perfect pet! He soon learns about kindness, community, and being true to yourself. We love our pets so much for exactly who they are, and they teach us so much about unconditional love. They are…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/book-list/fresh-voices-frightening-stories-horror-books-for-halloween/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fresh Voices, Frightening Stories: Horror Books for Halloween",
+      "publishedAt": "2026-09-22T14:10:27.000Z",
+      "description": "Looking for your next Halloween read? These unforgettable horror and thriller novels deliver chilling twists, haunting atmospheres, and stories that will stay with you long after the final page. Featuring standout voices from a wide range of authors, this collection is the perfect way to discover a new favorite while embracing the spooky season.",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/basic-books/7-books-on-the-united-states-constitution/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "7 Books on the United States Constitution",
+      "publishedAt": "2026-09-17T04:00:00.000Z",
+      "description": "The U.S. constitution has shaped American law for more than two centuries\u2014and debates over its meaning and power continue today. Explore these seven books from the Basic Books Group examining constitutional history, free speech, and the enduring questions at the heart of the Constitution. Born Equal by Akhil Reed Amar From “one of our most prodigious constitutional scholars” (Jonathan Eig), the d…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/little-brown-young-readers/lbyr-blog/picture-books-for-hocus-pocus-kids/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Picture Books for Hocus Pocus Kids",
+      "publishedAt": "2026-09-16T17:57:34.000Z",
+      "description": "I may or may not be obsessed with Hocus Pocus. I tend to quote it no matter the season, running AMOK AMOK AMOK with joy when it’s acceptable to start my annual rewatch. Or five. I am a bit of a scaredy cat when it comes to Halloween things, and Hocus Pocus is a perfect blend of silly, a tiny bit scary (we love you Billy Butcherson, but your introduction was frightening at first), and a whole lot …",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/ann-dye-named-vice-president-business-operations-of-hachette-book-group/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ann Dye Named Vice President, Business Operations of Hachette Book Group",
+      "publishedAt": "2026-09-15T18:01:34.000Z",
+      "description": "New York, NY (September 15, 2026) \u2014 Hachette Book Group (HBG) announced today that Ann Dye has been named Vice President, Business Operations, Hachette Book Group beginning on September 21. The appointment was made by Senior Vice President, Commercial Ops, Ed Spade, to whom Dye will report. In this new role, Dye will be a strategic partner and operational right hand to Spade driving execution of …",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/september-ebook-deals-2/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "September Ebook Deals",
+      "publishedAt": "2026-09-10T13:59:28.000Z",
+      "description": "May the fun begin with new books for your TBR! These September ebook deals start at just $1.99. Get them while they last! September 1, 2026 September 3, 2026 September 4, 2025",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/novl/1-author-7-questions-taylor-j-larue/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "1 Author, 7 Questions: Taylor J. LaRue",
+      "publishedAt": "2026-09-08T15:37:15.000Z",
+      "description": "OBSESSED does not even begin to cover the way I feel about Steelborn! The way I would like to dive into this world and wrap it around myself like a cloak! Reya is the badass heroine of all badass heroines, and I am chomping at the bit for book two! We got the chance to sit down with the mastermind behind it all, Taylor J. LaRue, and ask her all about her writing process, what inspired Steelborn, …",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/basic-books/seven-labor-history-recommendations-from-basic-books-group/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Seven Labor History Recommendations from Basic Books Group",
+      "publishedAt": "2026-09-07T03:50:00.000Z",
+      "description": null,
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/basic-books/roman-empire-reads-basic-books-group/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Roman Empire Reads from The Basic Books Group",
+      "publishedAt": "2026-09-04T04:00:00.000Z",
+      "description": "Explore the people, battles, places, and pivotal moments that shaped one of history's most influential empires with these 10 books.",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/hachette-book-group-and-hachette-uk-partners-with-barnes-noble-and-waterstones-to-launch-raising-readers-storytimes/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "HACHETTE BOOK GROUP AND HACHETTE UK PARTNERS WITH BARNES & NOBLE AND WATERSTONES TO LAUNCH RAISING READERS STORYTIMES",
+      "publishedAt": "2026-09-03T15:34:35.000Z",
+      "description": "A major three-day #RaisingReaders collaboration to promote the joys and benefits of reading with children. NEW YORK & LONDON (September 3, 2026) \u2014 In an exclusive partnership, global publishing powerhouses Hachette Book Group and Hachette UK are joining forces with Barnes & Noble and Waterstones to launch Raising Readers Storytimes, an extension of the #ReadingisGolden Campaign. Storytime is a tr…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/hachette-book-group-announces-new-sales-and-distribution-partnership-with-flame-tree-publishing/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hachette Book Group Announces New Sales and Distribution Partnership with Flame Tree Publishing",
+      "publishedAt": "2026-09-03T15:03:29.000Z",
+      "description": "Frances Bodiam (Managing Director) and Nick Wells (Publisher/Founder) NEW YORK, NY (September 3, 2026) \u2014 Hachette Book Group (HBG) is pleased to announce today that Flame Tree, the art-led publisher of books, gifts and calendars, will join HBG’s sales and distribution slate. Effective January 1, 2027, HBG will manage sales for Flame Tree across the United States, and distribution across North Ame…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/novl/dear-reader-love-author-elizabeth-agyemang/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dear Reader, Love Author: Elizabeth Agyemang",
+      "publishedAt": "2026-09-03T14:44:16.000Z",
+      "description": "Dear Reader, Confession: I've always been drawn to love stories that leave me devastated. Can love truly conquer all? Or are lovers mere mortals who are ill-fated and flawed? In my favorite stories like Black Orpheus, Sinners, and The Vampire Diaries, the characters are often fighting against fate for each other. Happily ever after can take many forms. Sometimes it can be as simple as the charact…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/craft-activity-books/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Craft & Activity Books",
+      "publishedAt": "2026-09-02T18:40:10.000Z",
+      "description": "Whether you're casting on your first stitch, throwing your first pot, or finally learning to fix the wobbly chair, this is a good place to begin. The perfect collection of hobby and craft books built for relaxing, challenging your mind, or trying something new.",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/little-brown-young-readers/lbyr-blog/picture-books-to-ease-anxiety/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Picture Books to Ease Anxiety",
+      "publishedAt": "2026-09-02T15:15:53.000Z",
+      "description": "Anxiety is that feeling of unease, worry, or nervousness, usually about a looming event or something where the outcome is uncertain. It is a feeling that most people experience at least once in their lifetime, but it’s a hard thing to deal with when it happening to you. It’s especially hard for young children to understand or navigate. To help them understand and deal with this confusing and worr…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/novl/the-october-novlbox-curated-by-sue-lynn-tan/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The October NOVLbox: Curated by Sue Lynn Tan",
+      "publishedAt": "2026-10-01T16:50:19.000Z",
+      "description": "It’s a new month, and you know what that means \u2013 NEW NOVLBOX. And this month’s box is such a gem! Sue Lynn Tan is curating this box in honor of For Ever More, sequel to her New York Times bestseller Never Ever After. She’s chosen plenty of magical items to help you immerse yourself into this fantasy world, and magical reads that pair so perfectly with this duology! So what are you waiting for?? E…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-blood-dynasty-by-richard-swan/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cover Launch: BLOOD DYNASTY by Richard Swan",
+      "publishedAt": "2026-09-30T14:45:00.000Z",
+      "description": "Take your first look at the cover for Blood Dynasty (US | UK), the final installment in The Great Silence trilogy by Richard Swan, coming April 2027! Cover Design by Ben Prior; Cover Illustration by Philip Harris Blood Dynasty is the final novel in the Great Silence trilogy from Sunday Times bestselling author Richard Swan\u2014a dark flintlock fantasy filled with epic adventure, arcane mysteries and …",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/acquisition-announcement-enemies-to-worse-by-sarah-rees-brennan/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Acquisition Announcement: ENEMIES TO WORSE by Sarah Rees Brennan",
+      "publishedAt": "2026-09-30T11:45:00.000Z",
+      "description": "Sarah Rees Brennan’s Time of Iron universe expands into short fiction. The author of the no. 1 Sunday Times bestselling Long Live Evil has sold a novella, set in the same world, to Orbit books. Editorial Director Jenni Hill bought World rights from Suzie Townsend at New Leaf Literary, and Editor Tiana Coven has acquired for Orbit US. The novella will be released in spring 2027: described as Heate…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/novl/my-fan-playlist-for-styx/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "My Fan Playlist for Styx",
+      "publishedAt": "2026-09-29T20:28:19.000Z",
+      "description": "If you know me, you know I absolutely adore Hekate by Nikita Gill. Well, she’s done it again with Styx \u2013 and Styx *might* be even better!? I KNOW. I don’t know how she did it either, but it’s true! So, I’ve done what I always do when I’m hyper-fixating on a book: I made a playlist for it! Listen while you read this brilliant novel in verse, or on any day where you need to tap into the river of po…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/michael-goldsmith-named-vice-president-executive-director-of-publicity-at-little-brown-and-company/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Michael Goldsmith Named Vice President, Executive Director of Publicity at Little, Brown and Company",
+      "publishedAt": "2026-09-28T19:14:56.000Z",
+      "description": "New York, NY (September 28, 2026) \u2014 Hachette Book Group (HBG) announced today that Michael Goldsmith has been named Vice President, Executive Director of Publicity at Little, Brown and Company beginning on October 13. The appointment was made by President and Publisher of Little, Brown and Company, Sally Kim, to whom Goldsmith will report. In this new role, Goldsmith will lead the overall media s…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/acquisition-announcement-revenge-piece-by-eman-quotah/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Acquisition Announcement: REVENGE PIECE by Eman Quotah",
+      "publishedAt": "2026-09-28T14:45:00.000Z",
+      "description": "We’re delighted to announce the acquisition of Revenge Piece, a new horror novel from Eman Quotah! Based on the frame story of One Thousand and One Nights, Revenge Piece is a found-footage story about two performance-artist sisters, Zadie and Dani, who put on a nightly show implicating a powerful man in a string of disappearances of women across the city. The show unexpectedly becomes a must-see …",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/excerpt-quaint-folk-by-bitter-karella/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Excerpt: QUAINT FOLK by Bitter Karella",
+      "publishedAt": "2026-09-25T15:45:00.000Z",
+      "description": "Quaint Folk is a sharply satirical queer folk horror novel that peels back the idyllic veneer of a seemingly perfect island town to reveal the rot beneath, from Bram Stoker and Shirley Jackson Award-nominated author Bitter Karella. Read an excerpt from Quaint Folk (US | UK), on-sale October 6th, below! 0. The grounds of Hollyoak House still retained a certain regal dignity in slow decay. The once…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/acquisition-announcement-that-time-i-got-drunk-and-was-bitten-by-a-snake-man-by-kimberly-lemming/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Acquisition Announcement: THAT TIME I GOT DRUNK AND WAS BITTEN BY A SNAKE MAN by Kimberly Lemming",
+      "publishedAt": "2026-09-25T14:45:00.000Z",
+      "description": "Orbit is so excited to announce that we’ve acquired two new novels from Kimberly Lemming in her hilarious, raunchy Mead Mishaps series! The fourth book in the Mead Mishaps series, publishing in Summer 2027, will be titled That Time I Got Drunk and Was Bitten by a Snake Man. When a fated mate comes for his pirate queen it seems like happily ever after, except her kisses can kill him. So what else …",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-one-of-us-is-already-dead-by-e-l-chen-2/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cover Launch: ONE OF US IS ALREADY DEAD by E. L. Chen",
+      "publishedAt": "2026-09-24T14:45:00.000Z",
+      "description": "Take your second look at the cover for One of Us Is Already Dead (US), the propulsive and chilling horror novel by E. L. Chen, coming February 2027! Cover Design by Lisa Marie Pompilio Twenty-five years after the making of a notorious found-footage horror movie, the estranged cast return to the site of filming\u2014including the former final girl, whose dreams are still haunted by that night. One of U…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/novl/a-fan-playlist-for-wicked-endeavors/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Fan Playlist for Wicked Endeavors",
+      "publishedAt": "2026-09-23T20:52:32.000Z",
+      "description": "I love Kamilah Cole. We all know this. Her previous two books So Let Them Burn and This Ends in Embers live in my head rent-free, and her latest novel Wicked Endeavors is my fresh obsession! It’s the exact type of fantasy I adore, rife with a compelling love triangle, an interesting magic system, and a female main character spying to take down a corrupt government! This is a fantasy about the pri…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/little-brown-young-readers/lbyr-blog/buddy-comedy-reads-for-your-kids/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Buddy Comedy Reads for Your Kids",
+      "publishedAt": "2026-09-23T20:02:53.000Z",
+      "description": "I don’t know about you, but I am only half as funny by myself as I am with my friends. There is something about being around your buds that just brings out laughter, and in many cases fits of the giggles. These books bring to pages the giggle fits that can only occur when you’re with your best pals! From dynamic duos to top-tier trios to silly siblings, if you are looking for some books or series…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-a-curse-of-emerald-flame-by-anuja-varghese/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cover Launch: A CURSE OF EMERALD FLAME by Anuja Varghese",
+      "publishedAt": "2026-09-23T14:45:00.000Z",
+      "description": "Take your first look at the cover for A Curse of Emerald Flame (US | UK), the second installment in the Games of the Goddess trilogy by Anuja Varghese, coming June 2027! Cover Design by Lisa Marie Pompilio; Cover Illustration by Mike Heath | Magnus Creative Also by Anuja Varghese Games of the Goddess View title 2048503 Tags: Orbit News, Orbit Cover Launch",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/novl/novl-review/novl-nation-pink-ribbon-winner-steelborn/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NOVL Nation Pink Ribbon Winner: Steelborn",
+      "publishedAt": "2026-09-22T16:07:38.000Z",
+      "description": "The NOVL Nation has spoken! Fans are loving Steelborn for its incredible world-building, its romantic yearning, and its breakneck plot! The twists will leave you begging for book two, and fans are saying Steelborn is perfect for fans of Throne of Glass! But don’t just listen to us, hear it from readers themselves! “Steelborn felt like it was written specifically for me. It’s an epic fantasy roman…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/excerpt-the-only-way-out-is-up-by-django-wexler/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Excerpt: THE ONLY WAY OUT IS UP by Django Wexler",
+      "publishedAt": "2026-09-18T15:45:00.000Z",
+      "description": "A small-time scrapper and his pet robot will fight their way out of the junk-heap in a tournament that will either make them richer than gods or rip them apart in the first book of Django Wexler’s lightning paced progression fantasy adventure for fans of Cradle and Dungeon Crawler Carl. Read an excerpt from The Only Way Out Is Up (US | UK), on-sale September 29th, below! PART ONE ONE Only an idio…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/santaclausconpreorder/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read The Santa Claus Con (Or Else)",
+      "publishedAt": "2026-09-17T16:29:39.000Z",
+      "description": "Dear Reader: Two undercover FBI agents, with buried feelings, are assigned to save New York’s Santa Con from a sadistic Santa. Can these two Grinches (one of which who is trying to be less Grinchy) get a handle on this case and finally figure out where they stand? Join the case on October 27. Treat yourself to a copy at one of the follow indie bookstores and you’ll receive a sparkly Big Santa Ene…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-where-dead-things-grow-by-megan-bontrager/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cover Launch: WHERE DEAD THINGS GROW by Megan Bontrager",
+      "publishedAt": "2026-09-16T14:45:00.000Z",
+      "description": "Take your first look at the cover for Where Dead Things Grow (US | UK), the new standalone, botanical horror novel by Megan Bontrager, coming June 2027! Cover Design by Lisa Marie Pompilio Armed with a stolen sword and accompanied by Death himself, a young au pair ventures deep into the heart of a sentient swamp to rescue her charges in this creeping botanical horror from Megan Bontrager. Evangel…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/dan-levy-appointed-senior-vice-president-chief-data-officer-hachette/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dan Levy Appointed Senior Vice President, Chief Data Officer, Hachette",
+      "publishedAt": "2026-09-16T13:54:38.000Z",
+      "description": "New York, NY (September 16, 2026) \u2014 Hachette Book Group (HBG) announced today that Dan Levy has been appointed to Senior Vice President, Chief Data Officer, Hachette beginning today. Levy steps into this role after 5 years at HBG, most recently holding the title of Vice President, Data Intelligence Group. The promotion was made by Brendan Goss, Group Chief Information Officer, to whom Levy will r…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/creamy-chicken-stew-from-mind-body-spirit-food/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Creamy Chicken Stew from Mind, Body, Spirit, Food",
+      "publishedAt": "2026-09-15T21:02:40.000Z",
+      "description": "Bring intention into the kitchen and learn how to make this Creamy Chicken Stew in Mind, Body, Spirit, Food. Intention: I Will Invite Comfort While cooking and eating can nourish us physically, they can also nurture us emotionally\u2014calming our frayed nerves, providing us with comfort, and fueling us for growth. A steaming bowl of creamy chicken stew, prepared and eaten with an intention to soothe,…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-the-nameless-god-by-amy-leow/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cover Launch: THE NAMELESS GOD by Amy Leow",
+      "publishedAt": "2026-09-14T14:45:00.000Z",
+      "description": "Take your first look at the cover for The Nameless God (US | UK), the second installment in The False Goddess Trilogy by Amy Leow, coming February 2027! Cover Design by Lauren Panepinto; Cover Illustration by Marcos Chin The next book in Amy Leow’s brilliant, political epic fantasy series following a goddess possessed by a demon. It’s been eight years since Binsa’s attempt to unseal the god Rashm…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/too-cold-for-comfort-by-nisha-j-tuli-preorder-campaign/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Too Cold for Comfort by Nisha J. Tuli | Preorder Campaign",
+      "publishedAt": "2026-09-10T16:12:44.000Z",
+      "description": "It’s Getting Hot in the Polar Bear Capital of the World… From Nisha J. Tuli, USA Today Bestselling author of Not Safe for Work, comes a very steamy new contemporary romance set in Canada’s wintry north. Following Aadya, a photographer on assignment looking for her big break, and Reid, the hot surly owner of the lodge she’s staying at. The pair get off on the wrong foot, but their fiery chemistry …",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/devil-on-my-shoulder-tour/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Devil On My Shoulder Tour",
+      "publishedAt": "2026-09-10T15:31:13.000Z",
+      "description": "Join Alice Cooper on his Book Tour this October!",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-prince-of-ash-by-k-m-enright/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cover Launch: PRINCE OF ASH by K. M. Enright",
+      "publishedAt": "2026-09-10T13:45:00.000Z",
+      "description": "Take your first look at the cover for Prince of Ash (US | UK), the final installment in The Age of Blood trilogy by K. M. Enright, coming January 2027! Cover Design by Ella Garrett; Cover Illustration by Felix Abel Klaer Prince of Ash is the unmissable conclusion to The Age of Blood trilogy, which began with Mistress of Lies, a dark fantasy romance with sizzling spice, vampiric blood magic, and c…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-the-secret-lives-of-immortals-by-ash-huang/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cover Launch: THE SECRET LIVES OF IMMORTALS by Ash Huang",
+      "publishedAt": "2026-09-09T14:45:00.000Z",
+      "description": "Take your first look at the cover for The Secret Lives of Immortals (US | UK), the remarkable fantasy debut by Ash Huang, coming March 2027! Cover Design by Ella Garrett\u2014LBBG An exquisite tale of sorcery and power, and a centuries-spanning love story between a poet from the Imperial Chinese palace and the Roman mercenary who tricks her into eternal life, from a remarkable new voice in fantasy, de…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/viper-lilies-pre-order-incentive/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "VIPER & LILIES Pre-Order Incentive",
+      "publishedAt": "2026-09-03T15:00:38.000Z",
+      "description": "<a href=\"https://hachettebookgroup.formstack.com/forms/js.php/viper_liliespreorder\" title=\"Online Form\">Online Form \u0026#8211; viper_liliespreorder</a>",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/ch-1-from-plot-twist-by-harlan-coben/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ch 1 from PLOT TWIST by Harlan Coben",
+      "publishedAt": "2026-09-03T14:43:43.000Z",
+      "description": "CHAPTER ONE Back in 1994, I received an advance of $5,000 for my first Myron Bolitar novel, Deal Breaker, but a mere three years later, when I published Back Spin, my fourth novel in the series\u2014I’m trying hard not to brag here\u2014my advance had risen all the way up from $5,000 to a whopping\u2014drumroll, please . . . $6,000. Just like that. An overnight success. Don’t worry. This won’t be one of those i…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-strange-promises-by-jared-poon/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cover Launch: STRANGE PROMISES by Jared Poon",
+      "publishedAt": "2026-09-02T14:45:00.000Z",
+      "description": "Take your first look at the cover for Strange Promises (US | UK), the second installment in The DEUS Files by Jared Poon, coming March 2027! Cover Design by Alexia E. Pereira Return to a magical Singapore where every supernatural disaster generates paperwork, in Strange Promises, a new adventure in the DEUS Files, an urban fantasy series by author Jared Poon that is equal parts humor, action, and…",
+      "discoveredAt": "2026-10-01T20:56:33.168Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "85e2c2dff4ba7635b3f6cba2e30af53d193bae8c7ec0f20fd854e9d9f5f75925"
+}

@@ -1,0 +1,25 @@
+{
+  "sourceId": "bristol-press",
+  "name": "Bristol University Press",
+  "entryUrl": "https://bristoluniversitypress.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:40.226Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://bristoluniversitypress.co.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1565,
+    "sha256": "1aa0522a11ea39918c1d13bbe98d2a0eea14f148d651bfa43726c85b7ca76b57",
+    "accessedAt": "2026-10-01T20:51:40.619Z",
+    "disallowed": [
+      "/cgi-bin/",
+      "/payment",
+      "/basket",
+      "/payment-complete"
+    ]
+  }
+}

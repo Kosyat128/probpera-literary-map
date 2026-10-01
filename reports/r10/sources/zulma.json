@@ -1,0 +1,46 @@
+{
+  "sourceId": "zulma",
+  "name": "Zulma",
+  "entryUrl": "https://www.zulma.fr/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:04.447Z",
+  "requests": [
+    {
+      "url": "https://www.zulma.fr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 484317,
+      "sha256": "422617840e6643f6a58aa62eac87183032a29048eba5e8c7dbb7007670560597",
+      "accessedAt": "2026-10-01T20:48:06.191Z"
+    },
+    {
+      "url": "https://www.zulma.fr/actualite/actualites/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 387802,
+      "sha256": "4a6e95efd03acf7ad1cdccb6b84fb3ee1a4e66abc76cef69d04b77270c1aca70",
+      "accessedAt": "2026-10-01T20:48:06.430Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.zulma.fr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 492,
+    "sha256": "db4d078009b44e9b61ad74b099ff9b330963136d0a4a1451d9e2c319c0a1e82f",
+    "accessedAt": "2026-10-01T20:48:05.386Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/",
+      "/system-config/",
+      "/system-config/"
+    ]
+  }
+}

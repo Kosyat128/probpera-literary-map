@@ -1,0 +1,93 @@
+{
+  "sourceId": "hay-festival-queretaro",
+  "name": "Hay Festival Querétaro",
+  "entryUrl": "https://www.hayfestival.com/m-235-queretaro-2026.aspx?skinid=19&localesetting=es-ES&currencysetting=MXN&resetfilters=true",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "MX"
+  ],
+  "attemptedAt": "2026-10-01T20:42:43.751Z",
+  "requests": [
+    {
+      "url": "https://www.hayfestival.com/m-235-queretaro-2026.aspx?skinid=19&localesetting=es-ES&currencysetting=MXN&resetfilters=true",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 164189,
+      "sha256": "b91690e95181a27610bd041db81940f8b4882951cff3f3c8c0b01d0595695987",
+      "accessedAt": "2026-10-01T20:42:45.062Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25828-book-club-with-iveth-luna-flores-and-paula-astorga.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 27975,
+      "sha256": "a7fe09a47e5ff8e19b5a16d15fe95f037d45f69f5de1956a59170a111b345b37",
+      "accessedAt": "2026-10-01T20:42:45.345Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25798-cristina-bendek-in-conversation-with-yunuen-tapia-torres.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30744,
+      "sha256": "693de0dcc1288e89f627d9894f9a51ee9ac60c6a7171436e9e5946e77ecf52d3",
+      "accessedAt": "2026-10-01T20:42:45.518Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25801-pol-guasch-in-conversation-with-mara-rahab-bautista-lopez.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 28432,
+      "sha256": "3d1c9e580c962f13e05588e724961caee008468aaf0daee28997417900b60491",
+      "accessedAt": "2026-10-01T20:42:45.795Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25799-alfredo-guzman-cayetano-in-conversation-with-karla-cerriteno-chavez-and-sue-meneses-eternot.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31876,
+      "sha256": "13bb4fc8fbc57058c1bba20b95460690db55be91756416d0cd5cab68e4d11839",
+      "accessedAt": "2026-10-01T20:42:45.956Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25800-elaine-vilar-madruga-in-conversation-with-luis-felipe-rodriguez.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30740,
+      "sha256": "bc2727c514e541f3308f225665103566ab384809139fda6701207b98391813d1",
+      "accessedAt": "2026-10-01T20:42:46.115Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25804-event-with-elaine-vilar-madruga.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 27463,
+      "sha256": "6cbdab22d5bbe69ef909c9e3a430198d23d556f7e892bddc6e80642a2e3074cf",
+      "accessedAt": "2026-10-01T20:42:46.306Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25805-pol-guasch-in-conversation-with-margarita-aguilar-urban.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 28343,
+      "sha256": "8a8e36ae30724eb3e831f97ac1ee94d61b4e5bd8419343bedc5ad92d46c7bb9d",
+      "accessedAt": "2026-10-01T20:42:46.455Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25807-paulina-chavira-mendoza-and-juan-jesus-garza-onofre-in-conversation-with-diana-gonzalez.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 29050,
+      "sha256": "7b592a38320940af11cefd325d14f1a89253207241d6661b6e643b598d4d5252",
+      "accessedAt": "2026-10-01T20:42:46.633Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.hayfestival.com/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  }
+}

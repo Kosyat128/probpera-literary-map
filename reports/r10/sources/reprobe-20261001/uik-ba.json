@@ -1,0 +1,35 @@
+{
+  "sourceId": "uik-ba",
+  "name": "Association of Publishers & Booksellers of Bosnia HerzegovinaMarsala Tita",
+  "entryUrl": "https://www.uik.ba/",
+  "countryCodes": [
+    "BA"
+  ],
+  "coverageCountryCodes": [
+    "BA"
+  ],
+  "attemptedAt": "2026-10-01T20:43:23.875Z",
+  "requests": [
+    {
+      "url": "https://www.uik.ba/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 6011,
+      "sha256": "2024ee6bdb46a2204942a50c881b395c52c0de8e3a943a94d9892cb0f26c6f15",
+      "accessedAt": "2026-10-01T20:43:24.757Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.uik.ba/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 111,
+    "sha256": "28830f31ccff2064d41d7ad3a586791fec0ff7f2eef1544fc9ce5766f0868402",
+    "accessedAt": "2026-10-01T20:43:24.385Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "sourceId": "new-directions",
+  "name": "New Directions",
+  "entryUrl": "https://www.ndbooks.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:54.983Z",
+  "requests": [
+    {
+      "url": "https://www.ndbooks.com/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 146897,
+      "sha256": "9e487cb85ac75eea0d93279503b0aa9daebbecf58cc725b9a231a06b5b58e2f2",
+      "accessedAt": "2026-10-01T20:47:55.324Z"
+    },
+    {
+      "url": "https://www.ndbooks.com/book/on-the-calculation-of-volume-book-v/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 93554,
+      "sha256": "503151b5a05b3ab1c463e4e8e1f4f909c23c46e64f67c1865cbd8cccdab4ac39",
+      "accessedAt": "2026-10-01T20:47:55.545Z"
+    },
+    {
+      "url": "https://www.ndbooks.com/book/h-of-h-playbook/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 93458,
+      "sha256": "94999e829ac56dbdeb2142c9b4c4582ad1aa26a1a276395169892e4db0812755",
+      "accessedAt": "2026-10-01T20:47:55.718Z"
+    },
+    {
+      "url": "https://www.ndbooks.com/book/blue-like-my-beloved/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 90917,
+      "sha256": "8bf00be7948f9e7486f029422ff6213f1d13153035abc78d6f9fe3ec03729f3c",
+      "accessedAt": "2026-10-01T20:47:55.847Z"
+    },
+    {
+      "url": "https://www.ndbooks.com/book/hafni-says/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 94458,
+      "sha256": "9e86f2279944a8ea9c820491f1f6d471a7c07fbe531e355eb1e52214247f77ea",
+      "accessedAt": "2026-10-01T20:47:55.963Z"
+    },
+    {
+      "url": "https://www.ndbooks.com/book/garden/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 92869,
+      "sha256": "440d86ba62849c35372513597828fbb7256c3e84fff3b6156782f4e873d3f504",
+      "accessedAt": "2026-10-01T20:47:56.108Z"
+    },
+    {
+      "url": "https://www.ndbooks.com/book/behind-the-gate/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 91147,
+      "sha256": "ca9819a89bb5676ae9a4cafc880c52a2a3d239929488ccb018731b4a4a711182",
+      "accessedAt": "2026-10-01T20:47:56.225Z"
+    },
+    {
+      "url": "https://www.ndbooks.com/book/perfecting-the-shot/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 90312,
+      "sha256": "054eaddba1aa5492abc5b09c278f251f0d2a830673a100383d4bf87606d86c41",
+      "accessedAt": "2026-10-01T20:47:56.491Z"
+    },
+    {
+      "url": "https://www.ndbooks.com/book/fortress-besieged-1/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 90487,
+      "sha256": "0e5f483733e55d2c81adb82ef3446f547bd8b0231446f41263fbe9c2442070f1",
+      "accessedAt": "2026-10-01T20:47:56.612Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.ndbooks.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 106,
+    "sha256": "34e9a34ea99344e625dd6adfbd928ff66e31c41886f5626e0a44b6d215625c24",
+    "accessedAt": "2026-10-01T20:47:55.241Z",
+    "disallowed": []
+  }
+}

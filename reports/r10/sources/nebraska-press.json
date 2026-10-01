@@ -1,0 +1,16 @@
+{
+  "sourceId": "nebraska-press",
+  "name": "University of Nebraska Press",
+  "entryUrl": "https://www.nebraskapress.unl.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:41.026Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://www.nebraskapress.unl.edu/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "sourceId": "literary-review",
+  "name": "Literary Review",
+  "entryUrl": "https://literaryreview.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:46.766Z",
+  "requests": [
+    {
+      "url": "https://literaryreview.co.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 101170,
+      "sha256": "91d9080956879475b7b635d984b2e0be7d794e8ccd638c2106f952995abd7ff8",
+      "accessedAt": "2026-10-01T20:48:47.195Z"
+    },
+    {
+      "url": "https://literaryreview.co.uk/current-issue",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 159643,
+      "sha256": "78e34b3e0f3b1cc974ea41e8549c384a80a5afc65232eead6f7ba72e505f0851",
+      "accessedAt": "2026-10-01T20:48:47.310Z"
+    },
+    {
+      "url": "https://literaryreview.co.uk/zombie-ipocalypse",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 74606,
+      "sha256": "9c30a162ca3e5eb26a5d9aec8644a4af254d210b80324bb346ba75524147a195",
+      "accessedAt": "2026-10-01T20:48:47.394Z"
+    },
+    {
+      "url": "https://literaryreview.co.uk/apocalypse-now-3",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 75165,
+      "sha256": "84433b21ba70f3e8a7e13e49d09e635e5a72b405cd5d8ec59f973877dd79e871",
+      "accessedAt": "2026-10-01T20:48:47.475Z"
+    },
+    {
+      "url": "https://literaryreview.co.uk/american-nightmare",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 73506,
+      "sha256": "5f77be48273834b7345e20961e8980ce503f472193bfbd02ade2b646004e3aa5",
+      "accessedAt": "2026-10-01T20:48:47.557Z"
+    },
+    {
+      "url": "https://literaryreview.co.uk/star-of-the-silkscreen",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 83436,
+      "sha256": "f5020661584ec1548bde4b35048d416b058904fa759afd58a29b227cd279959a",
+      "accessedAt": "2026-10-01T20:48:47.887Z"
+    },
+    {
+      "url": "https://literaryreview.co.uk/drudge-culture",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 71905,
+      "sha256": "8cae003c7c8e335dfb472d5dc078bae78bcbf6086e91aaf461a178cc796ec12b",
+      "accessedAt": "2026-10-01T20:48:48.190Z"
+    },
+    {
+      "url": "https://literaryreview.co.uk/despite-those-eyelashes-he-blew-it",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 82388,
+      "sha256": "4d088cb1c3ed73bc9bfb1308ee5e0dd16af40155bb79606666d43985e77da470",
+      "accessedAt": "2026-10-01T20:48:48.577Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://literaryreview.co.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accessedAt": "2026-10-01T20:48:47.041Z",
+    "disallowed": []
+  }
+}

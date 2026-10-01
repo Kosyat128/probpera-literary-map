@@ -1,0 +1,835 @@
+{
+  "sourceId": "voprosy-literatury",
+  "name": "Вопросы литературы",
+  "entryUrl": "https://voplit.ru/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:48.958Z",
+  "requests": [
+    {
+      "url": "https://voplit.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 149974,
+      "sha256": "e05d618b0949b44f61adf166a130d8919416d0b80520e3f762fbda6d1ef05c83",
+      "accessedAt": "2026-10-01T20:48:49.339Z"
+    },
+    {
+      "url": "https://voplit.ru/category/events/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 106745,
+      "sha256": "fbdfc46d4d53d803dfe4ec349dd56f12777e5bf1c66c3c039325d928f51435c1",
+      "accessedAt": "2026-10-01T20:48:50.288Z"
+    },
+    {
+      "url": "https://voplit.ru/2023/12/28/legkaya-kavaleriya-uchrezhdaet-ezhegodnuyu-premiyu-tri-bogatyrya/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 89977,
+      "sha256": "2c054550fedd6e7149d00c7ec9b7d33f384ceacb1dc715904cedc3503e851c87",
+      "accessedAt": "2026-10-01T20:48:50.923Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://voplit.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 304,
+    "sha256": "c0fb879ae6bdd5d372109b9b8c4cd9a108888da2ecc34176a555c353dbc55944",
+    "accessedAt": "2026-10-01T20:48:49.196Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "voprosy-literatury",
+    "name": "Вопросы литературы",
+    "url": "https://voplit.ru/category/events/",
+    "format": "html",
+    "language": "ru-RU",
+    "region": "global",
+    "sourceFamilyId": "voprosy-literatury",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://voplit.ru"
+    ],
+    "linkPattern": "^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://voplit.ru/2023/12/28/legkaya-kavaleriya-uchrezhdaet-ezhegodnuyu-premiyu-tri-bogatyrya/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:50.927Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 28,
+  "literaryCandidateCount": 28,
+  "sample": {
+    "sourceId": "voprosy-literatury",
+    "source": {
+      "name": "Вопросы литературы",
+      "url": "https://voplit.ru/2023/12/28/legkaya-kavaleriya-uchrezhdaet-ezhegodnuyu-premiyu-tri-bogatyrya/",
+      "language": "ru-RU"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "События «Легкая кавалерия» учреждает ежегодную премию «Три богатыря» Премия присуждается за лучшие публикации в рубрике «Легкая кавалерия» в течение года. Номинации премии «Три богатыря»: «Алеша Попович» - для начинающих критиков, «Никита Добрынич» - для продолжающих, «Илья Муромец» - для опытных. Жюри премии - редакция журнала «Вопросы литературы». Председатель жюри - Игорь Олегович Шайтанов.",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:50.305Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://voplit.ru/2023/12/28/legkaya-kavaleriya-uchrezhdaet-ezhegodnuyu-premiyu-tri-bogatyrya/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 89977,
+      "sha256": "2c054550fedd6e7149d00c7ec9b7d33f384ceacb1dc715904cedc3503e851c87",
+      "accessedAt": "2026-10-01T20:48:50.923Z",
+      "headline": "«Легкая кавалерия» учреждает ежегодную премию «Три богатыря» - Вопросы литературы",
+      "excerpt": "События Читать еще Усадьба и дача в литературе советской эпохи: потери и обретения: Коллективная монография Рецензия Екатерины Кузьминой Помогите журналу «Вопросы литературы» 70 лет журналу «Вопросы литературы». Но до юбилея он может НЕ дожить. Владимир Гандельсман. В небе царит звезда. Избранные эссе Рецензия Веры Зубаревой Предложить статью Подписка на журнал Рассылка Премия присуждается за лучш",
+      "publishedDates": [
+        {
+          "value": "2023-12-28T16:31:29+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2023-12-28T16:31:29+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2023-12-28T16:31:29+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://voplit.ru/2023/12/28/legkaya-kavaleriya-uchrezhdaet-ezhegodnuyu-premiyu-tri-bogatyrya/",
+      "language": "ru-RU",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:50.927Z",
+  "foundItems": [
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2023/12/28/legkaya-kavaleriya-uchrezhdaet-ezhegodnuyu-premiyu-tri-bogatyrya/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События «Легкая кавалерия» учреждает ежегодную премию «Три богатыря» Премия присуждается за лучшие публикации в рубрике «Легкая кавалерия» в течение года. Номинации премии «Три богатыря»: «Алеша Попович» - для начинающих критиков, «Никита Добрынич» - для продолжающих, «Илья Муромец» - для опытных. Жюри премии - редакция журнала «Вопросы литературы». Председатель жюри - Игорь Олегович Шайтанов.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2026/03/03/poeticheskij-vecher-6-marta-v-voprosah-literatury/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Поэтический вечер «6 марта в «Вопросах литературы»» Авторы: Алёна Каримова, Анна Логвинова, Елена Погорелая, Юлия Крылова, Марина Марьяшина, Леся Мосеева, Алиса Каширина. В программе - чтение стихов и выступление критиков о формах существования современной женской поэзии. Женская поэзия разных поколений",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2025/10/02/prezentatsiya-novogo-perevoda-richarda-ii/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Презентация нового перевода «Ричарда II» Вечер автора перевода - Игоря Шайтанова. Проводится в редакции журнала «Вопросы литературы» 17 октября в 18 часов. В редакции журнала «Вопросы литературы» 17 октября в 18 часов",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2025/06/16/chto-govorit-travma/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Что говорит травма? 20 июня в 18.00 приглашаем в редакцию журнала «Вопросы литературы» поговорить о современной «литературе травмы». В разговоре участвуют современные поэты, прозаики, критики, а также участники школы критического мастерства «Пишем на крыше». Разговор о «Литературе травмы»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2021/04/24/obyavlenie-o-konkurse-pishem-na-kryshe/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Хочешь бесплатно попасть в «Пишем на крыше»? Объявляем конкурс! Хочешь бесплатно попасть на курс по прозе писателя Владимира Новикова? Или научится писать о книгах? Национальный фонд поддержки правообладателей и школа «Пишем на крыше» объявляют конкурс. Победителям -бесплатное участие в семинарах «Проза» или «Критика». Пришли свой текст до семи тысяч знаков (это может быть фрагмент рассказы или романа/повести, а также отрывок из статьи/рецензии/эссе) с пробелами на почту voplit@mail.ru …",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2020/10/21/mifoproza-vs-zhanrovaya-literatura-fantastika-fentezi-detektiv-dok-blog-i-drugoe/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Мифопроза vs жанровая литература. Фантастика, фэнтези, детектив, док-блог и другое Вместе с \"Ridero\" в начале года мы запустили цикл вебинаров по современной литературе и литературному процессу.Четвертую встречу проведет критик, постоянный автор журнала «Вопросы литературы» и мастер школы «Пишем на крыше» Анна Жучкова. Встречаемся онлайн 29 октября в 16:00 по московскому времени.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2025/09/08/mariya-nesterenko-rozy-bez-shipov-zhenshhiny-v-literaturnom-protsesse-rossii-nachala-xix-veka/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Мария Нестеренко. Розы без шипов: Женщины в литературном процессе России начала XIX века Книга Марии Нестеренко демонстрирует, каким образом происходило утверждение фигуры пишущей женщины в литературном процессе России первой трети XIX столетия. Полемика о легитимности женского письма представлена в свете споров о судьбе русского языка, разразившихся между враждующими лагерями архаистов и новаторов. Рецензия Александры Карасевой",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2025/02/08/shkola-pisatelej-na-kryshe-pervogo-stolichnogo-neboskreba-doma-nirnzee-obyavlyaet-o-novom-nabore/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Школа писателей на крыше первого столичного небоскреба Дома Нирнзее объявляет о новом наборе! Заявки на конкурс принимаются с 04 февраля по 01 апреля. Занятия онлайн начнутся 4 апреля (в «Zoom»), а офлайн 5 апреля (в стенах редакции журнала «Вопросы литературы»). Конкурс на бесплатное участие",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2024/12/23/premii-zhurnala-voprosy-literatury/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Премии журнала «Вопросы литературы» За 2024 год присуждены за анализ романной прозы и важных эпизодов в истории идей, включая современность Екатерине Виноградовой, Ивану Ермолаеву, Марине Кузьминой, Дмитрию Иванову, Дмитрию Лакербаю и Марии Знобищевой.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2024/03/21/pishem-na-kryshe-novyj-konkurs-novaya-programma/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События «Пишем на крыше»: новый конкурс - новая программа! «Вопросы литературы» объявляют новый конкурсный набор в Школу. Заявки принимаются с 11 марта по 25 апреля: победители получат возможность бесплатного участия, а также иные бюджетные предложения в соответствии с оценками от мастеров и занятой категорией. Семинары поэзии, прозы и критики",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2021/04/15/vystavka-mihail-bulgakov-v-dome-nirzee/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Выставка «Михаил Булгаков в доме Нирнзее» Выставка «Михаил Булгаков в доме Нирнзее», подготовленная Музеем М. А. Булгакова совместно с журналом «Вопросы литературы», рассказывает о Москве глазами Булгакова-корреспондента, его московских литературных знакомствах в кружках и редакциях, а также о 1929 годе - переломном для жизни писателя, когда его пьесы попадают под запрет, а сам Булгаков знакомится с Еленой Сергеевной Шиловской - его будущей третьей женой.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2021/04/12/vypushhena-kniga-kak-my-chitaem/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Вышла книга «Как мы читаем» В прошлом главным вопросом в литературе было: «Как писать?». Наш современный вопрос связан прежде всего с читателем, с проблемой чтения. «Как читать?» - вот наш вопрос. Совместный проект с издательством «Эксмо» - экстремальное путешествие по современной литературе",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2021/04/09/programma-shkoly-pishem-na-kryshe-vesna-leto-2021/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Программа «Пишем на крыше» на весну-лето 2021 года Школа писательского мастерства «Пишем на крыше», организованная журналом «Вопросы литературы» совместно с Национальным фондом поддержки правообладателей, объявила программу семинаров и лекций первого полугодия и открыла набор участников, который продлится с 26 марта по 12 мая. Занятия начнутся 15 мая и будут проводиться как онлайн, так и в стенах редакции.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2020/06/22/proekt-snob-i-shkola-pisatelskogo-masterstva-pishem-na-kryshe-obyavlyayut-konkurs/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Проект «Сноб» и школа писательского мастерства «Пишем на крыше» объявляют конкурс Проект «Сноб» и школа писательского мастерства «Пишем на крыше» объявляют конкурс на создание самого интересного диалога, который мог бы случиться в 2035 году",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2026/03/24/spasite-zhurnal-voprosy-literatury/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Помогите журналу «Вопросы литературы» Полвека наша редакция работает на крыше Дома Нирнзее - того самого, где жил Маяковский, бывал Булгаков и снимали «Служебный роман». Это последняя историческая редакция Москвы. Место силы. Через несколько месяцев нас может не стать. Мы потеряли ключевого партнёра. Бюджета нет. Но мы не сдаёмся: подаём на гранты, запускаем проекты, работаем каждый день. НО НАМ НУЖНА ВАША ПОМОЩЬ ПРЯМО СЕЙЧАС. 1000 новых подписчиков по 499 рублей дадут нам время до юбил…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2025/12/09/usadba-i-dacha-v-literature-sovetskoj-epohi-poteri-i-obreteniya-kollektivnaya-monografiya/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Усадьба и дача в литературе советской эпохи: потери и обретения: Коллективная монография В рецензии анализируется логика исследовательской и составительской мысли в коллективной монографии «Усадьба и дача в литературе советской эпохи: потери и обретения», масштабном исследовании, выполненном в ИМЛИ РАН. Монография обладает большой научной ценностью и прочитывается как цельный текст. Рецензия Екатерины Кузьминой",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2025/06/26/vstrecha-s-prishvinym/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Встреча с Пришвиным Эссе писателя И. Кочергина посвящено «открытию Пришвина» - личному прочтению пришвинских текстов, предпринятому в связи с подготовкой книги о Пришвине в новой биографической серии «Редакции Елены Шубиной» «ЖИЛ» («Жизнь известных людей»). Рассказывая о своей поздней «встрече с Пришвиным», особенное внимание Кочергин уделяет общим для них обоих темам - взаимоотношениям человека с ландшафтом, открытию природы, «присвоению пространства» и др. Эссе Ильи Кочергина",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2022/01/21/premiya-voprosov-literatury-za-2021-god/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Премия «Вопросов литературы» за 2021 год Поздравляем Владимира Новикова, Александра Чернова, Дениса Захарова, Людмилу Борисову и Михаила Хлебникова.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2020/11/24/pisatel-i-puteshestvie-syuzhety-v-poiskah-avtora/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Писатель и путешествие: сюжеты в поисках автора Вебинар писателя Глеба Шульпякова",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2020/05/04/shkola-pisatelskogo-masterstva-pishem-na-kryshe-perehodit-na-onlajn-format-i-otkryvaet-novyj-nabor/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Школа писательского мастерства «Пишем на крыше» переходит на онлайн-формат и открывает новый набор Лекции и семинары пройдут с 30 мая по 18 июля. В связи с пандемией все занятия состоятся в онлайн-формате. С 1 по 25 мая проводится конкурсный набор на бюджетные места на семинары «Поэзия», «Проза» и «Критика».",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2025/10/06/vladimir-gandelsman-v-nebe-tsarit-zvezda-izbrannye-esse/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Владимир Гандельсман. В небе царит звезда. Избранные эссе В рецензии анализируется подход Владимира Гандельсмана к интерпретации произведений современных поэтов. Во главу угла поставлен метод определения уникального и разработана методика по выявлению уникальных свойств каждого отдельного художественного мира. Предложенная Гандельсманом методика в своей основе смыкается с разработками А. Веселовского. Рецензия Веры Зубаревой",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2025/06/30/ekoidentichnost-sovremennogo-cheloveka/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Экоидентичность современного человека Беседа литературного критика Т. Веретеновой с прозаиком И. Кочергиным посвящена главным образом вопросу о том, что для современного человека означает тема природы, как складываются отношения современного горожанина с внегородским пространством и населяющими его существами - зверями и птицами (в том числе на примере творчества самого Кочергина). Сами собеседники определяют это как «экоидентичность» - поиск и воспитание собственной «экологической души…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2024/09/09/pishem-na-kryshe-novyj-konkurs/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События «Пишем на крыше»: новый конкурс! Победители получат возможность бесплатного участия, а также иные бюджетные предложения в соответствии с оценками от мастеров и занятой категорией. Семинар «Поэзия» Дмитрия Воденникова (офлайн и онлайн) Офлайн-семинар «Проза» Ольги Новиковой. Онлайн-семинар «Проза» Сергея Белякова. Онлайн-семинар «Критика» Елены Погорелой. Заявки принимаются со 2 сентября по 25 октября",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2022/10/27/leonid-fridovich-katsis-nekrolog/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Леонид Фридович Кацис. Некролог 23 октября, у себя дома скоропостижно умер Леонид Фридович Кацис. Он не дожил меньше месяца до 64 лет. Филолог выдающейся эрудиции, полемического темперамента, он был непримирим к приблизительному полузнанию, к историко-литературным мифам, даже если их отстаивали десятилетиями и в их поддержку продолжают маршировать сомкнутым строем. Если его что-то и огорчало (скорее - возмущало), то трудность, с которой удавалось пробивать истину и исправлять ошибки, уп…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2022/02/08/slovo-proshhaniya-s-yuriem-vladimirovichem-mannom/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Слово прощания с Юрием Владимировичем Манном В последнее время мы привыкли к печальным новостям, но эта отзывается с особенной остротой: умер Юрий Владимирович Манн. Для нас в журнале «Вопросы литературы» это значит, что ушел последний из наших патриархов - многолетний член редколлегии журнала и старейший его автор. Мы всегда могли посоветоваться с Юрием Владимировичем - и не только по темам его прямой специализации. До последних лет он хотел знать, что происходит в журнале, подсказать,…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2022/01/24/detenysh-moj-molchit/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События «Детеныш мой молчит…» \"Детеныш мой молчит, и я беспокоюсь...\", - писал Юрий Домбровский в письме старому алма-атинскому другу, театральному критику и сценаристу Льву Варшавскому, осенью 1960 года. В этом году он познакомился с Кларой Турумовой. Ей было двадцать лет. Она была студентка филологического факультета Казахского университета, оказавшаяся - всего на день - проездом в Москве. Общие друзья дали ей адрес писателя, чтобы она могла где-то остановиться и переночевать. Домбровский при…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2021/11/18/olimpiada-rggu/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Олимпиада РГГУ В 2021-2022 учебном году Олимпиада РГГУ для школьников проводится по следующим профилям, соответствующим общеобразовательным предметам: русский язык (для учащихся 9-х - 11-х классов), история (для учащихся 9-х - 11-х классов), обществознание (для учащихся 9-х - 11-х классов), иностранный язык (английский, французский, немецкий) (для учащихся 9-х - 11-х классов), литература (для учащихся 9-х - 11-х классов). Регистрация для участия в Олимпиаде проводится с 01 декабря 2021 …",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "source": {
+        "name": "Вопросы литературы",
+        "url": "https://voplit.ru/2021/02/13/otkryt-novyj-nabor-na-seminar-anny-zhuchkovoj-i-eleny-pogoreloj-quot-kak-prepodavat-sovremennuyu-klassicheskuyu-literaturu-quot/",
+        "language": "ru-RU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "События Открыт новый набор на семинар Анны Жучковой и Елены Погорелой «Как преподавать (современную/классическую) литературу?» Бесплатный курс",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:50.305Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "fbdfc46d4d53d803dfe4ec349dd56f12777e5bf1c66c3c039325d928f51435c1"
+}

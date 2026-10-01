@@ -1,0 +1,891 @@
+{
+  "sourceId": "liternet-bulgaria",
+  "name": "LiterNet",
+  "entryUrl": "https://liternet.bg/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:57.838Z",
+  "requests": [
+    {
+      "url": "https://liternet.bg/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 70666,
+      "sha256": "9e694706625b70d79dc8e24181e6c6adb4ee6ea1e06e8534c40065bb3c4c2498",
+      "accessedAt": "2026-10-01T20:51:58.459Z"
+    },
+    {
+      "url": "https://liternet.bg/publisher/rss",
+      "status": 200,
+      "contentType": "application/xml; charset=utf-8",
+      "bytes": 30190,
+      "sha256": "afaad248cbef86e6a9865d47f9402d6acba9b5f9d8de919db74b9d932f1da559",
+      "accessedAt": "2026-10-01T20:51:58.640Z"
+    },
+    {
+      "url": "https://liternet.bg/publish11/p_antov/ivanisha.htm",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32873,
+      "sha256": "69f82e70d1a121416b4f20d55834ce9d52d9b5b9fa03a54f06d7e35a75534fbd",
+      "accessedAt": "2026-10-01T20:51:58.747Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://liternet.bg/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 202,
+    "sha256": "17fb1dc3361b057783040fa7f58d72f18707170866d370bd3db6e547bee09058",
+    "accessedAt": "2026-10-01T20:51:58.167Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "liternet-bulgaria",
+    "name": "LiterNet",
+    "url": "https://liternet.bg/publisher/rss",
+    "format": "rss",
+    "language": "bg",
+    "region": "global",
+    "sourceFamilyId": "liternet-bulgaria",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://liternet.bg"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://liternet.bg/publish11/p_antov/ivanisha.htm"
+    ],
+    "verifiedAt": "2026-10-01T20:51:58.749Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 31,
+  "literaryCandidateCount": 31,
+  "sample": {
+    "sourceId": "liternet-bulgaria",
+    "source": {
+      "name": "LiterNet",
+      "url": "https://liternet.bg/publish11/p_antov/ivanisha.htm",
+      "language": "bg"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Пламен Антов. За романа \"Иваниша от Севера\" от Тихомир Тодоров",
+    "publishedAt": "2021-03-27T20:06:34.000Z",
+    "description": "Това е един исторически роман, който следва класическите модели на жанра, но го прави по един достатъчно модерен начин. При което \"модерен\" означава не приближаване към приказното безвремие на фентъзи например (каквато е една от актуалните тенденции), а точно обратното: от една страна, романът стои на здрава историческа основа, с особен респект към цялата ѝ фактичност на всички равнища, а от друг…",
+    "discoveredAt": "2026-10-01T20:51:58.642Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://liternet.bg/publish11/p_antov/ivanisha.htm",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32873,
+      "sha256": "69f82e70d1a121416b4f20d55834ce9d52d9b5b9fa03a54f06d7e35a75534fbd",
+      "accessedAt": "2026-10-01T20:51:58.747Z",
+      "headline": "Пламен Антов - За романа \"Иваниша от Севера\" от Тихомир Тодоров",
+      "excerpt": "Настройки: Разшири Стесни | Уголеми Умали | Потъмни | Стандартни ЗА РОМАНА \"ИВАНИША ОТ СЕВЕРА\" ОТ ТИХОМИР ТОДОРОВ Пламен Антов web Това е един исторически роман, който следва класическите модели на жанра, но го прави по един достатъчно модерен начин. При което \"модерен\" означава не приближаване към приказното безвремие на фентъзи например (каквато е една от актуалните тенденции), а точно обратното",
+      "publishedDates": [],
+      "canonical": "https://liternet.bg/publish11/p_antov/ivanisha.htm",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:58.749Z",
+  "foundItems": [
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish11/p_antov/ivanisha.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Пламен Антов. За романа \"Иваниша от Севера\" от Тихомир Тодоров",
+      "publishedAt": "2021-03-27T20:06:34.000Z",
+      "description": "Това е един исторически роман, който следва класическите модели на жанра, но го прави по един достатъчно модерен начин. При което \"модерен\" означава не приближаване към приказното безвремие на фентъзи например (каквато е една от актуалните тенденции), а точно обратното: от една страна, романът стои на здрава историческа основа, с особен респект към цялата ѝ фактичност на всички равнища, а от друг…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish34/madlen-asparuhova/koprineni.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Мадлен Аспарухова. Копринени жерави",
+      "publishedAt": "2021-03-29T16:17:34.000Z",
+      "description": "Той постави ръка на коляното ѝ и леко го погали с палец. Не, не на нейното коляно. А на коляното на онази, чието име тя забрави веднага, след като го чу. На онази, чието име беше като една от сложните математически формули, които ти трябват само за някой изпит, а след това са непотребни. А тази вечер, тук, с приятелите им - тази вечер беше нейният изпит. Изпит, на който сама се подложи, за да док…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish33/ana-kostadinova/marin-georgiev-detskata.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ана Костадинова. Стиховете ми за деца - нещо от мен, неизвестно на самия мен. Интервю с Марин Георгиев",
+      "publishedAt": "2021-03-28T20:00:04.000Z",
+      "description": "Като творец Вие сте засвидетелствали неведнъж умението си пластично да предавате наблюдаваното и преживяното, да превръщате живота си в интересен и достоверен \"роман\" за близкото минало. Но Вие сте, без съмнение, един от интересните представители на поезията за деца. В книгите Ви се оглеждат важни страни от обновителните тенденции на детската литература в усилията ѝ за освобождаване от нормативни…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish32/vladimir-nabokov/podlec.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Владимир Набоков. Подлец (пр. Дора Янева-Медникарова)",
+      "publishedAt": "2021-03-27T17:56:00.000Z",
+      "description": "Прокълнатият ден, в който Антон Петрович се запозна с Берг, съществуваше само теоретично - паметта му не пазеше спомен за този момент от календара и датата вече не можеше да бъде точно определена. Но общо взето, всичко се случи миналата зима: Берг изплува срещу него от нищото - току се изправи, поклони се, след което пак потъна, но не в небитието, а в дълбокото кресло. >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish31/kolio-st-kolev/s-dyzhda.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Кольо Ст. Колев. С дъжда",
+      "publishedAt": "2021-03-25T23:09:28.000Z",
+      "description": "Мъглив дъждовен ден. Не вярващи във Бога думи валят, поят със тлен всяко мъничко наивно чудо. Измит - до пръст, до кал, >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish31/kolio-st-kolev/nai-suhiat.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Кольо Ст. Колев. Най-сухият човек",
+      "publishedAt": "2021-03-25T23:09:27.000Z",
+      "description": "Шамар удари на дъжда. Разбута със смеха си облаците черни. Не виждаше във своята борба той нищо странно и нередно. >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish31/kolio-st-kolev/poslednoto.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Кольо Ст. Колев. Последното изкушение",
+      "publishedAt": "2021-03-25T23:09:26.000Z",
+      "description": "Така и не отрязаха косите ми - запазих чудната си сила, макар че често се заплитаха, покрай врата, като бесило. Излезе вярна моята Далила >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish31/kolio-st-kolev/svideteli.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Кольо Ст. Колев. Свидетели",
+      "publishedAt": "2021-03-25T23:09:25.000Z",
+      "description": "И плача, и плача, защото отиват, отиват си птиците. Виждам как кротко Животът прави си примка от жиците. Виждам как скачат листата >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish31/kolio-st-kolev/revat.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Кольо Ст. Колев. Реват тръбите за отбой!...",
+      "publishedAt": "2021-03-25T23:09:24.000Z",
+      "description": "Реват тръбите за отбой! И ето ти я после тишината... Стремежът вчерашен - да си герой, се свива до компромис - да си някой. >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish33/rosen-petkov/riben-bukvar.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Росен Петков. Някои любопитни факти за оформлението на Рибния буквар - хартия, шрифт, илюстрации и отпечатване",
+      "publishedAt": "2021-03-24T23:32:01.000Z",
+      "description": "\"Буквар с различни поучения\" (Рибният буквар), събрани от Петра Х. Беровича (Петър Берон), е може би най-известната и най-коментираната възрожденска печатна книга. За нея се е писало много, за авторът ѝ - също. Но все пак има редица неосветени факти за книгата поради няколко причини. Първо, Букварът е отпечатан в зората на нашето книгопечатане на съвременен език, практически е първата печатна кни…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish31/orlin-krumov/nespasiaemi.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Орлин Крумов. Неспасяеми",
+      "publishedAt": "2021-03-24T21:07:47.000Z",
+      "description": "Човекът с въдицата беше напълно смаян... Помисли си, че сънува и дълго разтрива очите си. Това не попречи на онези да домъкнат товара си и със сетни сили да го хвърлят в реката. Заприщена, реката с глухо бълбукане изчезна от погледите. - Хей, върнете реката! - извика човекът с въдицата. - Има нареждане - сви рамене един от бутащите. >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish34/dimityr-cacov/dalchev/index.html",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Principium individuations: Атанас Далчев - поетичният вариант на презентационизма",
+      "publishedAt": "2021-03-24T20:27:50.000Z",
+      "description": "Основното в случая е, че текстовете на Далчев се разглеждат като философски, като съдържащи смисли, които резонират с редица онтологико-епистемологични идеи от началото на ХХ век, и моята цел е някаква част от тях да бъдат извадени наяве, да бъдат осветени в определена степен. Това не означава, че философското в поезията и изобщо в мисловността на Далчев се изчерпва с очертаното по-горе направлен…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish32/nikolae-dabizha/besarabia.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Николае Дабижа. Из \"Бесарабия, моя любов!\" (пр. Огнян Стамболиев)",
+      "publishedAt": "2021-03-23T00:39:03.000Z",
+      "description": "Аз умрях през лятото на 2007 година. Това беше през месеца, в който навърших петдесет и девет години. Паднах от скала в околностите на манастира Ципова, недалече от река Днестър. И тогава, в тези мигове между живота и смъртта, по-точно между смъртта и живота, ми се яви тази книга: отначало я видях цялата, за част от секундата! - сетне в течение на времето тя започна да ми се разтваря страница под…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish32/mile-giorgioski/aforizmi-2.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Миле Гьоргьоски. Афоризми - 2 (пр. Валентин Димитров)",
+      "publishedAt": "2021-03-21T22:59:27.000Z",
+      "description": "* Не съм националист. Нямам нищо против Македония да е прародина на всички народи. * Казват, че никой няма право да ни сменя идентичността. Значи, ще продължаваме да живеем кучешки. * Нормално е, че на Балканите няма смъртно наказание. Тук всички сме осъдени на доживотна робия. * Балканите са пренаселени. Такива големи народи - на толкова малко място. * На Балканите тежко се диша. Така е, когато …",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish2/dmihailov/elin-pelin-d-r-krystev.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Димитър Михайлов. Елин Пелин \"портретува\" д-р Кръстев",
+      "publishedAt": "2021-03-21T13:15:19.000Z",
+      "description": "След като през 1907 г. в \"Млади и стари\" д-р Кръстев със строг менторски тон рецензира книгата на Елин Пелин \"Разкази. Т. І\", не закъснява и отговорът на белетриста. В началната книжка на сп. \"Слънчоглед\" (1909) се появява разказът \"Моите приятели от Върбови ливади\", подписан с псевдонима Пан. Две години по-късно Елин Пелин разкрива авторството си, като го помества в книгата си \"Разкази. Т. ІІ\" (…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish34/kaloian-blazhev/herman-hese.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Калоян Блажев. За поетичното извънвремие на Херман Хесе",
+      "publishedAt": "2021-03-20T22:07:36.000Z",
+      "description": "Проблемът за времето е основен в творчеството на Хесе и е пряко свързан с пътя на героите към себе си и към смисъла на живота, с любовта, творчеството и смъртта. В новелата \"Клайн и Вагнер\" той пише, че едно от откритията на човешкия дух е времето: \"Фино откритие, тънък инструмент, за да се измъчваш още по-дълбоко и да направиш света многостранен и по-тежък! Винаги и единствено чрез времето човек…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish8/ves_veselinov/argentine-films.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Веселин Веселинов. Десет аржентински филма",
+      "publishedAt": "2021-03-19T23:52:46.000Z",
+      "description": "Позволявам си да препоръчам аржентинско кино по две причини. Първата е непознатостта, а втората - високото качество в духа на силното европейско кино от 1950-те-80-те години. Доколкото ми е известно, не е отбелязвана \"аржентинска вълна\" за разлика от \"румънска\", \"южнокорейска\", \"китайска\" в последните 30 години. Най-вероятната причина според мен е това, че аржентинската кинематография е \"заровена…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish34/kristina-todorova/haiku-1.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Кристина Тодорова. Хайку - 1",
+      "publishedAt": "2021-03-19T21:07:50.000Z",
+      "description": "* маски само мартеничките се смеят * световъртеж... Пижо и Пенда танцуват в пералнята >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish33/shinka-dicheva/11-septemvri.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Шинка Дичева-Христозова. Събитията на 11 септември (1894 г.) - (ре)конструиране на паметта",
+      "publishedAt": "2021-03-19T19:36:16.000Z",
+      "description": "Като че ли датата 11 септември е натоварена изначално от историята да \"говори\" за промяна на реда, за преобръщането на утвърдени модели на съществуване, за \"сверяване\" на времето. Може би съвремието дописва тази констатация с всичко случващо се през последните години. Но не за актуалния културно-политически ред иде реч в следващите няколко страници. Закономерна или случайна се оказва важността на…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/folklor/motivi-5/nevesta-varshee-gumno/content.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Български фолклорни мотиви. Т. II. Балади: Невеста вършее на гумно през нощта",
+      "publishedAt": "2021-03-17T23:35:02.000Z",
+      "description": "Ой, Милно, Милно, Милно хубава, Милно хубава, Милно Попова! Седяла й Милна, седянкувала, че си напрела девет вретина и десето Милна запрела. >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/folklor/sbornici/bfm/2/index.html",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Български фолклорни мотиви. Т. II. Балади (съст. Тодор Моллов)",
+      "publishedAt": "2021-03-17T23:35:02.000Z",
+      "description": "Илен Янко, илен по град оди, илен по град оди, по град оди, на град се наваля, врана коня по себе си води, остра сабля по калдръме влачи, морав кожув наопако носи, чист подкапник над очи надноси. >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/folklor/motivi-5/otrovena-sapernica/content.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Български фолклорни мотиви. Т. II. Балади: Млада невеста, отровена от пренебрегнато първо либе",
+      "publishedAt": "2021-03-17T23:35:01.000Z",
+      "description": "- Девойко мари хубава, девойко, болно ли ти е, девойко, че няма тебе да взема, че съм си друга загалил, друга от друга махала, >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/folklor/sbornici/bfm/6/index.html",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Български фолклорни мотиви. Т. VI. Любовни песни (съст. Тодор Моллов)",
+      "publishedAt": "2021-03-17T23:33:57.000Z",
+      "description": ">>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish23/b_ganchev/upravata.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Борислав Ганчев. Управата на птичата държава",
+      "publishedAt": "2021-03-17T00:15:42.000Z",
+      "description": "Събрали се пернатите отвред, кого да турят най-отпред за да решат. А по въпроса пръв думата поискал Коса: - Предлагам за водач аз Кака Сврака. В гората тя познава шумка всяка... >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish23/b_ganchev/kratuna.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Борислав Ганчев. Издигналата се кратуна",
+      "publishedAt": "2021-03-17T00:15:41.000Z",
+      "description": "От слънчеви лъчи огряна, от дъжд живителен обляна, една Кратуна двор напусна. В катеренето тъй изкусна, по зид висок ластари пусна >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish23/b_ganchev/koliba.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Борислав Ганчев. Богаташката колиба",
+      "publishedAt": "2021-03-17T00:15:40.000Z",
+      "description": "Един бедняк, незнайно как се случило, забогатял. Земи, имоти, куп пари натрупал хей така, дори накрай палат си вдигнал цял... >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish23/b_ganchev/statuia.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Борислав Ганчев. Съборената статуя",
+      "publishedAt": "2021-03-17T00:15:39.000Z",
+      "description": "Стърчала тя насред площада и стигала ѝ таз награда - че пътя сочейки напред, пред ней букет подир букет поставяли и ден след ден народ тълпял се възхитен... >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish8/vboneva/cultural-heritag.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Вера Бонева. Висше образование по културно-историческо наследство: Българският опит",
+      "publishedAt": "2021-03-16T23:10:09.000Z",
+      "description": "Висшето образование е ключова система на българското общество, включваща 52 висши училища - 38 държавни и 14 частни. Покриващи с мрежата си практически цялата страна и създаващи експертни кадри за икономиката, културата, държавната администрация, здравеопазването, науката и всички останали сектори, институциите на висшето образование разполагат с относително висок обществен престиж и реална акаде…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish32/emil-verharen/klervo.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Емил Верхарен. Клерво (пр. Тодорка Минева)",
+      "publishedAt": "2021-03-15T22:12:55.000Z",
+      "description": "Къде? В магичните далнини на мечтите ми, отначало доста смътно, почти невъзможно; постепенно очертаващо се и видимо; и накрая реално, тъжно и безкрайно похабено, право пред мене се яви на своето възвишение онова, което предугаждах: замъкът без стил, без епоха, без предтечи, а сред запуснатостта на мебелите, на черните и жълти канапета, на копринените акажута - днешният вестник, дъхтящ на мастило …",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish32/emil-verharen/vyv-fermata.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Емил Верхарен. Във фермата (пр. Тодорка Минева)",
+      "publishedAt": "2021-03-15T22:12:54.000Z",
+      "description": "На двора, край локвите, позлатени от слънчеви медали, върху гранитни колони е гълъбарникът: малка къщичка. Цяла една Холандия с врати, прозорци, сини, жълти, червени стълби с бял кант, и скривалища, и тайници, и помпони, и островръхи шипове, но най-вече четири пиньона и кула, ветропоказател, който се върти заедно със своя зелен конник, възседнал златен кон, препускащ в празното пространство от це…",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "source": {
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publish32/emil-verharen/zaradi.htm",
+        "language": "bg"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Емил Верхарен. Заради себе си (пр. Тодорка Минева)",
+      "publishedAt": "2021-03-15T22:12:53.000Z",
+      "description": "Трябва да си го набиеш в главата: пишеш заради самия себе си. Наоколо? Зиналите патешки човки на глупостта. По-късно? Утре? Онова, което чувстваме, обичаме, бленуваме, вече не ще бъде несъмнената слава на разума. А Изкуството, изместено от невежеството и здравето! Какви стихове! с техните филигранни композиции; какви стихове! с техните гримове от диези; какви стихове! >>>",
+      "discoveredAt": "2026-10-01T20:51:58.642Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "afaad248cbef86e6a9865d47f9402d6acba9b5f9d8de919db74b9d932f1da559"
+}

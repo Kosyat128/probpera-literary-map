@@ -11,6 +11,7 @@ import supplemental from './generated/writerDatePatches.r10-supplemental.json';
 import russian from './generated/writerDatePatches.r10-russian.json';
 import popular from './generated/writerDatePatches.r10-popular.json';
 import scoped from './generated/writerDatePatches.r10-scoped.json';
+import russianExpansion from './generated/writerDatePatches.r10-russian-expansion.json';
 import { calendarWriterQid } from './calendarWriterIdentities';
 import { applyCalendarWriterDatePatches, calendarWriterDatePatches } from './calendarWriterDatePatches';
 const writerDatePatches = [...canonicalWriterDatePatches, ...calendarWriterDatePatches];
@@ -26,6 +27,8 @@ const cachedEntities=new Map(cached.entities.map((e: {qid:string})=>[e.qid,e])) 
 const sourceReview=JSON.parse(readFileSync(new URL('../../../reports/r10/calendar/supplemental-source-review.json', import.meta.url),'utf8'));
 const supplementalIds=new Set(supplemental.patches.map(p=>p.id));
 const russianIds=new Set(russian.patches.map(p=>p.id));
+const russianExpansionIds=new Set(russianExpansion.patches.map(p=>p.id));
+const russianExpansionReview=JSON.parse(readFileSync(new URL('../../../reports/r10/calendar/russian-expansion-source-review-20261001.json',import.meta.url),'utf8'));
 const popularIds=new Set(popular.patches.map(p=>p.id));
 const scopedIds=new Set(scoped.patches.map(p=>p.id));
 const scopedText=readFileSync(new URL('../../../reports/r10/calendar/scoped-wikidata-evidence.json',import.meta.url),'utf8');
@@ -53,7 +56,8 @@ describe('R10 guarded date facts on the production country/calendar path',()=>{
       const isRussian=russianIds.has(p.id);
       const isPopular=popularIds.has(p.id);
       const isScoped=scopedIds.has(p.id);
-      const isCached=isSupplemental||isRussian||isPopular;
+      const isRussianExpansion=russianExpansionIds.has(p.id);
+      const isCached=isSupplemental||isRussian||isPopular||isRussianExpansion;
       expect(p.evidence.snapshotSha256).toBe(isScoped?scopedHash:isCached?cachedHash:snapshotHash);
       expect(calendarWriterQid(baseline.get(p.writerKey)!,p.writerKey)).toBe(p.evidence.wikidataId);
       const property=p.field==='birthDate'?'P569':'P570';
@@ -65,7 +69,7 @@ describe('R10 guarded date facts on the production country/calendar path',()=>{
           expect(claim).toMatchObject({referenced:true,precision:11});
           expect(claim.referenceCount).toBeGreaterThan(0);
           expect(claim.rank).not.toBe('deprecated');
-          if(isRussian&&p.evidence.method==='referenced-julian-claim-with-institutional-gregorian-source'){
+          if((isRussian||isRussianExpansion)&&p.evidence.method==='referenced-julian-claim-with-institutional-gregorian-source'){
             expect(claim.calendarmodel).toBe('http://www.wikidata.org/entity/Q1985786');
             const old=claim.time.slice(1,11);
             expect(Number(old.slice(0,4))).toBeGreaterThanOrEqual(1800);
@@ -96,6 +100,16 @@ describe('R10 guarded date facts on the production country/calendar path',()=>{
           sourceUrl:review.sourceUrl,checkedAt:review.checkedAt,
           sourceDocumentSha256:review.sourceDocumentSha256, finding:review.finding,
         });
+      }
+      if(isRussianExpansion){
+        expect(p.writerKey.startsWith('russia:')).toBe(true);
+        expect(p.evidence.retrievedAt).toBe(cached.retrievedAt);
+        const review=russianExpansionReview.ready.find((row:any)=>row.writerKey===p.writerKey&&row.field===p.field);
+        expect(review.value).toBe(p.appliedValue);
+        expect(p.expectedOld).toBe(review.expectedOld);
+        expect(p.evidence.supportingSources?.[0]).toMatchObject({sourceUrl:review.sourceUrl,checkedAt:review.checkedAt,
+          sourceDocumentSha256:review.sourceDocumentSha256,finding:review.finding});
+        if(review.corroborating)expect(p.evidence.supportingSources?.[1]).toEqual(review.corroborating);
       }
       if(p.field==='deathDate')expect(p.appliedValue<='2026-09-26').toBe(true);
       if(w.birthDate&&w.deathDate&&parseWriterDate(w.birthDate)?.precision==='day'&&parseWriterDate(w.deathDate)?.precision==='day')expect(w.birthDate<=w.deathDate).toBe(true);

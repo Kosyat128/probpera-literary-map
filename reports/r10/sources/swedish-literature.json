@@ -1,0 +1,16 @@
+{
+  "sourceId": "swedish-literature",
+  "name": "Swedish Arts Council",
+  "entryUrl": "https://www.kulturradet.se/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:03.678Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.kulturradet.se/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

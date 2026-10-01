@@ -1,4 +1,5 @@
 import {readFileSync} from 'node:fs';
+import {projectReviewedRussianCalendarExpansion} from './reviewed-russian-calendar-expansion.mjs';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {describe,expect,it} from 'vitest';
@@ -6,7 +7,7 @@ import {calendarSecurityFollowupAttestation as packet,calendarSecurityFollowupSh
   projectReviewedCalendarSecurityFollowup as project} from './reviewed-calendar-security-followup.mjs';
 import {checkedPopularCalendarReviewRow} from '../build-popular-calendar-dates-r10.mjs';
 import {checkedScopedCalendarReviewRow} from '../build-scoped-calendar-dates-r10.mjs';
-const raw=path=>readFileSync(path,'utf8').replace(/\r\n?/gu,'\n');
+const raw=path=>projectReviewedRussianCalendarExpansion(path,readFileSync(path,'utf8').replace(/\r\n?/gu,'\n'));
 const historical=path=>execFileSync('git',['-c',`safe.directory=${process.cwd()}`,'show',`${packet.baselineCommitSha}:${path}`],
   {encoding:'utf8',maxBuffer:50*1024*1024}).replace(/\r\n?/gu,'\n');
 

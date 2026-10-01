@@ -1,0 +1,98 @@
+{
+  "sourceId": "iowa-press",
+  "name": "University of Iowa Press",
+  "entryUrl": "https://uipress.uiowa.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:42.562Z",
+  "requests": [
+    {
+      "url": "https://uipress.uiowa.edu/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 103777,
+      "sha256": "64660fcf3a160cbb8751b3a74046ec1bc4fc99990e466f85064c622372c3bd47",
+      "accessedAt": "2026-10-01T20:51:43.453Z"
+    },
+    {
+      "url": "https://uipress.uiowa.edu/people/caroline-beuley",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 67965,
+      "sha256": "9d4098b1f19e9137111de5bc762dda5cbbf5caf494ff583bbd052b197b60e184",
+      "accessedAt": "2026-10-01T20:51:43.702Z"
+    },
+    {
+      "url": "https://uipress.uiowa.edu/people/jamie-d-brooks",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 38723,
+      "sha256": "6cc2888599136ba97edc8d8ef86927d6cd7a6f30e39dc39121a2fea9d6c909ca",
+      "accessedAt": "2026-10-01T20:51:43.846Z"
+    },
+    {
+      "url": "https://uipress.uiowa.edu/people/emad-mirmotahari",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 66661,
+      "sha256": "1540fa02db2c51c313321b825e3e9803d46e60b840893ee4b5753b06152348b1",
+      "accessedAt": "2026-10-01T20:51:44.054Z"
+    },
+    {
+      "url": "https://uipress.uiowa.edu/people/samuel-rafael-barber",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 68524,
+      "sha256": "12d9508effb51ecd3aed1733a251e2c94cc389628cc1fe5e4adfcf56f0e33d77",
+      "accessedAt": "2026-10-01T20:51:44.251Z"
+    },
+    {
+      "url": "https://uipress.uiowa.edu/resources/prospective-authors/submit-proposal",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 68963,
+      "sha256": "4b7417aadd680ee8fc09961b844fc5ddcda787245ab7eb53517bac2b9bcf53bc",
+      "accessedAt": "2026-10-01T20:51:44.414Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://uipress.uiowa.edu/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 1855,
+    "sha256": "5ade4f69325031a8a8b8a796b120cbb548f3663b1ac963c6afbc5c4334a9b174",
+    "accessedAt": "2026-10-01T20:51:43.165Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed",
+      "/libraries/*.htm",
+      "/saml/login"
+    ]
+  }
+}

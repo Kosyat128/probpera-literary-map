@@ -1,0 +1,628 @@
+{
+  "sourceId": "guernica-magazine",
+  "name": "Guernica",
+  "entryUrl": "https://www.guernicamag.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:50.118Z",
+  "requests": [
+    {
+      "url": "https://www.guernicamag.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 131566,
+      "sha256": "72fc717f2fa1003a9e7e02ed2e522861ab0f86b9b697be6ffa70019013d34096",
+      "accessedAt": "2026-10-01T20:51:50.785Z"
+    },
+    {
+      "url": "https://www.guernicamag.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 539784,
+      "sha256": "bbe031147e5ab18616fe7ad23215745329d0d0600209b26bd47003b0d5c690eb",
+      "accessedAt": "2026-10-01T20:51:50.990Z"
+    },
+    {
+      "url": "https://www.guernicamag.com/places-of-memory/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 129808,
+      "sha256": "8c798912d52601128cb9382b156dbc9509f3e1343bd080a5464e71dfd4146987",
+      "accessedAt": "2026-10-01T20:51:51.132Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.guernicamag.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 376,
+    "sha256": "d88158f9f8687b4248edef40c774074099704dad8f5ac233bb5e667e67266f17",
+    "accessedAt": "2026-10-01T20:51:50.718Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-content/plugins/",
+      "/readme.html",
+      "/trackback/",
+      "/wp-includes/",
+      "/go/"
+    ]
+  },
+  "endpoint": {
+    "id": "guernica-magazine",
+    "name": "Guernica",
+    "url": "https://www.guernicamag.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "guernica-magazine",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.guernicamag.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.guernicamag.com/places-of-memory/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:51.141Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 20,
+  "literaryCandidateCount": 20,
+  "sample": {
+    "sourceId": "guernica-magazine",
+    "source": {
+      "name": "Guernica",
+      "url": "https://www.guernicamag.com/places-of-memory/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Places of Memory: A Novel Excerpt",
+    "publishedAt": "2026-07-15T10:16:25.000Z",
+    "description": "From so far away, it felt impossible that they had ever been that young, and lived those other lives.",
+    "discoveredAt": "2026-10-01T20:51:50.998Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.guernicamag.com/places-of-memory/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 129808,
+      "sha256": "8c798912d52601128cb9382b156dbc9509f3e1343bd080a5464e71dfd4146987",
+      "accessedAt": "2026-10-01T20:51:51.132Z",
+      "headline": "Andra Otilia Nicolescu",
+      "excerpt": "But first, everything anew. For them, the millennium came early. Early evening on the fifteenth of September 1998, America unfurled beneath steady seas of clouds beneath Paul and Ana’s eyes. Holding hands, they peered past the window crystals. Trembling bodies, intent on a first look at their new country. What if I don’t want to live in any country? A four-year-old Maya had asked nine Septembers a",
+      "publishedDates": [
+        {
+          "value": "2026-07-15T10:16:25+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.guernicamag.com/places-of-memory/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:51.141Z",
+  "foundItems": [
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/places-of-memory/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Places of Memory: A Novel Excerpt",
+      "publishedAt": "2026-07-15T10:16:25.000Z",
+      "description": "From so far away, it felt impossible that they had ever been that young, and lived those other lives.",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/the-august-september-issue/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The August-September Issue",
+      "publishedAt": "2026-09-15T18:36:23.000Z",
+      "description": "-",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/faint-lines/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Faint Lines",
+      "publishedAt": "2026-09-15T15:49:38.000Z",
+      "description": "“Your name is the home you carry around, everywhere you go.”",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/tether/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tether",
+      "publishedAt": "2026-09-15T15:17:32.000Z",
+      "description": "“In the silence of the lab, the scents are loud. They even speak. They mix, change, pervert one another\u2014until they become something new.”",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/bye-bye-palestine/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bye-Bye, Palestine",
+      "publishedAt": "2026-09-15T14:47:54.000Z",
+      "description": "“Haifa became known as Um Al Gharib, Mother of the Stranger.”",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/the-little-corner-of-the-factory/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Little Corner of the Factory",
+      "publishedAt": "2026-09-15T14:45:40.000Z",
+      "description": "“A partner you could drink many shots of sake with over the same story; I decided that this was the love I wanted when I was old enough to sleep with someone on one single futon.”",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/after-development-in-conversation-with-dasho-karma-ura/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "After Development: In Conversation with Dasho Karma Ura",
+      "publishedAt": "2026-09-15T14:41:04.000Z",
+      "description": "But can one of the world's smallest nations, and one of the only ones spared from colonization, offer a model for the world? Ura believes so, having built Gross National Happiness as a scalar measurement system for the universal indicators of a good life.",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/the-insistence-of-beauty-tina-chang-and-nathalie-handal-in-conversation/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Insistence of Beauty: Tina Chang and Nathalie Handal in Conversation",
+      "publishedAt": "2026-09-15T14:34:43.000Z",
+      "description": "In LION and Roma Roam, form-breaking, world-crossing poets Tina Chang and Nathalie Handal transform violence, desire, betrayal, and displacement into new ways of imagining how we survive, how we belong, and how we begin again.",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/pistil-pistol/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pistil/Pistol",
+      "publishedAt": "2026-09-15T14:28:12.000Z",
+      "description": "Simple sounds ring and record",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/ive-gone-to-look-for-america-term-two/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I’ve Gone to Look for America, Term Two",
+      "publishedAt": "2026-09-15T13:55:50.000Z",
+      "description": "In the beginning, the peony was the bullet",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/how-do-we-know-ai-and-i-read-i-felt-a-funeral-in-my-brain-by-emily-dickinson/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How Do We Know? AI and I read “I felt a Funeral - in my Brain,” by Emily Dickinson",
+      "publishedAt": "2026-09-15T13:39:12.000Z",
+      "description": "“It turns out that AI may share the source of one of its biggest limitations with the humans who designed it: hubris.”",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/last-fight/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Last Fight",
+      "publishedAt": "2026-09-15T13:08:01.000Z",
+      "description": "“He believes his vote contributed to his brother’s death and cannot forgive himself.”",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/a-nation-wrestles-with-god/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Nation Wrestles with God",
+      "publishedAt": "2026-09-15T08:55:22.000Z",
+      "description": "“For his part, Twain seems to have maintained a bitter friendship with God. Or maybe they were frenemies.”",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/ive-gone-to-look-for-america-term-one/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I’ve Gone to Look for America, Term One",
+      "publishedAt": "2026-09-15T07:48:33.000Z",
+      "description": "I was a child of rust, browning at the interior",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/tidings-of-the-broken-flood/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tidings of the Broken Flood",
+      "publishedAt": "2026-09-15T07:45:18.000Z",
+      "description": "whispering of suns unseen",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/theres-this-blurry-photo-of-me-my-sister-with-our-eyes-closed/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "there’s this blurry photo of me & my sister with our eyes closed",
+      "publishedAt": "2026-09-15T07:40:42.000Z",
+      "description": "colors spread across our skin like nothing could hurt us",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/the-july-issue/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The July Issue",
+      "publishedAt": "2026-07-15T15:51:45.000Z",
+      "description": "-",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/bojack-blues/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bojack Blues",
+      "publishedAt": "2026-07-15T08:00:20.000Z",
+      "description": "You need folks like that. Folks that’ll drag you up out of that cold and nasty bottom, even out of sticky situations you don’t have no business being in.",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/must-a-people-disappear-for-us-to-know-that-it-existed/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Must a People Disappear for Us to Know That it Existed?",
+      "publishedAt": "2026-07-15T07:00:17.000Z",
+      "description": "But if we look closer, Sebeïba’s meaning is as layered as its history, and it is evolving\u2014subtly but profoundly, in response to forces from far beyond the oasis.",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "source": {
+        "name": "Guernica",
+        "url": "https://www.guernicamag.com/the-death-years/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Death Years",
+      "publishedAt": "2026-07-15T06:55:38.000Z",
+      "description": "\"What is better? To die quickly, or to be able to say goodbye? For my son’s sake, I hope I die quickly. For my own sake, I hope I get to say goodbye.\"",
+      "discoveredAt": "2026-10-01T20:51:50.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "bbe031147e5ab18616fe7ad23215745329d0d0600209b26bd47003b0d5c690eb"
+}

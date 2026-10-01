@@ -1,0 +1,152 @@
+{
+  "sourceId": "kent-literary-research",
+  "name": "University of Kent - literary research",
+  "entryUrl": "https://www.kent.ac.uk/news",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-10-01T20:42:43.751Z",
+  "requests": [
+    {
+      "url": "https://www.kent.ac.uk/news",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 498615,
+      "sha256": "1648930204dbc5c52b42e0ab94a73efdbb5d5eafe752b471ca26c618bd6d6e17",
+      "accessedAt": "2026-10-01T20:42:45.634Z"
+    },
+    {
+      "url": "https://www.kent.ac.uk/news/creativity-culture-and-heritage/36128/meet-dr-sarah-dustagheer",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 476701,
+      "sha256": "f96ef9f401710a41a10cae7a347147e16422474837446250591ad68fa715c5be",
+      "accessedAt": "2026-10-01T20:42:45.894Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.kent.ac.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1163,
+    "sha256": "dfa52600154af99d74820f28839eb3a19a5a8fbe19bae59eae3d0326552a746d",
+    "accessedAt": "2026-10-01T20:42:45.404Z",
+    "disallowed": [
+      "/student/my-study/",
+      "/search/",
+      "/search?q="
+    ]
+  },
+  "endpoint": {
+    "id": "kent-literary-research",
+    "name": "University of Kent - literary research",
+    "url": "https://www.kent.ac.uk/news",
+    "format": "html",
+    "language": "en-GB",
+    "region": "europe",
+    "sourceFamilyId": "kent-literary-research",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [
+      "GB"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.kent.ac.uk"
+    ],
+    "linkPattern": "^\\/news\\/creativity-culture-and-heritage\\/\\d+\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.kent.ac.uk/news/creativity-culture-and-heritage/36128/meet-dr-sarah-dustagheer"
+    ],
+    "verifiedAt": "2026-10-01T20:42:45.922Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 1,
+  "literaryCandidateCount": 1,
+  "sample": {
+    "sourceId": "kent-literary-research",
+    "source": {
+      "name": "University of Kent - literary research",
+      "url": "https://www.kent.ac.uk/news/creativity-culture-and-heritage/36128/meet-dr-sarah-dustagheer",
+      "language": "en-GB"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Dr Sarah Dustagheer",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:42:45.746Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.kent.ac.uk/news/creativity-culture-and-heritage/36128/meet-dr-sarah-dustagheer",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 476701,
+      "sha256": "f96ef9f401710a41a10cae7a347147e16422474837446250591ad68fa715c5be",
+      "accessedAt": "2026-10-01T20:42:45.894Z",
+      "headline": "Meet Dr Sarah Dustagheer: the power of the humanities",
+      "excerpt": "Meet Dr Sarah Dustagheer: the power of the humanities Emily Seling 5 February 2025 Creativity, Culture and Heritage Research Profile Social Justice, Inequalities and Conflict Dr Sarah Dustagheer has spent over 20 years of her life studying and researching English Literature across three UK universities. Now, from her position as Head of the School of Humanities, she is able to share a unique persp",
+      "publishedDates": [
+        {
+          "value": "2025-02-05T11:37:10+00:00",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "canonical": "https://www.kent.ac.uk/news/creativity-culture-and-heritage/36128/meet-dr-sarah-dustagheer",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:42:45.922Z",
+  "foundItems": [
+    {
+      "sourceId": "kent-literary-research",
+      "source": {
+        "name": "University of Kent - literary research",
+        "url": "https://www.kent.ac.uk/news/creativity-culture-and-heritage/36128/meet-dr-sarah-dustagheer",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dr Sarah Dustagheer",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:42:45.746Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "1648930204dbc5c52b42e0ab94a73efdbb5d5eafe752b471ca26c618bd6d6e17"
+}

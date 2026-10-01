@@ -6197,5 +6197,655 @@
     "verification": "confirmed",
     "region": "global",
     "eventKey": "sukhovo-kobylin-basinsky-literary-essay-20260928"
+  },
+  {
+    "id": "harari-laws-of-history-global-announcement-20261001",
+    "category": "releases",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-10-01T11:56:33.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Penguin Random House анонсировало The Laws of History Юваля Ноя Харари",
+      "en": "Penguin Random House announces Yuval Noah Harari’s The Laws of History"
+    },
+    "summary": {
+      "ru": "Penguin Random House объявило, что The Laws of History Юваля Ноя Харари выйдет 21 сентября 2027 года. В США Random House выпустит печатную и электронную версии, одновременно появится аудиокнига. Издатель также назвал Великобританию, Канаду, Испанию, Бразилию и Португалию среди территорий выпуска; анонс сделан 30 сентября.",
+      "en": "Penguin Random House has announced a September 21, 2027 global publication date for Yuval Noah Harari’s The Laws of History. Random House will publish the US hardcover and ebook, with a simultaneous audiobook. The publisher also names the UK, Canada, Spain, Brazil and Portugal among its territories; the announcement was made on September 30."
+    },
+    "source": {
+      "name": "Penguin Random House",
+      "url": "https://global.penguinrandomhouse.com/announcements/prh-to-publish-major-new-work-from-1-internationally-bestselling-author-of-sapiens-yuval-noah-harari/",
+      "language": "en-US",
+      "title": "PRH to Publish Major New Work From #1 Internationally Bestselling Author of SAPIENS Yuval Noah Harari"
+    },
+    "verification": "confirmed",
+    "region": "global",
+    "eventKey": "harari-laws-of-history-global-announcement-20261001"
+  },
+  {
+    "id": "liechtenstein-library-long-night-programme-20260930",
+    "category": "festivals",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Библиотека Лихтенштейна представила литературную программу на 3 октября",
+      "en": "Liechtenstein’s national library announces its October 3 literary programme"
+    },
+    "summary": {
+      "ru": "На Ночь музеев 3 октября Национальная библиотека Лихтенштейна запланировала поэтическую мастерскую Хелены Брем с 18:00 до 19:30 и выставку 101 поэтического плаката Зигфрида Хёлльригля. В 20:00 он представит работу с ручной печатью и типографикой. Библиотека и кафе будут открыты до полуночи.",
+      "en": "For the October 3 Long Night of Museums, Liechtenstein’s national library has scheduled Helena Brehm’s poetry workshop from 18:00 to 19:30 and Siegfried Höllrigl’s exhibition of 101 poetry posters. At 20:00 he will present his hand-printing and typography work. The library and cafeteria will stay open until midnight."
+    },
+    "source": {
+      "name": "National Library of Liechtenstein",
+      "url": "https://www.landesbibliothek.li/programm-der-langen-nacht-der-museen-am-samstag-3-okt-2026/",
+      "language": "de",
+      "title": "Programm der Langen Nacht der Museen am Samstag, 3. Okt 2026"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "liechtenstein-library-long-night-programme-20260930"
+  },
+  {
+    "id": "serbia-stankovic-150-exhibition-opened-20260930",
+    "category": "heritage",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30T13:31:15.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "В Белграде открылась выставка к 150-летию Борисава Станковича",
+      "en": "Belgrade opens an exhibition for Borisav Stanković’s 150th anniversary"
+    },
+    "summary": {
+      "ru": "30 сентября Национальная библиотека Сербии открыла выставку «Трагом људске душе» о жизни и литературном наследии Борисава Станковича. Её подготовили Мирослава и Томислав Симоновичи вместе с библиотекой «Бора Станкович» из Вране. Экспозиция приурочена к 150-летию писателя и будет работать до 2 ноября 2026 года.",
+      "en": "On September 30, Serbia’s national library opened Tragom ljudske duše, an exhibition on Borisav Stanković’s life and literary legacy. Miroslava and Tomislav Simonović prepared it with the Bora Stanković public library in Vranje. The exhibition marks the writer’s 150th birth anniversary and will remain open through November 2, 2026."
+    },
+    "source": {
+      "name": "National Library of Serbia",
+      "url": "https://nb.rs/otvorena-je-izlozba-tragom-ljudske-duse/",
+      "language": "sr-RS",
+      "title": "Отворена је изложба \"Трагом људске душе\" - Народна библиотека Србије"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "serbia-stankovic-150-exhibition-opened-20260930"
+  },
+  {
+    "id": "de-bezige-bij-independence-interview-20261001",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-10-01T11:56:35.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Руководители De Bezige Bij рассказали о возвращении издательства к независимости",
+      "en": "De Bezige Bij’s directors discuss the publisher’s return to independence"
+    },
+    "summary": {
+      "ru": "В новом интервью Publishing Perspectives руководители нидерландского De Bezige Bij объяснили выход из группы WPG, завершённый в августе 2026 года. Издательство сохранило марки Thomas Rap и Cargo; около 40 сотрудников участвуют в распределении прибыли. В планах - новая марка для авторов из бывших нидерландских колоний, начиная с Суринама.",
+      "en": "In a new Publishing Perspectives interview, the Dutch publisher De Bezige Bij’s directors explain its exit from WPG, completed in August 2026. The house retained the Thomas Rap and Cargo imprints, and approximately 40 employees take part in profit sharing. It also plans an imprint for voices from former Dutch colonies, beginning with Surinamese authors."
+    },
+    "source": {
+      "name": "Publishing Perspectives",
+      "url": "https://publishingperspectives.com/2026/10/dutch-publisher-de-bezige-bij-returns-to-its-independent-roots/",
+      "language": "en-US",
+      "title": "Dutch Publisher De Bezige Bij Returns to Its Independent Roots"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "de-bezige-bij-independence-interview-20261001"
+  },
+  {
+    "id": "digital-publishing-awards-12-finalists-20261001",
+    "category": "awards",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-10-01T12:33:02.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "В финал Digital Publishing Awards вышли 12 проектов из пяти стран",
+      "en": "Digital Publishing Awards shortlist 12 projects from five countries"
+    },
+    "summary": {
+      "ru": "В опубликованный шорт-лист Digital Publishing Awards вошли проекты из Египта, Германии, Индии, Великобритании и США. По сообщению Publishing Perspectives, жюри отобрало 12 финалистов из 42 заявок. Среди участников - индийская Ailaysa и египетская Nahdet Misr; победителей объявят на Франкфуртской книжной ярмарке.",
+      "en": "The Digital Publishing Awards shortlist includes 12 projects from Egypt, Germany, India, the UK and the US. Publishing Perspectives reports that an international jury selected them from 42 submissions. They include India’s Ailaysa and Egypt’s Nahdet Misr; winners will be announced at the Frankfurt Book Fair."
+    },
+    "source": {
+      "name": "Publishing Perspectives",
+      "url": "https://publishingperspectives.com/2026/10/innovation-with-ai-abounds-the-international-digital-publishing-award-announces-12-finalists/",
+      "language": "en-US",
+      "title": "Innovation with AI Abounds: The International Digital Publishing Award Announces 12 Finalists"
+    },
+    "verification": "confirmed",
+    "region": "global",
+    "eventKey": "digital-publishing-awards-12-finalists-20261001"
+  },
+  {
+    "id": "global50-publishing-ranking-2026-report-20261001",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-10-01T12:12:48.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Опубликован рейтинг Global 50: Bertelsmann возглавил список издательских групп",
+      "en": "Global 50 ranks Bertelsmann first among publishing groups"
+    },
+    "summary": {
+      "ru": "Global 50 Publishing Ranking 2026 сравнивает 48 издательских групп по выручке за 2025 год. Лидером стал Bertelsmann с 5,93 млрд евро издательской выручки; совокупный показатель участников - 64,2 млрд евро. Publishing Perspectives сообщает о выходе исследования Рюдигера Вишенбарта и его партнёров; презентация намечена на 7 октября во Франкфурте.",
+      "en": "Global 50 Publishing Ranking 2026 compares 48 publishing groups by their 2025 publishing revenue. Bertelsmann ranks first with €5.93 billion, while the ranked groups together generated €64.2 billion. Publishing Perspectives reports the release of Rüdiger Wischenbart and partners’ research; a presentation is planned for October 7 in Frankfurt."
+    },
+    "source": {
+      "name": "Publishing Perspectives",
+      "url": "https://publishingperspectives.com/2026/10/global-50-publishing-ranking-2026-announced-bertelsmann-takes-top-spot/",
+      "language": "en-US",
+      "title": "Global 50 Publishing Ranking 2026 Announced - Bertelsmann Takes Top Spot"
+    },
+    "verification": "confirmed",
+    "region": "global",
+    "eventKey": "global50-publishing-ranking-2026-report-20261001"
+  },
+  {
+    "id": "ncw-nine-emerging-translators-2026-27-20260930",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30T08:20:23.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Британский National Centre for Writing выбрал девять переводчиков для наставничества",
+      "en": "National Centre for Writing selects nine translators for 2026/27 mentorships"
+    },
+    "summary": {
+      "ru": "National Centre for Writing объявил участников Emerging Translator Mentorships на 2026/27 год. Девять начинающих литературных переводчиков будут шесть месяцев работать с опытными наставниками. В набор вошли переводчики с датского, нидерландского, итальянского, корейского и других языков; программа поддерживает перевод на английский недостаточно представленных литератур.",
+      "en": "The UK’s National Centre for Writing has announced its 2026/27 Emerging Translator Mentorships cohort. Nine early-career literary translators will work with experienced mentors for six months. Their languages include Danish, Dutch, Italian and Korean, among others. The programme supports literary translation into English, with a focus on underrepresented literatures."
+    },
+    "source": {
+      "name": "Publishing Perspectives",
+      "url": "https://publishingperspectives.com/2026/09/the-u-k-national-centre-for-writing-announces-translators-selected-for-international-mentorship-program/",
+      "language": "en-US",
+      "title": "The U.K. National Centre for Writing Announces Translators Selected for International Mentorship Program"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "ncw-nine-emerging-translators-2026-27-20260930"
+  },
+  {
+    "id": "abuja-literature-ideas-festival-announcement-20260930",
+    "category": "festivals",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30T05:09:23.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "В Абудже объявлен фестиваль литературы и идей 9-10 октября",
+      "en": "Abuja announces a Festival of Literature & Ideas for October 9-10"
+    },
+    "summary": {
+      "ru": "Book Buzz Foundation проведёт Abuja Festival of Literature & Ideas 9-10 октября 2026 года в The Nordic в районе Джаби. Brittle Paper сообщает о программе с нигерийскими авторами Ричардом Али и Хадизой Исма Эль-Руфаи. Учёный Симукай Чигуду представит мемуары Chasing Freedom; фестиваль получает софинансирование Европейского союза.",
+      "en": "Book Buzz Foundation will hold the Abuja Festival of Literature & Ideas on October 9-10, 2026, at The Nordic in Jabi. Brittle Paper reports a programme featuring Nigerian authors Richard Ali and Hadiza Isma El-Rufai. Academic Simukai Chigudu will discuss his memoir Chasing Freedom; the festival is co-funded by the European Union."
+    },
+    "source": {
+      "name": "Brittle Paper",
+      "url": "https://brittlepaper.com/2026/09/book-buzz-foundation-to-host-the-abuja-festival-of-literature-ideas-october-9-10-2026/",
+      "language": "en-US",
+      "title": "Book Buzz Foundation to Host the Abuja Festival of Literature & Ideas, October 9-10, 2026"
+    },
+    "verification": "confirmed",
+    "region": "africa",
+    "eventKey": "abuja-literature-ideas-festival-announcement-20260930"
+  },
+  {
+    "id": "elekere-inaugural-story-prize-shortlist-20260930",
+    "category": "awards",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30T05:02:33.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Élékéré Press объявило семь финалистов своей первой премии за рассказ",
+      "en": "Élékéré Press names seven finalists for its inaugural short-story prize"
+    },
+    "summary": {
+      "ru": "Élékéré Short Story Prize отобрала семь ранее не опубликованных рассказов из более чем 200 заявок. Тема первого конкурса - наследие; среди финалистов авторы из Нигерии, США и Зимбабве. Как сообщает Brittle Paper, победителя объявят 2 ноября 2026 года: он получит 500 долларов, а рассказ опубликуют на сайте издательства.",
+      "en": "The inaugural Élékéré Short Story Prize has shortlisted seven unpublished stories from more than 200 submissions. This year’s theme is inheritance, and finalists include writers from Nigeria, the US and Zimbabwe. Brittle Paper reports that the winner will be announced on November 2, 2026, receive $500 and have the story published on the press’s website."
+    },
+    "source": {
+      "name": "Brittle Paper",
+      "url": "https://brittlepaper.com/2026/09/elekere-press-announces-shortlist-for-its-inaugural-short-story-prize/",
+      "language": "en-US",
+      "title": "Élékéré Press Announces Shortlist for its Inaugural Short Story Prize"
+    },
+    "verification": "confirmed",
+    "region": "africa",
+    "eventKey": "elekere-inaugural-story-prize-shortlist-20260930"
+  },
+  {
+    "id": "onuzo-great-shaking-flatiron-rights-20260930",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30T05:00:24.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Flatiron приобрело права на The Great Shaking Чибунду Онузо",
+      "en": "Flatiron acquires North American rights to Chibundu Onuzo’s The Great Shaking"
+    },
+    "summary": {
+      "ru": "Brittle Paper сообщает, что редактор Кукува Фрейзер из Flatiron приобрела североамериканские права на новый роман Чибунду Онузо The Great Shaking. В антиутопическом будущем семья из бывшей Англии пытается переселиться в Нигерию. Источник ссылается на сведения о сделках Publishers Weekly за неделю 28 сентября; дата выхода книги пока не названа.",
+      "en": "Brittle Paper reports that Flatiron editor Kukuwa Fraser has acquired North American rights to Chibundu Onuzo’s new novel The Great Shaking. Set in a dystopian future, it follows a family from what was formerly England trying to move to Nigeria. The report cites Publishers Weekly’s deals roundup for the week of September 28; no publication date is given."
+    },
+    "source": {
+      "name": "Brittle Paper",
+      "url": "https://brittlepaper.com/2026/09/chibundu-onuzos-new-novel-the-great-shaking-acquired-by-flatiron/",
+      "language": "en-US",
+      "title": "Chibundu Onuzo’s New Novel The Great Shaking Acquired by Flatiron"
+    },
+    "verification": "confirmed",
+    "region": "global",
+    "eventKey": "onuzo-great-shaking-flatiron-rights-20260930"
+  },
+  {
+    "id": "maaza-mengiste-macarthur-fellowship-20261001",
+    "category": "awards",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-10-01T11:22:58.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Мааза Менгисте получила стипендию MacArthur 2026 года",
+      "en": "Maaza Mengiste receives a 2026 MacArthur Fellowship"
+    },
+    "summary": {
+      "ru": "Эфиопско-американская писательница Мааза Менгисте вошла в число 20 стипендиатов MacArthur 2026 года. Brittle Paper сообщает о гранте в 800 тысяч долларов: выплаты распределены на пять лет, ограничений по использованию средств нет. Автор Beneath the Lion’s Gaze и The Shadow King преподаёт английскую литературу в Уэслианском университете.",
+      "en": "Ethiopian American writer Maaza Mengiste is among 20 recipients of the 2026 MacArthur Fellowship. Brittle Paper reports an $800,000 grant, paid in quarterly instalments over five years, with no restrictions on its use. The author of Beneath the Lion’s Gaze and The Shadow King is a professor of English at Wesleyan University."
+    },
+    "source": {
+      "name": "Brittle Paper",
+      "url": "https://brittlepaper.com/2026/10/ethiopian-american-writer-maaza-mengiste-is-a-recipient-of-the-800000-2026-macarthur-genius-grant/",
+      "language": "en-US",
+      "title": "Ethiopian American Writer Maaza Mengiste Is a Recipient of the $800,000 2026 MacArthur Genius Grant"
+    },
+    "verification": "confirmed",
+    "region": "north-america",
+    "eventKey": "maaza-mengiste-macarthur-fellowship-20261001"
+  },
+  {
+    "id": "nigeria-66-years-fifteen-books-reading-list-20261001",
+    "category": "heritage",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-10-01T18:00:38.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Brittle Paper представил 15 книг к 66-летию независимости Нигерии",
+      "en": "Brittle Paper selects 15 books for Nigeria’s 66th independence anniversary"
+    },
+    "summary": {
+      "ru": "К годовщине независимости Нигерии Brittle Paper опубликовал новый список из 15 книг о переменах в стране. В него вошли Small by Small Айка Аньи о работе врачом в 1990-е годы и Half of a Yellow Sun Чимаманды Нгози Адичи о Биафрской войне. Также представлена антология Sọ̀rọ̀sókè о протестах #EndSARS под редакцией Джумоке Вериссимо и Джеймса Йеку.",
+      "en": "For Nigeria’s independence anniversary, Brittle Paper has published a new reading list of 15 books about the country’s changing history. It includes Ike Anya’s Small by Small, about becoming a doctor in the 1990s, and Chimamanda Ngozi Adichie’s Half of a Yellow Sun, about the Biafran War. It also features the #EndSARS anthology Sọ̀rọ̀sókè, edited by Jumoke Verissimo and James Yeku."
+    },
+    "source": {
+      "name": "Brittle Paper",
+      "url": "https://brittlepaper.com/2026/10/66-years-of-nigeria-told-through-15-books/",
+      "language": "en-US",
+      "title": "66 Years of Nigeria Told Through 15 Books"
+    },
+    "verification": "confirmed",
+    "region": "africa",
+    "eventKey": "nigeria-66-years-fifteen-books-reading-list-20261001"
+  },
+  {
+    "id": "asymptote-bojanovic-dizdarevic-translation-interview-20261001",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-10-01T12:59:56.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Урош Боянович и Айла Диздаревич обсудили перевод поэзии для Asymptote",
+      "en": "Uros Bojanović and Ajla Dizdarević discuss translating poetry with Asymptote"
+    },
+    "summary": {
+      "ru": "Asymptote опубликовал разговор поэта Уроша Бояновича и переводчицы Айлы Диздаревич о сборнике Sam u vodi, переведённом на английский как Alone in the Water. Участники обсуждают сербохорватскую идентичность, отчуждение и память послевоенного общества. Боянович рассказывает, как английский перевод меняет интонации отдельных стихотворений.",
+      "en": "Asymptote publishes a conversation between poet Uros Bojanović and translator Ajla Dizdarević about Sam u vodi, translated into English as Alone in the Water. They discuss Serbo-Croatian identity, alienation and memory in a post-war society. Bojanović describes how individual poems acquired different tones in their first translation into another language."
+    },
+    "source": {
+      "name": "Asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/10/01/the-violence-of-poetics-uros-bojanovic-and-ajla-dizdarevic-in-conversation/",
+      "language": "en",
+      "title": "The Violence of Poetics: Uros Bojanović and Ajla Dizdarević in Conversation - Asymptote Blog"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "asymptote-bojanovic-dizdarevic-translation-interview-20261001"
+  },
+  {
+    "id": "asymptote-helgadottir-september-book-club-20260930",
+    "category": "releases",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30T13:00:08.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Книжный клуб Asymptote выбрал роман Steinunn G. Helgadóttir",
+      "en": "Asymptote’s book club selects Steinunn G. Helgadóttir’s novel"
+    },
+    "summary": {
+      "ru": "Сентябрьской книгой клуба Asymptote стал The Strongest Woman in the World исландской писательницы Steinunn G. Helgadóttir. В материале указан перевод Лариссы Кайзер и издание Open Letter Books 2026 года. Участников клуба приглашают к обсуждению переведённой прозы и онлайн-встречам с авторами или переводчиками выбранных книг.",
+      "en": "Asymptote’s September book-club selection is The Strongest Woman in the World by Icelandic writer Steinunn G. Helgadóttir. The article identifies Larissa Kyzer’s translation and the 2026 Open Letter Books edition. Members are invited to discussions of translated fiction and online interviews with the authors or translators of the selected books."
+    },
+    "source": {
+      "name": "Asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/30/announcing-our-september-book-club-selection-the-strongest-woman-in-the-world-by-steinunn-g-helgadottir/",
+      "language": "en",
+      "title": "Announcing Our September Book Club Selection: The Strongest Woman in the World by Steinunn G. Helgadóttir - Asymptote Blog"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "asymptote-helgadottir-september-book-club-20260930"
+  },
+  {
+    "id": "asymptote-five-tamil-translators-interview-20260928",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-09-28",
+    "publishedAt": "2026-09-28T13:00:08.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Пять тамильских переводчиков рассказали Asymptote о литературных ландшафтах",
+      "en": "Five Tamil translators discuss literary landscapes with Asymptote"
+    },
+    "summary": {
+      "ru": "В новом интервью Asymptote создатели Tamil Terrains объясняют, как древняя система литературных ландшафтов thinai работает в поэзии диаспоры. В разговоре участвуют редакторы Недра Родриго и Гита Сукумаран, переводчики из Малайзии, Индии и Сингапура. Антология вышла в Trace Press в 2025 году, а интервью опубликовано 28 сентября 2026-го.",
+      "en": "In a new Asymptote interview, the makers of Tamil Terrains explain how the ancient thinai framework of literary landscapes can inform diaspora poetry. Editors Nedra Rodrigo and Geetha Sukumaran speak alongside translators from Malaysia, India and Singapore. Trace Press published the anthology in 2025, and Asymptote published this interview on September 28, 2026."
+    },
+    "source": {
+      "name": "Asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/28/red-earth-and-pouring-rain-an-interview-with-five-tamil-translators-on-thinai-and-transcreation/",
+      "language": "en",
+      "title": "Red Earth and Pouring Rain: An Interview with Five Tamil Translators on Thinai and Transcreation - Asymptote Blog"
+    },
+    "verification": "confirmed",
+    "region": "asia",
+    "eventKey": "asymptote-five-tamil-translators-interview-20260928"
+  },
+  {
+    "id": "publishing-scotland-free-sustainability-tools-20260928",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-09-28",
+    "publishedAt": "2026-09-28T14:17:38.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Publishing Scotland открыло бесплатные инструменты экологичного книгоиздания",
+      "en": "Publishing Scotland releases free sustainability tools for publishers"
+    },
+    "summary": {
+      "ru": "Publishing Scotland представило пакет бесплатных ресурсов для издателей: Sustainability Roadmap, инструкции по расчёту углеродного следа и Excel-шаблон Carbon Dashboard. К ним добавлены обучение и ежемесячные встречи Carbon Catchup. Отраслевая организация также анонсировала форум 27 октября в Эдинбурге с возможностью участия онлайн.",
+      "en": "Publishing Scotland has launched free resources for publishers: a Sustainability Roadmap, carbon-footprint guidelines and the Carbon Dashboard Excel template. The package also includes training and monthly Carbon Catchup support sessions. The trade body announces an Environmental Sustainability Forum on October 27 in Edinburgh, with online participation available."
+    },
+    "source": {
+      "name": "Publishing Scotland",
+      "url": "https://www.publishingscotland.org/2026/09/publishing-scotlands-sustainability-resources-provide-a-free-springboard-for-action/",
+      "language": "en-GB",
+      "title": "Publishing Scotland’s sustainability resources provide a free springboard for action"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "publishing-scotland-free-sustainability-tools-20260928"
+  },
+  {
+    "id": "academie-francaise-roman-first-selection-20261001",
+    "category": "awards",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-10-01",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Французская академия объявила первую подборку романов на премию 2026 года",
+      "en": "Académie française announces its first 2026 novel-prize selection"
+    },
+    "summary": {
+      "ru": "В первый список Grand Prix du roman Французской академии вошли 12 романов. ActuaLitté называет среди них Chronique d’un royaume perdu Ананды Деви и La Guerre éternelle Оливье Ролена. Следующий отбор сократит список до трёх книг: его объявят 15 октября, а победителя - 29 октября 2026 года.",
+      "en": "The Académie française’s first Grand Prix du roman selection contains 12 novels. ActuaLitté lists Ananda Devi’s Chronique d’un royaume perdu and Olivier Rolin’s La Guerre éternelle among them. A second selection, narrowing the list to three books, is planned for October 15, followed by the winner’s announcement on October 29, 2026."
+    },
+    "source": {
+      "name": "ActuaLitté",
+      "url": "https://actualitte.com/article/134343/prix-litteraires/grand-prix-du-roman-de-l-academie-francaise-la-premiere-selection-2026",
+      "language": "fr",
+      "title": "Grand Prix du roman de l’Académie française : la première sélection 2026"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "academie-francaise-roman-first-selection-20261001"
+  },
+  {
+    "id": "meilleur-livre-etranger-second-selection-20261001",
+    "category": "awards",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-10-01",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Во второй список Prix du Meilleur Livre étranger вошли девять книг",
+      "en": "Prix du Meilleur Livre étranger narrows its 2026 selection to nine books"
+    },
+    "summary": {
+      "ru": "ActuaLitté опубликовал второй список французской премии Prix du Meilleur Livre étranger 2026: шесть художественных и три нехудожественных книги. Среди кандидатов - Lazar Нелио Бидерманна в переводе Роз Лабури и Le Soldat remémoré Анъет Данье в переводе Изабель Росселен. Премия рассматривает зарубежные книги, переведённые на французский язык.",
+      "en": "ActuaLitté publishes the second 2026 Prix du Meilleur Livre étranger selection: six fiction titles and three nonfiction books. Candidates include Nelio Biedermann’s Lazar, translated by Rose Labourie, and Anjet Daanje’s Le Soldat remémoré, translated by Isabelle Rosselin. The French prize recognizes works originally published abroad and translated into French."
+    },
+    "source": {
+      "name": "ActuaLitté",
+      "url": "https://actualitte.com/article/134338/prix-litteraires/prix-du-meilleur-livre-etranger-2026-neuf-titres-dans-la-deuxieme-selection-une-autrice-repechee",
+      "language": "fr",
+      "title": "Prix du Meilleur Livre étranger 2026 : neuf titres dans la deuxième sélection, une autrice repêchée"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "meilleur-livre-etranger-second-selection-20261001"
+  },
+  {
+    "id": "eleuthera-forty-years-milan-event-20261001",
+    "category": "anniversaries",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-09-30T23:41:30.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Издательство Elèuthera анонсировало 40-летие с литературной встречей в Милане",
+      "en": "Elèuthera announces a Milan event for its 40th anniversary"
+    },
+    "summary": {
+      "ru": "Итальянское издательство Elèuthera отмечает 40 лет работы и приглашает на встречу 3 октября с 15:00 до 22:00 в миланском пространстве Scomodo на via Jean Jaurès, 22. Il Libraio сообщает о чтениях, дискуссиях и музыке. К мероприятию подготовлены две выставки издательства и архива G. Pinelli.",
+      "en": "Italian publisher Elèuthera is marking 40 years with an event on October 3, from 15:00 to 22:00, at Scomodo, via Jean Jaurès 22, Milan. Il Libraio reports a programme of readings, discussions and music. Two exhibitions by the publisher and the G. Pinelli archive are also planned for the occasion."
+    },
+    "source": {
+      "name": "Il Libraio",
+      "url": "https://www.illibraio.it/news/editoria/casa-editrice-eleuthera-1508736/",
+      "language": "it",
+      "title": "Verso l’isola dell’utopia (che ancora non c’è): i 40 anni della casa editrice elèuthera"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "eleuthera-forty-years-milan-event-20261001"
+  },
+  {
+    "id": "hazelwood-two-body-problem-sequel-report-20260930",
+    "category": "adaptations",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30T07:25:11.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Али Хейзелвуд анонсировала сиквел The Love Hypothesis с датой выхода в 2027 году",
+      "en": "Ali Hazelwood announces a 2027 sequel to The Love Hypothesis"
+    },
+    "summary": {
+      "ru": "По сообщению Il Libraio, Али Хейзелвуд объявила о выходе The two-body problem в США 2 февраля 2027 года. Продолжение The Love Hypothesis проследит жизнь героев после докторантуры. MRC разрабатывает экранизацию для Amazon MGM Studios. Материал от 30 сентября также сообщает, что фильм по первому роману появился на Prime Video 23 сентября.",
+      "en": "Il Libraio reports Ali Hazelwood’s announcement of The two-body problem, due in the US on February 2, 2027. The sequel to The Love Hypothesis will follow its protagonists after their doctorates, and MRC is developing an adaptation for Amazon MGM Studios. The September 30 article also reports that the first novel’s film arrived on Prime Video on September 23."
+    },
+    "source": {
+      "name": "Il Libraio",
+      "url": "https://www.illibraio.it/news/cinema/the-love-hypothesis-film-1507743/",
+      "language": "it",
+      "title": "\"The love hypothesis\", su Prime Video il film tratto dal romance di Ali Hazelwood"
+    },
+    "verification": "confirmed",
+    "region": "global",
+    "eventKey": "hazelwood-two-body-problem-sequel-report-20260930"
+  },
+  {
+    "id": "tiemen-hiemstra-w-italian-interview-20261001",
+    "category": "releases",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-10-01T01:43:26.000Z",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Тимен Химстра рассказал Il Libraio о романе W. и исчезновении его героя",
+      "en": "Tiemen Hiemstra discusses W. and its missing protagonist with Il Libraio"
+    },
+    "summary": {
+      "ru": "Il Libraio опубликовал интервью с нидерландским писателем Тименом Химстрой о дебютном романе W. Итальянское издание выпустило Adelphi в переводе Дафне Парис. Автор обсуждает дружбу, отсутствие и роль мемов: основное действие занимает 13 дней, а воспоминания Олафа возвращают читателя к исчезнувшему другу и отношениям внутри их компании.",
+      "en": "Il Libraio publishes an interview with Dutch writer Tiemen Hiemstra about his debut novel W. Adelphi publishes the Italian edition in Dafne Paris’s translation. Hiemstra discusses friendship, absence and memes: the main action spans 13 days, while Olaf’s memories return to his missing friend and the relationships within their circle."
+    },
+    "source": {
+      "name": "Il Libraio",
+      "url": "https://www.illibraio.it/news/dautore/w-tiemen-hiemstra-1507735/",
+      "language": "it",
+      "title": "Tra perdita, meme e filosofia: \"W.\" di Tiemen Hiemstra, un libro surreale \"per fare i conti con l'assenza\""
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "tiemen-hiemstra-w-italian-interview-20261001"
+  },
+  {
+    "id": "moscow-writers-bookshop-reopened-20260929",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-09-29",
+    "publishedAt": "2026-09-30",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "«Книжная лавка писателей» вновь открылась на Кузнецком Мосту",
+      "en": "Moscow’s Writers’ Bookshop reopens on Kuznetsky Most"
+    },
+    "summary": {
+      "ru": "29 сентября в Москве открылась «Книжная лавка писателей» по адресу Кузнецкий Мост, 18/7. «Год литературы» сообщает, что площадка вернулась Союзу писателей России и работает в сети «Достоевский». Помимо продажи книг, здесь предусмотрены кафе, поэтические чтения, лекции и авторские презентации.",
+      "en": "Moscow’s Writers’ Bookshop reopened on September 29 at Kuznetsky Most 18/7. God Literatury reports that the venue has returned to the Russian Writers’ Union and operates within the Dostoevsky bookshop network. Alongside bookselling, it provides for a café, poetry readings, lectures and author presentations."
+    },
+    "source": {
+      "name": "Год литературы",
+      "url": "https://godliteratury.ru/articles/2026/09/30/knizhnaia-lavka-pisatelej-vernulas-na-kuzneckij-most",
+      "language": "ru",
+      "title": "«Книжная лавка писателей» вернулась на Кузнецкий мост - Год Литературы"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "moscow-writers-bookshop-reopened-20260929"
+  },
+  {
+    "id": "staraya-russa-literary-kiosk-five-years-20261001",
+    "category": "anniversaries",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-10-01",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "Литературный киоск Старой Руссы отметил пять лет работы",
+      "en": "Staraya Russa’s literary kiosk marks five years of book sharing"
+    },
+    "summary": {
+      "ru": "Литературному киоску в Старой Руссе исполнилось пять лет. В репортаже «Года литературы» описана встреча читателей и дарителей книг на Воскресенской улице. Проект «Российской газеты» и газеты «Старая Русса» поддерживают волонтёры городской библиотеки: они проводят лекции и акции, а жители передают книги для свободного обмена.",
+      "en": "Staraya Russa’s literary kiosk has marked five years of operation. God Literatury reports a gathering of readers and book donors at the Voskresenskaya Street exchange point. The project by Rossiyskaya Gazeta and the Staraya Russa newspaper is supported by city-library volunteers, who organise lectures and reading activities while residents donate books for exchange."
+    },
+    "source": {
+      "name": "Год литературы",
+      "url": "https://godliteratury.ru/articles/2026/10/01/literaturnyj-kiosk-staroj-russy-otmetil-svoj-pervyj-iubilej",
+      "language": "ru",
+      "title": "Литературный киоск Старой Руссы отметил свой первый юбилей - Год Литературы"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "staraya-russa-literary-kiosk-five-years-20261001"
+  },
+  {
+    "id": "ast-sergey-aksakov-birth-anniversary-feature-20261001",
+    "category": "anniversaries",
+    "kind": "news",
+    "eventDate": "2026-10-01",
+    "publishedAt": "2026-10-01",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "АСТ опубликовало материал о Сергее Аксакове к его дню рождения",
+      "en": "AST publishes a Sergey Aksakov feature for his birth anniversary"
+    },
+    "summary": {
+      "ru": "1 октября АСТ выпустило материал о Сергее Аксакове - писателе, театральном критике и цензоре. Издательство рассказывает о его оценке актёрского искусства Михаила Щепкина и Павла Мочалова, а также о книгах о рыбалке и охоте. Материал прослеживает путь от очерка «Буран» 1833 года к мемуарной прозе, включая «Детские годы Багрова-внука».",
+      "en": "On October 1, AST published a birth-anniversary feature on Sergey Aksakov as writer, theatre critic and censor. The publisher discusses his appreciation of actors Mikhail Shchepkin and Pavel Mochalov and his writing about fishing and hunting. The feature traces his career from the 1833 sketch Buran to memoir prose, including Childhood Years of Bagrov’s Grandson."
+    },
+    "source": {
+      "name": "АСТ",
+      "url": "https://ast.ru/news/sergey-aksakov-pisatel-kritik-i-tsenzor/",
+      "language": "ru-RU",
+      "title": "Сергей Аксаков: книги, работа цензором, отношения с русскими классиками"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "ast-sergey-aksakov-birth-anniversary-feature-20261001"
+  },
+  {
+    "id": "tsarskoye-selo-four-rare-books-return-20260930",
+    "category": "heritage",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "В «Царское Село» вернулись четыре книги императорской библиотеки",
+      "en": "Four imperial-library books return to Tsarskoye Selo"
+    },
+    "summary": {
+      "ru": "Музей-заповедник «Царское Село» получил четыре книги XVIII-XIX веков, утраченные при распродажах 1930-х годов. Как сообщает «Год литературы», коллекционер Сергей Мосунов приобрёл их на международных аукционах и передал музею. Один том происходит из библиотеки Павла I, три - из комнат Александра I и Елизаветы Алексеевны; книги покажут в дворцовых экспозициях.",
+      "en": "Tsarskoye Selo museum has received four eighteenth- and nineteenth-century books lost during the 1930s sales. God Literatury reports that collector Sergey Mosunov bought them at international auctions and donated them. One volume comes from Paul I’s library; three are from Alexander I and Elizabeth Alexeievna’s rooms. The books will be displayed in the palace exhibitions."
+    },
+    "source": {
+      "name": "Год литературы",
+      "url": "https://godliteratury.ru/articles/2026/09/30/v-carskoe-selo-vernulis-utrachennye-v-1930-h-godah-knigi",
+      "language": "ru",
+      "title": "В «Царское Село» вернулись утраченные в 1930-х годах книги - Год Литературы"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "tsarskoye-selo-four-rare-books-return-20260930"
+  },
+  {
+    "id": "lope-de-vega-gatomachia-russian-translation-excerpt-20260930",
+    "category": "releases",
+    "kind": "news",
+    "eventDate": "2026-09-30",
+    "publishedAt": "2026-09-30",
+    "verifiedAt": "2026-10-01T21:26:03.554Z",
+    "title": {
+      "ru": "«Год литературы» представил полный русский перевод «Котомахии» Лопе де Веги",
+      "en": "God Literatury presents a complete Russian translation of Lope de Vega’s comic poem"
+    },
+    "summary": {
+      "ru": "Ко Дню переводчика «Год литературы» опубликовал фрагмент «Котомахии» Лопе де Веги в полном стихотворном переводе Александра Триандафилиди. Издание БСГ-Пресс 2026 года объёмом 226 страниц двуязычное; перевод сохраняет строфику испанской поэмы. Материал знакомит с новой русской версией пародийной «Илиады» о войне котов, впервые изданной автором в 1634 году.",
+      "en": "For International Translation Day, God Literatury publishes an excerpt of Lope de Vega’s comic war of cats in Alexander Triandafilidi’s complete Russian verse translation. The bilingual BSG-Press 2026 edition has 226 pages and preserves the Spanish poem’s verse forms. The article introduces the new Russian version of a poem that Lope originally published in 1634."
+    },
+    "source": {
+      "name": "Год литературы",
+      "url": "https://godliteratury.ru/articles/2026/09/30/koshachia-iliada-lope-de-vegi-vpervye-po-russki",
+      "language": "ru",
+      "title": "\"Кошачья Илиада\" Лопе де Веги - впервые по-русски - Год Литературы"
+    },
+    "verification": "confirmed",
+    "region": "europe",
+    "eventKey": "lope-de-vega-gatomachia-russian-translation-excerpt-20260930"
   }
 ]

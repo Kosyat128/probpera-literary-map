@@ -1,0 +1,421 @@
+{
+  "sourceId": "nordica-libros",
+  "name": "Nórdica Libros",
+  "entryUrl": "https://www.nordicalibros.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:09.667Z",
+  "requests": [
+    {
+      "url": "https://nordicalibros.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 210866,
+      "sha256": "310907379b8d03ca48b76659283819689d16a7e893bf0eba17254bca58369210",
+      "accessedAt": "2026-10-01T20:48:14.157Z"
+    },
+    {
+      "url": "https://nordicalibros.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml",
+      "bytes": 7976,
+      "sha256": "1898cf42f7e58e7ca7ee018f41cff4ec04dacb42a3a206198bd224d91e66fa12",
+      "accessedAt": "2026-10-01T20:48:15.465Z"
+    },
+    {
+      "url": "https://nordicalibros.com/nuestros-mejores-libros-de-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 157763,
+      "sha256": "deb635bdab9ed5046fbc817ea8490e2453b38db9220ebd3f7945834ee3cc8b7a",
+      "accessedAt": "2026-10-01T20:48:15.681Z"
+    },
+    {
+      "url": "https://nordicalibros.com/feria-del-libro-de-madrid-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 159510,
+      "sha256": "eae4e8629e5e9e1e0b18863810bc1260ce0bf68fb537ebe03616e9090fce5700",
+      "accessedAt": "2026-10-01T20:48:17.398Z"
+    },
+    {
+      "url": "https://nordicalibros.com/petroleo-nuestro-libro-del-ano/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 158933,
+      "sha256": "254e07e73321482c1bd4c3c35691c67d3116e4e073d090a6e0dcbc4e71788c33",
+      "accessedAt": "2026-10-01T20:48:18.935Z"
+    },
+    {
+      "url": "https://nordicalibros.com/libros-para-el-verano/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 160151,
+      "sha256": "20a92e061d675ab9a2f6d0c6505463b63c9e1c0a2f676e6f9a20ff3dec4f44f8",
+      "accessedAt": "2026-10-01T20:48:20.450Z"
+    },
+    {
+      "url": "https://nordicalibros.com/las-tres-recomendaciones-para-la-feria-del-libro-de-madrid/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 160327,
+      "sha256": "12c2c2c0936a6a05c437ee035373c9811511a1a45c4539d017044d15c75e14d3",
+      "accessedAt": "2026-10-01T20:48:22.027Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://nordicalibros.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 523,
+    "sha256": "1e4a4aaccc359a71fa970fda2381fe2c67f66807e400295362de70cf57f9510e",
+    "accessedAt": "2026-10-01T20:48:12.794Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/",
+      "/wp-content/uploads/wpo/wpo-plugins-tables-list.json"
+    ]
+  },
+  "endpoint": {
+    "id": "nordica-libros",
+    "name": "Nórdica Libros",
+    "url": "https://nordicalibros.com/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "nordica-libros",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://nordicalibros.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://nordicalibros.com/las-tres-recomendaciones-para-la-feria-del-libro-de-madrid/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:22.035Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "nordica-libros",
+    "source": {
+      "name": "Nórdica Libros",
+      "url": "https://nordicalibros.com/las-tres-recomendaciones-para-la-feria-del-libro-de-madrid/",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Las tres recomendaciones para la Feria del Libro de Madrid",
+    "publishedAt": "2024-06-03T09:36:29.000Z",
+    "description": "Novelas de Gloria Naylor, Helga Flatland y Bergsveinn Birgisson La entrada Las tres recomendaciones para la Feria del Libro de Madrid se publicó primero en Nórdica Libros.",
+    "discoveredAt": "2026-10-01T20:48:15.465Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://nordicalibros.com/las-tres-recomendaciones-para-la-feria-del-libro-de-madrid/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 160327,
+      "sha256": "12c2c2c0936a6a05c437ee035373c9811511a1a45c4539d017044d15c75e14d3",
+      "accessedAt": "2026-10-01T20:48:22.027Z",
+      "headline": "Las tres recomendaciones para la Feria del Libro de Madrid - Nórdica Libros",
+      "excerpt": "Novelas de Gloria Naylor, Helga Flatland y Bergsveinn Birgisson",
+      "publishedDates": [
+        {
+          "value": "2024-06-03T09:36:29+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2024-06-03T09:36:29+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2024-06-03T09:36:29+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://nordicalibros.com/las-tres-recomendaciones-para-la-feria-del-libro-de-madrid/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:22.035Z",
+  "foundItems": [
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/nuestros-mejores-libros-de-2025/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nuestros mejores libros de 2025",
+      "publishedAt": "2025-12-30T18:25:08.000Z",
+      "description": "La entrada Nuestros mejores libros de 2025 se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/feria-del-libro-de-madrid-2025/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Feria del libro de Madrid 2025",
+      "publishedAt": "2025-05-29T17:27:10.000Z",
+      "description": "La entrada Feria del libro de Madrid 2025 se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/petroleo-nuestro-libro-del-ano/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Petróleo, nuestro libro del año",
+      "publishedAt": "2025-10-10T08:35:40.000Z",
+      "description": "La entrada Petróleo, nuestro libro del año se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/libros-para-el-verano/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Libros para el verano",
+      "publishedAt": "2024-07-07T16:34:34.000Z",
+      "description": "La entrada Libros para el verano se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/las-tres-recomendaciones-para-la-feria-del-libro-de-madrid/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Las tres recomendaciones para la Feria del Libro de Madrid",
+      "publishedAt": "2024-06-03T09:36:29.000Z",
+      "description": "Novelas de Gloria Naylor, Helga Flatland y Bergsveinn Birgisson La entrada Las tres recomendaciones para la Feria del Libro de Madrid se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/nuestras-firmas-en-la-feria-del-libro-de-madrid-2024/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nuestras firmas en la Feria del Libro de Madrid 2024",
+      "publishedAt": "2024-06-03T09:33:25.000Z",
+      "description": "Os esperamos en la caseta 350. La entrada Nuestras firmas en la Feria del Libro de Madrid 2024 se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/nuestros-libros-para-el-verano/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nuestros libros para el verano",
+      "publishedAt": "2023-07-10T08:15:04.000Z",
+      "description": "La entrada Nuestros libros para el verano se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/nuestros-recomendados-para-la-feria-del-libro-de-madrid/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nuestros recomendados para la Feria del Libro de Madrid",
+      "publishedAt": "2023-06-05T06:49:15.000Z",
+      "description": "Hemos seleccionado tres libros que nos parecen buena ideas para la Feria del Libro de Madrid La entrada Nuestros recomendados para la Feria del Libro de Madrid se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/loterialiteraria22/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lotería Literaria 2022 - #NórdicaElNiño",
+      "publishedAt": "2022-01-03T09:08:50.000Z",
+      "description": "¡Participa en la Lotería Literaria de Nórdica Libros 2022! La entrada Lotería Literaria 2022 \u2013 #NórdicaElNiño se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "source": {
+        "name": "Nórdica Libros",
+        "url": "https://nordicalibros.com/la-poesia-de-ursula-k-le-guin/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La poesía de Ursula K. Le Guin",
+      "publishedAt": "2023-08-07T10:21:25.000Z",
+      "description": "La entrada La poesía de Ursula K. Le Guin se publicó primero en Nórdica Libros.",
+      "discoveredAt": "2026-10-01T20:48:15.465Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "1898cf42f7e58e7ca7ee018f41cff4ec04dacb42a3a206198bd224d91e66fa12"
+}

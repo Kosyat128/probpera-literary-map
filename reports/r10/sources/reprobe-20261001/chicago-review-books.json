@@ -1,0 +1,388 @@
+{
+  "sourceId": "chicago-review-books",
+  "name": "Chicago Review of Books",
+  "entryUrl": "https://chireviewofbooks.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:56:23.867Z",
+  "requests": [
+    {
+      "url": "https://chireviewofbooks.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 178422,
+      "sha256": "aa7bbb19a3ba1c65c7d0defc6d3befbfb875211c21813cdf31e3520474f2f343",
+      "accessedAt": "2026-10-01T20:56:24.536Z"
+    },
+    {
+      "url": "https://chireviewofbooks.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 195192,
+      "sha256": "a9ba8e1993e33d595f707abc40af7aaf14fe5091dfef7155a883b9cb6d5f1d1f",
+      "accessedAt": "2026-10-01T20:56:26.255Z"
+    },
+    {
+      "url": "https://chireviewofbooks.com/2026/10/01/announcing-the-2026-chicago-review-of-books-awards-shortlist/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 247875,
+      "sha256": "dd2453065b702e568f7123fac75b838cb637f2167ada8e010f349ef1371e5387",
+      "accessedAt": "2026-10-01T20:56:27.996Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://chireviewofbooks.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 553,
+    "sha256": "84139846d54cc98be82601a57598df203bb7ebc6bef1a04676a4cff8c0726654",
+    "accessedAt": "2026-10-01T20:56:24.195Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "chicago-review-books",
+    "name": "Chicago Review of Books",
+    "url": "https://chireviewofbooks.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "chicago-review-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://chireviewofbooks.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://chireviewofbooks.com/2026/10/01/announcing-the-2026-chicago-review-of-books-awards-shortlist/"
+    ],
+    "verifiedAt": "2026-10-01T20:56:28.009Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "chicago-review-books",
+    "source": {
+      "name": "Chicago Review of Books",
+      "url": "https://chireviewofbooks.com/2026/10/01/announcing-the-2026-chicago-review-of-books-awards-shortlist/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Announcing the 2026 Chicago Review of Books Awards Shortlist",
+    "publishedAt": "2026-10-01T14:50:00.000Z",
+    "description": "The Chicago Review of Books is proud to announce the shortlist for the 2026 Chicago Review of Books (CHIRBy) Awards! Since 2016, the CHIRBy Awards have honored the best fiction, nonfiction, poetry, and short essay and stories that feature Chicago and our strong literary community\u2014with past winners including authors such as Eve L. Ewing, Ling… The post Announcing the 2026 Chicago Review of Books A…",
+    "discoveredAt": "2026-10-01T20:56:26.258Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://chireviewofbooks.com/2026/10/01/announcing-the-2026-chicago-review-of-books-awards-shortlist/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 247875,
+      "sha256": "dd2453065b702e568f7123fac75b838cb637f2167ada8e010f349ef1371e5387",
+      "accessedAt": "2026-10-01T20:56:27.996Z",
+      "headline": "Announcing the 2026 Chicago Review of Books Awards Shortlist - Chicago Review of Books",
+      "excerpt": "All Things Chicago, Features, News by Editorial Staff October 1, 2026 The Chicago Review of Books is proud to announce the shortlist for the 2026 Chicago Review of Books (CHIRBy) Awards! Since 2016, the CHIRBy Awards have honored the best fiction, nonfiction, poetry, and short essay and stories that feature Chicago and our strong literary community\u2014with past winners including authors such as Eve L",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T14:50:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-10-01T14:50:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T14:50:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://chireviewofbooks.com/2026/10/01/announcing-the-2026-chicago-review-of-books-awards-shortlist/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:56:28.009Z",
+  "foundItems": [
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/10/01/announcing-the-2026-chicago-review-of-books-awards-shortlist/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the 2026 Chicago Review of Books Awards Shortlist",
+      "publishedAt": "2026-10-01T14:50:00.000Z",
+      "description": "The Chicago Review of Books is proud to announce the shortlist for the 2026 Chicago Review of Books (CHIRBy) Awards! Since 2016, the CHIRBy Awards have honored the best fiction, nonfiction, poetry, and short essay and stories that feature Chicago and our strong literary community\u2014with past winners including authors such as Eve L. Ewing, Ling… The post Announcing the 2026 Chicago Review of Books A…",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/10/01/12-must-read-books-of-october-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "12 Must-Read Books of October 2026",
+      "publishedAt": "2026-10-01T10:00:00.000Z",
+      "description": "It’s officially spooky season, which can only mean one thing: It’s time to find your next pulse-pounding book! Thankfully, October is packed with every genre, theme, and idea under the sun. From award finalists and haunting familial explorations to insightful poetry and essay collection, there’s something for everyone this month. No matter what makes your… The post 12 Must-Read Books of October 2…",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/09/30/ply-hernan-diaz/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Novel of Ideas: Ply by Hernan Diaz",
+      "publishedAt": "2026-10-01T00:22:56.000Z",
+      "description": "Our review of Hernan Diaz’s new book, \"Ply.\" The post The Novel of Ideas: Ply by Hernan Diaz appeared first on Chicago Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/09/22/book-stuff-sci-fi-writer-naomi-kritzer-on-a-future-without-obs/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Stuff: Sci-fi writer Naomi Kritzer on a future without OBs",
+      "publishedAt": "2026-09-22T10:00:00.000Z",
+      "description": "Minnesota-based and Hugo award-winning writer Naomi Kritzer started thinking about her latest book, Obstetrix, when Roe v. Wade was overturned in 2022. “What would states do if they lost all their obstetricians?” she asks on the latest episode of Book Stuff. What if states created laws around pregnancy and healthcare, especially medically needed abortions, that… The post Book Stuff: Sci-fi writer…",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/09/29/horror-tales-from-deep-inside-something-followed-us-home-tales-of-latine-horror/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Horror Tales From Deep Inside: “Something Followed Us Home: Tales of Latiné Horror”",
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "description": "With her new horror anthology, Something Followed Us Home: Tales of Latiné Horror, Chicago based editor/author Cynthia Pelayo expects to broaden the horizon for her prolific work in a debut edition from the relatively new but internationally well-connected Simon & Schuster imprint, Primero Sueño. It is a splendid collection of seventeen stories that will expand… The post Horror Tales From Deep In…",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/09/29/the-cost-of-a-better-future-on-min-jin-lees-american-hagwon/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Cost of a Better Future: On Min Jin Lee’s “American Hagwon”",
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "description": "Education is supposed to be a path toward a better life. But what happens when the path becomes so competitive, expensive, and unforgiving that the pursuit of that better life begins to consume the life itself? In American Hagwon, Min Jin Lee uses the world of private education to explore that question over fifteen years,… The post The Cost of a Better Future: On Min Jin Lee’s “American Hagwon” a…",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/09/28/matthew-prigge-dogs-day/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Bank Robbery That Dramatized Gay Liberation: An Interview with Matthew Prigge on “Dog’s Day”",
+      "publishedAt": "2026-09-28T10:00:00.000Z",
+      "description": "Matthew Prigge is an author and librarian at Marquette University in Milwaukee, Wisconsin. He has written several books, including Outlaws, Rebels, & Vixens, which was made into a feature-length documentary about film censorship. His newest book, Dog’s Day, is an examination of the story of John Wojtowicz, the bank robber who inspired Sidney Lumet’s hit… The post The Bank Robbery That Dramatized …",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/09/25/the-lives-of-others-flowers-and-insects-some-birds-and-a-pair-of-spiders/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Lives of Others: “Flowers and Insects, Some Birds and a Pair of Spiders”",
+      "publishedAt": "2026-09-25T10:00:00.000Z",
+      "description": "Our review of Ted Hughes' newly reissued poetry collection, \"Flowers and Insects, Some Birds and a Pair of Spiders\" The post The Lives of Others: “Flowers and Insects, Some Birds and a Pair of Spiders” appeared first on Chicago Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/09/24/cloud-six/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Philosophical Hall of Mirrors in “Cloud Six”",
+      "publishedAt": "2026-09-24T10:00:00.000Z",
+      "description": "Our review of Amy Fusselman's new novel, \"Cloud Six.\" The post A Philosophical Hall of Mirrors in “Cloud Six” appeared first on Chicago Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-review-books",
+      "source": {
+        "name": "Chicago Review of Books",
+        "url": "https://chireviewofbooks.com/2026/09/23/in-a-contribution-to-the-history-of-joy-the-birds-keep-the-score/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In “A Contribution to the History of Joy” the Birds Keep the Score",
+      "publishedAt": "2026-09-23T10:00:00.000Z",
+      "description": "In 1999, upon receiving the Open Society Prize, then-Czech Republic President Václav Havel gave a speech entitled The Last Laugh. “The only thing I can recommend at this stage is a sense of humor,” he said. “An ability to see things in their ridiculous and absurd dimensions, to laugh at others and at ourselves, a… The post In “A Contribution to the History of Joy” the Birds Keep the Score appeare…",
+      "discoveredAt": "2026-10-01T20:56:26.258Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a9ba8e1993e33d595f707abc40af7aaf14fe5091dfef7155a883b9cb6d5f1d1f"
+}

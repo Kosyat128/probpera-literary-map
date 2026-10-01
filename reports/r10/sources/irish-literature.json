@@ -1,0 +1,206 @@
+{
+  "sourceId": "irish-literature",
+  "name": "Literature Ireland",
+  "entryUrl": "https://www.literatureireland.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:03.737Z",
+  "requests": [
+    {
+      "url": "https://www.literatureireland.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 48259,
+      "sha256": "d1456f05b9458536d5990640983cf72147627ca7d0ac40f18f4d08c65f3fdff5",
+      "accessedAt": "2026-10-01T20:52:04.522Z"
+    },
+    {
+      "url": "https://www.literatureireland.com/latest/ireland-at-the-frankfurt-book-fair-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 41196,
+      "sha256": "fbfb1b2d28d41cb81fca11dd478a8e8500a233b3cc637ee5b428518944bbb74f",
+      "accessedAt": "2026-10-01T20:52:04.864Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.literatureireland.com/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "irish-literature",
+    "name": "Literature Ireland",
+    "url": "https://www.literatureireland.com/",
+    "format": "html",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "irish-literature",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.literatureireland.com"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/latest\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.literatureireland.com/latest/ireland-at-the-frankfurt-book-fair-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:52:04.870Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 4,
+  "literaryCandidateCount": 4,
+  "sample": {
+    "sourceId": "irish-literature",
+    "source": {
+      "name": "Literature Ireland",
+      "url": "https://www.literatureireland.com/latest/ireland-at-the-frankfurt-book-fair-2026/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Ireland at the Frankfurt Book Fair 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:52:04.551Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.literatureireland.com/latest/ireland-at-the-frankfurt-book-fair-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 41196,
+      "sha256": "fbfb1b2d28d41cb81fca11dd478a8e8500a233b3cc637ee5b428518944bbb74f",
+      "accessedAt": "2026-10-01T20:52:04.864Z",
+      "headline": "Literature Ireland | Ireland at the Frankfurt Book Fair 2026",
+      "excerpt": "Literature Ireland | Ireland at the Frankfurt Book Fair 2026 Home ›Latest ›Ireland at the Frankfurt Book Fair 2026 Ireland at the Frankfurt Book Fair 2026 In 2026, Irish publishing will once again be represented at the Frankfurt Book Fair, from 7-11 October. The stand will be located on the first floor in Hall 5.1 C49/C50.Stand exhibitors will include: Cló Iar-Chonnacht Micheál Ó Conghaile, CIC In",
+      "publishedDates": [],
+      "canonical": "https://www.literatureireland.com/latest/ireland-at-the-frankfurt-book-fair-2026/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:04.870Z",
+  "foundItems": [
+    {
+      "sourceId": "irish-literature",
+      "source": {
+        "name": "Literature Ireland",
+        "url": "https://www.literatureireland.com/latest/ireland-at-the-frankfurt-book-fair-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ireland at the Frankfurt Book Fair 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:52:04.551Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irish-literature",
+      "source": {
+        "name": "Literature Ireland",
+        "url": "https://www.literatureireland.com/latest/call-for-applications/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Call for Applications: Literary Translation Residency in Dublin - Dutch...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:52:04.551Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irish-literature",
+      "source": {
+        "name": "Literature Ireland",
+        "url": "https://www.literatureireland.com/latest/event-translating-a-nation-reaching-readers/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Event: Translating a Nation - Reaching Readers",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:52:04.551Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irish-literature",
+      "source": {
+        "name": "Literature Ireland",
+        "url": "https://www.literatureireland.com/latest/suil-amach-an-outward-eye/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Súil Amach | An Outward Eye",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:52:04.551Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "d1456f05b9458536d5990640983cf72147627ca7d0ac40f18f4d08c65f3fdff5"
+}

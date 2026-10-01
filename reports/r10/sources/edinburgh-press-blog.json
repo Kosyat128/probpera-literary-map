@@ -1,0 +1,103 @@
+{
+  "sourceId": "edinburgh-press-blog",
+  "name": "Edinburgh University Press",
+  "entryUrl": "https://euppublishingblog.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:40.095Z",
+  "requests": [
+    {
+      "url": "https://euppublishingblog.com/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 193866,
+      "sha256": "3bfc712ce2ac236871a284f37738c2039f8c3a141e47d299364fb615da294009",
+      "accessedAt": "2026-10-01T20:51:40.864Z"
+    },
+    {
+      "url": "https://euppublishingblog.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 194424,
+      "sha256": "3f98ea0e27a92540a7b3a830b234118af7b57aed707db147bf74ee6c09727a85",
+      "accessedAt": "2026-10-01T20:51:42.683Z"
+    },
+    {
+      "url": "https://euppublishingblog.com/2026/08/07/6-things-about-irish-literature-and-periodical-culture/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 204700,
+      "sha256": "e5208266ddb8dbde505a4a32b53aa42dda35929a5c5995d540cf2620e0160f36",
+      "accessedAt": "2026-10-01T20:51:42.803Z"
+    },
+    {
+      "url": "https://euppublishingblog.com/2026/10/01/al-mashhad-al-juyushi-the-story-behind-one-of-cairos-most-remarkable-fatimid-monuments/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 194044,
+      "sha256": "a725604a297b0024494b9f4fbf8f1b66df725da8297cb61cac8e0dfd0ef9f89d",
+      "accessedAt": "2026-10-01T20:51:42.933Z"
+    },
+    {
+      "url": "https://euppublishingblog.com/2026/09/25/richard-demarco-overwhelmed-by-memories/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 199549,
+      "sha256": "a0de984027e0b48900807caeb6d5f95e83e7f589c4ed3e47bd2b9add4aab43a4",
+      "accessedAt": "2026-10-01T20:51:43.058Z"
+    },
+    {
+      "url": "https://euppublishingblog.com/2026/09/22/hopetoun-house/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 188696,
+      "sha256": "d6d993a5eacf5ad3437fb6ad0a5073682c3b2840f27a3eab340d7dfff29e636a",
+      "accessedAt": "2026-10-01T20:51:43.172Z"
+    },
+    {
+      "url": "https://euppublishingblog.com/2026/09/15/photographing-peace-around-the-world/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 261766,
+      "sha256": "a52d5f5f841f98f3f05ecb7c89475ce53115ed08581cfead09bc91062382fb76",
+      "accessedAt": "2026-10-01T20:51:43.297Z"
+    },
+    {
+      "url": "https://euppublishingblog.com/2026/09/09/8-tips-on-turning-your-workshop-into-a-special-issue/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 201640,
+      "sha256": "eefdd047300a5d452b3413ae47063c6a498de56cf9f49c74b1e137ce5dc92977",
+      "accessedAt": "2026-10-01T20:51:43.431Z"
+    },
+    {
+      "url": "https://euppublishingblog.com/2026/09/04/lawless-glasgow-urban-declinism-and-the-radical-right-in-scotland/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 194546,
+      "sha256": "9d9d0e1569b8e7801a630d510db069d008dcf81ed9d08dee7a321c10531884e5",
+      "accessedAt": "2026-10-01T20:51:43.547Z"
+    },
+    {
+      "url": "https://euppublishingblog.com/2026/09/03/afghanistan-a-neglected-reality-fall-of-kabul/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 200006,
+      "sha256": "a044a6bf73280144e664798eac09bb235942f9402474764f87d8aea140777a65",
+      "accessedAt": "2026-10-01T20:51:43.662Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://euppublishingblog.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 224,
+    "sha256": "39fc7678debf69e818ee94be41b59bdb08789dd76cc0a0866d6e7abf7ad6db41",
+    "accessedAt": "2026-10-01T20:51:40.682Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

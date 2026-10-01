@@ -1,0 +1,234 @@
+{
+  "checkedAt": "2026-10-01T21:12:52.218Z",
+  "method": "Production DNS-pinned transport with an explicit truthful source identification User-Agent. No challenge bypass or security relaxation.",
+  "results": [
+    {
+      "sourceId": "archipelago-books",
+      "state": {
+        "id": "archipelago-books",
+        "name": "Archipelago Books",
+        "url": "https://archipelagobooks.org/feed/",
+        "format": "rss",
+        "language": "en-US",
+        "region": "global",
+        "topics": [
+          "publishing",
+          "releases",
+          "awards",
+          "festivals"
+        ],
+        "sourceFamilyId": "archipelago-books",
+        "countryCodes": [
+          "US"
+        ],
+        "coverageCountryCodes": [],
+        "status": "ok",
+        "lastSuccessAt": "2026-10-01T21:12:50.885Z",
+        "candidateCount": 10
+      },
+      "finds": 10,
+      "calls": [
+        {
+          "url": "https://archipelagobooks.org/feed/",
+          "status": 200,
+          "startedAt": "2026-10-01T21:12:50.559Z"
+        }
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "state": {
+        "id": "libros-asteroide",
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/",
+        "format": "html",
+        "language": "es",
+        "region": "global",
+        "topics": [
+          "publishing",
+          "releases",
+          "awards",
+          "festivals"
+        ],
+        "sourceFamilyId": "libros-asteroide",
+        "countryCodes": [
+          "ES"
+        ],
+        "coverageCountryCodes": [],
+        "status": "ok",
+        "lastSuccessAt": "2026-10-01T21:12:51.251Z",
+        "candidateCount": 11
+      },
+      "finds": 11,
+      "calls": [
+        {
+          "url": "https://librosdelasteroide.com/",
+          "status": 200,
+          "startedAt": "2026-10-01T21:12:50.569Z"
+        }
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "state": {
+        "id": "nottetempo",
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/",
+        "format": "html",
+        "language": "it",
+        "region": "global",
+        "topics": [
+          "publishing",
+          "releases",
+          "awards",
+          "festivals"
+        ],
+        "sourceFamilyId": "nottetempo",
+        "countryCodes": [],
+        "coverageCountryCodes": [],
+        "status": "ok",
+        "lastSuccessAt": "2026-10-01T21:12:51.863Z",
+        "candidateCount": 3
+      },
+      "finds": 3,
+      "calls": [
+        {
+          "url": "https://www.edizioninottetempo.it/",
+          "status": 200,
+          "startedAt": "2026-10-01T21:12:50.569Z"
+        }
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "state": {
+        "id": "spinifex-press",
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/",
+        "format": "html",
+        "language": "en-GB",
+        "region": "global",
+        "topics": [
+          "publishing",
+          "releases",
+          "awards",
+          "festivals"
+        ],
+        "sourceFamilyId": "spinifex-press",
+        "countryCodes": [],
+        "coverageCountryCodes": [],
+        "status": "ok",
+        "lastSuccessAt": "2026-10-01T21:12:51.425Z",
+        "candidateCount": 3
+      },
+      "finds": 3,
+      "calls": [
+        {
+          "url": "https://www.spinifexpress.com.au/",
+          "status": 200,
+          "startedAt": "2026-10-01T21:12:50.570Z"
+        }
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "state": {
+        "id": "adarna",
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/",
+        "format": "html",
+        "language": "en",
+        "region": "global",
+        "topics": [
+          "publishing",
+          "releases",
+          "awards",
+          "festivals"
+        ],
+        "sourceFamilyId": "adarna",
+        "countryCodes": [
+          "PH"
+        ],
+        "coverageCountryCodes": [],
+        "status": "ok",
+        "lastSuccessAt": "2026-10-01T21:12:51.451Z",
+        "candidateCount": 12
+      },
+      "finds": 12,
+      "calls": [
+        {
+          "url": "https://adarna.com.ph/",
+          "status": 200,
+          "startedAt": "2026-10-01T21:12:50.902Z"
+        }
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "state": {
+        "id": "liternet-bulgaria",
+        "name": "LiterNet",
+        "url": "https://liternet.bg/publisher/rss",
+        "format": "rss",
+        "language": "bg",
+        "region": "global",
+        "topics": [
+          "publishing",
+          "releases",
+          "awards",
+          "festivals"
+        ],
+        "sourceFamilyId": "liternet-bulgaria",
+        "countryCodes": [
+          "BG"
+        ],
+        "coverageCountryCodes": [],
+        "status": "error",
+        "lastSuccessAt": null,
+        "candidateCount": 0,
+        "error": "http_500"
+      },
+      "finds": 0,
+      "calls": [
+        {
+          "url": "https://liternet.bg/publisher/rss",
+          "status": 500,
+          "startedAt": "2026-10-01T21:12:51.252Z"
+        }
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "state": {
+        "id": "litlogos",
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/feed/",
+        "format": "rss",
+        "language": "de-CH",
+        "region": "global",
+        "topics": [
+          "publishing",
+          "releases",
+          "awards",
+          "festivals"
+        ],
+        "sourceFamilyId": "litlogos",
+        "countryCodes": [
+          "CH"
+        ],
+        "coverageCountryCodes": [],
+        "status": "ok",
+        "lastSuccessAt": "2026-10-01T21:12:52.217Z",
+        "candidateCount": 10
+      },
+      "finds": 10,
+      "calls": [
+        {
+          "url": "https://literaturhaus.ch/feed/",
+          "status": 200,
+          "startedAt": "2026-10-01T21:12:51.426Z"
+        }
+      ]
+    }
+  ]
+}

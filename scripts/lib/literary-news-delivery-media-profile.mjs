@@ -50,16 +50,19 @@ export async function syncDeliveryMedia({ storage, registry, destinations, now =
   if (!Array.isArray(registry?.assets) || registry.assets.length > NEWS_MEDIA_LIMITS.registryAssets
     || typeof readBytes !== 'function' || !Number.isSafeInteger(maximumNewUploads)
     || maximumNewUploads < 0 || maximumNewUploads > 32) fail('delivery_media_input_invalid');
-  const priorRaw = await storage.readIndex();
-  const prior = priorRaw === null ? null : await validateDeliveryMediaIndex(priorRaw, now);
-  const uploaded = new Map((prior?.uploads || []).map(row => [row.sha256, row.uploadedAt]));
-  const candidates = new Map(), assets = [], outcomes = []; let uploadedCount = 0;
+  // Check all identities before any upload. A conflict must never partially
+  // materialize a registry or replace the last confirmed index.
+  const candidates = new Map();
   for (const asset of registry.assets) {
     if (candidates.has(asset.id)) {
       if (await newsDigest(candidates.get(asset.id)) !== await newsDigest(asset)) fail('delivery_media_identity_conflict');
-      continue;
-    }
-    candidates.set(asset.id, asset);
+    } else candidates.set(asset.id, asset);
+  }
+  const priorRaw = await storage.readIndex();
+  const prior = priorRaw === null ? null : await validateDeliveryMediaIndex(priorRaw, now);
+  const uploaded = new Map((prior?.uploads || []).map(row => [row.sha256, row.uploadedAt]));
+  const assets = [], outcomes = []; let uploadedCount = 0;
+  for (const asset of candidates.values()) {
     if (!destinations.some(destination => destination.platform === 'telegram' && (() => {
       try { checkedNewsMediaAsset(asset, destination, asset.newsIds?.[0], now); checkDeliveryMediaDescriptor(asset.derivative); return true; }
       catch { return false; }

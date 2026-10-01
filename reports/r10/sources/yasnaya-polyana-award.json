@@ -1,0 +1,343 @@
+{
+  "sourceId": "yasnaya-polyana-award",
+  "name": "Премия Ясная Поляна",
+  "entryUrl": "https://www.yppremia.ru/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:48.058Z",
+  "requests": [
+    {
+      "url": "https://www.yppremia.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 189824,
+      "sha256": "015a6b36216ddbc9eb2137af4bf8055b17c7ab74c34c9124a9fb5957c230bd5c",
+      "accessedAt": "2026-10-01T20:48:48.787Z"
+    },
+    {
+      "url": "https://www.yppremia.ru/news",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 28961,
+      "sha256": "a8efaf052cd158810649d44eb341a00a4cbd981e23337a4250d53a0cc429bd6b",
+      "accessedAt": "2026-10-01T20:48:48.931Z"
+    },
+    {
+      "url": "https://www.yppremia.ru/news/besplatny-dostup-k-knigam-finalistov-2026",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 29045,
+      "sha256": "95e4069c56096a7ebd4e85def9af05530dfb84946429809c9e65b0c96fc5b23d",
+      "accessedAt": "2026-10-01T20:48:49.031Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.yppremia.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 39,
+    "sha256": "a1cb01baff400a7d106cd0a710d0a086fd86d4498b03b19725a0b2bfc4968f54",
+    "accessedAt": "2026-10-01T20:48:48.539Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "yasnaya-polyana-award",
+    "name": "Премия Ясная Поляна",
+    "url": "https://www.yppremia.ru/news",
+    "format": "html",
+    "language": "ru",
+    "region": "global",
+    "sourceFamilyId": "yasnaya-polyana-award",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.yppremia.ru"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.yppremia.ru/news/besplatny-dostup-k-knigam-finalistov-2026"
+    ],
+    "verifiedAt": "2026-10-01T20:48:49.034Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "yasnaya-polyana-award",
+    "source": {
+      "name": "Премия Ясная Поляна",
+      "url": "https://www.yppremia.ru/news/besplatny-dostup-k-knigam-finalistov-2026",
+      "language": "ru"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Литрес открывает бесплатный доступ к книгам финалистов 24-го сезона премии «Ясная Поляна»",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:48.938Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.yppremia.ru/news/besplatny-dostup-k-knigam-finalistov-2026",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 29045,
+      "sha256": "95e4069c56096a7ebd4e85def9af05530dfb84946429809c9e65b0c96fc5b23d",
+      "accessedAt": "2026-10-01T20:48:49.031Z",
+      "headline": "17 Сентября 2026 Литрес открывает бесплатный доступ к книгам финалистов 24-го сезона премии «Ясная Поляна»",
+      "excerpt": "Новости Новости Литрес открывает бесплатный доступ к книгам финалистов 24-го сезона премии «Ясная Поляна» 17 Сентября 2026 Литрес открывает бесплатный доступ к книгам финалистов 24-го сезона премии «Ясная Поляна» Книжный сервис Литрес в рамках сотрудничества с соучредителями литературной премии «Ясная Поляна» \u2014 музеем-усадьбой Л. Н. Толстого и компанией Samsung Electronics \u2014 открыл бесплатный дост",
+      "publishedDates": [],
+      "canonical": "https://www.yppremia.ru/news/besplatny-dostup-k-knigam-finalistov-2026",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:49.034Z",
+  "foundItems": [
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "source": {
+        "name": "Премия Ясная Поляна",
+        "url": "https://www.yppremia.ru/news/besplatny-dostup-k-knigam-finalistov-2026",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литрес открывает бесплатный доступ к книгам финалистов 24-го сезона премии «Ясная Поляна»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:48.938Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "source": {
+        "name": "Премия Ясная Поляна",
+        "url": "https://www.yppremia.ru/news/start-readers-vote-2026",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Премия «Ясная Поляна» объявляет о начале читательского голосования",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:48.938Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "source": {
+        "name": "Премия Ясная Поляна",
+        "url": "https://www.yppremia.ru/news/shortlist-russianprose-2026",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлены финалисты 24-го сезона премии «Ясная Поляна»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:48.938Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "source": {
+        "name": "Премия Ясная Поляна",
+        "url": "https://www.yppremia.ru/news/shkola-kritiki-itogi2026",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Итоги шестой школы литературной критики в Ясной Поляне",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:48.938Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "source": {
+        "name": "Премия Ясная Поляна",
+        "url": "https://www.yppremia.ru/news/shkolakritiki-student-list-2026",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен список участников шестой Школы литературной критики имени В. Я. Курбатова",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:48.938Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "source": {
+        "name": "Премия Ясная Поляна",
+        "url": "https://www.yppremia.ru/news/newadult-2026-shortlist",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Объявлен список номинации «Молодость» 24-го сезона премии «Ясная Поляна»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:48.938Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "source": {
+        "name": "Премия Ясная Поляна",
+        "url": "https://www.yppremia.ru/news/girlsbewiser-podcast-s4e13-new-adult",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литература для молодых взрослых в специальном эпизоде подкаста премии",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:48.938Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "source": {
+        "name": "Премия Ясная Поляна",
+        "url": "https://www.yppremia.ru/news/xxxi-pisatelskie-vstrechi",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Прошли XXXI Яснополянские писательские встречи",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:48.938Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "source": {
+        "name": "Премия Ясная Поляна",
+        "url": "https://www.yppremia.ru/news/girlsbewiser-podcast-s4e10-missed-masterpieces",
+        "language": "ru"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Вышел специальный эпизод подкаста премии с участием членов жюри",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:48.938Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a8efaf052cd158810649d44eb341a00a4cbd981e23337a4250d53a0cc429bd6b"
+}

@@ -2,16 +2,12 @@ import { load } from 'cheerio';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { lookup } from 'node:dns/promises';
-import { isIP } from 'node:net';
+import { isPublicNewsAddress } from './lib/literary-news-safe-fetch.mjs';
 
 const DIR = 'reports/r10/sources';
 export const sha = value => createHash('sha256').update(value).digest('hex');
 export function safeAddress(ip) {
-  if (isIP(ip) === 4) {
-    const [a,b]=ip.split('.').map(Number);
-    return !(a===0||a===10||a===127||a>=224||(a===100&&b>=64&&b<=127)||(a===169&&b===254)||(a===172&&b>=16&&b<=31)||(a===192&&(b===0||b===168))||(a===198&&(b===18||b===19)));
-  }
-  return isIP(ip) === 6 && !/^(?:\:\:|fc|fd|fe[89ab]|ff)/i.test(ip);
+  return isPublicNewsAddress(ip);
 }
 export async function boundedFetch(input, { timeout = 12000, maxBytes = 2 * 1024 * 1024, allowedHosts, encoding: pinnedEncoding, includeBytes = false } = {}) {
   let url = new URL(input);

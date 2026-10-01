@@ -1,0 +1,47 @@
+{
+  "sourceId": "boersenverein-de",
+  "name": "Börsenverein des Deutschen Buchhandels",
+  "entryUrl": "https://www.boersenverein.de/",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [
+    "DE"
+  ],
+  "attemptedAt": "2026-10-01T20:42:49.624Z",
+  "requests": [
+    {
+      "url": "https://www.boersenverein.de/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 300537,
+      "sha256": "84b48c5adf8c4d2ae770b195e0fb1f256483ff2a575d84ae8c988614cd4bb8bd",
+      "accessedAt": "2026-10-01T20:42:50.815Z"
+    },
+    {
+      "url": "https://www.boersenverein.de/beratung-service/barrierefreiheit/aktuelles/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 289200,
+      "sha256": "7f9b2cde2d96e18f6222418e7a4eb9eab592ae2dc7f3da1ac3938d3c3c5c532a",
+      "accessedAt": "2026-10-01T20:42:51.654Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.boersenverein.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 155,
+    "sha256": "338a23c788a257029cec2cf409cc05b1fd359262bec905fd0b4d32b5ebd5c894",
+    "accessedAt": "2026-10-01T20:42:50.225Z",
+    "disallowed": [
+      "/typo3/",
+      "/typo3_src/",
+      "/impressum/",
+      "/datenschutz/"
+    ]
+  },
+  "feedAttemptError": "http_403"
+}

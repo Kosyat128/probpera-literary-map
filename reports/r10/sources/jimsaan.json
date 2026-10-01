@@ -1,0 +1,16 @@
+{
+  "sourceId": "jimsaan",
+  "name": "Jimsaan",
+  "entryUrl": "https://jimsaan.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:16.915Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "getaddrinfo ENOTFOUND jimsaan.com",
+  "robots": {
+    "url": "https://jimsaan.com/robots.txt",
+    "error": "getaddrinfo ENOTFOUND jimsaan.com",
+    "disallowed": []
+  }
+}

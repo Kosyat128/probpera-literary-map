@@ -1,0 +1,393 @@
+{
+  "sourceId": "cleveland-review-books",
+  "name": "Cleveland Review of Books",
+  "entryUrl": "https://www.clereviewofbooks.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:56:30.243Z",
+  "requests": [
+    {
+      "url": "https://clereviewofbooks.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 203384,
+      "sha256": "f094e2748c8fe250b3f8b7cacecb37f8b6faaaac4fbd0bfbc883e9f182c5904b",
+      "accessedAt": "2026-10-01T20:56:34.459Z"
+    },
+    {
+      "url": "https://clereviewofbooks.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 246308,
+      "sha256": "f4dd532a9e0c8d2511c5aa4c16e10a0416031bddbdfe5bb653c3eefcf27b1dec",
+      "accessedAt": "2026-10-01T20:56:38.441Z"
+    },
+    {
+      "url": "https://clereviewofbooks.com/on-sean-thor-conroes-the-walk-book/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 162543,
+      "sha256": "26a93310bf1cd71513ed617db41828a2e03b4f257382790590c360ed27a02bc9",
+      "accessedAt": "2026-10-01T20:56:40.523Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://clereviewofbooks.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 553,
+    "sha256": "98e6bd710d9364a7d797f27f5792a9230a16d613ddd7610473eb300410edd38f",
+    "accessedAt": "2026-10-01T20:56:31.717Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "cleveland-review-books",
+    "name": "Cleveland Review of Books",
+    "url": "https://clereviewofbooks.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "cleveland-review-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://clereviewofbooks.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://clereviewofbooks.com/on-sean-thor-conroes-the-walk-book/"
+    ],
+    "verifiedAt": "2026-10-01T20:56:40.559Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "cleveland-review-books",
+    "source": {
+      "name": "Cleveland Review of Books",
+      "url": "https://clereviewofbooks.com/on-sean-thor-conroes-the-walk-book/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Backtracking Is Never the Move: On Sean Thor Conroe’s “The Walk Book”",
+    "publishedAt": "2026-10-01T12:48:47.000Z",
+    "description": "Is he writing it for the wrong reasons? The post Backtracking Is Never the Move: On Sean Thor Conroe’s “The Walk Book” appeared first on Cleveland Review of Books.",
+    "discoveredAt": "2026-10-01T20:56:38.443Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://clereviewofbooks.com/on-sean-thor-conroes-the-walk-book/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 162543,
+      "sha256": "26a93310bf1cd71513ed617db41828a2e03b4f257382790590c360ed27a02bc9",
+      "accessedAt": "2026-10-01T20:56:40.523Z",
+      "headline": "Backtracking Is Never the Move: On Sean Thor Conroe’s “The Walk Book”",
+      "excerpt": "Backtracking Is Never the Move: On Sean Thor Conroe’s “The Walk Book”Martin Dolan·October 1, 2026 <img data-recalc-dims=\"1\" fetchpriority=\"high\" decoding=\"async\" width=\"819\" height=\"1024\" data-attachment-id=\"17815\" data-permalink=\"https://clereviewofbooks.com/on-sean-thor-conroes-the-walk-book/conroe_website/\" data-orig-file=\"https://i0.wp.com/clereviewofbooks.com/wp-content/uploads/2026/10/Conroe",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T12:48:47+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-10-01T12:48:47+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T12:48:47+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-10-01T08:48:47-04:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://clereviewofbooks.com/on-sean-thor-conroes-the-walk-book/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:56:40.559Z",
+  "foundItems": [
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/on-sean-thor-conroes-the-walk-book/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Backtracking Is Never the Move: On Sean Thor Conroe’s “The Walk Book”",
+      "publishedAt": "2026-10-01T12:48:47.000Z",
+      "description": "Is he writing it for the wrong reasons? The post Backtracking Is Never the Move: On Sean Thor Conroe’s “The Walk Book” appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/on-bashos-the-narrow-road-of-oku/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "May 16th: On Bashō’s “The Narrow Road of Oku”",
+      "publishedAt": "2026-09-29T12:44:04.000Z",
+      "description": "I considered how easy it was to describe wreckage as something beautiful, like ancient ruins. The post May 16th: On Bashō’s “The Narrow Road of Oku” appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/a-soft-and-open-world/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Soft and Open World",
+      "publishedAt": "2026-09-24T15:03:30.000Z",
+      "description": "The memory of the feeling in the game, and the memory of the feeling in my real body. The post A Soft and Open World appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/from-three/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From “Three”",
+      "publishedAt": "2026-09-23T12:57:33.000Z",
+      "description": "No one could dine with the king without sacrificing a small part of his health, this was to be expected, the price that everyone knew but never talked about. The post From “Three” appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/on-joanna-walshs-amateurs/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Radical Meme-Making: On Joanna Walsh’s “Amateurs”",
+      "publishedAt": "2026-09-22T13:18:34.000Z",
+      "description": "Whatever Walsh says, there is no viable alternative the internet offers to art and politics. Though I suppose it is entertaining to think otherwise. The post Radical Meme-Making: On Joanna Walsh’s “Amateurs” appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/on-mark-habers-ada/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Price of Obsession: On Mark Haber’s “Ada”",
+      "publishedAt": "2026-09-17T14:19:18.000Z",
+      "description": "Obsession is by one turn the way that these characters achieve their meager success, but it is also, by another, the fatal flaw in their efforts to reach the perfection they seek. The post The Price of Obsession: On Mark Haber’s “Ada” appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/taste-of-garbage/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Taste of Garbage",
+      "publishedAt": "2026-09-16T12:23:55.000Z",
+      "description": "I went to the lawyer's estate sale to see what kind of freak shit you accumulate when you have the money and the dedication to the life of the mind. The post Taste of Garbage appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/on-carole-masos-ava/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "So Much Is Yet to Be Written-",
+      "publishedAt": "2026-09-15T14:02:16.000Z",
+      "description": "A weaving association of human desires, the reading of which moves the mind as living does. The post So Much Is Yet to Be Written\u2014 appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/forester-mcclatchey-killing-orpheus/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "When Green Things Talk: On Forester McClatchey’s “Killing Orpheus”",
+      "publishedAt": "2026-09-10T12:52:00.000Z",
+      "description": "Issues that, despite the great age of the texts we find them in, speak directly to our current moment. The post When Green Things Talk: On Forester McClatchey’s “Killing Orpheus” appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "source": {
+        "name": "Cleveland Review of Books",
+        "url": "https://clereviewofbooks.com/from-6aming/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From “6AMING”",
+      "publishedAt": "2026-09-09T13:16:29.000Z",
+      "description": "heart-shaped man or plant, having motivated itself \u2013 The post From “6AMING” appeared first on Cleveland Review of Books.",
+      "discoveredAt": "2026-10-01T20:56:38.443Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f4dd532a9e0c8d2511c5aa4c16e10a0416031bddbdfe5bb653c3eefcf27b1dec"
+}

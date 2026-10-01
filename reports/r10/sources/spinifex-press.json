@@ -1,0 +1,813 @@
+{
+  "sourceId": "spinifex-press",
+  "name": "Spinifex Press",
+  "entryUrl": "https://www.spinifexpress.com.au/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:32.359Z",
+  "requests": [
+    {
+      "url": "https://www.spinifexpress.com.au/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 710878,
+      "sha256": "95a56339039d13a1ec8d25a8f6edc4414ee3a30851f5129b1779afb56f55921d",
+      "accessedAt": "2026-10-01T20:48:33.102Z"
+    },
+    {
+      "url": "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 148845,
+      "sha256": "d0b61c32c035767e97ce4813edc16a234e61cfb08e497329ca67a0d3f481a328",
+      "accessedAt": "2026-10-01T20:48:33.745Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.spinifexpress.com.au/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 1515,
+    "sha256": "118a5979c55e5035341a600c98e4cb8d95caa3c738ae873ab7dda0c485e9ee66",
+    "accessedAt": "2026-10-01T20:48:32.842Z",
+    "disallowed": [
+      "/config",
+      "/search",
+      "/account$",
+      "/account/",
+      "/commerce/digital-download/",
+      "/api/",
+      "/static/",
+      "/*?author=*",
+      "/*&author=*",
+      "/*?tag=*",
+      "/*&tag=*",
+      "/*?month=*",
+      "/*&month=*",
+      "/*?view=*",
+      "/*&view=*",
+      "/*?format=json",
+      "/*&format=json",
+      "/*?format=page-context",
+      "/*&format=page-context",
+      "/*?format=main-content",
+      "/*&format=main-content",
+      "/*?format=json-pretty",
+      "/*&format=json-pretty",
+      "/*?format=ical",
+      "/*&format=ical",
+      "/*?reversePaginate=*",
+      "/*&reversePaginate=*"
+    ]
+  },
+  "endpoint": {
+    "id": "spinifex-press",
+    "name": "Spinifex Press",
+    "url": "https://www.spinifexpress.com.au/",
+    "format": "html",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "spinifex-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.spinifexpress.com.au"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/collections\\/p\\/[^/]+\\/?$|^\\/events\\/.+|^\\/ebook\\x2dstore\\/p\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover"
+    ],
+    "verifiedAt": "2026-10-01T20:48:33.750Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 27,
+  "literaryCandidateCount": 27,
+  "sample": {
+    "sourceId": "spinifex-press",
+    "source": {
+      "name": "Spinifex Press",
+      "url": "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Over the Rainbow Online Book Launch with Sall Grover",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:33.223Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 148845,
+      "sha256": "d0b61c32c035767e97ce4813edc16a234e61cfb08e497329ca67a0d3f481a328",
+      "accessedAt": "2026-10-01T20:48:33.745Z",
+      "headline": "Over the Rainbow Online Book Launch with Sall Grover",
+      "excerpt": "Back to All Events Over the Rainbow Online Book Launch with Sall Grover Thursday 17 September 2026 18:00 19:00 Google Calendar ICS Join us for the online book launch of Over the Rainbow: A Challenge to Cancel Culture. Why have liberal democracies with proud traditions of democracy and free speech become both obsessed with hate speech laws and anxious about offending citizens’ feelings? The writers",
+      "publishedDates": [],
+      "canonical": "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:33.750Z",
+  "foundItems": [
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Over the Rainbow Online Book Launch with Sall Grover",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/events/meet-the-authors-south-australian-storytellers",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet the Authors: South Australian Storytellers",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/events/christinebalintmorningtonlibrary",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Christine Balint Author Talk at Mornington Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/corpus-in-extremis-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Corpus in Extremis: A Memoir ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/fedora-walks-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fedora Walks by Merrilee Moss ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/flyingwithpaperwings-ebook-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Flying with Paper Wings by Sandy Jeffs ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/gender-identity-ebook-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gender Identity: Lies and Dangers ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/i-wish-i-was-a-lesbian-ebook-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I Wish I Was a Lesbian ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/onthemeaningofsex-ebook-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On the Meaning of Sex: Thoughts about the New Definition of Woman ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/over-the-rainbow-ebook-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Over the Rainbow: A Challenge to Cancel Culture ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/parallax-ebook-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Parallax by Robin Morgan ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/penile-imperialism-ebook-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Penile Imperialism: The Male Sex Right and Women’s Subordination ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/ebook-store/p/radical-reckonings-ebook-epub",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Radical Reckonings: Survival in Patriarchy ebook (EPUB)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/radfemspecialoffers",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Discover RadFem Offers today.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/climatechangeenvironment",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Explore our catalogue today.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/indigenousstories",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Learn more about our Indigenous list.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/christinebalint",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Christine Balint",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/kajsaekisekman",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kajsa Ekis Ekman",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/sheilajeffreys",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sheila Jeffreys",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/not-dead-yet-blog",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Not Dead Yet blog",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/heather-brunskell-evans",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Heather Brunskell-Evans",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/melindatankardreist",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Melinda Tankard Reist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/collections/p/gender-critical-pack-2025",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "THIS BOOK IS PART OF THE GENDER CRITICAL COLLECTION",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/collections/p/spinifex-shorts-collection-2025",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "eBook Available",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/collections/p/the-stop-surrogacy-now-collection-2026",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "THE STOP SURROGACY NOW COLLECTION",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/collections/p/spinifex-shorts-collection",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "THIS BOOK IS PART OF THE SPINIFEX SHORTS COMPLETE COLLECTION",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "source": {
+        "name": "Spinifex Press",
+        "url": "https://www.spinifexpress.com.au/collections/p/the-radfem-starter-library",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "THIS BOOK IS PART OF THE RADFEM STARTER LIBRARY",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:33.223Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "95a56339039d13a1ec8d25a8f6edc4414ee3a30851f5129b1779afb56f55921d"
+}

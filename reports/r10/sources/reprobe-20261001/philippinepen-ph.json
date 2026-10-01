@@ -1,0 +1,29 @@
+{
+  "sourceId": "philippinepen-ph",
+  "name": "Philippine PEN",
+  "entryUrl": "https://philippinepen.ph/",
+  "countryCodes": [
+    "PH"
+  ],
+  "coverageCountryCodes": [
+    "PH"
+  ],
+  "attemptedAt": "2026-10-01T20:44:18.333Z",
+  "requests": [
+    {
+      "url": "https://philippinepen.ph/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 478,
+      "sha256": "2329ec228dc847ea3fe9fff31804dc3726163de25d411446b28ed5d168bed23c",
+      "accessedAt": "2026-10-01T20:44:18.868Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://philippinepen.ph/robots.txt",
+    "error": "unsupported_content_type:",
+    "disallowed": []
+  }
+}

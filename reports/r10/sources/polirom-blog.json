@@ -1,0 +1,16 @@
+{
+  "sourceId": "polirom-blog",
+  "name": "Polirom",
+  "entryUrl": "https://blog.polirom.ro/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:36.075Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "getaddrinfo ENOTFOUND blog.polirom.ro",
+  "robots": {
+    "url": "https://blog.polirom.ro/robots.txt",
+    "error": "getaddrinfo ENOTFOUND blog.polirom.ro",
+    "disallowed": []
+  }
+}

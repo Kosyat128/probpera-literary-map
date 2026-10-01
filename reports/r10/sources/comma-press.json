@@ -1,0 +1,585 @@
+{
+  "sourceId": "comma-press",
+  "name": "Comma Press",
+  "entryUrl": "https://commapress.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:03.417Z",
+  "requests": [
+    {
+      "url": "https://commapress.co.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 55510,
+      "sha256": "a67105c173a997f842fa7caea846d32bd6f6be37b02a58f1b2038b53430f4fcc",
+      "accessedAt": "2026-10-01T20:48:04.554Z"
+    },
+    {
+      "url": "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 39097,
+      "sha256": "dcbc91aed31e2b32cfb628bed3024ac7d31420490fef643b699c954639e51b04",
+      "accessedAt": "2026-10-01T20:48:04.859Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://commapress.co.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 84,
+    "sha256": "07de4a346f3c8ff2aafe6f346a43b900e85f9b8679559532a336e0ced9d86694",
+    "accessedAt": "2026-10-01T20:48:03.827Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "comma-press",
+    "name": "Comma Press",
+    "url": "https://commapress.co.uk/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "comma-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://commapress.co.uk"
+    ],
+    "linkPattern": "^\\/books\\/[^/]+\\/?$|^\\/news\\/.+|^\\/events\\/.+|^\\/series\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions"
+    ],
+    "verifiedAt": "2026-10-01T20:48:04.864Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 19,
+  "literaryCandidateCount": 19,
+  "sample": {
+    "sourceId": "comma-press",
+    "source": {
+      "name": "Comma Press",
+      "url": "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Comma Press opens Dinesh Allirajah Prize 2027 Submissions",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:04.567Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 39097,
+      "sha256": "dcbc91aed31e2b32cfb628bed3024ac7d31420490fef643b699c954639e51b04",
+      "accessedAt": "2026-10-01T20:48:04.859Z",
+      "headline": "Comma Press opens Dinesh Allirajah Prize 2027 Submissions",
+      "excerpt": "Search Comma Press View Cart - empty0 Email Newsletter Signup Search Comma Press Search View cart View cart - {cart:total_items} items Close Comma Press opens Dinesh Allirajah Prize 2027 Submissions 13 Aug 2026 Comma Press and the University of Lancashire are delighted to announce that the Dinesh Allirajah Prize for Short Fiction is once again open for submissions with the theme ‘Found Fiction’.Th",
+      "publishedDates": [],
+      "canonical": "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:04.864Z",
+  "foundItems": [
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Comma Press opens Dinesh Allirajah Prize 2027 Submissions",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/news/andrew-rule-wins-emerging-translator-prize",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Andrew Rule Wins Emerging Translator Prize",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/events/china-100-book-launch-leeds-centre-for-new-chinese-writing",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "China + 100 Book Launch (Leeds)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/events/china100-book-launch-exhibition",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "China+100: Book Launch & Exhibition (Manchester)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/news/support-sondoss-studies",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Support Sondos’s Studies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/events/crafting-your-short-story-masterclass-with-jane-rogers",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Crafting your short story: Masterclass with Jane Rogers",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/series/reading-the-city",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "View the series",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/series/the-bbc-national-short-story-award",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "View the series",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/series/refugee-tales",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "View the series",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/series/horror",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "View the series",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/series/history-into-fiction",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "View the series",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/series/crime",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "View the series",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/series/futures-past",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "View the series",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/series/science-into-fiction",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "View the series",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/books/the-book-of-valletta",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Book of Valletta",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/books/the-book-of-cardiff",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Book of Cardiff",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/books/the-book-of-damascus",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Book of Damascus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/books/raising-sunson",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mona the Animal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "source": {
+        "name": "Comma Press",
+        "url": "https://commapress.co.uk/books/monster-capital",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Monster Capital",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:04.567Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a67105c173a997f842fa7caea846d32bd6f6be37b02a58f1b2038b53430f4fcc"
+}

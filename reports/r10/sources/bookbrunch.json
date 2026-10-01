@@ -1,0 +1,424 @@
+{
+  "sourceId": "bookbrunch",
+  "name": "BookBrunch",
+  "entryUrl": "https://www.bookbrunch.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:47.142Z",
+  "requests": [
+    {
+      "url": "https://www.bookbrunch.co.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 76281,
+      "sha256": "88fbc872215924b504a143fdd07bbb9cdbefef729beaffcd76de07d8b1808646",
+      "accessedAt": "2026-10-01T20:48:48.207Z"
+    },
+    {
+      "url": "https://www.bookbrunch.co.uk/#",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 77053,
+      "sha256": "da1b64a4ede66ad479dae6355462f9915cc55e80b7b8064739061ad294995032",
+      "accessedAt": "2026-10-01T20:48:48.978Z"
+    },
+    {
+      "url": "https://www.bookbrunch.co.uk/page/article-detail/baillie-gifford-prize-announces-eclectic-charismatic-2026-shortlist/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 52518,
+      "sha256": "b09c8d2b95d5fa4b2de43c0548977fc6ec6e63f7cb4d8b45b3fd67443769b10e",
+      "accessedAt": "2026-10-01T20:48:49.618Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.bookbrunch.co.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 660,
+    "sha256": "bef92a266642a342c0ab3ea6f0b3cce631dc93ce7a408b97e96df72f43c8a4c4",
+    "accessedAt": "2026-10-01T20:48:47.380Z",
+    "disallowed": [
+      "/admin/",
+      "/config/",
+      "/include/",
+      "/lib/",
+      "/account.php",
+      "/availability.check.php",
+      "/bookshelf.download.php",
+      "/bookshelf.php",
+      "/download_pdf.php",
+      "/review_form.php",
+      "/foxypage.php",
+      "/macro.php",
+      "/phpinfo.php",
+      "/site-minifier.php",
+      "/snip.php",
+      "/violationReportForCSP.php",
+      "/web.config.php",
+      "/*export-product=*",
+      "*/results/",
+      "*/pdf-ai-sheet/"
+    ]
+  },
+  "endpoint": {
+    "id": "bookbrunch",
+    "name": "BookBrunch",
+    "url": "https://www.bookbrunch.co.uk/#",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "bookbrunch",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.bookbrunch.co.uk"
+    ],
+    "linkPattern": "^\\/page\\/[^/]+\\/?$|^\\/page\\/article\\x2ddetail\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.bookbrunch.co.uk/page/article-detail/baillie-gifford-prize-announces-eclectic-charismatic-2026-shortlist"
+    ],
+    "verifiedAt": "2026-10-01T20:48:49.621Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 11,
+  "literaryCandidateCount": 11,
+  "sample": {
+    "sourceId": "bookbrunch",
+    "source": {
+      "name": "BookBrunch",
+      "url": "https://www.bookbrunch.co.uk/page/article-detail/baillie-gifford-prize-announces-eclectic-charismatic-2026-shortlist",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Baillie Gifford Prize announces...",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:49.007Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.bookbrunch.co.uk/page/article-detail/baillie-gifford-prize-announces-eclectic-charismatic-2026-shortlist/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 52518,
+      "sha256": "b09c8d2b95d5fa4b2de43c0548977fc6ec6e63f7cb4d8b45b3fd67443769b10e",
+      "accessedAt": "2026-10-01T20:48:49.618Z",
+      "headline": "Baillie Gifford Prize announces ‘eclectic, charismatic’ 2026 shortlist",
+      "excerpt": "Baillie Gifford Prize announces ‘eclectic, charismatic’ 2026 shortlist Natasha Poliszczuk Thursday, 1st October 2026 Nicholas Boggs, Anand Gopal, Patrick Radden Keefe, Edmund Richardson, Matthew Sweet and Andrea Wulf are the six shortlisted authors To read the rest of this article, please either log in to your account now, or subscribe: Log In Log in to your existing BookBrunch account below: Log ",
+      "publishedDates": [
+        {
+          "value": "20261001BST21:48:48",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-10-01",
+          "method": "jsonld.datePublished",
+          "type": "Product"
+        }
+      ],
+      "canonical": "https://www.bookbrunch.co.uk/page/article-detail/baillie-gifford-prize-announces-eclectic-charismatic-2026-shortlist/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:49.621Z",
+  "foundItems": [
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/baillie-gifford-prize-announces-eclectic-charismatic-2026-shortlist",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Baillie Gifford Prize announces...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/goldsmiths-prize-2026-shortlist-revealed",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Goldsmiths Prize 2026 shortlist revealed",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/kit-chapmans-age-of-alchemy-wins-the-25-000-royal-society-trivedi-science-book-prize",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kit Chapman's Age of Alchemy wins the £25,000 Royal Society Trivedi Science Book Prize",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/westminster-book-awards-now-open",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Westminster Book Awards now open",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/andersen-press-signs-the-young-queens-by-waterstones-prize-winner-sally-nicholls",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Andersen Press signs The Young Queens by Waterstones Prize-winner Sally Nicholls",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/indie-bookshops-suffer-huge-hit-over-early-availability-of-new-rebecca-yarros-novel",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Indie bookshops suffer ‘huge...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/womens-prize-trust-joins-forces-with-chanel-for-us-writing-development-programme",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Women's Prize Trust joins forces with Chanel for US writing development programme",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/faber-acquires-debut-ya-romantic-comedy-in-five-way-auction",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Faber acquires debut YA romantic...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/reading-in-the-spotlight-at-labour-party-conference",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reading in the spotlight at Labour Party Conference",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/white-rabbit-to-publish-tears-of-the-patriarch-by-lias-saoudi",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "White Rabbit to publish Tears of the Patriarch by Lias Saoudi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "source": {
+        "name": "BookBrunch",
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/isabel-ibanez-deal-for-hodderscape",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Isabel Ibanez deal for Hodderscape",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:49.007Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "da1b64a4ede66ad479dae6355462f9915cc55e80b7b8064739061ad294995032"
+}

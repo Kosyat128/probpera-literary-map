@@ -1,0 +1,373 @@
+{
+  "sourceId": "diacritik",
+  "name": "Diacritik",
+  "entryUrl": "https://diacritik.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:56:23.867Z",
+  "requests": [
+    {
+      "url": "https://diacritik.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 115353,
+      "sha256": "a5ad3bfe506d6e8e4f27de267b4b1372084ed55892c69562f89a754d77d6e671",
+      "accessedAt": "2026-10-01T20:56:25.254Z"
+    },
+    {
+      "url": "https://diacritik.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 12385,
+      "sha256": "79d1dd1632773ce02a2f44bc240e132657564f02abca84ba45504dc0632b06b0",
+      "accessedAt": "2026-10-01T20:56:25.594Z"
+    },
+    {
+      "url": "https://diacritik.com/2026/10/01/festival-jerk-off-19e-edition-1-10-octobre-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 79715,
+      "sha256": "898a3ed9be86613a987b7347f637c67e710ff62c425ece5b119899cfd85d2e2a",
+      "accessedAt": "2026-10-01T20:56:26.745Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://diacritik.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 240,
+    "sha256": "fe3c3d9e77fabfde5a20ab6149430da63c4f9e5d4d52d3446fd6edf77aee6098",
+    "accessedAt": "2026-10-01T20:56:24.692Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "diacritik",
+    "name": "Diacritik",
+    "url": "https://diacritik.com/feed/",
+    "format": "rss",
+    "language": "fr-FR",
+    "region": "global",
+    "sourceFamilyId": "diacritik",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://diacritik.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://diacritik.com/2026/10/01/festival-jerk-off-19e-edition-1-10-octobre-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:56:26.750Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "diacritik",
+    "source": {
+      "name": "Diacritik",
+      "url": "https://diacritik.com/2026/10/01/festival-jerk-off-19e-edition-1-10-octobre-2026/",
+      "language": "fr-FR"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Festival Jerk Off, 19e édition (1-10 octobre 2026)",
+    "publishedAt": "2026-10-01T05:00:56.000Z",
+    "description": "Pour sa 19e édition, le Festival Jerk Off demeure fidèle à son projet initial, se voulant un lieu […]",
+    "discoveredAt": "2026-10-01T20:56:25.596Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://diacritik.com/2026/10/01/festival-jerk-off-19e-edition-1-10-octobre-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 79715,
+      "sha256": "898a3ed9be86613a987b7347f637c67e710ff62c425ece5b119899cfd85d2e2a",
+      "accessedAt": "2026-10-01T20:56:26.745Z",
+      "headline": "Festival Jerk Off, 19e édition (1-10 octobre 2026)",
+      "excerpt": "oXni©Raphaël Massard Pour sa 19e édition, le Festival Jerk Off demeure fidèle à son projet initial, se voulant un lieu pour la mise en avant de la diversité queer. Comme pour les éditions précédentes, seront proposés des performances, de la danse, des lectures, du théâtre, des expositions, des soirées, etc., à travers différents espaces (théâtres, lieux culturels…) et selon différentes modalités. ",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T05:00:56+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://diacritik.com/2026/10/01/festival-jerk-off-19e-edition-1-10-octobre-2026/",
+      "language": "fr-FR",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:56:26.750Z",
+  "foundItems": [
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/10/01/festival-jerk-off-19e-edition-1-10-octobre-2026/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Festival Jerk Off, 19e édition (1-10 octobre 2026)",
+      "publishedAt": "2026-10-01T05:00:56.000Z",
+      "description": "Pour sa 19e édition, le Festival Jerk Off demeure fidèle à son projet initial, se voulant un lieu […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/10/01/xavier-grall-what-else/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Xavier Grall, « what else ? »",
+      "publishedAt": "2026-10-01T05:00:18.000Z",
+      "description": "Drôle de pistolet, ce monsieur Grall né en 1930 Landivisiau et mort en 1981 à Quimperlé. Et ça […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/09/30/terrain-vague-82-emmanuel-marre-notre-salut-georges-perec-les-arts-plastiques/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Terrain vague (82) - Emmanuel Marre, « Notre salut » ; Georges Perec & les arts plastiques",
+      "publishedAt": "2026-09-30T05:00:29.000Z",
+      "description": "17 septembre 2026. Projection de Notre salut, film d’Emmanuel Marre, au centre Wallonie Bruxelles à Paris. Dès le […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/09/30/aida-ndiaye-jai-voulu-montrer-a-quel-point-la-honte-est-dabord-laffect-des-positions-minoritaires-la-honte/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aïda N’Diaye : « J’ai voulu montrer à quel point la honte est d’abord l’affect des positions minoritaires » (La honte)",
+      "publishedAt": "2026-09-30T05:00:10.000Z",
+      "description": "Dans La honte, Aïda N’Diaye explore la destructivité, la violence et la dimension politique de cet affect répandu, […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/09/29/l-bigorra-les-mots-ne-nous-contiennent-pas-parce-que-ce-ne-sont-pas-nos-mots-19-minutes/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L. Bigòrra : « Les mots ne nous contiennent pas, parce que ce ne sont pas nos mots » (19 minutes)",
+      "publishedAt": "2026-09-29T05:00:51.000Z",
+      "description": "« Sans autre sillon possible, nous continuerons à croire. » Un nom dissimulé sous un bandeau noir, un […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/09/29/les-vies-paralleles-dangie-david-et-de-simone-de-beauvoir/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les Vies parallèles d’Angie David et de Simone de Beauvoir",
+      "publishedAt": "2026-09-29T05:00:03.000Z",
+      "description": "Angie David nous dit que c’est « l’écrivain Beauvoir » qui l’intéresse, « avec ses contradictions et ses repentirs », […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/09/28/belinda-cannone-circulation-de-laffection-eugene-histoire-dune-amitie/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Belinda Cannone : Circulation de l’affection (Eugène - Histoire d’une amitié)",
+      "publishedAt": "2026-09-28T05:00:35.000Z",
+      "description": "Avec Eugène \u2013 Histoire d’une amitié, Belinda Cannone rend hommage à l’un des plus beaux adjectifs de la […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/09/28/jane-sautiere-cette-vie-qui-nous-est-commune-de-la-terre-des-pleurs-un-grand-vent-seleva/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jane Sautière : Cette vie qui nous est commune (De la terre des pleurs un grand vent s’éleva)",
+      "publishedAt": "2026-09-28T05:00:01.000Z",
+      "description": "Le livre de Jane Sautière traite d’un sujet (« les exilés en Europe, dans une grande ville riche d’un […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/09/25/fanny-lambert-cest-cet-endroit-dimpossibilite-de-la-langue-qui-mappelle-et-me-traverse-se-renifler-quasi-bestial/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fanny Lambert : « C’est cet endroit d’impossibilité de la langue qui m’appelle et me traverse » (Se Renifler quasi bestial)",
+      "publishedAt": "2026-09-25T05:00:24.000Z",
+      "description": "Dans son deuxième recueil, Se Renifler quasi bestial, la voix de Fanny Lambert s’est acérée : l’absence s’est muée en […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "diacritik",
+      "source": {
+        "name": "Diacritik",
+        "url": "https://diacritik.com/2026/09/25/la-musique-de-m83-creuse-le-ciel-i-wrote-you-a-letter/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La musique de M83 creuse le ciel (I wrote you a letter)",
+      "publishedAt": "2026-09-25T05:00:14.000Z",
+      "description": "Les 1,2 milliards d’écoute du compteur Spotify de Midnight city (2011), tube de son groupe M83, ou son […]",
+      "discoveredAt": "2026-10-01T20:56:25.596Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "79d1dd1632773ce02a2f44bc240e132657564f02abca84ba45504dc0632b06b0"
+}

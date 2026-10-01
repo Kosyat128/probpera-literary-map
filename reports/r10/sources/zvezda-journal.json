@@ -1,0 +1,40 @@
+{
+  "sourceId": "zvezda-journal",
+  "name": "Звезда",
+  "entryUrl": "https://zvezdaspb.ru/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:49.035Z",
+  "requests": [
+    {
+      "url": "https://zvezdaspb.ru/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 31609,
+      "sha256": "cbc3790f3dd6619e158908713f93cf349486e0fbc018c1b5d4e60f5521a692a7",
+      "accessedAt": "2026-10-01T20:48:49.697Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://zvezdaspb.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 232,
+    "sha256": "1bc21c8af9012cbf9eec9d61e90c73df2d26d3dcfac2be019154ca7d5702ce5f",
+    "accessedAt": "2026-10-01T20:48:49.574Z",
+    "disallowed": [
+      "/bastext/",
+      "/panel/",
+      "/foto/",
+      "/images/",
+      "/zbuyem/",
+      "/zakaz/",
+      "/news/",
+      "/online/",
+      "/baner/",
+      "/zvbuy1.php"
+    ]
+  }
+}

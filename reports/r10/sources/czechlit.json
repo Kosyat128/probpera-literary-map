@@ -1,0 +1,374 @@
+{
+  "sourceId": "czechlit",
+  "name": "Czech Literary Centre",
+  "entryUrl": "https://www.czechlit.cz/en/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:32.635Z",
+  "requests": [
+    {
+      "url": "https://www.czechlit.cz/en/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 56569,
+      "sha256": "473462adf67eff4bf7bef92748b7482652e6fe4c30c6409149b8df08b0686a11",
+      "accessedAt": "2026-10-01T20:48:33.583Z"
+    },
+    {
+      "url": "https://www.czechlit.cz/en/feed/",
+      "status": 200,
+      "contentType": "text/xml; charset=UTF-8",
+      "bytes": 30182,
+      "sha256": "bd9d760035f48fc2e9e7935cdff261bebe11312647f35e2628b10f8468d48444",
+      "accessedAt": "2026-10-01T20:48:33.923Z"
+    },
+    {
+      "url": "https://www.czechlit.cz/en/results-support-for-foreign-translations-of-czech-literature/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 28806,
+      "sha256": "989a178fc6d1684cd9d7033d77965c9572d743f8420df8886a536513ffc575cc",
+      "accessedAt": "2026-10-01T20:48:34.126Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.czechlit.cz/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 35,
+    "sha256": "ee5cf1dce9b8ebaa7a825d00c21f07b9dad406370eb394b0205eda4665f0e769",
+    "accessedAt": "2026-10-01T20:48:33.287Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "czechlit",
+    "name": "Czech Literary Centre",
+    "url": "https://www.czechlit.cz/en/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "czechlit",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.czechlit.cz"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.czechlit.cz/en/results-support-for-foreign-translations-of-czech-literature/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:34.128Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "czechlit",
+    "source": {
+      "name": "Czech Literary Centre",
+      "url": "https://www.czechlit.cz/en/results-support-for-foreign-translations-of-czech-literature/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Results: Support for foreign translations of Czech literature",
+    "publishedAt": "2026-09-01T12:00:36.000Z",
+    "description": "The Ministry of Culture will support a total of 78 projects in the second round of applications for 2026. The Ministry of Culture of the Czech Republic has released the results of the Support Programme for Publishing Translations of Czech",
+    "discoveredAt": "2026-10-01T20:48:33.924Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.czechlit.cz/en/results-support-for-foreign-translations-of-czech-literature/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 28806,
+      "sha256": "989a178fc6d1684cd9d7033d77965c9572d743f8420df8886a536513ffc575cc",
+      "accessedAt": "2026-10-01T20:48:34.126Z",
+      "headline": "Results: Support for foreign translations of Czech literature",
+      "excerpt": "Grants, scholarships..., News 1. 9. 2026 The Ministry of Culture of the Czech Republic has released the results of the Support Programme for Publishing Translations of Czech Literature Abroad for 2026 \u2013 second round. All information, including the link to download the document with the supported projects, can be found on the Ministry’s website here. CzechLit",
+      "publishedDates": [
+        {
+          "value": "2026-09-01 14:00:36",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "canonical": "https://www.czechlit.cz/en/results-support-for-foreign-translations-of-czech-literature/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:34.128Z",
+  "foundItems": [
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/results-support-for-foreign-translations-of-czech-literature/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Results: Support for foreign translations of Czech literature",
+      "publishedAt": "2026-09-01T12:00:36.000Z",
+      "description": "The Ministry of Culture will support a total of 78 projects in the second round of applications for 2026. The Ministry of Culture of the Czech Republic has released the results of the Support Programme for Publishing Translations of Czech",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/results-czech-literary-centre-travel-grants-2/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Results: Czech Literary Centre Travel Grants",
+      "publishedAt": "2026-07-10T10:18:07.000Z",
+      "description": "Results of applications for the period from September 1, 2026 to December 15, 2026 As of March 31, 2026, the Czech Literary Centre received 29 applications (8 from authors and 21 from institutions) for grants to support Czech authors travelling",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/open-call-czechlit-travel-grants-deadline-31-10/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Open Call: CzechLit Travel Grants - Deadline 31. 10.",
+      "publishedAt": "2026-09-04T06:58:14.000Z",
+      "description": "The deadline for the next round of applications for authors’ travel grants is October 31, 2026. Czech Literary Centre (CzechLit), a section of the Moravian Library (ML), reminds applicants of the upcoming deadline for its programme supporting Czech authors’ participation",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/book/traum-1999-en/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Traum 1999",
+      "publishedAt": "2026-06-14T18:32:09.000Z",
+      "description": "Tomáš Motal’s Traum 1999 is not a dream; it is a blacker-than-black trauma. The sharply defined, hallucinogenic narratives feature bizarre characters from a shadowy world that could easily engulf us, even though it rarely makes any rational sense. Tomáš Motal",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/book/mosty-en/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mosty",
+      "publishedAt": "2026-06-14T12:54:17.000Z",
+      "description": "Explore the amazing world of bridges and discover how they connect us all! Bridges span valleys and speed up transport\u2014and they look good too! So does this ingenious publication, which aims not only to provide information about bridge design, construction",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/book/myko-kompletni-zpravodaj-ze-sveta-hub-en/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Myko: Kompletní zpravodaj ze světa hub",
+      "publishedAt": "2026-06-14T12:39:28.000Z",
+      "description": "Who better to introduce us to the world of mushrooms than mushrooms themselves? In this news report from the world of fungi, you will discover things you never dreamed of including how we humans are ripe for a change. Let’s",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/book/na-pouti-en-2/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Na pouti",
+      "publishedAt": "2026-06-14T11:53:12.000Z",
+      "description": "Let playful verses and dreamlike illustrations transport you to an old-fashioned village fair! A concertina board-book that encourages interactive creativity: the front side presents poems and colourful motifs of fairground attractions, while the inside, reverse page hides black-andwhite ink drawings",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/book/kost-en/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kost",
+      "publishedAt": "2026-06-14T11:26:25.000Z",
+      "description": "A captivating story about one peculiar souvenir, friendship, discovering family roots, and the courage to make things right. Out of curiosity, ten-year-old Matěj steals a bone from the open family vault at his great-uncle’s funeral and takes it home. What",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/book/atlas-sveta-evropa-en/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Atlas světa - Evropa",
+      "publishedAt": "2026-06-14T11:03:17.000Z",
+      "description": "A picture book that invites little travelers on a journey through Europe and introduces them to its beauty. A large, illustrated atlas that brings together the most interesting facts from the geography, history, art and gastronomy of all 46 European",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "source": {
+        "name": "Czech Literary Centre",
+        "url": "https://www.czechlit.cz/en/book/stromove-en/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Stromové",
+      "publishedAt": "2026-06-14T10:56:34.000Z",
+      "description": "An unconventional guide to thirty trees growing in the Czech landscape that come alive in illustrations\u2014walking, dancing, making music and simply living. Three dozen deciduous and coniferous trees typical of both the Czech landscape and many others parade past the",
+      "discoveredAt": "2026-10-01T20:48:33.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "bd9d760035f48fc2e9e7935cdff261bebe11312647f35e2628b10f8468d48444"
+}

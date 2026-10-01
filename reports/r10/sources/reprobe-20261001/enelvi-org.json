@@ -1,0 +1,65 @@
+{
+  "sourceId": "enelvi-org",
+  "name": "Association of Greek Publishers and Booksellers",
+  "entryUrl": "https://www.enelvi.org/",
+  "countryCodes": [
+    "GR"
+  ],
+  "coverageCountryCodes": [
+    "GR"
+  ],
+  "attemptedAt": "2026-10-01T20:43:25.055Z",
+  "requests": [
+    {
+      "url": "https://www.enelvi.org/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 35112,
+      "sha256": "62c4dd0de1798a0ceca8d20630c94cd6b21a38170f9dd100395b86286d0291cc",
+      "accessedAt": "2026-10-01T20:43:26.011Z"
+    },
+    {
+      "url": "https://www.enelvi.org/index.php?format=feed&type=rss",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=utf-8",
+      "bytes": 15524,
+      "sha256": "eff3aa34b905d84c07d56c85406e4bd7c9837f469c30b985125d725ac6bfd30d",
+      "accessedAt": "2026-10-01T20:43:26.184Z"
+    },
+    {
+      "url": "https://www.enelvi.org/index.php/78-enelvi/78-poioi-eimaste",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 35174,
+      "sha256": "5be8bdd33709d62ce85768ec07216b912707448c806fcffad8cf4f1b43bf8fec",
+      "accessedAt": "2026-10-01T20:43:26.445Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.enelvi.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 895,
+    "sha256": "e83379e873cdb5f969a2067850cabfebf8afcdd9bfaa6f4401efde9ded4c31bf",
+    "accessedAt": "2026-10-01T20:43:25.645Z",
+    "disallowed": [
+      "/administrator/",
+      "/cache/",
+      "/cli/",
+      "/components/",
+      "/images/",
+      "/includes/",
+      "/installation/",
+      "/language/",
+      "/libraries/",
+      "/logs/",
+      "/media/",
+      "/modules/",
+      "/plugins/",
+      "/templates/",
+      "/tmp/"
+    ]
+  }
+}

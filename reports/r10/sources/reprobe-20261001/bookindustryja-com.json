@@ -1,0 +1,20 @@
+{
+  "sourceId": "bookindustryja-com",
+  "name": "Book Industry Association of Jamaica",
+  "entryUrl": "https://bookindustryja.com/",
+  "countryCodes": [
+    "JM"
+  ],
+  "coverageCountryCodes": [
+    "JM"
+  ],
+  "attemptedAt": "2026-10-01T20:43:02.476Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://bookindustryja.com/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

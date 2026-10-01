@@ -73,6 +73,33 @@ try {
   assert.equal(day.freshCreates, 3); assert.equal(day.deficitToMinimum, 7);
   assert.equal(day.legacyReceiptsWithUnknownFirstDate, 3);
   checks.push('Moscow-day fresh first receipts in both formats, old edits excluded, legacy dates unknown');
+  await db.exec('reset role');
+  const announcement = (eventDate, verifiedAt) => ({ ...base.prepared,
+    temporal: { kind: 'announcement', eventDate, verifiedAt, publishedAt: '2026-09-29T11:00:00Z' } });
+  // These twenty newer photos filled the RPC page before the sender filtered
+  // them out, starving the older fresh news and the text fallback behind them.
+  for (let index = 0; index < 20; index++) await insert('expired-announcement-' + index,
+    { prepared: announcement('2026-09-28', '2026-09-28T12:00:00Z') });
+  await insert('future-announcement', { prepared: announcement('2026-09-30', '2026-09-28T12:00:00Z') });
+  // 22:00 UTC yesterday is already today in Moscow; 19:00 is still yesterday.
+  await insert('today-announcement', { prepared: announcement('2026-09-29', '2026-09-28T22:00:00Z') });
+  await insert('today-unverified-announcement', { prepared: announcement('2026-09-29', '2026-09-28T19:00:00Z') });
+  await insert('bad-event-date-announcement', { prepared: announcement('2026-09-31', now) });
+  await insert('bad-verification-announcement', { prepared: announcement('2026-09-30', '2026-02-30T00:00:00Z') });
+  await insert('undated-verification-announcement', { prepared: announcement('2026-09-30', null) });
+  await insert('local-time-verification-announcement', { prepared: announcement('2026-09-30', '2026-09-29T12:00:00') });
+  await insert('expired-announcement-correction', { status: 'correction_pending', remoteId: '8',
+    prepared: announcement('2026-09-28', '2026-09-28T12:00:00Z') });
+  await db.exec('set role service_role');
+  const announcements = (await due()).rows;
+  assert.deepEqual(announcements.map(row => row.entity_id.split(':')[2]).sort(),
+    ['correction', 'expired-announcement-correction', 'expired-inflight', 'fresh',
+      'future-announcement', 'text-only', 'today-announcement']);
+  const { checkedDeliveryDueRows } = await import('./workers/literary-news-delivery-worker.mjs');
+  const runtimeAnnouncements = announcements.map(row => ({ ...row,
+    metadata: { ...row.metadata, key: row.entity_id, newsId: row.entity_id.split(':')[2] } }));
+  assert.equal(checkedDeliveryDueRows(runtimeAnnouncements, destination, new Date(now)).length, announcements.length);
+  checks.push('twenty expired announcements cannot starve fresh news; future and Moscow-verified today survive before LIMIT, corrections retained');
   await assert.rejects(db.query('select * from public.read_due_literary_news_runtime_posts($1,$2,21)', [destination.id, now]));
   for (const role of ['anon', 'authenticated']) {
     await db.exec('reset role; set role ' + role); await assert.rejects(due()); await assert.rejects(status());

@@ -1,4 +1,5 @@
 import { R10_SOURCE_PROFILES, R10_SOURCE_GEOGRAPHY } from './literary-news-source-profiles.mjs';
+import { applyStreamSourceDiscoveryOverride } from './literary-news-stream-source-overrides.mjs';
 
 /**
  * Approved discovery endpoints and selectors. Changes require code review.
@@ -469,7 +470,7 @@ function freezeSource(value) {
 // Keep existing IDs and destinations when their latest upstream probe is blocked.
 // Only successfully tested, code-reviewed R10 profiles add or update destinations.
 export const LEGACY_LITERARY_NEWS_SOURCES = freezeSource(approvedSources);
-const verifiedById = new Map(R10_SOURCE_PROFILES.map((source) => [source.id, source]));
+const verifiedById = new Map(R10_SOURCE_PROFILES.map(applyStreamSourceDiscoveryOverride).map((source) => [source.id, source]));
 const existingIds = new Set(approvedSources.map((source) => source.id));
 export const LITERARY_NEWS_SOURCES = freezeSource([
   ...approvedSources.map((source) => ({
@@ -477,5 +478,5 @@ export const LITERARY_NEWS_SOURCES = freezeSource([
     ...R10_SOURCE_GEOGRAPHY[source.id],
     ...(verifiedById.get(source.id) || {}),
   })),
-  ...R10_SOURCE_PROFILES.filter((source) => !existingIds.has(source.id)),
+  ...R10_SOURCE_PROFILES.filter((source) => !existingIds.has(source.id)).map(applyStreamSourceDiscoveryOverride),
 ]);

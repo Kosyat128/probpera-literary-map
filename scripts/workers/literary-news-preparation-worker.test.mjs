@@ -2,6 +2,7 @@ import {describe,expect,it,vi} from 'vitest';
 import worker,{checkedPreparationSourceUrl,createPreparationSourceFetch,createPreparationBindingAi,
   boundedNativeNewsCandidates,reusableNativeNewsRecord,runNativeNewsPreparation,PREPARATION_REPORT_KEY} from './literary-news-preparation-worker.mjs';
 import {NEWS_PREPARATION_FENCE_KEY} from '../lib/literary-news-preparation-fence.mjs';
+import {LITERARY_NEWS_SOURCES} from '../lib/literary-news-sources.mjs';
 import {emptyDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
 import {DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_OWNER_KEY,
   DAILY_NEWS_WINDOW,DAILY_NEWS_POLICY,DAILY_NEWS_MODELS,makeDailyApprovedPayload,dailyNewsDigest,dailyRecordHashPayload} from '../lib/literary-news-daily-profile.mjs';
@@ -113,6 +114,76 @@ describe('Private native daily preparation and bounded public source adapter',()
     await expect(createPreparationSourceFetch({sources,fetchImpl:big})('https://source.example/news/item1')).rejects.toThrow('daily_source_response_too_large');
     const binary=vi.fn(async()=>new Response('binary',{headers:{'content-type':'application/octet-stream'}}));
     await expect(createPreparationSourceFetch({sources,fetchImpl:binary})('https://source.example/news/item1')).rejects.toThrow('daily_source_content_type_invalid');
+  });
+  it('accepts a 1.6 MB detail only under its matched frozen registered profile and ignores caller limits',async()=>{
+    const size=1_600_000,approved=[Object.freeze({...sources[0],detailMaxBytes:2*1024*1024})];
+    const body=()=>new Response(new Uint8Array(size),{headers:{'content-type':'text/html'}});
+    const fetchImpl=vi.fn(async()=>body()),fetchSource=createPreparationSourceFetch({sources:approved,fetchImpl,current:()=>current,maxRequests:2});
+    const evidence=await fetchSource('https://source.example/news/item1',{maxBytes:1});
+    expect(evidence).toMatchObject({bytes:size,status:200,accessedAt:current.toISOString()});
+    expect(evidence.rawBytes).toBeUndefined();expect(evidence.sha256).toMatch(/^[a-f0-9]{64}$/);
+    await expect(fetchSource('https://unregistered.example/news/item1',{maxBytes:2*1024*1024})).rejects.toThrow('daily_source_destination_rejected');
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+    await expect(createPreparationSourceFetch({sources,fetchImpl})('https://source.example/news/item1',{maxBytes:Infinity}))
+      .rejects.toThrow('daily_source_response_too_large');
+    await expect(createPreparationSourceFetch({sources:approved,fetchImpl})('https://source.example/news/',{includeBytes:true,maxBytes:Infinity}))
+      .rejects.toThrow('daily_source_response_too_large');
+    const untrustedCaller={includeBytes:false};Object.defineProperty(untrustedCaller,'maxBytes',{get(){throw Error('caller_limit_read');}});
+    expect((await fetchSource('https://source.example/news/item2',untrustedCaller)).bytes).toBe(size);
+    await expect(fetchSource('https://source.example/news/item3')).rejects.toThrow('daily_source_request_budget');
+  });
+  it('uses the two measured magazine/library exceptions from the actual frozen registry',async()=>{
+    for(const id of ['asymptote','landesbibliothek-li']){
+      const source=LITERARY_NEWS_SOURCES.find(item=>item.id===id),size=1_600_000;
+      expect(Object.isFrozen(source)).toBe(true);expect(source.detailMaxBytes).toBe(2*1024*1024);
+      const input=source.exampleArticleUrls[0],fetchImpl=vi.fn(async()=>new Response(new Uint8Array(size),{headers:{'content-type':'text/html'}}));
+      const evidence=await createPreparationSourceFetch({fetchImpl})(input);
+      expect(evidence.bytes).toBe(size);expect(evidence.rawBytes).toBeUndefined();expect(fetchImpl).toHaveBeenCalledTimes(1);
+      const signal=fetchImpl.mock.calls[0][1].signal;expect(signal).toBeInstanceOf(AbortSignal);
+    }
+  });
+  it.each([false,true])('enforces the exact 2 MiB cap for approved detail/listing overrides, including streamed bytes (%s)',async includeBytes=>{
+    const cap=2*1024*1024,approved=[Object.freeze({...sources[0],listingMaxBytes:cap,detailMaxBytes:cap})];
+    const input=includeBytes?'https://source.example/news/':'https://source.example/news/item1';
+    const exact=vi.fn(async()=>new Response(new Uint8Array(cap),{headers:{'content-type':'text/html'}}));
+    expect((await createPreparationSourceFetch({sources:approved,fetchImpl:exact})(input,{includeBytes})).bytes).toBe(cap);
+    const cancelled=vi.fn(),stream=()=>new ReadableStream({start(controller){controller.enqueue(new Uint8Array(cap+1));},cancel:cancelled});
+    const excess=vi.fn(async()=>new Response(stream(),{headers:{'content-type':'text/html'}}));
+    await expect(createPreparationSourceFetch({sources:approved,fetchImpl:excess})(input,{includeBytes,maxBytes:cap*10}))
+      .rejects.toThrow('daily_source_response_too_large');
+    expect(cancelled).toHaveBeenCalledTimes(1);
+    const oversizedHeader=vi.fn(async()=>new Response(stream(),{headers:{'content-type':'text/html','content-length':String(cap+1)}}));
+    await expect(createPreparationSourceFetch({sources:approved,fetchImpl:oversizedHeader})(input,{includeBytes}))
+      .rejects.toThrow('daily_source_response_too_large');
+    expect(cancelled).toHaveBeenCalledTimes(2);
+  });
+  it('rejects malformed, inherited, accessor and mutable profile overrides before any fetch',async()=>{
+    const fetchImpl=vi.fn();
+    for(const field of ['listingMaxBytes','detailMaxBytes'])for(const value of [undefined,null,0,-1,1.5,'2097152',NaN,Infinity,2*1024*1024+1,Number.MAX_SAFE_INTEGER]){
+      const approved=[Object.freeze({...sources[0],[field]:value})];
+      await expect(createPreparationSourceFetch({sources:approved,fetchImpl})('https://source.example/news/item1'))
+        .rejects.toThrow('daily_source_byte_limit_invalid');
+    }
+    const inherited=Object.freeze(Object.assign(Object.create({detailMaxBytes:2*1024*1024}),sources[0]));
+    const getter=vi.fn(()=>2*1024*1024),accessor={...sources[0]};Object.defineProperty(accessor,'detailMaxBytes',{get:getter});Object.freeze(accessor);
+    for(const source of [inherited,accessor,{...sources[0],detailMaxBytes:2*1024*1024}])
+      await expect(createPreparationSourceFetch({sources:[source],fetchImpl})('https://source.example/news/item1'))
+        .rejects.toThrow('daily_source_byte_limit_invalid');
+    expect(fetchImpl).not.toHaveBeenCalled();expect(getter).not.toHaveBeenCalled();
+  });
+  it('uses the matched destination profile after a same-origin redirect and retains deadline enforcement',async()=>{
+    const approved=[Object.freeze({...sources[0],detailMaxBytes:2*1024*1024}),
+      Object.freeze({...sources[0],id:'small-fixture',url:'https://source.example/short/',linkPattern:/^\/short\/[^/]+$/})];
+    const cancelled=vi.fn(),redirectBody=new ReadableStream({start(controller){controller.enqueue(new Uint8Array(1));},cancel:cancelled});
+    const fetchImpl=vi.fn(async url=>url.includes('/news/')?new Response(redirectBody,{status:302,headers:{location:'/short/item1'}}):
+      new Response(new Uint8Array(512*1024+1),{headers:{'content-type':'text/html'}}));
+    await expect(createPreparationSourceFetch({sources:approved,fetchImpl})('https://source.example/news/item1'))
+      .rejects.toThrow('daily_source_response_too_large');
+    expect(fetchImpl).toHaveBeenCalledTimes(2);expect(cancelled).toHaveBeenCalledTimes(1);
+    const noNetwork=vi.fn();
+    await expect(createPreparationSourceFetch({sources:approved,fetchImpl:noNetwork,current:()=>current,deadline:current.getTime()})
+      ('https://source.example/news/item1')).rejects.toThrow('daily_preparation_deadline');
+    expect(noNetwork).not.toHaveBeenCalled();
   });
   it('fits the free-plan external fetch allowance, counts redirects and closes discarded response bodies',async()=>{
     expect(()=>createPreparationSourceFetch({maxRequests:49})).toThrow('daily_source_request_budget_invalid');

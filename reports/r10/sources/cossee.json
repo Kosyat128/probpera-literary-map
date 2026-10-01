@@ -1,0 +1,16 @@
+{
+  "sourceId": "cossee",
+  "name": "Cossee",
+  "entryUrl": "https://www.cossee.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:18.658Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "external_redirect:http://www.uitgeverijcossee.nl",
+  "robots": {
+    "url": "https://www.cossee.com/robots.txt",
+    "error": "external_redirect:http://www.uitgeverijcossee.nl",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "sourceId": "libros-asteroide",
+  "name": "Libros del Asteroide",
+  "entryUrl": "https://librosdelasteroide.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:07.184Z",
+  "requests": [
+    {
+      "url": "https://librosdelasteroide.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 138876,
+      "sha256": "8c3a625b7b4081a7d9abc9b0dffee12e41849dc3828302380cddba77e0c3f215",
+      "accessedAt": "2026-10-01T20:48:08.162Z"
+    },
+    {
+      "url": "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 51024,
+      "sha256": "b1c6cd84732c98dfc41776e19ca47aa40f3a3699c64017ee1d58fa640a3b7200",
+      "accessedAt": "2026-10-01T20:48:08.444Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://librosdelasteroide.com/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "libros-asteroide",
+    "name": "Libros del Asteroide",
+    "url": "https://librosdelasteroide.com/",
+    "format": "html",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "libros-asteroide",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://librosdelasteroide.com"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/actualidad\\x2dasteroide\\/440\\/[^/]+\\/?$|^\\/actualidad\\x2dasteroide\\/425\\/[^/]+\\/?$|^\\/actualidad\\x2dasteroide\\/442\\/[^/]+\\/?$|^\\/actualidad\\x2dasteroide\\/438\\/[^/]+\\/?$|^\\/paseos\\/77\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027"
+    ],
+    "verifiedAt": "2026-10-01T20:48:08.447Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "libros-asteroide",
+    "source": {
+      "name": "Libros del Asteroide",
+      "url": "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "«Tierra», la nueva novela de Maggie O’Farrell, llegará a librerías el 1 de febrero de 2027",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:08.215Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 51024,
+      "sha256": "b1c6cd84732c98dfc41776e19ca47aa40f3a3699c64017ee1d58fa640a3b7200",
+      "accessedAt": "2026-10-01T20:48:08.444Z",
+      "headline": "«Tierra», la nueva novela de Maggie O’Farrell, llegará a librerías el 1 de febrero de 2027",
+      "excerpt": "«Tierra», la nueva novela de Maggie O’Farrell, llegará a librerías el 1 de febrero de 2027 Tierra, que llegará a las librerías el 1 de febrero de 2027, ya está en preventa y para celebrarlo, os invitamos a descubrir cómo será la cubierta de esta gran obra, diseñada por Duró Studio a partir de una imagen de Odilia Liuzzi.Maggie O’Farrell narra en su último lanzamiento la historia de una familia y d",
+      "publishedDates": [],
+      "canonical": "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:08.447Z",
+  "foundItems": [
+    {
+      "sourceId": "libros-asteroide",
+      "source": {
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Tierra», la nueva novela de Maggie O’Farrell, llegará a librerías el 1 de febrero de 2027",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:08.215Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "source": {
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/actualidad-asteroide/425/agenda-de-presentaciones-firmas-y-actos-de-nuestros-autores-en-septiembre-y-octubre",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Agenda de presentaciones, firmas y actos de nuestros autores en septiembre y octubre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:08.215Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "source": {
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/actualidad-asteroide/442/fallece-marcos-ordonez-autor-de-big-time-la-gran-vida-de-perico-vidal-y-otras-grandes-novelas",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fallece Marcos Ordóñez, autor de «Big Time: La gran vida de Perico Vidal» y otras grandes novelas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:08.215Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "source": {
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/politica-de-cookies",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Más información",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:08.215Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "source": {
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/contexto-de-editores",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Contexto de Editores",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:08.215Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "source": {
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/premios-y-menciones",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Premios y menciones",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:08.215Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "source": {
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/actualidad-asteroide/438/nuevas-guias-para-clubes-de-lectura-descubre-tu-proxima-lectura-compartida",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "¡Nuevas guías para clubes de lectura! Descubre tu próxima lectura compartida.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:08.215Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "source": {
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/paseos/77/lejos-del-mundanal-ruido",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lejos del mundanal ruido",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:08.215Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "source": {
+        "name": "Libros del Asteroide",
+        "url": "https://librosdelasteroide.com/politica-de-privacidad",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "política de privacidad",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:08.215Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8c3a625b7b4081a7d9abc9b0dffee12e41849dc3828302380cddba77e0c3f215"
+}

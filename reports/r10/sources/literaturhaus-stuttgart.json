@@ -1,0 +1,1370 @@
+{
+  "sourceId": "literaturhaus-stuttgart",
+  "name": "Literaturhaus Stuttgart",
+  "entryUrl": "https://www.literaturhaus-stuttgart.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:01.278Z",
+  "requests": [
+    {
+      "url": "https://www.literaturhaus-stuttgart.de/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 199386,
+      "sha256": "6a1d362326172ecd132828e061d589f97007ed8db4d9198ff02cc4c1a47d20c7",
+      "accessedAt": "2026-10-01T20:52:01.777Z"
+    },
+    {
+      "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+      "status": 200,
+      "contentType": "text/xml;charset=utf-8",
+      "bytes": 72098,
+      "sha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+      "accessedAt": "2026-10-01T20:52:02.562Z"
+    },
+    {
+      "url": "https://www.literaturhaus-stuttgart.de/event/6853.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 116728,
+      "sha256": "32677fb405b89bba653817714c2f08d51db1e9e3dfe66613d67e53799be4c823",
+      "accessedAt": "2026-10-01T20:52:02.729Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.literaturhaus-stuttgart.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 249,
+    "sha256": "ff70c85910917a8c238a05953c5d7b816e55da2a217b13775c4d2ff3a60566b5",
+    "accessedAt": "2026-10-01T20:52:01.599Z",
+    "disallowed": [
+      "/en/",
+      "/fileadmin/",
+      "/typo3temp/assets/"
+    ]
+  },
+  "endpoint": {
+    "id": "literaturhaus-stuttgart",
+    "name": "Literaturhaus Stuttgart",
+    "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+    "format": "rss",
+    "language": "de-DE",
+    "region": "global",
+    "sourceFamilyId": "literaturhaus-stuttgart",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.literaturhaus-stuttgart.de"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.literaturhaus-stuttgart.de/event/6853.html"
+    ],
+    "verifiedAt": "2026-10-01T20:52:02.734Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 50,
+  "literaryCandidateCount": 50,
+  "sample": {
+    "sourceId": "literaturhaus-stuttgart",
+    "source": {
+      "name": "Literaturhaus Stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6853.html",
+      "language": "de-DE"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Irish Poets in Conversation: Transnational Poetics of Extinction",
+    "publishedAt": "2026-10-01T09:37:48.000Z",
+    "description": "Anlässlich der irischen EU-Ratspräsidentschaft 2026 präsentiert Culture Ireland Cultúre 2026. Die multimediale Performance bringt drei der aufregendsten poetischen Stimmen aus Irland und Nordirland zusammen: Leeanne Quinn, Aifric Mac Aodha und Matthew Rice. Jede:r der drei Dichter:innen liest neuere Arbeiten, darunter ein eigens in Auftrag gegebenes dreisprachiges Gedicht (auf Englisch, Irisch un…",
+    "discoveredAt": "2026-10-01T20:52:02.565Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.literaturhaus-stuttgart.de/event/6853.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 116728,
+      "sha256": "32677fb405b89bba653817714c2f08d51db1e9e3dfe66613d67e53799be4c823",
+      "accessedAt": "2026-10-01T20:52:02.729Z",
+      "headline": "Irish Poets in Conversation: Transnational Poetics of Extinction / Leeanne Quinn, Aifric Mac Aodha, Matthew Rice | Literaturhaus Stuttgart",
+      "excerpt": "Eóin Flannery 26.11. Donnerstag 19.30 Uhr Lesung, Gespräch und Empfang Moderation: Jessica Bundschuh Eóin Flannery Toni Bernhart Karten Eintritt: 14 / 12 / 7 € Anlässlich der irischen EU-Ratspräsidentschaft 2026 präsentiert Culture Ireland Cultúre 2026. Die multimediale Performance bringt drei der aufregendsten poetischen Stimmen aus Irland und Nordirland zusammen: Leeanne Quinn, Aifric Mac Aodha ",
+      "publishedDates": [],
+      "canonical": "https://www.literaturhaus-stuttgart.de/event/6853.html",
+      "language": "de-DE",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:02.734Z",
+  "foundItems": [
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6853.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Irish Poets in Conversation: Transnational Poetics of Extinction",
+      "publishedAt": "2026-10-01T09:37:48.000Z",
+      "description": "Anlässlich der irischen EU-Ratspräsidentschaft 2026 präsentiert Culture Ireland Cultúre 2026. Die multimediale Performance bringt drei der aufregendsten poetischen Stimmen aus Irland und Nordirland zusammen: Leeanne Quinn, Aifric Mac Aodha und Matthew Rice. Jede:r der drei Dichter:innen liest neuere Arbeiten, darunter ein eigens in Auftrag gegebenes dreisprachiges Gedicht (auf Englisch, Irisch un…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6854.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literaturpodcast »Kapriolen«: - Folge 51",
+      "publishedAt": "2026-09-30T15:29:37.000Z",
+      "description": "Die Lyrikerin, Essayistin und Romanautorin Marica Bodrožić schreibt zwischen Sprachen und Ländern, zwischen Poesie und Politik. In ihrem neuesten Essay »Sterben« betritt Bodrožić nach einer Diagnose, die ihren baldigen Tod bedeuten könnte, einen Zwischenraum, in dem Körper- und Bewusstseinszeit auseinanderfallen. Regelmäßig lädt die Lyrikerin und Literaturvermittlerin Carolin Callies Autor:innen …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6745.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Das Fest. 25 Jahre Literaturhaus Stuttgart",
+      "publishedAt": "2026-09-30T14:28:04.000Z",
+      "description": "Grußworte Petra Olschowski, Ministerin für Wissenschaft, Forschung und KunstFabian Mayer, erster Bürgermeister der Stadt Stuttgart Lesung Christoph Ransmayr gehört zu den bedeutendsten deutsch - sprachigen Schriftsteller:innen der Gegenwart. Zum Geburtstag des Literaturhauses liest er exklusiv aus seinem noch unveröffentlichten Roman »Swan oder Der Puls der Sterne«, in dem wir mit einer Astronomi…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6089.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kapriolen - Der Literaturpodcast",
+      "publishedAt": "2026-09-29T22:41:54.000Z",
+      "description": "Es ist der verrückte Einfall, das Verrücken unserer gewohnten Perspektive um oftmals nur wenige Zentimeter, der aus Alltag Kunst, aus Worten Literatur entstehen lässt. Aber unter welchen Schichten lagern Impulse, woraus speisen sich Ideen, wie verhält es sich mit dem Einfall und wie entsteht aus feinen Beobachtungen Literatur, Lyrik? Seit Mai 2020 lädt die Lyrikerin Carolin Callies regelmäßig Sch…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6834.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ein Notizbuch binden",
+      "publishedAt": "2026-09-22T06:08:08.000Z",
+      "description": "In diesem Workshop binden Sie Schritt für Schritt ein Notizbuch mit offenem Rücken und vorgelegten, eingebundenen Kartonblättern. Dabei lernen Sie die Französische Kettenstichheftung kennen und haben die Möglichkeit, das Cover individuell zu gestalten, zum Beispiel mit einem weihnachtlichen Motiv. Am Ende des Workshops können Sie Ihr eigenes Buch als Weihnachtsgeschenk mit nach Hause nehmen. (lau…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6804.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Schweizer Buchpreis - Die Shortlist!",
+      "publishedAt": "2026-09-17T10:57:25.000Z",
+      "description": "Am 8. Oktober lernen Sie vier der fünf nominierten Autor:innen für den Schweizer Buchpreis 2026 kennen. Zum neunzehnten Mal vergeben der Verein LiteraturBasel und der Schweizer Buchhandels- und Verlagsverband SBVV am 15. November, im Theater Basel, den Schweizer Buchpreis. Die Jury hatte dieses Jahr 86 zugelassene deutschsprachige erzählerische oder essayistische Werke zu beurteilen.",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6782.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jetzt sag doch endlich was",
+      "publishedAt": "2026-10-01T11:16:47.000Z",
+      "description": "Stottern ist eine Art des rasenden Stillstands, eine unvorhergesehene Störung im Betriebsablauf, während unsere Gesellschaft pausenlos von künstlicher digitaler Dringlichkeit getrieben ist. Doch gesellschaftliche Teilhabe ist ein Gradmesser der Demokratie. Eine Gesellschaft, in der sich möglichst viele Menschen einbringen können, begegnet extremistischen Strömungen mit mehr Standfestigkeit. Auf d…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6698.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Schwebeteilchen",
+      "publishedAt": "2026-10-01T10:50:23.000Z",
+      "description": "Kleine Alltagsdinge. Magisch leichte, fast unscheibare Augenblicke. Oft ziehen sie einfach vorbei.Von Mai bis Oktober fangen fünf Autor:innen sie ein.Exklusiv wöchentlich hier auf unserer Homepage und @literaturhausstuttgartSchweben Sie mit!",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6843.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Das kalte Werk",
+      "publishedAt": "2026-10-01T09:38:49.000Z",
+      "description": "Wolfgang Schorlaus neuer Roman »Das kalte Werk. Denglers zwölfter Fall« erzählt von den Schatten der Vergangenheit und von den brutalen Arbeitsbedingungen der Zukunft - oder der Gegenwart? Georg Dengler und Olga treffen auf ihren mächtigsten Gegner: MEGA1, der amerikanische Tech-Milliardär, lässt sich durch San Francisco chauffieren. Er träumt von genialen Innovationen und einer Welt, in der kein…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6844.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mischka",
+      "publishedAt": "2026-10-01T09:38:41.000Z",
+      "description": "Barbara Honigmann erzählt vom Leben und Überleben der Freund:innen ihrer Eltern, die den Lagern der Nazis und des Gulag entkamen. Junge jüdische kommunistische Intellektuelle, die für ihre Ideal teuer bezahlten und von denen einige doch immer wieder Auswege fanden. Mischka, so der gleichnamige Titel ihres neuen Buches, brachte zum Beispiel in ihrer Moskauer Wohnung in den Siebzigerjahren Dichter:…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6845.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Leicht. denken, bauen, schweben",
+      "publishedAt": "2026-10-01T09:38:34.000Z",
+      "description": "Leichtbau, Robotik und computerbasiertes Entwerfen - Achim Menges gehört zu den profiliertesten und innovativsten Köpfen der Architektur in Forschung und Umsetzung; 2023 ausgezeichnet mit dem Gottfried Wilhelm Leibniz-Preis führten ihn Gastprofessuren durch die USA und Europa. Er ist Professor an der Universität Stuttgart und dort Leiter des von ihm gegründeten Institut für Computerbasiertes Entw…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6848.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Liefern",
+      "publishedAt": "2026-10-01T09:38:28.000Z",
+      "description": "Der Péter Horváth Literaturpreis geht in diesem Jahr an den in Israel geborenen und in Berlin lebenden Autor Tomer Gardi. In seinem Roman »Liefern« verfolgt er die Wege derjenigen, auf deren Schultern das Tischlein-deck-dich der Plattform-Ökonomie lastet. Im digital vernetzten globalen Dorf gibt es keine Wirtshäuser, aber dafür alle Arten von Lieferdiensten. Auf Fahrrädern, E-Bikes, Motorrädern o…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6849.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Das tickende Herz",
+      "publishedAt": "2026-10-01T09:38:21.000Z",
+      "description": "Es beginnt mit einer kleinen, nicht heilenden Wunde, die ein Kuss verursacht hat, und führt uns um den halben Erdball. Lutz Seiler erzählt in seinem neuen Roman »Das tickende Herz« das Leben seines Helden weiter, in dem sich Weltgeschichte und persönliches Schicksal überschneiden. Zu Beginn des neuen Jahrtausends kehrt Carl Bischoff aus der brandenburgischen Provinz nach Berlin zurück, doch nur, …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6850.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Schreibweisen VII",
+      "publishedAt": "2026-10-01T09:38:09.000Z",
+      "description": "In einem unserer letzten »zwischen/dinge« haben wir uns als Archäologinnen des Jetzt betätigt. Ohne, dass wir tief graben mussten, offenbarte die Stadt uns ihre Geheimnisse. Sie versetzte uns in einen Zustand zwischen Hieroglyphen-entzifferischem Detektivsinn und halluzinatorischer Wahrseherei, zwischen Albernheit und heiligem Ernst. Nun wollen wir der Spur dieser uns von der Stadt selbst eingepr…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6851.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Das Glück ist ein Engel mit ernstem Gesicht",
+      "publishedAt": "2026-10-01T09:38:03.000Z",
+      "description": "»Ich schreibe dich \u2013 / Zur Welt bist du wieder gekommen / mit geisternder Buchstabenkraft«, so zitiert Josef Winkler Nelly Sachs, wenn er seine mittlerweile gestorbene Schwester Maria in die Welt zurückschreibt. Sie war es, die sich in ihrer gemeinsamen Kindheit auf dem Bauernhof vor allem um den rebellischen Josef gekümmert hat. Für eine Ausbildung zur Konditorin verlässt sie das Dorf, arbeitet …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6852.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Schreibzirkel junger Autor:innen",
+      "publishedAt": "2026-10-01T09:37:56.000Z",
+      "description": "Einsam lebt die schriftstellerische Existenz \u2013 gute Texte entstehen in und aus der Abgeschiedenheit. Trotzdem, der Wunsch nach Austausch und Impulsen von außen kann selbst eingefleischteste Eremit:innen ereilen. Ihr seid herzlich eingeladen, euch mit euren Gedichten, Textfragmenten oder Romanprojekten unserer Runde anzuschließen.",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6856.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Keiner wird um etwas bitten",
+      "publishedAt": "2026-10-01T09:36:43.000Z",
+      "description": "»Die Stadt lag da wie ein Tier mit gebrochenem Rückgrat«. In der vom Krieg heimgesuchten Großstadt treffen sich Menschen an Orten, die noch halbwegs intakt sind: auf dem Fußballplatz, in der Kirche, in einem lichtdurchfluteten Hochhausbüro. Zhadan-Leser:innen begegnen im neuen Band »Keiner wird um etwas bitten« vertrauten Figuren aus den Büchern »Mesopotamien« oder »Internat«: Musikern, arbeitslo…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6855.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Auto-/Bio-/Grafik. Über Erinnerung und Nicht-Vergessen-Können",
+      "publishedAt": "2026-09-30T13:31:22.000Z",
+      "description": "Was bleibt von einer Kindheit, die zwischen Armut, Sucht und familiären Brüchen beginnt? Wie lässt sich die eigene Geschichte erzählen, ohne sie zu glätten oder zu dramatisieren? Die Ausstellung zeigt den autobiografischen Doppelband »Für einen Augenblick für immer glücklich« und »Wish you were here« von Shevek K. Selbert. Mit Zeichnungen, Fotografien und Archivmaterial erzählt Selbert von den Le…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6760.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Digitale Schreibsession",
+      "publishedAt": "2026-09-28T12:30:53.000Z",
+      "description": "Die eigene Lebensgeschichte kann vieles sein. Sie ist kein starrer Text \u2013 sie ist ein bewegtes Mosaik aus Momenten, Brüchen und Wegen. In diesen Schreibsessions geht es nicht um die perfekte Grammatik, sondern um den Weitblick autobiografischen Schreibens. Wir lernen, uns Fragen zu stellen, die wir uns selbst und als Gesellschaft häufig nicht zu stellen trauen. Mittwoch 11. bis Freitag 13.11. 17:…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6842.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Auto-/Bio-/Grafik",
+      "publishedAt": "2026-09-24T18:42:20.000Z",
+      "description": "Was bleibt von einer Kindheit, die zwischen Armut, Sucht und familiären Brüchen beginnt? Wie lässt sich die eigene Geschichte erzählen, ohne sie zu glätten oder zu dramatisieren? Die Ausstellung zeigt den autobiografischen Doppelband »Für einen Augenblick für immer glücklich« und »Wish you were here« von Shevek K. Selbert. Mit Zeichnungen, Fotografien und Archivmaterial erzählt Selbert von den Le…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6739.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Arctic Meltdown - Die Neuvermessung der Welt",
+      "publishedAt": "2026-09-24T09:48:19.000Z",
+      "description": "Die Drohungen des amerikanischen Präsidenten haben den Blick der Welt auf die Arktis gelenkt. In seinem neuen Buch zeigt Robert Habeck, um welche weltpolitischen Interessen es dabei geht \u2013 und was das für die internationale Friedensordnung bedeutet. Die arktische Erwärmung, die so viel schneller voranschreitet als im globalen Mittel, lässt das Eis schmelzen und internationale Begehrlichkeiten ent…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6823.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die Stadt, die sie schrieben",
+      "publishedAt": "2026-09-23T14:48:17.000Z",
+      "description": "New York City ist die literarische Sehnsuchtsstadt schlechthin \u2013 einst über Manhattan, heute über Brooklyn und Queens erzählt. Vor allem Autorinnen prägen dieses Bild und den Charakter: Dorothy Parker, Edith Wharton und Siri Hustvedt, ebenso wie Emma Lazarus, deren Zeilen im Sockel der Freiheitsstatue stehen, oder Ann Petry, die 1946 als erste Schwarze Autorin eine Million Bücher verkaufte. Isabe…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6832.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Morgenglocken wach geworden - Elke Erb in Fellbach",
+      "publishedAt": "2026-09-23T14:47:46.000Z",
+      "description": "Elke Erb hat in Ulrich Keichers Verlagsprogramm so manche Spur hinterlassen. »Morgenglocken wach geworden« erinnert nun an ihren Besuch in Fellbach 2018 und ihre Rückwendung zu Gedichten Eduard Mörikes. Der Band versammelt ihre Dankesrede zum Mörike-Preis der Stadt Fellbach sowie die Begründung ihrer Wahl der Förderpreisträgerin Marie T. Martin. Weiter enthält die Publikation die Laudatio auf Elk…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6830.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "»Anderwelttage« von Okwiri Oduor",
+      "publishedAt": "2026-09-23T14:46:47.000Z",
+      "description": "Verlegerin Jona Elisa Jeska erzählt über das Verlegen afrikanischer Literaturen \u2013 vorgestellt am Debütroman »Anderwelttage« von Okwiri Oduors (dt. Thomas Brückner). In der kenianischen Stadt Mapeli wächst Ayosa Ataraxis Brown auf, zwölf Jahre alt und das vielleicht einsamste Mädchen der Welt. Im baufälligen Haus ihrer Großmutter ist sie von geisterhaften Fatumas, boshaft lachenden Vögeln und dem …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6699.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "4. Stuttgarter Zukunftsrede",
+      "publishedAt": "2026-09-22T13:58:00.000Z",
+      "description": "Siri Hustvedt, eine der international bedeutendsten Schriftstellerinnen und Intellektuellen der USA, hebt die Grenzen zwischen erzählender Literatur und den Wissenschaften in ihren Texten immer wieder auf; Literatur, bildende Kunst, Psychologie, Neurowissenschaften und Philosophie fließen virtuos zusammen. Ob sie in ihren Romanen die New Yorker Intellektuellenszene seziert oder in ihren Essays di…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6835.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mit filigranen Collagen durch Jane Austens Welt",
+      "publishedAt": "2026-09-22T06:08:20.000Z",
+      "description": "»Überredung«, der letzte Roman der berühmten Jane Austen, erscheint in neuem Gewand. Illustratorin und Künstlerin Malika Specht fertigte für diesen Klassiker fantastische Bilder in Collagentechnik an, die Jane Austens Welt eindrucksvoll neu interpretieren. Die Besucher:innen werden am runden Tisch mehr über den Entstehungsprozess und Malikas Arbeitsweise erfahren und dabei in das England des 19. …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6763.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kometenparade - Markt der unabhängigen Verlage",
+      "publishedAt": "2026-09-22T06:05:44.000Z",
+      "description": "Wir holen das Weltall ins Literaturhaus:Kometen, deren Schweif erst heller strahlt, wenn sie sich der Sonne nähern. Die Kometen am literarischen Firmament sind die unabhängigen Verlage: Sie kreisen das ganze Jahr \u2013 allerdings meist fernab der großen Buchhandlungen und des Feuilletons. Doch ihre Leidenschaft ist ungebrochen. Sie setzen eigene Themen, unabhängig von Auflage und Umsatz. Sie antworte…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6840.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kleines Museum des Alltags",
+      "publishedAt": "2026-09-22T05:55:34.000Z",
+      "description": "In ihrer neuen Serie »Kleines Museum des Alltags« widmet sich Nathalie Wolff den kleinen Dingen des französischen und schwäbischen Alltags. Entstanden sind Aquarelle und Zeichnungen nach Motiven wie Spiegelei, Flaschenöffner, Wäscheklammer, Tempotaschentuch, Korkenzieher, Essiggurke, Küchenmesser, Schwamm und Gemüseschäler … (Édition totale éclipse)",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6833.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wenn du lächelst, zerfällt ein roter Apfel in Scheiben",
+      "publishedAt": "2026-09-22T05:53:38.000Z",
+      "description": "Begreift man alles im Leben als Übersetzung, wie Octavio Paz es tat, nähert man sich der Philosophie hinter Dilek Mayatürks zweisprachigem Gedichtband über Politik, Natur und Erotik. Sie denkt und schreibt auf Türkisch, verfasst dasselbe Gedicht im Anschluss aber neu auf Deutsch \u2013 keine Übersetzung, sondern ein Dialog beider Sprachen. In den Versen wird das Denken zur Handlung und das Lieben zum …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6825.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Metzina",
+      "publishedAt": "2026-09-22T05:46:49.000Z",
+      "description": "Olten im 14. Jahrhundert. Metzina kennt die Kräuter, hilft Kindern auf die Welt und deutet das Wetter \u2013 bis ein gewaltiges Unwetter das Kriegsglück wendet: Zufall oder Hexerei? Metzina gerät in Verdacht. Sie flieht, wird gefasst und in den krummen Turm geworfen. Der Scheiterhaufen wird aufgeschichtet. Im Dunkeln des Gefängnisses bleibt ihr nur die Stimme \u2013 sie erzählt von Krieg und Flucht, vom To…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6826.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "»Der alte Garten« von Marie Luise Kaschnitz",
+      "publishedAt": "2026-09-22T05:46:48.000Z",
+      "description": "Die karge Weite Ostpreußens um Königsberg, wo Marie Luise Kaschnitz von 1932 bis 1937 lebte, inspirierte die eigentlich südverliebte Lyrikerin zu einem besonderen Projekt: Sie wollte ein Naturkundebuch für Kinder schreiben, bebildert mit einfachen Zeichnungen und Aquarellen. Daraus entstand über drei Jahre ein modernes poetisches Naturmärchen für Erwachsene. Doch die Zeit war ungünstig \u2013 zwei Ver…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6827.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Königreich aus Licht und Schatten",
+      "publishedAt": "2026-09-22T05:46:47.000Z",
+      "description": "Der Stummfilm ist so etwas wie eine vergessene Kunstform. In nur 30 Jahren Blütezeit entwickelte er einen überwältigenden Reichtum an Erzählweisen \u2013 von der kuriosen Jahrmarkts-Attraktion über Wochenschau-Beiträge bis zum Dokumentarfilm, Slapstick-Spaß und episch ausgreifenden Spielfilmen \u2013 ein allen Menschen zugängliches, demokratisches Informations- und Unterhaltungsmedium, das ohne Worte weltw…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6829.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Heldinnen der Meere",
+      "publishedAt": "2026-09-22T05:46:45.000Z",
+      "description": "Eine Umweltaktivistin auf einer einsamen Insel, eine rachsüchtige Freibeuterin, eine isländische Fischereipionierin: Kerstin Ehmer porträtiert in 16 Kapiteln »Heldinnen der Meere« aus Wissenschaft, Kunst, Sport, Kultur und Mythologie \u2013 von Virginia Woolf, Elisabeth Mann Borgese bis zu Gertrude Ederle, die in einem Esslinger Badesee schwimmen lernte und 1925 als erste Frau den Ärmelkanal durchquer…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6828.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Comic-Magazin",
+      "publishedAt": "2026-09-22T05:46:45.000Z",
+      "description": "Von Superheld:innen zur Erinnerungskultur \u2013 zur steigenden Relevanz des Mediums Comics in Literatur, Wissenschaft und Forschung. Ein Impulsvortrag von Dr. Barbara M. Eggert anlässlich der Einrichtung der Leibinger Professur für Comics und Comicforschung und des damit verbundenen Studiengangs an der Merz Akademie Stuttgart. (Merz Akademie)",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6831.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Irrlichter",
+      "publishedAt": "2026-09-22T05:46:43.000Z",
+      "description": "Lüge, Diebstahl, Betrug \u2013 wo endet das Kavaliersdelikt, wo beginnt das Verbrechen? Vier Erzählungen in einem Schuber: »Kavaliersdelikte« von Son Lewandowski, Gregor Sander, Mareike Fallwickl und Enrico Ippolito loten lakonisch und bildreich die Grenzen von richtig und falsch aus. In »Irrlichter« schreibt Enrico Ippolito über ein Kindheitserlebnis, das einen Mann zeitlebens vom Feuer besessen mach…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6738.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Der letzte Mensch",
+      "publishedAt": "2026-09-21T16:32:32.000Z",
+      "description": "Auf welche Weltordnung steuern wir zu? Autoritäre Bewegungen, technologischer Wandel, Neoliberalismus und Identitätspolitik \u2013 liberale Gesellschaften stecken nach einer langen Phase der Demokratisierung in der Krise. Mit seinen Gedanken zur Lage der Welt zeigt Francis Fukuyama, warum das freiheitliche Denken für die westlichen Gesellschaften im 21. Jahrhundert alternativlos ist. Und er macht deut…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6815.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Was zählt ein Mensch?",
+      "publishedAt": "2026-09-20T19:23:45.000Z",
+      "description": "Was bedeutet radikaler Humanismus? Gibt es Grenzen der Einfühlung in andere? Wozu verpflichtet uns die Erinnerung an die Geschichte? Gibt es Grenzen der Pflicht, im Namen der Menschenrechte zu sprechen? Oder darf nichts uns daran hindern, die anderen als Teil des universalen Wirs wahrzunehmen? Carolin Emcke stellte sich diese Fragen bereits vor dem 7. Oktober und Gaza \u2013 aber seither sind sie noch…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6821.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Geschenke des Himmels",
+      "publishedAt": "2026-09-20T19:23:44.000Z",
+      "description": "»Geschenke des Himmels. Kann man Wolken sammeln?« \u2013 fragt Florian Illies in der erstmals öffentlich präsentierten privaten Sammlung seiner Wolkenbilder im Literaturhaus, begleitet durch den gleichnamigen Ausstellungskatalog (Schirmer/Mosel). Jahrtausendelang trieben die Wolken über die Erde, frei und unbestimmt. Bis Anfang des 19. Jahrhunderts die Menschen plötzlich begannen, sie in Kunst und Lit…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6841.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Schwebeteilchen",
+      "publishedAt": "2026-09-20T18:29:02.000Z",
+      "description": "Schon gewusst? Das Literaturhaus Stuttgart wurde einst von der Stuttgarter Stadtgesellschaft mitgegründet \u2013 und sie ist auch beim Jubiläum aktiv mittendrin: Auf unseren Aufruf antworteten zahlreiche Bürger:innen mit einem Schwebezitat. Diese schweben nun im und um das Literaturhaus, begegnen Passant:innen, laden zum Innehalten ein und fliegen weiter \u2013 in Gespräche, in Gedanken. Halten Sie die Aug…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6685.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "KulTOgether",
+      "publishedAt": "2026-09-17T10:45:15.000Z",
+      "description": "Was Dating Portale versprechen, konnte die Literatur schon immer: Menschen zusammenbringen! Abende im Literaturhaus inspirieren, provozieren, unterhalten oder machen einfach nur glücklich. Wer diese Erlebnisse einer Literaturveranstaltung nicht leise mit nach Hause nehmen, sondern sie noch am Abend mit anderen Menschen teilen möchte, den laden wir ein, sich einmal im Monat vor der Lesung im 1. St…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6753.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kister liest",
+      "publishedAt": "2026-09-16T06:57:33.000Z",
+      "description": "Viele Jahre hat Stefan Kister als Literaturkritiker der »Stuttgarter Zeitung« das literarische Geschehen verfolgt. Künftig wird er das an dieser Stelle fortsetzen: mit Besprechungen ausgewählter Neuerscheinungen rund um das Programm des Literaturhauses sowie in dem alle zwei Wochen erscheinenden Newsletter »Kister liest« \u2013 Einwürfe aus einem Leben zwischen Zeilen und den Anfechtungen des Alltags.…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6795.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anti Opfer. Warum wir Verletzlichkeit verachten",
+      "publishedAt": "2026-09-15T07:13:34.000Z",
+      "description": "Wahres Opfer, Falsches Opfer, Anti-Opfer \u2013 überall wird von »Opfer« gesprochen. Doch immer häufiger sind damit nicht Menschen gemeint, denen Unrecht widerfahren ist. Sondern solche, die die Harmonie stören, die als verweichlicht gelten, die andere herunterziehen oder sich über sie stellen wollen. In Ihrem neuen Buch »Anti Opfer. Warum wir Verletzlichkeit verachten« beschreibt Alice Hasters einen …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6788.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die ganze Wahrheit über das Lügen",
+      "publishedAt": "2026-09-08T12:53:39.000Z",
+      "description": "Ein Sachbuch voller Fakten, Tricks & Täuschungen: Na, heute schon gelogen? Wirklich nicht? Wahrscheinlich doch. Denn wir lügen oft oder sagen zumindest die Unwahrheit. Manchmal, weil wir dies drauf sind, und manchmal, um uns zu schützen. Manchmal auch, um nett zu sein. Es gibt große Lügen und kleine, hübsche und hässliche, folgenlose und fatale. Ein buntes, abwechslungsreiches Sachbuch, das mit L…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6783.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Voices against Violence",
+      "publishedAt": "2026-09-07T09:30:00.000Z",
+      "description": "Die wachsende digitale und physische Gewalt gegen Frauen, aber auch gegen Kinder ist sowohl in Deutschland als auch in Namibia ein dringliches soziales Phänomen. Im deutschsprachigen Raum findet es vor allem in der erzählenden Literatur in den letzten Jahren stärker Beachtung, bedeutende Autorinnen wie Jenny Erpenbeck, Terezia Mora, Anne Rabe, verarbeiten Gewalterfahrungen an Frauen oder Kindern …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6802.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Am I allowed to pop? Friederike Mayröckers Dichten in langsamen Blitzen",
+      "publishedAt": "2026-09-07T09:28:22.000Z",
+      "description": "Friederike Mayröcker (1924\u20132021, Wien) gilt als die Urmutter der deutschsprachigen Avantgarde, als eine Dichterin, deren weit über hundert Bücher so komplex strukturiert und semantisch so schwer zu fassen sind, dass ein ganzes Leseleben nicht ausreicht, um diesen Texten auf die Spur zu kommen. Gleichzeitig aber sind Friederike Mayröckers poetische Werke, schwebende, fast schwerelose Gebilde, die …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6803.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Schreibzirkel junger Autor:innen",
+      "publishedAt": "2026-09-07T09:28:12.000Z",
+      "description": "Einsam lebt die schriftstellerische Existenz \u2013 gute Texte entstehen in und aus der Abgeschiedenheit: Das zumindest ist die verbreitete Vorstellung des Autor:innendaseins. Und tatsächlich ist der eigene Schreibtisch aus gutem Grund kein geselliger Ort. Trotzdem, der Wunsch nach Austausch und Impulsen von außen kann selbst eingefleischteste Eremit:innen ereilen. Ihr seid herzlich eingeladen, euch m…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6805.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dead Ladies Show - Über Annemarie Schwarzenbach, Cathy Berberian und Hannah Höch",
+      "publishedAt": "2026-09-07T09:27:52.000Z",
+      "description": "Tot \u2013 und höchst lebendig! Die »Dead Ladies Show« feiert bemerkenswerte Frauen der Zeitgeschichte, die zu Unrecht in Vergessenheit geraten sind oder von ihren männlichen Zeitgenossen überschattet wurden. Durch die Show führen die belgische Schriftstellerin Gaea Schoeters, die den Abend kuratiert hat, die Schriftstellerin Miku Sophie Kühmel und Katharina Eickhoff, Musikjournalistin und Moderatorin…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6806.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Im Kampf gegen pseudowissenschaftlichen Unfug",
+      "publishedAt": "2026-09-07T09:27:43.000Z",
+      "description": "Die Erde ist ganz ohne Zweifel eine Scheibe. \u2013 Ich habe Beweise für Kontakte mit dem Jenseits. \u2013 Meine Nahrungsergänzungsmittel verbessern das Wohlbefinden und heilen sogar Krebs. Im Netz darf so ziemlich jeder so ziemlich alles behaupten. Viele Menschen machen von diesem Recht Gebrauch. Und da kommt Maximilian Doeckel ins Spiel. Doeckel ist Wissenschaftsjournalist und sieht seine Aufgabe darin, …",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6808.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ist der demokratische Rechtsstaat in der Lage, dem aktuellen Epochenbruch angemessen zu begegnen?",
+      "publishedAt": "2026-09-07T09:27:28.000Z",
+      "description": "Die Welt droht aus den Fugen zu geraten. Sehr viel mehr Menschen leben in Autokratien als in Demokratien. Menschenrechte werden missachtet, rechtsstaatliche Institutionen werden außer Kraft gesetzt oder unterwandert. Die Europäische Union und die UNO geraten an die Grenzen ihrer Handlungsfähigkeit. Der Krieg bestimmt den Alltag vieler Menschen und erhält durch den Einsatz von Drohnen eine neue Ze…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6809.html",
+        "language": "de-DE"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kunstform Comic!",
+      "publishedAt": "2026-09-07T09:27:18.000Z",
+      "description": "Die international renommierte Zeichnerin und Comickünstlerin Barbara Yelin tritt die frisch ins Leben gerufene Leibinger Professur für Comics und Comicforschung an der Merz Akademie Stuttgart an. Die Professur, die erste im deutschsprachigen Raum, möchte Praxis und Theorie verbinden, um die Comicforschung sowie die künstlerische Comicproduktion weiter zu fördern und auszubauen. Zusammen mit der M…",
+      "discoveredAt": "2026-10-01T20:52:02.565Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7"
+}

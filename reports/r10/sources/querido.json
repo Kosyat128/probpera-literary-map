@@ -1,0 +1,11 @@
+{
+  "sourceId": "querido",
+  "name": "Querido",
+  "entryUrl": "https://www.querido.nl/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:20.667Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

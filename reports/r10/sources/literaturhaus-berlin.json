@@ -1,0 +1,16 @@
+{
+  "sourceId": "literaturhaus-berlin",
+  "name": "Literaturhaus Berlin",
+  "entryUrl": "https://www.literaturhaus-berlin.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:00.658Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "external_redirect:https://li-be.de",
+  "robots": {
+    "url": "https://www.literaturhaus-berlin.de/robots.txt",
+    "error": "external_redirect:https://li-be.de",
+    "disallowed": []
+  }
+}

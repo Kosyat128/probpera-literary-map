@@ -1,0 +1,100 @@
+{
+  "sourceId": "nls-uk",
+  "name": "National Library of Scotland",
+  "entryUrl": "https://www.nls.uk/",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-10-01T20:44:15.154Z",
+  "requests": [
+    {
+      "url": "https://www.nls.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91007,
+      "sha256": "ab912c050b1beb88e7c3ba18aff139f2d0a75c23186ea57b228444f305a4cf68",
+      "accessedAt": "2026-10-01T20:44:16.002Z"
+    },
+    {
+      "url": "https://www.nls.uk/whats-on/members-connect/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 59863,
+      "sha256": "53ee8c50160073c074b86caf022f101367b721c94a08407e31ca39c6d327edd8",
+      "accessedAt": "2026-10-01T20:44:16.226Z"
+    },
+    {
+      "url": "https://www.nls.uk/whats-on/treasures-of-the-national-library-of-scotland/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 90382,
+      "sha256": "e6de14c923afef8d08511df0072dd936a2964bb1da57e3bab6a9acce19765ed0",
+      "accessedAt": "2026-10-01T20:44:16.389Z"
+    },
+    {
+      "url": "https://www.nls.uk/whats-on/paperback-revolutions/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 58139,
+      "sha256": "61c753f44b7e98f912ad25aedd57f475931b0ffee2eaea299e92bc54bc4ec16d",
+      "accessedAt": "2026-10-01T20:44:16.531Z"
+    },
+    {
+      "url": "https://www.nls.uk/whats-on/where-wind-and-water-cleave/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 58823,
+      "sha256": "1139313f60b746ba4e5ddc0b04d773c4952faddd135723e02474cf3e3893ef0c",
+      "accessedAt": "2026-10-01T20:44:16.695Z"
+    },
+    {
+      "url": "https://www.nls.uk/whats-on/a-foray-into-fungi-in-language-and-song/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 59103,
+      "sha256": "c476bbc689e5ee86fb1012c8b64e094d95fa1219bded9a2e1af08cefc030228b",
+      "accessedAt": "2026-10-01T20:44:16.854Z"
+    },
+    {
+      "url": "https://www.nls.uk/whats-on/witch-obsession-with-steven-veerapen/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 59415,
+      "sha256": "71f4f018b33013f92e4ca99261a037b80c5ae3b450f430aad531dbf161f1165d",
+      "accessedAt": "2026-10-01T20:44:17.001Z"
+    },
+    {
+      "url": "https://www.nls.uk/whats-on/everybody-to-kenmure-street/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 58915,
+      "sha256": "d84d63129d7a80590a6c05b74126e2cb42bca24e13c6f4fae240dc9b46ddbcdf",
+      "accessedAt": "2026-10-01T20:44:17.139Z"
+    },
+    {
+      "url": "https://www.nls.uk/whats-on/living-proof/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 57913,
+      "sha256": "3b0e0f1f0da70e16c6fec735425007e5a450e25bde2cfe87996bf3545fe8166a",
+      "accessedAt": "2026-10-01T20:44:17.280Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.nls.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 98,
+    "sha256": "9de334d2b696a4c046aecd44155afe9be5eed15f418758579dfb97c9879c7670",
+    "accessedAt": "2026-10-01T20:44:15.843Z",
+    "disallowed": [
+      "/umbraco/",
+      "/umbraco/"
+    ]
+  }
+}

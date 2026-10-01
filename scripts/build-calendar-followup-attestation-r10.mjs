@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
+import { projectReviewedRussianCalendarExpansion } from './lib/reviewed-russian-calendar-expansion.mjs';
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { projectReviewedUndiciSecurityFollowup } from './lib/reviewed-undici-security-followup.mjs';
 import { projectReviewedCalendarSecurityFollowup } from './lib/reviewed-calendar-security-followup.mjs';
 const lf=text=>text.replace(/\r\n?/gu,'\n');
-const read=path=>projectReviewedCalendarSecurityFollowup(path,readFileSync(path,'utf8'));
+const read=path=>projectReviewedCalendarSecurityFollowup(path,projectReviewedRussianCalendarExpansion(path,readFileSync(path,'utf8')));
 const sha=text=>createHash('sha256').update(lf(text)).digest('hex');
 const git=(...args)=>lf(execFileSync('git',['-c',`safe.directory=${process.cwd()}`,...args],{encoding:'utf8',maxBuffer:20*1024*1024}));
 const attestationPath='scripts/governance/calendar-followup-reviewed-20260929.json';

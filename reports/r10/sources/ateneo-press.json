@@ -1,0 +1,16 @@
+{
+  "sourceId": "ateneo-press",
+  "name": "Ateneo de Manila University Press",
+  "entryUrl": "https://unipress.ateneo.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:43.692Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://unipress.ateneo.edu/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

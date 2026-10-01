@@ -1,0 +1,16 @@
+{
+  "sourceId": "barzakh",
+  "name": "Barzakh",
+  "entryUrl": "https://www.editions-barzakh.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:20.278Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.editions-barzakh.com/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

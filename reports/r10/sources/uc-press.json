@@ -1,0 +1,37 @@
+{
+  "sourceId": "uc-press",
+  "name": "University of California Press",
+  "entryUrl": "https://www.ucpress.edu/blog/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:38.032Z",
+  "requests": [
+    {
+      "url": "https://www.ucpress.edu/blog",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 218597,
+      "sha256": "320b707c26fd6fac62ece2733a44a936795312e2579e196c215e0af6be37b223",
+      "accessedAt": "2026-10-01T20:51:39.781Z"
+    },
+    {
+      "url": "https://www.ucpress.edu/about/press-releases",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 143901,
+      "sha256": "d69b57a8f1be2a1bc8b000b485599cdbe86015980530172ad05f28deac6ab5ab",
+      "accessedAt": "2026-10-01T20:51:40.046Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.ucpress.edu/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 24,
+    "sha256": "deb2d519e27823e1176f59665d329b01cbcf000143420e19a45081e7c0accfb9",
+    "accessedAt": "2026-10-01T20:51:38.774Z",
+    "disallowed": []
+  }
+}

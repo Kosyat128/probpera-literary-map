@@ -1,0 +1,226 @@
+{
+  "sourceId": "virago",
+  "name": "Virago",
+  "entryUrl": "https://www.virago.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:56:24.577Z",
+  "requests": [
+    {
+      "url": "https://www.virago.co.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 260449,
+      "sha256": "3025e2f01e99358360e73f63535c139e2f3fff54f98f6563b4b529f636c3727b",
+      "accessedAt": "2026-10-01T20:56:25.947Z"
+    },
+    {
+      "url": "https://www.virago.co.uk/category/virago-news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 230793,
+      "sha256": "2a5cda5d2c82a5f526f9e952732008dc45fe6274e6113690daba11c9ebe1ed1a",
+      "accessedAt": "2026-10-01T20:56:31.267Z"
+    },
+    {
+      "url": "https://www.virago.co.uk/virago-news/2026/08/26/five-australian-classics/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 221638,
+      "sha256": "98ecf734b6df764d99f447d56805898b4773b866cc0e250cae40c198d94b2e26",
+      "accessedAt": "2026-10-01T20:56:32.286Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.virago.co.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 132,
+    "sha256": "8def351968ab1e663119081480d20f74ec710c4ff9c988b2fd86bc55814ebaf2",
+    "accessedAt": "2026-10-01T20:56:25.123Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "feedAttemptError": "response_too_large",
+  "endpoint": {
+    "id": "virago",
+    "name": "Virago",
+    "url": "https://www.virago.co.uk/category/virago-news/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "virago",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.virago.co.uk"
+    ],
+    "linkPattern": "^\\/landing\\x2dpage\\/virago\\/virago\\x2dbooks\\/[^/]+\\/?$|^\\/imprint\\/lbbg\\/virago\\/page\\/[^/]+\\/?$|^\\/virago\\x2dnews\\/2026\\/08\\/26\\/[^/]+\\/?$|^\\/virago\\x2dnews\\/2026\\/07\\/14\\/[^/]+\\/?$|^\\/virago\\x2dnews\\/2026\\/06\\/25\\/[^/]+\\/?$|^\\/virago\\x2dnews\\/2026\\/05\\/31\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.virago.co.uk/virago-news/2026/08/26/five-australian-classics/"
+    ],
+    "verifiedAt": "2026-10-01T20:56:32.294Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 4,
+  "literaryCandidateCount": 4,
+  "sample": {
+    "sourceId": "virago",
+    "source": {
+      "name": "Virago",
+      "url": "https://www.virago.co.uk/virago-news/2026/08/26/five-australian-classics/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Five Australian Classics",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:56:31.294Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.virago.co.uk/virago-news/2026/08/26/five-australian-classics/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 221638,
+      "sha256": "98ecf734b6df764d99f447d56805898b4773b866cc0e250cae40c198d94b2e26",
+      "accessedAt": "2026-10-01T20:56:32.286Z",
+      "headline": "Five Australian Classics",
+      "excerpt": "Lost your heart to the headstrong Sybylla? Dreaming of an outback romance? If the sassy new Netflix adaption of My Brilliant Career, Miles Franklin’s 1901 classic novel, has you dreaming of life Down Under, these five Australian classics might just be the perfect tonic… The Well by Elizabeth Jolley The wide expanses of rural Australia have never seemed more claustrophobic than in this jet-black ge",
+      "publishedDates": [
+        {
+          "value": "2026-08-26T12:50:20+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.hachette.co.uk/virago-news/2026/08/26/five-australian-classics/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:56:32.294Z",
+  "foundItems": [
+    {
+      "sourceId": "virago",
+      "source": {
+        "name": "Virago",
+        "url": "https://www.virago.co.uk/virago-news/2026/08/26/five-australian-classics/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Five Australian Classics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:56:31.294Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virago",
+      "source": {
+        "name": "Virago",
+        "url": "https://www.virago.co.uk/virago-news/2026/07/14/reading-guide-edible-woman-margaret-atwood/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reading guide for The Edible Woman by Margaret Atwood",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:56:31.294Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virago",
+      "source": {
+        "name": "Virago",
+        "url": "https://www.virago.co.uk/virago-news/2026/06/25/revisiting-loved-and-missed-for-audio-by-susie-boyt-v2/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Revisiting Loved and Missed for audio, by Susie Boyt V2",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:56:31.294Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virago",
+      "source": {
+        "name": "Virago",
+        "url": "https://www.virago.co.uk/virago-news/2026/05/31/where-to-start-reading-gloria-naylor/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Where to start reading: Gloria Naylor",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:56:31.294Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "2a5cda5d2c82a5f526f9e952732008dc45fe6274e6113690daba11c9ebe1ed1a"
+}

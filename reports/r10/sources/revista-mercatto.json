@@ -1,0 +1,358 @@
+{
+  "sourceId": "revista-mercatto",
+  "name": "Mercurio",
+  "entryUrl": "https://revistamercurio.es/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:52.734Z",
+  "requests": [
+    {
+      "url": "https://www.revistamercurio.es/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 115529,
+      "sha256": "a1f02d8ee3ddec84aceb3bd06289a7ed49ba6482547c02631b9b1bc4449fa777",
+      "accessedAt": "2026-10-01T20:51:55.224Z"
+    },
+    {
+      "url": "https://www.revistamercurio.es/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 141766,
+      "sha256": "036ff1faeca36e5eddcd67ed0c745d2f3b2bdff2842c149bd985c1f2bd40f143",
+      "accessedAt": "2026-10-01T20:51:55.967Z"
+    },
+    {
+      "url": "https://www.revistamercurio.es/2026/10/01/libros-de-la-semana-211/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 84251,
+      "sha256": "2e8425800191ea7d0d58ca9fe49da65de743fa0546569ec69c8c598eed874efd",
+      "accessedAt": "2026-10-01T20:51:56.902Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.revistamercurio.es/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 126,
+    "sha256": "e1a9217c3f9ce742d9e40d4cd0a92887fb0410f0780cc427aab216c7744a6d80",
+    "accessedAt": "2026-10-01T20:51:53.834Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "revista-mercatto",
+    "name": "Mercurio",
+    "url": "https://www.revistamercurio.es/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "revista-mercatto",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.revistamercurio.es"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.revistamercurio.es/2026/10/01/libros-de-la-semana-211/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:56.907Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "revista-mercatto",
+    "source": {
+      "name": "Mercurio",
+      "url": "https://www.revistamercurio.es/2026/10/01/libros-de-la-semana-211/",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Libros de la semana #211",
+    "publishedAt": "2026-10-01T09:04:24.000Z",
+    "description": "Cuanta más gente me jode, más buenos momentos tengo Maruja Torres Temas de Hoy (Barcelona, 2026) 256 páginas 21,90 € Maruja Torres ya no necesita viajar para explicar el mundo, aunque continúa haciéndolo porque pocas cosas resultan tan estimulantes como mirar alrededor y contarlo después. En estas páginas vuelve a […]",
+    "discoveredAt": "2026-10-01T20:51:55.969Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.revistamercurio.es/2026/10/01/libros-de-la-semana-211/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 84251,
+      "sha256": "2e8425800191ea7d0d58ca9fe49da65de743fa0546569ec69c8c598eed874efd",
+      "accessedAt": "2026-10-01T20:51:56.902Z",
+      "headline": "Libros de la semana #211",
+      "excerpt": "Cuanta más gente me jode, más buenos momentos tengo Maruja Torres Temas de Hoy (Barcelona, 2026) 256 páginas 21,90 € Maruja Torres ya no necesita viajar para explicar el mundo, aunque continúa haciéndolo porque pocas cosas resultan tan estimulantes como mirar alrededor y contarlo después. En estas páginas vuelve a hoteles, ciudades, guerras, periodistas, viejos amores y amistades mientras observa ",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T11:04:24+02:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-10-01T11:04:24+02:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-10-01T11:04:24+02:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "canonical": "https://www.revistamercurio.es/2026/10/01/libros-de-la-semana-211/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:56.907Z",
+  "foundItems": [
+    {
+      "sourceId": "revista-mercatto",
+      "source": {
+        "name": "Mercurio",
+        "url": "https://www.revistamercurio.es/2026/10/01/libros-de-la-semana-211/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Libros de la semana #211",
+      "publishedAt": "2026-10-01T09:04:24.000Z",
+      "description": "Cuanta más gente me jode, más buenos momentos tengo Maruja Torres Temas de Hoy (Barcelona, 2026) 256 páginas 21,90 € Maruja Torres ya no necesita viajar para explicar el mundo, aunque continúa haciéndolo porque pocas cosas resultan tan estimulantes como mirar alrededor y contarlo después. En estas páginas vuelve a […]",
+      "discoveredAt": "2026-10-01T20:51:55.969Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "source": {
+        "name": "Mercurio",
+        "url": "https://www.revistamercurio.es/2026/09/24/libros-de-la-semana-210/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Libros de la semana #210",
+      "publishedAt": "2026-09-24T06:12:37.000Z",
+      "description": "Tanta vida todavía Viola Ardone Traducción de Marilena de Chiara Random House (Barcelona, 2026) 272 páginas 21,90 € Vita vive encerrada en un silencio que parece haberse convertido en su manera de relacionarse con el mundo. A su lado está Irina, una empleada doméstica ucraniana que aprendió italiano leyendo a […]",
+      "discoveredAt": "2026-10-01T20:51:55.969Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "source": {
+        "name": "Mercurio",
+        "url": "https://www.revistamercurio.es/2026/09/17/libros-de-la-semana-209/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Libros de la semana #209",
+      "publishedAt": "2026-09-17T07:29:18.000Z",
+      "description": "El dedo en los labios Lola Pons Rodríguez Taurus (Barcelona, 2026) 280 páginas 20,10 € También el silencio tiene una historia. Lola Pons Rodríguez, catedrática de Historia de la Lengua en la Universidad de Sevilla, propone recorrer la cultura hispánica atendiendo precisamente a aquello que no se dice. Desde la […]",
+      "discoveredAt": "2026-10-01T20:51:55.969Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "source": {
+        "name": "Mercurio",
+        "url": "https://www.revistamercurio.es/2026/10/01/mira-pensar-y-contar-lo-que-somos-premio-delta-de-dirac-de-ensayo/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mira, pensar y contar lo que somos. Premio Delta de Dirac de ensayo",
+      "publishedAt": "2026-10-01T10:32:00.000Z",
+      "description": "En una sociedad como la nuestra, donde los algoritmos cada vez marcan más el camino, la necesidad de poner en valor el pensamiento y la reflexión es cada vez más necesaria y urgente. Entre otras muchas razones, por esta se ha creado el Premio Delta de Dirac de ensayo. Dos […]",
+      "discoveredAt": "2026-10-01T20:51:55.969Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "source": {
+        "name": "Mercurio",
+        "url": "https://www.revistamercurio.es/2026/09/27/cuando-duele-mas-un-hola-que-un-adios/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cuando duele más un «¡Hola!» que un «Adiós»",
+      "publishedAt": "2026-09-27T08:03:58.000Z",
+      "description": "El ganador de esta semana en el certamen de microrrelatos de Menéame es: Cuando duele más un «¡Hola!» que un «Adiós» de Grisgoblin Llevábamos dieciséis semanas sin separarnos ni una hora y esa mañana tocaba decirle adiós. Ella me miraba en silencio, parpadeando despacio, mientras yo me aferraba a su […]",
+      "discoveredAt": "2026-10-01T20:51:55.969Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "source": {
+        "name": "Mercurio",
+        "url": "https://www.revistamercurio.es/2026/09/25/los-comics-de-mercurio-13/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Los cómics de Mercurio #13",
+      "publishedAt": "2026-09-25T06:18:40.000Z",
+      "description": "El último libro de Calvin y Hobbes Bill Watterson Traducción de Francisco Pérez Navarro Astiberri (Bilbao, 2026) 208 páginas 26 € Calvin puede convertirse en explorador espacial, detective privado, tiranosaurio o superhéroe sin necesidad de abandonar su casa. Solo necesita imaginación y la compañía de Hobbes, un tigre de peluche […]",
+      "discoveredAt": "2026-10-01T20:51:55.969Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "source": {
+        "name": "Mercurio",
+        "url": "https://www.revistamercurio.es/2026/09/22/noemi-trujillo-la-prostitucion-no-es-compatible-con-una-sociedad-democratica-feminista-e-igualitaria/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Noemí Trujillo: «La prostitución no es compatible con una sociedad democrática, feminista e igualitaria»",
+      "publishedAt": "2026-09-22T06:24:05.000Z",
+      "description": "Uno de los primeros discursos que se aborda, cuando se inicia el camino por el paisaje del feminismo, es la prostitución. Toda reflexión sobre las diversas violencias que las mujeres sufren por el estricto hecho de serlo debe incorporar una preocupación por las mujeres en situación de explotación sexual y […]",
+      "discoveredAt": "2026-10-01T20:51:55.969Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "source": {
+        "name": "Mercurio",
+        "url": "https://www.revistamercurio.es/2026/09/20/ulises-xxi/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ulises XXI",
+      "publishedAt": "2026-09-20T06:14:13.000Z",
+      "description": "El ganador de esta semana en el certamen de microrrelatos de Menéame es: Ulises XXI de Un_señor_de_Cuenca Aliviaba la sofocante vulgaridad de mi vida fabulando comparaciones con mitologías. Mi Calipso fue Marisa (de contabilidad) que, en pago de aquello apresurado después de la cena de empresa, exigió el olvido para […]",
+      "discoveredAt": "2026-10-01T20:51:55.969Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "source": {
+        "name": "Mercurio",
+        "url": "https://www.revistamercurio.es/2026/09/16/vicente-lus-mora-tenemos-en-el-panorama-internacional-el-minusculo-lugar-que-nos-merecemos/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vicente Luis Mora: «Hay una inflación de escrituras presuntamente terapéuticas»",
+      "publishedAt": "2026-09-16T06:34:06.000Z",
+      "description": "Son pocos los debates que merecen ser atendidos en la actual conversación pública sobre la cosa cultural y literaria, sus vertientes y ramificaciones. La mayoría termina antes de haber comenzado, o bien son debates que concluyen en territorios nada fértiles, o, directamente, se visten con el traje militar que exige […]",
+      "discoveredAt": "2026-10-01T20:51:55.969Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "036ff1faeca36e5eddcd67ed0c745d2f3b2bdff2842c149bd985c1f2bd40f143"
+}

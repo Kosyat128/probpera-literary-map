@@ -1,0 +1,29 @@
+{
+  "sourceId": "literaturhaus",
+  "name": "Literaturhaus.de",
+  "entryUrl": "https://www.literaturhaus.de/",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [
+    "DE"
+  ],
+  "attemptedAt": "2026-10-01T20:44:22.750Z",
+  "requests": [
+    {
+      "url": "https://www.literaturhaus.de/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 7209,
+      "sha256": "4ec1889bc077e8c2afd226a4980ddf82044ed133134a504e6a0c5cdbb19ae49e",
+      "accessedAt": "2026-10-01T20:44:23.484Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.literaturhaus.de/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "sourceId": "polka-academy",
+  "name": "Полка",
+  "entryUrl": "https://polka.academy/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:44:54.728Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://polka.academy/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

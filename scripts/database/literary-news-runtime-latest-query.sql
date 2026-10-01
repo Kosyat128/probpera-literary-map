@@ -36,7 +36,7 @@ grant execute on function public.read_latest_literary_news_runtime(text,text,int
 comment on function public.read_latest_literary_news_runtime(text,text,integer) is
   'Service-only read of latest complete CAS states; invoker permissions/RLS, keyset pagination, no journal mutation or retention change.';
 
--- The 30-minute sender returns only due jobs, never the whole historical payload journal.
+-- The hourly sender returns only due jobs, never the whole historical payload journal.
 create or replace function public.read_due_literary_news_runtime_posts(
   p_destination_id text, p_now timestamptz default now(), p_limit integer default 20
 ) returns table(id bigint, entity_id text, metadata jsonb)
@@ -73,7 +73,19 @@ begin
             then (case when a.metadata->'prepared'->'temporal'->>'publishedAt' ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
               then ((a.metadata->'prepared'->'temporal'->>'publishedAt') || 'T00:00:00+03:00')::timestamptz
               else (a.metadata->'prepared'->'temporal'->>'publishedAt')::timestamptz end) between p_now - interval '7 days' and p_now
-            else false end))
+            else false end
+          -- Apply the same Moscow announcement eligibility as the sender before
+          -- the bounded page is selected. Expired announcements must not consume
+          -- all twenty rows and hide currently sendable news.
+          and (a.metadata->'prepared'->'temporal'->>'kind' = 'news'
+            or case when a.metadata->'prepared'->'temporal'->>'eventDate' ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+              and pg_catalog.pg_input_is_valid(a.metadata->'prepared'->'temporal'->>'eventDate','date')
+              and a.metadata->'prepared'->'temporal'->>'verifiedAt' ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]{1,3})?(Z|[+-][0-9]{2}:[0-9]{2})$'
+              and pg_catalog.pg_input_is_valid(a.metadata->'prepared'->'temporal'->>'verifiedAt','timestamp with time zone')
+              then (a.metadata->'prepared'->'temporal'->>'eventDate')::date > (p_now at time zone 'Europe/Moscow')::date
+                or ((a.metadata->'prepared'->'temporal'->>'eventDate')::date = (p_now at time zone 'Europe/Moscow')::date
+                  and ((a.metadata->'prepared'->'temporal'->>'verifiedAt')::timestamptz at time zone 'Europe/Moscow')::date >= (p_now at time zone 'Europe/Moscow')::date)
+              else false end)))
     order by (nullif(a.metadata->>'remoteId','') is not null) desc,
       (a.metadata->'prepared'->'media'->>'assetId' is not null) desc,
       a.metadata->'prepared'->'temporal'->>'publishedAt' desc nulls last, a.entity_id collate "C"

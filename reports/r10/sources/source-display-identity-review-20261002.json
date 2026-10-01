@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T21:26:49.420Z",
+  "scope": "Current display organisation identities only; captured directory and historical probe bytes remain unchanged.",
+  "results": [
+    {
+      "sourceId": "camlibro-com-co",
+      "name": "Cámara Colombiana del Libro",
+      "previousName": "Cámara Colombiana del LibroCalle",
+      "evidenceReport": "reports/r10/sources/camlibro-com-co.json",
+      "evidenceKind": "official_membership_directory",
+      "evidenceUrl": "https://internationalpublishers.org/about/",
+      "statement": "The captured directory row joins the organisation name to a postal address; the current display name separates those fields."
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "name": "Publishers Association of New Zealand",
+      "previousName": "Publishers Association of New ZealandPO Box",
+      "evidenceReport": "reports/r10/sources/publishers-org-nz.json",
+      "evidenceKind": "official_membership_directory",
+      "evidenceUrl": "https://internationalpublishers.org/about/",
+      "statement": "The captured directory row joins the organisation name to a postal address; the current display name separates those fields."
+    },
+    {
+      "sourceId": "ikapi-org",
+      "name": "Ikatan Penerbit Indonesia",
+      "previousName": "Ikatan Penerbit IndonesiaJL Kalipasir",
+      "evidenceReport": "reports/r10/sources/ikapi-org.json",
+      "evidenceKind": "official_membership_directory",
+      "evidenceUrl": "https://internationalpublishers.org/about/",
+      "statement": "The captured directory row joins the organisation name to a postal address; the current display name separates those fields."
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "name": "Publishers Association of China",
+      "previousName": "Publishers Association of ChinaNo.",
+      "evidenceReport": "reports/r10/sources/pac-org-cn.json",
+      "evidenceKind": "official_membership_directory",
+      "evidenceUrl": "https://internationalpublishers.org/about/",
+      "statement": "The captured directory row joins the organisation name to a postal address; the current display name separates those fields."
+    },
+    {
+      "sourceId": "publishers-fi",
+      "name": "Finnish Book Publishers Association",
+      "previousName": "Finnish Book Publishers AssociationUnioninkatu",
+      "evidenceReport": "reports/r10/sources/publishers-fi.json",
+      "evidenceKind": "official_membership_directory",
+      "evidenceUrl": "https://internationalpublishers.org/about/",
+      "statement": "The captured directory row joins the organisation name to a postal address; the current display name separates those fields."
+    },
+    {
+      "sourceId": "apel-pt",
+      "name": "Associação Portuguesa de Editores e Livreiros",
+      "previousName": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+      "evidenceReport": "reports/r10/sources/apel-pt.json",
+      "evidenceKind": "official_membership_directory",
+      "evidenceUrl": "https://internationalpublishers.org/about/",
+      "statement": "The captured directory row joins the organisation name to a postal address; the current display name separates those fields."
+    },
+    {
+      "sourceId": "adeb-be",
+      "name": "Association des Editeurs Belges (ADEB)",
+      "previousName": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+      "evidenceReport": "reports/r10/sources/adeb-be.json",
+      "evidenceKind": "official_membership_directory",
+      "evidenceUrl": "https://internationalpublishers.org/about/",
+      "statement": "The captured directory row joins the organisation name to a postal address; the current display name separates those fields."
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "name": "Polish Chamber of Books (PIK)",
+      "previousName": "Polish Chamber of Books (PIK)",
+      "evidenceReport": "reports/r10/sources/reprobe-20261001/pik-org-pl.json",
+      "evidenceKind": "official_membership_directory",
+      "evidenceUrl": "https://internationalpublishers.org/about/",
+      "statement": "The captured directory row joins the organisation name to a postal address; the current display name separates those fields."
+    },
+    {
+      "sourceId": "publishers-ca",
+      "name": "Association of Canadian Publishers",
+      "previousName": "Association Nationale des Editeurs de Livres",
+      "evidenceKind": "official_RSS_channel_title",
+      "url": "https://publishers.ca/feed/",
+      "responseSha256": "be47b4cf9ed4361e6e9a907de2b8eff0849caf1527a945cdec8576ea31fc3f7f",
+      "accessedAt": "2026-10-01T21:26:49.418Z",
+      "bytes": 66708
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "name": "Canadian Publishers Council",
+      "previousName": "Association Nationale des Editeurs de Livres",
+      "evidenceKind": "official_RSS_channel_title",
+      "url": "https://pubcouncil.ca/feed/",
+      "responseSha256": "604afc113c15a61fcd33aa893de241563bb01dc4ca461df942456b477bf743d4",
+      "accessedAt": "2026-10-01T21:26:47.728Z",
+      "bytes": 11668
+    }
+  ]
+}

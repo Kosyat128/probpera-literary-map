@@ -1,0 +1,16 @@
+{
+  "sourceId": "uitgeverij-vrijdag",
+  "name": "Uitgeverij Vrijdag",
+  "entryUrl": "https://www.uitgeverijvrijdag.be/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:20.854Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "external_redirect:https://www.pelckmansuitgevers.be",
+  "robots": {
+    "url": "https://www.uitgeverijvrijdag.be/robots.txt",
+    "error": "external_redirect:https://www.pelckmansuitgevers.be",
+    "disallowed": []
+  }
+}

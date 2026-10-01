@@ -4,9 +4,10 @@ import { applyCmsWriterProfileOverrides, type CmsWriterProfileOverride } from '.
 import russian from './generated/writerDatePatches.r10-russian.json';
 import popular from './generated/writerDatePatches.r10-popular.json';
 import scoped from './generated/writerDatePatches.r10-scoped.json';
+import russianExpansion from './generated/writerDatePatches.r10-russian-expansion.json';
 
 export type { WriterDatePatch } from './writerDatePatches';
-export const calendarWriterDatePatches = [...russian.patches, ...popular.patches, ...scoped.patches] as WriterDatePatch[];
+export const calendarWriterDatePatches = [...russian.patches, ...popular.patches, ...scoped.patches, ...russianExpansion.patches] as WriterDatePatch[];
 
 /** Derived calendar writer clones only. Canonical country/profile records stay intact. */
 export function applyCalendarWriterDatePatches(

@@ -1,15 +1,16 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { projectReviewedRussianCalendarExpansion, isReviewedRussianCalendarExpansionAddition, reviewedRussianCalendarExpansionAdditionPaths } from "./reviewed-russian-calendar-expansion.mjs";
 
 // Calendar evidence review is local agent review. It grants no release acceptance.
 export const calendarFollowupAttestation = JSON.parse(readFileSync(new URL("../governance/calendar-followup-reviewed-20260929.json", import.meta.url), "utf8"));
 export const calendarIntegrationAttestation = JSON.parse(readFileSync(new URL("../governance/calendar-governance-integration-reviewed-20260929.json", import.meta.url), "utf8"));
 export const calendarFollowupSha256 = source => createHash("sha256").update(source.replace(/\r\n?/gu, "\n")).digest("hex");
-export const reviewedCalendarAdditionPaths = new Set(calendarFollowupAttestation.additions.map(entry => entry.path));
+export const reviewedCalendarAdditionPaths = new Set([...calendarFollowupAttestation.additions.map(entry => entry.path), ...reviewedRussianCalendarExpansionAdditionPaths]);
 
 /** Reverse only the calendar packet, retaining every unrelated byte for older locks. */
 export function projectReviewedCalendarFollowup(relativePath, source) {
-  let projected = source.replace(/\r\n?/gu, "\n");
+  let projected = projectReviewedRussianCalendarExpansion(relativePath, source);
   const deltas = [...calendarIntegrationAttestation.projections, ...calendarFollowupAttestation.projections]
     .filter(delta => delta.path === relativePath);
   if (!deltas.length) return projected;
@@ -29,5 +30,8 @@ export function projectReviewedCalendarFollowup(relativePath, source) {
 /** Exact byte hashes, including identity and source-backed date evidence. */
 export function isReviewedCalendarAddition(relativePath, source) {
   const entry = calendarFollowupAttestation.additions.find(item => item.path === relativePath);
-  return Boolean(entry && calendarFollowupSha256(source) === entry.sha256Lf);
+  try {
+    return isReviewedRussianCalendarExpansionAddition(relativePath, source) ||
+      Boolean(entry && calendarFollowupSha256(projectReviewedRussianCalendarExpansion(relativePath, source)) === entry.sha256Lf);
+  } catch { return false; }
 }

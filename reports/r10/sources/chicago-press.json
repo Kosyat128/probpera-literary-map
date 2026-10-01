@@ -1,0 +1,205 @@
+{
+  "sourceId": "chicago-press",
+  "name": "University of Chicago Press",
+  "entryUrl": "https://press.uchicago.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:44.774Z",
+  "requests": [
+    {
+      "url": "https://press.uchicago.edu/index.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 39373,
+      "sha256": "19300ba8aa68aca03d49b90322382ef0419215ee5d689564a3f0c84d8be189f0",
+      "accessedAt": "2026-10-01T20:51:45.864Z"
+    },
+    {
+      "url": "https://press.uchicago.edu/books/freeEbook.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 24268,
+      "sha256": "31092c870dd14c9cc2a3dfa180fad275dc1a0d104eac0ae44c7306fcf572716f",
+      "accessedAt": "2026-10-01T20:51:46.105Z"
+    },
+    {
+      "url": "https://press.uchicago.edu/ucp/books/book/chicago/S/bo256019296.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 64742,
+      "sha256": "b35e2d8f1da1776dbe28b21970ff2c1e692eab471525ed2945b5d869fbe58c74",
+      "accessedAt": "2026-10-01T20:51:46.887Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://press.uchicago.edu/robots.txt",
+    "status": 200,
+    "contentType": "text/html;charset=UTF-8",
+    "bytes": 555,
+    "sha256": "4d315f9137f73ccdb04ee27f6d95a50f045bb5ac68c787e53dbf6e7137c4d539",
+    "accessedAt": "2026-10-01T20:51:45.383Z",
+    "disallowed": [
+      "/books/compcopy*",
+      "/books/textadoption*",
+      "/books/downloadSubjectCsv*",
+      "/journals/e-readers/processor/*",
+      "*.ctl",
+      "*.epl"
+    ]
+  },
+  "endpoint": {
+    "id": "chicago-press",
+    "name": "University of Chicago Press",
+    "url": "https://press.uchicago.edu/index.html",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "chicago-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://press.uchicago.edu"
+    ],
+    "linkPattern": "^\\/resource\\/[^/]+\\/?$|^\\/books\\/[^/]+\\/?$|^\\/ucp\\/books\\/book\\/chicago\\/S\\/[^/]+\\/?$|^\\/ucp\\/books\\/book\\/chicago\\/T\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://press.uchicago.edu/ucp/books/book/chicago/S/bo256019296.html"
+    ],
+    "verifiedAt": "2026-10-01T20:51:46.892Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 3,
+  "literaryCandidateCount": 3,
+  "sample": {
+    "sourceId": "chicago-press",
+    "source": {
+      "name": "University of Chicago Press",
+      "url": "https://press.uchicago.edu/ucp/books/book/chicago/S/bo256019296.html",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "The Second Estate",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:51:45.898Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://press.uchicago.edu/ucp/books/book/chicago/S/bo256019296.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 64742,
+      "sha256": "b35e2d8f1da1776dbe28b21970ff2c1e692eab471525ed2945b5d869fbe58c74",
+      "accessedAt": "2026-10-01T20:51:46.887Z",
+      "headline": "The Second Estate",
+      "excerpt": "Save Cover Preview for The Second Estate The Second Estate How the Tax Code Made an American Aristocracy Ray D. Madoff 9780226854496 9780226835204 9780226835211 9780226854069 Buy this book: The Second Estate Expand to see More Formats Collapse to see Fewer Formats REQUEST AN INSTRUCTOR COPY for The Second Estate Find this book in a library: The Second Estate Rights and Permissions for The Second E",
+      "publishedDates": [
+        {
+          "value": "Thu Oct 01 04:56:20 CDT 2026",
+          "method": "meta[name=\"date\"]"
+        }
+      ],
+      "canonical": "https://press.uchicago.edu/ucp/books/book/chicago/S/bo256019296.html",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:46.892Z",
+  "foundItems": [
+    {
+      "sourceId": "chicago-press",
+      "source": {
+        "name": "University of Chicago Press",
+        "url": "https://press.uchicago.edu/books/freeEbook.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Get this E-book: Plundered Skulls and Stolen Spirits",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-press",
+      "source": {
+        "name": "University of Chicago Press",
+        "url": "https://press.uchicago.edu/ucp/books/book/chicago/S/bo256019296.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Second Estate",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chicago-press",
+      "source": {
+        "name": "University of Chicago Press",
+        "url": "https://press.uchicago.edu/ucp/books/book/chicago/T/bo271524691.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Talking Classics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "19300ba8aa68aca03d49b90322382ef0419215ee5d689564a3f0c84d8be189f0"
+}

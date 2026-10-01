@@ -1,0 +1,24 @@
+{
+  "sourceId": "nepal-literature-festival",
+  "name": "Nepal Literature Festival",
+  "entryUrl": "https://nepalliteraturefestival.com/",
+  "countryCodes": [
+    "NP"
+  ],
+  "coverageCountryCodes": [
+    "NP"
+  ],
+  "attemptedAt": "2026-10-01T20:44:38.159Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "external_redirect:https://www.nepalliteraturefestival.org",
+  "robots": {
+    "url": "https://nepalliteraturefestival.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 24,
+    "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "accessedAt": "2026-10-01T20:44:39.396Z",
+    "disallowed": []
+  }
+}

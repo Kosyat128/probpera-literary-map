@@ -1,0 +1,335 @@
+{
+  "sourceId": "virginia-press",
+  "name": "University of Virginia Press",
+  "entryUrl": "https://www.upress.virginia.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:43.700Z",
+  "requests": [
+    {
+      "url": "https://www.upress.virginia.edu/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 52117,
+      "sha256": "720a62133d0c1924a0f4e89f9ffe96b5a830faad8c6571c847f5bcd6b352f321",
+      "accessedAt": "2026-10-01T20:51:44.711Z"
+    },
+    {
+      "url": "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 36144,
+      "sha256": "2cbb4d2e3acad7a26fded18d8a6f7128cc922b97cbe46804368a733ded565406",
+      "accessedAt": "2026-10-01T20:51:45.083Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.upress.virginia.edu/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 546,
+    "sha256": "ac1d3d30149a76682d56ec9a7b612705215a00e76f20f5f43ace4bb4efcfe194",
+    "accessedAt": "2026-10-01T20:51:44.460Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "virginia-press",
+    "name": "University of Virginia Press",
+    "url": "https://www.upress.virginia.edu/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "virginia-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.upress.virginia.edu"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/series\\/[^/]+\\/?$|^\\/title\\/[^/]+\\/?$|^\\/news\\/.+|^\\/author\\x2dcorner\\/[^/]+\\/?$|^\\/exhibits\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:45.085Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "virginia-press",
+    "source": {
+      "name": "University of Virginia Press",
+      "url": "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "UVA Press Announces New Series: Dis(place)ment, Migration, and Social JusticeThe University of Virginia Press is pleased to announce Dis(place)ment, Migration, and Social Justice, a new series that will publish the latest scholarship on forced relocation with a focus on...Continue Reading",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:51:44.732Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 36144,
+      "sha256": "2cbb4d2e3acad7a26fded18d8a6f7128cc922b97cbe46804368a733ded565406",
+      "accessedAt": "2026-10-01T20:51:45.083Z",
+      "headline": "UVA Press Announces New Series: Dis(place)ment, Migration, and Social Justice",
+      "excerpt": "All NewsUVA Press Announces New Series: Dis(place)ment, Migration, and Social JusticeThe University of Virginia Press is pleased to announce Dis(place)ment, Migration, and Social Justice, a new series that will publish the latest scholarship on forced relocation with a focus on the temporality of migration and the way that “place” is central to displacement. Informed by interdisciplinary perspecti",
+      "publishedDates": [],
+      "canonical": "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:45.085Z",
+  "foundItems": [
+    {
+      "sourceId": "virginia-press",
+      "source": {
+        "name": "University of Virginia Press",
+        "url": "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UVA Press Announces New Series: Dis(place)ment, Migration, and Social JusticeThe University of Virginia Press is pleased to announce Dis(place)ment, Migration, and Social Justice, a new series that will publish the latest scholarship on forced relocation with a focus on...Continue Reading",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:44.732Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virginia-press",
+      "source": {
+        "name": "University of Virginia Press",
+        "url": "https://www.upress.virginia.edu/author-corner/authors-corner-with-anna-vincenzi-author-of-echoes-of-a-distant-republic/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author's Corner with Anna Vincenzi, author of ECHOES OF A DISTANT REPUBLICToday, we are happy to bring you our conversation with Anna Vincenzi, author of Echoes of a Distant Republic: Italian Perspectives on the American and...Continue Reading",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:44.732Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virginia-press",
+      "source": {
+        "name": "University of Virginia Press",
+        "url": "https://www.upress.virginia.edu/authors-corner/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Authors' Corner2026-09-28",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:44.732Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virginia-press",
+      "source": {
+        "name": "University of Virginia Press",
+        "url": "https://www.upress.virginia.edu/title/10208/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kim Roberts MeikleThe District’s DepartedA Guidebook to DC Cemeteries",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:44.732Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virginia-press",
+      "source": {
+        "name": "University of Virginia Press",
+        "url": "https://www.upress.virginia.edu/exhibits/vmhc26/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "VMHC Conrad M. Hall Symposium for Virginia History 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:44.732Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virginia-press",
+      "source": {
+        "name": "University of Virginia Press",
+        "url": "https://www.upress.virginia.edu/exhibits/sesah26/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Southeast Chapter of the Society of Architectural Historians 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:44.732Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virginia-press",
+      "source": {
+        "name": "University of Virginia Press",
+        "url": "https://www.upress.virginia.edu/exhibits/asalh26/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Association for the Study of African American Life and History 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:44.732Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virginia-press",
+      "source": {
+        "name": "University of Virginia Press",
+        "url": "https://www.upress.virginia.edu/exhibits/shear26/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Society for Historians of the Early American Republic 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:44.732Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "virginia-press",
+      "source": {
+        "name": "University of Virginia Press",
+        "url": "https://www.upress.virginia.edu/great-experiment/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Experience the Constitutional Convention in Virtual Reality",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:44.732Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "720a62133d0c1924a0f4e89f9ffe96b5a830faad8c6571c847f5bcd6b352f321"
+}

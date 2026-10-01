@@ -1,0 +1,131 @@
+{
+  "sourceId": "charco-press",
+  "name": "Charco Press",
+  "entryUrl": "https://charcopress.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:48.253Z",
+  "requests": [
+    {
+      "url": "https://charcopress.com/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 219627,
+      "sha256": "5fbbe4d0bd3dc25b3169e1ff9b2e6eaa9c8750811fa9df52053239f6ca0faf94",
+      "accessedAt": "2026-10-01T20:51:48.737Z"
+    },
+    {
+      "url": "https://charcopress.com/home?format=rss",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 873,
+      "sha256": "e4fba1cfc18572da49f5ceb63d11e8a26a367012ad3f8b8235f058d285e4c01c",
+      "accessedAt": "2026-10-01T20:51:49.084Z"
+    },
+    {
+      "url": "https://charcopress.com/cristina-bendek",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 198592,
+      "sha256": "5fd70d93c641dcc7ee4b8e2722edd91748df0e28f69fb81ecd588c9eea8865d6",
+      "accessedAt": "2026-10-01T20:51:49.732Z"
+    },
+    {
+      "url": "https://charcopress.com/gabriela-cabezon-camara",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 202709,
+      "sha256": "0dad95e536bdfa66dbf279fd289e55935bfb575a83dacee4d84533062e178baa",
+      "accessedAt": "2026-10-01T20:51:49.820Z"
+    },
+    {
+      "url": "https://charcopress.com/giuseppe-caputo",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 184359,
+      "sha256": "8fc7f5f117fc6d745214a0012566ac29a8059739d93e5db70076d9c2f5d35d52",
+      "accessedAt": "2026-10-01T20:51:50.130Z"
+    },
+    {
+      "url": "https://charcopress.com/daniela-catrileo",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 200960,
+      "sha256": "9b1304cbe7f89ba7912885837b14c44ab98cade0a8c766bab99efac00680973c",
+      "accessedAt": "2026-10-01T20:51:50.431Z"
+    },
+    {
+      "url": "https://charcopress.com/renato-cisneros",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 219579,
+      "sha256": "b54867976cf1fc2c340bbb9d1354c0ed36cec038259cc7dd62869c85034f7330",
+      "accessedAt": "2026-10-01T20:51:50.748Z"
+    },
+    {
+      "url": "https://charcopress.com/jorge-consiglio",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 200804,
+      "sha256": "2e2be15f7b7b42cacdeed4999ce7fe768a51f24aab9725a18f7303ebbaadf034",
+      "accessedAt": "2026-10-01T20:51:51.056Z"
+    },
+    {
+      "url": "https://charcopress.com/rodrigo-fuentes",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 183011,
+      "sha256": "405fa43d357d0c3c68d3e2574cb3cfe7503afa09a69743a731f384f476b67cbb",
+      "accessedAt": "2026-10-01T20:51:51.345Z"
+    },
+    {
+      "url": "https://charcopress.com/mateo-garcia-elizondo",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 182891,
+      "sha256": "9b695f5ac7c42839d2ce716b068c37f0633bc4182aa9010e9dfcf2020d95ac70",
+      "accessedAt": "2026-10-01T20:51:51.648Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://charcopress.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 1506,
+    "sha256": "95483be18b6d8e911951cd6743812375be37323d24c5e7662ef144838c0474af",
+    "accessedAt": "2026-10-01T20:51:48.537Z",
+    "disallowed": [
+      "/config",
+      "/search",
+      "/account$",
+      "/account/",
+      "/commerce/digital-download/",
+      "/api/",
+      "/static/",
+      "/*?author=*",
+      "/*&author=*",
+      "/*?tag=*",
+      "/*&tag=*",
+      "/*?month=*",
+      "/*&month=*",
+      "/*?view=*",
+      "/*&view=*",
+      "/*?format=json",
+      "/*&format=json",
+      "/*?format=page-context",
+      "/*&format=page-context",
+      "/*?format=main-content",
+      "/*&format=main-content",
+      "/*?format=json-pretty",
+      "/*&format=json-pretty",
+      "/*?format=ical",
+      "/*&format=ical",
+      "/*?reversePaginate=*",
+      "/*&reversePaginate=*"
+    ]
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links",
+  "indexAttemptError": "http_404"
+}

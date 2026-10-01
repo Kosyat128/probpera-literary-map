@@ -1,0 +1,11 @@
+{
+  "sourceId": "melville-house",
+  "name": "Melville House",
+  "entryUrl": "https://www.mhpbooks.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:58.155Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

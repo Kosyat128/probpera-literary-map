@@ -1,0 +1,29 @@
+{
+  "sourceId": "revue-respiro",
+  "name": "Respiro",
+  "entryUrl": "https://www.respiro.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:56.902Z",
+  "requests": [
+    {
+      "url": "https://www.respiro.org/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 1583,
+      "sha256": "ec8b53707c52885da7102c11b468b6b380838ba03427bf12ab79b07d1a3ebbac",
+      "accessedAt": "2026-10-01T20:51:57.742Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.respiro.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 25,
+    "sha256": "5aba1f25a1e77d36539cf76479a4d08ccb7d30cd8ac85104130476af6f64cc35",
+    "accessedAt": "2026-10-01T20:51:57.568Z",
+    "disallowed": []
+  }
+}

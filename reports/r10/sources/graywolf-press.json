@@ -1,0 +1,45 @@
+{
+  "sourceId": "graywolf-press",
+  "name": "Graywolf Press",
+  "entryUrl": "https://www.graywolfpress.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:56.112Z",
+  "requests": [
+    {
+      "url": "https://graywolfpress.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 166606,
+      "sha256": "8eaabd6eafc8c019039bba2a5495b85d8314d2a3bcef2b2d152e61aa17bc4789",
+      "accessedAt": "2026-10-01T20:47:57.844Z"
+    },
+    {
+      "url": "https://graywolfpress.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1142,
+      "sha256": "3c26c9166301358b7e4a87576bf015e39a46c2ffc24560f8e758102dfcf38a89",
+      "accessedAt": "2026-10-01T20:47:58.145Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://graywolfpress.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 460,
+    "sha256": "4483bd22177ffaf7bad9cdf723d31f6c3083e98cdeac14ed072374bb7838014c",
+    "accessedAt": "2026-10-01T20:47:56.941Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links"
+}

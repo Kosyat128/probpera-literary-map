@@ -1,0 +1,16 @@
+{
+  "sourceId": "russian-pen",
+  "name": "Русский ПЕН-центр",
+  "entryUrl": "https://ruspen.ru/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:47.368Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://ruspen.ru/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

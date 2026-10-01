@@ -30,7 +30,9 @@ const metrics = countries => {
     }])) };
 };
 const datesOnly = countries => countries.map(c => ({ ...c, writers: c.writers.map(w => Object.fromEntries(Object.entries(w).filter(([key]) => !['birthDate', 'deathDate', 'dateEvidence'].includes(key)))) }));
-const allPatches = [...rt.writerDatePatches, ...rt.calendarWriterDatePatches];
+// This historical audit retains its accepted 25-field packet; the expansion has a separate current audit.
+const historicalPacket = rt.calendarWriterDatePatches.filter(patch => !patch.id.startsWith('r10-russian-expansion:'));
+const allPatches = [...rt.writerDatePatches, ...historicalPacket];
 const original = rt.writerDatePatches;
 const resumed = allPatches.filter(p => !/^(r10-popular|r10-scoped):/.test(p.id));
 const before = finish(rt.applyWriterDatePatches(rt.editorialCatalogCountries, original).countries);
@@ -39,7 +41,7 @@ const applied = rt.applyWriterDatePatches(rt.editorialCatalogCountries, allPatch
 assert.deepEqual(applied.conflicts, []);
 const after = finish(applied.countries);
 assert.deepEqual(before, rt.countries, 'Canonical country/profile export changed');
-assert.deepEqual(after, rt.applyCalendarWriterDatePatches(rt.countries).countries, 'Actual calendar clones differ from audited date overlay');
+assert.deepEqual(after, rt.applyCalendarWriterDatePatches(rt.countries, historicalPacket).countries, 'Actual calendar clones differ from audited date overlay');
 assert.deepEqual(datesOnly(before), datesOnly(after), 'Non-date catalogue content changed');
 const replay = rt.applyWriterDatePatches(applied.countries, allPatches);
 assert.deepEqual(replay.conflicts, []); assert.equal(replay.applied.length, 0);
@@ -50,7 +52,7 @@ const old = new Set(eventsBefore.map(key)), current = new Set(eventsAfter.map(ke
 assert.ok([...old].every(id => current.has(id)), 'An existing event disappeared');
 assert.equal(current.size, eventsAfter.length);
 assert.deepEqual(rt.selectCalendarEvents(after, 'en', undefined, []).map(key).sort(), eventsAfter.map(key).sort());
-const packet = rt.calendarWriterDatePatches;
+const packet = historicalPacket;
 const newEvents = eventsAfter.filter(e => !old.has(key(e)));
 const newKeys = new Set(newEvents.map(e => `${e.country.id}:${e.writer.id}:${e.kind === 'birth' ? 'birthDate' : 'deathDate'}`));
 const writerMap = new Map(after.flatMap(c => c.writers.map(w => [`${c.id}:${w.id}`, w])));

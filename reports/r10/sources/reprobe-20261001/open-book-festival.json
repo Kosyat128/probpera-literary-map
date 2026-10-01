@@ -1,0 +1,16 @@
+{
+  "sourceId": "open-book-festival",
+  "name": "Open Book Festival",
+  "entryUrl": "https://openbookfestival.co.za/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:45:00.982Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://openbookfestival.co.za/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

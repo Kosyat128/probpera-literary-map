@@ -1,0 +1,365 @@
+{
+  "sourceId": "nyrb",
+  "name": "New York Review Books",
+  "entryUrl": "https://www.nyrb.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:54.691Z",
+  "requests": [
+    {
+      "url": "https://www.nyrb.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 300256,
+      "sha256": "56528bfd35a37181af2ca367b068363bfaf66cdb64872a71c0b1d1ba5c3e74d7",
+      "accessedAt": "2026-10-01T20:47:55.414Z"
+    },
+    {
+      "url": "https://www.nyrb.com/blogs/nyrb-news",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 191577,
+      "sha256": "5b94f70e3d2d27d471c9a837bd70c51bfc663e6d4f88767e3606cf2d577e5cc3",
+      "accessedAt": "2026-10-01T20:47:55.784Z"
+    },
+    {
+      "url": "https://www.nyrb.com/blogs/nyrb-news/2026-pen-translation-prize-winner-minna-zallman-proctors-translation-of-the-leucothea-dialogues",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 157489,
+      "sha256": "c9a445c5c3688ddace6afa485f99b059193452624208a13cd3604254f434aaf3",
+      "accessedAt": "2026-10-01T20:47:56.100Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.nyrb.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 3608,
+    "sha256": "f81384a73e2160411fe60936cfe9fd4b548590d8be809a94f96c1a7fd7aa8098",
+    "accessedAt": "2026-10-01T20:47:55.238Z",
+    "disallowed": [
+      "/admin",
+      "/cart/",
+      "/*/cart/",
+      "/checkout",
+      "/*/checkout",
+      "/checkouts/",
+      "/*/checkouts/",
+      "/orders",
+      "/*/orders",
+      "/account",
+      "/*/account",
+      "/7269203",
+      "/cdn/wpm/*.js",
+      "/services",
+      "/sf_*",
+      "/cart.js",
+      "/*/cart.js",
+      "/recommendations/products",
+      "/*/recommendations/products",
+      "/collections/*sort_by*",
+      "/*/collections/*sort_by*",
+      "/collections/*+*",
+      "/collections/*%2B*",
+      "/collections/*%2b*",
+      "/*/collections/*+*",
+      "/*/collections/*%2B*",
+      "/*/collections/*%2b*",
+      "/collections/*filter*&*filter*",
+      "/*/collections/*filter*&*filter*",
+      "/blogs/*+*",
+      "/blogs/*%2B*",
+      "/blogs/*%2b*",
+      "/*/blogs/*+*",
+      "/*/blogs/*%2B*",
+      "/*/blogs/*%2b*",
+      "/*?*ls=*&ls=*",
+      "/*?*ls%3*ls%3*",
+      "/*?*oseid=*",
+      "/*?*preview_theme_id=*",
+      "/*?*preview_script_id=*"
+    ]
+  },
+  "endpoint": {
+    "id": "nyrb",
+    "name": "New York Review Books",
+    "url": "https://www.nyrb.com/blogs/nyrb-news",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "nyrb",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.nyrb.com"
+    ],
+    "linkPattern": "^\\/collections\\/[^/]+\\/?$|^\\/blogs\\/nyrb\\x2dnews\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.nyrb.com/blogs/nyrb-news/2026-pen-translation-prize-winner-minna-zallman-proctors-translation-of-the-leucothea-dialogues"
+    ],
+    "verifiedAt": "2026-10-01T20:47:56.105Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 8,
+  "literaryCandidateCount": 8,
+  "sample": {
+    "sourceId": "nyrb",
+    "source": {
+      "name": "New York Review Books",
+      "url": "https://www.nyrb.com/blogs/nyrb-news/2026-pen-translation-prize-winner-minna-zallman-proctors-translation-of-the-leucothea-dialogues",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "2026 PEN Translation Prize winner: Minna Zallman Proctor's translation of 'The Leucothea Dialogues'",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:47:55.806Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.nyrb.com/blogs/nyrb-news/2026-pen-translation-prize-winner-minna-zallman-proctors-translation-of-the-leucothea-dialogues",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 157489,
+      "sha256": "c9a445c5c3688ddace6afa485f99b059193452624208a13cd3604254f434aaf3",
+      "accessedAt": "2026-10-01T20:47:56.100Z",
+      "headline": "2026 PEN Translation Prize winner: Minna Zallman Proctor's translation",
+      "excerpt": "On March 31, PEN America announced it's 2026 literary prize winners. The Translation Prize, for a book-length translation of prose from any language into English, was awarded to Minna Zallman Proctor for her translation of The Leucothea Dialogues by Cesare Pavese. Published last fall by Archipelago Books, a NYRB distributed press, The Leucothea Dialogues is a shifting, primordial work by Cesare Pa",
+      "publishedDates": [
+        {
+          "value": "2026-04-01T18:02:56Z",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.nyrb.com/blogs/nyrb-news/2026-pen-translation-prize-winner-minna-zallman-proctors-translation-of-the-leucothea-dialogues",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:47:56.105Z",
+  "foundItems": [
+    {
+      "sourceId": "nyrb",
+      "source": {
+        "name": "New York Review Books",
+        "url": "https://www.nyrb.com/blogs/nyrb-news/2026-pen-translation-prize-winner-minna-zallman-proctors-translation-of-the-leucothea-dialogues",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 PEN Translation Prize winner: Minna Zallman Proctor's translation of 'The Leucothea Dialogues'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:55.806Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nyrb",
+      "source": {
+        "name": "New York Review Books",
+        "url": "https://www.nyrb.com/blogs/nyrb-news/the-palm-house-longlisted-for-2026-booker-prize",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "'The Palm House' longlisted for 2026 Booker Prize",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:55.806Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nyrb",
+      "source": {
+        "name": "New York Review Books",
+        "url": "https://www.nyrb.com/blogs/nyrb-news/three-nyrc-titles-nominated-for-2026-eisner-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Three NYRC titles nominated for 2026 Eisner Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:55.806Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nyrb",
+      "source": {
+        "name": "New York Review Books",
+        "url": "https://www.nyrb.com/blogs/nyrb-news/lion-by-sonya-walger-shortlisted-for-the-carol-shields-prize-for-fiction",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "'Lion' by Sonya Walger shortlisted for The Carol Shields Prize for Fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:55.806Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nyrb",
+      "source": {
+        "name": "New York Review Books",
+        "url": "https://www.nyrb.com/blogs/nyrb-news/kent-joness-late-fame-based-on-the-book-by-arthur-schnitzler-is-now-in-theaters",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kent Jones's 'Late Fame,' based on the book by Arthur Schnitzler, is now in theaters",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:55.806Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nyrb",
+      "source": {
+        "name": "New York Review Books",
+        "url": "https://www.nyrb.com/blogs/nyrb-news/mourning-the-loss-of-sonny-rollins",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mourning the loss of Sonny Rollins (1930-2026)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:55.806Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nyrb",
+      "source": {
+        "name": "New York Review Books",
+        "url": "https://www.nyrb.com/blogs/nyrb-news/gwendoline-riley-wins-windham-campbell-prize-for-lifes-work",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gwendoline Riley wins Windham-Campbell prize for life's work",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:55.806Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nyrb",
+      "source": {
+        "name": "New York Review Books",
+        "url": "https://www.nyrb.com/blogs/nyrb-news/mourning-the-loss-of-glen-baxter-and-yoshiharu-tsuge",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mourning the loss of Glen Baxter and Yoshiharu Tsuge",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:55.806Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5b94f70e3d2d27d471c9a837bd70c51bfc663e6d4f88767e3606cf2d577e5cc3"
+}

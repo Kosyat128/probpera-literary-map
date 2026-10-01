@@ -1,0 +1,538 @@
+{
+  "sourceId": "penn-state-press",
+  "name": "Penn State University Press",
+  "entryUrl": "https://www.psupress.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:43.943Z",
+  "requests": [
+    {
+      "url": "https://www.psupress.org/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 34012,
+      "sha256": "ce25349e264e3825aea53709f5ab4570ddd77e672f572d129b0435ca81f276c1",
+      "accessedAt": "2026-10-01T20:51:45.036Z"
+    },
+    {
+      "url": "https://www.psupress.org/journals/jnls_JAAH.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 22145,
+      "sha256": "da77fff16de1085a9755d091b7d28f790dce20ae731fbde6e46e91d3871e589c",
+      "accessedAt": "2026-10-01T20:51:45.231Z"
+    },
+    {
+      "url": "https://www.psupress.org/journals/jnls_JIP.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 24176,
+      "sha256": "dc6f77a75534ac5aa244bb5597152ddb44568bafba858d6dfc94f3785465e792",
+      "accessedAt": "2026-10-01T20:51:45.418Z"
+    },
+    {
+      "url": "https://www.psupress.org/journals/jnls_PIR.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 22140,
+      "sha256": "69164096a57ebb0dff91b3b0cd3d22cdb0feeee6c2abed999889b10b533afd9d",
+      "accessedAt": "2026-10-01T20:51:45.578Z"
+    },
+    {
+      "url": "https://www.psupress.org/books/titles/978-0-271-08005-5.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 43823,
+      "sha256": "7b328a1d03762996d54b73f3eaee37ec3932b5a81a5604ce8eb71f018e72a7c6",
+      "accessedAt": "2026-10-01T20:51:45.778Z"
+    },
+    {
+      "url": "https://www.psupress.org/books/titles/978-0-271-10209-2.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 28487,
+      "sha256": "444db35a212aa2dba229304bebf55ec03b87a2b561d8adca39137e7c69ab3332",
+      "accessedAt": "2026-10-01T20:51:45.995Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.psupress.org/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "penn-state-press",
+    "name": "Penn State University Press",
+    "url": "https://www.psupress.org/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "penn-state-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.psupress.org"
+    ],
+    "linkPattern": "^\\/journals\\/[^/]+\\/?$|^\\/books\\/author_resources\\/[^/]+\\/?$|^\\/rights\\/[^/]+\\/?$|^\\/books\\/titles\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.psupress.org/books/titles/978-0-271-10209-2.html"
+    ],
+    "verifiedAt": "2026-10-01T20:51:45.998Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 16,
+  "literaryCandidateCount": 16,
+  "sample": {
+    "sourceId": "penn-state-press",
+    "source": {
+      "name": "Penn State University Press",
+      "url": "https://www.psupress.org/books/titles/978-0-271-10209-2.html",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Intersectionality as Epistemic Resistance",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:51:45.062Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.psupress.org/books/titles/978-0-271-10209-2.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 28487,
+      "sha256": "444db35a212aa2dba229304bebf55ec03b87a2b561d8adca39137e7c69ab3332",
+      "accessedAt": "2026-10-01T20:51:45.995Z",
+      "headline": "Intersectionality as Epistemic Resistance: The Critical Theory of Patricia Hill Collins Edited by Amy Allen and Eduardo Mendieta",
+      "excerpt": "Intersectionality as Epistemic Resistance: The Critical Theory of Patricia Hill Collins Edited by Amy Allen and Eduardo Mendieta Intersectionality as Epistemic Resistance The Critical Theory of Patricia Hill Collins Edited by Amy Allen and Eduardo Mendieta $34.99 Paperback EditionISBN: 978-0-271-10209-2 Add to Cart Customers in Europe, UK, Middle East, and Africa Buy Here E-Book Available as an e-",
+      "publishedDates": [],
+      "canonical": "https://www.psupress.org/books/titles/978-0-271-10209-2.html",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:45.998Z",
+  "foundItems": [
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/journals/jnls_JAAH.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Journal of Austrian-American History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/journals/jnls_JIP.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Journal of Information Policy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/journals/jnls_PIR.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Palestine/Israel Review",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-08005-5.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Obscenities",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-10209-2.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Intersectionality as Epistemic Resistance",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-09782-4.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reinventing World War II",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-09507-3.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prisoners of Congress",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-10213-9.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Global Quakerism, 1938-2018",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-09215-7.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Holiness and Pentecostal Movements",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-10201-6.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Picturing the Poor",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-10233-7.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fighter’s Heaven",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-09738-1.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Christians at Home",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-09698-8.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Memorializing the Unsung",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-10142-2.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Conquest That Never Was",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/978-0-271-08118-2.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Passing to América",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penn-state-press",
+      "source": {
+        "name": "Penn State University Press",
+        "url": "https://www.psupress.org/books/titles/0-271-02754-1.html",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Journal of William Penn",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:45.062Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ce25349e264e3825aea53709f5ab4570ddd77e672f572d129b0435ca81f276c1"
+}

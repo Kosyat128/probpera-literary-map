@@ -1,0 +1,57 @@
+{
+  "sourceId": "page-libraires",
+  "name": "PAGE des libraires",
+  "entryUrl": "https://www.pagedeslibraires.fr/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:55.357Z",
+  "requests": [
+    {
+      "url": "https://www.pagedeslibraires.fr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 121183,
+      "sha256": "d5631f2e12c74ed6713149ade63d40cee46bfb03fda71dd3f74e96639c1a39b9",
+      "accessedAt": "2026-10-01T20:51:56.685Z"
+    },
+    {
+      "url": "https://www.pagedeslibraires.fr/auteur/2881/Marion%20Brunet",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 167197,
+      "sha256": "bbeb8382fc449c167315699a23acbb9083052d35e5f565b2ca9b0019fe6c4be6",
+      "accessedAt": "2026-10-01T20:51:57.008Z"
+    },
+    {
+      "url": "https://www.pagedeslibraires.fr/livre/l-arbre-caramel",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 60441,
+      "sha256": "635628b02f8a7554c487bed32071f0fdaeb8de9f6693bc3f9c6151d2c3bb0fc0",
+      "accessedAt": "2026-10-01T20:51:57.424Z"
+    },
+    {
+      "url": "https://www.pagedeslibraires.fr/auteur/21290/Kim%20Ji-ann",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 36264,
+      "sha256": "5ade0fcc7975f1cca1470d8e2d0d089190d505dfef6b403edb31983018f83f57",
+      "accessedAt": "2026-10-01T20:51:57.679Z"
+    },
+    {
+      "url": "https://www.pagedeslibraires.fr/livre/rendez-vous-sur-l-autre-rive",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 346919,
+      "sha256": "78c4c567c9796fb29a2629d238d0b12f5c9c2d17c041b35746084890fdd0bde6",
+      "accessedAt": "2026-10-01T20:51:58.355Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.pagedeslibraires.fr/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

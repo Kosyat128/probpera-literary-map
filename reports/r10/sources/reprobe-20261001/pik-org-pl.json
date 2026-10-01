@@ -1,0 +1,434 @@
+{
+  "sourceId": "pik-org-pl",
+  "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+  "entryUrl": "https://www.pik.org.pl/",
+  "countryCodes": [
+    "PL"
+  ],
+  "coverageCountryCodes": [
+    "PL"
+  ],
+  "attemptedAt": "2026-10-01T20:43:42.038Z",
+  "requests": [
+    {
+      "url": "https://pik.org.pl/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 179675,
+      "sha256": "a3c7de744fcdd4cbfa57a9d67d1ce9fe456302d57ac1bcbecb472bf5b05bf4ad",
+      "accessedAt": "2026-10-01T20:43:48.249Z"
+    },
+    {
+      "url": "https://pik.org.pl/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 50078,
+      "sha256": "56372ccfdb45966dbc398773246f70ed238704c31adae658c235a1ed870f3e53",
+      "accessedAt": "2026-10-01T20:43:49.787Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/09/10/stoisko-malych-wydawcow-29-mtk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 152982,
+      "sha256": "dec6233a255edb10d17e7d43ae0b20160cb0190abc5eacbb35b16c7aa3f218bf",
+      "accessedAt": "2026-10-01T20:43:50.991Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/10/01/program-dla-branzy-na-miedzynarodowych-targach-ksiazki-w-krakowie/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 155989,
+      "sha256": "57b9ce645504f9532d342897c8fa0c01d4f551234a0d554da8ed94508dc741f5",
+      "accessedAt": "2026-10-01T20:43:52.160Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://pik.org.pl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 111,
+    "sha256": "5a60c86da41f505bd09303d9155a94aa58953ee1de9ad40b29f8c92d4b171161",
+    "accessedAt": "2026-10-01T20:43:45.790Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "pik-org-pl",
+    "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+    "url": "https://pik.org.pl/feed/",
+    "format": "rss",
+    "language": "pl-PL",
+    "region": "europe",
+    "sourceFamilyId": "pik-org-pl",
+    "countryCodes": [
+      "PL"
+    ],
+    "coverageCountryCodes": [
+      "PL"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://pik.org.pl"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://pik.org.pl/2026/10/01/program-dla-branzy-na-miedzynarodowych-targach-ksiazki-w-krakowie/"
+    ],
+    "verifiedAt": "2026-10-01T20:43:52.173Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 12,
+  "literaryCandidateCount": 12,
+  "sample": {
+    "sourceId": "pik-org-pl",
+    "source": {
+      "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+      "url": "https://pik.org.pl/2026/10/01/program-dla-branzy-na-miedzynarodowych-targach-ksiazki-w-krakowie/",
+      "language": "pl-PL"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Program dla branży na Międzynarodowych Targach Książki w Krakowie®",
+    "publishedAt": "2026-10-01T16:30:47.000Z",
+    "description": "Program 28. Międzynarodowych Targów Książki w Krakowie, jak co roku, wypełnią także spotkania branżowe skierowane do wydawców, autorów, redaktorów, tłumaczy, bibliotekarzy, księgarzy i poligrafów. W tym roku to grono poszerzy się \u2013 dzięki debiutującej Strefie Adaptacji \u2013 o przedstawicieli branży filmowej. Również Polska Izba Książki będzie obecna na MTK w Krakowie \u2013 zapraszamy na dwa […]",
+    "discoveredAt": "2026-10-01T20:43:49.793Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://pik.org.pl/2026/10/01/program-dla-branzy-na-miedzynarodowych-targach-ksiazki-w-krakowie/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 155989,
+      "sha256": "57b9ce645504f9532d342897c8fa0c01d4f551234a0d554da8ed94508dc741f5",
+      "accessedAt": "2026-10-01T20:43:52.160Z",
+      "headline": "Program dla branży na Międzynarodowych Targach Książki w Krakowie® \u2013 Polska Izba Książki",
+      "excerpt": "Program dla branży na Międzynarodowych Targach Książki w Krakowie® \u2013 Polska Izba Książki Przejdź do treści Komunikaty PIK 1 października, 2026 Program dla branży na Międzynarodowych Targach Książki w Krakowie® Drukuj Program 28. Międzynarodowych Targów Książki w Krakowie, jak co roku, wypełnią także spotkania branżowe skierowane do wydawców, autorów, redaktorów, tłumaczy, bibliotekarzy, księgarzy ",
+      "publishedDates": [],
+      "canonical": "https://pik.org.pl/2026/10/01/program-dla-branzy-na-miedzynarodowych-targach-ksiazki-w-krakowie/",
+      "language": "pl-PL",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:43:52.173Z",
+  "foundItems": [
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/10/stoisko-malych-wydawcow-29-mtk/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ogłaszamy wyniki naboru na Stoisko Małych Wydawców na 29. Międzynarodowych Targach Książki w Krakowie w dniach 22-25 października 2026 roku.",
+      "publishedAt": "2026-09-10T12:59:00.000Z",
+      "description": "Kolektywne stoisko dla niezależnych oficyn jest wspólną inicjatywą Instytutu Książki i Polskiej Izby Książki. Jego celem jest umożliwienie małym wydawnictwom zaprezentowania swojej oferty podczas ważnego dla branży wydarzenia. Dla czytelników i czytelniczek będzie to z kolei okazja do kontaktu z wartościowymi publikacjami, które ze względów ekonomicznych nie są powszechnie dostępne w szerokiej sp…",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/10/01/program-dla-branzy-na-miedzynarodowych-targach-ksiazki-w-krakowie/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Program dla branży na Międzynarodowych Targach Książki w Krakowie®",
+      "publishedAt": "2026-10-01T16:30:47.000Z",
+      "description": "Program 28. Międzynarodowych Targów Książki w Krakowie, jak co roku, wypełnią także spotkania branżowe skierowane do wydawców, autorów, redaktorów, tłumaczy, bibliotekarzy, księgarzy i poligrafów. W tym roku to grono poszerzy się \u2013 dzięki debiutującej Strefie Adaptacji \u2013 o przedstawicieli branży filmowej. Również Polska Izba Książki będzie obecna na MTK w Krakowie \u2013 zapraszamy na dwa […]",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/29/mkidn-o-umowach-licencyjnych-niewylacznych-jako-mozliwej-formie-nabywania-praw-do-utworow-artystycznych/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MKiDN o umowach licencyjnych niewyłącznych jako możliwej formie nabywania praw do utworów artystycznych",
+      "publishedAt": "2026-09-29T15:02:06.000Z",
+      "description": "Zespół ds. pola literackiego przy Ministrze Kultury i Dziedzictwa Narodowego opracował przy wsparciu Departamentu Prawnego MKiDN informację na temat różnic i korzyści związanych ze stosowaniem dwóch rodzajów umów: umów o przeniesienie praw autorskich i umów licencyjnych, w kontekście konkretnych potrzeb i możliwości instytucji oraz twórców. Szczegóły na stronie Ministerstwa: Informacja dotycząca …",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/29/poznanska-noc-ksiegarn-juz-9-pazdziernika/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Także w Poznaniu: Poznańska Noc Księgarń już 9 października!",
+      "publishedAt": "2026-09-29T11:53:05.000Z",
+      "description": "9 października księgarnie w Poznaniu będą tętnić życiem także po zmroku. Podczas Poznańskiej Nocy Księgarń dwanaście księgarń i antykwariatów zaprosi czytelników na spotkania, warsztaty, koncerty i inne wydarzenia literackie. To wspaniała okazja, by odkryć miejsca tworzące książkową mapę miasta i spędzić jesienny wieczór wśród książek. Poznańska Noc Księgarń odbędzie się 9 października 2026 roku …",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/28/nocksiegarni/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Polska Izba Książki wspiera Noc Księgarni",
+      "publishedAt": "2026-09-28T09:35:50.000Z",
+      "description": "9 października z inicjatywy księgarzy prowadzących niezależne księgarnie w całej Polsce odbędzie się Noc Księgarni. Polska Izba Książki wspiera tę inicjatywę. Partnerem wydarzenia jest również Stowarzyszenie Księgarzy Polskich. Noc Księgarni odbędzie się w piątek 9 października w księgarniach kameralnych. Księgarze organizują wydarzenia \u2013 spotkania autorskie, warsztaty, debaty, promocje na książk…",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/22/rola-i-znaczenie-wydawcow-nagranie-debaty/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Rola i znaczenie wydawców na rynku książki - blaski i cienie” - nagranie debaty",
+      "publishedAt": "2026-09-22T07:59:01.000Z",
+      "description": "W piątek 11 września podczas Gdańskich Targów Książki PIK zorganizował debatę pt.: „Rola i znaczenie wydawców na rynku książki \u2013 blaski i cienie”. W debacie wzięli udział: Anna Nowacka-Devillard \u2013 Widnokrąg,Daria Majewska \u2013 słowo/obraz terytoria, Aldona Mackiewicz \u2013 Toruński Antykwariat Księgarski, Grażyna Plebanek \u2013 Unia Literacka, Maciej Studencki \u2013 Stowarzyszenie Tłumaczy Literatury, Oddział P…",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/21/ustawa-o-ochronie-rynku-ksiazki-formalnie-w-procedurze-legislaycjnej/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ustawa o ochronie rynku książki formalnie w procedurze legislacyjnej",
+      "publishedAt": "2026-09-21T15:24:56.000Z",
+      "description": "Ministerstwo Kultury i Dziedzictwa Narodowego w poniedziałek 21 września zorganizowało konferencję prasową, podczas której przedstawione zostały informacje dotyczące stanu prac legislacyjnych, w tym prac nad Ustawą o ochronie rynku książki. Ministra Marta Cienkowska poinformowała, że został złożony wniosek o wpisanie Ustawy o ochronie rynku książki do wykazu prac legislacyjnych i programowych Rad…",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/16/webinarium-fep-intergraf-na-temat-ppwr/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Webinarium FEP-Intergraf na temat PPWR",
+      "publishedAt": "2026-09-16T10:31:41.000Z",
+      "description": "Federacja Europejskich Wydawców (FEP) wraz z Intergraf zapraszają na webinar poświęcony PPWR (Packaging and Packaging Waste Regulation), który odbędzie się w poniedziałek 21 września o godz. 11:00. Szkolenie odbędzie się w języku angielskim z napisami tłumaczonymi na żywo. Członków PIK zainteresowanych udziałem w webinarium prosimy o kontakt pod adresem mailowym: biuro@pik.org.pl Od dnia 12 sierp…",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/15/baza-wiedzy-pik-nota-fep/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Baza wiedzy PIK - nowe materiały dla członków w tym dotyczące obowiązków etykietowania na mocy AI Act",
+      "publishedAt": "2026-09-15T15:06:44.000Z",
+      "description": "PIK przypomina, że członkowie Izby mogą korzystać z Bazy wiedzy, która obejmuje zagadnienia: Rynek polski, Rynek europejski, Dostępność na rynku książki oraz AI na rynku książki. W tej ostatniej sekcji polecamy Państwa uwadze najnowszy materiał, który otrzymaliśmy od Federacji Europejskich wydawców: „Nota FEP dotycząca obowiązków etykietowania na mocy ustawy o sztucznej inteligencji”. Notę FEP zn…",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/11/znamy-laureatow-i-edycji-konkursu-o-nagrode-literacka-ksiegarni-kameralnych/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Znamy laureatów I edycji konkursu o Nagrodę Literacką Księgarni Kameralnych",
+      "publishedAt": "2026-09-11T15:15:00.000Z",
+      "description": "Alicja Kobza, autorka książki „Graficzki. Nieopowiedziane historie polskich projektantek grafiki użytkowej 1945\u20131989” wydanej przez Wydawnictwo Karakter, została Laureatką Nagrody Literackiej Księgarni Kameralnych w kategorii: literatura polska dla dorosłych. Nagrodę w kategorii: literatura polska dla dzieci otrzymała Jola Richter-Magnuszewska, autorka i ilustratorka książki „Łąki, murawy, torfow…",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/08/polska-izba-ksiazki-na-gdanskich-targach-ksiazki/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Polska Izba Książki na Gdańskich Targach Książki",
+      "publishedAt": "2026-09-08T10:42:02.000Z",
+      "description": "Od 11 do 13 września w Europejskim Centrum Solidarności odbędzie się ósma edycja Gdańskich Targów Książki. Organizatorzy zapowiadają obecność 100 marek wydawniczych na ponad 75 stoiskach, spotkania autorskie, debaty i wydarzenia dla dzieci. Polska Izba Książki zaprasza na przygotowywane przez siebie wydarzenia: debatę branżową, warsztaty dla bibliotekarzy oraz galę Nagrody Literackiej Księgarni K…",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pik-org-pl",
+      "source": {
+        "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+        "url": "https://pik.org.pl/2026/09/07/debata-pik-gtk/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rola i znaczenie wydawców na rynku książki - blaski i cienie. Debata PIK podczas Gdańskich Targów Książki",
+      "publishedAt": "2026-09-07T10:48:05.000Z",
+      "description": "Polska Izba Książki zaprasza na debatę branżową podczas Gdańskich Targów Książki pod hasłem „Rola i znaczenie wydawców na rynku książki \u2013 blaski i cienie, która odbędzie się w piątek 11 września, godz. 13:00 w sali 5, Europejskie Centrum Solidarności, Gdańsk. Porozmawiamy o roli i znaczeniu wydawców na rynku książki, blaskach i cieniach tej działalności z […]",
+      "discoveredAt": "2026-10-01T20:43:49.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "56372ccfdb45966dbc398773246f70ed238704c31adae658c235a1ed870f3e53"
+}

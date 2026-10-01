@@ -1,0 +1,389 @@
+{
+  "sourceId": "iperborea",
+  "name": "Iperborea",
+  "entryUrl": "https://iperborea.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:16.037Z",
+  "requests": [
+    {
+      "url": "https://iperborea.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 138559,
+      "sha256": "51beab132d83eaeb79f6fd4c0f079a3c724b83479caed301049bf951513ab159",
+      "accessedAt": "2026-10-01T20:48:17.481Z"
+    },
+    {
+      "url": "https://iperborea.com/news/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 45669,
+      "sha256": "38c03005de6fbf4c8d0249c9367a51550bb6fccec46b62ab2eb9bbc31aa84e97",
+      "accessedAt": "2026-10-01T20:48:17.653Z"
+    },
+    {
+      "url": "https://iperborea.com/news/992/premio-orbil-2026-a-lotte-pelomatto/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32010,
+      "sha256": "c14cd60b4e2b55c64c4af455a7d90271d19743168be7ba89892ebd8eed66134c",
+      "accessedAt": "2026-10-01T20:48:17.795Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://iperborea.com/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "iperborea",
+    "name": "Iperborea",
+    "url": "https://iperborea.com/news/",
+    "format": "html",
+    "language": "it",
+    "region": "global",
+    "sourceFamilyId": "iperborea",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://iperborea.com"
+    ],
+    "linkPattern": "^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://iperborea.com/news/992/premio-orbil-2026-a-lotte-pelomatto/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:17.797Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 11,
+  "literaryCandidateCount": 11,
+  "sample": {
+    "sourceId": "iperborea",
+    "source": {
+      "name": "Iperborea",
+      "url": "https://iperborea.com/news/992/premio-orbil-2026-a-lotte-pelomatto/",
+      "language": "it"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "PREMIO ORBIL 2026 A «LOTTE PELOMATTO»",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:17.662Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://iperborea.com/news/992/premio-orbil-2026-a-lotte-pelomatto/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32010,
+      "sha256": "c14cd60b4e2b55c64c4af455a7d90271d19743168be7ba89892ebd8eed66134c",
+      "accessedAt": "2026-10-01T20:48:17.795Z",
+      "headline": "PREMIO ORBIL 2026 A «LOTTE PELOMATTO»",
+      "excerpt": "Speciale PREMIO ORBIL 2026 A «LOTTE PELOMATTO» Speciale PREMIO ORBIL 2026 A «LOTTE PELOMATTO» Data: 14 Maggio 2026 «Lotte Pelomatto» (trad. Laura Cangemi) di Lena Frölander-Ulf vince il Premio Orbil 2026 per la categoria Narrativa 6-10, assegnato ogni anno dai librai indipendenti dell'Associazione Librerie Indipendenti Ragazzi.Di seguito la motivazione della giuria: «Perché siamo tutti stati Lotte",
+      "publishedDates": [],
+      "canonical": "https://iperborea.com/news/992/premio-orbil-2026-a-lotte-pelomatto/",
+      "language": "it",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:17.797Z",
+  "foundItems": [
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/992/premio-orbil-2026-a-lotte-pelomatto/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PREMIO ORBIL 2026 A «LOTTE PELOMATTO»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/1003/la-citta-che-vorrei/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La città che vorrei",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/1002/la-bandiera-rossa-sventola-in-lapponia/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La bandiera rossa sventola in Lapponia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/1001/se-la-schiavitu-passa-in-un-ricamo-antico/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Se la schiavitù passa in un ricamo antico",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/999/i-nostri-audiolibri/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I nostri audiolibri",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/996/il-sogno-del-polpo-storia-di-unamicizia/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il sogno del polpo, storia di un'amicizia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/998/manca-tutto-tranne-il-panno-per-pulire-il-ritratto-di-kim/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Manca tutto tranne il panno per pulire il ritratto di Kim",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/997/brokken-viaggiatore-della-memoria/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Brokken, viaggiatore della memoria",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/995/uninfanzia-anticonvenzionale-lincontro-che-le-ha-cambiato-la-vita-tante-domande/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UN’INFANZIA ANTICONVENZIONALE, L’INCONTRO CHE LE HA CAMBIATO LA VITA, TANTE DOMANDE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/994/liran-e-un-grosso-gatto-con-ben-piu-di-nove-vite/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L'IRAN È UN GROSSO GATTO CON BEN PIÙ DI NOVE VITE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "source": {
+        "name": "Iperborea",
+        "url": "https://iperborea.com/news/991/premio-andersen-alla-miglior-traduzione-per-lotte-pelomatto/",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PREMIO ANDERSEN ALLA MIGLIOR TRADUZIONE PER «LOTTE PELOMATTO»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.662Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "38c03005de6fbf4c8d0249c9367a51550bb6fccec46b62ab2eb9bbc31aa84e97"
+}

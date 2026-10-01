@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T21:19:46.249Z",
+  "scope": "Agent review of own organisation office addresses. Weak coverage, distribution or branding excerpts cannot grant office country.",
+  "reviewed": 8,
+  "results": [
+    {
+      "sourceId": "harpercollins-india",
+      "countryCodes": [
+        "IN"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://harpercollins.co.in/contact-us/",
+        "organisation": "HarperCollins India",
+        "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+        "excerpt": "Address4th Floor, Cyber City, Building No 10,Tower A, Gurugram, Haryana 122002, IndiaPhone+91 12448-94800 Download QR ExploreBooksFirst chapterAuthorsaudiobooksblogsVideosAbout usAbout usteamimprintscataloguescontact usOur ContributorsHarper broadcastblogpress",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "b8243a56b67aac05b11754eb829fe9fd16c1adc078a22d9d9475817534381d90",
+        "accessedAt": "2026-10-01T21:16:16.930Z"
+      }
+    },
+    {
+      "sourceId": "nyrb",
+      "countryCodes": [
+        "US"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.nyrb.com/pages/contact-us",
+        "organisation": "New York Review Books",
+        "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+        "excerpt": "New York Review Books207 East 32nd StNew York, NY 10016-6305Tel 212 757-8070Fax 212 333-5374 Book OrdersTel 646 215-2500Fax 212 333-5374 Please visit our Frequently Asked Questions page for answers to common queries. Examination and Desk Copy Requests: Our boo",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "2292a97a4240a32d788c67ca2b6ae21017d349e26a810412fb45029e16302b02",
+        "accessedAt": "2026-10-01T21:16:11.489Z"
+      }
+    },
+    {
+      "sourceId": "aufbau",
+      "countryCodes": [
+        "DE"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.aufbau-verlage.de/impressum",
+        "organisation": "Aufbau",
+        "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+        "excerpt": "Aufbau Verlage GmbH & Co. KG Prinzenstraße 85 10969 Berlin Telefon +49(0) 30 28394 -0 Fax +49(0) 30 28394 -100 E-Mail: info[at]aufbau-verlage.de Registergericht: Amtsgericht Charlottenburg Registernummer: HRA 40423 B USt.Ident.Nr: DE 261725915 Persönlich hafte",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "f3eef1dfbaf333d2c160ff17e7b4c01503773c97c44bfbb9256535e5786fbe0b",
+        "accessedAt": "2026-10-01T21:16:10.388Z"
+      }
+    },
+    {
+      "sourceId": "fremantle-press",
+      "countryCodes": [
+        "AU"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://fremantlepress.com.au/contact-us/",
+        "organisation": "Fremantle Press",
+        "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+        "excerpt": "Postal address:Fremantle Press1/10 Parry StreetFremantle WA 6160 Street address:1/10 Parry StreetFremantle WA 6160 T+61 (0)8 9430 6331E admin@fremantlepress.com.auABN 78 910 098 021 Custom publishingVisit our custom publishing page Foreign rights, sales and di",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "9577a142ef26e5773bc985fedd85085a763aaad1666c19da6f84b67b545b925f",
+        "accessedAt": "2026-10-01T21:16:22.236Z"
+      }
+    },
+    {
+      "sourceId": "quidam-editeur",
+      "countryCodes": [],
+      "evidence": {
+        "method": "official_organisation_identity",
+        "url": "https://www.quidamediteur.com/contact",
+        "organisation": "Quidam Editeur",
+        "status": "office_country_unconfirmed",
+        "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+      }
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "countryCodes": [],
+      "evidence": {
+        "method": "official_organisation_identity",
+        "url": "https://cambridgeblog.org/",
+        "organisation": "Cambridge University Press",
+        "status": "office_country_unconfirmed",
+        "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+      }
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "countryCodes": [],
+      "evidence": {
+        "method": "official_organisation_identity",
+        "url": "https://letraslibres.com/",
+        "organisation": "Letras Libres",
+        "status": "office_country_unconfirmed",
+        "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+      }
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "countryCodes": [],
+      "evidence": {
+        "method": "official_organisation_identity",
+        "url": "https://liternet.bg/",
+        "organisation": "LiterNet",
+        "status": "office_country_unconfirmed",
+        "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+      }
+    }
+  ]
+}

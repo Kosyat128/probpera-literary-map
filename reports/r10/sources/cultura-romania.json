@@ -1,0 +1,170 @@
+{
+  "sourceId": "cultura-romania",
+  "name": "Cultura",
+  "entryUrl": "https://revistacultura.ro/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:56.909Z",
+  "requests": [
+    {
+      "url": "https://revistacultura.ro/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 346225,
+      "sha256": "98c79f76cebdd23590fb339bb5c376a120d08a523e6b142bb3eb0ca514aad554",
+      "accessedAt": "2026-10-01T20:51:57.587Z"
+    },
+    {
+      "url": "https://revistacultura.ro/feed/",
+      "status": 200,
+      "contentType": "text/xml;charset=UTF-8",
+      "bytes": 4129,
+      "sha256": "37e6a1dfd654640e9a75d4155de33f5a2da43e61235db9a1f70180bf9e2bc2a3",
+      "accessedAt": "2026-10-01T20:51:57.732Z"
+    },
+    {
+      "url": "https://revistacultura.ro/imagini-lipova-inainte-si-dupa-mara-lui-slavici/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 155872,
+      "sha256": "a2b2d6be319b19fdde87942ee25eb51906eaf1b1bbe686a020ce431066c2e0e5",
+      "accessedAt": "2026-10-01T20:51:57.830Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://revistacultura.ro/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 413,
+    "sha256": "9be29c8cf01b0e6bcbdd24d03c0e2e65023f52053351da3061e5d3d6c9f755df",
+    "accessedAt": "2026-10-01T20:51:57.315Z",
+    "disallowed": [
+      "/cgi-bin/",
+      "/tmp/",
+      "/nou/wp-admin/",
+      "/nou/wp-includes/",
+      "/nou/wp-content/plugins/",
+      "/nou/wp-contents/themes/",
+      "/cp/",
+      "/incl/",
+      "/Connections/",
+      "/blog/wp-admin/",
+      "/blog/wp-includes/",
+      "/blog/wp-content/plugins/",
+      "/blog/wp-contents/themes/"
+    ]
+  },
+  "endpoint": {
+    "id": "cultura-romania",
+    "name": "Cultura",
+    "url": "https://revistacultura.ro/feed/",
+    "format": "rss",
+    "language": "ro-RO",
+    "region": "global",
+    "sourceFamilyId": "cultura-romania",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://revistacultura.ro"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://revistacultura.ro/imagini-lipova-inainte-si-dupa-mara-lui-slavici/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:57.836Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 1,
+  "literaryCandidateCount": 1,
+  "sample": {
+    "sourceId": "cultura-romania",
+    "source": {
+      "name": "Cultura",
+      "url": "https://revistacultura.ro/imagini-lipova-inainte-si-dupa-mara-lui-slavici/",
+      "language": "ro-RO"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Imagini. Lipova - înainte și după „Mara” lui Slavici",
+    "publishedAt": "2026-10-01T15:48:33.000Z",
+    "description": "Vestul țării, târgul Radna, pe valea Mureșului, în județul Arad. Locul în care, acum mai bine de un secol și jumătatea, văduva Mara strângea, argint după argint, o avere și un viitor pentru copiii ei. În ce fel de lume eroina lui Ioan Slavici își putea crea singură un destin? Care sunt tradițiile locului și… Citește mai mult »Imagini. Lipova \u2013 înainte și după „Mara” lui Slavici Articolul Imagini.…",
+    "discoveredAt": "2026-10-01T20:51:57.733Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://revistacultura.ro/imagini-lipova-inainte-si-dupa-mara-lui-slavici/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 155872,
+      "sha256": "a2b2d6be319b19fdde87942ee25eb51906eaf1b1bbe686a020ce431066c2e0e5",
+      "accessedAt": "2026-10-01T20:51:57.830Z",
+      "headline": "Imagini. Lipova \u2013 înainte și după „Mara” lui Slavici",
+      "excerpt": "Vestul țării, târgul Radna, pe valea Mureșului, în județul Arad. Locul în care, acum mai bine de un secol și jumătatea, văduva Mara strângea, argint după argint, o avere și un viitor pentru copiii ei. În ce fel de lume eroina lui Ioan Slavici își putea crea singură un destin? Care sunt tradițiile locului și ce fel de memorie păstrează el azi? Ce s-a întâmplat cu barierele etnice și confesionale și",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T15:48:33+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-10-01T15:48:33+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T15:48:33+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://revistacultura.ro/imagini-lipova-inainte-si-dupa-mara-lui-slavici/",
+      "language": "ro-RO",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:57.836Z",
+  "foundItems": [
+    {
+      "sourceId": "cultura-romania",
+      "source": {
+        "name": "Cultura",
+        "url": "https://revistacultura.ro/imagini-lipova-inainte-si-dupa-mara-lui-slavici/",
+        "language": "ro-RO"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Imagini. Lipova - înainte și după „Mara” lui Slavici",
+      "publishedAt": "2026-10-01T15:48:33.000Z",
+      "description": "Vestul țării, târgul Radna, pe valea Mureșului, în județul Arad. Locul în care, acum mai bine de un secol și jumătatea, văduva Mara strângea, argint după argint, o avere și un viitor pentru copiii ei. În ce fel de lume eroina lui Ioan Slavici își putea crea singură un destin? Care sunt tradițiile locului și… Citește mai mult »Imagini. Lipova \u2013 înainte și după „Mara” lui Slavici Articolul Imagini.…",
+      "discoveredAt": "2026-10-01T20:51:57.733Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "37e6a1dfd654640e9a75d4155de33f5a2da43e61235db9a1f70180bf9e2bc2a3"
+}

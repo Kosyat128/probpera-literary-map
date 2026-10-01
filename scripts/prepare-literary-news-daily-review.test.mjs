@@ -6,6 +6,19 @@ const current=new Date('2026-09-29T12:00:00Z');
 const source=(id,language='en',region='europe')=>({id,name:`Source ${id}`,url:`https://${id}.example/feed/`,
   format:'rss',language,region,topics:['releases'],countryCodes:['GB']});
 describe('all-source bounded daily review intake',()=>{
+  it('covers every registry size under the actual two-hour and six-hour schedules',()=>{
+    for(const hours of [2,6]) for(let worldwideCount=1;worldwideCount<=238;worldwideCount++){
+      const sources=[...Array.from({length:12},(_,i)=>source(`ru-${i}`,'ru')),
+        ...Array.from({length:worldwideCount},(_,i)=>source(`world-${i}`))];
+      const visited=new Set();
+      for(let tick=0;tick<84;tick++){
+        const selected=selectDailyNewsSources({sources,current:new Date(current.getTime()+tick*hours*3600000),rotationMinutes:hours*60});
+        expect(selected.length).toBeLessThanOrEqual(32);
+        selected.forEach(row=>visited.add(row.id));
+      }
+      expect(visited.size,`${hours}h cadence with ${worldwideCount} world sources`).toBe(sources.length);
+    }
+  });
   it('rotates all approved active sources with Russian and worldwide representation and never revives disabled endpoints',()=>{
     const sources=[...Array.from({length:12},(_,i)=>source(`ru-${i}`,i%2?'ru-RU':'ru')),
       ...Array.from({length:120},(_,i)=>({...source(`world-${i}`,'en',['africa','asia','europe','north-america','latin-america','oceania'][i%6]),countryCodes:[String(i%20)]})),
