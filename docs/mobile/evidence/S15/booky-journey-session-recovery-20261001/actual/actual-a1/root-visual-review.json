@@ -1,0 +1,70 @@
+{
+  "pass": true,
+  "decision": "D242",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/source-manifest.json",
+    "sha256": "66f445ac76c96b4925aa6e4133ece7c10d3776105cc4075b67ac8464d86b6758"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/browser-result.json",
+    "sha256": "f3926e2479873aacfaceed596889230c9279d16691647cb5158e517f77a3236f"
+  },
+  "directRootViews": 8,
+  "allVisibleCopyAccepted": true,
+  "knownIssue": null,
+  "currentFooterTwelveDirectlyViewed": false,
+  "currentFooterNativeExportAssertionRetained": true,
+  "workspaceRecoveryScope": "Explicit opt-in session-local raw-form copy, manual Restore/Delete; read/quota failures are injected Storage API tests, not actual quota exhaustion.",
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "02bf76713cf4357aefd7b9f04aec836491b5971968a1ba420bb754741c7401a5",
+      "observation": "Desktop main-work RU/EN body comparison is visible in two columns; the four-node export footer shows eight dialogues."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "ed1d402da3eb1c485e7db1bf393e3ac7f40be809571336383979ddd4db659927",
+      "observation": "Narrow authoring view shows the incomplete EN country-caption error. Recovery behavior is established by browser assertions."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "5fa810fe7f4da30da5fb89cb5e277d563e64e8d8b67cdfeebc518af673b84d8d",
+      "observation": "EN narrow profile view shows one of two modeled completions and the independent outside-age message; age input is outside this crop."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "ea73e9bbe2b010faea6083348e86703c917f9674fcc1b391673ed1dd11b299ad",
+      "observation": "RU narrow session-copy recovery area after reload: updating is unchecked, a found-copy notice and native Restore/Delete controls are visible, and current route ID remains blank before explicit restoration. Native focus and no automatic input replacement are behavior-tested; no visible focus-ring claim."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "a4a8c4072fe7b21926c3b2b313fddd46650fea6698bab69577b472c274510b06",
+      "observation": "EN main-work fact caption comparison and synthetic source URL wrap within the narrow frame; lower navigation is cropped."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "f2e5de8da17f5ae03c1d3e487ea6a101de26b404ff1539d313e6f6ea20585d41",
+      "observation": "RU fact-country selector has native focus and canonical country label. Authored synthetic work prose remains unchanged; this is not editorial approval."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "a969fe816c5be3d3988c50587ce685f73fa1cd2d252d92d5b8ed45faa7bfee12",
+      "observation": "EN author activity shows explicit options, Check/Reset and actual helper verdict. Lower navigation is partly cropped."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "2fc2aec9cad0cf1e3b5450e03bdb69f80d6fb7dd155b234a24b129f13b8d8100",
+      "observation": "RU author finder shows zero matches and two retained native choices; this image does not show a verdict."
+    }
+  ],
+  "syntheticEditorialApproved": false,
+  "fullGraphVisuallyAccepted": false,
+  "mobileAppDeviceTested": false,
+  "fullDesignAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "accountIsolationAccepted": false,
+  "serverAutosaveCasAuditAccepted": false,
+  "actualQuotaExhaustionTested": false
+}
+

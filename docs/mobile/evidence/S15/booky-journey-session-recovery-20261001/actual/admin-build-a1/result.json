@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "booky-journey-session-recovery-admin-build",
+  "pass": true,
+  "sourceCommit": "2bc2d3c71f0a616eee80190c373580f418ade774",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/source-manifest.json",
+    "sha256": "66f445ac76c96b4925aa6e4133ece7c10d3776105cc4075b67ac8464d86b6758"
+  },
+  "sourceCommitReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/actual-a1/actual-source-commit.json",
+    "sha256": "3d3e53d41002366ae1e290929590e48ac0dfc196136356130c9cd4183583a7ae"
+  },
+  "retainedCurrentCoreUnit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-workspace-review/actual-a2/unit-result.json",
+    "sha256": "5fbed278f8be16a46bfd3e8c3046f5a7a2f080f4ae9b1182544664fbb8f97ad5"
+  },
+  "expectedCoreTests": 76,
+  "currentCoreUnitValidated": true,
+  "unitRerun": false,
+  "durationMs": 47441,
+  "build": {
+    "exitCode": 0,
+    "signal": null,
+    "pass": true,
+    "spawnError": null,
+    "durationMs": 46068,
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\next\\dist\\bin\\next",
+      "build",
+      "--webpack"
+    ],
+    "cwd": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/apps/admin",
+    "stdout": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/admin-build-a1/next-build.stdout.log",
+      "sha256": "57274f3630d73eea00a8fe36bf06f94fc84cbb14d2804e17fce85264223f12b9"
+    },
+    "stderr": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/admin-build-a1/next-build.stderr.log",
+      "sha256": "44c4821749609f1bc4deb69ee3723d51484f8f5af61baf36f7fa00131757ba18"
+    }
+  },
+  "clientSecrets": {
+    "exitCode": 0,
+    "signal": null,
+    "pass": true,
+    "spawnError": null,
+    "durationMs": 572,
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\check-admin-client-secrets.mjs"
+    ],
+    "cwd": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/apps/admin",
+    "stdout": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/admin-build-a1/client-secrets.stdout.log",
+      "sha256": "b349f3fdcd8b5b3cfd5973b21b2857c65fefe9bb92ce3c94ee1ea14ae4ae848b"
+    },
+    "stderr": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/admin-build-a1/client-secrets.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "failure": null,
+  "sourceBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/admin-build-a1/source-before.json",
+    "sha256": "d837af532a98872c8dc9cb2b81b302a4b9d6917cedaccd7fa72d56f95e15ac0b"
+  },
+  "sourceAfter": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/admin-build-a1/source-after.json",
+    "sha256": "d837af532a98872c8dc9cb2b81b302a4b9d6917cedaccd7fa72d56f95e15ac0b"
+  },
+  "sourceInputsUnchanged": true,
+  "standaloneTypecheckExecuted": false,
+  "catalogGenerationExecuted": false,
+  "mobileBuildExecuted": false,
+  "deploymentExecuted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-session-recovery-review/admin-build.mjs",
+    "sha256": "9745e50d496feb5b79ae98004d4339cf994fd196bb6b308a4e175ce6d8deb915"
+  }
+}
