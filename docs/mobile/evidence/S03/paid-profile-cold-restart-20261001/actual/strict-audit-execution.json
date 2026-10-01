@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-pwa-artifact.mjs",
+    "--allow-qa"
+  ],
+  "exitCode": 0,
+  "durationMs": 5204,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\strict-audit-stdout.log",
+    "sha256": "0a498c89efb09e409fcd4988686142f1aa47dba02152b4527b12e26c7fed6eeb",
+    "bytes": 796
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\strict-audit-stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

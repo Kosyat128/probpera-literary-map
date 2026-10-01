@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] [s03-msedge-390] › tests\pwa\controlled-pwa.spec.mjs:1040:1 › saved paid PWA survives a full persistent browser restart offline
+  1 passed (33.8s)

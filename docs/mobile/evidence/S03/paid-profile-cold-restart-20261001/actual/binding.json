@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-focused-pwa-qa-binding",
+  "sourceCommit": "d4b298209e8058158d93fcdcc03a3e586df2ddd4",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\source-a1\\current-source-manifest.json",
+    "sha256": "922d2b79d589706945e1c80296fb0c46fc98936d010bc0bf30949490847942c5"
+  },
+  "helpers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\runtime\\guard.mjs",
+      "sha256": "54d3143f906749030876f05102f2feb0a2dc9b9df41a06e2e33825df07e9d10b"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\runtime\\producer.mjs",
+      "sha256": "d39f82e33e6c02ffa5f4cdd0167a090db0fc2d1183a0549e661313a3d453afb3"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\runtime\\pwa.config.mjs",
+      "sha256": "acd68f1c2fbc72810afcb5cf0322b7c4e7d32ba7a85c20f695b896c96eeeff97"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-paid-pwa-persistent-browser-cold-restart-working-validation",
+  "decision": "D248",
+  "pass": true,
+  "recordedAt": "2026-10-01T18:17:46.067Z",
+  "sourceCommit": "d4b298209e8058158d93fcdcc03a3e586df2ddd4",
+  "sourceOwners": [
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "originalSha256": "43f17ab6344d951e7eeaee24916b740270d1cbc02c2c99bcef1748968501e790",
+      "sha256": "298eb9e276fed9426e7136d8b6ce4e95a45790f7535e18fffdea9060be2b6480"
+    }
+  ],
+  "copies": [
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review/source-a1/source-commit.json",
+        "sha256": "ba0c39cba27c05c58eb7db62000ebaa477bd8a0997133c939352fc8a91e622b2"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/source-commit.json",
+        "sha256": "ba0c39cba27c05c58eb7db62000ebaa477bd8a0997133c939352fc8a91e622b2"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review/actual-a5/result.json",
+        "sha256": "2a1a3869e60cd5db76a1ff021b5f4c68a5338ec862fd955b11264083902bd0ef"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/runtime-result.json",
+        "sha256": "2a1a3869e60cd5db76a1ff021b5f4c68a5338ec862fd955b11264083902bd0ef"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review/root-visual-a5.json",
+        "sha256": "06a63628a0e7d27c6d49e1325d6d2d6bf8c060b876e477ea43fa906ebc9735ac"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/root-visual.json",
+        "sha256": "06a63628a0e7d27c6d49e1325d6d2d6bf8c060b876e477ea43fa906ebc9735ac"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\source-a1\\current-source-manifest.json",
+        "sha256": "922d2b79d589706945e1c80296fb0c46fc98936d010bc0bf30949490847942c5"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/current-source-manifest.json",
+        "sha256": "922d2b79d589706945e1c80296fb0c46fc98936d010bc0bf30949490847942c5"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review/source-a1/syntax.json",
+        "sha256": "443ce8c4ea548eea2ee23c21b5b7abf4eacf159877380fe9b9b08a10b10c3517"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/syntax.json",
+        "sha256": "443ce8c4ea548eea2ee23c21b5b7abf4eacf159877380fe9b9b08a10b10c3517"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\source-a1\\syntax.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/syntax.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\source-a1\\syntax.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/syntax.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\strict-audit.json",
+        "sha256": "0a498c89efb09e409fcd4988686142f1aa47dba02152b4527b12e26c7fed6eeb"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/strict-audit.json",
+        "sha256": "0a498c89efb09e409fcd4988686142f1aa47dba02152b4527b12e26c7fed6eeb"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\strict-audit-execution.json",
+        "sha256": "344e98f67c3b11b8fcb9837d787e4b3cdd43e657bcd7ea217963dfe0dd6dd635"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/strict-audit-execution.json",
+        "sha256": "344e98f67c3b11b8fcb9837d787e4b3cdd43e657bcd7ea217963dfe0dd6dd635"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\browser-playwright.json",
+        "sha256": "ef045e85c1678ed68f5c063fd4c10ebc5d76918919607af04b0f6ce56f0dfb01"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/browser-report.json",
+        "sha256": "ef045e85c1678ed68f5c063fd4c10ebc5d76918919607af04b0f6ce56f0dfb01"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\browser-execution.json",
+        "sha256": "9106fa3f603e7576eb6ef3f49d3413e5f7775242dac1e1d9b05d30b8faf8dd9c"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/browser-execution.json",
+        "sha256": "9106fa3f603e7576eb6ef3f49d3413e5f7775242dac1e1d9b05d30b8faf8dd9c"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review/actual-a5/build-execution.json",
+        "sha256": "287f486c9677d34bc92af51648855aab02f4224ebc343934ea417948e2d5d52d"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/build-execution.json",
+        "sha256": "287f486c9677d34bc92af51648855aab02f4224ebc343934ea417948e2d5d52d"
+      }
+    },
+    {
+      "original": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-paid-profile-cold-restart-review/binding-a5.json",
+        "sha256": "9990ef41acdee95e3dbf27bdb8e9622f52b5dec72f3172e7ae1b45551241522c"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/binding.json",
+        "sha256": "9990ef41acdee95e3dbf27bdb8e9622f52b5dec72f3172e7ae1b45551241522c"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\strict-audit-stdout.log",
+        "sha256": "0a498c89efb09e409fcd4988686142f1aa47dba02152b4527b12e26c7fed6eeb"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/strict-audit.stdout.txt",
+        "sha256": "0a498c89efb09e409fcd4988686142f1aa47dba02152b4527b12e26c7fed6eeb"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\strict-audit-stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/strict-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\browser-stdout.log",
+        "sha256": "ad94ced3fb4de692310944c9c2f099e43a4b7a5bfb9069b18ab603ab546e7024"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/browser.stdout.txt",
+        "sha256": "ad94ced3fb4de692310944c9c2f099e43a4b7a5bfb9069b18ab603ab546e7024"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\browser-stderr.log",
+        "sha256": "7a2cb0608fcd9e3dd68e2280ec140e3835bb91563f55565d456a0b7d59c593dc"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/browser.stderr.txt",
+        "sha256": "7a2cb0608fcd9e3dd68e2280ec140e3835bb91563f55565d456a0b7d59c593dc"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\browser\\controlled-pwa-saved-paid--6f665-ent-browser-restart-offline-s03-msedge-390\\pwa-cold-profile-ru.png",
+        "sha256": "5247a14711e7539043de38289f78fb64971b0c70b4d3290615fef212e90e63ec"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/pwa-cold-profile-ru.png",
+        "sha256": "5247a14711e7539043de38289f78fb64971b0c70b4d3290615fef212e90e63ec"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\browser\\controlled-pwa-saved-paid--6f665-ent-browser-restart-offline-s03-msedge-390\\pwa-cold-profile-en.png",
+        "sha256": "fe6db2c727dba3cc2f845bb142062e7f93705b830e41a93dd4c151166fa4ac7d"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/paid-profile-cold-restart-20261001/actual/pwa-cold-profile-en.png",
+        "sha256": "fe6db2c727dba3cc2f845bb142062e7f93705b830e41a93dd4c151166fa4ac7d"
+      }
+    }
+  ],
+  "syntaxInvocations": 1,
+  "syntaxPass": true,
+  "typescriptRepeated": false,
+  "unitTestsRepeated": false,
+  "existingFixturePreservedExceptChromiumImport": true,
+  "pwaBuildInvocations": 1,
+  "browserInvocations": 1,
+  "browserCases": 1,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "buildId": "b199d6c5f75f1006d9c27fc9db9b94172a2536efbc445231106019b0a3bb0e0d",
+  "declaredSourceFiles": 2141,
+  "persistentLaunches": 3,
+  "browserProcessRestarts": 2,
+  "sameDisposableProfile": true,
+  "offlineBeforeFirstNavigation": true,
+  "freshSavedAccessVerification": true,
+  "deepLinkedCountryRetained": true,
+  "localeSequence": [
+    "ru",
+    "en",
+    "ru"
+  ],
+  "oneCanvasPerAuthorizedDocument": true,
+  "sameSceneAcrossProcessesClaimed": false,
+  "knownRevocationSurvivesOfflineRestart": true,
+  "offlineLicenseApiRequests": 0,
+  "profileSafelyRemoved": true,
+  "publicSeoAccepted": false,
+  "bothScreenshotsDirectlyViewed": true,
+  "functionalAccepted": true,
+  "scopedMobileLayoutAccepted": true,
+  "visualFollowUpRequired": false,
+  "wholeAppVisualAccepted": false,
+  "installedDeviceValidated": false,
+  "realPurchaseValidated": false,
+  "fullContentAccepted": false,
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "nextAction": "D249 / S03.acceptance: close the confirmed current-public-prerender evidence gap with one ROOT-reviewed local preparation/gate. Invoke the existing default-no-review writePublicLocalePages once in a new isolated checkout .tmp directory, using byte-exact retained actual dist/index.html and its bounded canonical root sitemap XML graph. Verify current emitted RU/EN home metadata/body before JavaScript, self-canonical/reciprocal annotations, localized JSON-LD/social metadata, inert RU/EN404 and exclusion of draft/private/error pages from the sitemap. Reuse the existing public-locales raw-before-JS oracle; add no duplicate testcase or application changes. Hash-bind the current source closure, retained input bytes and new emitted artifacts. Explicitly label this current-generator/retained-entry composition, not a newly compiled app, complete assets/runtime, editorial approval, public deployment/edge, native installation, full-content or S03/release acceptance. Preserve the D248 three-launch positive/known-revocation proof and all statuses. Do not rerun unchanged76/34/141 suites, PWA/APK builds, old browser/layout cases or passive private-PWA probes. No CMS/body approval/indexability/provider/deployment changes."
+}

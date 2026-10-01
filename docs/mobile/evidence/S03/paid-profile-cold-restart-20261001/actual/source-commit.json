@@ -1,0 +1,41 @@
+{
+  "pass": true,
+  "decision": "D248",
+  "base": "f804f0f5f983a515dd7d2337b45ac8b7ddcc422a",
+  "sourceCommit": "d4b298209e8058158d93fcdcc03a3e586df2ddd4",
+  "owner": {
+    "path": "tests/pwa/controlled-pwa.spec.mjs",
+    "originalSha256": "43f17ab6344d951e7eeaee24916b740270d1cbc02c2c99bcef1748968501e790",
+    "sha256": "298eb9e276fed9426e7136d8b6ce4e95a45790f7535e18fffdea9060be2b6480"
+  },
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\source-a1\\current-source-manifest.json",
+    "sha256": "922d2b79d589706945e1c80296fb0c46fc98936d010bc0bf30949490847942c5"
+  },
+  "syntax": {
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "--check",
+      "tests/pwa/controlled-pwa.spec.mjs"
+    ],
+    "exitCode": 0,
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\source-a1\\syntax.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\source-a1\\syntax.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "syntaxPass": true,
+  "syntaxInvocations": 1,
+  "existingFixturePreservedExceptChromiumImport": true,
+  "typescriptRepeated": false,
+  "unitTestsRepeated": false,
+  "pwaBuildsRun": 0,
+  "browserTestsRun": 0,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "clean": true
+}

@@ -1,0 +1,122 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\runtime\\pwa.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\runtime\\pwa.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-paid-profile-cold-restart-review/actual-a5/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "s03-msedge-390",
+        "name": "s03-msedge-390",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\actual-a5\\browser-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "controlled-pwa.spec.mjs",
+      "file": "controlled-pwa.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "saved paid PWA survives a full persistent browser restart offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "s03-msedge-390",
+              "projectName": "s03-msedge-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32838,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-01T18:09:30.566Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pwa-cold-profile-restart",
+                      "contentType": "application/json",
+                      "body": "ewogICJsb2NhbFFhT25seSI6IHRydWUsCiAgImJyb3dzZXJDaGFubmVsIjogIm1zZWRnZSIsCiAgInBlcnNpc3RlbnRMYXVuY2hlcyI6IDMsCiAgInJlc3RhcnRzIjogMiwKICAiZmlyc3RDb250ZXh0Q2xvc2VkIjogdHJ1ZSwKICAic2FtZURpc3Bvc2FibGVQcm9maWxlIjogdHJ1ZSwKICAib2ZmbGluZUJlZm9yZUZpcnN0TmF2aWdhdGlvbiI6IHRydWUsCiAgInBvc2l0aXZlT2ZmbGluZVJlc3RhcnQiOiB0cnVlLAogICJrbm93blJldm9jYXRpb25PZmZsaW5lUmVzdGFydCI6IHRydWUsCiAgImRvY3VtZW50cyI6IFsKICAgIHsKICAgICAgInBoYXNlIjogIm9ubGluZS1wcmltZSIsCiAgICAgICJjYW52YXNDb3VudCI6IDEsCiAgICAgICJjb25uZWN0ZWRDYW52YXMiOiB0cnVlLAogICAgICAicmVhbFJlbmRlcmVyIjogdHJ1ZSwKICAgICAgInJlYWxDYW1lcmEiOiB0cnVlLAogICAgICAicmVhbFNjZW5lIjogdHJ1ZSwKICAgICAgIm9ubGluZSI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJyZW9wZW5lZC1vZmZsaW5lIiwKICAgICAgImNhbnZhc0NvdW50IjogMSwKICAgICAgImNvbm5lY3RlZENhbnZhcyI6IHRydWUsCiAgICAgICJyZWFsUmVuZGVyZXIiOiB0cnVlLAogICAgICAicmVhbENhbWVyYSI6IHRydWUsCiAgICAgICJyZWFsU2NlbmUiOiB0cnVlLAogICAgICAib25saW5lIjogZmFsc2UKICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJyZXZva2VkLW9mZmxpbmUtcmVzdGFydCIsCiAgICAgICJvbmxpbmUiOiBmYWxzZSwKICAgICAgImF1dGhvcml6ZWRDb3VudCI6IDAsCiAgICAgICJjYW52YXNDb3VudCI6IDAKICAgIH0KICBdLAogICJsb2NhbGVzIjogWwogICAgewogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInNlbGVjdGVkQ291bnRyeSI6ICJydXNzaWEiLAogICAgICAic2F2ZWRWZXJpZmljYXRpb24iOiB0cnVlLAogICAgICAic2FtZVNjZW5lV2l0aGluUmVvcGVuZWREb2N1bWVudCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAic2VsZWN0ZWRDb3VudHJ5IjogInJ1c3NpYSIsCiAgICAgICJzYXZlZFZlcmlmaWNhdGlvbiI6IHRydWUsCiAgICAgICJzYW1lU2NlbmVXaXRoaW5SZW9wZW5lZERvY3VtZW50IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJzZWxlY3RlZENvdW50cnkiOiAicnVzc2lhIiwKICAgICAgInNhdmVkVmVyaWZpY2F0aW9uIjogdHJ1ZSwKICAgICAgInNhbWVTY2VuZVdpdGhpblJlb3BlbmVkRG9jdW1lbnQiOiB0cnVlCiAgICB9CiAgXSwKICAic2NyZWVuc2hvdHMiOiBbCiAgICAicHdhLWNvbGQtcHJvZmlsZS1ydS5wbmciLAogICAgInB3YS1jb2xkLXByb2ZpbGUtZW4ucG5nIgogIF0sCiAgImFjdHVhbE9zSW5zdGFsbGF0aW9uIjogZmFsc2UsCiAgInJlYWxTdG9yZVB1cmNoYXNlIjogZmFsc2UsCiAgInByb2R1Y3Rpb25Qcm92aWRlciI6IGZhbHNlLAogICJzdGFnZUFjY2VwdGVkIjogZmFsc2UsCiAgInJlbGVhc2VSZWFkeSI6IGZhbHNlLAogICJjb21wbGV0ZWQiOiB0cnVlLAogICJwcm9maWxlUmVtb3ZlZCI6IHRydWUsCiAgImJ1aWxkSWQiOiAiYjE5OWQ2YzVmNzVmMTAwNmQ5YzI3ZmM5ZGI5Yjk0MTcyYTI1MzZlZmJjNDQ1MjMxMTA2MDE5YjBhM2JiMGUwZCIsCiAgIm9mZmxpbmVMaWNlbnNlQXBpUmVxdWVzdHMiOiAwCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-1a048cb54c832c079400",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/controlled-pwa.spec.mjs",
+          "line": 1040,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-01T18:09:29.862Z",
+    "duration": 33845.336,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

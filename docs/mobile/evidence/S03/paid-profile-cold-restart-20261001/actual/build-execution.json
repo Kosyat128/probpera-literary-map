@@ -1,0 +1,33 @@
+{
+  "pass": true,
+  "durationMs": 19626,
+  "sourceCommit": "d4b298209e8058158d93fcdcc03a3e586df2ddd4",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-paid-profile-cold-restart-review/source-a1/current-source-manifest.json",
+    "sha256": "922d2b79d589706945e1c80296fb0c46fc98936d010bc0bf30949490847942c5",
+    "fileCount": 2141,
+    "inputRoots": [
+      "src",
+      "server",
+      "scripts",
+      "supabase/migrations",
+      "tests",
+      "package.json",
+      "package-lock.json",
+      "index.html",
+      "vite.config.ts",
+      "vite.pwa.config.ts",
+      "tsconfig.json",
+      "vitest.config.ts",
+      "data/book-canon-source-registry.json"
+    ],
+    "coverage": "complete declared input set; not every repository or public asset"
+  },
+  "buildId": "b199d6c5f75f1006d9c27fc9db9b94172a2536efbc445231106019b0a3bb0e0d",
+  "producer": "startPwaQaServer({buildQa:true}) -> scripts/mobile/build-pwa.mjs --qa-authority",
+  "buildInvocations": 1,
+  "origin": "http://127.0.0.1:58470",
+  "authorityPath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-qa\\s03-focused-a5-authority.json",
+  "privateKeyPersisted": false,
+  "publicAuthoritySha256": "d68c42a3c04f3654a0fcffd5d15df35f84fc0b74d3c0dd17162ce827e36e635d"
+}

@@ -1,0 +1,27 @@
+{
+  "decision": "ACCEPT_SCOPED_COLD_PROFILE_EVIDENCE",
+  "sourceCommit": "d4b298209e8058158d93fcdcc03a3e586df2ddd4",
+  "buildId": "b199d6c5f75f1006d9c27fc9db9b94172a2536efbc445231106019b0a3bb0e0d",
+  "directView": true,
+  "viewport": {"width":390,"height":844},
+  "screenshots": [
+    {"name":"pwa-cold-profile-ru.png","sha256":"5247a14711e7539043de38289f78fb64971b0c70b4d3290615fef212e90e63ec"},
+    {"name":"pwa-cold-profile-en.png","sha256":"fe6db2c727dba3cc2f845bb142062e7f93705b830e41a93dd4c151166fa4ac7d"}
+  ],
+  "observations": [
+    "Actual reopened offline authorized globe and selected Russia are visible in both languages.",
+    "The compact offline/saved-access notice remains readable without obscuring country controls.",
+    "No visible horizontal overflow or overlapping controls was found in these two frames."
+  ],
+  "functionalAccepted": true,
+  "scopedLayoutAccepted": true,
+  "persistentLaunches": 3,
+  "positiveOfflineRestart": true,
+  "knownRevocationOfflineRestart": true,
+  "sameSceneAcrossBrowserProcessesClaimed": false,
+  "wholeAppVisualAccepted": false,
+  "installedDeviceValidated": false,
+  "realPurchaseValidated": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "--check",
+    "tests/pwa/controlled-pwa.spec.mjs"
+  ],
+  "exitCode": 0,
+  "pass": true,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\source-a1\\syntax.stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-paid-profile-cold-restart-review\\source-a1\\syntax.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
