@@ -108,6 +108,13 @@
       "mobile": "passed"
     },
     "runtimePostgresCases": 11,
-    "fullSuite": "4342 passed, 3 governance hashes being resolved; not a pass claim"
+    "lintPassed": true,
+    "fullSuite": {
+      "passed": 4354,
+      "failed": 0,
+      "skipped": 11,
+      "testFiles": 659
+    },
+    "focusedBrowserLimitation": "Both desktop and mobile assertions passed; owned Windows preview wrappers required cleanup after teardown hung. Full remote browser checks remain pending."
   }
 }
