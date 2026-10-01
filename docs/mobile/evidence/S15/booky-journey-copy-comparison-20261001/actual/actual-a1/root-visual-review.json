@@ -1,0 +1,60 @@
+{
+  "pass": true,
+  "decision": "D233",
+  "directRootViews": 8,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/source-manifest.json",
+    "sha256": "17d493ffd1ab8b964759be166d19e4ac8e719f815c3ee7017edb19a89196b4ab"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/browser-result.json",
+    "sha256": "b88b81ed903c0cf23b63e806d2baf962336b2ffc1bb60ef4b2f8a94e8cb50820"
+  },
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "e70730861244e9c64448e92fef4b6b8d1ad47d307d63794288916776a3e1cfd7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "456769de8e4f3c054fe06bc497237c6a75085c27215abadf83cb17c46c543ea9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "fd9345a7ee3192de66c00ff25289749f078dae6fe0e001f2b7b001bcb6feae3e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "5e75bb603431c972d21f51aa48edbaa96c13197d9ef92210797b5fa40b0734b5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "aabcbba7f57abd1a19930c48d98fb9f8a6beae73a46bd2844fcd3d1beeb5b416"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "92a9a530e932669a7b7308fb35831f201044c57ba67ef8741ec84e85efae48f9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "1cfd25823bf2f544d784a92f2119f1f13ed9bc9813fd7ba17721c5e13b56d6a0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-copy-comparison-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "213467707f1ea31f306695e5e5aaba72f7f1a14f09edc2b3df5e01cff353525f"
+    }
+  ],
+  "observations": [
+    "RU desktop capture directly shows current Work compiled RU and EN titles/body in two measured columns inside the 768 px frame.",
+    "EN320 native-reopened reverse-order Fact capture directly shows both exact multiline captions and titles stacked without horizontal overflow.",
+    "RU and EN activity previews keep comparison collapsed by default, readable choices and incorrect/correct feedback.",
+    "Existing narrow profile, width and optional order views remain readable."
+  ],
+  "limits": [
+    "Synthetic admin component with mocked transport; no authenticated staff session, installed device, translation/editorial validation or stage acceptance.",
+    "Some sequential navigation controls extend below the narrow screenshot; control size and no-overflow are covered by browser assertions.",
+    "Fact source metadata is synthetic and unreviewed."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}
