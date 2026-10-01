@@ -67,6 +67,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [previewCopyView, setPreviewCopyView] = useState<PreviewCopyView>("body");
   const [previewWidth, setPreviewWidth] = useState<PreviewWidth>("available");
   const [previewProfile, setPreviewProfile] = useState<PreviewProfile>({ enabled: false, age: "", readingLevel: "" });
+  const [modeledPrerequisites, setModeledPrerequisites] = useState<readonly string[]>([]);
   const [answer, setAnswer] = useState<PreviewAnswer>(emptyAnswer);
   const previewOwner = useRef(preview), answerOwner = useRef(answer);
   previewOwner.current = preview; answerOwner.current = answer;
@@ -189,6 +190,13 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     age: previewProfile.age === "" ? NaN : Number(previewProfile.age), readingLevel: previewProfile.readingLevel,
   }) : null;
   const previewProfileMatches = !previewProfile.enabled || previewProfileResult?.status === "matches";
+  const previewPrerequisites = previewDefinition?.prerequisites ?? [];
+  const prerequisiteKey = (reference: { id: string; version: number }) => JSON.stringify([reference.id, reference.version]);
+  const missingPreviewPrerequisites = previewPrerequisites.filter((reference) => !modeledPrerequisites.includes(prerequisiteKey(reference)));
+  const modeledPrerequisiteCount = previewPrerequisites.length - missingPreviewPrerequisites.length;
+  const prerequisitePreviewMatches = !previewProfile.enabled || missingPreviewPrerequisites.length === 0;
+  const prerequisitePreviewReportId = errorPrefix + "-preview-prerequisites-report";
+  const prerequisitePreviewHelpId = errorPrefix + "-preview-prerequisites-help";
   const previewNode = previewDefinition?.nodes[preview?.step ?? 0];
   const previewChoices = previewNode?.kind === "activity" ? previewNode.activity?.choices ?? [] : [];
   const previewDialogue = preview?.draft.dialogues.find((record) => record.payload.locale === preview.locale
@@ -224,6 +232,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     setImportNotice(importing ? "Открытие файла отменено: форма была изменена." : "");
     if (fileControl.current) fileControl.current.value = "";
     setPreview(null);
+    setModeledPrerequisites([]);
     setAnswer(emptyAnswer());
     setValidating(false);
     setInput((current) => {
@@ -307,11 +316,18 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     const next = { ...previewProfile, ...change };
     if (next.enabled === previewProfile.enabled && next.age === previewProfile.age && next.readingLevel === previewProfile.readingLevel) return;
     beginOperation();
+    if (next.enabled !== previewProfile.enabled) setModeledPrerequisites([]);
     setPreviewProfile(next);
+  }
+  function updateModeledPrerequisite(key: string, completed: boolean) {
+    if (!previewProfile.enabled || !previewPrerequisites.some((reference) => prerequisiteKey(reference) === key)
+      || modeledPrerequisites.includes(key) === completed) return;
+    beginOperation();
+    setModeledPrerequisites((current) => completed ? [...current, key] : current.filter((item) => item !== key));
   }
   async function checkAnswer() {
     const candidate = preview, choiceId = answer.choiceId;
-    if (answer.pending || !previewProfileMatches || !candidate || previewNode?.kind !== "activity" || !choiceId || !previewChoices.some((choice) => choice.id === choiceId)) return;
+    if (answer.pending || !previewProfileMatches || !prerequisitePreviewMatches || !candidate || previewNode?.kind !== "activity" || !choiceId || !previewChoices.some((choice) => choice.id === choiceId)) return;
     const sequence = beginOperation(true), draftChecksum = contentRecordHash(candidate.draft);
     setAnswer({ choiceId, verdict: null, pending: true, error: "" });
     const report = (stale = false) => setAnswer({ choiceId, verdict: null, pending: false, error: candidate.locale === "ru"
@@ -454,6 +470,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       setInput(result.input);
       setEntityQueries({ country: "", writer: "", work: "" });
       setAuthorQuery("");
+      setModeledPrerequisites([]);
       setPreview(null);
       setErrors([]);
       setNotice("");
@@ -482,6 +499,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     if (input.activity && !(await validateActivity(result.draft, sequence))) return;
     if (sequence !== operationSequence.current) return;
     setPreviewCopyView("body");
+    setModeledPrerequisites([]);
     setPreview({ draft: result.draft, locale: "ru", step: 0 });
   }
   async function download(event: FormEvent<HTMLFormElement>) {
@@ -834,6 +852,22 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
               </select>
             </label>
           </div>}
+          {previewProfile.enabled && previewPrerequisites.length > 0 && <fieldset data-booky-preview-prerequisites
+            aria-describedby={prerequisitePreviewHelpId + " " + prerequisitePreviewReportId} style={{ minWidth: 0, margin: "12px 0 0", padding: 12 }}>
+            <legend>{preview.locale === "ru" ? "Модель завершений" : "Modeled completions"}</legend>
+            <p id={prerequisitePreviewHelpId}>{preview.locale === "ru"
+              ? "Только локальная модель для точных ID и версий. Существование и реальное завершение маршрутов не проверяются."
+              : "A local scenario for exact IDs and versions only. Journey existence and real completion are not verified."}</p>
+            {previewPrerequisites.map((reference, index) => {
+              const key = prerequisiteKey(reference), id = errorPrefix + "-preview-prerequisite-" + index;
+              return <label key={key} htmlFor={id} style={{ display: "flex", alignItems: "center", gap: 10, minHeight: 44, overflowWrap: "anywhere" }}>
+                <input id={id} type="checkbox" checked={modeledPrerequisites.includes(key)}
+                  aria-describedby={prerequisitePreviewHelpId + " " + prerequisitePreviewReportId}
+                  onChange={(event) => updateModeledPrerequisite(key, event.target.checked)} />
+                <span style={{ minWidth: 0 }}>{preview.locale === "ru" ? "Считать завершённым" : "Model as completed"} · {reference.id} · {preview.locale === "ru" ? "версия" : "version"} {reference.version}</span>
+              </label>;
+            })}
+          </fieldset>}
         </details>
         {previewProfile.enabled && previewProfileResult && <p id="journey-preview-profile-report" data-booky-preview-profile-report data-profile-status={previewProfileResult.status}
           role="status" aria-live="polite" lang={preview.locale}>
@@ -845,6 +879,18 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                 previewProfileResult.ageMatches === false ? preview.locale === "ru" ? "Этот возраст не входит в диапазон черновика." : "This age is outside the draft range." : "",
                 previewProfileResult.readingLevelMatches === false ? preview.locale === "ru" ? "Уровень чтения отличается от заданного в черновике." : "The reading level differs from the draft." : "",
               ].filter(Boolean).join(" ")}
+        </p>}
+        {previewProfile.enabled && <p id={prerequisitePreviewReportId} data-booky-preview-prerequisites-report
+          data-prerequisite-status={previewPrerequisites.length === 0 ? "none" : missingPreviewPrerequisites.length === 0 ? "all" : modeledPrerequisiteCount === 0 ? "missing" : "partial"}
+          role="status" aria-live="polite" lang={preview.locale} style={{ overflowWrap: "anywhere" }}>
+          {previewPrerequisites.length === 0
+            ? preview.locale === "ru" ? "В черновике нет предварительных маршрутов; модель завершений не ограничивает проверку."
+              : "This draft has no prerequisites; the completion scenario does not limit checking."
+            : <>{preview.locale === "ru" ? `Модель завершений: ${modeledPrerequisiteCount} из ${previewPrerequisites.length}. ` : `Modeled completions: ${modeledPrerequisiteCount} of ${previewPrerequisites.length}. `}
+              {missingPreviewPrerequisites.length === 0
+                ? preview.locale === "ru" ? "Все ссылки отмечены в локальной модели. " : "All references are marked in the local scenario. "
+                : <>{preview.locale === "ru" ? "Не смоделированы: " : "Not modeled: "}{missingPreviewPrerequisites.map((reference) => reference.id + " · " + (preview.locale === "ru" ? "версия " : "version ") + reference.version).join("; ")}. </>}
+              {preview.locale === "ru" ? "Фактическое завершение не проверено." : "Real completion has not been verified."}</>}
         </p>}
         <p role="status" aria-live="polite" lang={preview.locale}>{preview.locale === "ru" ? `Шаг ${preview.step + 1} из ${previewDefinition.nodes.length}` : `Step ${preview.step + 1} of ${previewDefinition.nodes.length}`} · {previewStepLabels[preview.locale][previewNode.kind]}</p>
         <details data-booky-journey-step-overview lang={preview.locale} style={{ minWidth: 0 }}>
@@ -918,8 +964,8 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             </ol>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               <button className="button" type="button" lang={preview.locale} style={{ minHeight: 44, minWidth: 44 }}
-                disabled={!answer.choiceId} aria-disabled={answer.pending || !answer.choiceId || !previewProfileMatches} aria-busy={answer.pending}
-                aria-describedby={previewProfile.enabled ? "journey-preview-profile-report" : undefined} onClick={checkAnswer}>
+                disabled={!answer.choiceId} aria-disabled={answer.pending || !answer.choiceId || !previewProfileMatches || !prerequisitePreviewMatches} aria-busy={answer.pending}
+                aria-describedby={previewProfile.enabled ? "journey-preview-profile-report " + prerequisitePreviewReportId : undefined} onClick={checkAnswer}>
                 {preview.locale === "ru" ? "Проверить ответ" : "Check answer"}</button>
               <button className="button-secondary" type="button" lang={preview.locale} style={{ minHeight: 44, minWidth: 44 }} onClick={() => beginOperation()}>
                 {preview.locale === "ru" ? "Сбросить ответ" : "Reset answer"}</button>

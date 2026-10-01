@@ -453,7 +453,6 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     expect(bounds.x+bounds.width).toBeLessThanOrEqual(321); expect(bounds.y+bounds.height).toBeLessThanOrEqual(844);
   }
   expect(await overflow()).toBe(false);
-  await capture('booky-journey-preview-en-320.png','Actual local EN320 work-step preview with expanded adult profile age66/plain and outside draft-range feedback; no runtime admission.');
   await profileAgeEn.fill('30'); await profileLevelEn.selectOption('fluent');
   await expect(profileReport).toHaveAttribute('data-profile-status','outside');
   await expect(profileReport).toContainText('The reading level differs from the draft.');
@@ -653,8 +652,49 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844);
   }
   expect(await overflow()).toBe(false);
-  await capture('booky-journey-preview-ru-320.png', 'Actual 320px route-conditions form with two explicit prerequisite ID/version references, labelled as unconfirmed. These are configured references only; this image does not establish existence, completion, current versions, review, graph validation or runtime admission. It does not show all sixteen supported rows.');
   await previewButton.tap(); await expect(preview).toBeVisible();
+  const completionReport = preview.locator('[data-booky-preview-prerequisites-report]');
+  const completionModel = preview.locator('[data-booky-preview-prerequisites]');
+  const modeledCompletion = (id, version, locale = 'ru') => completionModel.getByRole('checkbox', {
+    name: `${locale === 'ru' ? 'Считать завершённым' : 'Model as completed'} · ${id} · ${locale === 'ru' ? 'версия' : 'version'} ${version}`, exact: true,
+  });
+  await expect(profilePanel).not.toHaveAttribute('open', ''); await profilePanel.locator('summary').tap();
+  await expect(profileEnabledRu).toBeChecked(); await expect(profileAgeRu).toHaveValue('30'); await expect(profileLevelRu).toHaveValue('plain');
+  await expect(completionModel.getByRole('checkbox')).toHaveCount(2);
+  await expect(modeledCompletion('unresolved.route-v1', 7)).not.toBeChecked(); await expect(modeledCompletion('unresolved.next', 1)).not.toBeChecked();
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'missing'); await expect(completionReport).toContainText('Модель завершений: 0 из 2.');
+  await expect(completionReport).toContainText('Не смоделированы: unresolved.route-v1 · версия 7; unresolved.next · версия 1.');
+  await completionModel.evaluate(node => { node.scrollIntoView({ block: 'start' }); window.scrollBy(0, -12); });
+  for (const control of await completionModel.getByRole('checkbox').all()) {
+    await expect(control).toHaveAttribute('aria-describedby', /.+/);
+    expect(await control.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id => Boolean(document.getElementById(id))))).toBe(true);
+    const bounds = await control.locator('..').boundingBox(); expect(bounds.height).toBeGreaterThanOrEqual(44);
+    expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.x + bounds.width).toBeLessThanOrEqual(321);
+    expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844);
+  }
+  const ruCompletionReportBounds = await completionReport.boundingBox(); expect(ruCompletionReportBounds.y).toBeGreaterThanOrEqual(0); expect(ruCompletionReportBounds.y + ruCompletionReportBounds.height).toBeLessThanOrEqual(844);
+  expect(await overflow()).toBe(false);
+  await capture('booky-journey-preview-ru-320.png', 'Actual RU320 expanded adult-profile scenario with two immutable configured prerequisite ID/version pairs and zero modeled completions. Native checkboxes describe this local scenario; no existence, real completion, approval, device or runtime admission is established.');
+  await modeledCompletion('unresolved.route-v1', 7).focus(); await modeledCompletion('unresolved.route-v1', 7).press('Space');
+  await expect(modeledCompletion('unresolved.route-v1', 7)).toBeFocused(); await expect(modeledCompletion('unresolved.route-v1', 7)).toBeChecked();
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'partial'); await expect(completionReport).toContainText('Модель завершений: 1 из 2.');
+  await profileAgeRu.fill('31'); await profileAgeRu.fill('30'); await profileLevelRu.selectOption('fluent'); await profileLevelRu.selectOption('plain');
+  await overviewSummary.tap(); await overviewWork.tap(); await overviewSummary.tap(); await previewCopyView.selectOption('caption'); await previewCopyView.selectOption('body');
+  await widthPanel.locator('summary').tap(); await widthChoiceRu.selectOption('320'); await widthChoiceRu.selectOption('768'); await widthPanel.locator('summary').tap();
+  await searchPanel('country').locator('summary').tap(); await searchQuery('country').fill('local-only'); await searchPanel('country').getByRole('button', { name: 'Очистить поиск', exact: true }).tap();
+  await expect(modeledCompletion('unresolved.route-v1', 7)).toBeChecked(); await expect(modeledCompletion('unresolved.next', 1)).not.toBeChecked();
+  await preview.getByRole('button', { name: 'English', exact: true }).tap();
+  await expect(modeledCompletion('unresolved.route-v1', 7, 'en')).toBeChecked(); await expect(completionReport).toContainText('Modeled completions: 1 of 2.');
+  await profileAgeEn.fill('66'); await expect(profileReport).toHaveAttribute('data-profile-status', 'outside');
+  await expect(completionReport).toContainText('Not modeled: unresolved.next · version 1.');
+  await completionModel.evaluate(node => { node.scrollIntoView({ block: 'start' }); window.scrollBy(0, -12); });
+  await expect(modeledCompletion('unresolved.route-v1', 7, 'en')).toBeChecked();
+  await modeledCompletion('unresolved.next', 1, 'en').focus(); await expect(modeledCompletion('unresolved.next', 1, 'en')).toBeFocused();
+  expect((await modeledCompletion('unresolved.next', 1, 'en').locator('..').boundingBox()).height).toBeGreaterThanOrEqual(44); expect(await overflow()).toBe(false);
+  const enCompletionReportBounds = await completionReport.boundingBox(); expect(enCompletionReportBounds.y).toBeGreaterThanOrEqual(0); expect(enCompletionReportBounds.y + enCompletionReportBounds.height).toBeLessThanOrEqual(844);
+  await capture('booky-journey-preview-en-320.png', 'Actual EN320 adult-profile scenario with age66/plain outside the draft range, one of two modeled exact prerequisite pairs, and the remaining ID/version named in the local report. These local flags do not establish real completion or runtime admission.');
+  await profileAgeEn.fill('30'); await modeledCompletion('unresolved.next', 1, 'en').check();
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'all'); await expect(completionReport).toContainText('Modeled completions: 2 of 2.');
   const prerequisiteDownloadPromise = page.waitForEvent('download'); await button.tap(); const prerequisiteDownload = await prerequisiteDownloadPromise;
   expect(await prerequisiteDownload.failure()).toBeNull();
   const prerequisiteExportedPath = testInfo.outputPath('synthetic-journey-prerequisites-draft.json'); await prerequisiteDownload.saveAs(prerequisiteExportedPath);
@@ -665,26 +705,52 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   expect(prerequisiteDraft.authoringSourceChecksum).not.toBe(draft.authoringSourceChecksum);
   for (const key of ['journeyApprovals', 'dialogueApprovals', 'currentVersions', 'availability']) expect(prerequisiteDraft[key]).toEqual([]);
   expect(prerequisiteDraft.releaseReady).toBe(false);
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'all'); await expect(modeledCompletion('unresolved.route-v1', 7, 'en')).toBeChecked();
+  await expect(modeledCompletion('unresolved.next', 1, 'en')).toBeChecked();
+  expect(Object.hasOwn(prerequisiteDraft.authoringSource.input, 'modeledPrerequisites')).toBe(false);
+  await profileEnabledEn.uncheck(); await expect(completionReport).toHaveCount(0); await expect(completionModel).toHaveCount(0);
+  const ordinaryPrerequisiteDownloadPromise = page.waitForEvent('download'); await button.tap(); const ordinaryPrerequisiteDownload = await ordinaryPrerequisiteDownloadPromise;
+  expect(await ordinaryPrerequisiteDownload.failure()).toBeNull();
+  const ordinaryPrerequisiteExportedPath = testInfo.outputPath('synthetic-journey-prerequisites-ordinary-draft.json'); await ordinaryPrerequisiteDownload.saveAs(ordinaryPrerequisiteExportedPath);
+  const ordinaryPrerequisiteBytes = await fs.readFile(ordinaryPrerequisiteExportedPath); expect(ordinaryPrerequisiteBytes.equals(prerequisiteBytes)).toBe(true);
+  await profileEnabledEn.check(); await expect(profileAgeEn).toHaveValue('30'); await expect(profileLevelEn).toHaveValue('plain');
+  await expect(modeledCompletion('unresolved.route-v1', 7, 'en')).not.toBeChecked(); await expect(modeledCompletion('unresolved.next', 1, 'en')).not.toBeChecked();
+  await modeledCompletion('unresolved.route-v1', 7, 'en').check(); await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'partial');
   const preservedPrerequisitePreview = await preview.innerText();
   const tamperedPrerequisites = structuredClone(prerequisiteDraft); tamperedPrerequisites.authoringSource.input.prerequisites[0].version = 8;
   tamperedPrerequisites.authoringSourceChecksum = await page.evaluate(source => window.__copyVariantRecordHash(source), tamperedPrerequisites.authoringSource);
   await upload('rehashed-prerequisite-source.json', Buffer.from(JSON.stringify(tamperedPrerequisites)));
   await expect(page.getByRole('alert')).toBeVisible(); expect(await preview.innerText()).toBe(preservedPrerequisitePreview);
+  await expect(modeledCompletion('unresolved.route-v1', 7, 'en')).toBeChecked(); await expect(modeledCompletion('unresolved.next', 1, 'en')).not.toBeChecked();
   await expect(prerequisiteField(1, 'id')).toHaveValue('unresolved.route-v1'); await expect(prerequisiteField(1, 'version')).toHaveValue('7');
   await prerequisiteField(1, 'id').fill('unsaved.reference'); await expect(preview).toHaveCount(0);
   await upload('native-prerequisite-draft.json', prerequisiteBytes);
   await expect(prerequisiteField(1, 'id')).toHaveValue('unresolved.route-v1'); await expect(prerequisiteField(1, 'version')).toHaveValue('7');
   await expect(prerequisiteField(2, 'id')).toHaveValue('unresolved.next'); await expect(preview).toHaveCount(0);
+  await previewButton.tap(); await profilePanel.locator('summary').tap();
+  await expect(modeledCompletion('unresolved.route-v1', 7)).not.toBeChecked(); await expect(modeledCompletion('unresolved.next', 1)).not.toBeChecked();
+  await modeledCompletion('unresolved.route-v1', 7).check(); await modeledCompletion('unresolved.next', 1).check();
+  await previewButton.tap(); await expect(preview).toBeVisible();
+  if (!(await profilePanel.evaluate(node => node.open))) await profilePanel.locator('summary').tap();
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'missing');
+  await modeledCompletion('unresolved.route-v1', 7).check(); await modeledCompletion('unresolved.next', 1).check();
+  await prerequisiteField(1, 'version').fill('8'); await expect(preview).toHaveCount(0); await previewButton.tap(); await profilePanel.locator('summary').tap();
+  await expect(modeledCompletion('unresolved.route-v1', 7)).toHaveCount(0); await expect(modeledCompletion('unresolved.route-v1', 8)).not.toBeChecked();
+  await expect(modeledCompletion('unresolved.next', 1)).not.toBeChecked(); await expect(completionReport).toContainText('unresolved.route-v1 · версия 8');
+  await modeledCompletion('unresolved.route-v1', 8).check(); await upload('native-prerequisite-scenario-reset.json', prerequisiteBytes);
+  await previewButton.tap(); await profilePanel.locator('summary').tap(); await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'missing');
+  await expect(modeledCompletion('unresolved.route-v1', 7)).not.toBeChecked(); await expect(modeledCompletion('unresolved.route-v1', 8)).toHaveCount(0);
   await prerequisitesPanel.getByRole('button', { name: 'Удалить ссылку 2', exact: true }).tap();
   await prerequisitesPanel.getByRole('button', { name: 'Удалить ссылку 1', exact: true }).tap();
   await expect(prerequisitesPanel).toContainText('Ссылки не заданы.'); await expect(prerequisiteField(1, 'id')).toHaveCount(0);
   await previewButton.tap(); await expect(preview).toBeVisible();
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'none'); await expect(completionReport).toContainText('модель завершений не ограничивает проверку.');
   const restoredDownloadPromise = page.waitForEvent('download'); await button.tap(); const restoredDownload = await restoredDownloadPromise;
   expect(await restoredDownload.failure()).toBeNull();
   const restoredExportedPath = testInfo.outputPath('synthetic-journey-after-prerequisite-removal.json'); await restoredDownload.saveAs(restoredExportedPath);
   const restoredBytes = await fs.readFile(restoredExportedPath); expect(sha(restoredBytes)).toBe('7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5');
   expect(Object.hasOwn(JSON.parse(restoredBytes.toString('utf8')).authoringSource.input, 'prerequisites')).toBe(false);
-  expect(downloads).toHaveLength(3); expect(await page.evaluate(() => window.__activityValidationCalls)).toEqual([]);
+  expect(downloads).toHaveLength(4); expect(await page.evaluate(() => window.__activityValidationCalls)).toEqual([]);
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
   const profileStorageWrites=await page.evaluate(()=>window.__previewProfileStorageWrites); expect(profileStorageWrites).toEqual([]);
   await testInfo.attach('booky-journey-editor-evidence', { contentType: 'application/json', body: JSON.stringify({
@@ -711,7 +777,13 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     twoUnconfirmedPrerequisiteReferencesSurviveActualNativeExportAndReopen:true, independentlyRehashedSourceTamperingIsRejectedWithoutReplacingCurrentForm:true,
     removingEveryPrerequisiteDeletesOwnSourceKeyAndRestoresExactOriginalNativeDownloadBytes:true,
     prerequisiteReferencesDoNotCreateReviewCompletionCurrentVersionOrAdmissionAuthority:true,
+    exactCompiledPrerequisitePairsDriveLocalizedMissingPartialAllAndNoReferenceReports:true,
+    modeledChecksHaveNativeKeyboardFocusAssociatedReportsMinimum44CssPxAndNo320OverflowRuEn:true,
+    sameSourceAgeLevelLocaleStepWidthTextViewAndQueryPreserveModeledPairs:true,
+    toggleSuccessfulPreviewImportAndDraftVersionEditResetModeledPairsAndRejectedImportPreservesThem:true,
+    exportPreservesCurrentScenarioAndActualBytesEqualOrdinaryScenarioExport:true,
     prerequisiteExportedDraft: { path: prerequisiteExportedPath, sha256: sha(prerequisiteBytes), bytes: prerequisiteBytes.length },
+    ordinaryPrerequisiteExportedDraft: { path: ordinaryPrerequisiteExportedPath, sha256: sha(ordinaryPrerequisiteBytes), bytes: ordinaryPrerequisiteBytes.length },
     restoredExportedDraft: { path: restoredExportedPath, sha256: sha(restoredBytes), bytes: restoredBytes.length },
     localPreviewWidthStartsCollapsedAndAvailable:true, localizedNativeWidthChoicesRuEnVerified:true, actualPreviewFrameFitsParentAt320:true,
     actualDesktopFrameWidths320And768Verified:true, availableWidthRestoresActualParentWidth:true, widthControlsMinimum44CssPxAndKeyboardFocusVerified:true,
@@ -1259,6 +1331,14 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(preview).toHaveCount(0); await expect(page.locator('[data-booky-activity-verdict]')).toHaveCount(0);
   await upload('restore-after-copy-variant-edit.json');
   await expect(activityReduced).toHaveValue('');
+  const prerequisitesPanel = page.locator('[data-booky-prerequisites]');
+  await expect(prerequisitesPanel).not.toHaveAttribute('open', ''); await prerequisitesPanel.locator('summary').tap();
+  await prerequisitesPanel.getByRole('button', { name: 'Добавить предварительный маршрут', exact: true }).tap();
+  await prerequisitesPanel.getByRole('textbox', { name: 'ID предварительного маршрута 1', exact: true }).fill('held.prerequisite');
+  await prerequisitesPanel.getByRole('spinbutton', { name: 'Версия предварительного маршрута 1', exact: true }).fill('7');
+  await prerequisitesPanel.getByRole('button', { name: 'Добавить предварительный маршрут', exact: true }).tap();
+  await prerequisitesPanel.getByRole('textbox', { name: 'ID предварительного маршрута 2', exact: true }).fill('held.prerequisite-next');
+  await prerequisitesPanel.locator('summary').tap();
   await previewButton.tap(); for (let index = 0; index < 3; index++) await next.tap();
   await expect(preview.locator('[data-booky-preview-copy-view]')).toHaveValue('body');
   await expect(activityComparison).not.toHaveAttribute('open','');
@@ -1269,6 +1349,12 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(profileEnabled).not.toBeChecked(); await profileEnabled.check();
   const profileAge = profilePanel.getByLabel('Возраст для предпросмотра', { exact: true });
   const profileLevel = profilePanel.getByRole('combobox', { name: 'Уровень чтения для предпросмотра', exact: true });
+  const completionReport = preview.locator('[data-booky-preview-prerequisites-report]');
+  const completionModel = preview.locator('[data-booky-preview-prerequisites]');
+  const firstModeledCompletion = completionModel.getByRole('checkbox', { name: 'Считать завершённым · held.prerequisite · версия 7', exact: true });
+  const secondModeledCompletion = completionModel.getByRole('checkbox', { name: 'Считать завершённым · held.prerequisite-next · версия 1', exact: true });
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'missing'); await expect(completionReport).toContainText('Модель завершений: 0 из 2.');
+  await expect(firstModeledCompletion).not.toBeChecked(); await expect(secondModeledCompletion).not.toBeChecked();
   await expect(profileAge).toHaveValue(''); await expect(profileLevel).toHaveValue('');
   await expect(profileReport).toHaveAttribute('data-profile-status', 'invalid');
   await correctAnswer.tap(); await expect(answerCheckRu).toHaveAttribute('aria-disabled', 'true');
@@ -1278,10 +1364,25 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(verdict).toHaveCount(0);
   await profileAge.fill('30'); await profileLevel.selectOption('plain');
   await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
+  await correctAnswer.tap(); await expect(answerCheckRu).toHaveAttribute('aria-disabled', 'true');
+  const callsBeforeMissingCompletions = await page.evaluate(() => window.__activityAnswerCalls.length);
+  const combinedDescription = await answerCheckRu.getAttribute('aria-describedby'); expect(combinedDescription.split(' ')).toHaveLength(2);
+  expect(await answerCheckRu.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id => Boolean(document.getElementById(id))))).toBe(true);
+  expect(combinedDescription.split(' ')).toContain(await completionReport.getAttribute('id'));
+  await answerCheckRu.focus(); await answerCheckRu.press('Enter'); await expect(answerCheckRu).toBeFocused();
+  expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(callsBeforeMissingCompletions);
+  await firstModeledCompletion.focus(); await firstModeledCompletion.press('Space'); await expect(firstModeledCompletion).toBeFocused();
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'partial'); await expect(completionReport).toContainText('held.prerequisite-next · версия 1');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false'); await correctAnswer.tap();
+  await answerCheckRu.focus(); await answerCheckRu.press('Enter'); expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(callsBeforeMissingCompletions);
+  await secondModeledCompletion.check(); await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'all');
   await correctAnswer.tap();
   await page.evaluate(() => { window.__answerHoldNext = true; });
   await answerCheckRu.tap();
   const heldProfileVerdict = await answerHeldIndex();
+  await firstModeledCompletion.check(); await secondModeledCompletion.check();
+  await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'all');
   await expect(activityReview).not.toHaveAttribute('open',''); await activityReview.locator('summary').tap();
   const callsBeforeProfileInspect = await page.evaluate(() => ({validation:window.__activityValidationCalls.length,answer:window.__activityAnswerCalls.length}));
   await activityComparison.locator('summary').tap(); await activityComparison.locator('summary').tap();
@@ -1299,6 +1400,14 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await activityWidthPanel.locator('summary').tap();
   await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true');
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+  await expect(firstModeledCompletion).toBeChecked(); await expect(secondModeledCompletion).toBeChecked();
+  await firstModeledCompletion.uncheck(); await expect(answerCheckRu).toHaveAttribute('aria-busy', 'false');
+  await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false'); await expect(verdict).toHaveCount(0);
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'partial');
+  await correctAnswer.tap(); await expect(answerCheckRu).toHaveAttribute('aria-disabled', 'true');
+  const callsAfterCompletionChange = await page.evaluate(() => window.__activityAnswerCalls.length);
+  await answerCheckRu.focus(); await answerCheckRu.press('Enter'); expect(await page.evaluate(() => window.__activityAnswerCalls.length)).toBe(callsAfterCompletionChange);
+  await firstModeledCompletion.check(); await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'all');
   const callsBeforeOutsideProfile = await page.evaluate(() => window.__activityAnswerCalls.length);
   await profileAge.fill('66');
   await expect(profileReport).toHaveAttribute('data-profile-status', 'outside');
@@ -1312,6 +1421,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(verdict).toHaveCount(0); await expect(answerError).toHaveCount(0);
   await expect(profileReport).toHaveAttribute('data-profile-status', 'outside');
   await profileEnabled.uncheck(); await expect(profileReport).toHaveCount(0);
+  await expect(completionReport).toHaveCount(0); await expect(completionModel).toHaveCount(0);
   await expect(correctAnswer).toHaveAttribute('aria-pressed', 'false');
   await expect(stepStatus).toContainText(/^(?:Шаг 4 из 5|Step 4 of 5)/);
   await correctAnswer.tap();
@@ -1328,6 +1438,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(profilePanel).not.toHaveAttribute('open', ''); await profilePanel.locator('summary').tap();
   await profileEnabled.check(); await profileAge.fill('30'); await profileLevel.selectOption('plain');
   await expect(profileReport).toHaveAttribute('data-profile-status', 'matches');
+  await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'none');
   await profilePanel.locator('summary').tap();
   await wrongAnswer.tap();
   await answerCheckRu.tap();
@@ -1435,7 +1546,9 @@ test('optional adult RU EN author task uses current semantic validation and pres
     authorSearchAndClearPreserveExistingValidationErrorsAndHeldAnswerLeaseWithoutNewRequestsOrDownloads:true,
     authorSearchKeepsMainEntityQueriesIndependentAndHasNoExportFieldOrStorageWrite:true,
     actualDraftProfileConditionHelper: true, invalidAndOutsideProfilesBlockKeyboardCheckWithoutHelperRequest: true,
-    sameExplicitProfileKeepsPendingAnswer: true, newerOutsideProfileRejectsHeldAnswer: true, heldProfileVerdictCallIndex: heldProfileVerdict,
+    sameExplicitProfileAndIdenticalModeledCompletionKeepPendingAnswer: true, changedExactPrerequisiteTupleSelectionRejectsHeldAnswer: true, heldProfileVerdictCallIndex: heldProfileVerdict,
+    missingAndPartialCompletionsBlockNativeKeyboardCheckWithoutHelperCalls:true, combinedAgeLevelAndCompletionReportsDescribeGuardedCheck:true,
+    modeledCompletionsUseExactCompiledReferencesAndDoNotReachStaffAnswerAction:true, outsideAgeRemainsIndependentlyBlockedWithoutHelperCalls:true,
     returningToOrdinaryPreviewRestoresExplicitAnswerCheck: true, previewProfileScenarioHasNoStoredReaderPolicy: true,
     failedSessionOrNetworkCannotShowVerdict: true, localizedCalmAriaLiveFeedbackVerified: true,
     answerCheckDoesNotAdvanceStep: true, answerStateStorageWrites: storageWrites,
