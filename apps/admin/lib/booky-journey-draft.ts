@@ -34,6 +34,11 @@ export type JourneyDraftInput = {
   fact?: JourneyDraftFactInput;
   optionalNodeOrder?: readonly ("sourced-fact" | "activity")[];
   prerequisites?: readonly BookyJourneyPrerequisite[];
+  additionalWorks?: readonly JourneyDraftAdditionalWorkInput[];
+};
+export type JourneyDraftAdditionalWorkInput = {
+  workId: string;
+  copy: Record<"ru" | "en", JourneyDraftNodeCopy>;
 };
 export type JourneyDraftActivityInput = {
   type: "match-work-author";
@@ -59,6 +64,7 @@ export type JourneyDraftAuthoringSource = Readonly<{
   selection: Readonly<{
     country: SelectedEntity; writer: SelectedEntity; work: SelectedEntity;
     activityChoices?: readonly JourneyDraftActivityChoiceSnapshot[];
+    additionalWorks?: readonly Readonly<{ nodeId: string; work: SelectedEntity }>[];
   }>;
 }>;
 export type BookyJourneyDraft = Readonly<{
@@ -152,6 +158,36 @@ function nodeCopySnapshot(copy: JourneyDraftNodeCopy): JourneyDraftNodeCopy {
 }
 function payloadCopy(copy: JourneyDraftNodeCopy): BookyDialoguePayload["copy"] {
   return { title: copy.title, body: copy.body, caption: copy.caption ?? copy.title, reduced: copy.reduced ?? copy.title };
+}
+const additionalWorkNodeId = (index: number) => `work-extra-${index + 1}`;
+function additionalWorksInput(value: unknown):
+  | { ok: true; works: JourneyDraftAdditionalWorkInput[] }
+  | { ok: false; errors: JourneyDraftError[] } {
+  const malformed = () => ({ ok: false as const, errors: [{ field: "additionalWorks", message: "Дополнительные книги: от одной до восьми исходных строк с workId и текстами RU/EN, без пропусков, лишних полей или вычисляемых свойств." }] });
+  try {
+    if (!Array.isArray(value) || Object.getPrototypeOf(value) !== Array.prototype || value.length < 1 || value.length > 8
+      || Reflect.ownKeys(value).length !== value.length + 1) return malformed();
+    const works: JourneyDraftAdditionalWorkInput[] = [], errors: JourneyDraftError[] = [];
+    for (let index = 0; index < value.length; index++) {
+      const descriptor = Object.getOwnPropertyDescriptor(value, String(index)), field = `additionalWorks.${index}`;
+      if (!descriptor?.enumerable || !("value" in descriptor) || !ownDataKeys(descriptor.value, ["workId", "copy"])) return malformed();
+      const row = descriptor.value;
+      if (!entityId(row.workId)) errors.push({ field: field + ".workId", message: "Выберите существующую дополнительную книгу этого писателя." });
+      if (!ownDataKeys(row.copy, LOCALES)) return malformed();
+      for (const locale of LOCALES) {
+        const copy = row.copy[locale], copyField = field + ".copy." + locale;
+        if (!nodeCopyKeys(copy)) return malformed();
+        const names = { title: "Название шага", body: "Подсказка", caption: "Подпись", reduced: "Короткий текст" };
+        for (const [key, max, paragraphs] of [["title", 160, false], ["body", 1600, true], ["caption", 1600, true], ["reduced", 320, true]] as const) {
+          if ((key === "title" || key === "body" || Object.hasOwn(copy, key)) && !text(copy[key], max, paragraphs))
+            errors.push({ field: copyField + "." + key, message: `${names[key]} (${locale.toUpperCase()}): от 1 до ${max} символов без внешних пробелов и неподдерживаемых управляющих символов.` });
+        }
+      }
+      if (errors.length === 0) works.push({ workId: row.workId as string,
+        copy: { ru: nodeCopySnapshot(row.copy.ru as JourneyDraftNodeCopy), en: nodeCopySnapshot(row.copy.en as JourneyDraftNodeCopy) } });
+    }
+    return errors.length ? { ok: false, errors } : { ok: true, works };
+  } catch { return malformed(); }
 }
 function optionalNodeOrderInput(value: unknown, hasFact: boolean, hasActivity: boolean): ("sourced-fact" | "activity")[] | null {
   try {
@@ -325,6 +361,16 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
     if (!checked.ok) { checked.errors.forEach((error) => fail(error.field, error.message)); return rejected(); }
     prerequisites = checked.references;
   }
+  const additionalWorksDescriptor = Object.getOwnPropertyDescriptor(input, "additionalWorks");
+  let additionalWorks: JourneyDraftAdditionalWorkInput[] | undefined;
+  if (additionalWorksDescriptor) {
+    if (!additionalWorksDescriptor.enumerable || !("value" in additionalWorksDescriptor)) {
+      fail("additionalWorks", "Дополнительные книги должны быть исходным полем, без вычисляемых или скрытых свойств."); return rejected();
+    }
+    const checked = additionalWorksInput(additionalWorksDescriptor.value);
+    if (!checked.ok) { checked.errors.forEach((error) => fail(error.field, error.message)); return rejected(); }
+    additionalWorks = checked.works;
+  }
   if (!catalog || !Array.isArray(catalog.countries)) {
     fail("catalog", "Канонический каталог недоступен.");
     return rejected();
@@ -366,6 +412,17 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
   if (!writer) fail("writerId", "Выбранный писатель не принадлежит этой стране.");
   if (!work) fail("workId", "Выбранная книга не принадлежит этому писателю.");
   else if (!text(work.label?.en, 2000)) fail("workId", "Для выбранной книги требуется подтверждённое EN название.");
+  const additionalSelections: SelectedEntity[] = [], additionalIds = new Set<string>();
+  for (const [index, row] of (additionalWorks ?? []).entries()) {
+    const field = `additionalWorks.${index}.workId`, selectedWork = writer && Array.isArray(writer.works) ? writer.works.find((item: JourneyDraftCatalog["countries"][number]["writers"][number]["works"][number]) => item.id === row.workId) : undefined;
+    if (row.workId === input.workId || additionalIds.has(row.workId)) fail(field, "Дополнительная книга должна отличаться от основной и остальных дополнительных книг.");
+    additionalIds.add(row.workId);
+    if (!selectedWork) { fail(field, "Дополнительная книга не принадлежит выбранному каноническому писателю."); continue; }
+    if (!text(selectedWork.label?.ru, 2000) || !text(selectedWork.label?.en, 2000)) fail(field, "Для дополнительной книги требуются исходные подтверждённые названия RU/EN.");
+    if (country && writer && bookyJourneyEntityId({ kind: "work", countryId: country.id, writerId: writer.id, workId: selectedWork.id }).length > 200)
+      fail(field, "Канонический идентификатор дополнительной книги превышает предел реестра.");
+    additionalSelections.push(selectedWork);
+  }
   const activitySelections: JourneyDraftActivityChoiceSnapshot[] = [];
   if (activity) {
     const tuples = new Set<string>(), labels = { ru: new Set<string>(), en: new Set<string>() };
@@ -425,9 +482,12 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
       } } } : {}),
       ...(optionalNodeOrder ? { optionalNodeOrder: [...optionalNodeOrder] } : {}),
       ...(prerequisites ? { prerequisites: prerequisites.map((reference) => ({ ...reference })) } : {}),
+      ...(additionalWorks ? { additionalWorks: additionalWorks.map(row => ({ workId: row.workId,
+        copy: { ru: nodeCopySnapshot(row.copy.ru), en: nodeCopySnapshot(row.copy.en) } })) } : {}),
     },
     selection: { country: selected(country), writer: selected(writer), work: selected(work),
       ...(activity ? { activityChoices: activitySelections.map(choice => ({ country: selected(choice.country), writer: selected(choice.writer) })) } : {}),
+      ...(additionalWorks ? { additionalWorks: additionalSelections.map((item, index) => ({ nodeId: additionalWorkNodeId(index), work: selected(item) })) } : {}),
     },
   };
   // A routing owner is not an answer key. Current factual authorship is checked
@@ -501,14 +561,16 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
       fail("fact", "Не удалось связать тексты RU/EN с выбранной книгой."); return rejected();
     }
   }
-  const nodeKinds: readonly ((typeof NODE_KINDS)[number] | "activity" | "sourced-fact")[] = [
-    "country", "writer", "work", ...(optionalNodeOrder ?? [
+  const nodeSteps: readonly { kind: (typeof NODE_KINDS)[number] | "activity" | "sourced-fact"; id: string; additionalIndex?: number }[] = [
+    { kind: "country", id: "country" }, { kind: "writer", id: "writer" },
+    ...(additionalWorks ?? []).map((_, index) => ({ kind: "work" as const, id: additionalWorkNodeId(index), additionalIndex: index })),
+    { kind: "work", id: "work" }, ...(optionalNodeOrder ?? [
       ...(factSpec ? ["sourced-fact" as const] : []), ...(activitySpec ? ["activity" as const] : []),
-    ]), "checkpoint",
+    ]).map(kind => ({ kind, id: kind })), { kind: "checkpoint", id: "checkpoint" },
   ];
   for (const locale of LOCALES) {
     const nodes: BookyJourneyNode[] = [];
-    for (const kind of nodeKinds) {
+    for (const { kind, id, additionalIndex } of nodeSteps) {
       if (kind === "sourced-fact") {
         const record = factRecords[locale]!;
         dialogues.push(record);
@@ -519,12 +581,15 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         continue;
       }
       const node: BookyJourneyNode = {
-        id: kind, kind, entity: kind === "activity" ? null : refs[kind], screen: kind === "country" || kind === "writer" || kind === "activity" ? "globe" : "collection",
-        dialogue: { id: `${input.id}.${kind}`, version: input.version, contentChecksum: "" },
+        id, kind, entity: additionalIndex !== undefined ? { kind: "work", countryId: country.id, writerId: writer.id, workId: additionalSelections[additionalIndex].id }
+          : kind === "activity" ? null : refs[kind], screen: kind === "country" || kind === "writer" || kind === "activity" ? "globe" : "collection",
+        dialogue: { id: `${input.id}.${id}`, version: input.version, contentChecksum: "" },
         ...(kind === "activity" ? { activity: activitySpec! } : {}),
       };
       const context = bookyJourneyDialogueContext(input.id, node);
-      const copy = kind === "activity" ? authoringSource.input.activity!.copy[locale] : authoringSource.input.copy[locale].nodes[kind];
+      const copy = additionalIndex !== undefined ? authoringSource.input.additionalWorks![additionalIndex].copy[locale]
+        : kind === "activity" ? authoringSource.input.activity!.copy[locale] : authoringSource.input.copy[locale].nodes[kind];
+      const copyField = additionalIndex !== undefined ? `additionalWorks.${additionalIndex}.copy.${locale}` : `copy.${locale}.nodes.${kind}`;
       if (!context) { fail("id", "ID маршрута несовместим с контекстом диалога."); return rejected(); }
       const payload: BookyDialoguePayload = {
         id: node.dialogue.id, version: input.version, locale, audience: "adult",
@@ -537,15 +602,16 @@ export function createBookyJourneyDraft(input: JourneyDraftInput, catalog: Journ
         narration: null, prohibitedTags: [],
         provenance: {
           kind: "editorial", sourcePath: "authoringSource", sourceVersion: 1,
-          sourceRef: kind === "activity" ? `/input/activity/copy/${locale}` : `/input/copy/${locale}/nodes/${kind}`,
+          sourceRef: additionalIndex !== undefined ? `/input/additionalWorks/${additionalIndex}/copy/${locale}`
+            : kind === "activity" ? `/input/activity/copy/${locale}` : `/input/copy/${locale}/nodes/${kind}`,
           sourceSha256: authoringSourceChecksum, copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })),
         },
       };
       const contentChecksum = getBookyDialogueContentChecksum(payload);
-      if (!contentChecksum) { fail(`copy.${locale}.nodes.${kind}`, "Диалог не соответствует схеме реестра."); return rejected(); }
+      if (!contentChecksum) { fail(copyField, "Диалог не соответствует схеме реестра."); return rejected(); }
       const review = { status: "draft" as const, reviewer: null, reviewedAt: null, contentChecksum };
       const checksum = getBookyDialogueChecksum({ payload, review });
-      if (!checksum) { fail(`copy.${locale}.nodes.${kind}`, "Не удалось связать draft диалог с его контрольной суммой."); return rejected(); }
+      if (!checksum) { fail(copyField, "Не удалось связать draft диалог с его контрольной суммой."); return rejected(); }
       dialogues.push({ payload, review, checksum });
       nodes.push({ ...node, dialogue: { ...node.dialogue, contentChecksum } });
     }
@@ -600,7 +666,8 @@ export function parseBookyJourneyDraft(text: string, catalog: JourneyDraftCatalo
     const hasFact = record(input) && Object.prototype.hasOwnProperty.call(input, "fact");
     const hasOrder = record(input) && Object.prototype.hasOwnProperty.call(input, "optionalNodeOrder");
     const hasPrerequisites = record(input) && Object.prototype.hasOwnProperty.call(input, "prerequisites");
-    if (!exactKeys(input, [...inputFields, ...(hasActivity ? ["activity"] : []), ...(hasFact ? ["fact"] : []), ...(hasOrder ? ["optionalNodeOrder"] : []), ...(hasPrerequisites ? ["prerequisites"] : [])]) || !exactKeys(input.ageRange, ["min", "max"])
+    const hasAdditionalWorks = record(input) && Object.prototype.hasOwnProperty.call(input, "additionalWorks");
+    if (!exactKeys(input, [...inputFields, ...(hasActivity ? ["activity"] : []), ...(hasFact ? ["fact"] : []), ...(hasOrder ? ["optionalNodeOrder"] : []), ...(hasPrerequisites ? ["prerequisites"] : []), ...(hasAdditionalWorks ? ["additionalWorks"] : [])]) || !exactKeys(input.ageRange, ["min", "max"])
       || !exactKeys(input.copy, LOCALES))
       return rejected("authoringSource.input", "Исходная форма черновика содержит лишние или отсутствующие поля.");
     if (hasActivity && !activityInput(input.activity))
@@ -611,6 +678,10 @@ export function parseBookyJourneyDraft(text: string, catalog: JourneyDraftCatalo
       return rejected("optionalNodeOrder", "Порядок необязательных шагов не соответствует включённым факту и заданию либо содержит лишние или отсутствующие поля.");
     if (hasPrerequisites) {
       const checked = prerequisitesInput(input.prerequisites, input.id);
+      if (!checked.ok) return freeze({ ok: false as const, errors: checked.errors });
+    }
+    if (hasAdditionalWorks) {
+      const checked = additionalWorksInput(input.additionalWorks);
       if (!checked.ok) return freeze({ ok: false as const, errors: checked.errors });
     }
     for (const locale of LOCALES) {

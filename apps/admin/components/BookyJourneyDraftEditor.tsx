@@ -78,6 +78,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const formControl = useRef<HTMLFormElement>(null);
   const fileControl = useRef<HTMLInputElement>(null);
   const optionalOrderFocus = useRef<HTMLButtonElement | null>(null);
+  const additionalOrderFocus = useRef<HTMLElement | null>(null);
   const [validating, setValidating] = useState(false);
   const choiceWriters = catalog.countries.flatMap((item) => item.writers.map((author) => ({ country: item, writer: author })));
   const choiceKey = (choice: { countryId: string; writerId: string }) => JSON.stringify([choice.countryId, choice.writerId]);
@@ -94,6 +95,11 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     optionalOrderFocus.current = null;
     if (control?.isConnected) control.focus({ preventScroll: true });
   }, [input.optionalNodeOrder]);
+  useEffect(() => {
+    const control = additionalOrderFocus.current;
+    additionalOrderFocus.current = null;
+    if (control?.isConnected) control.focus({ preventScroll: true });
+  }, [input.additionalWorks]);
   const country = catalog.countries.find((item) => item.id === input.countryId);
   const writer = country?.writers.find((item) => item.id === input.writerId);
   const work = writer?.works.find((item) => item.id === input.workId);
@@ -108,6 +114,10 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     if (field === "prerequisites") return field;
     const prerequisite = /^prerequisites\.(\d+)\.(?:id|version)$/u.exec(field);
     if (prerequisite) return input.prerequisites?.[Number(prerequisite[1])] ? field : null;
+    if (field === "additionalWorks") return field;
+    const additional = /^additionalWorks\.(\d+)\.(?:workId|copy\.(?:ru|en)\.(?:title|body|caption|reduced))$/u.exec(field);
+    if (additional) return input.additionalWorks?.[Number(additional[1])] ? field.endsWith(".workId") && !writer ? "additionalWorks" : field : null;
+    if (/^additionalWorks\./u.test(field)) return "additionalWorks";
     if (field === "fact") return input.fact ? "fact" : null;
     if (["activity", "activity.auth", "activity.choices"].includes(field)) return input.activity ? "activity" : null;
     if (field === "optionalNodeOrder") return optionalNodeOrder.length ? "optionalNodeOrder" : null;
@@ -137,10 +147,15 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     const labels: Record<string, string> = { id: "Идентификатор маршрута", version: "Версия", "ageRange.min": "Возрастной диапазон",
       readingLevel: "Уровень чтения", estimatedDurationMinutes: "Примерная длительность", countryId: "Страна", writerId: "Писатель", workId: "Книга",
       fact: "Необязательный факт · источники", activity: "Необязательное задание · выбрать автора", optionalNodeOrder: "Порядок необязательных шагов",
-      prerequisites: "Предварительные маршруты · ссылки" };
+      prerequisites: "Предварительные маршруты · ссылки", additionalWorks: "Дополнительные книги" };
     if (target && labels[target]) return labels[target];
     const prerequisite = /^prerequisites\.(\d+)\.(id|version)$/u.exec(field);
     if (prerequisite) return (prerequisite[2] === "id" ? "ID" : "Версия") + " предварительного маршрута " + (Number(prerequisite[1]) + 1);
+    const additional = /^additionalWorks\.(\d+)\.(workId|copy\.(ru|en)\.(title|body|caption|reduced))$/u.exec(field);
+    if (additional) {
+      const names: Record<string, string> = { title: "Название", body: "Подсказка", caption: "Подпись", reduced: "Короткий текст" };
+      return "Дополнительная книга " + (Number(additional[1]) + 1) + " · " + (additional[2] === "workId" ? "канонический выбор" : names[additional[4]] + " (" + additional[3].toUpperCase() + ")");
+    }
     const choice = target && /^activity\.choices\.(\d+)$/u.exec(target);
     if (choice) return "Автор · вариант " + (Number(choice[1]) + 1);
     const route = /^copy\.(ru|en)\.(title|description)$/u.exec(field);
@@ -201,17 +216,22 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const previewChoices = previewNode?.kind === "activity" ? previewNode.activity?.choices ?? [] : [];
   const previewDialogue = preview?.draft.dialogues.find((record) => record.payload.locale === preview.locale
     && record.payload.id === previewNode?.dialogue.id);
-  const previewEntity = preview ? preview.draft.authoringSource.selection[
-    previewNode?.kind === "country" ? "country" : previewNode?.kind === "writer" ? "writer" : "work"
-  ] : null;
+  const previewEntity = previewNode?.kind === "work" && previewNode.id !== "work"
+    ? preview?.draft.authoringSource.selection.additionalWorks?.find((item) => item.nodeId === previewNode.id)?.work
+    : preview ? preview.draft.authoringSource.selection[previewNode?.kind === "country" ? "country" : previewNode?.kind === "writer" ? "writer" : "work"] : null;
+  function previewNodeLabel(locale: Locale, id: string, kind: CopyKind | "character") {
+    const additional = preview?.draft.authoringSource.selection.additionalWorks?.find((item) => item.nodeId === id);
+    return additional ? (locale === "ru" ? "Доп. книга · " : "Additional work · ") + additional.work.label[locale] : previewStepLabels[locale][kind];
+  }
   const reviewRows = preview && previewDefinition ? previewDefinition.nodes.map((node, step) => ({
     id: node.id, kind: node.kind, step,
     copies: locales.map((locale) => {
       const authored = preview.draft.authoringSource.input;
-      const copy = node.kind === "activity" ? authored.activity?.copy[locale]
+      const additionalIndex = preview.draft.authoringSource.selection.additionalWorks?.findIndex((item) => item.nodeId === node.id) ?? -1;
+      const copy = additionalIndex >= 0 ? authored.additionalWorks?.[additionalIndex]?.copy[locale] : node.kind === "activity" ? authored.activity?.copy[locale]
         : node.kind === "sourced-fact" ? authored.fact?.copy[locale]
           : node.kind === "country" || node.kind === "writer" || node.kind === "work" || node.kind === "checkpoint"
-            ? authored.copy[locale].nodes[node.kind] : undefined;
+            ? node.kind === "work" && node.id !== "work" ? undefined : authored.copy[locale].nodes[node.kind] : undefined;
       return { locale, supplied: !!copy,
         captionAuthored: !!copy && Object.hasOwn(copy, "caption"), reducedAuthored: !!copy && Object.hasOwn(copy, "reduced"),
         sourceCount: node.kind === "sourced-fact" ? authored.fact?.copy[locale].sources.length ?? 0 : null };
@@ -241,6 +261,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       if (Object.hasOwn(change, "fact") && change.fact === undefined) delete next.fact;
       if (Object.hasOwn(change, "optionalNodeOrder") && change.optionalNodeOrder === undefined) delete next.optionalNodeOrder;
       if (Object.hasOwn(change, "prerequisites") && change.prerequisites === undefined) delete next.prerequisites;
+      if (Object.hasOwn(change, "additionalWorks") && change.additionalWorks === undefined) delete next.additionalWorks;
       if (!!next.fact !== !!current.fact || !!next.activity !== !!current.activity) delete next.optionalNodeOrder;
       return next;
     });
@@ -406,7 +427,19 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       ...input.fact.copy[locale], sources: input.fact.copy[locale].sources.map((source, i) => i === index ? { ...source, [field]: value } : source),
     } } } });
   }
-  function updateCopyVariant(locale: Locale, kind: CopyKind, field: "caption" | "reduced", value: string) {
+  function updateAdditionalWorkCopy(index: number, locale: Locale, field: "title" | "body", value: string) {
+    if (input.additionalWorks?.[index]) update({ additionalWorks: input.additionalWorks.map((row, i) => i === index
+      ? { ...row, copy: { ...row.copy, [locale]: { ...row.copy[locale], [field]: value } } } : row) });
+  }
+  function moveAdditionalWork(index: number, direction: -1 | 1, control: HTMLButtonElement) {
+    const rows = input.additionalWorks, target = index + direction;
+    if (!rows || target < 0 || target >= rows.length) return;
+    const next = [...rows]; [next[index], next[target]] = [next[target], next[index]];
+    if (control === document.activeElement) additionalOrderFocus.current = formControl.current?.querySelector<HTMLButtonElement>(
+      `[data-booky-additional-order-index="${target}"][data-booky-additional-order-direction="${direction}"]`) ?? null;
+    update({ additionalWorks: next });
+  }
+  function updateCopyVariant(locale: Locale, kind: CopyKind, field: "caption" | "reduced", value: string, additionalIndex?: number) {
     function edit<T extends { caption?: string; reduced?: string }>(copy: T) {
       const next = { ...copy };
       if (value === "") delete next[field];
@@ -414,7 +447,10 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       else next.reduced = value;
       return next;
     }
-    if (kind === "activity") {
+    if (additionalIndex !== undefined) {
+      if (input.additionalWorks?.[additionalIndex]) update({ additionalWorks: input.additionalWorks.map((row, i) => i === additionalIndex
+        ? { ...row, copy: { ...row.copy, [locale]: edit(row.copy[locale]) } } : row) });
+    } else if (kind === "activity") {
       if (input.activity) update({ activity: { ...input.activity, copy: { ...input.activity.copy, [locale]: edit(input.activity.copy[locale]) } } });
     } else if (kind === "sourced-fact") {
       if (input.fact) update({ fact: { ...input.fact, copy: { ...input.fact.copy, [locale]: edit(input.fact.copy[locale]) } } });
@@ -422,20 +458,22 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       update({ copy: { ...input.copy, [locale]: { ...input.copy[locale], nodes: { ...input.copy[locale].nodes, [kind]: edit(input.copy[locale].nodes[kind]) } } } });
     }
   }
-  function copyVariantFields(locale: Locale, kind: CopyKind, copy: { caption?: string; reduced?: string }) {
-    const fieldBase = kind === "activity" ? "activity.copy." + locale : kind === "sourced-fact"
+  function copyVariantFields(locale: Locale, kind: CopyKind, copy: { caption?: string; reduced?: string }, additionalIndex?: number) {
+    const fieldBase = additionalIndex !== undefined ? "additionalWorks." + additionalIndex + ".copy." + locale : kind === "activity" ? "activity.copy." + locale : kind === "sourced-fact"
       ? "fact.copy." + locale : "copy." + locale + ".nodes." + kind;
-    const captionLabel = locale === "ru" ? `Подпись «${previewStepLabels.ru[kind]}» (RU)` : `Caption “${previewStepLabels.en[kind]}” (EN)`;
-    const reducedLabel = locale === "ru" ? `Короткий текст «${previewStepLabels.ru[kind]}» (RU)` : `Short text “${previewStepLabels.en[kind]}” (EN)`;
+    const ruLabel = additionalIndex !== undefined ? "Дополнительная книга " + (additionalIndex + 1) : previewStepLabels.ru[kind];
+    const enLabel = additionalIndex !== undefined ? "Additional work " + (additionalIndex + 1) : previewStepLabels.en[kind];
+    const captionLabel = locale === "ru" ? `Подпись «${ruLabel}» (RU)` : `Caption “${enLabel}” (EN)`;
+    const reducedLabel = locale === "ru" ? `Короткий текст «${ruLabel}» (RU)` : `Short text “${enLabel}” (EN)`;
     return <details lang={locale} data-booky-copy-variants={kind} data-copy-locale={locale} style={{ minWidth: 0 }}>
       <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>{locale === "ru" ? "Подпись и короткий текст" : "Caption and short text"}</summary>
       <p>{locale === "ru" ? "Пустое поле использует название шага." : "An empty field uses the step title."}</p>
       <label className="field"><span>{captionLabel}</span>
         <textarea {...fieldProps(fieldBase + ".caption")} lang={locale} aria-label={captionLabel} maxLength={1600} style={{ minHeight: 44 }} value={copy.caption ?? ""}
-          onChange={(event) => updateCopyVariant(locale, kind, "caption", event.target.value)} /></label>
+          onChange={(event) => updateCopyVariant(locale, kind, "caption", event.target.value, additionalIndex)} /></label>
       <label className="field"><span>{reducedLabel}</span>
         <textarea {...fieldProps(fieldBase + ".reduced")} lang={locale} aria-label={reducedLabel} maxLength={320} style={{ minHeight: 44 }} value={copy.reduced ?? ""}
-          onChange={(event) => updateCopyVariant(locale, kind, "reduced", event.target.value)} /></label>
+          onChange={(event) => updateCopyVariant(locale, kind, "reduced", event.target.value, additionalIndex)} /></label>
     </details>;
   }
   async function openDraft(event: ChangeEvent<HTMLInputElement>) {
@@ -723,7 +761,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <p>Эти шаги идут после книги и перед завершением. Страна, писатель и книга сохраняют свои места.</p>
           <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 12 }}>
             {optionalNodeOrder.map((kind, index) => <li key={kind} data-optional-node-kind={kind} style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
-              <span style={{ minWidth: 0, flex: "1 1 100%", overflowWrap: "anywhere" }}>{index + 4}. {previewStepLabels.ru[kind]}</span>
+              <span style={{ minWidth: 0, flex: "1 1 100%", overflowWrap: "anywhere" }}>{index + 4 + (input.additionalWorks?.length ?? 0)}. {previewStepLabels.ru[kind]}</span>
               <button className="button-secondary" type="button" aria-label={`Переместить шаг «${previewStepLabels.ru[kind]}» раньше`} aria-disabled={index === 0}
                 style={{ minHeight: 44, minWidth: 44 }} onClick={(event) => moveOptionalNode(kind, -1, event.currentTarget)}>Раньше</button>
               <button className="button-secondary" type="button" aria-label={`Переместить шаг «${previewStepLabels.ru[kind]}» позже`} aria-disabled={index === optionalNodeOrder.length - 1}
@@ -733,7 +771,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           {Object.hasOwn(input, "optionalNodeOrder") && <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, marginTop: 12 }} onClick={restoreOptionalNodeOrder}>Вернуть обычный порядок</button>}
         </details>}
         <section className="panel site-copy-card" aria-labelledby={`journey-step-${step.key}`}>
-          <header><h2 id={`journey-step-${step.key}`}>{step.number + (step.key === "checkpoint" ? Number(!!input.fact) + Number(!!input.activity) : 0)}. {step.title}</h2>
+          <header><h2 id={`journey-step-${step.key}`}>{step.number + (step.key === "checkpoint" ? Number(!!input.fact) + Number(!!input.activity) + (input.additionalWorks?.length ?? 0) : step.key === "work" ? input.additionalWorks?.length ?? 0 : 0)}. {step.title}</h2>
             <span className="badge">{step.key === "checkpoint" ? "Завершение" : "Канонический выбор"}</span></header>
           {step.key === "country" && <>
             {entitySearchFields("country", !available, countrySearch)}
@@ -764,6 +802,53 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                 <option value="">{writer ? "Выберите книгу" : "Сначала выберите писателя"}</option>
                 {workSearch.options.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(work?.label)}
+            <details data-booky-additional-works aria-labelledby={draftFieldId("additionalWorks")} style={{ minWidth: 0 }}>
+              <summary {...fieldProps("additionalWorks")} style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Дополнительные книги ({input.additionalWorks?.length ?? 0})</summary>
+              <p>До восьми книг выбранного писателя в вашем порядке, перед основной книгой. Факт, задание и завершение относятся к основной книге. При изменении выбора тексты сохраняются; недоступную ссылку исправьте или удалите.</p>
+              {(input.additionalWorks ?? []).map((row, index) => <fieldset key={index} data-booky-additional-work={index}
+                style={{ minWidth: 0, margin: "12px 0", padding: 12 }}>
+                <legend>Дополнительная книга {index + 1}</legend>
+                <label className="field"><span>Книга · дополнение {index + 1}</span>
+                  <select {...fieldProps("additionalWorks." + index + ".workId")} value={row.workId} disabled={!writer} style={{ minHeight: 44 }}
+                    onChange={(event) => update({ additionalWorks: input.additionalWorks!.map((item, i) => i === index ? { ...item, workId: event.target.value } : item) })}>
+                    <option value="">{writer ? "Выберите дополнительную книгу" : "Сначала выберите писателя"}</option>
+                    {row.workId && !writer?.works.some((item) => item.id === row.workId) && <option value={row.workId} disabled>{row.workId} · не принадлежит выбранному писателю</option>}
+                    {(writer?.works ?? []).map((item) => {
+                      const reason = item.id === input.workId ? "основная книга" : input.additionalWorks!.some((other, i) => i !== index && other.workId === item.id)
+                        ? "уже добавлена" : !item.label.ru || !item.label.en ? "нет названия RU/EN" : "";
+                      return <option key={item.id} value={item.id} disabled={!!reason}>{item.label.ru || item.id}{reason ? " · " + reason : ""}</option>;
+                    })}
+                  </select></label>
+                {englishLabel(writer?.works.find((item) => item.id === row.workId)?.label)}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                  {([-1, 1] as const).map((direction) => <button key={direction} className="button-secondary" type="button"
+                    data-booky-additional-order-index={index} data-booky-additional-order-direction={direction}
+                    aria-label={`Дополнительная книга ${index + 1} · ${direction === -1 ? "раньше" : "позже"}`} aria-disabled={direction === -1 ? index === 0 : index === (input.additionalWorks?.length ?? 0) - 1}
+                    style={{ minHeight: 44, minWidth: 44, maxWidth: "100%" }} onClick={(event) => moveAdditionalWork(index, direction, event.currentTarget)}>{direction === -1 ? "Раньше" : "Позже"}</button>)}
+                  <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, maxWidth: "100%" }} onClick={(event) => {
+                    const remaining = input.additionalWorks!.filter((_, i) => i !== index);
+                    if (!remaining.length && event.currentTarget === document.activeElement) additionalOrderFocus.current = document.getElementById(draftFieldId("additionalWorks"));
+                    update({ additionalWorks: remaining.length ? remaining : undefined });
+                  }}>Удалить дополнение {index + 1}</button>
+                </div>
+                <div className="site-copy-locales">
+                  {locales.map((locale) => <div key={locale} className="site-copy-grid">
+                    <label className="field"><span>Название дополнительной книги {index + 1} ({locale.toUpperCase()})</span>
+                      <input {...fieldProps("additionalWorks." + index + ".copy." + locale + ".title")} lang={locale} maxLength={160} style={{ minHeight: 44 }} value={row.copy[locale].title}
+                        onChange={(event) => updateAdditionalWorkCopy(index, locale, "title", event.target.value)} /></label>
+                    <label className="field"><span>Подсказка дополнительной книги {index + 1} ({locale.toUpperCase()})</span>
+                      <textarea {...fieldProps("additionalWorks." + index + ".copy." + locale + ".body")} lang={locale} maxLength={1600} style={{ minHeight: 44 }} value={row.copy[locale].body}
+                        onChange={(event) => updateAdditionalWorkCopy(index, locale, "body", event.target.value)} /></label>
+                    {copyVariantFields(locale, "work", row.copy[locale], index)}
+                  </div>)}
+                </div>
+              </fieldset>)}
+              {(input.additionalWorks?.length ?? 0) < 8 && <button className="button-secondary" type="button" disabled={!writer}
+                style={{ minHeight: 44, minWidth: 44, maxWidth: "100%" }} onClick={() => update({ additionalWorks: [...(input.additionalWorks ?? []), { workId: "", copy: {
+                  ru: { title: "Откройте дополнительную книгу", body: "Просмотрите выбранную дополнительную книгу." },
+                  en: { title: "Open the additional work", body: "Explore the selected additional work." },
+                } }] })}>Добавить книгу</button>}
+            </details>
           </>}
           {step.key === "checkpoint" && <p>Завершение связано с выбранной книгой. Новая сущность каталога не создаётся.</p>}
           <div className="site-copy-locales">
@@ -814,7 +899,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <p>{preview.locale === "ru" ? "Указанные тексты и источники по шагам. Редакционная проверка остаётся отдельной." : "Supplied copy and sources by step. Editorial review remains separate."}</p>
           <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {reviewRows.map((row) => <li key={row.id} data-review-node={row.id} style={{ minWidth: 0, padding: "10px 0", borderTop: "1px solid rgba(87, 54, 123, 0.2)" }}>
-              <strong>{row.step + 1}. {previewStepLabels[preview.locale][row.kind]}</strong>
+              <strong>{row.step + 1}. {previewNodeLabel(preview.locale, row.id, row.kind)}</strong>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 12, marginTop: 8 }}>
                 {row.copies.map((copy) => <div key={copy.locale} lang={copy.locale} data-review-locale={copy.locale} style={{ minWidth: 0, overflowWrap: "anywhere" }}>
                   <strong>{copy.locale.toUpperCase()}</strong>
@@ -892,7 +977,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                 : <>{preview.locale === "ru" ? "Не смоделированы: " : "Not modeled: "}{missingPreviewPrerequisites.map((reference) => reference.id + " · " + (preview.locale === "ru" ? "версия " : "version ") + reference.version).join("; ")}. </>}
               {preview.locale === "ru" ? "Фактическое завершение не проверено." : "Real completion has not been verified."}</>}
         </p>}
-        <p role="status" aria-live="polite" lang={preview.locale}>{preview.locale === "ru" ? `Шаг ${preview.step + 1} из ${previewDefinition.nodes.length}` : `Step ${preview.step + 1} of ${previewDefinition.nodes.length}`} · {previewStepLabels[preview.locale][previewNode.kind]}</p>
+        <p role="status" aria-live="polite" lang={preview.locale}>{preview.locale === "ru" ? `Шаг ${preview.step + 1} из ${previewDefinition.nodes.length}` : `Step ${preview.step + 1} of ${previewDefinition.nodes.length}`} · {previewNodeLabel(preview.locale, previewNode.id, previewNode.kind)}</p>
         <details data-booky-journey-step-overview lang={preview.locale} style={{ minWidth: 0 }}>
           <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>
             {preview.locale === "ru" ? "Шаги маршрута" : "Journey steps"} ({previewDefinition.nodes.length})
@@ -903,7 +988,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
               <button className={index === preview.step ? "button" : "button-secondary"} type="button" lang={preview.locale}
                 data-preview-step-choice={node.id} aria-current={index === preview.step ? "step" : undefined}
                 style={{ minHeight: 44, minWidth: 44, maxWidth: "100%", whiteSpace: "normal", textAlign: "start" }}
-                onClick={() => jumpPreviewStep(index)}>{index + 1}. {previewStepLabels[preview.locale][node.kind]}</button>
+                onClick={() => jumpPreviewStep(index)}>{index + 1}. {previewNodeLabel(preview.locale, node.id, node.kind)}</button>
             </li>)}
           </ol>
         </details>

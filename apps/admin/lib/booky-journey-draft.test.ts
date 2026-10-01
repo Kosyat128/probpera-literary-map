@@ -1761,3 +1761,200 @@ describe("adult Booky journey draft prerequisite references", () => {
     expect(configured.dialogues.every(record => record.review.status === "draft")).toBe(true);
   });
 });
+
+function additionalWorkValue(base = input(), count = 2): JourneyDraftInput {
+  return { ...base, additionalWorks: Array.from({ length: count }, (_, index) => ({ workId: `extra-work-${index + 1}`, copy: {
+    ru: { title: `Откройте дополнение ${index + 1}`, body: `Просмотрите дополнительную книгу ${index + 1}.` },
+    en: { title: `Open extra ${index + 1}`, body: `Explore additional work ${index + 1}.` },
+  } })) };
+}
+function additionalWorkCatalog(value: JourneyDraftInput, base = catalog(), count = 8): JourneyDraftCatalog {
+  const canonical = structuredClone(base), writer = canonical.countries.find(item => item.id === value.countryId)!.writers.find(item => item.id === value.writerId)!;
+  writer.works = [...writer.works, ...Array.from({ length: count }, (_, index) => ({ id: `extra-work-${index + 1}`,
+    label: { ru: `Дополнительная книга ${index + 1}`, en: `Additional work ${index + 1}` } }))];
+  return canonical;
+}
+
+describe("adult Booky journey draft additional canonical works", () => {
+  it("places one to eight distinct same-writer works before the unchanged main work with unique bilingual node and dialogue bindings", () => {
+    for (const count of [1, 2, 8]) {
+      const value = additionalWorkValue(input(), count), canonical = additionalWorkCatalog(value), exported = draft(value, canonical);
+      expect(exported.dialogues).toHaveLength((4 + count) * 2);
+      expect(exported.authoringSource.selection.additionalWorks?.map(item => [item.nodeId, item.work.id])).toEqual(
+        Array.from({ length: count }, (_, index) => [`work-extra-${index + 1}`, `extra-work-${index + 1}`]));
+      for (const definition of exported.definitions) {
+        expect(definition.nodes.map(node => node.id)).toEqual(["country", "writer", ...Array.from({ length: count }, (_, index) => `work-extra-${index + 1}`), "work", "checkpoint"]);
+        expect(new Set(definition.nodes.map(node => node.dialogue.id)).size).toBe(4 + count);
+        expect(getBookyJourneyChecksum(definition)).toBe(exported.definitionsChecksums.find(item => item.locale === definition.locale)?.checksum);
+        for (const [index, node] of definition.nodes.slice(2, 2 + count).entries()) {
+          expect(node).toMatchObject({ kind: "work", screen: "collection", entity: { kind: "work", countryId: value.countryId, writerId: value.writerId, workId: `extra-work-${index + 1}` } });
+          const record = exported.dialogues.find(item => item.payload.locale === definition.locale && item.payload.id === node.dialogue.id)!;
+          expect(record.payload.context).toBe(bookyJourneyDialogueContext(value.id, node));
+          expect(record.payload.entityIds).toEqual([bookyJourneyEntityId(node.entity!)]);
+          expect(record.payload.copy.title).toBe(value.additionalWorks![index].copy[definition.locale].title);
+          expect(record.payload.provenance.sourceRef).toBe(`/input/additionalWorks/${index}/copy/${definition.locale}`);
+          expect(record.payload.provenance.sourceSha256).toBe(exported.authoringSourceChecksum);
+          expect(record.payload.provenance.copySha256).toBe(contentTextHash(JSON.stringify({ title: record.payload.copy.title, body: record.payload.copy.body })));
+          expect(getBookyDialogueContentChecksum(record.payload)).toBe(node.dialogue.contentChecksum);
+          expect(getBookyDialogueChecksum({ payload: record.payload, review: record.review })).toBe(record.checksum);
+        }
+        expect(definition.nodes.at(-2)?.entity).toEqual({ kind: "work", countryId: value.countryId, writerId: value.writerId, workId: value.workId });
+        expect(definition.nodes.at(-1)?.entity).toBeNull();
+      }
+      const registry = createBookyDialogueRegistry(exported.dialogues, { canonicalEntityIds: [...new Set(exported.dialogues.flatMap(item => item.payload.entityIds))], approvedReviews: [] });
+      expect(registry.size).toBe((4 + count) * 2); expect(registry.rejections).toEqual([]);
+      expect(parseBookyJourneyDraft(JSON.stringify(exported), canonical).ok).toBe(true);
+      expect([exported.releaseReady, exported.humanReviewed, exported.childApproved, exported.narrationApproved]).toEqual([false, false, false, false]);
+    }
+  });
+
+  it("rejects repeated, main, unknown or foreign work IDs, unavailable canonical labels and overlong entity bindings", () => {
+    const canonical = additionalWorkCatalog(input());
+    for (const workId of ["test-work", "other-work", "missing", "", "bad id", null, 1, undefined]) {
+      const value = additionalWorkValue(); Object.assign(value.additionalWorks![0], { workId });
+      expect(errors(value, canonical)).toContain("additionalWorks.0.workId");
+    }
+    const duplicate = additionalWorkValue(); duplicate.additionalWorks![1].workId = "extra-work-1";
+    expect(errors(duplicate, canonical)).toContain("additionalWorks.1.workId");
+    for (const locale of ["ru", "en"] as const) {
+      const changed = structuredClone(canonical); changed.countries[0].writers[0].works[1].label[locale] = "";
+      expect(errors(additionalWorkValue(), changed)).toContain("additionalWorks.0.workId");
+    }
+    const value = additionalWorkValue(), scoped = additionalWorkCatalog(value);
+    scoped.countries[0].writers[1].works = [{ id: "extra-work-1", label: { ru: "Чужая локальная книга", en: "Foreign local work" } }];
+    expect(draft(value, scoped).authoringSource.selection.additionalWorks![0].work.label.en).toBe("Additional work 1");
+    const long = additionalWorkCatalog(value); long.countries[0].writers[0].works[1].id = "x".repeat(200); value.additionalWorks![0].workId = "x".repeat(200);
+    expect(errors(value, long)).toContain("additionalWorks.0.workId");
+  });
+
+  it("rejects holes, exotic prototypes, non-data rows or copy records and hidden or unknown fields without executing getters", () => {
+    let getterCalls = 0; const getter = () => { getterCalls++; throw new Error("additional work getter must not execute"); };
+    const row = () => structuredClone(additionalWorkValue().additionalWorks![0]);
+    const malformed: unknown[] = [undefined, null, {}, [], Array(1), [null], [{ workId: "extra-work-1" }], Array.from({ length: 9 }, row)];
+    for (const change of [
+      (rows: unknown[]) => { Object.defineProperty(rows, "0", { get: getter, enumerable: true }); },
+      (rows: unknown[]) => { Object.defineProperty(rows, "0", { value: row(), enumerable: false }); },
+      (rows: unknown[]) => { Object.defineProperty(rows, "hidden", { value: true }); },
+      (rows: unknown[]) => { Object.assign(rows, { extra: true }); },
+      (rows: unknown[]) => { Object.defineProperty(rows, Symbol("extra"), { value: true }); },
+      (rows: unknown[]) => { Object.setPrototypeOf(rows, null); },
+    ]) { const rows: unknown[] = [row()]; change(rows); malformed.push(rows); }
+    for (const target of ["row", "copy", "ru"] as const) {
+      for (const change of [
+        (record: object) => { Object.assign(record, { extra: true }); },
+        (record: object) => { Object.defineProperty(record, "hidden", { value: true }); },
+        (record: object) => { Object.defineProperty(record, Symbol("extra"), { value: true }); },
+        (record: object) => { Object.setPrototypeOf(record, { inherited: true }); },
+      ]) { const item = row(); change(target === "row" ? item : target === "copy" ? item.copy : item.copy.ru); malformed.push([item]); }
+    }
+    for (const [target, key] of [["row", "workId"], ["row", "copy"], ["copy", "en"], ["ru", "title"], ["ru", "caption"]] as const) {
+      const item = row(); Object.defineProperty(target === "row" ? item : target === "copy" ? item.copy : item.copy.ru, key, { enumerable: true, get: getter }); malformed.push([item]);
+    }
+    for (const rows of malformed) { const value = input(); Object.assign(value, { additionalWorks: rows }); expect(errors(value, additionalWorkCatalog(value))).toContain("additionalWorks"); }
+    for (const property of [{ enumerable: true, get: getter }, { value: [row()], enumerable: false }]) {
+      const value = input(); Object.defineProperty(value, "additionalWorks", property); expect(errors(value)).toContain("additionalWorks");
+    }
+    const plain = additionalWorkValue(); Object.assign(plain, { additionalWorks: [Object.assign(Object.create(null), row())] });
+    expect(draft(plain, additionalWorkCatalog(plain)).authoringSource.input.additionalWorks).toHaveLength(1);
+    expect(getterCalls).toBe(0);
+  });
+
+  it("applies existing separate RU EN main-copy and optional multiline variant bounds with precise actionable fields", () => {
+    const canonical = additionalWorkCatalog(input());
+    for (const locale of ["ru", "en"] as const) {
+      for (const [field, max, paragraphs] of [["title", 160, false], ["body", 1600, true], ["caption", 1600, true], ["reduced", 320, true]] as const) {
+        const bounded = additionalWorkValue(); bounded.additionalWorks![0].copy[locale][field] = "x".repeat(max);
+        expect(createBookyJourneyDraft(bounded, canonical).ok).toBe(true);
+        for (const bad of ["", " leading", "trailing ", "x".repeat(max + 1), "bad\u0000text", null, 4, undefined, ...(paragraphs ? [] : ["two\nlines"])]) {
+          const value = additionalWorkValue(); Object.assign(value.additionalWorks![0].copy[locale], { [field]: bad });
+          expect(errors(value, canonical)).toContain(`additionalWorks.0.copy.${locale}.${field}`);
+        }
+      }
+      const value = additionalWorkValue(); value.additionalWorks![0].copy[locale].caption = "Первая строка\nВторая строка";
+      value.additionalWorks![0].copy[locale].reduced = "First\nSecond";
+      const exported = draft(value, canonical), record = exported.dialogues.find(item => item.payload.id === "test-route.work-extra-1" && item.payload.locale === locale)!;
+      expect(record.payload.copy.caption).toBe(value.additionalWorks![0].copy[locale].caption);
+      expect(record.payload.copy.reduced).toBe(value.additionalWorks![0].copy[locale].reduced);
+      const omitted = additionalWorkValue(), old = draft(omitted, canonical).dialogues.find(item => item.payload.id === "test-route.work-extra-1" && item.payload.locale === locale)!;
+      expect(record.payload.provenance.copySha256).toBe(old.payload.provenance.copySha256); expect(record.review.contentChecksum).not.toBe(old.review.contentChecksum);
+      expect(exported.authoringSource.input.additionalWorks![1].copy[locale]).not.toHaveProperty("caption");
+    }
+  });
+
+  it("keeps fact activity and checkpoint bound to the final main work through extra reordering and optional-step ordering while rehashing all source-bound payloads", () => {
+    const value = additionalWorkValue(variantValue()), canonical = additionalWorkCatalog(value);
+    value.optionalNodeOrder = ["activity", "sourced-fact"]; value.prerequisites = [{ id: "unresolved.route", version: 6 }];
+    const ordinaryValue = structuredClone(value); delete ordinaryValue.additionalWorks;
+    const ordinary = draft(ordinaryValue, canonical), exported = draft(value, canonical);
+    for (const definition of exported.definitions) {
+      expect(definition.nodes.map(node => node.id)).toEqual(["country", "writer", "work-extra-1", "work-extra-2", "work", "activity", "sourced-fact", "checkpoint"]);
+      expect(definition.nodes[5].activity?.targetWork).toEqual(definition.nodes[4].entity);
+      expect(definition.nodes[6].entity).toEqual(definition.nodes[4].entity);
+      expect(definition.nodes[7].entity).toBeNull(); expect(definition.prerequisites).toEqual(value.prerequisites);
+      expect(getBookyJourneyFactChecksum(definition.nodes[6].fact, definition.nodes[4].entity!, "collection")).toBeTruthy();
+    }
+    for (const old of ordinary.dialogues) {
+      const next = exported.dialogues.find(item => item.payload.id === old.payload.id && item.payload.locale === old.payload.locale)!;
+      expect(next.payload.copy).toEqual(old.payload.copy); expect(next.payload.context).toBe(old.payload.context);
+      expect(next.payload.provenance.copySha256).toBe(old.payload.provenance.copySha256);
+      expect(next.payload.provenance.sourceSha256).not.toBe(old.payload.provenance.sourceSha256);
+      expect(next.review.contentChecksum).not.toBe(old.review.contentChecksum); expect(next.checksum).not.toBe(old.checksum);
+      expect(next.payload.factualSources).toEqual(old.payload.factualSources);
+    }
+    value.additionalWorks = [...value.additionalWorks!].reverse(); const reordered = draft(value, canonical);
+    expect(reordered.authoringSourceChecksum).not.toBe(exported.authoringSourceChecksum);
+    expect(reordered.definitions[0].nodes[2].entity).toMatchObject({ workId: "extra-work-2" });
+    expect(reordered.dialogues.find(item => item.payload.id === "test-route.work-extra-1" && item.payload.locale === "ru")?.payload.copy.title).toBe("Откройте дополнение 2");
+    expect(reordered.definitions[0].nodes[5].activity?.targetWork).toEqual(exported.definitions[0].nodes[5].activity?.targetWork);
+    expect(getBookyJourneyFactChecksum(reordered.definitions[0].nodes[6].fact, reordered.definitions[0].nodes[4].entity!, "collection"))
+      .not.toBe(getBookyJourneyFactChecksum(exported.definitions[0].nodes[6].fact, exported.definitions[0].nodes[4].entity!, "collection"));
+  });
+
+  it("independently clones and freezes authored rows canonical snapshots and locale entities while leaving mutable callers untouched", () => {
+    const value = additionalWorkValue(), canonical = additionalWorkCatalog(value), before = JSON.stringify({ value, canonical }), exported = draft(value, canonical);
+    expect(JSON.stringify({ value, canonical })).toBe(before);
+    const rows = exported.authoringSource.input.additionalWorks!, snapshots = exported.authoringSource.selection.additionalWorks!;
+    expect(rows).not.toBe(value.additionalWorks); expect(rows[0]).not.toBe(value.additionalWorks![0]); expect(rows[0].copy.ru).not.toBe(value.additionalWorks![0].copy.ru);
+    expect(snapshots[0].work.label).not.toBe(canonical.countries[0].writers[0].works[1].label);
+    expect(exported.definitions[0].nodes[2].entity).not.toBe(exported.definitions[1].nodes[2].entity);
+    for (const item of [rows, rows[0], rows[0].copy, rows[0].copy.ru, snapshots, snapshots[0], snapshots[0].work, snapshots[0].work.label, exported.definitions[0].nodes[2].entity]) expect(Object.isFrozen(item)).toBe(true);
+    const reopened = parseBookyJourneyDraft(JSON.stringify(exported), canonical); expect(reopened.ok).toBe(true);
+    if (!reopened.ok) throw new Error("additional work reopen failed");
+    expect(reopened.input.additionalWorks).toEqual(rows); expect(reopened.input.additionalWorks).not.toBe(rows);
+    expect(reopened.draft.authoringSource.selection.additionalWorks![0].work.label).not.toBe(snapshots[0].work.label);
+    value.additionalWorks![0].copy.ru.body = "Изменённая подсказка."; canonical.countries[0].writers[0].works[1].label.en = "Changed canonical label";
+    expect(rows[0].copy.ru.body).toBe("Просмотрите дополнительную книгу 1."); expect(snapshots[0].work.label.en).toBe("Additional work 1");
+    expect(Object.isFrozen(value.additionalWorks)).toBe(false); expect(draft(value, canonical).authoringSourceChecksum).not.toBe(exported.authoringSourceChecksum);
+    expect(parseBookyJourneyDraft(JSON.stringify(exported), canonical).ok).toBe(false);
+  });
+
+  it("rejects malformed imported rows and independently repaired source snapshot dialogue entity and sequence tampering through full regeneration", () => {
+    const value = additionalWorkValue(variantValue()), canonical = additionalWorkCatalog(value), exported = draft(value, canonical), serialized = JSON.stringify(exported);
+    for (const rows of [[], [{ workId: "extra-work-1" }], [{ ...value.additionalWorks![0], extra: true }], [{ ...value.additionalWorks![0], workId: "other-work" }]]) {
+      const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized); Object.assign(changed.authoringSource.input, { additionalWorks: rows });
+      expect(parseBookyJourneyDraft(JSON.stringify(changed), canonical).ok).toBe(false);
+    }
+    for (const change of [
+      (changed: Mutable<BookyJourneyDraft>) => { changed.authoringSource.input.additionalWorks![0].copy.ru.caption = "Changed source variant"; changed.authoringSourceChecksum = contentRecordHash(changed.authoringSource); },
+      (changed: Mutable<BookyJourneyDraft>) => { changed.authoringSource.selection.additionalWorks![0].work.label.en = "Forged canonical label"; changed.authoringSourceChecksum = contentRecordHash(changed.authoringSource); },
+      (changed: Mutable<BookyJourneyDraft>) => { changed.definitions[0].nodes[2].entity = { kind: "work", countryId: value.countryId, writerId: value.writerId, workId: value.workId }; changed.definitionsChecksums[0].checksum = getBookyJourneyChecksum(changed.definitions[0])!; },
+      (changed: Mutable<BookyJourneyDraft>) => { const nodes = changed.definitions[0].nodes; [nodes[2], nodes[4]] = [nodes[4], nodes[2]]; changed.definitionsChecksums[0].checksum = getBookyJourneyChecksum(changed.definitions[0])!; },
+      (changed: Mutable<BookyJourneyDraft>) => { const record = changed.dialogues.find(item => item.payload.id === "test-route.work-extra-1" && item.payload.locale === "en")!; record.payload.copy.reduced = "Forged derived variant"; record.review.contentChecksum = getBookyDialogueContentChecksum(record.payload)!; record.checksum = getBookyDialogueChecksum({ payload: record.payload, review: record.review })!; },
+    ]) { const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized); change(changed); expect(parseBookyJourneyDraft(JSON.stringify(changed), canonical).ok).toBe(false); }
+    const removed = structuredClone(canonical); removed.countries[0].writers[0].works = removed.countries[0].writers[0].works.filter(item => item.id !== "extra-work-1");
+    const failed = parseBookyJourneyDraft(serialized, removed); expect(failed.ok).toBe(false);
+    if (!failed.ok) expect(failed.errors.map(item => item.field)).toContain("additionalWorks.0.workId");
+  });
+
+  it("omits both optional source and selection keys and restores existing verified native download goldens after removing every additional row", () => {
+    for (const fixture of historicalOrderlessDownloads) {
+      const value = additionalWorkValue(structuredClone(fixture.input)), canonical = additionalWorkCatalog(value, fixture.catalog), configured = draft(value, canonical);
+      expect(contentTextHash(JSON.stringify(configured, null, 2) + "\n")).not.toBe(fixture.sha256);
+      delete value.additionalWorks; const restored = draft(value, canonical);
+      expect(contentTextHash(JSON.stringify(restored, null, 2) + "\n")).toBe(fixture.sha256);
+      expect(Object.hasOwn(restored.authoringSource.input, "additionalWorks")).toBe(false); expect(Object.hasOwn(restored.authoringSource.selection, "additionalWorks")).toBe(false);
+      expect(restored.authoringSource).toEqual(draft(fixture.input, fixture.catalog).authoringSource);
+      expect(restored.journeyApprovals).toEqual([]); expect(restored.availability).toEqual([]);
+    }
+  });
+});

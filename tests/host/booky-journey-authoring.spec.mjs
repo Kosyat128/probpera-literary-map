@@ -9,7 +9,11 @@ const origin = 'https://booky-journey-editor.test';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const catalog = { countries: [
   { id: 'country-a', label: { ru: 'Тестовая страна А', en: 'Synthetic country A' }, writers: [
-    { id: 'writer-a', label: { ru: 'Тестовый писатель А', en: 'Synthetic writer A' }, works: [{ id: 'work-a', label: { ru: 'Тестовая книга А', en: 'Synthetic work A' } }] },
+    { id: 'writer-a', label: { ru: 'Тестовый писатель А', en: 'Synthetic writer A' }, works: [
+      { id: 'work-a', label: { ru: 'Тестовая книга А', en: 'Synthetic work A' } },
+      { id: 'extra-alpha', label: { ru: 'Дополнение Альфа', en: 'Extra Alpha' } },
+      { id: 'extra-beta', label: { ru: 'Дополнение Бета', en: 'Extra Beta' } },
+    ] },
     { id: 'writer-b', label: { ru: 'Тестовый писатель Б', en: '' }, works: [{ id: 'work-b', label: { ru: 'Тестовая книга Б', en: 'Synthetic work B' } }] },
   ] },
   { id: 'country-b', label: { ru: 'Тестовая страна Б', en: 'Synthetic country B' }, writers: [
@@ -189,7 +193,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   for (const [kind, select, expectedId, queries, total] of [
     ['country', country, 'country-a', ['  ТЕСТОВАЯ СТРАНА А  ', 'SYNTHETIC COUNTRY A', ' COUNTRY-A '], 3],
     ['writer', writer, 'writer-a', ['ТЕСТОВЫЙ ПИСАТЕЛЬ А', ' SYNTHETIC WRITER A ', 'WRITER-A'], 2],
-    ['work', work, 'work-a', ['ТЕСТОВАЯ КНИГА А', 'SYNTHETIC WORK A', ' WORK-A '], 1],
+    ['work', work, 'work-a', ['ТЕСТОВАЯ КНИГА А', 'SYNTHETIC WORK A', ' WORK-A '], 3],
   ]) {
     const panel = searchPanel(kind), query = searchQuery(kind), result = panel.locator('[data-booky-search-result]');
     await panel.locator('summary').tap();
@@ -674,7 +678,6 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   }
   const ruCompletionReportBounds = await completionReport.boundingBox(); expect(ruCompletionReportBounds.y).toBeGreaterThanOrEqual(0); expect(ruCompletionReportBounds.y + ruCompletionReportBounds.height).toBeLessThanOrEqual(844);
   expect(await overflow()).toBe(false);
-  await capture('booky-journey-preview-ru-320.png', 'Actual RU320 expanded adult-profile scenario with two immutable configured prerequisite ID/version pairs and zero modeled completions. Native checkboxes describe this local scenario; no existence, real completion, approval, device or runtime admission is established.');
   await modeledCompletion('unresolved.route-v1', 7).focus(); await modeledCompletion('unresolved.route-v1', 7).press('Space');
   await expect(modeledCompletion('unresolved.route-v1', 7)).toBeFocused(); await expect(modeledCompletion('unresolved.route-v1', 7)).toBeChecked();
   await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'partial'); await expect(completionReport).toContainText('Модель завершений: 1 из 2.');
@@ -751,6 +754,108 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   const restoredBytes = await fs.readFile(restoredExportedPath); expect(sha(restoredBytes)).toBe('7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5');
   expect(Object.hasOwn(JSON.parse(restoredBytes.toString('utf8')).authoringSource.input, 'prerequisites')).toBe(false);
   expect(downloads).toHaveLength(4); expect(await page.evaluate(() => window.__activityValidationCalls)).toEqual([]);
+  const additionalPanel = page.locator('[data-booky-additional-works]');
+  const additionalRow = index => additionalPanel.locator(`[data-booky-additional-work="${index}"]`);
+  const additionalSelect = index => additionalRow(index).getByRole('combobox', { name: `Книга · дополнение ${index + 1}`, exact: true });
+  const additionalTitle = (index, locale) => additionalRow(index).getByRole('textbox', { name: `Название дополнительной книги ${index + 1} (${locale.toUpperCase()})`, exact: true });
+  const additionalBody = (index, locale) => additionalRow(index).getByRole('textbox', { name: `Подсказка дополнительной книги ${index + 1} (${locale.toUpperCase()})`, exact: true });
+  const additionalVariants = (index, locale) => additionalRow(index).locator(`[data-booky-copy-variants="work"][data-copy-locale="${locale}"]`);
+  await expect(additionalPanel).not.toHaveAttribute('open', ''); await additionalPanel.locator(':scope > summary').tap();
+  await additionalPanel.getByRole('button', { name: 'Добавить книгу', exact: true }).tap(); await expect(preview).toHaveCount(0);
+  await expect(additionalSelect(0)).toHaveValue(''); await expect(additionalSelect(0).locator('option[value="work-a"]')).toHaveAttribute('disabled', '');
+  await expect(additionalSelect(0).locator('option[value="work-a"]')).toContainText('основная книга');
+  await additionalSelect(0).selectOption('extra-alpha');
+  const authoredAdditional = [
+    { id: 'extra-alpha', ru: { title: 'Изучите Альфу', body: 'Сравните выбранное дополнение Альфа.', caption: 'Альфа\nОтдельная подпись.' }, en: { title: 'Explore Alpha', body: 'Compare the selected Alpha supplement.', caption: 'Alpha\nSeparate caption.' } },
+    { id: 'extra-beta', ru: { title: 'Изучите Бету', body: 'Сравните выбранное дополнение Бета.', reduced: 'Бета кратко.' }, en: { title: 'Explore Beta', body: 'Compare the selected Beta supplement.' } },
+  ];
+  await additionalPanel.getByRole('button', { name: 'Добавить книгу', exact: true }).tap();
+  await expect(additionalSelect(1).locator('option[value="extra-alpha"]')).toHaveAttribute('disabled', ''); await expect(additionalSelect(1).locator('option[value="extra-alpha"]')).toContainText('уже добавлена');
+  await additionalSelect(1).selectOption('extra-beta');
+  for (const [index, row] of authoredAdditional.entries()) for (const locale of ['ru', 'en']) {
+    await additionalTitle(index, locale).fill(row[locale].title); await additionalBody(index, locale).fill(row[locale].body);
+  }
+  for (const locale of ['ru', 'en']) {
+    await expect(additionalVariants(0, locale)).not.toHaveAttribute('open', ''); await additionalVariants(0, locale).locator('summary').tap();
+    const caption = additionalVariants(0, locale).getByRole('textbox', { name: locale === 'ru' ? 'Подпись «Дополнительная книга 1» (RU)' : 'Caption “Additional work 1” (EN)', exact: true });
+    await caption.fill(authoredAdditional[0][locale].caption);
+  }
+  const badExtraCaption = additionalVariants(0, 'en').getByRole('textbox', { name: 'Caption “Additional work 1” (EN)', exact: true });
+  await badExtraCaption.fill(' wrong'); await additionalVariants(0, 'en').locator('summary').tap(); await previewButton.tap();
+  const additionalCopyAction = page.locator('[data-booky-error-target="additionalWorks.0.copy.en.caption"]'); await expect(additionalCopyAction).toHaveCount(1);
+  await additionalPanel.locator(':scope > summary').tap(); await additionalCopyAction.tap(); await expect(additionalPanel).toHaveAttribute('open', '');
+  await expect(additionalVariants(0, 'en')).toHaveAttribute('open', ''); await expect(badExtraCaption).toBeFocused(); await expect(badExtraCaption).toHaveAttribute('aria-invalid', 'true');
+  expect(await badExtraCaption.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id => document.getElementById(id)?.textContent.includes('Подпись')))).toBe(true);
+  await badExtraCaption.fill(authoredAdditional[0].en.caption); await expect(additionalCopyAction).toHaveCount(0); await expect(badExtraCaption).not.toHaveAttribute('aria-invalid', 'true');
+  await additionalVariants(1, 'ru').locator('summary').tap(); await additionalVariants(1, 'ru').getByRole('textbox', { name: 'Короткий текст «Дополнительная книга 2» (RU)', exact: true }).fill(authoredAdditional[1].ru.reduced);
+  const extraEarlier = additionalPanel.getByRole('button', { name: 'Дополнительная книга 2 · раньше', exact: true });
+  await extraEarlier.focus(); await extraEarlier.press('Enter'); await expect(additionalPanel.getByRole('button', { name: 'Дополнительная книга 1 · раньше', exact: true })).toBeFocused();
+  await expect(additionalSelect(0)).toHaveValue('extra-beta'); await expect(additionalSelect(1)).toHaveValue('extra-alpha');
+  await expect(additionalTitle(0, 'ru')).toHaveValue(authoredAdditional[1].ru.title); await expect(additionalTitle(1, 'en')).toHaveValue(authoredAdditional[0].en.title);
+  for (const control of [additionalPanel.locator(':scope > summary'), additionalSelect(0), additionalSelect(1), extraEarlier, additionalPanel.getByRole('button', { name: 'Удалить дополнение 1', exact: true })]) {
+    const bounds = await control.boundingBox(); expect(bounds.height).toBeGreaterThanOrEqual(44); expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.x + bounds.width).toBeLessThanOrEqual(321);
+  }
+  expect(await overflow()).toBe(false); await previewButton.tap(); await expect(preview).toBeVisible();
+  await overviewSummary.tap(); await expect(overviewSummary).toHaveText('Шаги маршрута (6)');
+  await expect(overview.getByRole('button')).toHaveText(['1. Страна', '2. Писатель', '3. Доп. книга · Дополнение Бета', '4. Доп. книга · Дополнение Альфа', '5. Книга', '6. Завершение']);
+  await overview.locator('[data-preview-step-choice="work-extra-2"]').tap(); await overviewSummary.tap();
+  await expect(preview.locator('[data-preview-step="work-extra-2"]')).toContainText('Каноническая запись: Дополнение Альфа');
+  await previewCopyView.selectOption('caption'); await expect(previewCopy).toHaveText(authoredAdditional[0].ru.caption);
+  await reviewReport.locator('summary').tap(); await expect(reviewReport.locator('summary')).toHaveText('Отчёт по черновику (6)');
+  await expect(reviewReport.locator('[data-review-node="work-extra-1"] [data-review-locale="en"] [data-review-copy="reduced"]')).toHaveAttribute('data-copy-presence', 'title-fallback');
+  await expect(reviewReport.locator('[data-review-node="work-extra-1"] [data-review-locale="ru"] [data-review-copy="reduced"]')).toHaveAttribute('data-copy-presence', 'authored');
+  for (const locale of ['ru', 'en']) await expect(reviewReport.locator(`[data-review-node="work-extra-2"] [data-review-locale="${locale}"] [data-review-copy="caption"]`)).toHaveAttribute('data-copy-presence', 'authored');
+  await reviewReport.locator('[data-review-node="work-extra-1"] [data-review-inspect="en"]').tap();
+  await expect(preview.locator('[data-preview-step="work-extra-1"]')).toContainText('Canonical record: Extra Beta'); await expect(previewCopy).toHaveText(authoredAdditional[1].en.title);
+  await reviewReport.locator('[data-review-node="work-extra-2"] [data-review-inspect="ru"]').tap(); await reviewReport.locator('summary').tap();
+  await comparison.locator('summary').tap(); await expect(comparison).toHaveAttribute('data-comparison-node', 'work-extra-2');
+  await expect(comparisonRu.locator('[data-comparison-copy="caption"]')).toHaveText(authoredAdditional[0].ru.caption);
+  await expect(comparisonEn.locator('[data-comparison-copy="caption"]')).toHaveText(authoredAdditional[0].en.caption);
+  await comparison.locator('summary').evaluate(node => { node.scrollIntoView({ block: 'start' }); window.scrollBy(0, -12); });
+  for (const control of [comparison.locator('summary'), comparisonColumns]) {
+    const bounds = await control.boundingBox(); expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844);
+    expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.x + bounds.width).toBeLessThanOrEqual(321);
+  }
+  expect(await overflow()).toBe(false);
+  await capture('booky-journey-preview-ru-320.png', 'Actual RU320 comparison for the second additional canonical work, Alpha, after author-defined Beta/Alpha ordering. Its independent authored RU/EN multiline captions are visible in the existing local preview; no full graph, editorial, installed-device or runtime acceptance is established.');
+  await overviewSummary.tap(); await overview.locator('[data-preview-step-choice="work"]').tap(); await expect(preview.locator('[data-preview-step="work"]')).toContainText('Каноническая запись: Тестовая книга А');
+  await overview.locator('[data-preview-step-choice="checkpoint"]').tap(); await expect(preview.locator('[data-preview-step="checkpoint"]')).toContainText('Книга для завершения: Тестовая книга А');
+  await overviewSummary.tap();
+  const extraDownloadPromise = page.waitForEvent('download'); await button.tap(); const extraDownload = await extraDownloadPromise; expect(await extraDownload.failure()).toBeNull();
+  const extraExportedPath = testInfo.outputPath('synthetic-additional-works-draft.json'); await extraDownload.saveAs(extraExportedPath);
+  const extraBytes = await fs.readFile(extraExportedPath), extraDraft = JSON.parse(extraBytes.toString('utf8'));
+  expect(extraDraft.authoringSource.input.additionalWorks.map(row => row.workId)).toEqual(['extra-beta', 'extra-alpha']);
+  expect(extraDraft.authoringSource.input.additionalWorks.map(row => row.copy)).toEqual([authoredAdditional[1], authoredAdditional[0]].map(({ id, ...copy }) => copy));
+  expect(extraDraft.authoringSource.selection.additionalWorks.map(row => [row.nodeId, row.work.id])).toEqual([['work-extra-1', 'extra-beta'], ['work-extra-2', 'extra-alpha']]);
+  for (const definition of extraDraft.definitions) expect(definition.nodes.map(node => node.id)).toEqual(['country', 'writer', 'work-extra-1', 'work-extra-2', 'work', 'checkpoint']);
+  const preservedAdditionalPreview = await preview.innerText(), forgedExtraSnapshot = structuredClone(extraDraft);
+  forgedExtraSnapshot.authoringSource.selection.additionalWorks[1].work.label.en = 'Forged extra label';
+  forgedExtraSnapshot.authoringSourceChecksum = await page.evaluate(source => window.__copyVariantRecordHash(source), forgedExtraSnapshot.authoringSource);
+  await upload('rehashed-additional-snapshot.json', Buffer.from(JSON.stringify(forgedExtraSnapshot))); await expect(page.getByRole('alert')).toBeVisible();
+  expect(await preview.innerText()).toBe(preservedAdditionalPreview); await expect(additionalBody(1, 'en')).toHaveValue(authoredAdditional[0].en.body);
+  await additionalBody(0, 'ru').fill('Несохранённая подсказка дополнительной книги.'); await upload('native-additional-works-draft.json', extraBytes);
+  await expect(additionalBody(0, 'ru')).toHaveValue(authoredAdditional[1].ru.body); await expect(additionalBody(1, 'en')).toHaveValue(authoredAdditional[0].en.body); await expect(preview).toHaveCount(0);
+  await work.selectOption('extra-alpha'); await expect(additionalSelect(1)).toHaveValue('extra-alpha'); await expect(additionalSelect(1).locator('option[value="extra-alpha"]')).toHaveAttribute('disabled', '');
+  await previewButton.tap(); const mainCollisionAction = page.locator('[data-booky-error-target="additionalWorks.1.workId"]'); await expect(mainCollisionAction).toHaveCount(1);
+  await additionalPanel.locator(':scope > summary').tap(); await mainCollisionAction.tap(); await expect(additionalSelect(1)).toBeFocused();
+  await expect(additionalTitle(1, 'en')).toHaveValue(authoredAdditional[0].en.title); await work.selectOption('work-a'); await expect(mainCollisionAction).toHaveCount(0);
+  await country.selectOption('country-b'); await writer.selectOption('writer-c'); await work.selectOption('work-c');
+  await expect(additionalSelect(0)).toHaveValue('extra-beta'); await expect(additionalSelect(0).locator('option[value="extra-beta"]')).toHaveAttribute('disabled', '');
+  await expect(additionalSelect(0).locator('option[value="extra-beta"]')).toContainText('не принадлежит выбранному писателю');
+  await expect(additionalTitle(0, 'ru')).toHaveValue(authoredAdditional[1].ru.title); await expect(additionalBody(1, 'en')).toHaveValue(authoredAdditional[0].en.body);
+  await previewButton.tap(); await expect(preview).toHaveCount(0); const foreignExtraAction = page.locator('[data-booky-error-target="additionalWorks.0.workId"]'); await expect(foreignExtraAction).toHaveCount(1);
+  await foreignExtraAction.tap(); await expect(additionalSelect(0)).toBeFocused(); await expect(additionalSelect(0)).toHaveAttribute('aria-invalid', 'true');
+  await country.selectOption('country-a'); await writer.selectOption('writer-a'); await work.selectOption('work-a');
+  await expect(additionalSelect(0)).toHaveValue('extra-beta'); await expect(additionalSelect(1)).toHaveValue('extra-alpha'); await expect(foreignExtraAction).toHaveCount(0);
+  await additionalPanel.getByRole('button', { name: 'Удалить дополнение 1', exact: true }).tap(); await expect(additionalSelect(0)).toHaveValue('extra-alpha');
+  await additionalPanel.getByRole('button', { name: 'Удалить дополнение 1', exact: true }).focus(); await additionalPanel.getByRole('button', { name: 'Удалить дополнение 1', exact: true }).press('Enter');
+  await expect(additionalRow(0)).toHaveCount(0); await expect(additionalPanel.locator(':scope > summary')).toBeFocused();
+  await previewButton.tap(); await overviewSummary.tap(); await expect(overviewSummary).toHaveText('Шаги маршрута (4)'); await overviewSummary.tap();
+  const extrasRemovedDownloadPromise = page.waitForEvent('download'); await button.tap(); const extrasRemovedDownload = await extrasRemovedDownloadPromise; expect(await extrasRemovedDownload.failure()).toBeNull();
+  const extrasRemovedPath = testInfo.outputPath('synthetic-after-additional-work-removal.json'); await extrasRemovedDownload.saveAs(extrasRemovedPath);
+  const extrasRemovedBytes = await fs.readFile(extrasRemovedPath); expect(sha(extrasRemovedBytes)).toBe('7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5');
+  expect(Object.hasOwn(JSON.parse(extrasRemovedBytes.toString('utf8')).authoringSource.input, 'additionalWorks')).toBe(false);
+  expect(downloads).toHaveLength(6); expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls, answer: window.__activityAnswerCalls }))).toEqual({ validation: [], answer: [] });
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
   const profileStorageWrites=await page.evaluate(()=>window.__previewProfileStorageWrites); expect(profileStorageWrites).toEqual([]);
   await testInfo.attach('booky-journey-editor-evidence', { contentType: 'application/json', body: JSON.stringify({
@@ -782,9 +887,15 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     sameSourceAgeLevelLocaleStepWidthTextViewAndQueryPreserveModeledPairs:true,
     toggleSuccessfulPreviewImportAndDraftVersionEditResetModeledPairsAndRejectedImportPreservesThem:true,
     exportPreservesCurrentScenarioAndActualBytesEqualOrdinaryScenarioExport:true,
+    additionalWorksStartCollapsedWithExactlyTwoSyntheticLoadedSameWriterChoices:true, additionalWorkOrderingKeepsNativeFocusAndAuthoredRows:true,
+    additionalWorkLabelsCopyVariantsReportAndComparisonResolveImmutableNodeIdSnapshots:true,
+    mainDuplicateAndForeignOptionsRemainExplicitlyDisabledWithoutDeletingAuthoredCopy:true, additionalCopyAndRelationshipErrorsHaveNativeRecovery:true,
+    additionalWorkNativeExportReopenAndRehashedSnapshotTamperRejectionVerified:true, lastAdditionalRemovalRestoresOriginal7523Download:true,
     prerequisiteExportedDraft: { path: prerequisiteExportedPath, sha256: sha(prerequisiteBytes), bytes: prerequisiteBytes.length },
     ordinaryPrerequisiteExportedDraft: { path: ordinaryPrerequisiteExportedPath, sha256: sha(ordinaryPrerequisiteBytes), bytes: ordinaryPrerequisiteBytes.length },
     restoredExportedDraft: { path: restoredExportedPath, sha256: sha(restoredBytes), bytes: restoredBytes.length },
+    additionalWorksExportedDraft: { path: extraExportedPath, sha256: sha(extraBytes), bytes: extraBytes.length },
+    additionalWorksRemovedDraft: { path: extrasRemovedPath, sha256: sha(extrasRemovedBytes), bytes: extrasRemovedBytes.length },
     localPreviewWidthStartsCollapsedAndAvailable:true, localizedNativeWidthChoicesRuEnVerified:true, actualPreviewFrameFitsParentAt320:true,
     actualDesktopFrameWidths320And768Verified:true, availableWidthRestoresActualParentWidth:true, widthControlsMinimum44CssPxAndKeyboardFocusVerified:true,
     widthSelectionPreservesWorkProfileAndCopyView:true, widthSelectionDoesNotChangeExportedBytesOrFormWidth:true, previewWidthHasNoStorageWrites:true, previewWidthMeasurements,
@@ -2132,6 +2243,39 @@ test('optional bilingual work fact preserves authored source metadata through st
   for (const call of finalValidationCalls) { expect(call.actualHelperCalled).toBe(true); expect(call.actualResult.ok).toBe(true); }
   expect(downloads).toHaveLength(3); expect(screenshots).toHaveLength(2);
   expect(await page.evaluate(() => window.__factExportBlobs.length)).toBe(3);
+  await upload('restore-combined-with-additional-works.json', defaultBytes);
+  const additionalPanel = page.locator('[data-booky-additional-works]');
+  await expect(additionalPanel).not.toHaveAttribute('open', ''); await additionalPanel.locator(':scope > summary').tap();
+  for (const [index, workId] of ['extra-alpha', 'extra-beta'].entries()) {
+    await additionalPanel.getByRole('button', { name: 'Добавить книгу', exact: true }).tap();
+    await additionalPanel.getByRole('combobox', { name: `Книга · дополнение ${index + 1}`, exact: true }).selectOption(workId);
+  }
+  await expect(orderRows).toHaveText(['6. Факт', '7. Задание']);
+  await expect(page.locator('#journey-step-work')).toHaveText('5. Книга'); await expect(page.locator('#journey-step-checkpoint')).toHaveText('8. Завершение');
+  await previewButton.tap(); await overview.locator('summary').tap(); await expect(overview.locator('summary')).toHaveText('Шаги маршрута (8)');
+  await overview.locator('[data-preview-step-choice="work-extra-1"]').tap(); await expect(preview.locator('[data-preview-step="work-extra-1"]')).toContainText('Каноническая запись: Дополнение Альфа');
+  await overview.locator('[data-preview-step-choice="sourced-fact"]').tap(); await expect(stepStatus).toContainText('Шаг 6 из 8 · Факт'); await verifySources('ru');
+  await expect(factStep).toContainText('Каноническая запись: Тестовая книга А');
+  const combinedAdditionalDownloadPromise = page.waitForEvent('download'); await downloadButton.tap(); const combinedAdditionalDownload = await combinedAdditionalDownloadPromise;
+  expect(await combinedAdditionalDownload.failure()).toBeNull();
+  const combinedAdditionalPath = testInfo.outputPath('synthetic-combined-additional-works.json'); await combinedAdditionalDownload.saveAs(combinedAdditionalPath);
+  const combinedAdditionalBytes = await fs.readFile(combinedAdditionalPath), combinedAdditionalDraft = JSON.parse(combinedAdditionalBytes.toString('utf8'));
+  for (const definition of combinedAdditionalDraft.definitions) {
+    expect(definition.nodes.map(node => node.id)).toEqual(['country', 'writer', 'work-extra-1', 'work-extra-2', 'work', 'sourced-fact', 'activity', 'checkpoint']);
+    const mainWork = { kind: 'work', countryId: 'country-a', writerId: 'writer-a', workId: 'work-a' };
+    expect(definition.nodes[4].entity).toEqual(mainWork); expect(definition.nodes[5].entity).toEqual(mainWork); expect(definition.nodes[6].activity.targetWork).toEqual(mainWork);
+    expect(definition.nodes[2].entity.workId).toBe('extra-alpha'); expect(definition.nodes[3].entity.workId).toBe('extra-beta'); expect(definition.nodes[7].entity).toBeNull();
+  }
+  await upload('native-combined-additional-works.json', combinedAdditionalBytes); await expect(preview).toHaveCount(0);
+  await previewButton.tap(); await overview.locator('summary').tap(); await overview.locator('[data-preview-step-choice="activity"]').tap();
+  await expect(stepStatus).toContainText('Шаг 7 из 8 · Задание'); await activityStep.locator('[data-answer-choice-id="choice-2"]').tap();
+  await activityStep.getByRole('button', { name: 'Проверить ответ', exact: true }).tap(); await expect(activityStep.locator('[data-booky-activity-verdict]')).toHaveAttribute('data-verdict', 'correct');
+  await expect(stepStatus).toContainText('Шаг 7 из 8 · Задание');
+  const allFinalValidationCalls = await page.evaluate(() => window.__activityValidationCalls), allFinalAnswerCalls = await page.evaluate(() => window.__activityAnswerCalls);
+  expect(allFinalAnswerCalls).toHaveLength(5); expect(allFinalAnswerCalls.at(-1).actualHelperCalled).toBe(true); expect(allFinalAnswerCalls.at(-1).actualResult.correct).toBe(true);
+  expect(allFinalAnswerCalls.at(-1).actualResult.draftChecksum).toBe(await page.evaluate(value => window.__copyVariantRecordHash(value), combinedAdditionalDraft));
+  expect(allFinalValidationCalls.slice(finalValidationCalls.length).every(call => call.actualHelperCalled && call.actualResult.ok && call.completed)).toBe(true);
+  expect(downloads).toHaveLength(4); expect(await page.evaluate(() => window.__factExportBlobs.length)).toBe(4);
   const storageWrites = await page.evaluate(() => window.__factStorageWrites); expect(storageWrites).toEqual([]);
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
   await testInfo.attach('booky-journey-fact-evidence', { contentType: 'application/json', body: JSON.stringify({
@@ -2169,10 +2313,13 @@ test('optional bilingual work fact preserves authored source metadata through st
     optionalOrderRuControlsAndEnReopenedReverseComparisonCaptured: true,
     rehashedDerivedOrderAndWrongEnabledSetCannotReplaceInputOrPreview: true,
     returningDefaultOmitsOwnOrderAndRestoresOriginalWholeDraftHash: true, changingOptionalPresenceClearsCustomOrderAndPreservesRemainingAuthoredFields: true,
+    twoAdditionalWorksPrecedeMainAndShiftFactActivityCheckpointPositionsCorrectly:true,
+    nativeExportReopenKeepsMainFactAnchorAndActivityTargetWithEightActualNodes:true, actualSemanticHelperAcceptsSameCreditedMainWorkAnswerAfterTwoExtraWorks:true,
     authenticatedAdminServerTested: false, installedDeviceTested: false, answerCheckDoesNotAdvanceStep: true,
     storageWrites, downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length },
     combinedExports: [{ path: reversedPath, sha256: sha(reversedBytes), bytes: reversedBytes.length }, { path: defaultPath, sha256: sha(defaultBytes), bytes: defaultBytes.length }],
-    validationCalls: finalValidationCalls, answerCalls: finalAnswerCalls, sourceInputs: fixture.sourceInputs, screenshots, errors, externalRequests,
+    combinedAdditionalExport: { path: combinedAdditionalPath, sha256: sha(combinedAdditionalBytes), bytes: combinedAdditionalBytes.length },
+    validationCalls: allFinalValidationCalls, answerCalls: allFinalAnswerCalls, sourceInputs: fixture.sourceInputs, screenshots, errors, externalRequests,
     productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
   }, null, 2) });
 });
