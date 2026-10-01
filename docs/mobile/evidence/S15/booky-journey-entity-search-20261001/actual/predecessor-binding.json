@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "decision": "D234",
+  "docsCommit": "1fae34d18c11bbd96dcdb5ea226c1681ef4be6a1",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-journey-validation-recovery-20261001/result.json",
+    "sha256": "0a800275dc14cc524dfc89c6c61c3d0475c1196e232da76e3cd20392029fa21f"
+  }
+}

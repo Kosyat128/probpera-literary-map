@@ -1,0 +1,57 @@
+{
+  "pass": true,
+  "decision": "D235",
+  "directRootViews": 8,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/source-manifest.json",
+    "sha256": "6fcd92f196e251baf302f48b8f46eac50b8555261e729a72ef8dac5c63f86f97"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/browser-result.json",
+    "sha256": "620ef8584e9079bdd1462e5bda8fb3f1296da97da0bf3acc7dde9d8f10aa5e7d"
+  },
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "9b4e43217f54842c4ef9a8a3c7670b78742865e4b6f68164564c81037469b196"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "326bbc953c8d22410a4da16a340e240144637e1c607111c6743cecd5da5e8e8b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "2540d12441816144c760bd7cf8f0cc7d10fb10a5cb0f1829afc9ce420a0fa277"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "8807790a239b29b7b27b640042ab36916c34666c4aaae7a791c628141b639bab"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "aabcbba7f57abd1a19930c48d98fb9f8a6beae73a46bd2844fcd3d1beeb5b416"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "b05a4f68c978d26f611c477926b68b45d7900bf4369b585b34a4083614f6214e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "02c3cec12c5a99d3eea3a7afd743c3cd6da18a5e22950a25d4b64e469055e619"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-entity-search-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "213467707f1ea31f306695e5e5aaba72f7f1a14f09edc2b3df5e01cff353525f"
+    }
+  ],
+  "observations": [
+    "Eight actual current admin-component captures directly viewed by root.",
+    "booky-journey-preview-ru-320.png now shows the open local country search, zero matching results with retained current selection note, Clear search and the authoritative native country select fully within the frame.",
+    "New search controls and result text have no horizontal overlap at 320. The remaining captures retain their editor error summary, preview profile, bilingual copy comparison, optional order and RU/EN answer scopes.",
+    "The first RU320 editor error summary remains a partial action capture. Query, cascade, successful and rejected import, and held answer preservation are established by browser assertions, not all photographed."
+  ],
+  "limitations": [
+    "Admin-component evidence with synthetic catalog and mocked transport; not installed mobile app or full stage/accessibility acceptance.",
+    "The reused RU320 preview filename is a search capture; current width behavior remains supported by executed browser assertions, not this image."
+  ]
+}
