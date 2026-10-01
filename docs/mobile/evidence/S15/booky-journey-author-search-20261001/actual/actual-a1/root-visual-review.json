@@ -1,0 +1,57 @@
+{
+  "pass": true,
+  "decision": "D236",
+  "directRootViews": 8,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/source-manifest.json",
+    "sha256": "45a82dc9790865a48fbb1018cfd100da1fd04f81da4af9cc301944d8852d5805"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/browser-result.json",
+    "sha256": "0108ab293736056f50c00e45602e0fff566f0e3d2b9a8c414632396113d49521"
+  },
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "9b4e43217f54842c4ef9a8a3c7670b78742865e4b6f68164564c81037469b196"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "cf7ed36975b96696862ddc345e245741a02a216bf10732d7a53892887e444d91"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "c574d65fb0b20a72456a354b02cc1cbece45f347aed3e82744479db864efb902"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "8807790a239b29b7b27b640042ab36916c34666c4aaae7a791c628141b639bab"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "aabcbba7f57abd1a19930c48d98fb9f8a6beae73a46bd2844fcd3d1beeb5b416"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "92a9a530e932669a7b7308fb35831f201044c57ba67ef8741ec84e85efae48f9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "02c3cec12c5a99d3eea3a7afd743c3cd6da18a5e22950a25d4b64e469055e619"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-author-search-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "2fc2aec9cad0cf1e3b5450e03bdb69f80d6fb7dd155b234a24b129f13b8d8100"
+    }
+  ],
+  "observations": [
+    "Eight actual current admin-component captures directly viewed by root.",
+    "RU activity capture fully shows shared author query, help, zero-match note, clear action and two native selected author controls retained outside results. No horizontal overlap at 320px; long author-country option text is bounded within native controls.",
+    "This RU activity image is authoring-search evidence before the answer segment. Existing RU verdict assertions remain executed browser evidence; EN activity capture shows its actual correct verdict.",
+    "Country search, desktop and EN fact copy comparisons, optional order and profile retain their actual capture scopes. RU320 error action remains partially below its capture; not all recovery or search states are photographed."
+  ],
+  "limitations": [
+    "Focused admin-component evidence, synthetic data and mocked transport; not installed-device, editorial, language or full accessibility/stage acceptance.",
+    "No RU answer-verdict photograph claimed for the reused activity filename; no new RU width-preview image claimed."
+  ]
+}
