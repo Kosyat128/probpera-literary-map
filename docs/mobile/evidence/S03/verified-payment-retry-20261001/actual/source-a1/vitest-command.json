@@ -1,0 +1,16 @@
+{
+  "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "args": [
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "server/planet/api.test.ts",
+    "server/planet/supabase.test.ts",
+    "server/planet/integration.test.ts",
+    "server/planet/paymentRetry.test.ts",
+    "scripts/database/literary-planet-payment-retry.integration.test.mjs",
+    "--maxWorkers=1",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\vitest-report.json"
+  ]
+}

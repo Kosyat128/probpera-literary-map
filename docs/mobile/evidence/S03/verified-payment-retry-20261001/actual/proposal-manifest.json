@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "decision": "D250",
+  "status": "FROZEN_EXTERNAL_PROPOSAL",
+  "canonicalRoot": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "reviewWitnessHead": "1383b81342e6e69c3e693a71656de0c035e5a077",
+  "futureApplyHeadBinding": null,
+  "activeRoute": "S03.acceptance",
+  "criteria": [
+    "COMMERCE-001",
+    "COMMERCE-008"
+  ],
+  "parallelSafePrerequisite": true,
+  "criterionStatus": "OPEN",
+  "stageAccepted": false,
+  "productionReady": false,
+  "owners": [
+    {
+      "path": "server/planet/api.ts",
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\server\\planet\\api.ts",
+        "sha256": "2374a4cc2321938a6c1d4217b5b31107e53eb7d2a1532c1b5ab7c8bd5e02f345"
+      },
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\server\\planet\\api.ts",
+        "sha256": "d74dc1088db2eeb4a9775dbfb9ef77c7c0b57dd162c0d309c1eeb968174f39cc",
+        "bytes": 19042
+      },
+      "numstat": "14\t4\t\"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\original\\\\server\\\\planet\\\\api.ts\" => \"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\proposed\\\\server\\\\planet\\\\api.ts\""
+    },
+    {
+      "path": "server/planet/api.test.ts",
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\server\\planet\\api.test.ts",
+        "sha256": "307259486cfd746efabf249330feb63c4c71fcc74022f4cbc91ffe8364dc7e79"
+      },
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\server\\planet\\api.test.ts",
+        "sha256": "89f082f09d00c52c031a13905ff58bb0ac349a569f2f2da99409e6bbd7605353",
+        "bytes": 31496
+      },
+      "numstat": "40\t0\t\"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\original\\\\server\\\\planet\\\\api.test.ts\" => \"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\proposed\\\\server\\\\planet\\\\api.test.ts\""
+    },
+    {
+      "path": "server/planet/supabase.ts",
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\server\\planet\\supabase.ts",
+        "sha256": "25366cbe18aa8e83f692e63249a996d00d3ab4da218270d41961c1acb198b30b"
+      },
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\server\\planet\\supabase.ts",
+        "sha256": "80782d90421472aa8c31bc2bb3336bd1afd086eb6a97953bfcd806610c4bb264",
+        "bytes": 12493
+      },
+      "numstat": "44\t0\t\"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\original\\\\server\\\\planet\\\\supabase.ts\" => \"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\proposed\\\\server\\\\planet\\\\supabase.ts\""
+    },
+    {
+      "path": "server/planet/supabase.test.ts",
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\server\\planet\\supabase.test.ts",
+        "sha256": "9c7e57bda727565c7f29b3377acfde098bcc9dad588d66f429bb7a113a73d68b"
+      },
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\server\\planet\\supabase.test.ts",
+        "sha256": "c90ff9286ec9e6d4689e56b958356d898c62a2c57cc3371b75b3f0798d838e92",
+        "bytes": 15506
+      },
+      "numstat": "32\t1\t\"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\original\\\\server\\\\planet\\\\supabase.test.ts\" => \"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\proposed\\\\server\\\\planet\\\\supabase.test.ts\""
+    },
+    {
+      "path": "server/planet/integration.test.ts",
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\server\\planet\\integration.test.ts",
+        "sha256": "033d6bbc146745ef6484aa3c904e9210dded2d83c3f6777f3857bf1898f05eb9"
+      },
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\server\\planet\\integration.test.ts",
+        "sha256": "f26f947e5c4a04a780b73150814f601384daaf9a8be740af60b5434da3e04335",
+        "bytes": 16937
+      },
+      "numstat": "15\t9\t\"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\original\\\\server\\\\planet\\\\integration.test.ts\" => \"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\09\\\\20\\\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\\\s03-verified-payment-retry-review\\\\proposed\\\\server\\\\planet\\\\integration.test.ts\""
+    },
+    {
+      "path": "server/planet/paymentRetry.ts",
+      "original": null,
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\server\\planet\\paymentRetry.ts",
+        "sha256": "b7b3117472a0ae9f067db985d083d23eabe3fa70e93a51f9cd2143fb55382c19",
+        "bytes": 5872
+      },
+      "numstat": "71 added lines"
+    },
+    {
+      "path": "server/planet/paymentRetry.test.ts",
+      "original": null,
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\server\\planet\\paymentRetry.test.ts",
+        "sha256": "188ae092366f85322740c8f913347b8bf8d382af8e3e25e8a347d4b861007155",
+        "bytes": 4447
+      },
+      "numstat": "57 added lines"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-planet-payment-retry-context.mjs",
+      "original": null,
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\scripts\\database\\fixtures\\literary-planet-payment-retry-context.mjs",
+        "sha256": "20f6a28a0f3c3ad6e62c1027c970badaa78e6d179b3d22bf416f3a9c70239b0d",
+        "bytes": 3364
+      },
+      "numstat": "51 added lines"
+    },
+    {
+      "path": "scripts/database/literary-planet-payment-retry.integration.test.mjs",
+      "original": null,
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\scripts\\database\\literary-planet-payment-retry.integration.test.mjs",
+        "sha256": "ddc0de308ebb78c92079ed1e08621d6e693bc3d06966a99cc93139e4b40bf7a2",
+        "bytes": 15664
+      },
+      "numstat": "191 added lines"
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "original": null,
+      "proposed": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\payment-retry-queue.sql",
+        "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce",
+        "bytes": 24934
+      },
+      "numstat": "355 added lines"
+    }
+  ],
+  "ownerCount": 10,
+  "setupInputs": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459",
+      "witness": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\supabase\\schema.sql",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260802_reader_journey.sql",
+      "sha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+      "witness": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\supabase\\migrations\\20260802_reader_journey.sql",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+      "sha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418",
+      "witness": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\supabase\\migrations\\20260905_book_dossiers_v2.sql",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260728_cms_foundation.sql",
+      "sha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22",
+      "witness": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\supabase\\migrations\\20260728_cms_foundation.sql",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260905_literary_planet_web_license.sql",
+      "sha256": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2",
+      "witness": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\supabase\\migrations\\20260905_literary_planet_web_license.sql",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+      "witness": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\original\\supabase\\migrations\\20260906_literary_planet_reader_deletion_processor.sql",
+      "newOwner": false
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce",
+      "witness": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\proposed\\payment-retry-queue.sql",
+      "newOwner": true
+    }
+  ],
+  "deletionBlockerBodyProof": {
+    "source": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+    "function": "planet_reader_deletion_blockers(p_subject uuid)",
+    "originalBodySha256": "00341f81904fffcd96815075152a762308b8810ff47eead7afc7692eb4b8df55",
+    "proposedBodySha256": "12994f05fb4cd9d402d45597d5b64bfcf9e3feec7c942a371ecc1e9b43c78caf",
+    "inverseBodySha256": "00341f81904fffcd96815075152a762308b8810ff47eead7afc7692eb4b8df55",
+    "authorizedAddedLines": [
+      "    ('planet_verified_payment_retries','user_id','auth.users','c'),",
+      "      'planet_verified_payment_retries',"
+    ],
+    "exactInverse": true,
+    "otherBlockersAndPrivacyGatesChanged": false
+  },
+  "proposedChecks": {
+    "typescriptProject": "server/planet/tsconfig.json",
+    "suites": [
+      {
+        "path": "server/planet/api.test.ts",
+        "newTests": 2,
+        "expectedStaticTests": 58
+      },
+      {
+        "path": "server/planet/supabase.test.ts",
+        "newTests": 2,
+        "expectedStaticTests": 36
+      },
+      {
+        "path": "server/planet/integration.test.ts",
+        "newTests": 0,
+        "allFourAffected": true,
+        "expectedStaticTests": 4
+      },
+      {
+        "path": "server/planet/paymentRetry.test.ts",
+        "newTests": 3,
+        "expectedStaticTests": 3
+      },
+      {
+        "path": "scripts/database/literary-planet-payment-retry.integration.test.mjs",
+        "newTests": 4,
+        "expectedStaticTests": 4
+      }
+    ],
+    "expectedStaticTests": 105,
+    "newTests": 11,
+    "executed": false,
+    "tsExecuted": false,
+    "workerUnchanged": true,
+    "workerSuiteRerun": false,
+    "historicalFullDeletionSuiteRerun": false
+  },
+  "boundaries": [
+    "API enqueue-only; 204 requires existing apply success",
+    "Internal one-job drain capability is code-only, without route, cron, worker binding or provider configuration",
+    "Only verified normalized fields and original payload SHA persisted; no raw body, headers, cards, tokens, credentials or error text",
+    "Completion RPC requires matching committed ledger event; service_role remains trusted metadata authority",
+    "Queue user_id CASCADE; original financial ledger and receipt SET NULL unchanged",
+    "Existing deletion preflight and mutation fence remain authoritative",
+    "PGlite is one local connection; no live Supabase/Auth/Storage/PSP or advisory-contention acceptance",
+    "No network, DB apply, tests, builds, provider activation, canonical edits or publication executed by author"
+  ],
+  "diffSummary": [
+    "Verified immutable event snapshot before durable enqueue and existing apply",
+    "Separate validated claim/apply/finish/reschedule processor and canonical transport",
+    "Four-RPC invoker queue with deny-default RLS, bounded leases/backoff and exact replay",
+    "Two exact deletion blocker body additions plus original mutation fence",
+    "Focused API/adapter/processor/actual SQL/deletion regression coverage"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "decision": "D250",
+  "pass": true,
+  "recordedAt": "2026-10-01T19:34:07.506Z",
+  "proposalManifestSha256": "900cafa621a3dc8b9eeb218110eb79d353963b01e9d2415206e75e7214690db6",
+  "rootBindingSha256": "673cf8d98d2e31c6cf247632afd8e92e7838737fd3ea6f27f9c9b0d20f4f0ba9",
+  "owners": [
+    {
+      "path": "server/planet/api.ts",
+      "proposalPath": "server/planet/api.ts",
+      "originalSha256": "2374a4cc2321938a6c1d4217b5b31107e53eb7d2a1532c1b5ab7c8bd5e02f345",
+      "proposedSha256": "d74dc1088db2eeb4a9775dbfb9ef77c7c0b57dd162c0d309c1eeb968174f39cc"
+    },
+    {
+      "path": "server/planet/api.test.ts",
+      "proposalPath": "server/planet/api.test.ts",
+      "originalSha256": "307259486cfd746efabf249330feb63c4c71fcc74022f4cbc91ffe8364dc7e79",
+      "proposedSha256": "89f082f09d00c52c031a13905ff58bb0ac349a569f2f2da99409e6bbd7605353"
+    },
+    {
+      "path": "server/planet/supabase.ts",
+      "proposalPath": "server/planet/supabase.ts",
+      "originalSha256": "25366cbe18aa8e83f692e63249a996d00d3ab4da218270d41961c1acb198b30b",
+      "proposedSha256": "80782d90421472aa8c31bc2bb3336bd1afd086eb6a97953bfcd806610c4bb264"
+    },
+    {
+      "path": "server/planet/supabase.test.ts",
+      "proposalPath": "server/planet/supabase.test.ts",
+      "originalSha256": "9c7e57bda727565c7f29b3377acfde098bcc9dad588d66f429bb7a113a73d68b",
+      "proposedSha256": "c90ff9286ec9e6d4689e56b958356d898c62a2c57cc3371b75b3f0798d838e92"
+    },
+    {
+      "path": "server/planet/integration.test.ts",
+      "proposalPath": "server/planet/integration.test.ts",
+      "originalSha256": "033d6bbc146745ef6484aa3c904e9210dded2d83c3f6777f3857bf1898f05eb9",
+      "proposedSha256": "f26f947e5c4a04a780b73150814f601384daaf9a8be740af60b5434da3e04335"
+    },
+    {
+      "path": "server/planet/paymentRetry.ts",
+      "proposalPath": "server/planet/paymentRetry.ts",
+      "originalSha256": null,
+      "proposedSha256": "b7b3117472a0ae9f067db985d083d23eabe3fa70e93a51f9cd2143fb55382c19"
+    },
+    {
+      "path": "server/planet/paymentRetry.test.ts",
+      "proposalPath": "server/planet/paymentRetry.test.ts",
+      "originalSha256": null,
+      "proposedSha256": "188ae092366f85322740c8f913347b8bf8d382af8e3e25e8a347d4b861007155"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-planet-payment-retry-context.mjs",
+      "proposalPath": "scripts/database/fixtures/literary-planet-payment-retry-context.mjs",
+      "originalSha256": null,
+      "proposedSha256": "20f6a28a0f3c3ad6e62c1027c970badaa78e6d179b3d22bf416f3a9c70239b0d"
+    },
+    {
+      "path": "scripts/database/literary-planet-payment-retry.integration.test.mjs",
+      "proposalPath": "scripts/database/literary-planet-payment-retry.integration.test.mjs",
+      "originalSha256": null,
+      "proposedSha256": "ddc0de308ebb78c92079ed1e08621d6e693bc3d06966a99cc93139e4b40bf7a2"
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "proposalPath": "payment-retry-queue.sql",
+      "originalSha256": null,
+      "proposedSha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce"
+    }
+  ],
+  "fullChangedCodeAndFocusedFixturesReviewed": true,
+  "normalizedOriginalGuardSha256": "087210f6b2c136c616f0dcd2e3bf27ffca22a539de4741a6e533a56a822716b5",
+  "normalizedInverseGuardSha256": "087210f6b2c136c616f0dcd2e3bf27ffca22a539de4741a6e533a56a822716b5",
+  "exactInverse": true,
+  "onlyTwoGuardAdditions": true,
+  "unconfiguredProviderStillClosed": true,
+  "actualProviderValidated": false,
+  "remoteDatabaseApplied": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

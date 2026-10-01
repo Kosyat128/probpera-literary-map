@@ -1,0 +1,28 @@
+{
+  "pass": true,
+  "base": "1383b81342e6e69c3e693a71656de0c035e5a077",
+  "checkpoint": "9759878b8434d8f7e2076ea5faa3131991c96cc1",
+  "clean": true,
+  "exactPaths": [
+    "scripts/database/fixtures/literary-planet-payment-retry-context.mjs",
+    "scripts/database/literary-planet-payment-retry.integration.test.mjs",
+    "server/planet/api.test.ts",
+    "server/planet/api.ts",
+    "server/planet/integration.test.ts",
+    "server/planet/paymentRetry.test.ts",
+    "server/planet/paymentRetry.ts",
+    "server/planet/supabase.test.ts",
+    "server/planet/supabase.ts",
+    "supabase/migrations/20261001190736_planet_verified_payment_retry.sql"
+  ],
+  "checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\checks.json",
+    "sha256": "c297bd8a33cbd234332c0a99948d3dbee1d127cb5b19aa539c332bb3e4270673"
+  },
+  "currentSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\current-source-manifest.json",
+    "sha256": "a46b4da44e2acb944b01ddbbeef54a4b488f8109e554791e7fddb25b1e56f32a"
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

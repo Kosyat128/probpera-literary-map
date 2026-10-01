@@ -1,0 +1,83 @@
+{
+  "pass": true,
+  "decision": "D250",
+  "base": "1383b81342e6e69c3e693a71656de0c035e5a077",
+  "recordedAt": "2026-10-01T19:35:43.302Z",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\source-manifest.json",
+    "sha256": "95ace3873526f2d4aa2badbffec596399ae77c35694890715c447f997e9477f5"
+  },
+  "sourceAfter": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\source-after.json",
+    "sha256": "95ace3873526f2d4aa2badbffec596399ae77c35694890715c447f997e9477f5"
+  },
+  "additionalSqlInputs": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459"
+    }
+  ],
+  "inputsUnchangedDuringChecks": true,
+  "tsc": {
+    "exitCode": 0,
+    "command": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\server-typescript-command.json",
+      "sha256": "c8f0cfcbd4379e9b5cd29531bdfbaa966909b4760903c632ab4eeac7784b22b4"
+    },
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\server-typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\server-typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "test": {
+    "exitCode": 0,
+    "command": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\vitest-command.json",
+      "sha256": "83150f0cf1875307e0d4db4237918387dbe35d730dad46884af85a374d0d6e5c"
+    },
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\vitest.stdout.txt",
+      "sha256": "4bf914ce2c32d5a4e2dd44474113ed6708c58fd54988b4d6d224edcd6c55bc4f"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\vitest.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "report": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-verified-payment-retry-review\\source-a1\\vitest-report.json",
+    "sha256": "5829f844d16acd1743b311b9cca2484e19ff8d93144c3c8ac9e943498e884e3b"
+  },
+  "summary": {
+    "success": true,
+    "total": 105,
+    "passed": 105,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0,
+    "suiteFiles": [
+      "scripts/database/literary-planet-payment-retry.integration.test.mjs",
+      "server/planet/api.test.ts",
+      "server/planet/integration.test.ts",
+      "server/planet/paymentRetry.test.ts",
+      "server/planet/supabase.test.ts"
+    ]
+  },
+  "serverTypeScriptInvocations": 1,
+  "testInvocations": 1,
+  "oneConnectionLocalPostgres": true,
+  "localFixtureSqlExecuted": true,
+  "multiConnectionConcurrencyValidated": false,
+  "liveSupabaseValidated": false,
+  "providerValidated": false,
+  "appBuildExecuted": false,
+  "pwaBuildExecuted": false,
+  "nativeBuildExecuted": false,
+  "remoteDatabaseApplied": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
