@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-01T22:57:46.040Z",
+  "reviewer": "root_agent_visual_review",
+  "humanReview": false,
+  "beforeRawSha256": "d994867f8d366aa586003aceaa0f1e36488027550f743372d311f63b810d0e06",
+  "beforeCount": 120,
+  "afterCount": 124,
+  "added": [
+    {
+      "id": "academie-francaise-roman-first-selection-20261001",
+      "sourceUrl": "https://actualitte.com/article/134343/prix-litteraires/grand-prix-du-roman-de-l-academie-francaise-la-premiere-selection-2026",
+      "imageUrl": "https://actualitte.com/uploads/images/grand-prix-du-roman-de-l-academie-francaise-la-premiere-selection-2026-6abe708cb2a00167452547.jpg",
+      "sourceDocumentSha256": "2abc33274d5a8fa0457b5ba8c563cd8cbe9a87b0d63c14696262917358c70e71",
+      "displayOnly": true,
+      "socialReuseApproved": false,
+      "review": "Root visually reviewed complete original article-associated image; crop/layout inherited from accepted UI."
+    },
+    {
+      "id": "ast-sergey-aksakov-birth-anniversary-feature-20261001",
+      "sourceUrl": "https://ast.ru/news/sergey-aksakov-pisatel-kritik-i-tsenzor/",
+      "imageUrl": "https://ast.ru/upload/resize_cache/iblock/928/n10kwu3bnh79ic64lziflumu3pkm86z1/600_315_2/astrahov_1200.jpg",
+      "sourceDocumentSha256": "25bba491c08fb3eb7442df0470ca9fdf298f72c789bcf8f78ec39932c545b3fa",
+      "displayOnly": true,
+      "socialReuseApproved": false,
+      "review": "Root visually reviewed complete original article-associated image; crop/layout inherited from accepted UI."
+    },
+    {
+      "id": "asymptote-bojanovic-dizdarevic-translation-interview-20261001",
+      "sourceUrl": "https://www.asymptotejournal.com/blog/2026/10/01/the-violence-of-poetics-uros-bojanovic-and-ajla-dizdarevic-in-conversation/",
+      "imageUrl": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/10/dizdarevic%CC%81-bojanovic%CC%81.png",
+      "sourceDocumentSha256": "eafcfd202c633c0bfd36af95168e917ce793a2bb93046ab0a9b49c53fb512099",
+      "displayOnly": true,
+      "socialReuseApproved": false,
+      "review": "Root visually reviewed complete original article-associated image; crop/layout inherited from accepted UI."
+    },
+    {
+      "id": "avi-shlaim-three-worlds-interview-20261001",
+      "sourceUrl": "https://www.publicbooks.org/the-hyphen-unites-avi-shlaim-on-arab-jewish-life/",
+      "imageUrl": "https://www.publicbooks.org/wp-content/uploads/2026/10/Remains_of_Old_Jewish_Houses_in_Kirkuk_16.jpg",
+      "sourceDocumentSha256": "a14ce62317cb9b31ac8e62f33f3c3397a407c935dce88c9c1be6ea38fd2e1e24",
+      "displayOnly": true,
+      "socialReuseApproved": false,
+      "review": "Root visually reviewed complete original article-associated image; crop/layout inherited from accepted UI."
+    }
+  ],
+  "held": [
+    {
+      "id": "r10-news-c-eksmo-ast-fandom-fest-programme-20261002",
+      "reason": "Original OG graphic contains only publisher branding; no article-specific festival illustration verified."
+    }
+  ],
+  "limits": "Website display-only thumbnail association; no social-upload permission is inferred."
+}

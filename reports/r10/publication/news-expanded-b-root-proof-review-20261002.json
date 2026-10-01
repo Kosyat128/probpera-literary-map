@@ -1,0 +1,1211 @@
+{
+  "schemaVersion": 1,
+  "batchId": "news-expanded-b-20261002",
+  "checkedAt": "2026-10-01T22:34:12.729Z",
+  "reviewer": "root_agent_independent_from_batch_author",
+  "humanReview": false,
+  "releaseAccepted": false,
+  "productionApplied": false,
+  "canonicalWritten": false,
+  "remoteWrites": 0,
+  "records": 80,
+  "recordSha256": "c9208baaa4bb21a0cf85c235d5d95564bc946056f7a3f04f0447408432007fac",
+  "rawResponseDigestsChecked": 80,
+  "issues": [],
+  "results": [
+    {
+      "id": "volodine-aunt-yoanna-excerpt-20261002",
+      "sourceId": "electric-literature",
+      "responseSha256": "c6d1b18b5a00a61a9491844473b40b616e691e323b05819588d6860d5215f968",
+      "bodyBytes": 203320,
+      "primaryMeta": [
+        "2026-09-28T11:10:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-28T11:10:00+00:00"
+      ],
+      "publishedAt": "2026-09-28T11:10:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 250,
+      "enCharacters": 225
+    },
+    {
+      "id": "an-post-irish-bookshop-longlist-20261002",
+      "sourceId": "books-ireland",
+      "responseSha256": "b2a8cdb69462731c8dc7596b010cf02412ea95223b8227ba60e3ee98afe0abc3",
+      "bodyBytes": 131175,
+      "primaryMeta": [
+        "2026-09-29T11:16:36+01:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T11:16:36+01:00"
+      ],
+      "publishedAt": "2026-09-29T10:16:36.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 254,
+      "enCharacters": 266
+    },
+    {
+      "id": "sinelnikov-ave-maria-poems-20261002",
+      "sourceId": "literaturnaya-rossiya",
+      "responseSha256": "73356b91b4acc5b2b6bea3512b8affe33b57dc81883b63091d556840507a519a",
+      "bodyBytes": 477272,
+      "primaryMeta": [
+        "2026-09-25T06:00:43+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25T06:00:43.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 208,
+      "enCharacters": 219
+    },
+    {
+      "id": "rotpunkt-sievers-grab-co-leadership-20261002",
+      "sourceId": "buchmarkt",
+      "responseSha256": "d18d4604c57ab6408472a805bc8a5ad5fa7f7ddd6d209d79822c20e4ca14877d",
+      "bodyBytes": 117588,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T11:04:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 294,
+      "enCharacters": 252
+    },
+    {
+      "id": "buchkultur-anna-baar-amseln-review-20261002",
+      "sourceId": "buchkultur",
+      "responseSha256": "2cf3359038467351221ebc99827243e75dff8c2c5deaacfff8dd22b7b74c80a8",
+      "bodyBytes": 78580,
+      "primaryMeta": [
+        "2026-09-25T16:29:46+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T16:29:46+00:00"
+      ],
+      "publishedAt": "2026-09-25T16:29:46.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 255,
+      "enCharacters": 246
+    },
+    {
+      "id": "minima-ritratti-poesia-education-feature-20261002",
+      "sourceId": "minima-moralia",
+      "responseSha256": "6f098ba617028029b185d96ec67928196127facaa2575ef6c3a8332f8baaadaf",
+      "bodyBytes": 198338,
+      "primaryMeta": [
+        "2026-09-29T12:38:16+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T12:38:16+00:00"
+      ],
+      "publishedAt": "2026-09-29T12:38:16.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 266,
+      "enCharacters": 273
+    },
+    {
+      "id": "sololibri-cristo-paolo-lunare-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "1ea1c2aee3801f7ec140241710888cee0a79e3964652d1f465fb85e91dc17e68",
+      "bodyBytes": 113915,
+      "primaryMeta": [
+        "2026-10-01T13:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-10-01T15:00:00+02:00"
+      ],
+      "publishedAt": "2026-10-01T13:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 271,
+      "enCharacters": 257
+    },
+    {
+      "id": "zenda-rosa-berbel-sedimentacion-20261002",
+      "sourceId": "zenda-libros",
+      "responseSha256": "10511eec738840219a3d4ee6e538f7398c4e09a9ad02e20bf47bd68567a05dfb",
+      "bodyBytes": 197196,
+      "primaryMeta": [
+        "2026-10-01T04:00:55+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:00:55"
+      ],
+      "publishedAt": "2026-10-01T04:00:55.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 237,
+      "enCharacters": 222
+    },
+    {
+      "id": "mo-yan-divina-spanish-story-collection-20261002",
+      "sourceId": "placer-lectura",
+      "responseSha256": "fcdb1eafefc90540cc111dc265af8132002d2292377025151105752c320c7401",
+      "bodyBytes": 190501,
+      "primaryMeta": [
+        "2026-10-01T19:15:21+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T19:15:21+00:00"
+      ],
+      "publishedAt": "2026-10-01T19:15:21.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 281,
+      "enCharacters": 267
+    },
+    {
+      "id": "poznan-bookshop-night-twelve-venues-20261002",
+      "sourceId": "pik-org-pl",
+      "responseSha256": "33813ba2d7000836900df10a7bd355914dcbc60f402ffce9d76dbf49ca5a8180",
+      "bodyBytes": 154853,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29T11:53:05.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 278
+    },
+    {
+      "id": "hernan-diaz-ply-review-20261002",
+      "sourceId": "chicago-review-books",
+      "responseSha256": "171b15205b2614c74fa09bd64b8beaf70d02393fd7321aef6591ebfb9b8fa8cf",
+      "bodyBytes": 207972,
+      "primaryMeta": [
+        "2026-10-01T00:22:56+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T00:22:56+00:00"
+      ],
+      "publishedAt": "2026-09-30",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 295,
+      "enCharacters": 288
+    },
+    {
+      "id": "raghu-rai-animals-posthumous-book-20261002",
+      "sourceId": "harpercollins-india",
+      "responseSha256": "e07c2acfa4a07634a7b3f18215554624e9e3e7b49badeb3250ecdcff5c1e1c8f",
+      "bodyBytes": 140676,
+      "primaryMeta": [
+        "2026-09-29T10:37:01+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T10:37:01+00:00"
+      ],
+      "publishedAt": "2026-09-29T10:37:01.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 279,
+      "enCharacters": 292
+    },
+    {
+      "id": "elle-gospodinov-physics-sorrow-selection-20261002",
+      "sourceId": "impedimenta",
+      "responseSha256": "8d8898ff01074cab725457169e17b0ad8611771ee384210541be318996e2b839",
+      "bodyBytes": 308572,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:26:18.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 261,
+      "enCharacters": 259
+    },
+    {
+      "id": "sally-morgan-oral-history-classroom-resource-20261002",
+      "sourceId": "fremantle-press",
+      "responseSha256": "81a0ccfbe9c73638c0159e89e31dcd8bde7b8dff156568bc1946c96fcf69df1f",
+      "bodyBytes": 184140,
+      "primaryMeta": [
+        "2026-10-01T02:38:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T02:38:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T02:38:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 267,
+      "enCharacters": 256
+    },
+    {
+      "id": "duke-press-centennial-exhibition-20261002",
+      "sourceId": "duke-press-blog",
+      "responseSha256": "c1405f13ab174f4d5887787238bcbca8636bb72ea09c7fe21e74438bd6301a75",
+      "bodyBytes": 121105,
+      "primaryMeta": [
+        "2026-09-28T12:00:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28T12:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 263,
+      "enCharacters": 257
+    },
+    {
+      "id": "liverpool-translation-new-archipelagoes-feature-20261002",
+      "sourceId": "liverpool-press-blog",
+      "responseSha256": "673bff2a5ba12d2ad236c742017d170005216cef6635645f93f79d53761ed377",
+      "bodyBytes": 164284,
+      "primaryMeta": [
+        "2026-09-29T14:40:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29T14:40:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 290,
+      "enCharacters": 295
+    },
+    {
+      "id": "public-books-wpa-american-made-review-20261002",
+      "sourceId": "public-books",
+      "responseSha256": "f024b2cd0d925a31a37b5124c46eb6720ff5d184c54ca4dd91a336105ab21c2c",
+      "bodyBytes": 121486,
+      "primaryMeta": [
+        "2026-09-29T15:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T15:00:00+00:00"
+      ],
+      "publishedAt": "2026-09-29T15:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 311,
+      "enCharacters": 280
+    },
+    {
+      "id": "manuel-vilas-zeta-magical-interview-20261002",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "1e446306fb92a6c9892ce0bfa009dc3501e8210a98f5ea799b5dc62a51a3d639",
+      "bodyBytes": 290321,
+      "primaryMeta": [
+        "2026-10-01T08:21:31+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T08:21:31+00:00"
+      ],
+      "publishedAt": "2026-10-01T08:21:31.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 289
+    },
+    {
+      "id": "mercatto-grisgoblin-microfiction-winner-20261002",
+      "sourceId": "revista-mercatto",
+      "responseSha256": "1ae5736b8e5e6cdc48a0e0d477727c460e50fa729280f2ecfd92cb07ba050370",
+      "bodyBytes": 74647,
+      "primaryMeta": [
+        "2026-09-27T10:03:58+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-27T10:03:58+02:00"
+      ],
+      "publishedAt": "2026-09-27T08:03:58.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 267,
+      "enCharacters": 250
+    },
+    {
+      "id": "schorlau-resch-cold-work-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "e48133f49ec076c6ba1600a59134c813c80fc9a7aedcc59d9de120637f1c1da8",
+      "bodyBytes": 108916,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:38:49.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 251,
+      "enCharacters": 278
+    },
+    {
+      "id": "uj-prize-ndlovu-kekana-2026-20261002",
+      "sourceId": "karavan-press",
+      "responseSha256": "b8b87057a9864dbbcd8c494bb20c809fb05fa9ce790b2796d58beb5d70b0294d",
+      "bodyBytes": 147418,
+      "primaryMeta": [
+        "2026-09-29T15:18:09+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29T15:18:09.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 296,
+      "enCharacters": 298
+    },
+    {
+      "id": "libreria-nacional-colombia-85-years-20261002",
+      "sourceId": "camlibro-com-co",
+      "responseSha256": "2eac3cbf2b77f84d5ec4f04dba9b31c5cb2e502c9aff28b10bcad03565c43277",
+      "bodyBytes": 169174,
+      "primaryMeta": [
+        "2026-09-30T21:58:19+00:00",
+        "2026-09-30T21:58:19+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T21:58:19+00:00"
+      ],
+      "publishedAt": "2026-09-30T21:58:19.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 265,
+      "enCharacters": 276
+    },
+    {
+      "id": "gimtosios-kalbos-september-issue-20261002",
+      "sourceId": "lnb-lt",
+      "responseSha256": "ca28848b9d4ed6c4cf3cc722ab8975d86d77e0fcb9805a455c7a3ef701fc9b22",
+      "bodyBytes": 68080,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28T08:18:17.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 290,
+      "enCharacters": 273
+    },
+    {
+      "id": "taiwan-travelogue-translation-territories-feature-20261002",
+      "sourceId": "publishing-perspectives",
+      "responseSha256": "ff547bbd1d79b5813ca5caf2c723b116e0f612bfb6a2e50fc872fdec8fbcf053",
+      "bodyBytes": 92649,
+      "primaryMeta": [
+        "2026-09-25T07:26:40+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T07:26:40+00:00"
+      ],
+      "publishedAt": "2026-09-25T07:26:40.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 307,
+      "enCharacters": 309
+    },
+    {
+      "id": "luiselli-bookwire-audiobook-prize-20261002",
+      "sourceId": "dosdoce",
+      "responseSha256": "00dab542b9325f306b1e8451a80b1908f21ba870c4d899e1734ba2bf57a10b17",
+      "bodyBytes": 97452,
+      "primaryMeta": [
+        "2026-09-28T06:32:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28T06:32:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 310,
+      "enCharacters": 299
+    },
+    {
+      "id": "electric-literature-experimental-trauma-reading-list-20261002",
+      "sourceId": "electric-literature",
+      "responseSha256": "316c1d1fd698d035d375c6fb8bb884f7bad83c0ee48a07c67b1f8cce7683c9e4",
+      "bodyBytes": 158489,
+      "primaryMeta": [
+        "2026-09-25T11:05:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T11:05:00+00:00"
+      ],
+      "publishedAt": "2026-09-25T11:05:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 282,
+      "enCharacters": 287
+    },
+    {
+      "id": "courtney-darby-poetry-happening-20261002",
+      "sourceId": "books-ireland",
+      "responseSha256": "7901a633e0127f6cc1d0ce396716e3fa2d185b9985cee01aecb4659edc7e0f36",
+      "bodyBytes": 132477,
+      "primaryMeta": [
+        "2026-09-28T09:07:48+01:00"
+      ],
+      "primaryLd": [
+        "2026-09-28T09:07:48+01:00"
+      ],
+      "publishedAt": "2026-09-28T08:07:48.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 239,
+      "enCharacters": 248
+    },
+    {
+      "id": "malkievich-buffer-zone-prose-20261002",
+      "sourceId": "literaturnaya-rossiya",
+      "responseSha256": "8e9d14dce062483a80ce23aaeef7754c518d4d6778d632bd7fec53b294b9f7e0",
+      "bodyBytes": 488483,
+      "primaryMeta": [
+        "2026-09-25T05:30:08+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25T05:30:08.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 260,
+      "enCharacters": 246
+    },
+    {
+      "id": "hueber-franziska-dorbert-appointment-20261002",
+      "sourceId": "buchmarkt",
+      "responseSha256": "8383d949a601037a284fb2424b2091beeec359862ff688fb2c6da8635d57e753",
+      "bodyBytes": 115544,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T08:32:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 283,
+      "enCharacters": 287
+    },
+    {
+      "id": "luca-alvino-new-poetry-excerpts-20261002",
+      "sourceId": "minima-moralia",
+      "responseSha256": "fb6ad8ffbebf9f9c6ae899a74f75ff01b6248df92792251012ae7f841ac35895",
+      "bodyBytes": 186811,
+      "primaryMeta": [
+        "2026-09-29T09:29:39+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T09:29:39+00:00"
+      ],
+      "publishedAt": "2026-09-29T09:29:39.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 269,
+      "enCharacters": 252
+    },
+    {
+      "id": "rome-letterature-senza-esercito-programme-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "c8197eed2e181a34e5b6d677cd9dcdbd70f135b9dd91943ef7f166c5ab6c53a0",
+      "bodyBytes": 122096,
+      "primaryMeta": [
+        "2026-10-01T10:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-10-01T12:00:00+02:00"
+      ],
+      "publishedAt": "2026-10-01T10:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 312,
+      "enCharacters": 298
+    },
+    {
+      "id": "fernandez-mallo-ai-essay-review-20261002",
+      "sourceId": "zenda-libros",
+      "responseSha256": "c197ccb90580de036522cebe9ef5a6218df2e192a0554c0ce431def911d7a88f",
+      "bodyBytes": 193804,
+      "primaryMeta": [
+        "2026-10-01T04:00:54+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:00:54"
+      ],
+      "publishedAt": "2026-10-01T04:00:54.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 297,
+      "enCharacters": 291
+    },
+    {
+      "id": "cynthia-pelayo-latine-horror-anthology-review-20261002",
+      "sourceId": "chicago-review-books",
+      "responseSha256": "929f46fbec97c9da60cef6acc7bfdd6cfbc1567e3463c0e7225060a0be10dec2",
+      "bodyBytes": 214070,
+      "primaryMeta": [
+        "2026-09-29T10:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T10:00:00+00:00"
+      ],
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 292,
+      "enCharacters": 267
+    },
+    {
+      "id": "collins-spelling-bee-atyukt-behuray-20261002",
+      "sourceId": "harpercollins-india",
+      "responseSha256": "01eea057ab0d97e6f73059800b2768bc4ecdfca70a580b2347b25341e944b9d4",
+      "bodyBytes": 142587,
+      "primaryMeta": [
+        "2026-09-29T06:50:06+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T06:50:06+00:00"
+      ],
+      "publishedAt": "2026-09-29T06:50:06.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 291,
+      "enCharacters": 280
+    },
+    {
+      "id": "little-blue-maze-classroom-resource-20261002",
+      "sourceId": "fremantle-press",
+      "responseSha256": "caa17b297d1d913a3d2a28293060c8a043b09f42dfbef19d3325a7b425536f72",
+      "bodyBytes": 179376,
+      "primaryMeta": [
+        "2026-10-01T02:09:33+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T02:09:33+00:00"
+      ],
+      "publishedAt": "2026-10-01T02:09:33.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 286,
+      "enCharacters": 271
+    },
+    {
+      "id": "dorothy-day-modernist-hospitality-weekly-read-20261002",
+      "sourceId": "duke-press-blog",
+      "responseSha256": "3f6be16d57d3ed0e4abe8c8e21dce673a798927fa343aa21003fdff34c80de86",
+      "bodyBytes": 144389,
+      "primaryMeta": [
+        "2026-09-26T12:00:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-26T12:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 282,
+      "enCharacters": 259
+    },
+    {
+      "id": "public-books-brain-rot-literary-nonsense-20261002",
+      "sourceId": "public-books",
+      "responseSha256": "25b933a538f871e9f9d69db3b5edbf4fce93b817a82d82c8ea1fa6130e6b98cc",
+      "bodyBytes": 113653,
+      "primaryMeta": [
+        "2026-09-28T15:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-28T15:00:00+00:00"
+      ],
+      "publishedAt": "2026-09-28T15:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 287,
+      "enCharacters": 269
+    },
+    {
+      "id": "gabriel-zaid-indigenous-poetry-anthology-review-20261002",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "597060cba22664c23680acf32a949115ab1fdf32c6406f87a1a9892e63abcb30",
+      "bodyBytes": 280899,
+      "primaryMeta": [
+        "2026-10-01T06:43:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:43:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T06:43:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 289,
+      "enCharacters": 296
+    },
+    {
+      "id": "mercurio-thirteen-comics-selection-20261002",
+      "sourceId": "revista-mercatto",
+      "responseSha256": "ac94f9d6fd7915e3d6fc9ca791e6246a954c8560d5bb0ccf7ef4c12ab69368eb",
+      "bodyBytes": 85086,
+      "primaryMeta": [
+        "2026-09-25T08:18:40+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T08:18:40+02:00"
+      ],
+      "publishedAt": "2026-09-25T06:18:40.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 279,
+      "enCharacters": 290
+    },
+    {
+      "id": "barbara-honigmann-mischka-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "05276421074501dea7645e26eb20dda1bd9e5f0d383bcbd2d257b19b530508d4",
+      "bodyBytes": 119806,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:38:41.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 237,
+      "enCharacters": 257
+    },
+    {
+      "id": "klara-du-plessis-breytenbach-poetry-prize-20261002",
+      "sourceId": "karavan-press",
+      "responseSha256": "6bcd8fcb2c9ce22eadb06a228366244a6ecb955a752d9aa0413855e4fbfac4d3",
+      "bodyBytes": 145309,
+      "primaryMeta": [
+        "2026-09-26T21:00:17+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-26T21:00:17.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 288,
+      "enCharacters": 283
+    },
+    {
+      "id": "colombia-publishing-ai-seminar-completed-20261002",
+      "sourceId": "camlibro-com-co",
+      "responseSha256": "e2e16e6b4089b9c2968e403e68d0a355e73c609d6591b61825fee0146580baf3",
+      "bodyBytes": 180782,
+      "primaryMeta": [
+        "2026-09-30T21:32:24+00:00",
+        "2026-09-30T21:32:24+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T21:32:24+00:00"
+      ],
+      "publishedAt": "2026-09-30T21:32:24.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 290,
+      "enCharacters": 278
+    },
+    {
+      "id": "lagioia-city-living-screen-adaptation-announcement-20261002",
+      "sourceId": "il-libraio",
+      "responseSha256": "8abdf201e36247c88da85d8322998ca15a4fd165fdf1604236032f0ecd8a21bc",
+      "bodyBytes": 97678,
+      "primaryMeta": [
+        "2026-09-30T01:04:13+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30 03:04:13"
+      ],
+      "publishedAt": "2026-09-30T01:04:13.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 256,
+      "enCharacters": 249
+    },
+    {
+      "id": "ulmer-tietge-cookbook-distribution-agreement-20261002",
+      "sourceId": "buchmarkt",
+      "responseSha256": "c6be50405f9d3319ab78b1477a972af54d89f595d43ab35232c40662e11cc68c",
+      "bodyBytes": 114945,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T08:26:09.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 236,
+      "enCharacters": 233
+    },
+    {
+      "id": "lukas-baerfuss-night-queen-review-20261002",
+      "sourceId": "minima-moralia",
+      "responseSha256": "ef85964a93ae0beffb57e2d7067385115ef8b813f3d779e3a476f147da3ce086",
+      "bodyBytes": 191162,
+      "primaryMeta": [
+        "2026-09-28T08:58:51+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-28T08:58:51+00:00"
+      ],
+      "publishedAt": "2026-09-28T08:58:51.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 308,
+      "enCharacters": 291
+    },
+    {
+      "id": "walther-nardini-pacific-war-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "dfa62b298e6ad8368bfe8ee89cc34ac2fa40578d6e7532638831b1f32e2665b0",
+      "bodyBytes": 122655,
+      "primaryMeta": [
+        "2026-10-01T09:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-10-01T11:00:00+02:00"
+      ],
+      "publishedAt": "2026-10-01T09:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 288,
+      "enCharacters": 256
+    },
+    {
+      "id": "lola-pons-silence-language-book-review-20261002",
+      "sourceId": "zenda-libros",
+      "responseSha256": "50a14eb48bb3a90c92cf11a975a6149bb57cc84e06ed9a8fb6952141f0d598a8",
+      "bodyBytes": 198458,
+      "primaryMeta": [
+        "2026-10-01T04:00:51+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:00:51"
+      ],
+      "publishedAt": "2026-10-01T04:00:51.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 287,
+      "enCharacters": 269
+    },
+    {
+      "id": "min-jin-lee-american-hagwon-review-20261002",
+      "sourceId": "chicago-review-books",
+      "responseSha256": "f779c9451f865bee526122235a00f8ac527d3754002514d45079e873548e0e59",
+      "bodyBytes": 217501,
+      "primaryMeta": [
+        "2026-09-29T10:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T10:00:00+00:00"
+      ],
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 278,
+      "enCharacters": 274
+    },
+    {
+      "id": "ramachandra-guha-gandhi-reading-feature-20261002",
+      "sourceId": "harpercollins-india",
+      "responseSha256": "fea9a2f813a89b577837ab4f5a2900ab5e822c67b32e18ea457e4062878fcc8f",
+      "bodyBytes": 146104,
+      "primaryMeta": [
+        "2026-09-25T12:15:31+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T12:15:31+00:00"
+      ],
+      "publishedAt": "2026-09-25T12:15:31.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 291,
+      "enCharacters": 295
+    },
+    {
+      "id": "mack-paul-miracle-road-book-guest-feature-20261002",
+      "sourceId": "duke-press-blog",
+      "responseSha256": "ba2c768c89df665cd816f3511190ef64beda31497facaebdbe4c00790da14efd",
+      "bodyBytes": 149226,
+      "primaryMeta": [
+        "2026-09-25T12:00:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25T12:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 288,
+      "enCharacters": 313
+    },
+    {
+      "id": "letras-libres-spanish-exile-discussion-20261002",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "991fff0d0f8a989d39ded3633042452ba6182377c938afa6d3a21b8fafab97e8",
+      "bodyBytes": 292779,
+      "primaryMeta": [
+        "2026-10-01T06:40:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:40:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T06:40:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 290,
+      "enCharacters": 297
+    },
+    {
+      "id": "raffaella-silvestri-persona-peggiore-author-feature-20261002",
+      "sourceId": "il-libraio",
+      "responseSha256": "efe8bb75635270f27feb8952ef6dd0f2986ea50c89f9cf11315ce12c2dedac6c",
+      "bodyBytes": 107106,
+      "primaryMeta": [
+        "2026-09-30T00:16:47+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30 02:16:47"
+      ],
+      "publishedAt": "2026-09-30T00:16:47.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 287,
+      "enCharacters": 281
+    },
+    {
+      "id": "nika-vinogradova-lamplighter-review-20261002",
+      "sourceId": "literaturnaya-rossiya",
+      "responseSha256": "45c54c5757ab03d3a8503254b47e980d02672b10676e041b78f8e11f1ecf8519",
+      "bodyBytes": 464475,
+      "primaryMeta": [
+        "2026-09-25T03:00:58+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25T03:00:58.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 266,
+      "enCharacters": 289
+    },
+    {
+      "id": "buchmarkt-zeit-freitag-weekly-book-coverage-20261002",
+      "sourceId": "buchmarkt",
+      "responseSha256": "2d07a6ed7f9841aebe97c62e660e9014511e8a18bc31cead6a66c2fa1375f449",
+      "bodyBytes": 121925,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T08:07:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 286,
+      "enCharacters": 282
+    },
+    {
+      "id": "guido-morselli-expanded-diaries-review-20261002",
+      "sourceId": "minima-moralia",
+      "responseSha256": "13acae9ed4015b19c83ac50effe0fcaaa941b59eabcfcddb6ac46bc0f30ac166",
+      "bodyBytes": 200888,
+      "primaryMeta": [
+        "2026-09-25T07:20:25+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T07:20:25+00:00"
+      ],
+      "publishedAt": "2026-09-25T07:20:25.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 293,
+      "enCharacters": 283
+    },
+    {
+      "id": "tiya-miles-ashley-sack-italian-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "f9056000765d67cdaf2fb2e62010cb01df90362716b534edb8cf3626afb2cea9",
+      "bodyBytes": 117520,
+      "primaryMeta": [
+        "2026-10-01T08:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-10-01T10:00:00+02:00"
+      ],
+      "publishedAt": "2026-10-01T08:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 323,
+      "enCharacters": 311
+    },
+    {
+      "id": "fernando-sarria-five-poems-selection-20261002",
+      "sourceId": "zenda-libros",
+      "responseSha256": "c21836bf09f01f51f9330971f482554ccb481004c5d3a6b5ab2f743226350653",
+      "bodyBytes": 176931,
+      "primaryMeta": [
+        "2026-10-01T04:00:51+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:00:51"
+      ],
+      "publishedAt": "2026-10-01T04:00:51.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 270,
+      "enCharacters": 253
+    },
+    {
+      "id": "viktor-kane-sin-testigos-video-interview-20261002",
+      "sourceId": "placer-lectura",
+      "responseSha256": "a23be76c18431841905ee1fafb6b45377ae6a18cdd43d1afeaa4b0e3af976a32",
+      "bodyBytes": 187066,
+      "primaryMeta": [
+        "2026-10-01T16:37:29+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T16:37:29+00:00"
+      ],
+      "publishedAt": "2026-10-01T16:37:29.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 284,
+      "enCharacters": 284
+    },
+    {
+      "id": "matthew-prigge-dogs-day-interview-20261002",
+      "sourceId": "chicago-review-books",
+      "responseSha256": "b44ca8cb917371a581b777127de9013fcbdea3e886181ebad1dcfd45e46dec13",
+      "bodyBytes": 227101,
+      "primaryMeta": [
+        "2026-09-28T10:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-28T10:00:00+00:00"
+      ],
+      "publishedAt": "2026-09-28T10:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 286,
+      "enCharacters": 285
+    },
+    {
+      "id": "jeffrey-archer-adam-eve-india-announcement-20261002",
+      "sourceId": "harpercollins-india",
+      "responseSha256": "85bcaffb91761ef7d90d45716fb2032afdb240a935a91595c1a6e04b7fb3fa23",
+      "bodyBytes": 138465,
+      "primaryMeta": [
+        "2026-09-25T07:52:22+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T07:52:22+00:00"
+      ],
+      "publishedAt": "2026-09-25T07:52:22.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 278,
+      "enCharacters": 265
+    },
+    {
+      "id": "tatiana-tibuleac-cultural-interview-republication-20261002",
+      "sourceId": "impedimenta",
+      "responseSha256": "487b9f3a07c8a4bb361c6bc0c6c1899172bdad8e2fd90b1eb825d2cdd46860bf",
+      "bodyBytes": 317326,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-30T11:05:39.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 270,
+      "enCharacters": 313
+    },
+    {
+      "id": "ruben-dario-errant-life-review-20261002",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "fd7dc08821310132065f282b40b2361773357d0a2df53753526fd90d88e65182",
+      "bodyBytes": 297977,
+      "primaryMeta": [
+        "2026-10-01T06:19:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:19:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T06:19:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 292,
+      "enCharacters": 279
+    },
+    {
+      "id": "tomer-gardi-horvath-prize-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "78377b7203c8a9bba67e81409b93812e5df66c80047d9d4732305072b3ff3f28",
+      "bodyBytes": 135146,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:38:28.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 268,
+      "enCharacters": 285
+    },
+    {
+      "id": "reclam-inga-hamann-appointment-20261002",
+      "sourceId": "buchmarkt",
+      "responseSha256": "88731ee11308a5a58cdcb4f0ffc555494fe7128ee8caa756d848df439ea6cdf2",
+      "bodyBytes": 115901,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T07:27:50.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 282,
+      "enCharacters": 248
+    },
+    {
+      "id": "maria-garcia-zambrano-la-hija-reissue-review-20261002",
+      "sourceId": "zenda-libros",
+      "responseSha256": "a8b284bdd74e20a4167c8c66cd92207529e31c559870813669db00f2b85c42d5",
+      "bodyBytes": 206798,
+      "primaryMeta": [
+        "2026-10-01T04:00:37+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:00:37"
+      ],
+      "publishedAt": "2026-10-01T04:00:37.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 272,
+      "enCharacters": 235
+    },
+    {
+      "id": "ted-hughes-flowers-insects-reissue-review-20261002",
+      "sourceId": "chicago-review-books",
+      "responseSha256": "08982c3845ae51a76c05c609d17b091ed03703d92f1a591fedce5ba62344cc02",
+      "bodyBytes": 218639,
+      "primaryMeta": [
+        "2026-09-25T10:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T10:00:00+00:00"
+      ],
+      "publishedAt": "2026-09-25T10:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 275
+    },
+    {
+      "id": "mary-beard-classicos-sin-filtros-review-20261002",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "696a58ecbd61cbd1cc4f125528412231408eb193c49f86a2abed16f155820e4e",
+      "bodyBytes": 282713,
+      "primaryMeta": [
+        "2026-10-01T06:12:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:12:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T06:12:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 293,
+      "enCharacters": 276
+    },
+    {
+      "id": "lutz-seiler-tickende-herz-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "3c28615d25bdbf6c97011651398eb8662aa4a6235df452592dbc6294a470262c",
+      "bodyBytes": 136449,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:38:21.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 272,
+      "enCharacters": 287
+    },
+    {
+      "id": "svetlana-kryukova-silver-age-essay-20261002",
+      "sourceId": "literaturnaya-rossiya",
+      "responseSha256": "fb1111e50c0c6cfa05e6a0d84fec186414336bc2983ebfd7b162caa3560dbfc2",
+      "bodyBytes": 488436,
+      "primaryMeta": [
+        "2026-09-25T02:00:02+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25T02:00:02.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 278,
+      "enCharacters": 268
+    },
+    {
+      "id": "ullstein-and-new-imprint-announcement-20261002",
+      "sourceId": "buchmarkt",
+      "responseSha256": "715a1e9f1bfbba22dd344f9fd05dc3632ae77dd2319da0592b9242641362608a",
+      "bodyBytes": 113308,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T06:56:56.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 270,
+      "enCharacters": 245
+    },
+    {
+      "id": "elle-kennedy-body-check-italian-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "63ef6ce7bedddbfe9a2af568e4146024f4cce02d633055396c0e72f9f3b893a8",
+      "bodyBytes": 117956,
+      "primaryMeta": [
+        "2026-09-30T15:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-09-30T17:00:00+02:00"
+      ],
+      "publishedAt": "2026-09-30T15:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 291,
+      "enCharacters": 270
+    },
+    {
+      "id": "francisco-martinez-escondites-making-of-20261002",
+      "sourceId": "zenda-libros",
+      "responseSha256": "406293f1c824e5cf38d0820b8b0921a413e7b571bdc3eae1835770b955b4931f",
+      "bodyBytes": 195745,
+      "primaryMeta": [
+        "2026-10-01T04:00:02+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:00:02"
+      ],
+      "publishedAt": "2026-10-01T04:00:02.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 311,
+      "enCharacters": 307
+    },
+    {
+      "id": "placer-eight-autumn-novels-selection-20261002",
+      "sourceId": "placer-lectura",
+      "responseSha256": "b943dbe119aa1490e0a603456294e44a7ad1fba296af54e2c132e4050badc20e",
+      "bodyBytes": 204829,
+      "primaryMeta": [
+        "2026-10-01T14:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T14:00:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T14:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 304,
+      "enCharacters": 297
+    },
+    {
+      "id": "alicia-garcia-bergua-two-poems-20261002",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "591cd8ec30f1944e944003ff0395bc2e557e4d6066104ce4ed1cdc275b8ab228",
+      "bodyBytes": 264242,
+      "primaryMeta": [
+        "2026-10-01T06:08:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:08:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T06:08:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 290,
+      "enCharacters": 275
+    },
+    {
+      "id": "stuttgart-schreibweisen-seven-workshop-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "264e06035641ceac3d7a1c48033cea5deba63c7c3599140d04413abf878343bf",
+      "bodyBytes": 154409,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:38:09.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 247,
+      "enCharacters": 259
+    },
+    {
+      "id": "gleb-gorbovsky-literary-remembrance-20261002",
+      "sourceId": "literaturnaya-rossiya",
+      "responseSha256": "91e069e1cff25b30337ab02275a785c88f6a11cf5620515ab44a0361dd1d1e35",
+      "bodyBytes": 517289,
+      "primaryMeta": [
+        "2026-09-25T00:00:19+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25T00:00:19.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 277,
+      "enCharacters": 274
+    },
+    {
+      "id": "gmeiner-saga-egmont-distribution-2027-20261002",
+      "sourceId": "buchmarkt",
+      "responseSha256": "b6c0b684019fc6c07ab1bff56a70c047784c386ce614168fb9b798766c4db443",
+      "bodyBytes": 116745,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T06:45:39.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 282,
+      "enCharacters": 271
+    },
+    {
+      "id": "giuseppe-lazzati-biographical-volume-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "a798db022adf9751347c34c9d00601942f2c53928ed05d67f81e9f24e5a53b43",
+      "bodyBytes": 116620,
+      "primaryMeta": [
+        "2026-09-30T14:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-09-30T16:00:00+02:00"
+      ],
+      "publishedAt": "2026-09-30T14:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 306,
+      "enCharacters": 269
+    },
+    {
+      "id": "tom-clancy-thirteen-year-remembrance-20261002",
+      "sourceId": "placer-lectura",
+      "responseSha256": "baf3f1ae290ff1b14822eab2fca44a63158887a3804e30807370b955010859ed",
+      "bodyBytes": 205914,
+      "primaryMeta": [
+        "2026-10-01T13:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T13:00:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T13:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 292,
+      "enCharacters": 295
+    },
+    {
+      "id": "letras-libres-exiled-women-literary-press-20261002",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "53f1df220b65a370d37506abbbcd740701021cd9df8f0a77c7f3cfc8cb0eb3d7",
+      "bodyBytes": 286474,
+      "primaryMeta": [
+        "2026-10-01T06:04:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:04:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T06:04:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 304,
+      "enCharacters": 273
+    }
+  ]
+}

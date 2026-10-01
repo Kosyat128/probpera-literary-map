@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "diagnosedAt": "2026-10-01T23:03:27.451Z",
+  "repository": "Kosyat128/probpera-literary-map",
+  "headSha": "af4f0a4598c40144d7e62c706793a156bfe79d09",
+  "workflowRunId": 36933179499,
+  "jobId": 110610257878,
+  "jobName": "Browser / webgl-1",
+  "jobLogsFetchedThrough": "GitHub Actions joblogs connector",
+  "shards": [
+    {
+      "shard": "1/6",
+      "passed": 34,
+      "skipped": 1,
+      "failed": 0,
+      "durationMinutes": 17
+    },
+    {
+      "shard": "2/6",
+      "passed": 33,
+      "skipped": 1,
+      "failed": 1,
+      "durationMinutes": 7.6
+    }
+  ],
+  "failure": {
+    "step": "Run browser checks",
+    "project": "desktop-chromium",
+    "spec": "tests/e2e/public-doc-refinements.spec.mjs",
+    "line": 19,
+    "locator": ".book-of-day .book-source-link",
+    "message": "Element not found; expected visible within10000ms",
+    "attempts": 2,
+    "onlyFailedTest": true,
+    "sameFailureAsWebgl3": true,
+    "shaderOrGPUFailure": false
+  },
+  "artifact": {
+    "artifactId": 11197683726,
+    "githubSha256": "6b79def30fd0b444adf0563c6d34d20fbf62ddc34102e0b39a5090b4910ceff6",
+    "localZip": ".tmp/webgl-1-af4f-diagnostics.zip",
+    "localZipSha256": "6b79def30fd0b444adf0563c6d34d20fbf62ddc34102e0b39a5090b4910ceff6",
+    "digestMatchesGitHub": true,
+    "attempts": [
+      {
+        "errorContext": ".tmp/webgl-1-af4f-diagnostics/test-results/webgl-2/public-doc-refinements-boo-7d55c-eep-a-coherent-desktop-grid-desktop-chromium/error-context.md",
+        "sha256": "6eeb1a3d35761d74784825627075156c924fba9c300fae364fbd237cd342f033",
+        "selectedBookConfirmed": true,
+        "bothBookActionsVisible": true,
+        "missingSourceLocatorConfirmed": true
+      },
+      {
+        "errorContext": ".tmp/webgl-1-af4f-diagnostics/test-results/webgl-2/public-doc-refinements-boo-7d55c-eep-a-coherent-desktop-grid-desktop-chromium-retry1/error-context.md",
+        "sha256": "6eeb1a3d35761d74784825627075156c924fba9c300fae364fbd237cd342f033",
+        "selectedBookConfirmed": true,
+        "bothBookActionsVisible": true,
+        "missingSourceLocatorConfirmed": true
+      }
+    ]
+  },
+  "originalCause": "October book-of-month selection picked DavidCopperfield, a reviewed V2 record with structured sources but without a legacy top-levelsourceUrl. The old authorrubric rendered its source link only from legacyURL, and the old geometry test required that link. Same deterministic failure occurs on desktop and mobile.",
+  "latestUserRequirement": "The user explicitly requested no source reference in this authorial book-of-month rubric.",
+  "resolutionAlreadyImplemented": {
+    "bookMonthSourceActionLinkRemoved": true,
+    "testRequiresNoSource": true,
+    "actionsAndGridAssertionsRetained": true,
+    "protectedGlobeChanged": false,
+    "newsSourceLinksChanged": false
+  },
+  "validation": {
+    "newCodePreviouslyTypechecked": true,
+    "freshBuildAndRequiredCIRerunOwnedByRoot": true,
+    "focusedCommand": "npx playwright test --config=playwright.config.mjs tests/e2e/public-doc-refinements.spec.mjs --grep \"book of the month and the section directory\" --workers=1",
+    "noFreshBrowserPassClaimed": true
+  },
+  "remoteWrites": 0
+}

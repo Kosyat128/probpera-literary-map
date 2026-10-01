@@ -3,6 +3,37 @@ import assert from 'node:assert/strict';
 import {extractDailyNewsDetail} from './literary-news-daily-intake.mjs';
 import {LITERARY_NEWS_SOURCES} from './literary-news-sources.mjs';
 
+test('a code-owned metadata headline avoids related article headings and a default publisher image is excluded',()=>{
+  const detail=extractDailyNewsDetail('<meta property="og:title" content="Four new Irish books reviewed"><meta property="og:image" content="https://publisher.example/imagen-default-LL.jpg"><main><article class="primary"><p>The article reviews four books for younger readers.</p></article><article><h1>Related older award</h1></article></main>',
+    'https://publisher.example/new-books',{detailHeadlineSelector:'meta[property="og:title"]',detailTextSelector:'article.primary'});
+  assert.equal(detail.headline,'Four new Irish books reviewed');
+  assert.deepEqual(detail.images,[]);
+  assert.doesNotMatch(detail.text,/Related older/u);
+});
+
+test('document-title fallback excludes unrelated SVG icon titles',()=>{
+  const detail=extractDailyNewsDetail('<html><head><title>A new literary prize shortlist</title></head><body><svg><title>Email</title></svg><article><p>Six writers reached the shortlist.</p></article></body></html>',
+    'https://publisher.example/news/shortlist');
+  assert.equal(detail.headline,'A new literary prize shortlist');
+  assert.doesNotMatch(detail.headline,/Email/u);
+});
+
+test('a precise primary article nested in publisher footer survives while surrounding chrome and scripts are excluded',()=>{
+  const source={detailHeadlineSelector:'article .press-release h1',detailTextSelector:'article .press-release'};
+  const detail=extractDailyNewsDetail(`<header><h1>Publisher navigation</h1></header>
+    <footer><div>Generic contact footer</div><article><div class="press-release">
+      <h1>Book awards shortlist announced</h1><p>The jury selected six finalists.</p>
+      <p>The winner will be announced on October 20.</p><script>Invented script fact.</script>
+      <nav>Related old announcement</nav></div></article></footer>`,
+    'https://publisher.example/news/shortlist',source);
+  assert.equal(detail.headline,'Book awards shortlist announced');
+  assert.match(detail.text,/six finalists\. The winner/u);
+  assert.doesNotMatch(detail.text,/navigation|contact footer|Invented|Related old/u);
+  const unscoped=extractDailyNewsDetail('<footer><p>Generic footer is never an unscoped article.</p></footer>',
+    'https://publisher.example/news/shortlist');
+  assert.doesNotMatch(unscoped.text,/Generic footer/u);
+});
+
 test('PEN Germany’s article h2 and post body displace the earlier sidebar article and logo h1',()=>{
   const source=LITERARY_NEWS_SOURCES.find(s=>s.id==='pen-deutschland-de');
   const detail=extractDailyNewsDetail(`<header><h1>THE FREEDOM OF WORDS</h1></header>

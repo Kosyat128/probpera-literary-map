@@ -118,6 +118,22 @@ test('the actual NLI event selector extracts the literary exhibition rather than
   assert.doesNotMatch(detail.text, /opening hours|newsletter/);
 });
 
+test('the verified New Zealand release selector survives imported footer placement and excludes site contact chrome', () => {
+  const source = LITERARY_NEWS_SOURCES.find(row => row.id === 'publishers-org-nz');
+  const detail = extractDailyNewsDetail(`<html><div class="heading-title"><div class="blog-title"><h1>Book sector election manifesto</h1></div></div>
+    <article><div class="post-content"><footer><div class="sqs-image-shape-container-element">
+      <p>The Coalition for Books proposes focused funding for New Zealand literature.</p>
+      <p>Its manifesto calls for a New Zealand Year of Reading and local book purchasing.</p>
+      <script>advertisement()</script><nav>Unrelated website navigation</nav></div>
+      <div class="contact">Office contact and newsletter registration</div></footer></div></article>
+    <footer>Other site links and unrelated legal notices</footer></html>`,
+    'https://publishers.org.nz/media-release-book-sector-says-the-next-3-years-will-define-the-future/', source);
+  assert.equal(detail.headline, 'Book sector election manifesto');
+  assert.match(detail.text, /focused funding for New Zealand literature/);
+  assert.match(detail.text, /Year of Reading and local book purchasing/);
+  assert.doesNotMatch(detail.text, /advertisement|navigation|contact|newsletter|legal notices/);
+});
+
 test('new source proof literals retain their captured decoded value through JSON punctuation encoding', async () => {
   const manifest = JSON.parse(await readFile('reports/r10/sources/source-proof-literal-preservation-20261002.json', 'utf8'));
   let literalFields = 0, quotedDashes = 0;

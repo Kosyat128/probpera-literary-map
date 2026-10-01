@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import { projectReviewedNextBuilderFollowup } from './lib/reviewed-next-builder-followup.mjs';
+import { projectReviewedNextSecurityFollowup } from './lib/reviewed-next-security-followup.mjs';
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -6,7 +8,7 @@ import { execFileSync } from 'node:child_process';
 const lf = source => source.replace(/\r\n?/gu, '\n');
 const sha = source => createHash('sha256').update(lf(source)).digest('hex');
 const rawSha = source => createHash('sha256').update(source).digest('hex');
-const read = path => lf(readFileSync(path, 'utf8'));
+const read = path => lf(projectReviewedNextSecurityFollowup(path, projectReviewedNextBuilderFollowup(path, readFileSync(path, 'utf8'))));
 const git = (...args) => execFileSync('git', ['-c', `safe.directory=${process.cwd()}`, ...args], { maxBuffer: 50 * 1024 * 1024 });
 const attestationPath = 'scripts/governance/russian-calendar-expansion-reviewed-20261001.json';
 const baselineCommitSha = '031821';

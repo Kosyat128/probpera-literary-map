@@ -1,0 +1,3450 @@
+{
+  "schemaVersion": 1,
+  "batchId": "news-expanded-b-20261002",
+  "checkedAt": "2026-10-01T22:11:27.716Z",
+  "capturedArticles": 110,
+  "reviewedProposals": 80,
+  "held": 30,
+  "primaryDateBodiesChecked": 110,
+  "earlierPrimaryPublicationAmongProposals": 0,
+  "visibleDateException": [
+    {
+      "harvestIndex": 122,
+      "visiblePublisherDate": "2026-09-30",
+      "machineTimestamp": "2026-10-01T00:22:56+00:00",
+      "resolution": "Retain the visible calendar date; no timezone is inferred."
+    }
+  ],
+  "articles": [
+    {
+      "harvestIndex": 110,
+      "sourceId": "il-libraio",
+      "url": "https://www.illibraio.it/news/editoria/premi-letterari-1233707/",
+      "httpStatus": 200,
+      "responseSha256": "ba71221bc771e29194372caf7c7ecd3e0f884c8d794ef6335db424f175bfd2c2",
+      "listingPublishedAt": "2026-09-30T08:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T08:00:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30 10:00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T08:24:21+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30 10:24:21",
+          "method": "primary-jsonld.dateModified",
+          "type": "NewsArticle"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Evergreen literary-prize guide. September 30 metadata identifies current publication/revision but no independently established new news stage or original first-publication date."
+    },
+    {
+      "harvestIndex": 111,
+      "sourceId": "electric-literature",
+      "url": "https://electricliterature.com/aunt-yoanna-by-antoine-volodine/",
+      "httpStatus": 200,
+      "responseSha256": "c6d1b18b5a00a61a9491844473b40b616e691e323b05819588d6860d5215f968",
+      "listingPublishedAt": "2026-09-28T11:10:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-28T11:10:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-28T11:10:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-28T11:10:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-28T15:28:52+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-28T15:28:52+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-28T15:28:52+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 112,
+      "sourceId": "books-ireland",
+      "url": "https://booksirelandmagazine.com/an-post-bookshop-of-the-year-longlist-revealed/",
+      "httpStatus": 200,
+      "responseSha256": "b2a8cdb69462731c8dc7596b010cf02412ea95223b8227ba60e3ee98afe0abc3",
+      "listingPublishedAt": "2026-09-29T10:16:36.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T11:16:36+01:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T11:16:36+01:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-29T11:16:36+01:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-29T11:25:32+01:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-29T11:25:32+01:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-29T11:25:32+01:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "BlogPosting"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 113,
+      "sourceId": "literaturnaya-rossiya",
+      "url": "https://litrossia.ru/item/ave-mariya/",
+      "httpStatus": 200,
+      "responseSha256": "73356b91b4acc5b2b6bea3512b8affe33b57dc81883b63091d556840507a519a",
+      "listingPublishedAt": "2026-09-25T06:00:43.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T06:00:43+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T06:00:43+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T09:01:19+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T09:01:19+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 114,
+      "sourceId": "buchmarkt",
+      "url": "https://buchmarkt.de/2026/10/01/rotpunktverlag-annette-sievers-neue-verlagsleiterin-zusammen-mit-patrizia-grab/",
+      "httpStatus": 200,
+      "responseSha256": "d18d4604c57ab6408472a805bc8a5ad5fa7f7ddd6d209d79822c20e4ca14877d",
+      "listingPublishedAt": "2026-10-01T11:04:00.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 115,
+      "sourceId": "buchkultur",
+      "url": "https://www.buchkultur.net/anna-baar/",
+      "httpStatus": 200,
+      "responseSha256": "2cf3359038467351221ebc99827243e75dff8c2c5deaacfff8dd22b7b74c80a8",
+      "listingPublishedAt": "2026-09-25T16:29:46.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T16:29:46+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T16:29:46+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T16:29:46+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T16:32:02+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T16:32:02+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T16:32:02+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 116,
+      "sourceId": "minima-moralia",
+      "url": "https://minimaetmoralia.it/poesia/ritrarre-la-poesia/",
+      "httpStatus": 200,
+      "responseSha256": "6f098ba617028029b185d96ec67928196127facaa2575ef6c3a8332f8baaadaf",
+      "listingPublishedAt": "2026-09-29T12:38:16.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T12:38:16+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T12:38:16+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-09-29T12:38:16+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T09:17:04+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T09:17:04+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-09-30T09:17:04+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 117,
+      "sourceId": "sololibri",
+      "url": "https://www.sololibri.net/La-meravigliosa-lampada-di-Paolo-Lunare-Cristo.html",
+      "httpStatus": 200,
+      "responseSha256": "1ea1c2aee3801f7ec140241710888cee0a79e3964652d1f465fb85e91dc17e68",
+      "listingPublishedAt": "2026-10-01T13:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T13:00:00Z",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T15:00:00+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T13:00:00Z",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T15:00:00+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 118,
+      "sourceId": "zenda-libros",
+      "url": "https://www.zendalibros.com/zenda-recomienda-la-sedimentacion-de-rosa-berbel/",
+      "httpStatus": 200,
+      "responseSha256": "10511eec738840219a3d4ee6e538f7398c4e09a9ad02e20bf47bd68567a05dfb",
+      "listingPublishedAt": "2026-10-01T04:00:55.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T04:00:55+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T04:00:55+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-10-01T06:00:55",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-29T11:18:08+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-29T11:18:08+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-29T13:18:08",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 119,
+      "sourceId": "placer-lectura",
+      "url": "https://elplacerdelalectura.com/2026/10/la-prostitucion-divina-lo-nuevo-del-premio-nobel-mo-yan.html",
+      "httpStatus": 200,
+      "responseSha256": "fcdb1eafefc90540cc111dc265af8132002d2292377025151105752c320c7401",
+      "listingPublishedAt": "2026-10-01T19:15:21.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T19:15:21+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T19:15:21+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T19:15:21+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T19:15:22+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T19:15:22+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T19:15:22+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 120,
+      "sourceId": "le-litteraire",
+      "url": "https://www.lelitteraire.com/trop-mates/",
+      "httpStatus": 200,
+      "responseSha256": "62c22981b3c5db95eaf17f9559a6de5a21d52b52814ef1a929cfa47a85ef35e0",
+      "listingPublishedAt": "2026-09-30T23:02:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T23:02:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30T23:02:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-30T23:02:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Insufficient discrete literary news: a short philosophical reflection, without a book, new literary publication or event established."
+    },
+    {
+      "harvestIndex": 121,
+      "sourceId": "pik-org-pl",
+      "url": "https://pik.org.pl/2026/09/29/poznanska-noc-ksiegarn-juz-9-pazdziernika/",
+      "httpStatus": 200,
+      "responseSha256": "33813ba2d7000836900df10a7bd355914dcbc60f402ffce9d76dbf49ca5a8180",
+      "listingPublishedAt": "2026-09-29T11:53:05.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 122,
+      "sourceId": "chicago-review-books",
+      "url": "https://chireviewofbooks.com/2026/09/30/ply-hernan-diaz/",
+      "httpStatus": 200,
+      "responseSha256": "171b15205b2614c74fa09bd64b8beaf70d02393fd7321aef6591ebfb9b8fa8cf",
+      "listingPublishedAt": "2026-10-01T00:22:56.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T00:22:56+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T00:22:56+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T00:22:56+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T00:23:30+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T19:23:30-05:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T00:23:30+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T00:23:30+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "date-only; primary visible calendar date retained without inferred timezone",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 123,
+      "sourceId": "harpercollins-india",
+      "url": "https://harpercollins.co.in/press-release/harpercollins-presents-animals-by-raghu-rai/",
+      "httpStatus": 200,
+      "responseSha256": "e07c2acfa4a07634a7b3f18215554624e9e3e7b49badeb3250ecdcff5c1e1c8f",
+      "listingPublishedAt": "2026-09-29T10:37:01.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T10:37:01+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T10:37:01+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T10:37:01+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T05:16:04+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T05:16:04+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T05:16:04+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 124,
+      "sourceId": "impedimenta",
+      "url": "https://impedimenta.es/archivos/38218",
+      "httpStatus": 200,
+      "responseSha256": "8d8898ff01074cab725457169e17b0ad8611771ee384210541be318996e2b839",
+      "listingPublishedAt": "2026-10-01T09:26:18.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 125,
+      "sourceId": "fremantle-press",
+      "url": "https://fremantlepress.com.au/2026/10/01/oral-history-activity/",
+      "httpStatus": 200,
+      "responseSha256": "81a0ccfbe9c73638c0159e89e31dcd8bde7b8dff156568bc1946c96fcf69df1f",
+      "listingPublishedAt": "2026-10-01T02:38:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T02:38:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T02:38:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T02:38:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T02:38:04+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T02:38:04+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T02:38:04+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 126,
+      "sourceId": "booker-new-media",
+      "url": "https://www.thebookseller.com/news/baillie-gifford-prize-for-non-fiction-reveals-2026-shortlist",
+      "httpStatus": 200,
+      "responseSha256": "706274b19fa84a4149733dbb0bcf9dda17800633dcf72164567ad1c636a51d05",
+      "listingPublishedAt": "2026-10-01T09:00:49.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T07:45:00Z",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T09:00:49Z",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Subscriber article: the original body is gated. HTTP 200 and a teaser do not constitute retrieval of the full substantive report."
+    },
+    {
+      "harvestIndex": 127,
+      "sourceId": "duke-press-blog",
+      "url": "https://dukeupress.wordpress.com/2026/09/28/preview-our-centennial-exhibit/",
+      "httpStatus": 200,
+      "responseSha256": "c1405f13ab174f4d5887787238bcbca8636bb72ea09c7fe21e74438bd6301a75",
+      "listingPublishedAt": "2026-09-28T12:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-28T12:00:00+00:00",
+          "method": "primary-publication-meta"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-23T18:33:23+00:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 128,
+      "sourceId": "liverpool-press-blog",
+      "url": "https://liverpooluniversitypress.blog/2026/09/29/what-can-translation-do/",
+      "httpStatus": 200,
+      "responseSha256": "673bff2a5ba12d2ad236c742017d170005216cef6635645f93f79d53761ed377",
+      "listingPublishedAt": "2026-09-29T14:40:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T14:40:00+00:00",
+          "method": "primary-publication-meta"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-29T15:37:28+00:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 129,
+      "sourceId": "public-books",
+      "url": "https://www.publicbooks.org/long-distance-talkers-the-great-depression-speaks/",
+      "httpStatus": 200,
+      "responseSha256": "f024b2cd0d925a31a37b5124c46eb6720ff5d184c54ca4dd91a336105ab21c2c",
+      "listingPublishedAt": "2026-09-29T15:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T15:00:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T15:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T15:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T14:28:21+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T14:28:21+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-30T14:28:21+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 130,
+      "sourceId": "revista-letras-libres",
+      "url": "https://letraslibres.com/literatura/manuel-vilas-la-literatura-es-el-gran-idioma-comun-que-borra-todas-las-fronteras/01/10/2026/",
+      "httpStatus": 200,
+      "responseSha256": "1e446306fb92a6c9892ce0bfa009dc3501e8210a98f5ea799b5dc62a51a3d639",
+      "listingPublishedAt": "2026-10-01T08:21:31.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T08:21:31+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T08:21:31+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T08:21:31+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T09:21:55+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T09:21:55+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T09:21:55+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 131,
+      "sourceId": "revista-mercatto",
+      "url": "https://www.revistamercurio.es/2026/09/27/cuando-duele-mas-un-hola-que-un-adios/",
+      "httpStatus": 200,
+      "responseSha256": "1ae5736b8e5e6cdc48a0e0d477727c460e50fa729280f2ecfd92cb07ba050370",
+      "listingPublishedAt": "2026-09-27T08:03:58.000Z",
+      "published": [
+        {
+          "value": "2026-09-27T10:03:58+02:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-27T10:03:58+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-27T10:03:58+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-27T10:03:58+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-27T10:03:58+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "BlogPosting"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 132,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6843.html",
+      "httpStatus": 200,
+      "responseSha256": "e48133f49ec076c6ba1600a59134c813c80fc9a7aedcc59d9de120637f1c1da8",
+      "listingPublishedAt": "2026-10-01T09:38:49.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 133,
+      "sourceId": "karavan-press",
+      "url": "https://karavanpress.com/2026/09/29/malika-lueen-ndlovu-wins-the-2026-university-of-johannesburg-prize-for-south-african-writing/",
+      "httpStatus": 200,
+      "responseSha256": "b8b87057a9864dbbcd8c494bb20c809fb05fa9ce790b2796d58beb5d70b0294d",
+      "listingPublishedAt": "2026-09-29T15:18:09.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T15:18:09+00:00",
+          "method": "primary-publication-meta"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-29T15:18:09+00:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 134,
+      "sourceId": "camlibro-com-co",
+      "url": "https://camlibro.com.co/libreria-nacional-85-anos-de-primeras-veces/",
+      "httpStatus": 200,
+      "responseSha256": "2eac3cbf2b77f84d5ec4f04dba9b31c5cb2e502c9aff28b10bcad03565c43277",
+      "listingPublishedAt": "2026-09-30T21:58:19.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T21:58:19+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30T21:58:19+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30T21:58:19+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-30T21:58:19+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T19:32:33+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T19:32:33+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T19:32:33+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T19:32:33+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 135,
+      "sourceId": "lnb-lt",
+      "url": "https://www.lnb.lt/naujienos/15180-isleistas-gimtosios-kalbos-rugsejo-menesio-numeris-3",
+      "httpStatus": 200,
+      "responseSha256": "ca28848b9d4ed6c4cf3cc722ab8975d86d77e0fcb9805a455c7a3ef701fc9b22",
+      "listingPublishedAt": "2026-09-28T08:18:17.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 136,
+      "sourceId": "nbuv-gov-ua",
+      "url": "https://nbuv.gov.ua/node/7325",
+      "httpStatus": 200,
+      "responseSha256": "a823a1a57b04db97ba00b075b22a2179052e02543957b73a950c75cf850ad644",
+      "listingPublishedAt": "2026-09-28T17:34:56.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Routine library sanitary-day closure notice; no literary event."
+    },
+    {
+      "harvestIndex": 137,
+      "sourceId": "publishing-perspectives",
+      "url": "https://publishingperspectives.com/2026/09/internationally-award-winning-novel-taiwan-travelogue-signals-a-new-generation-of-taiwanese-writing/",
+      "httpStatus": 200,
+      "responseSha256": "ff547bbd1d79b5813ca5caf2c723b116e0f612bfb6a2e50fc872fdec8fbcf053",
+      "listingPublishedAt": "2026-09-25T07:26:40.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T07:26:40+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T07:26:40+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T07:26:40+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T07:27:20+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T07:27:20+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T07:27:20+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 138,
+      "sourceId": "dosdoce",
+      "url": "https://www.dosdoce.com/2026/09/28/principio-medio-fin-de-valeria-luiselli-gana-el-premio-bookwire-al-mejor-audiolibro-del-ano-2026/",
+      "httpStatus": 200,
+      "responseSha256": "00dab542b9325f306b1e8451a80b1908f21ba870c4d899e1734ba2bf57a10b17",
+      "listingPublishedAt": "2026-09-28T06:32:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-28T06:32:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-28T06:32:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-26T09:40:51+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-26T09:40:51+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 139,
+      "sourceId": "il-libraio",
+      "url": "https://www.illibraio.it/news/narrativa/99-racconti-consigliati-1506260/",
+      "httpStatus": 200,
+      "responseSha256": "df17cfd3b59d0e28792d006f2d9b6847957f480bc6822963ccdbfc15c052b572",
+      "listingPublishedAt": "2026-09-30T01:55:51.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T01:55:51+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30 03:55:51",
+          "method": "primary-jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T06:09:43+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01 08:09:43",
+          "method": "primary-jsonld.dateModified",
+          "type": "NewsArticle"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Long-lived author reading guide; a current metadata date alone does not establish a new selection or a newly released edition."
+    },
+    {
+      "harvestIndex": 140,
+      "sourceId": "electric-literature",
+      "url": "https://electricliterature.com/7-experimental-books-that-reimagine-how-trauma-is-told/",
+      "httpStatus": 200,
+      "responseSha256": "316c1d1fd698d035d375c6fb8bb884f7bad83c0ee48a07c67b1f8cce7683c9e4",
+      "listingPublishedAt": "2026-09-25T11:05:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T11:05:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T11:05:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T11:05:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 141,
+      "sourceId": "books-ireland",
+      "url": "https://booksirelandmagazine.com/poetry-happening-courtney-darby/",
+      "httpStatus": 200,
+      "responseSha256": "7901a633e0127f6cc1d0ce396716e3fa2d185b9985cee01aecb4659edc7e0f36",
+      "listingPublishedAt": "2026-09-28T08:07:48.000Z",
+      "published": [
+        {
+          "value": "2026-09-28T09:07:48+01:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-28T09:07:48+01:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-28T09:07:48+01:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-28T09:18:29+01:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-28T09:18:29+01:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-28T09:18:29+01:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "BlogPosting"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 142,
+      "sourceId": "literaturnaya-rossiya",
+      "url": "https://litrossia.ru/item/bufernaya-zona/",
+      "httpStatus": 200,
+      "responseSha256": "8e9d14dce062483a80ce23aaeef7754c518d4d6778d632bd7fec53b294b9f7e0",
+      "listingPublishedAt": "2026-09-25T05:30:08.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T05:30:08+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T05:30:08+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T09:01:07+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T09:01:07+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 143,
+      "sourceId": "buchmarkt",
+      "url": "https://buchmarkt.de/2026/10/01/franziska-dorbert-verantwortet-kuenftig-vertrieb-und-marketing-beim-hueber-verlag/",
+      "httpStatus": 200,
+      "responseSha256": "8383d949a601037a284fb2424b2091beeec359862ff688fb2c6da8635d57e753",
+      "listingPublishedAt": "2026-10-01T08:32:00.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 144,
+      "sourceId": "minima-moralia",
+      "url": "https://minimaetmoralia.it/altro/la-morte-a-volte-un-poco-ti-sorride-le-nuove-poesie-di-luca-alvino/",
+      "httpStatus": 200,
+      "responseSha256": "fb6ad8ffbebf9f9c6ae899a74f75ff01b6248df92792251012ae7f841ac35895",
+      "listingPublishedAt": "2026-09-29T09:29:39.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T09:29:39+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T09:29:39+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-09-29T09:29:39+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-29T09:30:30+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-29T09:30:30+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-09-29T09:30:30+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 145,
+      "sourceId": "sololibri",
+      "url": "https://www.sololibri.net/Letterature-senza-esercito-festival-Roma-poesia-torna-farsi-ascoltare.html",
+      "httpStatus": 200,
+      "responseSha256": "c8197eed2e181a34e5b6d677cd9dcdbd70f135b9dd91943ef7f166c5ab6c53a0",
+      "listingPublishedAt": "2026-10-01T10:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T10:00:00Z",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T12:00:00+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T10:00:00Z",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T12:00:00+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 146,
+      "sourceId": "zenda-libros",
+      "url": "https://www.zendalibros.com/los-limites-de-la-inteligencia-artificial/",
+      "httpStatus": 200,
+      "responseSha256": "c197ccb90580de036522cebe9ef5a6218df2e192a0554c0ce431def911d7a88f",
+      "listingPublishedAt": "2026-10-01T04:00:54.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T04:00:54+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T04:00:54+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-10-01T06:00:54",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T11:48:14+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T11:48:14+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-30T13:48:14",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 147,
+      "sourceId": "placer-lectura",
+      "url": "https://elplacerdelalectura.com/2026/10/la-novela-de-la-que-eduardo-mendoza-premio-princesa-de-asturias-2025-afirma-que-a-partir-de-la-publicacion-de-esta-novela-ya-no-se-puede-ser-tonto-en-la-literatura-espanola.html",
+      "httpStatus": 200,
+      "responseSha256": "ea64e0ace8c87576e3b784ac712a46781f6bf928e57667679a03d9598e2123ea",
+      "listingPublishedAt": "2026-10-01T18:30:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T18:30:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T18:30:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T18:30:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Catalogue-style aggregation of existing books with no independently established new publishing stage."
+    },
+    {
+      "harvestIndex": 148,
+      "sourceId": "le-litteraire",
+      "url": "https://www.lelitteraire.com/giancarlo-staffoni-la-forza-di-rette-colori-e-geometrie-exposition/",
+      "httpStatus": 200,
+      "responseSha256": "e550f003f6e62138b28a9b95ee864b3e6c1426ea2f4e2ecb2752c7ecc39193a3",
+      "listingPublishedAt": "2026-09-29T23:08:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T23:08:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T23:08:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T23:08:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Fine-art exhibition; no substantive literary event beyond a passing mention of the artist’s interests."
+    },
+    {
+      "harvestIndex": 149,
+      "sourceId": "pik-org-pl",
+      "url": "https://pik.org.pl/2026/09/28/nocksiegarni/",
+      "httpStatus": 200,
+      "responseSha256": "726ec5e279aa940cf6bd4b7b63879a8e0560ed90edb9384fbe04606ec2d396c8",
+      "listingPublishedAt": "2026-09-28T09:35:50.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Same Bookshop Night announcement stage as the more detailed Poznań programme at harvest index 121."
+    },
+    {
+      "harvestIndex": 150,
+      "sourceId": "chicago-review-books",
+      "url": "https://chireviewofbooks.com/2026/09/29/horror-tales-from-deep-inside-something-followed-us-home-tales-of-latine-horror/",
+      "httpStatus": 200,
+      "responseSha256": "929f46fbec97c9da60cef6acc7bfdd6cfbc1567e3463c0e7225060a0be10dec2",
+      "listingPublishedAt": "2026-09-29T10:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T10:00:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T10:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T10:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-27T18:22:12-05:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 151,
+      "sourceId": "harpercollins-india",
+      "url": "https://harpercollins.co.in/press-release/atyukt-behuray-wins-collins-spelling-bee-season-7/",
+      "httpStatus": 200,
+      "responseSha256": "01eea057ab0d97e6f73059800b2768bc4ecdfca70a580b2347b25341e944b9d4",
+      "listingPublishedAt": "2026-09-29T06:50:06.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T06:50:06+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T06:50:06+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T06:50:06+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-29T06:50:08+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-29T06:50:08+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T06:50:08+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 152,
+      "sourceId": "impedimenta",
+      "url": "https://impedimenta.es/archivos/38216",
+      "httpStatus": 200,
+      "responseSha256": "6b41fecb0604db44b273c419e5b82b2379cade87697e00fe84f85a245888b6b7",
+      "listingPublishedAt": "2026-10-01T09:23:30.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Second publisher republication of the same ELLE article as index 124."
+    },
+    {
+      "harvestIndex": 153,
+      "sourceId": "fremantle-press",
+      "url": "https://fremantlepress.com.au/2026/10/01/help-little-blue-get-home/",
+      "httpStatus": 200,
+      "responseSha256": "caa17b297d1d913a3d2a28293060c8a043b09f42dfbef19d3325a7b425536f72",
+      "listingPublishedAt": "2026-10-01T02:09:33.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T02:09:33+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T02:09:33+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T02:09:33+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T02:18:59+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T02:18:59+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T02:18:59+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 154,
+      "sourceId": "booker-new-media",
+      "url": "https://www.thebookseller.com/news/one-last-revelation-from-miss-daisy-frost",
+      "httpStatus": 200,
+      "responseSha256": "d3caad8c76df2165a2d738df058d90a30afc29362186abb79253c62ef58ea676",
+      "listingPublishedAt": "2026-10-01T08:18:50.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T10:30:00Z",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T08:18:50Z",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Subscriber gossip column; substantive original body unavailable."
+    },
+    {
+      "harvestIndex": 155,
+      "sourceId": "duke-press-blog",
+      "url": "https://dukeupress.wordpress.com/2026/09/26/dorothy-days-modernist-hospitality-the-weekly-read/",
+      "httpStatus": 200,
+      "responseSha256": "3f6be16d57d3ed0e4abe8c8e21dce673a798927fa343aa21003fdff34c80de86",
+      "listingPublishedAt": "2026-09-26T12:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-26T12:00:00+00:00",
+          "method": "primary-publication-meta"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T15:39:20+00:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 156,
+      "sourceId": "public-books",
+      "url": "https://www.publicbooks.org/if-we-rot-you-rot-with-us/",
+      "httpStatus": 200,
+      "responseSha256": "25b933a538f871e9f9d69db3b5edbf4fce93b817a82d82c8ea1fa6130e6b98cc",
+      "listingPublishedAt": "2026-09-28T15:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-28T15:00:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-28T15:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-28T15:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-28T17:03:49+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-28T17:03:49+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-28T17:03:49+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 157,
+      "sourceId": "revista-letras-libres",
+      "url": "https://letraslibres.com/revista/gabriel-zaid-y-la-poesia-indigena-del-norte-de-mexico-un-acontecimiento-literario/01/10/2026/",
+      "httpStatus": 200,
+      "responseSha256": "597060cba22664c23680acf32a949115ab1fdf32c6406f87a1a9892e63abcb30",
+      "listingPublishedAt": "2026-10-01T06:43:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T06:43:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T06:43:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T06:43:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T18:13:56+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T18:13:56+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T18:13:56+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 158,
+      "sourceId": "revista-mercatto",
+      "url": "https://www.revistamercurio.es/2026/09/25/los-comics-de-mercurio-13/",
+      "httpStatus": 200,
+      "responseSha256": "ac94f9d6fd7915e3d6fc9ca791e6246a954c8560d5bb0ccf7ef4c12ab69368eb",
+      "listingPublishedAt": "2026-09-25T06:18:40.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T08:18:40+02:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T08:18:40+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-25T08:18:40+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T11:05:52+02:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T11:05:52+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-25T11:05:52+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "BlogPosting"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 159,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6844.html",
+      "httpStatus": 200,
+      "responseSha256": "05276421074501dea7645e26eb20dda1bd9e5f0d383bcbd2d257b19b530508d4",
+      "listingPublishedAt": "2026-10-01T09:38:41.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 160,
+      "sourceId": "karavan-press",
+      "url": "https://karavanpress.com/2026/09/26/klara-du-plessis-is-die-wenner-van-die-breyten-breytenbach-prys-vir-digkuns-vir-haar-bundel-ekt-act/",
+      "httpStatus": 200,
+      "responseSha256": "6bcd8fcb2c9ce22eadb06a228366244a6ecb955a752d9aa0413855e4fbfac4d3",
+      "listingPublishedAt": "2026-09-26T21:00:17.000Z",
+      "published": [
+        {
+          "value": "2026-09-26T21:00:17+00:00",
+          "method": "primary-publication-meta"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-26T21:00:17+00:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 161,
+      "sourceId": "camlibro-com-co",
+      "url": "https://camlibro.com.co/seminario-de-formacion-inteligencia-artificial-aplicada-a-la-industria-del-libro/",
+      "httpStatus": 200,
+      "responseSha256": "e2e16e6b4089b9c2968e403e68d0a355e73c609d6591b61825fee0146580baf3",
+      "listingPublishedAt": "2026-09-30T21:32:24.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T21:32:24+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30T21:32:24+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30T21:32:24+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-30T21:32:24+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T21:11:27+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T21:11:27+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T21:11:27+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T21:11:27+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 162,
+      "sourceId": "lnb-lt",
+      "url": "https://www.lnb.lt/naujienos/15181-bibliografine-informacija-apie-numatomus-leisti-leidinius-rugsejo-21-27-d",
+      "httpStatus": 200,
+      "responseSha256": "75ae5eea26e8156cbde2bf911e37a7092d0a4bf56cc3b57e1bc1494d27b5ac72",
+      "listingPublishedAt": "2026-09-28T05:26:31.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Routine bibliography/catalogue notice without a separately verified literary release or event."
+    },
+    {
+      "harvestIndex": 163,
+      "sourceId": "il-libraio",
+      "url": "https://www.illibraio.it/news/cinema/film-la-citta-dei-vivi-1508929/",
+      "httpStatus": 200,
+      "responseSha256": "8abdf201e36247c88da85d8322998ca15a4fd165fdf1604236032f0ecd8a21bc",
+      "listingPublishedAt": "2026-09-30T01:04:13.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T01:04:13+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30 03:04:13",
+          "method": "primary-jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-24 11:44:30",
+          "method": "primary-jsonld.dateModified",
+          "type": "NewsArticle"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 164,
+      "sourceId": "literaturnaya-rossiya",
+      "url": "https://litrossia.ru/item/energiya-naroda-kak-potencial-razvitiya/",
+      "httpStatus": 200,
+      "responseSha256": "c4e7eab6ff717bd1ef0a059ebc90fef543558323bace53f0a1681a498c2c1e47",
+      "listingPublishedAt": "2026-09-25T04:00:55.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T04:00:55+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T04:00:55+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T09:01:00+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T09:01:00+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Broad political-economic commentary; no discrete current literary event."
+    },
+    {
+      "harvestIndex": 165,
+      "sourceId": "buchmarkt",
+      "url": "https://buchmarkt.de/2026/10/01/neue-vertriebskooperation-ulmer-bringt-kochbuchprogramm-von-tietge-in-den-handel/",
+      "httpStatus": 200,
+      "responseSha256": "c6be50405f9d3319ab78b1477a972af54d89f595d43ab35232c40662e11cc68c",
+      "listingPublishedAt": "2026-10-01T08:26:09.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 166,
+      "sourceId": "minima-moralia",
+      "url": "https://minimaetmoralia.it/libri/contro-il-ricatto-dellorigine-la-regina-della-notte-di-lukas-barfuss/",
+      "httpStatus": 200,
+      "responseSha256": "ef85964a93ae0beffb57e2d7067385115ef8b813f3d779e3a476f147da3ce086",
+      "listingPublishedAt": "2026-09-28T08:58:51.000Z",
+      "published": [
+        {
+          "value": "2026-09-28T08:58:51+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-28T08:58:51+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-09-28T08:58:51+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-28T08:58:52+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-28T08:58:52+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-09-28T08:58:52+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 167,
+      "sourceId": "sololibri",
+      "url": "https://www.sololibri.net/Gli-eroi-della-guerra-perduta-Walther-Nardini.html",
+      "httpStatus": 200,
+      "responseSha256": "dfa62b298e6ad8368bfe8ee89cc34ac2fa40578d6e7532638831b1f32e2665b0",
+      "listingPublishedAt": "2026-10-01T09:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T09:00:00Z",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T11:00:00+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T09:00:00Z",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T11:00:00+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 168,
+      "sourceId": "zenda-libros",
+      "url": "https://www.zendalibros.com/romper-el-silencio-lola-pons/",
+      "httpStatus": 200,
+      "responseSha256": "50a14eb48bb3a90c92cf11a975a6149bb57cc84e06ed9a8fb6952141f0d598a8",
+      "listingPublishedAt": "2026-10-01T04:00:51.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T04:00:51+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T04:00:51+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-10-01T06:00:51",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-29T10:37:05+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-29T10:37:05+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-29T12:37:05",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 169,
+      "sourceId": "placer-lectura",
+      "url": "https://elplacerdelalectura.com/2026/10/esta-es-la-novela-que-recomiendan-a-la-par-inaki-gabilondo-y-berna-gonzalez-harbour-desvela-en-una-ficcion-deslumbrante-la-historia-de-goya.html",
+      "httpStatus": 200,
+      "responseSha256": "c2b1b9df54156d77e266b2501e142de0effbde7d50306036b988a3a3cb4f3520",
+      "listingPublishedAt": "2026-10-01T17:30:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T17:30:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T17:30:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T17:30:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Headline names an older book while the body reproduces a December 2025 announcement for a March release. No verified new October stage."
+    },
+    {
+      "harvestIndex": 170,
+      "sourceId": "le-litteraire",
+      "url": "https://www.lelitteraire.com/jean-claude-belegou-la-cloture-suivi-de-solstice/",
+      "httpStatus": 200,
+      "responseSha256": "4ff331c9dbc3caa01cdc68412e0ba8fd563c4b776050147d61cc9606cea34d8b",
+      "listingPublishedAt": "2026-09-29T23:06:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T23:06:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T23:06:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T23:06:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Experimental film review without an established literary adaptation or publication."
+    },
+    {
+      "harvestIndex": 171,
+      "sourceId": "chicago-review-books",
+      "url": "https://chireviewofbooks.com/2026/09/29/the-cost-of-a-better-future-on-min-jin-lees-american-hagwon/",
+      "httpStatus": 200,
+      "responseSha256": "f779c9451f865bee526122235a00f8ac527d3754002514d45079e873548e0e59",
+      "listingPublishedAt": "2026-09-29T10:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T10:00:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T10:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T10:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-28T08:22:17-05:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 172,
+      "sourceId": "harpercollins-india",
+      "url": "https://harpercollins.co.in/blog/on-his-quest-to-understand-india-more-deeply-ramachandra-guha-finds-himself-in-an-argument-with-gandhi/",
+      "httpStatus": 200,
+      "responseSha256": "fea9a2f813a89b577837ab4f5a2900ab5e822c67b32e18ea457e4062878fcc8f",
+      "listingPublishedAt": "2026-09-25T12:15:31.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T12:15:31+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T12:15:31+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T12:15:31+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T12:17:24+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T12:17:24+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T12:17:24+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 173,
+      "sourceId": "impedimenta",
+      "url": "https://impedimenta.es/archivos/38213",
+      "httpStatus": 200,
+      "responseSha256": "5f565ea6e047697b012869af71dcd5202fcc6eba83a3c1d798799b409b9698b3",
+      "listingPublishedAt": "2026-09-30T11:12:18.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Very short press blurb on an existing novel; insufficient primary detail for a substantive independent news summary."
+    },
+    {
+      "harvestIndex": 174,
+      "sourceId": "fremantle-press",
+      "url": "https://fremantlepress.com.au/2026/09/29/imagining-the-after-rebecca-higgie-on-love-death-and-memory/",
+      "httpStatus": 200,
+      "responseSha256": "45dc34cdb9b33ad79caf1ae71fac36b13bbc16b49ea8f287832c573a580ca1b7",
+      "listingPublishedAt": "2026-09-29T01:01:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T01:01:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-29T01:01:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-29T01:01:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Visible article dates September 24 and 29 conflict; listing and metadata do not establish which is original publication and which is revision."
+    },
+    {
+      "harvestIndex": 175,
+      "sourceId": "booker-new-media",
+      "url": "https://www.thebookseller.com/news/giulia-de-biase-leaves-nurnberg-milano-to-launch-film-and-tv-agency-gdb-literary",
+      "httpStatus": 200,
+      "responseSha256": "64e791b76d0c259247345b1feadb9c230bc52c2833a260327e8904dd2a4c641d",
+      "listingPublishedAt": "2026-10-01T07:45:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T07:45:00Z",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Subscriber report: only the public teaser is available."
+    },
+    {
+      "harvestIndex": 176,
+      "sourceId": "duke-press-blog",
+      "url": "https://dukeupress.wordpress.com/2026/09/25/a-strategy-70-years-in-the-making-a-guest-post-by-mack-paul/",
+      "httpStatus": 200,
+      "responseSha256": "ba2c768c89df665cd816f3511190ef64beda31497facaebdbe4c00790da14efd",
+      "listingPublishedAt": "2026-09-25T12:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T12:00:00+00:00",
+          "method": "primary-publication-meta"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-24T17:19:39+00:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 177,
+      "sourceId": "revista-letras-libres",
+      "url": "https://letraslibres.com/revista/el-exilio-plural/01/10/2026/",
+      "httpStatus": 200,
+      "responseSha256": "991fff0d0f8a989d39ded3633042452ba6182377c938afa6d3a21b8fafab97e8",
+      "listingPublishedAt": "2026-10-01T06:40:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T06:40:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T06:40:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T06:40:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T19:50:40+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T19:50:40+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T19:50:40+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 178,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6845.html",
+      "httpStatus": 200,
+      "responseSha256": "45a25ce2c3389d065b20d659146b8e64629b4946f43829e51ac99dc6c2930ea5",
+      "listingPublishedAt": "2026-10-01T09:38:34.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Architecture/engineering discussion without an identified literary book or writing event."
+    },
+    {
+      "harvestIndex": 179,
+      "sourceId": "lnb-lt",
+      "url": "https://www.lnb.lt/naujienos/15170-oksfordo-universiteto-leidyklos-istekliai-atveria-naujas-galimybes-lietuvos-nacionalines-bibliotekos-skaitytojams",
+      "httpStatus": 200,
+      "responseSha256": "a8fabb8998de3004de2c6369d32cb20d4f22c2965e8ae5f8003a70488dbad7bd",
+      "listingPublishedAt": "2026-09-25T05:56:14.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Academic database access in business, law and politics; no sufficiently specific literature or book event."
+    },
+    {
+      "harvestIndex": 180,
+      "sourceId": "il-libraio",
+      "url": "https://www.illibraio.it/news/dautore/raffaella-silvestri-la-persona-peggiore-1506407/",
+      "httpStatus": 200,
+      "responseSha256": "efe8bb75635270f27feb8952ef6dd0f2986ea50c89f9cf11315ce12c2dedac6c",
+      "listingPublishedAt": "2026-09-30T00:16:47.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T00:16:47+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30 02:16:47",
+          "method": "primary-jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-24 15:28:43",
+          "method": "primary-jsonld.dateModified",
+          "type": "NewsArticle"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 181,
+      "sourceId": "literaturnaya-rossiya",
+      "url": "https://litrossia.ru/item/svet-vo-tme/",
+      "httpStatus": 200,
+      "responseSha256": "45c54c5757ab03d3a8503254b47e980d02672b10676e041b78f8e11f1ecf8519",
+      "listingPublishedAt": "2026-09-25T03:00:58.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T03:00:58+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T03:00:58+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T09:00:51+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T09:00:51+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 182,
+      "sourceId": "buchmarkt",
+      "url": "https://buchmarkt.de/2026/10/01/vorgeblaettert-buecher-und-autorinnen-im-freitag-und-in-der-zeit-52/",
+      "httpStatus": 200,
+      "responseSha256": "2d07a6ed7f9841aebe97c62e660e9014511e8a18bc31cead6a66c2fa1375f449",
+      "listingPublishedAt": "2026-10-01T08:07:00.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 183,
+      "sourceId": "minima-moralia",
+      "url": "https://minimaetmoralia.it/letteratura-italiana/soffro-dunque-sono-dentro-i-diari-di-guido-morselli/",
+      "httpStatus": 200,
+      "responseSha256": "13acae9ed4015b19c83ac50effe0fcaaa941b59eabcfcddb6ac46bc0f30ac166",
+      "listingPublishedAt": "2026-09-25T07:20:25.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T07:20:25+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T07:20:25+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-09-25T07:20:25+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-28T09:01:12+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-28T09:01:12+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "NewsArticle"
+        },
+        {
+          "value": "2026-09-28T09:01:12+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 184,
+      "sourceId": "sololibri",
+      "url": "https://www.sololibri.net/Il-sacco-di-Ashley-Tiya-Miles.html",
+      "httpStatus": 200,
+      "responseSha256": "f9056000765d67cdaf2fb2e62010cb01df90362716b534edb8cf3626afb2cea9",
+      "listingPublishedAt": "2026-10-01T08:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T08:00:00Z",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T10:00:00+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T08:00:00Z",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T10:00:00+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 185,
+      "sourceId": "zenda-libros",
+      "url": "https://www.zendalibros.com/5-poemas-de-el-vuelo-del-lugano-de-fernando-sarria/",
+      "httpStatus": 200,
+      "responseSha256": "c21836bf09f01f51f9330971f482554ccb481004c5d3a6b5ab2f743226350653",
+      "listingPublishedAt": "2026-10-01T04:00:51.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T04:00:51+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T04:00:51+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-10-01T06:00:51",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T11:45:29+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T11:45:29+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-30T13:45:29",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 186,
+      "sourceId": "placer-lectura",
+      "url": "https://elplacerdelalectura.com/2026/10/videoentrevista-a-viktor-kane-autor-de-sin-testigos.html",
+      "httpStatus": 200,
+      "responseSha256": "a23be76c18431841905ee1fafb6b45377ae6a18cdd43d1afeaa4b0e3af976a32",
+      "listingPublishedAt": "2026-10-01T16:37:29.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T16:37:29+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T16:37:29+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T16:37:29+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T16:37:30+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T16:37:30+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T16:37:30+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 187,
+      "sourceId": "chicago-review-books",
+      "url": "https://chireviewofbooks.com/2026/09/28/matthew-prigge-dogs-day/",
+      "httpStatus": 200,
+      "responseSha256": "b44ca8cb917371a581b777127de9013fcbdea3e886181ebad1dcfd45e46dec13",
+      "listingPublishedAt": "2026-09-28T10:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-28T10:00:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-28T10:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-28T10:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-26T16:53:28-05:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 188,
+      "sourceId": "harpercollins-india",
+      "url": "https://harpercollins.co.in/press-release/adam-eve-by-jeffrey-archer/",
+      "httpStatus": 200,
+      "responseSha256": "85bcaffb91761ef7d90d45716fb2032afdb240a935a91595c1a6e04b7fb3fa23",
+      "listingPublishedAt": "2026-09-25T07:52:22.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T07:52:22+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T07:52:22+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T07:52:22+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T07:52:23+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T07:52:23+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T07:52:23+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 189,
+      "sourceId": "impedimenta",
+      "url": "https://impedimenta.es/archivos/38208",
+      "httpStatus": 200,
+      "responseSha256": "487b9f3a07c8a4bb361c6bc0c6c1899172bdad8e2fd90b1eb825d2cdd46860bf",
+      "listingPublishedAt": "2026-09-30T11:05:39.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 190,
+      "sourceId": "booker-new-media",
+      "url": "https://www.thebookseller.com/news/bonnier-books-uk-appoints-stefanie-bierwerth-publisher-at-large-for-zaffre",
+      "httpStatus": 200,
+      "responseSha256": "6e3c46401fcbb2b25148c10190a39ea8d63da45b2269de39b198cb47dea7b0a3",
+      "listingPublishedAt": "2026-10-01T07:45:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T07:45:00Z",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Subscriber publisher appointment report; substantive original article body unavailable."
+    },
+    {
+      "harvestIndex": 191,
+      "sourceId": "revista-letras-libres",
+      "url": "https://letraslibres.com/revista/muy-antiguo-y-muy-moderno-dario/01/10/2026/",
+      "httpStatus": 200,
+      "responseSha256": "fd7dc08821310132065f282b40b2361773357d0a2df53753526fd90d88e65182",
+      "listingPublishedAt": "2026-10-01T06:19:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T06:19:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T06:19:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T06:19:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T17:57:47+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T17:57:47+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T17:57:47+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 192,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6848.html",
+      "httpStatus": 200,
+      "responseSha256": "78377b7203c8a9bba67e81409b93812e5df66c80047d9d4732305072b3ff3f28",
+      "listingPublishedAt": "2026-10-01T09:38:28.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 193,
+      "sourceId": "literaturnaya-rossiya",
+      "url": "https://litrossia.ru/item/neprostaya-prostaya-zhizn/",
+      "httpStatus": 200,
+      "responseSha256": "79343c63e789ea375440423d13153e2a4da19724241bc655e7fb2c32c1fed1ea",
+      "listingPublishedAt": "2026-09-25T02:30:31.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T02:30:31+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T02:30:31+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T11:10:57+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T11:10:57+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Fine-art review of drawings; not a literary news event."
+    },
+    {
+      "harvestIndex": 194,
+      "sourceId": "buchmarkt",
+      "url": "https://buchmarkt.de/2026/10/01/inga-hamann-uebernimmt-die-gesamtleitung-marketing-und-vertrieb-bei-reclam/",
+      "httpStatus": 200,
+      "responseSha256": "88731ee11308a5a58cdcb4f0ffc555494fe7128ee8caa756d848df439ea6cdf2",
+      "listingPublishedAt": "2026-10-01T07:27:50.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 195,
+      "sourceId": "sololibri",
+      "url": "https://www.sololibri.net/Scrittori-nati-a-settembre-anniversari-da-ricordare.html",
+      "httpStatus": 200,
+      "responseSha256": "1858ff2845bb70ac9f7c5a25af7333618c2b7e343d69fa186df02751d09c0d70",
+      "listingPublishedAt": "2026-09-30T15:54:54.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T15:54:54Z",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30T17:54:54+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T15:55:03Z",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T17:55:03+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Evergreen month-by-month birthday guide, without a new 2026 literary event or established new biographical research."
+    },
+    {
+      "harvestIndex": 196,
+      "sourceId": "zenda-libros",
+      "url": "https://www.zendalibros.com/el-miedo-que-cose-la-vida/",
+      "httpStatus": 200,
+      "responseSha256": "a8b284bdd74e20a4167c8c66cd92207529e31c559870813669db00f2b85c42d5",
+      "listingPublishedAt": "2026-10-01T04:00:37.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T04:00:37+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T04:00:37+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-10-01T06:00:37",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-28T10:28:42+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-28T10:28:42+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-28T12:28:42",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 197,
+      "sourceId": "placer-lectura",
+      "url": "https://elplacerdelalectura.com/2026/10/ojo-con-la-novela-que-recomienda-manuel-vicent-una-hermosa-reflexion-estetica-acerca-de-la-pasion-el-amor-ideal-y-la-belleza.html",
+      "httpStatus": 200,
+      "responseSha256": "97a608faa8a5961316dc27325ec883357339b43c964016a8b5da6fb958aadd33",
+      "listingPublishedAt": "2026-10-01T15:25:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T15:25:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T15:25:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T15:25:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Catalogue-style aggregation of existing Thomas Mann and Juan Benet books; no established new edition or news stage."
+    },
+    {
+      "harvestIndex": 198,
+      "sourceId": "chicago-review-books",
+      "url": "https://chireviewofbooks.com/2026/09/25/the-lives-of-others-flowers-and-insects-some-birds-and-a-pair-of-spiders/",
+      "httpStatus": 200,
+      "responseSha256": "08982c3845ae51a76c05c609d17b091ed03703d92f1a591fedce5ba62344cc02",
+      "listingPublishedAt": "2026-09-25T10:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T10:00:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T10:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T10:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-24T21:16:42-05:00",
+          "method": "primary-modification-meta"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 199,
+      "sourceId": "impedimenta",
+      "url": "https://impedimenta.es/archivos/38206",
+      "httpStatus": 200,
+      "responseSha256": "cb3106dff08e4bd27f9b314675b283930158c8986729e6022b4d006aab344b40",
+      "listingPublishedAt": "2026-09-30T10:53:33.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Reprinted award report has conflicting relative calendar wording. Original award/ceremony timing needs verification before a current news-stage claim."
+    },
+    {
+      "harvestIndex": 200,
+      "sourceId": "booker-new-media",
+      "url": "https://www.thebookseller.com/news/threshing-day-little-brown-extremely-sorry-as-new-fourth-wing-novel-fails-to-land-at-indies",
+      "httpStatus": 200,
+      "responseSha256": "ae6a6fec0a69f70d830f83ce965c6419570629262fdf47cf38f908fb7391d7f9",
+      "listingPublishedAt": "2026-10-01T07:34:30.000Z",
+      "published": [
+        {
+          "value": "2026-09-29T15:55:00Z",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T07:34:30Z",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Subscriber report with listing and primary article date disagreement; substantive original body is unavailable."
+    },
+    {
+      "harvestIndex": 201,
+      "sourceId": "revista-letras-libres",
+      "url": "https://letraslibres.com/revista/la-pervivencia-del-mundo-clasico/01/10/2026/",
+      "httpStatus": 200,
+      "responseSha256": "696a58ecbd61cbd1cc4f125528412231408eb193c49f86a2abed16f155820e4e",
+      "listingPublishedAt": "2026-10-01T06:12:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T06:12:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T06:12:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T06:12:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T18:09:34+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T18:09:34+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T18:09:34+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 202,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6849.html",
+      "httpStatus": 200,
+      "responseSha256": "3c28615d25bdbf6c97011651398eb8662aa4a6235df452592dbc6294a470262c",
+      "listingPublishedAt": "2026-10-01T09:38:21.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 203,
+      "sourceId": "literaturnaya-rossiya",
+      "url": "https://litrossia.ru/item/ya-dro/",
+      "httpStatus": 200,
+      "responseSha256": "fb1111e50c0c6cfa05e6a0d84fec186414336bc2983ebfd7b162caa3560dbfc2",
+      "listingPublishedAt": "2026-09-25T02:00:02.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T02:00:02+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T02:00:02+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T09:00:31+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T09:00:31+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 204,
+      "sourceId": "buchmarkt",
+      "url": "https://buchmarkt.de/2026/10/01/imprint-ullstein-startet/",
+      "httpStatus": 200,
+      "responseSha256": "715a1e9f1bfbba22dd344f9fd05dc3632ae77dd2319da0592b9242641362608a",
+      "listingPublishedAt": "2026-10-01T06:56:56.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 205,
+      "sourceId": "sololibri",
+      "url": "https://www.sololibri.net/Body-check-Contatto-pericoloso-Elle-Kennedy.html",
+      "httpStatus": 200,
+      "responseSha256": "63ef6ce7bedddbfe9a2af568e4146024f4cce02d633055396c0e72f9f3b893a8",
+      "listingPublishedAt": "2026-09-30T15:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T15:00:00Z",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30T17:00:00+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T15:00:00Z",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T17:00:00+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 206,
+      "sourceId": "zenda-libros",
+      "url": "https://www.zendalibros.com/como-escribir-un-libro-sobre-escondites/",
+      "httpStatus": 200,
+      "responseSha256": "406293f1c824e5cf38d0820b8b0921a413e7b571bdc3eae1835770b955b4931f",
+      "listingPublishedAt": "2026-10-01T04:00:02.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T04:00:02+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T04:00:02+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-10-01T06:00:02",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T09:48:58+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T09:48:58+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-30T11:48:58",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 207,
+      "sourceId": "placer-lectura",
+      "url": "https://elplacerdelalectura.com/2026/10/las-8-nuevas-novelas-literarias-de-esta-semana.html",
+      "httpStatus": 200,
+      "responseSha256": "b943dbe119aa1490e0a603456294e44a7ad1fba296af54e2c132e4050badc20e",
+      "listingPublishedAt": "2026-10-01T14:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T14:00:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T14:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T14:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 208,
+      "sourceId": "impedimenta",
+      "url": "https://impedimenta.es/archivos/38204",
+      "httpStatus": 200,
+      "responseSha256": "06a077528613cd66e68cbc4b91131475ffceaacae6826eb8784299b6e2b9a601",
+      "listingPublishedAt": "2026-09-29T10:46:05.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "September 29 republication of an explicitly September 9 interview. The relative today reading announcement is stale, not a fresh event."
+    },
+    {
+      "harvestIndex": 209,
+      "sourceId": "booker-new-media",
+      "url": "https://www.thebookseller.com/news/pa-renews-call-for-national-decade-of-reading-at-labour-party-conference",
+      "httpStatus": 200,
+      "responseSha256": "7ee708b9bcc963712b4133e90adf7e9a2da61b2f0ef327ad772b14cb3f5786e2",
+      "listingPublishedAt": "2026-09-30T15:12:09.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T15:00:00Z",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T15:12:09Z",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Subscriber report: only a public teaser is available, not the original substantive article."
+    },
+    {
+      "harvestIndex": 210,
+      "sourceId": "revista-letras-libres",
+      "url": "https://letraslibres.com/revista/dos-poemas-146/01/10/2026/",
+      "httpStatus": 200,
+      "responseSha256": "591cd8ec30f1944e944003ff0395bc2e557e4d6066104ce4ed1cdc275b8ab228",
+      "listingPublishedAt": "2026-10-01T06:08:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T06:08:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T06:08:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T06:08:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T17:52:15+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T17:52:15+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T17:52:15+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 211,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6850.html",
+      "httpStatus": 200,
+      "responseSha256": "264e06035641ceac3d7a1c48033cea5deba63c7c3599140d04413abf878343bf",
+      "listingPublishedAt": "2026-10-01T09:38:09.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 212,
+      "sourceId": "literaturnaya-rossiya",
+      "url": "https://litrossia.ru/item/ostajotsya-pesok-zolotoj/",
+      "httpStatus": 200,
+      "responseSha256": "91e069e1cff25b30337ab02275a785c88f6a11cf5620515ab44a0361dd1d1e35",
+      "listingPublishedAt": "2026-09-25T00:00:19.000Z",
+      "published": [
+        {
+          "value": "2026-09-25T00:00:19+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-25T00:00:19+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-25T09:00:20+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-25T09:00:20+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 213,
+      "sourceId": "buchmarkt",
+      "url": "https://buchmarkt.de/2026/10/01/gmeiner-uebernimmt-ab-2027-den-vertrieb-fuer-saga-egmont-deutschland/",
+      "httpStatus": 200,
+      "responseSha256": "b6c0b684019fc6c07ab1bff56a70c047784c386ce614168fb9b798766c4db443",
+      "listingPublishedAt": "2026-10-01T06:45:39.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 214,
+      "sourceId": "sololibri",
+      "url": "https://www.sololibri.net/Giuseppe-Lazzati-Testimone-e-maestro-Gianni-Borsa-e-Luciano-Caimi-a-cura-di.html",
+      "httpStatus": 200,
+      "responseSha256": "a798db022adf9751347c34c9d00601942f2c53928ed05d67f81e9f24e5a53b43",
+      "listingPublishedAt": "2026-09-30T14:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T14:00:00Z",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30T16:00:00+02:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T16:56:26Z",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T18:56:26+02:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 215,
+      "sourceId": "zenda-libros",
+      "url": "https://www.zendalibros.com/carta-a-woody-allen/",
+      "httpStatus": 200,
+      "responseSha256": "65f934550ccfc869abb73c1a453f6b7eb1089c385a9f437c6648eef40a713577",
+      "listingPublishedAt": "2026-09-30T22:23:15.000Z",
+      "published": [
+        {
+          "value": "2026-09-30T22:23:15+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-09-30T22:23:15+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-10-01T00:23:15",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T09:45:09+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-09-30T09:45:09+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-30T11:45:09",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Film-appreciation letter, without a current literary publication, adaptation or event established."
+    },
+    {
+      "harvestIndex": 216,
+      "sourceId": "placer-lectura",
+      "url": "https://elplacerdelalectura.com/2026/10/la-ficcion-tiene-sentido-tom-clancy-y-el-arte-de-convertir-una-duda-en-suspense.html",
+      "httpStatus": 200,
+      "responseSha256": "baf3f1ae290ff1b14822eab2fca44a63158887a3804e30807370b955010859ed",
+      "listingPublishedAt": "2026-10-01T13:00:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T13:00:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T13:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T13:00:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    },
+    {
+      "harvestIndex": 217,
+      "sourceId": "impedimenta",
+      "url": "https://impedimenta.es/archivos/38201",
+      "httpStatus": 200,
+      "responseSha256": "8985137f97c8879f5b121dd1d6ba056a229341b45bbc3b97831acfa6bed243a0",
+      "listingPublishedAt": "2026-09-29T10:29:28.000Z",
+      "published": [],
+      "modified": [],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Repeats the same Tatiana Țîbuleac novel and character/father-memory stage already covered by the reviewed primary author conversation. A separate source recommendation alone does not establish a distinct new event."
+    },
+    {
+      "harvestIndex": 218,
+      "sourceId": "booker-new-media",
+      "url": "https://www.thebookseller.com/news/books-in-the-media-scattered-applause-for-charles-spencers-memories-of-princess-diana",
+      "httpStatus": 200,
+      "responseSha256": "9849a8e8b2b3e3dcc44671326cadbef1f353eba3228a8195c0ff7c26b04b904e",
+      "listingPublishedAt": "2026-09-30T14:51:28.000Z",
+      "published": [
+        {
+          "value": "2026-09-28T10:59:00Z",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-09-30T14:51:28Z",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        }
+      ],
+      "reviewStatus": "held",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": null,
+      "heldReason": "Subscriber press roundup and listing/article-date disagreement; substantive report unavailable."
+    },
+    {
+      "harvestIndex": 219,
+      "sourceId": "revista-letras-libres",
+      "url": "https://letraslibres.com/revista/la-prensa-desde-el-margen/01/10/2026/",
+      "httpStatus": 200,
+      "responseSha256": "53f1df220b65a370d37506abbbcd740701021cd9df8f0a77c7f3cfc8cb0eb3d7",
+      "listingPublishedAt": "2026-10-01T06:04:00.000Z",
+      "published": [
+        {
+          "value": "2026-10-01T06:04:00+00:00",
+          "method": "primary-publication-meta"
+        },
+        {
+          "value": "2026-10-01T06:04:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T06:04:00+00:00",
+          "method": "primary-jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "modified": [
+        {
+          "value": "2026-10-01T18:33:32+00:00",
+          "method": "primary-modification-meta"
+        },
+        {
+          "value": "2026-10-01T18:33:32+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T18:33:32+00:00",
+          "method": "primary-jsonld.dateModified",
+          "type": "WebPage"
+        }
+      ],
+      "reviewStatus": "proposed",
+      "olderPrimaryPublication": [],
+      "publicationPrecision": "publisher-supplied timestamp; capture time is separate",
+      "heldReason": null
+    }
+  ]
+}

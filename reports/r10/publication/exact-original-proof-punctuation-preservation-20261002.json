@@ -1,0 +1,35 @@
+{
+  "scope": "Unicode escapes retain original proof/source punctuation while meeting repository editorial byte policy; accepted records and source bytes are unchanged.",
+  "files": [
+    {
+      "path": "reports/r10/publication/news-expanded-c-20261002.json",
+      "rawDigest": "351f18e0815dab4137713dfdd3155f559a1739ddc6aa3c8d0d7c17de5b0e92d4",
+      "escapedDigest": "ab17cf222429557e7785764a3ffdbcab623b1ca7b17777f3c02032c848b2859a",
+      "decodedJsonUnchanged": true
+    },
+    {
+      "path": "reports/r10/publication/news-september-f-20261002.json",
+      "rawDigest": "bf2ad4882b3d4487751116f64fbe0ac851ddde7cc0893ac415aa15311a4dbb1f",
+      "escapedDigest": "9cd79bda9c53ed0eec35a7629c0aad3d602cd1de4a5eea8fb849a9d255a3e804",
+      "decodedJsonUnchanged": true
+    },
+    {
+      "path": "scripts/check-british-library-scoped-extraction-20261002.mjs",
+      "rawDigest": "20c22300fe89415034b8c35a374541a8dffc974d7de6f9e7d6108fb65faf52e1",
+      "escapedDigest": "699b25f1fb6f583b65b94673e2acb9c90cbb2148ea6e473a088b803cf573a862",
+      "decodedJsonUnchanged": false
+    },
+    {
+      "path": "scripts/lib/british-library-scoped-extraction-20261002.test.mjs",
+      "rawDigest": "924522a3b02b1fc29eb9d3f8089911da3db987998339d2a9b17f69021846cb4d",
+      "escapedDigest": "ec658640447170ba3b7bcdeea944508828d5ea23fd02759390c2ccf7a9b83953",
+      "decodedJsonUnchanged": false
+    },
+    {
+      "path": "scripts/news-expanded-c-editorial-20261002.mjs",
+      "rawDigest": "3cce16571c5d13b0d5d24d492de6d54e1da9224abf06ede82ec2cff12dbf4210",
+      "escapedDigest": "0b944e2a45b9232be83c7bedf96c648a0dd18b96538ad63b642e6b2cf6f64278",
+      "decodedJsonUnchanged": false
+    }
+  ]
+}

@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 1,
+  "batchId": "news-expanded-c-20261002",
+  "checkedAt": "2026-10-01T22:34:58.190Z",
+  "reviewer": "root_agent_independent_from_batch_author",
+  "humanReview": false,
+  "releaseAccepted": false,
+  "productionApplied": false,
+  "canonicalWritten": false,
+  "remoteWrites": 0,
+  "records": 44,
+  "recordSha256": "7ec22bc3a9706ae70d7821fc6ab00d1a34216642c73192966ce723d494c58da4",
+  "rawResponseDigestsChecked": 44,
+  "issues": [],
+  "results": [
+    {
+      "id": "r10-news-c-josef-winkler-stuttgart-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "bcfd13466cae4c35d59d7c07b1400e50cf46f909b411c3c688ccf2a5cf2e24d7",
+      "bodyBytes": 106840,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:38:03.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 292,
+      "enCharacters": 303
+    },
+    {
+      "id": "r10-news-c-business-book-club-germany-launch-20261002",
+      "sourceId": "buchmarkt",
+      "responseSha256": "499a756bf5c0470aa64527cda788f37bf1947e2dd3b8507d2e3192474c479952",
+      "bodyBytes": 120532,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T06:43:20.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 310,
+      "enCharacters": 312
+    },
+    {
+      "id": "r10-news-c-shari-lapena-qui-tutti-mentono-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "ef057670c720723e5eac39f623031a652a8dcd3743ee0f1c7b76e246c814f8e9",
+      "bodyBytes": 114167,
+      "primaryMeta": [
+        "2026-09-30T13:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-09-30T15:00:00+02:00"
+      ],
+      "publishedAt": "2026-09-30T13:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 289,
+      "enCharacters": 273
+    },
+    {
+      "id": "r10-news-c-maylis-kerangal-dia-mareas-announcement-20261002",
+      "sourceId": "placer-lectura",
+      "responseSha256": "804c491d6c41172d3db73e062f711605afd0daebadf9bf476f34092e8ac6bac0",
+      "bodyBytes": 192411,
+      "primaryMeta": [
+        "2026-10-01T12:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T12:00:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T12:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 310,
+      "enCharacters": 288
+    },
+    {
+      "id": "r10-news-c-borges-collected-lectures-review-20261002",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "17b01cd6a8f37e72f854b1c6da632b10e32845004072788da4091437a8da8458",
+      "bodyBytes": 280542,
+      "primaryMeta": [
+        "2026-10-01T06:02:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:02:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T06:02:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 315,
+      "enCharacters": 314
+    },
+    {
+      "id": "r10-news-c-stuttgart-young-writers-online-circle-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "ab2acdc065d0e9a50305054b1a73e8072e44e9df2767c25e9919925341691bde",
+      "bodyBytes": 147727,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:37:56.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 303,
+      "enCharacters": 269
+    },
+    {
+      "id": "r10-news-c-morricone-tornatore-conversation-book-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "ceabd3741d9e9f4f97cc5b5b276baec5b0192e5fbb4595bed6ee84e99d1300f8",
+      "bodyBytes": 120009,
+      "primaryMeta": [
+        "2026-09-30T10:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-09-30T12:00:00+02:00"
+      ],
+      "publishedAt": "2026-09-30T10:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 315,
+      "enCharacters": 296
+    },
+    {
+      "id": "r10-news-c-irish-poets-stuttgart-trilingual-performance-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "32677fb405b89bba653817714c2f08d51db1e9e3dfe66613d67e53799be4c823",
+      "bodyBytes": 116728,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:37:48.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 319,
+      "enCharacters": 311
+    },
+    {
+      "id": "r10-news-c-serhij-zhadan-stuttgart-story-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "e0c8df2d47ed55946917acb5ba98fbc5e61875281b018349f61cd0f8982eebd0",
+      "bodyBytes": 105971,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:36:43.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 331,
+      "enCharacters": 315
+    },
+    {
+      "id": "r10-news-c-alcide-pierantozzi-lo-sbilico-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "92fc570dae4e984428da19366ac2bf16206de70ceff4e9b6573cf8c326050250",
+      "bodyBytes": 113332,
+      "primaryMeta": [
+        "2026-09-29T16:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-09-29T18:00:00+02:00"
+      ],
+      "publishedAt": "2026-09-29T16:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 318,
+      "enCharacters": 298
+    },
+    {
+      "id": "r10-news-c-kapriolen-marica-bodrozic-episode51-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "4d86063701bb924f5c1821c378580acce86fbc458ef480a3c8599fd76ea3c553",
+      "bodyBytes": 153075,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-30T15:29:37.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 294,
+      "enCharacters": 302
+    },
+    {
+      "id": "r10-news-c-vieri-tommasi-candidi-male-autore-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "bab4b4ea6a18ecdc179922853d6cad0a094a6cefc6bb14eb1a5124339b27c773",
+      "bodyBytes": 118285,
+      "primaryMeta": [
+        "2026-09-29T13:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-09-29T15:00:00+02:00"
+      ],
+      "publishedAt": "2026-09-29T13:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 307,
+      "enCharacters": 290
+    },
+    {
+      "id": "r10-news-c-stuttgart-literaturhaus25-programme-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "362ae795c9104b7e1d187b98c6662cb9622d56966dc77392b9e3a7a9df65c6a2",
+      "bodyBytes": 154181,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-30T14:28:04.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 283
+    },
+    {
+      "id": "r10-news-c-sinead-nolan-il-gioco-conta-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "f28e07e67d2cd7e1617b31955a47639f3de1cdbcffc9c509063b3b5ff3bc579f",
+      "bodyBytes": 115108,
+      "primaryMeta": [
+        "2026-09-29T10:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-09-29T12:00:00+02:00"
+      ],
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 308,
+      "enCharacters": 309
+    },
+    {
+      "id": "r10-news-c-letras-libres-poemas-efimeros-letter-20261002",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "9d0279d774b421d9b989abed2788c0fbb5e601f1343af3fdf645b8a6054a481d",
+      "bodyBytes": 264271,
+      "primaryMeta": [
+        "2026-10-01T06:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:00:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 287,
+      "enCharacters": 271
+    },
+    {
+      "id": "r10-news-c-shevek-selbert-inclusive-comics-exhibition-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "52fcdd229db8cfad5736e1df576a2c171a20d629599691e05a0a8ef5200b011a",
+      "bodyBytes": 130511,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-30T13:31:22.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 322,
+      "enCharacters": 323
+    },
+    {
+      "id": "r10-news-c-luciana-de-palma-travel-writing-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "3944b6c6fb0f9b200b3d49aeafed306c319d0edf5cffb3c95699f846048b3747",
+      "bodyBytes": 120056,
+      "primaryMeta": [
+        "2026-09-29T09:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-09-29T11:00:00+02:00"
+      ],
+      "publishedAt": "2026-09-29T09:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 315,
+      "enCharacters": 322
+    },
+    {
+      "id": "r10-news-c-stuttgart-digital-autobiographical-workshop-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "62b91f36f4aab061f274228a0ed1d662d393bf04dcb76a5b9c92ddfd3380d8ab",
+      "bodyBytes": 127375,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28T12:30:53.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 302,
+      "enCharacters": 272
+    },
+    {
+      "id": "r10-news-c-trude-teige-grandfather-sea-review-20261002",
+      "sourceId": "sololibri",
+      "responseSha256": "dc88b98c7b6d88784a556f6180d06c9e3292544d0810d1e0c4ef2e9dc456e871",
+      "bodyBytes": 120462,
+      "primaryMeta": [
+        "2026-09-29T08:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-09-29T10:00:00+02:00"
+      ],
+      "publishedAt": "2026-09-29T08:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 310,
+      "enCharacters": 294
+    },
+    {
+      "id": "r10-news-c-peter-may-publisher-obituary-20261002",
+      "sourceId": "booker-new-media",
+      "responseSha256": "e076c14c076c1ab871beda2c4c94365b15cd5ddf2560d7dd33316f9e2423b12a",
+      "bodyBytes": 112100,
+      "primaryMeta": [],
+      "primaryLd": [
+        "2026-09-29T07:45:00Z"
+      ],
+      "publishedAt": "2026-09-29T07:45:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 270,
+      "enCharacters": 274
+    },
+    {
+      "id": "r10-news-c-german-book-prize-2026-live-stream-20261002",
+      "sourceId": "german-book-prize",
+      "responseSha256": "d738a6db9742d49e6e987d6e8ac99ccc0a7ed2e84e003e64fddd318bd12b6206",
+      "bodyBytes": 18927,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 305,
+      "enCharacters": 309
+    },
+    {
+      "id": "r10-news-c-sonia-draga-cesare-de-michelis-2027-20261002",
+      "sourceId": "frankfurt-book-fair",
+      "responseSha256": "55915029424dbd4ddfb3f2f9b27c7cb772b59be163d76fa5ac5148354fbd0921",
+      "bodyBytes": 91821,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 288,
+      "enCharacters": 276
+    },
+    {
+      "id": "r10-news-c-gothenburg2026-attendance2027-themes-20261002",
+      "sourceId": "gothenburg-book-fair",
+      "responseSha256": "79f85b0c4e3558d847bfcd9f544ab1598aa562807cb844bc2c687c94b86bf3b0",
+      "bodyBytes": 216399,
+      "primaryMeta": [
+        "2026-09-28T09:25:33+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-28T09:25:33+00:00"
+      ],
+      "publishedAt": "2026-09-28T09:25:33.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 250,
+      "enCharacters": 250
+    },
+    {
+      "id": "r10-news-c-british-library2027-programme-20261002",
+      "sourceId": "british-library",
+      "responseSha256": "7a6cf7f773cf5c409edc00a356851de6c1930db6ae1920d1cdd3e44e2c3e920d",
+      "bodyBytes": 109407,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 310,
+      "enCharacters": 284
+    },
+    {
+      "id": "r10-news-c-saratov-literary-museums42-seminar-20261002",
+      "sourceId": "goslitmuz",
+      "responseSha256": "3efbe2625d534ad9dc56aaaf26c07565d0fd744c3c79de03ebbe9b67b7e2b72c",
+      "bodyBytes": 40195,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 307,
+      "enCharacters": 305
+    },
+    {
+      "id": "r10-news-c-yasnaya-polyana-eugene-onegin-screening-20261002",
+      "sourceId": "yasnaya-polyana",
+      "responseSha256": "c2f439f52597ccedb706ed9031f27a73285152da4c0dc29748deeaffc9ac7a2a",
+      "bodyBytes": 36182,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-26",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 288
+    },
+    {
+      "id": "r10-news-c-sne-sustainable-publishing-tools-20261002",
+      "sourceId": "sne-fr",
+      "responseSha256": "55462a9a2c4c3c1796d50e65c415891a8ee7b9fab9939db271bc5f06fcfe84ae",
+      "bodyBytes": 146732,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29T14:52:30.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 310,
+      "enCharacters": 310
+    },
+    {
+      "id": "r10-news-c-sferum-litres-teachers-reading-campaign-20261002",
+      "sourceId": "bookunion-ru",
+      "responseSha256": "6dedfed6be5b51e6f2059cf476bcf8abd70b868557def490b2b39bb9a94ab6e7",
+      "bodyBytes": 86137,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 284,
+      "enCharacters": 285
+    },
+    {
+      "id": "r10-news-c-bosnia-special-library-publication-project-20261002",
+      "sourceId": "nub-ba",
+      "responseSha256": "0a84aea2abf84e456984423f59432691774116e3b9b4d94e462117d345d89a42",
+      "bodyBytes": 17918,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 351,
+      "enCharacters": 343
+    },
+    {
+      "id": "r10-news-c-czech-national-library-albertina-cooperation-20261002",
+      "sourceId": "nkp-cz",
+      "responseSha256": "36b725a083bfe3a9bdb2ca72674e43c59fba9ddda4a87a0040ce1a102c452009",
+      "bodyBytes": 64127,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-24",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 303,
+      "enCharacters": 292
+    },
+    {
+      "id": "r10-news-c-montenegro-podgorica-literature-festival-20261002",
+      "sourceId": "nb-cg-me",
+      "responseSha256": "6c7997efa0eac61699d922ba7f1ee6a6e7ff83f8ced7a76d9da6c9da56c228c4",
+      "bodyBytes": 20380,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-30",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 327,
+      "enCharacters": 316
+    },
+    {
+      "id": "r10-news-c-poland-national-library-acquisitions-head-20261002",
+      "sourceId": "bn-org-pl",
+      "responseSha256": "cd0e6ba1a6d468d8ca5241fff310c07b8e429a88c8afaf769333e7066f5e86b6",
+      "bodyBytes": 31057,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 308,
+      "enCharacters": 305
+    },
+    {
+      "id": "r10-news-c-anna-manso-pen-eritrea-literary-letter-20261002",
+      "sourceId": "pencatala-cat",
+      "responseSha256": "63bf56e770e6446ce5d7075518582a43cbb3027cdd5b19662f1f2ad257c14bba",
+      "bodyBytes": 94755,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T10:09:29.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 312,
+      "enCharacters": 300
+    },
+    {
+      "id": "r10-news-c-mikhail-talalay-moscow-italian-excerpt-20261002",
+      "sourceId": "god-literatury",
+      "responseSha256": "a245669f53774264b7b63de79eb47058322e23b275b07cde16d32b0766b83113",
+      "bodyBytes": 111453,
+      "primaryMeta": [],
+      "primaryLd": [
+        "2026-09-27T08:15:00"
+      ],
+      "publishedAt": "2026-09-27",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 306
+    },
+    {
+      "id": "r10-news-c-ast-2026-children-book-sales-selection-20261002",
+      "sourceId": "ast",
+      "responseSha256": "e0e95bafe7ea32bb5f441ef56b80372d760c2861aaf0b56fc561dc74d2471f22",
+      "bodyBytes": 152789,
+      "primaryMeta": [],
+      "primaryLd": [
+        "2026-10-01T19:10:00+0300"
+      ],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 303,
+      "enCharacters": 274
+    },
+    {
+      "id": "r10-news-c-chile-national-library-gender-bibliography-20261002",
+      "sourceId": "bn-chile",
+      "responseSha256": "e39b19e55c7f2150944fecc7a676cb2e0324eb84b4a39dc9dce5c9b09de41644",
+      "bodyBytes": 57713,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 301,
+      "enCharacters": 293
+    },
+    {
+      "id": "r10-news-c-claire-louise-bennett-eterna-cadencia-excerpt-20261002",
+      "sourceId": "eterna-cadencia",
+      "responseSha256": "88774f0d2175a387463050da292488031c649ed269661a62c8f8435676480618",
+      "bodyBytes": 47939,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 283,
+      "enCharacters": 305
+    },
+    {
+      "id": "r10-news-c-thomas-mcguane-wooded-shore-critical-essay-20261002",
+      "sourceId": "literary-hub",
+      "responseSha256": "724c9e18f3af81aecf6255ec88bbb672bbffc153ba676d91ff063b93a2aab4e5",
+      "bodyBytes": 80204,
+      "primaryMeta": [
+        "2026-09-30T11:03:24+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-30T11:03:24.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 285,
+      "enCharacters": 282
+    },
+    {
+      "id": "r10-news-c-stepanova-dugdale-disappearing-act-interview-20261002",
+      "sourceId": "words-without-borders",
+      "responseSha256": "ec4c8240f17e3c5864a5126d6445d6c8a205c91d39e7459d1686fc09193655ce",
+      "bodyBytes": 120995,
+      "primaryMeta": [
+        "2026-10-01T13:00:02+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T13:00:02+00:00"
+      ],
+      "publishedAt": "2026-10-01T13:00:02.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 327,
+      "enCharacters": 327
+    },
+    {
+      "id": "r10-news-c-rumpus-emily-wilson-odyssey-rescheduled-20261002",
+      "sourceId": "the-rumpus",
+      "responseSha256": "ae85e670e7b1e9c6e225e795e3beeb8722a380f5b92efa9cc29a57621fe7c1ac",
+      "bodyBytes": 216929,
+      "primaryMeta": [
+        "2026-09-25T14:50:59+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T14:50:59+00:00"
+      ],
+      "publishedAt": "2026-09-25T14:50:59.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 318,
+      "enCharacters": 280
+    },
+    {
+      "id": "r10-news-c-scottish50word-fiction-children-call-20261002",
+      "sourceId": "scottish-book-trust",
+      "responseSha256": "08caa85ce35010cb38fe17c79526581bf2ad0dbe1b720ff08396d09cb6733934",
+      "bodyBytes": 385801,
+      "primaryMeta": [
+        "2026-10-01T15:40:54"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 303,
+      "enCharacters": 293
+    },
+    {
+      "id": "r10-news-c-eksmo-ast-fandom-fest-programme-20261002",
+      "sourceId": "literaturnaya-gazeta",
+      "responseSha256": "03f8b5f44ade13da22383d08580ac2f7b6ce096b0d8004bbc1af9eb0996b1cc7",
+      "bodyBytes": 78819,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-02",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 294,
+      "enCharacters": 289
+    },
+    {
+      "id": "r10-news-c-liberte-book-service-press-restructure-20261002",
+      "sourceId": "boersenblatt",
+      "responseSha256": "8898835bb70ddf56dc364b1e058006f2a6b386de2ff8223fa6177d3d2a427d16",
+      "bodyBytes": 98397,
+      "primaryMeta": [],
+      "primaryLd": [
+        "2026-10-01T17:33:30+0200"
+      ],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 309,
+      "enCharacters": 297
+    },
+    {
+      "id": "r10-news-c-ernesto-carrion-anagrama-writing-essay-20261002",
+      "sourceId": "anagrama",
+      "responseSha256": "30aaed7bec67402601ea41bcb3ac8949e95a079c2343b91106777f03eb24fa52",
+      "bodyBytes": 69111,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 293,
+      "enCharacters": 258
+    }
+  ]
+}

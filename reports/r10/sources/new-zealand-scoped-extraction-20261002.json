@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "publishers-org-nz",
+  "sourceName": "Publishers Association of New Zealand",
+  "url": "https://publishers.org.nz/media-release-book-sector-says-the-next-3-years-will-define-the-future/",
+  "httpStatus": 200,
+  "accessedAt": "2026-10-01T22:10:30.733Z",
+  "responseSha256": "9469a2e462934db6e73e1422c2e729c27e07c730214b57db062807f207656bf7",
+  "documentBytes": 93275,
+  "detailHeadlineSelector": ".heading-title .blog-title h1",
+  "detailTextSelector": "article .post-content .sqs-image-shape-container-element",
+  "capturedHeadline": "Book sector says the next 3 years will define the future",
+  "extractedCharacters": 2636,
+  "proofQuotes": [
+    "Coalition for Books",
+    "New Zealand Year of Reading",
+    "Public Lending Right"
+  ],
+  "method": "First-party media-release body inspected in the full retained original document. Its imported Squarespace content is inside a footer element; the trusted exact article selector is cloned before generic chrome removal.",
+  "officeCountryEvidenceChanged": false,
+  "remoteWrites": 0
+}

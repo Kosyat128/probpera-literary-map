@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-NEXT-BUILDER-FOLLOWUP-20261002",
+  "baselineCommitSha": "59350b6a5728b06403fcfa2d705528da57684ed6",
+  "historicalPinsChanged": false,
+  "authorization": {
+    "userAuthorized": true,
+    "scope": "Finish the archive and repair necessary reproducibility boundaries; additive agent review only.",
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "scope": "Reverse only nine builder and immutable-addition read fragments before the accepted Next security and calendar projections. No date, dependency, runtime, news or authority-packet changes.",
+  "allowedProjectionPaths": [
+    "scripts/build-russian-calendar-expansion-attestation-r10.mjs",
+    "scripts/build-calendar-followup-attestation-r10.mjs",
+    "scripts/lib/reviewed-next-security-followup.mjs",
+    "scripts/lib/reviewed-russian-calendar-expansion.mjs",
+    "scripts/lib/reviewed-next-security-followup.test.mjs"
+  ],
+  "sourceBaselines": {
+    "scripts/build-russian-calendar-expansion-attestation-r10.mjs": "fd45c9e38fea6122e3294aa2193d58c36197de5ec1ea244a62250f747c481f2e",
+    "scripts/build-calendar-followup-attestation-r10.mjs": "ea10962d79e07e8a813dde0b25709267060cb0c1193fa8de9f44236261565e0b",
+    "scripts/lib/reviewed-next-security-followup.mjs": "467df02983001a3d8a33fcecf96583be6ffc599c86f7e20a1a817f1e1e04e95c",
+    "scripts/lib/reviewed-russian-calendar-expansion.mjs": "fc0d366251fc419c410ccb18bd3b0e269272f582591798a4f17cf65ba02b6593",
+    "scripts/lib/reviewed-next-security-followup.test.mjs": "d5a0083b6601905989d964c601ecf795aa005534972764d38ab532f26bbaf3c2"
+  },
+  "reviewedSources": {
+    "scripts/build-russian-calendar-expansion-attestation-r10.mjs": "c0d81408438fc14ca2bb013479696453c792082eeaf7e121d5841301a41b5c58",
+    "scripts/build-calendar-followup-attestation-r10.mjs": "eec02257a6461df6dbf9018da100f5df6fecf3d27de962d264cc49ee8b4bc5d8",
+    "scripts/lib/reviewed-next-security-followup.mjs": "6bba8723534067aa81e99499505b71f8c5e802dc4b5d7953eaf6209c5a6050b2",
+    "scripts/lib/reviewed-russian-calendar-expansion.mjs": "431dfba4d63676daf8fb9149eb7ff544ad6555a1e59ca283460f7efd7c39db59",
+    "scripts/lib/reviewed-next-security-followup.test.mjs": "4be80e8d4a48bb01fc9ba6090af038399e982570531ce586250a046c906f59c1"
+  },
+  "projections": [
+    {
+      "path": "scripts/build-russian-calendar-expansion-attestation-r10.mjs",
+      "id": "russian-builder-followup-import",
+      "before": "import assert from 'node:assert/strict';\nimport { createHash } from 'node:crypto';",
+      "after": "import assert from 'node:assert/strict';\nimport { projectReviewedNextBuilderFollowup } from './lib/reviewed-next-builder-followup.mjs';\nimport { projectReviewedNextSecurityFollowup } from './lib/reviewed-next-security-followup.mjs';\nimport { createHash } from 'node:crypto';"
+    },
+    {
+      "path": "scripts/build-russian-calendar-expansion-attestation-r10.mjs",
+      "id": "russian-builder-followup-read",
+      "before": "const read = path => lf(readFileSync(path, 'utf8'));",
+      "after": "const read = path => lf(projectReviewedNextSecurityFollowup(path, projectReviewedNextBuilderFollowup(path, readFileSync(path, 'utf8'))));"
+    },
+    {
+      "path": "scripts/build-calendar-followup-attestation-r10.mjs",
+      "id": "calendar-builder-followup-import",
+      "before": "import assert from 'node:assert/strict';\nimport { projectReviewedRussianCalendarExpansion } from './lib/reviewed-russian-calendar-expansion.mjs';",
+      "after": "import assert from 'node:assert/strict';\nimport { projectReviewedNextBuilderFollowup } from './lib/reviewed-next-builder-followup.mjs';\nimport { projectReviewedNextSecurityFollowup } from './lib/reviewed-next-security-followup.mjs';\nimport { projectReviewedRussianCalendarExpansion } from './lib/reviewed-russian-calendar-expansion.mjs';",
+      "earlierBeforeVariants": [
+        "import assert from 'node:assert/strict';"
+      ]
+    },
+    {
+      "path": "scripts/build-calendar-followup-attestation-r10.mjs",
+      "id": "calendar-builder-followup-read",
+      "before": "const read=path=>projectReviewedCalendarSecurityFollowup(path,projectReviewedRussianCalendarExpansion(path,readFileSync(path,'utf8')));",
+      "after": "const read=path=>projectReviewedCalendarSecurityFollowup(path,projectReviewedRussianCalendarExpansion(path,projectReviewedNextSecurityFollowup(path,projectReviewedNextBuilderFollowup(path,readFileSync(path,'utf8')))));",
+      "earlierBeforeVariants": [
+        "const read=path=>projectReviewedCalendarSecurityFollowup(path,readFileSync(path,'utf8'));"
+      ]
+    },
+    {
+      "path": "scripts/lib/reviewed-next-security-followup.mjs",
+      "id": "next-builder-followup-outer-import",
+      "before": "import { createHash } from 'node:crypto';",
+      "after": "import { createHash } from 'node:crypto';\nimport { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-followup.mjs';"
+    },
+    {
+      "path": "scripts/lib/reviewed-next-security-followup.mjs",
+      "id": "next-builder-followup-outer-read",
+      "before": "  let projected = source.replace(/\\r\\n?/gu, '\\n');",
+      "after": "  let projected = projectReviewedNextBuilderFollowup(relativePath, source);"
+    },
+    {
+      "path": "scripts/lib/reviewed-russian-calendar-expansion.mjs",
+      "id": "next-builder-followup-addition-boundary",
+      "before": "  return Boolean(entry && russianCalendarExpansionSha256(source) === entry.sha256Lf);",
+      "after": "  try {\n    return Boolean(entry && russianCalendarExpansionSha256(projectReviewedNextSecurityFollowup(relativePath, source)) === entry.sha256Lf);\n  } catch { return false; }"
+    },
+    {
+      "path": "scripts/lib/reviewed-next-security-followup.test.mjs",
+      "id": "next-builder-followup-next-test-import",
+      "before": "import { readFileSync } from 'node:fs';",
+      "after": "import { readFileSync } from 'node:fs';\nimport { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-followup.mjs';"
+    },
+    {
+      "path": "scripts/lib/reviewed-next-security-followup.test.mjs",
+      "id": "next-builder-followup-next-test-read",
+      "before": "const read = path => readFileSync(path, 'utf8').replace(/\\r\\n?/gu, '\\n');",
+      "after": "const read = path => projectReviewedNextBuilderFollowup(path, readFileSync(path, 'utf8'));"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/next-security-followup-reviewed-20261002.json",
+      "sha256Raw": "e38e56603f34a54f271ea30870c772829c3910335241f690e2bab65ee9365438",
+      "sha256Lf": "e38e56603f34a54f271ea30870c772829c3910335241f690e2bab65ee9365438",
+      "jsonSha256": "7cd5c87f83d924c33232b1cc495a35004a0a049989457a4e7ca8f7e4cd47d3bc"
+    },
+    {
+      "path": "scripts/governance/russian-calendar-expansion-reviewed-20261001.json",
+      "sha256Raw": "91461d8240e4ce2142ae99e0239f42b63e6f121442dd3ff4a1765122ebfe68b4",
+      "sha256Lf": "91461d8240e4ce2142ae99e0239f42b63e6f121442dd3ff4a1765122ebfe68b4",
+      "jsonSha256": "bc1330bda023dc1fe9172a6275230d51124d92c70475fe643c3e5d8dd9e9bd49"
+    },
+    {
+      "path": "scripts/governance/calendar-followup-reviewed-20260929.json",
+      "sha256Raw": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce",
+      "sha256Lf": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce",
+      "jsonSha256": "686317fc56832427bf3226d6013bd37c08186164a03ea3f8772a7809f915c2d7"
+    },
+    {
+      "path": "scripts/governance/calendar-governance-integration-reviewed-20260929.json",
+      "sha256Raw": "212473e1965b1e18712dcbe26a0b107751284ecb80183205b6508b96cadd5450",
+      "sha256Lf": "212473e1965b1e18712dcbe26a0b107751284ecb80183205b6508b96cadd5450",
+      "jsonSha256": "b9272ef022902d570715518424c4c29f69bd90e72a51a62164bb251df53b7fe7"
+    },
+    {
+      "path": "scripts/governance/calendar-security-followup-reviewed-20260930.json",
+      "sha256Raw": "4af2a0621c67bc358ae9aa06d13dcf070168eee051c8c81bb42090fa81a6b68e",
+      "sha256Lf": "4af2a0621c67bc358ae9aa06d13dcf070168eee051c8c81bb42090fa81a6b68e",
+      "jsonSha256": "c86230e284819446e28fd806ed65f9d9a01518db724bfb133c2b76c9c4b7331e"
+    },
+    {
+      "path": "scripts/governance/undici-security-followup-reviewed-20260930.json",
+      "sha256Raw": "6e38b20b86d86437cfacd9d9419641ce2c385a562704d6e76d35bbd3b2966ee8",
+      "sha256Lf": "6e38b20b86d86437cfacd9d9419641ce2c385a562704d6e76d35bbd3b2966ee8",
+      "jsonSha256": "bdfa16eeae3719d13585559b56f693bd50e44b15cedb84c19b19242456daa997"
+    },
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Raw": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "jsonSha256": "7f277e58d5e0a46f7bc12a87e606304e63d05cf8a9c48781331d151cbbafef69"
+    }
+  ],
+  "baselineEvidence": {
+    "builders": "Exact Git bytes at the calendar expansion integration commit.",
+    "russianHelper": "Exact reviewedSources bytes in the unchanged Next security packet.",
+    "nextHelperAndTest": "Accepted current Next security implementation before the new builder boundary; exact pre-followup LF hashes above."
+  }
+}

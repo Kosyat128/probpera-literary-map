@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-followup.mjs';
 import { readFileSync } from 'node:fs';
 
 // Additive patch evidence. Historical attestations and acceptance remain intact.
@@ -9,7 +10,7 @@ export const nextSecurityFollowupSha256 = source => createHash('sha256')
 
 /** Reverse exact Next patch and read-boundary fragments; retain unrelated bytes. */
 export function projectReviewedNextSecurityFollowup(relativePath, source) {
-  let projected = source.replace(/\r\n?/gu, '\n');
+  let projected = projectReviewedNextBuilderFollowup(relativePath, source);
   const deltas = nextSecurityFollowupAttestation.projections.filter(delta => delta.path === relativePath);
   if (!deltas.length) return projected;
   // Older calendar projections can already have removed their own integration.

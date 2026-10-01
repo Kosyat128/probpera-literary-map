@@ -62,7 +62,7 @@ export function extractDailyNewsDetail(html, url, source = {}) {
   for (const property of ['og:image','twitter:image']) {
     const value = $(`meta[property="${property}"],meta[name="${property}"]`).first().attr('content');
     const parsed = canonicalUrl(value, url);
-    const brandingImage = parsed && /(?:^|[\/._-])(?:logo|favicon|site-icon|placeholder|avatar)(?:[\/._-]|$)/iu.test(parsed.pathname);
+    const brandingImage = parsed && /(?:^|[\/._-])(?:logo|favicon|site-icon|placeholder|avatar|default)(?:[\/._-]|$)/iu.test(parsed.pathname);
     if (value && parsed && !brandingImage && !images.some(image => image.url === parsed.href)) images.push({ url: parsed.href, method: property,
       displayOnly: true, socialReuseApproved: false });
   }
@@ -77,15 +77,22 @@ export function extractDailyNewsDetail(html, url, source = {}) {
       }; visit(JSON.parse($(element).html()));
     } catch { /* Invalid JSON-LD does not become evidence. */ }
   });
-  const headline = plain((source.detailHeadlineSelector ? $(source.detailHeadlineSelector).first().text() : '')
+  const selectedHeadline = source.detailHeadlineSelector ? $(source.detailHeadlineSelector).first() : null;
+  const headline = plain((selectedHeadline?.is('meta') ? selectedHeadline.attr('content') : selectedHeadline?.text())
     || $('article h1, main h1, .news-detail h1').first().text()
     || $('.entry-title, h1[itemprop="headline"]').first().text()
-    || $('meta[property="og:title"]').attr('content') || $('h1').first().text() || $('title').text());
+    || $('meta[property="og:title"]').attr('content') || $('h1').first().text() || $('head > title').first().text());
+  // Some publisher layouts nest the primary article inside a footer wrapper.
+  // Capture the code-owned precise scope before removing surrounding chrome.
+  const selectedBody = source.detailTextSelector ? $(source.detailTextSelector).first().clone() : null;
   $('script,style,noscript,template,svg,form,nav,footer,header,aside').remove();
   // Keep paragraph/list boundaries in the exact evidence text. Adjacent HTML
   // blocks otherwise concatenate words and corrupt quotations sent for review.
   $('p,li,h1,h2,h3,h4,blockquote,br').append('\n');
-  const selectedBody = source.detailTextSelector ? $(source.detailTextSelector).first() : null;
+  if (selectedBody?.length) {
+    selectedBody.find('script,style,noscript,template,svg,form,nav,footer,header,aside').remove();
+    selectedBody.find('p,li,h1,h2,h3,h4,blockquote,br').append('\n');
+  }
   const main = selectedBody?.length ? selectedBody : $('article, .entry-content, .post-content, .news-detail').first();
   const body = main.length ? main : $('main').first();
   return { headline: headline.slice(0, 500), text: plain((body.length ? body : $.root()).text()).slice(0, 14000),

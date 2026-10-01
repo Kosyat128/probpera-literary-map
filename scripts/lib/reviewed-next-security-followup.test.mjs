@@ -1,10 +1,11 @@
 import { readFileSync } from 'node:fs';
+import { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-followup.mjs';
 import { execFileSync } from 'node:child_process';
 import { describe, expect, it } from 'vitest';
 import { nextSecurityFollowupAttestation as packet, nextSecurityFollowupSha256 as sha,
   projectReviewedNextSecurityFollowup as project } from './reviewed-next-security-followup.mjs';
 
-const read = path => readFileSync(path, 'utf8').replace(/\r\n?/gu, '\n');
+const read = path => projectReviewedNextBuilderFollowup(path, readFileSync(path, 'utf8'));
 const historical = path => execFileSync('git', ['-c', `safe.directory=${process.cwd()}`, 'show',
   `${packet.baselineCommitSha}:${path}`], { encoding: 'utf8', maxBuffer: 30 * 1024 * 1024 }).replace(/\r\n?/gu, '\n');
 

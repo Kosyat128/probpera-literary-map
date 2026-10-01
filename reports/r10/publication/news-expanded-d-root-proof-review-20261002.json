@@ -1,0 +1,1307 @@
+{
+  "schemaVersion": 1,
+  "batchId": "news-expanded-d-20261002",
+  "checkedAt": "2026-10-01T22:58:14.673Z",
+  "reviewer": "root_agent_independent_from_batch_author",
+  "humanReview": false,
+  "releaseAccepted": false,
+  "productionApplied": false,
+  "canonicalWritten": false,
+  "remoteWrites": 0,
+  "records": 88,
+  "recordSha256": "4cb9cb0bb7d190b9f3d22e4e5f70a2a5a32439605a52fbd992baac3cdb534f0d",
+  "rawResponseDigestsChecked": 88,
+  "issues": [],
+  "results": [
+    {
+      "id": "henry-lien-eastern-storytelling-library-event-20261002",
+      "sourceId": "loc-bookmarked",
+      "responseSha256": "2df89d35c24434f32d4a9f232fbbc95989d88b3deca6db82293f7bf891f8b3b8",
+      "bodyBytes": 53635,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-21T14:15:49.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 282,
+      "enCharacters": 279
+    },
+    {
+      "id": "new-zealand-book-sector-election-manifesto-20261002",
+      "sourceId": "publishers-org-nz",
+      "responseSha256": "9469a2e462934db6e73e1422c2e729c27e07c730214b57db062807f207656bf7",
+      "bodyBytes": 93275,
+      "primaryMeta": [
+        "2026-09-17T00:34:10+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-17T00:34:10+00:00"
+      ],
+      "publishedAt": "2026-09-17T00:34:10+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 316,
+      "enCharacters": 300
+    },
+    {
+      "id": "belem-book-festival-2026-programme-20261002",
+      "sourceId": "apel-pt",
+      "responseSha256": "961f2633452376d18727296eeae442f125944ab322531a8d1698badc8635cdf8",
+      "bodyBytes": 124979,
+      "primaryMeta": [
+        "2026-09-11T09:55:35+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-11T09:55:35+00:00"
+      ],
+      "publishedAt": "2026-09-11T09:55:35+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 266,
+      "enCharacters": 286
+    },
+    {
+      "id": "goran-saric-chronicle-second-part-20261002",
+      "sourceId": "penbih-ba",
+      "responseSha256": "ecc7244ed5d8a5f44502c3b08e5f70114fe928b13e059770acec15bb1c269454",
+      "bodyBytes": 202853,
+      "primaryMeta": [
+        "2026-09-24T09:08:22+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-24T09:08:22+00:00"
+      ],
+      "publishedAt": "2026-09-24T09:08:22+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 259,
+      "enCharacters": 281
+    },
+    {
+      "id": "danish-pen-elsusi-expression-event-20261002",
+      "sourceId": "pen-dk",
+      "responseSha256": "a9e24c2dfae322f56f64b4c45ac8db1ee6b8a6fe62c3099e5222ef8528fac05f",
+      "bodyBytes": 132484,
+      "primaryMeta": [
+        "2026-09-24T13:08:49+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-24T13:08:49+02:00"
+      ],
+      "publishedAt": "2026-09-24T13:08:49+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 290,
+      "enCharacters": 296
+    },
+    {
+      "id": "lublin-banned-literature-film-discussion-20261002",
+      "sourceId": "penclub-com-pl",
+      "responseSha256": "76429d77fbc4cb5c8b7eb10231ee921ce81419ab1fd4c55a6aaccde151774120",
+      "bodyBytes": 77495,
+      "primaryMeta": [
+        "2026-09-14T23:04:58+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-14T23:04:58+00:00"
+      ],
+      "publishedAt": "2026-09-14T23:04:58+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 317,
+      "enCharacters": 293
+    },
+    {
+      "id": "lucille-clifton-electronic-archives-feature-20261002",
+      "sourceId": "ploughshares",
+      "responseSha256": "08feda473a227a5f4103ba42551ede867c02b754b0406cf6f2338d8a652ac512",
+      "bodyBytes": 368805,
+      "primaryMeta": [
+        "2026-09-17T13:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-17T13:00:00+00:00"
+      ],
+      "publishedAt": "2026-09-17T13:00:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 290,
+      "enCharacters": 309
+    },
+    {
+      "id": "gaelic-literature-awards-2026-winners-20261002",
+      "sourceId": "publishing-scotland",
+      "responseSha256": "22de28d87d661d817feda64c96f3ac09e5d1057f575cdf0a10126d9a46dc7233",
+      "bodyBytes": 164895,
+      "primaryMeta": [
+        "2026-09-18T12:40:49+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-18T12:40:49+00:00"
+      ],
+      "publishedAt": "2026-09-18T12:40:49+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 302,
+      "enCharacters": 305
+    },
+    {
+      "id": "isabelle-levesque-rien-du-pire-review-20261002",
+      "sourceId": "recours-poeme",
+      "responseSha256": "2d77db281aa0e6d8b9bd83acbbed4e619df2ede2ec4e930b95258b1965b38640",
+      "bodyBytes": 190854,
+      "primaryMeta": [
+        "2026-09-11T11:05:09+00:00",
+        "2026-09-11T11:05:09+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-11T11:05:09+00:00"
+      ],
+      "publishedAt": "2026-09-11",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 265,
+      "enCharacters": 277
+    },
+    {
+      "id": "kemick-decadence-weston-finalist-20261002",
+      "sourceId": "biblioasis",
+      "responseSha256": "a80fd4b7a44ca2f29268476cfe8c884c47a66a04a9a1ad1de67caf78d847480a",
+      "bodyBytes": 155973,
+      "primaryMeta": [
+        "2026-09-09T15:05:21+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-09T15:05:21+00:00"
+      ],
+      "publishedAt": "2026-09-09T15:05:21+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 283,
+      "enCharacters": 291
+    },
+    {
+      "id": "harrison-end-everything-booker-shortlist-20261002",
+      "sourceId": "serpents-tail",
+      "responseSha256": "11f73252b307be8635915d12b7847394c85f5d337fca8b79746fc6ce90724092",
+      "bodyBytes": 287203,
+      "primaryMeta": [
+        "2026-09-23T13:26:47+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-23T13:26:47+00:00"
+      ],
+      "publishedAt": "2026-09-23T13:26:47+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 264,
+      "enCharacters": 242
+    },
+    {
+      "id": "catherine-simpson-hold-fast-saltire-longlist-20261002",
+      "sourceId": "saraband",
+      "responseSha256": "7aeda52b7f2d3dc5e5f9fae73d6242b26d7cc846d9db08d1a56ebcb1d153b5e5",
+      "bodyBytes": 264549,
+      "primaryMeta": [
+        "2026-09-23T13:29:09+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-23T13:29:09+00:00"
+      ],
+      "publishedAt": "2026-09-23T13:29:09+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 289,
+      "enCharacters": 266
+    },
+    {
+      "id": "czechlit-travel-grants-october-call-20261002",
+      "sourceId": "czechlit",
+      "responseSha256": "9f393f4c44479538fc9ce7d5eb69b2294afb7da18a4a9caeb18eead695d1057e",
+      "bodyBytes": 31644,
+      "primaryMeta": [],
+      "primaryLd": [
+        "2026-09-04 08:58:14"
+      ],
+      "publishedAt": "2026-09-04",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 276,
+      "enCharacters": 256
+    },
+    {
+      "id": "derek-jarman-expanded-reissue-events-20261002",
+      "sourceId": "prototype-publishing",
+      "responseSha256": "dc674fb260ea5240ee26947d054169113fe958f8428055148614d7878e330f1a",
+      "bodyBytes": 111169,
+      "primaryMeta": [
+        "2026-09-21T11:54:48+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-21T11:54:48+00:00"
+      ],
+      "publishedAt": "2026-09-21T11:54:48+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 323,
+      "enCharacters": 309
+    },
+    {
+      "id": "guernica-august-september-double-issue-20261002",
+      "sourceId": "guernica-magazine",
+      "responseSha256": "22d4048350da17751721bcbbdc32ce78f17f8615cfbaf8667a8fc3023a4c71ae",
+      "bodyBytes": 103457,
+      "primaryMeta": [
+        "2026-09-15T18:36:23+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T18:36:23+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 316,
+      "enCharacters": 279
+    },
+    {
+      "id": "salzburg-literaturhaus-thirty-five-anniversary-20261002",
+      "sourceId": "literaturhaus-salzburg",
+      "responseSha256": "2300740fac4cfa5c4fb444a39f72bc847c6d794bd0fd12703b130356d60a6a74",
+      "bodyBytes": 168041,
+      "primaryMeta": [
+        "2026-09-02T16:23:19+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-02T16:23:19+02:00"
+      ],
+      "publishedAt": "2026-09-02T16:23:19+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 315,
+      "enCharacters": 302
+    },
+    {
+      "id": "stella-jamie-marina-lau-september-interview-20261002",
+      "sourceId": "stella-prize",
+      "responseSha256": "e79ef9445f4836db26b102451e01eb7bfc61892e87bf92f8c503ca92f1686333",
+      "bodyBytes": 150585,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-07T06:50:03.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 281,
+      "enCharacters": 283
+    },
+    {
+      "id": "prh-latine-heritage-nonfiction-selection-20261002",
+      "sourceId": "prh",
+      "responseSha256": "41fafc4a8d396a48cb3787b4c4a40bd749e553a161e822fae1dd51a3274bc8d9",
+      "bodyBytes": 110754,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-18T13:05:47.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 314,
+      "enCharacters": 298
+    },
+    {
+      "id": "steven-reese-read-your-color-library-letter-20261002",
+      "sourceId": "prh-library",
+      "responseSha256": "fe1b07b309caf2b695194129260036dc1a808522699d41e3f7ee42418725057e",
+      "bodyBytes": 191603,
+      "primaryMeta": [
+        "2026-09-23T13:51:55+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-23T13:51:55+00:00"
+      ],
+      "publishedAt": "2026-09-23T13:51:55+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 318,
+      "enCharacters": 305
+    },
+    {
+      "id": "library-congress-autumn-book-festival-preview-20261002",
+      "sourceId": "loc-bookmarked",
+      "responseSha256": "99d78d53d9701717dacc2bee0f517c25288c92b7a98559b8f3558e9ef1b292d3",
+      "bodyBytes": 58940,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-17T15:30:43.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 282,
+      "enCharacters": 290
+    },
+    {
+      "id": "finland-school-book-spending-report-20261002",
+      "sourceId": "publishers-fi",
+      "responseSha256": "3353f40b3f06008d72fd89c958d4e566c72e7b22c5ebcc73697d7fccc6b578aa",
+      "bodyBytes": 100205,
+      "primaryMeta": [
+        "2026-09-14T08:15:46+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-14T08:15:46+00:00"
+      ],
+      "publishedAt": "2026-09-14T08:15:46+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 277,
+      "enCharacters": 287
+    },
+    {
+      "id": "montevideo-book-fair-international-authors-20261002",
+      "sourceId": "cul-com-uy",
+      "responseSha256": "b81703257f8f0456bda386db383f939ce5ee46d7fb069a5d88e3367451b89a54",
+      "bodyBytes": 265033,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-21T22:33:55.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 314,
+      "enCharacters": 285
+    },
+    {
+      "id": "dubravka-rebic-vladan-desnica-prize-20261002",
+      "sourceId": "nb-rs",
+      "responseSha256": "526770807e9905672da0245ea48c0d7b3f32310ff5d1bf750d9813fe17ed9f8a",
+      "bodyBytes": 278277,
+      "primaryMeta": [
+        "2026-09-21T12:07:37+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-21T12:07:37+00:00"
+      ],
+      "publishedAt": "2026-09-21T12:07:37+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 301,
+      "enCharacters": 286
+    },
+    {
+      "id": "predrag-finci-soul-journeys-review-20261002",
+      "sourceId": "penbih-ba",
+      "responseSha256": "4f003717ef8e2a6c237744fb6508fb647b5b598c1b6a38c6d3525c418a09d1ac",
+      "bodyBytes": 209780,
+      "primaryMeta": [
+        "2026-09-24T08:46:04+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-24T08:46:04+00:00"
+      ],
+      "publishedAt": "2026-09-24T08:46:04+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 270,
+      "enCharacters": 266
+    },
+    {
+      "id": "japanese-senryu-hungarian-poetics-essay-20261002",
+      "sourceId": "asymptote",
+      "responseSha256": "df6c560664acb63a67d015faf61c52c9679dec9eefbda3af681a52f5ebeeacb6",
+      "bodyBytes": 1475778,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-23T13:00:33.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 270,
+      "enCharacters": 268
+    },
+    {
+      "id": "tommy-orange-ohenry-anthology-introduction-20261002",
+      "sourceId": "ploughshares",
+      "responseSha256": "b317c2475656eeee1dbd158533fe9138f2e90a91879d6c4f0be44985a73626fc",
+      "bodyBytes": 369868,
+      "primaryMeta": [
+        "2026-09-01T11:55:25+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-01T11:55:25+00:00"
+      ],
+      "publishedAt": "2026-09-01T11:55:25+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 260,
+      "enCharacters": 250
+    },
+    {
+      "id": "beatrice-bonhomme-eye-poem-screen-adaptation-20261002",
+      "sourceId": "recours-poeme",
+      "responseSha256": "19663cf9c0f002c835c2e664b40ddd4de70616060060e252116b26ea511fbe4f",
+      "bodyBytes": 160443,
+      "primaryMeta": [
+        "2026-09-09T13:13:57+00:00",
+        "2026-09-09T13:13:57+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-09T13:13:57+00:00"
+      ],
+      "publishedAt": "2026-09-09",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 274,
+      "enCharacters": 279
+    },
+    {
+      "id": "acantilado-literary-correspondence-selection-20261002",
+      "sourceId": "acantilado",
+      "responseSha256": "c6001d315f7298452a1eddeafe325dd9484e7156cc3df4cf1eb3675c121eb19c",
+      "bodyBytes": 265459,
+      "primaryMeta": [
+        "2026-09-02T11:53:24+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-02T11:53:24+00:00"
+      ],
+      "publishedAt": "2026-09-02T11:53:24+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 278,
+      "enCharacters": 294
+    },
+    {
+      "id": "colin-mcadam-daphnis-chloe-giller-longlist-20261002",
+      "sourceId": "biblioasis",
+      "responseSha256": "5652f0ed11c4fa4cdac8f1fedd2796f366d4f4648e8805f9191ef42217a53706",
+      "bodyBytes": 158078,
+      "primaryMeta": [
+        "2026-09-08T15:16:51+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-08T15:16:51+00:00"
+      ],
+      "publishedAt": "2026-09-08T15:16:51+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 263,
+      "enCharacters": 260
+    },
+    {
+      "id": "victoria-bennett-fools-leap-writing-practice-20261002",
+      "sourceId": "saraband",
+      "responseSha256": "559f1fe70562f65bb5ce88d5c4e38e6f1b8397a599f64145afceae86ddb341cc",
+      "bodyBytes": 268643,
+      "primaryMeta": [
+        "2026-09-23T08:03:40+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-23T08:03:40+00:00"
+      ],
+      "publishedAt": "2026-09-23T08:03:40+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 283,
+      "enCharacters": 292
+    },
+    {
+      "id": "czech-foreign-translation-grants-round-two-results-20261002",
+      "sourceId": "czechlit",
+      "responseSha256": "989a178fc6d1684cd9d7033d77965c9572d743f8420df8886a536513ffc575cc",
+      "bodyBytes": 28806,
+      "primaryMeta": [],
+      "primaryLd": [
+        "2026-09-01 14:00:36"
+      ],
+      "publishedAt": "2026-09-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 301,
+      "enCharacters": 302
+    },
+    {
+      "id": "anne-vegter-astrid-alben-pig-data-uk-tour-20261002",
+      "sourceId": "prototype-publishing",
+      "responseSha256": "ff0423f15d401782741b72c151370389da6d3f091b1ef69e44aa47695e107a49",
+      "bodyBytes": 116778,
+      "primaryMeta": [
+        "2026-09-10T08:46:12+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-10T08:46:12+00:00"
+      ],
+      "publishedAt": "2026-09-10T08:46:12+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 281,
+      "enCharacters": 288
+    },
+    {
+      "id": "nwanne-agwu-faint-lines-guernica-republication-20261002",
+      "sourceId": "guernica-magazine",
+      "responseSha256": "19e5c7e7cdbe9efa6cfa434e5d786ad9e53a0af9790d778f501f82142f1d5006",
+      "bodyBytes": 105523,
+      "primaryMeta": [
+        "2026-09-15T15:49:38+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T15:49:38+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 268,
+      "enCharacters": 259
+    },
+    {
+      "id": "sibylle-anderl-zurich-book-conversation-20261002",
+      "sourceId": "litlogos",
+      "responseSha256": "01f2d0b4397bdf7e25496cda950f6fe1e8b64925f3e3c929c00459e73c5a54f6",
+      "bodyBytes": 277851,
+      "primaryMeta": [
+        "2026-09-21T12:27:04+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-21T12:27:04+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 303,
+      "enCharacters": 291
+    },
+    {
+      "id": "prh-national-book-awards-actual-longlists-20261002",
+      "sourceId": "prh",
+      "responseSha256": "8b45cfd9aa0ff29826e8fb9063a2af63d2a5b0d4f74c67c78070c32e64e4384a",
+      "bodyBytes": 115481,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-17T13:55:58.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 304,
+      "enCharacters": 321
+    },
+    {
+      "id": "nanako-hanada-bookshop-woman-friday-excerpt-20261002",
+      "sourceId": "prh-library",
+      "responseSha256": "5c562bc3ae87750210166e9f15f81c58254d1880cbb69dc1c2c65c49269a14da",
+      "bodyBytes": 265846,
+      "primaryMeta": [
+        "2026-09-18T05:00:08+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-18T05:00:08+00:00"
+      ],
+      "publishedAt": "2026-09-18T05:00:08+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 292,
+      "enCharacters": 276
+    },
+    {
+      "id": "national-book-festival-2026-video-archive-20261002",
+      "sourceId": "loc-bookmarked",
+      "responseSha256": "19c4424a998909e008a611285e0b0605d5ae72201a19332ee6b0788e77d57fee",
+      "bodyBytes": 50523,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T15:30:20.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 297,
+      "enCharacters": 302
+    },
+    {
+      "id": "finnish-publishers-reading-policy-call-20261002",
+      "sourceId": "publishers-fi",
+      "responseSha256": "65bffcd897b7d33e41fe262999a6a50e5de45fe62f62d31351235b40d5176b3e",
+      "bodyBytes": 94809,
+      "primaryMeta": [
+        "2026-09-11T10:04:24+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-11T10:04:24+00:00"
+      ],
+      "publishedAt": "2026-09-11T10:04:24+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 300,
+      "enCharacters": 302
+    },
+    {
+      "id": "emmanuel-carrere-montevideo-ticket-distribution-20261002",
+      "sourceId": "cul-com-uy",
+      "responseSha256": "644f94a01c1ec93a27c54e9797a4a31a1e6faa9b2eec9d42f4a35891ed0f253c",
+      "bodyBytes": 160944,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-21T14:56:28.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 295,
+      "enCharacters": 312
+    },
+    {
+      "id": "moldova-european-languages-day-library-quiz-20261002",
+      "sourceId": "bnrm-md",
+      "responseSha256": "d02690dcfdb6a00f715da3ced68836408f63fda04f2f053f0324719da758d7cd",
+      "bodyBytes": 194322,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-23T06:16:56.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 292,
+      "enCharacters": 294
+    },
+    {
+      "id": "omer-ibrahimagic-konjuh-author-interview-20261002",
+      "sourceId": "penbih-ba",
+      "responseSha256": "c3dd05091bd05a443b266178271e5dd03f3ca4d89957b3ed3a502450f344cf08",
+      "bodyBytes": 210048,
+      "primaryMeta": [
+        "2026-09-07T17:21:07+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-07T17:21:07+00:00"
+      ],
+      "publishedAt": "2026-09-07T17:21:07+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 286,
+      "enCharacters": 292
+    },
+    {
+      "id": "barrio-berlin-latin-american-author-evening-20261002",
+      "sourceId": "pen-deutschland-de",
+      "responseSha256": "a85e579a11a8c5e3c2f54d34dfda43bf0cf716d3e2ba4b9558be85cd4eaf8346",
+      "bodyBytes": 216634,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-17T08:35:49+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 282,
+      "enCharacters": 290
+    },
+    {
+      "id": "makis-malafekas-deepfake-asymptote-interview-20261002",
+      "sourceId": "asymptote",
+      "responseSha256": "d84b0941719509d730ea6a7613ab759cd824d73160a9d724be2d1a33382dbc7f",
+      "bodyBytes": 1478366,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-21T13:00:01.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 254,
+      "enCharacters": 269
+    },
+    {
+      "id": "new-writing-north-creative-associates-2026-20261002",
+      "sourceId": "new-writing-north",
+      "responseSha256": "27ba253c7c882c59e4366c45163180e5a27422e5e3eb4ad2dca53d9c9d9e4033",
+      "bodyBytes": 64778,
+      "primaryMeta": [
+        "2026-09-09T08:59:53+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-09T08:59:53+00:00"
+      ],
+      "publishedAt": "2026-09-09T08:59:53+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 297,
+      "enCharacters": 293
+    },
+    {
+      "id": "dimitris-kraniotis-french-poetry-publication-20261002",
+      "sourceId": "recours-poeme",
+      "responseSha256": "5b5cba0bf0a8489a7bdaa003308bb76279dc124dea7ca9190478910f454b2ed2",
+      "bodyBytes": 144273,
+      "primaryMeta": [
+        "2026-09-06T06:33:24+00:00",
+        "2026-09-06T06:33:24+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-06T06:33:24+00:00"
+      ],
+      "publishedAt": "2026-09-06",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 302,
+      "enCharacters": 263
+    },
+    {
+      "id": "saraband-inklings-four-new-commissions-20261002",
+      "sourceId": "saraband",
+      "responseSha256": "27db2496f6bc5ae6ac94f761ab0831baadfc3cf7cb6231b25827ed3df107774d",
+      "bodyBytes": 271306,
+      "primaryMeta": [
+        "2026-09-03T13:43:50+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-03T13:43:50+00:00"
+      ],
+      "publishedAt": "2026-09-03T13:43:50+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 270,
+      "enCharacters": 298
+    },
+    {
+      "id": "typographia-london-print-culture-fair-announcement-20261002",
+      "sourceId": "prototype-publishing",
+      "responseSha256": "3ca5ef3cae95f6dc43c520c23a2c1ea39b209bb6da610ffe01ecbc1d4afcab73",
+      "bodyBytes": 116232,
+      "primaryMeta": [
+        "2026-09-10T08:40:59+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-10T08:40:59+00:00"
+      ],
+      "publishedAt": "2026-09-10T08:40:59+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 305,
+      "enCharacters": 315
+    },
+    {
+      "id": "emmy-rossum-tether-guernica-fiction-20261002",
+      "sourceId": "guernica-magazine",
+      "responseSha256": "21e63bf7cd102648f3fcd9cd0cc66ea4ae827d3ac19818c3f0d5a955c0375056",
+      "bodyBytes": 192927,
+      "primaryMeta": [
+        "2026-09-15T15:17:32+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T15:17:32+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 269,
+      "enCharacters": 262
+    },
+    {
+      "id": "zurich-literaturhaus-season-opening-report-20261002",
+      "sourceId": "litlogos",
+      "responseSha256": "8bc13f7ed6b613b63f1ef13136a07de4e5f7969453e056b97190e82af613ce4d",
+      "bodyBytes": 362181,
+      "primaryMeta": [
+        "2026-09-02T12:53:30+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-02T12:53:30+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 287,
+      "enCharacters": 287
+    },
+    {
+      "id": "fili-finnish-autumn-fiction-programme-20261002",
+      "sourceId": "literature-finland",
+      "responseSha256": "86a13a4fd7fa6c13fc77e8981ef034bcf4da188b6ae593f083920254f614384c",
+      "bodyBytes": 85895,
+      "primaryMeta": [
+        "2026-09-11T14:09:50+03:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-11T14:09:50+03:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 295,
+      "enCharacters": 308
+    },
+    {
+      "id": "prh-intellectual-freedom-taskforce-ipa-shortlist-20261002",
+      "sourceId": "prh",
+      "responseSha256": "23dd0d2d63397ed44ad5c76781e2d8299fa032531b3ee0cc5d278a7cc956a997",
+      "bodyBytes": 102040,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-14T13:59:42.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 316,
+      "enCharacters": 322
+    },
+    {
+      "id": "prh-audio-library-love-eighteen-authors-20261002",
+      "sourceId": "prh-library",
+      "responseSha256": "0b2f585e818c9e3b32a91891ea5b26653624767d717dc0accb679f5874dab28e",
+      "bodyBytes": 355601,
+      "primaryMeta": [
+        "2026-09-17T16:33:12+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-17T16:33:12+00:00"
+      ],
+      "publishedAt": "2026-09-17T16:33:12+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 296,
+      "enCharacters": 285
+    },
+    {
+      "id": "uk-publishers-parliament-reading-year-reception-20261002",
+      "sourceId": "publishers-org-uk",
+      "responseSha256": "11213b8b27618cfa09f4ea848a7e82cd1cdc8a1bd2af7caa0b1709145e00d107",
+      "bodyBytes": 88475,
+      "primaryMeta": [
+        "2026-09-08T17:02:35+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-08T17:02:35+00:00"
+      ],
+      "publishedAt": "2026-09-08T17:02:35+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 293,
+      "enCharacters": 293
+    },
+    {
+      "id": "biblionet-serbia-library-collections-conference-20261002",
+      "sourceId": "nb-rs",
+      "responseSha256": "1e57f10183c0caf5a83e4a478f39cf1391bcb28b47ae9cfc9697dd38bf348a1c",
+      "bodyBytes": 278355,
+      "primaryMeta": [
+        "2026-09-18T15:35:28+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-18T15:35:28+00:00"
+      ],
+      "publishedAt": "2026-09-18T15:35:28+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 284,
+      "enCharacters": 316
+    },
+    {
+      "id": "maryam-kishawarz-darmstadt-reading-announcement-20261002",
+      "sourceId": "pen-deutschland-de",
+      "responseSha256": "344b31e3558bef4bb7e236270fa871a917cc703413bf8b43ecfd1d8a072527b2",
+      "bodyBytes": 215919,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T10:51:59+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 269,
+      "enCharacters": 262
+    },
+    {
+      "id": "tamara-kjupeva-macedonian-trauma-literature-archive-20261002",
+      "sourceId": "asymptote",
+      "responseSha256": "6acda24a273fad49df8bc4639b43abb59debaa4ad04450b1bececb55e669a5c5",
+      "bodyBytes": 1467957,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-18T13:00:24.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 282,
+      "enCharacters": 309
+    },
+    {
+      "id": "el-boomerang-literary-reading-education-essay-20261002",
+      "sourceId": "el-boomeran",
+      "responseSha256": "f39fd373c9d82de6652ad75a2686f943d5235def9d06b47fd5c563fd3df9575d",
+      "bodyBytes": 124750,
+      "primaryMeta": [
+        "2026-09-24T07:53:25+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-24T07:53:25+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 284,
+      "enCharacters": 297
+    },
+    {
+      "id": "jachym-topol-die-holle-gibt-es-nicht-review-20261002",
+      "sourceId": "buchkultur",
+      "responseSha256": "d2a6be911bbf15a4bc26f06db80c2c81e5a965aefb0f6bbc1369f85aa74e57c0",
+      "bodyBytes": 71405,
+      "primaryMeta": [
+        "2026-09-23T17:40:23+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-23T17:40:23+00:00"
+      ],
+      "publishedAt": "2026-09-23T17:40:23+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 312,
+      "enCharacters": 312
+    },
+    {
+      "id": "lestran-2026-international-haiku-journal-review-20261002",
+      "sourceId": "recours-poeme",
+      "responseSha256": "9c07620678713a0968b971842d108611c60b1105637181b5f335d8d670d39543",
+      "bodyBytes": 157889,
+      "primaryMeta": [
+        "2026-09-06T06:31:22+00:00",
+        "2026-09-06T06:31:22+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-06T06:31:22+00:00"
+      ],
+      "publishedAt": "2026-09-06",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 296
+    },
+    {
+      "id": "water-on-wall-street-utp-book-feature-20261002",
+      "sourceId": "toronto-press",
+      "responseSha256": "2bf294fe59c187e12bb487dd84b20a12a8d95dc0cfa34b1ef8f954358165b43e",
+      "bodyBytes": 103899,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-16T04:00:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 301,
+      "enCharacters": 301
+    },
+    {
+      "id": "prototype-glue-book-fair-ica-programme-20261002",
+      "sourceId": "prototype-publishing",
+      "responseSha256": "2b9a2c650d8d5a0e350d1bfc86eadae3712a1b65afc3a9db190069977e421a4b",
+      "bodyBytes": 110397,
+      "primaryMeta": [
+        "2026-09-10T08:35:27+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-10T08:35:27+00:00"
+      ],
+      "publishedAt": "2026-09-10T08:35:27+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 296,
+      "enCharacters": 319
+    },
+    {
+      "id": "naeem-murr-bye-bye-palestine-fiction-20261002",
+      "sourceId": "guernica-magazine",
+      "responseSha256": "63acc0378df5a787cc9be7ad5bf37951872c72bb73fa4a7b768f1119822bd490",
+      "bodyBytes": 142104,
+      "primaryMeta": [
+        "2026-09-15T14:47:54+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T14:47:54+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 282,
+      "enCharacters": 282
+    },
+    {
+      "id": "na-zhong-three-october-fiction-excerpt-20261002",
+      "sourceId": "cleveland-review-books",
+      "responseSha256": "5ca388f4576abb20ffafc1f2362a9aced81f09b826d5fd6f0c9dcecfdd50a627",
+      "bodyBytes": 160766,
+      "primaryMeta": [
+        "2026-09-23T12:57:33+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-23T12:57:33+00:00"
+      ],
+      "publishedAt": "2026-09-23T12:57:33+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 313,
+      "enCharacters": 313
+    },
+    {
+      "id": "prh-library-september-audiobook-selection-20261002",
+      "sourceId": "prh-library",
+      "responseSha256": "e928bb16dabb38f33dcfc915d683f61f82d13de820fb9706ea7d0a5ec2b09a82",
+      "bodyBytes": 435408,
+      "primaryMeta": [
+        "2026-09-16T21:28:23+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-16T21:28:23+00:00"
+      ],
+      "publishedAt": "2026-09-16T21:28:23+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 299,
+      "enCharacters": 292
+    },
+    {
+      "id": "maria-romanciuc-moldova-two-book-launch-20261002",
+      "sourceId": "bnrm-md",
+      "responseSha256": "dfc460b9aa17a8affa9f547bddf2d379fec8021324f0da5228e48d3a213dfb87",
+      "bodyBytes": 194364,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-21T07:09:44.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 318,
+      "enCharacters": 330
+    },
+    {
+      "id": "authors-rights-network-packaging-statement-20261002",
+      "sourceId": "pen-deutschland-de",
+      "responseSha256": "3776cf116ec4fa6d2feccd050d60d3f1f6ba7ab353bf64f24a19dd14caffaf8a",
+      "bodyBytes": 221040,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-04T06:23:43+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 333,
+      "enCharacters": 304
+    },
+    {
+      "id": "dosdoce-ai-short-story-reader-study-feature-20261002",
+      "sourceId": "dosdoce",
+      "responseSha256": "48e4191b08c03c4bd3b6c32229f3b43e5dcb577416b39ee044da758f446b1029",
+      "bodyBytes": 93268,
+      "primaryMeta": [
+        "2026-09-24T06:31:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-24T06:31:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 317,
+      "enCharacters": 310
+    },
+    {
+      "id": "neruda-asturias-hungary-literary-memory-feature-20261002",
+      "sourceId": "el-boomeran",
+      "responseSha256": "7a9c7e64d07e1fe60d744770b185fbc52d317ea6bc642d6996f86d9867317193",
+      "bodyBytes": 128979,
+      "primaryMeta": [
+        "2026-09-21T10:49:27+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-21T10:49:27+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 295,
+      "enCharacters": 288
+    },
+    {
+      "id": "electric-literature-national-book-award-reading-debate-20261002",
+      "sourceId": "electric-literature",
+      "responseSha256": "a903b22a28eadc0113d811101153e5b9fa019da50a5763b5d94d142f97bd135c",
+      "bodyBytes": 164399,
+      "primaryMeta": [
+        "2026-09-24T12:37:19+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-24T12:37:19+00:00"
+      ],
+      "publishedAt": "2026-09-24T12:37:19+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 307,
+      "enCharacters": 305
+    },
+    {
+      "id": "john-liddy-true-to-form-poetry-review-20261002",
+      "sourceId": "books-ireland",
+      "responseSha256": "18de0f7eb7ec0ae9c1fef2f66b2c07f34fe29ce7577bf496ca768aac1544791d",
+      "bodyBytes": 137417,
+      "primaryMeta": [
+        "2026-09-23T16:10:38+01:00"
+      ],
+      "primaryLd": [
+        "2026-09-23T16:10:38+01:00"
+      ],
+      "publishedAt": "2026-09-23T16:10:38+01:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 297,
+      "enCharacters": 296
+    },
+    {
+      "id": "jean-pierre-simeon-un-non-pour-un-oui-review-20261002",
+      "sourceId": "recours-poeme",
+      "responseSha256": "6feb51656ae2dae37cfa09a7c2cd1cd0d988252de51043c31f805947495b0f44",
+      "bodyBytes": 137176,
+      "primaryMeta": [
+        "2026-09-06T06:31:05+00:00",
+        "2026-09-06T06:31:05+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-06T06:31:05+00:00"
+      ],
+      "publishedAt": "2026-09-06",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 283,
+      "enCharacters": 291
+    },
+    {
+      "id": "polish-book-chamber-publisher-debate-video-20261002",
+      "sourceId": "pik-org-pl",
+      "responseSha256": "d64718f17055812c2fd2bbda4576f395daf68e46fff16e3647d35f6f20249abe",
+      "bodyBytes": 152528,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T07:59:01.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 293,
+      "enCharacters": 286
+    },
+    {
+      "id": "oxford-university-voltaire-first-digital-update-20261002",
+      "sourceId": "liverpool-press-blog",
+      "responseSha256": "7531d2d8cb42fd922c0bc68dc76e5f63115388e63d865ae6d80d3e89f8263dfd",
+      "bodyBytes": 126289,
+      "primaryMeta": [
+        "2026-09-22T11:30:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T11:30:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 323,
+      "enCharacters": 327
+    },
+    {
+      "id": "yukiko-tominaga-little-corner-factory-fiction-20261002",
+      "sourceId": "guernica-magazine",
+      "responseSha256": "0d1cc3c9531f6ccee8f750753fc4110c3a7f67532b58dea229f3a43889b0f862",
+      "bodyBytes": 110527,
+      "primaryMeta": [
+        "2026-09-15T14:45:40+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T14:45:40+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 292,
+      "enCharacters": 278
+    },
+    {
+      "id": "joanna-walsh-amateurs-cleveland-review-20261002",
+      "sourceId": "cleveland-review-books",
+      "responseSha256": "1b8c39f40a4321471bb76bddd60c617decbfbf357d58fbd76e000cd47ce28db3",
+      "bodyBytes": 165243,
+      "primaryMeta": [
+        "2026-09-22T13:18:34+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-22T13:18:34+00:00"
+      ],
+      "publishedAt": "2026-09-22T13:18:34+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 287,
+      "enCharacters": 288
+    },
+    {
+      "id": "mercatto-weekly-books-selection-210-20261002",
+      "sourceId": "revista-mercatto",
+      "responseSha256": "5dcd2fbd24cbb03f9905865ef70f719afccc56ef4d0e8d10f6fedefc40fd203c",
+      "bodyBytes": 85750,
+      "primaryMeta": [
+        "2026-09-24T08:12:37+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-24T08:12:37+02:00"
+      ],
+      "publishedAt": "2026-09-24T08:12:37+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 301,
+      "enCharacters": 299
+    },
+    {
+      "id": "prh-morning-book-buzz-september-video-20261002",
+      "sourceId": "prh-library",
+      "responseSha256": "658bf22dbd5271ebfa75b7203e910de44759eac2b42eba5d2a856dd57fc4c6e5",
+      "bodyBytes": 270389,
+      "primaryMeta": [
+        "2026-09-16T17:44:54+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-16T17:44:54+00:00"
+      ],
+      "publishedAt": "2026-09-16T17:44:54+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 296,
+      "enCharacters": 272
+    },
+    {
+      "id": "moldova-century-higher-education-documentary-exhibition-20261002",
+      "sourceId": "bnrm-md",
+      "responseSha256": "5cb3ad7cfa4bdff11d3e86d25d1494c8f992f0b2003fcb3ec7bfa5b63201ecdb",
+      "bodyBytes": 195323,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-10T07:45:47.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 302,
+      "enCharacters": 289
+    },
+    {
+      "id": "ukrainian-librarians-personal-book-collections-seminar-20261002",
+      "sourceId": "nbuv-gov-ua",
+      "responseSha256": "28a0cb4ccba103ac2543bb0444e7e6a669c73c9766581a512a32f302f7b4b799",
+      "bodyBytes": 58831,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-10T12:32:39.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 309,
+      "enCharacters": 311
+    },
+    {
+      "id": "pen-germany-frankfurt-book-fair-programme-20261002",
+      "sourceId": "pen-deutschland-de",
+      "responseSha256": "1890cc70b660c7530fe07fc7d1125d0fccb89e31bb7b00d342bace5a5b83077b",
+      "bodyBytes": 223144,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-01T08:00:54+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 301,
+      "enCharacters": 299
+    },
+    {
+      "id": "pen-international-eritrea-writers-proof-of-life-20261002",
+      "sourceId": "norskpen-no",
+      "responseSha256": "9106696fd552a85be0fe6fc0ec2dc455d3cab84fe90db0fd2d0cf75b5cb23cd1",
+      "bodyBytes": 161151,
+      "primaryMeta": [
+        "2026-09-18T07:00:01+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-18T07:00:01+00:00"
+      ],
+      "publishedAt": "2026-09-18T07:00:01+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 324,
+      "enCharacters": 331
+    },
+    {
+      "id": "dosdoce-who-narrating-future-audio-survey-20261002",
+      "sourceId": "dosdoce",
+      "responseSha256": "a1ed63db2b3d1837d9646d0ac4d479955ad6fb55d9e386197ece5995ed32e5f6",
+      "bodyBytes": 98420,
+      "primaryMeta": [
+        "2026-09-23T06:25:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-23T06:25:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 318,
+      "enCharacters": 280
+    },
+    {
+      "id": "el-boomerang-refectorios-original-literary-texts-20261002",
+      "sourceId": "el-boomeran",
+      "responseSha256": "82f544d941eacd83f97aa7dd1ad2775b9ece6090a1f787efb3ad4165fb9a46d1",
+      "bodyBytes": 127853,
+      "primaryMeta": [
+        "2026-09-21T09:21:50+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-21T09:21:50+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 318,
+      "enCharacters": 292
+    },
+    {
+      "id": "lucy-zhang-son-debt-literary-narrative-20261002",
+      "sourceId": "electric-literature",
+      "responseSha256": "01f13afae9135031ff63d486989b08dc15eb9963978e08626d4098dade01b72a",
+      "bodyBytes": 163690,
+      "primaryMeta": [
+        "2026-09-24T11:10:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-24T11:10:00+00:00"
+      ],
+      "publishedAt": "2026-09-24T11:10:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 310,
+      "enCharacters": 290
+    },
+    {
+      "id": "the-lit-waterford-youth-festival-october-programme-20261002",
+      "sourceId": "books-ireland",
+      "responseSha256": "3a50d535aca5c719c348ccc3d6bf2ca0f452ef3cb46f878406a33d3482ac4e93",
+      "bodyBytes": 148654,
+      "primaryMeta": [
+        "2026-09-22T10:38:54+01:00"
+      ],
+      "primaryLd": [
+        "2026-09-22T10:38:54+01:00"
+      ],
+      "publishedAt": "2026-09-22T10:38:54+01:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 300,
+      "enCharacters": 316
+    },
+    {
+      "id": "antje-kunstmann-publisher-memorial-feature-20261002",
+      "sourceId": "buchkultur",
+      "responseSha256": "c1806d796850334fc3910425fdbd11b46e52b5e886b572417c3398b6b399ceb2",
+      "bodyBytes": 74386,
+      "primaryMeta": [
+        "2026-09-21T14:41:44+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-21T14:41:44+00:00"
+      ],
+      "publishedAt": "2026-09-21T14:41:44+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 319,
+      "enCharacters": 302
+    },
+    {
+      "id": "el-housseine-khaouti-bilingual-poetry-publication-20261002",
+      "sourceId": "recours-poeme",
+      "responseSha256": "63b7dbd662c679d05c7125d2d51763cab34560e4f19c7dc84189e1c332fdcdeb",
+      "bodyBytes": 151867,
+      "primaryMeta": [
+        "2026-09-06T06:30:38+00:00",
+        "2026-09-06T06:30:38+02:00"
+      ],
+      "primaryLd": [
+        "2026-09-06T06:30:38+00:00"
+      ],
+      "publishedAt": "2026-09-06",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 274,
+      "enCharacters": 276
+    },
+    {
+      "id": "polish-book-market-protection-legislative-first-step-20261002",
+      "sourceId": "pik-org-pl",
+      "responseSha256": "614696cd063e535e4ae7d11b2cd069a356b25989aff8f72677ea2355080bca40",
+      "bodyBytes": 154190,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-21T15:24:56.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 315,
+      "enCharacters": 313
+    }
+  ]
+}

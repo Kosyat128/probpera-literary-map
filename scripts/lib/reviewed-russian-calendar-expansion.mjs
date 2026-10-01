@@ -27,5 +27,7 @@ export function projectReviewedRussianCalendarExpansion(relativePath, source) {
 
 export function isReviewedRussianCalendarExpansionAddition(relativePath, source) {
   const entry = russianCalendarExpansionAttestation.additions.find(item => item.path === relativePath);
-  return Boolean(entry && russianCalendarExpansionSha256(source) === entry.sha256Lf);
+  try {
+    return Boolean(entry && russianCalendarExpansionSha256(projectReviewedNextSecurityFollowup(relativePath, source)) === entry.sha256Lf);
+  } catch { return false; }
 }

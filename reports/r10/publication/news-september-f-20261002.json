@@ -1,0 +1,3979 @@
+{
+  "schemaVersion": 1,
+  "batchId": "news-september-f-20261002",
+  "preparedAt": "2026-10-01T22:43:43.019Z",
+  "scope": "A bounded September literary archive proposal from prefetched candidates 240..299; no network, canonical or remote mutations.",
+  "inputEvidence": {
+    "harvestFile": "reports/r10/publication/september-news-candidate-pool-20261002.json",
+    "harvestSha256": "b2e153f75f5bb64a624c22d6479321d90a438ce2e559950ee0df8fb6c2957426",
+    "slice": {
+      "startInclusive": 240,
+      "endExclusive": 300
+    },
+    "capturedArticles": 60,
+    "bodyHTTP200": 60,
+    "fullBodyDigestsChecked": 60
+  },
+  "records": [
+    {
+      "id": "r10-news-f-mathieu-belezi-cetait-notre-terre-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T19:59:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau разобрал переиздание романа Матьё Белези",
+        "en": "En attendant Nadeau reviews a Mathieu Belezi reissue"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на C’était notre terre Матьё Белези в издательстве Le Tripode. Критик рассматривает книгу как завершение переиздания цикла об Алжире и прослеживает, как повторяющиеся голоса и ритм повествования связывают отдельные романы писателя.",
+        "en": "En attendant Nadeau publishes a review of Mathieu Belezi’s C’était notre terre from Le Tripode. The critic considers it the conclusion of a reissued cycle about Algeria, tracing how recurring voices and narrative rhythm connect the writer’s individual novels."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/la-malediction-des-colons/",
+        "language": "fr-FR",
+        "title": "La malédiction des colons"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-mathieu-belezi-cetait-notre-terre-review-20261002"
+    },
+    {
+      "id": "r10-news-f-stephane-giusti-halte-au-feu-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T19:58:36.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau представил второй роман Стефана Джусти",
+        "en": "En attendant Nadeau reviews Stéphane Giusti’s second novel"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на Halte au feu Стефана Джусти, выпущенный Seghers. Второй роман автора сосредоточен на одном дне в Алжире 1962 года; обзор обсуждает связь литературы и памяти и внимание повествования к судьбам отдельных персонажей.",
+        "en": "En attendant Nadeau reviews Stéphane Giusti’s Halte au feu, published by Seghers. The author’s second novel centres on a single day in Algeria in 1962; the discussion explores the relationship between literature and memory and the narrative’s attention to individual characters."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/une-journee-tragique/",
+        "language": "fr-FR",
+        "title": "Une journée tragique"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-stephane-giusti-halte-au-feu-review-20261002"
+    },
+    {
+      "id": "r10-news-f-isabella-caldart-new-york-reading-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-23",
+      "publishedAt": "2026-09-23T14:48:17.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Изабелла Кальдарт представит литературную карту Нью-Йорка",
+        "en": "Isabella Caldart announces a reading on literary New York"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал встречу с Изабеллой Кальдарт 20 ноября в 15:00 под названием Die Stadt, die sie schrieben. Книга AvivA Verlag предлагает литературную карту Нью-Йорка через женщин-писательниц, включая Дороти Паркер, Эдит Уортон и Сири Хустведт; разговор проведёт Клара ван Хандель.",
+        "en": "Literaturhaus Stuttgart announces Isabella Caldart’s Die Stadt, die sie schrieben event on November 20 at 15:00. The AvivA Verlag book maps literary New York through women writers including Dorothy Parker, Edith Wharton and Siri Hustvedt; Clara van Handel will moderate the conversation."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6823.html",
+        "language": "de-DE",
+        "title": "Isabella Caldart: Die Stadt, die sie schrieben"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-isabella-caldart-new-york-reading-20261002"
+    },
+    {
+      "id": "r10-news-f-hachette-halloween-horror-selection-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T14:10:27.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Hachette Book Group представило осеннюю подборку хоррора",
+        "en": "Hachette Book Group shares an autumn horror selection"
+      },
+      "summary": {
+        "ru": "Hachette Book Group опубликовало подборку хоррора и триллеров к Хэллоуину. В ней представлены The Sleeping Sisters Дженнифер Гиван, The Broken Hearts Agency Кларенса Хейнса и Teddy Bears Never Die Чо Еын в переводе Сон Рю; книги соединяют мистику, семейную память и детективные сюжеты.",
+        "en": "Hachette Book Group publishes a Halloween selection of horror and thriller novels. It includes Jennifer Givhan’s The Sleeping Sisters, Clarence Haynes’s The Broken Hearts Agency and Cho Yeeun’s Teddy Bears Never Die in Sung Ryu’s translation, combining supernatural plots, family memory and mystery."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/book-list/fresh-voices-frightening-stories-horror-books-for-halloween/",
+        "language": "en-US",
+        "title": "Fresh Voices, Frightening Stories: Horror Books for Halloween"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-hachette-halloween-horror-selection-20261002"
+    },
+    {
+      "id": "r10-news-f-elke-erb-fellbach-volume-reading-20261002",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-23",
+      "publishedAt": "2026-09-23T14:47:46.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "В Штутгарте представят книгу об Эльке Эрб и её связи с Фелльбахом",
+        "en": "Stuttgart announces a volume on Elke Erb’s connection with Fellbach"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал 20 ноября разговор о Morgenglocken wach geworden, книге Ulrich Keicher Verlag об Эльке Эрб. Издание объединяет её речь о премии Мёрике, объяснение выбора Мари Т. Мартин, выступление Флориана Хёллерера и материалы наследия; встреча обращается к приезду поэтессы в Фелльбах в 2018 году.",
+        "en": "Literaturhaus Stuttgart schedules a November 20 discussion of Morgenglocken wach geworden, Ulrich Keicher Verlag’s volume on Elke Erb. It brings together her Mörike Prize speech, her selection of Marie T. Martin, Florian Höllerer’s tribute and estate material, recalling the poet’s 2018 visit to Fellbach."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6832.html",
+        "language": "de-DE",
+        "title": "Morgenglocken wach geworden - Elke Erb in Fellbach: Ulrich Keicher, Florian Höllerer, Studierende HMDK / Institut für Sprech­kunst"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-elke-erb-fellbach-volume-reading-20261002"
+    },
+    {
+      "id": "r10-news-f-hollie-mcnish-french-book-interview-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T19:55:08.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Холли Макниш рассказала о поэзии и новом французском издании",
+        "en": "Hollie McNish discusses poetry and her new French edition"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал интервью с британской поэтессой Холли Макниш и фрагмент её книги Je me demande pourquoi on ne peut pas dire non, tout simplement. Издание Le Castor Astral переведено Виржини Тракслер; Макниш рассказывает о стихах из детских дневников и о соединении личных историй с поэзией.",
+        "en": "En attendant Nadeau interviews British poet Hollie McNish and shares an extract from Je me demande pourquoi on ne peut pas dire non, tout simplement. Virginie Trachsler translated the Le Castor Astral edition; McNish discusses poems in childhood diaries and combining personal anecdotes with poetry."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/entretien-avec-hollie-mcnish/",
+        "language": "fr-FR",
+        "title": "Entretien avec Hollie McNish : Dire tous les mots"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-hollie-mcnish-french-book-interview-20261002"
+    },
+    {
+      "id": "r10-news-f-okwiri-oduor-anderwelttage-stuttgart-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-23",
+      "publishedAt": "2026-09-23T14:46:47.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "В Штутгарте обсудят немецкое издание романа Оквири Одуор",
+        "en": "Stuttgart announces a discussion of Okwiri Oduor’s German edition"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart включил в программу 20 ноября представление Anderwelttage Оквири Одуор в переводе Томаса Брюкнера. Издательница Йона Элиза Еска расскажет об издании африканской литературы в Akono, а студенты института сценической речи прочитают фрагменты романа о двенадцатилетней Айосе.",
+        "en": "Literaturhaus Stuttgart schedules a November 20 presentation of Okwiri Oduor’s Anderwelttage in Thomas Brückner’s translation. Publisher Jona Elisa Jeska will discuss publishing African literature at Akono, while speech-performance students read extracts from the novel about twelve-year-old Ayosa."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6830.html",
+        "language": "de-DE",
+        "title": "Jona Elisa Jeska: »Anderwelttage« von Okwiri Oduor"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-okwiri-oduor-anderwelttage-stuttgart-20261002"
+    },
+    {
+      "id": "r10-news-f-martine-delvaux-divas-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T19:54:23.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau представил Divas Мартин Дельво",
+        "en": "En attendant Nadeau reviews Martine Delvaux’s Divas"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на Divas квебекской писательницы Мартин Дельво, изданный Héliotrope. Критик рассматривает книгу о женских голосах через молчание самой рассказчицы и поиск историй певиц, соединяя литературное свидетельство, память и размышления о праве говорить.",
+        "en": "En attendant Nadeau reviews Quebec writer Martine Delvaux’s Divas, published by Héliotrope. The critic considers its exploration of women’s voices through the narrator’s silence and her search for singers’ stories, connecting literary testimony, memory and the freedom to speak."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/retrouver-sa-voix/",
+        "language": "fr-FR",
+        "title": "Retrouver sa voix"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-martine-delvaux-divas-review-20261002"
+    },
+    {
+      "id": "r10-news-f-django-wexler-only-way-out-excerpt-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-18",
+      "publishedAt": "2026-09-18T15:45:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Orbit опубликовало фрагмент новой книги Джанго Векслера",
+        "en": "Orbit shares an extract from Django Wexler’s new book"
+      },
+      "summary": {
+        "ru": "Hachette Book Group опубликовало фрагмент The Only Way Out Is Up Джанго Векслера, заявленного к выходу 29 сентября. В первой книге приключенческой фэнтезийной серии сборщик утиля и его робот участвуют в опасном турнире; отрывок знакомит с миром гигантской свалки и рисками работы в её туннелях.",
+        "en": "Hachette Book Group publishes an extract from Django Wexler’s The Only Way Out Is Up, announced for September 29. The first adventure in the fantasy series follows a scrapper and his robot into a dangerous tournament; the opening introduces a giant junk heap and the hazards of its tunnels."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/excerpt-the-only-way-out-is-up-by-django-wexler/",
+        "language": "en-US",
+        "title": "Excerpt: THE ONLY WAY OUT IS UP by Django Wexler"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-django-wexler-only-way-out-excerpt-20261002"
+    },
+    {
+      "id": "r10-news-f-siri-hustvedt-stuttgart-future-address-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T13:58:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Сири Хустведт подготовит четвёртую Stuttgarter Zukunftsrede",
+        "en": "Siri Hustvedt announces the fourth Stuttgarter Zukunftsrede"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart сообщил, что Сири Хустведт выступит с четвёртой Stuttgarter Zukunftsrede 2 февраля 2027 года в Liederhalle. Через несколько недель речь планируют выпустить в Klett-Cotta с обложкой Кристофа Ниманна; билеты в зал уже распроданы, организаторы предлагают трансляцию.",
+        "en": "Literaturhaus Stuttgart announces that Siri Hustvedt will deliver the fourth Stuttgarter Zukunftsrede at Liederhalle on February 2, 2027. Klett-Cotta plans to publish the address a few weeks later with a Christoph Niemann cover; hall tickets are sold out, while livestream tickets remain available."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6699.html",
+        "language": "de-DE",
+        "title": "Siri Hustvedt: 4. Stuttgarter Zukunftsrede"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-siri-hustvedt-stuttgart-future-address-20261002"
+    },
+    {
+      "id": "r10-news-f-emmanuelle-lambert-la-meilleure-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T19:53:44.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau разобрал книгу Эмманюэль Ламбер о фотографиях",
+        "en": "En attendant Nadeau reviews Emmanuelle Lambert’s photographic memoir"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на La meilleure Эмманюэль Ламбер в серии Poursuites et ricochets издательства Lamaindonne. Автор обращается к семейным фотографиям, но постепенно выводит в центр историю дружбы; критик обсуждает, почему нечёткие частные снимки становятся материалом для литературной памяти.",
+        "en": "En attendant Nadeau reviews Emmanuelle Lambert’s La meilleure in Lamaindonne’s Poursuites et ricochets series. The writer turns to family photographs but gradually centres a friendship; the critic explores how imperfect private images become material for literary memory."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/lamie-sur-la-photo/",
+        "language": "fr-FR",
+        "title": "L’amie sur la photo"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-emmanuelle-lambert-la-meilleure-review-20261002"
+    },
+    {
+      "id": "r10-news-f-malika-specht-austen-collage-workshop-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T06:08:20.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Малика Шпехт расскажет о коллажах к роману Джейн Остин",
+        "en": "Malika Specht announces a conversation on Jane Austen collages"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал 20 ноября разговор с иллюстраторкой Маликой Шпехт о новом оформлении Überredung Джейн Остин. Для издания Büchergilde Gutenberg художница создала коллажи; посетителям предложат познакомиться с процессом работы и визуальным прочтением английского мира XIX века.",
+        "en": "Literaturhaus Stuttgart announces a November 20 conversation with illustrator Malika Specht about Jane Austen’s Überredung. She created collages for the Büchergilde Gutenberg edition; visitors will explore her working process and visual interpretation of nineteenth-century England."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6835.html",
+        "language": "de-DE",
+        "title": "Malika Specht: Mit filigranen Collagen durch Jane Austens Welt"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-malika-specht-austen-collage-workshop-20261002"
+    },
+    {
+      "id": "r10-news-f-en-attendant-nadeau-literary-travel-roundup-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T19:53:42.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau выпустил обзор литературных путешествий",
+        "en": "En attendant Nadeau publishes a literary travel roundup"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал подборку Voyages supplémentaires о книгах, связывающих чтение с путешествием. Она включает французский перевод романа У. Э. Б. Дюбуа La quête de la toison d’argent и поэзию Габриэль Фильто-Шиба о Квебеке; среди других маршрутов названы Байкал и проза Гюна Аюрзаны.",
+        "en": "En attendant Nadeau publishes Voyages supplémentaires, a roundup linking reading and travel. It includes the French translation of W. E. B. Du Bois’s La quête de la toison d’argent and Gabrielle Filteau-Chiba’s Quebec poetry; other literary routes include Lake Baikal and Gün G. Ayurzana’s prose."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/voyages-supplementaires-du-bois-filteau-chiba-ayurzana-azoulay-deleuze/",
+        "language": "fr-FR",
+        "title": "Voyages supplémentaires"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-en-attendant-nadeau-literary-travel-roundup-20261002"
+    },
+    {
+      "id": "r10-news-f-celine-righi-chambre-fougere-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T19:51:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau представил La chambre fougère Селин Риги",
+        "en": "En attendant Nadeau reviews Céline Righi’s La chambre fougère"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на La chambre fougère Селин Риги в Éditions du Sonneur. Книга рассказывает о брате, который пытается удержать уходящую из жизни сестру; критик обсуждает переплетение семейной памяти, сельских верований и растительных образов, превращающих лес в часть повествования.",
+        "en": "En attendant Nadeau reviews Céline Righi’s La chambre fougère from Éditions du Sonneur. The book follows a brother unable to let go of his dying sister; the critic examines the interplay of family memory, rural beliefs and plant imagery as the forest becomes part of the narrative."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/22/celine-righi-au-chevet-des-fantomes/",
+        "language": "fr-FR",
+        "title": "Céline Righi au chevet des fantômes"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-celine-righi-chambre-fougere-review-20261002"
+    },
+    {
+      "id": "r10-news-f-hachette-halloween-picture-book-selection-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-16",
+      "publishedAt": "2026-09-16T17:57:34.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Hachette представило детские книжки-картинки к Хэллоуину",
+        "en": "Hachette shares Halloween picture books for children"
+      },
+      "summary": {
+        "ru": "Hachette Book Group опубликовало подборку книжек-картинок для семейного чтения к Хэллоуину. В неё вошли The Bats on the Bus Элисон Джексон с иллюстрациями Скотта Магуна и Three Little Witches and the Spooky Old House Пегги Арчер с рисунками Гайи Бордиккья; истории предлагают юмор и мягкую праздничную мистику.",
+        "en": "Hachette Book Group publishes a Halloween picture-book selection for family reading. It includes Alison Jackson’s The Bats on the Bus with Scott Magoon’s illustrations and Peggy Archer’s Three Little Witches and the Spooky Old House illustrated by Gaia Bordicchia, featuring humour and gentle seasonal mystery."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/little-brown-young-readers/lbyr-blog/picture-books-for-hocus-pocus-kids/",
+        "language": "en-US",
+        "title": "Picture Books for Hocus Pocus Kids"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-hachette-halloween-picture-book-selection-20261002"
+    },
+    {
+      "id": "r10-news-f-stuttgart-independent-publisher-market-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T06:05:44.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "В Штутгарте анонсировали рынок более 30 независимых издателей",
+        "en": "Stuttgart announces a market with over 30 independent publishers"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart объявил Kometenparade 20 ноября - рынок книг более 30 независимых издателей с чтениями, мастерскими и выставками. Среди участников названы Akono, AvivA, Guggolz и Wagenbach; посетители смогут общаться с издателями и знакомиться с оформлением книг, включая бумагу, переплёт и типографику.",
+        "en": "Literaturhaus Stuttgart announces Kometenparade on November 20, a book market with more than 30 independent publishers, readings, workshops and exhibitions. Participants include Akono, AvivA, Guggolz and Wagenbach; visitors can meet publishers and explore book design, paper, binding and typography."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6763.html",
+        "language": "de-DE",
+        "title": "Kometenparade - Markt der unabhängigen Verlage"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-stuttgart-independent-publisher-market-20261002"
+    },
+    {
+      "id": "r10-news-f-megan-bontrager-botanical-horror-cover-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-16",
+      "publishedAt": "2026-09-16T14:45:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Orbit показало обложку нового романа Меган Бонтрейгер",
+        "en": "Orbit reveals Megan Bontrager’s new novel cover"
+      },
+      "summary": {
+        "ru": "Hachette Book Group представило обложку Where Dead Things Grow Меган Бонтрейгер, отдельного романа ботанического хоррора, заявленного на июнь 2027 года. Дизайн выполнила Лиза Мари Помпилио; сюжет следует за гувернанткой, которая отправляется в разумное болото вместе со Смертью, чтобы спасти похищенных детей.",
+        "en": "Hachette Book Group reveals Where Dead Things Grow by Megan Bontrager, a standalone botanical horror novel announced for June 2027. Lisa Marie Pompilio designed the cover; the story follows an au pair into a sentient swamp with Death to rescue kidnapped children."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-where-dead-things-grow-by-megan-bontrager/",
+        "language": "en-US",
+        "title": "Cover Launch: WHERE DEAD THINGS GROW by Megan Bontrager"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-megan-bontrager-botanical-horror-cover-20261002"
+    },
+    {
+      "id": "r10-news-f-enrique-vila-matas-canon-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-20",
+      "publishedAt": "2026-09-20T22:00:36.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau разобрал литературный канон Энрике Вила-Матаса",
+        "en": "En attendant Nadeau reviews Enrique Vila-Matas’s literary canon"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на Un canon de chambre noire Энрике Вила-Матаса в переводе Клода Блетона для Actes Sud. Герой наследует библиотеку и задачу составить тайный канон из 71 книги; критик рассматривает цитирование и чтение как способы заново построить историю собственной жизни.",
+        "en": "En attendant Nadeau reviews Enrique Vila-Matas’s Un canon de chambre noire, translated by Claude Bleton for Actes Sud. Its protagonist inherits a library and the task of creating a secret canon of 71 books; the critic explores quotation and reading as ways to reconstruct a personal life story."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/21/enrique-vila-matas-un-canon-de-chambre-noire/",
+        "language": "fr-FR",
+        "title": "Un fantôme de bibliothèque"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-enrique-vila-matas-canon-review-20261002"
+    },
+    {
+      "id": "r10-news-f-dan-levy-hachette-data-appointment-20261002",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-16",
+      "publishedAt": "2026-09-16T13:54:38.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Дэн Леви назначен руководителем данных группы Hachette",
+        "en": "Dan Levy is appointed Hachette’s Chief Data Officer"
+      },
+      "summary": {
+        "ru": "Hachette Book Group объявило о назначении Дэна Леви старшим вице-президентом и Chief Data Officer с 16 сентября. Он будет координировать данные и отчётность подразделений в США, Великобритании, Австралии, Новой Зеландии и Индии; Леви работает в HBG пять лет и подчиняется Брендану Госсу.",
+        "en": "Hachette Book Group appoints Dan Levy Senior Vice President and Chief Data Officer from September 16. He will coordinate data and reporting across the US, UK, Australia, New Zealand and India; Levy has worked at HBG for five years and reports to Brendan Goss."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/dan-levy-appointed-senior-vice-president-chief-data-officer-hachette/",
+        "language": "en-US",
+        "title": "Dan Levy Appointed Senior Vice President, Chief Data Officer, Hachette"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-dan-levy-hachette-data-appointment-20261002"
+    },
+    {
+      "id": "r10-news-f-dilek-mayaturk-bilingual-poetry-reading-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T05:53:38.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Дилек Майатюрк представит двуязычную поэзию в Штутгарте",
+        "en": "Dilek Mayatürk announces a bilingual poetry reading in Stuttgart"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал 20 ноября чтение Дилек Майатюрк о её турецко-немецком поэтическом сборнике. Поэтесса сначала пишет стихотворение на турецком, затем заново создаёт его на немецком; встреча представит диалог двух языков и пройдёт в сотрудничестве с Немецко-турецким форумом.",
+        "en": "Literaturhaus Stuttgart announces Dilek Mayatürk’s November 20 reading of her Turkish-German poetry collection. She writes a poem in Turkish before recreating it in German; the event will explore this dialogue between languages in cooperation with the German-Turkish Forum."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6833.html",
+        "language": "de-DE",
+        "title": "Dilek Mayatürk, Florian Höllerer: Wenn du lächelst, zerfällt ein roter Apfel in Scheiben"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-dilek-mayaturk-bilingual-poetry-reading-20261002"
+    },
+    {
+      "id": "r10-news-f-philippe-jaenada-javel-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-18",
+      "publishedAt": "2026-09-18T22:02:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau разобрал новый роман-расследование Филиппа Жанади",
+        "en": "En attendant Nadeau reviews Philippe Jaenada’s new investigation narrative"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на L’inconnue du quai de Javel Филиппа Жанади, книгу Flammarion. Критик обсуждает, как расследование происшествия соединяется с романным письмом и авторскими отступлениями; обзор сопоставляет новую работу с La petite femelle, La serpe и другими книгами писателя.",
+        "en": "En attendant Nadeau reviews Philippe Jaenada’s L’inconnue du quai de Javel, published by Flammarion. The critic examines how an investigation combines novelistic writing and authorial digressions, relating the new work to La petite femelle, La serpe and other books by the writer."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/19/philippe-jaenada-au-carre/",
+        "language": "fr-FR",
+        "title": "Jaenada au carré"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-philippe-jaenada-javel-review-20261002"
+    },
+    {
+      "id": "r10-news-f-rebekka-salm-metzina-reading-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T05:46:49.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Ребекка Зальм представит исторический роман Metzina",
+        "en": "Rebekka Salm announces a reading of her historical novel Metzina"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал 20 ноября чтение и разговор о Metzina Ребекки Зальм, выпущенном Knapp Verlag. Действие романа происходит в Ольтене XIVвека: обвинённая в колдовстве женщина сохраняет голос, рассказывая о войне, бегстве и потере сына; встречу проведёт Каролина Графе.",
+        "en": "Literaturhaus Stuttgart schedules a November 20 reading and conversation about Rebekka Salm’s Metzina from Knapp Verlag. Set in fourteenth-century Olten, the novel follows a woman accused of witchcraft who keeps telling stories of war, flight and loss; Caroline Grafe will moderate."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6825.html",
+        "language": "de-DE",
+        "title": "Rebekka Salm: Metzina"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-rebekka-salm-metzina-reading-20261002"
+    },
+    {
+      "id": "r10-news-f-paul-murray-bee-sting-interview-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-18",
+      "publishedAt": "2026-09-18T22:00:37.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Пол Мюррей рассказал о четырёх голосах своего семейного романа",
+        "en": "Paul Murray discusses the four voices of his family novel"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал интервью с Полом Мюрреем о La piqûre d’abeille, французском издании The Bee Sting в переводе Пьера Демарти. Писатель обсуждает четыре повествовательных голоса семьи Барнс и влияние неразрешённого прошлого на её отношения; роман был финалистом Букеровской премии 2023 года.",
+        "en": "En attendant Nadeau interviews Paul Murray about La piqûre d’abeille, Pierre Demarty’s French translation of The Bee Sting. The writer discusses the Barnes family’s four narrative voices and the effect of unresolved history on relationships; the novel was shortlisted for the 2023 Booker Prize."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/19/une-ville-irlandaise-apres-le-krach-entretien-avec-paul-murray/",
+        "language": "fr-FR",
+        "title": "« J’écris sur des rêveurs » : entretien avec Paul Murray"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-paul-murray-bee-sting-interview-20261002"
+    },
+    {
+      "id": "r10-news-f-ann-dye-hachette-operations-appointment-20261002",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-15",
+      "publishedAt": "2026-09-15T18:01:34.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Энн Дай назначена вице-президентом Hachette Book Group по операциям",
+        "en": "Ann Dye is appointed Hachette Book Group’s operations vice president"
+      },
+      "summary": {
+        "ru": "Hachette Book Group объявило о назначении Энн Дай вице-президентом по бизнес-операциям с 21 сентября. Под руководством Эда Спейда она займётся проектами между подразделениями и подключением новых клиентов к продажам и дистрибуции; ранее Дай руководила направлением Sales Operations в HarperCollins.",
+        "en": "Hachette Book Group appoints Ann Dye Vice President of Business Operations from September 21. Reporting to Ed Spade, she will lead projects across divisions and integrate new sales and distribution clients; Dye previously headed Sales Operations at HarperCollins."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/ann-dye-named-vice-president-business-operations-of-hachette-book-group/",
+        "language": "en-US",
+        "title": "Ann Dye Named Vice President, Business Operations of Hachette Book Group"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-ann-dye-hachette-operations-appointment-20261002"
+    },
+    {
+      "id": "r10-news-f-kaschnitz-old-garden-illustrated-reading-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T05:46:48.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "В Штутгарте представят новое иллюстрированное издание Кашниц",
+        "en": "Stuttgart announces a new illustrated Kaschnitz edition"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал 20 ноября чтение Der alte Garten Марии Луизы Кашниц в новом издании Panima Verlag. Книга вышла впервые посмертно в 1975 году, а версия 2026 года включает рисунки Джале Перего; студенты института сценической речи представят фрагменты поэтической сказки о природе.",
+        "en": "Literaturhaus Stuttgart announces a November 20 reading of Marie Luise Kaschnitz’s Der alte Garten in Panima Verlag’s new edition. First published posthumously in 1975, the 2026 version includes Jaleh Perego’s drawings; speech-performance students will read extracts from the poetic nature tale."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6826.html",
+        "language": "de-DE",
+        "title": "Christiane Möschle: »Der alte Garten« von Marie Luise Kaschnitz"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-kaschnitz-old-garden-illustrated-reading-20261002"
+    },
+    {
+      "id": "r10-news-f-masashi-matsuie-maison-ete-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-17",
+      "publishedAt": "2026-09-17T22:00:03.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau представил французский перевод Масаси Мацуиэ",
+        "en": "En attendant Nadeau reviews Masashi Matsuie’s French translation"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на La Maison d’été Масаси Мацуиэ в переводе Деборы Пьерре Ватанабэ для Éditions du sous-sol. Роман следует за молодым архитектором Тору, присоединившимся к мастерской в 1982 году; критик рассматривает коллективную жизнь команды и человеческую сторону архитектуры.",
+        "en": "En attendant Nadeau reviews Masashi Matsuie’s La Maison d’été, translated by Déborah Pierret Watanabe for Éditions du sous-sol. The novel follows young architect Toru as he joins a practice in 1982; the critic explores the team’s collective life and architecture’s human dimension."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/18/larchitecte-ideal-la-maison-dete-masashi-matsuie/",
+        "language": "fr-FR",
+        "title": "L’architecte idéal"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-masashi-matsuie-maison-ete-review-20261002"
+    },
+    {
+      "id": "r10-news-f-amy-leow-nameless-god-cover-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-14",
+      "publishedAt": "2026-09-14T14:45:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Orbit показало обложку The Nameless God Эми Леоу",
+        "en": "Orbit reveals Amy Leow’s The Nameless God cover"
+      },
+      "summary": {
+        "ru": "Hachette Book Group представило обложку The Nameless God Эми Леоу, второй книги The False Goddess Trilogy, заявленной на февраль 2027 года. Дизайн выполнила Лорен Панепинто, иллюстрацию - Маркос Чин; сюжет продолжает историю Медхи, занявшей Алый трон и отправленной расследовать убийство в городе Сулат.",
+        "en": "Hachette Book Group reveals The Nameless God by Amy Leow, the second False Goddess Trilogy volume announced for February 2027. Lauren Panepinto designed the cover and Marcos Chin illustrated it; the plot follows Medha, who occupies the Scarlet Throne and investigates a killing in Sulat."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-the-nameless-god-by-amy-leow/",
+        "language": "en-US",
+        "title": "Cover Launch: THE NAMELESS GOD by Amy Leow"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-amy-leow-nameless-god-cover-20261002"
+    },
+    {
+      "id": "r10-news-f-stefan-auer-silent-cinema-book-reading-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T05:46:47.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Стефан Ауэр представит книгу об истории немого кино",
+        "en": "Stefan Auer announces a discussion of his silent-cinema book"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал 20 ноября разговор с автором и книготорговцем Стефаном Ауэром о Königreich aus Licht und Schatten. Книга Starfruit Publications посвящена повествовательным формам немого кино; встречу проведёт Кристиане фон Валерт из Фонда Фридриха Вильгельма Мурнау.",
+        "en": "Literaturhaus Stuttgart announces Stefan Auer’s November 20 discussion of Königreich aus Licht und Schatten. The Starfruit Publications book explores silent cinema’s narrative forms; Christiane von Wahlert of the Friedrich Wilhelm Murnau Foundation will moderate the author and bookseller’s appearance."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6827.html",
+        "language": "de-DE",
+        "title": "Stefan Auer: Königreich aus Licht und Schatten"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-stefan-auer-silent-cinema-book-reading-20261002"
+    },
+    {
+      "id": "r10-news-f-pierre-ducrozet-eden-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-16",
+      "publishedAt": "2026-09-16T22:00:54.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau разобрал Éden Пьера Дюкрозе",
+        "en": "En attendant Nadeau reviews Pierre Ducrozet’s Éden"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на Éden Пьера Дюкрозе в Actes Sud. Роман следует за юным героем, который покидает Марсель и ищет воображаемый новый мир; критик обсуждает путешествие между портами, семейную историю и напряжение между страхом настоящего и надеждой на другой способ жизни.",
+        "en": "En attendant Nadeau reviews Pierre Ducrozet’s Éden from Actes Sud. The novel follows a young protagonist leaving Marseille in search of an imagined new world; the critic explores travel between ports, family history and the tension between present fears and hopes for another way of living."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/17/dans-les-limbes-des-conteneurs-eden/",
+        "language": "fr-FR",
+        "title": "Dans les limbes des conteneurs"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-pierre-ducrozet-eden-review-20261002"
+    },
+    {
+      "id": "r10-news-f-hachette-changing-story-second-festival-20261002",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-14",
+      "publishedAt": "2026-09-14T13:35:42.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Hachette Book Group подвело итоги второго Changing the Story Festival",
+        "en": "Hachette Book Group reports its second Changing the Story Festival"
+      },
+      "summary": {
+        "ru": "Hachette Book Group сообщило о втором Changing the Story Festival, прошедшем 10 сентября для сотрудников, авторов и специалистов отрасли. Участники обсуждали инклюзивность, интересы читателей и будущее издательского дела; с основным выступлением участвовал автор The Perilous Fight Колин Каперник.",
+        "en": "Hachette Book Group reports its second Changing the Story Festival, held on September 10 for employees, authors and publishing specialists. Participants discussed inclusion, readers’ interests and publishing’s future; The Perilous Fight author Colin Kaepernick delivered a keynote."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/articles/hachette-book-group-hosts-second-annual-changing-the-story-festival-highlighting-inclusion-as-a-driver-of-publishing-success/",
+        "language": "en-US",
+        "title": "Hachette Book Group Hosts Second Annual Changing the Story Festival Highlighting Inclusion as a Driver of Publishing Success"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-hachette-changing-story-second-festival-20261002"
+    },
+    {
+      "id": "r10-news-f-kerstin-ehmer-heldinnen-meere-reading-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T05:46:45.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Керстин Эмер представит книгу о женщинах и море",
+        "en": "Kerstin Ehmer announces a reading on women and the sea"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал 20 ноября чтение Heldinnen der Meere Керстин Эмер, изданного Mareverlag. В 16 главах автор связывает море с женщинами из науки, искусства, спорта и мифологии; среди названных героинь - Вирджиния Вулф и Элизабет Манн Боргезе.",
+        "en": "Literaturhaus Stuttgart announces a November 20 reading of Kerstin Ehmer’s Heldinnen der Meere, published by Mareverlag. In 16 chapters the author connects the sea with women from science, art, sport and mythology; the named figures include Virginia Woolf and Elisabeth Mann Borgese."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6829.html",
+        "language": "de-DE",
+        "title": "Kerstin Ehmer, Rainer Schimpf: Heldinnen der Meere"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-kerstin-ehmer-heldinnen-meere-reading-20261002"
+    },
+    {
+      "id": "r10-news-f-juan-gabriel-vasquez-feliza-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-15",
+      "publishedAt": "2026-09-15T19:59:09.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau представил Les noms de Feliza Хуана Габриэля Васкеса",
+        "en": "En attendant Nadeau reviews Juan Gabriel Vásquez’s Les noms de Feliza"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на Les noms de Feliza колумбийского писателя Хуана Габриэля Васкеса в переводе Изабель Гюньон для Seuil. Книга обращается к жизни художницы Фелисы Бурштын; критик рассматривает, как многолетнее любопытство автора и работа с чужой судьбой превращаются в литературное повествование.",
+        "en": "En attendant Nadeau reviews Colombian writer Juan Gabriel Vásquez’s Les noms de Feliza, translated by Isabelle Gugnon for Seuil. The book turns to artist Feliza Bursztyn’s life; the critic considers how years of curiosity and attention to another person’s history become a literary narrative."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/15/sculpter-une-vie-dartiste-feliza-bursztyn/",
+        "language": "fr-FR",
+        "title": "Sculpter une vie d’artiste"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-juan-gabriel-vasquez-feliza-review-20261002"
+    },
+    {
+      "id": "r10-news-f-enrico-ippolito-irrlichter-reading-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T05:46:43.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Энрико Ипполито представит рассказ Irrlichter в Штутгарте",
+        "en": "Enrico Ippolito announces an Irrlichter reading in Stuttgart"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал 20 ноября чтение и разговор с Энрико Ипполито о Irrlichter. Рассказ входит в комплект Kavaliersdelikte издательства Lampe, объединяющий четырёх авторов; Ипполито исследует одержимость огнём, выросшую из детского эпизода, и границы между поступком и преступлением.",
+        "en": "Literaturhaus Stuttgart announces Enrico Ippolito’s November 20 reading and conversation on Irrlichter. The story belongs to Lampe’s four-author Kavaliersdelikte collection; it follows an obsession with fire arising from a childhood experience and explores the boundary between an act and a crime."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6831.html",
+        "language": "de-DE",
+        "title": "Enrico Ippolito: Irrlichter"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-enrico-ippolito-irrlichter-reading-20261002"
+    },
+    {
+      "id": "r10-news-f-agnes-clancier-valadon-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-15",
+      "publishedAt": "2026-09-15T19:57:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau разобрал литературную биографию Сюзанны Валадон",
+        "en": "En attendant Nadeau reviews a literary portrait of Suzanne Valadon"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на Suzanne Valadon l’insoumise Аньес Клансье в Éditions des Instants. Критик рассматривает переход героини от модели к художнице и фрагментарную форму повествования; книга соединяет биографическое воображение с чувственными образами мастерских и Монмартра.",
+        "en": "En attendant Nadeau reviews Agnès Clancier’s Suzanne Valadon l’insoumise from Éditions des Instants. The critic explores the protagonist’s movement from model to artist and the narrative’s fragmentary form, combining biographical imagination with sensory images of studios and Montmartre."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/15/venus-de-la-butte-agnes-clancier-valadon/",
+        "language": "fr-FR",
+        "title": "Vénus de la Butte"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-agnes-clancier-valadon-review-20261002"
+    },
+    {
+      "id": "r10-news-f-joy-sorman-vie-brute-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-15",
+      "publishedAt": "2026-09-15T19:56:26.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau представил La vie brute Джой Сорман",
+        "en": "En attendant Nadeau reviews Joy Sorman’s La vie brute"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на La vie brute Джой Сорман в Flammarion. Рассказ вырос из года общения писательницы с художницей Ирен Жерар в бельгийской мастерской La S; критик рассматривает дистанцию между наблюдением и сочувствием и попытку передать опыт другого человека.",
+        "en": "En attendant Nadeau reviews Joy Sorman’s La vie brute from Flammarion. The narrative grew from a year alongside artist Irène Gérard at Belgium’s La S workshop; the critic examines the distance between observation and empathy and the attempt to convey another person’s experience."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/15/lune-et-lautre-irene-gerard/",
+        "language": "fr-FR",
+        "title": "L’une et l’autre"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-joy-sorman-vie-brute-review-20261002"
+    },
+    {
+      "id": "r10-news-f-km-enright-prince-ash-cover-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-10",
+      "publishedAt": "2026-09-10T13:45:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Orbit представило обложку Prince of Ash К. М. Энрайт",
+        "en": "Orbit reveals K. M. Enright’s Prince of Ash cover"
+      },
+      "summary": {
+        "ru": "Hachette Book Group показало обложку Prince of Ash К. М. Энрайт, заключительной части трилогии The Age of Blood, заявленной на январь 2027 года. Дизайн выполнила Элла Гарретт, иллюстрацию - Феликс Абель Клер; анонс продолжает историю персонажей, пытающихся разрушить власть вампирского короля.",
+        "en": "Hachette Book Group reveals Prince of Ash by K. M. Enright, the concluding Age of Blood trilogy volume announced for January 2027. Ella Garrett designed the cover and Felix Abel Klaer illustrated it; the announcement continues the characters’ struggle against a vampire king."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-prince-of-ash-by-k-m-enright/",
+        "language": "en-US",
+        "title": "Cover Launch: PRINCE OF ASH by K. M. Enright"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-km-enright-prince-ash-cover-20261002"
+    },
+    {
+      "id": "r10-news-f-olivier-rolin-guerre-eternelle-review-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-15",
+      "publishedAt": "2026-09-15T19:54:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "En attendant Nadeau разобрал книгу Оливье Ролена об «Илиаде»",
+        "en": "En attendant Nadeau reviews Olivier Rolin’s book on the Iliad"
+      },
+      "summary": {
+        "ru": "En attendant Nadeau опубликовал рецензию на La guerre éternelle Оливье Ролена в Gallimard. Автор обращается к «Илиаде», поискам Трои и собственной истории чтения Гомера; критик рассматривает, как эпический текст соединяется с путешествием, памятью и размышлениями о литературном письме.",
+        "en": "En attendant Nadeau reviews Olivier Rolin’s La guerre éternelle from Gallimard. The writer turns to the Iliad, the search for Troy and his own history of reading Homer; the critic explores how an epic text connects with travel, memory and reflections on literary writing."
+      },
+      "source": {
+        "name": "En attendant Nadeau",
+        "url": "https://www.en-attendant-nadeau.fr/2026/09/15/troie-un-mauvais-depart/",
+        "language": "fr-FR",
+        "title": "Troie, un mauvais départ ?"
+      },
+      "verification": "confirmed",
+      "region": "global",
+      "eventKey": "r10-news-f-olivier-rolin-guerre-eternelle-review-20261002"
+    },
+    {
+      "id": "r10-news-f-ash-huang-immortals-cover-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-09",
+      "publishedAt": "2026-09-09T14:45:00.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Orbit показало обложку дебютного фэнтези Эш Хуан",
+        "en": "Orbit reveals Ash Huang’s debut fantasy cover"
+      },
+      "summary": {
+        "ru": "Hachette Book Group представило обложку The Secret Lives of Immortals Эш Хуан, дебютного фэнтезийного романа, заявленного на март 2027 года. Дизайн выполнила Элла Гарретт; история соединяет поэтессу из императорского Китая и римского наёмника, чья встреча запускает многовековой сюжет бессмертия.",
+        "en": "Hachette Book Group reveals The Secret Lives of Immortals by Ash Huang, a debut fantasy novel announced for March 2027. Ella Garrett designed the cover; the story connects a poet from Imperial China with a Roman mercenary, beginning a centuries-spanning narrative of immortality."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-the-secret-lives-of-immortals-by-ash-huang/",
+        "language": "en-US",
+        "title": "Cover Launch: THE SECRET LIVES OF IMMORTALS by Ash Huang"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-ash-huang-immortals-cover-20261002"
+    },
+    {
+      "id": "r10-news-f-florian-illies-jan-wagner-clouds-reading-20261002",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-20",
+      "publishedAt": "2026-09-20T19:23:44.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Флориан Иллиес и Ян Вагнер обсудят облака в искусстве и литературе",
+        "en": "Florian Illies and Jan Wagner announce a conversation on clouds"
+      },
+      "summary": {
+        "ru": "Literaturhaus Stuttgart анонсировал 19 ноября встречу Флориана Иллиеса и поэта-переводчика Яна Вагнера на закрытии выставки Geschenke des Himmels. Разговор посвящён облакам в литературе и искусстве и сопровождающему выставку каталогу Schirmer/Mosel; Вагнер обратится к своим поэтическим связям с облачными этюдами.",
+        "en": "Literaturhaus Stuttgart announces Florian Illies and poet-translator Jan Wagner’s November 19 conversation at the Geschenke des Himmels exhibition closing. The discussion explores clouds in literature and art alongside the Schirmer/Mosel catalogue, including Wagner’s poetic engagement with cloud studies."
+      },
+      "source": {
+        "name": "Literaturhaus Stuttgart",
+        "url": "https://www.literaturhaus-stuttgart.de/event/6821.html",
+        "language": "de-DE",
+        "title": "Florian Illies, Jan Wagner: Geschenke des Himmels"
+      },
+      "verification": "confirmed",
+      "region": "europe",
+      "eventKey": "r10-news-f-florian-illies-jan-wagner-clouds-reading-20261002"
+    },
+    {
+      "id": "r10-news-f-taylor-larue-steelborn-interview-20261002",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-08",
+      "publishedAt": "2026-09-08T15:37:15.000Z",
+      "verifiedAt": "2026-10-01T22:43:43.019Z",
+      "title": {
+        "ru": "Тейлор Дж. Лару рассказала о создании Steelborn",
+        "en": "Taylor J. LaRue discusses the making of Steelborn"
+      },
+      "summary": {
+        "ru": "Hachette Book Group опубликовало интервью с Тейлор Дж. Лару о Steelborn и работе над продолжением. Писательница рассказывает, что придумала героиню Рею ещё в школе и строит план примерно до трёх четвертей сюжета; в разговоре она обсуждает ограничения магии и оставленное для открытия пространство финала.",
+        "en": "Hachette Book Group interviews Taylor J. LaRue about Steelborn and its sequel in progress. She describes creating Reya while at school and outlining roughly three quarters of a story; the discussion explores limits on magic and leaving the ending open to discovery."
+      },
+      "source": {
+        "name": "Hachette Book Group",
+        "url": "https://www.hachettebookgroup.com/novl/1-author-7-questions-taylor-j-larue/",
+        "language": "en-US",
+        "title": "1 Author, 7 Questions: Taylor J. LaRue"
+      },
+      "verification": "confirmed",
+      "region": "north-america",
+      "eventKey": "r10-news-f-taylor-larue-steelborn-interview-20261002"
+    }
+  ],
+  "recordSha256": "028d3e55ae35cdadd27df369f82f43bda21f1628e451ed3c59980892ce5c620f",
+  "evidence": [
+    {
+      "id": "r10-news-f-mathieu-belezi-cetait-notre-terre-review-20261002",
+      "septemberIndex": 241,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/22/la-malediction-des-colons/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:32.733Z",
+      "responseSha256": "c2fcc6166e142f42004a0c90c36f60b5d2f059d0c94386104fb8ac55f30c8e7b",
+      "documentBytes": 212424,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/241.bin",
+      "capturedHeadline": "La malédiction des colons",
+      "capturedHeadlineSha256": "748b41494bd8b19a0caee6f96c8b5e42b36ea3abf367e86cf19be3265f28724a",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-22T19:59:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-22T19:59:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-22T19:59:00+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-22T19:59:00+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-22T19:59:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Mathieu Belezi",
+        "C’était notre terre. Le Tripode"
+      ],
+      "facts": [
+        "The September22 review concerns a reissue and a literary cycle.",
+        "Historical setting is not presented as current news."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/Fonds_Georges_Maroniez_Plaques_de_.Maroniez_Georges_btv1b107058830_1.jpeg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-stephane-giusti-halte-au-feu-review-20261002",
+      "septemberIndex": 244,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/22/une-journee-tragique/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:33.289Z",
+      "responseSha256": "07eab2ea1f384bc7304284967a99d20540cd65e58d3ed56aee2706abddcbf2de",
+      "documentBytes": 213537,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/244.bin",
+      "capturedHeadline": "Une journée tragique",
+      "capturedHeadlineSha256": "58ce6451917f3f29e57e8d8dfcaf6f84869107068233cb36592eea77822860ee",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-22T19:58:36.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-22T19:58:36+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-22T19:58:36+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-22T19:58:36+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-22T19:58:36.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Stéphane Giusti",
+        "Halte au feu. Seghers"
+      ],
+      "facts": [
+        "The critical article identifies the author’s second novel.",
+        "The summary reports the fictional setting without asserting historical casualty numbers."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/Alger_Grande_Poste.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-isabella-caldart-new-york-reading-20261002",
+      "septemberIndex": 246,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6823.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:33.608Z",
+      "responseSha256": "15877f75a118beaecf8f3599ae7a375c41515cd1b1aacc00c876c8976dbdb175",
+      "documentBytes": 132946,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/246.bin",
+      "capturedHeadline": "Isabella Caldart: Die Stadt, die sie schrieben",
+      "capturedHeadlineSha256": "414a71383ad37f6e274909d69cf733315b5c8d131d61aa85a7cf00a5cfc6f6b9",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-23T14:48:17.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "20.11. Freitag 15.00 Uhr",
+        "Isabella Caldart",
+        "Clara van Handel"
+      ],
+      "facts": [
+        "The publisher-feed publication dates the announcement September23.",
+        "The November reading is planned, with author and moderator named."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Isabella-Liste.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-hachette-halloween-horror-selection-20261002",
+      "septemberIndex": 248,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/book-list/fresh-voices-frightening-stories-horror-books-for-halloween/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:34.711Z",
+      "responseSha256": "968b055f176235a557b1f652a72121c873edc7623e2eeb2eddd8419ee5c3f4c5",
+      "documentBytes": 474196,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/248.bin",
+      "capturedHeadline": "Fresh Voices, Frightening Stories: Horror Books for Halloween",
+      "capturedHeadlineSha256": "3f9be7f8917f202e5ba1bc41ec73da0a749752edf2ebd8e34fa13db1aee6ec1b",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-22T14:10:27.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-22T14:10:27+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "listingValue": "2026-09-22T14:10:27.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "The Sleeping Sisters",
+        "Clarence A. Haynes",
+        "Translated by Sung Ryu"
+      ],
+      "facts": [
+        "The September22 publisher selection explicitly names these books and translator.",
+        "Publication of a selection is distinct from each book’s original release."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Open-Book-Horror-Halloween-Titles.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Open-Book-Horror-Halloween-Titles.png?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-elke-erb-fellbach-volume-reading-20261002",
+      "septemberIndex": 249,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6832.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:34.173Z",
+      "responseSha256": "65c00b9f6f40846d8736d6ed4943023183f32914857c9df48e5947af9d7da6b8",
+      "documentBytes": 130412,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/249.bin",
+      "capturedHeadline": "Morgenglocken wach geworden \u2013 Elke Erb in Fellbach: Ulrich Keicher, Florian Höllerer, Studierende HMDK / Institut für Sprech­kunst",
+      "capturedHeadlineSha256": "3fd2fc6ab34d2fb451ce7f81b0094aea76c414b790c6bd5c684fb4bd25395131",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-23T14:47:46.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "Morgenglocken wach geworden",
+        "Materialien aus dem Nachlass",
+        "20.11. Freitag 20.00 Uhr"
+      ],
+      "facts": [
+        "The new September announcement concerns a future book discussion.",
+        "The2018visit and estate documents are contents of the commemorative volume."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Elke-Erb-Liste.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-hollie-mcnish-french-book-interview-20261002",
+      "septemberIndex": 250,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/22/entretien-avec-hollie-mcnish/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:35.244Z",
+      "responseSha256": "7a23873708ff985234c09263cafecb5327b92f0ca1d8e71ecf53c31876400728",
+      "documentBytes": 225718,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/250.bin",
+      "capturedHeadline": "Entretien avec Hollie McNish : Dire tous les mots",
+      "capturedHeadlineSha256": "00144c320ed9e40e3733e648b37551695830bd75f4638c0e6e95da4de932c77d",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-22T19:55:08.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-22T19:55:08+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-22T19:55:08+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-22T19:55:08+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-22T19:55:08.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Hollie McNish",
+        "Virginie Trachsler",
+        "Le Castor Astral"
+      ],
+      "facts": [
+        "The original interview and excerpt are new September publications.",
+        "The French edition’s translator and publisher are explicit."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/Two-Calla-Lilies-on-Pink-scaled.jpeg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-okwiri-oduor-anderwelttage-stuttgart-20261002",
+      "septemberIndex": 252,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6830.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:34.455Z",
+      "responseSha256": "2cdf67904e660d63b4df6f6a63a0e75c43a42175c2ea0833917668a9e5cdf26f",
+      "documentBytes": 132876,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/252.bin",
+      "capturedHeadline": "Jona Elisa Jeska: »Anderwelttage« von Okwiri Oduor",
+      "capturedHeadlineSha256": "351efa953c05556c63a7b6301dae8ef1b2b694dc8869af7f4a9afc030bc45cd2",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-23T14:46:47.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "Jona Elisa Jeska",
+        "Thomas Brückner",
+        "Akono Verlag"
+      ],
+      "facts": [
+        "The future session combines publishing discussion and a reading.",
+        "The twelve-year-old protagonist belongs to the fictional synopsis."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Jona-Liste.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-martine-delvaux-divas-review-20261002",
+      "septemberIndex": 253,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/22/retrouver-sa-voix/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:35.798Z",
+      "responseSha256": "9bdb0a69871271f53138f8bbdc0044d60d297a925446b0d996af4b60258ed49b",
+      "documentBytes": 212485,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/253.bin",
+      "capturedHeadline": "Retrouver sa voix",
+      "capturedHeadlineSha256": "7c7157666048b2eb7f8c34a91f3a1f3e03f01fe0f0bb7541b919aab157affd58",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-22T19:54:23.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-22T19:54:23+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-22T19:54:23+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-22T19:54:23+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-22T19:54:23.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Martine Delvaux",
+        "Divas. Héliotrope"
+      ],
+      "facts": [
+        "The original critical article identifies author, publisher and literary approach.",
+        "The summary attributes its interpretation to the reviewer."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/Nina_Simone14.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-django-wexler-only-way-out-excerpt-20261002",
+      "septemberIndex": 254,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/orbit-books/excerpt-the-only-way-out-is-up-by-django-wexler/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:35.610Z",
+      "responseSha256": "89e015363c3b90dcf34498613ad89604c55ea15a9e7b562d336f12a0b2173b79",
+      "documentBytes": 346704,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/254.bin",
+      "capturedHeadline": "Excerpt: THE ONLY WAY OUT IS UP by Django Wexler",
+      "capturedHeadlineSha256": "b350f40fa6ec7eb2c92a2faf24df2be48d1ea15bd1e107643807612d111c8cfd",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-18T15:45:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-18T15:45:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "listingValue": "2026-09-18T15:45:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Django Wexler",
+        "on-sale September 29th",
+        "pet robot"
+      ],
+      "facts": [
+        "The September18publisher article offers an excerpt before the announced on-sale day.",
+        "The tournament and junk heap are fictional."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/The-Only-Way-Out-Is-Up_CMS_Excerpt.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/The-Only-Way-Out-Is-Up_CMS_Excerpt.jpg?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-siri-hustvedt-stuttgart-future-address-20261002",
+      "septemberIndex": 255,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6699.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:35.289Z",
+      "responseSha256": "14615476c1d8958ff144a694c2deb093c345549a541a070adae3ce5a83a3e7d1",
+      "documentBytes": 138076,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/255.bin",
+      "capturedHeadline": "Siri Hustvedt: 4. Stuttgarter Zukunftsrede",
+      "capturedHeadlineSha256": "5e30b21af32e66a85424cbf7c8c013132ccceda558fda0043c8cf7668371b099",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-22T13:58:00.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "2. Februar 2027",
+        "Klett-Cotta",
+        "Christoph Niemann"
+      ],
+      "facts": [
+        "The official September announcement dates the2027speech.",
+        "The printed address is planned later; its release day is not inferred."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2027/02_2027/Stuttgarter_Zukunftsrede_2027/Zunkunftsrede-2027_3_2.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-emmanuelle-lambert-la-meilleure-review-20261002",
+      "septemberIndex": 256,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/22/lamie-sur-la-photo/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:36.577Z",
+      "responseSha256": "308ef86154948b75c4df80d051932bb52424bafd1c731b20c87261b7748415c6",
+      "documentBytes": 212488,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/256.bin",
+      "capturedHeadline": "L’amie sur la photo",
+      "capturedHeadlineSha256": "f761b915316a2aa572b2924ddb19e2226840c650f56681fef1540a5e4ce8e823",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-22T19:53:44.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-22T19:53:44+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-22T19:53:44+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-22T19:53:44+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-22T19:53:44.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Emmanuelle Lambert",
+        "La meilleure. Lamaindonne",
+        "Poursuites et ricochets"
+      ],
+      "facts": [
+        "The review identifies book, author and series.",
+        "Friendship and family-photo archives are the new critical article’s focus."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/Witkacy_-_Helena._Ja_photo_c._1912_-_2.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-malika-specht-austen-collage-workshop-20261002",
+      "septemberIndex": 258,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6835.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:35.942Z",
+      "responseSha256": "bacf9b61068c0d7e56d29eedddabdcab715aa8bad49ad2fa4b5ae9fcf8e14eab",
+      "documentBytes": 130944,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/258.bin",
+      "capturedHeadline": "Malika Specht: Mit filigranen Collagen durch Jane Austens Welt",
+      "capturedHeadlineSha256": "465af7e15dea27e2a1305984c8931258de943a301521ec4235b31eb122e02664",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-22T06:08:20.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "Malika Specht",
+        "Collagentechnik",
+        "Büchergilde Gutenberg"
+      ],
+      "facts": [
+        "The publisher-feed entry dates this future illustrator workshop announcement.",
+        "The new visual edition and collage method are stated."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Malika-Specht-_-Silvia-Clarissa-Schlicht.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-en-attendant-nadeau-literary-travel-roundup-20261002",
+      "septemberIndex": 259,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/22/voyages-supplementaires-du-bois-filteau-chiba-ayurzana-azoulay-deleuze/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:36.113Z",
+      "responseSha256": "25762ba0e1d2ce95f94d0407d3f0c7c5fe8b816e27f83282fed89fb2b7635b2f",
+      "documentBytes": 230046,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/259.bin",
+      "capturedHeadline": "Voyages supplémentaires",
+      "capturedHeadlineSha256": "48ca27c43410b9e9c988f3f3524cf5c29df5026ffa1fb1837610282eb74c41b9",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-22T19:53:42.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-22T19:53:42+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-22T19:53:42+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-22T19:53:42+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-22T19:53:42.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "La quête de la toison d’argent",
+        "Gabrielle Filteau-Chiba",
+        "Gün G. Ayurzana"
+      ],
+      "facts": [
+        "The roundup presents multiple named authors and travel contexts.",
+        "It is a new review selection, not a claim that all books were newly released together."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/22Paysage-rocheux22-Max-Beckmann-1949-%C2%A9-CC0Saint-Louis-Art-Museum-scaled.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-celine-righi-chambre-fougere-review-20261002",
+      "septemberIndex": 262,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/22/celine-righi-au-chevet-des-fantomes/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:37.499Z",
+      "responseSha256": "983cc3ff8da57267577db58f0ddcc65f15c3eb2d58b3faa7f43088ab6f123989",
+      "documentBytes": 209589,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/262.bin",
+      "capturedHeadline": "Céline Righi au chevet des fantômes",
+      "capturedHeadlineSha256": "30376b3bc43cedd6d5ab468d2d6f874e04be8e69bb626d228a9c3f633a8a869a",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-22T19:51:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-22T19:51:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-22T19:51:00+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-22T19:51:00+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-22T19:51:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Céline Righi",
+        "La chambre fougère",
+        "Éditions du Sonneur"
+      ],
+      "facts": [
+        "The current September review names author and edition.",
+        "The dying sibling and forest imagery describe fictional narrative."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/118_2024_dig_01_o2-scaled.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-hachette-halloween-picture-book-selection-20261002",
+      "septemberIndex": 263,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/little-brown-young-readers/lbyr-blog/picture-books-for-hocus-pocus-kids/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:37.299Z",
+      "responseSha256": "64f4c1d3d74d1be24432807e843c5f7e38bec24c0290b9c215b7986dcaa8ad46",
+      "documentBytes": 340644,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/263.bin",
+      "capturedHeadline": "Picture Books for Hocus Pocus Kids",
+      "capturedHeadlineSha256": "f4e82b690f89665e5dbe8005950ddc63c3ee1c14a42e0f171edc5168043c8a0f",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-16T17:57:34.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-16T17:57:34+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "listingValue": "2026-09-16T17:57:34.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Alison Jackson",
+        "Scott Magoon",
+        "Peggy Archer",
+        "Gaia Bordicchia"
+      ],
+      "facts": [
+        "The selection explicitly credits both writer-illustrator pairs.",
+        "Its new publication date does not replace the earlier dates of individual books."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Picture-Books-for-Hocus-Pocus-Kids.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Picture-Books-for-Hocus-Pocus-Kids.png?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-stuttgart-independent-publisher-market-20261002",
+      "septemberIndex": 264,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6763.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:36.986Z",
+      "responseSha256": "7e523e282f89a88a19bdd46adca75762aacd81daf9f10e564ae0216592955319",
+      "documentBytes": 347053,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/264.bin",
+      "capturedHeadline": "Kometenparade - Markt der unabhängigen Verlage",
+      "capturedHeadlineSha256": "cbc7267833dd9d2f82f400d23ccd3b93a675ab67ce209222a0c553ae8a72de68",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-22T06:05:44.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "20.11. Freitag 15.00 Uhr",
+        "über 30 unabhängigen Verlagen",
+        "Guggolz Verlag"
+      ],
+      "facts": [
+        "The programme describes the overall market and publisher roster.",
+        "Separately timed author sessions retain their own subject and activity."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Kometenparade.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-megan-bontrager-botanical-horror-cover-20261002",
+      "septemberIndex": 266,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-where-dead-things-grow-by-megan-bontrager/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:37.880Z",
+      "responseSha256": "c19579329b02387b4c07631476017f0c7e14b240f18c4f03ae184e273f9e0389",
+      "documentBytes": 290153,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/266.bin",
+      "capturedHeadline": "Cover Launch: WHERE DEAD THINGS GROW by Megan Bontrager",
+      "capturedHeadlineSha256": "8fda08fee6fc27a55d60e0f1e02b4bddda8a311bb35c4eaba4cd525eb4e714b2",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-16T14:45:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-16T14:45:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "listingValue": "2026-09-16T14:45:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "coming June 2027",
+        "Lisa Marie Pompilio",
+        "Death himself"
+      ],
+      "facts": [
+        "The September16article is a cover reveal with a future release month.",
+        "No exact June release day or completed publication is inferred."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Where-Dead-Things-Grow_Cover-Reveal-square.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Where-Dead-Things-Grow_Cover-Reveal-square.jpg?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-enrique-vila-matas-canon-review-20261002",
+      "septemberIndex": 268,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/21/enrique-vila-matas-un-canon-de-chambre-noire/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:38.805Z",
+      "responseSha256": "262a4e4a4119bd4a270b54bb8197753102b52eda2a5c486509fdc20dd98d9252",
+      "documentBytes": 211533,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/268.bin",
+      "capturedHeadline": "Un fantôme de bibliothèque",
+      "capturedHeadlineSha256": "602fa8b4619e56b69194beff1b30d44df1a5b341d6b369d3342cb37d9efa181a",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-20T22:00:36.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-20T22:00:36+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-20T22:00:36+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-20T22:00:36+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-20T22:00:36.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Claude Bleton",
+        "Actes Sud",
+        "71 livres"
+      ],
+      "facts": [
+        "The review identifies translator, publisher and fictional canon.",
+        "The71count describes books in the novel’s project."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/04_PERCENT.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-dan-levy-hachette-data-appointment-20261002",
+      "septemberIndex": 269,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/articles/dan-levy-appointed-senior-vice-president-chief-data-officer-hachette/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:38.593Z",
+      "responseSha256": "d8a658c45abcfa9918c8a514668576ffce8d1c660207df879648d19e5f232c85",
+      "documentBytes": 322529,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/269.bin",
+      "capturedHeadline": "Dan Levy Appointed Senior Vice President, Chief Data Officer, Hachette",
+      "capturedHeadlineSha256": "bbc69b322fea9abdfc6b210f94b0ef8d06a96eca37baaff25d4ce53b28f9e45c",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-16T13:54:38.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-16T13:54:38+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-16",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-16T13:54:38.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "September 16, 2026",
+        "Chief Data Officer",
+        "Hachette Australia & New Zealand"
+      ],
+      "facts": [
+        "The firsthand company release dates the appointment.",
+        "The named geographical responsibilities are planned scope, not completed integration."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Image-1.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Image-1.jpg?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-dilek-mayaturk-bilingual-poetry-reading-20261002",
+      "septemberIndex": 270,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6833.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:38.176Z",
+      "responseSha256": "8379eaff71e6855fe8bf2ac99a53e7b5e125bf3c225436f59d1a86c0963a7905",
+      "documentBytes": 134652,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/270.bin",
+      "capturedHeadline": "Dilek Mayatürk, Florian Höllerer: Wenn du lächelst, zerfällt ein roter Apfel in Scheiben",
+      "capturedHeadlineSha256": "91bd8744a81de4b323d26042a7b01c53f6eab428a856167913ab4b76e4f2997f",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-22T05:53:38.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "20.11. Freitag 20.25 Uhr",
+        "Dilek Mayatürk",
+        "Dialog beider Sprachen"
+      ],
+      "facts": [
+        "The organiser describes the poet’s bilingual method.",
+        "The November reading is announced in a September publisher-feed entry."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Dilek-Mayat%C3%BCrk-Copyright-Julia-Baier.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-philippe-jaenada-javel-review-20261002",
+      "septemberIndex": 271,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/19/philippe-jaenada-au-carre/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:39.394Z",
+      "responseSha256": "e2fa820829bc687862d5dcab9f25eea1c866955c85e9d151d7b24b523efa2ea0",
+      "documentBytes": 216490,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/271.bin",
+      "capturedHeadline": "Jaenada au carré",
+      "capturedHeadlineSha256": "dcd5166c808bf8ac78fce81d7d51a2dee709ce68498b70451f86164b38bd7f27",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-18T22:02:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-18T22:02:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-18T22:02:00+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-18T22:02:00+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-18T22:02:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Philippe Jaenada",
+        "L’inconnue du quai de Javel",
+        "La serpe"
+      ],
+      "facts": [
+        "The new critical article discusses the author’s narrative method.",
+        "It avoids repeating unverified accusations from the underlying case."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/javel-jaenada-scaled.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-rebekka-salm-metzina-reading-20261002",
+      "septemberIndex": 273,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6825.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:38.855Z",
+      "responseSha256": "c721a901553eef81f4527d7b93ad63f6d46dd5f207b6d672adeefde759df7ae0",
+      "documentBytes": 132768,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/273.bin",
+      "capturedHeadline": "Rebekka Salm: Metzina",
+      "capturedHeadlineSha256": "85bf07bf98e44fe8eaf3d40cf63b855e62405e702761e4cfc6074d5909782c6c",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-22T05:46:49.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "Rebekka Salm",
+        "Caroline Grafe",
+        "Knapp Verlag"
+      ],
+      "facts": [
+        "The organiser announces a future discussion of a named historical novel.",
+        "The accusation is part of fiction, not a contemporary allegation."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Rebekka_Salm_2_Frederike-Asael.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-paul-murray-bee-sting-interview-20261002",
+      "septemberIndex": 274,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/19/une-ville-irlandaise-apres-le-krach-entretien-avec-paul-murray/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:39.136Z",
+      "responseSha256": "20e2aba22779097aa9b2f744ade04051f91239f522242190b5ee3a1d2ac66dd8",
+      "documentBytes": 221428,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/274.bin",
+      "capturedHeadline": "« J’écris sur des rêveurs » : entretien avec Paul Murray",
+      "capturedHeadlineSha256": "d10594feed34d1855aec7048671690923868e41b58762e2b24c4d1ff7a2b7514",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-18T22:00:37.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-18T22:00:37+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-18T22:00:37+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-18T22:00:37+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-18T22:00:37.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Paul Murray",
+        "Pierre Demarty",
+        "Booker Prize 2023"
+      ],
+      "facts": [
+        "The interview is new while the Booker shortlist stage belongs to2023.",
+        "The summary follows the author’s firsthand discussion of narrative voices."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/MURRAY-J26-bertini-1008787.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-ann-dye-hachette-operations-appointment-20261002",
+      "septemberIndex": 275,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/articles/ann-dye-named-vice-president-business-operations-of-hachette-book-group/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:39.954Z",
+      "responseSha256": "94f5446c256d999aee3bbafc67b412898686da166a796e91cb5e60049dadc85f",
+      "documentBytes": 322489,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/275.bin",
+      "capturedHeadline": "Ann Dye Named Vice President, Business Operations of Hachette Book Group",
+      "capturedHeadlineSha256": "71958107c525bf4acaf540815dd787d31a4ae735801399feb313a6a98f2bcc48",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-15T18:01:34.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-15T18:01:34+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-15",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-15T18:01:34.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "September 21",
+        "Ann Dye",
+        "Sales Operations at HarperCollins"
+      ],
+      "facts": [
+        "The September15press release gives the effective September21appointment.",
+        "Prior employment and planned responsibilities are explicit."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Screenshot-2026-09-15-at-1.56.38-PM-1.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Screenshot-2026-09-15-at-1.56.38-PM-1.png?w=144",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-kaschnitz-old-garden-illustrated-reading-20261002",
+      "septemberIndex": 276,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6826.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:39.427Z",
+      "responseSha256": "d83e83f890858b41986c0323cb29e1f2fbb977234e079cf68f3f19574ef8cabd",
+      "documentBytes": 131351,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/276.bin",
+      "capturedHeadline": "Christiane Möschle: »Der alte Garten« von Marie Luise Kaschnitz",
+      "capturedHeadlineSha256": "9fe0ef64538c5658ac2627675022ce60c013b6ef6509a69e0d6362baf8b1c5ce",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-22T05:46:48.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "Marie Luise Kaschnitz",
+        "Jaleh Perego",
+        "Erst 1975 erschien es posthum."
+      ],
+      "facts": [
+        "The future reading concerns a2026illustrated reissue.",
+        "The original1975publication remains distinct."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Cover-Der-alte-Garten_Presseinformation_Mail-1.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-masashi-matsuie-maison-ete-review-20261002",
+      "septemberIndex": 277,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/18/larchitecte-ideal-la-maison-dete-masashi-matsuie/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:39.606Z",
+      "responseSha256": "ccd6e6948484890219f0c8b53b6ac49705893131d115cecb1e941cd854f97a3d",
+      "documentBytes": 213201,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/277.bin",
+      "capturedHeadline": "L’architecte idéal",
+      "capturedHeadlineSha256": "646f8a702ef022f5d4ba085c4a0345d3fabe952807e9817e5f3d5f2ed81cf8a5",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-17T22:00:03.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-17T22:00:03+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-17T22:00:03+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-17T22:00:03+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-17T22:00:03.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Masashi Matsuie",
+        "Déborah Pierret Watanabe",
+        "printemps 1982"
+      ],
+      "facts": [
+        "The review gives translator and edition.",
+        "1982is the fictional setting, not a news publication year."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/1554190636_8b16cc255c_c.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-amy-leow-nameless-god-cover-20261002",
+      "septemberIndex": 278,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-the-nameless-god-by-amy-leow/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:40.231Z",
+      "responseSha256": "8f7ef06a3731d78d8d1829e45fbc2a1f3da65af2534ccacae6b43de801c447cb",
+      "documentBytes": 289894,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/278.bin",
+      "capturedHeadline": "Cover Launch: THE NAMELESS GOD by Amy Leow",
+      "capturedHeadlineSha256": "33d12ed317b504156924f194f262d1e6f3f3ba91773a5a4501e1cb45f727e5df",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-14T14:45:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-14T14:45:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "listingValue": "2026-09-14T14:45:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "coming February 2027",
+        "Lauren Panepinto",
+        "Marcos Chin"
+      ],
+      "facts": [
+        "The September cover reveal credits designer and illustrator.",
+        "The future release month and second-series position are explicit."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Nameless-God_Cover-Reveal-square.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Nameless-God_Cover-Reveal-square.jpg?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-stefan-auer-silent-cinema-book-reading-20261002",
+      "septemberIndex": 279,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6827.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:39.749Z",
+      "responseSha256": "80b586b75ebb2e5cdfe7eb99e2e4ec1ab26ac454ae09e89a5eefc6d526d3bf78",
+      "documentBytes": 133078,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/279.bin",
+      "capturedHeadline": "Stefan Auer: Königreich aus Licht und Schatten",
+      "capturedHeadlineSha256": "35279773e2cc347a07dffefc4c09fae2e0584e0db6f9b409e175f961780991e9",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-22T05:46:47.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "Stefan Auer",
+        "Christiane von Wahlert",
+        "Starfruit Publications"
+      ],
+      "facts": [
+        "This is an announced book discussion, not a film release.",
+        "Author, moderator and publisher are named."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Stummfilm-Stefan-Auer.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-pierre-ducrozet-eden-review-20261002",
+      "septemberIndex": 280,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/17/dans-les-limbes-des-conteneurs-eden/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:39.930Z",
+      "responseSha256": "50bc8d7d154605cfdea8d089ada60b0fa6e82c8cbc22c4f751d3928431ccc449",
+      "documentBytes": 208114,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/280.bin",
+      "capturedHeadline": "Dans les limbes des conteneurs",
+      "capturedHeadlineSha256": "641fdeaefdc792de2241888e91b13ef018d701e05aa347e446200c971f7f86bc",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-16T22:00:54.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-16T22:00:54+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-16T22:00:54+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-16T22:00:54+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-16T22:00:54.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Pierre Ducrozet",
+        "Éden. Actes Sud",
+        "Marseille"
+      ],
+      "facts": [
+        "The September review concerns a named novel and its narrative geography.",
+        "The envisioned new world is fictional."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/20348770861_37d5fd7b8b_k.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-hachette-changing-story-second-festival-20261002",
+      "septemberIndex": 281,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/articles/hachette-book-group-hosts-second-annual-changing-the-story-festival-highlighting-inclusion-as-a-driver-of-publishing-success/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:40.555Z",
+      "responseSha256": "023d715173722b97eaad4d5c47f14e4f78b6fb1c0f891bef6ec8cb5869decdd6",
+      "documentBytes": 305818,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/281.bin",
+      "capturedHeadline": "Hachette Book Group Hosts Second Annual Changing the Story Festival Highlighting Inclusion as a Driver of Publishing Success",
+      "capturedHeadlineSha256": "930d71c2e7f996e8e05c712d5a3cf1cd6bdcfc4fd66e133ca4ac14e1660c9ea9",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-14T13:35:42.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-14T13:35:42+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-14",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-14T13:35:42.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "September 14, 2026",
+        "Thursday, September 10, 2026",
+        "Colin Kaepernick"
+      ],
+      "facts": [
+        "The September14firsthand report concerns a completed September10staff festival.",
+        "The summary attributes participation and themes to the company report."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Untitled-design-3-1.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Untitled-design-3-1.png?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-kerstin-ehmer-heldinnen-meere-reading-20261002",
+      "septemberIndex": 282,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6829.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:40.221Z",
+      "responseSha256": "7121d94efe806bbf5844a79b2123db0e6e82e66cf830d591c91549f22ae0bcb7",
+      "documentBytes": 132866,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/282.bin",
+      "capturedHeadline": "Kerstin Ehmer, Rainer Schimpf: Heldinnen der Meere",
+      "capturedHeadlineSha256": "5cd4459e543040fd28932d0450199c23ac8f23c64045320508580cb6afccbbe0",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-22T05:46:45.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "Kerstin Ehmer",
+        "16 Kapiteln",
+        "Virginia Woolf, Elisabeth Mann Borgese"
+      ],
+      "facts": [
+        "The future programme names a16chapter nonfiction book and publisher.",
+        "No uncertain historical swimming anniversary is repeated."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Portrait_Kerstin-Ehmer_sw-__--NeumannUndRodtmann.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-juan-gabriel-vasquez-feliza-review-20261002",
+      "septemberIndex": 283,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/15/sculpter-une-vie-dartiste-feliza-bursztyn/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:40.264Z",
+      "responseSha256": "67b9d43dd02b5d3f98974d26367864ac027cb4c213be74d10441532151090a4e",
+      "documentBytes": 215560,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/283.bin",
+      "capturedHeadline": "Sculpter une vie d’artiste",
+      "capturedHeadlineSha256": "73cf7134eff67e46051a1dc16ffaf380cd591ce692d32efe13be296b8c8a5414",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-15T19:59:09.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-15T19:59:09+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-15T19:59:09+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-15T19:59:09+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-15T19:59:09.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Juan Gabriel Vásquez",
+        "Isabelle Gugnon",
+        "Feliza Bursztyn"
+      ],
+      "facts": [
+        "The review names the Colombian author and French translator.",
+        "It avoids turning a quoted literary characterization into a medical cause of death."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/Feliza_Bursztyn_y_Fanny_Mikey.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-enrico-ippolito-irrlichter-reading-20261002",
+      "septemberIndex": 288,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6831.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:40.872Z",
+      "responseSha256": "1666e497897a8efefff5996b0e0d093966f5bcdd237e895d9b6b11a27e3098d4",
+      "documentBytes": 133161,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/288.bin",
+      "capturedHeadline": "Enrico Ippolito: Irrlichter",
+      "capturedHeadlineSha256": "a795eeaa92bfb2baf71233218c7c75689af3300169af9145df3b145393c27f75",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-22T05:46:43.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "Enrico Ippolito",
+        "Kavaliersdelikte",
+        "Lampe Verlag"
+      ],
+      "facts": [
+        "The future session features one specific story within a four-author collection.",
+        "The fire obsession belongs to fiction."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/11_2026/Kometenparade/Programm/Enrico-Ippolito-_c_Tobias-Brust.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-agnes-clancier-valadon-review-20261002",
+      "septemberIndex": 289,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/15/venus-de-la-butte-agnes-clancier-valadon/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:40.889Z",
+      "responseSha256": "ee241447fd876bd90e6694873714cde68a4bf4ecc07015623245e13def1db8ce",
+      "documentBytes": 211326,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/289.bin",
+      "capturedHeadline": "Vénus de la Butte",
+      "capturedHeadlineSha256": "f7cd72bad6475340e8d9cecd8f8bb9a3342a2995b4a2e95cbf5944e8e1884d57",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-15T19:57:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-15T19:57:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-15T19:57:00+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-15T19:57:00+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-15T19:57:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Agnès Clancier",
+        "Suzanne Valadon l’insoumise",
+        "Éditions des Instants"
+      ],
+      "facts": [
+        "The new review describes a literary-biographical book.",
+        "Its imaginative form is distinguished from newly proven historical findings."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/Toulouse-Lautrec_Henri_de_-_Portrait_de_Suzanne_Valadon_Madame_Suzanne_Valadon_artiste_peintre_-_Google_Art_Project.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-joy-sorman-vie-brute-review-20261002",
+      "septemberIndex": 292,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/15/lune-et-lautre-irene-gerard/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:41.447Z",
+      "responseSha256": "e41663187e2528f265539f7fe514c768eb57f633f6e4463201d399b719283510",
+      "documentBytes": 208450,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/292.bin",
+      "capturedHeadline": "L’une et l’autre",
+      "capturedHeadlineSha256": "2adeae76ee46791cbb300b2167676e8c76ecdec5e46d32c0cdb58725d08ffb65",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-15T19:56:26.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-15T19:56:26+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-15T19:56:26+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-15T19:56:26+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-15T19:56:26.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Joy Sorman",
+        "Irène Gérard",
+        "La vie brute. Flammarion"
+      ],
+      "facts": [
+        "The firsthand literary review identifies writer and subject.",
+        "The account concerns a book arising from a year of meetings, not a present-day exhibition."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/image-1-WEB.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-km-enright-prince-ash-cover-20261002",
+      "septemberIndex": 293,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-prince-of-ash-by-k-m-enright/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:42.246Z",
+      "responseSha256": "9033eaaa1ac11133ff86f421f3597068bef7ec708fc640c8f3d475c502608179",
+      "documentBytes": 321522,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/293.bin",
+      "capturedHeadline": "Cover Launch: PRINCE OF ASH by K. M. Enright",
+      "capturedHeadlineSha256": "92fa0d33f43af450005d2405f133831483b051174bf04c5f8fe9c2b6a828cae9",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-10T13:45:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-10T13:45:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "listingValue": "2026-09-10T13:45:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "coming January 2027",
+        "Ella Garrett",
+        "Felix Abel Klaer"
+      ],
+      "facts": [
+        "The September10publisher reveal announces a final series volume.",
+        "January2027 is a release month, not a made-up exact day."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/hardback-flatlay_grid.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/hardback-flatlay_grid.jpg?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-olivier-rolin-guerre-eternelle-review-20261002",
+      "septemberIndex": 295,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/15/troie-un-mauvais-depart/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:41.781Z",
+      "responseSha256": "8f06ba67a419feed4600987fcaa353322ed13b12d5ce01533f9fbf1cf0d836f0",
+      "documentBytes": 213347,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/295.bin",
+      "capturedHeadline": "Troie, un mauvais départ ?",
+      "capturedHeadlineSha256": "44d6d270a98d2427ee230a8612f2d99495c1a7a79d019dfdd7095ab3f6fd7e25",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-15T19:54:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-15T19:54:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-15T19:54:00+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-15T19:54:00+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "listingValue": "2026-09-15T19:54:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Olivier Rolin",
+        "La guerre éternelle. Gallimard",
+        "l’Iliade"
+      ],
+      "facts": [
+        "The new review concerns literary engagement with an ancient epic.",
+        "It does not infer a new archaeological discovery."
+      ],
+      "geography": {
+        "sourceCountryCodes": [],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.en-attendant-nadeau.fr/wp-content/uploads/2026/09/Giovanni_Domenico_Tiepolo_-_The_Procession_of_the_Trojan_Horse_in_Troy_-_WGA22382.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-ash-huang-immortals-cover-20261002",
+      "septemberIndex": 296,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/orbit-books/cover-launch-the-secret-lives-of-immortals-by-ash-huang/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:42.558Z",
+      "responseSha256": "030a077291970ac72f37a254dd73211671841d75055d5b9415c050a3b56fae62",
+      "documentBytes": 286052,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/296.bin",
+      "capturedHeadline": "Cover Launch: THE SECRET LIVES OF IMMORTALS by Ash Huang",
+      "capturedHeadlineSha256": "e26c0f008f67eb5f46ffedc1ec8f367dabd700a01075d45f41c1e0d7955b013c",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-09T14:45:00.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-09T14:45:00+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "listingValue": "2026-09-09T14:45:00.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Ash Huang",
+        "coming March 2027",
+        "Ella Garrett"
+      ],
+      "facts": [
+        "The publisher gives a debut, designer and future month.",
+        "The Chinese and Roman figures are fictional characters."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Immortals-1x1-1.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/Immortals-1x1-1.jpg?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-florian-illies-jan-wagner-clouds-reading-20261002",
+      "septemberIndex": 297,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6821.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:42.106Z",
+      "responseSha256": "5bf030f3000550fdc2c5934a096722f6057bdc137f65722bb9b3bf23cf09a66e",
+      "documentBytes": 130662,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/297.bin",
+      "capturedHeadline": "Florian Illies, Jan Wagner: Geschenke des Himmels",
+      "capturedHeadlineSha256": "15ccf933310b3857a8f13bfbe58e4168573808a8fe7704abca0e57f74dc7834e",
+      "sourcePublishedEvidence": {
+        "method": "explicit-publisher-listing",
+        "value": "2026-09-20T19:23:44.000Z",
+        "listing": {
+          "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+          "httpStatus": 200,
+          "accessedAt": "2026-10-01T21:47:32.904Z",
+          "responseSha256": "022354737998b29dce8c77972bc408a0f84da88a901a6903b285710eace521e7",
+          "responseBytes": 72098
+        },
+        "precision": "publisher-supplied feed timestamp"
+      },
+      "proofQuotes": [
+        "19.11. Donnerstag 19.30 Uhr",
+        "Florian Illies",
+        "Jan Wagner"
+      ],
+      "facts": [
+        "The future closing discussion has two named literary participants.",
+        "The catalogue accompanies the exhibition; the event is not reported as completed."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "DE"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/fileadmin/user_upload/Programm/2026/09_2026/Florian_Illies_c_Sebastian_Wenzel_knick.jpg",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    },
+    {
+      "id": "r10-news-f-taylor-larue-steelborn-interview-20261002",
+      "septemberIndex": 299,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/novl/1-author-7-questions-taylor-j-larue/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:42.932Z",
+      "responseSha256": "843340f43ecc9ccbffa7581e264cdaf37dec7ff5ab014dfc321e570c690ac659",
+      "documentBytes": 293789,
+      "localSourceDocument": ".tmp/september-news-bodies-20261002/source-documents/299.bin",
+      "capturedHeadline": "1 Author, 7 Questions: Taylor J. LaRue",
+      "capturedHeadlineSha256": "0288c4ea75a0b9bc587f0375069bf6d6f9f925a67e7b4cadc93c6212d6fe6eba",
+      "sourcePublishedEvidence": {
+        "method": "explicit-primary-article-publication-metadata",
+        "value": "2026-09-08T15:37:15.000Z",
+        "metadata": [
+          {
+            "value": "2026-09-08T15:37:15+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "listingValue": "2026-09-08T15:37:15.000Z",
+        "precision": "publisher-supplied timestamp; capture time separate"
+      },
+      "proofQuotes": [
+        "Taylor J. LaRue",
+        "in high school",
+        "70-75% mark"
+      ],
+      "facts": [
+        "The firsthand publisher interview covers composition and a sequel in progress.",
+        "The writing method is the author’s description, not prescriptive advice."
+      ],
+      "geography": {
+        "sourceCountryCodes": [
+          "US"
+        ],
+        "basis": "Publisher organisation geography; author and fictional-setting geography are separate."
+      },
+      "review": {
+        "method": "agent_factual_and_bilingual_review_of_fetched_primary_article",
+        "reviewedAt": "2026-10-01T22:43:43.019Z",
+        "bodyRetrieved": true,
+        "bodyDigestCheckedAgainstFullBytes": true,
+        "quoteGroundingChecked": true,
+        "ruEnFactsReviewed": true,
+        "eventDateBasis": "Primary publication date of this September report, interview, review or announcement.",
+        "archiveOnly": true,
+        "captureTimeUsedAsPublication": false,
+        "freshTelegramBackfill": false,
+        "limitation": "Book years and future event/release plans are kept separate; no completion or precise release day inferred."
+      },
+      "thumbnailCandidates": [
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/1-Author-7-Questions-Taylor-J-LaRue.png",
+          "method": "og:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/wp-content/uploads/2026/09/1-Author-7-Questions-Taylor-J-LaRue.png?w=640",
+          "method": "twitter:image",
+          "displayOnly": true,
+          "socialReuseApproved": false,
+          "relevanceStatus": "article-metadata-proposal-requires-image-review",
+          "autoApply": false
+        }
+      ]
+    }
+  ],
+  "held": [
+    {
+      "septemberIndex": 240,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6842.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:33.517Z",
+      "responseSha256": "d01d6165dc3afe2f08664bc236ab3001325ca784aa93ccd08669f7a8bd0db4fd",
+      "documentBytes": 124859,
+      "reason": "Semantic duplicate: the same Selbert exhibition and opening are already covered by C248.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 242,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/novl/novl-review/novl-nation-pink-ribbon-winner-steelborn/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:33.910Z",
+      "responseSha256": "be31619257589b4d5fd66fb99d05e28f83b31cd6da5c6e00094af01a3bb27d71",
+      "documentBytes": 294601,
+      "reason": "Not selected after source-backed editorial and distinct-stage review.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 243,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6739.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:33.038Z",
+      "responseSha256": "9510bd7f67e986d7368145b1bf6a8b5dbba28be8ab810c52f9291d54878b469d",
+      "documentBytes": 109492,
+      "reason": "General political/legal framing was not selected for this literary backfill.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 245,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/little-brown-young-readers/lbyr-blog/books-to-read-to-your-dog/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:34.051Z",
+      "responseSha256": "81ad1e79c100dae01bc15343cdb72d36d7aaaabab9da09dc73220dd5029bd577",
+      "documentBytes": 341207,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 247,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/22/guerre-algerie/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:33.835Z",
+      "responseSha256": "7298d532132237aaba87b9b8b58572420bbf3397c6626d3c3e3a57f303193f11",
+      "documentBytes": 216401,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 251,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/basic-books/new-business-books-from-the-basic-books-group/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:34.964Z",
+      "responseSha256": "16b50f1d9540e28c89471dfe56e6a864d7036b61fb8b6a24e43a33279898dacd",
+      "documentBytes": 348510,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 257,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/articles/santaclausconpreorder/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:36.128Z",
+      "responseSha256": "d27162c527f3e91f7aa971f489293c521c8fc6f1cccbf07fb0c724c66cb439c6",
+      "documentBytes": 296471,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 260,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/basic-books/7-books-on-the-united-states-constitution/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:36.966Z",
+      "responseSha256": "131b1f93ef344ddaf0413eab56de623c4ede8681f2dd3196312b7990b6728d70",
+      "documentBytes": 370583,
+      "reason": "General political/legal framing was not selected for this literary backfill.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 261,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6834.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:36.404Z",
+      "responseSha256": "4519b3d3e808ec41265967d0b6e436d2f93956d18a9bd36a478c4e2a6012800f",
+      "documentBytes": 135792,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 265,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/22/au-dela-des-emoticons/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:38.386Z",
+      "responseSha256": "39867ad2d2967cd8b361bb7f8bfb1edf85a6996058e9f5d84100d5b80881e6aa",
+      "documentBytes": 223029,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 267,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6840.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:37.611Z",
+      "responseSha256": "eaac0b80666447fd63857465b49059ba980eeb36201d82f7c194d43ebd9b5021",
+      "documentBytes": 130215,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 272,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/articles/creamy-chicken-stew-from-mind-body-spirit-food/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:39.289Z",
+      "responseSha256": "6cd15096ba76e49fe4e2b6eff812aa15dd0f493782dc5d61e28a7cde858931c3",
+      "documentBytes": 313609,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 284,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/articles/too-cold-for-comfort-by-nisha-j-tuli-preorder-campaign/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:41.233Z",
+      "responseSha256": "01d965aa8b5a5f79105d1cb973e38a0f3c7bba62e4f594f824de1680d9f4a34e",
+      "documentBytes": 328841,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 285,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6828.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:40.519Z",
+      "responseSha256": "cad5035e9f8f6f01d4627cb7b3d8ab9ac0f809dc758206046074a3422886c13a",
+      "documentBytes": 132335,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 286,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/15/les-musees-face-aux-enjeux-environnementaux/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:40.584Z",
+      "responseSha256": "f69296a718f8137742f560d34b687fdf132541c1c2ffded3ca4370aaf4608fc4",
+      "documentBytes": 213925,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 287,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/articles/devil-on-my-shoulder-tour/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:41.424Z",
+      "responseSha256": "7375a4148738ab9115b8d533baecb4b973733ee16dcca19cce52a3d42cca0994",
+      "documentBytes": 283858,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 290,
+      "sourceId": "hachette-book-group",
+      "url": "https://www.hachettebookgroup.com/articles/september-ebook-deals-2/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:42.057Z",
+      "responseSha256": "68d164c7d7f31aa7b9d13dbe3be8475efe9f2caa0b3338ae0e2aa41d51511b78",
+      "documentBytes": 437942,
+      "reason": "Held outside this bounded literary selection: general guides, commerce, nonliterary subjects or insufficient substantive text.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 291,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6738.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:41.145Z",
+      "responseSha256": "4d89f8e94d6794a3300f0cb5eb7626db79b90d820e678dc3e132e16c20a55a10",
+      "documentBytes": 108631,
+      "reason": "General political/legal framing was not selected for this literary backfill.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 294,
+      "sourceId": "literaturhaus-stuttgart",
+      "url": "https://www.literaturhaus-stuttgart.de/event/6815.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:41.697Z",
+      "responseSha256": "f922aa8c903450e6ade427aa9c359c5bd0d974c0d3cea7536c44ba4af04dd939",
+      "documentBytes": 106034,
+      "reason": "General political/legal framing was not selected for this literary backfill.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    },
+    {
+      "septemberIndex": 298,
+      "sourceId": "en-attendant-nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/09/15/le-grand-retour/",
+      "httpStatus": 200,
+      "accessedAt": "2026-10-01T22:11:43.395Z",
+      "responseSha256": "999a98bc4bba20d2989eb89219a416da52036722967caca27403e56102e78296",
+      "documentBytes": 210692,
+      "reason": "General political/legal framing was not selected for this literary backfill.",
+      "reviewStatus": "held",
+      "publicationEligible": false
+    }
+  ],
+  "editorialSha256": "44860566cc2fc445f8f0d279127315910812624b8c86f10eeda5ed09ff8742c0"
+}

@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-01T22:57:02.283Z",
+  "method": "agent_review_of_exact_source_owned_scopes_and_retained_originals",
+  "canonicalWritten": false,
+  "remoteWrites": 0,
+  "providerApiCalls": 0,
+  "profiles": [
+    {
+      "sourceId": "books-ireland",
+      "method": "The source omits articleh1. Explicit source-ownedog:title supplies the actual article headline; scoped single-entry content excludes all related loop-entry cards.",
+      "detailHeadlineSelector": "meta[property=\"og:title\"]",
+      "detailTextSelector": "article.single-entry .entry-content.single-content"
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "method": "The nodepage title follows an earlier logo h1; scope to contentpage title and nodearticle content.",
+      "detailHeadlineSelector": "#content > h1#page-title.title",
+      "detailTextSelector": "#content .node-article .content"
+    }
+  ],
+  "samples": [
+    {
+      "septemberIndex": 134,
+      "sourceId": "nbuv-gov-ua",
+      "url": "https://nbuv.gov.ua/node/7316",
+      "retainedLocalInput": ".tmp/september-news-bodies-20261002/source-documents/134.bin",
+      "httpStatus": 200,
+      "responseSha256": "49849a91f30c12f6e072af8bf191806836aa3f6dfe3e260e594b4cfb50a3fc39",
+      "documentBytes": 46947,
+      "headlineSelector": "#content > h1#page-title.title",
+      "bodySelector": "#content .node-article .content",
+      "scopedHeadlineSha256": "34045d50033d846865ec1d6c4b3e3274e4c668698869fdb23519e8dcd7f76085",
+      "scopedHeadlineWords": 17,
+      "scopedBodySha256": "cb7bfec776563a4a5c0fa51b1009320ec489509d7690a21ad201f26284ed681d",
+      "scopedBodyCharacters": 1800,
+      "headlineMatchesScopedOriginal": true,
+      "relatedOrLogoHeadlineExcluded": true,
+      "articleH1Absent": false,
+      "metadataTitlePresent": false,
+      "canonicalUrl": "https://nbuv.gov.ua/node/7316",
+      "factChecks": {
+        "hybridReadingDate": true,
+        "periodicalTitle": true
+      }
+    },
+    {
+      "septemberIndex": 139,
+      "sourceId": "books-ireland",
+      "url": "https://booksirelandmagazine.com/a-stellar-year-in-irish-ya/",
+      "retainedLocalInput": ".tmp/september-news-bodies-20261002/source-documents/139.bin",
+      "httpStatus": 200,
+      "responseSha256": "54366f8122f594fc111ba1dfc92631fac5ff5d27e121962df2e3787e6ced542e",
+      "documentBytes": 142984,
+      "headlineSelector": "meta[property=\"og:title\"]",
+      "bodySelector": "article.single-entry .entry-content.single-content",
+      "scopedHeadlineSha256": "e23766bd9de9c2f79df21ad3ffbd49b5d84d293c893b003c6e614ca31a2c2035",
+      "scopedHeadlineWords": 9,
+      "scopedBodySha256": "910ceeaee83184f01593b64c9be31942ada354440e744e1310a3f65859ba1667",
+      "scopedBodyCharacters": 7830,
+      "headlineMatchesScopedOriginal": true,
+      "relatedOrLogoHeadlineExcluded": true,
+      "articleH1Absent": true,
+      "metadataTitlePresent": true,
+      "canonicalUrl": "https://booksirelandmagazine.com/a-stellar-year-in-irish-ya/",
+      "factChecks": {
+        "critic": true,
+        "book": true
+      }
+    },
+    {
+      "septemberIndex": 160,
+      "sourceId": "books-ireland",
+      "url": "https://booksirelandmagazine.com/fiction-editing-masterclass-with-author-niamh-mulvey/",
+      "retainedLocalInput": ".tmp/september-news-bodies-20261002/source-documents/160.bin",
+      "httpStatus": 200,
+      "responseSha256": "c7fb55af2e902969c0c8c14c9f59da64d11be2ebf122b354199df2149310061d",
+      "documentBytes": 131378,
+      "headlineSelector": "meta[property=\"og:title\"]",
+      "bodySelector": "article.single-entry .entry-content.single-content",
+      "scopedHeadlineSha256": "eeda0be5f4d4505ca933de105da5b3db1b5753955836a1419cb4c3eab4c30dd2",
+      "scopedHeadlineWords": 10,
+      "scopedBodySha256": "4690aa51dc13cbaaa4e5fa06b4ba2406928422cff3d7da79cba482e8efc8989e",
+      "scopedBodyCharacters": 1584,
+      "headlineMatchesScopedOriginal": true,
+      "relatedOrLogoHeadlineExcluded": true,
+      "articleH1Absent": true,
+      "metadataTitlePresent": true,
+      "canonicalUrl": "https://booksirelandmagazine.com/fiction-editing-masterclass-with-author-niamh-mulvey/",
+      "factChecks": {
+        "author": true,
+        "courseDate": true
+      }
+    },
+    {
+      "septemberIndex": 180,
+      "sourceId": "books-ireland",
+      "url": "https://booksirelandmagazine.com/culture-night-at-the-national-library-of-ireland/",
+      "retainedLocalInput": ".tmp/september-news-bodies-20261002/source-documents/180.bin",
+      "httpStatus": 200,
+      "responseSha256": "00e8dec1c34be8b9cc0dde6bb58ba5571e417ce19cd5e37db07ee59142b640c6",
+      "documentBytes": 135500,
+      "headlineSelector": "meta[property=\"og:title\"]",
+      "bodySelector": "article.single-entry .entry-content.single-content",
+      "scopedHeadlineSha256": "c3562cfb86fddc087976f2ac7a4f7ccda2dc252e5f920f7d45d31353e42f49d2",
+      "scopedHeadlineWords": 11,
+      "scopedBodySha256": "e9d05f06f5bdfa844fd2a6a94ac1a17cae63135d10f7f0f34c65ff721571af5a",
+      "scopedBodyCharacters": 3145,
+      "headlineMatchesScopedOriginal": true,
+      "relatedOrLogoHeadlineExcluded": true,
+      "articleH1Absent": true,
+      "metadataTitlePresent": true,
+      "canonicalUrl": "https://booksirelandmagazine.com/culture-night-at-the-national-library-of-ireland/",
+      "factChecks": {
+        "libraryDirector": true,
+        "book": true
+      }
+    },
+    {
+      "septemberIndex": 197,
+      "sourceId": "books-ireland",
+      "url": "https://booksirelandmagazine.com/catherine-gander-on-rukeyser/",
+      "retainedLocalInput": ".tmp/september-news-bodies-20261002/source-documents/197.bin",
+      "httpStatus": 200,
+      "responseSha256": "3d251c9e2c28b4196cc7ebb72fa8dd36fea833c91c30bec9a27c2babf2c8d601",
+      "documentBytes": 149479,
+      "headlineSelector": "meta[property=\"og:title\"]",
+      "bodySelector": "article.single-entry .entry-content.single-content",
+      "scopedHeadlineSha256": "81114cb9d6104366d6376b870589dbcbfd3adce8c8b822868d1efe168bea93a1",
+      "scopedHeadlineWords": 16,
+      "scopedBodySha256": "33638e2227f7d0fda13638c6dc2f7b9871a8c49911a01424b59709cbb27736ba",
+      "scopedBodyCharacters": 10865,
+      "headlineMatchesScopedOriginal": true,
+      "relatedOrLogoHeadlineExcluded": true,
+      "articleH1Absent": true,
+      "metadataTitlePresent": true,
+      "canonicalUrl": "https://booksirelandmagazine.com/catherine-gander-on-rukeyser/",
+      "factChecks": {
+        "editors": true,
+        "publisher": true
+      }
+    }
+  ],
+  "tests": {
+    "command": "npx vitest run scripts/lib/books-ireland-nbuv-scoped-extraction-20261002.test.mjs scripts/lib/literary-news-stream-source-overrides.test.mjs --maxWorkers=2",
+    "passed": 12
+  },
+  "limits": [
+    "Original response bytes remain local and are not included in this report.",
+    "Selectors change extraction scope only; source date and admission quality gates are unchanged."
+  ]
+}

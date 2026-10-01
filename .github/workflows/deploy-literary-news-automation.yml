@@ -114,6 +114,17 @@ jobs:
             ||telegram.destinationId!==destination.id)throw Error('telegram_publication_rights_unconfirmed');
           console.log(JSON.stringify({telegramRightsVerified:true,destinationId:destination.id,readonly:true,delivered:0}));
           NODE
+      - name: Validate retained preparation ownership and checkpoints without writes
+        if: inputs.enabled
+        run: |
+          node --input-type=module <<'NODE'
+          import {createDailyNewsStorageClient} from './scripts/lib/literary-news-daily-automation.mjs';
+          import {DAILY_NEWS_OWNER_KEY,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_PROFILE_KEY} from './scripts/lib/literary-news-daily-profile.mjs';
+          import {checkNativeNewsActivationReadiness} from './scripts/lib/literary-news-native-activation-readiness.mjs';
+          const storage=createDailyNewsStorageClient({accountId:process.env.CLOUDFLARE_ACCOUNT_ID,apiToken:process.env.CLOUDFLARE_API_TOKEN});
+          const [owner,ledger,profile]=await Promise.all([storage.read(DAILY_NEWS_OWNER_KEY),storage.read(DAILY_NEWS_LEDGER_KEY),storage.read(DAILY_NEWS_PROFILE_KEY)]);
+          console.log(JSON.stringify(await checkNativeNewsActivationReadiness({owner,ledger,profile})));
+          NODE
       - name: Verify both configured AI protocols with unpublished fixtures
         if: inputs.enabled
         run: |
