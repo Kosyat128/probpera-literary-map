@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="ru" data-react-shell=""><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style data-home-prepaint="">
+    /*
+     * Production HTML contains a crawlable homepage fallback inside #root.
+     * Hide that temporary copy before the first paint when the React module is
+     * present. Static journal archives remove the module script and stay visible.
+     * If the application bundle cannot start, reveal the accessible fallback
+     * after a bounded delay instead of leaving the visitor on a blank page.
+     */
+    html[data-react-shell]:has(> head > script[type="module"]) #root > [data-static-seo] {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      animation: probpera-home-fallback-rescue 1ms step-end 8s forwards;
+    }
+
+    @keyframes probpera-home-fallback-rescue {
+      to {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  </style>
+  <noscript>
+    <style data-home-prepaint-noscript>
+      html[data-react-shell]:has(> head > script[type="module"]) #root > [data-static-seo] {
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        animation: none !important;
+      }
+    </style>
+  </noscript>
+  <meta name="description" content="Проба Пера - литературный журнал, статьи о книгах и интерактивная энциклопедия мира на старинном 3D-глобусе.">
+  <meta name="theme-color" content="#4b087c">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="author" content="Проба Пера">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+  <link rel="canonical" href="https://probpera.ru/">
+  <link rel="alternate" type="application/rss+xml" title="Проба Пера - новые публикации" href="https://probpera.ru/rss.xml">
+  <link rel="icon" type="image/png" href="/brand/probpera-logo.png">
+  <link rel="apple-touch-icon" href="/brand/probpera-logo.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Проба Пера">
+  <meta property="og:title" content="Проба Пера - литературный журнал и атлас мира">
+  <meta property="og:description" content="Авторские статьи, биографии, книги и интерактивная литературная энциклопедия на старинном 3D-глобусе.">
+  <meta property="og:image" content="https://probpera.ru/og-v3.webp">
+  <meta property="og:image:alt" content="Проба Пера - литературный журнал и карта мира">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Проба Пера - литературный журнал и атлас мира">
+  <meta name="twitter:description" content="Авторские статьи, биографии, книги и интерактивная литературная энциклопедия на старинном 3D-глобусе.">
+  <meta name="twitter:image" content="https://probpera.ru/og-v3.webp">
+  <meta name="twitter:image:alt" content="Проба Пера - литературный журнал и карта мира">
+  <title>Проба Пера - литературный журнал и атлас мира</title>
+
+  <script type="module" crossorigin="" src="/assets/index-RNE2Kwpr.js"></script>
+  <link rel="modulepreload" crossorigin="" href="/assets/vite-preload-helper-BXl3LOEh.js">
+  <link rel="modulepreload" crossorigin="" href="/assets/react-vendor-D6IN95gq.js">
+  <link rel="stylesheet" crossorigin="" href="/assets/index-DapkbUsO.css">
+<meta property="og:url" content="https://probpera.ru/"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://probpera.ru/#organization","name":"Проба Пера","url":"https://probpera.ru/","logo":{"@id":"https://probpera.ru/#logo"}},{"@type":"ImageObject","@id":"https://probpera.ru/#logo","url":"https://probpera.ru/brand/probpera-logo.png","contentUrl":"https://probpera.ru/brand/probpera-logo.png","width":500,"height":500},{"@type":"WebSite","@id":"https://probpera.ru/#website","name":"Проба Пера","alternateName":"Проба Пера - литературный журнал","url":"https://probpera.ru/","inLanguage":"ru-RU","publisher":{"@id":"https://probpera.ru/#organization"}},{"@type":"Periodical","@id":"https://probpera.ru/#periodical","name":"Проба Пера","url":"https://probpera.ru/stati/","inLanguage":"ru-RU","publisher":{"@id":"https://probpera.ru/#organization"}}]}</script></head>
+
+<body>
+  <div id="root">
+  <main class="static-article-fallback static-home-fallback" data-static-seo="">
+    <article>
+      <span>Литературный журнал и энциклопедия</span>
+      <h1>Проба Пера - статьи о книгах, писателях и мировой литературе</h1>
+      <p>Авторский литературный журнал, книжный архив, биографии писателей и интерактивная энциклопедия стран собраны в одном редакционном пространстве.</p>
+      <nav aria-label="Основные разделы">
+        <a href="/stati/">Читать журнал</a>
+        <a href="/#atlas">Открыть литературную карту мира</a>
+        <a href="/#books">Перейти к книжному архиву</a>
+      </nav>
+      <nav aria-label="Рубрики журнала">
+        <ul>
+          
+            <li><a href="/stati/mnenie-o-knige/">Мнение о книге</a> - 20</li>
+          
+
+            <li><a href="/stati/kniga-i-ekranizatsiya/">Книга и экранизация</a> - 19</li>
+          
+
+            <li><a href="/stati/pisateli-mira/">Писатели мира</a> - 23</li>
+          
+
+            <li><a href="/stati/knizhnyy-gid/">Книжный гид и подборки</a> - 20</li>
+          
+
+            <li><a href="/stati/literaturnye-premii/">Литературные премии</a> - 37</li>
+          
+
+            <li><a href="/stati/folklor-i-mifologiya/">Фольклор и мифология</a> - 22</li>
+          
+
+            <li><a href="/stati/russkiy-yazyk/">Русский язык</a> - 9</li>
+          
+
+            <li><a href="/stati/o-literature/">О литературе и культуре</a> - 15</li>
+          
+
+            <li><a href="/stati/literaturnye-istorii/">Литературные истории</a> - 1</li>
+          
+
+            <li><a href="/stati/raznoe/">Разное</a> - 1</li>
+          
+        </ul>
+      </nav>
+      <section aria-labelledby="latest-publications-static">
+        <h2 id="latest-publications-static">Новые публикации</h2>
+        <ul>
+          <li><a href="https://probpera.ru/stati/knizhnyy-gid/15-luchshih-hudozhestvennyh-knig-o-rytsaryah/">15 лучших художественных книг о рыцарях</a></li>
+<li><a href="https://probpera.ru/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/">15 крылатых выражений, пришедших к нам из Библии</a></li>
+<li><a href="https://probpera.ru/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/">Десять лучших книг Герберта Уэллса</a></li>
+<li><a href="https://probpera.ru/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/">Зарубежные классики литературы и их профессии (Часть 4)</a></li>
+<li><a href="https://probpera.ru/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3/">15 экранизаций классических романов, которые действительно удались (Часть 3)</a></li>
+<li><a href="https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-4/">Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)</a></li>
+<li><a href="https://probpera.ru/stati/russkiy-yazyk/popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-z/">«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «З»</a></li>
+<li><a href="https://probpera.ru/stati/folklor-i-mifologiya/tugarin-zmeevich-obraz-personazha-v-bylinah-i-ego-svyaz-s-folklorom/">Тугарин Змеевич. Образ персонажа в былинах и его связь с фольклором</a></li>
+<li><a href="https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-ambroz-birs/">Семь малоизвестных рассказов Амброза Бирса, которые стоит прочитать</a></li>
+<li><a href="https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/">13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)</a></li>
+<li><a href="https://probpera.ru/stati/pisateli-mira/nepriznannye-sovremennikami-genii-literatury-fernandu-pessoa/">Непризнанные современниками гении литературы. Фернанду Пессоа</a></li>
+<li><a href="https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-lorana-gunelya-bog-puteshestvuet-inkognito/">Мнение о книге Лорана Гунеля «Бог путешествует инкогнито»</a></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+</div>
+
+
+
+</body></html>

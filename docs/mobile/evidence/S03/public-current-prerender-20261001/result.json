@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-public-current-generator-retained-entry-working-validation",
+  "decision": "D249",
+  "pass": true,
+  "recordedAt": "2026-10-01T18:57:12.621Z",
+  "sourceCommit": "b27817d44f4b7aedb4556c39ee8d9e541dee67c8",
+  "copies": [
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review/actual-a1/result.json",
+        "sha256": "7b6f32c9f2979225170abe45b66628509eeb470dc35ae5b2d3b39deacdc7bd40"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/generator-result.json",
+        "sha256": "7b6f32c9f2979225170abe45b66628509eeb470dc35ae5b2d3b39deacdc7bd40"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review/actual-a1/source-manifest-before.json",
+        "sha256": "b38629e4c2eb6508388b5f16b7fbe7c06ef1847621a4f12196093f37694d60ee"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/source-manifest-before.json",
+        "sha256": "b38629e4c2eb6508388b5f16b7fbe7c06ef1847621a4f12196093f37694d60ee"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review/actual-a1/source-manifest-after.json",
+        "sha256": "b38629e4c2eb6508388b5f16b7fbe7c06ef1847621a4f12196093f37694d60ee"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/source-manifest-after.json",
+        "sha256": "b38629e4c2eb6508388b5f16b7fbe7c06ef1847621a4f12196093f37694d60ee"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\playwright.json",
+        "sha256": "bdb472e4ff98e2ed437bbb1125e3d44783a7a5d3e82b177c71ca2013c8845e8e",
+        "cases": 1,
+        "browserFixtureUsed": false
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/request-report.json",
+        "sha256": "bdb472e4ff98e2ed437bbb1125e3d44783a7a5d3e82b177c71ca2013c8845e8e"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\playwright.stdout.txt",
+        "sha256": "534360e819a6fc3eeb2ac9cefde8d459a7c42cc96dab3bb5cde6a36ed857af1a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/request.stdout.txt",
+        "sha256": "534360e819a6fc3eeb2ac9cefde8d459a7c42cc96dab3bb5cde6a36ed857af1a"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\playwright.stderr.txt",
+        "sha256": "ab0e8609b0d7791e8b6730397780a4587d076f16499c4fa896900c1511567c0f"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/request.stderr.txt",
+        "sha256": "ab0e8609b0d7791e8b6730397780a4587d076f16499c4fa896900c1511567c0f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review/actual-a1/retained-inputs-before.json",
+        "sha256": "73f38070b8b6849006d9c6b0e9646ecb5a40ea5e8fd80ee5c25049d8de3f54c6"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/retained-inputs-before.json",
+        "sha256": "73f38070b8b6849006d9c6b0e9646ecb5a40ea5e8fd80ee5c25049d8de3f54c6"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review/actual-a1/retained-inputs-after.json",
+        "sha256": "73f38070b8b6849006d9c6b0e9646ecb5a40ea5e8fd80ee5c25049d8de3f54c6"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/retained-inputs-after.json",
+        "sha256": "73f38070b8b6849006d9c6b0e9646ecb5a40ea5e8fd80ee5c25049d8de3f54c6"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review/actual-a1/public-ru-head-body.json",
+        "sha256": "5de73eb52f710af590a35116c6281c0f35ef00f8f5390887c5fc2a730ec2f801"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/public-ru-head-body.json",
+        "sha256": "5de73eb52f710af590a35116c6281c0f35ef00f8f5390887c5fc2a730ec2f801"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review/actual-a1/public-en-head-body.json",
+        "sha256": "4622e83eaddd142ce957e2b800e3c7a985de1d5571bf763a576ed1aedfa8cb31"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/public-en-head-body.json",
+        "sha256": "4622e83eaddd142ce957e2b800e3c7a985de1d5571bf763a576ed1aedfa8cb31"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review/proposed/gate.mjs",
+        "sha256": "b09ab416be3517a8fb0054113905b88523a3245a51ce76849642533f69c04d09"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/helpers/gate.mjs",
+        "sha256": "b09ab416be3517a8fb0054113905b88523a3245a51ce76849642533f69c04d09"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review/proposed/pwa.config.mjs",
+        "sha256": "4e8b8ee7b56c659f276a9bd770010dd7d1e2584920e7da61fc873dfae546e082"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/helpers/pwa.config.mjs",
+        "sha256": "4e8b8ee7b56c659f276a9bd770010dd7d1e2584920e7da61fc873dfae546e082"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/en/404.html",
+        "sha256": "cfce81dca518e16ef50893e85d9db6b396d1f21de9e4cf3d995b2b061a07da57"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/en/404.html",
+        "sha256": "cfce81dca518e16ef50893e85d9db6b396d1f21de9e4cf3d995b2b061a07da57"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/en/delete-account/index.html",
+        "sha256": "47df2f0d7a0ebaee8fca935d617284fd9f20f5a0cabd35e9b3d7511e0d9f319f"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/en/delete-account/index.html",
+        "sha256": "47df2f0d7a0ebaee8fca935d617284fd9f20f5a0cabd35e9b3d7511e0d9f319f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/en/index.html",
+        "sha256": "da5aa9b6160b2cbc636fc8ec10856aad7877e0a0f4e8e21f4f63f5b3c2235202"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/en/index.html",
+        "sha256": "da5aa9b6160b2cbc636fc8ec10856aad7877e0a0f4e8e21f4f63f5b3c2235202"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/en/planet-account/index.html",
+        "sha256": "43b0e01a0a9c8a13b6e5e3d39555606c29f18f437adaaa2b889cc444af3281af"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/en/planet-account/index.html",
+        "sha256": "43b0e01a0a9c8a13b6e5e3d39555606c29f18f437adaaa2b889cc444af3281af"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/en/sitemap.preparation.json",
+        "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/en/sitemap.preparation.json",
+        "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/en/structured-data.json",
+        "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/en/structured-data.json",
+        "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/locale-routes.json",
+        "sha256": "464665db94c91fc697a7bff0c5139a18fe73a71ef791e80ee275d70a80de3856"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/locale-routes.json",
+        "sha256": "464665db94c91fc697a7bff0c5139a18fe73a71ef791e80ee275d70a80de3856"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/ru/404.html",
+        "sha256": "807ab44db6ad49f72df2c11884b4b65ceb94541919b30f18f90f1850ac503bc3"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/ru/404.html",
+        "sha256": "807ab44db6ad49f72df2c11884b4b65ceb94541919b30f18f90f1850ac503bc3"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/ru/delete-account/index.html",
+        "sha256": "91e0cfe14e2ab66da045dbaebc6e3c5b53e151281088b828ff53ffdbd35cc795"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/ru/delete-account/index.html",
+        "sha256": "91e0cfe14e2ab66da045dbaebc6e3c5b53e151281088b828ff53ffdbd35cc795"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/ru/index.html",
+        "sha256": "1f0ccfb2aea1f69a386377c8f0fbb825590e008f298fbfaf1cd50a4cab4d38f7"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/ru/index.html",
+        "sha256": "1f0ccfb2aea1f69a386377c8f0fbb825590e008f298fbfaf1cd50a4cab4d38f7"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/ru/planet-account/index.html",
+        "sha256": "64a27c04e42d23a6bba74642af8cca380ead63adae46051e1cf84a6805154976"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/ru/planet-account/index.html",
+        "sha256": "64a27c04e42d23a6bba74642af8cca380ead63adae46051e1cf84a6805154976"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/ru/sitemap.preparation.json",
+        "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/ru/sitemap.preparation.json",
+        "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/ru/structured-data.json",
+        "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/emitted/ru/structured-data.json",
+        "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/index.html",
+        "sha256": "fabb90d77b33951c3f8808befca6a6d35a5e87749b74252e8348d9197d41dfe5"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/retained/index.html",
+        "sha256": "fabb90d77b33951c3f8808befca6a6d35a5e87749b74252e8348d9197d41dfe5"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1/sitemap.xml",
+        "sha256": "9f8ea222e5948e228b6703384b8689755a7c4a0faf708bb6d40455ee5223c746"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/retained/sitemap.xml",
+        "sha256": "9f8ea222e5948e228b6703384b8689755a7c4a0faf708bb6d40455ee5223c746"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-01.body",
+        "bytes": 27513,
+        "sha256": "9f8ea222e5948e228b6703384b8689755a7c4a0faf708bb6d40455ee5223c746"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-01.body",
+        "sha256": "9f8ea222e5948e228b6703384b8689755a7c4a0faf708bb6d40455ee5223c746"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-02.body",
+        "bytes": 4657,
+        "sha256": "1f0ccfb2aea1f69a386377c8f0fbb825590e008f298fbfaf1cd50a4cab4d38f7"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-02.body",
+        "sha256": "1f0ccfb2aea1f69a386377c8f0fbb825590e008f298fbfaf1cd50a4cab4d38f7"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-03.body",
+        "bytes": 4350,
+        "sha256": "da5aa9b6160b2cbc636fc8ec10856aad7877e0a0f4e8e21f4f63f5b3c2235202"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-03.body",
+        "sha256": "da5aa9b6160b2cbc636fc8ec10856aad7877e0a0f4e8e21f4f63f5b3c2235202"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-04.body",
+        "bytes": 594,
+        "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-04.body",
+        "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-05.body",
+        "bytes": 1022,
+        "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-05.body",
+        "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-06.body",
+        "bytes": 3785,
+        "sha256": "807ab44db6ad49f72df2c11884b4b65ceb94541919b30f18f90f1850ac503bc3"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-06.body",
+        "sha256": "807ab44db6ad49f72df2c11884b4b65ceb94541919b30f18f90f1850ac503bc3"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-07.body",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-07.body",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-08.body",
+        "bytes": 544,
+        "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-08.body",
+        "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-09.body",
+        "bytes": 1022,
+        "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-09.body",
+        "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-10.body",
+        "bytes": 3534,
+        "sha256": "cfce81dca518e16ef50893e85d9db6b396d1f21de9e4cf3d995b2b061a07da57"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-10.body",
+        "sha256": "cfce81dca518e16ef50893e85d9db6b396d1f21de9e4cf3d995b2b061a07da57"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-11.body",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/public-current-prerender-20261001/actual/raw/response-11.body",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "sourceBindingRoots": [
+    "src",
+    "server",
+    "scripts",
+    "supabase/migrations",
+    "tests",
+    "package.json",
+    "package-lock.json",
+    "index.html",
+    "vite.config.ts",
+    "vite.pwa.config.ts",
+    "tsconfig.json",
+    "vitest.config.ts",
+    "data/book-canon-source-registry.json"
+  ],
+  "declaredSourceFiles": 2141,
+  "applicationSourcesChanged": false,
+  "existingRequestCaseUsed": true,
+  "requestCases": 1,
+  "localHttpResponses": 11,
+  "writerInvocations": 1,
+  "emittedFilesIncludingManifest": 13,
+  "retainedEntryAndXmlBytes": [
+    {
+      "path": "index.html",
+      "bytes": 10490,
+      "sha256": "fabb90d77b33951c3f8808befca6a6d35a5e87749b74252e8348d9197d41dfe5"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 27513,
+      "sha256": "9f8ea222e5948e228b6703384b8689755a7c4a0faf708bb6d40455ee5223c746"
+    }
+  ],
+  "publicBeforeJavaScriptChecked": true,
+  "localizedJsonLdSocialChecked": true,
+  "localized404GetHeadChecked": true,
+  "draftSitemapExclusionChecked": true,
+  "indexingAllowed": false,
+  "editorialApprovalCreated": false,
+  "currentPublicCompilationValidated": false,
+  "assetRuntimeClosureValidated": false,
+  "browserStarted": false,
+  "JavaScriptExecuted": false,
+  "publicBuildsRun": 0,
+  "pwaBuildsRun": 0,
+  "wholeAppVisualAccepted": false,
+  "productionEdgeAccepted": false,
+  "installedDeviceValidated": false,
+  "realPurchaseValidated": false,
+  "fullContentAccepted": false,
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "nextAction": "D250 / S03.acceptance: implement the confirmed missing durable retry processing for already server-verified payment events as a documented parallel-safe internal prerequisite for COMMERCE-001/008. The original stage matrix permits parallel-safe documented work; remain in active S03 and leave all S03/S21 acceptance statuses unchanged. Full product-spec retry queue is internal programming work, distinct from unfinished real PSP/checkout/reconciliation and owner credentials. Preserve the current unconfigured503 and issue204 only after successful ledger application. Enqueue only after provider verification and normalized event validation; persist explicit VerifiedPayment fields, provider and payload SHA, never raw body/header/token/card/secrets. Keep API enqueue-only, with a separate private server processor for bounded claim/lease/retry/complete, and no new fetch route, scheduled deployment hook, PSP binding or worker activation. Reuse existing SQL payment idempotency and terminal refund protection. Review exact local proposals before edits; generate the actual new migration with Supabase CLI per the applied skill, using local authoring only. While CLI tooling is unavailable, prepare and review the independent processor/API/adapter and draft SQL contract without inventing a migration filename. Verify meaningful interrupted-apply, expired-lease/stale-owner and lost-ack-after-commit recovery in the existing isolated local PostgreSQL harness, plus appropriate affected API checks. No real database mutation, provider call, new SDK install, app/PWA/APK rebuild or unchanged76/34/141 repetition without a relevant reason. Preserve D249 current-generator/retained-entry proof and D248 actual paid-profile lifecycle proof; no public/native/provider/stage/release acceptance claim."
+}

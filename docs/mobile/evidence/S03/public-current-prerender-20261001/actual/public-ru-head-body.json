@@ -1,0 +1,30 @@
+{
+  "locale": "ru",
+  "title": "Проба Пера",
+  "description": "Литературный журнал и энциклопедия",
+  "head": "\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style data-home-prepaint=\"\">\n    /*\n     * Production HTML contains a crawlable homepage fallback inside #root.\n     * Hide that temporary copy before the first paint when the React module is\n     * present. Static journal archives remove the module script and stay visible.\n     * If the application bundle cannot start, reveal the accessible fallback\n     * after a bounded delay instead of leaving the visitor on a blank page.\n     */\n    html[data-react-shell]:has(> head > script[type=\"module\"]) #root > [data-static-seo] {\n      visibility: hidden;\n      opacity: 0;\n      pointer-events: none;\n      animation: probpera-home-fallback-rescue 1ms step-end 8s forwards;\n    }\n\n    @keyframes probpera-home-fallback-rescue {\n      to {\n        visibility: visible;\n        opacity: 1;\n        pointer-events: auto;\n      }\n    }\n  </style>\n  <noscript>\n    <style data-home-prepaint-noscript>\n      html[data-react-shell]:has(> head > script[type=\"module\"]) #root > [data-static-seo] {\n        visibility: visible !important;\n        opacity: 1 !important;\n        pointer-events: auto !important;\n        animation: none !important;\n      }\n    </style>\n  </noscript>\n  \n  <meta name=\"theme-color\" content=\"#4b087c\">\n  \n  <meta name=\"referrer\" content=\"strict-origin-when-cross-origin\">\n  \n  <meta http-equiv=\"Permissions-Policy\" content=\"camera=(), microphone=(), geolocation=()\">\n  \n  \n  <link rel=\"icon\" type=\"image/png\" href=\"/brand/probpera-logo.png\">\n  <link rel=\"apple-touch-icon\" href=\"/brand/probpera-logo.png\">\n  <link rel=\"manifest\" href=\"/site.webmanifest\">\n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n\n  \n  <link rel=\"modulepreload\" crossorigin=\"\" href=\"/assets/vite-preload-helper-BXl3LOEh.js\">\n  <link rel=\"modulepreload\" crossorigin=\"\" href=\"/assets/react-vendor-D6IN95gq.js\">\n  <link rel=\"stylesheet\" crossorigin=\"\" href=\"/assets/index-DapkbUsO.css\">\n<script type=\"module\" crossorigin=\"\" src=\"/assets/index-RNE2Kwpr.js\"></script><title>Проба Пера</title><meta name=\"description\" content=\"Литературный журнал и энциклопедия\"><meta name=\"robots\" content=\"noindex,follow\"><link rel=\"canonical\" href=\"https://probpera.ru/ru/\"><link rel=\"alternate\" hreflang=\"ru\" href=\"https://probpera.ru/ru/\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://probpera.ru/en/\"><link rel=\"alternate\" hreflang=\"x-default\" href=\"https://probpera.ru/\"><meta property=\"og:type\" content=\"website\"><meta property=\"og:locale\" content=\"ru_RU\"><meta property=\"og:locale:alternate\" content=\"en_US\"><meta property=\"og:site_name\" content=\"Проба Пера\"><meta property=\"og:title\" content=\"Проба Пера\"><meta property=\"og:description\" content=\"Литературный журнал и энциклопедия\"><meta property=\"og:url\" content=\"https://probpera.ru/ru/\"><meta property=\"og:image\" content=\"https://probpera.ru/og-v3.webp\"><meta property=\"og:image:alt\" content=\"Проба Пера\"><meta name=\"twitter:card\" content=\"summary\"><meta name=\"twitter:title\" content=\"Проба Пера\"><meta name=\"twitter:description\" content=\"Литературный журнал и энциклопедия\"><meta name=\"twitter:image\" content=\"https://probpera.ru/og-v3.webp\"><meta name=\"twitter:image:alt\" content=\"Проба Пера\"><script type=\"application/ld+json\" data-public-locale-structured-data=\"\">{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://probpera.ru/#website\",\n      \"url\": \"https://probpera.ru/\",\n      \"name\": \"Проба Пера\",\n      \"inLanguage\": \"ru\"\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://probpera.ru/ru/#webpage\",\n      \"url\": \"https://probpera.ru/ru/\",\n      \"name\": \"Проба Пера\",\n      \"description\": \"Литературный журнал и энциклопедия\",\n      \"inLanguage\": \"ru\",\n      \"isPartOf\": {\n        \"@id\": \"https://probpera.ru/#website\"\n      }\n    }\n  ]\n}\n</script>",
+  "body": "<div id=\"root\"><main class=\"static-article-fallback static-home-fallback\" data-localized-home-fallback=\"\"><article><h1>Проба Пера</h1><p>Литературный журнал и энциклопедия</p><nav aria-label=\"Основная навигация\"><a href=\"/ru/#atlas\">Литературная планета</a><a href=\"/stati/\">Читать журнал</a><a href=\"/ru/#books\">Книжный архив</a></nav></article></main></div>\n",
+  "schema": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://probpera.ru/#website",
+        "url": "https://probpera.ru/",
+        "name": "Проба Пера",
+        "inLanguage": "ru"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://probpera.ru/ru/#webpage",
+        "url": "https://probpera.ru/ru/",
+        "name": "Проба Пера",
+        "description": "Литературный журнал и энциклопедия",
+        "inLanguage": "ru",
+        "isPartOf": {
+          "@id": "https://probpera.ru/#website"
+        }
+      }
+    ]
+  }
+}

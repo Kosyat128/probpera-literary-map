@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "kind": "public-current-generator-retained-entry-working-validation",
+  "sourceCommit": "b27817d44f4b7aedb4556c39ee8d9e541dee67c8",
+  "nodeVersion": "v24.19.0",
+  "mode": "current-generator/retained-entry",
+  "pass": true,
+  "writerInvocations": 1,
+  "sourceRoots": [
+    "src",
+    "server",
+    "scripts",
+    "supabase/migrations",
+    "tests",
+    "package.json",
+    "package-lock.json",
+    "index.html",
+    "vite.config.ts",
+    "vite.pwa.config.ts",
+    "tsconfig.json",
+    "vitest.config.ts",
+    "data/book-canon-source-registry.json"
+  ],
+  "exportDependencies": [
+    "scripts/mobile/pwa-staging-package.mjs",
+    "scripts/mobile/write-public-locale-pages.mjs",
+    "scripts/mobile/public-locale-pages.mjs",
+    "scripts/mobile/public-locale-review.mjs",
+    "scripts/mobile/account-pages.mjs",
+    "scripts/mobile/pwa-artifact.mjs",
+    "src/pwa/accountCopy.ts",
+    "src/pwa/serviceWorkerRuntime.js",
+    "src/pwa/pwaBootstrapBudgets.ts",
+    "server/public-locales/handler.mjs",
+    "tests/e2e/public-locales.spec.mjs",
+    "package.json",
+    "package-lock.json"
+  ],
+  "helperDirectory": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\proposed",
+  "helpers": [
+    {
+      "path": "gate.mjs",
+      "bytes": 19035,
+      "sha256": "b09ab416be3517a8fb0054113905b88523a3245a51ce76849642533f69c04d09"
+    },
+    {
+      "path": "pwa.config.mjs",
+      "bytes": 1018,
+      "sha256": "4e8b8ee7b56c659f276a9bd770010dd7d1e2584920e7da61fc873dfae546e082"
+    }
+  ],
+  "retainedInputCompilationIsCurrent": false,
+  "sourceManifestBefore": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\source-manifest-before.json",
+    "sha256": "b38629e4c2eb6508388b5f16b7fbe7c06ef1847621a4f12196093f37694d60ee"
+  },
+  "currentAppRuntime": false,
+  "assetPresenceOrClosureVerified": false,
+  "JavaScriptExecuted": false,
+  "browserStarted": false,
+  "publicBuildsRun": 0,
+  "pwaBuildsRun": 0,
+  "licenseSigned": false,
+  "editorialApprovalCreated": false,
+  "indexingEnabled": false,
+  "productionEdgeAccepted": false,
+  "nativeInstalled": false,
+  "realStorePurchase": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "raw": [
+    {
+      "method": "GET",
+      "pathname": "/sitemap.xml",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-type": "application/xml; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-01.body",
+        "bytes": 27513,
+        "sha256": "9f8ea222e5948e228b6703384b8689755a7c4a0faf708bb6d40455ee5223c746"
+      }
+    },
+    {
+      "method": "GET",
+      "pathname": "/ru/",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-02.body",
+        "bytes": 4657,
+        "sha256": "1f0ccfb2aea1f69a386377c8f0fbb825590e008f298fbfaf1cd50a4cab4d38f7"
+      }
+    },
+    {
+      "method": "GET",
+      "pathname": "/en/",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-03.body",
+        "bytes": 4350,
+        "sha256": "da5aa9b6160b2cbc636fc8ec10856aad7877e0a0f4e8e21f4f63f5b3c2235202"
+      }
+    },
+    {
+      "method": "GET",
+      "pathname": "/ru/structured-data.json",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-04.body",
+        "bytes": 594,
+        "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153"
+      }
+    },
+    {
+      "method": "GET",
+      "pathname": "/ru/sitemap.preparation.json",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-05.body",
+        "bytes": 1022,
+        "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674"
+      }
+    },
+    {
+      "method": "GET",
+      "pathname": "/ru/__d249_missing__",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "cloudflare-cdn-cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-language": "ru",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "x-robots-tag": "noindex, follow"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-06.body",
+        "bytes": 3785,
+        "sha256": "807ab44db6ad49f72df2c11884b4b65ceb94541919b30f18f90f1850ac503bc3"
+      }
+    },
+    {
+      "method": "HEAD",
+      "pathname": "/ru/__d249_missing__",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "cloudflare-cdn-cache-control": "no-store",
+        "connection": "close",
+        "content-language": "ru",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "x-robots-tag": "noindex, follow"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-07.body",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "method": "GET",
+      "pathname": "/en/structured-data.json",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-08.body",
+        "bytes": 544,
+        "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9"
+      }
+    },
+    {
+      "method": "GET",
+      "pathname": "/en/sitemap.preparation.json",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-09.body",
+        "bytes": 1022,
+        "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb"
+      }
+    },
+    {
+      "method": "GET",
+      "pathname": "/en/__d249_missing__",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "cloudflare-cdn-cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-language": "en",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "x-robots-tag": "noindex, follow"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-10.body",
+        "bytes": 3534,
+        "sha256": "cfce81dca518e16ef50893e85d9db6b396d1f21de9e4cf3d995b2b061a07da57"
+      }
+    },
+    {
+      "method": "HEAD",
+      "pathname": "/en/__d249_missing__",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "cdn-cache-control": "no-store",
+        "cloudflare-cdn-cache-control": "no-store",
+        "connection": "close",
+        "content-language": "en",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Thu, 01 Oct 2026 18:39:53 GMT",
+        "x-robots-tag": "noindex, follow"
+      },
+      "body": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\raw\\response-11.body",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "command": {
+    "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "args": [
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\proposed\\pwa.config.mjs"
+    ],
+    "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+    "expectedCase": "public RU/EN shells have matching metadata before JavaScript",
+    "localOrigin": "http://127.0.0.1:61667",
+    "logicalOrigin": "https://probpera.ru"
+  },
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\playwright.stdout.txt",
+    "sha256": "534360e819a6fc3eeb2ac9cefde8d459a7c42cc96dab3bb5cde6a36ed857af1a"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\playwright.stderr.txt",
+    "sha256": "ab0e8609b0d7791e8b6730397780a4587d076f16499c4fa896900c1511567c0f"
+  },
+  "exitCode": 0,
+  "playwrightReport": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\playwright.json",
+    "sha256": "bdb472e4ff98e2ed437bbb1125e3d44783a7a5d3e82b177c71ca2013c8845e8e",
+    "cases": 1,
+    "browserFixtureUsed": false
+  },
+  "homeChecks": [
+    {
+      "locale": "ru",
+      "rawBeforeJavaScript": true,
+      "localizedSocialAndSchema": true,
+      "actualLocalHttp404GetAndHead": true
+    },
+    {
+      "locale": "en",
+      "rawBeforeJavaScript": true,
+      "localizedSocialAndSchema": true,
+      "actualLocalHttp404GetAndHead": true
+    }
+  ],
+  "emitted": [
+    {
+      "path": "en/404.html",
+      "bytes": 3534,
+      "sha256": "cfce81dca518e16ef50893e85d9db6b396d1f21de9e4cf3d995b2b061a07da57"
+    },
+    {
+      "path": "en/delete-account/index.html",
+      "bytes": 4703,
+      "sha256": "47df2f0d7a0ebaee8fca935d617284fd9f20f5a0cabd35e9b3d7511e0d9f319f"
+    },
+    {
+      "path": "en/index.html",
+      "bytes": 4350,
+      "sha256": "da5aa9b6160b2cbc636fc8ec10856aad7877e0a0f4e8e21f4f63f5b3c2235202"
+    },
+    {
+      "path": "en/planet-account/index.html",
+      "bytes": 4518,
+      "sha256": "43b0e01a0a9c8a13b6e5e3d39555606c29f18f437adaaa2b889cc444af3281af"
+    },
+    {
+      "path": "en/sitemap.preparation.json",
+      "bytes": 1022,
+      "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb"
+    },
+    {
+      "path": "en/structured-data.json",
+      "bytes": 544,
+      "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9"
+    },
+    {
+      "path": "locale-routes.json",
+      "bytes": 5448,
+      "sha256": "464665db94c91fc697a7bff0c5139a18fe73a71ef791e80ee275d70a80de3856"
+    },
+    {
+      "path": "ru/404.html",
+      "bytes": 3785,
+      "sha256": "807ab44db6ad49f72df2c11884b4b65ceb94541919b30f18f90f1850ac503bc3"
+    },
+    {
+      "path": "ru/delete-account/index.html",
+      "bytes": 5351,
+      "sha256": "91e0cfe14e2ab66da045dbaebc6e3c5b53e151281088b828ff53ffdbd35cc795"
+    },
+    {
+      "path": "ru/index.html",
+      "bytes": 4657,
+      "sha256": "1f0ccfb2aea1f69a386377c8f0fbb825590e008f298fbfaf1cd50a4cab4d38f7"
+    },
+    {
+      "path": "ru/planet-account/index.html",
+      "bytes": 5228,
+      "sha256": "64a27c04e42d23a6bba74642af8cca380ead63adae46051e1cf84a6805154976"
+    },
+    {
+      "path": "ru/sitemap.preparation.json",
+      "bytes": 1022,
+      "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674"
+    },
+    {
+      "path": "ru/structured-data.json",
+      "bytes": 594,
+      "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153"
+    }
+  ],
+  "retainedInputs": [
+    {
+      "path": "index.html",
+      "bytes": 10490,
+      "sha256": "fabb90d77b33951c3f8808befca6a6d35a5e87749b74252e8348d9197d41dfe5"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 27513,
+      "sha256": "9f8ea222e5948e228b6703384b8689755a7c4a0faf708bb6d40455ee5223c746"
+    }
+  ],
+  "artifactDirectory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\public-prerender-d249-a1",
+  "rootXmlGraphChecked": 1,
+  "localHttpRequests": 11,
+  "writerManifest": {
+    "schemaVersion": 1,
+    "generatedBy": "public-locale-pages",
+    "releaseReady": false,
+    "requiredLocales": [
+      "ru",
+      "en"
+    ],
+    "files": [
+      "ru/index.html",
+      "ru/404.html",
+      "ru/structured-data.json",
+      "ru/sitemap.preparation.json",
+      "en/index.html",
+      "en/404.html",
+      "en/structured-data.json",
+      "en/sitemap.preparation.json",
+      "ru/planet-account/index.html",
+      "ru/delete-account/index.html",
+      "en/planet-account/index.html",
+      "en/delete-account/index.html"
+    ],
+    "artifacts": [
+      {
+        "path": "ru/index.html",
+        "sha256": "1f0ccfb2aea1f69a386377c8f0fbb825590e008f298fbfaf1cd50a4cab4d38f7",
+        "indexable": false
+      },
+      {
+        "path": "ru/404.html",
+        "sha256": "807ab44db6ad49f72df2c11884b4b65ceb94541919b30f18f90f1850ac503bc3",
+        "indexable": false
+      },
+      {
+        "path": "ru/structured-data.json",
+        "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153",
+        "indexable": false
+      },
+      {
+        "path": "ru/sitemap.preparation.json",
+        "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674",
+        "indexable": false
+      },
+      {
+        "path": "en/index.html",
+        "sha256": "da5aa9b6160b2cbc636fc8ec10856aad7877e0a0f4e8e21f4f63f5b3c2235202",
+        "indexable": false
+      },
+      {
+        "path": "en/404.html",
+        "sha256": "cfce81dca518e16ef50893e85d9db6b396d1f21de9e4cf3d995b2b061a07da57",
+        "indexable": false
+      },
+      {
+        "path": "en/structured-data.json",
+        "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9",
+        "indexable": false
+      },
+      {
+        "path": "en/sitemap.preparation.json",
+        "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb",
+        "indexable": false
+      },
+      {
+        "path": "ru/planet-account/index.html",
+        "sha256": "64a27c04e42d23a6bba74642af8cca380ead63adae46051e1cf84a6805154976",
+        "indexable": false
+      },
+      {
+        "path": "ru/delete-account/index.html",
+        "sha256": "91e0cfe14e2ab66da045dbaebc6e3c5b53e151281088b828ff53ffdbd35cc795",
+        "indexable": false
+      },
+      {
+        "path": "en/planet-account/index.html",
+        "sha256": "43b0e01a0a9c8a13b6e5e3d39555606c29f18f437adaaa2b889cc444af3281af",
+        "indexable": false
+      },
+      {
+        "path": "en/delete-account/index.html",
+        "sha256": "47df2f0d7a0ebaee8fca935d617284fd9f20f5a0cabd35e9b3d7511e0d9f319f",
+        "indexable": false
+      }
+    ],
+    "sitemap": {
+      "version": 1,
+      "reviewGate": {
+        "state": "OPEN",
+        "releaseReady": false,
+        "indexingAllowed": false,
+        "scope": "public-localized-homepages-only",
+        "reviewerAuthentication": "not-performed",
+        "diagnostics": [
+          "review-missing"
+        ],
+        "requiredEvidence": [
+          "reviewed-bilingual-critical-content",
+          "source-bound-editorial-review",
+          "validated-release-artifact"
+        ]
+      },
+      "entries": [],
+      "excluded": [
+        {
+          "url": "https://probpera.ru/ru/",
+          "locale": "ru",
+          "kind": "home",
+          "reason": "bilingual-release-gates-open"
+        },
+        {
+          "url": "https://probpera.ru/ru/404.html",
+          "locale": "ru",
+          "kind": "not-found",
+          "reason": "error-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/en/",
+          "locale": "en",
+          "kind": "home",
+          "reason": "bilingual-release-gates-open"
+        },
+        {
+          "url": "https://probpera.ru/en/404.html",
+          "locale": "en",
+          "kind": "not-found",
+          "reason": "error-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/ru/planet-account/",
+          "locale": "ru",
+          "kind": "account",
+          "reason": "private-account-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/ru/delete-account/",
+          "locale": "ru",
+          "kind": "account",
+          "reason": "private-account-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/en/planet-account/",
+          "locale": "en",
+          "kind": "account",
+          "reason": "private-account-page-never-indexable"
+        },
+        {
+          "url": "https://probpera.ru/en/delete-account/",
+          "locale": "en",
+          "kind": "account",
+          "reason": "private-account-page-never-indexable"
+        }
+      ]
+    },
+    "notFound": {
+      "ru": "/ru/404.html",
+      "en": "/en/404.html",
+      "hostStatusRoutingConfigured": false
+    },
+    "accountRoutes": [
+      {
+        "locale": "ru",
+        "mode": "access",
+        "pathname": "/ru/planet-account/",
+        "file": "ru/planet-account/index.html",
+        "canonical": "https://probpera.ru/ru/planet-account/",
+        "indexable": false
+      },
+      {
+        "locale": "ru",
+        "mode": "deletion",
+        "pathname": "/ru/delete-account/",
+        "file": "ru/delete-account/index.html",
+        "canonical": "https://probpera.ru/ru/delete-account/",
+        "indexable": false
+      },
+      {
+        "locale": "en",
+        "mode": "access",
+        "pathname": "/en/planet-account/",
+        "file": "en/planet-account/index.html",
+        "canonical": "https://probpera.ru/en/planet-account/",
+        "indexable": false
+      },
+      {
+        "locale": "en",
+        "mode": "deletion",
+        "pathname": "/en/delete-account/",
+        "file": "en/delete-account/index.html",
+        "canonical": "https://probpera.ru/en/delete-account/",
+        "indexable": false
+      }
+    ],
+    "checkedSitemaps": 1
+  },
+  "sourceManifestAfter": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-public-prerender-current-generator-review\\actual-a1\\source-manifest-after.json",
+    "sha256": "b38629e4c2eb6508388b5f16b7fbe7c06ef1847621a4f12196093f37694d60ee"
+  },
+  "sourceAndInputsUnchanged": true
+}

@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://probpera.ru/#website",
+      "url": "https://probpera.ru/",
+      "name": "Proba Pera",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://probpera.ru/en/#webpage",
+      "url": "https://probpera.ru/en/",
+      "name": "Proba Pera",
+      "description": "Literary journal and encyclopedia",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://probpera.ru/#website"
+      }
+    }
+  ]
+}

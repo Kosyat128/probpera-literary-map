@@ -1,0 +1,30 @@
+{
+  "locale": "en",
+  "title": "Proba Pera",
+  "description": "Literary journal and encyclopedia",
+  "head": "\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style data-home-prepaint=\"\">\n    /*\n     * Production HTML contains a crawlable homepage fallback inside #root.\n     * Hide that temporary copy before the first paint when the React module is\n     * present. Static journal archives remove the module script and stay visible.\n     * If the application bundle cannot start, reveal the accessible fallback\n     * after a bounded delay instead of leaving the visitor on a blank page.\n     */\n    html[data-react-shell]:has(> head > script[type=\"module\"]) #root > [data-static-seo] {\n      visibility: hidden;\n      opacity: 0;\n      pointer-events: none;\n      animation: probpera-home-fallback-rescue 1ms step-end 8s forwards;\n    }\n\n    @keyframes probpera-home-fallback-rescue {\n      to {\n        visibility: visible;\n        opacity: 1;\n        pointer-events: auto;\n      }\n    }\n  </style>\n  <noscript>\n    <style data-home-prepaint-noscript>\n      html[data-react-shell]:has(> head > script[type=\"module\"]) #root > [data-static-seo] {\n        visibility: visible !important;\n        opacity: 1 !important;\n        pointer-events: auto !important;\n        animation: none !important;\n      }\n    </style>\n  </noscript>\n  \n  <meta name=\"theme-color\" content=\"#4b087c\">\n  \n  <meta name=\"referrer\" content=\"strict-origin-when-cross-origin\">\n  \n  <meta http-equiv=\"Permissions-Policy\" content=\"camera=(), microphone=(), geolocation=()\">\n  \n  \n  <link rel=\"icon\" type=\"image/png\" href=\"/brand/probpera-logo.png\">\n  <link rel=\"apple-touch-icon\" href=\"/brand/probpera-logo.png\">\n  <link rel=\"manifest\" href=\"/site.webmanifest\">\n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n\n  \n  <link rel=\"modulepreload\" crossorigin=\"\" href=\"/assets/vite-preload-helper-BXl3LOEh.js\">\n  <link rel=\"modulepreload\" crossorigin=\"\" href=\"/assets/react-vendor-D6IN95gq.js\">\n  <link rel=\"stylesheet\" crossorigin=\"\" href=\"/assets/index-DapkbUsO.css\">\n<script type=\"module\" crossorigin=\"\" src=\"/assets/index-RNE2Kwpr.js\"></script><title>Proba Pera</title><meta name=\"description\" content=\"Literary journal and encyclopedia\"><meta name=\"robots\" content=\"noindex,follow\"><link rel=\"canonical\" href=\"https://probpera.ru/en/\"><link rel=\"alternate\" hreflang=\"ru\" href=\"https://probpera.ru/ru/\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://probpera.ru/en/\"><link rel=\"alternate\" hreflang=\"x-default\" href=\"https://probpera.ru/\"><meta property=\"og:type\" content=\"website\"><meta property=\"og:locale\" content=\"en_US\"><meta property=\"og:locale:alternate\" content=\"ru_RU\"><meta property=\"og:site_name\" content=\"Proba Pera\"><meta property=\"og:title\" content=\"Proba Pera\"><meta property=\"og:description\" content=\"Literary journal and encyclopedia\"><meta property=\"og:url\" content=\"https://probpera.ru/en/\"><meta property=\"og:image\" content=\"https://probpera.ru/og-v3.webp\"><meta property=\"og:image:alt\" content=\"Proba Pera\"><meta name=\"twitter:card\" content=\"summary\"><meta name=\"twitter:title\" content=\"Proba Pera\"><meta name=\"twitter:description\" content=\"Literary journal and encyclopedia\"><meta name=\"twitter:image\" content=\"https://probpera.ru/og-v3.webp\"><meta name=\"twitter:image:alt\" content=\"Proba Pera\"><script type=\"application/ld+json\" data-public-locale-structured-data=\"\">{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"WebSite\",\n      \"@id\": \"https://probpera.ru/#website\",\n      \"url\": \"https://probpera.ru/\",\n      \"name\": \"Proba Pera\",\n      \"inLanguage\": \"en\"\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://probpera.ru/en/#webpage\",\n      \"url\": \"https://probpera.ru/en/\",\n      \"name\": \"Proba Pera\",\n      \"description\": \"Literary journal and encyclopedia\",\n      \"inLanguage\": \"en\",\n      \"isPartOf\": {\n        \"@id\": \"https://probpera.ru/#website\"\n      }\n    }\n  ]\n}\n</script>",
+  "body": "<div id=\"root\"><main class=\"static-article-fallback static-home-fallback\" data-localized-home-fallback=\"\"><article><h1>Proba Pera</h1><p>Literary journal and encyclopedia</p><nav aria-label=\"Main navigation\"><a href=\"/en/#atlas\">Literary Planet</a><a href=\"/stati/\">Read the journal</a><a href=\"/en/#books\">Book archive</a></nav></article></main></div>\n",
+  "schema": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://probpera.ru/#website",
+        "url": "https://probpera.ru/",
+        "name": "Proba Pera",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://probpera.ru/en/#webpage",
+        "url": "https://probpera.ru/en/",
+        "name": "Proba Pera",
+        "description": "Literary journal and encyclopedia",
+        "inLanguage": "en",
+        "isPartOf": {
+          "@id": "https://probpera.ru/#website"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "path": "index.html",
+    "bytes": 10490,
+    "sha256": "fabb90d77b33951c3f8808befca6a6d35a5e87749b74252e8348d9197d41dfe5"
+  },
+  {
+    "path": "sitemap.xml",
+    "bytes": 27513,
+    "sha256": "9f8ea222e5948e228b6703384b8689755a7c4a0faf708bb6d40455ee5223c746"
+  }
+]

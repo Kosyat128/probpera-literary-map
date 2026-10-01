@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] [s03-public-prerender-request-only] › tests\e2e\public-locales.spec.mjs:6:1 › public RU/EN shells have matching metadata before JavaScript
+  1 passed (1.2s)

@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "public-locale-pages",
+  "releaseReady": false,
+  "requiredLocales": [
+    "ru",
+    "en"
+  ],
+  "files": [
+    "ru/index.html",
+    "ru/404.html",
+    "ru/structured-data.json",
+    "ru/sitemap.preparation.json",
+    "en/index.html",
+    "en/404.html",
+    "en/structured-data.json",
+    "en/sitemap.preparation.json",
+    "ru/planet-account/index.html",
+    "ru/delete-account/index.html",
+    "en/planet-account/index.html",
+    "en/delete-account/index.html"
+  ],
+  "artifacts": [
+    {
+      "path": "ru/index.html",
+      "sha256": "1f0ccfb2aea1f69a386377c8f0fbb825590e008f298fbfaf1cd50a4cab4d38f7",
+      "indexable": false
+    },
+    {
+      "path": "ru/404.html",
+      "sha256": "807ab44db6ad49f72df2c11884b4b65ceb94541919b30f18f90f1850ac503bc3",
+      "indexable": false
+    },
+    {
+      "path": "ru/structured-data.json",
+      "sha256": "ba176a454561787421d59e6c139ffa66193a9439caf7e26d73b3e0af896c9153",
+      "indexable": false
+    },
+    {
+      "path": "ru/sitemap.preparation.json",
+      "sha256": "5b00ec4975e3309e20298a9981aba7d58643f1eae3a45418c901427fb6a7f674",
+      "indexable": false
+    },
+    {
+      "path": "en/index.html",
+      "sha256": "da5aa9b6160b2cbc636fc8ec10856aad7877e0a0f4e8e21f4f63f5b3c2235202",
+      "indexable": false
+    },
+    {
+      "path": "en/404.html",
+      "sha256": "cfce81dca518e16ef50893e85d9db6b396d1f21de9e4cf3d995b2b061a07da57",
+      "indexable": false
+    },
+    {
+      "path": "en/structured-data.json",
+      "sha256": "29f35babba263386bda83ebbb4385d0ef75fa06cab9bfa1c64d2a1c34b04a3d9",
+      "indexable": false
+    },
+    {
+      "path": "en/sitemap.preparation.json",
+      "sha256": "ae9bf4d90349b6b82d5ed65b3899c2ca01c27bf9068361808ebf71c06713f9bb",
+      "indexable": false
+    },
+    {
+      "path": "ru/planet-account/index.html",
+      "sha256": "64a27c04e42d23a6bba74642af8cca380ead63adae46051e1cf84a6805154976",
+      "indexable": false
+    },
+    {
+      "path": "ru/delete-account/index.html",
+      "sha256": "91e0cfe14e2ab66da045dbaebc6e3c5b53e151281088b828ff53ffdbd35cc795",
+      "indexable": false
+    },
+    {
+      "path": "en/planet-account/index.html",
+      "sha256": "43b0e01a0a9c8a13b6e5e3d39555606c29f18f437adaaa2b889cc444af3281af",
+      "indexable": false
+    },
+    {
+      "path": "en/delete-account/index.html",
+      "sha256": "47df2f0d7a0ebaee8fca935d617284fd9f20f5a0cabd35e9b3d7511e0d9f319f",
+      "indexable": false
+    }
+  ],
+  "sitemap": {
+    "version": 1,
+    "reviewGate": {
+      "state": "OPEN",
+      "releaseReady": false,
+      "indexingAllowed": false,
+      "scope": "public-localized-homepages-only",
+      "reviewerAuthentication": "not-performed",
+      "diagnostics": [
+        "review-missing"
+      ],
+      "requiredEvidence": [
+        "reviewed-bilingual-critical-content",
+        "source-bound-editorial-review",
+        "validated-release-artifact"
+      ]
+    },
+    "entries": [],
+    "excluded": [
+      {
+        "url": "https://probpera.ru/ru/",
+        "locale": "ru",
+        "kind": "home",
+        "reason": "bilingual-release-gates-open"
+      },
+      {
+        "url": "https://probpera.ru/ru/404.html",
+        "locale": "ru",
+        "kind": "not-found",
+        "reason": "error-page-never-indexable"
+      },
+      {
+        "url": "https://probpera.ru/en/",
+        "locale": "en",
+        "kind": "home",
+        "reason": "bilingual-release-gates-open"
+      },
+      {
+        "url": "https://probpera.ru/en/404.html",
+        "locale": "en",
+        "kind": "not-found",
+        "reason": "error-page-never-indexable"
+      },
+      {
+        "url": "https://probpera.ru/ru/planet-account/",
+        "locale": "ru",
+        "kind": "account",
+        "reason": "private-account-page-never-indexable"
+      },
+      {
+        "url": "https://probpera.ru/ru/delete-account/",
+        "locale": "ru",
+        "kind": "account",
+        "reason": "private-account-page-never-indexable"
+      },
+      {
+        "url": "https://probpera.ru/en/planet-account/",
+        "locale": "en",
+        "kind": "account",
+        "reason": "private-account-page-never-indexable"
+      },
+      {
+        "url": "https://probpera.ru/en/delete-account/",
+        "locale": "en",
+        "kind": "account",
+        "reason": "private-account-page-never-indexable"
+      }
+    ]
+  },
+  "notFound": {
+    "ru": "/ru/404.html",
+    "en": "/en/404.html",
+    "hostStatusRoutingConfigured": false
+  },
+  "accountRoutes": [
+    {
+      "locale": "ru",
+      "mode": "access",
+      "pathname": "/ru/planet-account/",
+      "file": "ru/planet-account/index.html",
+      "canonical": "https://probpera.ru/ru/planet-account/",
+      "indexable": false
+    },
+    {
+      "locale": "ru",
+      "mode": "deletion",
+      "pathname": "/ru/delete-account/",
+      "file": "ru/delete-account/index.html",
+      "canonical": "https://probpera.ru/ru/delete-account/",
+      "indexable": false
+    },
+    {
+      "locale": "en",
+      "mode": "access",
+      "pathname": "/en/planet-account/",
+      "file": "en/planet-account/index.html",
+      "canonical": "https://probpera.ru/en/planet-account/",
+      "indexable": false
+    },
+    {
+      "locale": "en",
+      "mode": "deletion",
+      "pathname": "/en/delete-account/",
+      "file": "en/delete-account/index.html",
+      "canonical": "https://probpera.ru/en/delete-account/",
+      "indexable": false
+    }
+  ],
+  "checkedSitemaps": 1
+}

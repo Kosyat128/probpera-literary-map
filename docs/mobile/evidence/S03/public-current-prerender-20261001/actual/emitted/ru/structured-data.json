@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://probpera.ru/#website",
+      "url": "https://probpera.ru/",
+      "name": "Проба Пера",
+      "inLanguage": "ru"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://probpera.ru/ru/#webpage",
+      "url": "https://probpera.ru/ru/",
+      "name": "Проба Пера",
+      "description": "Литературный журнал и энциклопедия",
+      "inLanguage": "ru",
+      "isPartOf": {
+        "@id": "https://probpera.ru/#website"
+      }
+    }
+  ]
+}

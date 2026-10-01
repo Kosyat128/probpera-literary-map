@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "public-locale-pages",
+  "recordType": "localized-sitemap-preparation",
+  "locale": "en",
+  "reviewGate": {
+    "state": "OPEN",
+    "releaseReady": false,
+    "indexingAllowed": false,
+    "scope": "public-localized-homepages-only",
+    "reviewerAuthentication": "not-performed",
+    "diagnostics": [
+      "review-missing"
+    ],
+    "requiredEvidence": [
+      "reviewed-bilingual-critical-content",
+      "source-bound-editorial-review",
+      "validated-release-artifact"
+    ]
+  },
+  "indexableEntries": [],
+  "excludedCandidates": [
+    {
+      "url": "https://probpera.ru/en/",
+      "locale": "en",
+      "kind": "home",
+      "reason": "bilingual-release-gates-open"
+    },
+    {
+      "url": "https://probpera.ru/en/404.html",
+      "locale": "en",
+      "kind": "not-found",
+      "reason": "error-page-never-indexable"
+    }
+  ],
+  "alternates": {
+    "ru": "https://probpera.ru/ru/",
+    "en": "https://probpera.ru/en/",
+    "x-default": "https://probpera.ru/"
+  }
+}
