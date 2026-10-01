@@ -27,6 +27,7 @@
     "build:all": "npm run build && npm run admin:build",
     "build:domain": "node scripts/build-domain-release.mjs",
     "build:pwa": "tsc --noEmit && node scripts/mobile/build-pwa.mjs",
+    "pwa:prepare:staging": "node scripts/mobile/prepare-pwa-staging.mjs",
     "domain:audit": "node scripts/audit-domain-release.mjs",
     "seo:audit": "node scripts/audit-seo-release.mjs",
     "analytics:config:check": "node scripts/audit-analytics-config.mjs",
