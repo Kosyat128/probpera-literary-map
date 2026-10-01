@@ -1,0 +1,33 @@
+{
+  "pass": true,
+  "durationMs": 17217,
+  "sourceCommit": "728e1ba489328898c642c2f9fa989f46cf80f8fd",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-offline-readiness-compact-review/actual-a1/current-source-manifest.json",
+    "sha256": "5db9ec4c2cdc7bd88af7bf238367be3bb3ed09ee6ecf3c6c20b726c87712c8c8",
+    "fileCount": 2141,
+    "inputRoots": [
+      "src",
+      "server",
+      "scripts",
+      "supabase/migrations",
+      "tests",
+      "package.json",
+      "package-lock.json",
+      "index.html",
+      "vite.config.ts",
+      "vite.pwa.config.ts",
+      "tsconfig.json",
+      "vitest.config.ts",
+      "data/book-canon-source-registry.json"
+    ],
+    "coverage": "complete declared input set; not every repository or public asset"
+  },
+  "buildId": "393e1be8859793da671cd5b620a784d5976afe104abedfa30e85861cc84975c5",
+  "producer": "startPwaQaServer({buildQa:true}) -> scripts/mobile/build-pwa.mjs --qa-authority",
+  "buildInvocations": 1,
+  "origin": "http://127.0.0.1:55946",
+  "authorityPath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-qa\\s03-focused-a4-authority.json",
+  "privateKeyPersisted": false,
+  "publicAuthoritySha256": "de679bb2fce0b8e9ef4f21f5717c9568b486a3d75e584d6819b7286680ee7b36"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-focused-pwa-qa-binding",
+  "sourceCommit": "728e1ba489328898c642c2f9fa989f46cf80f8fd",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-offline-readiness-compact-review/actual-a1/current-source-manifest.json",
+    "sha256": "5db9ec4c2cdc7bd88af7bf238367be3bb3ed09ee6ecf3c6c20b726c87712c8c8"
+  },
+  "helpers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-offline-readiness-compact-runtime-review/proposed/guard.mjs",
+      "sha256": "e0249767ccab793cd9545c9f0ace3b3a5d247f51908c32c9237d1ec78df2854a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-offline-readiness-compact-runtime-review/proposed/producer.mjs",
+      "sha256": "f8003e88ddb7011cc45ceca0b93bda6eebf1cb4c386cc553041a9a2b42e2dc74"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-offline-readiness-compact-runtime-review/proposed/pwa.config.mjs",
+      "sha256": "0be844d55587d4cae6cde3c4eabfc38f8083e91ee9136deb0a5242840e60073f"
+    }
+  ]
+}

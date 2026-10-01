@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "decision": "ACCEPT_SCOPED_MOBILE_LAYOUT",
+  "sourceCommit": "728e1ba489328898c642c2f9fa989f46cf80f8fd",
+  "runtimeResult": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-offline-readiness-compact-runtime-review/actual-a4/result.json",
+    "sha256": "78ed9131e97311fe5e7472dc310b94704867da9db5f957a65b60a91c9d4ec632"
+  },
+  "directView": true,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "screenshots": [
+    {
+      "name": "pwa-offline-sizes-ru.png",
+      "sha256": "c3d7ec2a7cb2dae1c1094c663437e1385c0703f4137f6d1efd3e41206bbac0a5"
+    },
+    {
+      "name": "pwa-offline-sizes-en.png",
+      "sha256": "135013614dd1b8e3a5bf0557716d5253eee74df32aee60335298a86b0f3e5d46"
+    }
+  ],
+  "findings": [
+    "RU/EN verified and repaired values fit with their units on one line.",
+    "The existing explanatory paragraphs are retained in the tested native disclosure, closed for the photos.",
+    "Both preparation controls remain visible; the shorter preparation card reveals more of the storage card.",
+    "No horizontal overflow or overlapping dialog is visible in these two captures."
+  ],
+  "scope": "D247 offline preparation values and explanations at one mobile viewport",
+  "functionalAccepted": true,
+  "scopedLayoutAccepted": true,
+  "wholeAppVisualAcceptance": false,
+  "installedDevice": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

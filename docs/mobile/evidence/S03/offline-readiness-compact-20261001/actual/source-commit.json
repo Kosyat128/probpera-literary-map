@@ -1,0 +1,48 @@
+{
+  "pass": true,
+  "decision": "D247",
+  "base": "27c2ece2eb780d93809a35e0ddbea96a18b0eb44",
+  "sourceCommit": "728e1ba489328898c642c2f9fa989f46cf80f8fd",
+  "owners": [
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "originalSha256": "7d35600e6534fc5f7952054df37a068863d1a225c1bde087928ffa2465d688bd",
+      "sha256": "b7fc6ad3a9561a9c9d8a0240642fd4edfb6252b5f53fa883621347e7e522e503"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "originalSha256": "53e2a0f09e1290069cd7adda081f2b6e14310cb1184f0c4e87e1d0a6fd2485a4",
+      "sha256": "9693b2caff710fc89f58dadb6d0e3391506fc03fc98cab2001645cec42a8716a"
+    },
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "originalSha256": "9990a2768876272e3a385ebba51e2c07ddaca2478906bf0b7c58035f7fbbef63",
+      "sha256": "43f17ab6344d951e7eeaee24916b740270d1cbc02c2c99bcef1748968501e790"
+    },
+    {
+      "path": "tests/pwa/offline-catalog.spec.mjs",
+      "originalSha256": "4bc630aa4996728d8f431d40ef77ca3035c6d327791105e6c8d31541ef4a9b72",
+      "sha256": "e360242028a1f859ecc5fd0934e6d4a4ffd535e2ae588e7a0de143d46212f4de"
+    },
+    {
+      "path": "tests/pwa/cross-engine-pwa.spec.mjs",
+      "originalSha256": "527a9520877aed78d8baeeb642694357b18065f3c31e8003f0dd0546ba1595e0",
+      "sha256": "55b6d996695d3c83b5fc3d8fccec75093eb5eaadd7d9d04f8e0c3f2a2e172a92"
+    }
+  ],
+  "checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\checks.json",
+    "sha256": "764ca8cecf53c2fe44d15affbcb6e99e4350606a5d22254302fc6d8db03b3ef3"
+  },
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\current-source-manifest.json",
+    "sha256": "5db9ec4c2cdc7bd88af7bf238367be3bb3ed09ee6ecf3c6c20b726c87712c8c8"
+  },
+  "typescriptPass": true,
+  "syntaxPass": true,
+  "testsRepeated": false,
+  "buildsRepeated": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "clean": true
+}

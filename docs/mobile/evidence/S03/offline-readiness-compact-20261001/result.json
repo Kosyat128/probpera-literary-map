@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-offline-readiness-compact-and-private-runtime-head-working-validation",
+  "decision": "D247",
+  "pass": true,
+  "recordedAt": "2026-10-01T17:54:45.039Z",
+  "sourceCommit": "728e1ba489328898c642c2f9fa989f46cf80f8fd",
+  "sourceOwners": [
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "originalSha256": "7d35600e6534fc5f7952054df37a068863d1a225c1bde087928ffa2465d688bd",
+      "sha256": "b7fc6ad3a9561a9c9d8a0240642fd4edfb6252b5f53fa883621347e7e522e503"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "originalSha256": "53e2a0f09e1290069cd7adda081f2b6e14310cb1184f0c4e87e1d0a6fd2485a4",
+      "sha256": "9693b2caff710fc89f58dadb6d0e3391506fc03fc98cab2001645cec42a8716a"
+    },
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "originalSha256": "9990a2768876272e3a385ebba51e2c07ddaca2478906bf0b7c58035f7fbbef63",
+      "sha256": "43f17ab6344d951e7eeaee24916b740270d1cbc02c2c99bcef1748968501e790"
+    },
+    {
+      "path": "tests/pwa/offline-catalog.spec.mjs",
+      "originalSha256": "4bc630aa4996728d8f431d40ef77ca3035c6d327791105e6c8d31541ef4a9b72",
+      "sha256": "e360242028a1f859ecc5fd0934e6d4a4ffd535e2ae588e7a0de143d46212f4de"
+    },
+    {
+      "path": "tests/pwa/cross-engine-pwa.spec.mjs",
+      "originalSha256": "527a9520877aed78d8baeeb642694357b18065f3c31e8003f0dd0546ba1595e0",
+      "sha256": "55b6d996695d3c83b5fc3d8fccec75093eb5eaadd7d9d04f8e0c3f2a2e172a92"
+    }
+  ],
+  "copies": [
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1/checks.json",
+        "sha256": "764ca8cecf53c2fe44d15affbcb6e99e4350606a5d22254302fc6d8db03b3ef3"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/checks.json",
+        "sha256": "764ca8cecf53c2fe44d15affbcb6e99e4350606a5d22254302fc6d8db03b3ef3"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1/source-commit.json",
+        "sha256": "e1bbc225a9b4223467d1a135da5619924c2347d9f9ae2868116ec984e01c1458"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/source-commit.json",
+        "sha256": "e1bbc225a9b4223467d1a135da5619924c2347d9f9ae2868116ec984e01c1458"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review/actual-a4/result.json",
+        "sha256": "78ed9131e97311fe5e7472dc310b94704867da9db5f957a65b60a91c9d4ec632"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/runtime-result.json",
+        "sha256": "78ed9131e97311fe5e7472dc310b94704867da9db5f957a65b60a91c9d4ec632"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review/root-visual-a4.json",
+        "sha256": "1e3d4ba044d720d96a1c24925e3ec3d5d1580828cb9938d7b6bb898ca74ecf22"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/root-visual.json",
+        "sha256": "1e3d4ba044d720d96a1c24925e3ec3d5d1580828cb9938d7b6bb898ca74ecf22"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\current-source-manifest.json",
+        "sha256": "5db9ec4c2cdc7bd88af7bf238367be3bb3ed09ee6ecf3c6c20b726c87712c8c8"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/current-source-manifest.json",
+        "sha256": "5db9ec4c2cdc7bd88af7bf238367be3bb3ed09ee6ecf3c6c20b726c87712c8c8"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\strict-audit.json",
+        "sha256": "675ebd01da4723012d5a64c07affdfc8a69bd22c3016baa919013bf1bba992be"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/strict-audit.json",
+        "sha256": "675ebd01da4723012d5a64c07affdfc8a69bd22c3016baa919013bf1bba992be"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\strict-audit-execution.json",
+        "sha256": "23436e42fd1bf9e6c5b9ccd1677f2f312ba3419f163147c391d72b4e8c96d43b"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/strict-audit-execution.json",
+        "sha256": "23436e42fd1bf9e6c5b9ccd1677f2f312ba3419f163147c391d72b4e8c96d43b"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\browser-playwright.json",
+        "sha256": "2d83e2902d11431e149e7416befaaff21879fe9027179ecfb02043ecf088bd21"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/browser-report.json",
+        "sha256": "2d83e2902d11431e149e7416befaaff21879fe9027179ecfb02043ecf088bd21"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\browser-execution.json",
+        "sha256": "857a904b5f66f5b4e1148ef227727859e51610e7259efcb1c1f6845b85738a45"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/browser-execution.json",
+        "sha256": "857a904b5f66f5b4e1148ef227727859e51610e7259efcb1c1f6845b85738a45"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review/actual-a4/build-execution.json",
+        "sha256": "fde8db822a8a1d60741d251428c922628ea5d491bbc47afe23383f429d1a6b7e"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/build-execution.json",
+        "sha256": "fde8db822a8a1d60741d251428c922628ea5d491bbc47afe23383f429d1a6b7e"
+      }
+    },
+    {
+      "original": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-offline-readiness-compact-runtime-review/binding-a4.json",
+        "sha256": "2a5201417d7a5ce4f7b043a3f6a892dcfc557d63be3da1175b86cf6a5f3178c2"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/binding.json",
+        "sha256": "2a5201417d7a5ce4f7b043a3f6a892dcfc557d63be3da1175b86cf6a5f3178c2"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\syntax-0.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/syntax-0.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\syntax-0.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/syntax-0.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\syntax-1.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/syntax-1.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/syntax-1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\syntax-2.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/syntax-2.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-review\\actual-a1\\syntax-2.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/syntax-2.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\strict-audit-stdout.log",
+        "sha256": "675ebd01da4723012d5a64c07affdfc8a69bd22c3016baa919013bf1bba992be"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/strict-audit.stdout.txt",
+        "sha256": "675ebd01da4723012d5a64c07affdfc8a69bd22c3016baa919013bf1bba992be"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\strict-audit-stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/strict-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\browser-stdout.log",
+        "sha256": "2fd195da7b58620e597757e77b5769644c8609a8769682b43f700ac6b2f0308a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/browser.stdout.txt",
+        "sha256": "2fd195da7b58620e597757e77b5769644c8609a8769682b43f700ac6b2f0308a"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\browser-stderr.log",
+        "sha256": "fe0e16e37b9e80cf706cd4e071bf1c314f5efddb57fd0970293f782ce8be9f2a"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/browser.stderr.txt",
+        "sha256": "fe0e16e37b9e80cf706cd4e071bf1c314f5efddb57fd0970293f782ce8be9f2a"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\browser\\controlled-pwa-verified-of-57f11-metadata-follow-real-repair-s03-msedge-390\\pwa-offline-sizes-ru.png",
+        "sha256": "c3d7ec2a7cb2dae1c1094c663437e1385c0703f4137f6d1efd3e41206bbac0a5"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/pwa-offline-sizes-ru.png",
+        "sha256": "c3d7ec2a7cb2dae1c1094c663437e1385c0703f4137f6d1efd3e41206bbac0a5"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-offline-readiness-compact-runtime-review\\actual-a4\\browser\\controlled-pwa-verified-of-57f11-metadata-follow-real-repair-s03-msedge-390\\pwa-offline-sizes-en.png",
+        "sha256": "135013614dd1b8e3a5bf0557716d5253eee74df32aee60335298a86b0f3e5d46"
+      },
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/offline-readiness-compact-20261001/actual/pwa-offline-sizes-en.png",
+        "sha256": "135013614dd1b8e3a5bf0557716d5253eee74df32aee60335298a86b0f3e5d46"
+      }
+    }
+  ],
+  "typescriptInvocations": 1,
+  "typescriptPass": true,
+  "typescriptWorkingBase": "27c2ece2eb780d93809a35e0ddbea96a18b0eb44",
+  "checkedOwnersUnchangedSinceChecks": true,
+  "syntaxInvocations": 3,
+  "pwaBuildInvocations": 1,
+  "browserInvocations": 1,
+  "browserCases": 1,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "buildId": "393e1be8859793da671cd5b620a784d5976afe104abedfa30e85861cc84975c5",
+  "declaredSourceFiles": 2141,
+  "verifiedFiles": 1398,
+  "verifiedBytes": 73082525,
+  "repairedFiles": 1,
+  "repairedBytes": 3127,
+  "repairedSha256": "adb371e76c2f3c43be0ae496410b49cc4919f4de5e9256b630b6301dae3ba602",
+  "privateRuntimeHeadChecked": true,
+  "publicSeoAccepted": false,
+  "bothScreenshotsDirectlyViewed": true,
+  "functionalAccepted": true,
+  "scopedMobileLayoutAccepted": true,
+  "offlineHelpDisclosureChecked": true,
+  "visualFollowUpRequired": false,
+  "wholeAppVisualAccepted": false,
+  "installedDeviceValidated": false,
+  "realPurchaseValidated": false,
+  "fullContentAccepted": false,
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "nextAction": "D248 / S03.acceptance: close the confirmed paid-PWA persistent-browser evidence gap with one appended, ROOT-reviewed controlled-pwa case. Use one live QA authority and loopback origin, obtain real authorized access and a COMPLETE package, fully close a disposable persistent Edge context, then relaunch the same profile with offline:true before its first navigation. Verify fresh saved-access verification, the actual canonical scene with one Canvas in each new document, and RU/EN/RU selection retention. Existing synthetic storage lifecycle and same-context document reload are insufficient for this specific evidence. No product defect has been found. Preserve the accepted D247 compact layout, all existing assertions, and all S03 statuses. Use one source-bound fresh QA build/audit and one new case; do not repeat unchanged34/141 units, APK, passive probes, or old layout cases. This is desktop browser/profile lifecycle evidence at a mobile viewport, not OS installation, native/store, real purchase, public SEO, full content, or stage/release acceptance."
+}
