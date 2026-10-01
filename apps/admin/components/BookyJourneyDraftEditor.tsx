@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, evaluateBookyJourneyDraftPreviewProfile, parseBookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput, type BookyJourneyDraft } from "@/lib/booky-journey-draft";
 
 import { evaluateBookyJourneyDraftActivityAction, validateBookyJourneyDraftActivityAction } from "@/app/(dashboard)/journeys/actions";
@@ -45,6 +45,7 @@ function initialCopy(): JourneyDraftInput["copy"] {
 }
 
 export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCatalog }) {
+  const errorPrefix = useId();
   const [input, setInput] = useState<JourneyDraftInput>(() => ({
     id: "", version: 1, countryId: "", writerId: "", workId: "",
     ageRange: { min: 18, max: 99 }, readingLevel: "plain", estimatedDurationMinutes: 0,
@@ -63,6 +64,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [importErrors, setImportErrors] = useState<readonly { field: string; message: string }[]>([]);
   const [importNotice, setImportNotice] = useState("");
   const operationSequence = useRef(0);
+  const formControl = useRef<HTMLFormElement>(null);
   const fileControl = useRef<HTMLInputElement>(null);
   const optionalOrderFocus = useRef<HTMLButtonElement | null>(null);
   const [validating, setValidating] = useState(false);
@@ -80,6 +82,63 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const available = catalog.countries.length > 0;
   const defaultOptionalNodeOrder: OptionalNodeKind[] = [...(input.fact ? ["sourced-fact" as const] : []), ...(input.activity ? ["activity" as const] : [])];
   const optionalNodeOrder = input.optionalNodeOrder ?? defaultOptionalNodeOrder;
+  function draftErrorTarget(field: string): string | null {
+    if (field === "ageRange") return "ageRange.min";
+    if (field === "fact") return input.fact ? "fact" : null;
+    if (["activity", "activity.auth", "activity.choices"].includes(field)) return input.activity ? "activity" : null;
+    if (field === "optionalNodeOrder") return optionalNodeOrder.length ? "optionalNodeOrder" : null;
+    const choice = /^activity\.choices\.(\d+)(?:\.label\.(?:ru|en)|\.(?:ru|en))?$/u.exec(field);
+    if (choice) return input.activity?.choices[Number(choice[1])] ? "activity.choices." + Number(choice[1]) : null;
+    if (field === "countryId") return available ? field : null;
+    if (field === "writerId") return country ? field : null;
+    if (field === "workId") return writer ? field : null;
+    if (["id", "version", "readingLevel", "estimatedDurationMinutes"].includes(field)
+      || /^copy\.(?:ru|en)\.(?:title|description)$/u.test(field)
+      || /^copy\.(?:ru|en)\.nodes\.(?:country|writer|work|checkpoint)\.(?:title|body|caption|reduced)$/u.test(field)) return field;
+    return null;
+  }
+  function draftFieldId(field: string) { return errorPrefix + "-field-" + field.replaceAll(".", "-"); }
+  function fieldProps(field: string, sharedErrors: readonly string[] = []) {
+    const errorIds = errors.flatMap((error, index) => error.field === field || sharedErrors.includes(error.field)
+      || draftErrorTarget(error.field) === field ? [errorPrefix + "-error-" + index] : []);
+    return {
+      id: draftFieldId(field),
+      "data-booky-draft-field": field,
+      "aria-invalid": errorIds.length ? true as const : undefined,
+      "aria-describedby": errorIds.length ? errorIds.join(" ") : undefined,
+    };
+  }
+  function draftErrorLabel(field: string) {
+    const target = draftErrorTarget(field);
+    const labels: Record<string, string> = { id: "Идентификатор маршрута", version: "Версия", "ageRange.min": "Возрастной диапазон",
+      readingLevel: "Уровень чтения", estimatedDurationMinutes: "Примерная длительность", countryId: "Страна", writerId: "Писатель", workId: "Книга",
+      fact: "Необязательный факт · источники", activity: "Необязательное задание · выбрать автора", optionalNodeOrder: "Порядок необязательных шагов" };
+    if (target && labels[target]) return labels[target];
+    const choice = target && /^activity\.choices\.(\d+)$/u.exec(target);
+    if (choice) return "Автор · вариант " + (Number(choice[1]) + 1);
+    const route = /^copy\.(ru|en)\.(title|description)$/u.exec(field);
+    if (route) return (route[2] === "title" ? "Название" : "Описание") + " маршрута (" + route[1].toUpperCase() + ")";
+    const copy = /^copy\.(ru|en)\.nodes\.(country|writer|work|checkpoint)\.(title|body|caption|reduced)$/u.exec(field);
+    if (copy) {
+      const locale = copy[1] as Locale, kind = copy[2] as NodeKind;
+      const names: Record<string, string> = locale === "ru" ? { title: "Название шага", body: "Подсказка", caption: "Подпись", reduced: "Короткий текст" }
+        : { title: "Step title", body: "Full text", caption: "Caption", reduced: "Short text" };
+      return names[copy[3]] + " · " + previewStepLabels[locale][kind] + " (" + locale.toUpperCase() + ")";
+    }
+    return "Поле маршрута";
+  }
+  function focusDraftError(field: string) {
+    const target = draftErrorTarget(field);
+    if (!target) return;
+    const control = Array.from(formControl.current?.querySelectorAll<HTMLElement>("[data-booky-draft-field]") ?? [])
+      .find((element) => element.dataset.bookyDraftField === target);
+    if (!control) return;
+    for (let ancestor: HTMLElement | null = control.parentElement; ancestor; ancestor = ancestor.parentElement) {
+      if (ancestor instanceof HTMLDetailsElement) ancestor.open = true;
+      if (ancestor === formControl.current) break;
+    }
+    control.focus();
+  }
   const previewDefinition = preview?.draft.definitions.find((definition) => definition.locale === preview.locale);
   const previewProfileResult = previewProfile.enabled && previewDefinition ? evaluateBookyJourneyDraftPreviewProfile(previewDefinition, {
     age: previewProfile.age === "" ? NaN : Number(previewProfile.age), readingLevel: previewProfile.readingLevel,
@@ -301,16 +360,18 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     }
   }
   function copyVariantFields(locale: Locale, kind: CopyKind, copy: { caption?: string; reduced?: string }) {
+    const fieldBase = kind === "activity" ? "activity.copy." + locale : kind === "sourced-fact"
+      ? "fact.copy." + locale : "copy." + locale + ".nodes." + kind;
     const captionLabel = locale === "ru" ? `Подпись «${previewStepLabels.ru[kind]}» (RU)` : `Caption “${previewStepLabels.en[kind]}” (EN)`;
     const reducedLabel = locale === "ru" ? `Короткий текст «${previewStepLabels.ru[kind]}» (RU)` : `Short text “${previewStepLabels.en[kind]}” (EN)`;
     return <details lang={locale} data-booky-copy-variants={kind} data-copy-locale={locale} style={{ minWidth: 0 }}>
       <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>{locale === "ru" ? "Подпись и короткий текст" : "Caption and short text"}</summary>
       <p>{locale === "ru" ? "Пустое поле использует название шага." : "An empty field uses the step title."}</p>
       <label className="field"><span>{captionLabel}</span>
-        <textarea lang={locale} aria-label={captionLabel} maxLength={1600} style={{ minHeight: 44 }} value={copy.caption ?? ""}
+        <textarea {...fieldProps(fieldBase + ".caption")} lang={locale} aria-label={captionLabel} maxLength={1600} style={{ minHeight: 44 }} value={copy.caption ?? ""}
           onChange={(event) => updateCopyVariant(locale, kind, "caption", event.target.value)} /></label>
       <label className="field"><span>{reducedLabel}</span>
-        <textarea lang={locale} aria-label={reducedLabel} maxLength={320} style={{ minHeight: 44 }} value={copy.reduced ?? ""}
+        <textarea {...fieldProps(fieldBase + ".reduced")} lang={locale} aria-label={reducedLabel} maxLength={320} style={{ minHeight: 44 }} value={copy.reduced ?? ""}
           onChange={(event) => updateCopyVariant(locale, kind, "reduced", event.target.value)} /></label>
     </details>;
   }
@@ -412,7 +473,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     return <p><small>{label.en || "Английское название пока не подтверждено"}</small></p>;
   }
 
-  return <form className="site-copy-editor" onSubmit={download} noValidate>
+  return <form ref={formControl} className="site-copy-editor" onSubmit={download} noValidate>
     <section className="editorial-note" aria-label="Границы черновика">
       <strong>Локальный черновик для взрослой аудитории</strong>
       <p>Экспорт сохраняет файл на вашем устройстве. Изменения не записываются в базу или историю редакции.
@@ -439,27 +500,27 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       <header><h2 id="journey-conditions-heading">Маршрут и условия</h2><span className="badge">Черновик · RU / EN</span></header>
       <div className="site-copy-locales">
         <label className="field"><span>Идентификатор маршрута</span>
-          <input maxLength={48} value={input.id} onChange={(event) => update({ id: event.target.value })} autoComplete="off" spellCheck={false} /></label>
+          <input {...fieldProps("id")} maxLength={48} value={input.id} onChange={(event) => update({ id: event.target.value })} autoComplete="off" spellCheck={false} /></label>
         <label className="field"><span>Версия</span>
-          <input type="number" min={1} max={1000000} step={1} value={input.version || ""} onChange={(event) => update({ version: Number(event.target.value) })} /></label>
+          <input {...fieldProps("version")} type="number" min={1} max={1000000} step={1} value={input.version || ""} onChange={(event) => update({ version: Number(event.target.value) })} /></label>
         <label className="field"><span>Возраст от</span>
-          <input type="number" min={18} max={120} step={1} value={input.ageRange.min || ""} onChange={(event) => update({ ageRange: { ...input.ageRange, min: Number(event.target.value) } })} /></label>
+          <input {...fieldProps("ageRange.min", ["ageRange"])} type="number" min={18} max={120} step={1} value={input.ageRange.min || ""} onChange={(event) => update({ ageRange: { ...input.ageRange, min: Number(event.target.value) } })} /></label>
         <label className="field"><span>Возраст до</span>
-          <input type="number" min={18} max={120} step={1} value={input.ageRange.max || ""} onChange={(event) => update({ ageRange: { ...input.ageRange, max: Number(event.target.value) } })} /></label>
+          <input {...fieldProps("ageRange.max", ["ageRange"])} type="number" min={18} max={120} step={1} value={input.ageRange.max || ""} onChange={(event) => update({ ageRange: { ...input.ageRange, max: Number(event.target.value) } })} /></label>
         <label className="field"><span id="journey-reading-level-label">Уровень чтения</span>
-          <select aria-labelledby="journey-reading-level-label" value={input.readingLevel} onChange={(event) => update({ readingLevel: event.target.value as JourneyDraftInput["readingLevel"] })}>
+          <select {...fieldProps("readingLevel")} aria-labelledby="journey-reading-level-label" value={input.readingLevel} onChange={(event) => update({ readingLevel: event.target.value as JourneyDraftInput["readingLevel"] })}>
             <option value="plain">Простой</option><option value="developing">Развивающийся</option><option value="fluent">Свободный</option>
           </select></label>
         <label className="field"><span>Примерная длительность (мин)</span>
-          <input type="number" min={1} max={1440} step={1} value={input.estimatedDurationMinutes || ""} onChange={(event) => update({ estimatedDurationMinutes: Number(event.target.value) })} /></label>
+          <input {...fieldProps("estimatedDurationMinutes")} type="number" min={1} max={1440} step={1} value={input.estimatedDurationMinutes || ""} onChange={(event) => update({ estimatedDurationMinutes: Number(event.target.value) })} /></label>
       </div>
       <p><small>Условия задаёт редактор. Они не назначают возраст или уровень чтения пользователям.</small></p>
       <div className="site-copy-locales">
         {locales.map((locale) => <div className="site-copy-grid" key={locale}>
           <label className="field"><span>Название маршрута ({locale.toUpperCase()})</span>
-            <input lang={locale} maxLength={200} value={input.copy[locale].title} onChange={(event) => updateCopy(locale, "title", event.target.value)} /></label>
+            <input {...fieldProps("copy." + locale + ".title")} lang={locale} maxLength={200} value={input.copy[locale].title} onChange={(event) => updateCopy(locale, "title", event.target.value)} /></label>
           <label className="field"><span>Описание маршрута ({locale.toUpperCase()})</span>
-            <textarea lang={locale} maxLength={800} value={input.copy[locale].description} onChange={(event) => updateCopy(locale, "description", event.target.value)} /></label>
+            <textarea {...fieldProps("copy." + locale + ".description")} lang={locale} maxLength={800} value={input.copy[locale].description} onChange={(event) => updateCopy(locale, "description", event.target.value)} /></label>
         </div>)}
       </div>
     </section>
@@ -467,8 +528,8 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     <ol className="site-copy-grid" aria-label="Путь маршрута" style={{ listStyle: "none", margin: 0, padding: 0 }}>
       {steps.map((step) => <li key={step.key}>
         {step.number > 1 && <p aria-hidden="true" style={{ textAlign: "center", margin: "0 0 14px" }}>↓</p>}
-        {step.key === "checkpoint" && <details className="panel site-copy-card" aria-labelledby="journey-fact-heading">
-          <summary id="journey-fact-heading" style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Необязательный факт · источники</summary>
+        {step.key === "checkpoint" && <details className="panel site-copy-card" aria-labelledby={draftFieldId("fact")}>
+          <summary {...fieldProps("fact")} style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Необязательный факт · источники</summary>
           <p>Добавьте собственный текст о выбранной книге и источники отдельно для RU и EN. Текст и источники ещё требуют проверки.</p>
           <label style={{ display: "flex", alignItems: "center", gap: 10, minHeight: 44 }}>
             <input type="checkbox" checked={!!input.fact} onChange={(event) => toggleFact(event.target.checked)} />
@@ -479,22 +540,22 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             <div className="site-copy-locales">
               {locales.map((locale) => <div key={locale} className="site-copy-grid">
                 <label className="field"><span>Название факта ({locale.toUpperCase()})</span>
-                  <input lang={locale} maxLength={160} style={{ minHeight: 44 }} value={input.fact!.copy[locale].title}
+                  <input {...fieldProps("fact.copy." + locale + ".title")} lang={locale} maxLength={160} style={{ minHeight: 44 }} value={input.fact!.copy[locale].title}
                     onChange={(event) => updateFactCopy(locale, "title", event.target.value)} /></label>
                 <label className="field"><span>Текст факта ({locale.toUpperCase()})</span>
-                  <textarea lang={locale} maxLength={1600} style={{ minHeight: 44 }} value={input.fact!.copy[locale].body}
+                  <textarea {...fieldProps("fact.copy." + locale + ".body")} lang={locale} maxLength={1600} style={{ minHeight: 44 }} value={input.fact!.copy[locale].body}
                     onChange={(event) => updateFactCopy(locale, "body", event.target.value)} /></label>
                 {copyVariantFields(locale, "sourced-fact", input.fact!.copy[locale])}
                 <p>Источники ({locale.toUpperCase()}): от 1 до 16. Укажите дату обращения вручную в формате UTC, например 2026-09-30T12:00:00.000Z.</p>
                 {input.fact!.copy[locale].sources.map((source, index) => <div key={index} className="site-copy-grid">
                   <label className="field"><span>ID источника {index + 1} ({locale.toUpperCase()})</span>
-                    <input maxLength={96} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.id}
+                    <input {...fieldProps("fact.copy." + locale + ".sources." + index + ".id")} maxLength={96} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.id}
                       onChange={(event) => updateFactSource(locale, index, "id", event.target.value)} /></label>
                   <label className="field"><span>HTTPS URL источника {index + 1} ({locale.toUpperCase()})</span>
-                    <input type="url" maxLength={1000} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.url}
+                    <input {...fieldProps("fact.copy." + locale + ".sources." + index + ".url")} type="url" maxLength={1000} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.url}
                       onChange={(event) => updateFactSource(locale, index, "url", event.target.value)} /></label>
                   <label className="field"><span>Дата обращения к источнику {index + 1} ({locale.toUpperCase()})</span>
-                    <input maxLength={24} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.accessedAt}
+                    <input {...fieldProps("fact.copy." + locale + ".sources." + index + ".accessedAt")} maxLength={24} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.accessedAt}
                       onChange={(event) => updateFactSource(locale, index, "accessedAt", event.target.value)} /></label>
                   {input.fact!.copy[locale].sources.length > 1 && <button className="button-secondary" type="button" style={{ minHeight: 44 }} onClick={() => {
                     if (input.fact) update({ fact: { ...input.fact, copy: { ...input.fact.copy, [locale]: {
@@ -511,8 +572,8 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             </div>
           </div>}
         </details>}
-        {step.key === "checkpoint" && <details className="panel site-copy-card" aria-labelledby="journey-activity-heading">
-          <summary id="journey-activity-heading" style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Необязательное задание · выбрать автора</summary>
+        {step.key === "checkpoint" && <details className="panel site-copy-card" aria-labelledby={draftFieldId("activity")}>
+          <summary {...fieldProps("activity")} style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Необязательное задание · выбрать автора</summary>
           <p>Добавьте вопрос между книгой и завершением. Выберите 2–4 автора из каталога; соответствие книге проверяется перед просмотром и экспортом.</p>
           <label style={{ display: "flex", alignItems: "center", gap: 10, minHeight: 44 }}>
             <input type="checkbox" checked={!!input.activity} onChange={(event) => toggleActivity(event.target.checked)} />
@@ -522,7 +583,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             <p>Книга: {work?.label.ru || "Сначала выберите книгу"}</p>
             {input.activity.choices.map((choice, index) => <div key={index} className="site-copy-grid">
               <label className="field"><span id={`journey-choice-${index}`}>Автор · вариант {index + 1}</span>
-                <select aria-labelledby={`journey-choice-${index}`} value={choiceKey(choice)} onChange={(event) => {
+                <select {...fieldProps("activity.choices." + index)} aria-labelledby={`journey-choice-${index}`} value={choiceKey(choice)} onChange={(event) => {
                   const selected = choiceWriters.find((item) => choiceKey({ countryId: item.country.id, writerId: item.writer.id }) === event.target.value);
                   if (input.activity) update({ activity: { ...input.activity, choices: input.activity.choices.map((item, i) => i === index
                     ? { countryId: selected?.country.id || "", writerId: selected?.writer.id || "" } : item) } });
@@ -546,16 +607,16 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             <div className="site-copy-locales">
               {locales.map((locale) => <div key={locale} className="site-copy-grid">
                 <label className="field"><span>Вопрос задания ({locale.toUpperCase()})</span>
-                  <input lang={locale} maxLength={160} value={input.activity!.copy[locale].title} onChange={(event) => updateActivityCopy(locale, "title", event.target.value)} /></label>
+                  <input {...fieldProps("activity.copy." + locale + ".title")} lang={locale} maxLength={160} value={input.activity!.copy[locale].title} onChange={(event) => updateActivityCopy(locale, "title", event.target.value)} /></label>
                 <label className="field"><span>Подсказка задания ({locale.toUpperCase()})</span>
-                  <textarea lang={locale} maxLength={1600} value={input.activity!.copy[locale].body} onChange={(event) => updateActivityCopy(locale, "body", event.target.value)} /></label>
+                  <textarea {...fieldProps("activity.copy." + locale + ".body")} lang={locale} maxLength={1600} value={input.activity!.copy[locale].body} onChange={(event) => updateActivityCopy(locale, "body", event.target.value)} /></label>
                 {copyVariantFields(locale, "activity", input.activity!.copy[locale])}
               </div>)}
             </div>
           </div>}
         </details>}
-        {step.key === "checkpoint" && optionalNodeOrder.length > 0 && <details className="panel site-copy-card" data-booky-optional-order aria-labelledby="journey-optional-order-heading">
-          <summary id="journey-optional-order-heading" style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Порядок необязательных шагов</summary>
+        {step.key === "checkpoint" && optionalNodeOrder.length > 0 && <details className="panel site-copy-card" data-booky-optional-order aria-labelledby={draftFieldId("optionalNodeOrder")}>
+          <summary {...fieldProps("optionalNodeOrder")} style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Порядок необязательных шагов</summary>
           <p>Эти шаги идут после книги и перед завершением. Страна, писатель и книга сохраняют свои места.</p>
           <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 12 }}>
             {optionalNodeOrder.map((kind, index) => <li key={kind} data-optional-node-kind={kind} style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
@@ -573,21 +634,21 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             <span className="badge">{step.key === "checkpoint" ? "Завершение" : "Канонический выбор"}</span></header>
           {step.key === "country" && <>
             <label className="field"><span id="journey-country-label">Страна</span>
-              <select aria-labelledby="journey-country-label" value={input.countryId} disabled={!available} onChange={(event) => update({ countryId: event.target.value, writerId: "", workId: "" })}>
+              <select {...fieldProps("countryId")} aria-labelledby="journey-country-label" value={input.countryId} disabled={!available} onChange={(event) => update({ countryId: event.target.value, writerId: "", workId: "" })}>
                 <option value="">Выберите страну</option>
                 {catalog.countries.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(country?.label)}
           </>}
           {step.key === "writer" && <>
             <label className="field"><span id="journey-writer-label">Писатель</span>
-              <select aria-labelledby="journey-writer-label" value={input.writerId} disabled={!country} onChange={(event) => update({ writerId: event.target.value, workId: "" })}>
+              <select {...fieldProps("writerId")} aria-labelledby="journey-writer-label" value={input.writerId} disabled={!country} onChange={(event) => update({ writerId: event.target.value, workId: "" })}>
                 <option value="">{country ? "Выберите писателя" : "Сначала выберите страну"}</option>
                 {country?.writers.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(writer?.label)}
           </>}
           {step.key === "work" && <>
             <label className="field"><span id="journey-work-label">Книга</span>
-              <select aria-labelledby="journey-work-label" value={input.workId} disabled={!writer} onChange={(event) => update({ workId: event.target.value })}>
+              <select {...fieldProps("workId")} aria-labelledby="journey-work-label" value={input.workId} disabled={!writer} onChange={(event) => update({ workId: event.target.value })}>
                 <option value="">{writer ? "Выберите книгу" : "Сначала выберите писателя"}</option>
                 {writer?.works.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(work?.label)}
@@ -596,9 +657,9 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <div className="site-copy-locales">
             {locales.map((locale) => <div className="site-copy-grid" key={locale}>
               <label className="field"><span>Название шага «{step.title}» ({locale.toUpperCase()})</span>
-                <input lang={locale} maxLength={160} value={input.copy[locale].nodes[step.key].title} onChange={(event) => updateNode(locale, step.key, "title", event.target.value)} /></label>
+                <input {...fieldProps("copy." + locale + ".nodes." + step.key + ".title")} lang={locale} maxLength={160} value={input.copy[locale].nodes[step.key].title} onChange={(event) => updateNode(locale, step.key, "title", event.target.value)} /></label>
               <label className="field"><span>Подсказка шага «{step.title}» ({locale.toUpperCase()})</span>
-                <textarea lang={locale} maxLength={1600} value={input.copy[locale].nodes[step.key].body} onChange={(event) => updateNode(locale, step.key, "body", event.target.value)} /></label>
+                <textarea {...fieldProps("copy." + locale + ".nodes." + step.key + ".body")} lang={locale} maxLength={1600} value={input.copy[locale].nodes[step.key].body} onChange={(event) => updateNode(locale, step.key, "body", event.target.value)} /></label>
               {copyVariantFields(locale, step.key, input.copy[locale].nodes[step.key])}
             </div>)}
           </div>
@@ -794,7 +855,12 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
     <section className="panel" aria-label="Экспорт черновика">
       {errors.length > 0 && <div className="form-message" role="alert">
         <strong>Проверьте поля перед просмотром или экспортом:</strong>
-        <ul>{errors.map((error, index) => <li key={`${error.field}-${index}`}>{error.message}</li>)}</ul>
+        <ul>{errors.map((error, index) => <li key={`${error.field}-${index}`} id={errorPrefix + "-error-" + index} style={{ overflowWrap: "anywhere" }}>
+          {draftErrorTarget(error.field) ? <button className="button-secondary" type="button" data-booky-error-target={error.field}
+            style={{ minHeight: 44, minWidth: 44, maxWidth: "100%", whiteSpace: "normal", textAlign: "left" }}
+            aria-label={"Перейти к полю: " + draftErrorLabel(error.field) + ". " + error.message}
+            onClick={() => focusDraftError(error.field)}>{draftErrorLabel(error.field)}: {error.message}</button> : error.message}
+        </li>)}</ul>
       </div>}
       <p role="status" aria-live="polite">{validating ? "Проверка задания по текущему каталогу…" : notice}</p>
       <p>JSON содержит два языковых маршрута и {input.fact && input.activity ? "двенадцать" : input.fact || input.activity ? "десять" : "восемь"} черновиков подсказок. Проверка формы не даёт редакционного одобрения.</p>

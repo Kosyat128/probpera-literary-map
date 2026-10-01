@@ -164,7 +164,56 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     const p = testInfo.outputPath(filename); await page.screenshot({ path: p });
     screenshots.push({ filename, sha256: sha(await fs.readFile(p)), viewport: page.viewportSize(), scope });
   }
-  await capture('booky-journey-editor-ru-320.png', 'Actual editor component with synthetic canonical choices; upper form at 320px.');
+  const enCountryVariants = page.locator('[data-booky-copy-variants="country"][data-copy-locale="en"]');
+  const invalidEnCaption = enCountryVariants.getByRole('textbox', { name: 'Caption “Country” (EN)', exact: true, includeHidden: true });
+  await enCountryVariants.locator('summary').tap();
+  const authoredInvalidCaption = ' Untrimmed\ncaption ';
+  await invalidEnCaption.fill(authoredInvalidCaption);
+  const originalCaptionId = await invalidEnCaption.getAttribute('id'); expect(originalCaptionId).toBeTruthy();
+  await enCountryVariants.locator('summary').tap(); await expect(enCountryVariants).not.toHaveAttribute('open', '');
+  await previewButton.tap(); await expect(preview).toHaveCount(0);
+  const captionErrorAction = page.locator('[data-booky-error-target="copy.en.nodes.country.caption"]');
+  await expect(captionErrorAction).toHaveCount(1); await expect(captionErrorAction).toBeVisible();
+  await expect(invalidEnCaption).toHaveAttribute('aria-invalid', 'true');
+  const captionErrorIds = await invalidEnCaption.getAttribute('aria-describedby'); expect(captionErrorIds).toBeTruthy();
+  expect(await invalidEnCaption.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id =>
+    document.getElementById(id)?.querySelector('[data-booky-error-target]')?.getAttribute('data-booky-error-target') === 'copy.en.nodes.country.caption'))).toBe(true);
+  await expect(page.locator('input[type="file"]')).toHaveAttribute('aria-describedby', 'journey-open-description');
+  await expect(country).not.toHaveAttribute('aria-invalid', 'true'); await expect(country).toHaveValue('country-a');
+  await expect(page.getByLabel('Название маршрута (RU)', { exact: true })).toHaveValue('Тестовый маршрут');
+  await captionErrorAction.scrollIntoViewIfNeeded();
+  const errorActionBounds = await captionErrorAction.boundingBox(); expect(errorActionBounds.height).toBeGreaterThanOrEqual(44); expect(errorActionBounds.width).toBeGreaterThanOrEqual(44);
+  expect(errorActionBounds.x).toBeGreaterThanOrEqual(0); expect(errorActionBounds.x + errorActionBounds.width).toBeLessThanOrEqual(321);
+  expect(await overflow()).toBe(false);
+  await capture('booky-journey-editor-ru-320.png', 'Actual 320px authoring error summary with its 44px recovery action for a hidden EN multiline caption rejected because of outer whitespace. This is the real compiler error path; no translation or editorial judgment. Native touch and keyboard focus recovery is then verified against the existing textarea.');
+  await captionErrorAction.tap(); await expect(enCountryVariants).toHaveAttribute('open', ''); await expect(invalidEnCaption).toBeFocused();
+  await expect(invalidEnCaption).toHaveValue(authoredInvalidCaption); await expect(invalidEnCaption).toHaveAttribute('lang', 'en');
+  await enCountryVariants.locator('summary').tap(); await expect(enCountryVariants).not.toHaveAttribute('open', '');
+  await captionErrorAction.focus(); await expect(captionErrorAction).toBeFocused(); await page.keyboard.press('Enter');
+  await expect(enCountryVariants).toHaveAttribute('open', ''); await expect(invalidEnCaption).toBeFocused();
+  await expect(invalidEnCaption).toHaveAttribute('id', originalCaptionId); await expect(invalidEnCaption).toHaveValue(authoredInvalidCaption);
+  await invalidEnCaption.fill(''); await expect(captionErrorAction).toHaveCount(0);
+  await expect(invalidEnCaption).not.toHaveAttribute('aria-invalid', 'true'); await expect(invalidEnCaption).not.toHaveAttribute('aria-describedby', /.+/);
+  await expect(page.locator('input[type="file"]')).toHaveAttribute('aria-describedby', 'journey-open-description');
+  await expect(page.getByLabel('Название маршрута (RU)', { exact: true })).toHaveValue('Тестовый маршрут');
+  await enCountryVariants.locator('summary').tap();
+  const ageMinimum = page.getByLabel('Возраст от', { exact: true }), ageMaximum = page.getByLabel('Возраст до', { exact: true });
+  await ageMaximum.fill('17'); await previewButton.tap(); await expect(preview).toHaveCount(0);
+  const ageErrorAction = page.locator('[data-booky-error-target="ageRange"]');
+  await expect(ageErrorAction).toHaveCount(1);
+  await expect(ageMinimum).toHaveAttribute('aria-invalid', 'true'); await expect(ageMaximum).toHaveAttribute('aria-invalid', 'true');
+  const ageErrorIds = await ageMinimum.getAttribute('aria-describedby'); expect(ageErrorIds).toBeTruthy();
+  await expect(ageMaximum).toHaveAttribute('aria-describedby', ageErrorIds);
+  expect(await ageMinimum.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id =>
+    document.getElementById(id)?.querySelector('[data-booky-error-target]')?.getAttribute('data-booky-error-target') === 'ageRange'))).toBe(true);
+  await ageErrorAction.tap(); await expect(ageMinimum).toBeFocused();
+  await expect(ageMinimum).toHaveValue('18'); await expect(ageMaximum).toHaveValue('17');
+  await expect(country).toHaveValue('country-a'); await expect(work).toHaveValue('work-a');
+  await ageMaximum.fill('65'); await expect(ageErrorAction).toHaveCount(0);
+  for (const control of [ageMinimum, ageMaximum]) {
+    await expect(control).not.toHaveAttribute('aria-invalid', 'true'); await expect(control).not.toHaveAttribute('aria-describedby', /.+/);
+  }
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls, answer: window.__activityAnswerCalls }))).toEqual({ validation: [], answer: [] });
   await previewButton.tap();
   const previous=preview.getByRole('button',{name: /^(?:Предыдущий шаг|Previous step)$/});
   const next=preview.getByRole('button',{name: /^(?:Следующий шаг|Next step)$/});
@@ -561,7 +610,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await page.getByLabel('Страна', { exact: true }).selectOption('country-a');
   await page.getByLabel('Писатель', { exact: true }).selectOption('writer-a');
   await page.getByLabel('Книга', { exact: true }).selectOption('work-a');
-  const activityOpener = page.locator('summary#journey-activity-heading');
+  const activityOpener = page.locator('summary[data-booky-draft-field="activity"]');
   await expect(activityOpener.locator('..')).not.toHaveAttribute('open', '');
   await activityOpener.tap();
   const activityEnabled = page.getByLabel('Добавить задание «Книга и автор»', { exact: true });
@@ -593,7 +642,18 @@ test('optional adult RU EN author task uses current semantic validation and pres
     expect(call.actualHelperCalled).toBe(true); expect(call.actualResult.ok).toBe(false);
     expect(call.choices).toEqual([{ countryId: 'country-a', writerId: 'writer-a' }, { countryId: 'country-c', writerId: 'writer-d' }]);
   }
+  const activityErrorAction = page.locator('[data-booky-error-target="activity"]');
+  await expect(activityErrorAction).toHaveCount(1); await expect(activityOpener).toHaveAttribute('aria-invalid', 'true');
+  const activityErrorIds = await activityOpener.getAttribute('aria-describedby'); expect(activityErrorIds).toBeTruthy();
+  expect(await activityOpener.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id =>
+    document.getElementById(id)?.querySelector('[data-booky-error-target]')?.getAttribute('data-booky-error-target') === 'activity'))).toBe(true);
+  await activityOpener.tap(); await expect(activityOpener.locator('..')).not.toHaveAttribute('open', '');
+  await activityErrorAction.tap(); await expect(activityOpener).toBeFocused(); await expect(activityOpener.locator('..')).toHaveAttribute('open', '');
+  await expect(firstChoice).toHaveValue(JSON.stringify(['country-a', 'writer-a'])); await expect(secondChoice).toHaveValue(JSON.stringify(['country-c', 'writer-d']));
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }))).toEqual({ validation: 2, answer: 0 });
   await secondChoice.selectOption(JSON.stringify(['country-b', 'writer-c']));
+  await expect(activityErrorAction).toHaveCount(0); await expect(activityOpener).not.toHaveAttribute('aria-invalid', 'true');
+  await expect(activityOpener).not.toHaveAttribute('aria-describedby', /.+/);
   await previewButton.tap();
   await expect(preview).toBeVisible();
   await expect(preview.getByRole('status')).toContainText(/^(?:Шаг 1 из 5|Step 1 of 5)/);
@@ -1186,11 +1246,11 @@ test('optional bilingual work fact preserves authored source metadata through st
   await page.getByLabel('Страна', { exact: true }).selectOption('country-a');
   await page.getByLabel('Писатель', { exact: true }).selectOption('writer-a');
   await page.getByLabel('Книга', { exact: true }).selectOption('work-a');
-  const factOpener = page.locator('summary#journey-fact-heading');
-  const activityOpener = page.locator('summary#journey-activity-heading');
+  const factOpener = page.locator('summary[data-booky-draft-field="fact"]');
+  const activityOpener = page.locator('summary[data-booky-draft-field="activity"]');
   await expect(factOpener.locator('..')).not.toHaveAttribute('open', '');
   await expect(activityOpener.locator('..')).not.toHaveAttribute('open', '');
-  expect(await factOpener.evaluate(node => Boolean(node.compareDocumentPosition(document.getElementById('journey-activity-heading')) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+  expect(await factOpener.evaluate((node, activityId) => Boolean(node.compareDocumentPosition(document.getElementById(activityId)) & Node.DOCUMENT_POSITION_FOLLOWING), await activityOpener.getAttribute('id'))).toBe(true);
   await factOpener.tap();
   const factEnabled = page.getByLabel('Добавить факт об этой книге', { exact: true });
   await expect(factEnabled).not.toBeChecked();
@@ -1267,7 +1327,24 @@ test('optional bilingual work fact preserves authored source metadata through st
   await previewButton.tap(); await expect(preview).toHaveCount(0);
   await downloadButton.tap(); expect(downloads).toEqual([]);
   await expect(sourceField('Дата обращения к источнику', 1, 'en')).toHaveValue('');
+  const factErrorAction = page.locator('[data-booky-error-target="fact"]');
+  await expect(factErrorAction).toHaveCount(1); await expect(factOpener).toHaveAttribute('aria-invalid', 'true');
+  const factErrorIds = await factOpener.getAttribute('aria-describedby'); expect(factErrorIds).toBeTruthy();
+  expect(await factOpener.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id =>
+    document.getElementById(id)?.querySelector('[data-booky-error-target]')?.getAttribute('data-booky-error-target') === 'fact'))).toBe(true);
+  await expect(sourceField('Дата обращения к источнику', 1, 'en')).not.toHaveAttribute('aria-invalid', 'true');
+  await expect(page.locator('input[type="file"]')).toHaveAttribute('aria-describedby', 'journey-open-description');
+  await factOpener.tap(); await expect(factOpener.locator('..')).not.toHaveAttribute('open', '');
+  const factErrorBounds = await factErrorAction.boundingBox(); expect(factErrorBounds.height).toBeGreaterThanOrEqual(44); expect(factErrorBounds.width).toBeGreaterThanOrEqual(44);
+  await factErrorAction.focus(); await expect(factErrorAction).toBeFocused(); await page.keyboard.press('Enter');
+  await expect(factOpener).toBeFocused(); await expect(factOpener.locator('..')).toHaveAttribute('open', '');
+  await expect(factEnabled).toBeChecked(); await expect(sourceField('Дата обращения к источнику', 1, 'en')).toHaveValue('');
+  await expect(sourceField('HTTPS URL источника', 1, 'ru')).toHaveValue(copy.ru.sources[0].url);
+  await expect(page.getByRole('textbox', { name: 'Текст факта (EN)', exact: true })).toHaveValue(copy.en.body);
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls, answer: window.__activityAnswerCalls }))).toEqual({ validation: [], answer: [] });
   await sourceField('Дата обращения к источнику', 1, 'en').fill(copy.en.sources[0].accessedAt);
+  await expect(factErrorAction).toHaveCount(0); await expect(factOpener).not.toHaveAttribute('aria-invalid', 'true');
+  await expect(factOpener).not.toHaveAttribute('aria-describedby', /.+/);
   const workVariants = page.locator('[data-booky-copy-variants="work"][data-copy-locale="ru"]');
   await workVariants.locator('summary').tap();
   const workCaption = workVariants.getByRole('textbox', { name: 'Подпись «Книга» (RU)', exact: true });
