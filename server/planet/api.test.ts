@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, describe, expect, it, vi } from "vitest";
-import { createPlanetApi, type PlanetApiServices, type PlanetAccess, type PlanetPrincipal, type VerifiedPayment, type PlanetDeletionStatus } from "./api";
+import { createPlanetApi, type PlanetApiServices, type PlanetAccess, type PlanetPrincipal, type VerifiedPayment, type PlanetDeletionStatus, type PlanetLicenseRateLimitDecision } from "./api";
 import { createCookieCodec, createGrantSigner } from "./crypto";
 import { verifyWebLicenseGrant } from "../../src/platform/adapters/web/WebLicense";
 import { createPwaLicenseRuntime } from "../../src/pwa/PwaLicenseRuntime";
@@ -57,7 +57,9 @@ function fixture() {
     enqueueVerifiedEvent: vi.fn(async (_provider: string, _event: Readonly<VerifiedPayment>, _hash: string) => undefined),
     applyPayment: vi.fn(async (_provider: string, _event: VerifiedPayment, _hash: string) => undefined),
   };
-  const services: PlanetApiServices = { auth, ledger, cookies, signer };
+  // Explicit permissive fixture only; production never supplies a default quota.
+  const licenseRateLimiter = { consume: vi.fn(async (_subject: string, _product: string): Promise<PlanetLicenseRateLimitDecision> => ({ allowed: true, retryAfterSeconds: 0 })) };
+  const services: PlanetApiServices = { auth, ledger, cookies, signer, licenseRateLimiter };
   const api = createPlanetApi({ origin, audience, product, cookieName, services, now: () => time,
     deletionDisclosure: { version: "local-test-fixture", ru: "Тестовые сведения для локального сценария.", en: "Test disclosure for the local scenario." } });
   const request = (route: string, body: object | string = baseBody, headers: Record<string, string> = {}, method = "POST") => new Request(`${origin}/planet/api/${route}`, {
@@ -70,12 +72,73 @@ function fixture() {
     const value = response.headers.get("set-cookie")!;
     return { response, cookie: value.split(";")[0], encoded: value.split(";")[0].slice(cookieName.length + 1) };
   };
-  return { api, services, principal, state, auth, ledger, cookies, signer, request, bridge,
+  return { api, services, principal, state, auth, ledger, cookies, signer, licenseRateLimiter, request, bridge,
     clock: () => time, setClock: (value: number) => { time = value; },
     removeSession: () => { sessionAlive = false; } };
 }
 
 describe("controlled Planet HTTP API with real crypto", () => {
+  it("fails closed only on grants when the private limiter is unconfigured", async () => {
+    const f = fixture(); delete f.services.licenseRateLimiter;
+    const { cookie } = await f.bridge(); const sign = vi.fn(f.signer.sign); f.services.signer = { sign };
+    expect((await f.api(f.request("license/identity", baseBody, { cookie }))).status).toBe(200);
+    const denied = await f.api(f.request("license/session", { ...baseBody, subject: f.principal.subject }, { cookie }));
+    expect(denied.status).toBe(503); expect(await denied.json()).toEqual({ error: "service-unavailable" });
+    expect(denied.headers.get("retry-after")).toBeNull(); expect(sign).not.toHaveBeenCalled();
+    expect((await f.api(f.request("license/sign-out", baseBody, { cookie }))).status).toBe(204);
+  });
+  it("consumes only the authenticated matching active subject/product before signing and emits bounded Retry-After", async () => {
+    const f = fixture(); const { cookie } = await f.bridge(); const sign = vi.fn(f.signer.sign); f.services.signer = { sign };
+    expect((await f.api(f.request("license/session", { ...baseBody, subject: f.principal.subject }))).status).toBe(401);
+    expect((await f.api(f.request("license/session", { ...baseBody, subject: crypto.randomUUID() }, { cookie }))).status).toBe(403);
+    f.state.active = false; f.state.activeReceiptCount = 0;
+    expect((await f.api(f.request("license/session", { ...baseBody, subject: f.principal.subject }, { cookie }))).status).toBe(402);
+    expect(f.licenseRateLimiter.consume).not.toHaveBeenCalled();
+    f.state.active = true; f.state.activeReceiptCount = 1;
+    f.licenseRateLimiter.consume.mockResolvedValue({ allowed: false, retryAfterSeconds: 86400 });
+    const denied = await f.api(f.request("license/session", { ...baseBody, subject: f.principal.subject }, { cookie }));
+    expect(denied.status).toBe(429); expect(denied.headers.get("retry-after")).toBe("86400");
+    expect(denied.headers.get("cache-control")).toBe("no-store"); expect(await denied.json()).toEqual({ error: "license-rate-limit-exceeded" });
+    expect(f.licenseRateLimiter.consume).toHaveBeenCalledTimes(1);
+    expect(f.licenseRateLimiter.consume).toHaveBeenCalledWith(f.principal.subject, product); expect(sign).not.toHaveBeenCalled();
+  });
+  it("denies unavailable and malformed budgets without signing or reflecting private details", async () => {
+    const invalid: unknown[] = [null, [], {}, { allowed: 1, retryAfterSeconds: 0 }, { allowed: true, retryAfterSeconds: 1 },
+      { allowed: false, retryAfterSeconds: 0 }, { allowed: false, retryAfterSeconds: 1.5 }, { allowed: false, retryAfterSeconds: 86401 },
+      { allowed: false, retryAfterSeconds: "1" }, { allowed: true, retryAfterSeconds: 0, private: "secret" },
+      Object.defineProperty({ retryAfterSeconds: 0 }, "allowed", { enumerable: true, get() { throw new Error("private-getter"); } })];
+    const f = fixture(); const { cookie } = await f.bridge(); const sign = vi.fn(f.signer.sign); f.services.signer = { sign };
+    for (const value of invalid) {
+      f.licenseRateLimiter.consume.mockResolvedValue(value as PlanetLicenseRateLimitDecision);
+      const response = await f.api(f.request("license/session", { ...baseBody, subject: f.principal.subject }, { cookie }));
+      expect(response.status).toBe(503); expect(await response.json()).toEqual({ error: "service-unavailable" }); expect(response.headers.get("retry-after")).toBeNull();
+    }
+    f.licenseRateLimiter.consume.mockRejectedValue(new Error("service-role-private-error"));
+    const response = await f.api(f.request("license/session", { ...baseBody, subject: f.principal.subject }, { cookie }));
+    expect(response.status).toBe(503); expect(await response.json()).toEqual({ error: "service-unavailable" }); expect(sign).not.toHaveBeenCalled();
+  });
+  it("constructs a new API handler without resetting its durable capability's grant budget", async () => {
+    const f = fixture(); const { cookie } = await f.bridge(); let remaining = 1;
+    f.licenseRateLimiter.consume.mockImplementation(async () => remaining-- > 0 ? { allowed: true, retryAfterSeconds: 0 } : { allowed: false, retryAfterSeconds: 20 });
+    const sign = vi.fn(f.signer.sign); f.services.signer = { sign };
+    expect((await f.api(f.request("license/session", { ...baseBody, subject: f.principal.subject }, { cookie }))).status).toBe(200);
+    const nextHandler = createPlanetApi({ origin, audience, product, cookieName, services: f.services, now: f.clock });
+    expect((await nextHandler(f.request("license/session", { ...baseBody, subject: f.principal.subject }, { cookie }))).status).toBe(429);
+    expect(sign).toHaveBeenCalledTimes(1); expect(f.licenseRateLimiter.consume).toHaveBeenCalledTimes(2);
+  });
+  it.each(["epoch", "refund", "logout", "expiry"] as const)("withholds a grant after %s while durable budget consumption is awaiting", async change => {
+    const f = fixture(); const { cookie } = await f.bridge(); const entered = deferred(); const release = deferred();
+    f.licenseRateLimiter.consume.mockImplementation(async () => { entered.resolve(); await release.promise; return { allowed: true, retryAfterSeconds: 0 }; });
+    const pending = f.api(f.request("license/session", { ...baseBody, subject: f.principal.subject }, { cookie }));
+    await entered.promise;
+    if (change === "epoch") f.state.sessionEpoch++;
+    if (change === "refund") { f.state.active = false; f.state.activeReceiptCount = 0; }
+    if (change === "logout") f.removeSession();
+    if (change === "expiry") f.setClock(f.principal.expiresAt * 1000);
+    release.resolve(); const response = await pending;
+    expect(response.status).toBe(change === "epoch" ? 403 : change === "refund" ? 402 : 401);
+    expect(await response.json()).not.toHaveProperty("grant");
+  });
   it("recovers a deletion receipt after the original 202 was lost and paid access/cookie are revoked", async () => {
     const f = fixture(); const { cookie } = await f.bridge(); const requestId = crypto.randomUUID();
     await f.api(f.request("account/deletion-request", { ...baseBody, requestId, reauthToken: "fixture.recent.proof" }, { cookie }));

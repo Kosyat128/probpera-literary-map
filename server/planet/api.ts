@@ -23,6 +23,10 @@ export interface PlanetDeletionStatus {
   requestId: string;
   status: "requested" | "processing" | "blocked" | "completed";
 }
+export interface PlanetLicenseRateLimitDecision {
+  allowed: boolean;
+  retryAfterSeconds: number;
+}
 export interface PlanetApiServices {
   auth: {
     verify(token: string): Promise<PlanetPrincipal | null>;
@@ -43,6 +47,8 @@ export interface PlanetApiServices {
     open(value: string, nowUnixSeconds: number): Promise<CookiePayload | null>;
   };
   signer: { sign(subject: string): Promise<string> };
+  /** Private durable grant budget. An absent capability denies license/session. */
+  licenseRateLimiter?: { consume(subject: string, product: string): Promise<PlanetLicenseRateLimitDecision> };
   payments?: {
     provider: string;
     verify(request: Request, bytes: Uint8Array): Promise<VerifiedPayment | null>;
@@ -137,6 +143,15 @@ function validAccess(value: PlanetAccess): boolean {
     && Number.isSafeInteger(value.activeReceiptCount) && value.activeReceiptCount >= 0
     && value.active === (!value.accessBlocked && value.activeReceiptCount > 0);
 }
+function validLicenseRateLimit(value: unknown): value is PlanetLicenseRateLimitDecision {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const descriptors = Object.getOwnPropertyDescriptors(value);
+  if (Reflect.ownKeys(descriptors).sort().join(",") !== "allowed,retryAfterSeconds"
+    || ![descriptors.allowed, descriptors.retryAfterSeconds].every(field => field && Object.hasOwn(field, "value") && field.enumerable)) return false;
+  const allowed: unknown = descriptors.allowed.value, retry: unknown = descriptors.retryAfterSeconds.value;
+  return typeof allowed === "boolean" && Number.isSafeInteger(retry)
+    && (allowed ? retry === 0 : (retry as number) >= 1 && (retry as number) <= 86400);
+}
 function cookieValue(request: Request, name: string): string | null {
   const values = (request.headers.get("cookie") ?? "").split(";").map(part => part.trim()).filter(part => part.startsWith(name + "="));
   if (values.length !== 1) return null;
@@ -168,11 +183,11 @@ export function createPlanetApi(options: PlanetApiOptions): (request: Request) =
     return seconds;
   };
   const cookie = (value: string, maxAge: number) => options.cookieName + "=" + value + "; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=" + maxAge;
-  const response = (status: number, body: object | null, setCookie?: string) => new Response(body ? JSON.stringify(body) : null, {
+  const response = (status: number, body: object | null, setCookie?: string, extraHeaders: Record<string, string> = {}) => new Response(body ? JSON.stringify(body) : null, {
     status,
     headers: { "Cache-Control": "no-store", "Pragma": "no-cache", "Vary": "Origin", "X-Content-Type-Options": "nosniff",
       ...(body ? { "Content-Type": "application/json; charset=utf-8" } : {}), ...(setCookie ? { "Set-Cookie": setCookie } : {}),
-      ...(status === 405 ? { Allow: "POST" } : {}) },
+      ...(status === 405 ? { Allow: "POST" } : {}), ...extraHeaders },
   });
   const access = async (subject: string) => {
     const result = await services.ledger.access(subject, options.product);
@@ -280,9 +295,13 @@ export function createPlanetApi(options: PlanetApiOptions): (request: Request) =
       }
       if (body.subject !== principal.subject) return response(403, { error: "subject-mismatch" });
       if (!state.active) return response(402, { error: "purchase-required" });
+      if (!services.licenseRateLimiter) throw new Error("License grant budget unavailable");
+      const budget = await services.licenseRateLimiter.consume(principal.subject, options.product);
+      if (!validLicenseRateLimit(budget)) throw new Error("Invalid license grant budget response");
+      if (!budget.allowed) return response(429, { error: "license-rate-limit-exceeded" }, undefined, { "Retry-After": String(budget.retryAfterSeconds) });
       const grant = await services.signer.sign(principal.subject);
-      // Signing may await remote key infrastructure. Recheck current state after
-      // it settles instead of releasing a grant after a known refund or logout.
+      // Budget consumption and signing may await remote services. Recheck current
+      // state after both settle before releasing a grant after refund or logout.
       const freshPrincipal = await services.auth.verify(session.accessToken);
       if (!validPrincipal(freshPrincipal, now()) || !samePrincipal(freshPrincipal, principal)) return response(401, { error: "authentication-required" }, cookie("", 0));
       const freshState = await access(principal.subject);

@@ -1,9 +1,11 @@
 import type { PGlite } from "@electric-sql/pglite";
+import { readFile } from "node:fs/promises";
 import { createPaymentRetryTestDatabase } from "../../scripts/database/fixtures/literary-planet-payment-retry-context.mjs";
 import { beforeAll, afterAll, describe, expect, it } from "vitest";
 import { createPlanetApi, type VerifiedPayment } from "./api";
 import { createCookieCodec, createGrantSigner } from "./crypto";
 import { createCanonicalSupabaseServices } from "./supabase";
+import { createCanonicalLicenseRateLimiter } from "./licenseRateLimiterSupabase";
 import { createPwaLicenseRuntime } from "../../src/pwa/PwaLicenseRuntime";
 import { createPlanetAccountClient } from "../../src/pwa/accountAccess";
 
@@ -23,6 +25,7 @@ const encode = (value: unknown) => Buffer.from(JSON.stringify(value)).toString("
 
 beforeAll(async () => {
   db = await createPaymentRetryTestDatabase();
+  await db.exec(await readFile("supabase/migrations/20261001194458_planet_license_rate_limits.sql", "utf8"));
   authKeys = await crypto.subtle.generateKey({ name: "ECDSA", namedCurve: "P-256" }, false, ["sign", "verify"]);
   grantKeys = await crypto.subtle.generateKey({ name: "ECDSA", namedCurve: "P-256" }, false, ["sign", "verify"]);
   publicAuthKey = await crypto.subtle.exportKey("jwk", authKeys.publicKey);
@@ -58,6 +61,8 @@ async function environment() {
       fields: ["p_provider", "p_event_id", "p_payload_sha256", "p_transaction_id", "p_user_id", "p_product_id", "p_status", "p_occurred_at"] },
     planet_enqueue_verified_payment_retry: { query: "select public.planet_enqueue_verified_payment_retry($1,$2,$3,$4,$5::uuid,$6,$7,$8::timestamptz) as value",
       fields: ["p_provider", "p_event_id", "p_payload_sha256", "p_transaction_id", "p_user_id", "p_product_id", "p_status", "p_occurred_at"] },
+    planet_consume_license_grant_budget: { query: "select public.planet_consume_license_grant_budget($1::uuid,$2,$3::integer,$4::integer) as value",
+      fields: ["p_subject", "p_product_id", "p_limit", "p_window_seconds"] },
   };
   const json = (value: unknown, status = 200) => new Response(JSON.stringify(value), { status, headers: { "Content-Type": "application/json" } });
   // This fixture stands in for Supabase Auth HTTP only. JWT verification uses the
@@ -89,12 +94,14 @@ async function environment() {
     } catch { return json({ code: "P0001", message: "Rejected by fixture SQL" }, 400); }
     finally { await db.exec("reset role"); }
   };
-  const canonical = createCanonicalSupabaseServices({ canonicalProjectUrl: project, publishableKey: "qa-publishable-fixture",
-    serviceRoleKey: "qa-service-role-fixture", recentAuthenticationSeconds: 300, fetch: fetchSupabase, now: () => now * 1000 });
+  const canonicalOptions = { canonicalProjectUrl: project, publishableKey: "qa-publishable-fixture",
+    serviceRoleKey: "qa-service-role-fixture", recentAuthenticationSeconds: 300, fetch: fetchSupabase, now: () => now * 1000 };
+  const canonical = createCanonicalSupabaseServices(canonicalOptions);
   const api = createPlanetApi({ origin, audience, product, cookieName: "__Host-planet-integration",
     now: () => now * 1000,
     deletionDisclosure: { version: "local-integration-fixture", ru: "Тестовый текст; не юридическое заключение.", en: "Test text; not a legal approval." },
     services: { ...canonical,
+      licenseRateLimiter: createCanonicalLicenseRateLimiter(canonicalOptions, { limit: 10000, windowSeconds: 60 }),
       cookies: createCookieCodec({ key: cookieKey, origin, cookieName: "__Host-planet-integration" }),
       signer: createGrantSigner({ privateKey: grantKeys.privateKey, kid: "fixture-license", issuer, audience, product, grantSeconds: 600, offlineSeconds: 300, now: () => now * 1000 }),
       payments: { provider: "local-fixture", async verify(request, bytes) {

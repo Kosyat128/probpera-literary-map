@@ -32,6 +32,7 @@ beforeAll(async () => {
     PLANET_ORIGIN: origin, PLANET_COOKIE_NAME: "__Host-planet-license", PLANET_LICENSE_ISSUER: origin + "/planet",
     PLANET_LICENSE_AUDIENCE: "literary-planet-web", PLANET_LICENSE_PRODUCT: "base-edition", PLANET_LICENSE_KID: "local-ephemeral",
     PLANET_GRANT_SECONDS: "3600", PLANET_OFFLINE_SECONDS: "600", PLANET_RECENT_AUTH_SECONDS: "300",
+    PLANET_LICENSE_RATE_LIMIT: "10000", PLANET_LICENSE_RATE_WINDOW_SECONDS: "60",
     SUPABASE_URL: "https://canonical-project.supabase.co", SUPABASE_PUBLISHABLE_KEY: "sb_publishable_local_fixture", SUPABASE_SERVICE_ROLE_KEY: "sb_secret_local_fixture",
     PLANET_COOKIE_AES_KEY: Buffer.from(crypto.getRandomValues(new Uint8Array(32))).toString("base64url"),
     PLANET_SIGNING_PRIVATE_JWK: JSON.stringify(privateKey),
@@ -193,6 +194,58 @@ describe("explicit host configuration and real API initialization", () => {
   ])("fails closed for invalid key/context/duration %#", async (change) => {
     await expect(createConfiguredPlanetApi({ ...configured, ...change })).rejects.toThrow();
   });
+  it.each([
+    { PLANET_LICENSE_RATE_LIMIT: undefined }, { PLANET_LICENSE_RATE_WINDOW_SECONDS: undefined },
+    { PLANET_LICENSE_RATE_LIMIT: "0" }, { PLANET_LICENSE_RATE_LIMIT: "10001" }, { PLANET_LICENSE_RATE_LIMIT: "01" },
+    { PLANET_LICENSE_RATE_WINDOW_SECONDS: "0" }, { PLANET_LICENSE_RATE_WINDOW_SECONDS: "86401" }, { PLANET_LICENSE_RATE_WINDOW_SECONDS: "1.5" },
+  ])("preserves configuration with an unconfigured grant-only policy %#", async change => {
+    const api = await createConfiguredPlanetApi({ ...configured, ...change });
+    const response = await api(request("/planet/api/configuration", { method: "POST", headers: { origin, "content-type": "application/json" }, body: '{"v":1}' }));
+    expect(response.status).toBe(200); expect((await response.json()).product).toBe(configured.PLANET_LICENSE_PRODUCT);
+  });
+  it.each(["valid", "missing", "malformed"] as const)("wires actual private license budget policy %s without signing denied grants", async mode => {
+    const authKeys = await crypto.subtle.generateKey({ name: "ECDSA", namedCurve: "P-256" }, true, ["sign", "verify"]);
+    const jwk = await crypto.subtle.exportKey("jwk", authKeys.publicKey);
+    const subject = crypto.randomUUID(), sessionId = crypto.randomUUID(), now = Math.floor(Date.now() / 1000);
+    const project = "https://worker-budget-" + crypto.randomUUID() + ".supabase.invalid";
+    const encode = (value: unknown) => Buffer.from(JSON.stringify(value)).toString("base64url");
+    const unsigned = encode({ alg: "ES256", typ: "JWT", kid: "fixture-auth" }) + "." + encode({
+      iss: project + "/auth/v1", aud: "authenticated", sub: subject, session_id: sessionId, exp: now + 3600, iat: now - 1, is_anonymous: false,
+    });
+    const token = unsigned + "." + Buffer.from(await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, authKeys.privateKey, new TextEncoder().encode(unsigned))).toString("base64url");
+    const calls: { path: string; body: unknown }[] = [];
+    const json = (value: unknown) => new Response(JSON.stringify(value), { headers: { "Content-Type": "application/json" } });
+    const fetcher: typeof fetch = async (input, init) => {
+      const url = new URL(typeof input === "string" ? input : input instanceof URL ? input.href : input.url);
+      expect(url.origin).toBe(project);
+      calls.push({ path: url.pathname, body: init?.body ? JSON.parse(String(init.body)) : null });
+      if (url.pathname === "/auth/v1/.well-known/jwks.json") return json({ keys: [{ ...jwk, kid: "fixture-auth", alg: "ES256", use: "sig" }] });
+      if (url.pathname === "/auth/v1/user") return json({ id: subject, aud: "authenticated", factors: [], is_anonymous: false });
+      expect(new Headers(init?.headers).get("authorization")).toBe("Bearer " + configured.SUPABASE_SERVICE_ROLE_KEY);
+      if (url.pathname.endsWith("/planet_has_auth_session")) return json(true);
+      if (url.pathname.endsWith("/planet_get_web_access")) return json({ active: true, accessBlocked: false, activeReceiptCount: 1, sessionEpoch: 1 });
+      if (url.pathname.endsWith("/planet_consume_license_grant_budget")) return json({ allowed: false, retry_after_seconds: 12 });
+      throw new Error("Unexpected fixture RPC");
+    };
+    vi.stubGlobal("fetch", fetcher); const sign = vi.spyOn(crypto.subtle, "sign");
+    try {
+      const api = await createConfiguredPlanetApi({ ...configured, SUPABASE_URL: project,
+        PLANET_LICENSE_RATE_LIMIT: mode === "missing" ? undefined : mode === "malformed" ? "0" : "2", PLANET_LICENSE_RATE_WINDOW_SECONDS: "60" });
+      const body = { v: 1, audience: configured.PLANET_LICENSE_AUDIENCE, product: configured.PLANET_LICENSE_PRODUCT };
+      const headers = { origin, "content-type": "application/json" };
+      const bridge = await api(request("/planet/api/license/bridge", { method: "POST", headers: { ...headers, authorization: "Bearer " + token }, body: JSON.stringify(body) }));
+      expect(bridge.status).toBe(200); const cookie = bridge.headers.get("set-cookie")!.split(";")[0];
+      const identity = await api(request("/planet/api/license/identity", { method: "POST", headers: { ...headers, cookie }, body: JSON.stringify(body) }));
+      expect(identity.status).toBe(200);
+      const response = await api(request("/planet/api/license/session", { method: "POST", headers: { ...headers, cookie }, body: JSON.stringify({ ...body, subject }) }));
+      expect(response.status).toBe(mode === "valid" ? 429 : 503); expect(sign).not.toHaveBeenCalled();
+      const budgetCalls = calls.filter(call => call.path.endsWith("/planet_consume_license_grant_budget"));
+      if (mode === "valid") {
+        expect(budgetCalls).toEqual([{ path: "/rest/v1/rpc/planet_consume_license_grant_budget", body: { p_subject: subject, p_product_id: configured.PLANET_LICENSE_PRODUCT, p_limit: 2, p_window_seconds: 60 } }]);
+        expect(response.headers.get("retry-after")).toBe("12");
+      } else { expect(budgetCalls).toHaveLength(0); expect(response.headers.get("retry-after")).toBeNull(); }
+    } finally { sign.mockRestore(); vi.unstubAllGlobals(); }
+  });
 });
 
 describe("local draft Worker packaging", () => {
@@ -216,6 +269,7 @@ describe("local draft Worker packaging", () => {
     expect(text).not.toContain("sb_secret_local_fixture");
     const inputs = Object.keys(built.metafile!.inputs);
     expect(inputs).toContain("server/planet/worker.ts"); expect(inputs).toContain("server/planet/supabase.ts");
+    expect(inputs).toContain("server/planet/licenseRateLimiterSupabase.ts");
     expect(inputs.some(name => /(?:^|\/)src\/components\//u.test(name))).toBe(false);
   });
 });

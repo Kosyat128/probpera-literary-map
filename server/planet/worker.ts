@@ -1,6 +1,7 @@
 import { createPlanetApi } from "./api";
 import { createCookieCodec, createGrantSigner } from "./crypto";
 import { createCanonicalSupabaseServices } from "./supabase";
+import { createCanonicalLicenseRateLimiter } from "./licenseRateLimiterSupabase";
 
 /** The standard Request/Response subset of the Cloudflare ASSETS Fetcher. */
 export interface PlanetAssets { fetch(request: Request): Promise<Response> }
@@ -10,8 +11,10 @@ export const PLANET_API_ENV_KEYS = [
   "PLANET_RECENT_AUTH_SECONDS", "SUPABASE_URL", "SUPABASE_PUBLISHABLE_KEY", "SUPABASE_SERVICE_ROLE_KEY",
   "PLANET_COOKIE_AES_KEY", "PLANET_SIGNING_PRIVATE_JWK",
 ] as const;
+export const PLANET_LICENSE_RATE_ENV_KEYS = ["PLANET_LICENSE_RATE_LIMIT", "PLANET_LICENSE_RATE_WINDOW_SECONDS"] as const;
+type PlanetEnvKey = (typeof PLANET_API_ENV_KEYS)[number] | (typeof PLANET_LICENSE_RATE_ENV_KEYS)[number];
 /** Optional bindings are deliberate: an unconfigured draft still serves its preparing shell. */
-export type PlanetWorkerBindings = Partial<Record<(typeof PLANET_API_ENV_KEYS)[number], string>> & {
+export type PlanetWorkerBindings = Partial<Record<PlanetEnvKey, string>> & {
   ASSETS?: PlanetAssets;
   PLANET_DELETION_DISCLOSURE_JSON?: string;
 };
@@ -56,12 +59,12 @@ function mimeMatches(filename: string, contentType: string | null): boolean {
   if (/\.webmanifest$/u.test(filename)) return mime === "application/manifest+json" || mime === "application/json";
   return true;
 }
-function secret(bindings: PlanetWorkerBindings, name: (typeof PLANET_API_ENV_KEYS)[number], max = 8192): string {
+function secret(bindings: PlanetWorkerBindings, name: PlanetEnvKey, max = 8192): string {
   const value = bindings[name];
   if (typeof value !== "string" || value.length === 0 || value.length > max) throw new Error("Missing/invalid server configuration");
   return value;
 }
-function seconds(bindings: PlanetWorkerBindings, name: (typeof PLANET_API_ENV_KEYS)[number]): number {
+function seconds(bindings: PlanetWorkerBindings, name: PlanetEnvKey): number {
   const value = secret(bindings, name, 5);
   if (!/^[1-9][0-9]*$/u.test(value)) throw new Error("Invalid explicit duration");
   return Number(value);
@@ -114,20 +117,34 @@ function deletionDisclosure(source: string | undefined): { version: string; ru: 
 export async function createConfiguredPlanetApi(bindings: PlanetWorkerBindings): Promise<ApiHandler> {
   // Snapshot configuration before awaits; request-specific identities never live
   // in module globals and no runtime key is created or exported here.
-  const config = Object.fromEntries(PLANET_API_ENV_KEYS.map(name => [name, secret(bindings, name)]));
+  const config = Object.freeze(Object.fromEntries([
+    ...PLANET_API_ENV_KEYS.map(name => [name, secret(bindings, name)]),
+    ...PLANET_LICENSE_RATE_ENV_KEYS.map(name => [name, bindings[name]]),
+  ]));
   const disclosure = deletionDisclosure(bindings.PLANET_DELETION_DISCLOSURE_JSON);
   const kid = config.PLANET_LICENSE_KID;
   const [cookieKey, signingKey] = await Promise.all([
     crypto.subtle.importKey("raw", decodeKey(config.PLANET_COOKIE_AES_KEY), { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]),
     crypto.subtle.importKey("jwk", privateJwk(config.PLANET_SIGNING_PRIVATE_JWK, kid), { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]),
   ]);
-  const services = createCanonicalSupabaseServices({ canonicalProjectUrl: config.SUPABASE_URL,
+  const canonical = { canonicalProjectUrl: config.SUPABASE_URL,
     publishableKey: config.SUPABASE_PUBLISHABLE_KEY, serviceRoleKey: config.SUPABASE_SERVICE_ROLE_KEY,
-    recentAuthenticationSeconds: seconds(config, "PLANET_RECENT_AUTH_SECONDS") });
+    recentAuthenticationSeconds: seconds(config, "PLANET_RECENT_AUTH_SECONDS") };
+  const services = createCanonicalSupabaseServices(canonical);
+  let licenseRateLimiter: ReturnType<typeof createCanonicalLicenseRateLimiter> | undefined;
+  try {
+    licenseRateLimiter = createCanonicalLicenseRateLimiter(canonical, {
+      limit: seconds(config, "PLANET_LICENSE_RATE_LIMIT"), windowSeconds: seconds(config, "PLANET_LICENSE_RATE_WINDOW_SECONDS"),
+    });
+  } catch {
+    // Missing/invalid grant policy supplies no limiter. Existing account routes
+    // stay available; license/session denies the absent capability before signing.
+  }
   return createPlanetApi({ origin: config.PLANET_ORIGIN, audience: config.PLANET_LICENSE_AUDIENCE,
     product: config.PLANET_LICENSE_PRODUCT, cookieName: config.PLANET_COOKIE_NAME,
     deletionDisclosure: disclosure,
     services: { ...services,
+      licenseRateLimiter,
       cookies: createCookieCodec({ key: cookieKey, origin: config.PLANET_ORIGIN, cookieName: config.PLANET_COOKIE_NAME }),
       signer: createGrantSigner({ privateKey: signingKey, kid, issuer: config.PLANET_LICENSE_ISSUER,
         audience: config.PLANET_LICENSE_AUDIENCE, product: config.PLANET_LICENSE_PRODUCT,
