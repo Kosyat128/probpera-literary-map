@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "decision": "D239",
+  "pass": true,
+  "scope": "Focused layout and artifact review; not full visible-copy or stage acceptance",
+  "directRootViews": 8,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/source-manifest.json",
+    "sha256": "4d53a85c2dd32846839022c4caa4477297ff55cfff2c5d896a2cac5be1855a70"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/browser-result.json",
+    "sha256": "13a01578780ac971887e875d1aec19877da38da7a164624e3cb54e26405a7239"
+  },
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "4e316e4e9e88c4a2d6551796bbe0496bea9e1c7c6930db3d1f430c038e85fcd2",
+      "note": "RU1280: actual main-work preview and RU/EN body comparison in two columns; native navigation and default four-node footer visible."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "db942c16c0265a129ff900cd9dfb6ef4fd3171e1321380141063778d22a1fa04",
+      "note": "RU320: wrapped caption validation error and recovery action partly below frame; this is a partial error image, not a full form or full action capture."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "5fa810fe7f4da30da5fb89cb5e277d563e64e8d8b67cdfeebc518af673b84d8d",
+      "note": "EN320: two configured local prerequisite pairs with one modeled completion and outside-age feedback. The age66 input is outside this frame; its value is browser asserted."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "a4ce6bb5e485e9b77936c16111cac81409c988ec46317ee4b89e5ec6d062d8d9",
+      "note": "RU320: second additional work Alpha after authored Beta/Alpha order; independent RU/EN multiline captions fit in stacked comparison. Node order and canonical identity are browser asserted. Visible legacy footer still says eight rather than twelve; accepted D240 corrects the count and compares it with actual export."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "d6dbbbb4f769342c7c4ac9b04516bd1002ab82fb47a3999df8650a8f51c906de",
+      "note": "EN320: stacked RU/EN fact captions and synthetic English source metadata; lower navigation partly below frame. Sources remain explicitly unreviewed."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "b2aa158107b3605350083f2581414fa52b777c84787e8fb46ef15c8485e408e5",
+      "note": "RU320: optional Activity/Fact order with Earlier focus and six-node completion heading; this image precedes addition of the two extra works."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "a969fe816c5be3d3988c50587ce685f73fa1cd2d252d92d5b8ed45faa7bfee12",
+      "note": "EN320: actual current helper-backed synthetic answer verdict Correct, choice and Check focus; lower navigation partly clipped."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-additional-works-review/actual-a4/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "2fc2aec9cad0cf1e3b5450e03bdb69f80d6fb7dd155b234a24b129f13b8d8100",
+      "note": "RU320: zero-match author search, visible retained selected native author options and focused query; no RU verdict is shown."
+    }
+  ],
+  "allVisibleCopyAccepted": false,
+  "knownIssue": {
+    "field": "legacy dialogue footer count",
+    "observed": "eight on the six-node additional-work comparison",
+    "expected": "twelve",
+    "nextCorrection": "Accepted D240 dynamic count plus actual export assertion"
+  },
+  "installedDeviceTested": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

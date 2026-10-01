@@ -1,0 +1,50 @@
+
+Running 3 tests using 1 worker
+F··
+
+  1) tests\host\booky-journey-authoring.spec.mjs:96:1 › adult bilingual journey editor exports only a draft and clears dependent canonical selections 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator:  locator('[data-booky-additional-works]').locator('[data-booky-additional-work="0"]').getByRole('combobox', { name: 'Книга · дополнение 1', exact: true }).locator('option[value="work-a"]')
+    Expected: disabled
+    Received: enabled
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeDisabled" with timeout 10000ms
+      - waiting for locator('[data-booky-additional-works]').locator('[data-booky-additional-work="0"]').getByRole('combobox', { name: 'Книга · дополнение 1', exact: true }).locator('option[value="work-a"]')
+        23 × locator resolved to <option disabled value="work-a">Тестовая книга А · основная книга</option>
+           - unexpected value "enabled"
+
+
+      763 |   await expect(additionalPanel).not.toHaveAttribute('open', ''); await additionalPanel.locator('summary').tap();
+      764 |   await additionalPanel.getByRole('button', { name: 'Добавить книгу', exact: true }).tap(); await expect(preview).toHaveCount(0);
+    > 765 |   await expect(additionalSelect(0)).toHaveValue(''); await expect(additionalSelect(0).locator('option[value="work-a"]')).toBeDisabled();
+          |                                                                                                                          ^
+      766 |   await expect(additionalSelect(0).locator('option[value="work-a"]')).toContainText('основная книга');
+      767 |   await additionalSelect(0).selectOption('extra-alpha');
+      768 |   const authoredAdditional = [
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\host\booky-journey-authoring.spec.mjs:765:122
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a2\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a2\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a2\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a2\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a2\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\host\booky-journey-authoring.spec.mjs:96:1 › adult bilingual journey editor exports only a draft and clears dependent canonical selections 
+  2 passed (59.1s)

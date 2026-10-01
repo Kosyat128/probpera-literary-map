@@ -1,0 +1,47 @@
+
+Running 3 tests using 1 worker
+F··
+
+  1) tests\host\booky-journey-authoring.spec.mjs:96:1 › adult bilingual journey editor exports only a draft and clears dependent canonical selections 
+
+    Error: locator.tap: Error: strict mode violation: locator('[data-booky-additional-works]').locator('summary') resolved to 5 elements:
+        1) <summary id=":r0:-field-additionalWorks" data-booky-draft-field="additionalWorks">Дополнительные книги (2)</summary> aka getByText('Дополнительные книги (2)')
+        2) <summary>Подпись и короткий текст</summary> aka getByText('Подпись и короткий текст').nth(2)
+        3) <summary>Caption and short text</summary> aka getByText('Caption and short text').nth(2)
+        4) <summary>Подпись и короткий текст</summary> aka getByText('Подпись и короткий текст').nth(3)
+        5) <summary>Caption and short text</summary> aka getByText('Caption and short text').nth(3)
+
+    Call log:
+      - waiting for locator('[data-booky-additional-works]').locator('summary')
+
+
+      784 |   await badExtraCaption.fill(' wrong'); await additionalVariants(0, 'en').locator('summary').tap(); await previewButton.tap();
+      785 |   const additionalCopyAction = page.locator('[data-booky-error-target="additionalWorks.0.copy.en.caption"]'); await expect(additionalCopyAction).toHaveCount(1);
+    > 786 |   await additionalPanel.locator('summary').tap(); await additionalCopyAction.tap(); await expect(additionalPanel).toHaveAttribute('open', '');
+          |                                            ^
+      787 |   await expect(additionalVariants(0, 'en')).toHaveAttribute('open', ''); await expect(badExtraCaption).toBeFocused(); await expect(badExtraCaption).toHaveAttribute('aria-invalid', 'true');
+      788 |   expect(await badExtraCaption.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id => document.getElementById(id)?.textContent.includes('Подпись')))).toBe(true);
+      789 |   await badExtraCaption.fill(authoredAdditional[0].en.caption); await expect(additionalCopyAction).toHaveCount(0); await expect(badExtraCaption).not.toHaveAttribute('aria-invalid', 'true');
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\host\booky-journey-authoring.spec.mjs:786:44
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a3\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a3\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a3\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a3\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-additional-works-review\actual-a3\captures\booky-journey-authoring-ad-edae1-endent-canonical-selections\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\host\booky-journey-authoring.spec.mjs:96:1 › adult bilingual journey editor exports only a draft and clears dependent canonical selections 
+  2 passed (56.8s)
