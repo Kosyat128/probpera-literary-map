@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type ChangeEvent, type FormEvent } from "react";
-import { BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, evaluateBookyJourneyDraftPreviewProfile, parseBookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput, type BookyJourneyDraft } from "@/lib/booky-journey-draft";
+import { BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, createBookyJourneyWorkspace, evaluateBookyJourneyDraftPreviewProfile, parseBookyJourneyDraft, parseBookyJourneyWorkspace, type JourneyDraftCatalog, type JourneyDraftInput, type BookyJourneyDraft } from "@/lib/booky-journey-draft";
 
 import { evaluateBookyJourneyDraftActivityAction, validateBookyJourneyDraftActivityAction } from "@/app/(dashboard)/journeys/actions";
 import { contentRecordHash } from "../../../src/planet/contentExportHash";
@@ -74,6 +74,11 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const [importing, setImporting] = useState(false);
   const [importErrors, setImportErrors] = useState<readonly { field: string; message: string }[]>([]);
   const [importNotice, setImportNotice] = useState("");
+  const [workspaceImporting, setWorkspaceImporting] = useState(false);
+  const [workspaceErrors, setWorkspaceErrors] = useState<readonly { field: string; message: string }[]>([]);
+  const [workspaceNotice, setWorkspaceNotice] = useState("");
+  const workspaceReadSequence = useRef(0);
+  const workspaceHelpId = errorPrefix + "-workspace-help", workspaceErrorId = errorPrefix + "-workspace-errors";
   const operationSequence = useRef(0);
   const formControl = useRef<HTMLFormElement>(null);
   const fileControl = useRef<HTMLInputElement>(null);
@@ -89,7 +94,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
   const retainsAuthorSelection = choiceWriters.some((item) => !matchesAuthor(item) && input.activity?.choices.some((choice) =>
     choiceKey(choice) === choiceKey({ countryId: item.country.id, writerId: item.writer.id })));
   const authorSearchId = errorPrefix + "-search-activity-authors";
-  useEffect(() => () => { operationSequence.current += 1; }, []);
+  useEffect(() => () => { operationSequence.current += 1; workspaceReadSequence.current += 1; }, []);
   useEffect(() => {
     const control = optionalOrderFocus.current;
     optionalOrderFocus.current = null;
@@ -547,6 +552,48 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
       }
     }
   }
+  function saveWorkspace() {
+    setWorkspaceErrors([]);
+    setWorkspaceNotice("");
+    const result = createBookyJourneyWorkspace(input);
+    if (!result.ok) { setWorkspaceErrors(result.errors); return; }
+    let objectUrl: string | undefined;
+    try {
+      objectUrl = URL.createObjectURL(new Blob([JSON.stringify(result.workspace, null, 2) + "\n"], { type: "application/json;charset=utf-8" }));
+      const link = document.createElement("a");
+      link.href = objectUrl; link.download = "booky-journey.workspace.json";
+      document.body.appendChild(link); link.click(); link.remove();
+      setWorkspaceNotice("Форма подготовлена для скачивания. Незавершённые поля сохранены в рабочем файле.");
+    } catch { setWorkspaceErrors([{ field: "workspace", message: "Не удалось скачать рабочий файл. Повторите сохранение." }]); }
+    finally { if (objectUrl) { const completedUrl = objectUrl; window.setTimeout(() => URL.revokeObjectURL(completedUrl), 1000); } }
+  }
+  async function openWorkspace(event: ChangeEvent<HTMLInputElement>) {
+    const control = event.currentTarget, file = control.files?.[0], readSequence = ++workspaceReadSequence.current;
+    const sourceSequence = operationSequence.current;
+    setWorkspaceImporting(false); setWorkspaceErrors([]); setWorkspaceNotice("");
+    if (!file || file.size === 0 || file.size > BOOKY_JOURNEY_DRAFT_MAX_BYTES) {
+      if (!file) setWorkspaceNotice("Файл не выбран. Текущая форма сохранена.");
+      else setWorkspaceErrors([{ field: "workspace", message: file.size === 0 ? "Рабочий файл пуст. Текущая форма сохранена." : "Размер рабочего файла превышает 512 КиБ. Текущая форма сохранена." }]);
+      control.value = ""; return;
+    }
+    setWorkspaceImporting(true);
+    try {
+      const text = await file.text();
+      if (readSequence !== workspaceReadSequence.current) return;
+      if (sourceSequence !== operationSequence.current) { setWorkspaceNotice("Открытие рабочего файла отменено: форма или предпросмотр изменились."); return; }
+      const result = parseBookyJourneyWorkspace(text);
+      if (!result.ok) { setWorkspaceErrors(result.errors); return; }
+      beginOperation();
+      setInput(result.workspace.input);
+      setEntityQueries({ country: "", writer: "", work: "" }); setAuthorQuery(""); setModeledPrerequisites([]);
+      setPreview(null); setErrors([]); setNotice(""); setImportErrors([]); setImportNotice("");
+      setWorkspaceNotice("Форма открыта для продолжения. Перед экспортом черновика проверьте маршрут.");
+    } catch {
+      if (readSequence === workspaceReadSequence.current) setWorkspaceErrors([{ field: "workspace", message: "Не удалось прочитать рабочий файл. Текущая форма сохранена." }]);
+    } finally {
+      if (readSequence === workspaceReadSequence.current) { setWorkspaceImporting(false); control.value = ""; }
+    }
+  }
   async function showPreview() {
     const sequence = beginOperation();
     setPreview(null);
@@ -622,6 +669,18 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         <strong>Черновик не открыт:</strong>
         <ul>{importErrors.map((error, index) => <li key={`${error.field}-${index}`}>{error.message}</li>)}</ul>
       </div>}
+      <details data-booky-workspace style={{ minWidth: 0 }}>
+        <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Форма для продолжения</summary>
+        <p id={workspaceHelpId}>Рабочий файл .workspace.json сохраняет незавершённые поля. Готовый черновик маршрута открывается и экспортируется отдельно.</p>
+        <button className="button-secondary" type="button" style={{ minHeight: 44, minWidth: 44, maxWidth: "100%", whiteSpace: "normal" }} onClick={saveWorkspace}>Сохранить форму для продолжения</button>
+        <label className="field"><span>Открыть форму для продолжения</span>
+          <input id={errorPrefix + "-workspace-file"} className="journey-draft-open-file" type="file" accept=".json" style={{ minHeight: 44, maxWidth: "100%" }}
+            aria-describedby={workspaceHelpId + (workspaceErrors.length ? " " + workspaceErrorId : "")} aria-busy={workspaceImporting} onChange={openWorkspace} /></label>
+        <p role="status" aria-live="polite">{workspaceImporting ? "Чтение рабочего файла…" : workspaceNotice}</p>
+        {workspaceErrors.length > 0 && <div id={workspaceErrorId} className="form-message" role="alert">
+          <strong>Рабочий файл:</strong><ul>{workspaceErrors.map((error, index) => <li key={index}>{error.message}</li>)}</ul>
+        </div>}
+      </details>
     </details>
 
     <section className="panel site-copy-card" aria-labelledby="journey-conditions-heading">
@@ -710,7 +769,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                     <input {...fieldProps("fact.copy." + locale + ".sources." + index + ".id")} maxLength={96} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.id}
                       onChange={(event) => updateFactSource(locale, index, "id", event.target.value)} /></label>
                   <label className="field"><span>HTTPS URL источника {index + 1} ({locale.toUpperCase()})</span>
-                    <input {...fieldProps("fact.copy." + locale + ".sources." + index + ".url")} type="url" maxLength={1000} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.url}
+                    <input {...fieldProps("fact.copy." + locale + ".sources." + index + ".url")} type="text" inputMode="url" maxLength={1000} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.url}
                       onChange={(event) => updateFactSource(locale, index, "url", event.target.value)} /></label>
                   <label className="field"><span>Дата обращения к источнику {index + 1} ({locale.toUpperCase()})</span>
                     <input {...fieldProps("fact.copy." + locale + ".sources." + index + ".accessedAt")} maxLength={24} autoComplete="off" spellCheck={false} style={{ minHeight: 44 }} value={source.accessedAt}
@@ -760,6 +819,8 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                     ? { countryId: selected?.country.id || "", writerId: selected?.writer.id || "" } : item) } });
                 }}>
                   <option value={choiceKey({ countryId: "", writerId: "" })}>Выберите автора</option>
+                  {(choice.countryId || choice.writerId) && !choiceWriters.some(item => choiceKey({ countryId: item.country.id, writerId: item.writer.id }) === choiceKey(choice))
+                    && <option value={choiceKey(choice)} disabled>{choice.countryId} / {choice.writerId} · недоступный автор</option>}
                   {choiceWriters.filter((item) => matchesAuthor(item)
                     || choiceKey(choice) === choiceKey({ countryId: item.country.id, writerId: item.writer.id })).map((item) => {
                     const key = choiceKey({ countryId: item.country.id, writerId: item.writer.id });
@@ -791,7 +852,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
           <summary {...fieldProps("optionalNodeOrder")} style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>Порядок необязательных шагов</summary>
           <p>Эти шаги идут после книги и перед завершением. Страна, писатель и книга сохраняют свои места.</p>
           <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 12 }}>
-            {optionalNodeOrder.map((kind, index) => <li key={kind} data-optional-node-kind={kind} style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
+            {optionalNodeOrder.map((kind, index) => <li key={optionalNodeOrder.indexOf(kind) === optionalNodeOrder.lastIndexOf(kind) ? kind : kind + "-" + index} data-optional-node-kind={kind} style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
               <span style={{ minWidth: 0, flex: "1 1 100%", overflowWrap: "anywhere" }}>{index + 4 + (input.additionalWorks?.length ?? 0)}. {previewStepLabels.ru[kind]}</span>
               <button className="button-secondary" type="button" aria-label={`Переместить шаг «${previewStepLabels.ru[kind]}» раньше`} aria-disabled={index === 0}
                 style={{ minHeight: 44, minWidth: 44 }} onClick={(event) => moveOptionalNode(kind, -1, event.currentTarget)}>Раньше</button>
@@ -812,6 +873,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                 update({ countryId: event.target.value, writerId: "", workId: "" });
               }}>
                 <option value="">Выберите страну</option>
+                {input.countryId && !country && <option value={input.countryId} disabled>{input.countryId} · недоступная страна</option>}
                 {countrySearch.options.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(country?.label)}
           </>}
@@ -823,6 +885,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
                 update({ writerId: event.target.value, workId: "" });
               }}>
                 <option value="">{country ? "Выберите писателя" : "Сначала выберите страну"}</option>
+                {input.writerId && !writer && <option value={input.writerId} disabled>{input.writerId} · недоступный писатель этой страны</option>}
                 {writerSearch.options.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(writer?.label)}
           </>}
@@ -831,6 +894,7 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             <label className="field"><span id="journey-work-label">Книга</span>
               <select {...fieldProps("workId")} aria-labelledby="journey-work-label" value={input.workId} disabled={!writer} style={{ minHeight: 44 }} onChange={(event) => update({ workId: event.target.value })}>
                 <option value="">{writer ? "Выберите книгу" : "Сначала выберите писателя"}</option>
+                {input.workId && !work && <option value={input.workId} disabled>{input.workId} · недоступная книга этого писателя</option>}
                 {workSearch.options.map((item) => <option key={item.id} value={item.id}>{item.label.ru}</option>)}
               </select></label>{englishLabel(work?.label)}
             <details data-booky-additional-works aria-labelledby={draftFieldId("additionalWorks")} style={{ minWidth: 0 }}>

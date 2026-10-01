@@ -9,7 +9,7 @@ import { getBookyJourneyActivityChecksum } from "../../../src/host/bookyJourneyA
 import { getBookyJourneyFactChecksum, parseBookyJourneyFact } from "../../../src/host/bookyJourneyFact";
 import { contentRecordHash, contentTextHash } from "../../../src/planet/contentExportHash";
 import {
-  BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, parseBookyJourneyDraft, evaluateBookyJourneyDraftPreviewProfile,
+  BOOKY_JOURNEY_DRAFT_MAX_BYTES, createBookyJourneyDraft, createBookyJourneyWorkspace, parseBookyJourneyDraft, parseBookyJourneyWorkspace, evaluateBookyJourneyDraftPreviewProfile,
   type BookyJourneyDraft, type JourneyDraftCatalog, type JourneyDraftInput,
 } from "./booky-journey-draft";
 
@@ -2077,5 +2077,177 @@ describe("adult Booky journey draft fact subjects", () => {
     ]) { const changed: Mutable<BookyJourneyDraft> = JSON.parse(serialized); change(changed); expect(parseBookyJourneyDraft(JSON.stringify(changed), canonical).ok).toBe(false); }
     expect(parseBookyJourneyDraft(serialized, canonical).ok).toBe(true);
     expect(draft(value, canonical).journeyApprovals).toEqual([]); expect(draft(value, canonical).availability).toEqual([]);
+  });
+});
+
+function unfinishedWorkspaceInput(): JourneyDraftInput {
+  const value = additionalWorkValue(variantValue());
+  value.id = " unfinished / route "; value.version = -1.5; value.ageRange = { min: 0, max: -3.25 }; value.estimatedDurationMinutes = 0.5;
+  value.countryId = " missing country "; value.writerId = "missing-writer"; value.workId = "";
+  value.copy.ru.title = ""; value.copy.en.title = "unfinished\nsingle-line\ttitle"; value.copy.en.description = " not yet finished ";
+  value.copy.ru.nodes.work.caption = ""; value.fact!.subject = "writer";
+  value.fact!.copy.ru.body = ""; value.fact!.copy.ru.sources = [{ id: "", url: " not a URL ", accessedAt: "not-a-date" }];
+  value.fact!.copy.en.sources = []; value.activity!.choices = [{ countryId: "", writerId: "not-a-canonical-author" }];
+  value.prerequisites = [{ id: value.id, version: -4.5 }, { id: value.id, version: 0 }];
+  value.optionalNodeOrder = ["activity", "activity"];
+  value.additionalWorks![0].workId = "unknown additional work"; value.additionalWorks![1].workId = value.additionalWorks![0].workId;
+  value.additionalWorks![0].copy.en.reduced = "";
+  return value;
+}
+function workspace(value: unknown = unfinishedWorkspaceInput()) {
+  const result = createBookyJourneyWorkspace(value);
+  if (!result.ok) throw new Error(JSON.stringify(result.errors));
+  return result.workspace;
+}
+
+describe("adult Booky journey unfinished local workspace", () => {
+  it("preserves unfinished strings finite semantic-invalid numbers optional own keys and row order in independent frozen snapshots without touching callers", () => {
+    const value = unfinishedWorkspaceInput(), before = JSON.stringify(value), saved = workspace(value);
+    expect(Object.keys(saved)).toEqual(["kind", "schemaVersion", "input"]); expect(saved.kind).toBe("booky-journey-workspace"); expect(saved.schemaVersion).toBe(1);
+    expect(saved.input).toEqual(value); expect(JSON.stringify(value)).toBe(before); expect(saved.input).not.toBe(value);
+    for (const [snapshot, original] of [[saved.input.fact, value.fact], [saved.input.fact!.copy.ru.sources, value.fact!.copy.ru.sources],
+      [saved.input.additionalWorks![0].copy.en, value.additionalWorks![0].copy.en], [saved.input.prerequisites, value.prerequisites],
+      [saved.input.optionalNodeOrder, value.optionalNodeOrder]] as const) { expect(snapshot).not.toBe(original); expect(Object.isFrozen(snapshot)).toBe(true); }
+    expect(saved.input.fact!.copy.ru.sources[0].url).toBe(" not a URL "); expect(saved.input.copy.ru.nodes.work.caption).toBe("");
+    expect(saved.input.copy.en.title).toBe("unfinished\nsingle-line\ttitle");
+    expect(Object.hasOwn(saved.input.additionalWorks![0].copy.en, "reduced")).toBe(true); expect(Object.hasOwn(saved.input.additionalWorks![1].copy.en, "reduced")).toBe(false);
+    const reopened = parseBookyJourneyWorkspace(JSON.stringify(saved)); expect(reopened.ok).toBe(true);
+    if (!reopened.ok) throw new Error("unfinished workspace reopen failed");
+    expect(reopened.workspace.input).toEqual(value); expect(reopened.workspace.input).not.toBe(saved.input);
+    expect(reopened.workspace.input.fact!.copy.en.sources).toEqual([]); expect(Object.isFrozen(reopened.workspace.input.additionalWorks![1])).toBe(true);
+    value.fact!.copy.ru.sources[0].url = "changed"; value.additionalWorks![0].copy.en.reduced = "changed"; (value.prerequisites![0] as { version: number }).version = 12;
+    expect(saved.input.fact!.copy.ru.sources[0].url).toBe(" not a URL "); expect(reopened.workspace.input.additionalWorks![0].copy.en.reduced).toBe("");
+    expect(reopened.workspace.input.prerequisites![0].version).toBe(-4.5); expect(Object.isFrozen(value)).toBe(false);
+  });
+
+  it("keeps workspace and compiled formats separate while later compilation rejects incomplete semantics and unchanged completed inputs retain existing native download goldens", () => {
+    const saved = workspace(); expect(createBookyJourneyDraft(saved.input, catalog()).ok).toBe(false);
+    expect(parseBookyJourneyDraft(JSON.stringify(saved), catalog()).ok).toBe(false);
+    expect(parseBookyJourneyWorkspace(JSON.stringify(draft())).ok).toBe(false);
+    expect(createBookyJourneyWorkspace(draft()).ok).toBe(false);
+    for (const fixture of historicalOrderlessDownloads) {
+      const reopened = parseBookyJourneyWorkspace(JSON.stringify(workspace(fixture.input))); expect(reopened.ok).toBe(true);
+      if (!reopened.ok) throw new Error("complete workspace reopen failed");
+      const compiled = draft(reopened.workspace.input, fixture.catalog);
+      expect(contentTextHash(JSON.stringify(compiled, null, 2) + "\n")).toBe(fixture.sha256);
+      expect(compiled.authoringSource).toEqual(draft(fixture.input, fixture.catalog).authoringSource);
+      expect(compiled.journeyApprovals).toEqual([]); expect(compiled.availability).toEqual([]);
+    }
+    const valid = variantValue(), wrongRefs = structuredClone(valid); wrongRefs.activity!.choices = [{ countryId: "foreign", writerId: "unknown" }];
+    expect(workspace(wrongRefs).input.activity!.choices).toEqual(wrongRefs.activity!.choices);
+    expect(createBookyJourneyDraft(workspace(wrongRefs).input, catalog()).ok).toBe(false);
+  });
+
+  it("accepts dense zero-to-cap unfinished arrays but rejects overflow holes exotic prototypes accessors and hidden extras without invoking getters", () => {
+    let getterCalls = 0;
+    const value = unfinishedWorkspaceInput();
+    const arrays = [
+      { cap: 16, row: value.prerequisites![0], replace: (target: JourneyDraftInput, rows: unknown) => Object.assign(target, { prerequisites: rows }) },
+      { cap: 8, row: value.additionalWorks![0], replace: (target: JourneyDraftInput, rows: unknown) => Object.assign(target, { additionalWorks: rows }) },
+      { cap: 4, row: value.activity!.choices[0], replace: (target: JourneyDraftInput, rows: unknown) => Object.assign(target.activity!, { choices: rows }) },
+      { cap: 16, row: value.fact!.copy.ru.sources[0], replace: (target: JourneyDraftInput, rows: unknown) => Object.assign(target.fact!.copy.ru, { sources: rows }) },
+      { cap: 2, row: "activity", replace: (target: JourneyDraftInput, rows: unknown) => Object.assign(target, { optionalNodeOrder: rows }) },
+    ];
+    for (const config of arrays) {
+      for (const length of [0, config.cap]) {
+        const target = unfinishedWorkspaceInput(), rows = Array.from({ length }, () => structuredClone(config.row)); config.replace(target, rows);
+        expect(workspace(target).input).toEqual(target);
+      }
+      const malformed: unknown[] = [null, {}, Array(1), Array.from({ length: config.cap + 1 }, () => structuredClone(config.row))];
+      for (const change of [
+        (rows: unknown[]) => { Object.defineProperty(rows, "0", { enumerable: true, get() { getterCalls++; throw new Error("workspace row getter"); } }); },
+        (rows: unknown[]) => { Object.defineProperty(rows, "0", { value: structuredClone(config.row), enumerable: false }); },
+        (rows: unknown[]) => { Object.setPrototypeOf(rows, null); },
+        (rows: unknown[]) => { Object.defineProperty(rows, "hidden", { value: true }); },
+        (rows: unknown[]) => { Object.assign(rows, { extra: true }); },
+        (rows: unknown[]) => { Object.defineProperty(rows, Symbol("extra"), { value: true }); },
+      ]) { const rows: unknown[] = [structuredClone(config.row)]; change(rows); malformed.push(rows); }
+      for (const rows of malformed) { const target = unfinishedWorkspaceInput(); config.replace(target, rows); expect(createBookyJourneyWorkspace(target).ok).toBe(false); }
+    }
+    const targets = [
+      (target: JourneyDraftInput) => target, (target: JourneyDraftInput) => target.ageRange,
+      (target: JourneyDraftInput) => target.copy.en, (target: JourneyDraftInput) => target.copy.ru.nodes.work,
+      (target: JourneyDraftInput) => target.fact!, (target: JourneyDraftInput) => target.fact!.copy.ru.sources[0],
+      (target: JourneyDraftInput) => target.activity!.choices[0], (target: JourneyDraftInput) => target.prerequisites![0],
+      (target: JourneyDraftInput) => target.additionalWorks![0].copy.en,
+    ];
+    for (const getTarget of targets) for (const change of [
+      (record: object) => { Object.assign(record, { extra: true }); }, (record: object) => { Object.defineProperty(record, "hidden", { value: true }); },
+      (record: object) => { Object.setPrototypeOf(record, { inherited: true }); },
+      (record: object) => { const key = Object.keys(record)[0]; Object.defineProperty(record, key, { enumerable: true, get() { getterCalls++; throw new Error("workspace value getter"); } }); },
+    ]) { const target = unfinishedWorkspaceInput(); change(getTarget(target)); expect(createBookyJourneyWorkspace(target).ok).toBe(false); }
+    const plain = Object.assign(Object.create(null), unfinishedWorkspaceInput()); expect(workspace(plain).input).toEqual(plain);
+    expect(getterCalls).toBe(0);
+  });
+
+  it("enforces only supported types enums maximum string lengths and finite numeric values while leaving domain integer syntax and catalog checks to the compiler", () => {
+    const fields = [
+      { max: 48, set: (value: JourneyDraftInput, text: unknown) => Object.assign(value, { id: text }) },
+      { max: 200, set: (value: JourneyDraftInput, text: unknown) => Object.assign(value, { countryId: text }) },
+      { max: 200, set: (value: JourneyDraftInput, text: unknown) => Object.assign(value.copy.ru, { title: text }) },
+      { max: 800, set: (value: JourneyDraftInput, text: unknown) => Object.assign(value.copy.en, { description: text }) },
+      { max: 96, set: (value: JourneyDraftInput, text: unknown) => Object.assign(value.prerequisites![0], { id: text }) },
+      { max: 1000, set: (value: JourneyDraftInput, text: unknown) => Object.assign(value.fact!.copy.ru.sources[0], { url: text }) },
+      { max: 24, set: (value: JourneyDraftInput, text: unknown) => Object.assign(value.fact!.copy.ru.sources[0], { accessedAt: text }) },
+      { max: 96, set: (value: JourneyDraftInput, text: unknown) => Object.assign(value.fact!.copy.ru.sources[0], { id: text }) },
+    ];
+    for (const field of fields) {
+      for (const text of ["", " leading and trailing ", "x".repeat(field.max)]) { const value = unfinishedWorkspaceInput(); field.set(value, text); expect(workspace(value).input).toEqual(value); }
+      for (const text of [undefined, null, 4, false, {}, "x".repeat(field.max + 1)]) { const value = unfinishedWorkspaceInput(); field.set(value, text); expect(createBookyJourneyWorkspace(value).ok).toBe(false); }
+    }
+    for (const kind of ["country", "writer", "work", "checkpoint", "activity", "sourced-fact", "additional"] as const) for (const [field, max] of [["title", 160], ["body", 1600], ["caption", 1600], ["reduced", 320]] as const) {
+      const value = unfinishedWorkspaceInput(), copy = kind === "additional" ? value.additionalWorks![0].copy.ru : kind === "activity" ? value.activity!.copy.ru
+        : kind === "sourced-fact" ? value.fact!.copy.ru : value.copy.ru.nodes[kind];
+      copy[field] = "x".repeat(max); expect(createBookyJourneyWorkspace(value).ok).toBe(true);
+      copy[field] = "x".repeat(max + 1); expect(createBookyJourneyWorkspace(value).ok).toBe(false);
+    }
+    for (const set of [
+      (value: JourneyDraftInput, number: unknown) => Object.assign(value, { version: number }),
+      (value: JourneyDraftInput, number: unknown) => Object.assign(value.ageRange, { min: number }),
+      (value: JourneyDraftInput, number: unknown) => Object.assign(value.ageRange, { max: number }),
+      (value: JourneyDraftInput, number: unknown) => Object.assign(value, { estimatedDurationMinutes: number }),
+      (value: JourneyDraftInput, number: unknown) => Object.assign(value.prerequisites![0], { version: number }),
+    ]) {
+      for (const number of [-9.25, 0, 1.5, Number.MAX_VALUE]) { const value = unfinishedWorkspaceInput(); set(value, number); expect(workspace(value).input).toEqual(value); }
+      for (const number of [NaN, Infinity, -Infinity, undefined, null, "3", true]) { const value = unfinishedWorkspaceInput(); set(value, number); expect(createBookyJourneyWorkspace(value).ok).toBe(false); }
+    }
+    for (const change of [
+      (value: JourneyDraftInput) => Object.assign(value, { readingLevel: "" }),
+      (value: JourneyDraftInput) => Object.assign(value.activity!, { type: "other" }),
+      (value: JourneyDraftInput) => Object.assign(value.fact!, { subject: "additional-work" }),
+      (value: JourneyDraftInput) => Object.assign(value, { optionalNodeOrder: ["checkpoint"] }),
+      (value: JourneyDraftInput) => Object.assign(value.additionalWorks![0].copy.ru, { reduced: undefined }),
+    ]) { const value = unfinishedWorkspaceInput(); change(value); expect(createBookyJourneyWorkspace(value).ok).toBe(false); }
+  });
+
+  it("rejects wrong discriminators versions missing fields extra authority and nested shapes before any workspace can replace form data", () => {
+    const saved = workspace(), serialized = JSON.stringify(saved);
+    for (const malformed of [null, [], {}, { ...saved, kind: "other" }, { ...saved, schemaVersion: 2 }, { kind: saved.kind, schemaVersion: 1 },
+      { ...saved, definitions: [] }, { ...saved, approved: true }, { ...saved, answers: [] }, { ...saved, input: { ...saved.input, profile: {} } }]) {
+      expect(parseBookyJourneyWorkspace(JSON.stringify(malformed)).ok).toBe(false);
+    }
+    for (const path of ["copy.ru", "copy.ru.nodes", "activity.copy", "fact.copy", "additionalWorks.0", "prerequisites.0", "fact.copy.ru.sources.0"]) {
+      const malformed = JSON.parse(serialized); let row = malformed.input;
+      for (const part of path.split(".")) row = row[part];
+      row.unexpected = true; expect(parseBookyJourneyWorkspace(JSON.stringify(malformed)).ok).toBe(false);
+    }
+    for (const raw of ["", "{", JSON.stringify({ ...saved, input: null }), serialized.replace('"schemaVersion":1', '"schemaVersion":"1"')]) expect(parseBookyJourneyWorkspace(raw).ok).toBe(false);
+    expect(parseBookyJourneyWorkspace(serialized).ok).toBe(true);
+  });
+
+  it("bounds actual UTF8 file bytes before parsing and formatted output after snapshot creation without relying on JavaScript string length", () => {
+    const saved = workspace(input()), serialized = JSON.stringify(saved), size = new TextEncoder().encode(serialized).byteLength;
+    const exactLimit = serialized + " ".repeat(BOOKY_JOURNEY_DRAFT_MAX_BYTES - size);
+    expect(parseBookyJourneyWorkspace(exactLimit).ok).toBe(true); expect(parseBookyJourneyWorkspace(exactLimit + " ").ok).toBe(false);
+    const multiByte = "界".repeat(175000); expect(multiByte.length).toBeLessThan(BOOKY_JOURNEY_DRAFT_MAX_BYTES);
+    const oversized = parseBookyJourneyWorkspace(multiByte); expect(oversized.ok).toBe(false);
+    if (!oversized.ok) expect(oversized.errors[0].message).toContain("512");
+    const value = additionalWorkValue(variantValue(), 8);
+    for (const { copy } of variantCopies(value)) { copy.body = "\u0000".repeat(1600); copy.caption = "\u0000".repeat(1600); }
+    for (const row of value.additionalWorks!) for (const locale of ["ru", "en"] as const) { row.copy[locale].body = "\u0000".repeat(1600); row.copy[locale].caption = "\u0000".repeat(1600); }
+    for (const locale of ["ru", "en"] as const) value.fact!.copy[locale].sources = Array.from({ length: 16 }, () => ({ id: "", url: "\u0000".repeat(1000), accessedAt: "" }));
+    expect(new TextEncoder().encode(JSON.stringify({ kind: "booky-journey-workspace", schemaVersion: 1, input: value }, null, 2) + "\n").byteLength).toBeGreaterThan(BOOKY_JOURNEY_DRAFT_MAX_BYTES);
+    const result = createBookyJourneyWorkspace(value); expect(result.ok).toBe(false); if (!result.ok) expect(result.errors[0].message).toContain("512");
+    expect(Object.isFrozen(value)).toBe(false);
   });
 });

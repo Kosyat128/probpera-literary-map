@@ -88,6 +88,12 @@ export type JourneyDraftResult =
 export type JourneyDraftParseResult =
   | Readonly<{ ok: true; input: JourneyDraftInput; draft: BookyJourneyDraft }>
   | Readonly<{ ok: false; errors: readonly JourneyDraftError[] }>;
+export type BookyJourneyWorkspace = Readonly<{
+  kind: "booky-journey-workspace"; schemaVersion: 1; input: JourneyDraftInput;
+}>;
+export type JourneyWorkspaceResult =
+  | Readonly<{ ok: true; workspace: BookyJourneyWorkspace }>
+  | Readonly<{ ok: false; errors: readonly JourneyDraftError[] }>;
 export type JourneyDraftPreviewProfileEvaluation = Readonly<{
   status: "matches" | "outside" | "invalid";
   ageMatches: boolean | null;
@@ -122,6 +128,97 @@ function ownDataKeys(value: unknown, fields: readonly string[]): value is Record
     const descriptor = Object.getOwnPropertyDescriptor(value, field);
     return !!descriptor?.enumerable && "value" in descriptor;
   });
+}
+
+function workspaceArray(value: unknown, max: number, valid: (item: unknown) => boolean): boolean {
+  if (!Array.isArray(value) || Object.getPrototypeOf(value) !== Array.prototype || value.length > max
+    || Reflect.ownKeys(value).length !== value.length + 1) return false;
+  for (let index = 0; index < value.length; index++) {
+    const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+    if (!descriptor?.enumerable || !("value" in descriptor) || !valid(descriptor.value)) return false;
+  }
+  return true;
+}
+const workspaceString = (value: unknown, max: number) => typeof value === "string" && value.length <= max;
+const workspaceNumber = (value: unknown) => typeof value === "number" && Number.isFinite(value);
+function workspaceCopy(value: unknown, extra: readonly string[] = []): boolean {
+  return nodeCopyKeys(value, extra) && workspaceString(value.title, 160) && workspaceString(value.body, 1600)
+    && (!Object.hasOwn(value, "caption") || workspaceString(value.caption, 1600))
+    && (!Object.hasOwn(value, "reduced") || workspaceString(value.reduced, 320));
+}
+function workspaceCopies(value: unknown, valid: (copy: unknown) => boolean): boolean {
+  return ownDataKeys(value, LOCALES) && LOCALES.every(locale => valid(value[locale]));
+}
+function workspaceRouteCopy(value: unknown): boolean {
+  if (!ownDataKeys(value, ["title", "description", "nodes"])) return false;
+  const nodes = value.nodes;
+  return workspaceString(value.title, 200) && workspaceString(value.description, 800)
+    && ownDataKeys(nodes, NODE_KINDS) && NODE_KINDS.every(kind => workspaceCopy(nodes[kind]));
+}
+function workspaceInput(value: unknown): JourneyDraftInput | null {
+  const optional = ["activity", "fact", "optionalNodeOrder", "prerequisites", "additionalWorks"]
+    .filter(field => !!value && Object.prototype.hasOwnProperty.call(value, field));
+  if (!ownDataKeys(value, ["id", "version", "countryId", "writerId", "workId", "ageRange", "readingLevel",
+    "estimatedDurationMinutes", "copy", ...optional]) || !workspaceString(value.id, 48) || !workspaceNumber(value.version)
+    || !["countryId", "writerId", "workId"].every(field => workspaceString(value[field], 200))
+    || !ownDataKeys(value.ageRange, ["min", "max"]) || !workspaceNumber(value.ageRange.min) || !workspaceNumber(value.ageRange.max)
+    || !["plain", "developing", "fluent"].includes(value.readingLevel as string) || !workspaceNumber(value.estimatedDurationMinutes)
+    || !workspaceCopies(value.copy, workspaceRouteCopy)) return null;
+  if (optional.includes("activity")) {
+    const activity = value.activity;
+    if (!ownDataKeys(activity, ["type", "choices", "copy"]) || activity.type !== "match-work-author"
+      || !workspaceArray(activity.choices, 4, choice => ownDataKeys(choice, ["countryId", "writerId"])
+        && workspaceString(choice.countryId, 200) && workspaceString(choice.writerId, 200))
+      || !workspaceCopies(activity.copy, copy => workspaceCopy(copy))) return null;
+  }
+  if (optional.includes("fact")) {
+    const fact = value.fact, hasSubject = !!fact && Object.prototype.hasOwnProperty.call(fact, "subject");
+    if (!ownDataKeys(fact, ["copy", ...(hasSubject ? ["subject"] : [])])
+      || hasSubject && !["country", "writer", "work"].includes(fact.subject as string)
+      || !workspaceCopies(fact.copy, copy => workspaceCopy(copy, ["sources"]) && ownDataKeys(copy,
+        ["title", "body", "sources", ...["caption", "reduced"].filter(field => !!copy && Object.prototype.hasOwnProperty.call(copy, field))])
+        && workspaceArray(copy.sources, 16, source => ownDataKeys(source, ["id", "url", "accessedAt"])
+          && workspaceString(source.id, 96) && workspaceString(source.url, 1000) && workspaceString(source.accessedAt, 24)))) return null;
+  }
+  if (optional.includes("optionalNodeOrder") && !workspaceArray(value.optionalNodeOrder, 2,
+    kind => kind === "sourced-fact" || kind === "activity")) return null;
+  if (optional.includes("prerequisites") && !workspaceArray(value.prerequisites, 16,
+    reference => ownDataKeys(reference, ["id", "version"]) && workspaceString(reference.id, 96) && workspaceNumber(reference.version))) return null;
+  if (optional.includes("additionalWorks") && !workspaceArray(value.additionalWorks, 8,
+    row => ownDataKeys(row, ["workId", "copy"]) && workspaceString(row.workId, 200) && workspaceCopies(row.copy, copy => workspaceCopy(copy)))) return null;
+  // Clone only validated own data; unfinished semantic values and optional-key
+  // presence survive without consulting a catalog or granting draft authority.
+  const snapshot = (item: unknown): unknown => Array.isArray(item)
+    ? Array.from({ length: item.length }, (_, index) => snapshot(Object.getOwnPropertyDescriptor(item, String(index))!.value))
+    : item && typeof item === "object" ? Object.fromEntries(Object.keys(item).map(key => [key, snapshot(Object.getOwnPropertyDescriptor(item, key)!.value)])) : item;
+  return snapshot(value) as JourneyDraftInput;
+}
+
+/** Explicit local file recovery only. This does not compile or validate a route. */
+export function createBookyJourneyWorkspace(input: unknown): JourneyWorkspaceResult {
+  const rejected = (message: string): JourneyWorkspaceResult => freeze({ ok: false as const, errors: [{ field: "workspace", message }] });
+  try {
+    const snapshot = workspaceInput(input);
+    if (!snapshot) return rejected("Форма содержит неподдерживаемую структуру, тип, поле или превышение длины. Рабочий файл не создан.");
+    const workspace: BookyJourneyWorkspace = { kind: "booky-journey-workspace", schemaVersion: 1, input: snapshot };
+    if (new TextEncoder().encode(JSON.stringify(workspace, null, 2) + "\n").byteLength > BOOKY_JOURNEY_DRAFT_MAX_BYTES)
+      return rejected("Размер рабочего файла превышает 512 КиБ.");
+    return freeze({ ok: true as const, workspace });
+  } catch { return rejected("Не удалось подготовить рабочий файл. Текущая форма сохранена."); }
+}
+
+/** A workspace can retain invalid authored values; it never replaces a compiled draft. */
+export function parseBookyJourneyWorkspace(text: string): JourneyWorkspaceResult {
+  const rejected = (message: string): JourneyWorkspaceResult => freeze({ ok: false as const, errors: [{ field: "workspace", message }] });
+  try {
+    if (typeof text !== "string" || text.length === 0) return rejected("Рабочий файл пуст или не содержит JSON.");
+    if (text.length > BOOKY_JOURNEY_DRAFT_MAX_BYTES || new TextEncoder().encode(text).byteLength > BOOKY_JOURNEY_DRAFT_MAX_BYTES)
+      return rejected("Размер рабочего файла превышает 512 КиБ.");
+    const workspace: unknown = JSON.parse(text);
+    if (!ownDataKeys(workspace, ["kind", "schemaVersion", "input"]) || workspace.kind !== "booky-journey-workspace" || workspace.schemaVersion !== 1)
+      return rejected("Выберите рабочий файл формы версии 1. Экспорт черновика маршрута открывается отдельно.");
+    return createBookyJourneyWorkspace(workspace.input);
+  } catch { return rejected("Не удалось прочитать рабочий файл JSON. Текущая форма сохранена."); }
 }
 
 /** Local adult preview only; matching conditions do not admit or approve a journey. */

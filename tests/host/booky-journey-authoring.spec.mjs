@@ -244,7 +244,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   const captionErrorIds = await invalidEnCaption.getAttribute('aria-describedby'); expect(captionErrorIds).toBeTruthy();
   expect(await invalidEnCaption.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id =>
     document.getElementById(id)?.querySelector('[data-booky-error-target]')?.getAttribute('data-booky-error-target') === 'copy.en.nodes.country.caption'))).toBe(true);
-  await expect(page.locator('input[type="file"]')).toHaveAttribute('aria-describedby', 'journey-open-description');
+  await expect(page.getByLabel('Открыть черновик JSON', { exact: true })).toHaveAttribute('aria-describedby', 'journey-open-description');
   await expect(country).not.toHaveAttribute('aria-invalid', 'true'); await expect(country).toHaveValue('country-a');
   await expect(page.getByLabel('Название маршрута (RU)', { exact: true })).toHaveValue('Тестовый маршрут');
   await captionErrorAction.scrollIntoViewIfNeeded();
@@ -260,7 +260,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   await expect(invalidEnCaption).toHaveAttribute('id', originalCaptionId); await expect(invalidEnCaption).toHaveValue(authoredInvalidCaption);
   await invalidEnCaption.fill(''); await expect(captionErrorAction).toHaveCount(0);
   await expect(invalidEnCaption).not.toHaveAttribute('aria-invalid', 'true'); await expect(invalidEnCaption).not.toHaveAttribute('aria-describedby', /.+/);
-  await expect(page.locator('input[type="file"]')).toHaveAttribute('aria-describedby', 'journey-open-description');
+  await expect(page.getByLabel('Открыть черновик JSON', { exact: true })).toHaveAttribute('aria-describedby', 'journey-open-description');
   await expect(page.getByLabel('Название маршрута (RU)', { exact: true })).toHaveValue('Тестовый маршрут');
   await enCountryVariants.locator('summary').tap();
   const ageMinimum = page.getByLabel('Возраст от', { exact: true }), ageMaximum = page.getByLabel('Возраст до', { exact: true });
@@ -516,7 +516,7 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   for (const record of draft.dialogues) expect(record.review).toMatchObject({ status: 'draft', reviewer: null, reviewedAt: null });
   for (const key of ['journeyApprovals', 'dialogueApprovals', 'currentVersions', 'availability']) expect(draft[key]).toEqual([]);
   expect(draft.releaseReady).toBe(false); expect(downloads).toHaveLength(1);
-  const opener=page.locator('summary').filter({hasText:'Открыть локальный черновик'});
+  const opener=page.locator('summary#journey-open-heading');
   await expect(opener.locator('..')).not.toHaveAttribute('open','');
   await opener.tap();
   const openDraft=page.getByLabel('Открыть черновик JSON',{exact:true});
@@ -817,7 +817,6 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     expect(bounds.x).toBeGreaterThanOrEqual(0); expect(bounds.x + bounds.width).toBeLessThanOrEqual(321);
   }
   expect(await overflow()).toBe(false);
-  await capture('booky-journey-preview-ru-320.png', 'Actual RU320 comparison for the second additional canonical work, Alpha, after author-defined Beta/Alpha ordering. Its independent authored RU/EN multiline captions are visible in the existing local preview; no full graph, editorial, installed-device or runtime acceptance is established.');
   await overviewSummary.tap(); await overview.locator('[data-preview-step-choice="work"]').tap(); await expect(preview.locator('[data-preview-step="work"]')).toContainText('Каноническая запись: Тестовая книга А');
   await overview.locator('[data-preview-step-choice="checkpoint"]').tap(); await expect(preview.locator('[data-preview-step="checkpoint"]')).toContainText('Книга для завершения: Тестовая книга А');
   await overviewSummary.tap();
@@ -857,6 +856,89 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
   const extrasRemovedBytes = await fs.readFile(extrasRemovedPath); expect(sha(extrasRemovedBytes)).toBe('7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5');
   expect(Object.hasOwn(JSON.parse(extrasRemovedBytes.toString('utf8')).authoringSource.input, 'additionalWorks')).toBe(false);
   expect(downloads).toHaveLength(6); expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls, answer: window.__activityAnswerCalls }))).toEqual({ validation: [], answer: [] });
+  const localFileSummary = page.locator('#journey-open-heading');
+  if (!(await localFileSummary.locator('..').evaluate(node => node.open))) await localFileSummary.tap();
+  const workspacePanel = page.locator('[data-booky-workspace]'), workspaceSummary = workspacePanel.locator(':scope > summary');
+  await expect(workspacePanel).not.toHaveAttribute('open', ''); await workspaceSummary.focus(); await workspaceSummary.press('Enter'); await expect(workspaceSummary).toBeFocused();
+  const saveWorkspace = workspacePanel.getByRole('button', { name: 'Сохранить форму для продолжения', exact: true });
+  const openWorkspace = workspacePanel.getByLabel('Открыть форму для продолжения', { exact: true });
+  for (const control of [workspaceSummary, saveWorkspace, openWorkspace]) expect((await control.boundingBox()).height).toBeGreaterThanOrEqual(44);
+  expect(await openWorkspace.evaluate(node => (node.getAttribute('aria-describedby') || '').split(' ').every(id => Boolean(document.getElementById(id))))).toBe(true);
+  const currentWorkspacePreview = await preview.innerText(), currentWorkspaceTitle = await routeTitle.inputValue();
+  const rawWorkspaceUpload = (name, buffer) => openWorkspace.setInputFiles({ name, mimeType: 'application/json', buffer });
+  for (const [name, buffer] of [
+    ['compiled-draft-is-not-workspace.json', extrasRemovedBytes], ['bad-workspace.json', Buffer.from('{')],
+    ['empty-workspace.json', Buffer.alloc(0)], ['oversize-workspace.json', Buffer.alloc(524289, ' ')],
+    ['unreadable-draft.json', Buffer.from('{}')],
+  ]) {
+    await rawWorkspaceUpload(name, buffer); await expect(workspacePanel.getByRole('alert')).toBeVisible();
+    expect(await preview.innerText()).toBe(currentWorkspacePreview); await expect(routeTitle).toHaveValue(currentWorkspaceTitle); await expect(country).toHaveValue('country-a');
+    expect(downloads).toHaveLength(6); expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls, answer: window.__activityAnswerCalls }))).toEqual({ validation: [], answer: [] });
+  }
+  const partialInput = structuredClone(JSON.parse(extrasRemovedBytes.toString('utf8')).authoringSource.input);
+  partialInput.copy.en.title = 'Unfinished\nsingle-line title';
+  Object.assign(partialInput, { countryId: 'missing-country', writerId: 'missing-writer', workId: 'missing-main-work', version: 0.5, estimatedDurationMinutes: -2.5,
+    prerequisites: [{ id: '', version: 0 }, { id: ' unfinished ref ', version: -1.25 }],
+    additionalWorks: structuredClone(extraDraft.authoringSource.input.additionalWorks), optionalNodeOrder: ['activity', 'sourced-fact'],
+    activity: { type: 'match-work-author', choices: [{ countryId: 'missing-country', writerId: 'unknown-answer-writer' }], copy: {
+      ru: { title: '', body: ' Вопрос пока не готов ' }, en: { title: '', body: '' } } },
+    fact: { subject: 'writer', copy: { ru: { title: '', body: '', caption: '', sources: [{ id: '', url: ' not a URL ', accessedAt: '' }] },
+      en: { title: '', body: '', sources: [] } } },
+  });
+  const partialWorkspace = { kind: 'booky-journey-workspace', schemaVersion: 1, input: partialInput };
+  await rawWorkspaceUpload('unfinished-form.workspace.json', Buffer.from(JSON.stringify(partialWorkspace)));
+  await expect(preview).toHaveCount(0); await expect(country).toHaveValue('missing-country'); await expect(writer).toHaveValue('missing-writer'); await expect(work).toHaveValue('missing-main-work');
+  for (const [control, value] of [[country, 'missing-country'], [writer, 'missing-writer'], [work, 'missing-main-work']]) {
+    await expect(control.locator(`option[value="${value}"]`)).toHaveAttribute('disabled', ''); await expect(control.locator('option:checked')).toContainText('недоступ');
+  }
+  await expect(writer).toBeDisabled(); await expect(work).toBeDisabled();
+  for (const kind of ['country', 'writer', 'work']) await expect(searchQuery(kind)).toHaveValue('');
+  const rawFactPanel = page.locator('summary[data-booky-draft-field="fact"]').locator('..');
+  if (!(await rawFactPanel.evaluate(node => node.open))) await rawFactPanel.locator(':scope > summary').tap();
+  const rawActivityPanel = page.locator('summary[data-booky-draft-field="activity"]').locator('..');
+  if (!(await rawActivityPanel.evaluate(node => node.open))) await rawActivityPanel.locator(':scope > summary').tap();
+  const missingAuthorChoice = rawActivityPanel.getByLabel('Автор · вариант 1', { exact: true });
+  await expect(missingAuthorChoice).toHaveValue(JSON.stringify(['missing-country', 'unknown-answer-writer']));
+  await expect(missingAuthorChoice.locator('option:checked')).toHaveAttribute('disabled', '');
+  await routeTitle.fill(' Незавершённая форма '); await page.getByLabel('HTTPS URL источника 1 (RU)', { exact: true }).fill(' invalid URL ');
+  const partialSavePromise = page.waitForEvent('download'); await saveWorkspace.tap(); const partialDownload = await partialSavePromise;
+  expect(await partialDownload.failure()).toBeNull(); expect(partialDownload.suggestedFilename()).toBe('booky-journey.workspace.json');
+  const partialWorkspacePath = testInfo.outputPath('unfinished-native.workspace.json'); await partialDownload.saveAs(partialWorkspacePath);
+  const partialWorkspaceBytes = await fs.readFile(partialWorkspacePath), partialSaved = JSON.parse(partialWorkspaceBytes.toString('utf8'));
+  expect(Object.keys(partialSaved)).toEqual(['kind', 'schemaVersion', 'input']); expect(partialSaved.kind).toBe('booky-journey-workspace'); expect(partialSaved.schemaVersion).toBe(1);
+  expect(partialSaved.input.copy.ru.title).toBe(' Незавершённая форма '); expect(partialSaved.input.fact.copy.ru.sources[0].url).toBe(' invalid URL ');
+  expect(partialSaved.input.copy.en.title).toBe('Unfinished\nsingle-line title');
+  expect(partialSaved.input.fact.copy.en.sources).toEqual([]); expect(partialSaved.input.fact.copy.ru.caption).toBe('');
+  expect(Object.hasOwn(partialSaved.input.fact.copy.en, 'caption')).toBe(false);
+  expect(partialSaved.input.additionalWorks).toEqual(extraDraft.authoringSource.input.additionalWorks);
+  expect(partialSaved.input.prerequisites).toEqual(partialInput.prerequisites); expect(partialSaved.input.optionalNodeOrder).toEqual(['activity', 'sourced-fact']);
+  await routeTitle.fill('Изменение после рабочего сохранения');
+  await rawWorkspaceUpload('native-reopened.workspace.json', partialWorkspaceBytes); await expect(routeTitle).toHaveValue(' Незавершённая форма ');
+  await expect(page.getByLabel('HTTPS URL источника 1 (RU)', { exact: true })).toHaveValue(' invalid URL ');
+  await expect(additionalBody(0, 'ru')).toHaveValue(authoredAdditional[1].ru.body); await expect(additionalBody(1, 'en')).toHaveValue(authoredAdditional[0].en.body);
+  await previewButton.tap(); await expect(preview).toHaveCount(0); await expect(page.locator('[data-booky-error-target="activity"]')).toHaveCount(1);
+  await rawActivityPanel.getByRole('checkbox', { name: 'Добавить задание «Книга и автор»', exact: true }).uncheck();
+  await previewButton.tap(); await expect(preview).toHaveCount(0); await expect(page.locator('[data-booky-error-target="fact"]')).toHaveCount(1);
+  await button.tap(); expect(downloads).toHaveLength(7);
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls, answer: window.__activityAnswerCalls }))).toEqual({ validation: [], answer: [] });
+  await upload('workspace-cannot-open-as-draft.json', partialWorkspaceBytes); await expect(preview).toHaveCount(0); await expect(routeTitle).toHaveValue(' Незавершённая форма ');
+  await page.evaluate(() => { window.__draftReadStarted = false; });
+  await rawWorkspaceUpload('delayed-draft.json', partialWorkspaceBytes); await page.waitForFunction(() => window.__draftReadStarted === true);
+  await routeTitle.fill('Правка во время рабочего чтения'); await page.evaluate(() => window.__finishDraftRead());
+  await expect(openWorkspace).not.toHaveAttribute('aria-busy', 'true'); await expect(routeTitle).toHaveValue('Правка во время рабочего чтения');
+  await rawWorkspaceUpload('native-reopened-again.workspace.json', partialWorkspaceBytes); await expect(routeTitle).toHaveValue(' Незавершённая форма ');
+  expect(await overflow()).toBe(false);
+  await saveWorkspace.focus(); await expect(saveWorkspace).toBeFocused();
+  await workspaceSummary.evaluate(node => node.scrollIntoView({ block: 'start' }));
+  for (const control of [saveWorkspace, openWorkspace]) { const bounds = await control.boundingBox(); expect(bounds.y).toBeGreaterThanOrEqual(0); expect(bounds.y + bounds.height).toBeLessThanOrEqual(844); }
+  await capture('booky-journey-preview-ru-320.png', 'Actual RU320 compact native workspace Save/Open area after successful reopening of a partially authored form. The actions and local continuation notice are visible; unknown IDs, unfinished source strings and row order are proved by behavior assertions, not all visible here. This file is neither a compiled route nor autosave, audit, editorial or device acceptance.');
+  await upload('strict-native-draft-after-workspace.json', extrasRemovedBytes); await expect(preview).toHaveCount(0); await expect(country).toHaveValue('country-a'); await expect(writer).toHaveValue('writer-a'); await expect(work).toHaveValue('work-a');
+  await previewButton.tap(); await expect(preview).toBeVisible();
+  const restoredWorkspaceDraftPromise = page.waitForEvent('download'); await button.tap(); const restoredWorkspaceDraftDownload = await restoredWorkspaceDraftPromise;
+  const restoredWorkspaceDraftPath = testInfo.outputPath('strict-draft-after-workspace.json'); await restoredWorkspaceDraftDownload.saveAs(restoredWorkspaceDraftPath);
+  const restoredWorkspaceDraftBytes = await fs.readFile(restoredWorkspaceDraftPath); expect(sha(restoredWorkspaceDraftBytes)).toBe('7523ea0a6972991c6ff999b3d1f61a812c12179781b15b45022ccf1a3ee8c6d5');
+  expect(restoredWorkspaceDraftBytes.equals(extrasRemovedBytes)).toBe(true); expect(downloads).toHaveLength(8);
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls, answer: window.__activityAnswerCalls }))).toEqual({ validation: [], answer: [] });
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
   const profileStorageWrites=await page.evaluate(()=>window.__previewProfileStorageWrites); expect(profileStorageWrites).toEqual([]);
   await testInfo.attach('booky-journey-editor-evidence', { contentType: 'application/json', body: JSON.stringify({
@@ -892,11 +974,19 @@ test('adult bilingual journey editor exports only a draft and clears dependent c
     additionalWorkLabelsCopyVariantsReportAndComparisonResolveImmutableNodeIdSnapshots:true,
     mainDuplicateAndForeignOptionsRemainExplicitlyDisabledWithoutDeletingAuthoredCopy:true, additionalCopyAndRelationshipErrorsHaveNativeRecovery:true,
     additionalWorkNativeExportReopenAndRehashedSnapshotTamperRejectionVerified:true, lastAdditionalRemovalRestoresOriginal7523Download:true,
+    nativeWorkspaceSaveAndReopenPreserveUnfinishedStringsOwnOptionalKeysNumbersAndAuthoredRowOrder:true,
+    unavailableCountryWriterMainAndAnswerChoiceIdsRemainVisibleWithoutSubstitution:true,
+    wrongFormatOversizeEmptyMalformedAndReadFailureKeepCurrentFormAndPreview:true,
+    delayedWorkspaceReadCannotOverwriteNewSourceEdit:true, rawWorkspaceOperationsHaveNoSemanticHelperOrStorageRequest:true,
+    incompleteWorkspaceStillFailsActualPreviewAndCompiledExportGates:true, workspaceAndCompiledFileActionsRejectEachOthersFormats:true,
+    compactNative44WorkspaceSaveOpenFocusedRu320Captured:true, laterStrictDraftRestoresOriginal7523NativeBytes:true,
     prerequisiteExportedDraft: { path: prerequisiteExportedPath, sha256: sha(prerequisiteBytes), bytes: prerequisiteBytes.length },
     ordinaryPrerequisiteExportedDraft: { path: ordinaryPrerequisiteExportedPath, sha256: sha(ordinaryPrerequisiteBytes), bytes: ordinaryPrerequisiteBytes.length },
     restoredExportedDraft: { path: restoredExportedPath, sha256: sha(restoredBytes), bytes: restoredBytes.length },
     additionalWorksExportedDraft: { path: extraExportedPath, sha256: sha(extraBytes), bytes: extraBytes.length },
     additionalWorksRemovedDraft: { path: extrasRemovedPath, sha256: sha(extrasRemovedBytes), bytes: extrasRemovedBytes.length },
+    unfinishedWorkspace: { path: partialWorkspacePath, sha256: sha(partialWorkspaceBytes), bytes: partialWorkspaceBytes.length },
+    strictAfterWorkspaceDraft: { path: restoredWorkspaceDraftPath, sha256: sha(restoredWorkspaceDraftBytes), bytes: restoredWorkspaceDraftBytes.length },
     localPreviewWidthStartsCollapsedAndAvailable:true, localizedNativeWidthChoicesRuEnVerified:true, actualPreviewFrameFitsParentAt320:true,
     actualDesktopFrameWidths320And768Verified:true, availableWidthRestoresActualParentWidth:true, widthControlsMinimum44CssPxAndKeyboardFocusVerified:true,
     widthSelectionPreservesWorkProfileAndCopyView:true, widthSelectionDoesNotChangeExportedBytesOrFormWidth:true, previewWidthHasNoStorageWrites:true, previewWidthMeasurements,
@@ -1092,7 +1182,7 @@ test('optional adult RU EN author task uses current semantic validation and pres
   expect(draft.releaseReady).toBe(false); expect(JSON.stringify(draft)).not.toMatch(/answerKey|correctChoice/);
   expect(Object.hasOwn(draft.authoringSource.input, 'authorQuery')).toBe(false);
 
-  const fileOpener = page.locator('summary').filter({ hasText: 'Открыть локальный черновик' });
+  const fileOpener = page.locator('summary#journey-open-heading');
   await expect(fileOpener.locator('..')).not.toHaveAttribute('open', '');
   await fileOpener.tap();
   const openDraft = page.getByLabel('Открыть черновик JSON', { exact: true });
@@ -1495,6 +1585,29 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await firstModeledCompletion.check(); await secondModeledCompletion.check();
   await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
   await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'all');
+  const pendingWorkspacePanel = page.locator('[data-booky-workspace]');
+  await expect(pendingWorkspacePanel).not.toHaveAttribute('open', ''); await pendingWorkspacePanel.locator(':scope > summary').tap();
+  const pendingWorkspaceSave = pendingWorkspacePanel.getByRole('button', { name: 'Сохранить форму для продолжения', exact: true });
+  const pendingWorkspaceOpen = pendingWorkspacePanel.getByLabel('Открыть форму для продолжения', { exact: true });
+  const pendingWorkspacePresentation = { step: await stepStatus.innerText(), width: await activityFrame.getAttribute('data-preview-width'),
+    view: await preview.locator('[data-booky-preview-copy-view]').inputValue(), age: await profileAge.inputValue(), level: await profileLevel.inputValue(), title: await routeTitle.inputValue() };
+  const pendingWorkspaceCalls = await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }));
+  const pendingWorkspaceDownloadPromise = page.waitForEvent('download'); await pendingWorkspaceSave.focus(); await pendingWorkspaceSave.press('Enter'); const pendingWorkspaceDownload = await pendingWorkspaceDownloadPromise;
+  expect(await pendingWorkspaceDownload.failure()).toBeNull();
+  const pendingWorkspacePath = testInfo.outputPath('pending-answer.workspace.json'); await pendingWorkspaceDownload.saveAs(pendingWorkspacePath);
+  const pendingWorkspaceBytes = await fs.readFile(pendingWorkspacePath), pendingWorkspace = JSON.parse(pendingWorkspaceBytes.toString('utf8'));
+  expect(Object.keys(pendingWorkspace)).toEqual(['kind', 'schemaVersion', 'input']); expect(pendingWorkspace.kind).toBe('booky-journey-workspace');
+  expect(pendingWorkspace.input.prerequisites).toEqual([{ id: 'held.prerequisite', version: 7 }, { id: 'held.prerequisite-next', version: 1 }]);
+  expect(pendingWorkspace.input.copy.ru.title).toBe(pendingWorkspacePresentation.title); expect(await page.evaluate(() => window.__draftExportBlobs[1].text())).toBe(pendingWorkspaceBytes.toString('utf8'));
+  await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(firstModeledCompletion).toBeChecked(); await expect(secondModeledCompletion).toBeChecked();
+  for (const [name, buffer] of [['compiled-route-is-not-workspace.json', bytes], ['invalid-input.workspace.json', Buffer.from('{"kind":"booky-journey-workspace","schemaVersion":1,"input":null}')], ['too-large.workspace.json', Buffer.alloc(524289, ' ')]]) {
+    await pendingWorkspaceOpen.setInputFiles({ name, mimeType: 'application/json', buffer }); await expect(pendingWorkspacePanel.getByRole('alert')).toBeVisible();
+    await expect(answerCheckRu).toHaveAttribute('aria-busy', 'true'); await expect(correctAnswer).toHaveAttribute('aria-pressed', 'true');
+    await expect(firstModeledCompletion).toBeChecked(); await expect(secondModeledCompletion).toBeChecked(); await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'all');
+    expect({ step: await stepStatus.innerText(), width: await activityFrame.getAttribute('data-preview-width'),
+      view: await preview.locator('[data-booky-preview-copy-view]').inputValue(), age: await profileAge.inputValue(), level: await profileLevel.inputValue(), title: await routeTitle.inputValue() }).toEqual(pendingWorkspacePresentation);
+    expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }))).toEqual(pendingWorkspaceCalls);
+  }
   await expect(activityReview).not.toHaveAttribute('open',''); await activityReview.locator('summary').tap();
   const callsBeforeProfileInspect = await page.evaluate(() => ({validation:window.__activityValidationCalls.length,answer:window.__activityAnswerCalls.length}));
   await activityComparison.locator('summary').tap(); await activityComparison.locator('summary').tap();
@@ -1601,8 +1714,30 @@ test('optional adult RU EN author task uses current semantic validation and pres
   await expect(activityComparison.locator('[data-comparison-copy="caption"]')).toHaveText(['Кто автор этой книги?','Who wrote this book?']);
   await expect(activityComparison.locator('[data-comparison-presence="title-fallback"]')).toHaveCount(2);
   await activityCopyView.selectOption('body');
-  expect(screenshots).toHaveLength(2); expect(downloads).toHaveLength(1);
-  expect(await page.evaluate(() => window.__draftExportBlobs.length)).toBe(1);
+  expect(screenshots).toHaveLength(2); expect(downloads).toHaveLength(2);
+  expect(await page.evaluate(() => window.__draftExportBlobs.length)).toBe(2);
+  await pendingWorkspaceOpen.setInputFiles({ name: 'restore-reference-form.workspace.json', mimeType: 'application/json', buffer: pendingWorkspaceBytes });
+  await expect(preview).toHaveCount(0); await previewButton.tap(); for (let index = 0; index < 3; index++) await next.tap();
+  await profilePanel.locator(':scope > summary').tap();
+  await profileEnabled.check(); await firstModeledCompletion.check(); await secondModeledCompletion.check(); await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'all');
+  await authorQuery.fill('clear-on-workspace-reopen');
+  for (const kind of ['country', 'writer', 'work']) {
+    const queryPanel = page.locator(`[data-booky-entity-search="${kind}"]`);
+    if (!(await queryPanel.evaluate(node => node.open))) await queryPanel.locator(':scope > summary').tap();
+    await queryPanel.locator('input[type="search"]').fill('clear-on-workspace-' + kind);
+  }
+  const rawSuccessCalls = await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }));
+  await pendingWorkspaceOpen.setInputFiles({ name: 'native-pending-answer.workspace.json', mimeType: 'application/json', buffer: pendingWorkspaceBytes });
+  await expect(preview).toHaveCount(0); await expect(routeTitle).toHaveValue(pendingWorkspacePresentation.title); await expect(page.locator('[data-booky-activity-verdict]')).toHaveCount(0);
+  await expect(authorQuery).toHaveValue(''); for (const kind of ['country', 'writer', 'work']) await expect(page.locator(`[data-booky-entity-search="${kind}"] input[type="search"]`)).toHaveValue('');
+  expect(await page.evaluate(() => ({ validation: window.__activityValidationCalls.length, answer: window.__activityAnswerCalls.length }))).toEqual(rawSuccessCalls);
+  await previewButton.tap(); for (let index = 0; index < 3; index++) await next.tap(); await profilePanel.locator('summary').tap();
+  await expect(profileEnabled).toBeChecked(); await expect(completionReport).toHaveAttribute('data-prerequisite-status', 'missing');
+  await expect(firstModeledCompletion).not.toBeChecked(); await expect(secondModeledCompletion).not.toBeChecked();
+  await profileEnabled.uncheck(); await correctAnswer.tap(); await answerCheckRu.tap(); await expect(verdict).toHaveAttribute('data-verdict', 'correct');
+  const afterWorkspaceAnswer = await page.evaluate(() => window.__activityAnswerCalls.at(-1));
+  expect(afterWorkspaceAnswer.actualHelperCalled).toBe(true); expect(afterWorkspaceAnswer.actualResult.ok).toBe(true); expect(afterWorkspaceAnswer.actualResult.correct).toBe(true);
+  await expect(stepStatus).toContainText('Шаг 4 из 5 · Задание');
   expect(errors).toEqual([]); expect(externalRequests).toEqual([]);
   const validationCalls = await page.evaluate(() => window.__activityValidationCalls);
   expect(validationCalls.filter(call => call.hold)).toHaveLength(2);
@@ -1661,10 +1796,15 @@ test('optional adult RU EN author task uses current semantic validation and pres
     sameExplicitProfileAndIdenticalModeledCompletionKeepPendingAnswer: true, changedExactPrerequisiteTupleSelectionRejectsHeldAnswer: true, heldProfileVerdictCallIndex: heldProfileVerdict,
     missingAndPartialCompletionsBlockNativeKeyboardCheckWithoutHelperCalls:true, combinedAgeLevelAndCompletionReportsDescribeGuardedCheck:true,
     modeledCompletionsUseExactCompiledReferencesAndDoNotReachStaffAnswerAction:true, outsideAgeRemainsIndependentlyBlockedWithoutHelperCalls:true,
+    nativeWorkspaceSavePreservesExistingHeldProfileAnswerLeasePresentationAndModeledPrerequisites:true,
+    rejectedWorkspaceFormatShapeAndOversizePreserveTheSamePendingLeaseWithoutHelperCalls:true,
+    successfulWorkspaceReopenClearsPreviewVerdictQueriesAndModeledKeysWithoutSemanticHelper:true,
+    subsequentActualCompilerAndCreditedAuthorHelperRemainRequiredAfterWorkspaceRecovery:true,
     returningToOrdinaryPreviewRestoresExplicitAnswerCheck: true, previewProfileScenarioHasNoStoredReaderPolicy: true,
     failedSessionOrNetworkCannotShowVerdict: true, localizedCalmAriaLiveFeedbackVerified: true,
     answerCheckDoesNotAdvanceStep: true, answerStateStorageWrites: storageWrites,
-    downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length }, validationCalls, answerCalls,
+    downloads, exportedDraft: { path: exportedPath, sha256: sha(bytes), bytes: bytes.length },
+    heldAnswerWorkspace: { path: pendingWorkspacePath, sha256: sha(pendingWorkspaceBytes), bytes: pendingWorkspaceBytes.length }, validationCalls, answerCalls,
     sourceInputs: fixture.sourceInputs, screenshots, errors, externalRequests,
     productionActionsPerformed: false, stageAccepted: false, releaseReady: false,
   }, null, 2) });
@@ -1804,7 +1944,7 @@ test('optional bilingual work fact preserves authored source metadata through st
     document.getElementById(id)?.querySelector('[data-booky-error-target]')?.getAttribute('data-booky-error-target') === 'fact'))).toBe(true);
   await expect(sourceField('Дата обращения к источнику', 1, 'en')).not.toHaveAttribute('aria-invalid', 'true');
   await expect(factSubject).not.toHaveAttribute('aria-invalid', 'true');
-  await expect(page.locator('input[type="file"]')).toHaveAttribute('aria-describedby', 'journey-open-description');
+  await expect(page.getByLabel('Открыть черновик JSON', { exact: true })).toHaveAttribute('aria-describedby', 'journey-open-description');
   await factOpener.tap(); await expect(factOpener.locator('..')).not.toHaveAttribute('open', '');
   const factErrorBounds = await factErrorAction.boundingBox(); expect(factErrorBounds.height).toBeGreaterThanOrEqual(44); expect(factErrorBounds.width).toBeGreaterThanOrEqual(44);
   await factErrorAction.focus(); await expect(factErrorAction).toBeFocused(); await page.keyboard.press('Enter');
