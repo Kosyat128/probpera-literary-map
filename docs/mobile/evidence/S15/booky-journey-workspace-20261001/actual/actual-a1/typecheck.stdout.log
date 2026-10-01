@@ -1,0 +1,1 @@
+apps/admin/lib/booky-journey-draft.test.ts(2118,132): error TS2540: Cannot assign to 'version' because it is a read-only property.

@@ -1,0 +1,42 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  [
+    'C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe',
+    'D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs',
+    'run',
+    'apps/admin/lib/booky-journey-draft.test.ts',
+    '--reporter=json',
++   '--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-workspace-review\\actual-a2\\unit-report.json'
+-   '--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-workspace-review\\actual-a1\\unit-report.json'
+  ]
+
+    at authenticateFreshD241 (file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-workspace-review/recover-a2-and-check.mjs:129:10)
+    at async file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-workspace-review/recover-a2-and-check.mjs:218:14 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe',
+    'D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs',
+    'run',
+    'apps/admin/lib/booky-journey-draft.test.ts',
+    '--reporter=json',
+    '--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-workspace-review\\actual-a2\\unit-report.json'
+  ],
+  expected: [
+    'C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe',
+    'D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs',
+    'run',
+    'apps/admin/lib/booky-journey-draft.test.ts',
+    '--reporter=json',
+    '--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-workspace-review\\actual-a1\\unit-report.json'
+  ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

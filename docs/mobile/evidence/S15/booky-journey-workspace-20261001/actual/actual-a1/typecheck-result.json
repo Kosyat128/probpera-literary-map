@@ -1,0 +1,29 @@
+{
+  "pass": false,
+  "exitCode": 2,
+  "error": null,
+  "durationMs": 18417,
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\typescript\\bin\\tsc",
+    "--noEmit",
+    "--project",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\admin\\tsconfig.json",
+    "--incremental",
+    "false",
+    "--pretty",
+    "false"
+  ],
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-workspace-review/actual-a1/source-manifest.json",
+    "sha256": "1bd4f448999f29ec40eec883f751e751575909d84b14a702d3ba00e1aa75a4f9"
+  },
+  "stdout": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-workspace-review/actual-a1/typecheck.stdout.log",
+    "sha256": "53041b6770f98ef486a7aaa3129269912c8d14d537cc667df71af770407a4d49"
+  },
+  "stderr": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-workspace-review/actual-a1/typecheck.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

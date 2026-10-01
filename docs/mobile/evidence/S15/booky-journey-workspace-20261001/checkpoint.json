@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceCommit": "3d5cd9b880aeb7d460ca090e79f4814f997ed70e",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/result.json",
+    "sha256": "64855e1351b03c7962885ed3ff48c47bc53f5ad940490605f6e927a7f6164fb6"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-workspace-review/checkpoint.mjs",
+    "sha256": "4db756fd1b449f53f744b2dc1c538b94356e168cfa11bdbd57cea9a9752e2344"
+  },
+  "outputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ad648cff810d3d7a6258d59a50e4e7bee5ee053d185b6e9b4c72052099993413"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "d0b02bc23d833492adce2247900942b755cc82e658788ae29598e1af28686b81"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "68ce3720f087e97d901ec90c2f9002f0f5ea3b165e90712d890f7040d956cbb2"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "2f877682d530e98299c47acf89c3eee48d010986656a8b658d92e59bc18a7f8c"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "fc8c69b7f93ab6c9a2125d129a04e87a7224e869c434079a279a23f820d86298"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "70dd5743ef70efcb446ebf8fc094d8fd8237d00c889e20c8b676fa4f48949848"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "d8265b7c752b4de3cc559eaacf20939a978d824959f1f50d0f4b3a0019c7fec1"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "38a5ab2094608e31cc281b1ec6c71e9c3040a1456299a97c37fc4188d1df18dc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/result.json",
+      "sha256": "64855e1351b03c7962885ed3ff48c47bc53f5ad940490605f6e927a7f6164fb6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/README.md",
+      "sha256": "78a2edf4a541cfc6141cf69884888caeb79615452c9963562c084bc5418fd75c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/predecessor-binding.json",
+      "sha256": "ef40fe3916516db11b200d4fb20f61857f11cbe9354dee4f8c90262d7ae62a1e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/actual-source-commit.json",
+      "sha256": "4d0d436c3fcdfe4fdf844cae385a71b761a7de11e3485da7cc7d63b0b7e65539"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/admin-build-a1/result.json",
+      "sha256": "987c10155dae166b154e2e0c2dd1af09a21c23e18b21d41b9fd3f515633b6186"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/source-manifest.json",
+      "sha256": "f3289d1d3e315c49535a46b9c5166b7ad256c431a613dcd948de74b07b2f39e8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/checks-result.json",
+      "sha256": "8638ae485fccd953abee0a56f5d4d03c86e2c0034adb16dc388911b6135fdd72"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/commit-source.mjs",
+      "sha256": "2b3b3276b69887cfa633a6534616210c45b944b68395502f7bf6035a3804afbf"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/finalize-a2-and-check.mjs",
+      "sha256": "2acb8f3593eb9db3eb3a39c6cf0afea51403378b14a1f6a9500e76dafc716429"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/source-before.json",
+      "sha256": "6a3f42560b8c681b77f481f8bae665372729d41be22b89efec0e882ccbf56d38"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/source-after.json",
+      "sha256": "6a3f42560b8c681b77f481f8bae665372729d41be22b89efec0e882ccbf56d38"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/typecheck-result.json",
+      "sha256": "37c68aa45cffef2121cc0bfbf3bdb247379f9d2163f3a3bd8cbe9ab3d6aabbef"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/unit-result.json",
+      "sha256": "5fbed278f8be16a46bfd3e8c3046f5a7a2f080f4ae9b1182544664fbb8f97ad5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/unit-report.json",
+      "sha256": "31ac01242ab0e17b07c12297b13b155c97d52d2b8e261c15a7be405da36e2b00"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/browser-result.json",
+      "sha256": "515fa888bf00c9dcc3733bcd9f570e608119f48ea39cd674f96475c60a9f3395"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/browser-report.json",
+      "sha256": "7bea08c401e8884b239da0b19356765da8d4d4e95212eaf2fdc65ab1902fba97"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/root-visual-review.json",
+      "sha256": "70981b95d8ed718fa263a673496137d30d39cf582a658dc8114791d29ec0f38e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "02bf76713cf4357aefd7b9f04aec836491b5971968a1ba420bb754741c7401a5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "44f0025e138442f3e01c8efe1e31aa7fd6ec0a0f1f1193edd3b89625e2ce3fad"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "5fa810fe7f4da30da5fb89cb5e277d563e64e8d8b67cdfeebc518af673b84d8d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "937ab10986270bf6173678c649afcda7702cb3073c7f678ec44d2f37fd0745e2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "a4a8c4072fe7b21926c3b2b313fddd46650fea6698bab69577b472c274510b06"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "f2e5de8da17f5ae03c1d3e487ea6a101de26b404ff1539d313e6f6ea20585d41"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "a969fe816c5be3d3988c50587ce685f73fa1cd2d252d92d5b8ed45faa7bfee12"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "2fc2aec9cad0cf1e3b5450e03bdb69f80d6fb7dd155b234a24b129f13b8d8100"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/recover-a2-and-check.mjs",
+      "sha256": "0a2c66a4f4e1e227d07b8e7af16f491c729cecccae09b10f4bfabda34687a5a0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/recover-a2-command.stderr.log",
+      "sha256": "dacaf8f42c9f295d69658b2ac2b62033f81c888bbc19c7a3c7662cebd80769aa"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/admin-command.stderr.log",
+      "sha256": "aeadd8359437b82d99a3fb0a729406cb605b68e5c3d08cbc9674e0e676b4abfd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/checks-result.json",
+      "sha256": "82cff9ad3918d58ef28c345b46ca6e16ac2f1967919b3d29b8408944894ace92"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/source-manifest.json",
+      "sha256": "1bd4f448999f29ec40eec883f751e751575909d84b14a702d3ba00e1aa75a4f9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/apply-and-check.mjs",
+      "sha256": "66e76b8320c83ba0f13c6b9a1e72841fdc8b854b27ccdbb1b7564c7c84139f9d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/unit-result.json",
+      "sha256": "9502aea1c6a28559d1c8104c8cae8bb01839d7ff654d82d41609c9035113aad4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/unit-report.json",
+      "sha256": "83269c1a95232531838846ded8854c28f1d88d0849d601fd31de3ad6c249380b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/typecheck-result.json",
+      "sha256": "2e73082fcc9560c7803e99e293739ddc7eca1205abf170b73a1d79e3f3004f3e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/original-core-test.ts",
+      "sha256": "2112d50a6e2c6b5f9e26a787fc6e38afa2910b6ddd33a41f1902fad847f10838"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/proposed/apps/admin/lib/booky-journey-draft.test.ts",
+      "sha256": "277a29db83b183854ec60836b3cfe77282deaf1107d7098fbf1a79415ab7fc7b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/unit.stdout.log",
+      "sha256": "fbade1037465748976ae9fcea3eae8a3003f3ae95aef8939646a772fb634bfca"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/unit.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/typecheck.stdout.log",
+      "sha256": "53041b6770f98ef486a7aaa3129269912c8d14d537cc667df71af770407a4d49"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/typecheck.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/source-before.json",
+      "sha256": "b0b7d70088fe8ea28a575c8b53fd6e177f6883c1097d43f1702a6e1bd55422a8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a1/source-after.json",
+      "sha256": "b0b7d70088fe8ea28a575c8b53fd6e177f6883c1097d43f1702a6e1bd55422a8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/admin-build-a1/source-before.json",
+      "sha256": "3de1a71a25c69fdc876c8c554cd3096ce1cfb83313db6c61360e6967a5026da7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/admin-build-a1/source-after.json",
+      "sha256": "3de1a71a25c69fdc876c8c554cd3096ce1cfb83313db6c61360e6967a5026da7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/admin-build.mjs",
+      "sha256": "4341937f37edeb034e45514b87dac3c4590d8b5a93c46570492750a8fd054923"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/typecheck.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/typecheck.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/unit.stdout.log",
+      "sha256": "622a3ee8fde72100dc96ec8a486bea6029edea6ecf04911706edca37ff8bd993"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/unit.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/browser.stdout.log",
+      "sha256": "ec354c9df43d1eca20569bfb5e718bcdbc28900bf0a4eaef0b9b30c0da8a09cc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/actual-a2/browser.stderr.log",
+      "sha256": "5f93bde6c51957c187f706125ec22c33e14c810d1caf3d95410b924e72d46870"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/admin-build-a1/next-build.stdout.log",
+      "sha256": "9848f5d8eb5fb6db2ecd86cdcd6e5df2d869f62431fc7abd903eb6916f519b52"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/admin-build-a1/next-build.stderr.log",
+      "sha256": "44c4821749609f1bc4deb69ee3723d51484f8f5af61baf36f7fa00131757ba18"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/admin-build-a1/client-secrets.stdout.log",
+      "sha256": "b349f3fdcd8b5b3cfd5973b21b2857c65fefe9bb92ce3c94ee1ea14ae4ae848b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/admin-build-a1/client-secrets.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-journey-workspace-20261001/actual/checkpoint.mjs",
+      "sha256": "4db756fd1b449f53f744b2dc1c538b94356e168cfa11bdbd57cea9a9752e2344"
+    }
+  ],
+  "applicationChecksRun": false,
+  "buildsRun": false,
+  "allStatusesUnchanged": true,
+  "releaseReady": false
+}
