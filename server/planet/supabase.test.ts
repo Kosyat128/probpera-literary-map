@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from "vitest";
-import { createCanonicalSupabaseServices } from "./supabase";
+import { createCanonicalPaymentRetryServices, createCanonicalSupabaseServices } from "./supabase";
 
 const subject = "b7d3c04e-a59a-4bda-8db4-4b2f8c573e74";
 const sessionId = "c3e02b27-057b-487e-b4f3-6a3b749f9cfa";
@@ -23,6 +23,7 @@ async function setup(overrides: Record<string, unknown> = {}) {
     live: true, userStatus: 200, userId: subject, rpcError: false, factors: [] as object[],
     access: { active: true, accessBlocked: false, activeReceiptCount: 1, sessionEpoch: 3 } as Record<string, unknown>,
     deletion: null as unknown, deletionHttpStatus: 200,
+    enqueue: { status: "queued", jobState: "pending" } as unknown,
   };
   const options = { canonicalProjectUrl: origin, publishableKey: "qa-public-not-a-real-key", serviceRoleKey: "qa-secret-not-a-real-key", recentAuthenticationSeconds: 300, now: () => now * 1000 };
   const fetcher: typeof fetch = async (input, init) => {
@@ -43,6 +44,10 @@ async function setup(overrides: Record<string, unknown> = {}) {
       if (name === "planet_revoke_web_sessions") return json({ sessionEpoch: 4 });
       if (name === "planet_request_account_deletion") return json({ requestId: (calls.at(-1)!.body as Record<string, unknown>).p_request_id, status: "requested", sessionEpoch: 4 });
       if (name === "planet_apply_verified_payment_event") return json({ duplicate: false, receiptApplied: true, receiptStatus: "active", sessionEpoch: 4 });
+      if (name === "planet_enqueue_verified_payment_retry") return json(state.enqueue);
+      if (name === "planet_claim_verified_payment_retry") return json({ status: "empty" });
+      if (name === "planet_finish_verified_payment_retry") return json({ status: "completed" });
+      if (name === "planet_reschedule_verified_payment_retry") return json({ status: "pending", nextAttemptAt: "2026-10-01T12:00:00.000000Z" });
     }
     throw new Error("Unexpected fixture request " + path);
   };
@@ -50,6 +55,32 @@ async function setup(overrides: Record<string, unknown> = {}) {
 }
 
 describe("canonical Supabase server adapter with actual SDK and signed test JWTs", () => {
+  it("enqueues only verified payment fields through the service channel and rejects malformed acknowledgements", async () => {
+    const f = await setup(); const hash = "a".repeat(64);
+    const event = { eventId: "event-1", transactionId: "transaction-1", subject, product: "base-v1", status: "active" as const,
+      occurredAt: "2026-10-01T12:00:00Z", rawBody: "never-copy-this" };
+    await f.services.ledger.enqueueVerifiedEvent("fixture-provider", event, hash);
+    expect(f.calls[0].body).toEqual({ p_provider: "fixture-provider", p_event_id: "event-1", p_payload_sha256: hash,
+      p_transaction_id: "transaction-1", p_user_id: subject, p_product_id: "base-v1", p_status: "active", p_occurred_at: event.occurredAt });
+    expect(f.calls[0].headers.get("authorization")).toBe("Bearer " + f.options.serviceRoleKey);
+    for (const response of [null, { status: "completed", jobState: "pending" }, { status: "queued", jobState: "pending", rawBody: "private" }]) {
+      f.state.enqueue = response; await expect(f.services.ledger.enqueueVerifiedEvent("fixture-provider", event, hash)).rejects.toThrow("Invalid canonical payment enqueue response");
+    }
+  });
+  it("keeps claim and completion capabilities separate from the API and bounds their canonical service transport", async () => {
+    const f = await setup(); const services = createCanonicalPaymentRetryServices({ ...f.options, fetch: f.fetcher });
+    const token = crypto.randomUUID(), lease = { provider: "fixture-provider", eventId: "event-1", leaseToken: token };
+    expect(await services.claim(token, 60)).toEqual({ status: "empty" });
+    expect(await services.complete(lease)).toEqual({ status: "completed" });
+    await services.reschedule(lease, "payment-apply-unavailable", 5);
+    expect(f.calls.map(call => call.path)).toEqual(["/rest/v1/rpc/planet_claim_verified_payment_retry", "/rest/v1/rpc/planet_finish_verified_payment_retry", "/rest/v1/rpc/planet_reschedule_verified_payment_retry"]);
+    expect(f.calls[0].body).toEqual({ p_lease_token: token, p_lease_seconds: 60 });
+    expect(f.calls[1].body).toEqual({ p_provider: lease.provider, p_event_id: lease.eventId, p_lease_token: token });
+    expect(f.calls[2].body).toEqual({ p_provider: lease.provider, p_event_id: lease.eventId, p_lease_token: token, p_failure_code: "payment-apply-unavailable", p_retry_seconds: 5 });
+    expect(f.calls.every(call => call.headers.get("authorization") === "Bearer " + f.options.serviceRoleKey && call.redirect === "error" && call.cache === "no-store")).toBe(true);
+    expect("claim" in f.services.ledger).toBe(false);
+    f.state.rpcError = true; await expect(services.complete(lease)).rejects.toThrow("Canonical payment retry queue unavailable");
+  });
   it("reads exact own-subject deletion status through service RPC independently of access", async () => {
     const f = await setup(); expect(await f.services.ledger.deletionStatus(subject)).toBeNull();
     for (const status of ["requested", "processing", "blocked", "completed"]) {

@@ -34,6 +34,8 @@ export interface PlanetApiServices {
     revokeSessions(subject: string): Promise<void>;
     requestDeletion(subject: string, requestId: string): Promise<{ requestId: string; status: "requested" }>;
     deletionStatus(subject: string): Promise<PlanetDeletionStatus | null>;
+    /** Server-verifier output only. This port cannot claim or complete retry jobs. */
+    enqueueVerifiedEvent(provider: string, event: Readonly<VerifiedPayment>, payloadSha256: string): Promise<void>;
     applyPayment(provider: string, event: VerifiedPayment, payloadSha256: string): Promise<void>;
   };
   cookies: {
@@ -198,18 +200,26 @@ export function createPlanetApi(options: PlanetApiOptions): (request: Request) =
       if (request.method !== "POST") return response(405, { error: "method-not-allowed" });
       if (isWebhook) {
         const provider = services.payments;
-        if (!provider || route !== "payments/webhook/" + provider.provider) return response(503, { error: "payment-provider-unconfigured" });
+        const providerName = provider?.provider;
+        if (!provider || typeof providerName !== "string" || route !== "payments/webhook/" + providerName) return response(503, { error: "payment-provider-unconfigured" });
         const bytes = await boundedBody(request, 262_144);
         const digest = await crypto.subtle.digest("SHA-256", bytes);
         const hash = [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
         // Provider verification receives the original bytes and signature headers.
         // It must validate its real provider protocol before returning any event.
-        const event = await provider.verify(request, bytes);
-        if (!event) return response(401, { error: "invalid-payment-signature" });
+        const verified = await provider.verify(request, bytes);
+        if (!verified) return response(401, { error: "invalid-payment-signature" });
+        // Snapshot only normalized fields before any ledger await. Raw payload,
+        // headers and extra provider fields never become retry-job data.
+        const event = Object.freeze({ eventId: verified.eventId, transactionId: verified.transactionId,
+          subject: verified.subject, product: verified.product, status: verified.status, occurredAt: verified.occurredAt });
         if (![event.eventId, event.transactionId].every(value => typeof value === "string" && /^[A-Za-z0-9:._/-]{1,240}$/u.test(value))
           || !UUID.test(event.subject) || event.product !== options.product || !["active", "refunded", "revoked"].includes(event.status)
           || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z$/u.test(event.occurredAt) || !Number.isFinite(Date.parse(event.occurredAt))) throw new Error("Invalid verified payment event");
-        await services.ledger.applyPayment(provider.provider, event, hash);
+        await services.ledger.enqueueVerifiedEvent(providerName, event, hash);
+        // Preserve the existing 204 contract: durable enqueue alone is not an
+        // applied payment. Only the separate internal processor completes jobs.
+        await services.ledger.applyPayment(providerName, event, hash);
         return response(204, null);
       }
       if (request.headers.get("origin") !== options.origin || ![null, "same-origin"].includes(request.headers.get("sec-fetch-site"))) return response(403, { error: "origin-denied" });

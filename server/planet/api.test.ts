@@ -54,6 +54,7 @@ function fixture() {
       return { requestId, status: "requested" as const };
     }),
     deletionStatus: vi.fn(async (_subject: string): Promise<PlanetDeletionStatus | null> => deletion),
+    enqueueVerifiedEvent: vi.fn(async (_provider: string, _event: Readonly<VerifiedPayment>, _hash: string) => undefined),
     applyPayment: vi.fn(async (_provider: string, _event: VerifiedPayment, _hash: string) => undefined),
   };
   const services: PlanetApiServices = { auth, ledger, cookies, signer };
@@ -318,6 +319,7 @@ describe("controlled Planet HTTP API with real crypto", () => {
     expect(verify).not.toHaveBeenCalled();
     expect((await f.api(f.request("payments/webhook/fixture-provider", "provider bytes"))).status).toBe(401);
     expect(f.ledger.applyPayment).not.toHaveBeenCalled();
+    expect(f.ledger.enqueueVerifiedEvent).not.toHaveBeenCalled();
   });
 
   it("passes exact webhook bytes and headers to its verifier, hashes them and delegates idempotency to SQL", async () => {
@@ -337,6 +339,44 @@ describe("controlled Planet HTTP API with real crypto", () => {
     const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(value => value.toString(16).padStart(2, "0")).join("");
     expect(f.ledger.applyPayment).toHaveBeenCalledTimes(2);
     expect(f.ledger.applyPayment).toHaveBeenLastCalledWith("fixture-provider", event, hash);
+    expect(f.ledger.enqueueVerifiedEvent).toHaveBeenCalledTimes(2);
+    expect(f.ledger.enqueueVerifiedEvent).toHaveBeenLastCalledWith("fixture-provider", event, hash);
+  });
+
+  it("queues a normalized immutable verifier snapshot before apply without copying provider extras", async () => {
+    const f = fixture(); const raw = "fixture-signed-message";
+    const event = { eventId: "snapshot-event", transactionId: "snapshot-transaction", subject: f.principal.subject,
+      product, status: "active" as const, occurredAt: "2026-09-05T12:00:00Z", rawToken: "must-not-be-stored" };
+    const expected = { eventId: event.eventId, transactionId: event.transactionId, subject: event.subject,
+      product, status: event.status, occurredAt: event.occurredAt };
+    const order: string[] = [];
+    f.services.payments = { provider: "fixture-provider", verify: async () => event };
+    f.ledger.enqueueVerifiedEvent.mockImplementation(async (_provider, snapshot) => {
+      order.push("enqueue"); expect(snapshot).toEqual(expected); expect(Object.isFrozen(snapshot)).toBe(true);
+      event.eventId = "changed-after-verification"; event.rawToken = "changed-private-field";
+    });
+    f.ledger.applyPayment.mockImplementation(async (_provider, snapshot) => { order.push("apply"); expect(snapshot).toEqual(expected); });
+    expect((await f.api(f.request("payments/webhook/fixture-provider", raw))).status).toBe(204);
+    expect(order).toEqual(["enqueue", "apply"]);
+    const hash = Buffer.from(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(raw))).toString("hex");
+    expect(f.ledger.enqueueVerifiedEvent).toHaveBeenCalledWith("fixture-provider", expected, hash);
+  });
+
+  it("returns no payment acknowledgement when enqueue or apply fails and never reflects private errors", async () => {
+    const f = fixture(); const event: VerifiedPayment = { eventId: "durable-event", transactionId: "durable-transaction",
+      subject: f.principal.subject, product, status: "active", occurredAt: "2026-09-05T12:00:00Z" };
+    f.services.payments = { provider: "fixture-provider", verify: async () => event };
+    f.ledger.enqueueVerifiedEvent.mockRejectedValueOnce(new Error("private-queue-details"));
+    const failedQueue = await f.api(f.request("payments/webhook/fixture-provider", "verified-message"));
+    expect(failedQueue.status).toBe(503); expect(await failedQueue.json()).toEqual({ error: "service-unavailable" });
+    expect(f.ledger.applyPayment).not.toHaveBeenCalled();
+    f.ledger.applyPayment.mockRejectedValueOnce(new Error("private-ledger-details"));
+    const failedApply = await f.api(f.request("payments/webhook/fixture-provider", "verified-message"));
+    expect(failedApply.status).toBe(503); expect(await failedApply.json()).toEqual({ error: "service-unavailable" });
+    expect(f.ledger.enqueueVerifiedEvent).toHaveBeenCalledTimes(2); expect(f.ledger.applyPayment).toHaveBeenCalledTimes(1);
+    const invalid = { ...event, eventId: "invalid id" }; f.services.payments.verify = async () => invalid;
+    expect((await f.api(f.request("payments/webhook/fixture-provider", "invalid-normalized-message"))).status).toBe(503);
+    expect(f.ledger.enqueueVerifiedEvent).toHaveBeenCalledTimes(2);
   });
 
   it("binds the webhook ledger hash to received bytes even if the provider adapter mutates its input buffer", async () => {

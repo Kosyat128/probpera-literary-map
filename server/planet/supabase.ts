@@ -1,5 +1,6 @@
 import { createClient, type AuthError } from "@supabase/supabase-js";
 import type { PlanetApiServices, PlanetAccess, PlanetPrincipal, VerifiedPayment } from "./api";
+import type { PaymentRetryServices } from "./paymentRetry";
 
 export interface CanonicalSupabaseOptions {
   /** Same project URL and publishable key as the canonical site, supplied by host. */
@@ -10,6 +11,41 @@ export interface CanonicalSupabaseOptions {
   recentAuthenticationSeconds: number;
   fetch?: typeof fetch;
   now?: () => number;
+}
+
+/** Separate server-only capability; never installed in PlanetWorker fetch bindings. */
+export function createCanonicalPaymentRetryServices(options: CanonicalSupabaseOptions): PaymentRetryServices {
+  // Reuse the canonical validation and existing apply authority. No transport
+  // occurs merely by constructing these explicit internal services.
+  const ledger = createCanonicalSupabaseServices(options).ledger;
+  const url = new URL(options.canonicalProjectUrl), fetcher = options.fetch ?? globalThis.fetch;
+  async function rpc(name: string, args: Record<string, unknown>, signal?: AbortSignal): Promise<unknown> {
+    const serverFetch: typeof fetch = async (input, init) => {
+      const endpoint = new URL(typeof input === "string" ? input : input instanceof URL ? input.href : input.url);
+      if (endpoint.origin !== url.origin || endpoint.username || endpoint.password) throw new Error("Canonical service origin mismatch");
+      const signals = [signal, init?.signal, AbortSignal.timeout(10_000)].filter((value): value is AbortSignal => !!value);
+      return fetcher(input, { ...init, signal: AbortSignal.any(signals), redirect: "error", cache: "no-store" });
+    };
+    const service = createClient(options.canonicalProjectUrl, options.serviceRoleKey, {
+      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }, global: { fetch: serverFetch },
+    });
+    const result = await service.rpc(name, args);
+    if (result.error) throw new Error("Canonical payment retry queue unavailable");
+    return result.data;
+  }
+  return {
+    claim(leaseToken, leaseSeconds, signal) {
+      return rpc("planet_claim_verified_payment_retry", { p_lease_token: leaseToken, p_lease_seconds: leaseSeconds }, signal);
+    },
+    applyPayment(provider, event, payloadSha256) { return ledger.applyPayment(provider, event, payloadSha256); },
+    complete(lease, signal) {
+      return rpc("planet_finish_verified_payment_retry", { p_provider: lease.provider, p_event_id: lease.eventId, p_lease_token: lease.leaseToken }, signal);
+    },
+    reschedule(lease, failureCode, retrySeconds, signal) {
+      return rpc("planet_reschedule_verified_payment_retry", { p_provider: lease.provider, p_event_id: lease.eventId,
+        p_lease_token: lease.leaseToken, p_failure_code: failureCode, p_retry_seconds: retrySeconds }, signal);
+    },
+  };
 }
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu;
 function record(value: unknown): value is Record<string, unknown> {
@@ -123,6 +159,14 @@ export function createCanonicalSupabaseServices(options: CanonicalSupabaseOption
         if (!record(value) || typeof value.duplicate !== "boolean" || typeof value.receiptApplied !== "boolean"
           || !["active", "refunded", "revoked"].includes(String(value.receiptStatus))
           || !Number.isSafeInteger(value.sessionEpoch) || (value.sessionEpoch as number) < 0) throw new Error("Invalid canonical payment response");
+      },
+      async enqueueVerifiedEvent(provider, event, payloadSha256) {
+        const value = await rpc("planet_enqueue_verified_payment_retry", { p_provider: provider, p_event_id: event.eventId,
+          p_payload_sha256: payloadSha256, p_transaction_id: event.transactionId, p_user_id: event.subject,
+          p_product_id: event.product, p_status: event.status, p_occurred_at: event.occurredAt });
+        if (!record(value) || Object.keys(value).sort().join(",") !== "jobState,status"
+          || typeof value.status !== "string" || !["queued", "duplicate"].includes(value.status)
+          || typeof value.jobState !== "string" || !["pending", "leased", "completed"].includes(value.jobState)) throw new Error("Invalid canonical payment enqueue response");
       },
     },
   };

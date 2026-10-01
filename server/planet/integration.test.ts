@@ -1,5 +1,5 @@
-import { readFile } from "node:fs/promises";
-import { PGlite } from "@electric-sql/pglite";
+import type { PGlite } from "@electric-sql/pglite";
+import { createPaymentRetryTestDatabase } from "../../scripts/database/fixtures/literary-planet-payment-retry-context.mjs";
 import { beforeAll, afterAll, describe, expect, it } from "vitest";
 import { createPlanetApi, type VerifiedPayment } from "./api";
 import { createCookieCodec, createGrantSigner } from "./crypto";
@@ -22,9 +22,7 @@ let webhookKey: CryptoKey;
 const encode = (value: unknown) => Buffer.from(JSON.stringify(value)).toString("base64url");
 
 beforeAll(async () => {
-  db = new PGlite();
-  await db.exec(await readFile(new URL("../../scripts/database/fixtures/literary-planet-web-license-contract.sql", import.meta.url), "utf8"));
-  await db.exec(await readFile(new URL("../../supabase/migrations/20260905_literary_planet_web_license.sql", import.meta.url), "utf8"));
+  db = await createPaymentRetryTestDatabase();
   authKeys = await crypto.subtle.generateKey({ name: "ECDSA", namedCurve: "P-256" }, false, ["sign", "verify"]);
   grantKeys = await crypto.subtle.generateKey({ name: "ECDSA", namedCurve: "P-256" }, false, ["sign", "verify"]);
   publicAuthKey = await crypto.subtle.exportKey("jwk", authKeys.publicKey);
@@ -42,6 +40,7 @@ async function environment() {
   const subject = crypto.randomUUID();
   const sessionId = crypto.randomUUID();
   await db.query("insert into auth.users(id) values($1::uuid)", [subject]);
+  await db.query("insert into public.profiles(id,display_name,role) values($1::uuid,'Local fixture reader','reader')", [subject]);
   await db.query("insert into auth.sessions(id,user_id) values($1::uuid,$2::uuid)", [sessionId, subject]);
   const project = "https://fixture-" + crypto.randomUUID() + ".supabase.invalid";
   const unsigned = encode({ alg: "ES256", typ: "JWT", kid: "fixture-auth" }) + "." + encode({
@@ -56,6 +55,8 @@ async function environment() {
     planet_request_account_deletion: { query: "select public.planet_request_account_deletion($1::uuid,$2::uuid) as value", fields: ["p_user_id", "p_request_id"] },
     planet_get_account_deletion_status: { query: "select public.planet_get_account_deletion_status($1::uuid) as value", fields: ["p_user_id"] },
     planet_apply_verified_payment_event: { query: "select public.planet_apply_verified_payment_event($1,$2,$3,$4,$5::uuid,$6,$7,$8::timestamptz) as value",
+      fields: ["p_provider", "p_event_id", "p_payload_sha256", "p_transaction_id", "p_user_id", "p_product_id", "p_status", "p_occurred_at"] },
+    planet_enqueue_verified_payment_retry: { query: "select public.planet_enqueue_verified_payment_retry($1,$2,$3,$4,$5::uuid,$6,$7,$8::timestamptz) as value",
       fields: ["p_provider", "p_event_id", "p_payload_sha256", "p_transaction_id", "p_user_id", "p_product_id", "p_status", "p_occurred_at"] },
   };
   const json = (value: unknown, status = 200) => new Response(JSON.stringify(value), { status, headers: { "Content-Type": "application/json" } });
@@ -153,15 +154,20 @@ describe.sequential("account → verified event → canonical SQL → signed PWA
     await expect(fresh.account.bridge(config, f.token)).rejects.toMatchObject({ reason: "denied" });
     expect(await fresh.account.deletionStatus(config, f.token)).toEqual({ requestId, status: "requested" });
     expect(Number((await db.query<{ count: number }>("select count(*)::integer as count from public.planet_deletion_requests where user_id=$1::uuid", [f.subject])).rows[0].count)).toBe(1);
+    const leaseToken = crypto.randomUUID();
     await db.exec("set role service_role");
-    try { await db.query("select public.planet_record_deletion_outcome($1::uuid,'processing',$2,array[]::text[])", [requestId, "a".repeat(64)]); }
+    try {
+      await db.query("select public.planet_claim_reader_deletion($1::uuid,$2::uuid,$3,60)", [requestId, leaseToken, "a".repeat(64)]);
+      const inspection = (await db.query<{ value: { phase: string; blockers: string[] } }>("select public.planet_inspect_reader_deletion($1::uuid,$2::uuid,true) as value", [requestId, leaseToken])).rows[0].value;
+      expect(inspection.phase).toBe("auth-ready"); expect(inspection.blockers).toEqual([]);
+    }
     finally { await db.exec("reset role"); }
     expect(await fresh.account.deletionStatus(config, f.token)).toEqual({ requestId, status: "processing" });
-    // Isolated test worker stands in for later authorized processing, not a
-    // production deletion implementation. Auth deletion must deny further reads.
+    // Local SQL stands in for authorized Auth HTTP only after the real reader
+    // processor lease/preflight arms the canonical guard; no live Auth acceptance.
     await db.query("delete from auth.users where id=$1::uuid", [f.subject]);
     await db.exec("set role service_role");
-    try { await db.query("select public.planet_record_deletion_outcome($1::uuid,'completed',$2,array[]::text[])", [requestId, "b".repeat(64)]); }
+    try { await db.query("select public.planet_finish_reader_deletion($1::uuid,$2::uuid,'completed',$3,array[]::text[])", [requestId, leaseToken, "b".repeat(64)]); }
     finally { await db.exec("reset role"); }
     await expect(fresh.account.deletionStatus(config, f.token)).rejects.toMatchObject({ reason: "authentication" });
     expect(await f.canonical.ledger.deletionStatus(f.subject)).toBeNull();
