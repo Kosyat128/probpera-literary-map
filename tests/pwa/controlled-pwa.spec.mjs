@@ -137,7 +137,7 @@ test("real signed access, locale and connectivity preserve the actual R3F scene"
   await expect(collection).toHaveAttribute("role", "dialog");
   const help = collection.locator(".pwa-help");
   await expect(help).toBeVisible();
-  await help.locator("summary").click();
+  await help.locator(":scope > details > summary").click();
   await expect(help.getByRole("heading", { name: "Чтение без сети", exact: true })).toBeVisible();
   await collection.getByRole("button", { name: "Вернуться к планете", exact: true }).click();
   await expect(collection).toBeHidden();
@@ -254,7 +254,7 @@ test("expanded portrait base installs and verifies real offline bytes with saved
     await expect(graphics.locator("[data-planet-quality-save-state]")).toHaveAttribute("data-planet-quality-save-state", "idle");
     await stable(scene);
     const help = collection.locator(".pwa-help");
-    await help.locator("summary").click();
+    await help.locator(":scope > details > summary").click();
     await worker.evaluate(() => { globalThis.__portraitFetchObservation.armed = true; });
     const checkStarted = Date.now();
     await help.getByRole("button", { name: "Проверить офлайн-файлы", exact: true }).click();
@@ -463,7 +463,7 @@ test("device preparation restores real offline bytes and keeps simulated browser
     const collection = page.locator(".native-planet-panel");
     const header = collection.locator(".native-planet-panel__header");
     const help = collection.locator(".pwa-help");
-    await help.locator("summary").click();
+    await help.locator(":scope > details > summary").click();
     const device = help.locator(".pwa-device");
     await expect(device.getByRole("heading", { name: "Приложение на устройстве", exact: true })).toBeVisible();
     const nodes = await page.evaluateHandle(() => ({ header: document.querySelector(".native-planet-panel__header"),
@@ -866,7 +866,7 @@ test("verified offline sizes and runtime locale metadata follow real repair", as
   expect(await original.evaluate(value => Boolean(value.scene?.canvas && value.scene.renderer && value.scene.camera && value.scene.scene))).toBe(true);
   const evidence = { localQaOnly: true, buildId: manifest.buildId, totals, removedFile: target,
     simulatedApis: [], liveProgressChecked: false, actualOsInstallation: false, browserProcessReopened: false,
-    publicSeoAcceptance: false, stageAccepted: false, headSnapshots: [], checks: [], repairs: [], screenshots: [], completed: false };
+    publicSeoAcceptance: false, stageAccepted: false, headSnapshots: [], checks: [], repairs: [], offlineHelpChecks: [], screenshots: [], completed: false };
   await page.evaluate(() => {
     const controller = navigator.serviceWorker.controller;
     if (!controller) throw new Error("The real controlling worker is required");
@@ -935,9 +935,11 @@ test("verified offline sizes and runtime locale metadata follow real repair", as
     await help.locator(":scope > details > summary").click();
     const device = help.locator(".pwa-device");
     const readiness = device.locator("[data-pwa-offline-readiness]");
-    const verifiedText = language => (language === "ru" ? "Файлов в проверенном базовом наборе: " : "Files in the verified base package: ")
+    const offlineHelp = device.locator(".pwa-device__offline-help");
+    await expect(offlineHelp).not.toHaveAttribute("open", "");
+    const verifiedText = language => (language === "ru" ? "Проверенный набор: " : "Verified base package: ")
       + totals.fileCount + " · " + size(totals.bytes, language);
-    const restoredText = language => (language === "ru" ? "Восстановлено файлов в этой попытке: " : "Files restored in this attempt: ")
+    const restoredText = language => (language === "ru" ? "Восстановлено за попытку: " : "Restored this attempt: ")
       + "1 · " + size(target.bytes, language);
     const check = async (language, expected) => {
       const before = await page.evaluate(() => window.__pwaSizesQa.readiness.length);
@@ -998,6 +1000,23 @@ test("verified offline sizes and runtime locale metadata follow real repair", as
       const totalNote = device.getByText(verifiedText(language), { exact: true });
       const repairNote = device.getByText(restoredText(language), { exact: true });
       await expect(totalNote).toBeVisible(); await expect(repairNote).toBeVisible();
+      const summary = offlineHelp.locator(":scope > summary");
+      await expect(summary).toHaveText(language === "ru" ? "Как работает офлайн" : "How offline works");
+      const caveats = language === "ru" ? [
+        "Загружаются только недостающие или повреждённые базовые файлы. Восстановление использует интернет и не продлевает доступ.",
+        "Проверка не продлевает право доступа и не включает дополнительные материалы. Браузер может удалить сохранённые файлы позднее.",
+      ] : [
+        "Only missing or damaged base files are downloaded. Restoration uses the internet and does not extend access.",
+        "This check does not extend access or include additional content. The browser may remove saved files later.",
+      ];
+      await expect(offlineHelp).not.toHaveAttribute("open", "");
+      for (const text of caveats) await expect(offlineHelp.getByText(text, { exact: true })).toBeHidden();
+      await summary.click();
+      await expect(offlineHelp).toHaveAttribute("open", "");
+      for (const text of caveats) await expect(offlineHelp.getByText(text, { exact: true })).toBeVisible();
+      await summary.click();
+      await expect(offlineHelp).not.toHaveAttribute("open", "");
+      evidence.offlineHelpChecks.push({ language, originalCaveatsRetained: true, nativeOpenClose: true, closedForPhoto: true });
       await collection.locator(".native-planet-panel__content").evaluate(container => {
         const card = container.querySelector("[data-pwa-offline-readiness]")?.parentElement;
         if (!card) throw new Error("The native offline preparation card is absent");

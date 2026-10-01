@@ -504,7 +504,7 @@ test("canonical book favorite survives cold offline reload and locale route chan
     // native account links must capture this new selection when used.
     const help = collection.locator(".pwa-help");
     await expect(help).toBeVisible();
-    await help.locator("summary").click();
+    await help.locator(":scope > details > summary").click();
     for (const name of ["Восстановить доступ", "Заявка на удаление аккаунта"]) {
       const accountLink = help.getByRole("link", { name, exact: true });
       await accountLink.focus();
@@ -513,7 +513,7 @@ test("canonical book favorite survives cold offline reload and locale route chan
       expect(target.origin).toBe("https://probpera.ru");
       expect(target.searchParams.get("returnTo")).toBe(current.pathname + current.search + current.hash);
     }
-    await help.locator("summary").click();
+    await help.locator(":scope > details > summary").click();
     const favorite = detail.getByRole("button", { name: "В избранное", exact: true });
     await favorite.click();
     await expect(detail.getByRole("button", { name: "В избранном", exact: true })).toHaveAttribute("aria-pressed", "true");
@@ -555,7 +555,7 @@ test("canonical book favorite survives cold offline reload and locale route chan
     expect(new URL(page.url()).searchParams.get("book")).toBe(selected.searchParams.get("book"));
     await expect(page.locator("#book-archive-detail .book-detail-actions button.is-saved").filter({ has: page.locator(".brand-heart-icon") })).not.toHaveCount(0);
     await page.screenshot({ path: testInfo.outputPath("pwa-collection-en-book.png"), fullPage: false });
-    await help.locator("summary").click();
+    await help.locator(":scope > details > summary").click();
     await expect(help.getByRole("heading", { name: "Reading offline", exact: true })).toBeVisible();
     await expect(help.getByRole("heading", { name: "Data on this device", exact: true })).toBeVisible();
     await expect(help.getByRole("link", { name: "Email support", exact: true })).toHaveAttribute("href", "mailto:probperasite@yandex.ru");

@@ -182,7 +182,7 @@ test("cold offline core/search and bilingual support retain truthful recovery bo
     expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
     expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
     const help = page.locator(".pwa-help");
-    await help.locator("summary").click();
+    await help.locator(":scope > details > summary").click();
     for (const language of ["en", "ru"]) {
       if (language === "ru") await locale(page, "ru");
       await expect(help.getByRole("heading", { name: language === "en" ? "Reading offline" : "Чтение без сети", exact: true })).toBeVisible();

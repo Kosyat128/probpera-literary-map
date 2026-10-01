@@ -163,11 +163,16 @@
 .pwa-device__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 .pwa-device__cards > section > button + .pwa-device__actions { margin-top: .75rem; }
 .pwa-device__note { font-size: .9rem; }
+.pwa-device__value { display: inline-block; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pwa-device__offline-help { margin-top: .5rem; }
+.pwa-device__offline-help > summary { min-height: 44px; padding-block: .5rem; color: inherit; font-size: .9rem; cursor: pointer; }
+.pwa-device__offline-help > summary:focus-visible { outline: 3px solid var(--planet-accent, #c29943); outline-offset: 2px; }
 .pwa-device dl { margin-block: .75rem; }
 .pwa-device dl > div { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .25rem 1rem; }
 .pwa-device dd { margin: 0; font-variant-numeric: tabular-nums; }
 @media (forced-colors: active) {
   .pwa-access__actions :is(a, button), .pwa-access__refresh { border-color: ButtonText; }
+  .pwa-device__offline-help > summary:focus-visible { outline-color: Highlight; }
 }
 
 /* In the active collection, notices belong to the modal and consume their own
