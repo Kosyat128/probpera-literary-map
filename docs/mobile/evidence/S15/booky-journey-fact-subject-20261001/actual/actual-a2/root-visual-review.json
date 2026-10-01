@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "decision": "D240",
+  "pass": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/source-manifest.json",
+    "sha256": "6c04cc21831002f32feae08fa661f2e9a28aad76e683badd7528d968f1a94ebf"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/browser-result.json",
+    "sha256": "5f2f1c29007d12dd59766816db39b91469cefa1237fdfe394d01a118c65a278c"
+  },
+  "directRootViews": 8,
+  "allVisibleCopyAccepted": true,
+  "legacyFooterCountCorrected": true,
+  "legacyFooterTwelveDirectlyViewed": true,
+  "legacyFooterMatchesActualNativeExportBrowserAsserted": true,
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "2585990b7f9942af8bf1b72dacd581c52e587f0cda754e408c8ea24f6248461e",
+      "scope": "RU desktop main-work body comparison in two columns; four-node legacy footer eight is correct."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "19d3fcbf693652715fd53886b2eb9cf7d2beea033dff8538a35ba7007c23297a",
+      "scope": "RU 320 partial-caption compiler error and native recovery; recovery action lies partly outside the capture and is behavior asserted."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "5fa810fe7f4da30da5fb89cb5e277d563e64e8d8b67cdfeebc518af673b84d8d",
+      "scope": "EN 320 one of two modeled completions and outside-age feedback; actual age66 input outside capture is behavior asserted."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "e3d36c06954968790aab5ad96532697e0dda31ddb6f564d84058fc4dfb7afe95",
+      "scope": "RU 320 independently authored Alpha RU/EN multiline captions after Beta/Alpha ordering; visible footer twelve correct and matched to actual native export. No photograph of all eight added rows or full graph."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "a4a8c4072fe7b21926c3b2b313fddd46650fea6698bab69577b472c274510b06",
+      "scope": "EN 320 main-work fact bilingual captions and synthetic source metadata, with wrapping; lower navigation partially clipped."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "a11425905bc916980df2ffb55c6c97836880a97c0a42fec629a3d04c69bc270f",
+      "scope": "RU 320 native Country fact-subject choice focused, canonical country label and main/additional-work boundary. Authored synthetic work-note prose preserved intentionally; factual/editorial accuracy not accepted."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "a969fe816c5be3d3988c50587ce685f73fa1cd2d252d92d5b8ed45faa7bfee12",
+      "scope": "EN 320 actual helper bridge correct answer, explicit choices/check/reset; lower navigation partially clipped."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-fact-subject-review/actual-a2/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "2fc2aec9cad0cf1e3b5450e03bdb69f80d6fb7dd155b234a24b129f13b8d8100",
+      "scope": "RU 320 zero-match author finder and retained native choices; no RU verdict photograph."
+    }
+  ],
+  "actualComponentBrowser": true,
+  "syntheticPublicData": true,
+  "authenticatedAdminSession": false,
+  "allVisibleSyntheticProseEditoriallyAccepted": false,
+  "fullGraphVisuallyAccepted": false,
+  "installedMobileDeviceTested": false,
+  "fullDesignAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

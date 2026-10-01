@@ -1,0 +1,49 @@
+
+Running 3 tests using 1 worker
+··F
+
+  1) tests\host\booky-journey-authoring.spec.mjs:1673:1 › optional bilingual work fact preserves authored source metadata through strict local export and reopen 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: locator('[data-booky-copy-variants="sourced-fact"][data-copy-locale="ru"]').getByRole('textbox', { name: 'Подпись «Факт» (RU)', exact: true })
+    Expected: "Синтетическая подпись.
+    Источники не проверены."
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" with timeout 10000ms
+      - waiting for locator('[data-booky-copy-variants="sourced-fact"][data-copy-locale="ru"]').getByRole('textbox', { name: 'Подпись «Факт» (RU)', exact: true })
+
+
+      2295 |     await expect(page.getByRole('textbox', { name: 'Текст факта (RU)', exact: true })).toHaveValue(copy.ru.body);
+      2296 |     await expect(page.getByRole('textbox', { name: 'Текст факта (EN)', exact: true })).toHaveValue(copy.en.body);
+    > 2297 |     await expect(factVariantField('ru', 'caption')).toHaveValue(copy.ru.caption);
+           |                                                     ^
+      2298 |     await expect(sourceField('HTTPS URL источника', 2, 'ru')).toHaveValue(copy.ru.sources[1].url);
+      2299 |     await expect(page.getByLabel('Автор · вариант 2', { exact: true })).toHaveValue(JSON.stringify(['country-b', 'writer-c']));
+      2300 |     expect((await factSubject.boundingBox()).height).toBeGreaterThanOrEqual(44); expect(await overflow()).toBe(false);
+        at D:\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\host\booky-journey-authoring.spec.mjs:2297:53
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-subject-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-subject-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-subject-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-subject-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-journey-fact-subject-review\actual-a1\captures\booky-journey-authoring-op-c3d04-ict-local-export-and-reopen\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\host\booky-journey-authoring.spec.mjs:1673:1 › optional bilingual work fact preserves authored source metadata through strict local export and reopen 
+  2 passed (59.7s)
