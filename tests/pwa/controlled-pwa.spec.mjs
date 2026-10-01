@@ -845,3 +845,175 @@ test("site worker activation preserves controlled and unrelated caches", async (
   await page.reload();
   await expect(page.locator("[data-pwa-authorized]")).toBeVisible();
 });
+
+test("verified offline sizes and runtime locale metadata follow real repair", async ({ page, context }, testInfo) => {
+  test.setTimeout(240_000);
+  await openAuthorized(page);
+  const marker = await installed(page);
+  const manifest = marker.manifest;
+  const totals = { fileCount: manifest.files.length, bytes: manifest.files.reduce((sum, file) => sum + file.bytes, 0) };
+  const target = manifest.files.find(file => file.kind === "shell" && file.url === manifest.entrypoints.en);
+  expect(target).toBeTruthy();
+  expect(target.bytes).toBeGreaterThanOrEqual(1_000);
+  expect(target.bytes).toBeLessThan(1_000_000);
+  const cacheName = "literary-planet-pwa-v1-" + manifest.buildId;
+  const initialUrl = new URL(page.url());
+  expect(initialUrl.searchParams.get("country")).toBe("russia");
+  expect(initialUrl.hash).toBe("#atlas");
+  await expect.poll(() => page.evaluate(() => typeof window.__literaryPlanetQaScenes)).toBe("function");
+  const original = await page.evaluateHandle(() => ({ document,
+    scene: window.__literaryPlanetQaScenes().find(item => document.querySelector("#atlas").contains(item.canvas)) }));
+  expect(await original.evaluate(value => Boolean(value.scene?.canvas && value.scene.renderer && value.scene.camera && value.scene.scene))).toBe(true);
+  const evidence = { localQaOnly: true, buildId: manifest.buildId, totals, removedFile: target,
+    simulatedApis: [], liveProgressChecked: false, actualOsInstallation: false, browserProcessReopened: false,
+    publicSeoAcceptance: false, stageAccepted: false, headSnapshots: [], checks: [], repairs: [], screenshots: [], completed: false };
+  await page.evaluate(() => {
+    const controller = navigator.serviceWorker.controller;
+    if (!controller) throw new Error("The real controlling worker is required");
+    const qa = window.__pwaSizesQa = { readiness: [], repairs: [], listener: null };
+    qa.listener = event => {
+      if (event.source !== controller || event.origin !== location.origin) return;
+      if (event.data?.type === "PLANET_OFFLINE_READINESS_RESULT") qa.readiness.push(structuredClone(event.data));
+      if (event.data?.type === "PLANET_OFFLINE_REPAIR_RESULT") qa.repairs.push(structuredClone(event.data));
+    };
+    navigator.serviceWorker.addEventListener("message", qa.listener);
+  });
+  let initialAssets;
+  const verifyHead = async language => {
+    const head = await page.evaluate(() => {
+      const one = (selector, attribute) => {
+        const nodes = document.head.querySelectorAll(selector);
+        if (nodes.length !== 1) throw new Error("Expected one owned head field: " + selector);
+        return nodes[0].getAttribute(attribute);
+      };
+      const names = ["description", "robots", "twitter:card", "twitter:title", "twitter:description", "twitter:image:alt"];
+      const properties = ["og:type", "og:title", "og:description", "og:site_name", "og:url", "og:locale", "og:locale:alternate", "og:image:alt"];
+      return { title: document.title, htmlLang: document.documentElement.lang,
+        routeLanguage: document.documentElement.getAttribute("data-route-language"),
+        pathname: location.pathname, search: location.search, hash: location.hash,
+        canonical: one('link[rel="canonical"]', "href"), manifest: one('link[rel="manifest"]', "href"),
+        alternates: Object.fromEntries(["ru", "en", "x-default"].map(value => [value, one(`link[rel="alternate"][hreflang="${value}"]`, "href")])),
+        names: Object.fromEntries(names.map(value => [value, one(`meta[name="${value}"]`, "content")])),
+        properties: Object.fromEntries(properties.map(value => [value, one(`meta[property="${value}"]`, "content")])),
+        assets: [...document.head.querySelectorAll('link[href]:not([rel="canonical"]):not([rel="manifest"]):not([hreflang]),script[src],meta[property="og:image"],meta[name="twitter:image"]')]
+          .map(node => [node.tagName, node.getAttribute("rel") ?? node.getAttribute("property") ?? node.getAttribute("name"),
+            node.getAttribute("href") ?? node.getAttribute("src") ?? node.getAttribute("content")].join(":")).sort() };
+    });
+    const title = language === "ru" ? "Литературная планета" : "Literary Planet";
+    const canonical = "https://probpera.ru/planet/" + language + "/";
+    expect(head).toMatchObject({ title, htmlLang: language, routeLanguage: language,
+      pathname: "/planet/" + language + "/", search: initialUrl.search, hash: initialUrl.hash,
+      canonical, manifest: "/planet/" + language + "/manifest.webmanifest" });
+    expect(head.alternates).toEqual({ ru: "https://probpera.ru/planet/ru/", en: "https://probpera.ru/planet/en/", "x-default": "https://probpera.ru/planet/" });
+    expect(head.names).toEqual({ description: title, robots: "noindex,nofollow", "twitter:card": "summary",
+      "twitter:title": title, "twitter:description": title, "twitter:image:alt": title });
+    expect(head.properties).toEqual({ "og:type": "website", "og:title": title, "og:description": title, "og:site_name": title,
+      "og:url": canonical, "og:locale": language === "ru" ? "ru_RU" : "en_US",
+      "og:locale:alternate": language === "ru" ? "en_US" : "ru_RU", "og:image:alt": title });
+    expect(head.assets.some(value => value.startsWith("META:og:image:https://"))).toBe(true);
+    expect(head.assets.some(value => value.startsWith("META:twitter:image:https://"))).toBe(true);
+    if (initialAssets) expect(head.assets).toEqual(initialAssets); else initialAssets = head.assets;
+    await expect(page.locator("canvas")).toHaveCount(1);
+    expect(await original.evaluate(previous => {
+      const current = window.__literaryPlanetQaScenes().find(item => item.canvas === previous.scene.canvas);
+      return previous.document === document && previous.scene.canvas.isConnected && current?.renderer === previous.scene.renderer
+        && current?.camera === previous.scene.camera && current?.scene === previous.scene.scene;
+    })).toBe(true);
+    evidence.headSnapshots.push(head);
+  };
+  const size = (bytes, language) => {
+    const divisor = bytes >= 1_000_000_000 ? 1_000_000_000 : bytes >= 1_000_000 ? 1_000_000 : 1_000;
+    const unit = divisor === 1_000_000_000 ? language === "ru" ? "ГБ" : "GB"
+      : divisor === 1_000_000 ? language === "ru" ? "МБ" : "MB" : language === "ru" ? "КБ" : "kB";
+    return new Intl.NumberFormat(language === "ru" ? "ru-RU" : "en-US", { maximumFractionDigits: 1 }).format(bytes / divisor) + " " + unit;
+  };
+  try {
+    await page.locator('[data-atlas-action="open-collection"]').click();
+    const collection = page.locator(".native-planet-panel");
+    const header = collection.locator(".native-planet-panel__header");
+    const help = collection.locator(".pwa-help");
+    await help.locator(":scope > details > summary").click();
+    const device = help.locator(".pwa-device");
+    const readiness = device.locator("[data-pwa-offline-readiness]");
+    const verifiedText = language => (language === "ru" ? "Файлов в проверенном базовом наборе: " : "Files in the verified base package: ")
+      + totals.fileCount + " · " + size(totals.bytes, language);
+    const restoredText = language => (language === "ru" ? "Восстановлено файлов в этой попытке: " : "Files restored in this attempt: ")
+      + "1 · " + size(target.bytes, language);
+    const check = async (language, expected) => {
+      const before = await page.evaluate(() => window.__pwaSizesQa.readiness.length);
+      await device.getByRole("button", { name: language === "ru" ? "Проверить офлайн-файлы" : "Check offline files", exact: true }).click();
+      await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", expected, { timeout: 35_000 });
+      await expect.poll(() => page.evaluate(() => window.__pwaSizesQa.readiness.length)).toBe(before + 1);
+      const reply = await page.evaluate(() => window.__pwaSizesQa.readiness.at(-1));
+      expect(reply).toMatchObject({ status: expected, engineBuildId: manifest.buildId, activeBuildId: manifest.buildId });
+      if (expected === "complete") expect(reply).toMatchObject(totals);
+      else { expect(Object.hasOwn(reply, "fileCount")).toBe(false); expect(Object.hasOwn(reply, "bytes")).toBe(false); }
+      evidence.checks.push({ language, ...reply });
+    };
+    const locale = async language => {
+      await header.locator(".interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
+      await expect(page.locator("html")).toHaveAttribute("lang", language);
+      await verifyHead(language);
+    };
+    await check("ru", "complete");
+    await expect(device.getByText(verifiedText("ru"), { exact: true })).toBeVisible();
+    // Capture build asset URLs after the real collection/help chunks are mounted.
+    await verifyHead("ru");
+    await locale("en");
+    await expect(device.getByText(verifiedText("en"), { exact: true })).toBeVisible();
+    await context.setOffline(true);
+    evidence.baseline = await page.evaluate(async ({ cacheName, target }) => {
+      if (!await caches.has(cacheName)) throw new Error("The exact build cache is absent");
+      const response = await caches.match(target.url, { cacheName });
+      if (!response) throw new Error("The exact EN shell is absent before deletion");
+      const bytes = await response.arrayBuffer();
+      const sha256 = [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(value => value.toString(16).padStart(2, "0")).join("");
+      if (sha256 !== target.sha256 || bytes.byteLength !== target.bytes) throw new Error("Baseline cached bytes do not match the manifest");
+      if (!await (await caches.open(cacheName)).delete(target.url)) throw new Error("The exact EN shell was not deleted");
+      return { url: target.url, sha256, bytes: bytes.byteLength };
+    }, { cacheName, target });
+    await check("en", "incomplete");
+    await expect(device.getByText(verifiedText("en"), { exact: true })).toHaveCount(0);
+    await expect(device.getByText(verifiedText("ru"), { exact: true })).toHaveCount(0);
+    expect(await page.evaluate(async ({ cacheName, target }) => Boolean(await caches.match(target.url, { cacheName })), { cacheName, target })).toBe(false);
+    await context.setOffline(false);
+    await device.getByRole("button", { name: "Restore offline files", exact: true }).click();
+    await expect(device.locator("[data-pwa-offline-repair]")).toHaveAttribute("data-pwa-offline-repair", "complete", { timeout: 125_000 });
+    await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", "complete");
+    await expect.poll(() => page.evaluate(() => window.__pwaSizesQa.repairs.length)).toBe(1);
+    const repaired = await page.evaluate(() => window.__pwaSizesQa.repairs[0]);
+    expect(repaired).toMatchObject({ status: "complete", engineBuildId: manifest.buildId, activeBuildId: manifest.buildId,
+      ...totals, repairedFiles: 1, repairedBytes: target.bytes });
+    evidence.repairs.push(repaired);
+    evidence.restored = await page.evaluate(async ({ cacheName, target }) => {
+      const response = await caches.match(target.url, { cacheName });
+      if (!response) throw new Error("The product repair did not restore the EN shell");
+      const bytes = await response.arrayBuffer();
+      const sha256 = [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(value => value.toString(16).padStart(2, "0")).join("");
+      return { url: target.url, sha256, bytes: bytes.byteLength };
+    }, { cacheName, target });
+    expect(evidence.restored).toEqual(evidence.baseline);
+    for (const language of ["ru", "en"]) {
+      await locale(language);
+      const totalNote = device.getByText(verifiedText(language), { exact: true });
+      const repairNote = device.getByText(restoredText(language), { exact: true });
+      await expect(totalNote).toBeVisible(); await expect(repairNote).toBeVisible();
+      await collection.locator(".native-planet-panel__content").evaluate(container => {
+        const card = container.querySelector("[data-pwa-offline-readiness]")?.parentElement;
+        if (!card) throw new Error("The native offline preparation card is absent");
+        container.scrollTop += card.getBoundingClientRect().top - container.getBoundingClientRect().top - 8;
+      });
+      await expect(totalNote).toBeInViewport({ ratio: 1 }); await expect(repairNote).toBeInViewport({ ratio: 1 });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      const filename = "pwa-offline-sizes-" + language + ".png";
+      await page.screenshot({ path: testInfo.outputPath(filename), fullPage: false });
+      evidence.screenshots.push(filename);
+    }
+    evidence.completed = true;
+  } finally {
+    await context.setOffline(false);
+    await page.evaluate(() => { if (window.__pwaSizesQa) navigator.serviceWorker.removeEventListener("message", window.__pwaSizesQa.listener); delete window.__pwaSizesQa; }).catch(() => {});
+    await original.dispose();
+    await testInfo.attach("pwa-offline-sizes-and-runtime-head", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" });
+  }
+});
