@@ -28,7 +28,7 @@ export interface PwaAccessSnapshot {
 const serverSnapshot: PwaAccessSnapshot = Object.freeze({ grant: null, verificationSource: null, checking: false, reason: "not-checked", observedAt: 0 });
 const getServerSnapshot = () => serverSnapshot;
 const environmentMode = (environment: PlatformSnapshot): AccessMode => environment.connectivity === "offline" ? "offline" : "online";
-const transportFailure = (reason: WebLicenseDenial) => ["network-unavailable", "timeout"].includes(reason);
+const transportFailure = (reason: WebLicenseDenial) => ["network-unavailable", "timeout", "rate-limited"].includes(reason);
 const missingOfflineProof = (reason: WebLicenseDenial) => ["no-cached-grant", "cache-unavailable", "network-unavailable", "timeout"].includes(reason);
 
 /** Reuses a verified assertion; this function never verifies or invents one. */
@@ -98,13 +98,15 @@ export function createPwaAccessController(client: WebLicenseClient | null) {
     const mode = environmentMode(environment);
     let verificationSource: PwaAccessSnapshot["verificationSource"] = mode === "online" ? "server" : "saved";
     let prior = snapshot.grant;
+    let rateLimited = false;
     publish(prior, true, null);
     prior = snapshot.grant;
     try {
       let result = await client.check({ mode, signal });
       if (!active()) return;
       if (mode === "online" && result.status === "denied" && transportFailure(result.reason)) {
-        // A failed network check narrows an existing assertion to its signed
+        rateLimited = result.reason === "rate-limited";
+        // A temporary online check failure narrows an existing assertion to its signed
         // offline window before a separately verified offline cache attempt.
         prior = retainedOfflineGrant(prior);
         publish(prior, true, result.reason, "saved");
@@ -113,7 +115,7 @@ export function createPwaAccessController(client: WebLicenseClient | null) {
         if (!active()) return;
       }
       if (result.status === "authorized") publish(result, false, null, verificationSource);
-      else if (missingOfflineProof(result.reason)) publish(retainedOfflineGrant(prior), false, result.reason, "saved");
+      else if (missingOfflineProof(result.reason)) publish(retainedOfflineGrant(prior), false, rateLimited ? "rate-limited" : result.reason, "saved");
       else publish(null, false, result.reason);
     } catch {
       if (active()) publish(retainedOfflineGrant(prior), false, "network-unavailable", "saved");
@@ -154,6 +156,7 @@ export function pwaAccessMessage(copy: PwaAccessCopy, reason: WebLicenseDenial |
   if (reason === "clock-skew" || reason === "not-yet-valid") return copy.clock;
   if (reason === "no-cached-grant") return copy.offline;
   if (reason === "cache-unavailable") return copy.storage;
+  if (reason === "rate-limited") return copy.rateLimited;
   if (reason === "network-unavailable" || reason === "timeout") return copy.network;
   return copy.denied;
 }

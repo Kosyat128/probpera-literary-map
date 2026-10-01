@@ -39,7 +39,7 @@ async function rowCount(table: "auth.users" | "public.planet_payment_events", su
   const column = table === "auth.users" ? "id" : "user_id";
   return Number((await db.query<{ count: number }>("select count(*)::integer as count from " + table + " where " + column + "=$1::uuid", [subject])).rows[0].count);
 }
-async function environment() {
+async function environment(rateLimit = 10000) {
   const subject = crypto.randomUUID();
   const sessionId = crypto.randomUUID();
   await db.query("insert into auth.users(id) values($1::uuid)", [subject]);
@@ -101,7 +101,7 @@ async function environment() {
     now: () => now * 1000,
     deletionDisclosure: { version: "local-integration-fixture", ru: "Тестовый текст; не юридическое заключение.", en: "Test text; not a legal approval." },
     services: { ...canonical,
-      licenseRateLimiter: createCanonicalLicenseRateLimiter(canonicalOptions, { limit: 10000, windowSeconds: 60 }),
+      licenseRateLimiter: createCanonicalLicenseRateLimiter(canonicalOptions, { limit: rateLimit, windowSeconds: 60 }),
       cookies: createCookieCodec({ key: cookieKey, origin, cookieName: "__Host-planet-integration" }),
       signer: createGrantSigner({ privateKey: grantKeys.privateKey, kid: "fixture-license", issuer, audience, product, grantSeconds: 600, offlineSeconds: 300, now: () => now * 1000 }),
       payments: { provider: "local-fixture", async verify(request, bytes) {
@@ -115,6 +115,8 @@ async function environment() {
   const authority = { issuer, audience, product, trustedKeys: [{ kid: "fixture-license", jwk: publicGrantKey }] };
   function browser() {
     let cookie = "";
+    let clientTime = now * 1000;
+    const sessions: { status: number; retryAfter: string | null }[] = [];
     const values = new Map<string, string>();
     const fetch: typeof globalThis.fetch = async (input, init) => {
       const url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
@@ -123,14 +125,15 @@ async function environment() {
       headers.set("origin", origin); headers.set("sec-fetch-site", "same-origin");
       if (cookie) headers.set("cookie", cookie);
       const response = await api(new Request(url, { ...init, headers }));
+      if (new URL(url).pathname === "/planet/api/license/session") sessions.push({ status: response.status, retryAfter: response.headers.get("retry-after") });
       const next = response.headers.get("set-cookie");
       if (next) cookie = next.includes("Max-Age=0") ? "" : next.split(";")[0];
       return response;
     };
     const account = createPlanetAccountClient({ origin, fetch });
-    const runtime = createPwaLicenseRuntime({ authority, origin, fetch, now: () => now * 1000,
+    const runtime = createPwaLicenseRuntime({ authority, origin, fetch, now: () => clientTime,
       storage: { getItem: key => values.get(key) ?? null, setItem: (key, value) => { values.set(key, value); }, removeItem: key => { values.delete(key); } } });
-    return { account, runtime, values, fetch };
+    return { account, runtime, values, fetch, sessions, setClock: (milliseconds: number) => { clientTime = milliseconds; } };
   }
   async function payment(event: VerifiedPayment, signed = true) {
     const bytes = new TextEncoder().encode(JSON.stringify(event));
@@ -146,6 +149,32 @@ async function environment() {
 // One PGlite connection: real SQL/ACL and complete protocol integration, not a
 // claim of production Auth/provider access or multi-connection concurrency QA.
 describe.sequential("account → verified event → canonical SQL → signed PWA access", () => {
+  it("honors actual durable grant exhaustion and Retry-After without losing signed offline proof or issuing another grant early", async () => {
+    const f = await environment(1); await f.payment(f.event());
+    const browser = f.browser(), config = await browser.account.configuration();
+    await browser.account.bridge(config, f.token);
+    const boot = await browser.runtime.bootstrap({ mode: "online" });
+    expect(await boot.client!.check({ mode: "online" })).toMatchObject({ status: "authorized", claims: { sub: f.subject, product } });
+    const saved = [...browser.values.entries()];
+    const budget = async () => (await db.query<{ value: unknown }>("select to_jsonb(b) as value from public.planet_license_grant_budgets b where user_id=$1::uuid and product_id=$2", [f.subject, product])).rows[0].value;
+    const before = await budget();
+    browser.setClock(now * 1000 + 500);
+    expect(await boot.client!.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" });
+    expect(browser.sessions.map(value => value.status)).toEqual([200, 429]);
+    const seconds = Number(browser.sessions[1].retryAfter);
+    expect(Number.isInteger(seconds)).toBe(true); expect(seconds).toBeGreaterThanOrEqual(1); expect(seconds).toBeLessThanOrEqual(60);
+    expect(await budget()).toEqual(before); expect([...browser.values.entries()]).toEqual(saved);
+    browser.setClock(now * 1000 + 500 + seconds * 1000 - 1);
+    expect(await boot.client!.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" });
+    expect(await boot.client!.check({ mode: "offline" })).toMatchObject({ status: "authorized", claims: { sub: f.subject, product } });
+    expect(browser.sessions.map(value => value.status)).toEqual([200, 429]);
+    // Only controlled fixture row data expires the DB window; no sleep/client clock authority.
+    await db.query("update public.planet_license_grant_budgets set window_started_at=statement_timestamp()-interval '61 seconds' where user_id=$1::uuid and product_id=$2", [f.subject, product]);
+    browser.setClock(now * 1000 + 500 + seconds * 1000);
+    expect(await boot.client!.check({ mode: "online" })).toMatchObject({ status: "authorized" });
+    expect(browser.sessions.map(value => value.status)).toEqual([200, 429, 200]);
+    expect(await budget()).toMatchObject({ used: 1, grant_limit: 1 });
+  });
   it("recovers a committed deletion after a lost 202 in a fresh browser without paid cookie or access", async () => {
     const f = await environment(), browser = f.browser(); const config = await browser.account.configuration();
     await browser.account.bridge(config, f.token); const requestId = crypto.randomUUID();

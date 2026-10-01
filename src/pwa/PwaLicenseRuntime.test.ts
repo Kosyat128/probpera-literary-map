@@ -50,6 +50,34 @@ beforeAll(async () => {
 afterEach(() => vi.useRealTimers());
 
 describe("independently established Web license identity", () => {
+  it("reuses a current identity client and its wait across online/offline bootstrap without persisting quota", async () => {
+    const token = await grant(), store = storage(); let time = NOW * 1000 + 500, grants = 0;
+    const fetcher = vi.fn<typeof fetch>(async input => {
+      const url = String(input);
+      if (url.endsWith(PWA_LICENSE_IDENTITY_PATH)) return json({ subject: SUBJECT });
+      grants++; return grants === 1 ? json({ grant: token }) : new Response(null, { status: 429, headers: { "Retry-After": "2" } });
+    });
+    const runtime = createPwaLicenseRuntime(options({ storage: store, fetch: fetcher, now: () => time }));
+    const first = await runtime.bootstrap({ mode: "online" }); await first.client!.check({ mode: "online" });
+    const saved = [...store.values.entries()]; await first.client!.check({ mode: "online" });
+    const again = await runtime.bootstrap({ mode: "online" }); expect(again.client).toBe(first.client);
+    const offline = await runtime.bootstrap({ mode: "offline" }); expect(offline.client).toBe(first.client);
+    expect(await offline.client!.check({ mode: "offline" })).toMatchObject({ status: "authorized" });
+    time += 1999; expect(await again.client!.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" });
+    expect(grants).toBe(2); expect([...store.values.entries()]).toEqual(saved);
+    time++; expect(await again.client!.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" }); expect(grants).toBe(3);
+  });
+  it("does not transfer an old identity's wait to a newly verified identity", async () => {
+    const other = "independent-adult-session-2", store = storage(); let subject = SUBJECT;
+    const token = await grant(other), fetcher = vi.fn<typeof fetch>(async input => String(input).endsWith(PWA_LICENSE_IDENTITY_PATH)
+      ? json({ subject }) : subject === SUBJECT ? new Response(null, { status: 429, headers: { "Retry-After": "60" } }) : json({ grant: token }));
+    const runtime = createPwaLicenseRuntime(options({ storage: store, fetch: fetcher }));
+    const first = await runtime.bootstrap({ mode: "online" }); expect(await first.client!.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" });
+    subject = other; const second = await runtime.bootstrap({ mode: "online" }); expect(second.client).not.toBe(first.client);
+    expect(await second.client!.check({ mode: "online" })).toMatchObject({ status: "authorized", claims: { sub: other } });
+    expect(await first.client!.check({ mode: "online" })).toMatchObject({ reason: "session-denied" });
+    expect(store.values.get(namespace() + ":identity")).toBe(other);
+  });
   it("does no constructor I/O and defaults to closed without configured authority", async () => {
     const store = storage();
     const fetcher = vi.fn<typeof fetch>();

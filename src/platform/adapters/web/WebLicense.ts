@@ -43,7 +43,7 @@ export type WebLicenseDenial =
   | "clock-skew" | "not-yet-valid" | "expired" | "offline-expired"
   | "revoked" | "refunded" | "no-cached-grant" | "cache-unavailable"
   | "session-denied" | "invalid-response" | "network-unavailable"
-  | "timeout" | "cancelled";
+  | "timeout" | "cancelled" | "rate-limited";
 export type WebLicenseResult =
   | { readonly status: "authorized"; readonly claims: WebLicenseClaims; readonly validUntil: number }
   | { readonly status: "denied"; readonly reason: WebLicenseDenial };
@@ -256,6 +256,8 @@ export function createWebLicenseClient(options: WebLicenseClientOptions): WebLic
   let pending: AbortController | undefined;
   let highWater = -1;
   let onlineDenial = false;
+  // One immutable identity/product context only; never persisted or shared.
+  let retryUntilMs = 0;
   // Serialize cache mutations so a slow superseded write cannot overwrite a
   // newer revocation/removal. All cached bytes are still untrusted on read.
   let cacheTail = Promise.resolve();
@@ -266,8 +268,11 @@ export function createWebLicenseClient(options: WebLicenseClientOptions): WebLic
     cacheTail = next.then(() => undefined, () => undefined);
     return next;
   }
-  function clockValid(): boolean {
-    const current = unixNow(now);
+  function readClock(): number {
+    try { return now(); } catch { return NaN; }
+  }
+  function clockValid(milliseconds = readClock()): boolean {
+    const current = unixNow(() => milliseconds);
     if (!Number.isSafeInteger(current) || current < highWater) return false;
     highWater = current;
     return true;
@@ -312,7 +317,8 @@ export function createWebLicenseClient(options: WebLicenseClientOptions): WebLic
       if (!contextValid(context) || !["online", "offline"].includes(request.mode)) return denied("invalid-context");
       const keyError = configurationKeyError ?? configuredKeys(keys);
       if (keyError) return denied(keyError);
-      if (!clockValid()) return denied("clock-skew");
+      const checkedAt = readClock();
+      if (!clockValid(checkedAt)) return denied("clock-skew");
       if (!active()) return denied("cancelled");
       if (request.mode === "offline") {
         if (onlineDenial) return denied("session-denied");
@@ -324,6 +330,7 @@ export function createWebLicenseClient(options: WebLicenseClientOptions): WebLic
         if (!cached) return denied("no-cached-grant");
         return verifyWebLicenseGrant(cached, context, { ...verification, mode: "offline" });
       }
+      if (checkedAt < retryUntilMs) return denied("rate-limited");
       const fetcher = options.fetch ?? globalThis.fetch;
       if (!fetcher) return denied("network-unavailable");
       let response: Response;
@@ -336,6 +343,20 @@ export function createWebLicenseClient(options: WebLicenseClientOptions): WebLic
         });
       } catch { return denied("network-unavailable"); }
       if (!active()) return denied("cancelled");
+      if (response.status === 429) {
+        // A foreign/redirected error cannot impose a wait or revoke saved proof.
+        if (response.redirected || (response.url && response.url !== endpoint)) return denied("invalid-response");
+        const receivedAt = readClock();
+        if (!clockValid(receivedAt)) return denied("clock-skew");
+        const raw = response.headers.get("retry-after");
+        const seconds = raw && /^[1-9][0-9]{0,4}$/u.test(raw) ? Number(raw) : NaN;
+        const deadline = receivedAt + seconds * 1000;
+        // Canonical D251 emits positive delta-seconds <=86400. Reject dates,
+        // merged duplicates and malformed values without inventing a wait.
+        if (seconds <= 86400 && Number.isFinite(deadline) && deadline <= Number.MAX_SAFE_INTEGER) retryUntilMs = deadline;
+        void response.body?.cancel().catch(() => undefined);
+        return denied("rate-limited");
+      }
       if (response.status !== 200) {
         if ([400, 401, 402, 403, 404, 410].includes(response.status)) clearCache();
         return denied([401, 402, 403, 410].includes(response.status) ? "session-denied" : "network-unavailable");

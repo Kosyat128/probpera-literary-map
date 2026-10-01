@@ -365,3 +365,93 @@ describe("same-origin Web license session client", () => {
     expect(stored).toBe(newGrant);
   });
 });
+
+describe("identity-bound server-requested grant retry windows", () => {
+  const limited = (header: string | null = "2") => new Response(null, { status: 429, headers: header === null ? {} : { "Retry-After": header } });
+  it("waits full delta-seconds after receipt, suppresses online requests and retains separately verified offline proof", async () => {
+    const token = await sign(), store = cache(token); let time = current * 1000 + 500, first = true;
+    const fetcher = vi.fn<typeof fetch>(async () => {
+      if (first) { first = false; time += 650; return limited("2"); }
+      return response(token);
+    });
+    const service = client({ cache: store, fetch: fetcher, now: () => time });
+    expect(await service.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" });
+    expect(await service.check({ mode: "offline" })).toMatchObject({ status: "authorized" });
+    expect(await service.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" });
+    time = current * 1000 + 3150 - 1;
+    expect(await service.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" });
+    expect(fetcher).toHaveBeenCalledTimes(1); expect(store.remove).not.toHaveBeenCalled(); expect(store.stored()).toBe(token);
+    time++; expect(await service.check({ mode: "online" })).toMatchObject({ status: "authorized" });
+    expect(fetcher).toHaveBeenCalledTimes(2);
+  });
+  it("rejects absent, malformed, merged and noncanonical headers without inventing a permanent wait", async () => {
+    const token = await sign();
+    for (const header of [null, "0", "-1", "+1", "01", "1.5", "86401", "1, 2", "Fri, 01 Oct 2027 12:00:00 GMT", "999999999999999999"]) {
+      const store = cache(token), fetcher = vi.fn<typeof fetch>().mockResolvedValueOnce(limited(header)).mockResolvedValueOnce(response(token));
+      const service = client({ cache: store, fetch: fetcher });
+      expect(await service.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" });
+      expect(await service.check({ mode: "online" })).toMatchObject({ status: "authorized" });
+      expect(fetcher).toHaveBeenCalledTimes(2); expect(store.remove).not.toHaveBeenCalled();
+    }
+  });
+  it("rejects foreign or redirected 429 responses without poisoning wait state or deleting signed bytes", async () => {
+    const token = await sign();
+    for (const responseProperty of [{ url: "https://foreign.invalid/planet/api/license/session" }, { redirected: true }]) {
+      const bad = limited("86400");
+      for (const [key, value] of Object.entries(responseProperty)) Object.defineProperty(bad, key, { value });
+      const store = cache(token), fetcher = vi.fn<typeof fetch>().mockResolvedValueOnce(bad).mockResolvedValueOnce(response(token));
+      const service = client({ cache: store, fetch: fetcher });
+      expect(await service.check({ mode: "online" })).toMatchObject({ reason: "invalid-response" });
+      expect(store.stored()).toBe(token); expect(store.remove).not.toHaveBeenCalled();
+      expect(await service.check({ mode: "online" })).toMatchObject({ status: "authorized" });
+    }
+  });
+  it("keeps waits local to immutable issuer/audience/product/subject contexts", async () => {
+    const fetcher = vi.fn<typeof fetch>(async () => limited("60")), service = client({ fetch: fetcher });
+    await service.check({ mode: "online" });
+    for (const field of ["issuer", "audience", "product", "subject"] as const) {
+      const other = { ...context, [field]: "different-" + field };
+      const token = await sign(claims({ iss: other.issuer, aud: other.audience, product: other.product, sub: other.subject }));
+      const otherFetch = vi.fn<typeof fetch>(async () => response(token));
+      expect(await client({ context: other, fetch: otherFetch }).check({ mode: "online" })).toMatchObject({ status: "authorized" });
+      expect(otherFetch).toHaveBeenCalledTimes(1);
+    }
+    expect(await service.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" }); expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+  it("ignores a delayed superseded 429 after a newer signed response", async () => {
+    let complete!: (value: Response) => void; const old = new Promise<Response>(resolve => { complete = resolve; });
+    const token = await sign(), fetcher = vi.fn<typeof fetch>().mockImplementationOnce(() => old).mockImplementation(async () => response(token));
+    const store = cache(), service = client({ cache: store, fetch: fetcher });
+    const stale = service.check({ mode: "online" });
+    expect(await service.check({ mode: "online" })).toMatchObject({ status: "authorized" });
+    complete(limited("86400")); expect(await stale).toMatchObject({ reason: "cancelled" });
+    expect(await service.check({ mode: "online" })).toMatchObject({ status: "authorized" });
+    expect(fetcher).toHaveBeenCalledTimes(3); expect(store.stored()).toBe(token);
+  });
+  it("does not retain a cancelled request's later 429 deadline", async () => {
+    let complete!: (value: Response) => void; const old = new Promise<Response>(resolve => { complete = resolve; });
+    const token = await sign(), fetcher = vi.fn<typeof fetch>().mockImplementationOnce(() => old).mockResolvedValue(response(token));
+    const service = client({ fetch: fetcher }); const controller = new AbortController();
+    const cancelled = service.check({ mode: "online", signal: controller.signal }); controller.abort();
+    expect(await cancelled).toMatchObject({ reason: "cancelled" }); complete(limited("86400"));
+    expect(await service.check({ mode: "online" })).toMatchObject({ status: "authorized" }); expect(fetcher).toHaveBeenCalledTimes(2);
+  });
+  it("does not revive known session denial or extend an expired signed offline window", async () => {
+    const token = await sign(), fetcher = vi.fn<typeof fetch>().mockResolvedValueOnce(new Response(null, { status: 403 })).mockResolvedValueOnce(limited("60"));
+    const store = cache(token), service = client({ cache: store, fetch: fetcher });
+    expect(await service.check({ mode: "online" })).toMatchObject({ reason: "session-denied" });
+    expect(await service.check({ mode: "online" })).toMatchObject({ reason: "rate-limited" });
+    expect(await service.check({ mode: "offline" })).toMatchObject({ reason: "session-denied" }); expect(store.stored()).toBeNull();
+    let time = current * 1000;
+    const retained = client({ cache: cache(await sign(claims({ offlineUntil: current + 1 }))), fetch: async () => limited("60"), now: () => time });
+    await retained.check({ mode: "online" }); time += 1000;
+    expect(await retained.check({ mode: "offline" })).toMatchObject({ reason: "offline-expired" });
+  });
+  it("fails closed on clock rollback during a wait without fetching or authorizing cached proof", async () => {
+    let time = current * 1000 + 500; const fetcher = vi.fn<typeof fetch>(async () => limited("60"));
+    const service = client({ cache: cache(await sign()), fetch: fetcher, now: () => time });
+    await service.check({ mode: "online" }); time -= 1000;
+    expect(await service.check({ mode: "online" })).toMatchObject({ reason: "clock-skew" });
+    expect(await service.check({ mode: "offline" })).toMatchObject({ reason: "clock-skew" }); expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+});

@@ -35,6 +35,26 @@ beforeEach(() => { vi.useFakeTimers(); vi.setSystemTime(NOW * 1000); });
 afterEach(() => { for (const value of controllers.splice(0)) value.stop(); vi.useRealTimers(); });
 
 describe("identity-bound PWA access lifecycle", () => {
+  it("separately verifies saved proof after rate limiting and keeps only its signed offline deadline", async () => {
+    const client = service(); client.check.mockResolvedValueOnce(authorized()).mockResolvedValueOnce(denied("rate-limited"))
+      .mockResolvedValueOnce({ ...authorized(), validUntil: NOW + 120 });
+    const access = controller(client); await access.start(online); await access.refresh();
+    expect(client.check.mock.calls.map(([request]) => request.mode)).toEqual(["online", "online", "offline"]);
+    expect(access.getSnapshot()).toMatchObject({ grant: { validUntil: NOW + 120 }, verificationSource: "saved", reason: null });
+    client.check.mockImplementation(() => new Promise(() => undefined));
+    await vi.advanceTimersByTimeAsync(120_000); expect(access.getSnapshot().grant).toBeNull();
+  });
+  it("shows accurate RU/EN wait copy without inventing proof when a rate-limited fallback has no cache", async () => {
+    const client = service(); client.check.mockResolvedValueOnce(denied("rate-limited")).mockResolvedValueOnce(denied("no-cached-grant"));
+    const access = controller(client); await access.start(online);
+    expect(access.getSnapshot()).toMatchObject({ grant: null, verificationSource: null, reason: "rate-limited", checking: false });
+    for (const locale of ["ru", "en"] as const) expect(pwaAccessMessage(pwaCopy.locales[locale], "rate-limited")).toBe(pwaCopy.locales[locale].rateLimited);
+  });
+  it("keeps definitive offline denial dominant after a rate-limited server response", async () => {
+    const client = service(); client.check.mockResolvedValueOnce(authorized()).mockResolvedValueOnce(denied("rate-limited")).mockResolvedValueOnce(denied("context-mismatch"));
+    const access = controller(client); await access.start(online); await access.refresh();
+    expect(access.getSnapshot()).toMatchObject({ grant: null, verificationSource: null, reason: "context-mismatch" });
+  });
   it("uses the same verified deadline for repair and never grants it before start or after stop", async () => {
     const client = service(); client.check.mockResolvedValue(authorized()); const access = controller(client);
     expect(access.getDeadline()).toBeNull(); await access.start(online);

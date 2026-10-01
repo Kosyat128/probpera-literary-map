@@ -12,6 +12,7 @@ export interface PwaAccessCopy {
   readonly offline: string;
   readonly storage: string;
   readonly network: string;
+  readonly rateLimited: string;
   readonly retry: string;
   readonly journal: string;
 }
@@ -35,6 +36,7 @@ export const pwaCopy = {
       offline: "Сейчас нет подтверждённого доступа без сети. Подключитесь к интернету и повторите проверку.",
       storage: "Не удаётся прочитать или сохранить данные доступа. Проверьте свободное место и настройки браузера, затем повторите попытку.",
       network: "Сейчас не удаётся проверить доступ. Повторите попытку, когда появится соединение.",
+      rateLimited: "Проверка доступа временно ограничена. Повторите проверку позже.",
       retry: "Проверить снова",
       journal: "Открыть журнал «Проба Пера»",
     },
@@ -50,6 +52,7 @@ export const pwaCopy = {
       offline: "Verified offline access is not available right now. Connect to the internet and check again.",
       storage: "Access data cannot be read or saved. Check available space and browser settings, then try again.",
       network: "Access cannot be checked right now. Try again when a connection is available.",
+      rateLimited: "Access checks are temporarily limited. Try checking again later.",
       retry: "Check again",
       journal: "Open the Proba Pera journal",
     },
