@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "decision": "D243",
+  "sourceCommit": "23f72547b023298f3996bbabc349be348341d18f",
+  "recordedAt": "2026-10-01T13:46:20.331Z",
+  "scope": "working-validation",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "allStatusesUnchanged": true,
+  "applicationChecksRun": false,
+  "buildsRun": false,
+  "mobileRuntimeChanged": false,
+  "payloadHashesRechecked": false,
+  "kind": "s03-bounded-environment-availability",
+  "criterionIds": [
+    "S03.PLATFORM-001"
+  ],
+  "requirementIds": [
+    "PLATFORM-001"
+  ],
+  "sourceFiles": [],
+  "osAvailability": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/os-availability.json",
+    "sha256": "b6a4545cf62ac24b67d16624029203badcd16a7ef7c1226e5c9da3882d295ccb"
+  },
+  "androidAvailability": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/android-availability.json",
+    "sha256": "caec28523e07820b9a8aab504d4fe0be9bdff80e8ab2b1b18cd07e9abe1df10c"
+  },
+  "availabilityOnly": true,
+  "readyIsolatedRunnerIdentified": false,
+  "actualInstallVerified": false,
+  "universalVmOrSdkAbsenceClaimed": false,
+  "ownerOnlyBlockerClaimed": false
+}

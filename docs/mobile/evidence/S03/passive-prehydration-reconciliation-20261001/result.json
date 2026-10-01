@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "decision": "D243",
+  "sourceCommit": "23f72547b023298f3996bbabc349be348341d18f",
+  "recordedAt": "2026-10-01T13:46:20.331Z",
+  "scope": "working-validation",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "allStatusesUnchanged": true,
+  "applicationChecksRun": false,
+  "buildsRun": false,
+  "mobileRuntimeChanged": false,
+  "payloadHashesRechecked": false,
+  "kind": "s03-working-evidence-reconciliation",
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "requirementIds": [],
+  "sourceFiles": [
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "scripts/mobile/pwa-shell.mjs",
+      "sha256": "16f1165034d6235385fed1e6af6a1e7641794568599b51975ebb93b9b39a86bd"
+    },
+    {
+      "path": "src/i18n/PublicLocaleMetadata.tsx",
+      "sha256": "201028bf84360a4d1184ca8171ffee39c78539d7da6cbe0ef7195d6e137779b9"
+    },
+    {
+      "path": "scripts/mobile/public-locale-pages.mjs",
+      "sha256": "aa1d260c23aa71ff855370867cc715dc6a161ea18e93c8a94e33d32e76c4edcd"
+    },
+    {
+      "path": "scripts/mobile/public-locale-review.mjs",
+      "sha256": "bfa7249f18c81f64139ea0957f6fc71097304c08b078e88457a9c2b407851076"
+    },
+    {
+      "path": "scripts/mobile/write-public-locale-pages.mjs",
+      "sha256": "d73e410dd45b3de02e62a01b6b881a0c6037c5638b6d4be48f37a2c69a7ed5af"
+    }
+  ],
+  "predecessor": {
+    "path": "docs/mobile/evidence/S15/booky-journey-session-recovery-20261001/result.json",
+    "sha256": "9256c837f5b0e1305bc228322f81028a11dd2b12d056eeed0501c7d29c0d1727"
+  },
+  "reconciliationReview": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/reconciliation-review.md",
+    "sha256": "587dda1a26bee2d0449c5f7b94cef79089ba9b0a765d83f77a023891876c7b11"
+  },
+  "reconciliationResult": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/reconciliation-result.json",
+    "sha256": "15c7a6256c0cdf5fb4e1ba90ac71e89bdaf60148f66054537e31f3bcc0c21c8c"
+  },
+  "actualProbe": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/probe-result.json",
+    "sha256": "3f519351efdc59007f4477c2524a8f3d82640940c12df50f4d2df642f68c1ffa"
+  },
+  "actualProducer": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/probe.mjs",
+    "sha256": "07699cf7f2f82763e5026c3abbe3a6b9ab0bde62a229aa1c81101761af316b88"
+  },
+  "httpSubset": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json",
+    "sha256": "13fb5426d33eca3aa5ad7a87bcc008e3d58e2d2c98960c99c3136c1059c5c44b"
+  },
+  "platformAvailability": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/platform-availability.json",
+    "sha256": "c4239d0845c730d442cfe185e0b9074a3b16e973fab0009709bfbc1a5a1e43bb"
+  },
+  "supportedSubsetPass": true,
+  "requestedCoverageComplete": false,
+  "all12CriteriaRemainUnfinished": true,
+  "firstUnresolved": "S03.acceptance",
+  "nextAction": "S03.acceptance: Prepare exactly one fresh source-bound controlled PWA QA candidate and a focused actual runtime RU/EN switch plus core-offline/cold-relaunch run for the existing BIL-019/075/077 and CONTENT-007 gaps. The retained D220 candidate cannot reopen authorized/offline operation: only its public authority remains, privateKeyPersisted is false and the original producer is closed. Authenticate and review the existing transport/license/authority harness, then use a separately bound temporary controlled QA authority for the fresh candidate; no production license, purchase, publication or reviewed-content authority is implied. Keep the actual passive13-request retained-candidate subset and bounded12-criterion/OS/Android audits; do not repeat them as runtime evidence. The fresh candidate/browser run is preparation pending at this checkpoint, not an already completed build or PASS. Actual OS/native installation needs a verified isolated runner; bounded checked-interface absence proves no universal VM/SDK absence and creates no owner-only blocker. Keep every criterion/global status, missing JSON-LD/sitemap/public-edge coverage and stage/release gate unchanged until actual scoped evidence is reviewed. No APK/store/OS side effect, fabricated device/full-offline/full-bilingual acceptance or new feature requirement."
+}

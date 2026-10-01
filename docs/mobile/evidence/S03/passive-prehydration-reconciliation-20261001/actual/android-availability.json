@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "kind": "S03.PLATFORM-001.narrow-android-readonly-followup",
+  "observedAt": "2026-10-01 13:28:29 UTC",
+  "sources": {
+    "retainedAndroidMetadata": {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-dialogue-provenance-rev7-20260930/retained-builds/android/975d0683b9882088-789e3a551885-975d0683b9882088-df6b1894004a-result.json",
+      "sha256": "975d0683b98820881fd535ea74ba4fede6386e18f3f8bc7002c485a3fb524ee0",
+      "metadataBytesAuthenticated": true,
+      "apkOrPayloadRead": false
+    },
+    "referencedBuildRunner": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/build-android-a1.ps1",
+      "sha256": "ac7e39cae888d1a013b0599cbc541e3f02e7207f9040f934774567fd24fb9c29",
+      "shaMatchedRetainedMetadata": true,
+      "sourceLines": {
+        "projectRoot": 9,
+        "toolRoot": 15,
+        "sdkRoot": [
+          21,
+          22
+        ],
+        "projectAndroidUserHome": 23
+      },
+      "executed": false
+    },
+    "referencedBuildMetadata": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-exhausted-retry-assessment-review/runtime-build-a1/android-a1/build-run.json",
+      "sha256": "304b2f0ea6ab37344801a368ca24bc5e81f4aa7fbb0814ed08e48d7def5346ad",
+      "readOnly": true,
+      "recordedDeviceTested": false,
+      "recordedTask": ":app:assembleDevDebug",
+      "commandToolPath": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/native-tools/java/jdk-21.0.12.1+1/bin/java.exe"
+    }
+  },
+  "exactPathChecks": [
+    {
+      "Kind": "documentedProjectSdkRoot",
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk",
+      "PathType": "Container",
+      "Exists": true,
+      "Basis": "Authenticated D220 runner lines 9/15/21/22",
+      "ReadError": null
+    },
+    {
+      "Kind": "sdkEmulator",
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\emulator\\emulator.exe",
+      "PathType": "Leaf",
+      "Exists": false,
+      "Basis": "Conventional exact emulator executable path under the documented project SDK; no directory enumeration",
+      "ReadError": null
+    },
+    {
+      "Kind": "sdkAvdmanagerLatest",
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\cmdline-tools\\latest\\bin\\avdmanager.bat",
+      "PathType": "Leaf",
+      "Exists": false,
+      "Basis": "Conventional latest-tools candidate under the documented project SDK; tool version not recorded in inspected metadata",
+      "ReadError": null
+    }
+  ],
+  "findings": {
+    "documentedProjectAndroidSdkExists": true,
+    "documentedProjectSdkEmulatorFound": false,
+    "latestAvdmanagerCandidateFound": false,
+    "cmdlineToolsVersionRecordedInInspectedMetadata": false,
+    "projectBuildRunnerIsBuildEvidenceOnly": true,
+    "recordedNativeExecutionIsNotDeviceAcceptance": true,
+    "personalOrProjectAvdInventoryRead": false,
+    "usableAndroidEmulatorSessionVerified": false,
+    "alreadyUsableIsolatedAndroidRunnerIdentified": false,
+    "s03PlatformInstallationVerified": false,
+    "limitation": "Only the documented project SDK root and two exact conventional executable candidates were checked. Absence of those executable candidates does not prove absence of other SDK versions, tool installations, AVDs or user VMs. No emulator or AVD lifecycle operation was attempted."
+  },
+  "boundaries": {
+    "sdkOrFilesystemEnumeration": false,
+    "personalAvdEnumeration": false,
+    "adbInvoked": false,
+    "emulatorInvoked": false,
+    "avdmanagerInvoked": false,
+    "appTestOrBuildRun": false,
+    "installOrConfigurationChange": false,
+    "networkOperation": false,
+    "canonicalWrite": false,
+    "apkOrPayloadRehash": false
+  },
+  "priorAudit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-platform-readonly-environment-audit-20261001/audit.json",
+    "frozenSha256": "b6a4545cf62ac24b67d16624029203badcd16a7ef7c1226e5c9da3882d295ccb",
+    "modified": false
+  }
+}

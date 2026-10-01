@@ -1,0 +1,586 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-passive-retained-candidate-prehydration-http",
+  "capturedAt": "2026-10-01T13:24:27.884Z",
+  "status": "SUPPORTED_SUBSET_PASS_WITH_EXPLICIT_COVERAGE_GAPS",
+  "supportedSubsetPass": true,
+  "requestedCoverageComplete": false,
+  "probeSourceSha256": "07699cf7f2f82763e5026c3abbe3a6b9ab0bde62a229aa1c81101761af316b88",
+  "noClaims": {
+    "JavaScriptExecuted": false,
+    "browserStarted": false,
+    "serviceWorkerRegistered": false,
+    "browserStorageTouched": false,
+    "runtimeLanguageSwitchVerified": false,
+    "licenseSigned": false,
+    "newQaAuthorityCreated": false,
+    "built": false,
+    "installed": false,
+    "productionEdgeVerified": false,
+    "fullBIL079Passed": false,
+    "stageAccepted": false,
+    "releaseReady": false
+  },
+  "mutationScope": "Only this new external report. Candidate, repository, state, prior evidence and artifact bytes are read-only.",
+  "binding": {
+    "classification": "Retained D220 candidate; seven current listed owner identities only",
+    "buildId": "313940bce3ea3ecb46b73e63ec30bab0528c17453d197055b8f44f9938246ed4",
+    "runtimeSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+    "sourceInputsSha256": "955b2625e93854f40a88334c54d2e480b10153c9cb85a7b097cd9de6e3d1f6c6",
+    "recordSha256": "b7951ee9ba9e8e5d00d6f3b5e11c2214a40f19dc68fc72d85cd4c4433147a2ac",
+    "sourceManifestSha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "descriptorSha256": "b04ebb7776ad556f9fd2e45ac786240077830ba38db5559ed1f9d5ac1c257465",
+    "artifactRoot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-runtime-build-evidence\\attempt-a1\\pwa\\pwa-313940bc",
+    "currentOwners": [
+      {
+        "path": "package.json",
+        "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "scripts/mobile/pwa-shell.mjs",
+        "sha256": "16f1165034d6235385fed1e6af6a1e7641794568599b51975ebb93b9b39a86bd",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "src/i18n/PublicLocaleMetadata.tsx",
+        "sha256": "201028bf84360a4d1184ca8171ffee39c78539d7da6cbe0ef7195d6e137779b9",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "scripts/mobile/public-locale-pages.mjs",
+        "sha256": "aa1d260c23aa71ff855370867cc715dc6a161ea18e93c8a94e33d32e76c4edcd",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "scripts/mobile/public-locale-review.mjs",
+        "sha256": "bfa7249f18c81f64139ea0957f6fc71097304c08b078e88457a9c2b407851076",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "scripts/mobile/write-public-locale-pages.mjs",
+        "sha256": "d73e410dd45b3de02e62a01b6b881a0c6037c5638b6d4be48f37a2c69a7ed5af",
+        "matchedAuthenticatedD220Manifest": true
+      }
+    ],
+    "fullDependencyClosureVerified": false,
+    "fullArtifactRehashed": false
+  },
+  "http": {
+    "origin": "http://127.0.0.1:53377",
+    "routingScope": "Probe-only exact allowlist. Status404 for named404 documents and unknown paths is this QA harness policy; production edge routing is not verified.",
+    "html": [
+      {
+        "route": "/planet/",
+        "file": "index.html",
+        "status": 200,
+        "responseSha256": "a6517e880dbce60aa11f4a45baec1f38d362a1105693d753febb678abd1cb980",
+        "bytes": 4542,
+        "rawBeforeJavaScript": true,
+        "htmlLang": "",
+        "title": "Литературная планета / Literary Planet",
+        "description": "Литературная планета / Literary Planet",
+        "heading": "Литературная планетаLiterary Planet",
+        "localizedBodyText": "Both language choices observed",
+        "canonical": "https://probpera.ru/planet/",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/",
+          "en": "https://probpera.ru/planet/en/",
+          "x-default": "https://probpera.ru/planet/"
+        },
+        "manifest": "/planet/manifest.webmanifest",
+        "robots": "noindex,nofollow",
+        "social": {
+          "og:type": "website",
+          "og:title": "Литературная планета / Literary Planet",
+          "og:site_name": "Литературная планета / Literary Planet",
+          "og:description": "Литературная планета / Literary Planet",
+          "og:url": "https://probpera.ru/planet/",
+          "og:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "og:image:alt": "Литературная планета / Literary Planet",
+          "twitter:card": "summary",
+          "twitter:title": "Литературная планета / Literary Planet",
+          "twitter:description": "Литературная планета / Literary Planet",
+          "twitter:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "twitter:image:alt": "Литературная планета / Literary Planet"
+        },
+        "socialImageFile": {
+          "file": "icons/icon-512.png",
+          "sha256": "8e4baa6e1c22ceb1231a413c9ee1f0dfa750b31ad08593d38027b1925eba47b7",
+          "width": 512,
+          "height": 512
+        },
+        "jsonLdBlocks": 0,
+        "sitemapLinks": 0,
+        "runtimeLanguageSwitchVerified": false
+      },
+      {
+        "route": "/planet/ru/",
+        "file": "ru/index.html",
+        "status": 200,
+        "responseSha256": "65bf5ff91bda2becfdddf9e9bea6936242dff6a4514deb78df2eb45561820abe",
+        "bytes": 3681,
+        "rawBeforeJavaScript": true,
+        "htmlLang": "ru",
+        "title": "Литературная планета",
+        "description": "Литературная планета",
+        "heading": "Литературная планета",
+        "localizedBodyText": "Открываем «Литературную планету»…",
+        "canonical": "https://probpera.ru/planet/ru/",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/",
+          "en": "https://probpera.ru/planet/en/",
+          "x-default": "https://probpera.ru/planet/"
+        },
+        "manifest": "/planet/ru/manifest.webmanifest",
+        "robots": "noindex,nofollow",
+        "social": {
+          "og:type": "website",
+          "og:title": "Литературная планета",
+          "og:site_name": "Литературная планета",
+          "og:description": "Литературная планета",
+          "og:url": "https://probpera.ru/planet/ru/",
+          "og:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "og:image:alt": "Литературная планета",
+          "twitter:card": "summary",
+          "twitter:title": "Литературная планета",
+          "twitter:description": "Литературная планета",
+          "twitter:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "twitter:image:alt": "Литературная планета"
+        },
+        "socialImageFile": {
+          "file": "icons/icon-512.png",
+          "sha256": "8e4baa6e1c22ceb1231a413c9ee1f0dfa750b31ad08593d38027b1925eba47b7",
+          "width": 512,
+          "height": 512
+        },
+        "jsonLdBlocks": 0,
+        "sitemapLinks": 0,
+        "runtimeLanguageSwitchVerified": false
+      },
+      {
+        "route": "/planet/en/",
+        "file": "en/index.html",
+        "status": 200,
+        "responseSha256": "767c4d607a99b74cd8c9be59bf9cddb7d35a0b47fa772634387c5cb9810b0697",
+        "bytes": 3127,
+        "rawBeforeJavaScript": true,
+        "htmlLang": "en",
+        "title": "Literary Planet",
+        "description": "Literary Planet",
+        "heading": "Literary Planet",
+        "localizedBodyText": "Opening Literary Planet…",
+        "canonical": "https://probpera.ru/planet/en/",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/",
+          "en": "https://probpera.ru/planet/en/",
+          "x-default": "https://probpera.ru/planet/"
+        },
+        "manifest": "/planet/en/manifest.webmanifest",
+        "robots": "noindex,nofollow",
+        "social": {
+          "og:type": "website",
+          "og:title": "Literary Planet",
+          "og:site_name": "Literary Planet",
+          "og:description": "Literary Planet",
+          "og:url": "https://probpera.ru/planet/en/",
+          "og:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "og:image:alt": "Literary Planet",
+          "twitter:card": "summary",
+          "twitter:title": "Literary Planet",
+          "twitter:description": "Literary Planet",
+          "twitter:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "twitter:image:alt": "Literary Planet"
+        },
+        "socialImageFile": {
+          "file": "icons/icon-512.png",
+          "sha256": "8e4baa6e1c22ceb1231a413c9ee1f0dfa750b31ad08593d38027b1925eba47b7",
+          "width": 512,
+          "height": 512
+        },
+        "jsonLdBlocks": 0,
+        "sitemapLinks": 0,
+        "runtimeLanguageSwitchVerified": false
+      },
+      {
+        "route": "/planet/404.html",
+        "file": "404.html",
+        "status": 404,
+        "responseSha256": "81ef1e614a8b816d034eb1c623c0750ec9cea3ea8cade57b9ac68cb2b8c9f851",
+        "bytes": 2974,
+        "rawBeforeJavaScript": true,
+        "htmlLang": "",
+        "title": "404 | Литературная планета / Literary Planet",
+        "description": "Литературная планета / Literary Planet",
+        "heading": "Литературная планетаLiterary Planet",
+        "localizedBodyText": "Both language choices observed",
+        "canonical": "https://probpera.ru/planet/404.html",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/404.html",
+          "en": "https://probpera.ru/planet/en/404.html",
+          "x-default": "https://probpera.ru/planet/404.html"
+        },
+        "manifest": "/planet/manifest.webmanifest",
+        "robots": "noindex,nofollow",
+        "social": {
+          "og:type": "website",
+          "og:title": "404 | Литературная планета / Literary Planet",
+          "og:site_name": "Литературная планета / Literary Planet",
+          "og:description": "Литературная планета / Literary Planet",
+          "og:url": "https://probpera.ru/planet/404.html",
+          "og:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "og:image:alt": "Литературная планета / Literary Planet",
+          "twitter:card": "summary",
+          "twitter:title": "404 | Литературная планета / Literary Planet",
+          "twitter:description": "Литературная планета / Literary Planet",
+          "twitter:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "twitter:image:alt": "Литературная планета / Literary Planet"
+        },
+        "socialImageFile": {
+          "file": "icons/icon-512.png",
+          "sha256": "8e4baa6e1c22ceb1231a413c9ee1f0dfa750b31ad08593d38027b1925eba47b7",
+          "width": 512,
+          "height": 512
+        },
+        "jsonLdBlocks": 0,
+        "sitemapLinks": 0,
+        "runtimeLanguageSwitchVerified": false
+      },
+      {
+        "route": "/planet/ru/404.html",
+        "file": "ru/404.html",
+        "status": 404,
+        "responseSha256": "6081227035893fae1059ae2c9dd969f94351f51a3e15852401279ca8d9844795",
+        "bytes": 2627,
+        "rawBeforeJavaScript": true,
+        "htmlLang": "ru",
+        "title": "404 | Литературная планета",
+        "description": "Литературная планета",
+        "heading": "Литературная планета",
+        "localizedBodyText": "Страница не найдена. Вернитесь к «Литературной планете».",
+        "canonical": "https://probpera.ru/planet/ru/404.html",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/404.html",
+          "en": "https://probpera.ru/planet/en/404.html",
+          "x-default": "https://probpera.ru/planet/404.html"
+        },
+        "manifest": "/planet/ru/manifest.webmanifest",
+        "robots": "noindex,nofollow",
+        "social": {
+          "og:type": "website",
+          "og:title": "404 | Литературная планета",
+          "og:site_name": "Литературная планета",
+          "og:description": "Литературная планета",
+          "og:url": "https://probpera.ru/planet/ru/404.html",
+          "og:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "og:image:alt": "Литературная планета",
+          "twitter:card": "summary",
+          "twitter:title": "404 | Литературная планета",
+          "twitter:description": "Литературная планета",
+          "twitter:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "twitter:image:alt": "Литературная планета"
+        },
+        "socialImageFile": {
+          "file": "icons/icon-512.png",
+          "sha256": "8e4baa6e1c22ceb1231a413c9ee1f0dfa750b31ad08593d38027b1925eba47b7",
+          "width": 512,
+          "height": 512
+        },
+        "jsonLdBlocks": 0,
+        "sitemapLinks": 0,
+        "runtimeLanguageSwitchVerified": false
+      },
+      {
+        "route": "/planet/en/404.html",
+        "file": "en/404.html",
+        "status": 404,
+        "responseSha256": "857329802dce3ec51522b612d740396d50e26749356130b298ff960aa9330fa3",
+        "bytes": 2287,
+        "rawBeforeJavaScript": true,
+        "htmlLang": "en",
+        "title": "404 | Literary Planet",
+        "description": "Literary Planet",
+        "heading": "Literary Planet",
+        "localizedBodyText": "Page not found. Return to Literary Planet.",
+        "canonical": "https://probpera.ru/planet/en/404.html",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/404.html",
+          "en": "https://probpera.ru/planet/en/404.html",
+          "x-default": "https://probpera.ru/planet/404.html"
+        },
+        "manifest": "/planet/en/manifest.webmanifest",
+        "robots": "noindex,nofollow",
+        "social": {
+          "og:type": "website",
+          "og:title": "404 | Literary Planet",
+          "og:site_name": "Literary Planet",
+          "og:description": "Literary Planet",
+          "og:url": "https://probpera.ru/planet/en/404.html",
+          "og:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "og:image:alt": "Literary Planet",
+          "twitter:card": "summary",
+          "twitter:title": "404 | Literary Planet",
+          "twitter:description": "Literary Planet",
+          "twitter:image": "https://probpera.ru/planet/icons/icon-512.png",
+          "twitter:image:alt": "Literary Planet"
+        },
+        "socialImageFile": {
+          "file": "icons/icon-512.png",
+          "sha256": "8e4baa6e1c22ceb1231a413c9ee1f0dfa750b31ad08593d38027b1925eba47b7",
+          "width": 512,
+          "height": 512
+        },
+        "jsonLdBlocks": 0,
+        "sitemapLinks": 0,
+        "runtimeLanguageSwitchVerified": false
+      }
+    ],
+    "manifests": [
+      {
+        "route": "/planet/manifest.webmanifest",
+        "file": "manifest.webmanifest",
+        "status": 200,
+        "responseSha256": "d6c65486914b2930e38525d673512958000d3dfe70f6fcf7e5c98af61324e124",
+        "id": "/planet/",
+        "scope": "/planet/",
+        "start_url": "/planet/",
+        "name": "Литературная планета / Literary Planet",
+        "short_name": "Литературная планета / Literary Planet",
+        "dir": "ltr",
+        "display": "standalone",
+        "background_color": "#f67518",
+        "theme_color": "#f67518",
+        "icons": [
+          {
+            "src": "/planet/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "/planet/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+          }
+        ],
+        "actualIconFiles": [
+          {
+            "file": "icons/icon-192.png",
+            "sha256": "c1eb0514b15f697fe97e1f211015d3773f9e99814bafeeb2c92e844926231e30",
+            "width": 192,
+            "height": 192
+          },
+          {
+            "file": "icons/icon-512.png",
+            "sha256": "8e4baa6e1c22ceb1231a413c9ee1f0dfa750b31ad08593d38027b1925eba47b7",
+            "width": 512,
+            "height": 512
+          }
+        ]
+      },
+      {
+        "route": "/planet/ru/manifest.webmanifest",
+        "file": "ru/manifest.webmanifest",
+        "status": 200,
+        "responseSha256": "1c9d8cfb5d63b241fdc5958b914c54123ce30eaf0eab671f9cee3f648930e736",
+        "id": "/planet/",
+        "scope": "/planet/",
+        "start_url": "/planet/ru/",
+        "name": "Литературная планета",
+        "short_name": "Литературная планета",
+        "lang": "ru",
+        "dir": "ltr",
+        "display": "standalone",
+        "background_color": "#f67518",
+        "theme_color": "#f67518",
+        "icons": [
+          {
+            "src": "/planet/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "/planet/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+          }
+        ],
+        "actualIconFiles": [
+          {
+            "file": "icons/icon-192.png",
+            "sha256": "c1eb0514b15f697fe97e1f211015d3773f9e99814bafeeb2c92e844926231e30",
+            "width": 192,
+            "height": 192
+          },
+          {
+            "file": "icons/icon-512.png",
+            "sha256": "8e4baa6e1c22ceb1231a413c9ee1f0dfa750b31ad08593d38027b1925eba47b7",
+            "width": 512,
+            "height": 512
+          }
+        ]
+      },
+      {
+        "route": "/planet/en/manifest.webmanifest",
+        "file": "en/manifest.webmanifest",
+        "status": 200,
+        "responseSha256": "baf94d17a9c1b5fc7255951e0d569493a96fa71c9cc7a4927904f1aba682d10a",
+        "id": "/planet/",
+        "scope": "/planet/",
+        "start_url": "/planet/en/",
+        "name": "Literary Planet",
+        "short_name": "Literary Planet",
+        "lang": "en",
+        "dir": "ltr",
+        "display": "standalone",
+        "background_color": "#f67518",
+        "theme_color": "#f67518",
+        "icons": [
+          {
+            "src": "/planet/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "/planet/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+          }
+        ],
+        "actualIconFiles": [
+          {
+            "file": "icons/icon-192.png",
+            "sha256": "c1eb0514b15f697fe97e1f211015d3773f9e99814bafeeb2c92e844926231e30",
+            "width": 192,
+            "height": 192
+          },
+          {
+            "file": "icons/icon-512.png",
+            "sha256": "8e4baa6e1c22ceb1231a413c9ee1f0dfa750b31ad08593d38027b1925eba47b7",
+            "width": 512,
+            "height": 512
+          }
+        ]
+      }
+    ],
+    "unsupportedRoutes": [
+      {
+        "route": "/planet/en/__s03_missing__.html",
+        "status": 404,
+        "responseSha256": "493fda53120050f85836032324409be6c6484f90a0755ae0c6a673ba7626818b",
+        "harnessPolicyOnly": true,
+        "artifactCoverageClaimed": false
+      },
+      {
+        "route": "/planet/sitemap.xml",
+        "status": 404,
+        "responseSha256": "493fda53120050f85836032324409be6c6484f90a0755ae0c6a673ba7626818b",
+        "harnessPolicyOnly": true,
+        "artifactCoverageClaimed": false
+      },
+      {
+        "route": "/planet/ru/sitemap.xml",
+        "status": 404,
+        "responseSha256": "493fda53120050f85836032324409be6c6484f90a0755ae0c6a673ba7626818b",
+        "harnessPolicyOnly": true,
+        "artifactCoverageClaimed": false
+      },
+      {
+        "route": "/planet/en/sitemap.xml",
+        "status": 404,
+        "responseSha256": "493fda53120050f85836032324409be6c6484f90a0755ae0c6a673ba7626818b",
+        "harnessPolicyOnly": true,
+        "artifactCoverageClaimed": false
+      }
+    ],
+    "requests": [
+      {
+        "method": "GET",
+        "route": "/planet/"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/ru/"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/en/"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/404.html"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/ru/404.html"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/en/404.html"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/manifest.webmanifest"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/ru/manifest.webmanifest"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/en/manifest.webmanifest"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/en/__s03_missing__.html"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/sitemap.xml"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/ru/sitemap.xml"
+      },
+      {
+        "method": "GET",
+        "route": "/planet/en/sitemap.xml"
+      }
+    ]
+  },
+  "coverage": {
+    "jsonLd": {
+      "observedBlocks": 0,
+      "status": "INTENTIONALLY_ABSENT_PRIVATE_SHELL",
+      "sourceIntent": "Site structured data has no place in this unpublished app shell.",
+      "source": "scripts/mobile/pwa-shell.mjs:52",
+      "publicStructuredDataAcceptanceClaimed": false
+    },
+    "sitemap": {
+      "descriptorEntries": [],
+      "status": "UNAVAILABLE_IN_CANDIDATE",
+      "noindexObservedOn": [
+        "/planet/",
+        "/planet/ru/",
+        "/planet/en/",
+        "/planet/404.html",
+        "/planet/ru/404.html",
+        "/planet/en/404.html"
+      ],
+      "publicSitemapExclusionProven": false,
+      "unknownHttp404IsHarnessOnly": true
+    },
+    "applicability": "152:20-34,77-92 applies public equivalent page discovery; this artifact is an unpublished noindex private app shell. Public schema/sitemap/edge coverage is not supplied by it.",
+    "requestedCoverageComplete": false
+  }
+}

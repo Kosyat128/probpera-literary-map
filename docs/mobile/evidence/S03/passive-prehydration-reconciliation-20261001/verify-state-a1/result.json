@@ -1,0 +1,105 @@
+{
+  "pass": true,
+  "base": "23f72547b023298f3996bbabc349be348341d18f",
+  "result": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json",
+    "sha256": "459a1fb6511ca564f5c15b34cf81a8fce30ef5c279bec45d9ee5dbea5ed71829"
+  },
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-passive-prehydration-probe-review/checkpoint.mjs",
+    "sha256": "0f14a9f1f45d9240c0dc7fb8adbf4ec443a95030129d55624d84e61352416eff"
+  },
+  "command": "verifyExecutionFiles(root) from scripts/mobile/verify-state.mjs",
+  "durationMs": 26786,
+  "error": null,
+  "inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "95bb5c0ff8b8c2798e3108c53b9afbbee6ea0a4ac382ff84e693110818f95037"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "49b68f2f9cb9c4d7c6ddd409793758a5f5970f8c13c8bfa6302aeafa0df62f07"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "dbc8d18a5a0fcff807f61ac2c8cfa016bc92087a4b1269a2ee64a3c8dcb81829"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "5b3c0dda7490f0e8118c41847ecded87cb9fb27d636c64141c55e2af642c133f"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "0c3870f3f3bcde6ef70f04a267dfc0cbc7481622e415e0baff2f26b0da17ee36"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "c85e9187ae9b9d69ce90ec6d5aa839344d4a10ae1cd4ae3af64b450bd28a7cbf"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "6122a2684c7ee644b3d6a1bfa88964747f47f34cdfa82301f19a69a6b28f319b"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "be8648be695ca708880e1fb284cfe67d5a5a4b5ffabd9b75e7b8a9efc2c2ff2a"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/README.md",
+      "sha256": "8fb45a28593107c9522bac1202c7349f7c6c7510ac2073c22859d349733fd926"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/android-availability.json",
+      "sha256": "caec28523e07820b9a8aab504d4fe0be9bdff80e8ab2b1b18cd07e9abe1df10c"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/checkpoint.mjs",
+      "sha256": "0f14a9f1f45d9240c0dc7fb8adbf4ec443a95030129d55624d84e61352416eff"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/os-availability.json",
+      "sha256": "b6a4545cf62ac24b67d16624029203badcd16a7ef7c1226e5c9da3882d295ccb"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/probe-result.json",
+      "sha256": "3f519351efdc59007f4477c2524a8f3d82640940c12df50f4d2df642f68c1ffa"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/probe.mjs",
+      "sha256": "07699cf7f2f82763e5026c3abbe3a6b9ab0bde62a229aa1c81101761af316b88"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/reconciliation-result.json",
+      "sha256": "15c7a6256c0cdf5fb4e1ba90ac71e89bdaf60148f66054537e31f3bcc0c21c8c"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/reconciliation-review.md",
+      "sha256": "587dda1a26bee2d0449c5f7b94cef79089ba9b0a765d83f77a023891876c7b11"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/checkpoint.json",
+      "sha256": "545374f55a96df93c52ebecdab0c80d48da903e6ddb716ac7181be7c53d99213"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json",
+      "sha256": "13fb5426d33eca3aa5ad7a87bcc008e3d58e2d2c98960c99c3136c1059c5c44b"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/platform-availability.json",
+      "sha256": "c4239d0845c730d442cfe185e0b9074a3b16e973fab0009709bfbc1a5a1e43bb"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json",
+      "sha256": "459a1fb6511ca564f5c15b34cf81a8fce30ef5c279bec45d9ee5dbea5ed71829"
+    }
+  ],
+  "inputsUnchanged": true,
+  "rawReport": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/verify-state-a1/raw-report.json",
+    "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+  },
+  "applicationChecksRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

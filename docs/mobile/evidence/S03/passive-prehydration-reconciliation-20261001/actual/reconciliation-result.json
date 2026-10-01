@@ -1,0 +1,728 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-acceptance-readonly-evidence-reconciliation",
+  "capturedAt": "2026-10-01T12:35:00.9012075Z",
+  "repository": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "observedHead": "3d5cd9b880aeb7d460ca090e79f4814f997ed70e",
+  "observedDirtyPaths": [],
+  "currentStageId": "S03",
+  "firstOpenCriterion": "S03.acceptance",
+  "changes": {
+    "canonicalSourceWritten": false,
+    "stateWritten": false,
+    "testsRun": false,
+    "buildsRun": false,
+    "installInvoked": false,
+    "remoteActions": false,
+    "externalArtifactOnly": true
+  },
+  "acceptance": {
+    "stageAccepted": false,
+    "releaseReady": false,
+    "statusesModified": false,
+    "criterionCount": 12
+  },
+  "interpretation": [
+    "Read-only source identities are evidence binding, not a new product test.",
+    "No full source/dependency closure was compared. Compatible listed owner identities do not make historical whole-suite or browser results current.",
+    "Git HEAD/status were captured at artifact creation; the observed snapshot is clean. Earlier root-owned admin changes were concurrent and this audit made no canonical writes.",
+    "Global requirement milestones must retain later implementation/validation stages. Empty criterion evidence is not proof that no implementation exists.",
+    "No number of remaining D checkpoints is invented; original 41 stages have3COMPLETE/12IN_PROGRESS/26NOT_STARTED at observation."
+  ],
+  "primary": [
+    {
+      "path": "docs/mobile/requirements/v12/69_STAGE_ACCEPTANCE_MATRIX.csv",
+      "lines": [
+        5,
+        6
+      ],
+      "purpose": "S03 Install/license/offline/SW; mapped requirements/evidence/commit and documented parallel-safe S04"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/07_THREE_PLATFORM_ARCHITECTURE_RU.md",
+      "lines": [
+        7,
+        26,
+        35,
+        39
+      ],
+      "purpose": "Installable controlled PWA, safe updates, fallback, actual install/offline deliverables"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
+      "lines": [
+        90,
+        102,
+        151,
+        158
+      ],
+      "purpose": "Offline legitimate installation and isolated SW/version/grace/no-bypass boundaries"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
+      "lines": [
+        123,
+        130
+      ],
+      "purpose": "Device widths/orientation and actual Chromium/Safari/Firefox support boundaries"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/152_BILINGUAL_WEB_SEO_DISCOVERY_RU_EN.md",
+      "lines": [
+        20,
+        34,
+        77,
+        92
+      ],
+      "purpose": "Exact mapped bilingual metadata/body/route acceptance, later public discovery scope"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "S03.acceptance",
+      "existing": [
+        "BIL14",
+        "PWA08",
+        "DELETE06",
+        "D220"
+      ],
+      "retention": "Разрозненные working evidence; criterion evidence и commit пусты.",
+      "missing": "Привязать 12 критериев к точному кандидату и конкретным ранним milestones; недостающие install/browser/deletion gates не закрывать ссылками на чужой scope.",
+      "boundary": "Приёмка этапа отсутствует; поздние обязательства остаются OPEN.",
+      "statusObserved": "IN_PROGRESS",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [],
+      "validationStages": []
+    },
+    {
+      "id": "S03.BIL-019",
+      "existing": [
+        "BIL14",
+        "BIL14_STATIC",
+        "HTTP08"
+      ],
+      "retention": "Metadata/shell owners и tests совпадают с Sep14/D220; raw HTTP evidence относится к 46210d8e.",
+      "missing": "Raw HTTP head/body before hydration + runtime metadata для точного актуального кандидата; не считать неизменённые отдельные файлы полным dependency closure.",
+      "boundary": "Public indexable/reviewed locale surfaces проверяются позже S36/S40.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ]
+    },
+    {
+      "id": "S03.BIL-075",
+      "existing": [
+        "BIL14",
+        "HTTP08"
+      ],
+      "retention": "Reciprocal RU/EN locale routes проверены исторически; текущие listed owners совпадают.",
+      "missing": "На точном кандидате записать устойчивые locale routes, reciprocal alternates и переключение эквивалентной entity/page.",
+      "boundary": "Production domain/edge deployment и reviewed indexable routes не доказаны локальным QA.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ]
+    },
+    {
+      "id": "S03.BIL-076",
+      "existing": [
+        "BIL14",
+        "HTTP08"
+      ],
+      "retention": "EN self-canonical/noindex draft foundation есть; approvalCreated=false.",
+      "missing": "Проверить текущие self-canonical/noindex draft gates; approved translation evidence по всему продукту отсутствует.",
+      "boundary": "Редакторское утверждение/права не подменять автоматической проверкой; полный bilingual release остаётся OPEN.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ]
+    },
+    {
+      "id": "S03.BIL-077",
+      "existing": [
+        "BIL14",
+        "HTTP08"
+      ],
+      "retention": "Историческое server/prerender body/head evidence; metadata/shell identities совместимы в проверенном subset.",
+      "missing": "Exact-candidate RU/EN raw response language/head/body до JS и после native language switch.",
+      "boundary": "Эта проверка не утверждает полный английский каталог или full UI parity.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ]
+    },
+    {
+      "id": "S03.BIL-079",
+      "existing": [
+        "BIL14",
+        "BIL14_REPAIR",
+        "HTTP08"
+      ],
+      "retention": "Final writer/test отличаются от initial Sep14 static-before, совпадают с D220; repaired76 PASS исторически. QA 404 limitations явные.",
+      "missing": "Current-candidate manifests/social/JSON-LD/404 status+body; сохранять sitemap/noindex exclusion. Public edge exact-status proof отдельно.",
+      "boundary": "Старый local QA served explicit404 asHTTP200; public production fallback/SEO не принят. Deploy требует отдельного разрешения.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S36",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ]
+    },
+    {
+      "id": "S03.COMMERCE-001",
+      "existing": [
+        "ACCESS05",
+        "PWA08",
+        "D220_PWA"
+      ],
+      "retention": "Current access owners/tests совпадают с Sep14/D220; QA signed grant не является покупкой.",
+      "missing": "Связать deny/expiry/revocation/bypass absence с точным candidate; full paid distribution/listing/provider acceptance отсутствует.",
+      "boundary": "Merchant/store identity, real transaction и release approval внешние; PSP integration остаётся внутренней работой S20/S21.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S12",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S26",
+        "S28"
+      ]
+    },
+    {
+      "id": "S03.COMMERCE-008",
+      "existing": [
+        "ACCESS05",
+        "CANONICAL",
+        "PWA08"
+      ],
+      "retention": "Signature/session/identity foundation исторически проверена; из5 captured saved-access05 owners3 изменились,2 совпадают. Более поздние listed access identities совпадают с Sep14/D220.",
+      "missing": "Current exact dependency-bound license/session proof. Actual checkout/provider verification/refund/reconcile не завершены этим evidence.",
+      "boundary": "Отсутствующие provider adapters — код S20/S21, а не только credentials; реальные операции отдельно разрешаются владельцем.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S20",
+        "S21"
+      ],
+      "validationStages": [
+        "S21",
+        "S25",
+        "S34"
+      ]
+    },
+    {
+      "id": "S03.CONTENT-007",
+      "existing": [
+        "PWA08",
+        "CROSS_ENGINE",
+        "CROSS_TRANSPORT",
+        "D220_PWA"
+      ],
+      "retention": "Chrome cold offline/search evidence историческое; D220 один Booky case, не current fulloffline suite.",
+      "missing": "Exact-candidate cold offline/relaunch/search/favorites/recent/help plus supported browser boundaries; installed relaunch не доказан.",
+      "boundary": "Child/journeys/fullsignedpackages находятся в S11/S15/S16/S39; OS/device matrix требует фактического исполнения.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S11"
+      ],
+      "validationStages": [
+        "S11",
+        "S25",
+        "S39"
+      ]
+    },
+    {
+      "id": "S03.MOD-030",
+      "existing": [
+        "DELETE06",
+        "CANONICAL"
+      ],
+      "retention": "130 PASS на2dd6f1f6; 8 precise API/processor/CLI/SQLtest Gitblobs одинаковы на currentHEAD. Полный closure не проверялся.",
+      "missing": "Явно принять ранний safe-reader scope или реализовать все обещанные supported categories; проверять ownership/concurrency/retention milestones без выдуманного fullPASS.",
+      "boundary": "Processor intentionally blocks public contributions/staff. Production Auth/Storage erasure, legal retention/disposition approval не доказаны local SQL fixture.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S23",
+        "S26"
+      ],
+      "validationStages": [
+        "S28",
+        "S37",
+        "S40"
+      ]
+    },
+    {
+      "id": "S03.OMIN-023",
+      "existing": [
+        "CANONICAL"
+      ],
+      "retention": "Working-validation snapshot; текущего source-bound staging-deploy/webhook proof в рассмотренных records нет.",
+      "missing": "Локально подготовить воспроизводимый staging package/fail-closed inputs; затем provider integration и actual allowed deployment proof.",
+      "boundary": "Не считать запрет deploy отсутствующим кодом; серверная integration S21 и official draft automation S34 внутренние, remote publish отдельно разрешается.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03",
+        "S21",
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ]
+    },
+    {
+      "id": "S03.PLATFORM-001",
+      "existing": [
+        "INSTALL_PREP",
+        "PWA08",
+        "D220_PWA"
+      ],
+      "retention": "OSinstall не вызван; viewport/SW/manifest не установка. CurrentD220 installedDevice=false.",
+      "missing": "В изолированной OS VM/runner actual install→standalone→coldoffline/relaunch→RU/EN и честные browser boundaries.",
+      "boundary": "Chrome profile не изолирует OS shortcuts/registry. Наличие изолированной среды не подтверждено; macOS/iOS/physicaldevice evidence отдельно.",
+      "statusObserved": "OPEN",
+      "criterionEvidenceObserved": [],
+      "criterionCommitObserved": null,
+      "implementationStages": [
+        "S03"
+      ],
+      "validationStages": [
+        "S03",
+        "S11",
+        "S25",
+        "S26",
+        "S39"
+      ]
+    }
+  ],
+  "evidenceRecords": [
+    {
+      "id": "BIL14",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/result.json",
+      "sha256": "6b77519186db533544b0a28262a53d3b88992136af9d8043a98e84e3491d0563"
+    },
+    {
+      "id": "BIL14_STATIC",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/static-a1/result.json",
+      "sha256": "09a0f0837d4b2db3373e719b49b24cf38f73d12e9737f758998b72528340c16b"
+    },
+    {
+      "id": "BIL14_REPAIR",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/unit-repair-a1/vitest.json",
+      "sha256": "78d351d47ad2e561aa4d8173f91135aaf0b73e5a0c5704afb9143c49728f3496"
+    },
+    {
+      "id": "HTTP08",
+      "path": "docs/mobile/evidence/S03/current-pwa-20260908/http-metadata-a.json",
+      "sha256": "ee7b63b02ea93a85d16341041325b98d6e70cbcd9500060b92a0d06f566c57c2"
+    },
+    {
+      "id": "PWA08",
+      "path": "docs/mobile/evidence/S03/current-pwa-20260908/result.json",
+      "sha256": "2e204ef020ad9f6f34658e6a7c108f399d39d8f514c9312ddf1aa335fedff604"
+    },
+    {
+      "id": "ACCESS05",
+      "path": "docs/mobile/evidence/S03/saved-access-verification.json",
+      "sha256": "349e36cc3e13872d82cfb7e9e76fa9a621475b717c59f2fecb4dc14b4df892a0"
+    },
+    {
+      "id": "DELETE06",
+      "path": "docs/mobile/evidence/S03/deletion-processor-current-validation.json",
+      "sha256": "feb9fab1b7b27b9a0325a95ac50b4112352f9d8a40f9bced7e29e02b7456d401"
+    },
+    {
+      "id": "CANONICAL",
+      "path": "docs/mobile/evidence/S03/canonical-integration-working-validation.json",
+      "sha256": "58aceff247fd8ff1dcfa9e5b9e4ebab49f3e38ef86a3657d1a2f4b01526fbed6"
+    },
+    {
+      "id": "INSTALL_PREP",
+      "path": "docs/mobile/evidence/S04/pwa-preparation/result.json",
+      "sha256": "ffabc620daf0fc468f04d80ff0c5f8b7ee0c91de717fc07a26420b3f26b7af2b"
+    },
+    {
+      "id": "CROSS_ENGINE",
+      "path": "docs/mobile/evidence/S03/cross-engine-browser-first.json",
+      "sha256": "6471ae78a446f4e87be3cb982d8bf43cadf43b7104c2a2c8e70d4b4f5aff1df6"
+    },
+    {
+      "id": "CROSS_TRANSPORT",
+      "path": "docs/mobile/evidence/S03/cross-engine-transport-boundaries.json",
+      "sha256": "f24bc506c2f25497fa36f55bcb28e5d725495bbb41ba53ac63298878a600a628"
+    },
+    {
+      "id": "D220",
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/result.json",
+      "sha256": "3e505ed546e65f2cd10989be177fbfdb8dae54885152300a3951a54a9dd630b1"
+    },
+    {
+      "id": "D220_MANIFEST",
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/555b4c84f613941d-bbb22bb0c290-source-manifest.json",
+      "sha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324"
+    },
+    {
+      "id": "D220_PWA",
+      "path": "docs/mobile/evidence/S15/booky-exhausted-retry-20260930/builds/pwa/b7951ee9ba9e8e5d-603ef40ec561-result.json",
+      "sha256": "b7951ee9ba9e8e5d00d6f3b5e11c2214a40f19dc68fc72d85cd4c4433147a2ac"
+    }
+  ],
+  "listedSourceBindings": [
+    {
+      "path": "src/i18n/PublicLocaleMetadata.tsx",
+      "currentRawSha256": "201028bf84360a4d1184ca8171ffee39c78539d7da6cbe0ef7195d6e137779b9",
+      "sep14InitialStaticRawSha256": "201028bf84360a4d1184ca8171ffee39c78539d7da6cbe0ef7195d6e137779b9",
+      "sameSep14Initial": true,
+      "D220RawSha256": "201028bf84360a4d1184ca8171ffee39c78539d7da6cbe0ef7195d6e137779b9",
+      "sameD220": true
+    },
+    {
+      "path": "src/i18n/PublicLocaleMetadata.test.mjs",
+      "currentRawSha256": "b9a493b7b000231e03f898c84d9221972441a6f93e7b718ce0e1bd5d457caf76",
+      "sep14InitialStaticRawSha256": "b9a493b7b000231e03f898c84d9221972441a6f93e7b718ce0e1bd5d457caf76",
+      "sameSep14Initial": true,
+      "D220RawSha256": "b9a493b7b000231e03f898c84d9221972441a6f93e7b718ce0e1bd5d457caf76",
+      "sameD220": true
+    },
+    {
+      "path": "scripts/mobile/pwa-shell.mjs",
+      "currentRawSha256": "16f1165034d6235385fed1e6af6a1e7641794568599b51975ebb93b9b39a86bd",
+      "sep14InitialStaticRawSha256": "16f1165034d6235385fed1e6af6a1e7641794568599b51975ebb93b9b39a86bd",
+      "sameSep14Initial": true,
+      "D220RawSha256": "16f1165034d6235385fed1e6af6a1e7641794568599b51975ebb93b9b39a86bd",
+      "sameD220": true
+    },
+    {
+      "path": "scripts/mobile/pwa-shell.test.mjs",
+      "currentRawSha256": "dd7ed9d7159ac890a6501e977bec1265e61742e76b99f2c7094313d21fe2012d",
+      "sep14InitialStaticRawSha256": "dd7ed9d7159ac890a6501e977bec1265e61742e76b99f2c7094313d21fe2012d",
+      "sameSep14Initial": true,
+      "D220RawSha256": "dd7ed9d7159ac890a6501e977bec1265e61742e76b99f2c7094313d21fe2012d",
+      "sameD220": true
+    },
+    {
+      "path": "scripts/mobile/public-locale-pages.mjs",
+      "currentRawSha256": "aa1d260c23aa71ff855370867cc715dc6a161ea18e93c8a94e33d32e76c4edcd",
+      "sep14InitialStaticRawSha256": "aa1d260c23aa71ff855370867cc715dc6a161ea18e93c8a94e33d32e76c4edcd",
+      "sameSep14Initial": true,
+      "D220RawSha256": "aa1d260c23aa71ff855370867cc715dc6a161ea18e93c8a94e33d32e76c4edcd",
+      "sameD220": true
+    },
+    {
+      "path": "scripts/mobile/public-locale-pages.test.mjs",
+      "currentRawSha256": "19e4d2cc0a149c41d60f96626437e56a5dce240766faf8c505ac444c6de532db",
+      "sep14InitialStaticRawSha256": "cf901d4e8a364ff57737dfec3558f5fd8d91b2d805a525323e72290691843d98",
+      "sameSep14Initial": false,
+      "D220RawSha256": "19e4d2cc0a149c41d60f96626437e56a5dce240766faf8c505ac444c6de532db",
+      "sameD220": true
+    },
+    {
+      "path": "scripts/mobile/public-locale-review.mjs",
+      "currentRawSha256": "bfa7249f18c81f64139ea0957f6fc71097304c08b078e88457a9c2b407851076",
+      "sep14InitialStaticRawSha256": "bfa7249f18c81f64139ea0957f6fc71097304c08b078e88457a9c2b407851076",
+      "sameSep14Initial": true,
+      "D220RawSha256": "bfa7249f18c81f64139ea0957f6fc71097304c08b078e88457a9c2b407851076",
+      "sameD220": true
+    },
+    {
+      "path": "scripts/mobile/public-locale-review.test.mjs",
+      "currentRawSha256": "2e22ba55b5f1e8e396fedeab08c78506c076b0d61313e7118572b63fee0fe233",
+      "sep14InitialStaticRawSha256": "2e22ba55b5f1e8e396fedeab08c78506c076b0d61313e7118572b63fee0fe233",
+      "sameSep14Initial": true,
+      "D220RawSha256": "2e22ba55b5f1e8e396fedeab08c78506c076b0d61313e7118572b63fee0fe233",
+      "sameD220": true
+    },
+    {
+      "path": "scripts/mobile/write-public-locale-pages.mjs",
+      "currentRawSha256": "d73e410dd45b3de02e62a01b6b881a0c6037c5638b6d4be48f37a2c69a7ed5af",
+      "sep14InitialStaticRawSha256": "d7ee142125faae9c6f368b5065cf8f376db09be9d66850b9c7f26d5753e07091",
+      "sameSep14Initial": false,
+      "D220RawSha256": "d73e410dd45b3de02e62a01b6b881a0c6037c5638b6d4be48f37a2c69a7ed5af",
+      "sameD220": true
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "currentRawSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "sep14InitialStaticRawSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "sameSep14Initial": true,
+      "D220RawSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "sameD220": true
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.test.tsx",
+      "currentRawSha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910",
+      "sep14InitialStaticRawSha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910",
+      "sameSep14Initial": true,
+      "D220RawSha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910",
+      "sameD220": true
+    },
+    {
+      "path": "src/pwa/PwaLicenseRuntime.ts",
+      "currentRawSha256": "02abe28132731ce592e2f18e6792d8a3240c391eceba88b0dd0049cf1bb16fb4",
+      "sep14InitialStaticRawSha256": "02abe28132731ce592e2f18e6792d8a3240c391eceba88b0dd0049cf1bb16fb4",
+      "sameSep14Initial": true,
+      "D220RawSha256": "02abe28132731ce592e2f18e6792d8a3240c391eceba88b0dd0049cf1bb16fb4",
+      "sameD220": true
+    },
+    {
+      "path": "src/pwa/PwaLicenseRuntime.test.ts",
+      "currentRawSha256": "6503cdf473f0fa494b59fa534072099f56bb9bfd542522b8b4bb37bfdb348594",
+      "sep14InitialStaticRawSha256": "6503cdf473f0fa494b59fa534072099f56bb9bfd542522b8b4bb37bfdb348594",
+      "sameSep14Initial": true,
+      "D220RawSha256": "6503cdf473f0fa494b59fa534072099f56bb9bfd542522b8b4bb37bfdb348594",
+      "sameD220": true
+    },
+    {
+      "path": "src/platform/adapters/web/WebLicense.ts",
+      "currentRawSha256": "490398a3ed108fba036dd0f851fcb74fb3e288bbd71694cedd0c5a593f829089",
+      "sep14InitialStaticRawSha256": "490398a3ed108fba036dd0f851fcb74fb3e288bbd71694cedd0c5a593f829089",
+      "sameSep14Initial": true,
+      "D220RawSha256": "490398a3ed108fba036dd0f851fcb74fb3e288bbd71694cedd0c5a593f829089",
+      "sameD220": true
+    },
+    {
+      "path": "src/platform/adapters/web/WebLicense.test.ts",
+      "currentRawSha256": "d2af3889aa8cd98afe2210e2bf9ceff2164ffd46a1201084626e572c8af894d3",
+      "sep14InitialStaticRawSha256": "d2af3889aa8cd98afe2210e2bf9ceff2164ffd46a1201084626e572c8af894d3",
+      "sameSep14Initial": true,
+      "D220RawSha256": "d2af3889aa8cd98afe2210e2bf9ceff2164ffd46a1201084626e572c8af894d3",
+      "sameD220": true
+    },
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "currentRawSha256": "0bd4e12dfb6147dabc35416a3e10bade59e8cea2ed2914654de4d5ee7b6b31bb",
+      "sep14InitialStaticRawSha256": null,
+      "sameSep14Initial": null,
+      "D220RawSha256": "0bd4e12dfb6147dabc35416a3e10bade59e8cea2ed2914654de4d5ee7b6b31bb",
+      "sameD220": true
+    },
+    {
+      "path": "tests/pwa/offline-catalog.spec.mjs",
+      "currentRawSha256": "9e8e983044a26f0c73310a40def9b38b61fa442756e9c5f250e98b0b497ed3ad",
+      "sep14InitialStaticRawSha256": null,
+      "sameSep14Initial": null,
+      "D220RawSha256": "9e8e983044a26f0c73310a40def9b38b61fa442756e9c5f250e98b0b497ed3ad",
+      "sameD220": true
+    },
+    {
+      "path": "playwright.pwa-current.config.mjs",
+      "currentRawSha256": "a1dd4f348dff085913e9b3241902bf1617b9fe170e49cbd88565a74f054c7749",
+      "sep14InitialStaticRawSha256": null,
+      "sameSep14Initial": null,
+      "D220RawSha256": null,
+      "sameD220": null
+    }
+  ],
+  "deletionListedGitBindings": [
+    {
+      "path": "server/planet/api.ts",
+      "historicalCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+      "historicalGitOid": "1e6ed192b90754af4bea2e8f5faaa3021989fbb4",
+      "currentGitOid": "1e6ed192b90754af4bea2e8f5faaa3021989fbb4",
+      "sameGitBlob": true,
+      "currentRawSha256": "2374a4cc2321938a6c1d4217b5b31107e53eb7d2a1532c1b5ab7c8bd5e02f345"
+    },
+    {
+      "path": "server/planet/api.test.ts",
+      "historicalCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+      "historicalGitOid": "9995256bea7268b95eef02492dd094ead7f9e0ce",
+      "currentGitOid": "9995256bea7268b95eef02492dd094ead7f9e0ce",
+      "sameGitBlob": true,
+      "currentRawSha256": "307259486cfd746efabf249330feb63c4c71fcc74022f4cbc91ffe8364dc7e79"
+    },
+    {
+      "path": "server/planet/integration.test.ts",
+      "historicalCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+      "historicalGitOid": "dfdaaa49a4419f5589e72cb16fdafe27f6455193",
+      "currentGitOid": "dfdaaa49a4419f5589e72cb16fdafe27f6455193",
+      "sameGitBlob": true,
+      "currentRawSha256": "033d6bbc146745ef6484aa3c904e9210dded2d83c3f6777f3857bf1898f05eb9"
+    },
+    {
+      "path": "server/planet/deletionProcessor.ts",
+      "historicalCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+      "historicalGitOid": "397db4a7c5a67df307dcef7665c639c10fb6a644",
+      "currentGitOid": "397db4a7c5a67df307dcef7665c639c10fb6a644",
+      "sameGitBlob": true,
+      "currentRawSha256": "0cf31f84f958fc54484d594392dde3fa5436346981c4376fddd115d9677c25a4"
+    },
+    {
+      "path": "server/planet/deletionProcessor.test.ts",
+      "historicalCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+      "historicalGitOid": "90681bb04092fcc714c13388650baec672e9c983",
+      "currentGitOid": "90681bb04092fcc714c13388650baec672e9c983",
+      "sameGitBlob": true,
+      "currentRawSha256": "21f3e069e51930b1e81fb79a0078799d406722944c86e6de6bb6ee0380921563"
+    },
+    {
+      "path": "server/planet/deletionProcessorCli.ts",
+      "historicalCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+      "historicalGitOid": "6699c3e855ab5426947771feda185321fb9a320a",
+      "currentGitOid": "6699c3e855ab5426947771feda185321fb9a320a",
+      "sameGitBlob": true,
+      "currentRawSha256": "cec4ec5d09b831c2a0e78cce5effb56f4c86d42828fbf05a56ea5fb97a5e6387"
+    },
+    {
+      "path": "server/planet/deletionProcessorCli.test.ts",
+      "historicalCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+      "historicalGitOid": "9b3b603fd463e53d3789cdc8a264682a0bf5bd06",
+      "currentGitOid": "9b3b603fd463e53d3789cdc8a264682a0bf5bd06",
+      "sameGitBlob": true,
+      "currentRawSha256": "60f23329b9b426f4044324f2007e63a9e853077f8e871b7e712bdc862711ab13"
+    },
+    {
+      "path": "scripts/database/literary-planet-reader-deletion.integration.test.mjs",
+      "historicalCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+      "historicalGitOid": "a9f270119a3a4eb94e355337b32f2715acd29e49",
+      "currentGitOid": "a9f270119a3a4eb94e355337b32f2715acd29e49",
+      "sameGitBlob": true,
+      "currentRawSha256": "b611fa06f9e56605e854bd6fd3344d08959c3c5ba5da2b2a9a6d3578a987c749"
+    }
+  ],
+  "candidate": {
+    "classification": "Existing D220 actual source-bound artifact; current compatibility demonstrated for selected owners only",
+    "runtimeSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+    "buildId": "313940bce3ea3ecb46b73e63ec30bab0528c17453d197055b8f44f9938246ed4",
+    "sourceInputsSha256": "955b2625e93854f40a88334c54d2e480b10153c9cb85a7b097cd9de6e3d1f6c6",
+    "recordedArtifactSha256": "b04ebb7776ad556f9fd2e45ac786240077830ba38db5559ed1f9d5ac1c257465",
+    "artifactRoot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-runtime-build-evidence\\attempt-a1\\pwa\\pwa-313940bc",
+    "artifactEntriesRead": [
+      {
+        "path": "ru/index.html",
+        "sha256": "65bf5ff91bda2becfdddf9e9bea6936242dff6a4514deb78df2eb45561820abe"
+      },
+      {
+        "path": "en/index.html",
+        "sha256": "767c4d607a99b74cd8c9be59bf9cddb7d35a0b47fa772634387c5cb9810b0697"
+      },
+      {
+        "path": "ru/manifest.webmanifest",
+        "sha256": "1c9d8cfb5d63b241fdc5958b914c54123ce30eaf0eab671f9cee3f648930e736"
+      },
+      {
+        "path": "en/manifest.webmanifest",
+        "sha256": "baf94d17a9c1b5fc7255951e0d569493a96fa71c9cc7a4927904f1aba682d10a"
+      },
+      {
+        "path": "404.html",
+        "sha256": "81ef1e614a8b816d034eb1c623c0750ec9cea3ea8cade57b9ac68cb2b8c9f851"
+      }
+    ],
+    "fullArtifactRehashed": false,
+    "sourceManifestExpectedSha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "pwaRecordExpectedSha256": "b7951ee9ba9e8e5d00d6f3b5e11c2214a40f19dc68fc72d85cd4c4433147a2ac",
+    "browserScope": "One Booky support case; no full current S03 offline/metadata/install coverage claim",
+    "installedDevice": false
+  },
+  "firstMissingLocalGate": {
+    "criteria": [
+      "S03.BIL-019",
+      "S03.BIL-075",
+      "S03.BIL-076",
+      "S03.BIL-077",
+      "S03.BIL-079"
+    ],
+    "task": "Create exact-candidate passive raw-HTTP/prehydration evidence for RU/EN shell/body/head/reciprocal canonical+hreflang/manifest and truthful404 handling. Retain draft/noindex gates; bind response bytes to candidate file hashes. Reuse source-compatible narrow unit evidence only to its actual scope; no broad rerun.",
+    "productOwners": [
+      "scripts/mobile/pwa-shell.mjs",
+      "src/i18n/PublicLocaleMetadata.tsx",
+      "scripts/mobile/write-public-locale-pages.mjs"
+    ],
+    "existingGateOwners": [
+      "tests/pwa/support/local-server.mjs",
+      "tests/pwa/support/cross-engine-server.mjs",
+      "tests/pwa/controlled-pwa.spec.mjs"
+    ],
+    "existingRunnerConstraint": "local-server creates new in-memory authority and rejects mismatched existing artifact authority; cross-engine --serve may build. Do not use them unchanged to sign/rewrite/rebuild a preserved historical candidate. A passive static-artifact loopback metadata probe requires no license grant or private key.",
+    "implementationBugEstablished": false,
+    "permissionForLocalPreparationAlreadyProvided": true,
+    "installGapUnchanged": "Actual OS install must follow in verified disposable OS isolation; a browserprofile/mobileviewport/SWmarker cannot close PLATFORM-001."
+  },
+  "ownerBoundaries": [
+    "Agent can implement local fixes/harnesses, provider adapters, UI, tests and concrete release preparation without another permission request.",
+    "Actual deployment/store publication, real transactions, credentials/signing/accounts and legal/editorial approval are separately scoped owner/release actions; no such action was performed.",
+    "OS/device availability is an environment constraint, not evidence of installation; no invented full-stage or release claim."
+  ],
+  "savedAccessListedRawBindings": [
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "historicalRawSha256": "ba4f1f936b36f54e11ce00ab06b33201181e9f0a1dacb54e7239e0d6c68dd322",
+      "currentRawSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "sameRaw": false
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.test.tsx",
+      "historicalRawSha256": "49000b0e464c489c6e5e66a663384f3901415ea034144b8ad295fd591ac0f5c7",
+      "currentRawSha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910",
+      "sameRaw": false
+    },
+    {
+      "path": "src/pwa/pwaCopy.ts",
+      "historicalRawSha256": "577e114719579e69ec68f9aa4ac7ed63033aacd88ddc7a874fcf766a5a51d319",
+      "currentRawSha256": "577e114719579e69ec68f9aa4ac7ed63033aacd88ddc7a874fcf766a5a51d319",
+      "sameRaw": true
+    },
+    {
+      "path": "tests/pwa/pwa-edition-lifecycle.spec.mjs",
+      "historicalRawSha256": "c637521cb479b16740ac08e125e945239a440aacb8b95f287ae99156f8a6f56a",
+      "currentRawSha256": "c637521cb479b16740ac08e125e945239a440aacb8b95f287ae99156f8a6f56a",
+      "sameRaw": true
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "historicalRawSha256": "40379eaa321272a5f60580144e4dc8b0311d6ed571c88405569e231321e1ce9a",
+      "currentRawSha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31",
+      "sameRaw": false
+    }
+  ]
+}

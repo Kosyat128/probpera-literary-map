@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "2bc2d3c71f0a616eee80190c373580f418ade774",
+  "headSha": "23f72547b023298f3996bbabc349be348341d18f",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-01T13:22:35.369Z",
+  "updatedAt": "2026-10-01T13:46:20.331Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -417,50 +417,62 @@
         {
           "id": "S03.acceptance",
           "status": "IN_PROGRESS",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Stage foundation acceptance; global requirements remain separate."
+          "notes": "Stage foundation acceptance; global requirements remain separate. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed. Added D243 bounded read-only OS/Android availability evidence. Checked PATH interfaces/known paths did not identify a ready isolated OS runner. The documented project Android SDK exists, but the two checked conventional emulator/avdmanager candidates were absent; no SDK/AVD inventory, adb, emulator/VM launch, installation, configuration change or APK payload read occurred. These findings do not establish universal absence of other SDK versions, AVDs or user VMs. PLATFORM-001 remains OPEN; no external-only blocker or device acceptance is inferred."
         },
         {
           "id": "S03.BIL-019",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "HTML lang SSR metadata canonical and hreflang are correct. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+          "notes": "HTML lang SSR metadata canonical and hreflang are correct. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed."
         },
         {
           "id": "S03.BIL-075",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Russian and English public pages use stable locale routes and reciprocal hreflang. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation."
+          "notes": "Russian and English public pages use stable locale routes and reciprocal hreflang. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed."
         },
         {
           "id": "S03.BIL-076",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "English pages are self-canonical approved translations and are not canonicalized to Russian. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation."
+          "notes": "English pages are self-canonical approved translations and are not canonicalized to Russian. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed."
         },
         {
           "id": "S03.BIL-077",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Server/prerender language metadata and body match before hydration. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation."
+          "notes": "Server/prerender language metadata and body match before hydration. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed."
         },
         {
           "id": "S03.BIL-079",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Localized sitemaps structured data social metadata 404 and PWA discovery pass. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation."
+          "notes": "Localized sitemaps structured data social metadata 404 and PWA discovery pass. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation. Added D243 bounded working evidence: actual13 loopback raw HTTP requests on authenticated retained D220 PWA313940 before JavaScript, including RU/EN language/head/body, reciprocal canonical/hreflang, manifests/social/noindex and QA404 responses. Supported subset passed; requested coverage remains incomplete. Private-shell JSON-LD is intentionally absent, sitemap inventory is unavailable, and QA404 is not production edge proof. Seven listed owner identities are a subset, not a full current dependency closure. No runtime language switch, offline suite, OS install, reviewed translation, full BIL-079 or stage/release acceptance is claimed."
         },
         {
           "id": "S03.COMMERCE-001",
@@ -505,10 +517,12 @@
         {
           "id": "S03.PLATFORM-001",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/platform-availability.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Installable paid Web/PWA with safe Service Worker. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
+          "notes": "Installable paid Web/PWA with safe Service Worker. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance. Added D243 bounded read-only OS/Android availability evidence. Checked PATH interfaces/known paths did not identify a ready isolated OS runner. The documented project Android SDK exists, but the two checked conventional emulator/avdmanager candidates were absent; no SDK/AVD inventory, adb, emulator/VM launch, installation, configuration change or APK payload read occurred. These findings do not establish universal absence of other SDK versions, AVDs or user VMs. PLATFORM-001 remains OPEN; no external-only blocker or device acceptance is inferred."
         }
       ],
       "lastGreenCommands": [
@@ -547,7 +561,17 @@
         "docs/mobile/evidence/S10/search-20260908/pwa/result.json",
         "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json",
         "docs/mobile/evidence/S10/history-20260908/pwa/result.json",
-        "docs/mobile/evidence/S03/bilingual-foundations-20260914/result.json"
+        "docs/mobile/evidence/S03/bilingual-foundations-20260914/result.json",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/http-subset.json",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/platform-availability.json",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/README.md",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/probe-result.json",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/probe.mjs",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/reconciliation-review.md",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/reconciliation-result.json",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/os-availability.json",
+        "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/android-availability.json"
       ],
       "externalBlockers": []
     },
@@ -12207,7 +12231,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "S03.acceptance: Reconcile the12 existing criteria S03.acceptance, S03.BIL-019/075/076/077/079, S03.COMMERCE-001/008, S03.CONTENT-007, S03.MOD-030, S03.OMIN-023 and S03.PLATFORM-001 using the root-reviewed frozen s03-acceptance-evidence-reconciliation-review/review.md and result.json. Start with the prepared passive raw HTTP/prehydration helper s03-passive-prehydration-probe-review/probe.mjs (07699cf7f2f82763e5026c3abbe3a6b9ab0bde62a229aa1c81101761af316b88), after root review; it has not yet executed. Probe the existing authenticated D220 PWA313940 candidate at s15-booky-exhausted-retry-runtime-build-evidence/attempt-a1/pwa/pwa-313940bc and its canonical record docs/mobile/evidence/S15/booky-exhausted-retry-20260930/builds/pwa/b7951ee9ba9e8e5d-603ef40ec561-result.json/source manifest docs/mobile/evidence/S15/booky-exhausted-retry-20260930/actual/555b4c84f613941d-bbb22bb0c290-source-manifest.json. Bind the exact preserved candidate and source subset; do not rebuild it or use a development server that manufactures new authority. Capture actual RU/EN raw response head/body before hydration, locale routes, canonical/hreflang, manifest/social/draft-noindex and honest404 status/body evidence for the five BIL criteria. The private PWA shell intentionally excludes JSON-LD and the inventory lacks a sitemap: report observed absence and unsupported requested coverage=false, with supported subset results kept separate; never add product JSON-LD/sitemap or claim BIL-079/full-stage acceptance from this probe. Existing HTTP08/build46210d8e is historical, listed owner identity is only subset compatibility and no current full dependency-closure/offline PASS is established. Preserve criterion statuses and missing gates until actual scoped evidence is reviewed. Then address genuine PLATFORM-001 install→standalone→coldoffline/relaunch→RU/EN only in verified isolated OS VM/runner; browser profiles do not establish OS isolation or installation, and no such environment has yet been confirmed. Keep real transactions, provider adapters, production Auth/Storage erasure/retention, deployment/webhooks, physical-device/native/iOS/Safari and later S milestones as their actual separate unresolved obligations. No new D243 CMS feature, remote deployment/install side effect, fictitious approval or acceptance. Retain existing36 unavailable dialogues/empty production/mobile bytes and all historical caches and gates.",
+    "nextAction": "S03.acceptance: Prepare exactly one fresh source-bound controlled PWA QA candidate and a focused actual runtime RU/EN switch plus core-offline/cold-relaunch run for the existing BIL-019/075/077 and CONTENT-007 gaps. The retained D220 candidate cannot reopen authorized/offline operation: only its public authority remains, privateKeyPersisted is false and the original producer is closed. Authenticate and review the existing transport/license/authority harness, then use a separately bound temporary controlled QA authority for the fresh candidate; no production license, purchase, publication or reviewed-content authority is implied. Keep the actual passive13-request retained-candidate subset and bounded12-criterion/OS/Android audits; do not repeat them as runtime evidence. The fresh candidate/browser run is preparation pending at this checkpoint, not an already completed build or PASS. Actual OS/native installation needs a verified isolated runner; bounded checked-interface absence proves no universal VM/SDK absence and creates no owner-only blocker. Keep every criterion/global status, missing JSON-LD/sitemap/public-edge coverage and stage/release gate unchanged until actual scoped evidence is reviewed. No APK/store/OS side effect, fabricated device/full-offline/full-bilingual acceptance or new feature requirement.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -12390,7 +12414,8 @@
       "docs/mobile/evidence/S15/booky-journey-additional-works-20261001/result.json",
       "docs/mobile/evidence/S15/booky-journey-fact-subject-20261001/result.json",
       "docs/mobile/evidence/S15/booky-journey-workspace-20261001/result.json",
-      "docs/mobile/evidence/S15/booky-journey-session-recovery-20261001/result.json"
+      "docs/mobile/evidence/S15/booky-journey-session-recovery-20261001/result.json",
+      "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -12518,7 +12543,8 @@
       "Retain actual D239 a2 TS/65 at original2f027 through a4 only with strict2100 byte equality excluding solely browser; no rerun/new-fixture coverage or rewritten old manifest. Fresh a4 browser3/eight root views and committed-source Next/client-secret bind final4d53. Keep failed a1 TS7006, a2 OPTION, a3 descendant-summary artifacts diagnostic; authenticate exact1/4/6 deltas and olda3 proposed a461 reference through sameSHA actual-a4 witness, preserving old JSON. D23757/D23049/proof remain historical only; helper18/action10/factsmoke/D232 no fresh parser claims. Six first-case downloads retain original/restored7523; four third-case files retain main-work helper answers. RU320 Alpha multiline captions do not photograph all8 rows; EN320 age66 input outside frame, partial error action/lower navigation. Legacy8-vs12 footer/allVisibleCopyAcceptedfalse remains known until accepted D240 authored formula/native export assertion. Continue D240 country/writer/mainwork fact subject and footer, with fresh current65 plus meaningful tests/TS/browser after core changes, never old/current retention substitution. Preserve36 unavailable dialogues/empty production/statuses/caches/gates; no unrelated runtime/catalog/mobile/history checks.",
       "Retain actual D240 a1 core70/TypeScript at original0b4c through browser-only a2 only with exact2100 equality excluding solely browser, unchanged reports and no new-fixture/fresh-final-manifest claims. Fresh a2 browser3/eight root views and committed-source direct Next/client-secret bind final6c04. Keep failed a1 browser2/1+ten captures and recovery-guard preflight diagnostics separate from acceptance; authenticate exactly two native variant reveals and original9969 producer without app/core/TS reruns. D23965/TS at original2f027/last-compatible4d53, D23757 and D23049/proof are historical only after core changes; helper18/action10/factsmoke/D232 are historical, with no fresh parser claims. Six first-case/seven third-case native downloads preserve goldens, configured subject copies and main-work helper targets. Current RU Alpha/footer12, Country selector/boundary, EN main-work fact sources, RU author finder, EN modeled1/2 feedback and partial error/navigation captures retain their actual scopes; age66 input is off frame. Root copy acceptance is bounded UI only; preserved synthetic work prose does not become approved country/writer content. Continue accepted D241 explicit native unfinished workspace kind/schema1/input Save/Reopen, strict own-data512KiB actualUTF8 shape and exact raw strings/optional rows, four existing owners/fresh current70 plus meaningful tests (accepted static76 requires actual report), source-reset/held-save/import protections, original3/8/7held and committed-source Next. No autosave/storage/serverCAS/audit/full-recovery/device/stage claims or unrelated catalog/mobile/history checks; preserve36 unavailable dialogues/empty production/statuses/caches/gates.",
       "Preserve actual corrected D241 a2 unit76/report31ac/TS37c at original f328 through the metadata-only command-guard finalizer after exact unchanged2101 input verification; finalizer unit/typecheckExecutedfalse and no report/manifest rewrite or browser-fixture coverage. Fresh first browser3/eight current root views and committed-source Next/client-secret source3d5cd9 are actual. Original a1 TS2540/76/test2112/1bd4 is diagnostic only; authenticate exact one mutable type assertion to277a and current76, without an erasure-proof/rerun cycle. Preserve original0a2 outputFile guard and early admin CLI arity diagnostics separately from actual app successes. D24070/TS original0b4c/last6c04, D23965/TS, D23757, D23049/proof/helper18/action10/factsmoke/D232 remain historical with no current old-core/parser claims. Workspace raw input uses explicit version1 native files/512KiB actualUTF8 structural validation, exact unfinished strings/keys/rows, no storage/helper/network, unchanged compiled gates and existing held/save/rejection/success-reset semantics; native downloads8/2/7 and original7523 preserved. RUpreview current scope is workspace controls/status; Alpha/footer photograph is historical D240 only and current native-export footer assertion remains. No all-state/full-recovery/device/source/editorial acceptance. Continue accepted D242 only: default-off opt-in own-key sessionStorage raw copy,600ms source debounce, manual Restore/Delete, injected quota/read exceptions and held/cancellation safeguards, two owners/freshTS/browser/actual76 strict protected-byte retention, then source Next. After D242 reconcile existing12 S03.acceptance criteria; do not add further CMS feature stages or fabricate a fixed total D inventory. Keep36 unavailable dialogues/empty production/mobile bytes/statuses/caches/gates and no unrelated repeated checks.",
-      "Preserve original D241a2 current core76/report31ac/f328 throughD242 only after exact2099 protected equality excluding the two current UI/browser owners; no unit rerun, report rewrite or new-UI coverage. D242 focusedTS/browser3/eight direct root views and committed-source Next/client-secret evidence are fresh and separately source-bound. Old D24137c TypeScript and its TS2540/command-finalization/early-admin-CLI diagnostic lineage remain immutable historical snapshots, never D242 current typecheck/UI coverage. All70/65/57/49/proof/helper18/action10/factsmoke/D232 historical bytes/claims remain unchanged. Session updating is defaultoff explicit opt-in only, ownkey temporary sessionStorage,600ms authored-input debounce and no-op/cancellation, manual validated Restore/Delete and once source reset, no presentation/profile/model/answer persistence or helper/network side effect. Quota/read failures are injected Storage API exceptions, not actual exhaustion/privacy/provider acceptance. RU current capture is session Restore/Delete; D241 workspace and earlier Alpha/footer photos are historical, footer-export assertion retained. Preserve original3/8/7held/downloads8/2/7/golden7523 and no whole-device/full-recovery/source/editorial acceptance. Next is first-open S03.acceptance12-criterion reconciliation and passive rawHTTP exact preserved D220 candidate; no new CMSfeature or finiteDcount. Do not recreate the retained candidate, invent JSON-LD/sitemap for its private shell, equate a Chrome profile with OS isolation/install, or close production/transaction/deletion/deployment/device gates with unrelated local QA. Preserve statuses/caches/mobile/runtime/36 unapproved dialogues/empty production and avoid unrelated repeated checks."
+      "Preserve original D241a2 current core76/report31ac/f328 throughD242 only after exact2099 protected equality excluding the two current UI/browser owners; no unit rerun, report rewrite or new-UI coverage. D242 focusedTS/browser3/eight direct root views and committed-source Next/client-secret evidence are fresh and separately source-bound. Old D24137c TypeScript and its TS2540/command-finalization/early-admin-CLI diagnostic lineage remain immutable historical snapshots, never D242 current typecheck/UI coverage. All70/65/57/49/proof/helper18/action10/factsmoke/D232 historical bytes/claims remain unchanged. Session updating is defaultoff explicit opt-in only, ownkey temporary sessionStorage,600ms authored-input debounce and no-op/cancellation, manual validated Restore/Delete and once source reset, no presentation/profile/model/answer persistence or helper/network side effect. Quota/read failures are injected Storage API exceptions, not actual exhaustion/privacy/provider acceptance. RU current capture is session Restore/Delete; D241 workspace and earlier Alpha/footer photos are historical, footer-export assertion retained. Preserve original3/8/7held/downloads8/2/7/golden7523 and no whole-device/full-recovery/source/editorial acceptance. Next is first-open S03.acceptance12-criterion reconciliation and passive rawHTTP exact preserved D220 candidate; no new CMSfeature or finiteDcount. Do not recreate the retained candidate, invent JSON-LD/sitemap for its private shell, equate a Chrome profile with OS isolation/install, or close production/transaction/deletion/deployment/device gates with unrelated local QA. Preserve statuses/caches/mobile/runtime/36 unapproved dialogues/empty production and avoid unrelated repeated checks.",
+      "D243 recorded actual passive13-request retained D220 HTTP subset and frozen12-criterion/OS/Android availability audits. Preserve private noJSONLD/no-sitemap/QA404 boundaries, no runtime/installed/whole-closure acceptance, no repeated passive probe or rehash/rebuild of retained D220, and every status/commit/cache/gate. Continue S03 runtime locale/offline investigation without new CMS features or invented OS isolation."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",

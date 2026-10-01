@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-platform-readonly-environment-audit",
+  "criterion": "S03.PLATFORM-001",
+  "observedAtUtc": "2026-10-01 13:09:52 UTC",
+  "scope": "Bounded readonly availability audit of already usable isolated OS interfaces; no application, installation or VM launch.",
+  "commands": [
+    {
+      "Name": "WindowsSandbox.exe",
+      "Available": false,
+      "CommandType": null,
+      "Source": null
+    },
+    {
+      "Name": "Get-VM",
+      "Available": false,
+      "CommandType": null,
+      "Source": null
+    },
+    {
+      "Name": "Get-VMHost",
+      "Available": false,
+      "CommandType": null,
+      "Source": null
+    },
+    {
+      "Name": "vmconnect.exe",
+      "Available": false,
+      "CommandType": null,
+      "Source": null
+    },
+    {
+      "Name": "VBoxManage.exe",
+      "Available": false,
+      "CommandType": null,
+      "Source": null
+    },
+    {
+      "Name": "vmrun.exe",
+      "Available": false,
+      "CommandType": null,
+      "Source": null
+    },
+    {
+      "Name": "qemu-system-x86_64.exe",
+      "Available": false,
+      "CommandType": null,
+      "Source": null
+    }
+  ],
+  "knownPaths": [
+    {
+      "Kind": "WindowsSandbox",
+      "Path": "C:\\WINDOWS\\System32\\WindowsSandbox.exe",
+      "Exists": false,
+      "ReadError": null
+    },
+    {
+      "Kind": "WindowsSandbox32",
+      "Path": "C:\\WINDOWS\\SysWOW64\\WindowsSandbox.exe",
+      "Exists": false,
+      "ReadError": null
+    },
+    {
+      "Kind": "HyperVModule",
+      "Path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\Modules\\Hyper-V\\Hyper-V.psd1",
+      "Exists": false,
+      "ReadError": null
+    },
+    {
+      "Kind": "HyperVConnect",
+      "Path": "C:\\WINDOWS\\System32\\vmconnect.exe",
+      "Exists": false,
+      "ReadError": null
+    },
+    {
+      "Kind": "VirtualBox",
+      "Path": "C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe",
+      "Exists": false,
+      "ReadError": null
+    },
+    {
+      "Kind": "VMwareWorkstation",
+      "Path": "C:\\Program Files\\VMware\\VMware Workstation\\vmrun.exe",
+      "Exists": false,
+      "ReadError": null
+    },
+    {
+      "Kind": "Qemu",
+      "Path": "C:\\Program Files\\qemu\\qemu-system-x86_64.exe",
+      "Exists": false,
+      "ReadError": null
+    },
+    {
+      "Kind": "ProjectPlaywrightCLI",
+      "Path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/node_modules/@playwright/test/cli.js",
+      "Exists": true,
+      "ReadError": null
+    }
+  ],
+  "currentProcessElevated": false,
+  "dedicatedOsIsolationTools": [],
+  "sourceOfFindings": [
+    {
+      "method": "PowerShell Get-Command -ErrorAction SilentlyContinue",
+      "names": [
+        "WindowsSandbox.exe",
+        "Get-VM",
+        "Get-VMHost",
+        "vmconnect.exe",
+        "VBoxManage.exe",
+        "vmrun.exe",
+        "qemu-system-x86_64.exe"
+      ],
+      "executed": true
+    },
+    {
+      "method": "PowerShell Test-Path -LiteralPath -PathType Leaf -ErrorAction Stop",
+      "paths": [
+        "C:\\WINDOWS\\System32\\WindowsSandbox.exe",
+        "C:\\WINDOWS\\SysWOW64\\WindowsSandbox.exe",
+        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\Modules\\Hyper-V\\Hyper-V.psd1",
+        "C:\\WINDOWS\\System32\\vmconnect.exe",
+        "C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe",
+        "C:\\Program Files\\VMware\\VMware Workstation\\vmrun.exe",
+        "C:\\Program Files\\qemu\\qemu-system-x86_64.exe",
+        "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/node_modules/@playwright/test/cli.js"
+      ],
+      "executed": true
+    },
+    {
+      "method": "WindowsPrincipal.IsInRole(Administrator) on current process token",
+      "executed": true
+    },
+    {
+      "method": "Exposed tool catalog metadata filter for Windows Sandbox, Hyper-V, VirtualBox, VMware, QEMU and OS-isolation names/descriptions",
+      "executed": true
+    }
+  ],
+  "findings": {
+    "readyIsolatedOsEnvironmentIdentified": false,
+    "isolatedOsControlVerified": false,
+    "vmManagementPermissionsVerified": false,
+    "projectPlaywrightCliExists": true,
+    "browserProfileCountsAsOsIsolation": false,
+    "actualPwaInstallationVerified": false,
+    "safeReadyInstallationRunner": null,
+    "conclusion": "No already usable isolated OS environment was identified through the checked interfaces. Actual PWA installation remains unverified for this agent."
+  },
+  "limits": [
+    "PATH command checks and a bounded set of known executable/module paths only; no broad inventory.",
+    "No available Hyper-V management command was found, so VM inventory and guest-control permissions were not queried.",
+    "These results do not prove that no other installation or user-owned VM exists."
+  ],
+  "operations": {
+    "readOnlyEnvironmentQueries": true,
+    "externalAuditArtifactWritten": true,
+    "canonicalWrites": false,
+    "appChecksExecuted": false,
+    "sdkScanExecuted": false,
+    "hardwareScanExecuted": false,
+    "broadFilesystemScanExecuted": false,
+    "adbExecuted": false,
+    "vmInventoryQueried": false,
+    "vmOrBrowserLaunched": false,
+    "featuresEnabled": false,
+    "softwareInstalled": false,
+    "configurationChanged": false,
+    "accountsChanged": false,
+    "registryAccessed": false,
+    "appsClosed": false,
+    "networkAccessed": false
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}
+

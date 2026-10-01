@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "decision": "D243",
+  "sourceCommit": "23f72547b023298f3996bbabc349be348341d18f",
+  "recordedAt": "2026-10-01T13:46:20.331Z",
+  "scope": "working-validation",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "allStatusesUnchanged": true,
+  "applicationChecksRun": false,
+  "buildsRun": false,
+  "mobileRuntimeChanged": false,
+  "payloadHashesRechecked": false,
+  "kind": "s03-passive-prehydration-supported-subset",
+  "criterionIds": [
+    "S03.BIL-019",
+    "S03.BIL-075",
+    "S03.BIL-076",
+    "S03.BIL-077",
+    "S03.BIL-079"
+  ],
+  "requirementIds": [
+    "BIL-019",
+    "BIL-075",
+    "BIL-076",
+    "BIL-077",
+    "BIL-079"
+  ],
+  "sourceFiles": [
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "scripts/mobile/pwa-shell.mjs",
+      "sha256": "16f1165034d6235385fed1e6af6a1e7641794568599b51975ebb93b9b39a86bd"
+    },
+    {
+      "path": "src/i18n/PublicLocaleMetadata.tsx",
+      "sha256": "201028bf84360a4d1184ca8171ffee39c78539d7da6cbe0ef7195d6e137779b9"
+    },
+    {
+      "path": "scripts/mobile/public-locale-pages.mjs",
+      "sha256": "aa1d260c23aa71ff855370867cc715dc6a161ea18e93c8a94e33d32e76c4edcd"
+    },
+    {
+      "path": "scripts/mobile/public-locale-review.mjs",
+      "sha256": "bfa7249f18c81f64139ea0957f6fc71097304c08b078e88457a9c2b407851076"
+    },
+    {
+      "path": "scripts/mobile/write-public-locale-pages.mjs",
+      "sha256": "d73e410dd45b3de02e62a01b6b881a0c6037c5638b6d4be48f37a2c69a7ed5af"
+    }
+  ],
+  "actualProbe": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/probe-result.json",
+    "sha256": "3f519351efdc59007f4477c2524a8f3d82640940c12df50f4d2df642f68c1ffa"
+  },
+  "actualProducer": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/probe.mjs",
+    "sha256": "07699cf7f2f82763e5026c3abbe3a6b9ab0bde62a229aa1c81101761af316b88"
+  },
+  "reconciliation": {
+    "path": "docs/mobile/evidence/S03/passive-prehydration-reconciliation-20261001/actual/reconciliation-result.json",
+    "sha256": "15c7a6256c0cdf5fb4e1ba90ac71e89bdaf60148f66054537e31f3bcc0c21c8c"
+  },
+  "supportedSubsetPass": true,
+  "requestedCoverageComplete": false,
+  "rawHttpRequests": 13,
+  "retainedCandidate": {
+    "classification": "Retained D220 candidate; seven current listed owner identities only",
+    "buildId": "313940bce3ea3ecb46b73e63ec30bab0528c17453d197055b8f44f9938246ed4",
+    "runtimeSourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+    "sourceInputsSha256": "955b2625e93854f40a88334c54d2e480b10153c9cb85a7b097cd9de6e3d1f6c6",
+    "recordSha256": "b7951ee9ba9e8e5d00d6f3b5e11c2214a40f19dc68fc72d85cd4c4433147a2ac",
+    "sourceManifestSha256": "555b4c84f613941df20da33259cf7880e5ef2737252e2810807143f311dea324",
+    "descriptorSha256": "b04ebb7776ad556f9fd2e45ac786240077830ba38db5559ed1f9d5ac1c257465",
+    "artifactRoot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-exhausted-retry-runtime-build-evidence\\attempt-a1\\pwa\\pwa-313940bc",
+    "currentOwners": [
+      {
+        "path": "package.json",
+        "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "scripts/mobile/pwa-shell.mjs",
+        "sha256": "16f1165034d6235385fed1e6af6a1e7641794568599b51975ebb93b9b39a86bd",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "src/i18n/PublicLocaleMetadata.tsx",
+        "sha256": "201028bf84360a4d1184ca8171ffee39c78539d7da6cbe0ef7195d6e137779b9",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "scripts/mobile/public-locale-pages.mjs",
+        "sha256": "aa1d260c23aa71ff855370867cc715dc6a161ea18e93c8a94e33d32e76c4edcd",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "scripts/mobile/public-locale-review.mjs",
+        "sha256": "bfa7249f18c81f64139ea0957f6fc71097304c08b078e88457a9c2b407851076",
+        "matchedAuthenticatedD220Manifest": true
+      },
+      {
+        "path": "scripts/mobile/write-public-locale-pages.mjs",
+        "sha256": "d73e410dd45b3de02e62a01b6b881a0c6037c5638b6d4be48f37a2c69a7ed5af",
+        "matchedAuthenticatedD220Manifest": true
+      }
+    ],
+    "fullDependencyClosureVerified": false,
+    "fullArtifactRehashed": false
+  },
+  "noClaims": {
+    "JavaScriptExecuted": false,
+    "browserStarted": false,
+    "serviceWorkerRegistered": false,
+    "browserStorageTouched": false,
+    "runtimeLanguageSwitchVerified": false,
+    "licenseSigned": false,
+    "newQaAuthorityCreated": false,
+    "built": false,
+    "installed": false,
+    "productionEdgeVerified": false,
+    "fullBIL079Passed": false,
+    "stageAccepted": false,
+    "releaseReady": false
+  },
+  "coverage": {
+    "jsonLd": {
+      "observedBlocks": 0,
+      "status": "INTENTIONALLY_ABSENT_PRIVATE_SHELL",
+      "sourceIntent": "Site structured data has no place in this unpublished app shell.",
+      "source": "scripts/mobile/pwa-shell.mjs:52",
+      "publicStructuredDataAcceptanceClaimed": false
+    },
+    "sitemap": {
+      "descriptorEntries": [],
+      "status": "UNAVAILABLE_IN_CANDIDATE",
+      "noindexObservedOn": [
+        "/planet/",
+        "/planet/ru/",
+        "/planet/en/",
+        "/planet/404.html",
+        "/planet/ru/404.html",
+        "/planet/en/404.html"
+      ],
+      "publicSitemapExclusionProven": false,
+      "unknownHttp404IsHarnessOnly": true
+    },
+    "applicability": "152:20-34,77-92 applies public equivalent page discovery; this artifact is an unpublished noindex private app shell. Public schema/sitemap/edge coverage is not supplied by it.",
+    "requestedCoverageComplete": false
+  },
+  "production404OrFullPublicSeoAccepted": false
+}
