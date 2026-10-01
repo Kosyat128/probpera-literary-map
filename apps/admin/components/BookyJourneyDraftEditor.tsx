@@ -105,6 +105,13 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
         sourceCount: node.kind === "sourced-fact" ? authored.fact?.copy[locale].sources.length ?? 0 : null };
     }),
   })) : [];
+  const comparisonCopies = preview && previewNode ? locales.flatMap((locale) => {
+    const node = preview.draft.definitions.find((definition) => definition.locale === locale)?.nodes.find((item) => item.id === previewNode.id);
+    const dialogue = preview.draft.dialogues.find((record) => record.payload.locale === locale && record.payload.id === node?.dialogue.id);
+    const supplied = reviewRows.find((row) => row.id === previewNode.id)?.copies.find((copy) => copy.locale === locale);
+    return dialogue && supplied ? [{ locale, copy: dialogue.payload.copy,
+      presence: previewCopyView === "body" || (previewCopyView === "caption" ? supplied.captionAuthored : supplied.reducedAuthored) ? "authored" : "title-fallback" }] : [];
+  }) : [];
 
   function update(change: Partial<JourneyDraftInput>) {
     operationSequence.current += 1;
@@ -717,6 +724,21 @@ export function BookyJourneyDraftEditor({ catalog }: { catalog: JourneyDraftCata
             </select>
           </label>
           <p data-booky-preview-copy={previewCopyView} style={{ whiteSpace: "pre-wrap" }}>{previewDialogue.payload.copy[previewCopyView]}</p>
+          <details data-booky-copy-comparison data-comparison-node={previewNode.id} lang={preview.locale} style={{ minWidth: 0 }}>
+            <summary style={{ minHeight: 44, padding: "10px 0", cursor: "pointer" }}>{preview.locale === "ru" ? "Сравнить тексты RU и EN" : "Compare RU and EN copy"}</summary>
+            <p>{preview.locale === "ru" ? "Тексты текущего шага для сопоставления. Проверка перевода и редакционная проверка остаются отдельными." : "Current-step copy for comparison. Translation and editorial review remain separate."}</p>
+            <div data-booky-comparison-columns style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: 16 }}>
+              {comparisonCopies.map((copy) => <section key={copy.locale} lang={copy.locale} data-comparison-locale={copy.locale}
+                aria-label={copy.locale === "ru" ? "Текст шага RU для сравнения" : "EN step copy for comparison"} style={{ minWidth: 0, overflowWrap: "anywhere" }}>
+                <strong>{copy.locale.toUpperCase()}</strong>
+                <h5 lang={copy.locale} data-comparison-title style={{ margin: "8px 0", fontSize: "inherit" }}>{copy.copy.title}</h5>
+                <p data-comparison-presence={copy.presence} style={{ margin: "8px 0" }}>{copy.locale === "ru"
+                  ? `${previewCopyView === "body" ? "Полный текст" : previewCopyView === "caption" ? "Подпись" : "Короткий текст"}: ${copy.presence === "authored" ? "авторский текст" : "название шага"}`
+                  : `${previewCopyView === "body" ? "Full text" : previewCopyView === "caption" ? "Caption" : "Short text"}: ${copy.presence === "authored" ? "authored" : "title fallback"}`}</p>
+                <p lang={copy.locale} data-comparison-copy={previewCopyView} style={{ margin: "8px 0", whiteSpace: "pre-wrap" }}>{copy.copy[previewCopyView]}</p>
+              </section>)}
+            </div>
+          </details>
           {previewNode.kind === "sourced-fact" && <section data-booky-fact-sources aria-label={preview.locale === "ru" ? "Источники факта" : "Fact sources"}>
             <p role="note">{preview.locale === "ru" ? "Черновик факта — источники ещё требуют проверки" : "Draft fact — sources still need review"}</p>
             <ul>
