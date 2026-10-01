@@ -1,0 +1,56 @@
+{
+  "pass": true,
+  "decision": "D237",
+  "directRootViews": 8,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/source-manifest.json",
+    "sha256": "1ee71b640b711d5c4da048913518d01583ecdc69bc0bd9288be8e005f072c5ea"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/browser-result.json",
+    "sha256": "0b043abe27c4f637b83bf3f069ebca72f4bd7aa86feb5c34f5f0a2c9aa947a19"
+  },
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "930f61323678c8130356e36f1153f98f62efed05b36327eb438a468b9da33f18"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "eb15a4d7507240017297807f2140825291efa263220166ca58d451c229c13f6f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "0405bbaca843066c95f9b5c5e2155d7237a21d36cc2b6395f480609786ea9cd8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "b36b6c1c8748e4dbf4088e23cfc27603ace62ca236b6405e41d4643fe49964c7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "aabcbba7f57abd1a19930c48d98fb9f8a6beae73a46bd2844fcd3d1beeb5b416"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "92a9a530e932669a7b7308fb35831f201044c57ba67ef8741ec84e85efae48f9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "02c3cec12c5a99d3eea3a7afd743c3cd6da18a5e22950a25d4b64e469055e619"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "2fc2aec9cad0cf1e3b5450e03bdb69f80d6fb7dd155b234a24b129f13b8d8100"
+    }
+  ],
+  "notes": [
+    "Root directly inspected all eight actual admin-editor captures after current TypeScript, 57 core tests and three browser cases passed.",
+    "The RU320 prerequisite form shows two unconfirmed ID/version rows, native remove and add controls, focus and no visible collision or horizontal overflow. Sixteen-row visual acceptance is not claimed.",
+    "Desktop comparison uses two columns; narrow comparison stacks exact RU and EN copy. Profile, optional order, author search and English answer verdict retain their stated bounded scopes.",
+    "The RU320 error capture is partial; the lower error-recovery action continues below the frame. Browser bounds and focus assertions cover its actual control.",
+    "These are local adult draft-authoring captures, without native-device, full design, accessibility, publication or runtime admission acceptance."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

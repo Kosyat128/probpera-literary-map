@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "booky-journey-prerequisites-admin-build",
+  "pass": true,
+  "sourceCommit": "a4550e8feb072cae11abf7acf0a799e621eab459",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/source-manifest.json",
+    "sha256": "1ee71b640b711d5c4da048913518d01583ecdc69bc0bd9288be8e005f072c5ea"
+  },
+  "sourceCommitReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/actual-source-commit.json",
+    "sha256": "74489b361a258f6fbb632456025025e336aae4afdd424fe8a8aed2caac38280f"
+  },
+  "currentCoreUnit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/actual-a1/unit-result.json",
+    "sha256": "aecc49a6b6bcf101efad41d792640f2e543de34db03cae3e32e5430e53c791d9"
+  },
+  "expectedCoreTests": 57,
+  "currentCoreUnitValidated": true,
+  "unitRerun": false,
+  "durationMs": 38088,
+  "build": {
+    "exitCode": 0,
+    "signal": null,
+    "pass": true,
+    "spawnError": null,
+    "durationMs": 36899,
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\next\\dist\\bin\\next",
+      "build",
+      "--webpack"
+    ],
+    "cwd": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/apps/admin",
+    "stdout": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/admin-build-a1/next-build.stdout.log",
+      "sha256": "0d52b9cc030f4c39d58654a8c66e107f56739b093d7550610643cd5ee16b40e1"
+    },
+    "stderr": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/admin-build-a1/next-build.stderr.log",
+      "sha256": "44c4821749609f1bc4deb69ee3723d51484f8f5af61baf36f7fa00131757ba18"
+    }
+  },
+  "clientSecrets": {
+    "exitCode": 0,
+    "signal": null,
+    "pass": true,
+    "spawnError": null,
+    "durationMs": 533,
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\check-admin-client-secrets.mjs"
+    ],
+    "cwd": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/apps/admin",
+    "stdout": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/admin-build-a1/client-secrets.stdout.log",
+      "sha256": "b349f3fdcd8b5b3cfd5973b21b2857c65fefe9bb92ce3c94ee1ea14ae4ae848b"
+    },
+    "stderr": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/admin-build-a1/client-secrets.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "failure": null,
+  "sourceBefore": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/admin-build-a1/source-before.json",
+    "sha256": "c032f6a416448d269ee988a3948c41bb9d4881205305f466f51526ea439ded07"
+  },
+  "sourceAfter": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/admin-build-a1/source-after.json",
+    "sha256": "c032f6a416448d269ee988a3948c41bb9d4881205305f466f51526ea439ded07"
+  },
+  "sourceInputsUnchanged": true,
+  "standaloneTypecheckExecuted": false,
+  "catalogGenerationExecuted": false,
+  "mobileBuildExecuted": false,
+  "deploymentExecuted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "producer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisites-review/admin-build.mjs",
+    "sha256": "fa6432e3674277401a9efca1467f01dbbd9f92a1fc24d3ce034a2d8b553703e5"
+  }
+}
