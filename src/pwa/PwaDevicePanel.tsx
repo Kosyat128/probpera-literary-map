@@ -21,16 +21,18 @@ export const pwaDeviceCopy = {
     offlineTitle: "Перед поездкой", check: "Проверить офлайн-файлы", checking: "Проверяем сохранённые файлы…",
     unchecked: "Проверьте базовые файлы перед использованием без сети.",
     complete: "Все базовые файлы прошли проверку на этом устройстве.",
+    verifiedFiles: "Файлов в проверенном базовом наборе",
     incomplete: "Часть базовых файлов отсутствует или повреждена. Подключитесь к сети и восстановите офлайн-файлы перед поездкой.",
     repair: "Восстановить офлайн-файлы", repairing: "Восстанавливаем недостающие файлы и проверяем весь базовый набор…",
     cancelRepair: "Остановить восстановление", repaired: "Базовые файлы восстановлены и прошли полную проверку на этом устройстве.",
     repairIncomplete: "Восстановление не завершено. Некоторые проверенные файлы уже могли сохраниться. Проверьте подключение и свободное место, затем повторите попытку.",
+    restoredFiles: "Восстановлено файлов в этой попытке",
     repairUnavailable: "Восстановление остановлено или сейчас недоступно. Некоторые файлы уже могли сохраниться. Проверьте доступ и подключение, затем повторите проверку файлов.",
     repairMissingManifest: "Сведения о сохранённой версии отсутствуют. Подключитесь к сети и заново откройте приложение, чтобы загрузить доступную версию.",
     repairNote: "Загружаются только недостающие или повреждённые базовые файлы. Восстановление использует интернет и не продлевает доступ.",
     unavailable: "Сейчас проверить файлы не удалось. Повторите попытку после завершения загрузки приложения.",
     limit: "Проверка не продлевает право доступа и не включает дополнительные материалы. Браузер может удалить сохранённые файлы позднее.",
-    storageTitle: "Место на устройстве", measuring: "Проверяем хранилище…", usage: "Примерно занято", quota: "Лимит браузера", unit: "МБ", largeUnit: "ГБ",
+    storageTitle: "Место на устройстве", measuring: "Проверяем хранилище…", usage: "Примерно занято", quota: "Лимит браузера", byteUnit: "Б", smallUnit: "КБ", unit: "МБ", largeUnit: "ГБ",
     originScope: "Оценка относится ко всем данным этого сайта, включая другие его страницы.",
     unknown: "Браузер не предоставил оценку места.", storageError: "Не удалось проверить хранилище. Можно повторить попытку.",
     refresh: "Обновить оценку", protect: "Запросить сохранение данных", requesting: "Ожидаем решение браузера…",
@@ -52,16 +54,18 @@ export const pwaDeviceCopy = {
     offlineTitle: "Before you travel", check: "Check offline files", checking: "Checking saved files…",
     unchecked: "Check the base files before using the app offline.",
     complete: "All base files passed verification on this device.",
+    verifiedFiles: "Files in the verified base package",
     incomplete: "Some base files are missing or damaged. Connect to the internet and restore the offline files before travelling.",
     repair: "Restore offline files", repairing: "Restoring missing files and checking the entire base package…",
     cancelRepair: "Stop restoring", repaired: "Base files have been restored and passed a full check on this device.",
     repairIncomplete: "Restoration is incomplete. Some verified files may already have been saved. Check your connection and free space, then try again.",
+    restoredFiles: "Files restored in this attempt",
     repairUnavailable: "Restoration has stopped or is unavailable now. Some files may already have been saved. Check your access and connection, then check the files again.",
     repairMissingManifest: "The saved version’s information is missing. Connect to the internet and reopen the app to load an available version.",
     repairNote: "Only missing or damaged base files are downloaded. Restoration uses the internet and does not extend access.",
     unavailable: "The files could not be checked now. Try again after the app finishes loading.",
     limit: "This check does not extend access or include additional content. The browser may remove saved files later.",
-    storageTitle: "Device storage", measuring: "Checking storage…", usage: "Approximate usage", quota: "Browser allowance", unit: "MB", largeUnit: "GB",
+    storageTitle: "Device storage", measuring: "Checking storage…", usage: "Approximate usage", quota: "Browser allowance", byteUnit: "B", smallUnit: "kB", unit: "MB", largeUnit: "GB",
     originScope: "This estimate covers all data for this site, including its other pages.",
     unknown: "The browser did not provide a storage estimate.", storageError: "Storage could not be checked. You can try again.",
     refresh: "Refresh estimate", protect: "Request persistent storage", requesting: "Waiting for the browser’s decision…",
@@ -144,10 +148,11 @@ export default function PwaDevicePanel({ install, worker }: { install: PwaInstal
     : installation.phase === "dismissed" ? copy.dismissed
     : installation.phase === "error" ? copy.installError : copy.manual;
   const size = (value: number) => {
-    const large = value >= 1_000_000_000;
+    const divisor = value >= 1_000_000_000 ? 1_000_000_000 : value >= 1_000_000 ? 1_000_000 : value >= 1_000 ? 1_000 : 1;
+    const unit = divisor === 1_000_000_000 ? copy.largeUnit : divisor === 1_000_000 ? copy.unit : divisor === 1_000 ? copy.smallUnit : copy.byteUnit;
     const number = new Intl.NumberFormat(language === "ru" ? "ru-RU" : "en-US", { maximumFractionDigits: 1 })
-      .format(value / (large ? 1_000_000_000 : 1_000_000));
-    return `${number} ${large ? copy.largeUnit : copy.unit}`;
+      .format(value / divisor);
+    return `${number} ${unit}`;
   };
   const persistenceText = storage.state.denied ? copy.denied : storage.state.persisted === true ? copy.persistent
     : storage.state.persisted === false ? copy.temporary : copy.persistenceUnknown;
@@ -165,12 +170,18 @@ export default function PwaDevicePanel({ install, worker }: { install: PwaInstal
         <p role="status" data-pwa-offline-readiness={checking ? "checking" : currentCheck?.status ?? "unchecked"}>
           {checking ? copy.checking : currentCheck ? copy[currentCheck.status] : copy.unchecked}
         </p>
+        {!checking && !repairing && currentCheck?.status === "complete" ? <p className="pwa-device__note">
+          {copy.verifiedFiles}: {currentCheck.fileCount} · {size(currentCheck.bytes)}
+        </p> : null}
         <button type="button" disabled={checking || repairing} onClick={() => { void checkOffline(); }}>{copy.check}</button>
         <div className="pwa-device__actions">
           <button type="button" disabled={checking || repairing || !repairAccess} onClick={() => { void restoreOffline(); }}>{copy.repair}</button>
           {repairing ? <button type="button" onClick={() => { repairRequest.current?.abort(); }}>{copy.cancelRepair}</button> : null}
         </div>
         {repairText ? <p role="status" data-pwa-offline-repair={repairing ? "repairing" : currentRepair?.status}>{repairText}</p> : null}
+        {!checking && !repairing && currentRepair && (currentRepair.status === "complete" || currentRepair.status === "incomplete") ? <p className="pwa-device__note">
+          {copy.restoredFiles}: {currentRepair.repairedFiles} · {size(currentRepair.repairedBytes)}
+        </p> : null}
         <p className="pwa-device__note">{copy.repairNote}</p>
         <p className="pwa-device__note">{copy.limit}</p>
       </section>
