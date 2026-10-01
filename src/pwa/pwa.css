@@ -56,6 +56,68 @@
   color: #271538;
   pointer-events: none;
 }
+.pwa-notices > .connectivity-status.pwa-status-card {
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  border: 1px solid var(--planet-accent, #c29943);
+  border-radius: .875rem;
+  background: var(--planet-surface, #fffaf2);
+  color: var(--planet-ink, #30261c);
+  box-shadow: 0 3px 12px rgba(48, 38, 28, .08);
+  font-size: .875rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  backdrop-filter: none;
+}
+.pwa-status-card__details { min-width: 0; }
+.pwa-status-card__details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: .375rem .75rem;
+  border-radius: .75rem;
+  cursor: pointer;
+  list-style: none;
+  touch-action: manipulation;
+}
+.pwa-status-card__details > summary::-webkit-details-marker { display: none; }
+.pwa-status-card__summary-text { display: grid; gap: .125rem; min-width: 0; line-height: 1.2; }
+.pwa-status-card__summary-text strong { font-size: .9375rem; font-weight: 700; }
+.pwa-status-card__summary-text small { font-size: .8125rem; line-height: 1.2; }
+.pwa-status-card__disclosure { display: inline-flex; align-items: center; gap: .5rem; flex-shrink: 0; color: var(--planet-accent-strong, #76531c); font-size: .8125rem; }
+.pwa-status-card__disclosure > span { width: .375rem; height: .375rem; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform .15s ease; }
+.pwa-status-card__details[open] .pwa-status-card__disclosure > span { transform: rotate(225deg); }
+.pwa-status-card__body { max-height: min(28dvh, 12rem); overflow-y: auto; overscroll-behavior: contain; padding: .625rem .75rem .5rem; border-top: 1px solid var(--planet-accent, #c29943); line-height: 1.5; }
+.pwa-status-card__body p { margin: .5rem 0 0; }
+.pwa-status-card__body p:first-child { margin-top: 0; }
+.pwa-status-card .pwa-access__refresh { padding: 0; border: 0; border-radius: 0; background: transparent; color: inherit; pointer-events: auto; }
+.pwa-status-card__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; padding: .375rem .75rem; }
+.pwa-status-card__details + .pwa-status-card__actions { margin-top: .25rem; border-top: 1px solid var(--planet-accent, #c29943); padding-top: .625rem; }
+.pwa-status-card__message { flex-basis: 100%; line-height: 1.4; }
+.pwa-notices .pwa-status-card button { min-width: 44px; min-height: 44px; padding: .5rem .875rem; border: 1px solid var(--planet-accent-strong, #76531c); border-radius: .625rem; background: var(--planet-surface, #fffaf2); color: var(--planet-ink, #30261c); font: inherit; font-weight: 600; touch-action: manipulation; cursor: pointer; }
+.pwa-notices .pwa-status-card button:disabled { opacity: .65; cursor: progress; }
+.pwa-status-card__details > summary:focus-visible, .pwa-notices .pwa-status-card button:focus-visible { outline: 3px solid var(--planet-accent-strong, #76531c); outline-offset: 3px; color: var(--planet-ink, #30261c); }
+.pwa-status-card__details > summary:focus-visible { outline-offset: -3px; }
+.pwa-notices .pwa-status-card .connectivity-status-dismiss { margin-left: auto; padding-inline: .5rem; font-size: 1.25rem; }
+@media (hover: hover) {
+  .pwa-status-card__details > summary:hover, .pwa-notices .pwa-status-card button:not(:disabled):hover { background: var(--planet-chrome-raised, #f5ead4); }
+  .pwa-notices .pwa-status-card .connectivity-status-dismiss:hover { color: var(--planet-ink, #30261c); border-color: var(--planet-accent-strong, #76531c); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pwa-status-card__disclosure > span { transition: none; }
+}
+@media (forced-colors: active) {
+  .pwa-notices > .connectivity-status.pwa-status-card, .pwa-status-card__body, .pwa-status-card__details + .pwa-status-card__actions { border-color: CanvasText; box-shadow: none; }
+  .pwa-notices > .connectivity-status.pwa-status-card, .pwa-notices .pwa-status-card button { background: Canvas; color: CanvasText; }
+  .pwa-notices .pwa-status-card button { border-color: ButtonText; }
+  .pwa-status-card__disclosure { color: LinkText; }
+  .pwa-status-card__details > summary:focus-visible, .pwa-notices .pwa-status-card button:focus-visible { outline-color: Highlight; color: CanvasText; }
+  .pwa-notices .pwa-status-card .connectivity-status-dismiss:hover { color: CanvasText; border-color: ButtonText; }
+}
 .pwa-help {
   box-sizing: border-box;
   padding: 1rem max(1.25rem, env(safe-area-inset-right)) max(1.5rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));

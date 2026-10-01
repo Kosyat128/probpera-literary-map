@@ -112,7 +112,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             {!pwaWorker && <ConnectivityStatus />}
             <AppErrorBoundary>
               {accountMode ? <AccountEntry mode={accountMode} /> : pwaRuntime ? <PwaEdition runtime={pwaRuntime}
-                connectivityNotice={pwaWorker ? <PwaConnectivity controller={pwaWorker} /> : undefined}>
+                connectivityNotice={pwaWorker ? notice => <PwaConnectivity controller={pwaWorker} verificationNotice={notice} /> : undefined}>
                 <App productHelp={<PwaHelp embedded devicePanel={pwaWorker && pwaInstall
                   ? <PwaDevicePanel install={pwaInstall} worker={pwaWorker} /> : undefined} />} />
               </PwaEdition>

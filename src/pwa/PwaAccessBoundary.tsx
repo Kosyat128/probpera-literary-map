@@ -158,11 +158,17 @@ export function pwaAccessMessage(copy: PwaAccessCopy, reason: WebLicenseDenial |
   return copy.denied;
 }
 
+export interface PwaAccessVerificationNotice {
+  readonly checking: boolean;
+  readonly source: PwaAccessSnapshot["verificationSource"];
+  readonly text: string;
+}
+
 export interface PwaAccessBoundaryProps {
   readonly client: WebLicenseClient | null;
   readonly children: ReactNode;
   readonly closedHelp?: ReactNode;
-  readonly connectivityNotice?: ReactNode;
+  readonly connectivityNotice?: (notice: PwaAccessVerificationNotice | null) => ReactNode;
   readonly bootstrapStatus?: { readonly checking: boolean; readonly reason: WebLicenseDenial | null };
   readonly onBootstrapRetry?: () => void;
 }
@@ -201,16 +207,17 @@ export default function PwaAccessBoundary({ client, children, bootstrapStatus, o
   const accountQuery = "?returnTo=" + encodeURIComponent(returnTo);
   const reason = client ? snapshot.reason : bootstrapStatus?.reason ?? "unconfigured";
   const checking = client ? snapshot.checking || snapshot.reason === "not-checked" : bootstrapStatus?.checking === true;
+  const verificationNotice: PwaAccessVerificationNotice | null = authorized && (snapshot.checking || snapshot.verificationSource === "saved")
+    ? { checking: snapshot.checking, source: snapshot.verificationSource, text: snapshot.checking ? copy.checking : copy.savedVerification } : null;
   return (
     <ProductNoticeHost notices={
       <div className="pwa-notices">
-        {authorized && (snapshot.checking || snapshot.verificationSource === "saved") ? (
+        {connectivityNotice ? connectivityNotice(verificationNotice) : verificationNotice ? (
           <div key="refresh" className="pwa-access__refresh" role="status" aria-live="polite" aria-atomic="true"
-            data-pwa-access-verification={snapshot.verificationSource ?? undefined}>
-            {snapshot.checking ? copy.checking : copy.savedVerification}
+            data-pwa-access-verification={verificationNotice.source ?? undefined}>
+            {verificationNotice.text}
           </div>
         ) : null}
-        {connectivityNotice}
       </div>
     }>
       {authorized && recentStore ? <RepairAccess.Provider key="experience" value={controller}><RecentHistoryProvider store={recentStore}><div className="pwa-access__content" data-pwa-authorized="">{children}</div></RecentHistoryProvider></RepairAccess.Provider> : null}

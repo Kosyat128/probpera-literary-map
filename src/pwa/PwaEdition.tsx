@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { usePlatformSnapshot } from "../platform/PlatformServices";
 import type { WebLicenseClient, WebLicenseDenial } from "../platform/adapters/web/WebLicense";
 import { createPwaLicenseRuntime } from "./PwaLicenseRuntime";
-import PwaAccessBoundary from "./PwaAccessBoundary";
+import PwaAccessBoundary, { type PwaAccessBoundaryProps } from "./PwaAccessBoundary";
 import PwaHelp from "./PwaHelp";
 
 export type PwaLicenseRuntime = ReturnType<typeof createPwaLicenseRuntime>;
@@ -10,7 +10,7 @@ export type PwaLicenseRuntime = ReturnType<typeof createPwaLicenseRuntime>;
 export default function PwaEdition({ runtime, children, connectivityNotice }: {
   runtime: PwaLicenseRuntime;
   children: ReactNode;
-  connectivityNotice?: ReactNode;
+  connectivityNotice?: PwaAccessBoundaryProps["connectivityNotice"];
 }) {
   const { connectivity, visibility } = usePlatformSnapshot();
   const initialRuntime = useRef(runtime);

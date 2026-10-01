@@ -2177,10 +2177,15 @@ export default function BookArchiveSection({
           return;
         }
         observer?.disconnect();
+        const toolbarBounds = detailOverlayRef.current
+          ?.querySelector<HTMLElement>(".book-detail-toolbar")?.getBoundingClientRect();
+        const revealTop = toolbarBounds?.width && toolbarBounds.height
+          ? Math.min(detailBounds.top, toolbarBounds.top) : detailBounds.top;
+        // Include the preceding book controls in the same scrollable row.
         // scrollIntoView also scrolls overflow:hidden ancestors, which can move
         // the panel's persistent header and locale control out of view.
         panelContent.scrollTo({
-          top: panelContent.scrollTop + detailBounds.top
+          top: panelContent.scrollTop + revealTop
             - panelContent.getBoundingClientRect().top,
           behavior,
         });

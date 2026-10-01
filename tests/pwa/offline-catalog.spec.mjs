@@ -52,6 +52,32 @@ async function panelNoticeLayout(page) {
   }).toBe(true);
 }
 
+async function compactNoticeDetails(page, locale) {
+  const card = page.locator(".pwa-status-card"), details = card.locator(".pwa-status-card__details");
+  await expect(card).toHaveCount(1);
+  await expect(details).toHaveJSProperty("open", false);
+  await expect.poll(async () => (await card.boundingBox())?.height ?? Infinity).toBeLessThanOrEqual(76);
+  const saved = card.locator('[data-pwa-access-verification="saved"]');
+  await expect(saved).toHaveText(locale === "ru" ? "Используется сохранённое подтверждение доступа." : "Using saved access verification.");
+  await expect(saved).toBeHidden();
+  await details.locator("summary").click();
+  await expect(saved).toBeVisible();
+  await expect(card.getByText(locale === "ru" ? "Нет сети. Доступ зависит от сохранённых материалов и подтверждённого права доступа." : "You are offline. Access depends on saved content and a verified license.", { exact: true })).toBeVisible();
+  await details.locator("summary").click();
+  await expect(details).toHaveJSProperty("open", false);
+  await panelNoticeLayout(page);
+}
+
+async function bookControlsInPanel(page) {
+  const toolbar = page.locator(".book-shelf-frame__detail .book-detail-toolbar");
+  await expect(toolbar).toBeInViewport({ ratio: 1 });
+  await expect.poll(async () => {
+    const controls = await toolbar.boundingBox(), content = await page.locator(".native-planet-panel__content").boundingBox();
+    return Boolean(controls && content && controls.y >= content.y - 1 && controls.y + controls.height <= content.y + content.height + 1);
+  }).toBe(true);
+  await expect(toolbar.locator(".book-detail-close")).toBeVisible();
+}
+
 async function verifiedCoverImages(page, collection) {
   const targets = [
     ["england:george_orwell:nineteen-eighty-four", "nineteen-eighty-four-editorial.webp"],
@@ -462,6 +488,7 @@ test("canonical book favorite survives cold offline reload and locale route chan
     await expect(collection).toHaveAttribute("role", "dialog");
     await expect(page.locator(".interface-language-control")).toHaveCount(1);
     await panelNoticeLayout(page);
+    await compactNoticeDetails(page, "ru");
     const coverImages = await verifiedCoverImages(page, collection);
     await testInfo.attach("canonical-offline-cover-images", { body: JSON.stringify({ localQaOnly: true, coverImages }), contentType: "application/json" });
     const item = page.locator(".archive-book-detail").first();
@@ -470,6 +497,7 @@ test("canonical book favorite survives cold offline reload and locale route chan
     const detail = page.locator("#book-archive-detail");
     await expect(detail).toBeVisible();
     await selectedWorkInViewport(page, detail, testInfo, "warm-ru");
+    await bookControlsInPanel(page);
     await retainedGlobe(page, scene);
     await page.screenshot({ path: testInfo.outputPath("pwa-collection-ru-book.png"), fullPage: false });
     // Opening a book updates canonical history without rendering Help. Both
@@ -511,6 +539,7 @@ test("canonical book favorite survives cold offline reload and locale route chan
     scene = await actualGlobe(page);
     await expect(page.locator("#book-archive-detail")).toBeVisible({ timeout: 30_000 });
     await selectedWorkInViewport(page, detail, testInfo, "cold-ru");
+    await bookControlsInPanel(page);
     await expect(page.locator("#book-archive-detail .book-detail-copy h3")).toHaveText(title);
     await expect(page.locator("#book-archive-detail").getByRole("button", { name: "В избранном", exact: true })).toHaveAttribute("aria-pressed", "true");
     await scene.dispose();
@@ -520,7 +549,9 @@ test("canonical book favorite survives cold offline reload and locale route chan
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page.locator("#book-archive-detail")).toBeVisible({ timeout: 30_000 });
     await selectedWorkInViewport(page, detail, testInfo, "cold-en");
+    await bookControlsInPanel(page);
     await panelNoticeLayout(page);
+    await compactNoticeDetails(page, "en");
     expect(new URL(page.url()).searchParams.get("book")).toBe(selected.searchParams.get("book"));
     await expect(page.locator("#book-archive-detail .book-detail-actions button.is-saved").filter({ has: page.locator(".brand-heart-icon") })).not.toHaveCount(0);
     await page.screenshot({ path: testInfo.outputPath("pwa-collection-en-book.png"), fullPage: false });
