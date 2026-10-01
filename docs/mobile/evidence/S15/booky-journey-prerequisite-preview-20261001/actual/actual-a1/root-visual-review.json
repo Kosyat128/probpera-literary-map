@@ -1,0 +1,56 @@
+{
+  "pass": true,
+  "decision": "D238",
+  "directRootViews": 8,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/source-manifest.json",
+    "sha256": "6fac7ba7cefbc3ce5e5c180a47f1d3857accf3d96358385fdc388ab749371713"
+  },
+  "browser": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/browser-result.json",
+    "sha256": "9a34763e4c7ae25523be48e7480b9af05340143e1bae34c394e146ae46615c41"
+  },
+  "screenshots": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-1280.png",
+      "sha256": "4e316e4e9e88c4a2d6551796bbe0496bea9e1c7c6930db3d1f430c038e85fcd2"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-editor-ru-320.png",
+      "sha256": "d1c2918a5776b761a3670a4ba79f4318722a486796acfd3bf9e841b7777fea12"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-en-320.png",
+      "sha256": "5fa810fe7f4da30da5fb89cb5e277d563e64e8d8b67cdfeebc518af673b84d8d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/captures/booky-journey-authoring-ad-edae1-endent-canonical-selections/booky-journey-preview-ru-320.png",
+      "sha256": "1f44e8c69a70180a5e8d063dea70f9e46c6dfc3d2f3def89bf7fc31715923ffc"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-en-320.png",
+      "sha256": "aabcbba7f57abd1a19930c48d98fb9f8a6beae73a46bd2844fcd3d1beeb5b416"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/captures/booky-journey-authoring-op-c3d04-ict-local-export-and-reopen/booky-journey-fact-ru-320.png",
+      "sha256": "92a9a530e932669a7b7308fb35831f201044c57ba67ef8741ec84e85efae48f9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-en-320.png",
+      "sha256": "74eca8163cafed45bb3525bce36f51fec468b1fe59465fab6d4b93794af022b6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-prerequisite-preview-review/actual-a1/captures/booky-journey-authoring-op-df663-iled-or-obsolete-operations/booky-journey-activity-ru-320.png",
+      "sha256": "2fc2aec9cad0cf1e3b5450e03bdb69f80d6fb7dd155b234a24b129f13b8d8100"
+    }
+  ],
+  "notes": [
+    "Root directly inspected all eight current admin-editor captures after focused TypeScript and three browser cases passed; original D23757 units were retained under unchanged core/test/dependency bytes.",
+    "RU320 shows two exact prerequisite pairs with zero locally modeled completions; EN320 shows one modeled pair, the remaining exact ID/version and outside-age feedback. The age input itself is outside the EN capture frame.",
+    "Native labeled completion controls and reports wrap within the narrow frame with no visible overlap. This is a local comparison scenario; no actual reader progress or journey admission is established.",
+    "Desktop comparison, stacked factual copy, optional order, author search and English answer verdict retain their actual scopes. The compiler-error capture is partial, with the lower recovery action below the frame.",
+    "These are adult draft-authoring browser captures; all reset, import, race and validation states are not photographed. Full design, accessibility, native-device, source review and release acceptance are not claimed."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}
