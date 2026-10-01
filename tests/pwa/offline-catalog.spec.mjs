@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { expect, test } from "@playwright/test";
+import { chromium, expect, test } from "@playwright/test";
 
 const qaControlPath = process.env.PWA_QA_CONTROL_PATH ?? ".tmp/pwa-qa/server.json";
 const qaOrigin = process.env.PWA_QA_ORIGIN ?? "http://127.0.0.1:4293";
@@ -638,4 +638,122 @@ test("recent writer opens outside the active country filter without replacing th
     expect(await page.locator("#atlas canvas").evaluate((node, original) => node === original, canvas)).toBe(true);
     await canvas.dispose();
   } finally { await context.setOffline(false); }
+});
+
+test("canonical 429 preserves saved access through early recheck and a full offline browser restart", async ({ request }, testInfo) => {
+  test.setTimeout(180_000);
+  const { lstat, mkdir, mkdtemp, realpath, rm, rmdir } = await import("node:fs/promises");
+  const { dirname, join, resolve, sep } = await import("node:path");
+  const config = await readQaConfiguration(), artifact = JSON.parse(await readFile("dist-pwa/artifact.json", "utf8"));
+  expect(artifact.localQaAuthority).toBe(true);expect(artifact.releaseReady).toBe(false);
+  const checkout = await realpath(process.cwd()), temporary = resolve(".tmp");
+  const temporaryStat = await lstat(temporary), temporaryRoot = await realpath(temporary);
+  if (!temporaryStat.isDirectory() || temporaryStat.isSymbolicLink() || temporaryRoot !== join(checkout, ".tmp")) throw new Error("A real checkout temporary directory is required");
+  const profileRoot = await mkdtemp(join(temporaryRoot, "pwa-rate-limit-profile-")), profile = join(profileRoot, "profile");
+  await mkdir(profile);
+  const control = async body => {
+    const result = await request.post(config.origin + "/__pwa_qa__/control", { headers: { Authorization: "Bearer " + config.controlToken }, data: body });
+    expect(result.status()).toBe(200);return result.json();
+  };
+  const licenseRequests = status => status.requests.filter(row => row.method === "POST" && ["/planet/api/license/identity", "/planet/api/license/session"].includes(row.pathname));
+  const evidence = { localQaOnly: true, browserChannel: "msedge", sourceCommit: artifact.sourceCommit, buildId: artifact.buildId,
+    persistentLaunches: 0, restarts: 0, warmSessionPosts: 0, earlyRetryExtraSessionPosts: null, offlineLicenseRequests: null,
+    firstContextClosed: false, sameDisposableProfile: true, offlineBeforeFirstNavigation: false, locales: [],
+    validSavedProofAfter429: false, completed: false, profileRemoved: false,
+    actualOsInstallation: false, realStorePurchase: false, productionProvider: false, stageAccepted: false, releaseReady: false };
+  const errors = [], blockedRequests = [], licenseAttempts = [], sessionPosts = [];
+  let context, scene;
+  const launch = async offline => {
+    context = await chromium.launchPersistentContext(profile, { channel: "msedge", headless: true, baseURL: qaOrigin,
+      viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, hasTouch: true, serviceWorkers: "allow", reducedMotion: "reduce", offline });
+    await context.route("**/*", route => {
+      const url = new URL(route.request().url());
+      if (url.origin === config.origin || ["data:", "blob:"].includes(url.protocol)) return route.continue();
+      if (blockedRequests.length < 20) blockedRequests.push({ origin: url.origin, pathname: url.pathname.slice(0, 240) });
+      return route.abort("blockedbyclient");
+    });
+    evidence.persistentLaunches++;if (evidence.persistentLaunches > 1) evidence.restarts++;
+    const page = context.pages()[0] ?? await context.newPage();expect(context.pages()).toHaveLength(1);expect(page.url()).toBe("about:blank");
+    page.on("pageerror", error => errors.push(error.name));
+    page.on("request", value => {
+      const url = new URL(value.url());
+      if (value.method() === "POST" && url.origin === config.origin && ["/planet/api/license/identity", "/planet/api/license/session"].includes(url.pathname)) {
+        const row = { launch: evidence.persistentLaunches, pathname: url.pathname };licenseAttempts.push(row);
+        if (url.pathname === "/planet/api/license/session") sessionPosts.push(row);
+      }
+    });
+    return page;
+  };
+  const complete = async page => {
+    await expect.poll(() => page.evaluate(() => navigator.serviceWorker.controller?.scriptURL ?? ""), { timeout: 60_000 }).toBe(config.origin + "/planet/sw.js");
+    await expect.poll(() => page.evaluate(async expected => {
+      for (const name of (await caches.keys()).filter(value => value.startsWith("literary-planet-pwa-v1-"))) {
+        const marker = await (await caches.open(name)).match("/planet/__pwa_complete__");
+        if (marker) { const value = await marker.json();if (value.state === "COMPLETE" && value.activationSequence > 0 && value.manifest?.buildId === expected) return value.manifest.buildId; }
+      }
+      return null;
+    }, artifact.buildId), { timeout: 60_000 }).toBe(artifact.buildId);
+  };
+  const savedNotice = async (page, locale) => {
+    const details = page.locator(".pwa-status-card__details");await expect(details).toHaveCount(1);
+    if (await details.getAttribute("open") === null) await details.locator(":scope > summary").click();
+    const saved = details.locator('[data-pwa-access-verification="saved"]');await expect(saved).toBeVisible();
+    await expect(saved).toHaveText(locale === "ru" ? "Используется сохранённое подтверждение доступа." : "Using saved access verification.");
+    return details;
+  };
+  try {
+    const online = await launch(false);await prepare(online, request);await complete(online);scene = await actualGlobe(online);
+    const selection = new URL(online.url());expect(selection.searchParams.get("country")).toBe("russia");expect(selection.hash).toBe("#atlas");
+    await control({ action: "license", state: { session: "rate-limited", retryAfterSeconds: 60 } });
+    await context.setOffline(true);const firstSaved = await savedNotice(online, "ru");await firstSaved.locator(":scope > summary").click();
+    const limitedResponse = online.waitForResponse(value => new URL(value.url()).pathname === "/planet/api/license/session" && value.request().method() === "POST" && value.status() === 429);
+    await context.setOffline(false);const limited = await limitedResponse, limitedAt = Date.now();
+    expect(limited.headers()["retry-after"]).toBe("60");expect(limited.url()).toBe(config.origin + "/planet/api/license/session");
+    const notice = await savedNotice(online, "ru");await retainedGlobe(online, scene);
+    await online.screenshot({ path: testInfo.outputPath("pwa-rate-limit-saved-online.png"), fullPage: false });
+    await notice.locator(":scope > summary").click();evidence.validSavedProofAfter429 = true;
+    const beforeEarly = sessionPosts.length;
+    // A real connectivity change retries the same mounted client. There is no
+    // closed-access retry button while an independently verified cache authorizes.
+    await context.setOffline(true);expect(await online.evaluate(() => navigator.onLine)).toBe(false);
+    const offlineNotice = await savedNotice(online, "ru");
+    await expect(offlineNotice.getByText("Нет сети. Доступ зависит от сохранённых материалов и подтверждённого права доступа.", { exact: true })).toBeVisible();
+    await offlineNotice.locator(":scope > summary").click();
+    const identityResponse = online.waitForResponse(value => value.url() === config.origin + "/planet/api/license/identity" && value.request().method() === "POST" && value.status() === 200);
+    await context.setOffline(false);const identity = await identityResponse;await identity.finished();expect(await online.evaluate(() => navigator.onLine)).toBe(true);
+    const earlyNotice = await savedNotice(online, "ru");await earlyNotice.locator(":scope > summary").click();
+    await online.evaluate(() => new Promise(resolveFrame => requestAnimationFrame(() => requestAnimationFrame(resolveFrame))));
+    await online.waitForTimeout(250);
+    const earlyElapsed = Date.now() - limitedAt;expect(earlyElapsed).toBeGreaterThanOrEqual(0);expect(earlyElapsed).toBeLessThan(60_000);
+    expect(sessionPosts.length).toBe(beforeEarly);await retainedGlobe(online, scene);
+    evidence.earlyRetryIdentityStatus = identity.status();evidence.earlyRetryObservationMs = earlyElapsed;evidence.earlyRetryExtraSessionPosts = sessionPosts.length - beforeEarly;evidence.warmSessionPosts = sessionPosts.length;
+    await scene.dispose();scene = undefined;
+    await context.close();context = undefined;expect(online.isClosed()).toBe(true);evidence.firstContextClosed = true;
+    const beforeCold = licenseRequests(await control({ action: "status" }));expect(beforeCold.length).toBeGreaterThan(0);
+    const postsBeforeCold = sessionPosts.length, attemptsBeforeCold = licenseAttempts.length;
+    const cold = await launch(true);expect(await cold.evaluate(() => navigator.onLine)).toBe(false);evidence.offlineBeforeFirstNavigation = true;
+    await cold.goto(selection.href);await complete(cold);scene = await actualGlobe(cold);
+    for (const [index, locale] of ["ru", "en", "ru"].entries()) {
+      if (index > 0) await cold.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      await expect(cold.locator("html")).toHaveAttribute("lang", locale);await expect.poll(() => new URL(cold.url()).pathname).toBe("/planet/" + locale + "/");
+      const current = new URL(cold.url());expect(current.origin).toBe(selection.origin);expect(current.search).toBe(selection.search);expect(current.hash).toBe(selection.hash);
+      await expect(cold.locator('.atlas-country-presentation[data-atlas-country="russia"]')).toBeVisible();
+      expect(await cold.evaluate(() => navigator.onLine)).toBe(false);await retainedGlobe(cold, scene);
+      const saved = await savedNotice(cold, locale);if (index < 2) await cold.screenshot({ path: testInfo.outputPath("pwa-rate-limit-offline-" + locale + ".png"), fullPage: false });
+      await saved.locator(":scope > summary").click();evidence.locales.push({ locale, selectedCountry: "russia", savedVerification: true, singleSceneWithinReopenedDocument: true });
+    }
+    const afterCold = licenseRequests(await control({ action: "status" }));expect(afterCold).toEqual(beforeCold);expect(sessionPosts.length).toBe(postsBeforeCold);expect(licenseAttempts.length).toBe(attemptsBeforeCold);
+    evidence.offlineLicenseRequests = afterCold.length - beforeCold.length;evidence.offlineLicensePostAttempts = licenseAttempts.length - attemptsBeforeCold;
+    expect(errors).toEqual([]);expect(blockedRequests).toEqual([]);expect(evidence.persistentLaunches).toBe(2);expect(evidence.restarts).toBe(1);evidence.completed = true;
+  } finally {
+    try {
+      await scene?.dispose().catch(() => undefined);if (context) await context.close();
+      const parentStat = await lstat(dirname(profileRoot)), rootStat = await lstat(profileRoot), profileStat = await lstat(profile);
+      const actualParent = await realpath(dirname(profileRoot)), actualRoot = await realpath(profileRoot), actualProfile = await realpath(profile);
+      if (!parentStat.isDirectory() || parentStat.isSymbolicLink() || !rootStat.isDirectory() || rootStat.isSymbolicLink() || !profileStat.isDirectory() || profileStat.isSymbolicLink()
+        || actualParent !== temporaryRoot || actualRoot !== profileRoot || actualProfile !== profile || dirname(profileRoot) !== temporaryRoot
+        || !profileRoot.startsWith(join(temporaryRoot, "pwa-rate-limit-profile-")) || dirname(profile) !== profileRoot || !actualProfile.startsWith(actualRoot + sep)) throw new Error("Refuse cleanup outside the exact disposable profile");
+      await rm(profile, { recursive: true, force: true });await rmdir(profileRoot);evidence.profileRemoved = true;
+    } finally { evidence.blockedRequests = blockedRequests;await testInfo.attach("canonical-429-offline-cold-restart", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" }); }
+  }
 });

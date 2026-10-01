@@ -174,3 +174,73 @@ describe("real isolated static serving and update faults", () => {
     expect(await (await fetch(env.server.origin + "/planet/sw.js")).text()).toBe(original);
   });
 });
+
+describe("canonical local QA license admission responses", () => {
+  it("returns bounded canonical 429 headers while identity and reset retain their original contracts", async () => {
+    const env = await fixture();
+    const originalState = { identity: "authorized", session: "active", offlineSeconds: 300, grantSeconds: 3600, delayMs: 0 };
+    expect((await (await env.control({ action: "status" })).json()).state).toEqual(originalState);
+    for (const seconds of [1, 86400]) {
+      expect((await env.control({ action: "license", state: { session: "rate-limited", retryAfterSeconds: seconds } })).status).toBe(200);
+      const response = await env.session();
+      expect(response.status).toBe(429);
+      expect(response.url).toBe(env.server.origin + "/planet/api/license/session");
+      expect(response.redirected).toBe(false);
+      expect(response.headers.get("retry-after")).toBe(String(seconds));
+      expect(response.headers.get("cache-control")).toBe("no-store");
+      expect(response.headers.get("content-type")).toBe("application/json");
+      expect(await response.json()).toEqual({});
+      const identity = await env.identity();
+      expect(identity.status).toBe(200);
+      expect(await identity.json()).toEqual({ subject: env.server.subject });
+    }
+    expect((await env.control({ action: "reset" })).status).toBe(200);
+    expect((await (await env.control({ action: "status" })).json()).state).toEqual(originalState);
+    const active = await env.session();
+    expect(active.status).toBe(200);
+    expect(active.headers.get("retry-after")).toBeNull();
+    expect(await env.verify((await active.json()).grant)).toMatchObject({ status: "authorized" });
+  });
+
+  it("rejects missing, out-of-bounds and non-integer retry intervals before mutating QA state", async () => {
+    const env = await fixture();
+    const before = (await (await env.control({ action: "status" })).json()).state;
+    const invalid = [
+      { session: "rate-limited" },
+      ...[0, -1, 86401, 1.5, "60", null].map(retryAfterSeconds => ({ session: "rate-limited", retryAfterSeconds })),
+      { session: "active", retryAfterSeconds: 0 },
+    ];
+    for (const state of invalid) {
+      expect((await env.control({ action: "license", state })).status).toBe(400);
+      expect((await (await env.control({ action: "status" })).json()).state).toEqual(before);
+    }
+    expect((await env.control({ action: "license", state: { session: "rate-limited", retryAfterSeconds: 60 } })).status).toBe(200);
+    const response = await env.session();
+    expect(response.status).toBe(429);
+    expect(response.headers.get("retry-after")).toBe("60");
+    expect(await response.json()).toEqual({});
+  });
+
+  it("keeps a delayed session reply bound to its captured admission state after control changes", async () => {
+    const env = await fixture();
+    expect((await env.control({ action: "license", state: { session: "rate-limited", retryAfterSeconds: 7, delayMs: 1000 } })).status).toBe(200);
+    const before = env.server.getSessionAdmissions();
+    let settled = false;
+    const held = env.session().then(response => { settled = true; return response; });
+    try {
+      await expect.poll(() => env.server.getSessionAdmissions(), { timeout: 2000, interval: 10 }).toBe(before + 1);
+      expect((await env.control({ action: "license", state: { session: "active", delayMs: 0 } })).status).toBe(200);
+      expect(settled).toBe(false);
+      const response = await held;
+      expect(response.status).toBe(429);
+      expect(response.headers.get("retry-after")).toBe("7");
+      expect(await response.json()).toEqual({});
+      const subsequent = await env.session();
+      expect(subsequent.status).toBe(200);
+      expect(subsequent.headers.get("retry-after")).toBeNull();
+      expect(await env.verify((await subsequent.json()).grant)).toMatchObject({ status: "authorized" });
+    } finally {
+      await held.catch(() => undefined);
+    }
+  });
+});

@@ -53,13 +53,16 @@ export async function startPwaQaServer({ root: inputRoot = repoRoot, distPath = 
   const sockets = new Set();
   const timers = new Set();
   const requests = [];
+  let sessionAdmissions = 0;
   function setLicenseState(patch) {
-    if (!patch || typeof patch !== "object" || Array.isArray(patch) || Object.keys(patch).some(key => !Object.hasOwn(defaults(), key))) throw new Error("Unknown QA license field");
+    if (!patch || typeof patch !== "object" || Array.isArray(patch) || Object.keys(patch).some(key => !Object.hasOwn(defaults(), key) && key !== "retryAfterSeconds")) throw new Error("Unknown QA license field");
     const next = { ...state, ...patch };
-    if (!["authorized", "denied", "unavailable"].includes(next.identity) || !["active", "denied", "revoked", "refunded", "expired", "unavailable"].includes(next.session)
+    if (!["authorized", "denied", "unavailable"].includes(next.identity) || !["active", "denied", "revoked", "refunded", "expired", "unavailable", "rate-limited"].includes(next.session)
       || !Number.isInteger(next.offlineSeconds) || next.offlineSeconds < 1 || next.offlineSeconds > 86400
       || !Number.isInteger(next.grantSeconds) || next.grantSeconds < next.offlineSeconds || next.grantSeconds > 86400
-      || !Number.isInteger(next.delayMs) || next.delayMs < 0 || next.delayMs > 30000) throw new Error("Invalid QA license state");
+      || !Number.isInteger(next.delayMs) || next.delayMs < 0 || next.delayMs > 30000
+      || (Object.hasOwn(next, "retryAfterSeconds") && (!Number.isInteger(next.retryAfterSeconds) || next.retryAfterSeconds < 1 || next.retryAfterSeconds > 86400))
+      || (next.session === "rate-limited" && !Object.hasOwn(next, "retryAfterSeconds"))) throw new Error("Invalid QA license state");
     state = next;
     return Object.freeze({ ...state });
   }
@@ -138,10 +141,10 @@ export async function startPwaQaServer({ root: inputRoot = repoRoot, distPath = 
     for await (const chunk of request) { size += chunk.length; if (size > 4096) throw new Error("QA request too large"); chunks.push(chunk); }
     return JSON.parse(Buffer.concat(chunks).toString("utf8"));
   }
-  async function grant() {
+  async function grant(licenseState = state) {
     const current = Math.floor(Date.now() / 1000);
-    const expired = state.session === "expired";
-    const claims = { v: 1, iss: authority.issuer, aud: authority.audience, sub: subject, product: authority.product, model: "one-time", status: ["revoked", "refunded"].includes(state.session) ? state.session : "active", jti: randomBytes(16).toString("hex"), iat: current - 60, nbf: current - 60, exp: expired ? current - 1 : current + state.grantSeconds, offlineUntil: expired ? current - 1 : current + state.offlineSeconds };
+    const expired = licenseState.session === "expired";
+    const claims = { v: 1, iss: authority.issuer, aud: authority.audience, sub: subject, product: authority.product, model: "one-time", status: ["revoked", "refunded"].includes(licenseState.session) ? licenseState.session : "active", jti: randomBytes(16).toString("hex"), iat: current - 60, nbf: current - 60, exp: expired ? current - 1 : current + licenseState.grantSeconds, offlineUntil: expired ? current - 1 : current + licenseState.offlineSeconds };
     const input = base64(JSON.stringify({ alg: "ES256", typ: "lp-web-license+jwt", kid: authority.trustedKeys[0].kid })) + "." + base64(JSON.stringify(claims));
     return input + "." + base64(await webcrypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, pair.privateKey, new TextEncoder().encode(input)));
   }
@@ -171,11 +174,15 @@ export async function startPwaQaServer({ root: inputRoot = repoRoot, distPath = 
       const body = await jsonBody(request);
       const identity = pathname.endsWith("/identity");
       if (!exact(body, identity ? ["v", "audience", "product"] : ["v", "audience", "product", "subject"]) || body.v !== 1 || body.audience !== authority.audience || body.product !== authority.product || (!identity && body.subject !== subject)) return send(response, 403, "{}");
+      // QA-only session responses retain their verified request's state across delay.
+      const requestState = Object.freeze({ ...state });
+      if (!identity) sessionAdmissions++;
       if (state.delayMs) await new Promise(resolve => { const timer = setTimeout(() => { timers.delete(timer); resolve(); }, state.delayMs); timers.add(timer); });
       if (identity) return send(response, state.identity === "authorized" ? 200 : state.identity === "denied" ? 403 : 503, state.identity === "authorized" ? JSON.stringify({ subject }) : "{}");
-      if (state.session === "denied" || state.identity === "denied") return send(response, 403, "{}");
-      if (state.session === "unavailable") return send(response, 503, "{}");
-      return send(response, 200, JSON.stringify({ grant: await grant() }));
+      if (requestState.session === "denied" || requestState.identity === "denied") return send(response, 403, "{}");
+      if (requestState.session === "unavailable") return send(response, 503, "{}");
+      if (requestState.session === "rate-limited") return send(response, 429, "{}", "application/json", { "Retry-After": String(requestState.retryAfterSeconds) });
+      return send(response, 200, JSON.stringify({ grant: await grant(requestState) }));
     }
     if (!["GET", "HEAD"].includes(request.method)) return send(response, 405, "{}");
     if (pathname === "/sw.js") return send(response, 200, (await containedFile(root, "public/sw.js")).bytes, "text/javascript", { "Service-Worker-Allowed": "/", "Cache-Control": "no-cache" });
@@ -221,7 +228,7 @@ export async function startPwaQaServer({ root: inputRoot = repoRoot, distPath = 
     });
     await setArtifact(distPath);
   } catch (error) { await close(); throw error; }
-  return Object.freeze({ origin, authority, authorityPath: authorityFile, controlPath: controlFile, controlToken, subject, close, setLicenseState, setFault, setArtifact, createCandidate, getRequests: () => [...requests] });
+  return Object.freeze({ origin, authority, authorityPath: authorityFile, controlPath: controlFile, controlToken, subject, close, setLicenseState, setFault, setArtifact, createCandidate, getRequests: () => [...requests], getSessionAdmissions: () => sessionAdmissions });
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
