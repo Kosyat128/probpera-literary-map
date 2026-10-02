@@ -1387,3 +1387,13 @@ body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-
   .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome :is(button, select):focus-visible { outline-color: Highlight; }
   .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-language .interface-language-control--flags button[aria-pressed="true"] { border-color: Highlight; outline: 2px solid Highlight; }
 }
+
+/* Give the small companion-return shortcut a consistent portrait-phone dock.
+   A hidden character cannot be dragged; active, walking and retry surfaces keep
+   their measured placement. Avoid relying on a previous numeric left position. */
+@media (max-width: 640px) and (min-height: 541px) and (orientation: portrait) {
+  .native-planet-app > .planet-mascot-controls[data-planet-mascot-active="false"][data-planet-mascot-screen="globe"]:not([data-planet-mascot-closed-notice="true"]) {
+    left: auto !important;
+    right: max(20px, env(safe-area-inset-right));
+  }
+}

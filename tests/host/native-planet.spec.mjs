@@ -2867,7 +2867,117 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
     await preserved();
     await evidence(fixture, testInfo, "compact-mobile-touch-zoom-reset", { beforeZoom, zoomedPose, resetPose,
       actualTouchActions: ["zoom-in", "reset"], sameCanvasRendererCameraScene: true, canonicalSelection });
+    const bookyGeometry = await page.locator('.planet-mascot-controls[data-planet-mascot-active="false"] > .planet-mascot-controls__show').evaluate(button => {
+      const root = button.parentElement, rect = button.getBoundingClientRect(), view = visualViewport;
+      return { root: root.getBoundingClientRect().toJSON(), button: rect.toJSON(), left: root.style.left,
+        rootFont: getComputedStyle(document.documentElement).fontSize, font: getComputedStyle(button).font,
+        clientWidth: document.documentElement.clientWidth, innerWidth, view: { width: view?.width, offsetLeft: view?.offsetLeft, scale: view?.scale },
+        ownHits: [[.5,.5],[.15,.15],[.85,.15],[.15,.85],[.85,.85]].map(([x,y]) => {
+          const hit = document.elementFromPoint(rect.left + rect.width*x,rect.top + rect.height*y);
+          return hit===button || Boolean(hit&&button.contains(hit));
+        }) };
+    });
+    await evidence(fixture, testInfo, "booky-actual-history-text-return", { bookyGeometry, actualNativeInstallation: false });
+    expect(bookyGeometry.button.right, 'Booky actual-history visible right').toBeLessThanOrEqual(391);
+    expect(bookyGeometry.button.width, 'Booky actual-history touch width').toBeGreaterThanOrEqual(44);
+    expect(bookyGeometry.button.height, 'Booky actual-history touch height').toBeGreaterThanOrEqual(44);
+    expect(bookyGeometry.ownHits, 'Booky actual-history own hit points').toEqual([true,true,true,true,true]);
     expect(fixture.consoleErrors).toEqual([]);
     await testInfo.attach("compact-mobile-observations", { body: JSON.stringify(observations), contentType: "application/json" });
   } finally { await original.dispose(); }
+});
+
+test("hidden Booky trigger remains exposed after the real Menu large-text round trip", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=russia&writer=dostoevsky#atlas",
+    viewport: { width: 390, height: 844 }, reducedMotion: "reduce", hasTouch: true, isMobile: true,
+    safeArea: { top: 24, bottom: 16, left: 0, right: 0 },
+    preferences: { "probpera-planet-welcome-v1": "completed" } });
+  const { page } = fixture;
+  const trigger = page.locator('.planet-mascot-controls[data-planet-mascot-active="false"] > .planet-mascot-controls__show');
+  const original = await captureScene(page);
+  const observations = [];
+  async function geometry(phase) {
+    return trigger.evaluate((button, phase) => {
+      const root = button.parentElement, view = visualViewport;
+      const rect = button.getBoundingClientRect(), rootRect = root.getBoundingClientRect();
+      const buttonStyle = getComputedStyle(button), rootStyle = getComputedStyle(root);
+      const points = [[.5, .5], [.15, .15], [.85, .15], [.15, .85], [.85, .85]];
+      return { phase, language: document.documentElement.lang,
+        rootFont: getComputedStyle(document.documentElement).fontSize,
+        viewport: { left: view?.offsetLeft ?? 0, top: view?.offsetTop ?? 0,
+          width: view?.width ?? innerWidth, height: view?.height ?? innerHeight, scale: view?.scale ?? 1 },
+        layoutViewport: { width: innerWidth, height: innerHeight,
+          clientWidth: document.documentElement.clientWidth, clientHeight: document.documentElement.clientHeight },
+        root: { bounds: rootRect.toJSON(), inlineLeft: root.style.left, computedLeft: rootStyle.left,
+          computedWidth: rootStyle.width, visibility: root.getAttribute("data-planet-mascot-visibility") },
+        trigger: { bounds: rect.toJSON(), font: buttonStyle.font, computedWidth: buttonStyle.width,
+          ownHits: points.map(([x, y]) => {
+            const hit = document.elementFromPoint(rect.left + rect.width * x, rect.top + rect.height * y);
+            return hit === button || Boolean(hit && button.contains(hit));
+          }) } };
+    }, phase);
+  }
+  function exposed(record) {
+    const { bounds, ownHits } = record.trigger, view = record.viewport;
+    expect(bounds.width, record.phase + " touch width").toBeGreaterThanOrEqual(44);
+    expect(bounds.height, record.phase + " touch height").toBeGreaterThanOrEqual(44);
+    expect(bounds.left, record.phase + " visible left").toBeGreaterThanOrEqual(view.left - 1);
+    expect(bounds.right, record.phase + " visible right").toBeLessThanOrEqual(Math.min(view.left + view.width, record.layoutViewport.clientWidth) + 1);
+    expect(bounds.top, record.phase + " visible top").toBeGreaterThanOrEqual(view.top - 1);
+    expect(bounds.bottom, record.phase + " visible bottom").toBeLessThanOrEqual(view.top + view.height + 1);
+    expect(ownHits, record.phase + " own hit points").toEqual([true, true, true, true, true]);
+  }
+  try {
+    const sheet = page.locator('.atlas-country-presentation[data-atlas-country="russia"]');
+    const sheetToggle = sheet.locator(".atlas-country-sheet-toggle");
+    for (let taps = 0; taps < 2; taps++) {
+      const phase = await sheet.getAttribute("data-atlas-sheet-state");
+      if (phase === "collapsed") break;
+      await sheetToggle.tap();
+      await expect(sheet).toHaveAttribute("data-atlas-sheet-state", phase === "half" ? "expanded" : "collapsed");
+    }
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "collapsed");
+    await expect(trigger).toHaveCount(1);
+    await expect(trigger).toBeVisible();
+    await settledCameraPose(original);
+    const initial = await geometry("before-large-text"); observations.push(initial);
+    await evidence(fixture, testInfo, "booky-before-large-text", { observations, actualNativeInstallation: false });
+    exposed(initial);
+    await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
+    const popup = await nativeMenu(page, "tap");
+    await expect(popup.locator('[data-atlas-action="open-collection"]')).toBeInViewport({ ratio: 1 });
+    observations.push(await geometry("large-text-menu-open"));
+    await page.keyboard.press("Escape");
+    await expect(popup).toBeHidden();
+    await expect(page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]')).toBeFocused();
+    await page.evaluate(() => { document.documentElement.style.removeProperty("font-size"); });
+    observations.push(await geometry("immediately-after-text-restore"));
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+    observations.push(await geometry("after-two-animation-frames"));
+    await settledCameraPose(original);
+    let previous, current, stable = 0;
+    await expect.poll(async () => {
+      current = await geometry("settled-after-text-restore");
+      const signature = JSON.stringify([current.viewport, current.root.bounds, current.trigger.bounds, current.rootFont, current.trigger.font]);
+      stable = signature === previous ? stable + 1 : 0; previous = signature;
+      return stable;
+    }, { intervals: [100, 200, 300], timeout: 15_000 }).toBeGreaterThanOrEqual(3);
+    observations.push(current);
+    await retained(page, original);
+    await evidence(fixture, testInfo, "booky-after-text-roundtrip", { observations,
+      single390Viewport: true, noCompanionActivation: true, actualNativeInstallation: false });
+    exposed(current);
+    await page.setViewportSize({ width: 330, height: 844 });
+    await nativeLanguage(page, 'en', 'tap');
+    await settledCameraPose(original);
+    await expect(trigger).toHaveText('Mr. Booky');
+    const english = await geometry('english-narrow-return-shortcut'); observations.push(english);
+    await evidence(fixture, testInfo, 'booky-english-narrow-return-shortcut', { observations,
+      noCompanionActivation: true, actualNativeInstallation: false });
+    exposed(english);
+    await retained(page, original);
+  } finally {
+    await page.evaluate(() => { document.documentElement.style.removeProperty("font-size"); });
+    await original.dispose();
+  }
 });
