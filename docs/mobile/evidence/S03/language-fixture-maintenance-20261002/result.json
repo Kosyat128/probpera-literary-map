@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-language-flags-existing-fixture-maintenance",
+  "sourceCommit": "0cb0464321e83fa861a0beab3eae0b4e2bddfd19",
+  "parentCommit": "55c5297cd5bd8df4abf7ba36c849f7113447de78",
+  "files": [
+    {
+      "path": "tests/e2e/planet-account-pages.spec.mjs",
+      "sha256": "3d6f859567ba363e0f2eb4db5bc4a20432477ebc44501c6be27cd66cbff89262"
+    },
+    {
+      "path": "tests/pwa/globe-background-customization.spec.mjs",
+      "sha256": "172bfd5f6c4b04ad64497310cfad36ad00727db35535e48729b1673de121dde8"
+    },
+    {
+      "path": "tests/pwa/globe-composition.spec.mjs",
+      "sha256": "93df61c7e3e26385fa3546fc4691b9980b1108d7c68d19ec77267c3a0f194144"
+    },
+    {
+      "path": "tests/pwa/globe-edition-preference.spec.mjs",
+      "sha256": "2507045eba20ae53213626b086879c70ed2ecbc7328a65230c960a61061eeb0b"
+    },
+    {
+      "path": "tests/pwa/globe-stand-customization.spec.mjs",
+      "sha256": "f5c240d21470fbd71a46559e612870b832c177f0dbb7477e09840be1bb53ab8c"
+    }
+  ],
+  "syntax": [
+    {
+      "path": "tests/e2e/planet-account-pages.spec.mjs",
+      "exitCode": 0
+    },
+    {
+      "path": "tests/pwa/globe-background-customization.spec.mjs",
+      "exitCode": 0
+    },
+    {
+      "path": "tests/pwa/globe-composition.spec.mjs",
+      "exitCode": 0
+    },
+    {
+      "path": "tests/pwa/globe-edition-preference.spec.mjs",
+      "exitCode": 0
+    },
+    {
+      "path": "tests/pwa/globe-stand-customization.spec.mjs",
+      "exitCode": 0
+    }
+  ],
+  "syntaxPassed": true,
+  "browserInvocations": 0,
+  "applicationBuildInvocations": 0,
+  "productCodeChanged": false,
+  "fullSuiteAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "clean": true,
+  "note": "Only five existing selectors are maintained: the actual account header uses language IDs directly, and actual App globe fixtures open the genuine Menu before selecting its flag. Standalone text-control fixtures and public-site labels remain unchanged. Syntax passes; these five complete browser cases have not been rerun. Prior current product/native/offline/update evidence keeps its original source and artifact IDs.",
+  "recordedAt": "2026-10-02T01:56:16.285Z",
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "sourceReceipt": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\fixture-maintenance\\result.json",
+    "sha256": "50c4c841265fa32cb662f1f01df9d0a487b88efa10c5bac7ccc8c9755a689a54"
+  },
+  "nextAction": "Continue S03.acceptance with the bounded current-public mobile fallback/e2e gap: the existing built canonical account routes oracle has been adapted to flag IDs, but has not yet run against a source-bound current public compilation. Inspect and bind the applicable current public-account build closure before one selected existing mobile case; do not substitute the private QA PWA or retained old public HTML. Keep the inconclusive EN native-checkbox still-frame paint separate from functional consent retention and resolve it before full account visual acceptance. Preserve passed flags/native/offline/account/marker/update evidence without reruns for documentation; all11 routed criteria, approvals and installed-device/provider/legal/editorial/stage/release gates remain unchanged."
+}
