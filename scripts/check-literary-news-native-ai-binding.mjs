@@ -77,15 +77,18 @@ export async function checkNativeNewsAiBinding({ accountId, apiToken,
     || typeof apiToken !== 'string' || !apiToken || apiToken.trim() !== apiToken || /[\r\n]/.test(apiToken)) {
     fail('native_ai_probe_intended_credentials_missing');
   }
-  let session, runtime, report, failure;
+  let session, runtime, report, failure, stage = 'remote_session';
   try {
     session = await startSession({ accountId, apiToken });
     await session.ready;
+    stage = 'runtime_init';
     runtime = await createRuntime(session.remoteProxyConnectionString);
+    stage = 'binding_discovery';
     const env = await runtime.getBindings();
     const client = createPreparationBindingAi(env.AI);
     const phases = [];
     for (const phase of ['draft', 'review']) {
+      stage = phase;
       const result = await client.request({ phase, messages: structuredClone(messages) });
       if (!matchesFixture(result, phase === 'draft' ? draft : review)) fail('native_ai_probe_fixture_unconfirmed');
       phases.push({ phase, model: DAILY_NEWS_MODELS[phase], protocolConfirmed: true, published: false });
@@ -96,6 +99,12 @@ export async function checkNativeNewsAiBinding({ accountId, apiToken,
     // Neither provider responses nor preview connection/auth errors enter Actions logs.
     failure = Error(/^(?:native_ai_probe_|ai_|daily_)[a-z0-9_]+$/.test(error?.message || '')
       ? error.message : 'native_ai_probe_remote_binding_unavailable');
+    failure.stage = stage;
+    const status = Number(error?.httpStatus ?? error?.status ?? error?.statusCode);
+    const code = Number(error?.code ?? error?.cause?.code);
+    if (Number.isInteger(status) && status >= 100 && status <= 599) failure.upstreamStatus = status;
+    if (Number.isInteger(code) && code >= 0 && code <= 10000000) failure.upstreamCode = code;
+    if (['Error', 'TypeError', 'SyntaxError', 'UserError', 'FatalError', 'MiniflareCoreError', 'MiniflareError', 'APIError'].includes(error?.name)) failure.errorClass = error.name;
   } finally {
     for (const resource of [runtime, session]) {
       if (resource) {
@@ -116,7 +125,10 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       apiToken: process.env.CLOUDFLARE_API_TOKEN });
     console.log(JSON.stringify(report));
   } catch (error) {
-    console.error(error.message);
+    console.error(JSON.stringify({code: error.message, stage: error.stage || 'configuration',
+      ...(error.upstreamStatus !== undefined ? {upstreamStatus: error.upstreamStatus} : {}),
+      ...(error.upstreamCode !== undefined ? {upstreamCode: error.upstreamCode} : {}),
+      ...(error.errorClass ? {errorClass: error.errorClass} : {})}));
     process.exitCode = 1;
   }
 }
