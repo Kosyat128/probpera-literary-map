@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "literary-planet-release-decision-registry",
-  "dataFlowFingerprint": "2519c7c5ea3f7d82758cb0f222b38c7d38f6ec7d4b08236a91aed8ff3b040719",
+  "dataFlowFingerprint": "48fb3cff04e7d04d03bbe019b7bb6e25bec5675ee40b192b0998e264f50a7c95",
   "sources": [
     {
       "path": "apps/mobile/android/.gitignore",
@@ -45,7 +45,7 @@
     },
     {
       "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
-      "sha256": "a7cd425c3aaff59db0feef761badec8995b7bf6d3823a5f2bd106b4742c83758"
+      "sha256": "f9f5b1b21901cd6fd9f6f53f0020aa8fea7913237e14fad6a223529b4fb51882"
     },
     {
       "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetContentStorePlugin.java",

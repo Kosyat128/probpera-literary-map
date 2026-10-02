@@ -193,8 +193,8 @@ final class PlanetChildVault {
             AtomicFile file = record(directory); FileOutputStream stream = null; commitCheck.check();
             try { stream = file.startWrite(); stream.write(encoded); commitCheck.check(); stream.getFD().sync(); commitCheck.check(); file.finishWrite(stream); stream = null; }
             finally { if (stream != null) file.failWrite(stream); }
-            FileDescriptor fd = Os.open(directory.getPath(), OsConstants.O_RDONLY | OsConstants.O_DIRECTORY | OsConstants.O_CLOEXEC, 0);
-            try { Os.fsync(fd); } finally { Os.close(fd); }
+            FileDescriptor fd = Os.open(directory.getPath(), OsConstants.O_RDONLY | OsConstants.O_CLOEXEC, 0);
+            try { require(OsConstants.S_ISDIR(Os.fstat(fd).st_mode)); Os.fsync(fd); } finally { Os.close(fd); }
             byte[] actual = readExact(directory); try { require(MessageDigest.isEqual(actual, next)); } finally { Arrays.fill(actual, (byte) 0); }
             commitCheck.check(); // Late abort/timeout cannot publish a parent proof.
         } finally { Arrays.fill(ciphertext, (byte) 0); if (encoded != null) Arrays.fill(encoded, (byte) 0); }
