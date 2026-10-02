@@ -1,4 +1,11 @@
 
+<!-- s16-parent-gate-foundation-20261002:begin -->
+S16 local Parent Gate foundation: one-use opaque action/target/profile/policy/revision/generation authority; revoke/cancel/background/dispose and exclusive monotonic deadlines. PIN verification charges increasing backoff with trusted full-record atomic durable CAS before salted slow derivation, then rereads and durably finalizes before proof. All secure-store/time/input ports used in tests are explicit synthetic fixtures; WebCrypto PBKDF2-SHA256 has one independent real600k comparison. No installed secure OS adapter, calibrated native timing, enrollment/recovery, App/routes/lifecycle/UI or child activation is proved.
+Evidence: docs/mobile/evidence/S16/parent-gate-foundation-20261002/result.json
+Next: S03.acceptance remains first unresolved with11 OPEN criteria and unchanged installation, unchosen PSP/integration, real payments/refunds, RU/EN editorial/legal, Auth/deletion and authorized remote-check dependencies. Continue documented parallel-safe S16 from the tested profile/access and Parent Gate foundations: implement sealed startup/profile/policy/package/route orchestration and strict separate child indexes/cache/history/offline namespaces before content can render; implement actual native atomic secure-store, protected restart-stable time, PIN input/enrollment/recovery and lifecycle action adapters as Codex programming work. Device availability and platform timing calibration remain necessary for installed Parent Gate acceptance. Never substitute Preferences/browser storage/UI booleans for parent authority, auto-reset missing/corrupt credentials or fabricate child/rights/human approval. Preserve earlier222 units, current focused evidence and D267/D268 without docs-only reruns; no deploy/push/merge/store actions.
+<!-- s16-parent-gate-foundation-20261002:end -->
+
+
 <!-- s16-child-policy-foundation-20261002:begin -->
 S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation.
 Evidence: docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json

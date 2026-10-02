@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\typescript\\bin\\tsc",
+    "--noEmit",
+    "--incremental",
+    "false"
+  ],
+  "startedAt": "2026-10-02T16:42:19.449Z",
+  "finishedAt": "2026-10-02T16:42:43.399Z",
+  "elapsedMs": 23949,
+  "exitCode": 0,
+  "signal": null,
+  "error": null
+}

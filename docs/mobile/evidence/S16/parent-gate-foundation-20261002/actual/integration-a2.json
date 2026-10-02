@@ -1,0 +1,167 @@
+{
+  "initialHead": "66ba49261716a03d5d0babd0335d8468c28daa55",
+  "root": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "witnesses": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "b2692d97d7b52949192ceadcf0331635561850913b6afe2d1b4da6c13f4bbbb3"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "f695a107d9e57caa14665952d96c57cfa2da0ab5d7f74468a3c16ad09f58deb8"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "f8163d8c2d84b2741c02c57475206f036be2c461fe74ffaaeb0d8962aefd2cb9"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "81f2e00a0a7bd40bae9b052e9c7928d4be771608eee2a98d394d667d23ab8f68"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "7d954e8af3f7a9950bba1ed049f0ddf5b75bcd30f76737ad2813747d3216fa1c"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "b2c8b934d0ad72e6c5bd7d0b4b468c97491a204b59fbe5bba84ecd4404058a8d"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "2d42298de08f8b67b278457c7cc64ac59c3be420eb8b336077e001ac06add0db"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "df37f51411802c9874ab92370efec7472c9c68e88ac0f52b0747aa4c5911f82c"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "105eaa265de9967a1ebf82062b8734f62225cadaf31afe9bc5cf924fa342d72c"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "3957d534405a8aab7b1d27044caead6b795838ee0c20aac70206c3d9f308e71d"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "51353969918a3bbfdbafef37a9b3c28de7c31421853edb664666b547071d9459"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    },
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+    },
+    {
+      "path": "src/child/childProfile.test.ts",
+      "sha256": "3b8e976c23388da198eea5f86f840cfe572c2861c3d30474febbed0c40ef223f"
+    },
+    {
+      "path": "src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554"
+    },
+    {
+      "path": "src/child/childAccessPolicy.test.ts",
+      "sha256": "39d9778b22798a240866489d78b53d42bddb9bd1753752086d5331cf07944c9e"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/result.json",
+      "sha256": "0f823b07150024774866a1de9e220b45ec6f060cbacfa2b2891c1584b9e448d5"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/capture-review.json",
+      "sha256": "b6a7e036ea08c8f2a8a5393ad80aa5d3bbc6b5abbd46bbe2978a31ea0205a8ba"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/verification-final.json",
+      "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/remaining-gates.json",
+      "sha256": "273bc9e9b1a13631ef5a51541ffcf7b7569b7bff180f82557f5eac7b397a0f22"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/verification-input-correction.json",
+      "sha256": "7c7449ed6d35b6d6d42cb32be79d65a7b7b8b6dcaa669c14736d430b9448b011"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json",
+      "sha256": "dc4f2b877dc226d7eb06aa1d6dbb3428f6738d08be91a2036df3d15cd3185d4c"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/verification-final.json",
+      "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/record-recovery.json",
+      "sha256": "adaad137fde14b84fe8f3020fab5cb3d5631813447c0191adea8203d8e5c8632"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/11_CHILD_MODE_PARENT_GATE_AGE_ASSURANCE_RU.md",
+      "sha256": "e465ec632eace6ce1dd964c085003140cb1247ddabe2136a757c9821409e8a76"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/20_SECURITY_PRIVACY_COMPLIANCE_RU.md",
+      "sha256": "f7d33dc6673785ad183dee3c7a35b09ff1dce56788702d0548bf4fc55f7ab3da"
+    }
+  ],
+  "proposed": [
+    {
+      "path": "src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+    },
+    {
+      "path": "src/child/parentGate.test.ts",
+      "sha256": "dadd5de7d6707a1ac7a6aa367fbe21206aa900f950377ff483451acbf7668599"
+    },
+    {
+      "path": "src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+    },
+    {
+      "path": "src/child/parentPinVerification.test.ts",
+      "sha256": "939d54a375baa7a4eca74f4f849076f2006edd37860def0328a6eec26850c622"
+    }
+  ],
+  "initialProposed": [
+    {
+      "path": "src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+    },
+    {
+      "path": "src/child/parentGate.test.ts",
+      "sha256": "dadd5de7d6707a1ac7a6aa367fbe21206aa900f950377ff483451acbf7668599"
+    },
+    {
+      "path": "src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+    },
+    {
+      "path": "src/child/parentPinVerification.test.ts",
+      "sha256": "dac4e0a2bcfbe0075c74b4f36cdf8cbef4586299f9f6eda27b59bad0e46ef391"
+    }
+  ],
+  "repair": "Explicit Uint8Array return annotation on one test mock resolves two generic ArrayBuffer type errors. No product behavior changed; unit invocation count before repair is zero."
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "firstUnresolved": "S03.acceptance",
+  "s03OpenCriteria": [
+    "S03.BIL-019",
+    "S03.BIL-075",
+    "S03.BIL-076",
+    "S03.BIL-077",
+    "S03.BIL-079",
+    "S03.COMMERCE-001",
+    "S03.COMMERCE-008",
+    "S03.CONTENT-007",
+    "S03.MOD-030",
+    "S03.OMIN-023",
+    "S03.PLATFORM-001"
+  ],
+  "retainedS03Evidence": "docs/mobile/evidence/S03/booky-size-persistence-20261002/remaining-gates.json",
+  "userInputsAlreadyKnown": {
+    "installedTestDeviceOrVMAvailable": false,
+    "pspChosen": false
+  },
+  "internalCodexWork": [
+    "Sealed startup and separate child data namespaces",
+    "Actual Keychain/Keystore atomic record store and rollback safeguards",
+    "Protected restart-stable clock and device-calibrated policy",
+    "Native PIN entry, explicit enrollment and secure recovery",
+    "App/route/Back/background/deep-link/notification/callback integration",
+    "Cancellable executor for asynchronous protected actions"
+  ],
+  "externalAcceptanceDependencies": [
+    "Installed device/VM for secure OS storage and lifecycle tests",
+    "Approved RU/EN child editorial, rights and legal data",
+    "Explicit parent/reviewer admission of exact materials",
+    "PSP selection, integration and actual payments/refunds",
+    "Configured Auth/deletion and separately authorized remote verification"
+  ],
+  "nativeFixtureQualification": "Current secure-store/time/input fixtures are synthetic CAS and clock implementations; they establish no actual OS storage behavior."
+}

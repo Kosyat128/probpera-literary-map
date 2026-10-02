@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "src/child/parentGate.test.ts",
+    "src/child/parentPinVerification.test.ts",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\parent-gate\\actual\\a2\\vitest.json"
+  ],
+  "startedAt": "2026-10-02T16:36:32.368Z",
+  "finishedAt": "2026-10-02T16:36:34.095Z",
+  "elapsedMs": 1727,
+  "exitCode": 1,
+  "signal": null,
+  "error": null
+}

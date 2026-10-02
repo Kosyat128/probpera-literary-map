@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "0df1101c9aba91ce5c36f3a07b6067f4e2898a22",
+  "originalGuardFailure": "Reporting helper counted the S03.acceptance IN_PROGRESS milestone with its11 OPEN requirements, resulting in12 versus an incorrectly asserted11 total criteria.",
+  "correctedGuard": "Require S03.acceptance IN_PROGRESS plus exactly11 OPEN requirement criteria and preserve the entire S03 object unchanged.",
+  "checkpointInputsWereUnchangedAtRecovery": true,
+  "partialEvidenceArtifactsComparedAndRetainedWithoutRewrite": true,
+  "originalHelperRetained": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/checkpoint.mjs",
+  "productChecksRepeated": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

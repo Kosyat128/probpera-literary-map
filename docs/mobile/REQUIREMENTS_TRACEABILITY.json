@@ -2295,11 +2295,19 @@
         "all"
       ],
       "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
+      "implementationFiles": [
+        "src/child/parentGate.ts",
+        "src/child/parentPinVerification.ts"
+      ],
+      "tests": [
+        "src/child/parentGate.test.ts",
+        "src/child/parentPinVerification.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S16/parent-gate-foundation-20261002/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S16 local Parent Gate foundation: one-use opaque action/target/profile/policy/revision/generation authority; revoke/cancel/background/dispose and exclusive monotonic deadlines. PIN verification charges increasing backoff with trusted full-record atomic durable CAS before salted slow derivation, then rereads and durably finalizes before proof. All secure-store/time/input ports used in tests are explicit synthetic fixtures; WebCrypto PBKDF2-SHA256 has one independent real600k comparison. No installed secure OS adapter, calibrated native timing, enrollment/recovery, App/routes/lifecycle/UI or child activation is proved."
     },
     {
       "id": "CHILD-009",
@@ -2310,11 +2318,19 @@
         "all"
       ],
       "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
+      "implementationFiles": [
+        "src/child/parentGate.ts",
+        "src/child/parentPinVerification.ts"
+      ],
+      "tests": [
+        "src/child/parentGate.test.ts",
+        "src/child/parentPinVerification.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S16/parent-gate-foundation-20261002/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S16 local Parent Gate foundation: one-use opaque action/target/profile/policy/revision/generation authority; revoke/cancel/background/dispose and exclusive monotonic deadlines. PIN verification charges increasing backoff with trusted full-record atomic durable CAS before salted slow derivation, then rereads and durably finalizes before proof. All secure-store/time/input ports used in tests are explicit synthetic fixtures; WebCrypto PBKDF2-SHA256 has one independent real600k comparison. No installed secure OS adapter, calibrated native timing, enrollment/recovery, App/routes/lifecycle/UI or child activation is proved."
     },
     {
       "id": "CHILD-010",

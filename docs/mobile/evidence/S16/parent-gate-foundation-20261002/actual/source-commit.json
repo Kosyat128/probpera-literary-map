@@ -1,0 +1,29 @@
+{
+  "sourceCommit": "0df1101c9aba91ce5c36f3a07b6067f4e2898a22",
+  "originalTestHead": "66ba49261716a03d5d0babd0335d8468c28daa55",
+  "sourceFiles": [
+    {
+      "path": "src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+    },
+    {
+      "path": "src/child/parentGate.test.ts",
+      "sha256": "dadd5de7d6707a1ac7a6aa367fbe21206aa900f950377ff483451acbf7668599"
+    },
+    {
+      "path": "src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+    },
+    {
+      "path": "src/child/parentPinVerification.test.ts",
+      "sha256": "52c2b7d35e9aff3a5379026a025077482544f1581164a42f2b04fb794780c0bd"
+    }
+  ],
+  "exactTestedFileRows": true,
+  "unitInvocations": 2,
+  "typeScriptInvocations": 3,
+  "failedTypeScriptInvocations": 1,
+  "uniqueCasesValidated": 96,
+  "passing91CasesNotRepeated": true,
+  "originalFailuresRetained": true
+}

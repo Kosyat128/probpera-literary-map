@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S16",
+  "kind": "parent-gate-and-durable-pin-boundary",
+  "sourceCommit": "0df1101c9aba91ce5c36f3a07b6067f4e2898a22",
+  "originalTestHead": "66ba49261716a03d5d0babd0335d8468c28daa55",
+  "recordedAt": "2026-10-02T16:44:36.614Z",
+  "pass": true,
+  "criterionIds": [
+    "S16.acceptance",
+    "S16.CHILD-008",
+    "S16.CHILD-009"
+  ],
+  "requirementIds": [
+    "CHILD-008",
+    "CHILD-009"
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690",
+      "gitBlob": "be4de59839f960f3aaafbaba5cd44d46d8f8850f"
+    },
+    {
+      "path": "src/child/parentGate.test.ts",
+      "sha256": "dadd5de7d6707a1ac7a6aa367fbe21206aa900f950377ff483451acbf7668599",
+      "gitBlob": "23de65479b7ac98a6222281e0a59d899987c7437"
+    },
+    {
+      "path": "src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17",
+      "gitBlob": "4ef06a56f798450d3f6f5c1722401a7eb580a37c"
+    },
+    {
+      "path": "src/child/parentPinVerification.test.ts",
+      "sha256": "52c2b7d35e9aff3a5379026a025077482544f1581164a42f2b04fb794780c0bd",
+      "gitBlob": "d4e62d23e68617ad43240a38e23ed3c4313c1399"
+    }
+  ],
+  "checks": {
+    "typeScriptInvocations": 3,
+    "failedTypeScriptInvocations": 1,
+    "passedTypeScriptInvocations": 2,
+    "unitInvocations": 2,
+    "fullUnitInvocations": 1,
+    "targetedUnitInvocations": 1,
+    "unitFiles": 2,
+    "uniqueCasesValidated": 96,
+    "firstUnitRunPassed": 91,
+    "firstUnitRunFailed": 5,
+    "correctedFailedCasesPassed": 5,
+    "unresolvedFailedCases": 0,
+    "passing91CasesRepeated": false,
+    "realKdfComparisonRepeated": false,
+    "targetedUnselectedCases": 22,
+    "todoUnitTests": 0,
+    "unitCounts": [
+      {
+        "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/parentGate.test.ts",
+        "firstRunPassedTests": 69,
+        "correctedFailedCases": 0,
+        "uniqueCasesValidated": 69
+      },
+      {
+        "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/parentPinVerification.test.ts",
+        "firstRunPassedTests": 22,
+        "correctedFailedCases": 5,
+        "uniqueCasesValidated": 27
+      }
+    ],
+    "standardKdfComparisons": 1,
+    "browserRuns": 0,
+    "appBuilds": 0,
+    "prior222TestsRepeated": false,
+    "sourceRowsBeforeAfterEqual": true,
+    "committedTestedFileRowsEqual": true
+  },
+  "qualification": "S16 local Parent Gate foundation: one-use opaque action/target/profile/policy/revision/generation authority; revoke/cancel/background/dispose and exclusive monotonic deadlines. PIN verification charges increasing backoff with trusted full-record atomic durable CAS before salted slow derivation, then rereads and durably finalizes before proof. All secure-store/time/input ports used in tests are explicit synthetic fixtures; WebCrypto PBKDF2-SHA256 has one independent real600k comparison. No installed secure OS adapter, calibrated native timing, enrollment/recovery, App/routes/lifecycle/UI or child activation is proved.",
+  "cryptoReferences": [
+    {
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+      "purpose": "PBKDF2-HMAC-SHA256 iteration floor600000, checked2026-10-02; not device calibration or PIN entropy acceptance."
+    },
+    {
+      "url": "https://www.w3.org/TR/WebCryptoAPI/",
+      "purpose": "Standard non-extractable PBKDF2 importKey/deriveBits and strong random values."
+    }
+  ],
+  "limitations": {
+    "runtimeIntegrated": false,
+    "secureNativeStore": false,
+    "trustedNativeTime": false,
+    "nativePinInput": false,
+    "pinEnrollmentRecovery": false,
+    "calibratedTimingPolicy": false,
+    "installedDevice": false,
+    "childModeEnabled": false,
+    "actualHumanApproval": false,
+    "rightsContentApproval": false,
+    "asyncProtectedExecutor": false,
+    "runtimeCryptoKeyExplicitErasure": false
+  },
+  "initialTypeScriptFailure": {
+    "report": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/typescript.execution.json",
+    "exitCode": 2,
+    "reason": "Two ArrayBuffer generic type errors in one synthetic KDF mock fixed by explicit Uint8Array return annotation. Product behavior unchanged; no units ran before repair.",
+    "originalSourceRows": [
+      {
+        "path": "src/child/parentGate.ts",
+        "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+      },
+      {
+        "path": "src/child/parentGate.test.ts",
+        "sha256": "dadd5de7d6707a1ac7a6aa367fbe21206aa900f950377ff483451acbf7668599"
+      },
+      {
+        "path": "src/child/parentPinVerification.ts",
+        "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+      },
+      {
+        "path": "src/child/parentPinVerification.test.ts",
+        "sha256": "dac4e0a2bcfbe0075c74b4f36cdf8cbef4586299f9f6eda27b59bad0e46ef391"
+      }
+    ],
+    "unitInvocationsBeforeRepair": 0
+  },
+  "initialUnitFailure": {
+    "report": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a2/vitest.json",
+    "pass": false,
+    "passedTests": 91,
+    "failedTests": 5,
+    "reason": "The clock test erroneously created a fresh verifier for its permanent-seal assertion. Reuse the same instance in only that five-parameter case; no product source changed.",
+    "correctedTargetedReport": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a3/vitest.json",
+    "correctedCasesPassed": 5,
+    "originalSourceRows": [
+      {
+        "path": "src/child/parentGate.ts",
+        "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+      },
+      {
+        "path": "src/child/parentGate.test.ts",
+        "sha256": "dadd5de7d6707a1ac7a6aa367fbe21206aa900f950377ff483451acbf7668599"
+      },
+      {
+        "path": "src/child/parentPinVerification.ts",
+        "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+      },
+      {
+        "path": "src/child/parentPinVerification.test.ts",
+        "sha256": "939d54a375baa7a4eca74f4f849076f2006edd37860def0328a6eec26850c622"
+      }
+    ],
+    "passingCasesAndRealKdfNotRepeated": true
+  },
+  "artifacts": [
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/integration.json",
+      "sha256": "d5256e280aeebf4d60d1a67247ec56850d76c6731f6620ae935e3d16cb96116c"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/integration-a2.json",
+      "sha256": "94518295d5b59ee9fb7d934face7fed764c367f210ec645082a3983a546c4789"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/integration-a3.json",
+      "sha256": "cd77b16e23314a90a85a3489774c76cf3404f9f0fb94436ae31960517f9aa109"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/focused-final.json",
+      "sha256": "15a16e877923d6f8c8890806d5a530e3409526073713be507cdbacb58af97683"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/source-commit.json",
+      "sha256": "1ea3efbf8a9dad1464cf621c1fcbbf1ce9cc14cfe8fba24f05596d9ee80fe894"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/typescript.stdout.txt",
+      "sha256": "ad2936418e63a088735e794a0954c808e75b7f76bcd69455bb4519c67fc39cb3"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/typescript.execution.json",
+      "sha256": "8e9862d944403eac32549d5b10a0093b44fe53c3f30ac9bc970010558df36158"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/run-a1.mjs",
+      "sha256": "02116b6316d93f621dac317d7f6da733fdaefcfea9588285308159749f735fcb"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/run-a2.mjs",
+      "sha256": "49c93686666b57700b9ecc01ac599ededbd43235a494684da3354ab4a91fa54e"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a2/typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a3/typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a2/typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a3/typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a2/typescript.execution.json",
+      "sha256": "1dce8727254b33eae117ceaee3426bb56ccddfd86fc0d8056ea4168a607c681d"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a3/typescript.execution.json",
+      "sha256": "8612cb2b22fe35a1bc1f38737e09ab7e832f2cae69babaceba364195f1b3c030"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a2/units.stdout.txt",
+      "sha256": "7fb372585a5f4f61595ac461b3397c82733734a333f20d852bfe61e39eb208e4"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a3/units.stdout.txt",
+      "sha256": "9b5ba6e8c84f507c0f667a282267f2aa6b199e6a386087619a6a38d302db3de9"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a2/units.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a3/units.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a2/units.execution.json",
+      "sha256": "a15fbbe547a0e57fb0c4c251f758dd75a5678732ae880daaac2d635afd75ba57"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a3/units.execution.json",
+      "sha256": "ae694044a7f261ee1c56bf9670a587287cff577ad8d0d8da56674cded45b9f50"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a2/vitest.json",
+      "sha256": "7b6018f989c11599114b578f06501108828b8e45cddbc6456ffcaf9d433b97bc"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/a3/vitest.json",
+      "sha256": "87f0411ef658b09df7ff7c1a2f1e0fbecfa25ffb5cd59aabff42adc59d8b5183"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/failed-a1/src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/failed-a1/src/child/parentGate.test.ts",
+      "sha256": "dadd5de7d6707a1ac7a6aa367fbe21206aa900f950377ff483451acbf7668599"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/failed-a1/src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/failed-a1/src/child/parentPinVerification.test.ts",
+      "sha256": "dac4e0a2bcfbe0075c74b4f36cdf8cbef4586299f9f6eda27b59bad0e46ef391"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/failed-a2/src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/failed-a2/src/child/parentGate.test.ts",
+      "sha256": "dadd5de7d6707a1ac7a6aa367fbe21206aa900f950377ff483451acbf7668599"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/failed-a2/src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/failed-a2/src/child/parentPinVerification.test.ts",
+      "sha256": "939d54a375baa7a4eca74f4f849076f2006edd37860def0328a6eec26850c622"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/run.mjs",
+      "sha256": "9c7440738faae221111b3e9cec03f98d1da76c70129e44f5b4409cc6f6dcbbdb"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/actual/checkpoint.mjs",
+      "sha256": "1ed3c33170005443192fdb1b76a1df9c926e85a232c2609619ca02af91b5369b"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}
