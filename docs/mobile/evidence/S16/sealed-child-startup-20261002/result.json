@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S16",
+  "kind": "sealed-startup-and-child-data-namespace-foundation",
+  "sourceCommit": "9dc4028b1eb00c846fdf88b2f61b69ff2a482969",
+  "originalTestHead": "d4166a73ba3a94abb58429319db5f275316dc147",
+  "recordedAt": "2026-10-02T17:09:46.069Z",
+  "pass": true,
+  "sourceFiles": [
+    {
+      "path": "src/child/childDataNamespace.ts",
+      "sha256": "2a0b9497bc77f8fd9cf078ce2e3b91cff1ac16c842dd38df28e59d236be1c97a",
+      "gitBlob": "ebfd72937a9b7c1d51552c5495e42590a7073578"
+    },
+    {
+      "path": "src/child/childDataNamespace.test.ts",
+      "sha256": "ae9b5ddd75f33d42323bedab93c0413e6a9ec8699be881f6af1de28bcc3b329e",
+      "gitBlob": "c2b1b4c496f577dcd14a8fa2f416049038c282ab"
+    },
+    {
+      "path": "src/child/childStartup.ts",
+      "sha256": "18f0d6149aef26201ae26fe9185fa71f193f1a5f4f44f007a7151a84a7d82cd8",
+      "gitBlob": "4240af75b0d23c07801b994cd40e5b400fc9c829"
+    },
+    {
+      "path": "src/child/childStartup.test.ts",
+      "sha256": "05366cf0cf6cae30ab14518032869bbcbaff54371665bb9040a4e2d7ade7aa40",
+      "gitBlob": "c6d229041473dd5cd0368b5b6a33e2dea64d4d80"
+    }
+  ],
+  "criterionIds": [
+    "S16.acceptance",
+    "S16.CHILD-005",
+    "S16.CHILD-006",
+    "S16.CHILD-007"
+  ],
+  "requirementIds": [
+    "CHILD-005",
+    "CHILD-006",
+    "CHILD-007"
+  ],
+  "checks": {
+    "typeScriptInvocations": 1,
+    "unitInvocations": 1,
+    "unitFiles": 2,
+    "passedUnitTests": 91,
+    "failedUnitTests": 0,
+    "skippedUnitTests": 0,
+    "todoUnitTests": 0,
+    "namespaceTests": 40,
+    "startupTests": 51,
+    "browserRuns": 0,
+    "appBuilds": 0,
+    "earlier222And96CasesRepeated": false,
+    "sourceRowsBeforeAfterEqual": true,
+    "committedTestedFileRowsEqual": true
+  },
+  "qualification": "S16 local sealed startup/namespace foundation: child-only restore runs secure selection, authenticated profile, current policy, trusted reviewed package, child route and final secure selection recheck; before that only sealed/restoring observations exist, never adult-ready. Scope binds exact profile/revision/age, RU/EN, policy and package digests/versions. Background is latched until explicit foreground and a fresh restore; generations, timeout, trusted clock and exclusive validity fence delayed work and synchronous view revalidation. Eight pure namespaces are distinct and case-safe. All admission ports remain synthetic in tests; no actual OS adapters, reviewed content, runtime/UI/index query or frame guarantee is delivered.",
+  "limitations": {
+    "runtimeIntegrated": false,
+    "installedDevice": false,
+    "secureNativeModeProfileStorage": false,
+    "trustedNativeClock": false,
+    "genuineAuthenticatedProfileAdapter": false,
+    "genuineReviewedChildPackageAdapter": false,
+    "actualChildIndexQueries": false,
+    "atomicNativeScopeMigration": false,
+    "actualLifecycleWiring": false,
+    "noAdultFrameProven": false,
+    "editorialLegalRightsApproval": false,
+    "childModeEnabled": false
+  },
+  "artifacts": [
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/integration.json",
+      "sha256": "511bc3c60a1128a670b82bceb4bea8d8416ffd1995e31cd8c5f779daeb873ec1"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/source-commit.json",
+      "sha256": "6ebf2c8b588c8c276904f0a3f65d8b164205a277103e0575f10a3c5895d50499"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/typescript.execution.json",
+      "sha256": "0857ccd1b75390a5af42cc4319599da67db0f3d5c5e1081ded3518cb8044d5da"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/units.stdout.txt",
+      "sha256": "80b1fc37230310417f75dab3c7882208768ff1daf6d78c8399c4091a4fee5fe6"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/units.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/units.execution.json",
+      "sha256": "ef5910db7e4c024ee37f56be4885e4fce6aa3a5d392d8662e86c1c476bd7752d"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/vitest.json",
+      "sha256": "2545cb05c4e540609a1e6235a2b7927b2b28e246586c302b7dd7f7d648ce355d"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/focused-result.json",
+      "sha256": "707da56ee7bc21ebc620595e853eb69f4b90b69916557505e958527861b42259"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/run.mjs",
+      "sha256": "1e6a0c5766226e3339b6b429da4edf917d4fd4c9340f83d3550083033cf5cddf"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/sealed-child-startup-20261002/actual/checkpoint.mjs",
+      "sha256": "91351e2b0be78d5a7b3d9c2ab5e7a1b2a7fe7232d8578c5c0e48617fbd1e6596"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

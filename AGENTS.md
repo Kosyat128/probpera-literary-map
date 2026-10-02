@@ -39,6 +39,13 @@ The active task is the user's V12 bilingual product request, based on canonical
 
 
 
+
+<!-- s16-sealed-child-startup-20261002:begin -->
+S16 local sealed startup/namespace foundation: child-only restore runs secure selection, authenticated profile, current policy, trusted reviewed package, child route and final secure selection recheck; before that only sealed/restoring observations exist, never adult-ready. Scope binds exact profile/revision/age, RU/EN, policy and package digests/versions. Background is latched until explicit foreground and a fresh restore; generations, timeout, trusted clock and exclusive validity fence delayed work and synchronous view revalidation. Eight pure namespaces are distinct and case-safe. All admission ports remain synthetic in tests; no actual OS adapters, reviewed content, runtime/UI/index query or frame guarantee is delivered.
+Evidence: docs/mobile/evidence/S16/sealed-child-startup-20261002/result.json
+Next: S03.acceptance remains first unresolved with11 OPEN requirements; installed test device/VM is absent, PSP is unchosen and real payment/refund, RU/EN editorial/legal, Auth/deletion and authorized remote gates remain unchanged. Continue documented parallel-safe S16 from tested profile/access, Parent Gate and sealed startup/namespace foundations: implement a verified child-only package/index adapter with per-entity exact-age/locale/current rights review, separate query/history/cache/offline ports and atomic scope retirement; implement actual protected native mode/profile/PIN storage, restart-stable trusted time, enrollment/recovery and host lifecycle/route wiring as Codex programming. Do not activate child content or claim a frame/device/storage guarantee from mocked ports, namespace metadata, signatures or UI booleans. Preserve previous222 and96 case evidence plus the new focused checks without report-only repeats. No deploy/push/merge/store actions.
+<!-- s16-sealed-child-startup-20261002:end -->
+
 <!-- s16-parent-gate-foundation-20261002:begin -->
 S16 local Parent Gate foundation: one-use opaque action/target/profile/policy/revision/generation authority; revoke/cancel/background/dispose and exclusive monotonic deadlines. PIN verification charges increasing backoff with trusted full-record atomic durable CAS before salted slow derivation, then rereads and durably finalizes before proof. All secure-store/time/input ports used in tests are explicit synthetic fixtures; WebCrypto PBKDF2-SHA256 has one independent real600k comparison. No installed secure OS adapter, calibrated native timing, enrollment/recovery, App/routes/lifecycle/UI or child activation is proved.
 Evidence: docs/mobile/evidence/S16/parent-gate-foundation-20261002/result.json

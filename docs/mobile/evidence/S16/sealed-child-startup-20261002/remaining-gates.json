@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "firstUnresolved": "S03.acceptance",
+  "s03OpenCriteria": [
+    "S03.BIL-019",
+    "S03.BIL-075",
+    "S03.BIL-076",
+    "S03.BIL-077",
+    "S03.BIL-079",
+    "S03.COMMERCE-001",
+    "S03.COMMERCE-008",
+    "S03.CONTENT-007",
+    "S03.MOD-030",
+    "S03.OMIN-023",
+    "S03.PLATFORM-001"
+  ],
+  "previousGates": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/remaining-gates.json",
+  "userInputsAlreadyKnown": {
+    "testDeviceOrVMAvailable": false,
+    "pspChosen": false
+  },
+  "internalCodexWork": [
+    "Trusted child-only package/index/query adapters",
+    "Separate child search/history/cache/offline with atomic scope retirement",
+    "Protected native mode/profile/PIN record storage",
+    "Trusted restart-stable time and device calibration",
+    "Native enrollment/recovery and host startup/lifecycle/route integration"
+  ],
+  "externalAcceptanceDependencies": [
+    "Installed device/VM tests",
+    "Approved exact RU/EN child editorial/rights/legal materials",
+    "PSP selection and real payment/refund validation",
+    "Configured Auth/deletion and separately authorized remote verification"
+  ],
+  "qualification": "Synthetic trusted ports are no OS or editorial approval proof. No actual index query or rendered frame was tested.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

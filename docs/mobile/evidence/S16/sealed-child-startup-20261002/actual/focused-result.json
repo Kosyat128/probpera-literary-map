@@ -1,0 +1,184 @@
+{
+  "pass": true,
+  "totalTests": 91,
+  "passedTests": 91,
+  "failedTests": 0,
+  "unitFiles": 2,
+  "unitInvocations": 1,
+  "typeScriptInvocations": 1,
+  "noBrowserOrAppBuild": true,
+  "prior222UnitsRepeated": false,
+  "sourceRowsBeforeAfterEqual": true,
+  "sourceFiles": [
+    {
+      "path": "src/child/childDataNamespace.ts",
+      "sha256": "2a0b9497bc77f8fd9cf078ce2e3b91cff1ac16c842dd38df28e59d236be1c97a"
+    },
+    {
+      "path": "src/child/childDataNamespace.test.ts",
+      "sha256": "ae9b5ddd75f33d42323bedab93c0413e6a9ec8699be881f6af1de28bcc3b329e"
+    },
+    {
+      "path": "src/child/childStartup.ts",
+      "sha256": "18f0d6149aef26201ae26fe9185fa71f193f1a5f4f44f007a7151a84a7d82cd8"
+    },
+    {
+      "path": "src/child/childStartup.test.ts",
+      "sha256": "05366cf0cf6cae30ab14518032869bbcbaff54371665bb9040a4e2d7ade7aa40"
+    }
+  ],
+  "unchangedWitnesses": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "f2ccd2cea84839d0a5de07324703567340458edcf3b8e0d2ca18ee30ab2c65bd"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "0e85477588f34c120bd58f35ce08e2c4b696fd42f6037bafcaa59648d74000ac"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "73e0028d0a618ad97e8fc4943f5ae23537d70e23bbc5f286c69c3343ba97dc73"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "9d6b93900d7e8faab4c9ecffe5950fcd016aaf4cafd039c5c270062f21f2ec1c"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "cf00aa0c5693973625093c16fcad26d889dcbc443e594f8d6b07e9a5338b241e"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "eb0d77cce0e083c1044298d62bd8a412c82f256bedb3a36cf420a806b60addf3"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "351a0c88cbb21a410f7f37affa3a11f10f423c1528bf3dcceec8166201ad0c67"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "df37f51411802c9874ab92370efec7472c9c68e88ac0f52b0747aa4c5911f82c"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "105eaa265de9967a1ebf82062b8734f62225cadaf31afe9bc5cf924fa342d72c"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "3957d534405a8aab7b1d27044caead6b795838ee0c20aac70206c3d9f308e71d"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "51353969918a3bbfdbafef37a9b3c28de7c31421853edb664666b547071d9459"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    },
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+    },
+    {
+      "path": "src/child/childProfile.test.ts",
+      "sha256": "3b8e976c23388da198eea5f86f840cfe572c2861c3d30474febbed0c40ef223f"
+    },
+    {
+      "path": "src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554"
+    },
+    {
+      "path": "src/child/childAccessPolicy.test.ts",
+      "sha256": "39d9778b22798a240866489d78b53d42bddb9bd1753752086d5331cf07944c9e"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/result.json",
+      "sha256": "0f823b07150024774866a1de9e220b45ec6f060cbacfa2b2891c1584b9e448d5"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/capture-review.json",
+      "sha256": "b6a7e036ea08c8f2a8a5393ad80aa5d3bbc6b5abbd46bbe2978a31ea0205a8ba"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/verification-final.json",
+      "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/remaining-gates.json",
+      "sha256": "273bc9e9b1a13631ef5a51541ffcf7b7569b7bff180f82557f5eac7b397a0f22"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/verification-input-correction.json",
+      "sha256": "7c7449ed6d35b6d6d42cb32be79d65a7b7b8b6dcaa669c14736d430b9448b011"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json",
+      "sha256": "dc4f2b877dc226d7eb06aa1d6dbb3428f6738d08be91a2036df3d15cd3185d4c"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/verification-final.json",
+      "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/record-recovery.json",
+      "sha256": "adaad137fde14b84fe8f3020fab5cb3d5631813447c0191adea8203d8e5c8632"
+    },
+    {
+      "path": "src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+    },
+    {
+      "path": "src/child/parentGate.test.ts",
+      "sha256": "dadd5de7d6707a1ac7a6aa367fbe21206aa900f950377ff483451acbf7668599"
+    },
+    {
+      "path": "src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+    },
+    {
+      "path": "src/child/parentPinVerification.test.ts",
+      "sha256": "52c2b7d35e9aff3a5379026a025077482544f1581164a42f2b04fb794780c0bd"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/result.json",
+      "sha256": "fa8a4d0859c5482ccd46014292518eb3263b970c8426a4b02fdd2bedf9757dcf"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/verification-final.json",
+      "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/parent-gate-foundation-20261002/record-recovery.json",
+      "sha256": "e8c4af76885172556b1d600c1823f2c83e5fba2cccaffa9635af5a50a58de4ea"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/11_CHILD_MODE_PARENT_GATE_AGE_ASSURANCE_RU.md",
+      "sha256": "e465ec632eace6ce1dd964c085003140cb1247ddabe2136a757c9821409e8a76"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/20_SECURITY_PRIVACY_COMPLIANCE_RU.md",
+      "sha256": "f7d33dc6673785ad183dee3c7a35b09ff1dce56788702d0548bf4fc55f7ab3da"
+    }
+  ]
+}

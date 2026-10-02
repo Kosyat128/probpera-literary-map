@@ -2250,11 +2250,17 @@
         "all"
       ],
       "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
+      "implementationFiles": [
+        "src/child/childDataNamespace.ts"
+      ],
+      "tests": [
+        "src/child/childDataNamespace.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S16/sealed-child-startup-20261002/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S16 local sealed startup/namespace foundation: child-only restore runs secure selection, authenticated profile, current policy, trusted reviewed package, child route and final secure selection recheck; before that only sealed/restoring observations exist, never adult-ready. Scope binds exact profile/revision/age, RU/EN, policy and package digests/versions. Background is latched until explicit foreground and a fresh restore; generations, timeout, trusted clock and exclusive validity fence delayed work and synchronous view revalidation. Eight pure namespaces are distinct and case-safe. All admission ports remain synthetic in tests; no actual OS adapters, reviewed content, runtime/UI/index query or frame guarantee is delivered."
     },
     {
       "id": "CHILD-006",
@@ -2265,11 +2271,19 @@
         "all"
       ],
       "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
+      "implementationFiles": [
+        "src/child/childStartup.ts",
+        "src/child/childDataNamespace.ts"
+      ],
+      "tests": [
+        "src/child/childStartup.test.ts",
+        "src/child/childDataNamespace.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S16/sealed-child-startup-20261002/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S16 local sealed startup/namespace foundation: child-only restore runs secure selection, authenticated profile, current policy, trusted reviewed package, child route and final secure selection recheck; before that only sealed/restoring observations exist, never adult-ready. Scope binds exact profile/revision/age, RU/EN, policy and package digests/versions. Background is latched until explicit foreground and a fresh restore; generations, timeout, trusted clock and exclusive validity fence delayed work and synchronous view revalidation. Eight pure namespaces are distinct and case-safe. All admission ports remain synthetic in tests; no actual OS adapters, reviewed content, runtime/UI/index query or frame guarantee is delivered."
     },
     {
       "id": "CHILD-007",
@@ -2280,11 +2294,19 @@
         "all"
       ],
       "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
+      "implementationFiles": [
+        "src/child/childStartup.ts",
+        "src/child/childDataNamespace.ts"
+      ],
+      "tests": [
+        "src/child/childStartup.test.ts",
+        "src/child/childDataNamespace.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S16/sealed-child-startup-20261002/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S16 local sealed startup/namespace foundation: child-only restore runs secure selection, authenticated profile, current policy, trusted reviewed package, child route and final secure selection recheck; before that only sealed/restoring observations exist, never adult-ready. Scope binds exact profile/revision/age, RU/EN, policy and package digests/versions. Background is latched until explicit foreground and a fresh restore; generations, timeout, trusted clock and exclusive validity fence delayed work and synchronous view revalidation. Eight pure namespaces are distinct and case-safe. All admission ports remain synthetic in tests; no actual OS adapters, reviewed content, runtime/UI/index query or frame guarantee is delivered."
     },
     {
       "id": "CHILD-008",
