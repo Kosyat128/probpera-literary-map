@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "base": "59b1840780afc6e32cd797092f9a11e9c54f2eb2",
+  "files": [
+    {
+      "path": "src/host/host.css",
+      "originalSha256": "16b02d1c535282596a2ec31bd7ed32e894900bc3ad708ba4672dbb7b52a2ebe2",
+      "proposedSha256": "516cac522c11faa1abc0dbea407b94e15c277543f129fb452477d1fa030164f4"
+    },
+    {
+      "path": "src/App.tsx",
+      "originalSha256": "8454aa457390fe533b518c023818a2930195e037105f35c9b4603f54512f2efa",
+      "proposedSha256": "2d4afe74d934c526783e6a68b2d62362dfc8078715bd02b67cb2a0cbf2f22942"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "originalSha256": "0a4d3999e3d5e946e6510eaccb8b6d416edf120d3fbff65a6fafb7760af7f6d6",
+      "proposedSha256": "6d06555aac0c80a39cc912302ba3023d945fb2c7dfb91b040ebc75d8e6400692"
+    },
+    {
+      "path": "src/components/AtlasExperienceChrome.tsx",
+      "originalSha256": "80f7ea58ab632b4da0cda60322882e26b33923a64b78cafd89d7fa167e1b138c",
+      "proposedSha256": "941c75e0219a3b3d4e6ad6a81e060c3bf00176b977ce4cfccba6577c4a6ef5a8"
+    },
+    {
+      "path": "tests/host/native-planet.spec.mjs",
+      "originalSha256": "0d76972a6ac76ab0cdd784309cfea0539dea9511769a6802afe3eb113bf31fe6",
+      "proposedSha256": "cde7a3b535eccec44702f190db232cddb6f6181e4d826cc0948dcecb603f0f4f"
+    }
+  ],
+  "stageAccepted": false,
+  "checksExecuted": false
+}

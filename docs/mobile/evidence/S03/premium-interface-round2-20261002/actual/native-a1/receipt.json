@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "workingSourceParent": "59b1840780afc6e32cd797092f9a11e9c54f2eb2",
+  "runId": "d258-premium-interface-a1",
+  "sourceManifestSha256": "40559dd1c37aae018b763b3bf28ecda9621e60a438de04fcdf67113d0db0481d",
+  "reportSha256": "6219de2f010c8fc85296bedfaf899154867b67020675d8571a3838d5b9ca104c",
+  "typeScript": {
+    "args": [
+      "node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ],
+    "exitCode": 0,
+    "durationMs": 30920
+  },
+  "syntax": {
+    "args": [
+      "--check",
+      "tests/host/native-planet.spec.mjs"
+    ],
+    "exitCode": 0,
+    "durationMs": 78
+  },
+  "browser": {
+    "args": [
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "playwright.native-planet.config.mjs",
+      "-g",
+      "compact premium mobile chrome retains the actual globe across menu, locale and edition controls$"
+    ],
+    "exitCode": 0,
+    "durationMs": 48658
+  },
+  "viewports": 7,
+  "largeText": "200%",
+  "realAppAndCanvas": true,
+  "sourceUnchanged": true,
+  "installedDeviceAcceptance": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

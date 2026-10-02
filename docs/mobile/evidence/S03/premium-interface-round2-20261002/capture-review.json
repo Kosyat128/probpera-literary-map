@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "787723adc0b4082febe4b7de8d46b4418b19e71e",
+  "buildId": "a29f08961d327a79046fdd9672f55ecc5b39246abf2a9dfbfc13229409c53ecf",
+  "reviewer": "ROOT",
+  "nativeCapturesViewed": [
+    "compact-mobile-320x844.png",
+    "compact-mobile-330x844.png",
+    "compact-mobile-390x480.png",
+    "compact-mobile-390x844.png",
+    "compact-mobile-430x844.png",
+    "compact-mobile-768x1024.png",
+    "compact-mobile-844x390.png",
+    "compact-mobile-flags-menu-390x844.png",
+    "compact-mobile-touch-zoom-reset.png",
+    "native-final-passed.png",
+    "premium-collection-en-390x844.png",
+    "premium-collection-ru-390x844.png",
+    "premium-collection-tools-390x844.png",
+    "premium-menu-large-text-390x844.png"
+  ],
+  "pwaCapturesViewed": [
+    "pwa-premium-globe-ru.png",
+    "pwa-premium-menu-ru.png",
+    "pwa-premium-globe-en.png",
+    "pwa-premium-menu-en.png"
+  ],
+  "scope": "Manual review of actual final native and QA PWA captures; no full visual, accessibility or installed-device acceptance.",
+  "findings": [
+    "Final menu row hierarchy, icon tiles, locale flags, wrapping, Collection content-first ordering and settings shortcut are readable in reviewed captures.",
+    "The RU About/Downloads captures contain a transient cyan rectangle immediately after touch; user-select:none did not eliminate it. Chrome touch feedback is a hypothesis, not a proved text-selection bug or confirmed repair.",
+    "Touch/reset end-frame Booky trigger is partly clipped at the right edge; this is not full Booky/mobile visual acceptance and needs separate focused diagnosis if persistent."
+  ],
+  "evidence": [
+    {
+      "name": "captures/pwa-premium-globe-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-ru.png",
+      "sha256": "9d36a052fd29915a3b73b3859a9d11ff36286127156e2fc2522c1c39eb6b6a44",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/pwa-premium-globe-ru.png",
+        "sha256": "9d36a052fd29915a3b73b3859a9d11ff36286127156e2fc2522c1c39eb6b6a44"
+      }
+    },
+    {
+      "name": "captures/pwa-premium-menu-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-ru.png",
+      "sha256": "0e890d4fb6e7755620cd9e97c0ee867ffa6d03aa0080723a4d6d5e0b96b2dd0c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/pwa-premium-menu-ru.png",
+        "sha256": "0e890d4fb6e7755620cd9e97c0ee867ffa6d03aa0080723a4d6d5e0b96b2dd0c"
+      }
+    },
+    {
+      "name": "captures/pwa-premium-globe-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-en.png",
+      "sha256": "6d9628b0c6635a66bb3d54bc1d7412d3e110d90c9ba69aca4a0abfa70f5a7439",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/pwa-premium-globe-en.png",
+        "sha256": "6d9628b0c6635a66bb3d54bc1d7412d3e110d90c9ba69aca4a0abfa70f5a7439"
+      }
+    },
+    {
+      "name": "captures/pwa-premium-menu-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-en.png",
+      "sha256": "6e9964acfec8e20274b7134b683cceffb87d6989c1a752d230b1df4b4f7e9e1e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/pwa-premium-menu-en.png",
+        "sha256": "6e9964acfec8e20274b7134b683cceffb87d6989c1a752d230b1df4b4f7e9e1e"
+      }
+    },
+    {
+      "name": "captures/compact-mobile-320x844.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-320x844.png",
+      "sha256": "cd3d3a6885c6d7fd583add7992455fe3b67f7baeebd4e4b9c58d5ca5713c5537",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-320x844.png",
+        "sha256": "cd3d3a6885c6d7fd583add7992455fe3b67f7baeebd4e4b9c58d5ca5713c5537"
+      }
+    },
+    {
+      "name": "captures/compact-mobile-330x844.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-330x844.png",
+      "sha256": "a663945490da0623eb162db75150aef12a85e74043f66ca4e5f0448fe69627b4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-330x844.png",
+        "sha256": "a663945490da0623eb162db75150aef12a85e74043f66ca4e5f0448fe69627b4"
+      }
+    },
+    {
+      "name": "captures/compact-mobile-390x480.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-390x480.png",
+      "sha256": "32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-390x480.png",
+        "sha256": "32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c"
+      }
+    },
+    {
+      "name": "captures/compact-mobile-390x844.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-390x844.png",
+      "sha256": "9bd00ceb65f8c019782b01a3eee273d2b29572d3fee6b80d89e7565dbc43786e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-390x844.png",
+        "sha256": "9bd00ceb65f8c019782b01a3eee273d2b29572d3fee6b80d89e7565dbc43786e"
+      }
+    },
+    {
+      "name": "captures/compact-mobile-430x844.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-430x844.png",
+      "sha256": "f9228e37d962b0a1587ea16a4bc29f466632ca5604d9d4a65d4c9a3ec8b360cf",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-430x844.png",
+        "sha256": "f9228e37d962b0a1587ea16a4bc29f466632ca5604d9d4a65d4c9a3ec8b360cf"
+      }
+    },
+    {
+      "name": "captures/compact-mobile-768x1024.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-768x1024.png",
+      "sha256": "c08277c82141af0271b7fac5892129f588319e3fae58b943cdb98009ab48b99f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-768x1024.png",
+        "sha256": "c08277c82141af0271b7fac5892129f588319e3fae58b943cdb98009ab48b99f"
+      }
+    },
+    {
+      "name": "captures/compact-mobile-844x390.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-844x390.png",
+      "sha256": "cd0736bed1de0466edbff5ac639e096f086a0801ef27c988dd3a9f1f0ac1e1a2",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-844x390.png",
+        "sha256": "cd0736bed1de0466edbff5ac639e096f086a0801ef27c988dd3a9f1f0ac1e1a2"
+      }
+    },
+    {
+      "name": "captures/compact-mobile-flags-menu-390x844.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-flags-menu-390x844.png",
+      "sha256": "8bafa1ce1bcb7ede579b168853b59937704d6fc44c9adea934266627bc4aa796",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-flags-menu-390x844.png",
+        "sha256": "8bafa1ce1bcb7ede579b168853b59937704d6fc44c9adea934266627bc4aa796"
+      }
+    },
+    {
+      "name": "captures/compact-mobile-touch-zoom-reset.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-touch-zoom-reset.png",
+      "sha256": "39804ab784205b93053bf111216d5c95755438a549167938fc1000f3feb70353",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-touch-zoom-reset.png",
+        "sha256": "39804ab784205b93053bf111216d5c95755438a549167938fc1000f3feb70353"
+      }
+    },
+    {
+      "name": "captures/native-final-passed.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\native-final-passed.png",
+      "sha256": "39804ab784205b93053bf111216d5c95755438a549167938fc1000f3feb70353",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/compact-mobile-touch-zoom-reset.png",
+        "sha256": "39804ab784205b93053bf111216d5c95755438a549167938fc1000f3feb70353"
+      }
+    },
+    {
+      "name": "captures/premium-collection-en-390x844.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-collection-en-390x844.png",
+      "sha256": "474a3b94f79eb8328bf75ef13086fb5332c809bd2cb22a0e09c011aa2b04637c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/premium-collection-en-390x844.png",
+        "sha256": "474a3b94f79eb8328bf75ef13086fb5332c809bd2cb22a0e09c011aa2b04637c"
+      }
+    },
+    {
+      "name": "captures/premium-collection-ru-390x844.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-collection-ru-390x844.png",
+      "sha256": "c707f4db59868197583220948c334d0a3eedc0c4517d9ff6d8d586c49738875e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/premium-collection-ru-390x844.png",
+        "sha256": "c707f4db59868197583220948c334d0a3eedc0c4517d9ff6d8d586c49738875e"
+      }
+    },
+    {
+      "name": "captures/premium-collection-tools-390x844.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-collection-tools-390x844.png",
+      "sha256": "427556f76608c7b0edef39a01c20e5ff51095b2838b77c36ff36a50b215f6010",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/premium-collection-tools-390x844.png",
+        "sha256": "427556f76608c7b0edef39a01c20e5ff51095b2838b77c36ff36a50b215f6010"
+      }
+    },
+    {
+      "name": "captures/premium-menu-large-text-390x844.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d258-premium-interface-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-menu-large-text-390x844.png",
+      "sha256": "18901976ab012b240becd28583b13ece56f4aff604f155e7e0b58331c591cb3e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/premium-interface-round2-20261002/actual/captures/premium-menu-large-text-390x844.png",
+        "sha256": "18901976ab012b240becd28583b13ece56f4aff604f155e7e0b58331c591cb3e"
+      }
+    }
+  ]
+}

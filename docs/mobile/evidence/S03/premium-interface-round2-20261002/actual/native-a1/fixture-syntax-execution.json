@@ -1,0 +1,8 @@
+{
+  "args": [
+    "--check",
+    "tests/host/native-planet.spec.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 78
+}

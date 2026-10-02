@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-premium-interface-round2-qa",
+  "bindingReady": true,
+  "sourceCommit": "787723adc0b4082febe4b7de8d46b4418b19e71e",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\current-source-manifest.json",
+    "sha256": "17bb5a28ca042471b822df79dacb2d0f83659e95ad0e706ada5e833ed6c82f00"
+  },
+  "outputName": "actual-a1",
+  "helpers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\producer.mjs",
+      "sha256": "1708de4e75f4ddd4d633a92380d87744c9f55ed7314df3554e9e4fcf91a7d046"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\pwa.config.mjs",
+      "sha256": "04280f1c0980b315c09340e7e942b8bd6701bca681bb48288351590dc4f9280e"
+    }
+  ],
+  "tools": [
+    {
+      "path": "node_modules/esbuild/package.json",
+      "sha256": "9d0bc453f4e791553c4cc2298ba023b409241fd9801e494741666eb0f6051490"
+    },
+    {
+      "path": "node_modules/vite/package.json",
+      "sha256": "e5ed0f85215f871fe22a48987dcd77fcfbe14064a53c0c9f7f48186a6b7e2cf0"
+    },
+    {
+      "path": "node_modules/@playwright/test/package.json",
+      "sha256": "be51f784a5742a1aa075e0173f5f04f189a791cc30c40e3bb18be584f696764e"
+    },
+    {
+      "path": "node_modules/@playwright/test/cli.js",
+      "sha256": "79e23e6a249176295b8490567daa7717448a75866d6ea6f6b296ff3d23305c69"
+    },
+    {
+      "path": "node_modules/playwright/package.json",
+      "sha256": "ca170ec143a88ed3043ac953eb3b2377b2b97304104f4e1e23316684ce2c35af"
+    },
+    {
+      "path": "node_modules/playwright/lib/runner/index.js",
+      "sha256": "6dcf135a144b0f243848128bb68e0a25898b8ad764a34326f36ab45d9a9e1685"
+    },
+    {
+      "path": "node_modules/typescript/package.json",
+      "sha256": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6"
+    },
+    {
+      "path": "node_modules/sharp/package.json",
+      "sha256": "0f3a7e7eb4f22978dfde46e6c7c6ecf3b86b43e33c3d366de88b334b4610c3ff"
+    }
+  ],
+  "additionalInputs": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459"
+    }
+  ],
+  "rootReview": {
+    "fullHelperBytesReviewed": true,
+    "onePwaCompilation": true,
+    "noSmokeOrPackaging": true,
+    "oneOfflineBrowserCase": true
+  },
+  "scope": "One fresh final round2 app-source QA PWA compilation and strict audit; one existing RU/EN offline author-search and book-return case with four existing globe/Menu captures. No SW update case, smoke, packaging, TypeScript invocation, provider, OS installation or release acceptance."
+}

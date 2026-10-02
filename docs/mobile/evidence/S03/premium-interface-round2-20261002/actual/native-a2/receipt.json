@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "workingSourceParent": "59b1840780afc6e32cd797092f9a11e9c54f2eb2",
+  "runId": "d258-premium-interface-a2",
+  "browser": {
+    "args": [
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "playwright.native-planet.config.mjs",
+      "-g",
+      "compact premium mobile chrome retains the actual globe across menu, locale and edition controls$"
+    ],
+    "exitCode": 0,
+    "durationMs": 46013
+  },
+  "viewports": 7,
+  "largeText": "200%",
+  "sourceUnchanged": true,
+  "reportSha256": "5747a25ef698c0494ec1d898ec7b266c27a6263d0593e44365f18427a7863b31",
+  "onlyCssChangedSinceA1": true,
+  "typeScriptInvocations": 0,
+  "syntaxInvocations": 0,
+  "priorTypeScriptAndSyntax": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\native-a1\\receipt.json",
+    "sha256": "c48331a30ce6a4a84c27d698ee8850eb1a66f16808e63eb6bda478f77c87a1bf"
+  },
+  "visualFollowup": "Override older menu row/flag rules at the actual app chrome scope; prevent accidental selection on the About disclosure summary.",
+  "realAppAndCanvas": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

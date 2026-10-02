@@ -1,0 +1,12 @@
+{
+  "args": [
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "-c",
+    "playwright.native-planet.config.mjs",
+    "-g",
+    "compact premium mobile chrome retains the actual globe across menu, locale and edition controls$"
+  ],
+  "exitCode": 0,
+  "durationMs": 46013
+}

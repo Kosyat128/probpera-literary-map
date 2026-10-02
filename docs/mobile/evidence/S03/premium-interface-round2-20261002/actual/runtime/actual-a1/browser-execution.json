@@ -1,0 +1,18 @@
+{
+  "command": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\actual-a1\\browser-command.json",
+    "sha256": "7a17bc7a2100429b17757da3eaec947c2fa09448af141c91c331e0c5d032f2ec"
+  },
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 35056,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\actual-a1\\browser.stdout.txt",
+    "sha256": "865c2f654e7b6b28a99933919cecf124db290a3fb585aab3ee50f569ee3e3bb5"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\runtime\\actual-a1\\browser.stderr.txt",
+    "sha256": "e76a59f9ebabbb361dc533eeb1eb8cf0ee8a386369c08869117cefff438eeaf1"
+  }
+}
