@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { parse } from 'yaml';
-import { checkNativeQuotaResume } from './check-literary-news-quota-resume.mjs';
+import { checkNativeQuotaResume, nativeQuotaResumeOutputPath } from './check-literary-news-quota-resume.mjs';
 
 const env = { GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: 'schedule', GITHUB_REF: 'refs/heads/main',
   GITHUB_REPOSITORY: 'Kosyat128/probpera-literary-map', LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME: 'true',
@@ -13,6 +13,13 @@ const proof = mode => ({ readonly: true, externalWrites: 0, providerRequests: 4,
   requestedExpected: 'auto-resume', expected: mode });
 
 describe('Daily quota recovery authorization without inference or mutations', () => {
+  it('writes only to the runner-created output command file outside the checkout', () => {
+    const target = '/home/runner/work/_temp/_runner_file_commands/set_output_12345678-1234-1234-1234-123456789abc';
+    expect(nativeQuotaResumeOutputPath(target)).toBe(target);
+    for (const path of [undefined, '', '/etc/passwd', '../set_output_12345678-1234-1234-1234-123456789abc',
+      target.replace('/_temp/', '/checkout/'), target + '/../secret', target + '?extra'])
+      expect(() => nativeQuotaResumeOutputPath(path)).toThrow(/^quota_resume_output_/);
+  });
   it('keeps every activation step behind recovery authorization and both AI protocols ahead of Worker mutations', () => {
     const workflow = parse(readFileSync(new URL('../.github/workflows/deploy-literary-news-automation.yml', import.meta.url), 'utf8'));
     expect(workflow.on.schedule).toEqual([{ cron: '7 0 * * *' }]);

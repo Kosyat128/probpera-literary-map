@@ -1,8 +1,21 @@
 import { appendFile } from 'node:fs/promises';
+import { basename } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { verifyNativeNewsWorkers } from './verify-native-news-workers.mjs';
 
 const fail = code => { throw Error(code); };
+
+// This workflow runs on GitHub's hosted Ubuntu runner, whose file-command root
+// is outside the checkout. Caller-provided paths cannot select another directory.
+export function nativeQuotaResumeOutputPath(value) {
+  if (typeof value !== 'string') fail('quota_resume_output_missing');
+  const name = basename(value);
+  if (!/^set_output_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(name))
+    fail('quota_resume_output_rejected');
+  const target = '/home/runner/work/_temp/_runner_file_commands/' + name;
+  if (value !== target) fail('quota_resume_output_rejected');
+  return target;
+}
 
 /** Read-only authorization for the daily recovery workflow; this function never invokes AI. */
 export async function checkNativeQuotaResume({ env = process.env, current = new Date(),
@@ -34,8 +47,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   try {
     if (process.argv.length !== 2) fail('quota_resume_arguments_rejected');
     const report = await checkNativeQuotaResume();
-    if (!process.env.GITHUB_OUTPUT) fail('quota_resume_output_missing');
-    await appendFile(process.env.GITHUB_OUTPUT, `run_needed=${report.runNeeded}\n`);
+    await appendFile(nativeQuotaResumeOutputPath(process.env.GITHUB_OUTPUT), `run_needed=${report.runNeeded}\n`);
     console.log(JSON.stringify(report));
   } catch (error) {
     const code = /^(?:quota_resume_|native_check_)[a-z_]+$/.test(error?.message || '') ? error.message : 'quota_resume_failed';
