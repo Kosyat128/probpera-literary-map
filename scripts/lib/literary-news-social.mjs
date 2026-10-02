@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { newsDigest, verifyPublishedNewsSnapshot } from "./literary-news-publication.mjs";
 import { newsAnnouncementEligible } from "./literary-news-reviewed.mjs";
+import { dailyPublicationEpoch } from "./literary-news-daily-profile.mjs";
 import { selectNewsMedia } from "./literary-news-media-policy.mjs";
 import { reserveNewsDeliverySlot } from "./literary-news-pacing.mjs";
 import socialConfiguration from "../../data/news/social-destinations.json" with { type: "json" };
@@ -254,13 +255,29 @@ async function transition(store, key, mutate) {
 }
 
 /** Only confirmed complete public snapshots can establish expectations. */
-export async function reconcileNewsSnapshot(store, feed, destinations, now = new Date(), { mediaOptions } = {}) {
+export async function reconcileNewsSnapshot(store, feed, destinations, now = new Date(), { mediaOptions, boundedCaptureIds } = {}) {
   await verifyPublishedNewsSnapshot(feed);
   if (feed.timeZone !== "Europe/Moscow" || feed.fallbackCapturedAt
     || Math.abs(now.getTime() - Date.parse(feed.generatedAt)) > 300000) throw new Error("public_snapshot_not_current");
-  store = await reconciliationStore(store);
+  let items = feed.items;
+  if (boundedCaptureIds !== undefined) {
+    if (!Array.isArray(boundedCaptureIds) || boundedCaptureIds.length > 24
+      || new Set(boundedCaptureIds).size !== boundedCaptureIds.length
+      || !Array.isArray(destinations) || destinations.length !== 1 || destinations[0]?.platform !== 'telegram')
+      throw Error('bounded_capture_invalid');
+    checkedDestination(destinations[0]);
+    const byId = new Map(feed.items.map(item => [item.id, item]));
+    const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Moscow', year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);
+    items = boundedCaptureIds.map(id => {
+      const item = byId.get(id), published = dailyPublicationEpoch(item?.publishedAt);
+      if (typeof id !== 'string' || !item || !['news', 'announcement'].includes(item.kind)
+        || !Number.isFinite(published) || published > now.getTime() || now.getTime() - published > 7 * 86400000
+        || !newsAnnouncementEligible(item, today, 'Europe/Moscow')) throw Error('bounded_capture_invalid');
+      return item;
+    });
+  } else store = await reconciliationStore(store);
   const result = { expectedThisSnapshot: 0, newAdmissions: 0, historyGap: true, keys: [], preparationFailures: [] };
-  for (const item of feed.items) {
+  for (const item of items) {
     const revision = await newsSemanticRevision(item);
     const admissionKey = `admission:news:${encodeURIComponent(item.id)}`;
     let firstAdmission = false;
@@ -322,6 +339,8 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
       result.expectedThisSnapshot++; result.keys.push(key);
     }
   }
+  // A bounded capture cannot infer absence, repair archives, apply withdrawals or scan historical journals.
+  if (boundedCaptureIds !== undefined) return { ...result, restoredMissingJobs: 0, heldArchivedMediaJobs: 0 };
   // Repair a crash between durable admission and per-destination job creation,
   // including items that have since expired from the current projection.
   let restoredMissingJobs = 0, heldArchivedMediaJobs = 0;

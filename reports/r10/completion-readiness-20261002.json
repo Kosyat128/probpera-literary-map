@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-01T23:05:28.000Z",
+  "checkedAt": "2026-10-02T00:32:50.122Z",
   "userAuthorizedMainMergeAndActivation": true,
   "phase": "locally_integrated_remote_release_pending",
   "news": {
@@ -80,7 +80,8 @@
       10,
       15
     ],
-    "archivalBatchSend": false
+    "archivalBatchSend": false,
+    "hourlyNativeAdmissionCapture": true
   },
   "postFormat": {
     "sourceLinkFirst": true,
@@ -110,11 +111,17 @@
     "runtimePostgresCases": 11,
     "lintPassed": true,
     "fullSuite": {
-      "passed": 4354,
+      "passed": 4379,
       "failed": 0,
       "skipped": 11,
-      "testFiles": 659
+      "testFiles": 660
     },
-    "focusedBrowserLimitation": "Both desktop and mobile assertions passed; owned Windows preview wrappers required cleanup after teardown hung. Full remote browser checks remain pending."
+    "focusedBrowserLimitation": "Both desktop and mobile assertions passed; owned Windows preview wrappers required cleanup after teardown hung. Full remote browser checks remain pending.",
+    "nativeHourlyCapture": {
+      "focusedPassed": 95,
+      "newCases": 25,
+      "deliveryBundlePassed": true,
+      "evidence": "reports/r10/qa/native-hourly-admissions-20261002.json"
+    }
   }
 }

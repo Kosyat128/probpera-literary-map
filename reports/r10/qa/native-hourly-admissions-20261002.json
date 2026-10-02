@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T00:32:50.122Z",
+  "scope": "Native hourly fresh admissions and existing paced Telegram dispatch; no production activation claim",
+  "previousGap": "Native preparation published the feed, while Telegram admissions depended on a GitHub workflow scheduled only three times per day.",
+  "fix": {
+    "fixedPublicFeedOnly": true,
+    "completeSnapshotDigestAndReleaseHeaderVerified": true,
+    "freshPublicationDays": 7,
+    "maximumAdmissionItems": 24,
+    "hourlyNativeCapture": true,
+    "existingCASAndPacing": true,
+    "journalListCalls": 0,
+    "archiveAndGlobalHistoryWrites": 0,
+    "currentPublicIdentityAndRevisionRequiredForCreates": true,
+    "remoteCorrectionIdentityPreserved": true,
+    "textFallbackAllowed": true,
+    "quotaFailStop": true
+  },
+  "validation": {
+    "focusedPassed": 95,
+    "newCases": 25,
+    "syntaxPassed": true,
+    "shortHyphenPassed": true,
+    "lintPassed": true,
+    "deliveryWranglerDryRunPassed": true,
+    "workerKiB": 1557.02,
+    "workerGzipKiB": 253.56,
+    "fullSuite": {
+      "passed": 4379,
+      "failed": 0,
+      "skipped": 11,
+      "testFiles": 660
+    },
+    "priorAttempt": "Windows Git rejected the checkout owner; the complete rerun sets safe.directory only for this exact repository."
+  },
+  "files": [
+    {
+      "path": "scripts/lib/literary-news-native-admissions.mjs",
+      "sha256": "85015e00a0e0ba10143efd1cf6d3323c4aaeb5fbe694fe7ff764c46f97c97566"
+    },
+    {
+      "path": "scripts/lib/literary-news-social.mjs",
+      "sha256": "13263a1a7f265cba9e4b14baa44ce39ba22b747e0931178f69a651cd03ad3b1b"
+    },
+    {
+      "path": "scripts/workers/literary-news-delivery-worker.mjs",
+      "sha256": "0ae345a2285547adac8870b3a37b9e788a0448b8e92ec289269f82b5fc90c619"
+    },
+    {
+      "path": "scripts/workers/literary-news-delivery-worker.test.mjs",
+      "sha256": "05f4345a08c00bc7e72e0d57d819ec614fabd28a6f8a99d01de1c0f1584cb8b9"
+    },
+    {
+      "path": "scripts/workers/literary-news-delivery-admissions.test.mjs",
+      "sha256": "5617ff4d78fad95a5299ac415e4036196160cddad5d8db55084d3e64881ebde9"
+    }
+  ],
+  "productionApplied": false,
+  "actualNativeReceipt": false
+}

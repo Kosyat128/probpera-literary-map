@@ -2,7 +2,8 @@ import { Buffer } from 'node:buffer';
 import { randomUUID } from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 import configuration from '../../data/news/social-destinations.json' with { type: 'json' };
-import { createNewsRuntimeStore, dispatchNewsBatch, newsPostKey,scheduleNewsJobs } from '../lib/literary-news-social.mjs';
+import { createNewsRuntimeStore, dispatchNewsBatch, newsPostKey,reconcileNewsSnapshot,scheduleNewsJobs } from '../lib/literary-news-social.mjs';
+import { currentNativeNewsDueRows, fetchNativeNewsAdmissionFeed, selectNativeNewsAdmissionIds } from '../lib/literary-news-native-admissions.mjs';
 import { fallbackUnsentNewsPhoto } from '../lib/literary-news-text-fallback.mjs';
 import { createNewsSocialTransport } from '../lib/literary-news-social-transport-core.mjs';
 import { newsDeliveryPacingKey } from '../lib/literary-news-pacing.mjs';
@@ -20,7 +21,9 @@ const fail = code => { throw Error(code); };
 const safeCodes = new Set(['runtime_quota_exceeded','runtime_due_rpc_required','runtime_day_status_rpc_required',
   'runtime_due_response_invalid','runtime_day_status_invalid','delivery_media_index_invalid','delivery_media_index_unavailable',
   'delivery_credentials_missing','delivery_supabase_origin_invalid','delivery_network_rejected','delivery_response_too_large',
-  'delivery_request_timeout','delivery_registry_binding_missing','delivery_runtime_failed']);
+  'delivery_request_timeout','delivery_registry_binding_missing','delivery_runtime_failed',
+  'delivery_public_feed_invalid','delivery_public_feed_unavailable','delivery_public_feed_origin_invalid',
+  'delivery_public_feed_too_large','delivery_public_feed_release_mismatch','delivery_public_feed_not_current','bounded_capture_invalid']);
 const safeCode = error => safeCodes.has(error?.message) ? error.message : 'delivery_runtime_failed';
 
 export async function boundedDeliveryResponse(response, maximum = 2 * 1024 * 1024) {
@@ -110,7 +113,7 @@ async function readMediaOptions(binding,current) {
 }
 
 export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,createClientImpl=createClient,
-  storeFactory=createNewsRuntimeStore,dispatchImpl=dispatchNewsBatch}={}) {
+  storeFactory=createNewsRuntimeStore,dispatchImpl=dispatchNewsBatch,fetchFeedImpl=fetchNativeNewsAdmissionFeed}={}) {
   const current=now(),runId=randomUUID(),base={runner:'native-cron',runId,startedAt:current.toISOString()};
   if(env?.NEWS_DELIVERY_ENABLED!=='true')return {...base,status:'disabled',deliveredThisRun:0};
   if(current.getTime()<Date.parse(DELIVERY_WINDOW.start)||current.getTime()>=Date.parse(DELIVERY_WINDOW.end))
@@ -129,14 +132,22 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
     // Prove that the metrics prerequisite exists before any external provider write.
     let dayStatus=checkedDeliveryDayStatus(await requiredRpc(client,'literary_news_delivery_day_status',
       {p_destination_id:destination.id,p_now:current.toISOString()}),current);
-    const rawDue=await requiredRpc(client,'read_due_literary_news_runtime_posts',
+    let rawDue=await requiredRpc(client,'read_due_literary_news_runtime_posts',
       {p_destination_id:destination.id,p_now:current.toISOString(),p_limit:20});
-    const candidates=checkedDeliveryDueRows(rawDue,destination,current);
+    let candidates=checkedDeliveryDueRows(rawDue,destination,current);
+    const feed=await fetchFeedImpl({fetchImpl,current}),captureIds=selectNativeNewsAdmissionIds(feed,current);
     let mediaOptions={registry:{assets:[]},now:current,deferBytes:true},mediaIndexUnavailable=false;
-    if(candidates.some(row=>row.state.prepared?.media)){
+    if(captureIds.length||candidates.some(row=>row.state.prepared?.media)){
       try{mediaOptions=await readMediaOptions(env.NEWS_STATE,current);}
       catch(error){if(error.message!=='delivery_media_index_unavailable')throw error;mediaIndexUnavailable=true;}
     }
+    const capture=await reconcileNewsSnapshot(store,feed,[destination],current,{mediaOptions,boundedCaptureIds:captureIds});
+    if(captureIds.length){
+      rawDue=await requiredRpc(client,'read_due_literary_news_runtime_posts',
+        {p_destination_id:destination.id,p_now:current.toISOString(),p_limit:20});
+      candidates=checkedDeliveryDueRows(rawDue,destination,current);
+    }
+    candidates=await currentNativeNewsDueRows(candidates,feed);
     const pacing=(await store.read(newsDeliveryPacingKey(destination))).state;
     const selected=[];let mediaUnavailable=0,textFallbacks=0;
     const rowsByKey=new Map(candidates.map(row=>[row.key,row]));
@@ -172,6 +183,7 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
     const summary={...base,finishedAt:now().toISOString(),status:outcomes.some(row=>row.status==='ambiguous')?'dispatch_reconciliation_required'
         :dayStatus.deficitToMinimum?'daily_target_deficit':'daily_minimum_reached',
       inspectedJobs:rawDue.length,eligibleJobs:candidates.length,selectedJobs:selected.length,mediaUnavailable,textFallbacks,
+      capturedCandidates:captureIds.length,newAdmissions:capture.newAdmissions,
       deliveredThisRun:outcomes.filter(row=>row.status==='sent_current'&&row.dispatchAttempted).length,
       ambiguousThisRun:outcomes.filter(row=>row.status==='ambiguous').length,dayStatus};
     const heartbeat=await store.read('heartbeat:native-delivery');
