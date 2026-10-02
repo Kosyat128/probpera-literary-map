@@ -59,6 +59,8 @@ export interface ChildMediaOptions {
 }
 export interface ChildMediaDelivery {
   readonly scope: ChildDataScope; readonly asset: ChildMediaAsset; readonly bytes: Uint8Array;
+  /** Actual loader review/manifest/context intersection, never fresh authority. */
+  readonly validUntilEpochMs: number;
 }
 const epoch = (value: unknown): value is number => typeof value === "number" && Number.isSafeInteger(value)
   && value >= 0 && value <= 8_640_000_000_000_000;
@@ -262,7 +264,7 @@ export function createChildMediaLoader(options: ChildMediaOptions) {
         || !row.payload.references.some(reference => sameReference(reference, asset.entity))
         || !policyCurrent(row, operation.context, deliveryAt) || !policyCurrent(media, operation.context, deliveryAt)
         || !current(operation)) return;
-      const value: ChildMediaDelivery = Object.freeze({ scope: operation.context.scope, asset, bytes: bytes.slice() });
+      const value: ChildMediaDelivery = Object.freeze({ scope: operation.context.scope, asset, bytes: bytes.slice(), validUntilEpochMs: validUntil });
       const completion: unknown = visitor(value);
       if (completion !== undefined) { void Promise.resolve(completion).catch(() => {}); return; }
       delivered = request.isCurrent();

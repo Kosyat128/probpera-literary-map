@@ -90,6 +90,13 @@ function fixture(locale: "ru" | "en" = "ru", narration = false) {
 afterEach(() => vi.useRealTimers());
 
 describe("child media manifest and exact local inventory", () => {
+  it("reports the actual intersected media review expiry without extending the first bound", async () => {
+    const f = fixture(); await f.admit();
+    f.review.verify.mockImplementationOnce(async challenge => ({ status: "verified", challenge, validUntilEpochMs: initialTime + 20 }));
+    f.review.verify.mockImplementationOnce(async challenge => ({ status: "verified", challenge, validUntilEpochMs: initialTime + 40 }));
+    const visitor = vi.fn(); expect(await f.visit(visitor)).toBe(true);
+    expect(visitor.mock.calls[0][0].validUntilEpochMs).toBe(initialTime + 20);
+  });
   it.each(["ru", "en"] as const)("hands off exact %s PNG bytes through the actual compiled active child index", async locale => {
     const f = fixture(locale); await f.admit(); const visitor = vi.fn(); expect(await f.visit(visitor)).toBe(true);
     const value: ChildMediaDelivery = visitor.mock.calls[0][0]; expect(value.scope.locale).toBe(locale);
