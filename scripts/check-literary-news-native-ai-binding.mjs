@@ -15,9 +15,20 @@ export async function buildNativeAiProbeWorker() {
 // OAuth, .env, .dev.vars, production config, or publication binding is read.
 export async function startNativeAiProbeSession(auth, { fetchImpl = fetch,
   loadWrangler = () => import('wrangler') } = {}) {
-  const response = await fetchImpl(`https://api.cloudflare.com/client/v4/accounts/${auth.accountId}/workers/subdomain`, {
+  if (typeof auth?.accountId !== 'string' || !/^[a-f0-9]{32}$/i.test(auth.accountId)
+    || typeof auth.apiToken !== 'string' || !auth.apiToken || auth.apiToken.trim() !== auth.apiToken
+    || /[\r\n]/.test(auth.apiToken)) fail('native_ai_probe_intended_credentials_missing');
+  const target = new URL('https://api.cloudflare.com');
+  target.pathname = `/client/v4/accounts/${auth.accountId}/workers/subdomain`;
+  if (target.hostname !== 'api.cloudflare.com' || target.origin !== 'https://api.cloudflare.com'
+    || target.protocol !== 'https:' || target.port || target.username || target.password || target.search || target.hash)
+    fail('native_ai_probe_endpoint_rejected');
+  const response = await fetchImpl(target.href, { method: 'GET',
     headers: { Authorization: `Bearer ${auth.apiToken}` }, redirect: 'error', signal: AbortSignal.timeout(10000) });
-  if (!response.ok) fail('native_ai_probe_existing_subdomain_unconfirmed');
+  if (!response.ok) {
+    await response.body?.cancel().catch(() => {});
+    fail('native_ai_probe_existing_subdomain_unconfirmed');
+  }
   if (!response.body || typeof response.body.getReader !== 'function') fail('native_ai_probe_existing_subdomain_unconfirmed');
   const reader = response.body.getReader(), decoder = new TextDecoder();
   let size = 0, raw = '';

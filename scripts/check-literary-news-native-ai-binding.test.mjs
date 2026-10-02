@@ -36,10 +36,18 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     await startNativeAiProbeSession(credentials, { fetchImpl, loadWrangler });
     expect(fetchImpl).toHaveBeenCalledTimes(1);
     expect(fetchImpl.mock.calls[0][0]).toBe(`https://api.cloudflare.com/client/v4/accounts/${credentials.accountId}/workers/subdomain`);
-    expect(fetchImpl.mock.calls[0][1]).toMatchObject({ redirect: 'error', headers: { Authorization: `Bearer ${credentials.apiToken}` } });
+    expect(fetchImpl.mock.calls[0][1]).toMatchObject({ method: 'GET', redirect: 'error', headers: { Authorization: `Bearer ${credentials.apiToken}` } });
     expect(startRemoteProxySession).toHaveBeenCalledExactlyOnceWith({ AI: { type: 'ai', remote: true } }, {
       workerName: 'probpera-native-news-ai-binding-proof',
       auth: {accountId: credentials.accountId, apiToken: {apiToken: credentials.apiToken}} });
+  });
+  it.each(['https://untrusted.example', `${'a'.repeat(32)}/../../scripts`, `${'a'.repeat(32)}?override=1`,
+    `${'a'.repeat(32)}%2f..`, `${'a'.repeat(32)}#fragment`, 'a'.repeat(31)])
+  ('rejects account path injection at the session boundary before any request %s', async accountId => {
+    const fetchImpl = vi.fn(), loadWrangler = vi.fn();
+    await expect(startNativeAiProbeSession({ ...credentials, accountId }, { fetchImpl, loadWrangler }))
+      .rejects.toThrow('native_ai_probe_intended_credentials_missing');
+    expect(fetchImpl).not.toHaveBeenCalled(); expect(loadWrangler).not.toHaveBeenCalled();
   });
   it.each([
     { status: 401, body: { success: false, errors: [{ code: 10000 }] } },
