@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "sourceCommit": "861127cd8df5be8dcd226502219d0bf68b30bb33",
+  "buildId": "b9c0a6a2206eec542328b87c7c50d6a6f5b0b06653da5a6c70bfb900594bb333",
+  "buildInvocations": 1,
+  "producer": "startPwaQaServer({buildQa:true})",
+  "sameLiveAuthority": true,
+  "privateKeyPersisted": false,
+  "releaseReady": false
+}

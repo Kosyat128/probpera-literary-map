@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "decision": "D268",
+  "sourceCommit": "4d13faac42618c0a399daa3b967e0d19fa760c2c",
+  "featureSourceCommit": "373d0ec92641faccd2c3fef494eb14b1fcc4cb4f",
+  "initialAttemptSourceCommit": "861127cd8df5be8dcd226502219d0bf68b30bb33",
+  "sourceOnlyTestAppend": false,
+  "sizeFeatureUnchanged": true,
+  "pwaNoticePlacementFix": true,
+  "files": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "beforeSha256": "b75661b835ffdd295a13cb8119cb46dfd77b3fee22311d95b21b61dcda7cf949",
+      "afterSha256": "c67ee7dd8adb1a49041e3fccbc8283b17d1a1afc70427c5f4bdf549db0d2597f"
+    },
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "beforeSha256": "ba9a5fbecc4a830b3f4dfa29f304c62a42e4b8e7077c34a9067d2e199c50d6af",
+      "afterSha256": "ae759ca67eeed6aed33344c7a57777ae0b7ea29de8f2a5b570b17057798fb675"
+    }
+  ],
+  "testsPending": true,
+  "qualification": "Initial offline case reached cached authorized globe but timed out with hidden Booky return control behind the status layer. Existing native-app obstacle measurement now includes the actual product notice host; unchanged finite placement handles expanded/collapsed notice bounds without raising layers or changing canonical globe. Default action timeout now yields a bounded call log; overall test timeout unchanged. Follow-up runtime and actual captures remain pending."
+}

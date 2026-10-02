@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "decision": "D268",
+  "sourceCommit": "861127cd8df5be8dcd226502219d0bf68b30bb33",
+  "featureSourceCommit": "373d0ec92641faccd2c3fef494eb14b1fcc4cb4f",
+  "owner": "tests/pwa/controlled-pwa.spec.mjs",
+  "originalSha256": "75f1ac6660f7fd73a92ee5bf7e1279a906fb09353ad7c76b94f7237d9da3374b",
+  "proposalSha256": "8e98cf519a06c3a7092ccb6094616853971651822087344f7b35cb8aedb47ae7",
+  "sourceSha256": "ba9a5fbecc4a830b3f4dfa29f304c62a42e4b8e7077c34a9067d2e199c50d6af",
+  "existingSourceBytePrefixUnchanged": true,
+  "sourceOnlyTestAppend": true,
+  "testsPending": true,
+  "rootStaticReview": "Full case and existing helpers read. Actual controls, strict Web localStorage, closed persistent context, offline before navigation, fresh scene identity scoped to reopened document, same verified executable and exact owned profile cleanup.",
+  "helpers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\producer.mjs",
+      "sha256": "e4800b28c018d745489b7459b0be4158b5a6e8bc11e84d429f461e5fc9cd7869"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\pwa.config.mjs",
+      "sha256": "a269ed2b9568fd7560d72566cbbd12b33bc79b3e73af3f38aaea9aef056d2c60"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\launch.mjs",
+      "sha256": "ee907e8d107a207b988ff76432a874254d7270d624cf173ac20abd381c48e085"
+    }
+  ],
+  "additional": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459"
+    },
+    {
+      "path": "node_modules/@playwright/test/package.json",
+      "sha256": "be51f784a5742a1aa075e0173f5f04f189a791cc30c40e3bb18be584f696764e"
+    },
+    {
+      "path": "node_modules/vite/package.json",
+      "sha256": "e5ed0f85215f871fe22a48987dcd77fcfbe14064a53c0c9f7f48186a6b7e2cf0"
+    },
+    {
+      "path": "node_modules/esbuild/package.json",
+      "sha256": "9d0bc453f4e791553c4cc2298ba023b409241fd9801e494741666eb0f6051490"
+    }
+  ],
+  "scope": "One current QA compilation, strict audit and one real Web-port persistent offline restart case. No TypeScript/unit/native/old rollback reruns, packaging, production provider or OS installation."
+}

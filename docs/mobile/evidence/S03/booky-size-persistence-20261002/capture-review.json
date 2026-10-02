@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "4d13faac42618c0a399daa3b967e0d19fa760c2c",
+  "featureSourceCommit": "373d0ec92641faccd2c3fef494eb14b1fcc4cb4f",
+  "reviewer": "ROOT direct actual image inspection",
+  "d267CaptureCount": 4,
+  "d268CaptureCount": 3,
+  "fullVisualAcceptance": false,
+  "viewport": "390x844 touch, reduced motion",
+  "native": {
+    "reviewed": true,
+    "scope": "Actual Android-port browser fixture; native preference storage is Node-owned simulation, not OS storage.",
+    "observations": "Unknown-preference notice and44px retry fit the compact options; explicit Normal recovery and restored Large RU/EN remain selected without a success notice. Large80px3D avatar, controls and country header remain within this viewport; final actual Hide returns to the compact dock. Four actual screenshots inspected before PWA work.",
+    "captures": [
+      {
+        "name": "booky-size-unknown-preference-ru.png",
+        "sha256": "25139f6a185d5b3050e7b0e125548aa9a6be3eda35f36e418af78095a819d191"
+      },
+      {
+        "name": "booky-size-restored-large-ru.png",
+        "sha256": "9ff598e6b77ad4651c687cfb4866985cc28bfcda3ebe953bd650fc51694659e2"
+      },
+      {
+        "name": "booky-size-restored-large-en.png",
+        "sha256": "0e2adda2955838bb8f2b67f83d16142808e73071b3bc8071fa114cd5f848f83d"
+      },
+      {
+        "name": "native-final-passed.png",
+        "sha256": "75f075637c88390d8fce2adc668990791172c8d88f80217ca17ff3c433543f91"
+      }
+    ]
+  },
+  "pwa": {
+    "reviewed": true,
+    "scope": "Actual final controlled PWA build7b3e7084 in an owned persistent Edge profile; one full offline browser restart, not OS installation.",
+    "observations": "Warm Large and restored offline RU/EN show the selected Large button, live3D companion and compact actions without clipping. In offline frames Booky and its actions move above the country header and the separate collapsed offline card. Header flags/menu/scene remain intact; no extra success status clutters the size selector. Walk is intentionally disabled by the fixture's reduced-motion setting. Automated real center-hit and taps additionally verify the return control is reachable before showing the companion.",
+    "captures": [
+      {
+        "name": "pwa-booky-size-large-before-close.png",
+        "sha256": "bc76b972989be2f7904b035c8eb6b156ed81b4567cd8fb7dd1f5fafd2df02856"
+      },
+      {
+        "name": "pwa-booky-size-restored-large-ru.png",
+        "sha256": "abd1f8aec49cded94bc7c1993868f666eed9b1f070a27c71af3c0b64fd7544c5"
+      },
+      {
+        "name": "pwa-booky-size-restored-large-en.png",
+        "sha256": "318aeada0ac886ff4d6111324c56f1b7608a2872a081437c43800f14ea20a9a8"
+      }
+    ]
+  },
+  "initialFailure": {
+    "sourceCommit": "861127cd8df5be8dcd226502219d0bf68b30bb33",
+    "directlyReviewedFailureScreenshots": 2,
+    "observations": "Actual cold globe displays Offline and Access verified earlier. Hidden return control exists in the accessibility snapshot but is absent visually under the higher offline status layer. This bounded evidence and the missing notice obstacle motivated the one-line placement fix; the initial timeout is retained and never relabeled PASS. The separate offline-only diagnostic's300s QA grant had expired and it establishes no successful app behavior."
+  },
+  "stageAccepted": false,
+  "releaseReady": false,
+  "recordedAt": "2026-10-02T15:11:36.583Z",
+  "captures": [
+    {
+      "run": "D267",
+      "name": "booky-size-restored-large-en.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\booky-size-d267-a1\\artifacts\\native-planet-Booky-compan-8865a-reference-port-after-reload\\booky-size-restored-large-en.png",
+      "sha256": "0e2adda2955838bb8f2b67f83d16142808e73071b3bc8071fa114cd5f848f83d"
+    },
+    {
+      "run": "D267",
+      "name": "booky-size-restored-large-ru.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\booky-size-d267-a1\\artifacts\\native-planet-Booky-compan-8865a-reference-port-after-reload\\booky-size-restored-large-ru.png",
+      "sha256": "9ff598e6b77ad4651c687cfb4866985cc28bfcda3ebe953bd650fc51694659e2"
+    },
+    {
+      "run": "D267",
+      "name": "booky-size-unknown-preference-ru.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\booky-size-d267-a1\\artifacts\\native-planet-Booky-compan-8865a-reference-port-after-reload\\booky-size-unknown-preference-ru.png",
+      "sha256": "25139f6a185d5b3050e7b0e125548aa9a6be3eda35f36e418af78095a819d191"
+    },
+    {
+      "run": "D267",
+      "name": "native-final-passed.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\booky-size-d267-a1\\artifacts\\native-planet-Booky-compan-8865a-reference-port-after-reload\\native-final-passed.png",
+      "sha256": "75f075637c88390d8fce2adc668990791172c8d88f80217ca17ff3c433543f91"
+    },
+    {
+      "run": "D268",
+      "name": "pwa-booky-size-large-before-close.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\pwa-booky-size-large-before-close.png",
+      "sha256": "bc76b972989be2f7904b035c8eb6b156ed81b4567cd8fb7dd1f5fafd2df02856"
+    },
+    {
+      "run": "D268",
+      "name": "pwa-booky-size-restored-large-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\pwa-booky-size-restored-large-ru.png",
+      "sha256": "abd1f8aec49cded94bc7c1993868f666eed9b1f070a27c71af3c0b64fd7544c5"
+    },
+    {
+      "run": "D268",
+      "name": "pwa-booky-size-restored-large-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\pwa-booky-size-restored-large-en.png",
+      "sha256": "318aeada0ac886ff4d6111324c56f1b7608a2872a081437c43800f14ea20a9a8"
+    }
+  ],
+  "rawCapturesReviewed": {
+    "d267": false,
+    "d268": false
+  },
+  "qualification": "Separate ROOT review of actual captures, original producer flags untouched. Focused390x844 rendering and one current browser/profile do not establish other devices, OS-installed/native storage, complete animation/visual or stage/release acceptance."
+}

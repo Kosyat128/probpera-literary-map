@@ -1,0 +1,40 @@
+{
+  "base": "66012ebc6ba9b90278d744c6cae5277dd7f60b31",
+  "files": [
+    {
+      "path": "src/App.tsx",
+      "beforeSha256": "1b1a4f22ee3c5bdf6c19e5f4c4d0d1514947d380917af177bf8a65b547e2d5a7",
+      "afterSha256": "105eaa265de9967a1ebf82062b8734f62225cadaf31afe9bc5cf924fa342d72c"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "beforeSha256": "06f36a530feda776071038ec8c18524990811faa52e3fe7e7c4da2f16fbdd858",
+      "afterSha256": "b75661b835ffdd295a13cb8119cb46dfd77b3fee22311d95b21b61dcda7cf949"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "beforeSha256": "b64e161b91d6c7e8ed403324a50da8c60969f7cc52d03196873c4de715424a8f",
+      "afterSha256": "ad1763da617e252ce83d9a9ad96ac9694afe6a608269fe9634ff3bb0db2fe840"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "beforeSha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86",
+      "afterSha256": "488a4ddc2b3116c724987e132f0fe1c3482ffa7a4c1dbc7d4487c5777b1ae267"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "beforeSha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9",
+      "afterSha256": "94c313fbed2e78701b22f57fa53c13bbc9f3b36c5204255b59eda2d2209c72ba"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "beforeSha256": "aebaa2d5775cb8d7613b66e9e36cfa2df30607cdb0b33c5555acf4ce716f124a",
+      "afterSha256": "9edf887504458bf66d269813decb3a01a25801908cf7355f78bffcb9f9675f33"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "beforeSha256": "271c6a7c0f019a37a2ec519f9b2b866624f81e183876962dd23f1709c28c8717",
+      "afterSha256": "df31fa983450cdbfa059049a2890fec7676fa0fd88e0400e7007afc6f91910c4"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] [s03-d268-msedge-390] › tests\pwa\controlled-pwa.spec.mjs:1438:1 › saved Booky size survives a full persistent browser restart offline through the real Web preference port
+  1) [s03-d268-msedge-390] › tests\pwa\controlled-pwa.spec.mjs:1438:1 › saved Booky size survives a full persistent browser restart offline through the real Web preference port 
+
+    Test timeout of 180000ms exceeded.
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s03-booky-size-offline-d268\runtime\actual-a1\browser\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s03-booky-size-offline-d268\runtime\actual-a1\browser\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s03-booky-size-offline-d268\runtime\actual-a1\browser\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\error-context.md
+
+
+  1 failed
+    [s03-d268-msedge-390] › tests\pwa\controlled-pwa.spec.mjs:1438:1 › saved Booky size survives a full persistent browser restart offline through the real Web preference port 

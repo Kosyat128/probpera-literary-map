@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "kind": "booky-size-native-reload-focused-case-proposal",
+  "status": "frozen-not-executed",
+  "baseCommit": "66012ebc6ba9b90278d744c6cae5277dd7f60b31",
+  "appendOwner": "tests/host/native-planet.spec.mjs",
+  "originalOwnerSha256": "2367a9817600befe4091391a17446e59d11593a31db828943eb8e10abaed3cd6",
+  "caseFile": "native-size-case.txt",
+  "caseSha256": "cfe4f75c10d27b770b8af219db30c378c6185cfae0c90bce3b9d836a4d02df86",
+  "caseTitle": "Booky companion size restores from the native preference port after reload",
+  "expectedSelectedCases": 1,
+  "appendOnly": true,
+  "existingCasesAndHelpersChanged": false,
+  "config": {
+    "path": "playwright.native-planet.config.mjs",
+    "sha256": "17783f4e8371239c1e1a81478bf3b7dfb9e63b0bc58272c19529abf077e38087",
+    "grep": "Booky companion size restores from the native preference port after reload$",
+    "runId": "ROOT supplies a fresh NATIVE_PLANET_RUN_ID"
+  },
+  "reusedHelpers": ["open", "nativeRootReady", "captureScene", "retained", "nativeLanguage", "browserFrames"],
+  "fixture": {
+    "viewport": {"width": 390, "height": 844},
+    "hasTouch": true,
+    "isMobile": true,
+    "reducedMotion": "reduce",
+    "storage": "Existing Node-owned preferenceMemory Map and page.exposeBinding, forwarded by the real Android adapter. No direct preference mutation or reseeding after reload.",
+    "initialSizePreference": "future-size",
+    "route": "/?country=russia#atlas"
+  },
+  "productContract": {
+    "sizeKey": "probpera-booky-size-v1",
+    "storedValue": "large",
+    "restoredAvatarWidth": "80px",
+    "statusSelector": "[data-booky-size-state]",
+    "readFailure": {"data-booky-size-state": "failed", "data-booky-size-error": "read"},
+    "retrySelector": "[data-booky-size-retry]",
+    "successfulState": "ready",
+    "statusQualification": "The ready status paragraph is attached but empty; do not require :visible or add success text.",
+    "visibilityKey": "probpera-booky-adult-v1"
+  },
+  "proof": [
+    "Seed future-size through the existing preferences option, require a read failure and the genuine RU notice, preserve raw bytes and forbid automatic size-key writes; capture the actual 44px retry control.",
+    "Tap the real retry, observe a fresh port get and unchanged future-size/no writes; explicitly choose the already-selected Normal to repair the record and confirm stored normal/ready.",
+    "Choose Large through genuine controls, confirm actual port set followed by get/readback and ready state.",
+    "Use real Hide and await saved existing visibility false before reload so unchanged nativeRootReady retains its one-document-canvas contract.",
+    "Reload on the same Page/preference port, wait for the real native root and capture a NEW scene baseline; do not compare objects or camera pose across documents.",
+    "Show Large in RU and EN, assert 80px, exactly one pressed size choice, ready state and retained stored value; take two restored screenshots in addition to the earlier read-failure screenshot.",
+    "Hide the decorative companion before retained(newScene), switch RU/EN/RU with real Menu controls and preserve country/hash and the same post-reload canonical globe."
+  ],
+  "primaryCaptures": ["booky-size-unknown-preference-ru.png", "booky-size-restored-large-ru.png", "booky-size-restored-large-en.png"],
+  "captureQualification": "Three intentional unique primary images plus the unchanged existing automatic afterEach final capture. Playwright attachment copies are duplicates and must not be counted as extra photographs.",
+  "runtimeFailureInjection": false,
+  "failureScope": "Unknown saved-value read failure and genuine read retry are covered using existing fixture preferences. Other read/write failures remain unit/port tests. No failure hook, Map monkeypatch or broader fixture option is added.",
+  "qualification": "Actual app source browser fixture with a simulated native preference port. No installed PWA/APK, physical OS-storage, cross-start device or full visual acceptance claim; scene identity is compared only within the reloaded document.",
+  "preparation": {"canonicalEdits": false, "testsRun": false, "buildsRun": false, "browserRun": false, "approvalsChanged": false, "acceptanceChanged": false}
+}

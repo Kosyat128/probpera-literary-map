@@ -1,0 +1,13 @@
+{
+  "rows": [
+    {
+      "phase": "diagnostic",
+      "failure": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#atlas .literary-globe[data-globe-webgl-context=\"ready\"]') to be visible\u001b[22m\n"
+    }
+  ],
+  "contextClosed": true,
+  "profileRetainedForExactOwnedCleanup": true,
+  "actualOsInstallation": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

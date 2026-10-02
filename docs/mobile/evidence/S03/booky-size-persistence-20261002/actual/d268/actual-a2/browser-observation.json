@@ -1,0 +1,81 @@
+{
+  "localQaOnly": true,
+  "browserChannel": "msedge",
+  "persistentLaunches": 2,
+  "restarts": 1,
+  "sameDisposableProfile": true,
+  "firstContextClosed": true,
+  "offlineBeforeFirstNavigation": true,
+  "preferenceKey": "probpera-booky-size-v1",
+  "documents": [
+    {
+      "phase": "reopened-offline",
+      "servedBuildId": "7b3e70842d18ab879d4445b64547e6552624bad231fb68814fb2f7a77a4ec471",
+      "freshDocumentAfterClosedBrowser": true
+    }
+  ],
+  "locales": [
+    {
+      "locale": "ru",
+      "storedSize": "large",
+      "confirmedSizeState": "ready",
+      "avatarWidth": 80,
+      "selectedCountry": "russia",
+      "savedVerification": true,
+      "sameSceneWithinReopenedDocument": true,
+      "canonicalGlobeCanvasCount": 1
+    },
+    {
+      "locale": "en",
+      "storedSize": "large",
+      "confirmedSizeState": "ready",
+      "avatarWidth": 80,
+      "selectedCountry": "russia",
+      "savedVerification": true,
+      "sameSceneWithinReopenedDocument": true,
+      "canonicalGlobeCanvasCount": 1
+    },
+    {
+      "locale": "ru",
+      "storedSize": "large",
+      "confirmedSizeState": "ready",
+      "avatarWidth": 80,
+      "selectedCountry": "russia",
+      "savedVerification": true,
+      "sameSceneWithinReopenedDocument": true,
+      "canonicalGlobeCanvasCount": 1
+    }
+  ],
+  "screenshots": [
+    "pwa-booky-size-large-before-close.png",
+    "pwa-booky-size-restored-large-ru.png",
+    "pwa-booky-size-restored-large-en.png"
+  ],
+  "capturesReviewed": false,
+  "profileRemoved": true,
+  "actualOsInstallation": false,
+  "realStorePurchase": false,
+  "productionProvider": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "completed": true,
+  "build": {
+    "buildId": "7b3e70842d18ab879d4445b64547e6552624bad231fb68814fb2f7a77a4ec471",
+    "manifestSha256": "000a3c0a8cf5c8f0b7bef4717f33d3cb463fbeccad3b889f0506684815004088",
+    "executablePath": "/planet/assets/ArticleLibrarySection-CCvi59zo.js",
+    "executable": {
+      "buildId": "7b3e70842d18ab879d4445b64547e6552624bad231fb68814fb2f7a77a4ec471",
+      "bytes": 11118,
+      "sha256": "d134180c4b8a78753f3b85ec39cf144e4f49aa2dd54a63d0a578999a363b63dc"
+    }
+  },
+  "beforeClose": {
+    "storedSize": "large",
+    "confirmedSizeState": "ready",
+    "chosenSize": "large",
+    "avatarWidth": 80,
+    "realWebPreferencePort": true
+  },
+  "offlineLicenseApiRequests": 0,
+  "blockedRequests": []
+}

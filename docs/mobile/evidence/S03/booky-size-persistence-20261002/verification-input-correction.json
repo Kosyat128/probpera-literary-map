@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "4d13faac42618c0a399daa3b967e0d19fa760c2c",
+  "initialVerificationPassed": false,
+  "finalVerificationPassed": true,
+  "verificationInvocations": 2,
+  "initialReport": "docs/mobile/evidence/S03/booky-size-persistence-20261002/verification.json",
+  "finalReport": "docs/mobile/evidence/S03/booky-size-persistence-20261002/verification-final.json",
+  "initialErrorCount": 34,
+  "legacyProof": {
+    "path": "docs/mobile/evidence/S00/requirements-verification.json",
+    "sha256": "03b2aafbced7b91b7ac8f9950af13504cd944c36cbf90d8df59b4c289d80e024",
+    "acceptedGitBlob": "2b8d6f717ddb0f70ce0577328b4fb7ef9f7beec7",
+    "withoutConversion": "746da702de3116cdbaa844ec94bbe290e9dc5591",
+    "withHistoricalConversion": "2b8d6f717ddb0f70ce0577328b4fb7ef9f7beec7"
+  },
+  "qualification": "First checkpoint helper incorrectly forced core.autocrlf=false for verification. Existing evidence.mjs uses git hash-object --path and requires historical Windows clean conversion; false made unchanged S00-S02 CRLF artifacts appear stale. A separate verification-only helper restores effective historical true, proves the exact accepted Git blob without rewriting the artifact, and retains both reports. Source/docs scoped commits still use per-command false to preserve mixed unchanged file bytes. No global/repository config change, historical evidence rewrite, acceptance/cache/approval modification, build or test rerun.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "decision": "D268",
+  "sourceCommit": "861127cd8df5be8dcd226502219d0bf68b30bb33",
+  "featureSourceCommit": "373d0ec92641faccd2c3fef494eb14b1fcc4cb4f",
+  "pass": false,
+  "buildInvocations": 1,
+  "browserInvocations": 1,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "actualOsInstallation": false,
+  "providerValidated": false,
+  "productionActionsPerformed": false,
+  "capturesReviewed": false,
+  "buildId": "b9c0a6a2206eec542328b87c7c50d6a6f5b0b06653da5a6c70bfb900594bb333",
+  "strictAuditPassed": true,
+  "failure": "AssertionError [ERR_ASSERTION]: browser\n\n1 !== 0\n\n    at command (file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-booky-size-offline-d268/runtime/producer.mjs:18:505)\n    at async file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-booky-size-offline-d268/runtime/producer.mjs:26:30",
+  "sourceBeforeAfterEqual": true,
+  "helpersAndWitnessesUnchanged": true,
+  "signerClosed": true
+}

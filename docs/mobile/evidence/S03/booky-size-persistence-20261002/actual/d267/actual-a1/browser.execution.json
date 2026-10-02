@@ -1,0 +1,15 @@
+{
+  "name": "browser",
+  "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "args": [
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "--config",
+    "playwright.native-planet.config.mjs",
+    "--grep",
+    "Booky companion size restores from the native preference port after reload$",
+    "--workers=1"
+  ],
+  "startedAt": "2026-10-02T14:30:50.279Z",
+  "exitCode": 0
+}

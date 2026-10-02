@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-02T15:11:36.583Z",
+  "sourceCommit": "4d13faac42618c0a399daa3b967e0d19fa760c2c",
+  "stage": "S03",
+  "status": "IN_PROGRESS",
+  "criteria": [
+    {
+      "id": "S03.acceptance",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": "S03.BIL-019",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.BIL-075",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.BIL-076",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.BIL-077",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.BIL-079",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.COMMERCE-001",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.COMMERCE-008",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.CONTENT-007",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.MOD-030",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.OMIN-023",
+      "status": "OPEN"
+    },
+    {
+      "id": "S03.PLATFORM-001",
+      "status": "OPEN"
+    }
+  ],
+  "review": "Current Booky size enhancement and real Web-port offline evidence are completed; original formal admission gates remain unchanged. No additional confirmed local gap is implied by this scoped checkpoint.",
+  "pending": [
+    {
+      "work": "Actual installed-PWA OS lifecycle",
+      "requires": "An isolated installation target; user already confirmed none is available.",
+      "localEvidence": "Disposable browser/profile restart verified; not OS installation."
+    },
+    {
+      "work": "PSP-specific programming and real purchase/refund/reconciliation",
+      "requires": "Chosen PSP and applicable contract/configuration/provider environment.",
+      "localEvidence": "Existing local fake/fixture cases do not establish provider acceptance."
+    },
+    {
+      "work": "Editorial/legal/indexability and retention/disclosure admission",
+      "requires": "Actual reviewed RU/EN materials and applicable legal/editorial decisions.",
+      "localEvidence": "Approval/status records preserved; no invented human approval."
+    },
+    {
+      "work": "Configured Auth/live deletion and remote staging/provider validation",
+      "requires": "Configured target/services and operation-specific authorization for remote mutations/deployment.",
+      "localEvidence": "Public unavailable guards and configured local fixtures remain separately qualified."
+    }
+  ],
+  "externalBlockerStatusChanged": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "featureSourceCommit": "373d0ec92641faccd2c3fef494eb14b1fcc4cb4f"
+}

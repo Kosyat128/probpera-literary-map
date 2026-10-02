@@ -1,0 +1,52 @@
+[
+  {
+    "path": "artifacts/.last-run.json",
+    "bytes": 45,
+    "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+  },
+  {
+    "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/attachments/booky-size-restored-large-en-2b90ae121f0a7c14a3cb63e14356619c76627580.png",
+    "bytes": 371058,
+    "sha256": "0e2adda2955838bb8f2b67f83d16142808e73071b3bc8071fa114cd5f848f83d"
+  },
+  {
+    "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/attachments/booky-size-restored-large-ru-279f929bb4caa923279c09e9d931d91e8999ed38.png",
+    "bytes": 373931,
+    "sha256": "9ff598e6b77ad4651c687cfb4866985cc28bfcda3ebe953bd650fc51694659e2"
+  },
+  {
+    "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/attachments/booky-size-unknown-preference-ru-1a609296824f8f2cd8cb7ace08cb6d0abda5afc6.png",
+    "bytes": 343213,
+    "sha256": "25139f6a185d5b3050e7b0e125548aa9a6be3eda35f36e418af78095a819d191"
+  },
+  {
+    "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/attachments/native-final-passed-screenshot-b49008236805b049c73b31673df0a074c415e404.png",
+    "bytes": 373451,
+    "sha256": "75f075637c88390d8fce2adc668990791172c8d88f80217ca17ff3c433543f91"
+  },
+  {
+    "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/booky-size-restored-large-en.png",
+    "bytes": 371058,
+    "sha256": "0e2adda2955838bb8f2b67f83d16142808e73071b3bc8071fa114cd5f848f83d"
+  },
+  {
+    "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/booky-size-restored-large-ru.png",
+    "bytes": 373931,
+    "sha256": "9ff598e6b77ad4651c687cfb4866985cc28bfcda3ebe953bd650fc51694659e2"
+  },
+  {
+    "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/booky-size-unknown-preference-ru.png",
+    "bytes": 343213,
+    "sha256": "25139f6a185d5b3050e7b0e125548aa9a6be3eda35f36e418af78095a819d191"
+  },
+  {
+    "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/native-final-passed.png",
+    "bytes": 373451,
+    "sha256": "75f075637c88390d8fce2adc668990791172c8d88f80217ca17ff3c433543f91"
+  },
+  {
+    "path": "results.json",
+    "bytes": 52974,
+    "sha256": "5856a03e78326913d4695f90eefaa89d26b09a7839c2af622c4299d4bb9a36cd"
+  }
+]

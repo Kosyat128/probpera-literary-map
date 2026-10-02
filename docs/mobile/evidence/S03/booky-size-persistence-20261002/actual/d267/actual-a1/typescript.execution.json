@@ -1,0 +1,12 @@
+{
+  "name": "typescript",
+  "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "args": [
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\typescript\\bin\\tsc",
+    "--noEmit",
+    "-p",
+    "tsconfig.json"
+  ],
+  "startedAt": "2026-10-02T14:30:26.599Z",
+  "exitCode": 0
+}

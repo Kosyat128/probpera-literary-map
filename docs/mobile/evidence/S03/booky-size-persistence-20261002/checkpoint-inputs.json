@@ -1,0 +1,31 @@
+{
+  "sourceCommit": "4d13faac42618c0a399daa3b967e0d19fa760c2c",
+  "featureSourceCommit": "373d0ec92641faccd2c3fef494eb14b1fcc4cb4f",
+  "globals": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "511bea21cf6f8dfc3058c424ca3f3031a4306f1f7315db17352957e3284bdc57"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "966c67932d8d8840580b2844895209602e1c4cda5438ee6df218976f5c132a51"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "3060f5359f1e585a052efa7e63fd7394b9eaf4e16ca368797c7fee303b326eb2"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "59440b7599472a533aa6e6ce149ecbfc171269631d35d0546d58d653564a60e7"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "2c840b71799ce28620eec64f273551ee5a157afa911699895f790dcffcc6adcd"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "296d776485a0e6a3990535d941e72783b54bef4553a0f99cc22607c18bd4719d"
+    }
+  ],
+  "previousNextAction": "D265/D266 local checkpoint is recorded. No additional confirmed local implementation/evidence gap was identified by the bounded current-stage review; do not manufacture new D stages or repeat passing builds/cases for documentation. S03.acceptance remains IN_PROGRESS and all11 routed criteria remain OPEN. Continue the actual pending admission gates when their necessary inputs exist: isolated OS installation target (user previously confirmed none), selected PSP contract/configuration and its required integration plus real purchase/refund/reconciliation, reviewed RU/EN editorial/legal/indexability and retention/disclosure inputs, configured Auth/live deletion processor, and separately authorized remote staging/provider validation. Do not infer OS installation, provider/editorial/legal/whole-stage/release acceptance from local browser/fixture evidence; preserve approvals/cache and original evidence identities."
+}

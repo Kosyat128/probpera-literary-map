@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "decision": "D267",
+  "sourceCommit": "373d0ec92641faccd2c3fef494eb14b1fcc4cb4f",
+  "pass": true,
+  "commands": [
+    {
+      "name": "units",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+        "run",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\units.config.mjs"
+      ],
+      "startedAt": "2026-10-02T14:30:26.617Z",
+      "exitCode": 0
+    },
+    {
+      "name": "typescript",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\typescript\\bin\\tsc",
+        "--noEmit",
+        "-p",
+        "tsconfig.json"
+      ],
+      "startedAt": "2026-10-02T14:30:26.599Z",
+      "exitCode": 0
+    },
+    {
+      "name": "browser",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "--config",
+        "playwright.native-planet.config.mjs",
+        "--grep",
+        "Booky companion size restores from the native preference port after reload$",
+        "--workers=1"
+      ],
+      "startedAt": "2026-10-02T14:30:50.279Z",
+      "exitCode": 0
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "actualOsInstallation": false,
+  "providerValidated": false,
+  "productionActionsPerformed": false,
+  "qualification": "New size persistence code; bounded source/native-port fixture plus controller/Web/native-port unit evidence. Native preference storage is Node-owned simulation through the actual Android adapter; not OS installation, installed PWA/APK, universal rendering or stage acceptance.",
+  "selectedUnitCases": 22,
+  "unselectedUnitCases": 217,
+  "browserResults": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\booky-size-d267-a1",
+  "browserCases": 1,
+  "captures": [
+    {
+      "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/booky-size-restored-large-en.png",
+      "bytes": 371058,
+      "sha256": "0e2adda2955838bb8f2b67f83d16142808e73071b3bc8071fa114cd5f848f83d"
+    },
+    {
+      "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/booky-size-restored-large-ru.png",
+      "bytes": 373931,
+      "sha256": "9ff598e6b77ad4651c687cfb4866985cc28bfcda3ebe953bd650fc51694659e2"
+    },
+    {
+      "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/booky-size-unknown-preference-ru.png",
+      "bytes": 343213,
+      "sha256": "25139f6a185d5b3050e7b0e125548aa9a6be3eda35f36e418af78095a819d191"
+    },
+    {
+      "path": "artifacts/native-planet-Booky-compan-8865a-reference-port-after-reload/native-final-passed.png",
+      "bytes": 373451,
+      "sha256": "75f075637c88390d8fce2adc668990791172c8d88f80217ca17ff3c433543f91"
+    }
+  ],
+  "capturesReviewed": false,
+  "sourceBeforeAfterEqual": true,
+  "checks": {
+    "typeScriptInvocations": 1,
+    "unitInvocations": 1,
+    "browserInvocations": 1,
+    "selectedUnitCases": 22,
+    "browserCases": 1
+  }
+}

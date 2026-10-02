@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "4d13faac42618c0a399daa3b967e0d19fa760c2c",
+  "rawLog": {
+    "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/browser.stdout.txt",
+    "sha256": "3338cad84ad7a204e9a414188e351fedca420675a6daeb821dc87056011b789c"
+  },
+  "reportedLines": [
+    7,
+    23
+  ],
+  "diagnostic": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/browser.stdout.txt:7: trailing whitespace.\n+  1) [s03-d268-msedge-390] › tests\\pwa\\controlled-pwa.spec.mjs:1438:1 › saved Booky size survives a full persistent browser restart offline through the real Web preference port \ndocs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/browser.stdout.txt:23: trailing whitespace.\n+    [s03-d268-msedge-390] › tests\\pwa\\controlled-pwa.spec.mjs:1438:1 › saved Booky size survives a full persistent browser restart offline through the real Web preference port",
+  "qualification": "Initial scoped commit preparation stopped on two trailing spaces emitted by the original failed Playwright list renderer. The raw hashed log is retained byte-for-byte. Only this exact raw evidence file is excluded from whitespace lint; the full remaining staged change passes git diff --cached --check. No source/style log normalization, global config change, test/build rerun or first-attempt commit occurred.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,967 @@
+{
+  "schemaVersion": 1,
+  "decision": "D268",
+  "relatedDecisions": [
+    "D267"
+  ],
+  "kind": "booky-size-persistence-offline-notice-placement-and-web-restart-checkpoint",
+  "sourceCommit": "4d13faac42618c0a399daa3b967e0d19fa760c2c",
+  "featureSourceCommit": "373d0ec92641faccd2c3fef494eb14b1fcc4cb4f",
+  "initialAttemptSourceCommit": "861127cd8df5be8dcd226502219d0bf68b30bb33",
+  "recordedAt": "2026-10-02T15:11:36.583Z",
+  "pass": true,
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "pwaBuildId": "7b3e70842d18ab879d4445b64547e6552624bad231fb68814fb2f7a77a4ec471",
+  "initialPwaBuildId": "b9c0a6a2206eec542328b87c7c50d6a6f5b0b06653da5a6c70bfb900594bb333",
+  "checks": {
+    "typeScriptInvocations": 1,
+    "selectedUnitCases": 22,
+    "unselectedUnitCases": 217,
+    "nativeFixtureCases": 1,
+    "pwaCompilations": 2,
+    "strictAudits": 2,
+    "persistentWebCaseInvocations": 2,
+    "failedPersistentWebCases": 1,
+    "passedPersistentWebCases": 1,
+    "boundedDiagnosticInvocations": 1,
+    "followupPersistentLaunches": 2,
+    "followupFullBrowserRestarts": 1,
+    "passedRunActualCaptures": 7,
+    "sourceBeforeAfterEqual": true,
+    "sizeControllerAndPortsUnchangedBetweenNativeAndFinalPwa": true,
+    "additionalProductChange": "One product notice host selector in measured Booky navigation obstacles; current PWA case proves actionable return control."
+  },
+  "qualification": "D267 source373d0ec9 adds durable Booky size through existing Web/native preference ports. Explicit choice fences late reads; ordered writes require exact durable read-back; failed reads/saves expose RU/EN retry, unknown values remain untouched until explicit choice, inactive late work cannot publish. One app TypeScript check,22 selected controller/Web/native-port unit cases and one390px Android-port browser fixture passed first runtime invocation;217 unrelated cases filtered, native OS storage is a Node-owned simulation. Four native frames directly reviewed. D268 initial source861127cd compiled/audited successfully but its new offline browser case timed out after reopening the authorized globe; failed report/images/source pins are retained. The actual offline status layer was absent from Booky navigation obstacles. Source4d13faac adds this one native-app notice selector to existing measured placement, without changing layers/globe/size-controller semantics, and adds bounded action timeout plus real center-hit proof for the return control. One necessary fresh follow-up QA compilation/audit and the same focused persistent case passed after that repair; prior passing TSC/units/native/public/rollback/package checks were not repeated. Real Large/ready/localStorage survives full close/reopen of the same owned profile offline before navigation; same COMPLETE generation and actual JS digest, saved QA access and RU/EN/RU retain one canonical scene within the reopened document. Follow-up has two launches/one restart, exact owned profile removed and signer closed; first timed-out profile separately removed after closed diagnostic whose300s offline grant had expired (no acceptance claimed). Three final PWA frames reviewed. Totals:2QA compilations/2audits/2case invocations (1failed,1passed),1bounded failed diagnostic,7passed-run captures reviewed separately from2failure screenshots. Historical pre-check testsPending/raw capturesReviewed:false retained. No OS installation/native OS-storage/provider/full visual/editorial/legal/stage/release acceptance.",
+  "preparation": {
+    "nativeReceiptTestsPending": true,
+    "initialPwaReceiptTestsPending": true,
+    "repairReceiptTestsPending": true,
+    "meaning": "Historical pre-check receipts retained; actual reports separately establish runs. Mixed EOL correction and one syntax repair of unexecuted external repair helper occurred before their source commit/runtime, not additional test/build runs."
+  },
+  "scope": {
+    "realWebPreferenceStorage": true,
+    "nativeOSStorageSimulated": true,
+    "localQaAccess": true,
+    "actualOsInstallation": false,
+    "providerValidated": false,
+    "fullVisualAcceptance": false,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "productionActionsPerformed": false
+  },
+  "evidence": [
+    {
+      "name": "d267/apply.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\apply.mjs",
+      "sha256": "cebb5ecab0dfb5cd9f9e4e2454411377fa37a0a973c5874ce3724e8473ac2a55",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/apply.mjs",
+        "sha256": "cebb5ecab0dfb5cd9f9e4e2454411377fa37a0a973c5874ce3724e8473ac2a55"
+      }
+    },
+    {
+      "name": "d267/prepare-integration.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\prepare-integration.mjs",
+      "sha256": "58bf758563ac2750657c7996bc05df1bac5e890526d825882323fa989a8376cd",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/prepare-integration.mjs",
+        "sha256": "58bf758563ac2750657c7996bc05df1bac5e890526d825882323fa989a8376cd"
+      }
+    },
+    {
+      "name": "d267/preserve-endings.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\preserve-endings.mjs",
+      "sha256": "0e7e58f912b069daf9157b0217e9eb6ec5bed8cab8e63f94ba8baaf54333ce45",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/preserve-endings.mjs",
+        "sha256": "0e7e58f912b069daf9157b0217e9eb6ec5bed8cab8e63f94ba8baaf54333ce45"
+      }
+    },
+    {
+      "name": "d267/prepare-integration-endings.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\prepare-integration-endings.mjs",
+      "sha256": "8d27a33def725889017a35ade78ccdcdaa64596c74ae054e55f874edc3b1a571",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/prepare-integration-endings.mjs",
+        "sha256": "8d27a33def725889017a35ade78ccdcdaa64596c74ae054e55f874edc3b1a571"
+      }
+    },
+    {
+      "name": "d267/finish-source.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\finish-source.mjs",
+      "sha256": "603bcd8a3073a81026e053c92fb0e1d356b5f3153112fbb615682c018a9d0bc9",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/finish-source.mjs",
+        "sha256": "603bcd8a3073a81026e053c92fb0e1d356b5f3153112fbb615682c018a9d0bc9"
+      }
+    },
+    {
+      "name": "d267/integration-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\integration-manifest.json",
+      "sha256": "31b411bd182c2e90a3ed9b3243f2f2af9151fa0d82bba788b98b9269d50f03e1",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/integration-manifest.json",
+        "sha256": "31b411bd182c2e90a3ed9b3243f2f2af9151fa0d82bba788b98b9269d50f03e1"
+      }
+    },
+    {
+      "name": "d267/integration-a2.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\integration-a2.json",
+      "sha256": "e58fb0d290c38b0e4ef484674da6310ac23e6de8f2b1fb9f5a2f0ce6c4476ddc",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/integration-a2.json",
+        "sha256": "e58fb0d290c38b0e4ef484674da6310ac23e6de8f2b1fb9f5a2f0ce6c4476ddc"
+      }
+    },
+    {
+      "name": "d267/proposal-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\proposal-manifest.json",
+      "sha256": "fc85fb4ebe0b3aa1056ff96e9e9482cec3cc8f4c0b97ab83f81ba222b8b42915",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/proposal-manifest.json",
+        "sha256": "fc85fb4ebe0b3aa1056ff96e9e9482cec3cc8f4c0b97ab83f81ba222b8b42915"
+      }
+    },
+    {
+      "name": "d267/review.md",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\review.md",
+      "sha256": "de94c1c60e8155bffc07ae80fd5c43c65d68dc98fd0b5a33662decfc05fef38d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/review.md",
+        "sha256": "de94c1c60e8155bffc07ae80fd5c43c65d68dc98fd0b5a33662decfc05fef38d"
+      }
+    },
+    {
+      "name": "d267/source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\source-commit.json",
+      "sha256": "660447e2d54ca4beaefad58fe4a04e2ce7a552b457c3e46c48a48ed7a2f720ca",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/source-commit.json",
+        "sha256": "660447e2d54ca4beaefad58fe4a04e2ce7a552b457c3e46c48a48ed7a2f720ca"
+      }
+    },
+    {
+      "name": "d267/run.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\run.mjs",
+      "sha256": "bcb911cead8f4552d70f5089b39a87239ab5b39833a76a69b161088f504d7560",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/run.mjs",
+        "sha256": "bcb911cead8f4552d70f5089b39a87239ab5b39833a76a69b161088f504d7560"
+      }
+    },
+    {
+      "name": "d267/units.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\units.config.mjs",
+      "sha256": "701f16ef70d85b62fc47b562ecd5edf95ff8e4fa41bba0097ad9e635bade2f52",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/units.config.mjs",
+        "sha256": "701f16ef70d85b62fc47b562ecd5edf95ff8e4fa41bba0097ad9e635bade2f52"
+      }
+    },
+    {
+      "name": "d267/original/bookySizePreference-7cdd.ts",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\original\\bookySizePreference-7cdd.ts",
+      "sha256": "7cdd386b00dd13fb5e19b6e56980847ff5bdcaec1bac1f41c50f998187e90c77",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/original/bookySizePreference-7cdd.ts",
+        "sha256": "7cdd386b00dd13fb5e19b6e56980847ff5bdcaec1bac1f41c50f998187e90c77"
+      }
+    },
+    {
+      "name": "d267/proposal/src/host/bookySizePreference.ts",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\proposal\\src\\host\\bookySizePreference.ts",
+      "sha256": "a987baf02892dd611a78a3757092f5623219ef8653591f97a0ad9be2d0f85107",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/proposal/src/host/bookySizePreference.ts",
+        "sha256": "a987baf02892dd611a78a3757092f5623219ef8653591f97a0ad9be2d0f85107"
+      }
+    },
+    {
+      "name": "d267/proposal/src/host/bookySizePreference.test.ts",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\proposal\\src\\host\\bookySizePreference.test.ts",
+      "sha256": "da3d841d7a370bf90be59b0ac853faa3045e23bac42c1c5db864edc118ae5680",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/proposal/src/host/bookySizePreference.test.ts",
+        "sha256": "da3d841d7a370bf90be59b0ac853faa3045e23bac42c1c5db864edc118ae5680"
+      }
+    },
+    {
+      "name": "d267/proposal/native-size-case.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\proposal\\native-size-case.txt",
+      "sha256": "cfe4f75c10d27b770b8af219db30c378c6185cfae0c90bce3b9d836a4d02df86",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/proposal/native-size-case.txt",
+        "sha256": "cfe4f75c10d27b770b8af219db30c378c6185cfae0c90bce3b9d836a4d02df86"
+      }
+    },
+    {
+      "name": "d267/proposal/review-notes.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\proposal\\review-notes.json",
+      "sha256": "6e54e45e109b3725f314c100a6f1c70d4ac2cd4125a4fb910c711bddee3bfc65",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/proposal/review-notes.json",
+        "sha256": "6e54e45e109b3725f314c100a6f1c70d4ac2cd4125a4fb910c711bddee3bfc65"
+      }
+    },
+    {
+      "name": "d267/proposal/pwa-size-case.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\proposal\\pwa-size-case.txt",
+      "sha256": "8e98cf519a06c3a7092ccb6094616853971651822087344f7b35cb8aedb47ae7",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/proposal/pwa-size-case.txt",
+        "sha256": "8e98cf519a06c3a7092ccb6094616853971651822087344f7b35cb8aedb47ae7"
+      }
+    },
+    {
+      "name": "d267/proposal/pwa-size-review.md",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\proposal\\pwa-size-review.md",
+      "sha256": "d250a92f7a7e74373a2341db9d9ee65d1cabada5a61576fcf4b095929c5d7e82",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/proposal/pwa-size-review.md",
+        "sha256": "d250a92f7a7e74373a2341db9d9ee65d1cabada5a61576fcf4b095929c5d7e82"
+      }
+    },
+    {
+      "name": "d267/actual-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\result.json",
+      "sha256": "8da7eb60bc99b5a4111921ca6f5d13bc07fb0c290b82761f7561dfa508bcfbb3",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/result.json",
+        "sha256": "8da7eb60bc99b5a4111921ca6f5d13bc07fb0c290b82761f7561dfa508bcfbb3"
+      }
+    },
+    {
+      "name": "d267/actual-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\source-before.json",
+      "sha256": "5c172dd7752e9f8255d8b7ad7498dceb8f7e9025653bbe2181f88302aa17fc81",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/source-before.json",
+        "sha256": "5c172dd7752e9f8255d8b7ad7498dceb8f7e9025653bbe2181f88302aa17fc81"
+      }
+    },
+    {
+      "name": "d267/actual-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\source-after.json",
+      "sha256": "5c172dd7752e9f8255d8b7ad7498dceb8f7e9025653bbe2181f88302aa17fc81",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/source-after.json",
+        "sha256": "5c172dd7752e9f8255d8b7ad7498dceb8f7e9025653bbe2181f88302aa17fc81"
+      }
+    },
+    {
+      "name": "d267/actual-a1/selected-native-assets.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\selected-native-assets.json",
+      "sha256": "5b827c3cae486670ba655afd4445640bda0a26304508b314ddd923a2d7808d7e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/selected-native-assets.json",
+        "sha256": "5b827c3cae486670ba655afd4445640bda0a26304508b314ddd923a2d7808d7e"
+      }
+    },
+    {
+      "name": "d267/actual-a1/vitest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\vitest.json",
+      "sha256": "a4e93871e05328b70a31f456bae0084fa7560878cd5f6e7cda1186d2c87f634b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/vitest.json",
+        "sha256": "a4e93871e05328b70a31f456bae0084fa7560878cd5f6e7cda1186d2c87f634b"
+      }
+    },
+    {
+      "name": "d267/actual-a1/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\playwright.json",
+      "sha256": "5856a03e78326913d4695f90eefaa89d26b09a7839c2af622c4299d4bb9a36cd",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/playwright.json",
+        "sha256": "5856a03e78326913d4695f90eefaa89d26b09a7839c2af622c4299d4bb9a36cd"
+      }
+    },
+    {
+      "name": "d267/actual-a1/browser-inventory.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\browser-inventory.json",
+      "sha256": "432da70dbb93927772e30ce8fad84e7cd32878a027931ce2d48d822b15a1dc43",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/browser-inventory.json",
+        "sha256": "432da70dbb93927772e30ce8fad84e7cd32878a027931ce2d48d822b15a1dc43"
+      }
+    },
+    {
+      "name": "d267/actual-a1/typescript.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\typescript.execution.json",
+      "sha256": "4e6f7b54d0b78342b135b3e267ca1ae1ea9dbd4bf418a9d9f91c1b79d7e6c948",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/typescript.execution.json",
+        "sha256": "4e6f7b54d0b78342b135b3e267ca1ae1ea9dbd4bf418a9d9f91c1b79d7e6c948"
+      }
+    },
+    {
+      "name": "d267/actual-a1/typescript.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "d267/actual-a1/typescript.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "d267/actual-a1/units.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\units.execution.json",
+      "sha256": "6cbbe85234c904b75fd237702f57ec1c597a2bea0662736f69b23833ffbc1deb",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/units.execution.json",
+        "sha256": "6cbbe85234c904b75fd237702f57ec1c597a2bea0662736f69b23833ffbc1deb"
+      }
+    },
+    {
+      "name": "d267/actual-a1/units.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\units.stdout.txt",
+      "sha256": "73666d76b7f6cc0b315412de4efc1d056c2832defcb6c491a635813bc716e46e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/units.stdout.txt",
+        "sha256": "73666d76b7f6cc0b315412de4efc1d056c2832defcb6c491a635813bc716e46e"
+      }
+    },
+    {
+      "name": "d267/actual-a1/units.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\units.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/units.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "d267/actual-a1/browser.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\browser.execution.json",
+      "sha256": "b34d017d99b228d46ae926e6a9a6551181fe30912b71737ca50ff423c71ed006",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/browser.execution.json",
+        "sha256": "b34d017d99b228d46ae926e6a9a6551181fe30912b71737ca50ff423c71ed006"
+      }
+    },
+    {
+      "name": "d267/actual-a1/browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\browser.stdout.txt",
+      "sha256": "11e7c4686e476acaec29765d1ab94add19b6a1dc8bd001ee547a702157b43a73",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/browser.stdout.txt",
+        "sha256": "11e7c4686e476acaec29765d1ab94add19b6a1dc8bd001ee547a702157b43a73"
+      }
+    },
+    {
+      "name": "d267/actual-a1/browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-persistence-d267\\actual-a1\\browser.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/actual-a1/browser.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "d267/native-config/playwright.native-planet.config.mjs",
+      "path": "playwright.native-planet.config.mjs",
+      "sha256": "17783f4e8371239c1e1a81478bf3b7dfb9e63b0bc58272c19529abf077e38087",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d267/native-config/playwright.native-planet.config.mjs",
+        "sha256": "17783f4e8371239c1e1a81478bf3b7dfb9e63b0bc58272c19529abf077e38087"
+      }
+    },
+    {
+      "name": "d268/prepare.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\prepare.mjs",
+      "sha256": "8385ee5466f0ca01f2767396ae78d7ebb2827913a7c416551556e5944c0caa68",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/prepare.mjs",
+        "sha256": "8385ee5466f0ca01f2767396ae78d7ebb2827913a7c416551556e5944c0caa68"
+      }
+    },
+    {
+      "name": "d268/source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\source-commit.json",
+      "sha256": "638450f5a54f95972c79be175575a0b91b3bc7f34be0c0938af77971d69749e8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/source-commit.json",
+        "sha256": "638450f5a54f95972c79be175575a0b91b3bc7f34be0c0938af77971d69749e8"
+      }
+    },
+    {
+      "name": "d268/fix-offline-placement.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\fix-offline-placement.mjs",
+      "sha256": "956605c256528863c1d4701df6ff42b30677d9f05f26d7b05a4f1fa7176d8cc5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/fix-offline-placement.mjs",
+        "sha256": "956605c256528863c1d4701df6ff42b30677d9f05f26d7b05a4f1fa7176d8cc5"
+      }
+    },
+    {
+      "name": "d268/repair-source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\repair-source-commit.json",
+      "sha256": "fa0d677fc3e753cd4c7b497ea072faf8d0c5b6caa287a044c8a7ad89803714f6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/repair-source-commit.json",
+        "sha256": "fa0d677fc3e753cd4c7b497ea072faf8d0c5b6caa287a044c8a7ad89803714f6"
+      }
+    },
+    {
+      "name": "d268/prepare-followup.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\prepare-followup.mjs",
+      "sha256": "6eab2c37f8ba4d27f66b150581b0e35d32482f9a5c3c04b04fcdeb0f2eaa305b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/prepare-followup.mjs",
+        "sha256": "6eab2c37f8ba4d27f66b150581b0e35d32482f9a5c3c04b04fcdeb0f2eaa305b"
+      }
+    },
+    {
+      "name": "d268/failed-profile-cleanup.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\failed-profile-cleanup.json",
+      "sha256": "d12858eec956e13513a52e5fd276bfeb5f02f86bb37af730ed77839f1a98f276",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-profile-cleanup.json",
+        "sha256": "d12858eec956e13513a52e5fd276bfeb5f02f86bb37af730ed77839f1a98f276"
+      }
+    },
+    {
+      "name": "d268/diagnose-a1.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\diagnose-a1.mjs",
+      "sha256": "bb655e3072a790272fcda8dc169d9df88f5c5e610e69236f63de9184d71f3e9a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/diagnose-a1.mjs",
+        "sha256": "bb655e3072a790272fcda8dc169d9df88f5c5e610e69236f63de9184d71f3e9a"
+      }
+    },
+    {
+      "name": "d268/diagnostic-a1/observations.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\diagnostic-a1\\observations.json",
+      "sha256": "781b397808d8d332aaa36e971a8d576233a478319bf3631934b2711de30d14b8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/diagnostic-a1/observations.json",
+        "sha256": "781b397808d8d332aaa36e971a8d576233a478319bf3631934b2711de30d14b8"
+      }
+    },
+    {
+      "name": "d268/runtime/producer.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\producer.mjs",
+      "sha256": "e4800b28c018d745489b7459b0be4158b5a6e8bc11e84d429f461e5fc9cd7869",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime/producer.mjs",
+        "sha256": "e4800b28c018d745489b7459b0be4158b5a6e8bc11e84d429f461e5fc9cd7869"
+      }
+    },
+    {
+      "name": "d268/runtime/pwa.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\pwa.config.mjs",
+      "sha256": "a269ed2b9568fd7560d72566cbbd12b33bc79b3e73af3f38aaea9aef056d2c60",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime/pwa.config.mjs",
+        "sha256": "a269ed2b9568fd7560d72566cbbd12b33bc79b3e73af3f38aaea9aef056d2c60"
+      }
+    },
+    {
+      "name": "d268/runtime/launch.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\launch.mjs",
+      "sha256": "ee907e8d107a207b988ff76432a874254d7270d624cf173ac20abd381c48e085",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime/launch.mjs",
+        "sha256": "ee907e8d107a207b988ff76432a874254d7270d624cf173ac20abd381c48e085"
+      }
+    },
+    {
+      "name": "d268/runtime/launcher.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\launcher.execution.json",
+      "sha256": "0444ad3adf34297c24a39ca6dd59475c150d754d250eab9fdce999dfa11b1a42",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime/launcher.execution.json",
+        "sha256": "0444ad3adf34297c24a39ca6dd59475c150d754d250eab9fdce999dfa11b1a42"
+      }
+    },
+    {
+      "name": "d268/runtime/launcher.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\launcher.stdout.txt",
+      "sha256": "61442150466914dbcc1e5ea8b0aaa5b26d1a40f2554de9b8a24301920e7a7565",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime/launcher.stdout.txt",
+        "sha256": "61442150466914dbcc1e5ea8b0aaa5b26d1a40f2554de9b8a24301920e7a7565"
+      }
+    },
+    {
+      "name": "d268/runtime/launcher.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\launcher.stderr.txt",
+      "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime/launcher.stderr.txt",
+        "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082"
+      }
+    },
+    {
+      "name": "d268/runtime-a2/producer.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\producer.mjs",
+      "sha256": "e1170b6c1674c7a0b97314ed0142176950b62173657f077f98f4641e7c44c806",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime-a2/producer.mjs",
+        "sha256": "e1170b6c1674c7a0b97314ed0142176950b62173657f077f98f4641e7c44c806"
+      }
+    },
+    {
+      "name": "d268/runtime-a2/pwa.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\pwa.config.mjs",
+      "sha256": "d9d253b9b98f1b0be92838e008886db2b171dfc1b447b7bb41de9d72f5026648",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime-a2/pwa.config.mjs",
+        "sha256": "d9d253b9b98f1b0be92838e008886db2b171dfc1b447b7bb41de9d72f5026648"
+      }
+    },
+    {
+      "name": "d268/runtime-a2/launch.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\launch.mjs",
+      "sha256": "e3849aff1046d4f68fa5658e1572e58da1b94f08d0705681577df47980d64802",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime-a2/launch.mjs",
+        "sha256": "e3849aff1046d4f68fa5658e1572e58da1b94f08d0705681577df47980d64802"
+      }
+    },
+    {
+      "name": "d268/runtime-a2/launcher.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\launcher.execution.json",
+      "sha256": "0f3ddfadfe950fe077bd49050d789ed8e0f3981ed7c2ad9236fe88dbacdd0208",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime-a2/launcher.execution.json",
+        "sha256": "0f3ddfadfe950fe077bd49050d789ed8e0f3981ed7c2ad9236fe88dbacdd0208"
+      }
+    },
+    {
+      "name": "d268/runtime-a2/launcher.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\launcher.stdout.txt",
+      "sha256": "71b48d9ea18ba84ed0b33a49134ff813dd27c83f00709c7f1b427e3338d9da61",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime-a2/launcher.stdout.txt",
+        "sha256": "71b48d9ea18ba84ed0b33a49134ff813dd27c83f00709c7f1b427e3338d9da61"
+      }
+    },
+    {
+      "name": "d268/runtime-a2/launcher.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\launcher.stderr.txt",
+      "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/runtime-a2/launcher.stderr.txt",
+        "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082"
+      }
+    },
+    {
+      "name": "d268/actual-a2/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\result.json",
+      "sha256": "e2708e71f442f4b76da64b199012026a9a41ebfc3657c39aa056d086f991b9e5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/result.json",
+        "sha256": "e2708e71f442f4b76da64b199012026a9a41ebfc3657c39aa056d086f991b9e5"
+      }
+    },
+    {
+      "name": "d268/actual-a2/binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\binding.json",
+      "sha256": "b7ac60320b710194de848fcadeef17c3697f9c6b0860a8150c190f861a75ef1f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/binding.json",
+        "sha256": "b7ac60320b710194de848fcadeef17c3697f9c6b0860a8150c190f861a75ef1f"
+      }
+    },
+    {
+      "name": "d268/actual-a2/artifact.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\artifact.json",
+      "sha256": "931323bc0098b45e39f1c21118ca9bf296d9bedeb4047016e98e1c7b889a9604",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/artifact.json",
+        "sha256": "931323bc0098b45e39f1c21118ca9bf296d9bedeb4047016e98e1c7b889a9604"
+      }
+    },
+    {
+      "name": "d268/actual-a2/asset-provenance.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\asset-provenance.json",
+      "sha256": "97ecf9c099b09a4a60c408961bceaea81a92b4481e58d6f752fa3a934f9dc8cd",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/asset-provenance.json",
+        "sha256": "97ecf9c099b09a4a60c408961bceaea81a92b4481e58d6f752fa3a934f9dc8cd"
+      }
+    },
+    {
+      "name": "d268/actual-a2/build-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\build-execution.json",
+      "sha256": "03d74c19bdd8cb191b8630f176ab4d10171ca5ce5ea62e65ce290ec97e8e51ae",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/build-execution.json",
+        "sha256": "03d74c19bdd8cb191b8630f176ab4d10171ca5ce5ea62e65ce290ec97e8e51ae"
+      }
+    },
+    {
+      "name": "d268/actual-a2/browser-observation.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser-observation.json",
+      "sha256": "624b60e72dd4ba09f029476716e9ca2df06f12567ce97a2d7371638e931fb6aa",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/browser-observation.json",
+        "sha256": "624b60e72dd4ba09f029476716e9ca2df06f12567ce97a2d7371638e931fb6aa"
+      }
+    },
+    {
+      "name": "d268/actual-a2/browser-inventory.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser-inventory.json",
+      "sha256": "39d4d09ce6fa2a438fc2ca2a74833ad8853277f9ad2e1f1506d41c291f05d2da",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/browser-inventory.json",
+        "sha256": "39d4d09ce6fa2a438fc2ca2a74833ad8853277f9ad2e1f1506d41c291f05d2da"
+      }
+    },
+    {
+      "name": "d268/actual-a2/browser.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser.execution.json",
+      "sha256": "8d4c2e19e5496165bf2ea3eecc9a05210750368782ded0590d4a4d39bf614462",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/browser.execution.json",
+        "sha256": "8d4c2e19e5496165bf2ea3eecc9a05210750368782ded0590d4a4d39bf614462"
+      }
+    },
+    {
+      "name": "d268/actual-a2/browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser.stdout.txt",
+      "sha256": "060512b10dd571148b31ab47ec13a1ec47214247091f12392953be149b364999",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/browser.stdout.txt",
+        "sha256": "060512b10dd571148b31ab47ec13a1ec47214247091f12392953be149b364999"
+      }
+    },
+    {
+      "name": "d268/actual-a2/browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser.stderr.txt",
+      "sha256": "0d1f07bf6d2c5f6a4d9fcacfd61cb34ba313db1a6baff35a6e2483cb18d8f8ad",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/browser.stderr.txt",
+        "sha256": "0d1f07bf6d2c5f6a4d9fcacfd61cb34ba313db1a6baff35a6e2483cb18d8f8ad"
+      }
+    },
+    {
+      "name": "d268/actual-a2/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\playwright.json",
+      "sha256": "c1ef14267b820e23bcf46fb6c2c85495fb6a2a226646a952bb5c6a532329b1e6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/playwright.json",
+        "sha256": "c1ef14267b820e23bcf46fb6c2c85495fb6a2a226646a952bb5c6a532329b1e6"
+      }
+    },
+    {
+      "name": "d268/actual-a2/server-request-ledger.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\server-request-ledger.json",
+      "sha256": "ca6d17a60245ff76ee9b68a1c0f088f05a072fecacb9df18bb3f1239142967a7",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/server-request-ledger.json",
+        "sha256": "ca6d17a60245ff76ee9b68a1c0f088f05a072fecacb9df18bb3f1239142967a7"
+      }
+    },
+    {
+      "name": "d268/actual-a2/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\source-before.json",
+      "sha256": "f9b2de531d0dc2f7c7ec7e433527c700f49c11d7c897c133b307a81e2f520bc9",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/source-before.json",
+        "sha256": "f9b2de531d0dc2f7c7ec7e433527c700f49c11d7c897c133b307a81e2f520bc9"
+      }
+    },
+    {
+      "name": "d268/actual-a2/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\source-after.json",
+      "sha256": "f9b2de531d0dc2f7c7ec7e433527c700f49c11d7c897c133b307a81e2f520bc9",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/source-after.json",
+        "sha256": "f9b2de531d0dc2f7c7ec7e433527c700f49c11d7c897c133b307a81e2f520bc9"
+      }
+    },
+    {
+      "name": "d268/actual-a2/strict-audit.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\strict-audit.execution.json",
+      "sha256": "eefb14991c9c7f513f4440e433b3e6ec6ae4adb63cd2f5e1fe65cf304083eda0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/strict-audit.execution.json",
+        "sha256": "eefb14991c9c7f513f4440e433b3e6ec6ae4adb63cd2f5e1fe65cf304083eda0"
+      }
+    },
+    {
+      "name": "d268/actual-a2/strict-audit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\strict-audit.json",
+      "sha256": "8e11947fa40ab9661cd14ed440a842c857b7f99b058fe58b2f8013a3165f9dfb",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/strict-audit.json",
+        "sha256": "8e11947fa40ab9661cd14ed440a842c857b7f99b058fe58b2f8013a3165f9dfb"
+      }
+    },
+    {
+      "name": "d268/actual-a2/strict-audit.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\strict-audit.stdout.txt",
+      "sha256": "8e11947fa40ab9661cd14ed440a842c857b7f99b058fe58b2f8013a3165f9dfb",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/strict-audit.stdout.txt",
+        "sha256": "8e11947fa40ab9661cd14ed440a842c857b7f99b058fe58b2f8013a3165f9dfb"
+      }
+    },
+    {
+      "name": "d268/actual-a2/strict-audit.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\strict-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/actual-a2/strict-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "d268/failed-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\result.json",
+      "sha256": "fd2f5aea5c5f4d933067e90a0ef70b1a58f2ef511785d842a96b10775dc121e1",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/result.json",
+        "sha256": "fd2f5aea5c5f4d933067e90a0ef70b1a58f2ef511785d842a96b10775dc121e1"
+      }
+    },
+    {
+      "name": "d268/failed-a1/binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\binding.json",
+      "sha256": "ec35078d31de1976282d6dd7e3b5f6e53139d7a70ca78cc4884f40aff3f7ae0a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/binding.json",
+        "sha256": "ec35078d31de1976282d6dd7e3b5f6e53139d7a70ca78cc4884f40aff3f7ae0a"
+      }
+    },
+    {
+      "name": "d268/failed-a1/artifact.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\artifact.json",
+      "sha256": "9be72bf8971829f2858ff59a723bfd74a960a914302cadcbd843edd341fa5d7d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/artifact.json",
+        "sha256": "9be72bf8971829f2858ff59a723bfd74a960a914302cadcbd843edd341fa5d7d"
+      }
+    },
+    {
+      "name": "d268/failed-a1/asset-provenance.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\asset-provenance.json",
+      "sha256": "509bf10e83890a7d610cab6c9f211428759de4e2e6f047f407850f41fa6c3538",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/asset-provenance.json",
+        "sha256": "509bf10e83890a7d610cab6c9f211428759de4e2e6f047f407850f41fa6c3538"
+      }
+    },
+    {
+      "name": "d268/failed-a1/build-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\build-execution.json",
+      "sha256": "f32d7689c341f29df2b06af3806e44b80889b94ef08774a2877de6e8fe7c728d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/build-execution.json",
+        "sha256": "f32d7689c341f29df2b06af3806e44b80889b94ef08774a2877de6e8fe7c728d"
+      }
+    },
+    {
+      "name": "d268/failed-a1/browser.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\browser.execution.json",
+      "sha256": "f0fc65bedf9524b7a41e9ce80c5123fbbee3582ebef5555851a8584bd702ed8e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/browser.execution.json",
+        "sha256": "f0fc65bedf9524b7a41e9ce80c5123fbbee3582ebef5555851a8584bd702ed8e"
+      }
+    },
+    {
+      "name": "d268/failed-a1/browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\browser.stdout.txt",
+      "sha256": "3338cad84ad7a204e9a414188e351fedca420675a6daeb821dc87056011b789c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/browser.stdout.txt",
+        "sha256": "3338cad84ad7a204e9a414188e351fedca420675a6daeb821dc87056011b789c"
+      }
+    },
+    {
+      "name": "d268/failed-a1/browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\browser.stderr.txt",
+      "sha256": "4245adea0cb1773139f28467f1dc7a9e6b35e9333801ef9421793d4f276b2cd4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/browser.stderr.txt",
+        "sha256": "4245adea0cb1773139f28467f1dc7a9e6b35e9333801ef9421793d4f276b2cd4"
+      }
+    },
+    {
+      "name": "d268/failed-a1/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\playwright.json",
+      "sha256": "2ab493edfc2db3d703cc4e932a129f6a6031198b60ffb015345051d237162eff",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/playwright.json",
+        "sha256": "2ab493edfc2db3d703cc4e932a129f6a6031198b60ffb015345051d237162eff"
+      }
+    },
+    {
+      "name": "d268/failed-a1/server-request-ledger.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\server-request-ledger.json",
+      "sha256": "c7fd8b3892f045ea40f6a9329b260004792012f4383e1b7c718534f47e14dcb1",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/server-request-ledger.json",
+        "sha256": "c7fd8b3892f045ea40f6a9329b260004792012f4383e1b7c718534f47e14dcb1"
+      }
+    },
+    {
+      "name": "d268/failed-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\source-before.json",
+      "sha256": "a2a125db4772d308eb65a04e3ccf57d6419d723e6cf6008a26a1eced4c1c6e17",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/source-before.json",
+        "sha256": "a2a125db4772d308eb65a04e3ccf57d6419d723e6cf6008a26a1eced4c1c6e17"
+      }
+    },
+    {
+      "name": "d268/failed-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\source-after.json",
+      "sha256": "a2a125db4772d308eb65a04e3ccf57d6419d723e6cf6008a26a1eced4c1c6e17",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/source-after.json",
+        "sha256": "a2a125db4772d308eb65a04e3ccf57d6419d723e6cf6008a26a1eced4c1c6e17"
+      }
+    },
+    {
+      "name": "d268/failed-a1/strict-audit.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\strict-audit.execution.json",
+      "sha256": "eefb14991c9c7f513f4440e433b3e6ec6ae4adb63cd2f5e1fe65cf304083eda0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/strict-audit.execution.json",
+        "sha256": "eefb14991c9c7f513f4440e433b3e6ec6ae4adb63cd2f5e1fe65cf304083eda0"
+      }
+    },
+    {
+      "name": "d268/failed-a1/strict-audit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\strict-audit.json",
+      "sha256": "4c9b8b2738fd5aaa064909285466d91b9c7f16da7df4ae4e886ae02226bb7680",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/strict-audit.json",
+        "sha256": "4c9b8b2738fd5aaa064909285466d91b9c7f16da7df4ae4e886ae02226bb7680"
+      }
+    },
+    {
+      "name": "d268/failed-a1/strict-audit.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\strict-audit.stdout.txt",
+      "sha256": "4c9b8b2738fd5aaa064909285466d91b9c7f16da7df4ae4e886ae02226bb7680",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/strict-audit.stdout.txt",
+        "sha256": "4c9b8b2738fd5aaa064909285466d91b9c7f16da7df4ae4e886ae02226bb7680"
+      }
+    },
+    {
+      "name": "d268/failed-a1/strict-audit.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\strict-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/strict-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "d268/failed-a1/captures/error-context.md",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\error-context.md",
+      "sha256": "ce321e1cd134f57b3a68012bc95d67b17cf768fe0be967e60fe4b94686bca514",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/captures/error-context.md",
+        "sha256": "ce321e1cd134f57b3a68012bc95d67b17cf768fe0be967e60fe4b94686bca514"
+      }
+    },
+    {
+      "name": "d268/failed-a1/captures/pwa-booky-size-large-before-close.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\pwa-booky-size-large-before-close.png",
+      "sha256": "bc76b972989be2f7904b035c8eb6b156ed81b4567cd8fb7dd1f5fafd2df02856",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/captures/pwa-booky-size-large-before-close.png",
+        "sha256": "bc76b972989be2f7904b035c8eb6b156ed81b4567cd8fb7dd1f5fafd2df02856"
+      }
+    },
+    {
+      "name": "d268/failed-a1/captures/test-failed-1.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\test-failed-1.png",
+      "sha256": "92baa5a51c1e62eceba4bf5730ab86207f3fe263355d1b6ed4d2143c94cdbca0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/captures/test-failed-1.png",
+        "sha256": "92baa5a51c1e62eceba4bf5730ab86207f3fe263355d1b6ed4d2143c94cdbca0"
+      }
+    },
+    {
+      "name": "d268/failed-a1/captures/test-failed-2.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime\\actual-a1\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\test-failed-2.png",
+      "sha256": "8ef2b5cd132202bd5f9b22de53acd3ba87d95b5a4ce6410226691f5aea670da7",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/d268/failed-a1/captures/test-failed-2.png",
+        "sha256": "8ef2b5cd132202bd5f9b22de53acd3ba87d95b5a4ce6410226691f5aea670da7"
+      }
+    },
+    {
+      "name": "captures/d267/booky-size-restored-large-en.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\booky-size-d267-a1\\artifacts\\native-planet-Booky-compan-8865a-reference-port-after-reload\\booky-size-restored-large-en.png",
+      "sha256": "0e2adda2955838bb8f2b67f83d16142808e73071b3bc8071fa114cd5f848f83d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/captures/d267/booky-size-restored-large-en.png",
+        "sha256": "0e2adda2955838bb8f2b67f83d16142808e73071b3bc8071fa114cd5f848f83d"
+      }
+    },
+    {
+      "name": "captures/d267/booky-size-restored-large-ru.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\booky-size-d267-a1\\artifacts\\native-planet-Booky-compan-8865a-reference-port-after-reload\\booky-size-restored-large-ru.png",
+      "sha256": "9ff598e6b77ad4651c687cfb4866985cc28bfcda3ebe953bd650fc51694659e2",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/captures/d267/booky-size-restored-large-ru.png",
+        "sha256": "9ff598e6b77ad4651c687cfb4866985cc28bfcda3ebe953bd650fc51694659e2"
+      }
+    },
+    {
+      "name": "captures/d267/booky-size-unknown-preference-ru.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\booky-size-d267-a1\\artifacts\\native-planet-Booky-compan-8865a-reference-port-after-reload\\booky-size-unknown-preference-ru.png",
+      "sha256": "25139f6a185d5b3050e7b0e125548aa9a6be3eda35f36e418af78095a819d191",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/captures/d267/booky-size-unknown-preference-ru.png",
+        "sha256": "25139f6a185d5b3050e7b0e125548aa9a6be3eda35f36e418af78095a819d191"
+      }
+    },
+    {
+      "name": "captures/d267/native-final-passed.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\booky-size-d267-a1\\artifacts\\native-planet-Booky-compan-8865a-reference-port-after-reload\\native-final-passed.png",
+      "sha256": "75f075637c88390d8fce2adc668990791172c8d88f80217ca17ff3c433543f91",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/captures/d267/native-final-passed.png",
+        "sha256": "75f075637c88390d8fce2adc668990791172c8d88f80217ca17ff3c433543f91"
+      }
+    },
+    {
+      "name": "captures/d268/pwa-booky-size-large-before-close.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\pwa-booky-size-large-before-close.png",
+      "sha256": "bc76b972989be2f7904b035c8eb6b156ed81b4567cd8fb7dd1f5fafd2df02856",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/captures/d268/pwa-booky-size-large-before-close.png",
+        "sha256": "bc76b972989be2f7904b035c8eb6b156ed81b4567cd8fb7dd1f5fafd2df02856"
+      }
+    },
+    {
+      "name": "captures/d268/pwa-booky-size-restored-large-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\pwa-booky-size-restored-large-ru.png",
+      "sha256": "abd1f8aec49cded94bc7c1993868f666eed9b1f070a27c71af3c0b64fd7544c5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/captures/d268/pwa-booky-size-restored-large-ru.png",
+        "sha256": "abd1f8aec49cded94bc7c1993868f666eed9b1f070a27c71af3c0b64fd7544c5"
+      }
+    },
+    {
+      "name": "captures/d268/pwa-booky-size-restored-large-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\browser\\controlled-pwa-saved-Booky-04e13-he-real-Web-preference-port-s03-d268-msedge-390\\pwa-booky-size-restored-large-en.png",
+      "sha256": "318aeada0ac886ff4d6111324c56f1b7608a2872a081437c43800f14ea20a9a8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/captures/d268/pwa-booky-size-restored-large-en.png",
+        "sha256": "318aeada0ac886ff4d6111324c56f1b7608a2872a081437c43800f14ea20a9a8"
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\pwa.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\pwa.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-booky-size-offline-d268/runtime-a2/actual-a2/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "s03-d268-msedge-390",
+        "name": "s03-d268-msedge-390",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-booky-size-offline-d268\\runtime-a2\\actual-a2\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "controlled-pwa.spec.mjs",
+      "file": "controlled-pwa.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "saved Booky size survives a full persistent browser restart offline through the real Web preference port",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "s03-d268-msedge-390",
+              "projectName": "s03-d268-msedge-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32205,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T15:05:37.931Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pwa-booky-size-persistent-offline",
+                      "contentType": "application/json",
+                      "body": "ewogICJsb2NhbFFhT25seSI6IHRydWUsCiAgImJyb3dzZXJDaGFubmVsIjogIm1zZWRnZSIsCiAgInBlcnNpc3RlbnRMYXVuY2hlcyI6IDIsCiAgInJlc3RhcnRzIjogMSwKICAic2FtZURpc3Bvc2FibGVQcm9maWxlIjogdHJ1ZSwKICAiZmlyc3RDb250ZXh0Q2xvc2VkIjogdHJ1ZSwKICAib2ZmbGluZUJlZm9yZUZpcnN0TmF2aWdhdGlvbiI6IHRydWUsCiAgInByZWZlcmVuY2VLZXkiOiAicHJvYnBlcmEtYm9va3ktc2l6ZS12MSIsCiAgImRvY3VtZW50cyI6IFsKICAgIHsKICAgICAgInBoYXNlIjogInJlb3BlbmVkLW9mZmxpbmUiLAogICAgICAic2VydmVkQnVpbGRJZCI6ICI3YjNlNzA4NDJkMThhYjg3OWQ0NDQ1YjY0NTQ3ZTY1NTI2MjRiYWQyMzFmYjY4ODE0ZmIyZjdhNzdhNGVjNDcxIiwKICAgICAgImZyZXNoRG9jdW1lbnRBZnRlckNsb3NlZEJyb3dzZXIiOiB0cnVlCiAgICB9CiAgXSwKICAibG9jYWxlcyI6IFsKICAgIHsKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJzdG9yZWRTaXplIjogImxhcmdlIiwKICAgICAgImNvbmZpcm1lZFNpemVTdGF0ZSI6ICJyZWFkeSIsCiAgICAgICJhdmF0YXJXaWR0aCI6IDgwLAogICAgICAic2VsZWN0ZWRDb3VudHJ5IjogInJ1c3NpYSIsCiAgICAgICJzYXZlZFZlcmlmaWNhdGlvbiI6IHRydWUsCiAgICAgICJzYW1lU2NlbmVXaXRoaW5SZW9wZW5lZERvY3VtZW50IjogdHJ1ZSwKICAgICAgImNhbm9uaWNhbEdsb2JlQ2FudmFzQ291bnQiOiAxCiAgICB9LAogICAgewogICAgICAibG9jYWxlIjogImVuIiwKICAgICAgInN0b3JlZFNpemUiOiAibGFyZ2UiLAogICAgICAiY29uZmlybWVkU2l6ZVN0YXRlIjogInJlYWR5IiwKICAgICAgImF2YXRhcldpZHRoIjogODAsCiAgICAgICJzZWxlY3RlZENvdW50cnkiOiAicnVzc2lhIiwKICAgICAgInNhdmVkVmVyaWZpY2F0aW9uIjogdHJ1ZSwKICAgICAgInNhbWVTY2VuZVdpdGhpblJlb3BlbmVkRG9jdW1lbnQiOiB0cnVlLAogICAgICAiY2Fub25pY2FsR2xvYmVDYW52YXNDb3VudCI6IDEKICAgIH0sCiAgICB7CiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAic3RvcmVkU2l6ZSI6ICJsYXJnZSIsCiAgICAgICJjb25maXJtZWRTaXplU3RhdGUiOiAicmVhZHkiLAogICAgICAiYXZhdGFyV2lkdGgiOiA4MCwKICAgICAgInNlbGVjdGVkQ291bnRyeSI6ICJydXNzaWEiLAogICAgICAic2F2ZWRWZXJpZmljYXRpb24iOiB0cnVlLAogICAgICAic2FtZVNjZW5lV2l0aGluUmVvcGVuZWREb2N1bWVudCI6IHRydWUsCiAgICAgICJjYW5vbmljYWxHbG9iZUNhbnZhc0NvdW50IjogMQogICAgfQogIF0sCiAgInNjcmVlbnNob3RzIjogWwogICAgInB3YS1ib29reS1zaXplLWxhcmdlLWJlZm9yZS1jbG9zZS5wbmciLAogICAgInB3YS1ib29reS1zaXplLXJlc3RvcmVkLWxhcmdlLXJ1LnBuZyIsCiAgICAicHdhLWJvb2t5LXNpemUtcmVzdG9yZWQtbGFyZ2UtZW4ucG5nIgogIF0sCiAgImNhcHR1cmVzUmV2aWV3ZWQiOiBmYWxzZSwKICAicHJvZmlsZVJlbW92ZWQiOiB0cnVlLAogICJhY3R1YWxPc0luc3RhbGxhdGlvbiI6IGZhbHNlLAogICJyZWFsU3RvcmVQdXJjaGFzZSI6IGZhbHNlLAogICJwcm9kdWN0aW9uUHJvdmlkZXIiOiBmYWxzZSwKICAic3RhZ2VBY2NlcHRlZCI6IGZhbHNlLAogICJyZWxlYXNlUmVhZHkiOiBmYWxzZSwKICAiY29tcGxldGVkIjogdHJ1ZSwKICAiYnVpbGQiOiB7CiAgICAiYnVpbGRJZCI6ICI3YjNlNzA4NDJkMThhYjg3OWQ0NDQ1YjY0NTQ3ZTY1NTI2MjRiYWQyMzFmYjY4ODE0ZmIyZjdhNzdhNGVjNDcxIiwKICAgICJtYW5pZmVzdFNoYTI1NiI6ICIwMDBhM2MwYThjZjVjOGYwYjdiZWY0NzE3ZjMzZDNjYjQ2M2ZiZWNjYWQzYjg4OWYwNTA2Njg0ODE1MDA0MDg4IiwKICAgICJleGVjdXRhYmxlUGF0aCI6ICIvcGxhbmV0L2Fzc2V0cy9BcnRpY2xlTGlicmFyeVNlY3Rpb24tQ0N2aTU5em8uanMiLAogICAgImV4ZWN1dGFibGUiOiB7CiAgICAgICJidWlsZElkIjogIjdiM2U3MDg0MmQxOGFiODc5ZDQ0NDViNjQ1NDdlNjU1MjYyNGJhZDIzMWZiNjg4MTRmYjJmN2E3N2E0ZWM0NzEiLAogICAgICAiYnl0ZXMiOiAxMTExOCwKICAgICAgInNoYTI1NiI6ICJkMTM0MTgwYzRiOGE3ODc1M2YzYjg1ZWMzOWNmMTQ0ZTRmNDlhYTJkZDU0YTYzZDBhNTc4OTk5YTM2M2I2M2RjIgogICAgfQogIH0sCiAgImJlZm9yZUNsb3NlIjogewogICAgInN0b3JlZFNpemUiOiAibGFyZ2UiLAogICAgImNvbmZpcm1lZFNpemVTdGF0ZSI6ICJyZWFkeSIsCiAgICAiY2hvc2VuU2l6ZSI6ICJsYXJnZSIsCiAgICAiYXZhdGFyV2lkdGgiOiA4MCwKICAgICJyZWFsV2ViUHJlZmVyZW5jZVBvcnQiOiB0cnVlCiAgfSwKICAib2ZmbGluZUxpY2Vuc2VBcGlSZXF1ZXN0cyI6IDAsCiAgImJsb2NrZWRSZXF1ZXN0cyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-d92fa2be21e1b9e3ba2a",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/controlled-pwa.spec.mjs",
+          "line": 1438,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T15:05:37.220Z",
+    "duration": 32974.013999999996,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

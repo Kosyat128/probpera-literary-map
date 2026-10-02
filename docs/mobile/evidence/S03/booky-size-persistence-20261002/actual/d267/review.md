@@ -1,0 +1,12 @@
+# D267: Booky chosen size preference
+
+User-requested quality enhancement; the previous mounted-session behavior is not claimed as a defect or failed requirement.
+Author scope is two NEW owners only: src/host/bookySizePreference.ts and its focused test. ROOT owns App/Controls and preference-port integration; no canonical changes or tests/build/browser run by these proposal authors.
+
+The controller uses only PreferenceStore and probpera-booky-size-v1. Exact enum small/normal/large; unknown raw bytes are never normalized/rendered or automatically replaced. Constructor, disabled/public host and absent-key hydration do not write defaults. The disabled snapshot is normal/ready; the initial enabled snapshot is normal/loading.
+Explicit selection is immediately reflected even during restore/read failure, including choosing Normal over an unknown stored value. It invalidates late hydration; same ready or saving choice is a no-op. Only set(true) plus exact readback confirms ready; write errors retain the local choice and require explicit retry. Read errors/timeouts preserve storage and can retry without waiting forever behind a hung old read.
+Started writes serialize across controller remount on the SAME PreferenceStore object. A noncancellable set keeps the write tail until settlement; later reads/writes wait for it. Deactivation invalidates old completions and clears its observation deadline, not the underlying port operation. Queue ownership is established before publishing Saving, protecting reentrant observers. Ready activation re-reads authoritative storage; failed activation does not automatically retry; Saving reactivation resumes the previous explicit intent.
+Snapshot has size/state/error; API activate/selectSize/retry/getSnapshot/getServerSnapshot/subscribe. Stable frozen snapshots and generic error categories never expose raw/private adapter error details.
+
+Final controller is117lines. Original7cdd proposal is preserved only as a historical external witness; ROOT requested exactly two reviewed corrections (publish after pending creation; identical ready/saving choice ignored). Final a987 supersedes7cdd. The test proposal covers independent lifecycle/storage failures and races; static case count is a plan, not an executed PASS.
+No motion/tour/position refactor, new permission, server/cloud state, provider/OS installation or stage/release promotion. ROOT must review the merged integration owners and execute its one current focused check before claiming working evidence.

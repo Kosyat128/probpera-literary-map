@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "decision": "D267",
+  "kind": "external-booky-size-preference-proposal",
+  "frozen": true,
+  "scope": "User-requested quality enhancement; mounted-session behavior is not claimed as a bug",
+  "canonicalSourceBinding": "PENDING_ROOT_MERGED_INTEGRATION_AND_ACTUAL_CHECK",
+  "owners": [
+    {
+      "path": "src/host/bookySizePreference.ts",
+      "proposalPath": "proposal/src/host/bookySizePreference.ts",
+      "sha256": "a987baf02892dd611a78a3757092f5623219ef8653591f97a0ad9be2d0f85107",
+      "change": "new-owner"
+    },
+    {
+      "path": "src/host/bookySizePreference.test.ts",
+      "proposalPath": "proposal/src/host/bookySizePreference.test.ts",
+      "sha256": "da3d841d7a370bf90be59b0ac853faa3045e23bac42c1c5db864edc118ae5680",
+      "change": "new-owner"
+    }
+  ],
+  "preferenceKey": "probpera-booky-size-v1",
+  "sizeEnum": [
+    "small",
+    "normal",
+    "large"
+  ],
+  "staticTests": {
+    "suite": "src/host/bookySizePreference.test.ts",
+    "cases": [
+      {
+        "line": 41,
+        "title": "keeps a disabled host normal without any preference IO"
+      },
+      {
+        "line": 51,
+        "title": "confirms absence without default writes and bounds activation and timeout inputs"
+      },
+      {
+        "line": 74,
+        "title": "restores each saved size in a fresh owner after a confirmed choice"
+      },
+      {
+        "line": 89,
+        "title": "preserves unknown bytes and read failures until an explicit normal choice"
+      },
+      {
+        "line": 108,
+        "title": "applies an immediate local choice while a late authoritative read is still pending"
+      },
+      {
+        "line": 120,
+        "title": "serializes a started old-owner write before the newest remounted-owner choice"
+      },
+      {
+        "line": 135,
+        "title": "requires exact readback and retains a failed local choice until explicit write retry"
+      },
+      {
+        "line": 155,
+        "title": "retries a timed-out read without waiting for the old hung read"
+      },
+      {
+        "line": 166,
+        "title": "keeps a timed-out write serialized while cleanup and reactivation retain the latest explicit intent"
+      },
+      {
+        "line": 182,
+        "title": "fences late publications and restores the chosen size in a reentrant owner"
+      }
+    ],
+    "expectedCases": 10,
+    "actualExecuted": false
+  },
+  "historicalModule": {
+    "path": "original/bookySizePreference-7cdd.ts",
+    "sha256": "7cdd386b00dd13fb5e19b6e56980847ff5bdcaec1bac1f41c50f998187e90c77",
+    "superseded": true,
+    "approvedCorrections": [
+      "Establish pending write queue before publishing operation state",
+      "Same ready or saving choice returns false; loading/failed explicit choice remains allowed"
+    ]
+  },
+  "review": {
+    "authorReadEntireFinalModuleAndTest": true,
+    "independentModuleStaticReview": true,
+    "rootMergedReviewRequired": true,
+    "notes": {
+      "path": "review.md",
+      "sha256": "de94c1c60e8155bffc07ae80fd5c43c65d68dc98fd0b5a33662decfc05fef38d"
+    }
+  },
+  "integrationOwnership": "ROOT separately owns App/Controls and Web/native preference port changes; this two-owner author packet is not the complete merged source manifest",
+  "checksByAuthor": {
+    "typescript": 0,
+    "vitest": 0,
+    "builds": 0,
+    "browser": 0,
+    "canonicalWrites": 0
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}
