@@ -6,6 +6,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import { lstat, mkdir, readFile, readdir, realpath, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import { setTimeout as delay } from 'node:timers/promises';
 import { verifyNativeArtifact } from './verify-native-artifact.mjs';
 import { DEVELOPER_DIR, selectSmokeTarget, simulatorLaunchPid, validateAppInfo, verifyCopiedPublic } from './ios-simulator-build.mjs';
@@ -19,6 +20,133 @@ const parseJson = bytes => { try { return JSON.parse(bytes.toString('utf8')); } 
 const within = (root, target) => { const relative = path.relative(root, target); return relative && relative !== '..' && !relative.startsWith('..' + path.sep) && !path.isAbsolute(relative); };
 const relativePath = relative => typeof relative === 'string' && relative.length > 0 && relative.length < 1024 && !relative.includes('\\') && !relative.startsWith('/')
   && !/[\u0000-\u001f%?:#]/u.test(relative) && relative.split('/').every(part => part && part !== '.' && part !== '..');
+const ownRecord = value => value !== null && typeof value === 'object' && !Array.isArray(value) && Object.getPrototypeOf(value) === Object.prototype
+  && Reflect.ownKeys(value).every(key => typeof key === 'string' && Object.getOwnPropertyDescriptor(value, key)?.enumerable === true
+    && Object.hasOwn(Object.getOwnPropertyDescriptor(value, key), 'value'));
+const PREVIOUS_PREFERENCE_PROTOCOL = 'capacitor-preferences-v1-reflection';
+const previousReceiptKeys = ['schemaVersion','artifactPath','artifactSha256','artifactBytes','applicationId','versionCode','versionName',
+  'certificateSha256','debuggable','webArtifactSha256','sourceCommit','platform','channel','metadataStatus','preferencesProtocol'];
+
+/** Read actual class definitions, not incidental descriptor strings. Only the
+ * fixed old Preferences classes are inspected; no DEX execution/decompilation. */
+export function previousPreferencesDexClasses(bytes) {
+  try {
+    check(bytes instanceof Uint8Array && bytes.length >= 112 && bytes.length <= 32 * 1024 * 1024, 'Bounded DEX required.');
+    check(/^dex\n0(?:35|37|38|39|40)\0$/u.test(Buffer.from(bytes.subarray(0,8)).toString('ascii')), 'Unsupported DEX header.');
+    const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength), u32 = offset => view.getUint32(offset, true);
+    check(u32(32) === bytes.length && u32(36) === 112 && u32(40) === 0x12345678, 'Invalid DEX bounds/endian.');
+    const table = (countOffset, offsetOffset, width, maximum) => { const count = u32(countOffset), offset = u32(offsetOffset);
+      check(count <= maximum && offset >= 112 && offset + count * width <= bytes.length, 'Invalid DEX table.'); return { count, offset }; };
+    const strings = table(56,60,4,250_000), types = table(64,68,4,65_536), classes = table(96,100,32,65_536);
+    const wanted = new Set(['Lcom/capacitorjs/plugins/preferences/Preferences;', 'Lcom/capacitorjs/plugins/preferences/PreferencesConfiguration;',
+      'Lcom/capacitorjs/plugins/preferences/PreferencesPlugin;']), found = new Set();
+    const text = index => { check(index < strings.count, 'Invalid descriptor index.'); let offset = u32(strings.offset + index * 4);
+      check(offset >= 112 && offset < bytes.length, 'Invalid string offset.'); let ended = false;
+      for (let index = 0; index < 5 && offset < bytes.length; index++) if ((bytes[offset++] & 128) === 0) { ended = true; break; }
+      check(ended, 'Invalid string length.'); const start = offset;
+      while (offset < bytes.length && bytes[offset] !== 0 && offset - start <= 512) offset++;
+      check(offset < bytes.length && offset - start <= 512, 'Invalid descriptor length.');
+      return Buffer.from(bytes.subarray(start, offset)).toString('ascii'); };
+    for (let index = 0; index < classes.count; index++) { const type = u32(classes.offset + index * 32); check(type < types.count, 'Invalid class type.');
+      const descriptor = text(u32(types.offset + type * 4)); if (wanted.has(descriptor)) found.add(descriptor); }
+    return Object.freeze({ preferences: found.has('Lcom/capacitorjs/plugins/preferences/Preferences;'),
+      configuration: found.has('Lcom/capacitorjs/plugins/preferences/PreferencesConfiguration;'),
+      plugin: found.has('Lcom/capacitorjs/plugins/preferences/PreferencesPlugin;') });
+  } catch { return Object.freeze({ preferences: false, configuration: false, plugin: false }); }
+}
+
+/** Bounded selected ZIP entries only. Embedded historical source is identity
+ * evidence for these signed bytes, never a claim of current-source acceptance. */
+export function inspectPreviousAndroidArchive(bytes, unzipSync) {
+  check(bytes instanceof Uint8Array && bytes.length > 0 && bytes.length <= 512 * 1024 * 1024 && typeof unzipSync === 'function', 'Bounded APK reader required.');
+  let selected = 0, total = 0; const names = new Set();
+  const files = unzipSync(bytes, { filter(entry) {
+    if (entry.name !== 'assets/public/artifact.json' && entry.name !== 'assets/capacitor.plugins.json' && !/^classes(?:[2-9]|[1-3][0-9])?\.dex$/u.test(entry.name)) return false;
+    const maximum = entry.name.endsWith('.dex') ? 32 * 1024 * 1024 : 8 * 1024 * 1024;
+    check(!names.has(entry.name) && ++selected <= 34 && Number.isSafeInteger(entry.originalSize) && entry.originalSize > 0
+      && entry.originalSize <= maximum && (total += entry.originalSize) <= 64 * 1024 * 1024, 'Duplicate/oversized selected APK entries.');
+    names.add(entry.name); return true;
+  } });
+  const metadataBytes = files['assets/public/artifact.json']; let metadata = null, plugins = null;
+  try { if (metadataBytes) metadata = parseJson(Buffer.from(metadataBytes)); } catch {}
+  try { if (files['assets/capacitor.plugins.json']) plugins = parseJson(Buffer.from(files['assets/capacitor.plugins.json'])); } catch {}
+  const metadataValid = ownRecord(metadata) && metadata.schemaVersion === 1 && metadata.kind === 'literary-planet-bundled-native-preparation'
+    && commit(metadata.sourceCommit) && metadata.platform === 'android' && metadata.channel === 'dev'
+    && metadata.releaseReady === false && metadata.productionActionsAuthorized === false;
+  const classes = Object.entries(files).filter(([name]) => name.endsWith('.dex')).map(([,value]) => previousPreferencesDexClasses(value));
+  const plugin = Array.isArray(plugins) && plugins.length <= 64 && plugins.some(item => ownRecord(item)
+    && item.pkg === '@capacitor/preferences' && item.classpath === 'com.capacitorjs.plugins.preferences.PreferencesPlugin');
+  const protocol = plugin && ['preferences','configuration','plugin'].every(field => classes.some(item => item[field] === true));
+  return Object.freeze({ webArtifactSha256: metadataBytes ? sha(metadataBytes) : null,
+    sourceCommit: metadataValid ? metadata.sourceCommit : null, platform: metadataValid ? 'android' : null, channel: metadataValid ? 'dev' : null,
+    metadataStatus: metadataValid ? 'valid' : metadataBytes ? 'incompatible' : 'missing',
+    preferencesProtocol: protocol ? PREVIOUS_PREFERENCE_PROTOCOL : null });
+}
+
+export function validatePreviousAndroidArtifact(value, current, receiptPath) {
+  check(ownRecord(value) && ownRecord(current) && Object.keys(value).sort().join(',') === [...previousReceiptKeys].sort().join(',') && value.schemaVersion === 1,
+    'Malformed exact predecessor receipt.');
+  check(typeof receiptPath === 'string' && /^\.tmp\/mobile-release-android-[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}\/binary\.json$/u.test(receiptPath)
+    && value.artifactPath === path.posix.dirname(receiptPath) + '/previous-dev-debug.apk'
+    && current.artifactPath === path.posix.dirname(receiptPath) + '/app-dev-debug.apk', 'Predecessor must be the exact preserved own preparation copy.');
+  check(hash(value.artifactSha256) && Number.isSafeInteger(value.artifactBytes) && value.artifactBytes > 0 && value.artifactBytes <= 512 * 1024 * 1024
+    && typeof value.applicationId === 'string' && value.applicationId.length <= 128 && Number.isSafeInteger(value.versionCode) && value.versionCode >= 1
+    && typeof value.versionName === 'string' && value.versionName.length > 0 && value.versionName.length <= 128 && hash(value.certificateSha256)
+    && typeof value.debuggable === 'boolean' && ['valid','missing','incompatible'].includes(value.metadataStatus)
+    && (value.webArtifactSha256 === null || hash(value.webArtifactSha256)) && (value.preferencesProtocol === null || value.preferencesProtocol === PREVIOUS_PREFERENCE_PROTOCOL), 'Invalid predecessor identity.');
+  if (value.metadataStatus === 'valid') check(hash(value.webArtifactSha256) && commit(value.sourceCommit) && value.platform === 'android' && value.channel === 'dev', 'Invalid historical embedded source binding.');
+  else check(value.sourceCommit === null && value.platform === null && value.channel === null
+    && (value.metadataStatus === 'missing' ? value.webArtifactSha256 === null : hash(value.webArtifactSha256)), 'Incompatible historical metadata must not fabricate source identity.');
+  check(hash(current.certificateSha256), 'Current receipt must bind its actual certificate for an update.');
+  let reason = null;
+  if (!value.debuggable || value.applicationId !== current.applicationId) reason = 'previous-application-or-debug-channel-incompatible';
+  else if (value.certificateSha256 !== current.certificateSha256) reason = 'previous-signing-certificate-incompatible';
+  else if (value.versionCode > current.versionCode) reason = 'previous-version-is-newer-no-downgrade';
+  else if (value.artifactSha256 === current.artifactSha256) reason = 'preserved-artifact-is-identical-not-a-previous-build';
+  else if (value.metadataStatus !== 'valid') reason = 'previous-embedded-metadata-' + value.metadataStatus;
+  else if (value.preferencesProtocol === null) reason = 'previous-capacitor-preferences-protocol-unavailable';
+  return Object.freeze({ ready: reason === null, reason, previous: Object.freeze({ ...value }) });
+}
+export function verifyPreviousAndroidBinding(expected, actual) {
+  check(ownRecord(expected) && ownRecord(actual) && previousReceiptKeys.every(key => Object.hasOwn(expected,key) && Object.hasOwn(actual,key)
+    && expected[key] === actual[key]), 'Historical metadata/protocol/package/source differs from the bound predecessor.');
+  return true;
+}
+
+/** Pure argument arrays, only consumed after exact own-target checks. No shell,
+ * implicit downgrade, app reset, generic private-key seed or default execution. */
+export function androidPreviousUpdatePlan(current, assessment, runId) {
+  check(assessment?.ready === true && /^[a-f0-9]{32}$/u.test(runId), 'A verified compatible predecessor and run identity are required.');
+  return Object.freeze({ previousInstall: Object.freeze(['install', assessment.previous.artifactPath]),
+    currentUpdate: Object.freeze(['install','-r',current.artifactPath]),
+    seedArguments: Object.freeze(['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetPreviousPreferencesRuntimeTest',
+      '-e','literaryRunId',runId,'-e','literaryPhase','write','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']) });
+}
+
+export function createPreviousAndroidArtifact(artifact, metadata, certificateSha256, inspection) {
+  check(relativePath(artifact?.path) && hash(artifact.sha256) && Number.isSafeInteger(artifact.bytes) && artifact.bytes > 0 && artifact.bytes <= 512 * 1024 * 1024
+    && hash(certificateSha256) && ownRecord(metadata) && ownRecord(inspection), 'Exact inspected predecessor is required.');
+  return Object.freeze({ schemaVersion: 1, artifactPath: artifact.path, artifactSha256: artifact.sha256, artifactBytes: artifact.bytes,
+    applicationId: metadata.applicationId, versionCode: metadata.versionCode, versionName: metadata.versionName, debuggable: metadata.debuggable,
+    certificateSha256, ...inspection });
+}
+export async function inspectPreviousAndroidApk(root, bytes) {
+  const installed = parseJson(await regular(root, 'node_modules/fflate/package.json', 64 * 1024));
+  check(installed.name === 'fflate' && installed.version === '0.8.3', 'Use the existing pinned APK ZIP reader.');
+  const { unzipSync } = createRequire(path.join(root,'package.json'))('fflate');
+  return inspectPreviousAndroidArchive(bytes, unzipSync);
+}
+/** Pure per-run command configuration. Ambient JVM flags can print secrets to
+ * stderr or redirect Java writes before even a read-only metadata command. */
+export function nativeRuntimeCommandContext(ambient, output) {
+  check(path.isAbsolute(output), 'An absolute owned runtime output is required.');
+  const blocked = /^(?:VITE_|SUPABASE|PLANET_|LITERARY_PLANET_|TURNSTILE|YANDEX_|CMS_|CLOUDFLARE|YOOKASSA|PSP_|PAYMENT_|AUTH_|JAVA_TOOL_OPTIONS$|_JAVA_OPTIONS$|JDK_JAVA_OPTIONS$|JAVA_OPTS$|GRADLE_OPTS$|NODE_OPTIONS$|JAVA_HOME$|GRADLE_USER_HOME$|ANDROID_USER_HOME$|ANDROID_SDK_HOME$|TMPDIR$|TMP$|TEMP$|DEVELOPER_DIR$)/iu;
+  const home = path.join(output, 'command-user'), temporary = path.join(output, 'command-temp'), android = path.join(output, 'android-user');
+  const env = Object.fromEntries(Object.entries(ambient).filter(([key]) => !blocked.test(key)));
+  Object.assign(env, { ANDROID_USER_HOME: android, TMPDIR: temporary, TMP: temporary, TEMP: temporary, DEVELOPER_DIR });
+  return Object.freeze({ env: Object.freeze(env), javaArgs: Object.freeze(['-Duser.home=' + home, '-Djava.io.tmpdir=' + temporary]),
+    directories: Object.freeze([home, temporary, android]) });
+}
 async function regular(root, relative, maximum = 512 * 1024 * 1024) {
   check(relativePath(relative), 'Unsafe contained file path.');
   const target = path.resolve(root, relative), stat = await lstat(target);
@@ -149,6 +277,7 @@ export async function runNativeInstallRuntime(options = {}) {
   const abort = new AbortController(), interrupt = () => abort.abort();
   process.once('SIGINT', interrupt); process.once('SIGTERM', interrupt);
   let ownedAndroidInstall = false, ownedTestInstall = false, ownedSimulator = null, receipt, xctestrun;
+  let previousAssessment = null, installedAndroidGeneration = null, legacyPreferenceSeeded = false;
   const toolRoot = path.join(root, '.tmp', 'native-tools');
   const extension = process.platform === 'win32' ? '.exe' : '';
   const tools = { adb: path.join(toolRoot, 'android-sdk', 'platform-tools', 'adb' + extension),
@@ -156,8 +285,16 @@ export async function runNativeInstallRuntime(options = {}) {
     java: path.join(toolRoot, 'java', 'jdk-21.0.12.1+1', 'bin', 'java' + extension),
     signer: path.join(toolRoot, 'android-sdk', 'build-tools', '36.0.0', 'lib', 'apksigner.jar'),
     androidHome: path.join(toolRoot, 'android-user'), xcrun: '/usr/bin/xcrun' };
-  const env = { ...process.env, ANDROID_USER_HOME: tools.androidHome, DEVELOPER_DIR };
+  const commandContext = nativeRuntimeCommandContext(process.env, output), env = commandContext.env;
+  let commandDirectoriesReady = false;
   async function command(binary, args, timeoutMs = 30_000, cleanup = false) {
+    if (!commandDirectoriesReady) {
+      for (const directory of commandContext.directories) {
+        await mkdir(directory); const stat = await lstat(directory);
+        check(within(output, directory) && stat.isDirectory() && !stat.isSymbolicLink() && await realpath(directory) === directory, 'Linked command cache.');
+      }
+      commandDirectoriesReady = true;
+    }
     const entry = { binary, args, startedAt: new Date().toISOString(), timeoutMs }; report.commands.push(entry);
     return new Promise((resolve, reject) => {
       let timer, timedOut = false;
@@ -182,6 +319,18 @@ export async function runNativeInstallRuntime(options = {}) {
   async function androidPreference(phase, label = phase) {
     await androidInstrument(phase, false, true);
     report.checks.push({ id: 'preferences-' + label, status: 'PASS', backend: phase === 'plugin-failure' || phase === 'timeout' ? 'synthetic-boundary' : 'native-os' });
+  }
+  async function androidPreviousPreference(phase, cleanup = false) {
+    check(['write','read','remove'].includes(phase), 'Exact historical preference fixture phase required.');
+    const text = await adb(['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetPreviousPreferencesRuntimeTest',
+      '-e','literaryRunId',runId,'-e','literaryPhase',phase,'ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner'],60_000,cleanup);
+    check(instrumentationPassed(text), 'Historical isolated Preferences fixture did not pass: ' + phase);
+  }
+  async function installedAndroidBytes(expectedSha256, filename) {
+    const installed = (await adb(['shell','pm','path',receipt.applicationId])).trim();
+    check(/^package:\/data\/app\/[^\n]+\/base\.apk$/u.test(installed), 'Expected one installed base APK.');
+    await adb(['pull',installed.slice(8),path.join(output,filename)],60_000);
+    check(sha(await regular(output,filename)) === expectedSha256, 'Installed APK differs from the exact bound package.');
   }
   async function capture(filename, simulator = false) {
     const target = path.join(output, filename);
@@ -215,16 +364,33 @@ export async function runNativeInstallRuntime(options = {}) {
     const binary = path.resolve(root, receipt.artifactPath);
     if (platform === 'android') {
       check(sha(await regular(root, receipt.artifactPath)) === receipt.artifactSha256 && sha(await regular(root, receipt.testArtifactPath)) === receipt.testArtifactSha256, 'Wrong main or instrumentation APK digest.');
-      report.toolchain = { java: await command(tools.java, ['-version']), aapt: await command(tools.aapt, ['version']), node: process.version };
+      report.toolchain = { java: await command(tools.java, [...commandContext.javaArgs, '-version']), aapt: await command(tools.aapt, ['version']), node: process.version };
       const metadata = parseAndroidPackage(await command(tools.aapt, ['dump', 'badging', binary]));
       check(metadata.applicationId === receipt.applicationId && metadata.versionCode === receipt.versionCode && metadata.versionName === receipt.versionName && metadata.debuggable, 'Actual APK version/application/debug channel differs from the receipt.');
       const test = path.resolve(root, receipt.testArtifactPath), testMetadata = parseAndroidPackage(await command(tools.aapt, ['dump', 'badging', test]));
       check(testMetadata.applicationId === 'ru.probpera.literaryplanet.dev.test' && testMetadata.debuggable, 'Wrong debug instrumentation package.');
       const testManifest = await command(tools.aapt, ['dump', 'xmltree', '--file', 'AndroidManifest.xml', test]);
       check(testManifest.includes('androidx.test.runner.AndroidJUnitRunner') && /android:targetPackage[^\n]*"ru\.probpera\.literaryplanet\.dev"/u.test(testManifest), 'Instrumentation does not target this dev application.');
-      const certificate = parseAndroidCertificate(await command(tools.java, ['-jar', tools.signer, 'verify', '--verbose', '--print-certs', binary]));
-      check(certificate === parseAndroidCertificate(await command(tools.java, ['-jar', tools.signer, 'verify', '--verbose', '--print-certs', test])), 'Instrumentation signing identity does not match the main APK.');
+      const certificate = parseAndroidCertificate(await command(tools.java, [...commandContext.javaArgs, '-jar', tools.signer, 'verify', '--verbose', '--print-certs', binary]));
+      check(certificate === parseAndroidCertificate(await command(tools.java, [...commandContext.javaArgs, '-jar', tools.signer, 'verify', '--verbose', '--print-certs', test])), 'Instrumentation signing identity does not match the main APK.');
       report.signing = { certificateSha256: certificate, productionSigning: false };
+      if (receipt.certificateSha256 !== undefined) check(receipt.certificateSha256 === certificate, 'Current certificate differs from the receipt.');
+      if (receipt.previousArtifact !== undefined && receipt.previousArtifact !== null) {
+        previousAssessment = validatePreviousAndroidArtifact(receipt.previousArtifact,receipt,options.receiptPath);
+        const previous = previousAssessment.previous, bytes = await regular(root,previous.artifactPath);
+        check(bytes.length === previous.artifactBytes && sha(bytes) === previous.artifactSha256, 'Preserved predecessor bytes changed.');
+        const inspected = await inspectPreviousAndroidApk(root,bytes), oldPath = path.resolve(root,previous.artifactPath);
+        const oldMetadata = parseAndroidPackage(await command(tools.aapt,['dump','badging',oldPath]));
+        const oldCertificate = parseAndroidCertificate(await command(tools.java,[...commandContext.javaArgs,'-jar',tools.signer,'verify','--verbose','--print-certs',oldPath]));
+        const actualPrevious = createPreviousAndroidArtifact({path:previous.artifactPath,sha256:sha(bytes),bytes:bytes.length},oldMetadata,oldCertificate,inspected);
+        verifyPreviousAndroidBinding(previous,actualPrevious);
+        report.previousArtifact = { ...previous, compatible: previousAssessment.ready, dependency: previousAssessment.reason,
+          scope: 'nonsecret-preferences-update-only', runtimeTested: false };
+      }
+      record('previous-version-secure-storage-update','NOT_RUN','The historical binary has no admitted compatible secure-store migration fixture; nonsecret Preferences cannot attest secret update.');
+      record('previous-version-parent-pin-update','NOT_RUN','Protected child PIN/full-record update and actual checkpoint admission remain unavailable.');
+      if (!previousAssessment?.ready) record('previous-version-update','NOT_RUN',previousAssessment?.reason ?? 'No bound preserved predecessor receipt exists; current preparation must inspect its saved previous APK.');
+      else if (options.execute !== true) record('previous-version-update','NOT_RUN','Verified preserved predecessor is available; an explicitly owned fresh Android target and --execute are required.');
       if (options.execute === true && options.serial && options.avdName) validateOwnedAndroidTarget(options.serial, options.avdName, runId);
     } else {
       check(await appDigest(binary) === receipt.artifactSha256, 'Wrong simulator app-tree digest.');
@@ -247,13 +413,28 @@ export async function runNativeInstallRuntime(options = {}) {
       check((await adb(['emu', 'avd', 'name'])).replaceAll('\r\n', '\n').trim() === options.avdName + '\nOK', 'Emulator is not the explicitly owned run AVD.');
       check((await adb(['shell', 'pm', 'list', 'packages', receipt.applicationId])).trim() === '', 'Refuse an already installed application; use a fresh own emulator.');
       check(Number((await adb(['shell', 'getprop', 'ro.build.version.sdk'])).trim()) >= 28, 'Synthetic instrumentation requires API 28 or newer.');
-      await adb(['install', binary], 60_000); ownedAndroidInstall = true;
-      await adb(['install', path.resolve(root, receipt.testArtifactPath)], 60_000); ownedTestInstall = true;
-      const installed = (await adb(['shell', 'pm', 'path', receipt.applicationId])).trim();
-      check(/^package:\/data\/app\/[^\n]+\/base\.apk$/u.test(installed), 'Expected one installed base APK.');
-      await adb(['pull', installed.slice(8), path.join(output, 'installed-base.apk')], 60_000);
-      check(sha(await regular(output, 'installed-base.apk')) === receipt.artifactSha256, 'Installed APK differs from the exact compiled package.');
+      if (previousAssessment?.ready) {
+        const plan = androidPreviousUpdatePlan(receipt,previousAssessment,runId);
+        await adb(plan.previousInstall,60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'previous';
+        await installedAndroidBytes(previousAssessment.previous.artifactSha256,'installed-previous-base.apk');
+        record('previous-version-installed-byte-equality','PASS');
+        await adb(['install',path.resolve(root,receipt.testArtifactPath)],60_000); ownedTestInstall = true;
+        legacyPreferenceSeeded = true;
+        const seeded = await adb(plan.seedArguments,60_000); check(instrumentationPassed(seeded),'Previous application preference seed did not pass.');
+        record('previous-version-preferences-seed','PASS');
+        await adb(['shell','am','force-stop',receipt.applicationId]);
+        await adb(plan.currentUpdate,60_000); installedAndroidGeneration = 'current';
+      } else { await adb(['install', binary], 60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'current';
+        await adb(['install', path.resolve(root, receipt.testArtifactPath)], 60_000); ownedTestInstall = true; }
+      await installedAndroidBytes(receipt.artifactSha256,'installed-base.apk');
       report.installed = true; record('installed-package-byte-equality', 'PASS');
+      if (previousAssessment?.ready) {
+        await androidPreference('read','preserved-after-previous-update');
+        report.previousArtifact.runtimeTested = true;
+        report.checks.push({id:'previous-version-update',status:'PASS',backend:'native-os',scope:'nonsecret-preferences-only',
+          previousArtifactSha256:previousAssessment.previous.artifactSha256,artifactSha256:receipt.artifactSha256,
+          previousSourceCommit:previousAssessment.previous.sourceCommit,sourceCommit:receipt.sourceCommit});
+      }
       await androidInstrument('write'); record('secure-storage-write-ciphertext-readback', 'PASS');
       await androidPreference('write');
       const launch = async () => { await adb(['shell', 'am', 'start', '-W', '-n', receipt.applicationId + '/ru.probpera.literaryplanet.MainActivity']);
@@ -280,11 +461,10 @@ export async function runNativeInstallRuntime(options = {}) {
       await androidInstrument('remove'); record('secure-store-remove', 'PASS');
       await androidInstrument('absent');
       await adb(['uninstall', receipt.applicationId]); ownedAndroidInstall = false;
-      await adb(['install', binary], 60_000); ownedAndroidInstall = true;
+      await adb(['install', binary], 60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'current';
       await adb(['install', '-r', path.resolve(root, receipt.testArtifactPath)], 60_000); ownedTestInstall = true;
       await androidInstrument('absent'); await launch(); await capture('clean-reinstall.png'); record('clean-reinstall-qa-key-absent', 'PASS');
       await androidPreference('absent', 'absent-after-clean-reinstall');
-      record('previous-version-update', 'NOT_RUN', 'No separately identified compatible previous binary was supplied. This runner does not invent an update PASS.');
     } else {
       for (const name of ['list', 'create', 'boot', 'bootstatus', 'install', 'launch', 'terminate', 'shutdown', 'delete', 'uninstall', 'get_app_container', 'io'])
         check((await sim(['help', name])).includes(name), 'Installed simctl does not support required command: ' + name);
@@ -346,8 +526,9 @@ export async function runNativeInstallRuntime(options = {}) {
   } catch (error) { report.status = abort.signal.aborted ? 'NOT_RUN' : 'FAIL'; report.failure = error.message; return report; }
   finally {
     if (ownedAndroidInstall) {
-      if (ownedTestInstall) { try { await androidInstrument('clear', true, true); report.cleanup.preferenceFixtureRemoved = true; } catch { report.cleanup.preferenceFixtureRemoved = false; } }
-      try { if (ownedTestInstall) await androidInstrument('clear', true); await adb(['uninstall', receipt.applicationId], 30_000, true); report.cleanup.mainApplicationRemoved = true; }
+      if (ownedTestInstall) { try { if (legacyPreferenceSeeded || installedAndroidGeneration === 'previous') await androidPreviousPreference('remove',true);
+        else await androidInstrument('clear', true, true); report.cleanup.preferenceFixtureRemoved = true; } catch { report.cleanup.preferenceFixtureRemoved = false; } }
+      try { if (ownedTestInstall && installedAndroidGeneration === 'current') await androidInstrument('clear', true); await adb(['uninstall', receipt.applicationId], 30_000, true); report.cleanup.mainApplicationRemoved = true; }
       catch { report.cleanup.mainApplicationRemoved = false; }
     }
     if (ownedTestInstall) { try { await adb(['uninstall', 'ru.probpera.literaryplanet.dev.test'], 30_000, true); report.cleanup.testApplicationRemoved = true; } catch { report.cleanup.testApplicationRemoved = false; } }

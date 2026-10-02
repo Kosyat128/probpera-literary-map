@@ -8,7 +8,7 @@ const files=new Map();for(const item of artifact.inventory){const name=path.reso
 const report={schemaVersion:1,startedAt:new Date().toISOString(),binding:input,buildId:artifact.buildId,artifactSha256:sha256(await fs.readFile(path.join(root,'dist-native/artifact.json'))),pluginBoundary:'simulation',installed:false,osStorageObserved:false,releaseReady:false,cases:[],errors:[],screenshots:[],externalRequests:[]};
 let browser,context;const preferences=new Map();const origin='https://local-native-bundle.test';
 try{
- browser=await chromium.launch({headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});context=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true,reducedMotion:'reduce',serviceWorkers:'block'});
+ browser=await chromium.launch({channel:'msedge',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});context=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true,reducedMotion:'reduce',serviceWorkers:'block'});
  await context.exposeBinding('fixturePreference',(_source,method,key,value)=>{if(method==='get')return preferences.get(key)??null;if(method==='set')preferences.set(key,value);else if(method==='remove')preferences.delete(key);return true;});
  await context.addInitScript(()=>{
   window.androidBridge={postMessage(){throw new Error('No actual OS bridge in this browser smoke');}};

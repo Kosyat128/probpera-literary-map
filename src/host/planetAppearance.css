@@ -220,7 +220,7 @@
   border-color: var(--planet-accent-strong);
 }
 .native-planet-app[data-planet-edition] :is(
-  .book-dossier-reader button, .book-dossier-reader__page a, .pwa-help a,
+  .book-dossier-reader button:not(:is(.book-dossier-reader__header button, .book-dossier-reader__pager button)), .book-dossier-reader__page a, .pwa-help a,
   .native-planet-panel__header .interface-language-control button:not(.is-active)
 ) { color: var(--planet-accent-strong); }
 .native-planet-app[data-planet-edition] :is(
@@ -231,6 +231,7 @@
   accent-color: var(--planet-accent-strong);
 }
 .native-planet-app[data-planet-edition] .book-dossier-reader button:is(:hover, [aria-pressed="true"], [aria-current]) {
+  color: var(--planet-accent-strong);
   background: var(--planet-card);
   border-color: var(--planet-accent-strong);
 }

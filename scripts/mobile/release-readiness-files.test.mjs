@@ -97,3 +97,13 @@ test('retained Android web manifest stays bound after the shared dist-native gen
  const result=await checkReleaseEvidence(f.root,f.input);assert.equal(result.errors.some(error=>error.startsWith('ARTIFACT_')),false);assert.equal(result.releaseReady,false);
  await f.write(webArtifactPath,'changed retained manifest');assert.ok((await checkReleaseEvidence(f.root,f.input)).errors.includes('ARTIFACT_METADATA_IDENTITY_MISMATCH'));
 });
+
+test('operator-only commit keeps an exact raw native artifact valid but does not hide product changes',async t=>{
+ const f=await fixture(t),buildCommit=f.binding.sourceCommit;await f.write('scripts/mobile/operator-only.mjs','// synthetic operator script\n');f.git(['add','scripts/mobile/operator-only.mjs']);f.git(['commit','-m','Synthetic operator-only change']);
+ const current=await captureReleaseInputs(f.root);f.input.binding={...f.binding,sourceFingerprint:current.sourceFingerprint,lockSha256:current.lockSha256,toolsFingerprint:current.toolsFingerprint};
+ assert.notEqual(current.sourceCommit,buildCommit);const valid=await checkReleaseEvidence(f.root,f.input);assert.equal(valid.errors.some(error=>error.startsWith('ARTIFACT_')||error==='MANIFEST_INPUTS_CHANGED'),false);assert.equal(valid.artifactSourceCommit,buildCommit);assert.equal(valid.releaseReady,false);
+ await f.write('src/input.ts','changed actual product bytes\n');const edited=await captureReleaseInputs(f.root);f.input.binding.sourceFingerprint=edited.sourceFingerprint;assert.ok((await checkReleaseEvidence(f.root,f.input)).errors.includes('ARTIFACT_SOURCE_INPUTS_MISMATCH'));
+});
+test('build commit outside current checkout history cannot attest an artifact',async t=>{
+ const f=await fixture(t);f.input.binding.sourceCommit='0'.repeat(40);await f.write(f.input.artifactMetadataPath,JSON.stringify({...f.meta,sourceCommit:f.input.binding.sourceCommit}));const r=await checkReleaseEvidence(f.root,f.input);assert.ok(r.errors.includes('ARTIFACT_SOURCE_COMMIT_NOT_IN_CURRENT_HISTORY'));assert.equal(r.releaseReady,false);
+});

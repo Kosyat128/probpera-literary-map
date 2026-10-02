@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "literary-planet-release-decision-registry",
-  "dataFlowFingerprint": "3a084bd6cefbda6bc1c375e7b8bcd266dd3d2fb66d3c6ee72666c2d15b9bcf94",
+  "dataFlowFingerprint": "2519c7c5ea3f7d82758cb0f222b38c7d38f6ec7d4b08236a91aed8ff3b040719",
   "sources": [
     {
       "path": "apps/mobile/android/.gitignore",
@@ -28,6 +28,10 @@
       "sha256": "bdeeb9f437ace2e654ea121a7dcac17b9c29bcdf591cd6b2aba9f5899c623469"
     },
     {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetPreviousPreferencesRuntimeTest.java",
+      "sha256": "ba7c22cffe0e82c708eb410bb4c528279e305111afedddfad49c82862bda233a"
+    },
+    {
       "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetSecureStoreRuntimeTest.java",
       "sha256": "6e0c37786445232c800cac8a4885d6f080d2ca8f2f2024d60c588dda239ba78e"
     },
@@ -38,6 +42,10 @@
     {
       "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
       "sha256": "af77529e8dddb8c99fd3f42bb688671f3a181c9e31002af389c31c7e81617e8b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "a7cd425c3aaff59db0feef761badec8995b7bf6d3823a5f2bd106b4742c83758"
     },
     {
       "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetContentStorePlugin.java",
@@ -241,7 +249,7 @@
     },
     {
       "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
-      "sha256": "28f6f55b8a26d36899bdd1bd76addfcfacf26d8b3b39d9cdc334acc5a9a6e0e0"
+      "sha256": "db0a92a53777a985116dd8878619b58707dad63b92b6608a62302ad821754c71"
     },
     {
       "path": "apps/mobile/ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
@@ -294,6 +302,10 @@
     {
       "path": "apps/mobile/ios/App/App/Info.plist",
       "sha256": "9c791e794d5a4f8849d7ceb4d282f2623fab79c1ccf28165f66ab3f82ffbfa51"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sha256": "954cfa7d42922d74c9a36188ef89525fdf205774167f9f96bc25658389411395"
     },
     {
       "path": "apps/mobile/ios/App/App/PlanetContentStorePlugin.swift",
@@ -406,6 +418,46 @@
     {
       "path": "server/planet/yookassa.ts",
       "sha256": "d3394e75c9ed55e69c3c7540b01f94d6b8dd8e94c2bf8f747e5f8638d789dbad"
+    },
+    {
+      "path": "src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554"
+    },
+    {
+      "path": "src/child/childDataNamespace.ts",
+      "sha256": "2a0b9497bc77f8fd9cf078ce2e3b91cff1ac16c842dd38df28e59d236be1c97a"
+    },
+    {
+      "path": "src/child/childIndex.ts",
+      "sha256": "9a59977420c10f3eb17333dea8ea038a1c1378aa93696857f197cf8adab0903c"
+    },
+    {
+      "path": "src/child/childMedia.ts",
+      "sha256": "a95f3c57c3a2e81b496c020f6adb4d74e3871df16d53152fedd8f41dfae8e2b2"
+    },
+    {
+      "path": "src/child/childPackage.ts",
+      "sha256": "e7ebba5afcf9bc1d7b6c6fc545f5ad47518d5b7cfc24482b4d4f8b8c7c3c2326"
+    },
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+    },
+    {
+      "path": "src/child/childProtectedState.ts",
+      "sha256": "4446d7e2833ecd0648fc3e80cb940c0a31521901d87e399b93f9f9aafcb8e78d"
+    },
+    {
+      "path": "src/child/childStartup.ts",
+      "sha256": "18f0d6149aef26201ae26fe9185fa71f193f1a5f4f44f007a7151a84a7d82cd8"
+    },
+    {
+      "path": "src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+    },
+    {
+      "path": "src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
     },
     {
       "path": "src/community/ActivityTracker.tsx",
@@ -805,7 +857,7 @@
     },
     {
       "path": "src/host/planetAppearance.css",
-      "sha256": "57c46af2e0704da55e2054e9d09f2b8d408c4428c002e8faf2fe60663e066329"
+      "sha256": "958fde1eab6df1603f9bcacf6a6b661c9479968b019940badc18cf555188e802"
     },
     {
       "path": "src/host/planetAppearance.ts",
@@ -1484,6 +1536,15 @@
       "network": "Local audited bundle; accountless reader and self-only CSP retained"
     },
     {
+      "area": "Child foundation (unintegrated)",
+      "data": [
+        "Exact-age RU/EN profiles, child-only package/media metadata and protected full-record/PIN-attempt schema",
+        "Approved production child content absent"
+      ],
+      "storage": "Sealed in-memory index/media foundation and synthetic scoped ports; separate OS encrypted candidate; protected admission UNAVAILABLE; no actual child persistence or PIN authority",
+      "network": "No App activation, child endpoint or approved production inventory; parent/current-time/rollback guarantees are not supplied by local fixtures"
+    },
+    {
       "area": "Native secrets capability",
       "data": [
         "Project-scoped session, PKCE verifier and private user record when explicitly integrated"
@@ -1580,7 +1641,21 @@
         "SUPABASE_URL",
         "SUPABASE_PUBLISHABLE_KEY",
         "SUPABASE_SERVICE_ROLE_KEY",
-        "PLANET_* license/deletion policy fields"
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
       ],
       "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
     },

@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import { bindXctestrun, xctestPassed, instrumentationPassed, parseAndroidCertificate, parseAndroidPackage, runNativeInstallRuntime,
+import { bindXctestrun, xctestPassed, instrumentationPassed, nativeRuntimeCommandContext, parseAndroidCertificate, parseAndroidPackage, runNativeInstallRuntime,
   validateOwnedAndroidTarget, validateRuntimeReceipt } from './native-install-runtime.mjs';
 
 const hash = value => createHash('sha256').update(value).digest('hex');
@@ -27,6 +27,23 @@ afterEach(async () => {
 });
 
 describe('exact-package local native runner gates', () => {
+  it('removes ambient credential/JVM injection and keeps command homes/temp within this run without process mutation', () => {
+    const keys = ['VITE_SUPABASE_URL', 'Supabase_SECRET_KEY', 'PLANET_PAYMENT_KEY', 'LITERARY_PLANET_TEST_TOKEN', 'TURNSTILE_SECRET',
+      'YANDEX_METRIKA_COUNTER_ID', 'CMS_TOKEN', 'CLOUDFLARE_API_TOKEN', 'YOOKASSA_SECRET_KEY', 'PSP_KEY', 'PAYMENT_KEY', 'AUTH_TOKEN',
+      'JAVA_TOOL_OPTIONS', '_JAVA_OPTIONS', 'JDK_JAVA_OPTIONS', 'JAVA_OPTS', 'GRADLE_OPTS', 'java_tool_options', 'NODE_OPTIONS',
+      'JAVA_HOME', 'GRADLE_USER_HOME', 'ANDROID_USER_HOME', 'ANDROID_SDK_HOME', 'TMPDIR', 'TMP', 'TEMP', 'DEVELOPER_DIR'];
+    const ambient = { PATH: 'synthetic-required-tool-path', SystemRoot: 'synthetic-os-root',
+      ...Object.fromEntries(keys.map(key => [key, 'synthetic-private-or-redirected-value'])) }, before = { ...ambient };
+    const output = path.resolve('/synthetic-own-runtime'), result = nativeRuntimeCommandContext(ambient, output);
+    for (const key of keys.filter(key => !['ANDROID_USER_HOME', 'TMPDIR', 'TMP', 'TEMP', 'DEVELOPER_DIR'].includes(key)))
+      expect(Object.prototype.hasOwnProperty.call(result.env, key)).toBe(false);
+    expect(result.env.PATH).toBe(ambient.PATH); expect(result.env.SystemRoot).toBe(ambient.SystemRoot);
+    expect(result.env.ANDROID_USER_HOME).toBe(path.join(output, 'android-user'));
+    expect(result.env.TMPDIR).toBe(path.join(output, 'command-temp')); expect(result.env.TMP).toBe(result.env.TMPDIR); expect(result.env.TEMP).toBe(result.env.TMPDIR);
+    expect(result.javaArgs).toEqual(['-Duser.home=' + path.join(output, 'command-user'), '-Djava.io.tmpdir=' + result.env.TMPDIR]);
+    for (const directory of result.directories) expect(path.dirname(directory)).toBe(output);
+    expect(JSON.stringify(result)).not.toContain('synthetic-private-or-redirected-value'); expect(ambient).toEqual(before);
+  });
   it.each(['android', 'ios'])('accepts only a bound unreleased %s dev binary receipt', platform => {
     expect(validateRuntimeReceipt(receipt(platform), platform)).toEqual(receipt(platform));
   });

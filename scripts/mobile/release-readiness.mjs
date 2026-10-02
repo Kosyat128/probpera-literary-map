@@ -133,9 +133,15 @@ export async function checkReleaseEvidence(rootDir, input) {
       try { const stat = await fs.lstat(filename); if (!filename.startsWith(root+path.sep) || !stat.isFile() || stat.isSymbolicLink() || stat.size > 32*1024*1024 || await fs.realpath(filename) !== filename) continue; checkedFiles.set(item.path, sha256(await fs.readFile(filename))); } catch { /* missing proof stays NOT_RUN/FAIL */ }
     }
   }
-  const binding = { ...(object(input.binding) ? input.binding : {}), ...Object.fromEntries(['sourceCommit','sourceFingerprint','lockSha256','toolsFingerprint'].map(key => [key,current[key]])) };
+  const binding = { ...(object(input.binding) ? input.binding : {}), ...Object.fromEntries(['sourceFingerprint','lockSha256','toolsFingerprint'].map(key => [key,current[key]])) };
   const result = evaluateReadiness({ binding, gates: input.gates, checkedFiles });
   result.currentInputs = current;
+  // The artifact's exact build commit may precede operator-only or report
+  // commits. Its complete raw preparation/binary manifests must still match
+  // current files below, while all current tools/source fingerprints are bound.
+  try { if(!COMMIT.test(binding.sourceCommit))throw new Error();execFileSync('git',['merge-base','--is-ancestor',binding.sourceCommit,current.repositoryHead],{cwd:root,stdio:['ignore','pipe','pipe']});result.artifactSourceCommit=binding.sourceCommit; }
+  catch { result.errors.push('ARTIFACT_SOURCE_COMMIT_NOT_IN_CURRENT_HISTORY');result.releaseReady=false; }
+
   if (!sameBinding(input.binding, binding)) { result.errors.push('MANIFEST_INPUTS_CHANGED'); result.releaseReady = false; }
   let meta;
   if (!safeRelative(input.artifactMetadataPath)) { result.errors.push('ARTIFACT_METADATA_MISSING'); result.releaseReady=false; }
