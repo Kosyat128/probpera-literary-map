@@ -184,9 +184,21 @@ test("offline PWA cross-language author search and book return retain the globe 
     if (await toggle.getAttribute("aria-expanded") === "false") await toggle.click();
     const writer = page.locator(".writer-detail"), detail = page.locator("#book-archive-detail");
     const observations = [];
+    const header = page.locator(".atlas-immersive-chrome");
+    const menuToggle = header.locator('[data-atlas-action="toggle-menu"]');
+    const menuPanel = header.locator('[data-atlas-application-menu-panel]');
+    const selectGlobeLocale = async locale => {
+      await expect(menuToggle).toHaveAttribute("aria-expanded", "false");
+      await menuToggle.click();
+      await expect(menuPanel).toBeVisible();
+      await menuPanel.locator(".interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      await expect(menuToggle).toHaveAttribute("aria-expanded", "false");
+      await expect(menuPanel).toBeHidden();
+      await expect(menuToggle).toBeFocused();
+    };
     for (const locale of ["ru", "en"]) {
       if (locale === "en") {
-        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "EN" }).click();
+        await selectGlobeLocale("en");
       }
       await expect(page.locator("html")).toHaveAttribute("lang", locale);
       await expect(writer.locator("h4")).toContainText(locale === "ru" ? "Достоевский" : "Dostoevsky");
@@ -224,8 +236,32 @@ test("offline PWA cross-language author search and book return retain the globe 
       expect(await page.locator("#atlas").evaluate(node => node.inert)).toBe(false);
       await retainedGlobe(page, scene);
       await testInfo.attach(`pwa-country-writer-return-${locale}`, { body: await page.screenshot(), contentType: "image/png" });
+      await expect(menuToggle).toHaveAttribute("aria-expanded", "false");
+      await expect(menuPanel).toBeHidden();
+      await page.screenshot({ path: testInfo.outputPath(`pwa-premium-globe-${locale}.png`), fullPage: false });
+      await menuToggle.click();
+      await expect(menuPanel).toBeVisible();
+      await expect(page.locator(".interface-language-control")).toHaveCount(1);
+      await expect(menuPanel.locator(".interface-language-control")).toBeVisible();
+      const directTargets = await header.locator('.atlas-application-actions > .ui-icon-button, .atlas-application-menu-toggle')
+        .evaluateAll(buttons => buttons.map(button => { const rect = button.getBoundingClientRect(); return { width: rect.width, height: rect.height }; }));
+      expect(directTargets).toHaveLength(3);
+      expect(directTargets.every(rect => rect.width >= 44 && rect.height >= 44)).toBe(true);
+      const menuTargets = await menuPanel.locator("button:not(:disabled)")
+        .evaluateAll(buttons => buttons.map(button => { const rect = button.getBoundingClientRect(); return { width: rect.width, height: rect.height }; }));
+      expect(menuTargets.length).toBeGreaterThanOrEqual(4);
+      expect(menuTargets.every(rect => rect.width >= 44 && rect.height >= 44)).toBe(true);
+      await retainedGlobe(page, scene);
+      await page.screenshot({ path: testInfo.outputPath(`pwa-premium-menu-${locale}.png`), fullPage: false });
+      await page.keyboard.press("Escape");
+      await expect(menuToggle).toHaveAttribute("aria-expanded", "false");
+      await expect(menuPanel).toBeHidden();
+      await expect(menuToggle).toBeFocused();
+      await expect(writer).toBeVisible();
+      await retainedGlobe(page, scene);
       observations.push({ locale, oppositeName, canonicalSearchIds: true, country: "russia", writer: "dostoevsky", readerClosed: true, collectionClosed: true,
-        writerRevealedByProduct: true, focusWithinCountryCard: true, sameCanvasRendererCameraScene: true, offline: true });
+        writerRevealedByProduct: true, focusWithinCountryCard: true, sameCanvasRendererCameraScene: true, offline: true,
+        directTargets, menuTargets, menuDismissedByEscape: true, menuTriggerFocusRestored: true });
     }
     await page.locator('[data-atlas-action="toggle-search"]').click();
     await page.locator("#country-search").fill("Zambia");
@@ -234,7 +270,7 @@ test("offline PWA cross-language author search and book return retain the globe 
     if (await toggle.getAttribute("aria-expanded") === "false") await toggle.click();
     for (const locale of ["en", "ru", "en"]) {
       if (await page.locator("html").getAttribute("lang") !== locale) {
-        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+        await selectGlobeLocale(locale);
       }
       await expect(page.locator("html")).toHaveAttribute("lang", locale);
       await expect(page.locator(".country-heading p")).toHaveText(locale === "ru" ? "Столица: Лусака" : "The country’s literary heritage");

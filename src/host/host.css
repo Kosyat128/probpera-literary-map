@@ -634,3 +634,371 @@ body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-
     display: none;
   }
 }
+
+/* Application navigation: one persistent scene with compact touch controls. */
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] {
+  --planet-navigation-gutter: max(12px, env(safe-area-inset-right));
+  --planet-sheet-header: 82px;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  height: 58px;
+  min-height: 58px;
+  padding: 6px 8px 6px 12px;
+  overflow: visible;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  color: var(--planet-on-dark, #fff3df);
+  background: var(--planet-chrome, #241914);
+  border: 1px solid rgba(var(--planet-accent-rgb, 237, 179, 77), .24);
+  border-radius: 22px;
+  box-shadow: 0 8px 28px #0004, inset 0 1px 0 #ffffff08;
+}
+.native-planet-app[data-planet-edition] .atlas-application-chrome .atlas-immersive-identity {
+  width: auto;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  opacity: 1;
+}
+.native-planet-app[data-planet-edition] .atlas-application-chrome .atlas-immersive-identity img {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-application-chrome .atlas-application-actions {
+  display: flex;
+  position: static;
+  align-items: center;
+  gap: 3px;
+  padding: 0;
+  overflow: visible;
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu { position: static; }
+.native-planet-app[data-planet-edition] .atlas-application-actions > :is(.ui-action, .ui-icon-button),
+.native-planet-app[data-planet-edition] .atlas-application-menu > :is(.ui-action, .ui-icon-button) {
+  position: relative;
+  z-index: 4;
+  flex: 0 0 44px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--planet-on-dark, #fff3df);
+  background: transparent;
+  box-shadow: none;
+  opacity: 1;
+}
+.native-planet-app[data-planet-edition] .atlas-application-actions :is(.ui-action, .ui-icon-button):is(:hover, [aria-expanded="true"]) {
+  color: var(--planet-accent, #edb34d);
+  background: rgba(var(--planet-accent-rgb, 237, 179, 77), .12);
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .atlas-application-actions :is(.ui-action, .ui-icon-button):active { transform: scale(.96); }
+.native-planet-app[data-planet-edition] .atlas-application-menu-icon { display: grid; gap: 4px; width: 18px; }
+.native-planet-app[data-planet-edition] .atlas-application-menu-icon i {
+  display: block;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu-backdrop { position: fixed; z-index: 1; inset: 0; }
+.native-planet-app[data-planet-edition] .atlas-application-menu-panel {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 8px);
+  right: 0;
+  display: grid;
+  gap: 3px;
+  box-sizing: border-box;
+  width: min(320px, calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)));
+  max-height: calc(100dvh - 92px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+  color: var(--planet-on-dark, #fff3df);
+  background: var(--planet-chrome, #241914);
+  border: 1px solid rgba(var(--planet-accent-rgb, 237, 179, 77), .3);
+  border-radius: 22px;
+  box-shadow: 0 18px 60px #0008, inset 0 1px 0 #ffffff0a;
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu-panel[hidden] { display: none; }
+.native-planet-app[data-planet-edition] .atlas-application-menu-heading {
+  margin: 2px 10px 10px;
+  color: var(--planet-muted-dark, #cabaa4);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu-panel > .ui-action {
+  justify-content: flex-start;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 12px;
+  color: var(--planet-on-dark, #fff3df);
+  background: transparent;
+  box-shadow: none;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu-panel > .ui-action .ui-action__label { text-align: left; }
+.native-planet-app[data-planet-edition] .atlas-application-menu-panel > .ui-action:hover {
+  background: rgba(var(--planet-accent-rgb, 237, 179, 77), .1);
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu-language {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 12px 8px 2px;
+  border-top: 1px solid rgba(var(--planet-accent-rgb, 237, 179, 77), .18);
+  font-size: 13px;
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu-language .interface-language-control { flex: 0 0 auto; margin: 0; }
+.native-planet-app[data-planet-edition] .atlas-application-menu-language .interface-language-control button { min-width: 44px; min-height: 44px; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe :is(
+  .globe-style-switch, .globe-style-switch-toggle, .globe-edition-scroll-cue,
+  .globe-navigation-label, .globe-controls [data-globe-control="edition-info"],
+  .globe-controls [data-globe-control="reset"] small
+) { display: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-edition-compact-select {
+  position: absolute;
+  z-index: 42;
+  display: block;
+  top: calc(var(--atlas-globe-chrome-top, 10px) + 68px);
+  right: auto;
+  left: 50%;
+  width: min(190px, calc(100% - 144px));
+  margin: 0;
+  transform: translateX(-50%);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-edition-compact-select select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 32px 8px 16px;
+  border: 1px solid rgba(var(--planet-accent-rgb, 237, 179, 77), .46);
+  border-radius: 999px;
+  box-shadow: 0 5px 20px #0003;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls {
+  position: absolute;
+  z-index: 42;
+  top: calc(var(--atlas-globe-chrome-top, 10px) + 80px);
+  right: var(--planet-navigation-gutter);
+  bottom: auto;
+  left: auto;
+  display: grid;
+  grid-template-columns: 44px;
+  gap: 2px;
+  width: auto;
+  height: auto;
+  padding: 4px;
+  margin: 0;
+  transform: none;
+  border: 1px solid rgba(var(--planet-accent-rgb, 237, 179, 77), .24);
+  border-radius: 22px;
+  box-shadow: 0 6px 24px #0004;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls button {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .globe-controls .globe-scale-feedback {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  bottom: auto;
+  left: auto;
+  width: 54px;
+  min-width: 0;
+  padding: 5px 0;
+  font-size: 11px;
+  text-align: center;
+  border-radius: 999px;
+}
+.native-planet-app[data-planet-edition] .globe-controls .globe-scale-feedback-label { display: none; }
+.native-planet-app[data-planet-edition] .globe-playback-control {
+  position: absolute;
+  z-index: 42;
+  bottom: calc(22px + var(--product-notice-bottom-space, 0px) + env(safe-area-inset-bottom));
+  left: max(12px, env(safe-area-inset-left));
+}
+.native-planet-app[data-planet-edition] .globe-playback-control .ui-action {
+  min-height: 44px;
+  padding: 8px 16px;
+  color: var(--planet-on-dark, #fff3df);
+  background: var(--planet-chrome, #241914);
+  border: 1px solid rgba(var(--planet-accent-rgb, 237, 179, 77), .3);
+  border-radius: 999px;
+  box-shadow: 0 5px 18px #0003;
+}
+.native-planet-app[data-planet-edition] .globe-playback-control .ui-action small { font-size: 12px; }
+.native-planet-app[data-planet-edition] .globe-playback-control .ui-action__icon svg { width: 18px; height: 18px; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] [data-planet-stand-toggle]:not([data-planet-stand-inspection-return]) { display: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-presentation {
+  border: 1px solid rgba(var(--planet-accent-rgb, 237, 179, 77), .3);
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -8px 30px #0003;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-sheet-toggle {
+  min-height: var(--planet-sheet-header);
+  padding: 14px 18px 10px;
+  border: 0;
+  border-radius: 24px 24px 0 0;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-sheet-toggle .ui-action__label {
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  gap: 12px;
+}
+.native-planet-app[data-planet-edition] .atlas-country-sheet-flag { width: 38px; height: 38px; }
+.native-planet-app[data-planet-edition] .atlas-country-sheet-copy strong {
+  font-family: var(--serif, Georgia, serif);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+.native-planet-app[data-planet-edition] .atlas-country-sheet-copy small { margin-top: 4px; font-size: 12px; }
+.native-planet-app[data-planet-edition] .atlas-country-sheet-action {
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 15px;
+  color: #261a0b;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--planet-accent, #edb34d) 78%, #fff2d4), var(--planet-accent, #edb34d));
+  border: 1px solid #ffdc9466;
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 #fff5, 0 3px 12px #0002;
+  font-size: 12px;
+  font-weight: 650;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.native-planet-app[data-planet-edition] .atlas-country-sheet-handle { width: 30px; height: 3px; opacity: .45; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-sheet-content {
+  height: calc(100% - var(--planet-sheet-header));
+}
+@media (max-width: 980px) {
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] {
+    --planet-collapsed-country-height: calc(var(--planet-sheet-header) + max(8px, env(safe-area-inset-bottom)));
+  }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-presentation[data-atlas-sheet-state="collapsed"] {
+    height: var(--planet-collapsed-country-height);
+    max-height: var(--planet-collapsed-country-height);
+  }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-panel-state="open"] .globe-playback-control {
+    bottom: calc(var(--planet-collapsed-country-height) + var(--product-notice-bottom-space, 0px) + 12px);
+  }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-panel-state="open"]:is([data-atlas-sheet-state="half"], [data-atlas-sheet-state="expanded"]) .globe-playback-control { display: none; }
+}
+@media (max-width: 720px) {
+  .native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-application-chrome .atlas-immersive-identity { grid-template-columns: 30px; width: 30px; }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-application-chrome .atlas-immersive-identity img { width: 30px; height: 30px; }
+}
+@media (max-width: 380px) {
+  .native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-sheet-toggle { padding-inline: 12px; }
+  .native-planet-app[data-planet-edition] .atlas-country-sheet-copy strong { font-size: 19px; white-space: normal; }
+  .native-planet-app[data-planet-edition] .atlas-country-sheet-action { padding-inline: 12px; }
+  .native-planet-app[data-planet-edition] .atlas-country-sheet-action-full { display: none; }
+  .native-planet-app[data-planet-edition] .atlas-country-sheet-action-compact { display: inline; }
+}
+@media (max-width: 980px) and (max-height: 540px) {
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] { --planet-sheet-header: 64px; }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-sheet-toggle { padding-block: 8px; }
+  .native-planet-app[data-planet-edition] .atlas-country-sheet-copy strong { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .native-planet-app[data-planet-edition] .atlas-application-actions :is(.ui-action, .ui-icon-button):active { transform: none; }
+}
+
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-sheet-content[aria-hidden="true"] { height: 0; }
+
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-application-chrome .atlas-application-actions > * {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+.native-planet-app[data-planet-edition] .atlas-application-chrome::before,
+.native-planet-app[data-planet-edition] .atlas-application-chrome::after,
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-application-chrome nav > *::before,
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-application-chrome nav > *::after { content: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface .globe-edition-compact-select > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .globe-edition-compact-select select { appearance: none; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface .globe-edition-compact-select::after {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: 6px;
+  height: 6px;
+  content: "";
+  pointer-events: none;
+  border-right: 1.5px solid var(--planet-accent);
+  border-bottom: 1.5px solid var(--planet-accent);
+  transform: translateY(-70%) rotate(45deg);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-sheet-action {
+  color: #261a0b;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--planet-accent) 78%, #fff2d4), var(--planet-accent));
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-presentation { padding: 0; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-presentation[data-atlas-sheet-state="collapsed"] {
+  background: var(--planet-chrome);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-country-sheet-copy strong {
+  font-family: "Source Serif 4 Local", Georgia, serif;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-actions > .ui-icon-button,
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu > .ui-icon-button {
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-actions .ui-icon-button:is(:hover, [aria-expanded="true"]) {
+  background: rgba(var(--planet-accent-rgb), .12);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls {
+  min-height: 0;
+  grid-auto-rows: 44px;
+  align-content: start;
+}
+@media (max-width: 980px) and (max-height: 540px) and (orientation: landscape) {
+  .native-planet-app[data-planet-edition] .atlas-experience-surface .globe-controls .globe-scale-feedback {
+    width: 1px;
+    height: 1px;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

@@ -73,6 +73,7 @@ interface Props {
   backgroundCustomization?: GlobeBackgroundPresentation;
   composition?: PlanetCompositionPresentation;
   standControls?: ReactNode;
+  sourceDialogRequestId?: number;
   sceneInspection?: GlobeSceneInspectionBridge;
   standInspection?: GlobeStandInspectionBridge;
   dataStatus?: DeferredLoadStatus;
@@ -105,6 +106,7 @@ export default function LiteraryWorldMap({
   backgroundCustomization,
   composition,
   standControls,
+  sourceDialogRequestId,
   sceneInspection,
   standInspection,
   dataStatus = "ready",
@@ -227,6 +229,7 @@ export default function LiteraryWorldMap({
           backgroundCustomization={backgroundCustomization}
           composition={composition}
           standControls={standControls}
+          sourceDialogRequestId={sourceDialogRequestId}
           sceneInspection={sceneInspection}
           standInspection={standInspection}
         />

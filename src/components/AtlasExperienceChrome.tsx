@@ -1,4 +1,4 @@
-import type { ReactNode, RefObject } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode, type RefObject } from "react";
 
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import Button from "../ui/Button";
@@ -18,6 +18,8 @@ type Props = {
   immersive: boolean;
   applicationRoot?: boolean;
   languageControl?: ReactNode;
+  onAppearance?: () => void;
+  onSource?: () => void;
   onCollection?: () => void;
   onClose: () => void;
   onFiltersToggle: () => void;
@@ -35,6 +37,8 @@ export default function AtlasExperienceChrome({
   immersive,
   applicationRoot = false,
   languageControl = <InterfaceLanguageControl />,
+  onAppearance,
+  onSource,
   onCollection,
   onClose,
   onFiltersToggle,
@@ -44,6 +48,50 @@ export default function AtlasExperienceChrome({
   searchOpen,
 }: Props) {
   const { language, t } = useInterfaceLanguage();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuId = useId();
+  const menuRootRef = useRef<HTMLDivElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
+  const languageAvailable = languageControl !== null;
+  const menuLabel = language === "ru" ? "Меню" : "Menu";
+  const closeMenu = (restoreFocus = false) => {
+    setMenuOpen(false);
+    if (restoreFocus) closeButtonRef.current?.focus({ preventScroll: true });
+  };
+  const runMenuAction = (action?: () => void) => {
+    closeMenu(true);
+    action?.();
+  };
+
+  useEffect(() => {
+    // Parent panels own their existing focus and scene state. Opening this
+    // disclosure closes them first; a later parent opening dismisses it.
+    if (!menuOpen) return;
+    if (!applicationRoot || !immersive || searchOpen || filtersOpen || !languageAvailable) {
+      setMenuOpen(false);
+      return;
+    }
+    menuPanelRef.current?.querySelector<HTMLButtonElement>("button:not(:disabled)")?.focus({ preventScroll: true });
+  }, [menuOpen, applicationRoot, immersive, searchOpen, filtersOpen, languageAvailable]);
+
+  useEffect(() => {
+    // The canonical locale control keeps its provider/URL behavior. A locale
+    // change also dismisses the disclosure without replacing the globe.
+    setMenuOpen(false);
+  }, [language]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const dismiss = (event: PointerEvent) => {
+      if (event.target instanceof Node && !menuRootRef.current?.contains(event.target)) {
+        const restore = Boolean(menuPanelRef.current?.contains(document.activeElement));
+        setMenuOpen(false);
+        if (restore) closeButtonRef.current?.focus({ preventScroll: true });
+      }
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, [menuOpen, closeButtonRef]);
 
   return (
     <>
@@ -54,7 +102,7 @@ export default function AtlasExperienceChrome({
         <span className="atlas-ambient-halo" />
       </div>
       <header
-        className="atlas-immersive-chrome"
+        className={`atlas-immersive-chrome${applicationRoot ? " atlas-application-chrome" : ""}`}
         aria-hidden={immersive ? undefined : "true"}
       >
         <div className="atlas-immersive-identity">
@@ -71,7 +119,97 @@ export default function AtlasExperienceChrome({
             <strong>{t("Литературная планета")}</strong>
           </div>
         </div>
-        <nav aria-label={t("Литературная планета")}>
+        {applicationRoot ? <nav className="atlas-application-actions" aria-label={t("Литературная планета")}>
+          <IconButton
+            ref={filtersButtonRef}
+            className="atlas-immersive-filter-toggle"
+            size="md"
+            surface="dark"
+            icon={<BrandFilterIcon />}
+            aria-expanded={filtersOpen}
+            aria-controls="atlas-filter-panel"
+            aria-label={t("Фильтры глобуса")}
+            title={t("Фильтры глобуса")}
+            data-atlas-action="toggle-filters"
+            onClick={() => { closeMenu(); onFiltersToggle(); }}
+          />
+          <IconButton
+            ref={searchButtonRef}
+            className="atlas-immersive-search-toggle"
+            size="md"
+            surface="dark"
+            icon={<BrandSearchIcon />}
+            aria-expanded={searchOpen}
+            aria-controls="atlas-search-panel"
+            aria-label={t("Поиск по Литературной планете")}
+            title={t("Поиск")}
+            data-atlas-action="toggle-search"
+            onPointerDown={event => {
+              // Retain the current mobile Search blur/click ordering.
+              if (searchOpen && event.isPrimary && event.button === 0) event.preventDefault();
+            }}
+            onClick={() => { closeMenu(); onSearchToggle(); }}
+          />
+          <div ref={menuRootRef} className="atlas-application-menu"
+            data-atlas-application-menu={menuOpen ? "open" : "closed"}
+            onBlur={event => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false);
+            }}
+            onKeyDown={event => {
+              if (event.key !== "Escape" || !menuOpen) return;
+              event.preventDefault(); event.stopPropagation(); closeMenu(true);
+            }}>
+            <IconButton
+              ref={closeButtonRef}
+              className="atlas-application-menu-toggle"
+              size="md"
+              surface="dark"
+              icon={<span className="atlas-application-menu-icon" aria-hidden="true"><i /><i /><i /></span>}
+              aria-label={menuLabel}
+              title={menuLabel}
+              aria-expanded={menuOpen}
+              aria-controls={menuId}
+              data-atlas-action="toggle-menu"
+              onClick={() => {
+                if (menuOpen) { closeMenu(true); return; }
+                if (searchOpen) onSearchToggle();
+                if (filtersOpen) onFiltersToggle();
+                setMenuOpen(true);
+              }}
+            />
+            {menuOpen && <div className="atlas-application-menu-backdrop" aria-hidden="true"
+              onPointerDown={event => { event.preventDefault(); event.stopPropagation(); closeMenu(true); }} />}
+            <div ref={menuPanelRef} id={menuId} className="atlas-application-menu-panel"
+              data-atlas-application-menu-panel="" role="group" aria-label={menuLabel} hidden={!menuOpen}>
+              <p className="atlas-application-menu-heading">{t("Литературная планета")}</p>
+              {onAppearance && <Button size="md" surface="dark" variant="secondary" startIcon={<BrandSparkleIcon />}
+                data-atlas-action="open-appearance" onClick={() => runMenuAction(onAppearance)}>
+                {language === "ru" ? "Оформление" : "Appearance"}
+              </Button>}
+              <Button size="md" surface="dark" variant="secondary" startIcon={<BrandBookIcon />}
+                data-atlas-action="open-collection" onClick={() => runMenuAction(onCollection)}>
+                {language === "ru" ? "Коллекция" : "Collection"}
+              </Button>
+              <Button size="md" surface="dark" variant="secondary" startIcon={<BrandSparkleIcon />}
+                disabled={randomDisabled} data-atlas-action="random-journey"
+                aria-label={t("Случайное литературное путешествие")}
+                onClick={() => runMenuAction(onRandomJourney)}>
+                {t("Случайное путешествие")}
+              </Button>
+              {onSource && <Button size="md" surface="dark" variant="secondary" startIcon={<BrandBookIcon />}
+                data-atlas-action="globe-source" onClick={() => runMenuAction(onSource)}>
+                {language === "ru" ? "Источник и права" : "Source and rights"}
+              </Button>}
+              <div className="atlas-application-menu-language"
+                onClickCapture={event => {
+                  if (event.target instanceof Element && event.target.closest("button:not(:disabled)")) closeMenu(true);
+                }}>
+                <span>{t("Язык интерфейса")}</span>
+                {languageControl}
+              </div>
+            </div>
+          </div>
+        </nav> : <nav aria-label={t("Литературная планета")}>
           <Button
             ref={searchButtonRef}
             className="atlas-immersive-search-toggle"
@@ -131,7 +269,7 @@ export default function AtlasExperienceChrome({
             data-atlas-action={applicationRoot ? "open-collection" : "exit-immersive"}
             onClick={applicationRoot ? onCollection : onClose}
           />
-        </nav>
+        </nav>}
       </header>
     </>
   );

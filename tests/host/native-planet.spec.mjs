@@ -384,13 +384,39 @@ async function evidence(fixture, testInfo, name, extra = {}) {
   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);
 }
 
+// Root actions use the genuine disclosure; Collection owns its separate locale control.
+async function nativeMenu(page, input = "click") {
+  const chrome = page.locator(".atlas-application-chrome");
+  const toggle = chrome.locator('[data-atlas-action="toggle-menu"]');
+  const panel = chrome.locator("[data-atlas-application-menu-panel]");
+  await expect(toggle).toBeVisible();
+  if (await toggle.getAttribute("aria-expanded") !== "true") await toggle[input]();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await expect(panel).toBeVisible();
+  return panel;
+}
+
+async function nativeMenuAction(page, action) {
+  const panel = await nativeMenu(page);
+  await panel.locator('[data-atlas-action="' + action + '"]').click();
+  await expect(panel).toBeHidden();
+  await expect(page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]')).toHaveAttribute("aria-expanded", "false");
+}
+
+async function nativeLanguage(page, language, input = "click") {
+  const panel = await nativeMenu(page, input);
+  await panel.locator(".interface-language-control button").filter({ hasText: language.toUpperCase() })[input]();
+  await expect(panel).toBeHidden();
+  await expect(page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]')).toHaveAttribute("aria-expanded", "false");
+}
+
 test("downloads live in the actual globe collection and retain the scene through RUEN and reopening", async ({}, testInfo) => {
   const fixture = await open({ route: "/?country=russia#atlas", viewport: { width: 390, height: 844 },
     hasTouch: true, isMobile: true, preferences: { "probpera-planet-welcome-v1": "completed" } });
   const { page } = fixture;
   try {
     await nativeRootReady(page); const original = await captureScene(page);
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await nativeMenuAction(page, "open-collection");
     const panel = page.locator(".native-planet-panel"), downloads = panel.locator('[data-planet-downloads]');
     await downloads.locator("summary").click();
     await expect(downloads).toContainText("Дополнительных пакетов для загрузки пока нет.");
@@ -405,7 +431,7 @@ test("downloads live in the actual globe collection and retain the scene through
     await expect(downloads).toContainText("Available space could not be determined.");
     await retained(page, original);
     await panel.getByRole("button", { name: "Return to the planet", exact: true }).click();
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await nativeMenuAction(page, "open-collection");
     await expect(downloads).toHaveAttribute("open", "");
     await retained(page, original);
     const colors = await downloads.evaluate(element => ({ ink: getComputedStyle(element).color, surface: getComputedStyle(element).backgroundColor,
@@ -432,7 +458,7 @@ test("mobile globe search reveals the writer and restores Escape focus across RU
       if (locale === "en") {
         const pose = await settledCameraPose(original);
         const previousUrl = new URL(page.url());
-        await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
+        await nativeLanguage(page, "en");
         await expect(page.locator("html")).toHaveAttribute("lang", "en");
         await expect(page.locator(".writer-detail h4")).toContainText(/Dostoevsky/iu);
         await retained(page, original);
@@ -519,7 +545,7 @@ test("native first screen is the actual immersive globe and RU/EN retains writer
     await expect(page.locator("[data-planet-welcome]")).toHaveCount(0);
     const selectedCameraPose = await settledCameraPose(original);
     for (const language of ["en", "ru"]) {
-      await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
+      await nativeLanguage(page, language);
       await expect(page.locator("html")).toHaveAttribute("lang", language);
       await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe(language);
       await retained(page, original);
@@ -564,8 +590,7 @@ async function applicationAppearanceEvidence(page, phase) {
       searchResults: "#country-results", country: ".atlas-country-presentation .country-panel", countryToggle: ".atlas-country-sheet-toggle",
       collection: ".native-planet-panel", collectionHeader: ".native-planet-panel__header", archiveHeading: ".book-archive-heading",
       archiveCard: ".archive-book-card", filterDrawer: "#book-archive-advanced-filters",
-      editionArrow: '.globe-edition-scroll-cue[data-visible="true"] button', scaleFeedback: ".globe-scale-feedback",
-      previousEditionFade: ".globe-edition-scroll-cue.is-previous", nextEditionFade: ".globe-edition-scroll-cue.is-next" };
+      editionSelect: ".globe-edition-compact-select select", scaleFeedback: ".globe-scale-feedback" };
     const surfaces = {};
     for (const [name, selector] of Object.entries(selectors)) {
       const element = document.querySelector(selector);
@@ -708,7 +733,7 @@ test("native application defaults to rich graphics under low-resource hints whil
     return actual;
   };
   const openSettings = async (language, keyboard = false) => {
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await nativeMenuAction(page, "open-collection");
     await expect(panel).toBeVisible();
     await expect(settings.locator("summary")).toHaveText(language === "ru" ? "Настройки графики" : "Graphics settings");
     if (keyboard) {
@@ -737,7 +762,7 @@ test("native application defaults to rich graphics under low-resource hints whil
     expect(initial.reducedMotion).toBe(false);
     const pose = await settledCameraPose(original);
     for (const language of ["en", "ru"]) {
-      await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
+      await nativeLanguage(page, language);
       await expect(page.locator("html")).toHaveAttribute("lang", language);
       await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe(language);
       await showWriter(page);
@@ -869,7 +894,7 @@ test("native application defaults to rich graphics under low-resource hints whil
         scope: "320 CSS px browser viewport; normal vertical scrolling allowed. New settings only; no physical device or OS text-scale claim." });
     }
     await closeSettings("en");
-    await expect(page.locator('[data-atlas-action="open-collection"]')).toBeFocused();
+    await expect(page.locator('[data-atlas-action="toggle-menu"]')).toBeFocused();
     await retained(page, reloaded);
     await expect(page.locator(".country-heading img.country-flag")).toHaveAttribute("alt", "");
     await expect(page.locator(".country-heading img.country-flag")).toHaveAttribute("fetchpriority", "high");
@@ -896,7 +921,7 @@ test("native application appearance follows canonical globe editions while prese
     const pose = await settledCameraPose(original);
     const locales = [];
     for (const language of ["en", "ru"]) {
-      await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
+      await nativeLanguage(page, language);
       await expect(page.locator("html")).toHaveAttribute("lang", language);
       await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe(language);
       await showWriter(page);
@@ -928,21 +953,15 @@ test("native application appearance follows canonical globe editions while prese
     const appearances = [];
     for (const [edition, style] of [["rand-mcnally-1887", "antique"], ["nasa-blue-marble", "earth"], ["natural-earth-2026", "modern"]]) {
       const globe = page.locator("#atlas .literary-globe");
-      if (await globe.getAttribute("data-globe-edition") !== edition) {
-        const select = page.locator(".globe-edition-compact-select select");
-        if (await select.isVisible()) await select.selectOption(edition);
-        else {
-          const option = page.locator('button[data-globe-edition-option="' + edition + '"]');
-          if (!await option.isVisible()) await page.locator('[data-globe-control="edition-rail-toggle"]').click();
-          await option.click();
-        }
-      }
+      const editionSelect = page.locator(".globe-edition-compact-select select");
+      await expect(editionSelect).toBeVisible();
+      if (await globe.getAttribute("data-globe-edition") !== edition) await editionSelect.selectOption(edition);
       await expect(globe).toHaveAttribute("data-globe-edition", edition);
       await expect(globe).toHaveAttribute("data-globe-style", style);
       await expect(page.locator(".native-planet-app")).toHaveAttribute("data-planet-edition", edition);
       await expect(globe).toHaveAttribute("data-globe-edition-transition", "idle");
       if (style === "earth") {
-        await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
+        await nativeLanguage(page, "en");
         await expect(page.locator("html")).toHaveAttribute("lang", "en");
       }
       await retained(page, original);
@@ -952,16 +971,26 @@ test("native application appearance follows canonical globe editions while prese
       expect(graphics.rendererPixelRatio).toBe(1.5);
       expect(graphics.pointVertexCounts).toContain(2400);
 
-      const editionToggle = page.locator('[data-globe-control="edition-rail-toggle"]');
-      if (await editionToggle.getAttribute("aria-expanded") !== "true") await editionToggle.click();
-      await expect(page.locator("#globe-edition-rail")).toHaveAttribute("aria-hidden", "false");
-      await expect(page.locator('.globe-edition-scroll-cue[data-visible="true"] button').first()).toBeVisible();
+      await expect(editionSelect).toHaveValue(edition);
+      await expect(editionSelect).toBeEnabled();
+      await expect(editionSelect).toHaveAttribute("aria-busy", "false");
+      await expect(editionSelect).toHaveAccessibleName(/Текущее издание глобуса|Current globe edition/u);
+      await expect(page.locator("#globe-edition-rail")).toBeHidden();
+      await expect(page.locator('[data-globe-control="edition-rail-toggle"]')).toBeHidden();
+      for (const cue of await page.locator(".globe-edition-scroll-cue").all()) await expect(cue).toBeHidden();
       await page.mouse.move(0, 0);
       const editionControls = await applicationAppearanceEvidence(page, style + "-edition-controls");
-      for (const surface of ["editionArrow", "scaleFeedback"]) expectAppearanceSurface(editionControls, surface, "chrome", "on-dark");
-      for (const surface of ["previousEditionFade", "nextEditionFade"]) {
-        expect(editionControls.surfaces[surface].backgroundImage).toContain(editionControls.surfaces.chrome.backgroundColor);
+      for (const surface of ["editionSelect", "scaleFeedback"]) expectAppearanceSurface(editionControls, surface, "chrome", "on-dark");
+      const editionOptions = await editionSelect.locator("option").evaluateAll(options => options.map(option => ({
+        value: option.value, label: option.label, color: getComputedStyle(option).color,
+        backgroundColor: getComputedStyle(option).backgroundColor })));
+      expect(editionOptions.map(option => option.value)).toEqual(await page.locator("#globe-edition-rail [data-globe-edition-option]").evaluateAll(buttons => buttons.map(button => button.dataset.globeEditionOption)));
+      for (const option of editionOptions) {
+        expect(option.label.trim()).not.toBe("");
+        expect(option.color).toBe(editionControls.surfaces.editionSelect.color);
+        expect(option.backgroundColor).toBe(editionControls.surfaces.editionSelect.backgroundColor);
       }
+      editionControls.editionOptions = editionOptions;
       await page.locator('[data-atlas-action="toggle-search"]').click();
       await page.locator("#country-search").fill("Достоевский");
       await expect(page.locator('#country-results [role="option"]').filter({ hasText: /Достоевск|Dostoevsk/iu }).first()).toBeVisible();
@@ -972,7 +1001,7 @@ test("native application appearance follows canonical globe editions while prese
         committedEdition: edition, sameCanvasRendererCameraScene: true });
       await page.keyboard.press("Escape");
 
-      await page.locator('[data-atlas-action="open-collection"]').click();
+      await nativeMenuAction(page, "open-collection");
       const panel = page.locator(".native-planet-panel");
       await expect(panel).toBeVisible();
       await expect(panel.locator(".book-archive-heading")).toBeVisible();
@@ -1041,12 +1070,15 @@ test("native application appearance follows canonical globe editions while prese
       const narrow = await applicationAppearanceEvidence(page, "modern-narrow-header");
       expectAppearanceSurface(narrow, "chrome", "chrome", "on-dark");
       expectAppearanceSurface(narrow, "countryToggle", "chrome", "on-dark");
-      for (const surface of ["editionArrow", "scaleFeedback"]) expectAppearanceSurface(narrow, surface, "chrome", "on-dark");
+      for (const surface of ["editionSelect", "scaleFeedback"]) expectAppearanceSurface(narrow, surface, "chrome", "on-dark");
       const header = page.locator(".atlas-immersive-chrome");
       const headerBounds = await header.boundingBox();
       expect(headerBounds.y).toBeGreaterThanOrEqual(59);
       expect(headerBounds.x).toBeGreaterThanOrEqual(0);
       expect(headerBounds.x + headerBounds.width).toBeLessThanOrEqual(390);
+      const visibleHeaderButtons = header.locator("button:visible");
+      await expect(visibleHeaderButtons).toHaveCount(3);
+      expect(await visibleHeaderButtons.evaluateAll(buttons => buttons.map(button => button.dataset.atlasAction))).toEqual(["toggle-filters", "toggle-search", "toggle-menu"]);
       const buttons = [];
       for (const button of await header.locator("button").all()) {
         if (!await button.isVisible()) continue;
@@ -1132,7 +1164,7 @@ test("WebGL context recovery retains the canonical globe, camera pose and RUEN s
     await evidence(fixture, testInfo, "native-context-lost-ru", { initialPose, rotatedPose, zoomedPose, beforeLoss, lostFrames,
       actualExtension: "WEBGL_lose_context", stableManualPose: true, syntheticContextEvents: false,
       sameCanvasRendererCameraScene: true });
-    await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
+    await nativeLanguage(page, "en");
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(globe).toHaveAttribute("data-globe-webgl-context", "lost");
     await expect(globe.locator('.globe-webgl-recovery[role="alert"]')).toContainText("The globe display was interrupted");
@@ -1154,7 +1186,7 @@ test("WebGL context recovery retains the canonical globe, camera pose and RUEN s
     ]);
     await evidence(fixture, testInfo, "native-context-restored-en", { beforeLoss, restoredPose: await cameraPose(original), contextEvents,
       sameCanvasRendererCameraScene: true, country: "russia", writer: "dostoevsky", actualExtension: "WEBGL_lose_context" });
-    await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "RU" }).click();
+    await nativeLanguage(page, "ru");
     await expect(page.locator("html")).toHaveAttribute("lang", "ru");
     expect(await cameraPose(original)).toEqual(beforeLoss); await retained(page, original);
     const restoredFrame = (await nativeGlobeRuntime(page)).renderFrame;
@@ -1317,7 +1349,7 @@ test("native host background pauses the actual globe while the document stays vi
     await showWriter(page);
     await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("russia");
     await expect.poll(() => new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
-    await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
+    await nativeLanguage(page, "en");
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe("en");
     await expect(globe).toHaveAttribute("data-globe-camera-phase", "idle");
@@ -1537,7 +1569,7 @@ test("mobile country sheet preserves keyboard, touch cancellation, locale and or
     await retained(page, original);
     expect(await cameraPose(original)).toEqual(pose);
 
-    await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).tap();
+    await nativeLanguage(page, "en", "tap");
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(handle).toHaveAccessibleName("Expand archive fully");
     await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "half");
@@ -1595,15 +1627,27 @@ async function welcomeGeometry(page, safeArea = { top: 0, bottom: 0, left: 0, ri
 }
 
 async function welcomeLanguageAccess(page, safeArea) {
-  // Observe the application's own idle timer without pointer/focus actions or
-  // synthetic quiet attributes: language must stay discoverable while reading.
+  // Observe natural idle before interaction: the visible Menu must continue
+  // to provide genuine language access while reading the invitation.
   await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-quiet", "true");
   await expect(page.locator("[data-planet-welcome]")).toBeVisible();
   const chrome = page.locator(".atlas-immersive-chrome");
   await expect(chrome).toHaveCSS("opacity", "1");
   await expect(chrome).toHaveCSS("transform", "none");
   expect(await chrome.evaluate(element => element.matches(":hover, :focus-within"))).toBe(false);
-  const buttons = chrome.locator(".interface-language-control button");
+  const menu = chrome.locator('[data-atlas-action="toggle-menu"]');
+  await expect(menu).toBeVisible();
+  await expect(menu).toBeInViewport({ ratio: 1 });
+  const menuBounds = await menu.boundingBox();
+  expect(menuBounds.width).toBeGreaterThanOrEqual(44);
+  expect(menuBounds.height).toBeGreaterThanOrEqual(44);
+  expect(await menu.evaluate(element => {
+    const bounds = element.getBoundingClientRect();
+    const hit = document.elementFromPoint(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2);
+    return hit === element || element.contains(hit);
+  })).toBe(true);
+  const panel = await nativeMenu(page);
+  const buttons = panel.locator(".interface-language-control button");
   await expect(buttons).toHaveText(["RU", "EN"]);
   const observations = [];
   for (const button of await buttons.all()) {
@@ -1639,8 +1683,16 @@ async function welcomeLanguageAccess(page, safeArea) {
     expect(observation.bounds.bottom).toBeLessThanOrEqual(page.viewportSize().height - safeArea.bottom);
     observations.push(observation);
   }
-  return { quiet: true, naturalIdleObserved: true, hoveredOrFocused: false,
-    chromeOpacity: 1, chromeTransform: "none", buttons: observations };
+  await page.keyboard.press("Escape");
+  await expect(panel).toBeHidden();
+  await expect(menu).toBeFocused();
+  await expect(menu).toHaveAttribute("aria-expanded", "false");
+  // Leave focus on an actual invitation action for the next idle observation.
+  await page.locator('[data-planet-welcome-action="journey"]').focus();
+  await page.mouse.move(0, 0);
+  return { quietBeforeOpening: true, naturalIdleObserved: true, initiallyHoveredOrFocused: false,
+    chromeOpacity: 1, chromeTransform: "none", languageAccess: "genuine Menu disclosure",
+    menuBounds, menuClosedAfterObservation: true, buttons: observations };
 }
 
 test("first journey invitation waits for the real scene, keeps RU/EN camera pose and starts a canonical journey", async ({}, testInfo) => {
@@ -1654,7 +1706,7 @@ test("first journey invitation waits for the real scene, keeps RU/EN camera pose
     const invitationNode = await invitation.elementHandle();
     for (const [language, phase] of [["ru", "ru-initial"], ["en", "en"], ["ru", "ru-restored"]]) {
       if (await page.locator("html").getAttribute("lang") !== language) {
-        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
+        await nativeLanguage(page, language);
       }
       await expect(page.locator("html")).toHaveAttribute("lang", language);
       await expect(invitation.getByRole("heading", { name: language === "ru" ? "Начните путешествие" : "Begin your journey", exact: true })).toBeVisible();
@@ -1834,7 +1886,7 @@ test("native book author navigation closes the reader and reveals the canonical 
       if (locale === "en") {
         const pose = await settledCameraPose(scene);
         const before = new URL(page.url());
-        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "EN" }).click();
+        await nativeLanguage(page, "en");
         await expect(page.locator("html")).toHaveAttribute("lang", "en");
         await retained(page, scene);
         expect(await cameraPose(scene)).toEqual(pose);
@@ -1931,7 +1983,7 @@ test("native book author navigation closes the reader and reveals the canonical 
     const countryAddress = new URL(page.url());
     for (const [locale, phase] of [["en", "initial"], ["ru", "switched"], ["en", "restored"]]) {
       if (phase !== "initial") {
-        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+        await nativeLanguage(page, locale);
       }
       await expect(page.locator("html")).toHaveAttribute("lang", locale);
       await expect(page.locator(".country-heading p")).toHaveText(locale === "ru"
@@ -1974,12 +2026,13 @@ test("narrow reduced-motion native launch and search retain the actual globe wit
       await expect(logo).toBeVisible();
       expect(await logo.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
       const logoBounds = await logo.boundingBox();
-      expect(logoBounds.width).toBe(24);
-      expect(logoBounds.height).toBe(24);
+      expect(logoBounds.width).toBe(30);
+      expect(logoBounds.height).toBe(30);
       expect(logoBounds.y).toBeGreaterThanOrEqual(safeArea.top);
       expect(logoBounds.x).toBeGreaterThanOrEqual(safeArea.left);
       const headerButtons = page.locator(".atlas-immersive-chrome button:visible");
-      expect(await headerButtons.count()).toBeGreaterThan(0);
+      await expect(headerButtons).toHaveCount(3);
+      expect(await headerButtons.evaluateAll(buttons => buttons.map(button => button.dataset.atlasAction))).toEqual(["toggle-filters", "toggle-search", "toggle-menu"]);
       const buttons = [];
       for (const button of await headerButtons.all()) {
         const bounds = await button.boundingBox();
@@ -2003,7 +2056,7 @@ test("narrow reduced-motion native launch and search retain the actual globe wit
     await expect.poll(() => new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
     await retained(page, original);
     await evidence(fixture, testInfo, "native-narrow-reduced-motion", { viewport: { width: 390, height: 844 }, reducedMotion: true, directGlobeEntry: true, safeArea, compactChrome, sameCanvasAcrossResize: true, safeAreaEmulation: "Chrome CDP CSS environment; not an iOS device" });
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await nativeMenuAction(page, "open-collection");
     const returnButton = page.locator(".native-planet-panel").getByRole("button", { name: "Вернуться к планете", exact: true });
     await expect(returnButton).toBeVisible();
     const closeBounds = await returnButton.boundingBox();
@@ -2042,7 +2095,7 @@ test("mobile globe book search resolves evidence-backed RU and EN titles to the 
       if (locale === "en") {
         const previousUrl = new URL(page.url());
         const pose = await settledCameraPose(original);
-        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "EN" }).click();
+        await nativeLanguage(page, "en");
         await expect(page.locator("html")).toHaveAttribute("lang", "en");
         await retained(page, original);
         expect(await cameraPose(original)).toEqual(pose);
@@ -2122,7 +2175,7 @@ test("mobile globe search resolves canonical opposite-locale author names and pa
       if (locale === "en") {
         const pose = await settledCameraPose(scene);
         const before = new URL(page.url());
-        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "EN" }).click();
+        await nativeLanguage(page, "en");
         await expect(page.locator("html")).toHaveAttribute("lang", "en");
         await retained(page, scene);
         expect(await cameraPose(scene)).toEqual(pose);
@@ -2211,7 +2264,7 @@ test("native recent history persists canonical writer and work across RU and EN 
     }
   };
   const showHistory = async () => {
-    if (!await panel.isVisible()) await page.locator('[data-atlas-action="open-collection"]').click();
+    if (!await panel.isVisible()) await nativeMenuAction(page, "open-collection");
     await expect(recent).toHaveCount(1);
     if (await recent.getAttribute("open") === null) await recent.locator("summary").click();
     await expect(recent.locator(".recent-history__content")).toBeVisible();
@@ -2482,4 +2535,251 @@ test("native collections disclose session-only favorites and smart shelves when 
       indexedDBUnavailable: true, currentSessionFavoriteAndShelfRetainedAcrossLocale: true,
       disclosedFavoriteAndShelfLossOnNewDocumentObserved: true, noInjectedCollectionStore: true, actualNativeInstallation: false });
   } finally { await scene?.dispose(); }
+});
+
+test("compact premium mobile chrome retains the actual globe across menu, locale and edition controls", async ({}, testInfo) => {
+  test.setTimeout(180_000);
+  const safeArea = { top: 24, bottom: 16, left: 0, right: 0 };
+  const fixture = await open({ route: "/?country=russia&writer=dostoevsky#atlas",
+    viewport: { width: 330, height: 844 }, reducedMotion: "reduce", hasTouch: true, isMobile: true,
+    safeArea, preferences: { "probpera-planet-welcome-v1": "completed" } });
+  const { page } = fixture;
+  const header = page.locator(".atlas-immersive-chrome");
+  const globe = page.locator("#atlas .literary-globe");
+  const filters = header.locator('[data-atlas-action="toggle-filters"]');
+  const search = header.locator('[data-atlas-action="toggle-search"]');
+  const menu = header.locator('[data-atlas-action="toggle-menu"]');
+  const popup = header.locator("[data-atlas-application-menu-panel]");
+  const selector = page.locator(".globe-edition-compact-select select");
+  const observations = [];
+  const selection = () => {
+    const url = new URL(page.url());
+    return { country: url.searchParams.get("country"), writer: url.searchParams.get("writer"),
+      book: url.searchParams.get("book"), hash: url.hash };
+  };
+  const canonicalSelection = selection();
+  expect(canonicalSelection).toEqual({ country: "russia", writer: "dostoevsky", book: null, hash: "#atlas" });
+
+  async function collapseCountrySheet() {
+    const sheet = page.locator('.atlas-country-presentation[data-atlas-country="russia"]');
+    const toggle = sheet.locator(".atlas-country-sheet-toggle");
+    await expect(sheet).toBeVisible();
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", /^(?:collapsed|half|expanded)$/u);
+    // The product hides playback behind an open country sheet. Reach its
+    // collapsed state through the real toggle without altering the deep link.
+    for (let taps = 0; taps < 2; taps++) {
+      const phase = await sheet.getAttribute("data-atlas-sheet-state");
+      if (phase === "collapsed") break;
+      await toggle.tap();
+      await expect(sheet).toHaveAttribute("data-atlas-sheet-state", phase === "half" ? "expanded" : "collapsed");
+    }
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "collapsed");
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(selection()).toEqual(canonicalSelection);
+  }
+  await collapseCountrySheet();
+  const original = await captureScene(page);
+
+  async function exposed(target, label) {
+    await expect(target, label).toBeVisible();
+    // Popup content may use its normal scrollport on short screens. This only
+    // exposes the actual target; activation below uses genuine browser input.
+    await target.scrollIntoViewIfNeeded();
+    await expect(target, label).toBeInViewport({ ratio: 1 });
+    const measured = await target.evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      const points = [[.5, .5], [.15, .15], [.85, .15], [.15, .85], [.85, .85]];
+      return { label: element.getAttribute("aria-label") ?? element.textContent?.trim(),
+        bounds: rect.toJSON(), viewport: { width: innerWidth, height: innerHeight }, ownHits: points.map(([x, y]) => {
+          const hit = document.elementFromPoint(rect.left + rect.width * x, rect.top + rect.height * y);
+          return hit === element || Boolean(hit && element.contains(hit));
+        }) };
+    });
+    expect(measured.bounds.width, label + " touch width").toBeGreaterThanOrEqual(44);
+    expect(measured.bounds.height, label + " touch height").toBeGreaterThanOrEqual(44);
+    expect(measured.bounds.left, label + " safe left").toBeGreaterThanOrEqual(safeArea.left - 1);
+    expect(measured.bounds.top, label + " safe top").toBeGreaterThanOrEqual(safeArea.top - 1);
+    expect(measured.bounds.right, label + " safe right").toBeLessThanOrEqual(measured.viewport.width - safeArea.right + 1);
+    expect(measured.bounds.bottom, label + " safe bottom").toBeLessThanOrEqual(measured.viewport.height - safeArea.bottom + 1);
+    expect(measured.ownHits, label + " own hit points").toEqual([true, true, true, true, true]);
+    return measured;
+  }
+  async function openMenu() {
+    await menu.tap();
+    await expect(menu).toHaveAttribute("aria-expanded", "true");
+    await expect(popup).toBeVisible();
+    await expect.poll(() => popup.evaluate(element => element.contains(document.activeElement))).toBe(true);
+  }
+  async function preserved() {
+    await retained(page, original);
+    expect(selection()).toEqual(canonicalSelection);
+  }
+
+  try {
+    for (const viewport of [{ width: 330, height: 844 }, { width: 390, height: 844 },
+      { width: 390, height: 480 }, { width: 844, height: 390 }]) {
+      await page.setViewportSize(viewport);
+      await nativeRootReady(page);
+      await collapseCountrySheet();
+      await expect(globe).toHaveAttribute("data-globe-camera-phase", "idle");
+      const pose = await settledCameraPose(original);
+      await expect(menu).toHaveAttribute("aria-expanded", "false");
+      await expect(popup).toBeHidden();
+      await expect(header.getByRole("button")).toHaveCount(3);
+      await expect(header.locator(".interface-language-control")).toHaveCount(1);
+      await expect(header.locator(".interface-language-control")).toBeHidden();
+      for (const action of [filters, search, menu]) expect(await action.getAttribute("aria-label")).toBeTruthy();
+      const actions = [];
+      for (const [target, label] of [[filters, "visible Filters"], [search, "visible Search"], [menu, "visible Menu"]]) {
+        actions.push(await exposed(target, label));
+      }
+      expect(Math.max(...actions.map(action => action.bounds.y)) - Math.min(...actions.map(action => action.bounds.y))).toBeLessThanOrEqual(2);
+      const logo = header.locator(".atlas-immersive-identity > img");
+      await expect(logo).toBeVisible();
+      expect(await logo.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+
+      await openMenu();
+      await exposed(popup.locator('[data-atlas-action="open-collection"]'), "submenu Collection");
+      await page.keyboard.press("Escape");
+      await expect(popup).toBeHidden();
+      await expect(menu).toBeFocused();
+      await preserved();
+      expect(await cameraPose(original)).toEqual(pose);
+
+      if (viewport.width === 330) {
+        await openMenu();
+        const appearance = popup.locator('[data-atlas-action="open-appearance"]');
+        await exposed(appearance, "submenu Appearance");
+        await appearance.tap();
+        const standPanel = page.locator("[data-planet-stand-panel]");
+        await expect(standPanel).toBeVisible();
+        await expect(standPanel.locator("h2")).not.toBeEmpty();
+        await expect(standPanel.locator("[data-planet-stand-select]")).toBeFocused();
+        await expect(popup).toBeHidden();
+        await page.keyboard.press("Escape");
+        await expect(standPanel).toBeHidden();
+        await expect(menu).toBeFocused();
+        await preserved();
+        expect(await settledCameraPose(original)).toEqual(pose);
+      }
+
+      const locales = [];
+      for (const locale of ["en", "ru"]) {
+        await openMenu();
+        const language = popup.locator(".interface-language-control button").filter({ hasText: new RegExp("^" + locale.toUpperCase() + "$", "u") });
+        locales.push({ locale, target: await exposed(language, "submenu " + locale.toUpperCase()) });
+        await language.tap();
+        await expect(page.locator("html")).toHaveAttribute("lang", locale);
+        await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe(locale);
+        await expect(popup).toBeHidden();
+        await expect(menu).toHaveAttribute("aria-expanded", "false");
+        await expect(menu).toBeFocused();
+        await preserved();
+        expect(await cameraPose(original)).toEqual(pose);
+      }
+
+      // Verify the real header handoff while the submenu owns focus/backdrop.
+      await openMenu();
+      await search.tap();
+      const input = page.locator("#country-search");
+      await expect(input).toBeFocused();
+      await expect(search).toHaveAttribute("aria-expanded", "true");
+      await expect(popup).toBeHidden();
+      await input.press("Escape");
+      await expect(search).toHaveAttribute("aria-expanded", "false");
+      await expect(search).toBeFocused();
+      await preserved();
+
+      await filters.tap();
+      await expect(filters).toHaveAttribute("aria-expanded", "true");
+      await page.keyboard.press("Escape");
+      await expect(filters).toHaveAttribute("aria-expanded", "false");
+      await expect(filters).toBeFocused();
+      await preserved();
+
+      await openMenu();
+      await popup.locator('[data-atlas-action="open-collection"]').tap();
+      const collection = page.locator(".native-planet-panel");
+      await expect(collection).toBeVisible();
+      const returnToGlobe = collection.getByRole("button", { name: /^(?:Вернуться к планете|Return to the planet)$/u });
+      await exposed(returnToGlobe, "Collection return");
+      await returnToGlobe.tap();
+      await expect(collection).toBeHidden();
+      await expect(menu).toBeFocused();
+      await expect(popup).toBeHidden();
+      await collapseCountrySheet();
+      await preserved();
+      expect(await settledCameraPose(original)).toEqual(pose);
+
+      await openMenu();
+      const source = popup.locator('[data-atlas-action="globe-source"]');
+      await exposed(source, "submenu Source and rights");
+      await source.tap();
+      const dialog = page.locator(".globe-edition-info-dialog");
+      await expect(dialog).toBeVisible();
+      await expect(dialog).toHaveAttribute("open", "");
+      await expect(dialog.locator("#globe-edition-info-title")).not.toBeEmpty();
+      expect(await dialog.locator("dl dt").count()).toBeGreaterThanOrEqual(4);
+      await expect.poll(() => dialog.evaluate(element => element.contains(document.activeElement))).toBe(true);
+      await page.keyboard.press("Escape");
+      await expect(dialog).toBeHidden();
+      await expect(menu).toBeFocused();
+      await expect(popup).toBeHidden();
+      await preserved();
+      expect(await cameraPose(original)).toEqual(pose);
+
+      const editionControl = await exposed(selector, "compact edition selector");
+      await expect(selector).toHaveAccessibleName(/издани|edition/iu);
+      const previousEdition = await globe.getAttribute("data-globe-edition");
+      const nextEdition = previousEdition === "nasa-blue-marble" ? "rand-mcnally-1887" : "nasa-blue-marble";
+      await selector.selectOption(nextEdition);
+      await expect(globe).toHaveAttribute("data-globe-edition", nextEdition);
+      await expect(globe).toHaveAttribute("data-globe-edition-transition", "idle");
+      await expect(selector).toHaveValue(nextEdition);
+      await expect(selector).toBeEnabled();
+      await preserved();
+      expect(await settledCameraPose(original)).toEqual(pose);
+
+      const controls = {};
+      for (const name of ["zoom-in", "zoom-out", "reset", "auto-rotate"]) {
+        controls[name] = await exposed(globe.locator('[data-globe-control="' + name + '"]'), name);
+      }
+      expect(Math.abs(controls["zoom-in"].bounds.x - controls["zoom-out"].bounds.x)).toBeLessThanOrEqual(2);
+      expect(Math.abs(controls["zoom-out"].bounds.x - controls.reset.bounds.x)).toBeLessThanOrEqual(2);
+      expect(controls["zoom-in"].bounds.bottom).toBeLessThanOrEqual(controls["zoom-out"].bounds.top);
+      expect(controls["zoom-out"].bounds.bottom).toBeLessThanOrEqual(controls.reset.bounds.top);
+      expect(controls["auto-rotate"].bounds.right).toBeLessThan(controls["zoom-in"].bounds.left);
+      await expect(globe.locator('[data-globe-control="auto-rotate"]')).toBeDisabled();
+      await expect(globe).toHaveAttribute("data-globe-auto-rotate", "reduced-motion");
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      await preserved();
+      const observation = { viewport, safeArea, actions, locales, controls, editionControl, committedEdition: nextEdition,
+        selectedCountry: "russia", selectedWriter: "dostoevsky", sameCanvasRendererCameraScene: true,
+        focusReturns: ["Menu Escape", "locale", "Search Escape", "Filters Escape", "Collection return", "Source Escape", ...(viewport.width === 330 ? ["Appearance Escape"] : [])],
+        sheetPreparation: "Actual country toggle taps to collapsed; URL retained",
+        nativeOsPopupCaptured: false, nativeDeviceObserved: false };
+      observations.push(observation);
+      await evidence(fixture, testInfo, "compact-mobile-" + viewport.width + "x" + viewport.height, observation);
+    }
+    const beforeZoom = await settledCameraPose(original);
+    const zoomIn = globe.locator('[data-globe-control="zoom-in"]');
+    await exposed(zoomIn, "touch zoom in");
+    await zoomIn.tap();
+    await expect.poll(() => cameraPose(original)).not.toEqual(beforeZoom);
+    const zoomedPose = await settledCameraPose(original);
+    expect(Math.hypot(...zoomedPose.position)).toBeLessThan(Math.hypot(...beforeZoom.position));
+    await preserved();
+    const reset = globe.locator('[data-globe-control="reset"]');
+    await exposed(reset, "touch reset");
+    await reset.tap();
+    await expect(globe).toHaveAttribute("data-globe-camera-phase", "idle");
+    const resetPose = await settledCameraPose(original);
+    expect(resetPose).not.toEqual(zoomedPose);
+    await preserved();
+    await evidence(fixture, testInfo, "compact-mobile-touch-zoom-reset", { beforeZoom, zoomedPose, resetPose,
+      actualTouchActions: ["zoom-in", "reset"], sameCanvasRendererCameraScene: true, canonicalSelection });
+    expect(fixture.consoleErrors).toEqual([]);
+    await testInfo.attach("compact-mobile-observations", { body: JSON.stringify(observations), contentType: "application/json" });
+  } finally { await original.dispose(); }
 });

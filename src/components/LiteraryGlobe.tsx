@@ -183,6 +183,7 @@ interface Props {
   runtimeActive?: boolean;
   standCustomization?: GlobeStandPresentation;
   standControls?: ReactNode;
+  sourceDialogRequestId?: number;
   backgroundCustomization?: GlobeBackgroundPresentation;
   composition?: PlanetCompositionPresentation;
   sceneInspection?: GlobeSceneInspectionBridge;
@@ -2020,6 +2021,7 @@ export default function LiteraryGlobe({
   runtimeActive = true,
   standCustomization,
   standControls,
+  sourceDialogRequestId = 0,
   backgroundCustomization,
   composition,
   sceneInspection,
@@ -2443,10 +2445,18 @@ export default function LiteraryGlobe({
     ? !inspectionZoom || inspectionZoom.zoom <= inspectionZoom.minZoom + 1e-7
     : cameraRadius >= GLOBE_MAX_CAMERA_RADIUS - GLOBE_ZOOM_LIMIT_EPSILON;
   const sourceEdition = renderedEdition;
+  const handledSourceRequest = useRef(0);
   const openSourceDialog = () => {
     const dialog = sourceDialogRef.current;
     if (dialog && !dialog.open) dialog.showModal();
   };
+  useEffect(() => {
+    if (!isPlanetApplication || !sourceDialogRequestId || sourceDialogRequestId === handledSourceRequest.current) return;
+    const dialog = sourceDialogRef.current;
+    if (!dialog) return;
+    handledSourceRequest.current = sourceDialogRequestId;
+    if (!dialog.open) dialog.showModal();
+  }, [isPlanetApplication, sourceDialogRequestId, atlas]);
   const clearEditionRailHideTimer = useCallback(() => {
     if (editionRailHideTimerRef.current === null) return;
     window.clearTimeout(editionRailHideTimerRef.current);
@@ -3077,6 +3087,30 @@ export default function LiteraryGlobe({
     visualStyleError,
   ]);
 
+  const autoRotateControl = (
+        <Button
+          surface="dark"
+          variant="text"
+          startIcon={isPlanetApplication ? <svg viewBox="0 0 24 24" aria-hidden="true">
+            {autoRotateRequested && !reducedMotion
+              ? <path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              : <path d="m9 5 10 7-10 7Z" fill="currentColor" stroke="none" />}
+          </svg> : <BrandRotateIcon />}
+          className={
+            autoRotateRequested && !reducedMotion ? "is-active" : undefined
+          }
+          data-globe-control="auto-rotate"
+          data-globe-auto-rotate-state={autoRotateStatus}
+          aria-label={autoRotateControlLabel}
+          aria-pressed={autoRotateRequested && !reducedMotion}
+          disabled={reducedMotion}
+          title={autoRotateControlLabel}
+          onClick={toggleAutoRotate}
+        >
+          <small>{autoRotateControlCaption}</small>
+        </Button>
+  );
+
   if (!atlas) {
     return (
       <div
@@ -3339,23 +3373,7 @@ export default function LiteraryGlobe({
             requestGlobeControl({ type: "zoom", direction: "out" })
           }
         />
-        <Button
-          surface="dark"
-          variant="text"
-          startIcon={<BrandRotateIcon />}
-          className={
-            autoRotateRequested && !reducedMotion ? "is-active" : undefined
-          }
-          data-globe-control="auto-rotate"
-          data-globe-auto-rotate-state={autoRotateStatus}
-          aria-label={autoRotateControlLabel}
-          aria-pressed={autoRotateRequested && !reducedMotion}
-          disabled={reducedMotion}
-          title={autoRotateControlLabel}
-          onClick={toggleAutoRotate}
-        >
-          <small>{autoRotateControlCaption}</small>
-        </Button>
+        {!isPlanetApplication && autoRotateControl}
         <Button
           surface="dark"
           variant="text"
@@ -3389,6 +3407,8 @@ export default function LiteraryGlobe({
           <span className="globe-scale-feedback-label">{t("Масштаб")}{"\u00a0"}</span>{number(globeScalePercent)}%
         </output>
       </div>
+
+      {isPlanetApplication && <div className="globe-playback-control">{autoRotateControl}</div>}
 
       {standControls}
 
@@ -3497,7 +3517,7 @@ export default function LiteraryGlobe({
         </button>
       </div>
 
-      <label className="globe-edition-compact-select">
+      <label className="globe-edition-compact-select" data-globe-edition-selector="">
         <span>{t("Текущее издание глобуса")}</span>
         <select
           value={pendingEditionId ?? renderedEditionId}
@@ -3556,6 +3576,7 @@ export default function LiteraryGlobe({
         ref={sourceDialogRef}
         className="globe-edition-info-dialog"
         aria-labelledby="globe-edition-info-title"
+        onKeyDown={event => { if (event.key === "Escape") event.stopPropagation(); }}
         onClick={(event) => {
           if (event.target === event.currentTarget) event.currentTarget.close();
         }}

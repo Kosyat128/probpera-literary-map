@@ -708,12 +708,17 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       || Boolean(entry.hash && entry.hash !== "#atlas");
   });
   const nativeGlobeRootRef = useRef<HTMLElement>(null);
+  const [globeSourceRequestId, setGlobeSourceRequestId] = useState(0);
   const closeStandControls = useCallback(() => {
     standInspection.returnToGlobe();
     if (composition.controller.getSnapshot().editor) composition.controller.cancel();
     window.requestAnimationFrame(() => {
       const root = nativeGlobeRootRef.current;
-      if (root && !root.hasAttribute("inert")) root.querySelector<HTMLElement>("[data-planet-stand-toggle]")?.focus({ preventScroll: true });
+      if (root && !root.hasAttribute("inert")) {
+        const toggle = root.querySelector<HTMLElement>("[data-planet-stand-toggle]");
+        const visibleToggle = toggle?.getClientRects().length ? toggle : root.querySelector<HTMLElement>('[data-atlas-action="toggle-menu"]');
+        visibleToggle?.focus({ preventScroll: true });
+      }
     });
   }, [composition.controller, standInspection]);
   const nativeReturnRequestedRef = useRef(false);
@@ -2794,6 +2799,13 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 <AtlasExperienceChrome
                   immersive={atlasImmersive}
                   applicationRoot={isPlanetApplication}
+                  onAppearance={isPlanetApplication ? () => {
+                    cancelNativeNavigation();
+                    closeAtlasSearch();
+                    sceneInspection.close();
+                    composition.controller.open("stand");
+                  } : undefined}
+                  onSource={isPlanetApplication ? () => setGlobeSourceRequestId(value => value + 1) : undefined}
                   languageControl={isPlanetApplication && nativeCollectionOpen ? null : undefined}
                   onCollection={() => { cancelNativeNavigation(); requestBookRuntime(); setBookLoadRequested(true); setNativeCollectionOpen(true); }}
                   searchOpen={atlasSearchOpen}
@@ -3172,6 +3184,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 economical={atlasExperience.economical}
                 qualityTier={isPlanetApplication ? graphics.qualityTier : undefined}
                 runtimeActive={globeRuntimeActive}
+                sourceDialogRequestId={isPlanetApplication ? globeSourceRequestId : undefined}
                 standCustomization={isPlanetApplication ? standPresentation : undefined}
                 backgroundCustomization={isPlanetApplication ? backgroundPresentation : undefined}
                 composition={isPlanetApplication ? composition : undefined}
@@ -3485,7 +3498,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>
       <main ref={nativeGlobeRootRef} onPointerDownCapture={event => {
         mascotFocusSequence.current += 1;
-        if (event.target instanceof Element && event.target.closest("canvas, .globe-controls")) {
+        if (event.target instanceof Element && event.target.closest("canvas, .globe-controls, .globe-playback-control")) {
           setPlanetWelcomeSuppressed(true);
         }
       }}>{atlasContent}<ProductNoticeSlot placement="root" reserveSpaceRef={nativeGlobeRootRef} /></main>
