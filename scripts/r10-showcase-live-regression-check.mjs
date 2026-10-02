@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const origin = process.env.SHOWCASE_QA_ORIGIN || "http://127.0.0.1:5193/probpera-literary-map/";
-const snapshotPath = process.env.SHOWCASE_QA_SNAPSHOT || "../r10-live-regressions-cache/published-content-20261002.json";
+const snapshotPath = new URL("../../r10-live-regressions-cache/published-content-20261002.json", import.meta.url);
 const output = "reports/r10/showcase/live-regression-20261002";
 const snapshotBytes = await readFile(snapshotPath);
 const snapshot = JSON.parse(snapshotBytes);
