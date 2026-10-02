@@ -1,0 +1,21 @@
+{
+  "runId": "d256-compact-a4",
+  "exitCode": 0,
+  "durationMs": 31750,
+  "stats": {
+    "startTime": "2026-10-02T00:39:23.701Z",
+    "duration": 28138.579999999998,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceManifestSha256": "825a6ee42b8afd48f8afba083f1ca40d1935d6007a21bfb86c91384117fee967",
+  "reportSha256": "02ea2446829c9e415f7b6d74caa5c34bd5b607d76a479e41de7f722267df397f",
+  "sourceUnchanged": true,
+  "realAppAndCanvas": true,
+  "nativeBoundary": "existing controlled OS adapter ports",
+  "nativeInstallationObserved": false,
+  "pwaBuilds": 0,
+  "applicationTypeScriptPreviouslyPassed": true
+}

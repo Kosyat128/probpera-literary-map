@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "decision": "D257",
+  "kind": "s03-account-fixture-fidelity-retry-working-evidence",
+  "recordReady": true,
+  "pass": true,
+  "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+  "artifactId": null,
+  "selectedCases": 1,
+  "browserInvocations": 1,
+  "compilerScope": "Existing real React/browser in-memory esbuild account fixture; exact production styles/fonts/logo witnesses and explicit controlled Auth/API ports, not a complete compiled application or provider",
+  "fixtureFidelityRetryRecordedByThisSlice": true,
+  "sourceCommitRawTestsPendingFlagPreserved": true,
+  "rootCaptureReviewRecordedByThisSlice": true,
+  "installedDeviceAcceptance": false,
+  "providerValidated": false,
+  "legalAcceptance": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "proof": {
+    "decision": "D257_ACCOUNT_FIDELITY",
+    "name": "actual-a1/result.json",
+    "equals": {
+      "passed": true,
+      "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+      "selectedCases": 1,
+      "actualBrowserInvocations": 1,
+      "stageAccepted": false,
+      "installedOsAppVerified": false,
+      "providerVerified": false
+    }
+  },
+  "note": "The separate account style/fidelity amendment is committed at source0440b85a: account-scoped CSS and the existing browser fixture changed. Its one existing mobile-case retry passed independently of the original be4 case, retaining the bilingual form/plaintext disclosure/stable ID and checking the production-style/font/logo witnesses plus44px/overflow/hit targets. This remains an in-memory esbuild React fixture with controlled Auth/API ports; no PWA compile, full production dependency closure, live provider, legal, installed-device acceptance. Separate ROOT capture review covers fonts/logo/panel/button layout only; EN native-checkbox still-frame paint remains inconclusive and no full visual acceptance is made.",
+  "criterionIds": [
+    "S03.acceptance",
+    "S03.MOD-030"
+  ],
+  "originalAccountProofStillSeparate": true,
+  "rootCaptureReviewScope": "Fonts/logo/panel/button layout only; EN native-checkbox still-frame paint inconclusive, no full visual acceptance.",
+  "recordedAt": "2026-10-02T01:46:07.955Z",
+  "evidence": [
+    {
+      "decision": "D257_ACCOUNT_FIDELITY",
+      "name": "actual-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\result.json",
+      "sha256": "dd5fa08f24ba4d76a7f6b86477b5d7eb89c107a3b9a7e8d79297ff0647dae67d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/dd5fa08f24ba4d76a7f6b86477b5d7eb89c107a3b9a7e8d79297ff0647dae67d.json",
+        "sha256": "dd5fa08f24ba4d76a7f6b86477b5d7eb89c107a3b9a7e8d79297ff0647dae67d"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT_FIDELITY",
+      "name": "actual-a1/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\playwright.json",
+      "sha256": "fd93d72c650028acb2ccfc8341d72d0c6f5c12170e60b8b0834de1c6ed2bf5d4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/fd93d72c650028acb2ccfc8341d72d0c6f5c12170e60b8b0834de1c6ed2bf5d4.json",
+        "sha256": "fd93d72c650028acb2ccfc8341d72d0c6f5c12170e60b8b0834de1c6ed2bf5d4"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT_FIDELITY",
+      "name": "source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\source-commit.json",
+      "sha256": "9017a5967996f3fb662e3406bb045ca229525829f63d4b16b2c075542efe501e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/9017a5967996f3fb662e3406bb045ca229525829f63d4b16b2c075542efe501e.json",
+        "sha256": "9017a5967996f3fb662e3406bb045ca229525829f63d4b16b2c075542efe501e"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT_FIDELITY",
+      "name": "source-pins.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\source-pins.json",
+      "sha256": "c7400ff6b5584b4b811cb940f748ff7708364281fbb58e7348fc3bc0c4b6e479",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/c7400ff6b5584b4b811cb940f748ff7708364281fbb58e7348fc3bc0c4b6e479.json",
+        "sha256": "c7400ff6b5584b4b811cb940f748ff7708364281fbb58e7348fc3bc0c4b6e479"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT_FIDELITY",
+      "name": "production-inputs.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\production-inputs.json",
+      "sha256": "97ac65458ecbf65be8f8d793613e1a8984e4b2b9b69b4a6097388f356fd3ea52",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/97ac65458ecbf65be8f8d793613e1a8984e4b2b9b69b4a6097388f356fd3ea52.json",
+        "sha256": "97ac65458ecbf65be8f8d793613e1a8984e4b2b9b69b4a6097388f356fd3ea52"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT_FIDELITY",
+      "name": "root-capture-review.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\root-capture-review.json",
+      "sha256": "cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580.json",
+        "sha256": "cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT_FIDELITY",
+      "name": "captures/planet-account-deletion-flags-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-mobile-fixture\\planet-account-deletion-flags-ru.png",
+      "sha256": "bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976.png",
+        "sha256": "bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT_FIDELITY",
+      "name": "captures/planet-account-deletion-flags-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-mobile-fixture\\planet-account-deletion-flags-en.png",
+      "sha256": "a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2.png",
+        "sha256": "a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2"
+      }
+    }
+  ]
+}

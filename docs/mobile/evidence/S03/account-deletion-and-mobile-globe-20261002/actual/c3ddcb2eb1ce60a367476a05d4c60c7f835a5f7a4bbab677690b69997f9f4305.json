@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-language-flags-focused-ui-review",
+  "recordedAt": "2026-10-02T01:11:52.166Z",
+  "sourceCommit": "348a376236fb0c8d4da18180f8bb484898de67ef",
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/current-source-manifest.json",
+    "sha256": "7898e65fbd14ce495b888913d8b027210768d7b3b2ce2418b645e139f2a47352"
+  },
+  "sourceUnchangedThroughReview": true,
+  "artifactBuildId": "34b5cb62e703d35d07e2d56ed9307fb154fc5034e24e59c26f2c2639c4ba85fe",
+  "nativeReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/native-a1/receipt.json",
+    "sha256": "6bb004d8e4da451d15dfa0cb374ceeca2ccd3e3cda36d2dccb2ac1f311973a9a"
+  },
+  "pwaRawAggregate": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/result.json",
+    "sha256": "4a7300d8d5e4a0164a81bf584f5623d92b83edd6324c81f32cafb71a1e73aa15"
+  },
+  "pwaReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser-playwright.json",
+    "sha256": "70c3407fd66536ef1e44fed5cb35a1b206854069c0f994d1d40ac6414ca30dbc"
+  },
+  "cases": [
+    {
+      "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+      "status": "failed",
+      "durationMs": 24077,
+      "error": "Error: page.evaluate: TypeError: Failed to update a ServiceWorker for scope ('http://127.0.0.1:63132/planet/') with script ('http://127.0.0.1:63132/planet/sw.js'): ServiceWorker script evaluation failed"
+    },
+    {
+      "title": "offline PWA cross-language author search and book return retain the globe and integrated archive card",
+      "status": "passed",
+      "durationMs": 44403,
+      "error": null
+    }
+  ],
+  "focusedUiPass": true,
+  "aggregatePwaPass": false,
+  "observation": {
+    "localQaOnly": true,
+    "observations": [
+      {
+        "locale": "ru",
+        "oppositeName": "Fyodor Dostoevsky",
+        "canonicalSearchIds": true,
+        "country": "russia",
+        "writer": "dostoevsky",
+        "readerClosed": true,
+        "collectionClosed": true,
+        "writerRevealedByProduct": true,
+        "focusWithinCountryCard": true,
+        "sameCanvasRendererCameraScene": true,
+        "offline": true,
+        "directTargets": [
+          {
+            "width": 44,
+            "height": 44
+          },
+          {
+            "width": 44,
+            "height": 44
+          },
+          {
+            "width": 44,
+            "height": 44
+          }
+        ],
+        "menuTargets": [
+          {
+            "width": 294,
+            "height": 48
+          },
+          {
+            "width": 294,
+            "height": 48
+          },
+          {
+            "width": 294,
+            "height": 48
+          },
+          {
+            "width": 294,
+            "height": 48
+          },
+          {
+            "width": 44,
+            "height": 44
+          },
+          {
+            "width": 44,
+            "height": 44
+          }
+        ],
+        "loadedFlags": [
+          {
+            "locale": "ru",
+            "asset": "assets/country-flags/ru.svg",
+            "loaded": true,
+            "selected": true
+          },
+          {
+            "locale": "en",
+            "asset": "assets/country-flags/gb.svg",
+            "loaded": true,
+            "selected": false
+          }
+        ],
+        "menuDismissedByEscape": true,
+        "menuTriggerFocusRestored": true
+      },
+      {
+        "locale": "en",
+        "oppositeName": "Фёдор Михайлович Достоевский",
+        "canonicalSearchIds": true,
+        "country": "russia",
+        "writer": "dostoevsky",
+        "readerClosed": true,
+        "collectionClosed": true,
+        "writerRevealedByProduct": true,
+        "focusWithinCountryCard": true,
+        "sameCanvasRendererCameraScene": true,
+        "offline": true,
+        "directTargets": [
+          {
+            "width": 44,
+            "height": 44
+          },
+          {
+            "width": 44,
+            "height": 44
+          },
+          {
+            "width": 44,
+            "height": 44
+          }
+        ],
+        "menuTargets": [
+          {
+            "width": 294,
+            "height": 48
+          },
+          {
+            "width": 294,
+            "height": 48
+          },
+          {
+            "width": 294,
+            "height": 48
+          },
+          {
+            "width": 294,
+            "height": 48
+          },
+          {
+            "width": 44,
+            "height": 44
+          },
+          {
+            "width": 44,
+            "height": 44
+          }
+        ],
+        "loadedFlags": [
+          {
+            "locale": "ru",
+            "asset": "assets/country-flags/ru.svg",
+            "loaded": true,
+            "selected": false
+          },
+          {
+            "locale": "en",
+            "asset": "assets/country-flags/gb.svg",
+            "loaded": true,
+            "selected": true
+          }
+        ],
+        "menuDismissedByEscape": true,
+        "menuTriggerFocusRestored": true
+      }
+    ]
+  },
+  "reviewedCaptures": [
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-330x844.png",
+      "sha256": "756d9da11159b0d5873e7053d994e367a14445a7bf6a497c2f9af82c9c3f3c56",
+      "name": "compact-mobile-330x844.png",
+      "width": 330,
+      "height": 844,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-390x844.png",
+      "sha256": "45595f970cdb94b90ed74523f97043e03bd236e3c51f2241e14081dc4c6d6118",
+      "name": "compact-mobile-390x844.png",
+      "width": 390,
+      "height": 844,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-390x480.png",
+      "sha256": "32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c",
+      "name": "compact-mobile-390x480.png",
+      "width": 390,
+      "height": 480,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-844x390.png",
+      "sha256": "75dba9d3bbf064041c454a78b627808104a0aacf7e38b19439fffc3c04fe3ccf",
+      "name": "compact-mobile-844x390.png",
+      "width": 844,
+      "height": 390,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-flags-menu-390x844.png",
+      "sha256": "4ca8f742c873d4060e7fe5b845845b1bc7a3bde7f16b3aff613b64ddaeb80b13",
+      "name": "compact-mobile-flags-menu-390x844.png",
+      "width": 390,
+      "height": 844,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-touch-zoom-reset.png",
+      "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db",
+      "name": "compact-mobile-touch-zoom-reset.png",
+      "width": 844,
+      "height": 390,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/native-final-passed.png",
+      "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db",
+      "name": "native-final-passed.png",
+      "width": 844,
+      "height": 390,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-menu-ru.png",
+      "sha256": "29041843b67f062f2f6b36b0c356e84540f6d91693e02c9eb82b173e50bcc605",
+      "name": "pwa-premium-menu-ru.png",
+      "width": 390,
+      "height": 844,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-globe-ru.png",
+      "sha256": "d33952d95dd7d57e37c848718746bb49307d21fdbe07a3f842675e746b6211d4",
+      "name": "pwa-premium-globe-ru.png",
+      "width": 390,
+      "height": 844,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-menu-en.png",
+      "sha256": "3800834735315a8fac2d4115debb60e7e7ace38e947df9525a2770c11c75381d",
+      "name": "pwa-premium-menu-en.png",
+      "width": 390,
+      "height": 844,
+      "rootViewedOriginal": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-globe-en.png",
+      "sha256": "3a362677a0d7c7601a0e0ce172960a4e39d70b084cb6e34f19bac8b27c9e63d8",
+      "name": "pwa-premium-globe-en.png",
+      "width": 390,
+      "height": 844,
+      "rootViewedOriginal": true
+    }
+  ],
+  "visualObservations": [
+    "Bundled vector Russia and Great Britain flags are loaded in RU/EN with selected indicators and 44px controls.",
+    "Compact menu and panels remain readable across four viewport sizes; no control overlap observed in the reviewed captures.",
+    "Source catalogue RU metadata is preserved separately from interface language."
+  ],
+  "limitations": {
+    "safeUpdateRollbackPassed": false,
+    "installedOsApplication": false,
+    "liveProvider": false,
+    "stageAccepted": false,
+    "releaseReady": false
+  },
+  "nextAction": "Fix the actual COMPLETE marker size accounting, then run affected unit tests and only the failed update/rollback browser case on a fresh current QA artifact."
+}

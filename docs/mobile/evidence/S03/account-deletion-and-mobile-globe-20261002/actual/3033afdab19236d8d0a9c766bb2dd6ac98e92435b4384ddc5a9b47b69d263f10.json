@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+  "buildId": "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+  "durationMs": 33017,
+  "producer": "startPwaQaServer({buildQa:true}) -> build-pwa.mjs --qa-authority",
+  "buildInvocations": 1,
+  "origin": "http://127.0.0.1:64311",
+  "privateKeyPersisted": false
+}

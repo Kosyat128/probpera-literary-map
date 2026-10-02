@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "observedSourceHead": "348a376236fb0c8d4da18180f8bb484898de67ef",
+  "scope": "Explicit selected fixture/runtime/asset/config witnesses; not a complete esbuild dependency closure. Expected clean execution HEAD is a required ROOT argument after canonical application/commit.",
+  "files": [
+    {
+      "path": "tests/pwa/planet-account.spec.mjs",
+      "sha256": "85da909aedf0ceb96f96749647ebc3a0b2bc69368b07a99fe868c50c80a4bb86"
+    },
+    {
+      "path": "src/pwa/PlanetAccountPage.tsx",
+      "sha256": "f05d5b4cf7b690c9df768d10ae82428cb0604fc837e906f12f4d40a6c0136af0"
+    },
+    {
+      "path": "src/pwa/accountAccess.ts",
+      "sha256": "b38a88bac60ac595bd6282ace0d574ea41692e276fe4fff617cebe66cb8916cf"
+    },
+    {
+      "path": "src/pwa/accountCopy.ts",
+      "sha256": "73eb68802468efec0c65f33e1df2c44c8466603c1da37b93de8ce11a533fe914"
+    },
+    {
+      "path": "src/pwa/accountRoutes.ts",
+      "sha256": "6e8424a6d87e72b36bc6be1b5963a2a524825ba4b1913877d51bd48d04513d41"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "sha256": "9693b2caff710fc89f58dadb6d0e3391506fc03fc98cab2001645cec42a8716a"
+    },
+    {
+      "path": "src/pwa/account.css",
+      "sha256": "8795fce4d4e0281093ac672fa78c59aaeae30e58dd43e6474ad9677838c453cc"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "16b02d1c535282596a2ec31bd7ed32e894900bc3ad708ba4672dbb7b52a2ebe2"
+    },
+    {
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "sha256": "4dac509281f0fa13bbe0dbe8c337123381d8c6faff7557c04362271b98cb3d01"
+    },
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "sha256": "f4318be4993ea0c7499fd83053f6595913dcb10184c9dfcaa6ff6f7660afc18b"
+    },
+    {
+      "path": "src/utils/countryFlag.ts",
+      "sha256": "0a52e22624d93da3cab8a9f88b90920770bbb0e7091ebe8d8ac592d4ab798a9b"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "sha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3"
+    },
+    {
+      "path": "scripts/mobile/account-pages.mjs",
+      "sha256": "a7ecc5b052f8986dcc8feb1b5eeff3765d7930a63db5e25aab843713d0411c11"
+    },
+    {
+      "path": "public/assets/country-flags/ru.svg",
+      "sha256": "375a1fd45c4d0c0b0cd5e05a5322da90f30714b979b41771de847d92a8536fc9"
+    },
+    {
+      "path": "public/assets/country-flags/gb.svg",
+      "sha256": "6a18edf4c0d8cc42802dafd1c97cfae16088b4d07fe9464611094a2a0ecfc052"
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    }
+  ]
+}

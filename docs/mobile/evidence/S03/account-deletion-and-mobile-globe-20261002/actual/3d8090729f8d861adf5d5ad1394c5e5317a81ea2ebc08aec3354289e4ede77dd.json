@@ -1,0 +1,18 @@
+{
+  "command": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-command.json",
+    "sha256": "44812b6ee58a122e1c49d47433fcc5cea00a86d9ca4b20aedb0511f1fd65d289"
+  },
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 93766,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser.stdout.txt",
+    "sha256": "718596ea4f1895d483f4ff0940ee3ca7ff98c149120da5daebccf6db337efdd0"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser.stderr.txt",
+    "sha256": "ba7290bffd9c96bb99d72537bab4c5d6182aef6389a7845c13b4f0799601dd7b"
+  }
+}

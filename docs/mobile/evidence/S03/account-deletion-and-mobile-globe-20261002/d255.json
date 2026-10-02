@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "decision": "D255",
+  "kind": "s03-account-deletion-composition-working-evidence",
+  "pass": true,
+  "sourceCommit": "0ba39489dc5a7e48abebd24bc935e1992f6d7d43",
+  "artifactId": null,
+  "affectedSuite": "server/planet/integration.test.ts",
+  "vitestInvocations": 1,
+  "testsPassed": 6,
+  "testsFailed": 0,
+  "newCases": 1,
+  "composition": "Actual account client -> API/SQL lost-202 acknowledgement recovery -> real SDK reader-deletion processor and selected current SQL -> job/account fences, hard deletion, service-only completed receipt and subsequent Auth denial",
+  "originalFiveCasesPreserved": true,
+  "sqlBoundary": "One local PGlite connection; controlled Auth/Storage ports",
+  "reviewedDisclosureDefaultsUnchanged": true,
+  "unauthenticatedCompletedReceiptClaimed": false,
+  "appOrServerTypeScriptInvocations": 0,
+  "buildOrBrowserInvocations": 0,
+  "providerValidated": false,
+  "multiConnectionConcurrencyValidated": false,
+  "legalOrEditorialAcceptance": false,
+  "criterionIds": [
+    "S03.acceptance",
+    "S03.MOD-030"
+  ],
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "recordedAt": "2026-10-02T01:46:07.955Z",
+  "evidence": [
+    {
+      "decision": "D255",
+      "name": "source-a1/checks.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\checks.json",
+      "sha256": "626c4f6c150c4515378efd52cef543eff97ac9faf1b2a34ed3d467615ef32e44",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/626c4f6c150c4515378efd52cef543eff97ac9faf1b2a34ed3d467615ef32e44.json",
+        "sha256": "626c4f6c150c4515378efd52cef543eff97ac9faf1b2a34ed3d467615ef32e44"
+      }
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-commit.json",
+      "sha256": "80b50577ac3bdb7551fe820d98b388dc0920cb69e8747fee474619f678935113",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/80b50577ac3bdb7551fe820d98b388dc0920cb69e8747fee474619f678935113.json",
+        "sha256": "80b50577ac3bdb7551fe820d98b388dc0920cb69e8747fee474619f678935113"
+      }
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/vitest-report.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest-report.json",
+      "sha256": "1f690233951fc26fb3d77303db8b7e9954fb50242ae2a48bc8f25125eea5ea47",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/1f690233951fc26fb3d77303db8b7e9954fb50242ae2a48bc8f25125eea5ea47.json",
+        "sha256": "1f690233951fc26fb3d77303db8b7e9954fb50242ae2a48bc8f25125eea5ea47"
+      }
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/vitest-command.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest-command.json",
+      "sha256": "d2a30bf54b22feaece0c360708607cd7ce2b7d2b3a0c36f1a0ba8531e0efaf0c",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/vitest.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest.stdout.txt",
+      "sha256": "fce328acaa0c32acb38f47b1efb10682750df24e4e30bb9fee323b6ef5c5f2ac",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/vitest.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/tool-inputs.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\tool-inputs.json",
+      "sha256": "38e411c54bfeac32071db80c5f7e6b958bd9b6f9284db39ac9801943ccb3954b",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/source-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-manifest.json",
+      "sha256": "3bfd4deb10dbb0cccf07ee7d99176aed23158ec2a16b6d1b7feab9d87fe3785c",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-before.json",
+      "sha256": "1b6e48849a01136debaf15ac54779163eb2f66e1769e9d3b287e3ac1a702f768",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-after.json",
+      "sha256": "3bfd4deb10dbb0cccf07ee7d99176aed23158ec2a16b6d1b7feab9d87fe3785c",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D255",
+      "name": "source-a1/current-source-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\current-source-manifest.json",
+      "sha256": "b7381d560a05dba32d94568d5424e6b465c56429f6f94eeff18c3d4c09078340",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/b7381d560a05dba32d94568d5424e6b465c56429f6f94eeff18c3d4c09078340.json",
+        "sha256": "b7381d560a05dba32d94568d5424e6b465c56429f6f94eeff18c3d4c09078340"
+      }
+    }
+  ]
+}

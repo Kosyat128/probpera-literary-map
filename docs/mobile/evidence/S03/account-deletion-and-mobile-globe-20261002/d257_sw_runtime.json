@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "decision": "D257",
+  "kind": "s03-marker-fixed-safe-update-runtime-working-evidence",
+  "recordReady": true,
+  "pass": true,
+  "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+  "artifactId": "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+  "pwaCompilations": 1,
+  "strictAuditPassed": true,
+  "browserInvocations": 1,
+  "selectedCases": 1,
+  "casesPassed": 1,
+  "corruptedCandidateEnteredInstall": true,
+  "failedCandidateState": "CANDIDATE",
+  "selectedWholeVerifiedGenerations": [
+    "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+    "efa272cd1da09950fb8cf8b47aea5e74b7ad23d7c82366667075e4527fb43867",
+    "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547"
+  ],
+  "rootReviewedCaptureReferences": 2,
+  "rawAutomationCapturesReviewed": false,
+  "sameContextOfflineOnly": true,
+  "installedDeviceAcceptance": false,
+  "providerValidated": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "proof": {
+    "decision": "D257_SW_RUNTIME",
+    "name": "actual-a1/result.json",
+    "equals": {
+      "pass": true,
+      "failure": null,
+      "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+      "buildId": "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+      "buildInvocations": 1,
+      "browserInvocations": 1,
+      "smokeInvocations": 0,
+      "packagingInvocations": 0,
+      "browser.stats.expected": 1,
+      "browser.stats.unexpected": 0,
+      "browser.stats.skipped": 0,
+      "browser.stats.flaky": 0,
+      "liveQaAuthority.signerClosed": true,
+      "liveQaAuthority.privateKeyPersisted": false,
+      "scope.stageAccepted": false,
+      "scope.releaseReady": false
+    }
+  },
+  "extraProofs": [
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/browser-observation.json",
+      "equals": {
+        "corruptedCandidateRejected": true,
+        "corruptCandidateEnteredInstall": true,
+        "failedCandidateState": "CANDIDATE",
+        "sameCanvasRendererCameraSceneBeforeExplicitActivation": true,
+        "keyboardUpdateAndRollbackFromCollectionClose": true,
+        "selectedWholeVerifiedGenerations": [
+          "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+          "efa272cd1da09950fb8cf8b47aea5e74b7ad23d7c82366667075e4527fb43867",
+          "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547"
+        ]
+      }
+    }
+  ],
+  "note": "The separate marker-fixed runtime at source0440b85a/artifactaf5b8adb passed one fresh controlled QA PWA compile/strict audit and only the previously failed safe-update/rollback case. The corrupt candidate enters installation but never becomes COMPLETE; the active valid generation stays intact. Explicit update selects the whole verified new generation and offline rollback restores the whole prior RU/EN/module generation. ROOT reviewed its two original Collection captures separately; raw capturesReviewed=false and the historical flags aggregate failure remain untouched. One compile/browser invocation, no repeated native/offline UI,203-unit,163/package or additional TypeScript runs. This is same-context browser QA, not OS-installed/profile-reopen/provider, complete content/visual, stage or release acceptance.",
+  "recordedAt": "2026-10-02T01:46:07.955Z",
+  "evidence": [
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\result.json",
+      "sha256": "b265d9c6c1588c7fe65889fcbe529a9779bc029a3bf13bc63c270e3cf492e6e2",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/b265d9c6c1588c7fe65889fcbe529a9779bc029a3bf13bc63c270e3cf492e6e2.json",
+        "sha256": "b265d9c6c1588c7fe65889fcbe529a9779bc029a3bf13bc63c270e3cf492e6e2"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/browser-playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-playwright.json",
+      "sha256": "356a715a3570c47634eed93669e915a0ea9e5d2ae28f43aa271441a9145eb8d9",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/356a715a3570c47634eed93669e915a0ea9e5d2ae28f43aa271441a9145eb8d9.json",
+        "sha256": "356a715a3570c47634eed93669e915a0ea9e5d2ae28f43aa271441a9145eb8d9"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/browser-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-execution.json",
+      "sha256": "3d8090729f8d861adf5d5ad1394c5e5317a81ea2ebc08aec3354289e4ede77dd",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/3d8090729f8d861adf5d5ad1394c5e5317a81ea2ebc08aec3354289e4ede77dd.json",
+        "sha256": "3d8090729f8d861adf5d5ad1394c5e5317a81ea2ebc08aec3354289e4ede77dd"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/strict-audit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\strict-audit.json",
+      "sha256": "d4e0996b059956f3bf345049312bc22f3ef65e6add1eda1610d15c59f88dcd78",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/d4e0996b059956f3bf345049312bc22f3ef65e6add1eda1610d15c59f88dcd78.json",
+        "sha256": "d4e0996b059956f3bf345049312bc22f3ef65e6add1eda1610d15c59f88dcd78"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/strict-audit-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\strict-audit-execution.json",
+      "sha256": "b51cfac13517d62b3181102580fcf50c29e873a4e94cd8012e61fd234d435ca4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/b51cfac13517d62b3181102580fcf50c29e873a4e94cd8012e61fd234d435ca4.json",
+        "sha256": "b51cfac13517d62b3181102580fcf50c29e873a4e94cd8012e61fd234d435ca4"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/browser-observation.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-observation.json",
+      "sha256": "e3de003ff9b75c2519a3d723c6f27f7edafe71cdcf6c3a32f6c9b35a256cfb00",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/e3de003ff9b75c2519a3d723c6f27f7edafe71cdcf6c3a32f6c9b35a256cfb00.json",
+        "sha256": "e3de003ff9b75c2519a3d723c6f27f7edafe71cdcf6c3a32f6c9b35a256cfb00"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\source-before.json",
+      "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4.json",
+        "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\source-after.json",
+      "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4.json",
+        "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/build-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\build-execution.json",
+      "sha256": "3033afdab19236d8d0a9c766bb2dd6ac98e92435b4384ddc5a9b47b69d263f10",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/3033afdab19236d8d0a9c766bb2dd6ac98e92435b4384ddc5a9b47b69d263f10.json",
+        "sha256": "3033afdab19236d8d0a9c766bb2dd6ac98e92435b4384ddc5a9b47b69d263f10"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "actual-a1/binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\binding.json",
+      "sha256": "2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6.json",
+        "sha256": "2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "current-source-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\current-source-manifest.json",
+      "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4.json",
+        "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "root-binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\root-binding.json",
+      "sha256": "2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6.json",
+        "sha256": "2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "captures/pwa-collection-keyboard-update.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-s03-premium-msedge-390\\pwa-collection-keyboard-update.png",
+      "sha256": "16598d5772c0a9d37356faca32c9d48b9109774dba2a5801a56efac02345551d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/16598d5772c0a9d37356faca32c9d48b9109774dba2a5801a56efac02345551d.png",
+        "sha256": "16598d5772c0a9d37356faca32c9d48b9109774dba2a5801a56efac02345551d"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "captures/pwa-collection-keyboard-rollback.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-s03-premium-msedge-390\\pwa-collection-keyboard-rollback.png",
+      "sha256": "c777bbbd3697e50f0d453dbe94ac41363a2acc5ae0bdf2d06dd47023febac849",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/c777bbbd3697e50f0d453dbe94ac41363a2acc5ae0bdf2d06dd47023febac849.png",
+        "sha256": "c777bbbd3697e50f0d453dbe94ac41363a2acc5ae0bdf2d06dd47023febac849"
+      }
+    },
+    {
+      "decision": "D257_SW_RUNTIME",
+      "name": "root-capture-review.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\root-capture-review.json",
+      "sha256": "cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580.json",
+        "sha256": "cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580"
+      }
+    }
+  ]
+}

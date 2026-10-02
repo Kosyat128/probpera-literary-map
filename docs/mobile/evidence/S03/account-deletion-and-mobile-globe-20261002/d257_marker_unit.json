@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "decision": "D257",
+  "kind": "s03-complete-marker-envelope-unit-working-evidence",
+  "recordReady": true,
+  "pass": true,
+  "sourceCommit": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+  "artifactId": null,
+  "unitInvocations": 1,
+  "testsPassed": 203,
+  "testsFailed": 0,
+  "syntaxChecksPassed": 3,
+  "sourceRowsPreserved": true,
+  "pwaBrowserStillPending": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "proof": {
+    "decision": "D257_MARKER_UNIT",
+    "name": "actual-unit-a1/result.json",
+    "equals": {
+      "pass": true,
+      "sourceCommit": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+      "tests.total": 203,
+      "tests.passed": 203,
+      "tests.failed": 0,
+      "syntax.length": 3,
+      "sourceUnchangedDuringChecks": true,
+      "committedFileRowsPreserved": true,
+      "pwaBrowserStillPending": true
+    }
+  },
+  "note": "The reviewed three-owner COMPLETE marker envelope fix is committed at source21704c2b. One affected serviceWorkerRuntime suite passed203/203 and all three syntax checks passed; original working and committed source rows remain separately bound. The raw result explicitly says pwaBrowserStillPending=true: the historical SW failure is preserved and no fresh update/rollback runtime success is claimed from these local units.",
+  "recordedAt": "2026-10-02T01:46:07.955Z",
+  "evidence": [
+    {
+      "decision": "D257_MARKER_UNIT",
+      "name": "actual-unit-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\result.json",
+      "sha256": "1d665e4e6f3f8ac20509998517fe2b01c6b3709baa0a52cb0366f4251726fd04",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/1d665e4e6f3f8ac20509998517fe2b01c6b3709baa0a52cb0366f4251726fd04.json",
+        "sha256": "1d665e4e6f3f8ac20509998517fe2b01c6b3709baa0a52cb0366f4251726fd04"
+      }
+    },
+    {
+      "decision": "D257_MARKER_UNIT",
+      "name": "actual-unit-a1/vitest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\vitest.json",
+      "sha256": "e790951371014a1621c585f4595b60c3587367bf83aaaf476d385d5086b32c53",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/e790951371014a1621c585f4595b60c3587367bf83aaaf476d385d5086b32c53.json",
+        "sha256": "e790951371014a1621c585f4595b60c3587367bf83aaaf476d385d5086b32c53"
+      }
+    },
+    {
+      "decision": "D257_MARKER_UNIT",
+      "name": "actual-unit-a1/unit-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\unit-execution.json",
+      "sha256": "ece6803e3b17cf7217030df0cc4aa561788763385902bbbfab42f793480d8f7a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/ece6803e3b17cf7217030df0cc4aa561788763385902bbbfab42f793480d8f7a.json",
+        "sha256": "ece6803e3b17cf7217030df0cc4aa561788763385902bbbfab42f793480d8f7a"
+      }
+    },
+    {
+      "decision": "D257_MARKER_UNIT",
+      "name": "actual-unit-a1/committed-source.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\committed-source.json",
+      "sha256": "486fd840123631bbd88863ab15c8aa14be9a550ffd230b31183b07bf4c427abe",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/486fd840123631bbd88863ab15c8aa14be9a550ffd230b31183b07bf4c427abe.json",
+        "sha256": "486fd840123631bbd88863ab15c8aa14be9a550ffd230b31183b07bf4c427abe"
+      }
+    }
+  ]
+}

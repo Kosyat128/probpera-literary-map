@@ -1,0 +1,1954 @@
+{
+  "binding": {
+    "schemaVersion": 1,
+    "bindingReady": true,
+    "checkpointSourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+    "currentCanonicalDocCheckpoint": "D254",
+    "globalOwners": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "d216415acdf02f78c87f5e4dbcbdd9270355e7d526f55ad19625dd633599b37d"
+      },
+      {
+        "path": "docs/mobile/AUTOPILOT_STATE.json",
+        "sha256": "c23fcf6ed44f6a7bc9ee086e30b1eefc272bca61135f4f17bd45c6f03a630189"
+      },
+      {
+        "path": "docs/mobile/DECISIONS.md",
+        "sha256": "4580f25b39dd045928de737ea1921c0dbb86b94a5322f98a572f961d172daaec"
+      },
+      {
+        "path": "docs/mobile/STATUS.md",
+        "sha256": "a1eb323b8544026d153d0d9f4b8a6b27cf8bad30f0f9f1cb68a6d3fb759a073c"
+      },
+      {
+        "path": "docs/mobile/BLOCKERS.md",
+        "sha256": "f65e55bb9a8f70156a65ef28e6dbadf6f1c939b7587709a7e9836d728dd5ab5a"
+      },
+      {
+        "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+        "sha256": "4c2013802314af547ddbe9f23bc9678fd61ebcfd2e8959345621360eea0f5332"
+      }
+    ],
+    "verifyStateModule": {
+      "path": "scripts/mobile/verify-state.mjs",
+      "sha256": "f31e2b86d3e415a541a9186cac35ec1765ce4ae235eeecb310038cee46260ebf"
+    },
+    "historicalSourceCommits": {
+      "D255": "0ba39489dc5a7e48abebd24bc935e1992f6d7d43",
+      "D256": "5add2ce1d83cf5f74f411bbef96bfdf5dc5199b6",
+      "D257_FLAGS": "348a376236fb0c8d4da18180f8bb484898de67ef",
+      "D257_ACCOUNT": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+      "D257_MARKER_UNIT": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+      "D257_ACCOUNT_FIDELITY": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+      "D257_SW_RUNTIME": "0440b85a04090cb2fcb3c4fb549387f19dd9817c"
+    },
+    "proposalInputs": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\evidence-inputs.json",
+        "sha256": "c3af5c7a8cc05b747d9d711387fd9e24c5b17a1069b55a2119b328e6b29fbab7"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\results.template.json",
+        "sha256": "3e8c8c0c3f9692b577f54fc53af68a765641f9af258c512a6322cfb020bbfeb4"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\doc-delta.template.json",
+        "sha256": "93c5bb939a0c4c93e25b34b46b281bcb5467e870c1a39b28b84691827cbb8ac6"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\root-current-amendment.json",
+        "sha256": "30c9c22eba4e2d36c7246b26bd6e418db70f350cca5a803fd027c9070458fbeb"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\root-added-evidence-inputs.json",
+        "sha256": "e61f438de504d64a6d0f6721b81d85d01513796cabd89900313cf6c5f2607b84"
+      }
+    ]
+  },
+  "records": {
+    "D255": {
+      "decision": "D255",
+      "kind": "s03-account-deletion-composition-working-evidence",
+      "pass": true,
+      "sourceCommit": "0ba39489dc5a7e48abebd24bc935e1992f6d7d43",
+      "artifactId": null,
+      "affectedSuite": "server/planet/integration.test.ts",
+      "vitestInvocations": 1,
+      "testsPassed": 6,
+      "testsFailed": 0,
+      "newCases": 1,
+      "composition": "Actual account client -> API/SQL lost-202 acknowledgement recovery -> real SDK reader-deletion processor and selected current SQL -> job/account fences, hard deletion, service-only completed receipt and subsequent Auth denial",
+      "originalFiveCasesPreserved": true,
+      "sqlBoundary": "One local PGlite connection; controlled Auth/Storage ports",
+      "reviewedDisclosureDefaultsUnchanged": true,
+      "unauthenticatedCompletedReceiptClaimed": false,
+      "appOrServerTypeScriptInvocations": 0,
+      "buildOrBrowserInvocations": 0,
+      "providerValidated": false,
+      "multiConnectionConcurrencyValidated": false,
+      "legalOrEditorialAcceptance": false,
+      "criterionIds": [
+        "S03.acceptance",
+        "S03.MOD-030"
+      ],
+      "allStatusesUnchanged": true,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "D256": {
+      "decision": "D256",
+      "kind": "s03-compact-mobile-globe-working-evidence",
+      "pass": true,
+      "sourceCommit": "5add2ce1d83cf5f74f411bbef96bfdf5dc5199b6",
+      "artifactId": "ca9dbc746b7c0a59fc3a455e01714bf0d94d75fa2e71ceff4d765406c1fb1f54",
+      "nativeAttempts": [
+        {
+          "id": "d256-compact-a1",
+          "classification": "NO_TESTS",
+          "exitCode": 1,
+          "expected": 0,
+          "unexpected": 0,
+          "sourceManifestSha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+          "rawReceiptDerivedFlagCaveat": "realAppAndCanvas:true conflicts with exitCode1 and No tests found; do not use that flag as runtime evidence"
+        },
+        {
+          "id": "d256-compact-a2",
+          "classification": "FAILED",
+          "exitCode": 1,
+          "expected": 0,
+          "unexpected": 1,
+          "sourceManifestSha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+          "failure": "Open-menu backdrop intercepted the real Search tap"
+        },
+        {
+          "id": "d256-compact-a3",
+          "classification": "PASSED",
+          "exitCode": 0,
+          "expected": 1,
+          "unexpected": 0,
+          "sourceManifestSha256": "23827722336aff48abbd02f52d9e144844553e47313c6b6bfa8d04b8b1d33dd2"
+        },
+        {
+          "id": "d256-compact-a4",
+          "classification": "PASSED",
+          "exitCode": 0,
+          "expected": 1,
+          "unexpected": 0,
+          "sourceManifestSha256": "825a6ee42b8afd48f8afba083f1ca40d1935d6007a21bfb86c91384117fee967",
+          "fileRowsMatchCommittedSource": true
+        }
+      ],
+      "nativeCase": "compact premium mobile chrome retains the actual globe across menu, locale and edition controls",
+      "nativeViewports": [
+        {
+          "width": 330,
+          "height": 844
+        },
+        {
+          "width": 390,
+          "height": 844
+        },
+        {
+          "width": 390,
+          "height": 480
+        },
+        {
+          "width": 844,
+          "height": 390
+        }
+      ],
+      "nativeBoundary": "Actual application/browser/Canvas with existing controlled OS adapter ports; no installed device",
+      "pwaAttempt": "runtime/actual-a1",
+      "pwaCompilations": 1,
+      "strictAuditPassed": true,
+      "pwaBrowserInvocations": 1,
+      "pwaBrowserCasesPassed": 1,
+      "pwaCase": "offline PWA cross-language author search and book return retain the globe and integrated archive card",
+      "pwaViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pwaMainAndMenuCaptures": 4,
+      "pwaAssertions": "Actual offline RU/EN opposite-language author search and book return; retained country/writer/deep link and canonical scene; actual Menu switching, 44px targets, Escape and focus restoration",
+      "pwaBrowserProfileReopened": false,
+      "privateKeyPersisted": false,
+      "qaSignerClosed": true,
+      "old163OrPackagingRerun": false,
+      "pwaAdditionalTypeScriptRuns": 0,
+      "rootCaptureReview": null,
+      "rawPwaCapturesReviewed": false,
+      "fullVisualAcceptance": false,
+      "actualOsInstallation": false,
+      "realPurchaseOrProviderValidated": false,
+      "publicSiteOrPublicSeoAcceptance": false,
+      "editorialOrLegalAcceptance": false,
+      "criterionIds": [
+        "S03.acceptance"
+      ],
+      "allStatusesUnchanged": true,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "D257_FLAGS": {
+      "decision": "D257",
+      "kind": "s03-flags-focused-ui-working-evidence",
+      "recordReady": true,
+      "pass": true,
+      "scope": "Focused flags UI only; separate raw PWA aggregate remains false",
+      "sourceCommit": "348a376236fb0c8d4da18180f8bb484898de67ef",
+      "artifactId": "34b5cb62e703d35d07e2d56ed9307fb154fc5034e24e59c26f2c2639c4ba85fe",
+      "focusedUiPass": true,
+      "aggregatePwaPass": false,
+      "nativeCasesPassed": 1,
+      "nativeViewports": 4,
+      "applicationTypeScriptPassed": true,
+      "pwaCompilations": 1,
+      "pwaStrictAuditPassed": true,
+      "selectedPwaCases": 2,
+      "offlineUiCase": "PASSED",
+      "safeUpdateRollbackCase": "FAILED before install",
+      "rawAggregateBrowserField": null,
+      "rootReviewedCaptureReferences": 11,
+      "uniqueReviewedCaptureBytes": 10,
+      "sameContextOfflineOnly": true,
+      "installedDeviceAcceptance": false,
+      "providerValidated": false,
+      "stageAccepted": false,
+      "releaseReady": false,
+      "criterionIds": [
+        "S03.acceptance"
+      ],
+      "proof": {
+        "decision": "D257_FLAGS",
+        "name": "ui-review.json",
+        "equals": {
+          "focusedUiPass": true,
+          "aggregatePwaPass": false,
+          "sourceCommit": "348a376236fb0c8d4da18180f8bb484898de67ef",
+          "artifactBuildId": "34b5cb62e703d35d07e2d56ed9307fb154fc5034e24e59c26f2c2639c4ba85fe",
+          "reviewedCaptures.length": 11
+        }
+      },
+      "note": "D257 focused flags UI passed at source348a3762/artifact34b5cb62: one actual-App four-viewport browser case and app TypeScript passed; the controlled PWA build/audit passed, and the selected offline RU/EN flags/Menu case passed. ROOT independently reviewed11 capture references representing10 unique images. Keep the raw PWA aggregate false/browser=null and the separate failed pre-install update/rollback case; this focused UI proof is not overall D257, installed-device, provider, full visual/content, stage or release acceptance."
+    },
+    "D257_ACCOUNT": {
+      "decision": "D257",
+      "kind": "s03-account-flags-existing-mobile-case-working-evidence",
+      "recordReady": true,
+      "pass": true,
+      "sourceCommit": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+      "artifactId": null,
+      "selectedCases": 1,
+      "browserInvocations": 1,
+      "compilerScope": "Existing in-memory esbuild React account fixture; explicit controlled Auth/API ports, not a PWA build or full application dependency closure",
+      "fixtureFidelityRetryRecordedByThisSlice": false,
+      "sourceCommitRawTestsPendingFlagPreserved": true,
+      "installedDeviceAcceptance": false,
+      "providerValidated": false,
+      "legalAcceptance": false,
+      "stageAccepted": false,
+      "releaseReady": false,
+      "criterionIds": [
+        "S03.acceptance",
+        "S03.MOD-030"
+      ],
+      "proof": {
+        "decision": "D257_ACCOUNT",
+        "name": "actual-a1/result.json",
+        "equals": {
+          "passed": true,
+          "sourceCommit": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+          "selectedCases": 1,
+          "actualBrowserInvocations": 1
+        }
+      },
+      "note": "At sourcebe4e9963 one existing mobile account case passed in the real React/browser esbuild fixture: the bilingual deletion form, plaintext disclosure and stable retry ID remain. Preserve the earlier source-commit testsPending=true receipt separately from the later actual PASS report. Explicit controlled Auth/API ports and selected witnesses are not a full app/esbuild closure, live provider, legal or installed-device acceptance. The later fixture style/JSX/asset-fidelity retry belongs to a separate slice."
+    },
+    "D257_MARKER_UNIT": {
+      "decision": "D257",
+      "kind": "s03-complete-marker-envelope-unit-working-evidence",
+      "recordReady": true,
+      "pass": true,
+      "sourceCommit": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+      "artifactId": null,
+      "unitInvocations": 1,
+      "testsPassed": 203,
+      "testsFailed": 0,
+      "syntaxChecksPassed": 3,
+      "sourceRowsPreserved": true,
+      "pwaBrowserStillPending": true,
+      "stageAccepted": false,
+      "releaseReady": false,
+      "criterionIds": [
+        "S03.acceptance"
+      ],
+      "proof": {
+        "decision": "D257_MARKER_UNIT",
+        "name": "actual-unit-a1/result.json",
+        "equals": {
+          "pass": true,
+          "sourceCommit": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+          "tests.total": 203,
+          "tests.passed": 203,
+          "tests.failed": 0,
+          "syntax.length": 3,
+          "sourceUnchangedDuringChecks": true,
+          "committedFileRowsPreserved": true,
+          "pwaBrowserStillPending": true
+        }
+      },
+      "note": "The reviewed three-owner COMPLETE marker envelope fix is committed at source21704c2b. One affected serviceWorkerRuntime suite passed203/203 and all three syntax checks passed; original working and committed source rows remain separately bound. The raw result explicitly says pwaBrowserStillPending=true: the historical SW failure is preserved and no fresh update/rollback runtime success is claimed from these local units."
+    },
+    "D257_ACCOUNT_FIDELITY": {
+      "decision": "D257",
+      "kind": "s03-account-fixture-fidelity-retry-working-evidence",
+      "recordReady": true,
+      "pass": true,
+      "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+      "artifactId": null,
+      "selectedCases": 1,
+      "browserInvocations": 1,
+      "compilerScope": "Existing real React/browser in-memory esbuild account fixture; exact production styles/fonts/logo witnesses and explicit controlled Auth/API ports, not a complete compiled application or provider",
+      "fixtureFidelityRetryRecordedByThisSlice": true,
+      "sourceCommitRawTestsPendingFlagPreserved": true,
+      "rootCaptureReviewRecordedByThisSlice": true,
+      "installedDeviceAcceptance": false,
+      "providerValidated": false,
+      "legalAcceptance": false,
+      "stageAccepted": false,
+      "releaseReady": false,
+      "proof": {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "actual-a1/result.json",
+        "equals": {
+          "passed": true,
+          "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+          "selectedCases": 1,
+          "actualBrowserInvocations": 1,
+          "stageAccepted": false,
+          "installedOsAppVerified": false,
+          "providerVerified": false
+        }
+      },
+      "note": "The separate account style/fidelity amendment is committed at source0440b85a: account-scoped CSS and the existing browser fixture changed. Its one existing mobile-case retry passed independently of the original be4 case, retaining the bilingual form/plaintext disclosure/stable ID and checking the production-style/font/logo witnesses plus44px/overflow/hit targets. This remains an in-memory esbuild React fixture with controlled Auth/API ports; no PWA compile, full production dependency closure, live provider, legal, installed-device acceptance. Separate ROOT capture review covers fonts/logo/panel/button layout only; EN native-checkbox still-frame paint remains inconclusive and no full visual acceptance is made.",
+      "criterionIds": [
+        "S03.acceptance",
+        "S03.MOD-030"
+      ],
+      "originalAccountProofStillSeparate": true,
+      "rootCaptureReviewScope": "Fonts/logo/panel/button layout only; EN native-checkbox still-frame paint inconclusive, no full visual acceptance."
+    },
+    "D257_SW_RUNTIME": {
+      "decision": "D257",
+      "kind": "s03-marker-fixed-safe-update-runtime-working-evidence",
+      "recordReady": true,
+      "pass": true,
+      "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+      "artifactId": "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+      "pwaCompilations": 1,
+      "strictAuditPassed": true,
+      "browserInvocations": 1,
+      "selectedCases": 1,
+      "casesPassed": 1,
+      "corruptedCandidateEnteredInstall": true,
+      "failedCandidateState": "CANDIDATE",
+      "selectedWholeVerifiedGenerations": [
+        "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+        "efa272cd1da09950fb8cf8b47aea5e74b7ad23d7c82366667075e4527fb43867",
+        "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547"
+      ],
+      "rootReviewedCaptureReferences": 2,
+      "rawAutomationCapturesReviewed": false,
+      "sameContextOfflineOnly": true,
+      "installedDeviceAcceptance": false,
+      "providerValidated": false,
+      "stageAccepted": false,
+      "releaseReady": false,
+      "criterionIds": [
+        "S03.acceptance"
+      ],
+      "proof": {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/result.json",
+        "equals": {
+          "pass": true,
+          "failure": null,
+          "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+          "buildId": "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+          "buildInvocations": 1,
+          "browserInvocations": 1,
+          "smokeInvocations": 0,
+          "packagingInvocations": 0,
+          "browser.stats.expected": 1,
+          "browser.stats.unexpected": 0,
+          "browser.stats.skipped": 0,
+          "browser.stats.flaky": 0,
+          "liveQaAuthority.signerClosed": true,
+          "liveQaAuthority.privateKeyPersisted": false,
+          "scope.stageAccepted": false,
+          "scope.releaseReady": false
+        }
+      },
+      "extraProofs": [
+        {
+          "decision": "D257_SW_RUNTIME",
+          "name": "actual-a1/browser-observation.json",
+          "equals": {
+            "corruptedCandidateRejected": true,
+            "corruptCandidateEnteredInstall": true,
+            "failedCandidateState": "CANDIDATE",
+            "sameCanvasRendererCameraSceneBeforeExplicitActivation": true,
+            "keyboardUpdateAndRollbackFromCollectionClose": true,
+            "selectedWholeVerifiedGenerations": [
+              "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+              "efa272cd1da09950fb8cf8b47aea5e74b7ad23d7c82366667075e4527fb43867",
+              "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547"
+            ]
+          }
+        }
+      ],
+      "note": "The separate marker-fixed runtime at source0440b85a/artifactaf5b8adb passed one fresh controlled QA PWA compile/strict audit and only the previously failed safe-update/rollback case. The corrupt candidate enters installation but never becomes COMPLETE; the active valid generation stays intact. Explicit update selects the whole verified new generation and offline rollback restores the whole prior RU/EN/module generation. ROOT reviewed its two original Collection captures separately; raw capturesReviewed=false and the historical flags aggregate failure remain untouched. One compile/browser invocation, no repeated native/offline UI,203-unit,163/package or additional TypeScript runs. This is same-context browser QA, not OS-installed/profile-reopen/provider, complete content/visual, stage or release acceptance."
+    }
+  },
+  "delta": {
+    "marker": "s03-account-deletion-and-mobile-globe-20261002",
+    "D255": "D255 at source0ba394: one affected server integration invocation passed6/6, including one additive account-client/API/SQL lost-202 recovery composed with the real SDK deletion processor, current SQL, job/account fences, hard deletion, service-only receipt and Auth denial. The original five cases remain. This is one local PGlite connection with controlled Auth/Storage ports; no live provider, multi-connection, unauthenticated completed-status UI or legal acceptance. Reviewed disclosure defaults and all statuses remain unchanged; MOD-030 stays OPEN.",
+    "D256": "D256 at source5add2ce1: compact app Filter/Search/Menu, submenu secondary controls, compact edition dropdown, vertical zoom/reset, bottom-left pause and country-card polish preserve the canonical scene and public-site presentation. Four native-browser attempts remain separate: a1 found no tests (its conflicting derived receipt flag is not runtime evidence); a2 failed on the open-menu backdrop intercepting Search; a3 and final a4 each passed one four-viewport actual-App case. Final a4 file rows match the committed source. One fresh controlled QA PWA compilation/strict audit and one existing390x844 offline RU/EN author-search/book-return case passed at artifactca9dbc74; four main/menu captures are retained, with raw capturesReviewed=false pending a separate ROOT review record. Same-context offline/browser evidence is not an installed-device/profile-reopen, real purchase/provider, public SEO, complete visual/content or stage/release acceptance. No old163 or packaging repetition; historical source/artifact IDs remain separate from later flags work.",
+    "nextAction": "Continue S03.acceptance with a bounded inspection of the remaining current-public mobile fallback/e2e evidence gap. Choose only an applicable existing oracle whose current-source coverage is actually unproven; preserve historical accepted flags/offline/account/marker proof without reruns for documentation. Keep all11 routed criteria OPEN, approval caches unchanged and OS/profile/provider/legal/editorial/full-content/stage/release gates separate.",
+    "doNotRepeat": "Retain D255 one6/6 affected integration run and D256 original native a1/a2/a3/a4 plus one current QA PWA compilation/audit/offline case. Documentation alone does not justify repeating the old163/packaging/API suites, existing accepted cases, PWA/APK builds or provider calls. Do not relabel these historical identities as D257 evidence."
+  },
+  "amendment": {
+    "schemaVersion": 1,
+    "sourceState": "historical-working-proof; ROOT binds the final clean checkpoint HEAD separately",
+    "frozenBaseManifestSha256": "c67245df9af7a2ba261bc30871df0da3810de74069e50d5e3dc65762717b4264",
+    "sixGlobalOwnersStillByteExact": true,
+    "originalSixProposalFilesStillByteExact": true,
+    "latestSourceWithReadActualReceipt": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+    "records": {
+      "D257_FLAGS": {
+        "decision": "D257",
+        "kind": "s03-flags-focused-ui-working-evidence",
+        "recordReady": true,
+        "pass": true,
+        "scope": "Focused flags UI only; separate raw PWA aggregate remains false",
+        "sourceCommit": "348a376236fb0c8d4da18180f8bb484898de67ef",
+        "artifactId": "34b5cb62e703d35d07e2d56ed9307fb154fc5034e24e59c26f2c2639c4ba85fe",
+        "focusedUiPass": true,
+        "aggregatePwaPass": false,
+        "nativeCasesPassed": 1,
+        "nativeViewports": 4,
+        "applicationTypeScriptPassed": true,
+        "pwaCompilations": 1,
+        "pwaStrictAuditPassed": true,
+        "selectedPwaCases": 2,
+        "offlineUiCase": "PASSED",
+        "safeUpdateRollbackCase": "FAILED before install",
+        "rawAggregateBrowserField": null,
+        "rootReviewedCaptureReferences": 11,
+        "uniqueReviewedCaptureBytes": 10,
+        "sameContextOfflineOnly": true,
+        "installedDeviceAcceptance": false,
+        "providerValidated": false,
+        "stageAccepted": false,
+        "releaseReady": false,
+        "criterionIds": [
+          "S03.acceptance"
+        ],
+        "proof": {
+          "decision": "D257_FLAGS",
+          "name": "ui-review.json",
+          "equals": {
+            "focusedUiPass": true,
+            "aggregatePwaPass": false,
+            "sourceCommit": "348a376236fb0c8d4da18180f8bb484898de67ef",
+            "artifactBuildId": "34b5cb62e703d35d07e2d56ed9307fb154fc5034e24e59c26f2c2639c4ba85fe",
+            "reviewedCaptures.length": 11
+          }
+        },
+        "note": "D257 focused flags UI passed at source348a3762/artifact34b5cb62: one actual-App four-viewport browser case and app TypeScript passed; the controlled PWA build/audit passed, and the selected offline RU/EN flags/Menu case passed. ROOT independently reviewed11 capture references representing10 unique images. Keep the raw PWA aggregate false/browser=null and the separate failed pre-install update/rollback case; this focused UI proof is not overall D257, installed-device, provider, full visual/content, stage or release acceptance."
+      },
+      "D257_ACCOUNT": {
+        "decision": "D257",
+        "kind": "s03-account-flags-existing-mobile-case-working-evidence",
+        "recordReady": true,
+        "pass": true,
+        "sourceCommit": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+        "artifactId": null,
+        "selectedCases": 1,
+        "browserInvocations": 1,
+        "compilerScope": "Existing in-memory esbuild React account fixture; explicit controlled Auth/API ports, not a PWA build or full application dependency closure",
+        "fixtureFidelityRetryRecordedByThisSlice": false,
+        "sourceCommitRawTestsPendingFlagPreserved": true,
+        "installedDeviceAcceptance": false,
+        "providerValidated": false,
+        "legalAcceptance": false,
+        "stageAccepted": false,
+        "releaseReady": false,
+        "criterionIds": [
+          "S03.acceptance",
+          "S03.MOD-030"
+        ],
+        "proof": {
+          "decision": "D257_ACCOUNT",
+          "name": "actual-a1/result.json",
+          "equals": {
+            "passed": true,
+            "sourceCommit": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+            "selectedCases": 1,
+            "actualBrowserInvocations": 1
+          }
+        },
+        "note": "At sourcebe4e9963 one existing mobile account case passed in the real React/browser esbuild fixture: the bilingual deletion form, plaintext disclosure and stable retry ID remain. Preserve the earlier source-commit testsPending=true receipt separately from the later actual PASS report. Explicit controlled Auth/API ports and selected witnesses are not a full app/esbuild closure, live provider, legal or installed-device acceptance. The later fixture style/JSX/asset-fidelity retry belongs to a separate slice."
+      },
+      "D257_MARKER_UNIT": {
+        "decision": "D257",
+        "kind": "s03-complete-marker-envelope-unit-working-evidence",
+        "recordReady": true,
+        "pass": true,
+        "sourceCommit": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+        "artifactId": null,
+        "unitInvocations": 1,
+        "testsPassed": 203,
+        "testsFailed": 0,
+        "syntaxChecksPassed": 3,
+        "sourceRowsPreserved": true,
+        "pwaBrowserStillPending": true,
+        "stageAccepted": false,
+        "releaseReady": false,
+        "criterionIds": [
+          "S03.acceptance"
+        ],
+        "proof": {
+          "decision": "D257_MARKER_UNIT",
+          "name": "actual-unit-a1/result.json",
+          "equals": {
+            "pass": true,
+            "sourceCommit": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+            "tests.total": 203,
+            "tests.passed": 203,
+            "tests.failed": 0,
+            "syntax.length": 3,
+            "sourceUnchangedDuringChecks": true,
+            "committedFileRowsPreserved": true,
+            "pwaBrowserStillPending": true
+          }
+        },
+        "note": "The reviewed three-owner COMPLETE marker envelope fix is committed at source21704c2b. One affected serviceWorkerRuntime suite passed203/203 and all three syntax checks passed; original working and committed source rows remain separately bound. The raw result explicitly says pwaBrowserStillPending=true: the historical SW failure is preserved and no fresh update/rollback runtime success is claimed from these local units."
+      },
+      "D257_ACCOUNT_FIDELITY": {
+        "decision": "D257",
+        "kind": "s03-account-fixture-fidelity-retry-working-evidence",
+        "recordReady": true,
+        "pass": true,
+        "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+        "artifactId": null,
+        "selectedCases": 1,
+        "browserInvocations": 1,
+        "compilerScope": "Existing real React/browser in-memory esbuild account fixture; exact production styles/fonts/logo witnesses and explicit controlled Auth/API ports, not a complete compiled application or provider",
+        "fixtureFidelityRetryRecordedByThisSlice": true,
+        "sourceCommitRawTestsPendingFlagPreserved": true,
+        "rootCaptureReviewRecordedByThisSlice": true,
+        "installedDeviceAcceptance": false,
+        "providerValidated": false,
+        "legalAcceptance": false,
+        "stageAccepted": false,
+        "releaseReady": false,
+        "proof": {
+          "decision": "D257_ACCOUNT_FIDELITY",
+          "name": "actual-a1/result.json",
+          "equals": {
+            "passed": true,
+            "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+            "selectedCases": 1,
+            "actualBrowserInvocations": 1,
+            "stageAccepted": false,
+            "installedOsAppVerified": false,
+            "providerVerified": false
+          }
+        },
+        "note": "The separate account style/fidelity amendment is committed at source0440b85a: account-scoped CSS and the existing browser fixture changed. Its one existing mobile-case retry passed independently of the original be4 case, retaining the bilingual form/plaintext disclosure/stable ID and checking the production-style/font/logo witnesses plus44px/overflow/hit targets. This remains an in-memory esbuild React fixture with controlled Auth/API ports; no PWA compile, full production dependency closure, live provider, legal, installed-device acceptance. Separate ROOT capture review covers fonts/logo/panel/button layout only; EN native-checkbox still-frame paint remains inconclusive and no full visual acceptance is made.",
+        "criterionIds": [
+          "S03.acceptance",
+          "S03.MOD-030"
+        ],
+        "originalAccountProofStillSeparate": true,
+        "rootCaptureReviewScope": "Fonts/logo/panel/button layout only; EN native-checkbox still-frame paint inconclusive, no full visual acceptance."
+      },
+      "D257_SW_RUNTIME": {
+        "decision": "D257",
+        "kind": "s03-marker-fixed-safe-update-runtime-working-evidence",
+        "recordReady": true,
+        "pass": true,
+        "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+        "artifactId": "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+        "pwaCompilations": 1,
+        "strictAuditPassed": true,
+        "browserInvocations": 1,
+        "selectedCases": 1,
+        "casesPassed": 1,
+        "corruptedCandidateEnteredInstall": true,
+        "failedCandidateState": "CANDIDATE",
+        "selectedWholeVerifiedGenerations": [
+          "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+          "efa272cd1da09950fb8cf8b47aea5e74b7ad23d7c82366667075e4527fb43867",
+          "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547"
+        ],
+        "rootReviewedCaptureReferences": 2,
+        "rawAutomationCapturesReviewed": false,
+        "sameContextOfflineOnly": true,
+        "installedDeviceAcceptance": false,
+        "providerValidated": false,
+        "stageAccepted": false,
+        "releaseReady": false,
+        "criterionIds": [
+          "S03.acceptance"
+        ],
+        "proof": {
+          "decision": "D257_SW_RUNTIME",
+          "name": "actual-a1/result.json",
+          "equals": {
+            "pass": true,
+            "failure": null,
+            "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+            "buildId": "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+            "buildInvocations": 1,
+            "browserInvocations": 1,
+            "smokeInvocations": 0,
+            "packagingInvocations": 0,
+            "browser.stats.expected": 1,
+            "browser.stats.unexpected": 0,
+            "browser.stats.skipped": 0,
+            "browser.stats.flaky": 0,
+            "liveQaAuthority.signerClosed": true,
+            "liveQaAuthority.privateKeyPersisted": false,
+            "scope.stageAccepted": false,
+            "scope.releaseReady": false
+          }
+        },
+        "extraProofs": [
+          {
+            "decision": "D257_SW_RUNTIME",
+            "name": "actual-a1/browser-observation.json",
+            "equals": {
+              "corruptedCandidateRejected": true,
+              "corruptCandidateEnteredInstall": true,
+              "failedCandidateState": "CANDIDATE",
+              "sameCanvasRendererCameraSceneBeforeExplicitActivation": true,
+              "keyboardUpdateAndRollbackFromCollectionClose": true,
+              "selectedWholeVerifiedGenerations": [
+                "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+                "efa272cd1da09950fb8cf8b47aea5e74b7ad23d7c82366667075e4527fb43867",
+                "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547"
+              ]
+            }
+          }
+        ],
+        "note": "The separate marker-fixed runtime at source0440b85a/artifactaf5b8adb passed one fresh controlled QA PWA compile/strict audit and only the previously failed safe-update/rollback case. The corrupt candidate enters installation but never becomes COMPLETE; the active valid generation stays intact. Explicit update selects the whole verified new generation and offline rollback restores the whole prior RU/EN/module generation. ROOT reviewed its two original Collection captures separately; raw capturesReviewed=false and the historical flags aggregate failure remain untouched. One compile/browser invocation, no repeated native/offline UI,203-unit,163/package or additional TypeScript runs. This is same-context browser QA, not OS-installed/profile-reopen/provider, complete content/visual, stage or release acceptance."
+      }
+    },
+    "primaryOldCopyNames": [
+      "D255/source-a1/checks.json",
+      "D255/source-a1/source-commit.json",
+      "D255/source-a1/vitest-report.json",
+      "D255/source-a1/current-source-manifest.json",
+      "D256/source-commit.json",
+      "D256/runtime/current-source-manifest.json",
+      "D256/d256-compact-a1/receipt.json",
+      "D256/d256-compact-a1/results.json",
+      "D256/d256-compact-a2/receipt.json",
+      "D256/d256-compact-a2/results.json",
+      "D256/d256-compact-a3/receipt.json",
+      "D256/d256-compact-a3/results.json",
+      "D256/d256-compact-a4/receipt.json",
+      "D256/d256-compact-a4/results.json",
+      "D256/d256-compact-a4/source-before.json",
+      "D256/runtime/actual-a1/result.json",
+      "D256/runtime/actual-a1/browser-playwright.json",
+      "D256/runtime/actual-a1/strict-audit.json",
+      "D256/runtime/actual-a1/browser-observation.json"
+    ],
+    "finalNextActionAfterActualRetries": "Continue S03.acceptance with a bounded inspection of the remaining current-public mobile fallback/e2e evidence gap. Choose only an applicable existing oracle whose current-source coverage is actually unproven; preserve historical accepted flags/offline/account/marker proof without reruns for documentation. Keep all11 routed criteria OPEN, approval caches unchanged and OS/profile/provider/legal/editorial/full-content/stage/release gates separate.",
+    "doNotRepeatAddition": "D257: retain focused flags UI PASS and ROOT's11/10 capture review separately from the original false PWA aggregate/SW failure; retain marker203-unit PASS and each account invocation under its own source ID. Do not repeat passed native/flags/offline UI cases or the affected203 units for documentation, and never relabel an old artifact as a fresh marker-fixed runtime. The separate source0440/artifactaf5b marker-fixed runtime passed its one selected update/rollback case; retain this later success without changing the original false aggregate.",
+    "newCanonicalPendingRecordRequired": false,
+    "canonicalWritesOrChecksExecuted": false
+  },
+  "addedEvidenceInputs": {
+    "schemaVersion": 1,
+    "files": [
+      {
+        "decision": "D257_FLAGS",
+        "name": "ui-review.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\ui-review.json",
+        "sha256": "c3ddcb2eb1ce60a367476a05d4c60c7f835a5f7a4bbab677690b69997f9f4305",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\source-commit.json",
+        "sha256": "0029485ea8f7ebb6b009f1fb8609bb948726e6a322e8dc7f063211fe81c7a887",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "native-a1/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\native-a1\\receipt.json",
+        "sha256": "6bb004d8e4da451d15dfa0cb374ceeca2ccd3e3cda36d2dccb2ac1f311973a9a",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "native-a1/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\native-a1\\results.json",
+        "sha256": "23e59488531999ca345d6b6977c65bcf8d16cad8a0dd75914e7e7a06d66c9391",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "native-a1/application-typescript-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\native-a1\\application-typescript-execution.json",
+        "sha256": "82ece6edfa9d8ee5662b81fd6937a2194d72ac12d36e2c6b5fd52206a174c510",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/current-source-manifest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\current-source-manifest.json",
+        "sha256": "7898e65fbd14ce495b888913d8b027210768d7b3b2ce2418b645e139f2a47352",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/actual-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\result.json",
+        "sha256": "4a7300d8d5e4a0164a81bf584f5623d92b83edd6324c81f32cafb71a1e73aa15",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/actual-a1/browser-playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\browser-playwright.json",
+        "sha256": "70c3407fd66536ef1e44fed5cb35a1b206854069c0f994d1d40ac6414ca30dbc",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/actual-a1/browser-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\browser-execution.json",
+        "sha256": "7f7df8a3df34b4203a7747db51d52869a5cce2b327ec6d9e43ea3d793dd13e6e",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/actual-a1/strict-audit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\strict-audit.json",
+        "sha256": "1c4f94159fc48755c3d150dfb5e4fdd4c50f11982c5d32b66b5828ad62bc629b",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-330x844.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-330x844.png",
+        "sha256": "756d9da11159b0d5873e7053d994e367a14445a7bf6a497c2f9af82c9c3f3c56",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-390x844.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-390x844.png",
+        "sha256": "45595f970cdb94b90ed74523f97043e03bd236e3c51f2241e14081dc4c6d6118",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-390x480.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-390x480.png",
+        "sha256": "32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-844x390.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-844x390.png",
+        "sha256": "75dba9d3bbf064041c454a78b627808104a0aacf7e38b19439fffc3c04fe3ccf",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-flags-menu-390x844.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-flags-menu-390x844.png",
+        "sha256": "4ca8f742c873d4060e7fe5b845845b1bc7a3bde7f16b3aff613b64ddaeb80b13",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-touch-zoom-reset.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-touch-zoom-reset.png",
+        "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/native-final-passed.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/native-final-passed.png",
+        "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/pwa-premium-menu-ru.png",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-menu-ru.png",
+        "sha256": "29041843b67f062f2f6b36b0c356e84540f6d91693e02c9eb82b173e50bcc605",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/pwa-premium-globe-ru.png",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-globe-ru.png",
+        "sha256": "d33952d95dd7d57e37c848718746bb49307d21fdbe07a3f842675e746b6211d4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/pwa-premium-menu-en.png",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-menu-en.png",
+        "sha256": "3800834735315a8fac2d4115debb60e7e7ace38e947df9525a2770c11c75381d",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/pwa-premium-globe-en.png",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-globe-en.png",
+        "sha256": "3a362677a0d7c7601a0e0ce172960a4e39d70b084cb6e34f19bac8b27c9e63d8",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT",
+        "name": "actual-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\actual-a1\\result.json",
+        "sha256": "42e4459b5467fd4d892460bc2f216756b280f7d75e898bc62af18f370386254b",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT",
+        "name": "actual-a1/playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\actual-a1\\playwright.json",
+        "sha256": "825e389e6078e533a8e60963279a9818920945d5c2e0538ecec55acfbaaf2cd8",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT",
+        "name": "source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\source-commit.json",
+        "sha256": "6f8367f013eb761da838d24599974cadec925b417989af27afb865e9ce3ada1d",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT",
+        "name": "source-pins.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\source-pins.json",
+        "sha256": "2f3b022bcec5cafcc2e6fddc0e2ab95c672eb85004a6e5c9ca4dfc46d754a498",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_MARKER_UNIT",
+        "name": "actual-unit-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\result.json",
+        "sha256": "1d665e4e6f3f8ac20509998517fe2b01c6b3709baa0a52cb0366f4251726fd04",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_MARKER_UNIT",
+        "name": "actual-unit-a1/vitest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\vitest.json",
+        "sha256": "e790951371014a1621c585f4595b60c3587367bf83aaaf476d385d5086b32c53",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_MARKER_UNIT",
+        "name": "actual-unit-a1/unit-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\unit-execution.json",
+        "sha256": "ece6803e3b17cf7217030df0cc4aa561788763385902bbbfab42f793480d8f7a",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_MARKER_UNIT",
+        "name": "actual-unit-a1/committed-source.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\committed-source.json",
+        "sha256": "486fd840123631bbd88863ab15c8aa14be9a550ffd230b31183b07bf4c427abe",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "actual-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\result.json",
+        "sha256": "dd5fa08f24ba4d76a7f6b86477b5d7eb89c107a3b9a7e8d79297ff0647dae67d",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "actual-a1/playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\playwright.json",
+        "sha256": "fd93d72c650028acb2ccfc8341d72d0c6f5c12170e60b8b0834de1c6ed2bf5d4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\source-commit.json",
+        "sha256": "9017a5967996f3fb662e3406bb045ca229525829f63d4b16b2c075542efe501e",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "source-pins.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\source-pins.json",
+        "sha256": "c7400ff6b5584b4b811cb940f748ff7708364281fbb58e7348fc3bc0c4b6e479",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "production-inputs.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\production-inputs.json",
+        "sha256": "97ac65458ecbf65be8f8d793613e1a8984e4b2b9b69b4a6097388f356fd3ea52",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\result.json",
+        "sha256": "b265d9c6c1588c7fe65889fcbe529a9779bc029a3bf13bc63c270e3cf492e6e2",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/browser-playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-playwright.json",
+        "sha256": "356a715a3570c47634eed93669e915a0ea9e5d2ae28f43aa271441a9145eb8d9",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/browser-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-execution.json",
+        "sha256": "3d8090729f8d861adf5d5ad1394c5e5317a81ea2ebc08aec3354289e4ede77dd",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/strict-audit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\strict-audit.json",
+        "sha256": "d4e0996b059956f3bf345049312bc22f3ef65e6add1eda1610d15c59f88dcd78",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/strict-audit-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\strict-audit-execution.json",
+        "sha256": "b51cfac13517d62b3181102580fcf50c29e873a4e94cd8012e61fd234d435ca4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/browser-observation.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-observation.json",
+        "sha256": "e3de003ff9b75c2519a3d723c6f27f7edafe71cdcf6c3a32f6c9b35a256cfb00",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\source-before.json",
+        "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\source-after.json",
+        "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/build-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\build-execution.json",
+        "sha256": "3033afdab19236d8d0a9c766bb2dd6ac98e92435b4384ddc5a9b47b69d263f10",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\binding.json",
+        "sha256": "2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "current-source-manifest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\current-source-manifest.json",
+        "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "root-binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\root-binding.json",
+        "sha256": "2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "captures/pwa-collection-keyboard-update.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-s03-premium-msedge-390\\pwa-collection-keyboard-update.png",
+        "sha256": "16598d5772c0a9d37356faca32c9d48b9109774dba2a5801a56efac02345551d",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "captures/pwa-collection-keyboard-rollback.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-s03-premium-msedge-390\\pwa-collection-keyboard-rollback.png",
+        "sha256": "c777bbbd3697e50f0d453dbe94ac41363a2acc5ae0bdf2d06dd47023febac849",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "root-capture-review.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\root-capture-review.json",
+        "sha256": "cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "root-capture-review.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\root-capture-review.json",
+        "sha256": "cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "captures/planet-account-deletion-flags-ru.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-mobile-fixture\\planet-account-deletion-flags-ru.png",
+        "sha256": "bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "captures/planet-account-deletion-flags-en.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-mobile-fixture\\planet-account-deletion-flags-en.png",
+        "sha256": "a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2",
+        "canonicalCopy": true
+      }
+    ],
+    "finalSwReceiptStillPending": false,
+    "accountFidelityBound": true
+  },
+  "evidenceInputs": {
+    "schemaVersion": 1,
+    "externalProposalOnly": true,
+    "files": [
+      {
+        "decision": "D255",
+        "name": "source-a1/checks.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\checks.json",
+        "sha256": "626c4f6c150c4515378efd52cef543eff97ac9faf1b2a34ed3d467615ef32e44",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-commit.json",
+        "sha256": "80b50577ac3bdb7551fe820d98b388dc0920cb69e8747fee474619f678935113",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/vitest-report.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest-report.json",
+        "sha256": "1f690233951fc26fb3d77303db8b7e9954fb50242ae2a48bc8f25125eea5ea47",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/vitest-command.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest-command.json",
+        "sha256": "d2a30bf54b22feaece0c360708607cd7ce2b7d2b3a0c36f1a0ba8531e0efaf0c",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/vitest.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest.stdout.txt",
+        "sha256": "fce328acaa0c32acb38f47b1efb10682750df24e4e30bb9fee323b6ef5c5f2ac",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/vitest.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/tool-inputs.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\tool-inputs.json",
+        "sha256": "38e411c54bfeac32071db80c5f7e6b958bd9b6f9284db39ac9801943ccb3954b",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/source-manifest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-manifest.json",
+        "sha256": "3bfd4deb10dbb0cccf07ee7d99176aed23158ec2a16b6d1b7feab9d87fe3785c",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-before.json",
+        "sha256": "1b6e48849a01136debaf15ac54779163eb2f66e1769e9d3b287e3ac1a702f768",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-after.json",
+        "sha256": "3bfd4deb10dbb0cccf07ee7d99176aed23158ec2a16b6d1b7feab9d87fe3785c",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D255",
+        "name": "source-a1/current-source-manifest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\current-source-manifest.json",
+        "sha256": "b7381d560a05dba32d94568d5424e6b465c56429f6f94eeff18c3d4c09078340",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\source-commit.json",
+        "sha256": "4c84bc4c8659095662d6da7e69fe1a1c5878ad547d8b2574e72cfd33f766643d",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "apply.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\apply.json",
+        "sha256": "8a96495f1771557dd6497d6ec73b4b27931f4f6b2ab1c5654f723a78f98188d8",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "final-preparation.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\final-preparation.json",
+        "sha256": "ed9f06ca2b422883269d3abfaa0f8969b4df3779b42684a8d4d7f24ca6a79b6c",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/current-source-manifest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\current-source-manifest.json",
+        "sha256": "26f32bfa7624ab4e2e58babbbb79acc8bb32649d143ec8046b3efc0d129e809b",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/root-binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\root-binding.json",
+        "sha256": "d0136093cb9d455bdcfa65d14f201886ffe18a9f0c651539057a24a51b78df30",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/producer.mjs",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\producer.mjs",
+        "sha256": "be84eb6b75d9288ec03c40db7bf4f4f761071c6fdbfd14577410219e90964856",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/pwa.config.mjs",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\pwa.config.mjs",
+        "sha256": "fbb11ac5d7c659cde99e66798af58caa0a80ccce2f0cff9eb6448496ab436862",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/launcher.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\launcher.stdout.txt",
+        "sha256": "c9ca0d63e89c08c97ed37dbbd2e433ea3addb204cda0da7d1640bd6952cf1ff5",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/launcher.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\launcher.stderr.txt",
+        "sha256": "e7d1243d9b3cb87ceff52f00bb215aff3429f530dc0c12bfb48b8ee2d0c9b48f",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a1/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\receipt.json",
+        "sha256": "8790afa8d9748e2ca7fc7f42e310b7b8923927eaa90403eac0ac5723a31a0fb2",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a1/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\results.json",
+        "sha256": "fa034d9a81910bcc6c848c51ecff800748102161ef0b33f12d454ea873827ca0",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\source-before.json",
+        "sha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a1/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\source-after.json",
+        "sha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a1/stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\stdout.txt",
+        "sha256": "bef44b71926303f638fcf3917875642de7e01f8828d85d994561945390fde863",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a1/stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a2/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\receipt.json",
+        "sha256": "a5be183b30ec62f109cb6ccc2457d04c4260b29b9aa97dc347edc870684bc950",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a2/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\results.json",
+        "sha256": "07dbf3a3b65fb74fdc4b9c4eb8b557ef133de8e89d5008e3c3ba3ca980481546",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a2/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\source-before.json",
+        "sha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a2/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\source-after.json",
+        "sha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a2/stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\stdout.txt",
+        "sha256": "df2263a247833f174cadf40ba3662f5a07282a1257df6e6ebb6e27123c9bcf74",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a2/stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\stderr.txt",
+        "sha256": "9e8a61fa3c4980db7eaf24b64ca37dd6fdc6d73492ebe863baab7616c09d897a",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\receipt.json",
+        "sha256": "56d6d0d092886b67b6b0058298f13d5a2aba0d85db88da363e1768ddee758407",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\results.json",
+        "sha256": "13c27e101dc0aa694602aafa3c96001c30f3b889577a4de44664fdf6bcbcf446",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\source-before.json",
+        "sha256": "23827722336aff48abbd02f52d9e144844553e47313c6b6bfa8d04b8b1d33dd2",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\source-after.json",
+        "sha256": "23827722336aff48abbd02f52d9e144844553e47313c6b6bfa8d04b8b1d33dd2",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\stdout.txt",
+        "sha256": "4175ee15fb1837a2557f480e7d24c6ea3506910f633e1b9804468804d3a7ce6d",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\stderr.txt",
+        "sha256": "92f1947a41ea70621928ef3bb22ed934ad2ed07008fd195b8277a94152e97f59",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/captures/compact-mobile-330x844-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-330x844-screenshot-8e1fa8cc14c28d263f280f1a33e39b55cb99ea59.png",
+        "sha256": "517e68f6e0d4bd0b3f6e6ad646a7908475e235fb9a2fd7271a904beb05dc3cbb",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/captures/compact-mobile-390x844-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-390x844-screenshot-949c3c7451a8d8885db979820ab9c77458352ac7.png",
+        "sha256": "2e27eb7e042c0e5887e041f4e72674e8c084207d9897d54cc4e96f01a66675f2",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/captures/compact-mobile-390x480-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-390x480-screenshot-3fb9344fe91f3049622fb8a7ee69e6ce475a4ae1.png",
+        "sha256": "9541f914d7601bbfd3338210f2c8560b863de59b3e055f28661ad36df7e65e40",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/captures/compact-mobile-844x390-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-844x390-screenshot-11fd6cb71b81c394b9290745c8e2a55e5c13ce88.png",
+        "sha256": "19d1522470d5ea1623512a7e344867060301e2ddca5406f5c0bf50c97167d98d",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/captures/compact-mobile-touch-zoom-reset-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-touch-zoom-reset-screenshot-21d3b9a7a576770d86350bb0efa907b1b7c6f535.png",
+        "sha256": "cfd1cb1e8156e01a18a1d8d205c49134c9ddd64e54f5291b489cdccdbe487a9a",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a3/captures/native-final-passed-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\native-final-passed-screenshot-cf2780589976b7b1cbf4f6f513ad4a3df1aa6e23.png",
+        "sha256": "cfd1cb1e8156e01a18a1d8d205c49134c9ddd64e54f5291b489cdccdbe487a9a",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\receipt.json",
+        "sha256": "d928384317de1715984cd580d1743c4160e6644846da3035bdc339861d289275",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\results.json",
+        "sha256": "02ea2446829c9e415f7b6d74caa5c34bd5b607d76a479e41de7f722267df397f",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\source-before.json",
+        "sha256": "825a6ee42b8afd48f8afba083f1ca40d1935d6007a21bfb86c91384117fee967",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\source-after.json",
+        "sha256": "825a6ee42b8afd48f8afba083f1ca40d1935d6007a21bfb86c91384117fee967",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\stdout.txt",
+        "sha256": "a8c19da67fb7bc35e1f0276c2593518949a7d64a7a1368247817a52015db3e52",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\stderr.txt",
+        "sha256": "d6b02a932344d492b40b56d26053fc092d0fad1f18fc152284c4f4d0785a87e1",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/captures/compact-mobile-330x844-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-330x844-screenshot-a7c04c471e013e3cc49dba0225410559c7f4fbed.png",
+        "sha256": "ce530ce3e40eb3512cdbf01c568d40abeca6ce9e3ef7853f256e32b5d51de9fa",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/captures/compact-mobile-390x844-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-390x844-screenshot-2ef92acaa763a7c045b8e4859413631d249be7a0.png",
+        "sha256": "45595f970cdb94b90ed74523f97043e03bd236e3c51f2241e14081dc4c6d6118",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/captures/compact-mobile-390x480-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-390x480-screenshot-8964160f35bf70c5e5247f17f7a30502a7855a03.png",
+        "sha256": "32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/captures/compact-mobile-844x390-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-844x390-screenshot-3ddb151f947a4af582955ae0983cd52de003f56b.png",
+        "sha256": "c87f3def933030d335ecba858f7f726357fa751fa0e95ff19bfeb3fc4d66a9b9",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/captures/compact-mobile-touch-zoom-reset-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-touch-zoom-reset-screenshot-4cc7f43e530a3506450b4462c53403d4f5bfde29.png",
+        "sha256": "e40f10c5f3e42c52e1d978252c80536c51bdcb79d04d15db839bd8c5d5dadcbb",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "d256-compact-a4/captures/native-final-passed-screenshot.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\native-final-passed-screenshot-e87bf26b028d8a6b7a6a2622f2518052193f463e.png",
+        "sha256": "e40f10c5f3e42c52e1d978252c80536c51bdcb79d04d15db839bd8c5d5dadcbb",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\binding.json",
+        "sha256": "d0136093cb9d455bdcfa65d14f201886ffe18a9f0c651539057a24a51b78df30",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/browser-command.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser-command.json",
+        "sha256": "2fb1229b2e0d56f8b73d6cb608c08ad2a3301c32f3786bf3fe4ed90c6fa77dfe",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/browser-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser-execution.json",
+        "sha256": "b0dcda31456f06b6715697cc80b08d88d25aabab9fd9a091b134cd96fd5723c0",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/browser-observation.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser-observation.json",
+        "sha256": "bf9551772cbdc5d1f1a400001a2961df8d1fd225d09ca15a1608ef6c11ccc4d5",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/browser-playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser-playwright.json",
+        "sha256": "7363403e326a062fc2ca44b82957e4950af4dd2c811b9b756b04fab8040c426f",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/browser.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser.stderr.txt",
+        "sha256": "42dccc8b3b342254d70699f66834033d8f0f5f176e74534aebb1a2ea892ce8ad",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/browser.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser.stdout.txt",
+        "sha256": "e720242a05559026bdf6645ab42150b5bc7eefe5161f0488c9da2fbda258c364",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/build-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\build-execution.json",
+        "sha256": "78b858d939ad982f75fb11f73fc6de75ea7da18bb0f9c82cefb98a55b88fa045",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\result.json",
+        "sha256": "66c00989b1a65209ecfe872ed304e4e15c4f27c646648e61565ae60157dbf7c8",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\source-after.json",
+        "sha256": "26f32bfa7624ab4e2e58babbbb79acc8bb32649d143ec8046b3efc0d129e809b",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\source-before.json",
+        "sha256": "26f32bfa7624ab4e2e58babbbb79acc8bb32649d143ec8046b3efc0d129e809b",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/strict-audit-command.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit-command.json",
+        "sha256": "e49c6987889ce7c7941e7586ff25176a6149015c586676b913f05a9b8c27bac1",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/strict-audit-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit-execution.json",
+        "sha256": "306fa42a55d359191cb28cd365e8d8da52a566be723d26f8d499e45ffec23851",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/strict-audit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit.json",
+        "sha256": "ea4e4f8d2efafc08bb987ca8addabd1278cb07158c6a99a323e2f42cb94e5413",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/strict-audit.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/strict-audit.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit.stdout.txt",
+        "sha256": "ea4e4f8d2efafc08bb987ca8addabd1278cb07158c6a99a323e2f42cb94e5413",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/captures/pwa-premium-globe-ru.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-ru.png",
+        "sha256": "c62432f9682e6ed7cd97e0be6417b91cdf49e009f65d3db8963d68d84ef695f7",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/captures/pwa-premium-menu-ru.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-ru.png",
+        "sha256": "eb3a9a1bc91435de433334b43182be1f5085b310a6afbe24e8031ed90515889e",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/captures/pwa-premium-globe-en.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-en.png",
+        "sha256": "aeee3bb2684530393f8d862fc2b806799083fddc3d81d21749f11c836041af19",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D256",
+        "name": "runtime/actual-a1/captures/pwa-premium-menu-en.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-en.png",
+        "sha256": "47e3660ab3518803dcd5e16abaec13bed7e40abdaa8c64f9722c25d646d41bdf",
+        "canonicalCopy": false
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "ui-review.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\ui-review.json",
+        "sha256": "c3ddcb2eb1ce60a367476a05d4c60c7f835a5f7a4bbab677690b69997f9f4305",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\source-commit.json",
+        "sha256": "0029485ea8f7ebb6b009f1fb8609bb948726e6a322e8dc7f063211fe81c7a887",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "native-a1/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\native-a1\\receipt.json",
+        "sha256": "6bb004d8e4da451d15dfa0cb374ceeca2ccd3e3cda36d2dccb2ac1f311973a9a",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "native-a1/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\native-a1\\results.json",
+        "sha256": "23e59488531999ca345d6b6977c65bcf8d16cad8a0dd75914e7e7a06d66c9391",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "native-a1/application-typescript-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\native-a1\\application-typescript-execution.json",
+        "sha256": "82ece6edfa9d8ee5662b81fd6937a2194d72ac12d36e2c6b5fd52206a174c510",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/current-source-manifest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\current-source-manifest.json",
+        "sha256": "7898e65fbd14ce495b888913d8b027210768d7b3b2ce2418b645e139f2a47352",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/actual-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\result.json",
+        "sha256": "4a7300d8d5e4a0164a81bf584f5623d92b83edd6324c81f32cafb71a1e73aa15",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/actual-a1/browser-playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\browser-playwright.json",
+        "sha256": "70c3407fd66536ef1e44fed5cb35a1b206854069c0f994d1d40ac6414ca30dbc",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/actual-a1/browser-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\browser-execution.json",
+        "sha256": "7f7df8a3df34b4203a7747db51d52869a5cce2b327ec6d9e43ea3d793dd13e6e",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "runtime/actual-a1/strict-audit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\strict-audit.json",
+        "sha256": "1c4f94159fc48755c3d150dfb5e4fdd4c50f11982c5d32b66b5828ad62bc629b",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-330x844.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-330x844.png",
+        "sha256": "756d9da11159b0d5873e7053d994e367a14445a7bf6a497c2f9af82c9c3f3c56",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-390x844.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-390x844.png",
+        "sha256": "45595f970cdb94b90ed74523f97043e03bd236e3c51f2241e14081dc4c6d6118",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-390x480.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-390x480.png",
+        "sha256": "32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-844x390.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-844x390.png",
+        "sha256": "75dba9d3bbf064041c454a78b627808104a0aacf7e38b19439fffc3c04fe3ccf",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-flags-menu-390x844.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-flags-menu-390x844.png",
+        "sha256": "4ca8f742c873d4060e7fe5b845845b1bc7a3bde7f16b3aff613b64ddaeb80b13",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/compact-mobile-touch-zoom-reset.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-touch-zoom-reset.png",
+        "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/native-final-passed.png",
+        "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/native-final-passed.png",
+        "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/pwa-premium-menu-ru.png",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-menu-ru.png",
+        "sha256": "29041843b67f062f2f6b36b0c356e84540f6d91693e02c9eb82b173e50bcc605",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/pwa-premium-globe-ru.png",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-globe-ru.png",
+        "sha256": "d33952d95dd7d57e37c848718746bb49307d21fdbe07a3f842675e746b6211d4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/pwa-premium-menu-en.png",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-menu-en.png",
+        "sha256": "3800834735315a8fac2d4115debb60e7e7ace38e947df9525a2770c11c75381d",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_FLAGS",
+        "name": "captures/pwa-premium-globe-en.png",
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-globe-en.png",
+        "sha256": "3a362677a0d7c7601a0e0ce172960a4e39d70b084cb6e34f19bac8b27c9e63d8",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT",
+        "name": "actual-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\actual-a1\\result.json",
+        "sha256": "42e4459b5467fd4d892460bc2f216756b280f7d75e898bc62af18f370386254b",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT",
+        "name": "actual-a1/playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\actual-a1\\playwright.json",
+        "sha256": "825e389e6078e533a8e60963279a9818920945d5c2e0538ecec55acfbaaf2cd8",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT",
+        "name": "source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\source-commit.json",
+        "sha256": "6f8367f013eb761da838d24599974cadec925b417989af27afb865e9ce3ada1d",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT",
+        "name": "source-pins.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\source-pins.json",
+        "sha256": "2f3b022bcec5cafcc2e6fddc0e2ab95c672eb85004a6e5c9ca4dfc46d754a498",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_MARKER_UNIT",
+        "name": "actual-unit-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\result.json",
+        "sha256": "1d665e4e6f3f8ac20509998517fe2b01c6b3709baa0a52cb0366f4251726fd04",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_MARKER_UNIT",
+        "name": "actual-unit-a1/vitest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\vitest.json",
+        "sha256": "e790951371014a1621c585f4595b60c3587367bf83aaaf476d385d5086b32c53",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_MARKER_UNIT",
+        "name": "actual-unit-a1/unit-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\unit-execution.json",
+        "sha256": "ece6803e3b17cf7217030df0cc4aa561788763385902bbbfab42f793480d8f7a",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_MARKER_UNIT",
+        "name": "actual-unit-a1/committed-source.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\marker-envelope-fix\\actual-unit-a1\\committed-source.json",
+        "sha256": "486fd840123631bbd88863ab15c8aa14be9a550ffd230b31183b07bf4c427abe",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "actual-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\result.json",
+        "sha256": "dd5fa08f24ba4d76a7f6b86477b5d7eb89c107a3b9a7e8d79297ff0647dae67d",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "actual-a1/playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\playwright.json",
+        "sha256": "fd93d72c650028acb2ccfc8341d72d0c6f5c12170e60b8b0834de1c6ed2bf5d4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\source-commit.json",
+        "sha256": "9017a5967996f3fb662e3406bb045ca229525829f63d4b16b2c075542efe501e",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "source-pins.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\source-pins.json",
+        "sha256": "c7400ff6b5584b4b811cb940f748ff7708364281fbb58e7348fc3bc0c4b6e479",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "production-inputs.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\production-inputs.json",
+        "sha256": "97ac65458ecbf65be8f8d793613e1a8984e4b2b9b69b4a6097388f356fd3ea52",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\result.json",
+        "sha256": "b265d9c6c1588c7fe65889fcbe529a9779bc029a3bf13bc63c270e3cf492e6e2",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/browser-playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-playwright.json",
+        "sha256": "356a715a3570c47634eed93669e915a0ea9e5d2ae28f43aa271441a9145eb8d9",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/browser-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-execution.json",
+        "sha256": "3d8090729f8d861adf5d5ad1394c5e5317a81ea2ebc08aec3354289e4ede77dd",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/strict-audit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\strict-audit.json",
+        "sha256": "d4e0996b059956f3bf345049312bc22f3ef65e6add1eda1610d15c59f88dcd78",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/strict-audit-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\strict-audit-execution.json",
+        "sha256": "b51cfac13517d62b3181102580fcf50c29e873a4e94cd8012e61fd234d435ca4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/browser-observation.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-observation.json",
+        "sha256": "e3de003ff9b75c2519a3d723c6f27f7edafe71cdcf6c3a32f6c9b35a256cfb00",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\source-before.json",
+        "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\source-after.json",
+        "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/build-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\build-execution.json",
+        "sha256": "3033afdab19236d8d0a9c766bb2dd6ac98e92435b4384ddc5a9b47b69d263f10",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "actual-a1/binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\binding.json",
+        "sha256": "2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "current-source-manifest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\current-source-manifest.json",
+        "sha256": "30c984853ca647cb1caaefc052913b1150064cca82d586870dbec87700aee9b4",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "root-binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\root-binding.json",
+        "sha256": "2b5eb0b1bedc0dbc2f947c54ebda2fc10bb331c3f7d26d9c3ba7d8881aadf3b6",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "captures/pwa-collection-keyboard-update.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-s03-premium-msedge-390\\pwa-collection-keyboard-update.png",
+        "sha256": "16598d5772c0a9d37356faca32c9d48b9109774dba2a5801a56efac02345551d",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "captures/pwa-collection-keyboard-rollback.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-s03-premium-msedge-390\\pwa-collection-keyboard-rollback.png",
+        "sha256": "c777bbbd3697e50f0d453dbe94ac41363a2acc5ae0bdf2d06dd47023febac849",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_SW_RUNTIME",
+        "name": "root-capture-review.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\root-capture-review.json",
+        "sha256": "cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "root-capture-review.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\root-capture-review.json",
+        "sha256": "cd51825628ccf5c8f3340041bc43beb7cbd9514fd0c7d30f4e396eabc7290580",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "captures/planet-account-deletion-flags-ru.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-mobile-fixture\\planet-account-deletion-flags-ru.png",
+        "sha256": "bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976",
+        "canonicalCopy": true
+      },
+      {
+        "decision": "D257_ACCOUNT_FIDELITY",
+        "name": "captures/planet-account-deletion-flags-en.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-mobile-fixture\\planet-account-deletion-flags-en.png",
+        "sha256": "a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2",
+        "canonicalCopy": true
+      }
+    ]
+  },
+  "helper": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-d255-d256-checkpoint-review\\checkpoint-final.mjs",
+    "sha256": "fab82b892f15573004df6d2614e72dac677a844af44e3b45c86be06a1bdc5096"
+  },
+  "verificationExecutedAtRecordTime": false
+}

@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "base": "fa3fc8133072613366b23f865429b666bb00b080",
+  "checkpoint": "0ba39489dc5a7e48abebd24bc935e1992f6d7d43",
+  "exactPaths": [
+    "server/planet/integration.test.ts"
+  ],
+  "clean": true,
+  "checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\checks.json",
+    "sha256": "626c4f6c150c4515378efd52cef543eff97ac9faf1b2a34ed3d467615ef32e44"
+  },
+  "currentSourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\current-source-manifest.json",
+    "sha256": "b7381d560a05dba32d94568d5424e6b465c56429f6f94eeff18c3d4c09078340"
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

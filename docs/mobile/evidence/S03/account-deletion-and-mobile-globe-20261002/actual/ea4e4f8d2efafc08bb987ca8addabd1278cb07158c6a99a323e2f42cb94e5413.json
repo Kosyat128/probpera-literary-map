@@ -1,0 +1,23 @@
+{
+  "pass": true,
+  "identity": {
+    "buildId": "ca9dbc746b7c0a59fc3a455e01714bf0d94d75fa2e71ceff4d765406c1fb1f54",
+    "sourceCommit": "5add2ce1d83cf5f74f411bbef96bfdf5dc5199b6",
+    "localQaAuthority": true
+  },
+  "counts": {
+    "files": 1427,
+    "bytes": 76912189,
+    "bootstrapFiles": 1398,
+    "bootstrapBytes": 73102025,
+    "sourceInputs": 1108,
+    "publicSources": 1349,
+    "scripts": 46
+  },
+  "findings": [],
+  "releaseReady": false,
+  "limitations": [
+    "Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.",
+    "Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required."
+  ]
+}

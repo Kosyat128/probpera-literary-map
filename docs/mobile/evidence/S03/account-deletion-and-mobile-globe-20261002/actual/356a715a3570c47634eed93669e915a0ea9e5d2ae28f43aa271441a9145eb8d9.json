@@ -1,0 +1,122 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\pwa.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\pwa.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/update/runtime/actual-a1/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "s03-premium-msedge-390",
+        "name": "s03-premium-msedge-390",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "controlled-pwa.spec.mjs",
+      "file": "controlled-pwa.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "s03-premium-msedge-390",
+              "projectName": "s03-premium-msedge-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 90555,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T01:32:56.651Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pwa-update-notice-host-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJsb2NhbFFhT25seSI6dHJ1ZSwic2FtZU5vdGljZUhvc3RBbmRDb25uZWN0aXZpdHlBY3Jvc3NDb2xsZWN0aW9uIjp0cnVlLCJzYW1lQ2FudmFzUmVuZGVyZXJDYW1lcmFTY2VuZUJlZm9yZUV4cGxpY2l0QWN0aXZhdGlvbiI6dHJ1ZSwia2V5Ym9hcmRVcGRhdGVBbmRSb2xsYmFja0Zyb21Db2xsZWN0aW9uQ2xvc2UiOnRydWUsImNvcnJ1cHRlZENhbmRpZGF0ZVJlamVjdGVkIjp0cnVlLCJjb3JydXB0Q2FuZGlkYXRlRW50ZXJlZEluc3RhbGwiOnRydWUsImZhaWxlZENhbmRpZGF0ZVN0YXRlIjoiQ0FORElEQVRFIiwic2VsZWN0ZWRXaG9sZVZlcmlmaWVkR2VuZXJhdGlvbnMiOlsiYWY1YjhhZGJjOWM4ZjY5MTY2MjkwZmU5ZjIwMThhZDlhZDNhZDEwNTA2ZGU1YWU0OTcyYjFhN2E4NTNjNDU0NyIsImVmYTI3MmNkMWRhMDk5NTBmYjhjZjhiNDdhZWE1ZTc0YjdhZDIzZDdjODIzNjY2NjcwNzVlNDUyN2ZiNDM4NjciLCJhZjViOGFkYmM5YzhmNjkxNjYyOTBmZTlmMjAxOGFkOWFkM2FkMTA1MDZkZTVhZTQ5NzJiMWE3YTg1M2M0NTQ3Il19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-058344dc2b3690272ff9",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/controlled-pwa.spec.mjs",
+          "line": 748,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T01:32:55.363Z",
+    "duration": 92879.33099999999,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

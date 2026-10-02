@@ -1,0 +1,34 @@
+{
+  "parent": "0ba39489dc5a7e48abebd24bc935e1992f6d7d43",
+  "sourceCommit": "5add2ce1d83cf5f74f411bbef96bfdf5dc5199b6",
+  "changedPaths": [
+    "src/App.tsx",
+    "src/components/AtlasExperienceChrome.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/host.css",
+    "tests/host/native-planet.spec.mjs",
+    "tests/pwa/offline-catalog.spec.mjs"
+  ],
+  "clean": true,
+  "nativeBrowserFileRowsPreserved": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/runtime/current-source-manifest.json",
+    "sha256": "26f32bfa7624ab4e2e58babbbb79acc8bb32649d143ec8046b3efc0d129e809b"
+  },
+  "binding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/runtime/root-binding.json",
+    "sha256": "d0136093cb9d455bdcfa65d14f201886ffe18a9f0c651539057a24a51b78df30"
+  },
+  "helpers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\producer.mjs",
+      "sha256": "be84eb6b75d9288ec03c40db7bf4f4f761071c6fdbfd14577410219e90964856"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\pwa.config.mjs",
+      "sha256": "fbb11ac5d7c659cde99e66798af58caa0a80ccce2f0cff9eb6448496ab436862"
+    }
+  ]
+}

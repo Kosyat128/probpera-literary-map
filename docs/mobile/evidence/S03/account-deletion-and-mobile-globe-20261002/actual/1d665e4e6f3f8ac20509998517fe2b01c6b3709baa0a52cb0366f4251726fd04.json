@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "parent": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+  "sourceCommit": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+  "changedPaths": [
+    "src/pwa/serviceWorkerRuntime.js",
+    "src/pwa/serviceWorkerRuntime.test.mjs",
+    "tests/pwa/controlled-pwa.spec.mjs"
+  ],
+  "unit": {
+    "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "args": [
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "src/pwa/serviceWorkerRuntime.test.mjs",
+      "--maxWorkers=1",
+      "--reporter=json",
+      "--outputFile=D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/marker-envelope-fix/actual-unit-a1/vitest.json"
+    ],
+    "exitCode": 0,
+    "durationMs": 5030
+  },
+  "syntax": [
+    {
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "--check",
+        "src/pwa/serviceWorkerRuntime.js"
+      ],
+      "exitCode": 0,
+      "durationMs": 97
+    },
+    {
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "--check",
+        "src/pwa/serviceWorkerRuntime.test.mjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 109
+    },
+    {
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "--check",
+        "tests/pwa/controlled-pwa.spec.mjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 127
+    }
+  ],
+  "tests": {
+    "total": 203,
+    "passed": 203,
+    "failed": 0
+  },
+  "sourceUnchangedDuringChecks": true,
+  "committedFileRowsPreserved": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "pwaBrowserStillPending": true
+}

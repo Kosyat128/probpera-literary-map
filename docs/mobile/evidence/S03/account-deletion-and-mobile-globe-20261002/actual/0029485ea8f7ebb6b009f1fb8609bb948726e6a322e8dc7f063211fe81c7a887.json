@@ -1,0 +1,36 @@
+{
+  "parent": "5add2ce1d83cf5f74f411bbef96bfdf5dc5199b6",
+  "sourceCommit": "348a376236fb0c8d4da18180f8bb484898de67ef",
+  "changedPaths": [
+    "src/components/AtlasExperienceChrome.tsx",
+    "src/components/InterfaceLanguageControl.tsx",
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetSceneInspectionControls.tsx",
+    "src/host/host.css",
+    "src/pwa/PlanetAccountPage.tsx",
+    "src/pwa/PwaAccessBoundary.tsx",
+    "tests/host/native-planet.spec.mjs",
+    "tests/pwa/controlled-pwa.spec.mjs",
+    "tests/pwa/offline-catalog.spec.mjs"
+  ],
+  "clean": true,
+  "nativeBrowserFileRowsPreserved": true,
+  "sourceManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/current-source-manifest.json",
+    "sha256": "7898e65fbd14ce495b888913d8b027210768d7b3b2ce2418b645e139f2a47352"
+  },
+  "binding": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/root-binding.json",
+    "sha256": "4d374788920a3dd259577edbf12149a270866fff76b0958dfe0bf6705b6b1944"
+  },
+  "helpers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/producer.mjs",
+      "sha256": "787fa3bb9b3474a7e305964d619a78e3ed8e9ceea2268678166e2fab8e60fbc3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/pwa.config.mjs",
+      "sha256": "121174d4d6773cbd65b1f12fafadae6859fd504694c75db66f931ba2314f3343"
+    }
+  ]
+}

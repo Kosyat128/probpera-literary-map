@@ -1,0 +1,598 @@
+{
+  "schemaVersion": 1,
+  "decision": "D256",
+  "kind": "s03-compact-mobile-globe-working-evidence",
+  "pass": true,
+  "sourceCommit": "5add2ce1d83cf5f74f411bbef96bfdf5dc5199b6",
+  "artifactId": "ca9dbc746b7c0a59fc3a455e01714bf0d94d75fa2e71ceff4d765406c1fb1f54",
+  "nativeAttempts": [
+    {
+      "id": "d256-compact-a1",
+      "classification": "NO_TESTS",
+      "exitCode": 1,
+      "expected": 0,
+      "unexpected": 0,
+      "sourceManifestSha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+      "rawReceiptDerivedFlagCaveat": "realAppAndCanvas:true conflicts with exitCode1 and No tests found; do not use that flag as runtime evidence"
+    },
+    {
+      "id": "d256-compact-a2",
+      "classification": "FAILED",
+      "exitCode": 1,
+      "expected": 0,
+      "unexpected": 1,
+      "sourceManifestSha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+      "failure": "Open-menu backdrop intercepted the real Search tap"
+    },
+    {
+      "id": "d256-compact-a3",
+      "classification": "PASSED",
+      "exitCode": 0,
+      "expected": 1,
+      "unexpected": 0,
+      "sourceManifestSha256": "23827722336aff48abbd02f52d9e144844553e47313c6b6bfa8d04b8b1d33dd2"
+    },
+    {
+      "id": "d256-compact-a4",
+      "classification": "PASSED",
+      "exitCode": 0,
+      "expected": 1,
+      "unexpected": 0,
+      "sourceManifestSha256": "825a6ee42b8afd48f8afba083f1ca40d1935d6007a21bfb86c91384117fee967",
+      "fileRowsMatchCommittedSource": true
+    }
+  ],
+  "nativeCase": "compact premium mobile chrome retains the actual globe across menu, locale and edition controls",
+  "nativeViewports": [
+    {
+      "width": 330,
+      "height": 844
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 390,
+      "height": 480
+    },
+    {
+      "width": 844,
+      "height": 390
+    }
+  ],
+  "nativeBoundary": "Actual application/browser/Canvas with existing controlled OS adapter ports; no installed device",
+  "pwaAttempt": "runtime/actual-a1",
+  "pwaCompilations": 1,
+  "strictAuditPassed": true,
+  "pwaBrowserInvocations": 1,
+  "pwaBrowserCasesPassed": 1,
+  "pwaCase": "offline PWA cross-language author search and book return retain the globe and integrated archive card",
+  "pwaViewport": {
+    "width": 390,
+    "height": 844
+  },
+  "pwaMainAndMenuCaptures": 4,
+  "pwaAssertions": "Actual offline RU/EN opposite-language author search and book return; retained country/writer/deep link and canonical scene; actual Menu switching, 44px targets, Escape and focus restoration",
+  "pwaBrowserProfileReopened": false,
+  "privateKeyPersisted": false,
+  "qaSignerClosed": true,
+  "old163OrPackagingRerun": false,
+  "pwaAdditionalTypeScriptRuns": 0,
+  "rootCaptureReview": null,
+  "rawPwaCapturesReviewed": false,
+  "fullVisualAcceptance": false,
+  "actualOsInstallation": false,
+  "realPurchaseOrProviderValidated": false,
+  "publicSiteOrPublicSeoAcceptance": false,
+  "editorialOrLegalAcceptance": false,
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "allStatusesUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "recordedAt": "2026-10-02T01:46:07.955Z",
+  "evidence": [
+    {
+      "decision": "D256",
+      "name": "source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\source-commit.json",
+      "sha256": "4c84bc4c8659095662d6da7e69fe1a1c5878ad547d8b2574e72cfd33f766643d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/4c84bc4c8659095662d6da7e69fe1a1c5878ad547d8b2574e72cfd33f766643d.json",
+        "sha256": "4c84bc4c8659095662d6da7e69fe1a1c5878ad547d8b2574e72cfd33f766643d"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "apply.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\apply.json",
+      "sha256": "8a96495f1771557dd6497d6ec73b4b27931f4f6b2ab1c5654f723a78f98188d8",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "final-preparation.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\final-preparation.json",
+      "sha256": "ed9f06ca2b422883269d3abfaa0f8969b4df3779b42684a8d4d7f24ca6a79b6c",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/current-source-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\current-source-manifest.json",
+      "sha256": "26f32bfa7624ab4e2e58babbbb79acc8bb32649d143ec8046b3efc0d129e809b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/26f32bfa7624ab4e2e58babbbb79acc8bb32649d143ec8046b3efc0d129e809b.json",
+        "sha256": "26f32bfa7624ab4e2e58babbbb79acc8bb32649d143ec8046b3efc0d129e809b"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/root-binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\root-binding.json",
+      "sha256": "d0136093cb9d455bdcfa65d14f201886ffe18a9f0c651539057a24a51b78df30",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/producer.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\producer.mjs",
+      "sha256": "be84eb6b75d9288ec03c40db7bf4f4f761071c6fdbfd14577410219e90964856",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/pwa.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\pwa.config.mjs",
+      "sha256": "fbb11ac5d7c659cde99e66798af58caa0a80ccce2f0cff9eb6448496ab436862",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/launcher.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\launcher.stdout.txt",
+      "sha256": "c9ca0d63e89c08c97ed37dbbd2e433ea3addb204cda0da7d1640bd6952cf1ff5",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/launcher.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\launcher.stderr.txt",
+      "sha256": "e7d1243d9b3cb87ceff52f00bb215aff3429f530dc0c12bfb48b8ee2d0c9b48f",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a1/receipt.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\receipt.json",
+      "sha256": "8790afa8d9748e2ca7fc7f42e310b7b8923927eaa90403eac0ac5723a31a0fb2",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/8790afa8d9748e2ca7fc7f42e310b7b8923927eaa90403eac0ac5723a31a0fb2.json",
+        "sha256": "8790afa8d9748e2ca7fc7f42e310b7b8923927eaa90403eac0ac5723a31a0fb2"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a1/results.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\results.json",
+      "sha256": "fa034d9a81910bcc6c848c51ecff800748102161ef0b33f12d454ea873827ca0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/fa034d9a81910bcc6c848c51ecff800748102161ef0b33f12d454ea873827ca0.json",
+        "sha256": "fa034d9a81910bcc6c848c51ecff800748102161ef0b33f12d454ea873827ca0"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\source-before.json",
+      "sha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\source-after.json",
+      "sha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a1/stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\stdout.txt",
+      "sha256": "bef44b71926303f638fcf3917875642de7e01f8828d85d994561945390fde863",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a1/stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a1\\stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a2/receipt.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\receipt.json",
+      "sha256": "a5be183b30ec62f109cb6ccc2457d04c4260b29b9aa97dc347edc870684bc950",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/a5be183b30ec62f109cb6ccc2457d04c4260b29b9aa97dc347edc870684bc950.json",
+        "sha256": "a5be183b30ec62f109cb6ccc2457d04c4260b29b9aa97dc347edc870684bc950"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a2/results.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\results.json",
+      "sha256": "07dbf3a3b65fb74fdc4b9c4eb8b557ef133de8e89d5008e3c3ba3ca980481546",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/07dbf3a3b65fb74fdc4b9c4eb8b557ef133de8e89d5008e3c3ba3ca980481546.json",
+        "sha256": "07dbf3a3b65fb74fdc4b9c4eb8b557ef133de8e89d5008e3c3ba3ca980481546"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a2/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\source-before.json",
+      "sha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a2/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\source-after.json",
+      "sha256": "6b0f7020dbf57c5fb0f589cb8f593ee23b53eaa808c852e73d554c270c3d8433",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a2/stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\stdout.txt",
+      "sha256": "df2263a247833f174cadf40ba3662f5a07282a1257df6e6ebb6e27123c9bcf74",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a2/stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a2\\stderr.txt",
+      "sha256": "9e8a61fa3c4980db7eaf24b64ca37dd6fdc6d73492ebe863baab7616c09d897a",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/receipt.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\receipt.json",
+      "sha256": "56d6d0d092886b67b6b0058298f13d5a2aba0d85db88da363e1768ddee758407",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/56d6d0d092886b67b6b0058298f13d5a2aba0d85db88da363e1768ddee758407.json",
+        "sha256": "56d6d0d092886b67b6b0058298f13d5a2aba0d85db88da363e1768ddee758407"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/results.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\results.json",
+      "sha256": "13c27e101dc0aa694602aafa3c96001c30f3b889577a4de44664fdf6bcbcf446",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/13c27e101dc0aa694602aafa3c96001c30f3b889577a4de44664fdf6bcbcf446.json",
+        "sha256": "13c27e101dc0aa694602aafa3c96001c30f3b889577a4de44664fdf6bcbcf446"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\source-before.json",
+      "sha256": "23827722336aff48abbd02f52d9e144844553e47313c6b6bfa8d04b8b1d33dd2",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\source-after.json",
+      "sha256": "23827722336aff48abbd02f52d9e144844553e47313c6b6bfa8d04b8b1d33dd2",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\stdout.txt",
+      "sha256": "4175ee15fb1837a2557f480e7d24c6ea3506910f633e1b9804468804d3a7ce6d",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a3\\stderr.txt",
+      "sha256": "92f1947a41ea70621928ef3bb22ed934ad2ed07008fd195b8277a94152e97f59",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/captures/compact-mobile-330x844-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-330x844-screenshot-8e1fa8cc14c28d263f280f1a33e39b55cb99ea59.png",
+      "sha256": "517e68f6e0d4bd0b3f6e6ad646a7908475e235fb9a2fd7271a904beb05dc3cbb",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/captures/compact-mobile-390x844-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-390x844-screenshot-949c3c7451a8d8885db979820ab9c77458352ac7.png",
+      "sha256": "2e27eb7e042c0e5887e041f4e72674e8c084207d9897d54cc4e96f01a66675f2",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/captures/compact-mobile-390x480-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-390x480-screenshot-3fb9344fe91f3049622fb8a7ee69e6ce475a4ae1.png",
+      "sha256": "9541f914d7601bbfd3338210f2c8560b863de59b3e055f28661ad36df7e65e40",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/captures/compact-mobile-844x390-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-844x390-screenshot-11fd6cb71b81c394b9290745c8e2a55e5c13ce88.png",
+      "sha256": "19d1522470d5ea1623512a7e344867060301e2ddca5406f5c0bf50c97167d98d",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/captures/compact-mobile-touch-zoom-reset-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-touch-zoom-reset-screenshot-21d3b9a7a576770d86350bb0efa907b1b7c6f535.png",
+      "sha256": "cfd1cb1e8156e01a18a1d8d205c49134c9ddd64e54f5291b489cdccdbe487a9a",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a3/captures/native-final-passed-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a3\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\native-final-passed-screenshot-cf2780589976b7b1cbf4f6f513ad4a3df1aa6e23.png",
+      "sha256": "cfd1cb1e8156e01a18a1d8d205c49134c9ddd64e54f5291b489cdccdbe487a9a",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/receipt.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\receipt.json",
+      "sha256": "d928384317de1715984cd580d1743c4160e6644846da3035bdc339861d289275",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/d928384317de1715984cd580d1743c4160e6644846da3035bdc339861d289275.json",
+        "sha256": "d928384317de1715984cd580d1743c4160e6644846da3035bdc339861d289275"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/results.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\results.json",
+      "sha256": "02ea2446829c9e415f7b6d74caa5c34bd5b607d76a479e41de7f722267df397f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/02ea2446829c9e415f7b6d74caa5c34bd5b607d76a479e41de7f722267df397f.json",
+        "sha256": "02ea2446829c9e415f7b6d74caa5c34bd5b607d76a479e41de7f722267df397f"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\source-before.json",
+      "sha256": "825a6ee42b8afd48f8afba083f1ca40d1935d6007a21bfb86c91384117fee967",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/825a6ee42b8afd48f8afba083f1ca40d1935d6007a21bfb86c91384117fee967.json",
+        "sha256": "825a6ee42b8afd48f8afba083f1ca40d1935d6007a21bfb86c91384117fee967"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\source-after.json",
+      "sha256": "825a6ee42b8afd48f8afba083f1ca40d1935d6007a21bfb86c91384117fee967",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\stdout.txt",
+      "sha256": "a8c19da67fb7bc35e1f0276c2593518949a7d64a7a1368247817a52015db3e52",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\d256-compact-a4\\stderr.txt",
+      "sha256": "d6b02a932344d492b40b56d26053fc092d0fad1f18fc152284c4f4d0785a87e1",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/captures/compact-mobile-330x844-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-330x844-screenshot-a7c04c471e013e3cc49dba0225410559c7f4fbed.png",
+      "sha256": "ce530ce3e40eb3512cdbf01c568d40abeca6ce9e3ef7853f256e32b5d51de9fa",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/captures/compact-mobile-390x844-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-390x844-screenshot-2ef92acaa763a7c045b8e4859413631d249be7a0.png",
+      "sha256": "45595f970cdb94b90ed74523f97043e03bd236e3c51f2241e14081dc4c6d6118",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/captures/compact-mobile-390x480-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-390x480-screenshot-8964160f35bf70c5e5247f17f7a30502a7855a03.png",
+      "sha256": "32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/captures/compact-mobile-844x390-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-844x390-screenshot-3ddb151f947a4af582955ae0983cd52de003f56b.png",
+      "sha256": "c87f3def933030d335ecba858f7f726357fa751fa0e95ff19bfeb3fc4d66a9b9",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/captures/compact-mobile-touch-zoom-reset-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\compact-mobile-touch-zoom-reset-screenshot-4cc7f43e530a3506450b4462c53403d4f5bfde29.png",
+      "sha256": "e40f10c5f3e42c52e1d978252c80536c51bdcb79d04d15db839bd8c5d5dadcbb",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "d256-compact-a4/captures/native-final-passed-screenshot.png",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d256-compact-a4\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\attachments\\native-final-passed-screenshot-e87bf26b028d8a6b7a6a2622f2518052193f463e.png",
+      "sha256": "e40f10c5f3e42c52e1d978252c80536c51bdcb79d04d15db839bd8c5d5dadcbb",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\binding.json",
+      "sha256": "d0136093cb9d455bdcfa65d14f201886ffe18a9f0c651539057a24a51b78df30",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/browser-command.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser-command.json",
+      "sha256": "2fb1229b2e0d56f8b73d6cb608c08ad2a3301c32f3786bf3fe4ed90c6fa77dfe",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/browser-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser-execution.json",
+      "sha256": "b0dcda31456f06b6715697cc80b08d88d25aabab9fd9a091b134cd96fd5723c0",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/browser-observation.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser-observation.json",
+      "sha256": "bf9551772cbdc5d1f1a400001a2961df8d1fd225d09ca15a1608ef6c11ccc4d5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/bf9551772cbdc5d1f1a400001a2961df8d1fd225d09ca15a1608ef6c11ccc4d5.json",
+        "sha256": "bf9551772cbdc5d1f1a400001a2961df8d1fd225d09ca15a1608ef6c11ccc4d5"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/browser-playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser-playwright.json",
+      "sha256": "7363403e326a062fc2ca44b82957e4950af4dd2c811b9b756b04fab8040c426f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/7363403e326a062fc2ca44b82957e4950af4dd2c811b9b756b04fab8040c426f.json",
+        "sha256": "7363403e326a062fc2ca44b82957e4950af4dd2c811b9b756b04fab8040c426f"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser.stderr.txt",
+      "sha256": "42dccc8b3b342254d70699f66834033d8f0f5f176e74534aebb1a2ea892ce8ad",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser.stdout.txt",
+      "sha256": "e720242a05559026bdf6645ab42150b5bc7eefe5161f0488c9da2fbda258c364",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/build-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\build-execution.json",
+      "sha256": "78b858d939ad982f75fb11f73fc6de75ea7da18bb0f9c82cefb98a55b88fa045",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\result.json",
+      "sha256": "66c00989b1a65209ecfe872ed304e4e15c4f27c646648e61565ae60157dbf7c8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/66c00989b1a65209ecfe872ed304e4e15c4f27c646648e61565ae60157dbf7c8.json",
+        "sha256": "66c00989b1a65209ecfe872ed304e4e15c4f27c646648e61565ae60157dbf7c8"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\source-after.json",
+      "sha256": "26f32bfa7624ab4e2e58babbbb79acc8bb32649d143ec8046b3efc0d129e809b",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\source-before.json",
+      "sha256": "26f32bfa7624ab4e2e58babbbb79acc8bb32649d143ec8046b3efc0d129e809b",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/strict-audit-command.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit-command.json",
+      "sha256": "e49c6987889ce7c7941e7586ff25176a6149015c586676b913f05a9b8c27bac1",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/strict-audit-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit-execution.json",
+      "sha256": "306fa42a55d359191cb28cd365e8d8da52a566be723d26f8d499e45ffec23851",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/strict-audit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit.json",
+      "sha256": "ea4e4f8d2efafc08bb987ca8addabd1278cb07158c6a99a323e2f42cb94e5413",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/ea4e4f8d2efafc08bb987ca8addabd1278cb07158c6a99a323e2f42cb94e5413.json",
+        "sha256": "ea4e4f8d2efafc08bb987ca8addabd1278cb07158c6a99a323e2f42cb94e5413"
+      }
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/strict-audit.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/strict-audit.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\strict-audit.stdout.txt",
+      "sha256": "ea4e4f8d2efafc08bb987ca8addabd1278cb07158c6a99a323e2f42cb94e5413",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/captures/pwa-premium-globe-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-ru.png",
+      "sha256": "c62432f9682e6ed7cd97e0be6417b91cdf49e009f65d3db8963d68d84ef695f7",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/captures/pwa-premium-menu-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-ru.png",
+      "sha256": "eb3a9a1bc91435de433334b43182be1f5085b310a6afbe24e8031ed90515889e",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/captures/pwa-premium-globe-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-en.png",
+      "sha256": "aeee3bb2684530393f8d862fc2b806799083fddc3d81d21749f11c836041af19",
+      "canonicalCopy": null
+    },
+    {
+      "decision": "D256",
+      "name": "runtime/actual-a1/captures/pwa-premium-menu-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\runtime\\actual-a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-en.png",
+      "sha256": "47e3660ab3518803dcd5e16abaec13bed7e40abdaa8c64f9722c25d646d41bdf",
+      "canonicalCopy": null
+    }
+  ]
+}

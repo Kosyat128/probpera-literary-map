@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "runId": "d257-flags-a1",
+  "sourceManifestSha256": "bdfac0ee4495a03ff413c9744cc1b727f3a3a7029df8188f5e6e3a2b1bc87707",
+  "reportSha256": "23e59488531999ca345d6b6977c65bcf8d16cad8a0dd75914e7e7a06d66c9391",
+  "sourceUnchanged": true,
+  "typeScript": {
+    "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "args": [
+      "node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ],
+    "exitCode": 0,
+    "durationMs": 25639
+  },
+  "syntax": [
+    {
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "--check",
+        "tests/host/native-planet.spec.mjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 88
+    },
+    {
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "--check",
+        "tests/pwa/controlled-pwa.spec.mjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 95
+    },
+    {
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "--check",
+        "tests/pwa/offline-catalog.spec.mjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 84
+    }
+  ],
+  "browser": {
+    "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "args": [
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "playwright.native-planet.config.mjs",
+      "-g",
+      "compact premium mobile chrome retains the actual globe across menu, locale and edition controls$"
+    ],
+    "exitCode": 0,
+    "durationMs": 29937
+  },
+  "stats": {
+    "startTime": "2026-10-02T01:04:36.006Z",
+    "duration": 29363.727,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "realAppAndCanvas": true,
+  "nativeInstallationObserved": false,
+  "pwaBuilds": 0,
+  "viewportCount": 4
+}

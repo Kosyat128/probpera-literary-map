@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-02T01:45:25.418Z",
+  "reviewer": "ROOT",
+  "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+  "artifactBuildId": "af5b8adbc9c8f69166290fe9f2018ad9ad3ad10506de5ae4972b1a7a853c4547",
+  "reviewedCaptures": [
+    {
+      "name": "pwa-collection-keyboard-update.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-s03-premium-msedge-390\\pwa-collection-keyboard-update.png",
+      "sha256": "16598d5772c0a9d37356faca32c9d48b9109774dba2a5801a56efac02345551d",
+      "bytes": 48294,
+      "width": 390,
+      "height": 844,
+      "scope": "Collection update/rollback notice, visible language flags, readable layout and focus; ROOT viewed the original capture."
+    },
+    {
+      "name": "pwa-collection-keyboard-rollback.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\update\\runtime\\actual-a1\\browser\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-s03-premium-msedge-390\\pwa-collection-keyboard-rollback.png",
+      "sha256": "c777bbbd3697e50f0d453dbe94ac41363a2acc5ae0bdf2d06dd47023febac849",
+      "bytes": 50347,
+      "width": 390,
+      "height": 844,
+      "scope": "Collection update/rollback notice, visible language flags, readable layout and focus; ROOT viewed the original capture."
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-mobile-fixture\\planet-account-deletion-flags-ru.png",
+      "sha256": "bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976",
+      "name": "planet-account-deletion-flags-ru.png",
+      "width": 390,
+      "height": 844,
+      "scope": "ROOT viewed production fonts/logo, panel, form wrapping and button layout. Native checkbox paint in the EN still frame is inconclusive; no full visual acceptance."
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\fidelity\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-mobile-fixture\\planet-account-deletion-flags-en.png",
+      "sha256": "a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2",
+      "name": "planet-account-deletion-flags-en.png",
+      "width": 390,
+      "height": 844,
+      "scope": "ROOT viewed production fonts/logo, panel, form wrapping and button layout. Native checkbox paint in the EN still frame is inconclusive; no full visual acceptance."
+    }
+  ],
+  "rawAutomationCapturesReviewedFieldsPreserved": true,
+  "scope": "Manual review of four original browser captures; account is an in-memory fixture, SW uses the actual controlled PWA artifact.",
+  "fullVisualAcceptance": false,
+  "installedDeviceAcceptance": false,
+  "providerValidated": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "decision": "D257",
+  "kind": "s03-flags-focused-ui-working-evidence",
+  "recordReady": true,
+  "pass": true,
+  "scope": "Focused flags UI only; separate raw PWA aggregate remains false",
+  "sourceCommit": "348a376236fb0c8d4da18180f8bb484898de67ef",
+  "artifactId": "34b5cb62e703d35d07e2d56ed9307fb154fc5034e24e59c26f2c2639c4ba85fe",
+  "focusedUiPass": true,
+  "aggregatePwaPass": false,
+  "nativeCasesPassed": 1,
+  "nativeViewports": 4,
+  "applicationTypeScriptPassed": true,
+  "pwaCompilations": 1,
+  "pwaStrictAuditPassed": true,
+  "selectedPwaCases": 2,
+  "offlineUiCase": "PASSED",
+  "safeUpdateRollbackCase": "FAILED before install",
+  "rawAggregateBrowserField": null,
+  "rootReviewedCaptureReferences": 11,
+  "uniqueReviewedCaptureBytes": 10,
+  "sameContextOfflineOnly": true,
+  "installedDeviceAcceptance": false,
+  "providerValidated": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "proof": {
+    "decision": "D257_FLAGS",
+    "name": "ui-review.json",
+    "equals": {
+      "focusedUiPass": true,
+      "aggregatePwaPass": false,
+      "sourceCommit": "348a376236fb0c8d4da18180f8bb484898de67ef",
+      "artifactBuildId": "34b5cb62e703d35d07e2d56ed9307fb154fc5034e24e59c26f2c2639c4ba85fe",
+      "reviewedCaptures.length": 11
+    }
+  },
+  "note": "D257 focused flags UI passed at source348a3762/artifact34b5cb62: one actual-App four-viewport browser case and app TypeScript passed; the controlled PWA build/audit passed, and the selected offline RU/EN flags/Menu case passed. ROOT independently reviewed11 capture references representing10 unique images. Keep the raw PWA aggregate false/browser=null and the separate failed pre-install update/rollback case; this focused UI proof is not overall D257, installed-device, provider, full visual/content, stage or release acceptance.",
+  "recordedAt": "2026-10-02T01:46:07.955Z",
+  "evidence": [
+    {
+      "decision": "D257_FLAGS",
+      "name": "ui-review.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\ui-review.json",
+      "sha256": "c3ddcb2eb1ce60a367476a05d4c60c7f835a5f7a4bbab677690b69997f9f4305",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/c3ddcb2eb1ce60a367476a05d4c60c7f835a5f7a4bbab677690b69997f9f4305.json",
+        "sha256": "c3ddcb2eb1ce60a367476a05d4c60c7f835a5f7a4bbab677690b69997f9f4305"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\source-commit.json",
+      "sha256": "0029485ea8f7ebb6b009f1fb8609bb948726e6a322e8dc7f063211fe81c7a887",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/0029485ea8f7ebb6b009f1fb8609bb948726e6a322e8dc7f063211fe81c7a887.json",
+        "sha256": "0029485ea8f7ebb6b009f1fb8609bb948726e6a322e8dc7f063211fe81c7a887"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "native-a1/receipt.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\native-a1\\receipt.json",
+      "sha256": "6bb004d8e4da451d15dfa0cb374ceeca2ccd3e3cda36d2dccb2ac1f311973a9a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/6bb004d8e4da451d15dfa0cb374ceeca2ccd3e3cda36d2dccb2ac1f311973a9a.json",
+        "sha256": "6bb004d8e4da451d15dfa0cb374ceeca2ccd3e3cda36d2dccb2ac1f311973a9a"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "native-a1/results.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\native-a1\\results.json",
+      "sha256": "23e59488531999ca345d6b6977c65bcf8d16cad8a0dd75914e7e7a06d66c9391",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/23e59488531999ca345d6b6977c65bcf8d16cad8a0dd75914e7e7a06d66c9391.json",
+        "sha256": "23e59488531999ca345d6b6977c65bcf8d16cad8a0dd75914e7e7a06d66c9391"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "native-a1/application-typescript-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\native-a1\\application-typescript-execution.json",
+      "sha256": "82ece6edfa9d8ee5662b81fd6937a2194d72ac12d36e2c6b5fd52206a174c510",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/82ece6edfa9d8ee5662b81fd6937a2194d72ac12d36e2c6b5fd52206a174c510.json",
+        "sha256": "82ece6edfa9d8ee5662b81fd6937a2194d72ac12d36e2c6b5fd52206a174c510"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "runtime/current-source-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\current-source-manifest.json",
+      "sha256": "7898e65fbd14ce495b888913d8b027210768d7b3b2ce2418b645e139f2a47352",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/7898e65fbd14ce495b888913d8b027210768d7b3b2ce2418b645e139f2a47352.json",
+        "sha256": "7898e65fbd14ce495b888913d8b027210768d7b3b2ce2418b645e139f2a47352"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "runtime/actual-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\result.json",
+      "sha256": "4a7300d8d5e4a0164a81bf584f5623d92b83edd6324c81f32cafb71a1e73aa15",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/4a7300d8d5e4a0164a81bf584f5623d92b83edd6324c81f32cafb71a1e73aa15.json",
+        "sha256": "4a7300d8d5e4a0164a81bf584f5623d92b83edd6324c81f32cafb71a1e73aa15"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "runtime/actual-a1/browser-playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\browser-playwright.json",
+      "sha256": "70c3407fd66536ef1e44fed5cb35a1b206854069c0f994d1d40ac6414ca30dbc",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/70c3407fd66536ef1e44fed5cb35a1b206854069c0f994d1d40ac6414ca30dbc.json",
+        "sha256": "70c3407fd66536ef1e44fed5cb35a1b206854069c0f994d1d40ac6414ca30dbc"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "runtime/actual-a1/browser-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\browser-execution.json",
+      "sha256": "7f7df8a3df34b4203a7747db51d52869a5cce2b327ec6d9e43ea3d793dd13e6e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/7f7df8a3df34b4203a7747db51d52869a5cce2b327ec6d9e43ea3d793dd13e6e.json",
+        "sha256": "7f7df8a3df34b4203a7747db51d52869a5cce2b327ec6d9e43ea3d793dd13e6e"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "runtime/actual-a1/strict-audit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-mobile-globe-compact-review\\flags\\runtime\\actual-a1\\strict-audit.json",
+      "sha256": "1c4f94159fc48755c3d150dfb5e4fdd4c50f11982c5d32b66b5828ad62bc629b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/1c4f94159fc48755c3d150dfb5e4fdd4c50f11982c5d32b66b5828ad62bc629b.json",
+        "sha256": "1c4f94159fc48755c3d150dfb5e4fdd4c50f11982c5d32b66b5828ad62bc629b"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/compact-mobile-330x844.png",
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-330x844.png",
+      "sha256": "756d9da11159b0d5873e7053d994e367a14445a7bf6a497c2f9af82c9c3f3c56",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/756d9da11159b0d5873e7053d994e367a14445a7bf6a497c2f9af82c9c3f3c56.png",
+        "sha256": "756d9da11159b0d5873e7053d994e367a14445a7bf6a497c2f9af82c9c3f3c56"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/compact-mobile-390x844.png",
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-390x844.png",
+      "sha256": "45595f970cdb94b90ed74523f97043e03bd236e3c51f2241e14081dc4c6d6118",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/45595f970cdb94b90ed74523f97043e03bd236e3c51f2241e14081dc4c6d6118.png",
+        "sha256": "45595f970cdb94b90ed74523f97043e03bd236e3c51f2241e14081dc4c6d6118"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/compact-mobile-390x480.png",
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-390x480.png",
+      "sha256": "32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c.png",
+        "sha256": "32a18fd4ed79e8fd541401e89dce4194d60f8f6d4c0e58d4b0cf2461950d005c"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/compact-mobile-844x390.png",
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-844x390.png",
+      "sha256": "75dba9d3bbf064041c454a78b627808104a0aacf7e38b19439fffc3c04fe3ccf",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/75dba9d3bbf064041c454a78b627808104a0aacf7e38b19439fffc3c04fe3ccf.png",
+        "sha256": "75dba9d3bbf064041c454a78b627808104a0aacf7e38b19439fffc3c04fe3ccf"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/compact-mobile-flags-menu-390x844.png",
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-flags-menu-390x844.png",
+      "sha256": "4ca8f742c873d4060e7fe5b845845b1bc7a3bde7f16b3aff613b64ddaeb80b13",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/4ca8f742c873d4060e7fe5b845845b1bc7a3bde7f16b3aff613b64ddaeb80b13.png",
+        "sha256": "4ca8f742c873d4060e7fe5b845845b1bc7a3bde7f16b3aff613b64ddaeb80b13"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/compact-mobile-touch-zoom-reset.png",
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/compact-mobile-touch-zoom-reset.png",
+      "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db.png",
+        "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/native-final-passed.png",
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/d257-flags-a1/artifacts/native-planet-compact-prem-49478-locale-and-edition-controls/native-final-passed.png",
+      "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db.png",
+        "sha256": "0eb2e75410609424fd7f57e2323dd874cebf21421b2e72c1afa79c634cebd0db"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/pwa-premium-menu-ru.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-menu-ru.png",
+      "sha256": "29041843b67f062f2f6b36b0c356e84540f6d91693e02c9eb82b173e50bcc605",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/29041843b67f062f2f6b36b0c356e84540f6d91693e02c9eb82b173e50bcc605.png",
+        "sha256": "29041843b67f062f2f6b36b0c356e84540f6d91693e02c9eb82b173e50bcc605"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/pwa-premium-globe-ru.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-globe-ru.png",
+      "sha256": "d33952d95dd7d57e37c848718746bb49307d21fdbe07a3f842675e746b6211d4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/d33952d95dd7d57e37c848718746bb49307d21fdbe07a3f842675e746b6211d4.png",
+        "sha256": "d33952d95dd7d57e37c848718746bb49307d21fdbe07a3f842675e746b6211d4"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/pwa-premium-menu-en.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-menu-en.png",
+      "sha256": "3800834735315a8fac2d4115debb60e7e7ace38e947df9525a2770c11c75381d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/3800834735315a8fac2d4115debb60e7e7ace38e947df9525a2770c11c75381d.png",
+        "sha256": "3800834735315a8fac2d4115debb60e7e7ace38e947df9525a2770c11c75381d"
+      }
+    },
+    {
+      "decision": "D257_FLAGS",
+      "name": "captures/pwa-premium-globe-en.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-mobile-globe-compact-review/flags/runtime/actual-a1/browser/offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390/pwa-premium-globe-en.png",
+      "sha256": "3a362677a0d7c7601a0e0ce172960a4e39d70b084cb6e34f19bac8b27c9e63d8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/3a362677a0d7c7601a0e0ce172960a4e39d70b084cb6e34f19bac8b27c9e63d8.png",
+        "sha256": "3a362677a0d7c7601a0e0ce172960a4e39d70b084cb6e34f19bac8b27c9e63d8"
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "parent": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+  "sourceCommit": "0440b85a04090cb2fcb3c4fb549387f19dd9817c",
+  "owners": [
+    {
+      "path": "src/pwa/account.css",
+      "original": {
+        "path": "original/src/pwa/account.css",
+        "sha256": "8795fce4d4e0281093ac672fa78c59aaeae30e58dd43e6474ad9677838c453cc"
+      },
+      "proposed": {
+        "path": "proposed/src/pwa/account.css",
+        "sha256": "12fb3818995f21bab6630c776452f69437cdd9a0ba3c1097e02e93ae9461ccf7"
+      }
+    },
+    {
+      "path": "tests/pwa/planet-account.spec.mjs",
+      "original": {
+        "path": "original/tests/pwa/planet-account.spec.mjs",
+        "sha256": "85da909aedf0ceb96f96749647ebc3a0b2bc69368b07a99fe868c50c80a4bb86"
+      },
+      "proposed": {
+        "path": "proposed/tests/pwa/planet-account.spec.mjs",
+        "sha256": "c6b774feae465a4412590f3bd59d52c961450125f0a4c2b69be72349ba8d9e8d"
+      }
+    }
+  ],
+  "clean": true,
+  "testsPending": true
+}

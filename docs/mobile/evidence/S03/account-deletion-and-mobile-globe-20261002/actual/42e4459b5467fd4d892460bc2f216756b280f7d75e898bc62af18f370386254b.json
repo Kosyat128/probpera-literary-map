@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "sourceCommit": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+  "selectedCases": 1,
+  "actualBrowserInvocations": 1,
+  "sourcePins": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\source-pins.json",
+    "sha256": "2f3b022bcec5cafcc2e6fddc0e2ab95c672eb85004a6e5c9ca4dfc46d754a498"
+  },
+  "report": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\actual-a1\\playwright.json",
+    "sha256": "825e389e6078e533a8e60963279a9818920945d5c2e0538ecec55acfbaaf2cd8"
+  },
+  "compilerScope": "Existing one in-memory esbuild account fixture; no Vite/PWA/application build.",
+  "evidenceScope": "Real browser/React account UI with explicit controlled Auth/API ports; not real Supabase, provider, legal, installed-OS or stage acceptance.",
+  "stageAccepted": false,
+  "installedOsAppVerified": false,
+  "providerVerified": false,
+  "releaseEnabled": false
+}

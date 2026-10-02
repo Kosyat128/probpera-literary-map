@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "observedSourceHead": "21704c2bac5092d639f5b28ff5f09ec6c3d7c09c",
+  "scope": "Explicit selected account fixture/runtime/canonical CSS/font/logo/asset/config witnesses, not a complete esbuild dependency closure. ROOT must supply actual clean source HEAD after the two-owner canonical apply/commit.",
+  "files": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "public/assets/country-flags/gb.svg",
+      "sha256": "6a18edf4c0d8cc42802dafd1c97cfae16088b4d07fe9464611094a2a0ecfc052"
+    },
+    {
+      "path": "public/assets/country-flags/ru.svg",
+      "sha256": "375a1fd45c4d0c0b0cd5e05a5322da90f30714b979b41771de847d92a8536fc9"
+    },
+    {
+      "path": "public/brand/probpera-logo.png",
+      "sha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27"
+    },
+    {
+      "path": "public/fonts/editorial/onest-cyrillic-ext-variable.woff2",
+      "sha256": "268f03691b3d06e57abcf20f9277e314ea8784298983aab5b40c1b91965027e1"
+    },
+    {
+      "path": "public/fonts/editorial/onest-cyrillic-variable.woff2",
+      "sha256": "68e5e01d6265bd68967746d4f5a9d18d0e6cbb5d15583c7082d6384ab1229b27"
+    },
+    {
+      "path": "public/fonts/editorial/onest-latin-ext-variable.woff2",
+      "sha256": "14e7d3079b75860e2ab50efc6c318c398fdb46ede9b56e625f12ae70a3c5d9a4"
+    },
+    {
+      "path": "public/fonts/editorial/onest-latin-variable.woff2",
+      "sha256": "052df74533250c2e0ca0c4bdd32de594e107d99c1648e63820ef9c6142067828"
+    },
+    {
+      "path": "public/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2",
+      "sha256": "b0324c3af47c138a2b5457466037637b8279576197024ed6968041836ffc0546"
+    },
+    {
+      "path": "public/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2",
+      "sha256": "31fe183d248fa315a872f0956e0e43bc5d1d6c9c7fea2fa434deb91ab2a686ff"
+    },
+    {
+      "path": "public/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+      "sha256": "1c484c7583999a7471c7d2dff4f0d1e001d459afaed4f58b3f6e0d88548d982c"
+    },
+    {
+      "path": "public/fonts/editorial/source-sans-3-latin-400-normal.woff2",
+      "sha256": "0f73f35e08cde0a2f10c109c6e01d71459d97e4099ecd9a50f1b6c0209e4de2b"
+    },
+    {
+      "path": "public/fonts/editorial/source-sans-3-latin-600-normal.woff2",
+      "sha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38"
+    },
+    {
+      "path": "public/fonts/editorial/source-sans-3-latin-700-normal.woff2",
+      "sha256": "ae35266f2ab0d5314ff9a04127931eb26c793e4f1269bb240046d4d2db4b7bb1"
+    },
+    {
+      "path": "public/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2",
+      "sha256": "18148c0920aa7272b106614f585dfa46d08d01aca5734e5c990f02e649c33aeb"
+    },
+    {
+      "path": "public/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+      "sha256": "4899e71407c11bcafe49dfa3573415740a5b47a87028917eedd39731237369c0"
+    },
+    {
+      "path": "public/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2",
+      "sha256": "881a5cd61ba36255b82c4e99ca68a21dab3fc62fd91d780501c597f82cae477a"
+    },
+    {
+      "path": "public/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+      "sha256": "faf0f5d4125e4f68e024a1d6cf5dad104487692badf3b24a3a8dd38a63542e20"
+    },
+    {
+      "path": "public/fonts/editorial/source-serif-4-latin-400-italic.woff2",
+      "sha256": "882b7c150c29f29d4f8daae6b8dcae8662aac7f28ca34b34615305154136ecfd"
+    },
+    {
+      "path": "public/fonts/editorial/source-serif-4-latin-400-normal.woff2",
+      "sha256": "02194deb92d3975dd30e11a3824a1f1db32b48c93654e60560cb81ce8e7b5f95"
+    },
+    {
+      "path": "public/fonts/editorial/source-serif-4-latin-600-normal.woff2",
+      "sha256": "f2b7e1cf1d277b7608231868135648f8ad8e2b58d8e97ca088bee15dc357bee7"
+    },
+    {
+      "path": "public/fonts/editorial/source-serif-4-latin-700-normal.woff2",
+      "sha256": "7691c51bc286a9014db0048277d2c3f2ad0a90b533dc8adfb16cb22a95390d39"
+    },
+    {
+      "path": "scripts/mobile/account-pages.mjs",
+      "sha256": "a7ecc5b052f8986dcc8feb1b5eeff3765d7930a63db5e25aab843713d0411c11"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "sha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3"
+    },
+    {
+      "path": "src/community/community-accessibility.css",
+      "sha256": "0511aa9695398fbec58f331f615ca87f51bb3acf9a933e6fa5739c646a9176ae"
+    },
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "sha256": "f4318be4993ea0c7499fd83053f6595913dcb10184c9dfcaa6ff6f7660afc18b"
+    },
+    {
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "sha256": "4dac509281f0fa13bbe0dbe8c337123381d8c6faff7557c04362271b98cb3d01"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "16b02d1c535282596a2ec31bd7ed32e894900bc3ad708ba4672dbb7b52a2ebe2"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "src/index.css",
+      "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "3957d534405a8aab7b1d27044caead6b795838ee0c20aac70206c3d9f308e71d"
+    },
+    {
+      "path": "src/pwa/PlanetAccountPage.tsx",
+      "sha256": "f05d5b4cf7b690c9df768d10ae82428cb0604fc837e906f12f4d40a6c0136af0"
+    },
+    {
+      "path": "src/pwa/account.css",
+      "sha256": "12fb3818995f21bab6630c776452f69437cdd9a0ba3c1097e02e93ae9461ccf7"
+    },
+    {
+      "path": "src/pwa/accountAccess.ts",
+      "sha256": "b38a88bac60ac595bd6282ace0d574ea41692e276fe4fff617cebe66cb8916cf"
+    },
+    {
+      "path": "src/pwa/accountCopy.ts",
+      "sha256": "73eb68802468efec0c65f33e1df2c44c8466603c1da37b93de8ce11a533fe914"
+    },
+    {
+      "path": "src/pwa/accountRoutes.ts",
+      "sha256": "6e8424a6d87e72b36bc6be1b5963a2a524825ba4b1913877d51bd48d04513d41"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "sha256": "9693b2caff710fc89f58dadb6d0e3391506fc03fc98cab2001645cec42a8716a"
+    },
+    {
+      "path": "src/styles/article-reading-layout.css",
+      "sha256": "3eb4de168f7488e94c059e14c985c8f15e4963798fa2a72f2d6c627f22ceb8a5"
+    },
+    {
+      "path": "src/styles/atlas-intro-layout.css",
+      "sha256": "2696c80f1c841cbd5b8f9a7ec19599a25e9e3a1a93bd98479e18cdb22deab5c4"
+    },
+    {
+      "path": "src/styles/book-dossier.css",
+      "sha256": "6e3cb67dafa906d2fdd319b45165ca490ace3265bb40c9d4a34a9f028e12cd9d"
+    },
+    {
+      "path": "src/styles/book-reader-refinement.css",
+      "sha256": "7bad1c58453b6f26487ab27bf0db5f37e9dcf128129148c2cf3d9bcae97fa997"
+    },
+    {
+      "path": "src/styles/book-shelf-controls.css",
+      "sha256": "8fb1c01cfb863c1caded404a39a3af632403f669d9627f5e5aa60ed7d0563d77"
+    },
+    {
+      "path": "src/styles/calendar-layout.css",
+      "sha256": "fbfdcbd66e0667e0e90f2d13c0cf37545edd2edff75c9318cf7704e0b194a59a"
+    },
+    {
+      "path": "src/styles/community-editorial-layout.css",
+      "sha256": "807412a41aaee4462460bb910e1e31c3a93530d808164bcd43c84c9bca35ab99"
+    },
+    {
+      "path": "src/styles/community-layout.css",
+      "sha256": "f822748de952a309039edffc9dbededc07ba642b9e542cf531555904015cae62"
+    },
+    {
+      "path": "src/styles/editorial-card-layout.css",
+      "sha256": "a32cacb3017501b0212ff54b0caeb87bc43bf640cc1d2676ea92c513b0fbb07f"
+    },
+    {
+      "path": "src/styles/editorial-fonts.css",
+      "sha256": "c89f85b84d0c9605e49e676fd9740bfaf2c56d968770219e4042e9a2042b7630"
+    },
+    {
+      "path": "src/styles/header-preserved.css",
+      "sha256": "5202e30dbaf7fcc30d43a4487906ad3077f5f2300bd504eabe58821ba2bda466"
+    },
+    {
+      "path": "src/styles/navigation-panels.css",
+      "sha256": "20c36cd316b9d00476d298f1b697094438a1fe57cd4fc24887c60ea59bca1086"
+    },
+    {
+      "path": "src/styles/search-account-layout.css",
+      "sha256": "d9c6da3849dd60cab742a9ac600e9b7b0601954250199a3f0180b1af4ab67b80"
+    },
+    {
+      "path": "src/styles/site-typography.css",
+      "sha256": "1fe463913b921d1fad65e0c7618958a31efbb5948d80f2132a4c71ef46945abb"
+    },
+    {
+      "path": "src/styles/stage5-book-shelf.css",
+      "sha256": "ba7e7e65f2a3d42b332456d250d3fa03091a2396120902602ccf6a2461821bea"
+    },
+    {
+      "path": "src/styles/stage5-home-art-direction.css",
+      "sha256": "b831603df709b9683395d4ddb329c59f64d43c27b0e98ac492a6661c072db757"
+    },
+    {
+      "path": "src/styles/stage5-home-layout.css",
+      "sha256": "b2c12339ed66fd27cdf511d947ab20115e0a1a7039a54877efbd56920a06e92d"
+    },
+    {
+      "path": "src/styles/stage5f-responsive-accessibility.css",
+      "sha256": "4f4d0f596e01d3714c44d2c9c37e74dfc0d5932c8f4415d5570d757d052a5974"
+    },
+    {
+      "path": "src/utils/countryFlag.ts",
+      "sha256": "0a52e22624d93da3cab8a9f88b90920770bbb0e7091ebe8d8ac592d4ab798a9b"
+    },
+    {
+      "path": "tests/pwa/planet-account.spec.mjs",
+      "sha256": "c6b774feae465a4412590f3bd59d52c961450125f0a4c2b69be72349ba8d9e8d"
+    }
+  ]
+}

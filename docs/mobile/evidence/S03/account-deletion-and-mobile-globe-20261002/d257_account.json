@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "decision": "D257",
+  "kind": "s03-account-flags-existing-mobile-case-working-evidence",
+  "recordReady": true,
+  "pass": true,
+  "sourceCommit": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+  "artifactId": null,
+  "selectedCases": 1,
+  "browserInvocations": 1,
+  "compilerScope": "Existing in-memory esbuild React account fixture; explicit controlled Auth/API ports, not a PWA build or full application dependency closure",
+  "fixtureFidelityRetryRecordedByThisSlice": false,
+  "sourceCommitRawTestsPendingFlagPreserved": true,
+  "installedDeviceAcceptance": false,
+  "providerValidated": false,
+  "legalAcceptance": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "criterionIds": [
+    "S03.acceptance",
+    "S03.MOD-030"
+  ],
+  "proof": {
+    "decision": "D257_ACCOUNT",
+    "name": "actual-a1/result.json",
+    "equals": {
+      "passed": true,
+      "sourceCommit": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+      "selectedCases": 1,
+      "actualBrowserInvocations": 1
+    }
+  },
+  "note": "At sourcebe4e9963 one existing mobile account case passed in the real React/browser esbuild fixture: the bilingual deletion form, plaintext disclosure and stable retry ID remain. Preserve the earlier source-commit testsPending=true receipt separately from the later actual PASS report. Explicit controlled Auth/API ports and selected witnesses are not a full app/esbuild closure, live provider, legal or installed-device acceptance. The later fixture style/JSX/asset-fidelity retry belongs to a separate slice.",
+  "recordedAt": "2026-10-02T01:46:07.955Z",
+  "evidence": [
+    {
+      "decision": "D257_ACCOUNT",
+      "name": "actual-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\actual-a1\\result.json",
+      "sha256": "42e4459b5467fd4d892460bc2f216756b280f7d75e898bc62af18f370386254b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/42e4459b5467fd4d892460bc2f216756b280f7d75e898bc62af18f370386254b.json",
+        "sha256": "42e4459b5467fd4d892460bc2f216756b280f7d75e898bc62af18f370386254b"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT",
+      "name": "actual-a1/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\actual-a1\\playwright.json",
+      "sha256": "825e389e6078e533a8e60963279a9818920945d5c2e0538ecec55acfbaaf2cd8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/825e389e6078e533a8e60963279a9818920945d5c2e0538ecec55acfbaaf2cd8.json",
+        "sha256": "825e389e6078e533a8e60963279a9818920945d5c2e0538ecec55acfbaaf2cd8"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT",
+      "name": "source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\source-commit.json",
+      "sha256": "6f8367f013eb761da838d24599974cadec925b417989af27afb865e9ce3ada1d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/6f8367f013eb761da838d24599974cadec925b417989af27afb865e9ce3ada1d.json",
+        "sha256": "6f8367f013eb761da838d24599974cadec925b417989af27afb865e9ce3ada1d"
+      }
+    },
+    {
+      "decision": "D257_ACCOUNT",
+      "name": "source-pins.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-planet-account-flags-review\\source-pins.json",
+      "sha256": "2f3b022bcec5cafcc2e6fddc0e2ab95c672eb85004a6e5c9ca4dfc46d754a498",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-deletion-and-mobile-globe-20261002/actual/2f3b022bcec5cafcc2e6fddc0e2ab95c672eb85004a6e5c9ca4dfc46d754a498.json",
+        "sha256": "2f3b022bcec5cafcc2e6fddc0e2ab95c672eb85004a6e5c9ca4dfc46d754a498"
+      }
+    }
+  ]
+}

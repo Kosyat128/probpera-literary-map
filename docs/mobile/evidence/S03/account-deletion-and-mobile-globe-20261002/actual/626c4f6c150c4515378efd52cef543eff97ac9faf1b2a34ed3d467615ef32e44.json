@@ -1,0 +1,57 @@
+{
+  "pass": true,
+  "decision": "D255",
+  "base": "fa3fc8133072613366b23f865429b666bb00b080",
+  "recordedAt": "2026-10-01T23:56:31.164Z",
+  "sourceManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-manifest.json",
+    "sha256": "3bfd4deb10dbb0cccf07ee7d99176aed23158ec2a16b6d1b7feab9d87fe3785c"
+  },
+  "sourceAfter": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\source-after.json",
+    "sha256": "3bfd4deb10dbb0cccf07ee7d99176aed23158ec2a16b6d1b7feab9d87fe3785c"
+  },
+  "inputsUnchanged": true,
+  "test": {
+    "command": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest-command.json",
+      "sha256": "d2a30bf54b22feaece0c360708607cd7ce2b7d2b3a0c36f1a0ba8531e0efaf0c"
+    },
+    "exitCode": 0,
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest.stdout.txt",
+      "sha256": "fce328acaa0c32acb38f47b1efb10682750df24e4e30bb9fee323b6ef5c5f2ac"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "report": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-deletion-integration-gap-review\\source-a1\\vitest-report.json",
+    "sha256": "1f690233951fc26fb3d77303db8b7e9954fb50242ae2a48bc8f25125eea5ea47"
+  },
+  "summary": {
+    "success": true,
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0,
+    "suites": [
+      "server/planet/integration.test.ts"
+    ],
+    "assertionsPassed": true,
+    "assertions": 6
+  },
+  "testInvocations": 1,
+  "newTestCases": 1,
+  "appTypeScriptInvocations": 0,
+  "serverTypeScriptInvocations": 0,
+  "pwaBuildExecuted": false,
+  "browserInvocations": 0,
+  "providerValidated": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

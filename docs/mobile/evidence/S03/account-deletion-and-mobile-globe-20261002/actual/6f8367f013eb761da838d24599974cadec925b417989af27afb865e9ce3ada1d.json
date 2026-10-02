@@ -1,0 +1,8 @@
+{
+  "parent": "348a376236fb0c8d4da18180f8bb484898de67ef",
+  "sourceCommit": "be4e99630518ecc604c6041a5b9acafa3c69a10a",
+  "owner": "tests/pwa/planet-account.spec.mjs",
+  "sha256": "85da909aedf0ceb96f96749647ebc3a0b2bc69368b07a99fe868c50c80a4bb86",
+  "clean": true,
+  "testsPending": true
+}
