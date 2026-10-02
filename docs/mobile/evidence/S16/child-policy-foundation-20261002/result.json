@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "stage": "S16",
+  "kind": "child-profile-and-exact-age-policy-foundation",
+  "sourceCommit": "2119414899bcce51ca6cdbe94495b33b22d3bcfe",
+  "originalTestHead": "3ef3eb6eda231000ef9dd5401f17f5485a1fc2aa",
+  "recordedAt": "2026-10-02T15:58:58.298Z",
+  "pass": true,
+  "criterionIds": [
+    "S16.acceptance",
+    "S16.CHILD-001",
+    "S16.CHILD-002",
+    "S16.CHILD-003",
+    "S16.CHILD-004"
+  ],
+  "requirementIds": [
+    "CHILD-001",
+    "CHILD-002",
+    "CHILD-003",
+    "CHILD-004"
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148",
+      "gitBlob": "588a2a05a362c1de3caf9daaf0bd90f66ca66564"
+    },
+    {
+      "path": "src/child/childProfile.test.ts",
+      "sha256": "3b8e976c23388da198eea5f86f840cfe572c2861c3d30474febbed0c40ef223f",
+      "gitBlob": "74d2f83c2c48e4f8c8b0d482f03511f3c499659b"
+    },
+    {
+      "path": "src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554",
+      "gitBlob": "9ae9e84bdbec96157f6de736e7701995e56a6860"
+    },
+    {
+      "path": "src/child/childAccessPolicy.test.ts",
+      "sha256": "39d9778b22798a240866489d78b53d42bddb9bd1753752086d5331cf07944c9e",
+      "gitBlob": "25dd7dcb88c11d555acfbdefe809945efc0edd61"
+    }
+  ],
+  "checks": {
+    "typeScriptInvocations": 2,
+    "failedTypeScriptInvocations": 1,
+    "passedTypeScriptInvocations": 1,
+    "unitInvocations": 1,
+    "unitFiles": 2,
+    "passedUnitTests": 222,
+    "policyTests": 191,
+    "profileTests": 31,
+    "failedUnitTests": 0,
+    "skippedUnitTests": 0,
+    "todoUnitTests": 0,
+    "matrixEntityKinds": 19,
+    "testedEntityKinds": 25,
+    "browserRuns": 0,
+    "appBuilds": 0,
+    "sourceRowsBeforeAfterEqual": true,
+    "committedTestedFileRowsEqual": true
+  },
+  "qualification": "S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation.",
+  "limitations": {
+    "runtimeIntegrated": false,
+    "childModeEnabled": false,
+    "secureParentGate": false,
+    "nativeOSStorage": false,
+    "profilePersistence": false,
+    "authenticatedChildPackageAdapter": false,
+    "actualHumanApproval": false,
+    "editorialLegalAdmission": false,
+    "installedDevice": false
+  },
+  "initialFailure": {
+    "report": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/typescript.execution.json",
+    "exitCode": 2,
+    "reason": "Two new-file TypeScript typing errors repaired before the first unit invocation; original files and failed report retained.",
+    "policyTestExpansion": "Final reviewed table was extended from19 matrix kinds to all25 spec kinds before the first unit run."
+  },
+  "artifacts": [
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/integration.json",
+      "sha256": "9f37ff037b5d0acd16baa99e2da162c520544628d9e5c8173b776ed37224a938"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/integration-a2.json",
+      "sha256": "a4fa0d4e7614861c6c3774b0660953970946b240297e2cb177590d9bf79ac031"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/typescript.stdout.txt",
+      "sha256": "ca2f2db55e27f136ff378c9c74f91d9410ef71b77758c1cdbb219b49a6572e30"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/typescript.execution.json",
+      "sha256": "17b5d36f5ec613d96038a0089dcaff9da355002c1db207375e60aed9db57cd89"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/source-commit.json",
+      "sha256": "a7db574137debaa45477da35aff2c8105822a840bc69205a933d58849541f4f6"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/a2/typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/a2/typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/a2/typescript.execution.json",
+      "sha256": "26a4fd065164f671210996cbe0b81f29fcb7cda6f62fa046a64e03d22b3bb7c8"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/a2/units.stdout.txt",
+      "sha256": "d61d9f6025cc0ec9664f3d1eeed2efc46d48c6a67a5e5e5982ead63261a87780"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/a2/units.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/a2/units.execution.json",
+      "sha256": "9871a2833fc0f2147c702e6873401627790bd56b4d8f017d2f1281111c50b89a"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/a2/vitest.json",
+      "sha256": "07ef5d67ac6aa6147739190b9de11478de0a4563555cb98e70cd6e5424b06868"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/a2/focused-result.json",
+      "sha256": "8a40aa5107b2e9e6469250dad335a7848df9da22c3fffbf39a7abc4fe389d30c"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/failed-a1/src/child/childProfile.ts",
+      "sha256": "ae6c48c9dd0b2f644163b6506e7811a4933bf12239d9aa52b4d5ff330b83b909"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/failed-a1/src/child/childProfile.test.ts",
+      "sha256": "3704a5a75a31eb114c44bf75bac9fa1242ebbdd92ef2a35561ea0e902a2a1005"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/failed-a1/src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/failed-a1/src/child/childAccessPolicy.test.ts",
+      "sha256": "cddd287b92ebf1b0c5868c5e89687b6494057761fc065b20a3ef364314b890a5"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/run.mjs",
+      "sha256": "c613b4de2e5ba91d5c04f763025c99b4c87d2a43d3bd94989e6d0b690aad9416"
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-policy-foundation-20261002/actual/checkpoint.mjs",
+      "sha256": "c52ea65587dd0b89e05be9364e90dfe64c27f8ed67de46241e5160049c0a5d8a"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

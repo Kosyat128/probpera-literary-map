@@ -1,0 +1,25 @@
+{
+  "sourceCommit": "2119414899bcce51ca6cdbe94495b33b22d3bcfe",
+  "originalTestHead": "3ef3eb6eda231000ef9dd5401f17f5485a1fc2aa",
+  "exactTestedFileRows": true,
+  "sourceFiles": [
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+    },
+    {
+      "path": "src/child/childProfile.test.ts",
+      "sha256": "3b8e976c23388da198eea5f86f840cfe572c2861c3d30474febbed0c40ef223f"
+    },
+    {
+      "path": "src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554"
+    },
+    {
+      "path": "src/child/childAccessPolicy.test.ts",
+      "sha256": "39d9778b22798a240866489d78b53d42bddb9bd1753752086d5331cf07944c9e"
+    }
+  ],
+  "typeScriptInvocations": 2,
+  "unitInvocations": 1
+}

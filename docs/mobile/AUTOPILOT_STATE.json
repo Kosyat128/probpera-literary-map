@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "4d13faac42618c0a399daa3b967e0d19fa760c2c",
+  "headSha": "2119414899bcce51ca6cdbe94495b33b22d3bcfe",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-02T15:11:36.583Z",
+  "updatedAt": "2026-10-02T15:58:58.298Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -4841,15 +4841,17 @@
     {
       "id": "S16",
       "name": "Child mode and Parent Gate",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S16.acceptance",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Stage foundation acceptance; global requirements remain separate."
+          "notes": "Stage foundation acceptance; global requirements remain separate. S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation."
         },
         {
           "id": "S16.BIL-008",
@@ -4902,34 +4904,42 @@
         {
           "id": "S16.CHILD-001",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Up to four local profiles. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+          "notes": "Up to four local profiles. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks. S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation."
         },
         {
           "id": "S16.CHILD-002",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Exact age 3-17. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+          "notes": "Exact age 3-17. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks. S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation."
         },
         {
           "id": "S16.CHILD-003",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Per-work access decision. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+          "notes": "Per-work access decision. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks. S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation."
         },
         {
           "id": "S16.CHILD-004",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Per-character/scene/media decision. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+          "notes": "Per-character/scene/media decision. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks. S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation."
         },
         {
           "id": "S16.CHILD-005",
@@ -5133,7 +5143,10 @@
         }
       ],
       "lastGreenCommands": [],
-      "artifacts": [],
+      "artifacts": [
+        "docs/mobile/evidence/S16/child-policy-foundation-20261002/entry.json",
+        "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -13197,7 +13210,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "D267/D268 local size-persistence checkpoint is recorded. No additional confirmed local implementation/evidence gap was identified by the bounded current-stage review; do not manufacture new D stages or repeat passing builds/cases for documentation. S03.acceptance remains IN_PROGRESS and all11 routed criteria remain OPEN. Continue the actual pending admission gates when their necessary inputs exist: isolated OS installation target (user previously confirmed none), selected PSP contract/configuration and its required integration plus real purchase/refund/reconciliation, reviewed RU/EN editorial/legal/indexability and retention/disclosure inputs, configured Auth/live deletion processor, and separately authorized remote staging/provider validation. Do not infer OS installation, provider/editorial/legal/whole-stage/release acceptance from local browser/fixture evidence; preserve approvals/cache and original evidence identities.",
+    "nextAction": "S03.acceptance remains the first unresolved gate with all11 criteria OPEN and its recorded installation/PSP/editorial/legal/Auth/remote dependencies unchanged. Continue the documented parallel-safe S16 child implementation from the tested profile/access foundation: inspect and implement the secure Parent Gate capability and local verification/storage boundary, then sealed startup/profile/index/history/package integration before any child UI or content activation. Programming remains Codex work. Do not use PreferenceStore for PIN/verifier/parent authority, invent approved child materials, or infer child access from the decoder, a signature, a parent boolean or paid base. Preserve tested foundation and D267/D268 evidence without docs-only reruns; no deploy/push/merge/store actions.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -13414,7 +13427,9 @@
       "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/remaining-gates.json",
       "docs/mobile/evidence/S03/booky-size-persistence-20261002/result.json",
       "docs/mobile/evidence/S03/booky-size-persistence-20261002/capture-review.json",
-      "docs/mobile/evidence/S03/booky-size-persistence-20261002/remaining-gates.json"
+      "docs/mobile/evidence/S03/booky-size-persistence-20261002/remaining-gates.json",
+      "docs/mobile/evidence/S16/child-policy-foundation-20261002/entry.json",
+      "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -13562,7 +13577,8 @@
       "D262 canonical current-public compile and one actual mobile account route PASS retained at82e04e6e; raw setup/selection and duplicate-attachment aggregation failures remain separate. Do not rerun passing compiler/browser or older QA/packaging for docs. EN checked consent and duplicate status polish remain scoped next work.",
       "D263/D264 one TypeScript/public compile/public-case at516efd and three affected checkbox case attempts with truthful manual visual failures/success retained. Final1a548 differs only in CSS and fixture after initial checks; no broad suite/packaging/docs-only repetition. Continue D265 rollback/profile composition only.",
       "D265 one current QA build/audit/new persistent rollback case and D266 one current public build/existing account case at938 are retained with7 reviewed actual captures. No passed-suite/typecheck/packaging/browser repetitions for docs or speculative D stages. Browser/profile evidence is not isolated OS installation; all11 criteria/approvals remain open/unchanged.",
-      "D267 source373 size enhancement:1TSC/22 selected units/1native-port case/4reviewed captures. D268 initial861 QA build/audit passed and case timed out; after one-line notice obstacle repair source4d13 follow-up QA build/audit/samecase passed with3reviewed captures and real return-control center hit. Keep failure/expired diagnostic evidence and exact source IDs; no passing TSC/unit/native/public/rollback/package repeats for docs. All11 formal criteria/approvals/cache unchanged."
+      "D267 source373 size enhancement:1TSC/22 selected units/1native-port case/4reviewed captures. D268 initial861 QA build/audit passed and case timed out; after one-line notice obstacle repair source4d13 follow-up QA build/audit/samecase passed with3reviewed captures and real return-control center hit. Keep failure/expired diagnostic evidence and exact source IDs; no passing TSC/unit/native/public/rollback/package repeats for docs. All11 formal criteria/approvals/cache unchanged.",
+      "S16 foundation source21194148: retain222 focused units and correctedTypeScript PASS; first TypeScript failure stays separate. No passing old PWA/native/public/Booky or foundation runs solely for reports. Child runtime, secure Parent Gate, OS storage and content approvals remain absent."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -13692,6 +13708,13 @@
           "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
           "docs/mobile/evidence/S15/booky-live-character-20260920/entry.json",
           "docs/mobile/evidence/S15/booky-live-character-20260920/result.json"
+        ]
+      },
+      "S16": {
+        "reason": "Pure child profile/access contracts are original unfinished internal programming independent of OS/PSP/remote/human review inputs. Current App, globe, Booky, locale and paid-access source remain byte-identical; no child mode is activated.",
+        "evidence": [
+          "docs/mobile/evidence/S16/child-policy-foundation-20261002/entry.json",
+          "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
         ]
       }
     },

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "2119414899bcce51ca6cdbe94495b33b22d3bcfe",
+  "recordWritesCompleted": true,
+  "originalRecordGuardFailure": "Git helper trim removed the first porcelain status space; scope guard read GENTS.md instead of AGENTS.md after writing all planned files.",
+  "fix": "Preserve leading status whitespace with trimEnd. Reconstruct the scope plan from existing hashes without rewriting records or rerunning product checks.",
+  "allProtectedStateAndRequirementValuesEqual": true,
+  "s03Unchanged": true,
+  "originalRecordHelperRetained": true,
+  "productChecksRepeated": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,116 @@
+{
+  "initialHead": "3ef3eb6eda231000ef9dd5401f17f5485a1fc2aa",
+  "root": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "witnesses": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ee4e65879846769202cf4d4a96737495964976dc6005dc06c4fba483914da860"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "8b52f73a02995ae9e4fe414a0d4dd6602d787879706686a5eff62ccfc6aa6c75"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "5bd76f9a98fbe3e4ca18b3a4d41ce15f425c2103c6b8c9a5f281b99c46db6fe4"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "92a2611577a4f258b24055df06515efda947fce0d555b35e8a1a26761279be43"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "76a1b801e9323e582634e180aea0ead8061c99cbfe50607215f6d697cb769f42"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "963cf0071c6f2a5d6f884e633d18104de433971c7a495e833bccc91516ef06ac"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "8a2c278845a2be679bcf86c2b7040b717159c865e84d02c1d89b9b7c2fcbb0d5"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "df37f51411802c9874ab92370efec7472c9c68e88ac0f52b0747aa4c5911f82c"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "105eaa265de9967a1ebf82062b8734f62225cadaf31afe9bc5cf924fa342d72c"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "3957d534405a8aab7b1d27044caead6b795838ee0c20aac70206c3d9f308e71d"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "51353969918a3bbfdbafef37a9b3c28de7c31421853edb664666b547071d9459"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/result.json",
+      "sha256": "0f823b07150024774866a1de9e220b45ec6f060cbacfa2b2891c1584b9e448d5"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/capture-review.json",
+      "sha256": "b6a7e036ea08c8f2a8a5393ad80aa5d3bbc6b5abbd46bbe2978a31ea0205a8ba"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/verification-final.json",
+      "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/booky-size-persistence-20261002/verification-input-correction.json",
+      "sha256": "7c7449ed6d35b6d6d42cb32be79d65a7b7b8b6dcaa669c14736d430b9448b011"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/11_CHILD_MODE_PARENT_GATE_AGE_ASSURANCE_RU.md",
+      "sha256": "e465ec632eace6ce1dd964c085003140cb1247ddabe2136a757c9821409e8a76"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/62_CHILD_AGE_POLICY_MATRIX.csv",
+      "sha256": "b226343c9d648b734e83d9b1768163cc768c42e68a8a9139d2fff63ba012272d"
+    }
+  ],
+  "proposed": [
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "ae6c48c9dd0b2f644163b6506e7811a4933bf12239d9aa52b4d5ff330b83b909"
+    },
+    {
+      "path": "src/child/childProfile.test.ts",
+      "sha256": "3704a5a75a31eb114c44bf75bac9fa1242ebbdd92ef2a35561ea0e902a2a1005"
+    },
+    {
+      "path": "src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554"
+    },
+    {
+      "path": "src/child/childAccessPolicy.test.ts",
+      "sha256": "cddd287b92ebf1b0c5868c5e89687b6494057761fc065b20a3ef364314b890a5"
+    }
+  ]
+}

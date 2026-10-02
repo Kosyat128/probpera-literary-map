@@ -2160,11 +2160,17 @@
         "all"
       ],
       "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
+      "implementationFiles": [
+        "src/child/childProfile.ts"
+      ],
+      "tests": [
+        "src/child/childProfile.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation."
     },
     {
       "id": "CHILD-002",
@@ -2175,11 +2181,19 @@
         "all"
       ],
       "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
+      "implementationFiles": [
+        "src/child/childProfile.ts",
+        "src/child/childAccessPolicy.ts"
+      ],
+      "tests": [
+        "src/child/childProfile.test.ts",
+        "src/child/childAccessPolicy.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation."
     },
     {
       "id": "CHILD-003",
@@ -2190,11 +2204,19 @@
         "all"
       ],
       "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
+      "implementationFiles": [
+        "src/child/childAccessPolicy.ts",
+        "src/child/childProfile.ts"
+      ],
+      "tests": [
+        "src/child/childAccessPolicy.test.ts",
+        "src/child/childProfile.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation."
     },
     {
       "id": "CHILD-004",
@@ -2205,11 +2227,19 @@
         "all"
       ],
       "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
+      "implementationFiles": [
+        "src/child/childAccessPolicy.ts",
+        "src/child/childProfile.ts"
+      ],
+      "tests": [
+        "src/child/childAccessPolicy.test.ts",
+        "src/child/childProfile.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
+      ],
       "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S16 local foundation: strict decoder for up to4 local profiles and integer ages3-17; per-entity access binds ID/kind/source/policy/selected RU/EN payload, review, topics including parent allowlist/blocklist, rights/platform/territory and exclusive expiry. Only synthetic policy records were tested. No UI/runtime/secure-storage/Parent Gate/content or stage/release activation."
     },
     {
       "id": "CHILD-005",

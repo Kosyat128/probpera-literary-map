@@ -1,0 +1,4 @@
+src/child/childProfile.test.ts(74,42): error TS2352: Conversion of type '{ locale: string; readingLevel: string; motion: string; id: string; label: string; exactAge: number; ageConfirmedAt: string; allowedTopics: string[] | null; blockedTopics: string[]; soundEnabled: boolean; narrationEnabled: boolean; }' to type '{ id: string; label: string; exactAge: number; locale: string; ageConfirmedAt: string; readingLevel: null; allowedTopics: string[] | null; blockedTopics: string[]; soundEnabled: boolean; motion: string; narrationEnabled: boolean; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Types of property 'readingLevel' are incompatible.
+    Type 'string' is not comparable to type 'null'.
+src/child/childProfile.ts(61,38): error TS2551: Property 'value' does not exist on type 'number'. Did you mean 'valueOf'?
