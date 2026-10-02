@@ -203,7 +203,7 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
     } finally { if (pending.current === controller) { pending.current = null; setBusy(false); } }
   }
   const status = statusUnknown || error === "status-unknown" ? copy.statusUnknown : error === "authentication" ? copy.authentication : error === "reauthentication" ? copy.reauthentication
-    : error === "denied" ? copy.denied : error ? copy.unavailable : loading || auth.loading || statusChecking ? copy.busy : "";
+    : error === "denied" ? copy.denied : error ? copy.unavailable : loading || auth.loading || statusChecking ? copy.busy : !auth.configured ? copy.unavailable : "";
   const disclosure = config?.deletionDisclosure;
   const returnQuery = typeof window === "undefined" ? "" : window.location.search;
   return <main className="planet-account pwa-access" aria-labelledby={headingId} data-planet-account={mode} data-copy-review={planetAccountCopy.reviewStatus}>
@@ -233,7 +233,6 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
         <p>{copy.statusInfo}</p>
         {auth.user && config ? <button type="button" disabled={busy || statusChecking} onClick={() => { setError(null); setStatusReload(value => value + 1); }}>{copy.checkStatus}</button> : null}
       </> : null}
-      {!auth.configured && !auth.loading ? <p>{copy.unavailable}</p> : null}
       {mode === "access" && !modalOpen && !receipt ? <PlanetPasswordRecovery onSignIn={() => void signInAgain()} /> : null}
       <nav className="planet-account__links" aria-label={t("Основная навигация")}>
         <a href={`/${language}/${mode === "access" ? "delete-account" : "planet-account"}/${returnQuery}`}>{mode === "access" ? copy.deleteLink : copy.accessLink}</a>

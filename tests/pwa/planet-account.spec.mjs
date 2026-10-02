@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { build } from "esbuild";
 import { chromium, expect, test } from "@playwright/test";
 import { generatePlanetAccountPages } from "../../scripts/mobile/account-pages.mjs";
@@ -241,7 +241,59 @@ for (const mobile of [false, true]) test(`deletion remains the same bilingual fo
     await page.locator('[data-interface-language="en"]').click();
     await expect(page.locator('.planet-account__disclosure')).toHaveText(config.deletionDisclosure.en);
     await loadedLanguageFlags(page, "en");
-    if (mobile) { await productionAccountAppearance(page, "en"); await page.screenshot({ path: testInfo.outputPath("planet-account-deletion-flags-en.png"), fullPage: false }); }
+    if (mobile) {
+      await productionAccountAppearance(page, "en");
+      await expect(consent).toBeChecked(); await expect(consent).toBeEnabled(); await expect(consent).toBeVisible();
+      expect(await consent.evaluate((node, previous) => node === previous, original)).toBe(true);
+      const label = page.locator(".planet-account__consent"), observations = [], captures = ["planet-account-deletion-flags-en.png"];
+      const settleNativePaint = () => page.evaluate(() => new Promise(resolve => {
+        scrollTo({ top: 0, left: 0, behavior: "instant" });
+        requestAnimationFrame(() => requestAnimationFrame(resolve));
+      }));
+      const observeNativeConsent = async state => {
+        const observation = await consent.evaluate(node => {
+          const style = getComputedStyle(node), label = node.closest("label");
+          const input = node.getBoundingClientRect(), target = label.getBoundingClientRect();
+          const rect = value => ({ x: value.x, y: value.y, width: value.width, height: value.height });
+          return {
+            language: document.documentElement.lang, checked: node.checked, disabled: node.disabled,
+            inputBounds: rect(input), labelBounds: rect(target),
+            inputHit: document.elementFromPoint(input.left + input.width / 2, input.top + input.height / 2) === node,
+            labelHit: label.contains(document.elementFromPoint(target.left + target.width / 2, target.top + target.height / 2)),
+            style: { display: style.display, visibility: style.visibility, opacity: style.opacity,
+              appearance: style.appearance, webkitAppearance: style.webkitAppearance,
+              accentColor: style.accentColor, colorScheme: style.colorScheme },
+            viewport: { width: innerWidth, height: innerHeight, scrollX, scrollY },
+          };
+        });
+        observations.push({ state, ...observation });
+        expect(observation.labelBounds.height).toBeGreaterThanOrEqual(44);
+        expect(observation.inputHit).toBe(true); expect(observation.labelHit).toBe(true);
+      };
+      await settleNativePaint(); await observeNativeConsent("checked-after-en-switch");
+      await page.screenshot({ path: testInfo.outputPath("planet-account-deletion-flags-en.png"), fullPage: false });
+      for (const checked of [false, true]) {
+        await label.click();
+        if (checked) await expect(consent).toBeChecked(); else await expect(consent).not.toBeChecked();
+        await expect(consent).toBeEnabled(); await expect(consent).toBeVisible();
+        expect(await consent.evaluate((node, previous) => node === previous, original)).toBe(true);
+        await settleNativePaint(); await observeNativeConsent(checked ? "checked-after-label-click" : "unchecked-after-label-click");
+        const filename = `planet-account-consent-en-${checked ? "checked" : "unchecked"}.png`;
+        await page.screenshot({ path: testInfo.outputPath(filename), fullPage: false }); captures.push(filename);
+      }
+      const inputCapture = "planet-account-consent-en-native-input.png";
+      await consent.screenshot({ path: testInfo.outputPath(inputCapture) }); captures.push(inputCapture);
+      for (const filename of captures) await testInfo.attach(filename, { path: testInfo.outputPath(filename), contentType: "image/png" });
+      const evidence = "planet-account-consent-en-observations.json";
+      await writeFile(testInfo.outputPath(evidence), JSON.stringify({
+        schemaVersion: 1, kind: "account-native-checkbox-paint-observations", language: "en",
+        environmentChanged: false, interaction: "actual label.click", observations, captures,
+        pixelsValidated: false, paintVerdict: "requires direct capture review",
+        scope: "390x844 viewport React fixture with controlled Auth/API ports; no touch, OS, public-build or full visual acceptance",
+      }, null, 2) + "\n", { flag: "wx" });
+      await testInfo.attach("EN native checkbox observations", { path: testInfo.outputPath(evidence), contentType: "application/json" });
+      await expect(consent).toBeChecked();
+    }
     expect(await page.evaluate(() => window.bad)).toBeUndefined();
     await expect(page.locator('canvas,iframe,.site-header')).toHaveCount(0);
     await expect(page.locator('.interface-language-control')).toHaveCount(1);

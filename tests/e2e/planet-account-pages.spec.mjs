@@ -28,6 +28,9 @@ test("built canonical account routes remain private, bilingual and outside the g
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `https://probpera.ru/${locale}/${name}/`);
       expect(await page.locator("main[data-planet-account]").evaluate((node, previous) => node === previous, original)).toBe(true);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+      const unavailable = locale === "ru" ? "Сервис сейчас недоступен. Повторите попытку позже." : "The service is unavailable right now. Please try again later.";
+      await expect(page.getByText(unavailable, { exact: true })).toHaveCount(1);
+      await expect(page.getByRole("status")).toContainText(unavailable);
       for (const flag of await page.locator(".planet-account__header [data-interface-language]").all()) {
         const box = await flag.boundingBox(); expect(box).not.toBeNull();
         expect(box.width).toBeGreaterThanOrEqual(44); expect(box.height).toBeGreaterThanOrEqual(44);
