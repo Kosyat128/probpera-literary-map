@@ -304,7 +304,10 @@ async function preview(page, id) {
   return actual;
 }
 async function language(page, locale) {
-  await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+  const menu = page.locator('.native-planet-app [data-atlas-action="toggle-menu"]');
+  if (await menu.getAttribute("aria-expanded") !== "true") await menu.click();
+  const control = page.locator(`.native-planet-app [data-atlas-application-menu-panel] [data-interface-language="${locale}"]`);
+  await expect(control).toBeVisible(); await control.click();
   await expect(page.locator("html")).toHaveAttribute("lang", locale);
 }
 async function dragPlanet(page) {

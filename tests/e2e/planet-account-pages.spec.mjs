@@ -20,7 +20,7 @@ test("built canonical account routes remain private, bilingual and outside the g
     await expect(page.locator("#atlas,canvas,.site-header,[data-cms-edit-root]")).toHaveCount(0);
     const original = await page.locator("main[data-planet-account]").elementHandle();
     for (const locale of ["ru", "en"]) {
-      await page.locator(".interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      await page.locator(`.planet-account__header [data-interface-language="${locale}"]`).click();
       await expect(page.locator("html")).toHaveAttribute("lang", locale);
       await expect.poll(() => new URL(page.url()).pathname).toBe(`/${locale}/${name}/`);
       expect(new URL(page.url()).searchParams.get("returnTo")).toBe("/planet/en/?country=russia#atlas");

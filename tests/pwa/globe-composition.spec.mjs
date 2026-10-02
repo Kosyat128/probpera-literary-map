@@ -343,7 +343,10 @@ test("one composition migrates the three legacy choices after a real frame, appl
     await expect(page.locator('[data-planet-composition-summary]')).toHaveText('Подставка: Стопка книг · Фон: Звёздное небо');
     await page.screenshot({path:testInfo.outputPath('composition-combined-preview-ru-1440.png')});
     const beforeLocale = (await sample(page)).fingerprint;
-    await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
+    const menu = page.locator('.native-planet-app [data-atlas-action="toggle-menu"]');
+    if (await menu.getAttribute("aria-expanded") !== "true") await menu.click();
+    const control = page.locator(`.native-planet-app [data-atlas-application-menu-panel] [data-interface-language="en"]`);
+    await expect(control).toBeVisible(); await control.click();
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page.locator("[data-planet-background-panel]")).toHaveAttribute("data-planet-background-phase", "preview");
     await expect.poll(async () => (await sample(page)).fingerprint).not.toBe(beforeLocale);
