@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Missing expected rejection.
+    at async file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-premium-interface-round2/booky-followup/runtime/producer.mjs:65:99 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: { code: 'ENOENT' },
+  operator: 'rejects',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

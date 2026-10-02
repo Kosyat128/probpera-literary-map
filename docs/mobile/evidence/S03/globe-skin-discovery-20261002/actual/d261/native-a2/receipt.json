@@ -1,0 +1,32 @@
+{
+  "runId": "d261-booky-live-a2",
+  "workingSourceParent": "5351f2c8cbe4bc1fe4295f47ecb416e0c46e35e9",
+  "sourceUnchanged": true,
+  "browser": {
+    "args": [
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "playwright.native-planet.config.mjs",
+      "-g",
+      "compact premium mobile chrome retains the actual globe across menu, locale and edition controls$"
+    ],
+    "exitCode": 0,
+    "durationMs": 59454
+  },
+  "stats": {
+    "startTime": "2026-10-02T04:00:54.859Z",
+    "duration": 58882.146,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "typeScriptAndUnitRetainedFrom": "native-a1",
+  "onlyCssChangedSinceFirstRun": true,
+  "viewports": 7,
+  "menuTextScale": "200%",
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,54 @@
+{
+  "runId": "d261-booky-live-a1",
+  "workingSourceParent": "5351f2c8cbe4bc1fe4295f47ecb416e0c46e35e9",
+  "sourceUnchanged": true,
+  "sourceManifestSha256": "a804df9b9d42d000e56f88cd2a1982bdcc769e45d00f60513fab2728aec042c6",
+  "reportSha256": "7a8db4c422a45d6f88762bfe657d10057049451b6e79ffb5e93663d273692d80",
+  "typeScript": {
+    "args": [
+      "node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ],
+    "exitCode": 0,
+    "durationMs": 21896
+  },
+  "unit": {
+    "args": [
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "src/host/bookyModel.test.ts",
+      "src/host/bookyAnimation.test.ts",
+      "--reporter=json",
+      "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\unit-results.json"
+    ],
+    "exitCode": 0,
+    "durationMs": 4510
+  },
+  "browser": {
+    "args": [
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "playwright.native-planet.config.mjs",
+      "-g",
+      "compact premium mobile chrome retains the actual globe across menu, locale and edition controls$"
+    ],
+    "exitCode": 0,
+    "durationMs": 62452
+  },
+  "stats": {
+    "startTime": "2026-10-02T03:56:15.162Z",
+    "duration": 61846.71,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "viewports": 7,
+  "menuTextScale": "200%",
+  "actualAppAndGlobe": true,
+  "finite3DGestures": 6,
+  "stageAccepted": false,
+  "releaseReady": false
+}

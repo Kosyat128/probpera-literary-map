@@ -1,0 +1,65 @@
+{
+  "base": "5351f2c8cbe4bc1fe4295f47ecb416e0c46e35e9",
+  "files": [
+    {
+      "path": "src/App.tsx",
+      "originalSha256": "2d4afe74d934c526783e6a68b2d62362dfc8078715bd02b67cb2a0cbf2f22942",
+      "proposedSha256": "1b1a4f22ee3c5bdf6c19e5f4c4d0d1514947d380917af177bf8a65b547e2d5a7"
+    },
+    {
+      "path": "src/components/AtlasExperienceChrome.tsx",
+      "originalSha256": "941c75e0219a3b3d4e6ad6a81e060c3bf00176b977ce4cfccba6577c4a6ef5a8",
+      "proposedSha256": "dcf103969c8eb68807a9f8d481aa96c33f53926ff351304464c78d3a1c0776d3"
+    },
+    {
+      "path": "src/components/GlobeSkinGuide.tsx",
+      "originalSha256": "1e0f36cbccd2a2961f618825bc873384f26e32ab651ae0622fe5c48b431f697b",
+      "proposedSha256": "f042a6161d3e4cc3f98a34e2a073818fa056798a842005c10ec32523e01e8342"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "originalSha256": "ea85fa541a714933fb5e73d3eee1933716796b4674aef53d91191ae1a88717a0",
+      "proposedSha256": "4e2365ae68621c6214a497d4224721f04f50c455d85c49ffbb186180bff66e23"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "originalSha256": "08ff5755fd05eb645b1b5c95c7314e31196470d61de6720aa629370b2199daf0",
+      "proposedSha256": "88df439004d46e4471cabffcf317bf60e68a84e73040ef5a8b851adf9b18bdce"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "originalSha256": "312f8629c66c6ac1c5e80c9d25c40ed741b4cad5ae7b6591ddb16d26c3e22382",
+      "proposedSha256": "b64e161b91d6c7e8ed403324a50da8c60969f7cc52d03196873c4de715424a8f"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "originalSha256": "f8d48e8bdf67ec803370b1399223e64226f810a69116149e85c285e5011aa9f5",
+      "proposedSha256": "06f36a530feda776071038ec8c18524990811faa52e3fe7e7c4da2f16fbdd858"
+    },
+    {
+      "path": "src/host/bookyAnimation.ts",
+      "originalSha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f",
+      "proposedSha256": "01ca74a68a7aed307b114e9f20b90d0b3624f98e175aa033c6b9d2a592ade2a6"
+    },
+    {
+      "path": "src/host/bookyModel.test.ts",
+      "originalSha256": "f4c4e23c2e4df3d6a154474816cec8bed41b460e2c9e13d98e82cd5aca736d0c",
+      "proposedSha256": "08d910d4a05a89b177f4f965f8f1a2f54615a8a457be7f7ea4da03d0df8f45ba"
+    },
+    {
+      "path": "src/host/bookyModel.ts",
+      "originalSha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89",
+      "proposedSha256": "517330f6898751e706988d72ee03be300476d6ef91b66e4fcf4637965cd76812"
+    },
+    {
+      "path": "src/host/host.css",
+      "originalSha256": "e30e2c740540de76f70376972837af7b5febf0212826fabc26218e281b0ccfa3",
+      "proposedSha256": "d10c5442798df82bcf87006507ba3ac63ffcd1dd35fea454fe7380af70e0c261"
+    },
+    {
+      "path": "tests/host/native-planet.spec.mjs",
+      "originalSha256": "f3b4a01aa9f0de5a381a1e995a388c45be54da332e9939f58d709b3786a9a513",
+      "proposedSha256": "2367a9817600befe4091391a17446e59d11593a31db828943eb8e10abaed3cd6"
+    }
+  ]
+}

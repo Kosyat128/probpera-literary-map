@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "runId": "d259-booky-text-a1",
+  "workingSourceParent": "5460de777cd749c2da53a89b55625d3c50e23bcc",
+  "owners": [
+    "tests/host/native-planet.spec.mjs"
+  ],
+  "args": [
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "-c",
+    "playwright.native-planet.config.mjs",
+    "-g",
+    "hidden Booky trigger remains exposed after the real Menu large-text round trip$"
+  ],
+  "exitCode": 0,
+  "durationMs": 16750,
+  "sourceUnchanged": true,
+  "sourceManifestSha256": "e844a5856f0abe2cec5256c7a73bf24c33d039236ce66b7e0663333aab6bbf8f",
+  "reportSha256": "8380614ab80820f94c1ab3182ba317814d294948752c39bb99a35cb6c4211073",
+  "stats": {
+    "startTime": "2026-10-02T02:48:16.926Z",
+    "duration": 11216.225,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "browserInvocations": 1,
+  "typeScriptInvocations": 0,
+  "pwaBuildInvocations": 0,
+  "stageAccepted": false,
+  "releaseReady": false
+}

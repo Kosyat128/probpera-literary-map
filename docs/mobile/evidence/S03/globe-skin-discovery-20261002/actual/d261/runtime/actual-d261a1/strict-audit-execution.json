@@ -1,0 +1,18 @@
+{
+  "command": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\strict-audit-command.json",
+    "sha256": "e49c6987889ce7c7941e7586ff25176a6149015c586676b913f05a9b8c27bac1"
+  },
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 4822,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\strict-audit.stdout.txt",
+    "sha256": "2891944e0bdb206d72cdb3e9c689f7c3a0366b06df26017227a3c41a19b5eb0f"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\strict-audit.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

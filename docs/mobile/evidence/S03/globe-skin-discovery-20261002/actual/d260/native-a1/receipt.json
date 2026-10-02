@@ -1,0 +1,41 @@
+{
+  "runId": "d260-globe-skins-a1",
+  "workingSourceParent": "ed7a67934d0dacca88f4abe0565aec32f1751381",
+  "sourceUnchanged": true,
+  "sourceManifestSha256": "78bac8011e0aaa67a197659dfc88751c46c94c82693aae78d7ba3799c3d0302f",
+  "reportSha256": "b6b4a8b146ec9d9cd7581e3acfc66c0d2f788fcd2edece48377e91950a36dff4",
+  "typeScript": {
+    "args": [
+      "node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ],
+    "exitCode": 0,
+    "durationMs": 24630
+  },
+  "browser": {
+    "args": [
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "playwright.native-planet.config.mjs",
+      "-g",
+      "compact premium mobile chrome retains the actual globe across menu, locale and edition controls$"
+    ],
+    "exitCode": 0,
+    "durationMs": 52183
+  },
+  "stats": {
+    "startTime": "2026-10-02T03:27:50.920Z",
+    "duration": 51529.097,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "viewports": 7,
+  "menuTextScale": "200%",
+  "actualAppAndGlobe": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

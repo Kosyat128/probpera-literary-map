@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "runId": "d259-booky-text-a2",
+  "workingSourceParent": "5460de777cd749c2da53a89b55625d3c50e23bcc",
+  "owners": [
+    "tests/host/native-planet.spec.mjs"
+  ],
+  "args": [
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "-c",
+    "playwright.native-planet.config.mjs",
+    "-g",
+    "compact premium mobile chrome retains the actual globe across menu, locale and edition controls$"
+  ],
+  "exitCode": 0,
+  "durationMs": 57175,
+  "sourceUnchanged": true,
+  "sourceManifestSha256": "ab512745e15848a2296ec0f782adc583ca2f3f5944070624de45df8e96ef5a1f",
+  "reportSha256": "914757b7c9ba16f967b1d5e98962e5c186b0e7f00dde4e998d1a1a815a759bb6",
+  "stats": {
+    "startTime": "2026-10-02T02:51:38.804Z",
+    "duration": 52384.288,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "browserInvocations": 1,
+  "typeScriptInvocations": 0,
+  "pwaBuildInvocations": 0,
+  "stageAccepted": false,
+  "releaseReady": false
+}

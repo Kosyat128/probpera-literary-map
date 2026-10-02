@@ -1,0 +1,19 @@
+{
+  "sourceCommit": "ed7a67934d0dacca88f4abe0565aec32f1751381",
+  "parentCommit": "5460de777cd749c2da53a89b55625d3c50e23bcc",
+  "owners": [
+    {
+      "path": "src/host/host.css",
+      "sha256": "1bac56918718b6934e45ded88e9479131d9380decaf72950e4682651d9098f6e"
+    },
+    {
+      "path": "tests/host/native-planet.spec.mjs",
+      "sha256": "c4dba1dea3c9d63ea97b2615c3a37dedaf6e83056a9962886f0ea4545059a600"
+    }
+  ],
+  "nativeFinalRowsEqualCommitted": true,
+  "clean": true,
+  "underlyingHistoricalCropCauseProved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

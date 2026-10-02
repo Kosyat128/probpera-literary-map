@@ -1,0 +1,877 @@
+{
+  "binding": {
+    "base": "d1301b669dcf75d27373aacd8345cd2e135ede0c",
+    "globals": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "f80cb3e3a087af192c91113a97f31561700cf9bf55c672252948c89dde8312ee"
+      },
+      {
+        "path": "docs/mobile/AUTOPILOT_STATE.json",
+        "sha256": "ee1685afea7ffc4bcd9dc02995909dea5b2370ca6e933857dc62506f259f29b7"
+      },
+      {
+        "path": "docs/mobile/DECISIONS.md",
+        "sha256": "a7f02aac93b6c84dff12cdcbc614f3e56eb041d2b764f83b7f878e1316516784"
+      },
+      {
+        "path": "docs/mobile/STATUS.md",
+        "sha256": "1ed7f1bf1969d7a81b3c9a497d7d9770b2b3dc3177d409ddaef5f53f8288af7e"
+      },
+      {
+        "path": "docs/mobile/BLOCKERS.md",
+        "sha256": "8c4035761d256aabb0b7fe34c8bcff5686be6b486aad93267d3f872246c75b7f"
+      },
+      {
+        "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+        "sha256": "aad35d9f6d4b62cf6a092cb0cf637e0521ce95facaf9a22d0f724942924a236c"
+      }
+    ],
+    "entries": [
+      {
+        "name": "d261/proposal.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\proposal.json",
+        "sha256": "9e485db0e8a75764c8aea0aa98cc5eebe16c8f68c55f4a631edbd194b09b4cfe"
+      },
+      {
+        "name": "d261/source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\source-commit.json",
+        "sha256": "66dbc24f3709863e3c8da212c86a3bcc4ff9e28fefee715e809b08be1dec5819"
+      },
+      {
+        "name": "d261/apply-run.mjs",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\apply-run.mjs",
+        "sha256": "ee985efd6c4c62c4b56f127bd7960579d6e5e4f7679b9e62856e9dbe4ff74408"
+      },
+      {
+        "name": "d261/commit-bind.mjs",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\commit-bind.mjs",
+        "sha256": "40490d7007c2e431b7330afa628d26a2bde0ab97066fc01bc5fea916cd5c0258"
+      },
+      {
+        "name": "d260/proposal.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\proposal.json",
+        "sha256": "126933c1e1bc979c364daee48825c2d28cecbd38a3959cc7e0d0ebda624d1317"
+      },
+      {
+        "name": "d260/source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\source-commit.json",
+        "sha256": "443c0796ee598e0e80ed5d72210709bb72a11f5bb968fef290b83a6fd3df7921"
+      },
+      {
+        "name": "d259/source-commit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\source-commit.json",
+        "sha256": "bee4732fb46ebf87c58f75f1911d2bbb63954ca8a3beb8bcf028052526b78050"
+      },
+      {
+        "name": "d259/native-a1/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a1\\receipt.json",
+        "sha256": "897ca1849f66d1ec042c28417a42abf4fb00af017b6cf805ed49798c507710e5"
+      },
+      {
+        "name": "d259/native-a1/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a1\\results.json",
+        "sha256": "8380614ab80820f94c1ab3182ba317814d294948752c39bb99a35cb6c4211073"
+      },
+      {
+        "name": "d259/native-a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a1\\source-before.json",
+        "sha256": "e844a5856f0abe2cec5256c7a73bf24c33d039236ce66b7e0663333aab6bbf8f"
+      },
+      {
+        "name": "d259/native-a1/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a1\\source-after.json",
+        "sha256": "e844a5856f0abe2cec5256c7a73bf24c33d039236ce66b7e0663333aab6bbf8f"
+      },
+      {
+        "name": "d259/native-a1/browser.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a1\\browser.stdout.txt",
+        "sha256": "1d46d3beeb68756173ce09bcc1ded7cffe51b632398c9a1f5eeca0955d9ed68f"
+      },
+      {
+        "name": "d259/native-a1/browser.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a1\\browser.stderr.txt",
+        "sha256": "1bc1203dd1f290569c31e87386d1cd68d96f75c1da9805780e448a9dfb937222"
+      },
+      {
+        "name": "d259/native-a2/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a2\\receipt.json",
+        "sha256": "76f3f1b09ca0f09117c7390ec290be8e07e92286036abb7853ef31aa38e4518a"
+      },
+      {
+        "name": "d259/native-a2/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a2\\results.json",
+        "sha256": "914757b7c9ba16f967b1d5e98962e5c186b0e7f00dde4e998d1a1a815a759bb6"
+      },
+      {
+        "name": "d259/native-a2/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a2\\source-before.json",
+        "sha256": "ab512745e15848a2296ec0f782adc583ca2f3f5944070624de45df8e96ef5a1f"
+      },
+      {
+        "name": "d259/native-a2/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a2\\source-after.json",
+        "sha256": "ab512745e15848a2296ec0f782adc583ca2f3f5944070624de45df8e96ef5a1f"
+      },
+      {
+        "name": "d259/native-a2/browser.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a2\\browser.stdout.txt",
+        "sha256": "783f5c5556b4186575cd82b0541c6387ad34f8f5b625f11c3ae8410b8c574b00"
+      },
+      {
+        "name": "d259/native-a2/browser.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a2\\browser.stderr.txt",
+        "sha256": "2b077f2b02558a8cdf261674e54c564f0f577c3d6f4e6904680d331b7aaeca80"
+      },
+      {
+        "name": "d259/native-a3/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a3\\receipt.json",
+        "sha256": "82ab150734a4cf0e86222f240e2dffff610c48b8758b7d8067090ea2315d79a1"
+      },
+      {
+        "name": "d259/native-a3/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a3\\results.json",
+        "sha256": "6031026770bcc8e986fb6848dd9e45f6c8b67a7342218d07667bea1ce5932919"
+      },
+      {
+        "name": "d259/native-a3/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a3\\source-before.json",
+        "sha256": "e85a24b1a118826edd1cc156e3586762eed90e9fdb86c421b0afb69ed5d54bdc"
+      },
+      {
+        "name": "d259/native-a3/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a3\\source-after.json",
+        "sha256": "e85a24b1a118826edd1cc156e3586762eed90e9fdb86c421b0afb69ed5d54bdc"
+      },
+      {
+        "name": "d259/native-a3/browser.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a3\\browser.stdout.txt",
+        "sha256": "e3a703608678d3fb8ba7825b6dda0f17e5d14393e3eddea6747e18c717949b4c"
+      },
+      {
+        "name": "d259/native-a3/browser.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\native-a3\\browser.stderr.txt",
+        "sha256": "3ec5770d9ce46ef58c4170760a78fda9d060dbd09a5319895cbcb7de5ebdd116"
+      },
+      {
+        "name": "d260/native-a1/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\native-a1\\receipt.json",
+        "sha256": "63b990d1fea9732566f1cff214ddb9439e44f399ae066d272fec9c4dd2952bae"
+      },
+      {
+        "name": "d260/native-a1/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\native-a1\\results.json",
+        "sha256": "b6b4a8b146ec9d9cd7581e3acfc66c0d2f788fcd2edece48377e91950a36dff4"
+      },
+      {
+        "name": "d260/native-a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\native-a1\\source-before.json",
+        "sha256": "78bac8011e0aaa67a197659dfc88751c46c94c82693aae78d7ba3799c3d0302f"
+      },
+      {
+        "name": "d260/native-a1/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\native-a1\\source-after.json",
+        "sha256": "78bac8011e0aaa67a197659dfc88751c46c94c82693aae78d7ba3799c3d0302f"
+      },
+      {
+        "name": "d260/native-a1/browser-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\native-a1\\browser-execution.json",
+        "sha256": "87b7511eb5e62bb06c3d853c6e6d041b4fc3c72131abff8532be52c0b09b278b"
+      },
+      {
+        "name": "d260/native-a1/browser.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\native-a1\\browser.stdout.txt",
+        "sha256": "6eb7be799af32937527acb07107dd2330677378acdbbeefe9b50097a173cd675"
+      },
+      {
+        "name": "d260/native-a1/browser.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\native-a1\\browser.stderr.txt",
+        "sha256": "986c042fcc2f9477141d1fe7c2172f4cc29f6b5b66fcf2c0668b97323a9ee300"
+      },
+      {
+        "name": "d261/native-a1/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\receipt.json",
+        "sha256": "7b6ef4270e6bf471e54395f48485711f4327273f7d95214869cc539263e15acc"
+      },
+      {
+        "name": "d261/native-a1/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\results.json",
+        "sha256": "7a8db4c422a45d6f88762bfe657d10057049451b6e79ffb5e93663d273692d80"
+      },
+      {
+        "name": "d261/native-a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\source-before.json",
+        "sha256": "a804df9b9d42d000e56f88cd2a1982bdcc769e45d00f60513fab2728aec042c6"
+      },
+      {
+        "name": "d261/native-a1/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\source-after.json",
+        "sha256": "a804df9b9d42d000e56f88cd2a1982bdcc769e45d00f60513fab2728aec042c6"
+      },
+      {
+        "name": "d261/native-a1/browser-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\browser-execution.json",
+        "sha256": "749a27af1a81176cf6cf050f0c11a98bd34eb33d00d7277690a41b4383642789"
+      },
+      {
+        "name": "d261/native-a1/browser.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\browser.stdout.txt",
+        "sha256": "a15e24786e5fc018f1c0286cb537ee6dd2669847c0d73dbf0c50c3af52d24d4a"
+      },
+      {
+        "name": "d261/native-a1/browser.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\browser.stderr.txt",
+        "sha256": "86223d519d676f620dfe7d5d706398ffb70738359fd5c1bb21428dc0aa99659d"
+      },
+      {
+        "name": "d261/native-a2/receipt.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a2\\receipt.json",
+        "sha256": "eaaaa238004b9fcf044e2194b683ee98add0b9cd51b69f4d01a6866b64b72fa9"
+      },
+      {
+        "name": "d261/native-a2/results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a2\\results.json",
+        "sha256": "3b6f2c6426868d10b5722970807668421478f5c4425aa675427b0ce648d8769a"
+      },
+      {
+        "name": "d261/native-a2/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a2\\source-before.json",
+        "sha256": "1abfcbe05ea3673696f862e63a3a49490d7e8adf5ca7611949bc74c723a9ca66"
+      },
+      {
+        "name": "d261/native-a2/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a2\\source-after.json",
+        "sha256": "1abfcbe05ea3673696f862e63a3a49490d7e8adf5ca7611949bc74c723a9ca66"
+      },
+      {
+        "name": "d261/native-a2/browser-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a2\\browser-execution.json",
+        "sha256": "0916a1862b0d33356ea9561eb7deb1f7a6564f28af173341253e44f1ea1d5dda"
+      },
+      {
+        "name": "d261/native-a2/browser.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a2\\browser.stdout.txt",
+        "sha256": "92b0570ec23f9755c079bf4ef7143a0398a06b6634c4ddba9b53f8ccb4bcdb2a"
+      },
+      {
+        "name": "d261/native-a2/browser.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a2\\browser.stderr.txt",
+        "sha256": "b1ad431ba4cd28bb4f9066fa1909fe42310c3735416f40444299e62e345268e8"
+      },
+      {
+        "name": "d261/native-a1/application-typescript-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\application-typescript-execution.json",
+        "sha256": "840ff2c19fea6f2e4b26207f6b52c5129ad0ca2e3ba5e6f833fae7bf25e6dca8"
+      },
+      {
+        "name": "d261/native-a1/booky-model-animation-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\booky-model-animation-execution.json",
+        "sha256": "a58700aac9123ab70e285879d87b65f3e286758ec23c4eacfc63e35927ef44cc"
+      },
+      {
+        "name": "d261/native-a1/unit-results.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\unit-results.json",
+        "sha256": "46ef4c64f8306225afb1205bd416b3c957bbeebf14a5ba67722583f964ee68aa"
+      },
+      {
+        "name": "d260/native-a1/application-typescript-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\native-a1\\application-typescript-execution.json",
+        "sha256": "6b4d971dee4ee7be33d03c9c46045a8d6dbde87a49d2fcc5e3958c7c91f869ce"
+      },
+      {
+        "name": "d259/runtime/launcher.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\runtime\\launcher.stderr.txt",
+        "sha256": "ff221ef67cc534d89a13baaf04167bda20a0d16f028adfb1d15a3f5a6d99df1f"
+      },
+      {
+        "name": "d259/runtime/launcher.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\runtime\\launcher.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "d259/runtime/root-binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\runtime\\root-binding.json",
+        "sha256": "4d8123c74cfc41313768558a12edac67a839bc20938fe6a022ed3ae07d08f175"
+      },
+      {
+        "name": "d259/runtime/actual-a1/binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\runtime\\actual-a1\\binding.json",
+        "sha256": "4d8123c74cfc41313768558a12edac67a839bc20938fe6a022ed3ae07d08f175"
+      },
+      {
+        "name": "d259/runtime/actual-a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\booky-followup\\runtime\\actual-a1\\source-before.json",
+        "sha256": "67b3aba66cda507d76da31132ee81a8ec704dabf6e0954244884ba53c2f8d9db"
+      },
+      {
+        "name": "d261/runtime/producer.mjs",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\producer.mjs",
+        "sha256": "1708de4e75f4ddd4d633a92380d87744c9f55ed7314df3554e9e4fcf91a7d046"
+      },
+      {
+        "name": "d261/runtime/pwa.config.mjs",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\pwa.config.mjs",
+        "sha256": "04280f1c0980b315c09340e7e942b8bd6701bca681bb48288351590dc4f9280e"
+      },
+      {
+        "name": "d261/runtime/root-binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\root-binding.json",
+        "sha256": "b6c9ffa2089b1bdc66ece82dab272409a3cad7e78efc69a79e4023599eab31ef"
+      },
+      {
+        "name": "d261/runtime/current-source-manifest.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\current-source-manifest.json",
+        "sha256": "58b44d12bcce01bc96e1b72e811232dfe5596d415271ff94e83c60f04563f287"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/result.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\result.json",
+        "sha256": "ee902c1bbc7905a32b40c5d09340f23600382b89beef98b2b8806dd7fba698c6"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/binding.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\binding.json",
+        "sha256": "b6c9ffa2089b1bdc66ece82dab272409a3cad7e78efc69a79e4023599eab31ef"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/source-before.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\source-before.json",
+        "sha256": "58b44d12bcce01bc96e1b72e811232dfe5596d415271ff94e83c60f04563f287"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/source-after.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\source-after.json",
+        "sha256": "58b44d12bcce01bc96e1b72e811232dfe5596d415271ff94e83c60f04563f287"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/browser-playwright.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser-playwright.json",
+        "sha256": "a7cddba6cfa60b398fb65b4409c8f801c3edcaadf07b6e6978d8d9e6026c9890"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/browser-observation.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser-observation.json",
+        "sha256": "cc96daca3a1b0da73f23c841837a8808af6ca8d92918379949b3236bf239c09b"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/browser-command.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser-command.json",
+        "sha256": "e67ca9c2c5e29dd55f581e9bc4b1268502ad4a244ffa7506824fee4d91ab9e8f"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/browser-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser-execution.json",
+        "sha256": "b286ec1ab16d6d96caf2695f623a2fb36d70031ca6e7b5608b6a70caf42be603"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/browser.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser.stdout.txt",
+        "sha256": "729882eeb16b5a96cb469c8492b8447c82cf0e795d4887231a82a842886299ca"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/browser.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser.stderr.txt",
+        "sha256": "d6b33a06c156e8da6c5229a6475402604c21d243d10e1cae630025897af22a8a"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/build-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\build-execution.json",
+        "sha256": "94b8e0e9b921baaffbf2607110b7121a43bf5af42537d8250437ab638243543c"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/strict-audit.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\strict-audit.json",
+        "sha256": "2891944e0bdb206d72cdb3e9c689f7c3a0366b06df26017227a3c41a19b5eb0f"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/strict-audit-command.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\strict-audit-command.json",
+        "sha256": "e49c6987889ce7c7941e7586ff25176a6149015c586676b913f05a9b8c27bac1"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/strict-audit-execution.json",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\strict-audit-execution.json",
+        "sha256": "59955fc347167cba75837300f00710b07112cbca3c64a0ddeec615cae7a9fa55"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/strict-audit.stdout.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\strict-audit.stdout.txt",
+        "sha256": "2891944e0bdb206d72cdb3e9c689f7c3a0366b06df26017227a3c41a19b5eb0f"
+      },
+      {
+        "name": "d261/runtime/actual-d261a1/strict-audit.stderr.txt",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\strict-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "captures/d259-a3/booky-after-text-roundtrip.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d259-booky-text-a3\\artifacts\\native-planet-hidden-Booky-02b67--Menu-large-text-round-trip\\booky-after-text-roundtrip.png",
+        "sha256": "bb90f5ba84ca0aac174542343848a8ccbabb7ae36e37928ad781da520853094b"
+      },
+      {
+        "name": "captures/d259-a3/booky-english-narrow-return-shortcut.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d259-booky-text-a3\\artifacts\\native-planet-hidden-Booky-02b67--Menu-large-text-round-trip\\booky-english-narrow-return-shortcut.png",
+        "sha256": "869818ed4cafd3d750535d486a9e15978c559878417648d68bd6d0551477f798"
+      },
+      {
+        "name": "captures/d259-a3/native-final-passed.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d259-booky-text-a3\\artifacts\\native-planet-hidden-Booky-02b67--Menu-large-text-round-trip\\native-final-passed.png",
+        "sha256": "869818ed4cafd3d750535d486a9e15978c559878417648d68bd6d0551477f798"
+      },
+      {
+        "name": "captures/d260-a1/compact-mobile-320x844.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-320x844.png",
+        "sha256": "ef7156a7b992b4d94eccb87b090878bd17d056138e28262b39a5ce7018b79a00"
+      },
+      {
+        "name": "captures/d260-a1/compact-mobile-390x844.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-390x844.png",
+        "sha256": "adb15b988a71a1fcdc4a3d51d89eacd23c7138ee001bf7ed3e8319599c0a9d18"
+      },
+      {
+        "name": "captures/d260-a1/premium-globe-skin-tip-ru.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-ru.png",
+        "sha256": "7d694a47beaf181a5878cee92a788c99cb92c2b3e6223c61c53713d928771d35"
+      },
+      {
+        "name": "captures/d260-a1/premium-globe-skin-tip-en.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-en.png",
+        "sha256": "a8aecfcff05f00b9a3ec593a28309f03e24e4c24f67e90883df43d0ca5593bf7"
+      },
+      {
+        "name": "captures/d260-a1/compact-mobile-330x844.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-330x844.png",
+        "sha256": "a6a44f3dcea3fdfb18bc6aa0b29a17852f7c58337f21cbe828b7686332561f38"
+      },
+      {
+        "name": "captures/d260-a1/compact-mobile-390x480.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-390x480.png",
+        "sha256": "2bf5b5b7c1e099462afe6c364cb8735e8e8d78e7bc144d03cb8f6e7020e75f0a"
+      },
+      {
+        "name": "captures/d260-a1/compact-mobile-430x844.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-430x844.png",
+        "sha256": "8d8fa278facb97b2cc7c83c273abefdf1f483ca2c36a9e26325a635555ac8d8c"
+      },
+      {
+        "name": "captures/d260-a1/compact-mobile-844x390.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-844x390.png",
+        "sha256": "a1d2c3ddce55b12045efbbec95ee15cb8e26ae30b8388c85f6838840d7ce0686"
+      },
+      {
+        "name": "captures/d260-a1/compact-mobile-768x1024.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-768x1024.png",
+        "sha256": "6a956c4559a532f9321f8eb54b02ab239832c136b22871e7968944837d134dd8"
+      },
+      {
+        "name": "captures/d260-a1/premium-menu-large-text-390x844.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-menu-large-text-390x844.png",
+        "sha256": "b23a447bb9dd9679d9c82a41daf47bbfd6e6ed23a5a2cb06942572705d0c0616"
+      },
+      {
+        "name": "captures/d261-a1/compact-mobile-330x844.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-330x844.png",
+        "sha256": "5c5df13de5ac813dfedff4d14ded27205fe0e21680155153a41782167241d09a"
+      },
+      {
+        "name": "captures/d261-a1/premium-globe-skin-tip-ru.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-ru.png",
+        "sha256": "f1c540f3faddf01fa7d9b8c5a0b1237b235df126b353bd65407d4d6716149444"
+      },
+      {
+        "name": "captures/d261-a1/booky-guide-live-wink-ru.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\booky-guide-live-wink-ru.png",
+        "sha256": "7ebbbbf83f8a7770f8840f5a331322d5652973a19fc32966045923e7755ee111"
+      },
+      {
+        "name": "captures/d261-a1/premium-globe-skin-tip-en.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-en.png",
+        "sha256": "c9c530eff0d78e53ec81928293bdcabd52ba99f4d67991e59b9c3fb558c3de69"
+      },
+      {
+        "name": "captures/d261-a1/booky-companion-large-actions-ru.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\booky-companion-large-actions-ru.png",
+        "sha256": "50d274163eb23c204f3158b9fa30de5c8eb5a29a08a99f17de48b00aff94e74d"
+      },
+      {
+        "name": "captures/d261-a1/compact-mobile-844x390.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-844x390.png",
+        "sha256": "19509ebccd3c0718a4dcae99955db45a70dca645d2d26cdc4133a8f0a0240455"
+      },
+      {
+        "name": "captures/d261-a1/native-final-passed.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\native-final-passed.png",
+        "sha256": "defcaa9424fa0a8fbfd9e89233fcef2aa2a65be477eb13c512fecd22083b474a"
+      },
+      {
+        "name": "captures/d261-a2/booky-companion-large-actions-ru.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\booky-companion-large-actions-ru.png",
+        "sha256": "2554bf12a68493faa5674fd91d7ab80df8be501f4afeafd35bc441ddbc7cbd03"
+      },
+      {
+        "name": "captures/d261-a2/premium-globe-skin-tip-ru.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-ru.png",
+        "sha256": "f3461bea735490f8eaa4732ca3dd916e7038374d0a9415134f47a1d0e2a5e969"
+      },
+      {
+        "name": "captures/d261-a2/booky-guide-live-wink-ru.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\booky-guide-live-wink-ru.png",
+        "sha256": "3aa06be3ceee4543f406b041863cf63bb73b6b9ad82d75c29bd9320ffd4fe34a"
+      },
+      {
+        "name": "captures/d261-a2/premium-globe-skin-tip-en.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-en.png",
+        "sha256": "3e2fb39c6a31ef02754595647a2bb414b451a14c1312ed92794d27037168a3e1"
+      },
+      {
+        "name": "captures/d261-a2/compact-mobile-330x844.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-330x844.png",
+        "sha256": "5c5df13de5ac813dfedff4d14ded27205fe0e21680155153a41782167241d09a"
+      },
+      {
+        "name": "captures/d261-a2/compact-mobile-390x480.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-390x480.png",
+        "sha256": "0608653e9c8272eae83ee87426b1bdc4c0d7556b1c5da2fa2b88e09cd624b51f"
+      },
+      {
+        "name": "captures/d261-a2/compact-mobile-844x390.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-844x390.png",
+        "sha256": "45b031a7b22ad92564c93a70ba40a22b0c4bd8ca6be1dbc28bd5312827a1ab7c"
+      },
+      {
+        "name": "captures/d261-a2/premium-menu-large-text-390x844.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-menu-large-text-390x844.png",
+        "sha256": "87fa9f78447a582f33e755b85f291511f38dad02a51f0257b6ccdc5069584b34"
+      },
+      {
+        "name": "captures/d261-a2/native-final-passed.png",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\native-final-passed.png",
+        "sha256": "d675484cc7410695e02ac94f36e498f36abbc35729c48f210e8bb06a4caaacff"
+      },
+      {
+        "name": "captures/d261-pwa/pwa-premium-globe-ru.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-ru.png",
+        "sha256": "fc71570b5dfa6d5e25705b3854b0b1388708e5689da8d348660759c887110b86"
+      },
+      {
+        "name": "captures/d261-pwa/pwa-premium-menu-ru.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-ru.png",
+        "sha256": "2f5edaccfcf676cf9f78daf39b1b4a38cdc613e38c4f05b9149f35f2b1b2d0fa"
+      },
+      {
+        "name": "captures/d261-pwa/pwa-premium-globe-en.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-en.png",
+        "sha256": "def3befa33f43ef2c959caade3b540cac81ab51170e96a89d34102c0a1fb2ef6"
+      },
+      {
+        "name": "captures/d261-pwa/pwa-premium-menu-en.png",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-en.png",
+        "sha256": "0f6543d926d5bc42404bb96c515f19410846f1704e7dab8dc8f9865e0bfca929"
+      }
+    ],
+    "review": {
+      "schemaVersion": 1,
+      "reviewer": "ROOT",
+      "sourceCommit": "d1301b669dcf75d27373aacd8345cd2e135ede0c",
+      "buildId": "018cd4bde9515a434ad8e764d7a8880e2b276647afad9081e2f10aa48685a342",
+      "scope": "Selected actual native and current QA PWA captures; no full visual, accessibility, installed-device or child/adult user-study acceptance.",
+      "captures": [
+        {
+          "group": "d259-a3",
+          "name": "booky-after-text-roundtrip.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d259-booky-text-a3\\artifacts\\native-planet-hidden-Booky-02b67--Menu-large-text-round-trip\\booky-after-text-roundtrip.png",
+          "sha256": "bb90f5ba84ca0aac174542343848a8ccbabb7ae36e37928ad781da520853094b",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D259 sourceed7: directly reviewed earlier this turn; scoped hidden return dock, not proof of the old crop cause."
+        },
+        {
+          "group": "d259-a3",
+          "name": "booky-english-narrow-return-shortcut.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d259-booky-text-a3\\artifacts\\native-planet-hidden-Booky-02b67--Menu-large-text-round-trip\\booky-english-narrow-return-shortcut.png",
+          "sha256": "869818ed4cafd3d750535d486a9e15978c559878417648d68bd6d0551477f798",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D259 sourceed7: directly reviewed earlier this turn; scoped hidden return dock, not proof of the old crop cause."
+        },
+        {
+          "group": "d259-a3",
+          "name": "native-final-passed.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d259-booky-text-a3\\artifacts\\native-planet-hidden-Booky-02b67--Menu-large-text-round-trip\\native-final-passed.png",
+          "sha256": "869818ed4cafd3d750535d486a9e15978c559878417648d68bd6d0551477f798",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D259 sourceed7: directly reviewed earlier this turn; scoped hidden return dock, not proof of the old crop cause."
+        },
+        {
+          "group": "d260-a1",
+          "name": "compact-mobile-320x844.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-320x844.png",
+          "sha256": "ef7156a7b992b4d94eccb87b090878bd17d056138e28262b39a5ce7018b79a00",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d260-a1",
+          "name": "compact-mobile-390x844.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-390x844.png",
+          "sha256": "adb15b988a71a1fcdc4a3d51d89eacd23c7138ee001bf7ed3e8319599c0a9d18",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d260-a1",
+          "name": "premium-globe-skin-tip-ru.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-ru.png",
+          "sha256": "7d694a47beaf181a5878cee92a788c99cb92c2b3e6223c61c53713d928771d35",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d260-a1",
+          "name": "premium-globe-skin-tip-en.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-en.png",
+          "sha256": "a8aecfcff05f00b9a3ec593a28309f03e24e4c24f67e90883df43d0ca5593bf7",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d260-a1",
+          "name": "compact-mobile-330x844.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-330x844.png",
+          "sha256": "a6a44f3dcea3fdfb18bc6aa0b29a17852f7c58337f21cbe828b7686332561f38",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d260-a1",
+          "name": "compact-mobile-390x480.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-390x480.png",
+          "sha256": "2bf5b5b7c1e099462afe6c364cb8735e8e8d78e7bc144d03cb8f6e7020e75f0a",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d260-a1",
+          "name": "compact-mobile-430x844.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-430x844.png",
+          "sha256": "8d8fa278facb97b2cc7c83c273abefdf1f483ca2c36a9e26325a635555ac8d8c",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d260-a1",
+          "name": "compact-mobile-844x390.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-844x390.png",
+          "sha256": "a1d2c3ddce55b12045efbbec95ee15cb8e26ae30b8388c85f6838840d7ce0686",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d260-a1",
+          "name": "compact-mobile-768x1024.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-768x1024.png",
+          "sha256": "6a956c4559a532f9321f8eb54b02ab239832c136b22871e7968944837d134dd8",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d260-a1",
+          "name": "premium-menu-large-text-390x844.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d260-globe-skins-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-menu-large-text-390x844.png",
+          "sha256": "b23a447bb9dd9679d9c82a41daf47bbfd6e6ed23a5a2cb06942572705d0c0616",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D260 source5351 before the 3D/size/menu-tile follow-up."
+        },
+        {
+          "group": "d261-a1",
+          "name": "compact-mobile-330x844.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-330x844.png",
+          "sha256": "5c5df13de5ac813dfedff4d14ded27205fe0e21680155153a41782167241d09a",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D261 working a1; size-choice mid-word wrapping was found here and corrected by CSS only for finala2."
+        },
+        {
+          "group": "d261-a1",
+          "name": "premium-globe-skin-tip-ru.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-ru.png",
+          "sha256": "f1c540f3faddf01fa7d9b8c5a0b1237b235df126b353bd65407d4d6716149444",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D261 working a1; size-choice mid-word wrapping was found here and corrected by CSS only for finala2."
+        },
+        {
+          "group": "d261-a1",
+          "name": "booky-guide-live-wink-ru.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\booky-guide-live-wink-ru.png",
+          "sha256": "7ebbbbf83f8a7770f8840f5a331322d5652973a19fc32966045923e7755ee111",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D261 working a1; size-choice mid-word wrapping was found here and corrected by CSS only for finala2."
+        },
+        {
+          "group": "d261-a1",
+          "name": "premium-globe-skin-tip-en.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-en.png",
+          "sha256": "c9c530eff0d78e53ec81928293bdcabd52ba99f4d67991e59b9c3fb558c3de69",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D261 working a1; size-choice mid-word wrapping was found here and corrected by CSS only for finala2."
+        },
+        {
+          "group": "d261-a1",
+          "name": "booky-companion-large-actions-ru.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\booky-companion-large-actions-ru.png",
+          "sha256": "50d274163eb23c204f3158b9fa30de5c8eb5a29a08a99f17de48b00aff94e74d",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D261 working a1; size-choice mid-word wrapping was found here and corrected by CSS only for finala2."
+        },
+        {
+          "group": "d261-a1",
+          "name": "compact-mobile-844x390.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-844x390.png",
+          "sha256": "19509ebccd3c0718a4dcae99955db45a70dca645d2d26cdc4133a8f0a0240455",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D261 working a1; size-choice mid-word wrapping was found here and corrected by CSS only for finala2."
+        },
+        {
+          "group": "d261-a1",
+          "name": "native-final-passed.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a1\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\native-final-passed.png",
+          "sha256": "defcaa9424fa0a8fbfd9e89233fcef2aa2a65be477eb13c512fecd22083b474a",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Historical D261 working a1; size-choice mid-word wrapping was found here and corrected by CSS only for finala2."
+        },
+        {
+          "group": "d261-a2",
+          "name": "booky-companion-large-actions-ru.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\booky-companion-large-actions-ru.png",
+          "sha256": "2554bf12a68493faa5674fd91d7ab80df8be501f4afeafd35bc441ddbc7cbd03",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final D261 native file rows equal committedd130; direct review of these selected nine captures, not every native image."
+        },
+        {
+          "group": "d261-a2",
+          "name": "premium-globe-skin-tip-ru.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-ru.png",
+          "sha256": "f3461bea735490f8eaa4732ca3dd916e7038374d0a9415134f47a1d0e2a5e969",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final D261 native file rows equal committedd130; direct review of these selected nine captures, not every native image."
+        },
+        {
+          "group": "d261-a2",
+          "name": "booky-guide-live-wink-ru.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\booky-guide-live-wink-ru.png",
+          "sha256": "3aa06be3ceee4543f406b041863cf63bb73b6b9ad82d75c29bd9320ffd4fe34a",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final D261 native file rows equal committedd130; direct review of these selected nine captures, not every native image."
+        },
+        {
+          "group": "d261-a2",
+          "name": "premium-globe-skin-tip-en.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-globe-skin-tip-en.png",
+          "sha256": "3e2fb39c6a31ef02754595647a2bb414b451a14c1312ed92794d27037168a3e1",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final D261 native file rows equal committedd130; direct review of these selected nine captures, not every native image."
+        },
+        {
+          "group": "d261-a2",
+          "name": "compact-mobile-330x844.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-330x844.png",
+          "sha256": "5c5df13de5ac813dfedff4d14ded27205fe0e21680155153a41782167241d09a",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final D261 native file rows equal committedd130; direct review of these selected nine captures, not every native image."
+        },
+        {
+          "group": "d261-a2",
+          "name": "compact-mobile-390x480.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-390x480.png",
+          "sha256": "0608653e9c8272eae83ee87426b1bdc4c0d7556b1c5da2fa2b88e09cd624b51f",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final D261 native file rows equal committedd130; direct review of these selected nine captures, not every native image."
+        },
+        {
+          "group": "d261-a2",
+          "name": "compact-mobile-844x390.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\compact-mobile-844x390.png",
+          "sha256": "45b031a7b22ad92564c93a70ba40a22b0c4bd8ca6be1dbc28bd5312827a1ab7c",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final D261 native file rows equal committedd130; direct review of these selected nine captures, not every native image."
+        },
+        {
+          "group": "d261-a2",
+          "name": "premium-menu-large-text-390x844.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\premium-menu-large-text-390x844.png",
+          "sha256": "87fa9f78447a582f33e755b85f291511f38dad02a51f0257b6ccdc5069584b34",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final D261 native file rows equal committedd130; direct review of these selected nine captures, not every native image."
+        },
+        {
+          "group": "d261-a2",
+          "name": "native-final-passed.png",
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\d261-booky-live-a2\\artifacts\\native-planet-compact-prem-49478-locale-and-edition-controls\\native-final-passed.png",
+          "sha256": "d675484cc7410695e02ac94f36e498f36abbc35729c48f210e8bb06a4caaacff",
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final D261 native file rows equal committedd130; direct review of these selected nine captures, not every native image."
+        },
+        {
+          "group": "d261-pwa",
+          "name": "pwa-premium-globe-ru.png",
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-ru.png",
+          "sha256": "fc71570b5dfa6d5e25705b3854b0b1388708e5689da8d348660759c887110b86",
+          "bytes": 257706,
+          "width": 390,
+          "height": 844,
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final fresh QA PWA018cd4 at committedd130; four actual offline RU/EN screenshots directly viewed."
+        },
+        {
+          "group": "d261-pwa",
+          "name": "pwa-premium-menu-ru.png",
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-ru.png",
+          "sha256": "2f5edaccfcf676cf9f78daf39b1b4a38cdc613e38c4f05b9149f35f2b1b2d0fa",
+          "bytes": 169585,
+          "width": 390,
+          "height": 844,
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final fresh QA PWA018cd4 at committedd130; four actual offline RU/EN screenshots directly viewed."
+        },
+        {
+          "group": "d261-pwa",
+          "name": "pwa-premium-globe-en.png",
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-globe-en.png",
+          "sha256": "def3befa33f43ef2c959caade3b540cac81ab51170e96a89d34102c0a1fb2ef6",
+          "bytes": 253205,
+          "width": 390,
+          "height": 844,
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final fresh QA PWA018cd4 at committedd130; four actual offline RU/EN screenshots directly viewed."
+        },
+        {
+          "group": "d261-pwa",
+          "name": "pwa-premium-menu-en.png",
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser\\offline-catalog-offline-PW-8871d-and-integrated-archive-card-s03-premium-msedge-390\\pwa-premium-menu-en.png",
+          "sha256": "0f6543d926d5bc42404bb96c515f19410846f1704e7dab8dc8f9865e0bfca929",
+          "bytes": 163988,
+          "width": 390,
+          "height": 844,
+          "directlyViewedBy": "ROOT",
+          "qualification": "Final fresh QA PWA018cd4 at committedd130; four actual offline RU/EN screenshots directly viewed."
+        }
+      ],
+      "findings": [
+        "Upper identity and aligned rectangular menu tile are visible in the reviewed native and final PWA captures; the actual menu retains RU/GB flags in its submenu.",
+        "Finala2 companion size labels stay whole inside one grouped control, replacing the observed a1 mid-word wrapping.",
+        "Real3D Booky, attached magnifier, rounded cheeks and independent wink lid are visible in selected guide and companion captures; finite gesture, reduced-motion, real size/touch move/hide/return/locale/Collection functionality passed in the browser case.",
+        "Native capture alignment changes in some interaction frames. Selected final guides remain within the viewport and their text/actions are visible; these photos do not establish universal absence of layout shifts or full OS visual acceptance.",
+        "Historical D258 partly clipped return trigger has a new consistent portrait dock and scoped D259 RU/EN hit-point evidence. The original cause remains unproved.",
+        "Raw producer capturesReviewed:false stays unchanged; this review is separate."
+      ],
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "verifier": {
+      "path": "scripts/mobile/verify-state.mjs",
+      "sha256": "f31e2b86d3e415a541a9186cac35ec1765ce4ae235eeecb310038cee46260ebf"
+    },
+    "helper": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\checkpoint.mjs",
+      "sha256": "10d386fd34a7119deb53212b23b2286a6fff9450881026e5de31ed6b5c48655b"
+    }
+  },
+  "previousNextActionRetained": "Continue S03.acceptance with the bounded current-public mobile fallback/e2e gap: the existing built canonical account routes oracle has been adapted to flag IDs, but has not yet run against a source-bound current public compilation. Inspect and bind the applicable current public-account build closure before one selected existing mobile case; do not substitute the private QA PWA or retained old public HTML. Keep the inconclusive EN native-checkbox still-frame paint separate from functional consent retention and resolve it before full account visual acceptance. Preserve passed flags/native/offline/account/marker/update evidence without reruns for documentation; all11 routed criteria, approvals and installed-device/provider/legal/editorial/stage/release gates remain unchanged."
+}

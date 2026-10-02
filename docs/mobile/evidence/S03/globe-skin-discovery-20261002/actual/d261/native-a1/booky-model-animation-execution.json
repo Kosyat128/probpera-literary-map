@@ -1,0 +1,12 @@
+{
+  "args": [
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\native-a1\\unit-results.json"
+  ],
+  "exitCode": 0,
+  "durationMs": 4510
+}

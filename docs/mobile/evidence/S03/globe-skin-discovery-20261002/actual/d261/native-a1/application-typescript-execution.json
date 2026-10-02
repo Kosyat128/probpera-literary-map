@@ -1,0 +1,8 @@
+{
+  "args": [
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "exitCode": 0,
+  "durationMs": 21896
+}

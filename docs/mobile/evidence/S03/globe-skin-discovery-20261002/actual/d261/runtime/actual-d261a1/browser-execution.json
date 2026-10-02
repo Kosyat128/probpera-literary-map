@@ -1,0 +1,18 @@
+{
+  "command": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser-command.json",
+    "sha256": "e67ca9c2c5e29dd55f581e9bc4b1268502ad4a244ffa7506824fee4d91ab9e8f"
+  },
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "durationMs": 28909,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser.stdout.txt",
+    "sha256": "729882eeb16b5a96cb469c8492b8447c82cf0e795d4887231a82a842886299ca"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-premium-interface-round2\\skin-affordance\\motion\\runtime\\actual-d261a1\\browser.stderr.txt",
+    "sha256": "d6b33a06c156e8da6c5229a6475402604c21d243d10e1cae630025897af22a8a"
+  }
+}

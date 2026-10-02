@@ -1,0 +1,31 @@
+{
+  "sourceCommit": "5351f2c8cbe4bc1fe4295f47ecb416e0c46e35e9",
+  "parentCommit": "ed7a67934d0dacca88f4abe0565aec32f1751381",
+  "files": [
+    {
+      "path": "src/host/host.css",
+      "originalSha256": "1bac56918718b6934e45ded88e9479131d9380decaf72950e4682651d9098f6e",
+      "proposedSha256": "e30e2c740540de76f70376972837af7b5febf0212826fabc26218e281b0ccfa3"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "originalSha256": "db8f1d26d71cf4ebbbd9009e1b4895fa351b2d79850498adccb1716d88940a8e",
+      "proposedSha256": "ea85fa541a714933fb5e73d3eee1933716796b4674aef53d91191ae1a88717a0"
+    },
+    {
+      "path": "tests/host/native-planet.spec.mjs",
+      "originalSha256": "c4dba1dea3c9d63ea97b2615c3a37dedaf6e83056a9962886f0ea4545059a600",
+      "proposedSha256": "f3b4a01aa9f0de5a381a1e995a388c45be54da332e9939f58d709b3786a9a513"
+    },
+    {
+      "path": "src/components/GlobeSkinGuide.tsx",
+      "originalSha256": null,
+      "proposedSha256": "1e0f36cbccd2a2961f618825bc873384f26e32ab651ae0622fe5c48b431f697b"
+    }
+  ],
+  "nativeFinalRowsEqualCommitted": true,
+  "clean": true,
+  "sourceRows": 2151,
+  "stageAccepted": false,
+  "releaseReady": false
+}

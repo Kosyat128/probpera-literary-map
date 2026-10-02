@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] [s03-premium-msedge-390] › tests\pwa\offline-catalog.spec.mjs:201:1 › offline PWA cross-language author search and book return retain the globe and integrated archive card
+  1 passed (28.3s)
