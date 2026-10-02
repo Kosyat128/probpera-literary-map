@@ -1,0 +1,82 @@
+name: Recover reviewed literary news corrections without publishing
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: Exact current main commit SHA containing the unchanged-edit fix
+        required: true
+        type: string
+      mode:
+        description: Inspect or requeue the thirteen reviewed corrections; neither mode publishes
+        required: true
+        type: choice
+        options: [inspect, apply]
+        default: inspect
+      manifest_sha256:
+        description: Exact reviewed correction manifest SHA-256
+        required: true
+        default: c14f0615dd24db5831b6031c42ef4edcfda5c6ad4cf47ddd47b847c2fa06d886
+        type: string
+      confirmation:
+        description: Type inspect for inspection or recover-13-corrections to requeue
+        required: true
+        type: string
+
+permissions:
+  contents: read
+concurrency:
+  group: literary-agenda-delivery
+  cancel-in-progress: false
+jobs:
+  recover:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: production
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Validate exact main invocation and reviewed scope
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          MODE: ${{ inputs.mode }}
+          MANIFEST_SHA256: ${{ inputs.manifest_sha256 }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" && "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]]
+          [[ "$MANIFEST_SHA256" == "c14f0615dd24db5831b6031c42ef4edcfda5c6ad4cf47ddd47b847c2fa06d886" ]]
+          [[ "$MODE" == "inspect" && "$CONFIRMATION" == "inspect" || "$MODE" == "apply" && "$CONFIRMATION" == "recover-13-corrections" ]]
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Verify bounded recovery fixtures
+        run: npx vitest run scripts/recover-literary-news-corrections.test.mjs --maxWorkers=2
+      - name: Recheck main and prepare only the reviewed correction states
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          MODE: ${{ inputs.mode }}
+          MANIFEST_SHA256: ${{ inputs.manifest_sha256 }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
+          args=(--manifest-sha256 "$MANIFEST_SHA256" --expected-head "$EXPECTED_MAIN_SHA")
+          if [[ "$MODE" == "apply" ]]; then args+=(--apply); fi
+          node scripts/recover-literary-news-corrections.mjs "${args[@]}"
+      - name: Retain safe recovery counts only
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: news-correction-recovery-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .tmp/news-correction-recovery/result.json
+          if-no-files-found: ignore
+          retention-days: 30

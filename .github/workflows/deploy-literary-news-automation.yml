@@ -8,7 +8,12 @@ on:
         required: true
         type: string
       enabled:
-        description: Activate the verified one-year preparation and Telegram schedule
+        description: Activate the verified Telegram delivery schedule
+        required: true
+        type: boolean
+        default: false
+      preparation_enabled:
+        description: Also activate preparation after both real AI protocols pass; keep false while AI quota is unavailable
         required: true
         type: boolean
         default: false
@@ -39,7 +44,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
           ENABLED: ${{ inputs.enabled }}
+          PREPARATION_ENABLED: ${{ inputs.preparation_enabled }}
           NATIVE_DELIVERY_ENABLED: ${{ vars.LITERARY_NEWS_NATIVE_DELIVERY_ENABLED }}
+          NATIVE_PREPARATION_ENABLED: ${{ vars.LITERARY_NEWS_NATIVE_PREPARATION_ENABLED }}
           RUNTIME_ENABLED: ${{ vars.LITERARY_NEWS_RUNTIME_ENABLED }}
         run: |
           set -Eeuo pipefail
@@ -48,8 +55,10 @@ jobs:
           [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
           test -n "$CLOUDFLARE_ACCOUNT_ID"
           test -n "$CLOUDFLARE_API_TOKEN"
+          [[ "$PREPARATION_ENABLED" != "true" || "$ENABLED" == "true" ]]
           if [[ "$ENABLED" == "true" ]]; then
             [[ "$NATIVE_DELIVERY_ENABLED" == "true" && "$RUNTIME_ENABLED" == "true" ]]
+            [[ "$NATIVE_PREPARATION_ENABLED" == "$PREPARATION_ENABLED" ]]
           fi
       - uses: actions/setup-node@v7
         with:
@@ -115,7 +124,7 @@ jobs:
           console.log(JSON.stringify({telegramRightsVerified:true,destinationId:destination.id,readonly:true,delivered:0}));
           NODE
       - name: Validate retained preparation ownership and checkpoints without writes
-        if: inputs.enabled
+        if: inputs.enabled && inputs.preparation_enabled
         run: |
           node --input-type=module <<'NODE'
           import {createDailyNewsStorageClient} from './scripts/lib/literary-news-daily-automation.mjs';
@@ -126,7 +135,7 @@ jobs:
           console.log(JSON.stringify(await checkNativeNewsActivationReadiness({owner,ledger,profile})));
           NODE
       - name: Verify both configured AI protocols with unpublished fixtures
-        if: inputs.enabled
+        if: inputs.enabled && inputs.preparation_enabled
         # Match production env.AI.run using an isolated Worker preview with explicit
         # deployment-token auth. No local OAuth, production bindings or publication.
         run: node scripts/check-literary-news-native-ai-binding.mjs
@@ -173,6 +182,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          PREPARATION_ENABLED: ${{ inputs.preparation_enabled }}
         run: |
           set -Eeuo pipefail
           [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
@@ -182,25 +192,32 @@ jobs:
           if(head.codePending)throw Error('public_site_release_unconfirmed');
           NODE
           node scripts/verify-literary-news-live.mjs --expected-head "$EXPECTED_MAIN_SHA"
-          node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:true --var NEWS_AUTOMATION_BOOTSTRAP:true
+          if [[ "$PREPARATION_ENABLED" == "true" ]]; then
+            node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:true --var NEWS_AUTOMATION_BOOTSTRAP:true
+          fi
           node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-delivery.jsonc --var NEWS_DELIVERY_ENABLED:true
       - name: Verify the actual Worker flags and Cron schedules
         env:
           ENABLED: ${{ inputs.enabled }}
+          PREPARATION_ENABLED: ${{ inputs.preparation_enabled }}
         run: |
-          if [[ "$ENABLED" == "true" ]]; then
+          if [[ "$ENABLED" == "true" && "$PREPARATION_ENABLED" == "true" ]]; then
             node scripts/verify-native-news-workers.mjs --expect-enabled
+          elif [[ "$ENABLED" == "true" ]]; then
+            node scripts/verify-native-news-workers.mjs --expect-delivery-only
           else
             node scripts/verify-native-news-workers.mjs --expect-disabled
           fi
       - name: Record the schedule window
         env:
           ENABLED: ${{ inputs.enabled }}
+          PREPARATION_ENABLED: ${{ inputs.preparation_enabled }}
         run: |
           node --input-type=module <<'NODE'
           import {appendFile} from 'node:fs/promises';
           import {DAILY_NEWS_WINDOW} from './scripts/lib/literary-news-daily-profile.mjs';
-          await appendFile(process.env.GITHUB_STEP_SUMMARY,`Native preparation and delivery enabled: ${process.env.ENABLED}. Window: ${DAILY_NEWS_WINDOW.start} through ${DAILY_NEWS_WINDOW.endExclusive} (exclusive), ${DAILY_NEWS_WINDOW.timeZone}. Preparation: every two hours; Telegram: hourly from 08:00 through 22:00 Moscow, target 10-15 fresh literary news daily, photo priority with text fallback. Actual publication and Telegram acknowledgements require postflight verification.\n`);
+          const preparation=process.env.ENABLED==='true'&&process.env.PREPARATION_ENABLED==='true';
+          await appendFile(process.env.GITHUB_STEP_SUMMARY,`Native delivery enabled: ${process.env.ENABLED}. Native preparation enabled: ${preparation}. Window: ${DAILY_NEWS_WINDOW.start} through ${DAILY_NEWS_WINDOW.endExclusive} (exclusive), ${DAILY_NEWS_WINDOW.timeZone}. Telegram: hourly from 08:00 through 22:00 Moscow, target 10-15 fresh literary news daily, photo priority with text fallback. ${preparation?'Preparation: every two hours after both AI protocols passed.':'Preparation remains disabled; the verified existing public feed supplies delivery. No AI inference or checkpoint writes were authorized by this delivery-only activation.'} Actual Telegram acknowledgements require postflight verification.\n`);
           NODE
       - name: Record recovery requirements after a failed activation
         if: failure() && inputs.enabled

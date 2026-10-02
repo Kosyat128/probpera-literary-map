@@ -23,6 +23,16 @@ const safeCount = value => Number.isSafeInteger(value) && value >= 0 && value <=
 const safeTime = value => validTimestamp(value) ? value : null;
 const safeCode = value => typeof value === 'string'
   && /^(?:operations_|native_check_|daily_|ai_|provider_|runtime_)[a-z0-9_]+$/.test(value) ? value : 'operations_check_failed';
+const disabledPreparationReason = value => value === 'ai_quota_exceeded' ? value : 'disabled_by_configuration';
+
+// Only an explicit configuration flag may remove preparation checks. Missing configuration stays strict.
+function preparationConfiguration(env) {
+  const value = env.LITERARY_NEWS_NATIVE_PREPARATION_ENABLED;
+  if (value !== undefined && value !== '' && value !== 'true' && value !== 'false') fail('operations_configuration_invalid');
+  const enabled = value !== 'false';
+  return { preparationEnabled: enabled,
+    preparationBlockReason: enabled ? null : disabledPreparationReason(env.LITERARY_NEWS_NATIVE_PREPARATION_BLOCK_REASON) };
+}
 
 /** Count only elapsed publication hours, including across the nightly gap. Bounded to nine days. */
 export function newsDeliveryCheckpointAge(checkpoint, current) {
@@ -65,33 +75,39 @@ export function createNewsOperationsReportReader({ accountId, apiToken, fetchImp
 
 /** Raw sources, article bodies, credentials, model text and remote identifiers never enter this projection. */
 export async function summarizeNewsOperations({ feed, profile, ledger, owner, preparationReport, workers, control,
-  dayStatus, recentDayStatuses = [], dueRows, deliveryHeartbeat, destination, current = new Date(), expectedHead = null }) {
+  dayStatus, recentDayStatuses = [], dueRows, deliveryHeartbeat, destination, current = new Date(), expectedHead = null,
+  preparationEnabled = true, preparationBlockReason = null }) {
   if (!Number.isFinite(current.getTime())) fail('operations_clock_invalid');
+  if (typeof preparationEnabled !== 'boolean') fail('operations_configuration_invalid');
   const failures = [], add = code => { if (!failures.includes(code)) failures.push(code); };
   const day = dailyNewsDay(current), inWindow = day >= DAILY_NEWS_WINDOW.start && day < DAILY_NEWS_WINDOW.endExclusive;
-  if (workers?.readonly !== true || workers.expected !== 'enabled' || workers.workers?.length !== 2
-    || !workers.workers.some(row => row.flags?.NEWS_AUTOMATION_ENABLED === 'true')
+  const mode = preparationEnabled ? 'enabled' : 'delivery-only';
+  if (workers?.readonly !== true || workers.expected !== mode || workers.workers?.length !== 2
+    || !workers.workers.some(row => row.flags?.NEWS_AUTOMATION_ENABLED === String(preparationEnabled)
+      && (preparationEnabled || row.flags?.NEWS_AUTOMATION_BOOTSTRAP === 'false' && row.flags?.NEWS_AUTOMATION_WRITER === 'native'))
     || !workers.workers.some(row => row.flags?.NEWS_DELIVERY_ENABLED === 'true')) add('operations_workers_not_enabled');
   let publicValid = false, profileValid = false, ledgerValid = false;
   try { await verifyPublishedNewsSnapshot(feed); publicValid = true; } catch { add('operations_public_feed_invalid'); }
   if (publicValid && (feed.timeZone !== DAILY_NEWS_WINDOW.timeZone
     || !safeTime(feed.generatedAt) || Math.abs(current - Date.parse(feed.generatedAt)) > 300000)) add('operations_public_feed_stale');
   if (expectedHead !== null && (!/^[a-f0-9]{40}$/.test(expectedHead) || feed?.snapshot?.release !== expectedHead)) add('operations_public_release_mismatch');
-  try { if (!profile) throw Error(); await validateDailyApprovedPayload(profile, current); profileValid = true; }
-  catch { add('operations_profile_missing_or_invalid'); }
-  try { if (!ledger) throw Error(); await validateDailyLedger(ledger, current); ledgerValid = true; }
-  catch { add('operations_checkpoint_missing_or_invalid'); }
-  if (owner?.schemaVersion !== 1 || owner.owner !== 'native' || owner.nativeEnabled !== true || owner.drained !== false)
-    add('operations_native_owner_not_enabled');
-  const preparationAt = safeTime(preparationReport?.checkedAt), deliveryAt = safeTime(deliveryHeartbeat?.finishedAt);
-  if (!preparationAt || preparationReport?.schemaVersion !== 1 || preparationReport.publicationConfirmed !== true)
+  if (preparationEnabled) {
+    try { if (!profile) throw Error(); await validateDailyApprovedPayload(profile, current); profileValid = true; }
+    catch { add('operations_profile_missing_or_invalid'); }
+    try { if (!ledger) throw Error(); await validateDailyLedger(ledger, current); ledgerValid = true; }
+    catch { add('operations_checkpoint_missing_or_invalid'); }
+    if (owner?.schemaVersion !== 1 || owner.owner !== 'native' || owner.nativeEnabled !== true || owner.drained !== false)
+      add('operations_native_owner_not_enabled');
+  }
+  const preparationAt = preparationEnabled ? safeTime(preparationReport?.checkedAt) : null, deliveryAt = safeTime(deliveryHeartbeat?.finishedAt);
+  if (preparationEnabled && (!preparationAt || preparationReport?.schemaVersion !== 1 || preparationReport.publicationConfirmed !== true))
     add('operations_preparation_checkpoint_missing');
   if (inWindow) {
     if (preparationAt && (Date.parse(preparationAt) > current.getTime() || current - Date.parse(preparationAt) > MAX_AGE))
       add('operations_preparation_stale');
     if (profileValid && current - Date.parse(profile.generatedAt) > MAX_AGE) add('operations_profile_stale');
     if (ledgerValid && current - Date.parse(ledger.updatedAt) > MAX_AGE) add('operations_ledger_stale');
-    if (preparationReport?.stoppedReason && preparationReport.stoppedReason !== 'ai_request_budget_exhausted')
+    if (preparationEnabled && preparationReport?.stoppedReason && preparationReport.stoppedReason !== 'ai_request_budget_exhausted')
       add('operations_preparation_degraded');
     if (control?.mode !== 'on' || control.paused !== false || control.historyReconciled !== true) add('operations_destination_not_enabled');
     const firstDelivery = Date.parse(DAILY_NEWS_WINDOW.start + 'T08:00:00+03:00');
@@ -119,7 +135,7 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
       deliveries.set(historicalDay.editorialDay, historicalDay);
     } catch { add('operations_day_history_invalid'); }
   }
-  const admittedToday = perDay.get(day) || 0, publicIds = new Set(publicValid ? feed.items.map(row => row.id) : []);
+  const admittedToday = preparationEnabled ? perDay.get(day) || 0 : null, publicIds = new Set(publicValid ? feed.items.map(row => row.id) : []);
   const withdrawnIds = new Set(publicValid ? feed.withdrawals.map(row => row.id) : []);
   if (publicValid && records.some(record => !publicIds.has(record.id) && !withdrawnIds.has(record.id))) add('operations_public_profile_incomplete');
   const sourceStatuses = { ok: 0, error: 0, pending: 0 }, sourceFailures = {};
@@ -128,23 +144,29 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
     if (source.status === 'error') { const code = /^(?:http_[1-5][0-9]{2}|source_disabled|redirect_not_allowed|unexpected_response_origin|response_too_large|unsupported_content_type|empty_response|no_article_links|unexpected_feed_format|request_timeout|request_aborted|fetch_failed)$/.test(source.error)
       ? source.error : 'source_error'; sourceFailures[code] = (sourceFailures[code] || 0) + 1; }
   }
-  const sourceCounts = preparationReport?.native?.sourceCounts, sourceIntake = {};
+  const sourceCounts = preparationEnabled ? preparationReport?.native?.sourceCounts : null, sourceIntake = {};
   for (const key of ['approvedActiveSources', 'checkedSources', 'totalFinds', 'unreviewedRecentOrUndated', 'verifiedDetails'])
     sourceIntake[key] = safeCount(sourceCounts?.[key]);
   return { schemaVersion: 1, readonly: true, externalWrites: 0, checkedAt: current.toISOString(), day,
-    timeZone: DAILY_NEWS_WINDOW.timeZone, window: DAILY_NEWS_WINDOW, enabledVerified: !failures.includes('operations_workers_not_enabled'),
-    status: failures.length ? 'failed' : !inWindow ? 'outside_authorized_window' : admittedToday < DAILY_NEWS_LIMITS.minimum ? 'supply_degraded' : 'operational',
-    failures, scope: 'Current enabled schedules and checkpoint freshness are separate from actual accepted news and acknowledged Telegram creates. The daily target is not a guaranteed supply.',
+    timeZone: DAILY_NEWS_WINDOW.timeZone, window: DAILY_NEWS_WINDOW, mode, enabledVerified: !failures.includes('operations_workers_not_enabled'),
+    status: failures.length ? 'failed' : !inWindow ? 'outside_authorized_window' : !preparationEnabled ? 'preparation_disabled'
+      : admittedToday < DAILY_NEWS_LIMITS.minimum ? 'supply_degraded' : 'operational',
+    failures, scope: 'Verified schedules describe the configured mode only. Disabled preparation is not operational preparation. Actual accepted news and acknowledged Telegram creates remain separate; the daily target is not a guaranteed supply.',
     public: { valid: publicValid, release: /^[a-f0-9]{40}$/.test(feed?.snapshot?.release || '') ? feed.snapshot.release : null,
       generatedAt: safeTime(feed?.generatedAt), sourceCheckedAt: safeTime(feed?.lastCheckedAt),
       items: publicValid ? feed.items.length : null, sources: publicValid ? feed.sources.length : null,
       sourceStatuses, sourceFailures },
-    preparation: { lastRunAt: preparationAt, profileUpdatedAt: safeTime(profile?.generatedAt), ledgerUpdatedAt: safeTime(ledger?.updatedAt),
-      publishedHistorical: records.length, checkpointAccepted: ledgerValid ? ledger.accepted.length : null,
+    preparation: { enabled: preparationEnabled, status: preparationEnabled ? 'enabled' : 'preparation_disabled',
+      reason: preparationEnabled ? null : disabledPreparationReason(preparationBlockReason),
+      lastRunAt: preparationAt, profileUpdatedAt: preparationEnabled ? safeTime(profile?.generatedAt) : null,
+      ledgerUpdatedAt: preparationEnabled ? safeTime(ledger?.updatedAt) : null,
+      publishedHistorical: preparationEnabled ? records.length : null, checkpointAccepted: ledgerValid ? ledger.accepted.length : null,
       admittedToday, minimum: DAILY_NEWS_LIMITS.minimum, maximum: DAILY_NEWS_LIMITS.maximum,
-      minimumDeficit: Math.max(0, DAILY_NEWS_LIMITS.minimum - admittedToday), sourceIntake,
-      providerStop: preparationReport?.stoppedReason ? safeCode(preparationReport.stoppedReason) : null,
-      acceptedPerDay: [...perDay].filter(([acceptedDay]) => acceptedDay >= since).sort().map(([acceptedDay, count]) => ({ day: acceptedDay, count })) },
+      minimumDeficit: preparationEnabled ? Math.max(0, DAILY_NEWS_LIMITS.minimum - admittedToday) : null, sourceIntake,
+      providerStop: preparationEnabled ? preparationReport?.stoppedReason ? safeCode(preparationReport.stoppedReason) : null
+        : preparationBlockReason === 'ai_quota_exceeded' ? 'ai_quota_exceeded' : null,
+      acceptedPerDay: preparationEnabled ? [...perDay].filter(([acceptedDay]) => acceptedDay >= since).sort()
+        .map(([acceptedDay, count]) => ({ day: acceptedDay, count })) : null },
     telegram: { lastRunAt: deliveryAt, acknowledgedCreatesToday: deliveryDay?.acknowledgedCreates ?? null,
       acknowledgedPhotoCreatesToday: deliveryDay?.acknowledgedPhotoCreates ?? null,
       freshAcknowledgedCreatesToday: deliveryDay?.freshCreates ?? null, freshAcknowledgedPhotoCreatesToday: deliveryDay?.freshPhotoCreates ?? null,
@@ -158,17 +180,19 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
 }
 
 export async function checkNewsOperations({ env = process.env, fetchImpl = fetch, now = () => new Date(), expectedHead = null } = {}) {
+  const preparation = preparationConfiguration(env);
   const workers = await verifyNativeNewsWorkers({ accountId: env.CLOUDFLARE_ACCOUNT_ID, apiToken: env.CLOUDFLARE_API_TOKEN,
-    expected: 'enabled', fetchImpl });
+    expected: preparation.preparationEnabled ? 'enabled' : 'delivery-only', fetchImpl });
   const current = now(), destination = configuration.destinations.find(row => row.platform === 'telegram');
   if (!destination || !env.SUPABASE_SERVICE_ROLE_KEY) fail('operations_credentials_missing');
-  const origin = trustedSupabaseOrigin(env.SUPABASE_URL), storage = createDailyNewsStorageClient({
-    accountId: env.CLOUDFLARE_ACCOUNT_ID, apiToken: env.CLOUDFLARE_API_TOKEN, fetchImpl });
+  const origin = trustedSupabaseOrigin(env.SUPABASE_URL), storage = preparation.preparationEnabled ? createDailyNewsStorageClient({
+    accountId: env.CLOUDFLARE_ACCOUNT_ID, apiToken: env.CLOUDFLARE_API_TOKEN, fetchImpl }) : null;
   const client = createClient(origin, env.SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false, autoRefreshToken: false },
     global: { fetch: createDeliverySupabaseFetch(origin, fetchImpl) } }), store = createNewsRuntimeStore(client);
-  const values = await Promise.allSettled([fetchPublishedAgenda(fetchImpl), storage.read(DAILY_NEWS_PROFILE_KEY),
-    storage.read(DAILY_NEWS_LEDGER_KEY), storage.read(DAILY_NEWS_OWNER_KEY),
-    createNewsOperationsReportReader({ accountId: env.CLOUDFLARE_ACCOUNT_ID, apiToken: env.CLOUDFLARE_API_TOKEN, fetchImpl })(),
+  const values = await Promise.allSettled([fetchPublishedAgenda(fetchImpl), storage?.read(DAILY_NEWS_PROFILE_KEY),
+    storage?.read(DAILY_NEWS_LEDGER_KEY), storage?.read(DAILY_NEWS_OWNER_KEY),
+    preparation.preparationEnabled ? createNewsOperationsReportReader({ accountId: env.CLOUDFLARE_ACCOUNT_ID,
+      apiToken: env.CLOUDFLARE_API_TOKEN, fetchImpl })() : null,
     store.read('destination:telegram:' + destination.id),
     client.rpc('literary_news_delivery_day_status', { p_destination_id: destination.id, p_now: current.toISOString() }),
     client.rpc('read_due_literary_news_runtime_posts', { p_destination_id: destination.id, p_now: current.toISOString(), p_limit: 20 }),
@@ -177,7 +201,7 @@ export async function checkNewsOperations({ env = process.env, fetchImpl = fetch
       p_destination_id: destination.id, p_now: new Date(current.getTime() - (index + 1) * 86400000).toISOString() }))]);
   const get = index => values[index].status === 'fulfilled' ? values[index].value : null;
   const rpc = index => get(index)?.error ? null : get(index)?.data;
-  return summarizeNewsOperations({ workers, current, destination, expectedHead, feed: get(0), profile: get(1), ledger: get(2), owner: get(3),
+  return summarizeNewsOperations({ ...preparation, workers, current, destination, expectedHead, feed: get(0), profile: get(1), ledger: get(2), owner: get(3),
     preparationReport: get(4), control: get(5)?.state, dayStatus: rpc(6), dueRows: rpc(7), deliveryHeartbeat: get(8)?.state,
     recentDayStatuses: Array.from({ length: 6 }, (_, index) => ({
       at: new Date(current.getTime() - (index + 1) * 86400000).toISOString(), status: rpc(index + 9) })) });

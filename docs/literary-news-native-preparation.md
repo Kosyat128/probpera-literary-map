@@ -75,6 +75,26 @@ remains disabled. Bootstrap cannot silently perform that transfer.
 
 ## Verification limits
 
+The intended GitHub token reached the real native AI binding in run `36955958406`;
+the draft request stopped with `ai_quota_exceeded`. Preparation is therefore
+disabled, and no further inference is attempted. This result establishes the quota
+stop, not successful draft/review execution or a continuous supply of new stories.
+
+The explicit delivery-only deployment keeps `NEWS_AUTOMATION_ENABLED=false`,
+`NEWS_AUTOMATION_BOOTSTRAP=false` and `NEWS_AUTOMATION_WRITER=native`, while setting
+`NEWS_DELIVERY_ENABLED=true`. Delivery uses the existing reviewed feed and its
+eligible records, spacing and receipt checks. It does not invoke AI preparation,
+generate replacement stories or transfer ledger ownership to another writer. Both
+Cron schedules stay unchanged; the disabled preparer performs no scheduled work.
+
+After this deployment, `node scripts/verify-native-news-workers.mjs
+--expect-delivery-only` checks the two Workers' settings and schedules with exactly
+four read-only GETs. It requires preparation/bootstrap off and delivery on, rejects
+conflicting expectation flags, and prints only approved operational fields. These
+configuration checks do not prove a Telegram receipt or guarantee future feed
+availability. Returning to full preparation requires restored provider capacity
+and a successful two-protocol activation check; a quota error must not be bypassed.
+
 Activation checks both unpublished fixture protocols through an isolated remote
 AI binding using the explicitly supplied GitHub deployment token. It does not read
 local Wrangler OAuth, install another credential, or use production KV, queues,
