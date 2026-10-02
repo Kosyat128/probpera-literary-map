@@ -53,7 +53,8 @@ export async function startNativeAiProbeSession(auth, { fetchImpl = fetch,
     || !/^[a-z0-9][a-z0-9-]{0,62}$/.test(data.result.subdomain)) fail('native_ai_probe_existing_subdomain_unconfirmed');
   const { startRemoteProxySession } = await loadWrangler();
   return startRemoteProxySession({ AI: { type: 'ai', remote: true } }, {
-    workerName: 'probpera-native-news-ai-binding-proof', auth });
+    workerName: 'probpera-native-news-ai-binding-proof',
+    auth: {accountId: auth.accountId, apiToken: {apiToken: auth.apiToken}} });
 }
 
 export function nativeAiProbeRuntimeOptions(remoteProxyConnectionString) {

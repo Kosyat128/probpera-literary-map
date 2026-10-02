@@ -33,7 +33,8 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     expect(fetchImpl.mock.calls[0][0]).toBe(`https://api.cloudflare.com/client/v4/accounts/${credentials.accountId}/workers/subdomain`);
     expect(fetchImpl.mock.calls[0][1]).toMatchObject({ redirect: 'error', headers: { Authorization: `Bearer ${credentials.apiToken}` } });
     expect(startRemoteProxySession).toHaveBeenCalledExactlyOnceWith({ AI: { type: 'ai', remote: true } }, {
-      workerName: 'probpera-native-news-ai-binding-proof', auth: credentials });
+      workerName: 'probpera-native-news-ai-binding-proof',
+      auth: {accountId: credentials.accountId, apiToken: {apiToken: credentials.apiToken}} });
   });
   it.each([
     { status: 401, body: { success: false, errors: [{ code: 10000 }] } },
