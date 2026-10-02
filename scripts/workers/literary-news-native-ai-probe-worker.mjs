@@ -1,4 +1,4 @@
-import { createPreparationBindingAi } from './literary-news-preparation-worker.mjs';
+import { createPreparationBindingAi } from '../lib/literary-news-preparation-binding-ai.mjs';
 import { NATIVE_AI_PROBE_URL, NATIVE_AI_PROBE_DRAFT, NATIVE_AI_PROBE_REVIEW,
   NATIVE_AI_PROBE_MESSAGES, matchesNativeAiProbeFixture, nativeAiProbeReport } from '../lib/literary-news-native-ai-probe-fixture.mjs';
 

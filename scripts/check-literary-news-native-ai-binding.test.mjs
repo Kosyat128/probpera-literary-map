@@ -5,6 +5,8 @@ import { convertV4MiniflareOptions } from 'miniflare';
 import { checkNativeNewsAiBinding as check, nativeAiProbeRuntimeOptions,
   startNativeAiProbeSession, buildNativeAiProbeWorker } from './check-literary-news-native-ai-binding.mjs';
 import { createNativeAiProbeWorker } from './workers/literary-news-native-ai-probe-worker.mjs';
+import { createPreparationBindingAi as sharedAdapter } from './lib/literary-news-preparation-binding-ai.mjs';
+import { createPreparationBindingAi as productionAdapter } from './workers/literary-news-preparation-worker.mjs';
 import { NATIVE_AI_PROBE_URL, nativeAiProbeReport } from './lib/literary-news-native-ai-probe-fixture.mjs';
 import { DAILY_NEWS_DRAFT_SCHEMA, DAILY_NEWS_REVIEW_SCHEMA } from './lib/literary-news-daily-automation.mjs';
 import { DAILY_NEWS_MODELS } from './lib/literary-news-daily-profile.mjs';
@@ -170,6 +172,13 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     expect(script).not.toContain('getPlatformProxy');
     expect(script).not.toContain('wrangler/dist');
     expect(script).not.toContain('INTENDED_GITHUB_TOKEN');
+    expect(script).not.toContain('node:https');
+    expect(script).not.toContain('node:dns');
+    expect(script).not.toContain('node:net');
+    expect(script).not.toContain('node:zlib');
+    expect(script).not.toContain('node:stream');
+    expect(script).not.toContain('cheerio');
+    expect(productionAdapter).toBe(sharedAdapter);
     expect(convertV4MiniflareOptions(nativeAiProbeRuntimeOptions('http://127.0.0.1:19291', script)).workers).toHaveLength(1);
   });
   it.each([
