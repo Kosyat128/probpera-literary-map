@@ -20,7 +20,17 @@
 .planet-account__panel > [role="status"] { color: var(--account-muted); }
 .planet-account__disclosure { white-space: pre-wrap; overflow-wrap: anywhere; border-left: 2px solid var(--account-line); padding-left: .875rem; }
 .planet-account__consent { display: flex; gap: .75rem; align-items: flex-start; min-height: 44px; margin: 1.25rem 0; cursor: pointer; }
-.planet-account__consent input { flex: 0 0 auto; width: 24px; height: 24px; margin-top: .2rem; accent-color: var(--account-accent); }
+.planet-account__consent input {
+  appearance: none; box-sizing: border-box; flex: 0 0 auto; width: 24px; height: 24px; margin-top: .2rem;
+  border: 1.5px solid var(--account-muted); border-radius: .25rem; background-color: #fffdf5;
+  background-position: center; background-repeat: no-repeat; background-size: 18px 18px;
+  cursor: pointer;
+}
+.planet-account__consent input:checked {
+  border-color: var(--account-accent); background-color: var(--account-accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12l5 5L20 6' fill='none' stroke='%23fffaf2' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.planet-account__consent input:disabled { opacity: .55; cursor: not-allowed; }
 .planet-account .pwa-access__actions { gap: .625rem; }
 .planet-account__panel button {
   display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
@@ -44,6 +54,7 @@
 .planet-account :is(a, button, input):focus-visible { outline: 3px solid var(--account-focus); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .planet-account__panel button { transition: none; } }
 @media (forced-colors: active) {
+  .planet-account__consent input, .planet-account__consent input:checked { appearance: auto; border: initial; border-radius: initial; background: initial; accent-color: auto; opacity: 1; }
   .planet-account.pwa-access, .planet-account__panel, .planet-account__receipt { color: CanvasText; background: Canvas; box-shadow: none; }
   .planet-account__panel, .planet-account__disclosure, .planet-account__receipt, .planet-account__links { border-color: CanvasText; }
   .planet-account__panel button, .planet-account .pwa-access__actions > button:first-child { color: ButtonText; background: ButtonFace; border-color: ButtonText; }

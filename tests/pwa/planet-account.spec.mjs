@@ -283,6 +283,13 @@ for (const mobile of [false, true]) test(`deletion remains the same bilingual fo
       }
       const inputCapture = "planet-account-consent-en-native-input.png";
       await consent.screenshot({ path: testInfo.outputPath(inputCapture) }); captures.push(inputCapture);
+      await page.emulateMedia({ forcedColors: "active" });
+      await expect(consent).toBeChecked();
+      expect(await consent.evaluate(node => getComputedStyle(node).appearance)).toBe("auto");
+      await settleNativePaint();
+      const contrastCapture = "planet-account-consent-en-forced-colors.png";
+      await page.screenshot({ path: testInfo.outputPath(contrastCapture), fullPage: false }); captures.push(contrastCapture);
+      await page.emulateMedia({ forcedColors: "none" }); await settleNativePaint();
       for (const filename of captures) await testInfo.attach(filename, { path: testInfo.outputPath(filename), contentType: "image/png" });
       const evidence = "planet-account-consent-en-observations.json";
       await writeFile(testInfo.outputPath(evidence), JSON.stringify({
