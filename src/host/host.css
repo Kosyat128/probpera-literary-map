@@ -1002,3 +1002,125 @@ body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-
     border: 0;
   }
 }
+
+/* Vector language flags, with the existing locale provider and focus rules. */
+.interface-language-control.interface-language-control--flags {
+  --language-control-accent: var(--planet-accent-strong, var(--orange-deep, #b25a20));
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-sizing: border-box;
+  height: auto;
+  padding: 3px;
+  border-radius: 999px;
+}
+.interface-language-control.interface-language-control--flags button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: 0 0 44px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+}
+.interface-language-control.interface-language-control--flags button[aria-pressed="true"] {
+  border-color: var(--language-control-accent);
+  background: color-mix(in srgb, var(--language-control-accent) 12%, transparent);
+  box-shadow: none;
+}
+.interface-language-control--flags .interface-language-control__flag {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #ffffff26, 0 2px 4px #0002;
+}
+.interface-language-control--flags .interface-language-control__selected {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 13px;
+  height: 13px;
+  border: 2px solid var(--planet-surface, var(--paper, #fff8eb));
+  border-radius: 50%;
+  background: var(--language-control-accent);
+  box-sizing: content-box;
+}
+.interface-language-control--flags .interface-language-control__selected::after {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 3px;
+  height: 6px;
+  content: "";
+  border-right: 1.5px solid white;
+  border-bottom: 1.5px solid white;
+  transform: rotate(40deg);
+}
+.interface-language-control--flags .country-flag-icon--fallback {
+  font-size: 0;
+  background: var(--planet-line, #cdbdad);
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu-language .interface-language-control--flags {
+  --language-control-accent: var(--planet-accent);
+  height: auto;
+  background: var(--planet-chrome-raised);
+  border-color: rgba(var(--planet-accent-rgb), .2);
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu-language .interface-language-control__selected {
+  border-color: var(--planet-chrome);
+  background: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .atlas-application-menu-language .interface-language-control__selected::after { border-color: var(--planet-chrome); }
+.native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control.interface-language-control--flags { height: auto; }
+.native-planet-app[data-planet-edition] .interface-language-control.interface-language-control--flags button[aria-pressed="true"] {
+  border-color: var(--language-control-accent);
+  background: color-mix(in srgb, var(--language-control-accent) 12%, transparent);
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-application-menu-language > span { line-height: 1.4; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface :is(.atlas-heading, .atlas-toolbar) {
+  border-radius: 20px;
+  border-color: rgba(var(--planet-accent-rgb), .24);
+  box-shadow: 0 16px 48px #0005;
+}
+.native-planet-app[data-planet-edition] .atlas-heading .search-field {
+  border-radius: 14px;
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .atlas-toolbar .atlas-filters button {
+  min-height: 48px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .country-panel .writer-row.is-active {
+  color: var(--planet-ink);
+  background: var(--planet-card);
+  border-color: var(--planet-accent-strong);
+  box-shadow: inset 3px 0 var(--planet-accent-strong);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .planet-stand-controls__panel {
+  padding: 16px;
+  border-radius: 20px;
+  border-color: rgba(var(--planet-accent-rgb), .3);
+  box-shadow: 0 18px 48px #0005;
+}
+.native-planet-app[data-planet-edition] .planet-stand-controls :is(button, select) { border-radius: 12px; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe[data-globe-stand] .globe-controls {
+  bottom: auto;
+  min-height: 0;
+  align-content: start;
+}
+@media (forced-colors: active) {
+  .interface-language-control--flags button[aria-pressed="true"] { outline: 2px solid Highlight; outline-offset: -2px; }
+  .interface-language-control--flags .interface-language-control__selected { background: Highlight; forced-color-adjust: none; }
+}

@@ -226,7 +226,7 @@ export default function PwaAccessBoundary({ client, children, bootstrapStatus, o
       {authorized && recentStore ? <RepairAccess.Provider key="experience" value={controller}><RecentHistoryProvider store={recentStore}><div className="pwa-access__content" data-pwa-authorized="">{children}</div></RecentHistoryProvider></RepairAccess.Provider> : null}
       {!authorized ? (
         <main key="access" className="pwa-access app-error" aria-labelledby={headingId} data-pwa-access-state={checking ? "checking" : "closed"}>
-          <InterfaceLanguageControl />
+          <InterfaceLanguageControl presentation="flags" />
           <span>{t("Литературная планета")}</span>
           <h1 ref={heading} id={headingId} tabIndex={-1}>{copy.heading}</h1>
           <p className="pwa-access__status" role="status" aria-live="polite" aria-atomic="true">

@@ -42,6 +42,32 @@ async function retainedGlobe(page, original) {
   })).toBe(true);
 }
 
+// Only globe-root actions enter the real Menu; Collection/access controls stay direct.
+async function applicationMenu(page) {
+  const chrome = page.locator(".atlas-application-chrome");
+  const toggle = chrome.locator('[data-atlas-action="toggle-menu"]');
+  const panel = chrome.locator("[data-atlas-application-menu-panel]");
+  await expect(toggle).toBeVisible();
+  if (await toggle.getAttribute("aria-expanded") !== "true") await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await expect(panel).toBeVisible();
+  return panel;
+}
+
+async function openApplicationCollection(page) {
+  const menu = await applicationMenu(page);
+  await menu.locator('[data-atlas-action="open-collection"]').click();
+  await expect(menu).toBeHidden();
+  await expect(page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]')).toHaveAttribute("aria-expanded", "false");
+}
+
+async function selectApplicationLocale(page, locale) {
+  const menu = await applicationMenu(page);
+  await menu.locator('[data-interface-language="' + locale + '"]').click();
+  await expect(menu).toBeHidden();
+  await expect(page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]')).toHaveAttribute("aria-expanded", "false");
+}
+
 async function panelNoticeLayout(page) {
   const slot = page.locator('.native-planet-panel > [data-product-notice-placement="panel"]');
   await expect(slot.locator(".product-notice-host > .pwa-notices")).toBeVisible();
@@ -191,7 +217,7 @@ test("offline PWA cross-language author search and book return retain the globe 
       await expect(menuToggle).toHaveAttribute("aria-expanded", "false");
       await menuToggle.click();
       await expect(menuPanel).toBeVisible();
-      await menuPanel.locator(".interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      await menuPanel.locator('[data-interface-language="' + locale + '"]').click();
       await expect(menuToggle).toHaveAttribute("aria-expanded", "false");
       await expect(menuPanel).toBeHidden();
       await expect(menuToggle).toBeFocused();
@@ -243,6 +269,24 @@ test("offline PWA cross-language author search and book return retain the globe 
       await expect(menuPanel).toBeVisible();
       await expect(page.locator(".interface-language-control")).toHaveCount(1);
       await expect(menuPanel.locator(".interface-language-control")).toBeVisible();
+      const languageFlags = menuPanel.locator('[data-interface-language-presentation="flags"]');
+      await expect(languageFlags).toHaveCount(1);
+      const loadedFlags = [];
+      for (const [targetLocale, flagCode] of [["ru", "ru"], ["en", "gb"]]) {
+        const target = languageFlags.locator('[data-interface-language="' + targetLocale + '"]');
+        await expect(target).toHaveAccessibleName(locale === "ru"
+          ? (targetLocale === "ru" ? "Русский язык" : "Английский язык")
+          : (targetLocale === "ru" ? "Russian" : "English"));
+        await expect(target).toHaveAttribute("aria-pressed", String(targetLocale === locale));
+        const image = target.locator("img.interface-language-control__flag.country-flag-icon--round");
+        await expect(image).toHaveCount(1);
+        await expect(image).toHaveAttribute("alt", "");
+        await expect(image).toHaveAttribute("src", new RegExp("/assets/country-flags/" + flagCode + "\\.svg$"));
+        await expect.poll(() => image.evaluate(node => node.complete && node.naturalWidth > 0)).toBe(true);
+        await expect(target.locator(".country-flag-icon--fallback")).toHaveCount(0);
+        await expect(target.locator(".interface-language-control__selected")).toHaveCount(targetLocale === locale ? 1 : 0);
+        loadedFlags.push({ locale: targetLocale, asset: "assets/country-flags/" + flagCode + ".svg", loaded: true, selected: targetLocale === locale });
+      }
       const directTargets = await header.locator('.atlas-application-actions > .ui-icon-button, .atlas-application-menu-toggle')
         .evaluateAll(buttons => buttons.map(button => { const rect = button.getBoundingClientRect(); return { width: rect.width, height: rect.height }; }));
       expect(directTargets).toHaveLength(3);
@@ -261,7 +305,7 @@ test("offline PWA cross-language author search and book return retain the globe 
       await retainedGlobe(page, scene);
       observations.push({ locale, oppositeName, canonicalSearchIds: true, country: "russia", writer: "dostoevsky", readerClosed: true, collectionClosed: true,
         writerRevealedByProduct: true, focusWithinCountryCard: true, sameCanvasRendererCameraScene: true, offline: true,
-        directTargets, menuTargets, menuDismissedByEscape: true, menuTriggerFocusRestored: true });
+        directTargets, menuTargets, loadedFlags, menuDismissedByEscape: true, menuTriggerFocusRestored: true });
     }
     await page.locator('[data-atlas-action="toggle-search"]').click();
     await page.locator("#country-search").fill("Zambia");
@@ -339,7 +383,7 @@ test("orange PWA launch and bilingual recovery lead to the retained offline lite
     const key = "russia:dostoevsky:crime-and-punishment";
     for (const locale of ["en", "ru"]) {
       if (locale === "ru") {
-        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "RU" }).click();
+        await selectApplicationLocale(page, "ru");
         await expect(page.locator("html")).toHaveAttribute("lang", "ru");
       }
       await page.locator('[data-atlas-action="toggle-search"]').click();
@@ -463,7 +507,7 @@ test("cold offline Dostoevsky enrichment preserves writer, works tab and actual 
     }));
     expect(await original.evaluate(value => Boolean(value.detail && value.tab && value.panel && value.scene?.canvas && value.scene.renderer && value.scene.camera && value.scene.scene))).toBe(true);
     for (const locale of ["en", "ru"]) {
-      await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      await selectApplicationLocale(page, locale);
       await expect(page.locator("html")).toHaveAttribute("lang", locale);
       await expect(savedVerification).toHaveText(locale === "ru"
         ? "Используется сохранённое подтверждение доступа."
@@ -518,7 +562,7 @@ test("canonical book favorite survives cold offline reload and locale route chan
     await page.goto("/planet/ru/");
     scene = await actualGlobe(page);
     await expect(page.locator(".native-planet-panel")).toBeHidden();
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await openApplicationCollection(page);
     const collection = page.locator(".native-planet-panel");
     await expect(collection).toBeVisible();
     await expect(collection).toHaveAttribute("role", "dialog");
@@ -564,7 +608,7 @@ test("canonical book favorite survives cold offline reload and locale route chan
     await expect(collection).toBeHidden();
     await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBeNull();
     await retainedGlobe(page, scene);
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await openApplicationCollection(page);
     await collection.locator('.archive-book-detail[data-book-key=' + JSON.stringify(selected.searchParams.get("book")) + ']').click();
     await expect(detail).toBeVisible();
     await expect(detail.getByRole("button", { name: "В избранном", exact: true })).toHaveAttribute("aria-pressed", "true");
@@ -601,7 +645,7 @@ test("canonical book favorite survives cold offline reload and locale route chan
     await page.screenshot({ path: testInfo.outputPath("pwa-collection-en-help.png"), fullPage: false });
     const selectedBook = await page.locator("#book-archive-detail").elementHandle();
     await expect(page.locator(".interface-language-control")).toHaveCount(1);
-    await collection.locator(".native-planet-panel__header .interface-language-control button").filter({ hasText: "RU" }).click();
+    await collection.locator('.native-planet-panel__header [data-interface-language="ru"]').click();
     await expect(page.locator("html")).toHaveAttribute("lang", "ru");
     await expect.poll(() => new URL(page.url()).pathname).toBe("/planet/ru/");
     await expect(help.getByRole("heading", { name: "Чтение без сети", exact: true })).toBeVisible();
@@ -624,7 +668,11 @@ test("canonical book favorite survives cold offline reload and locale route chan
     await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBeNull();
     await retainedGlobe(page, scene);
     await expect(page.locator(".interface-language-control")).toHaveCount(1);
-    await expect(page.locator(".atlas-immersive-chrome .interface-language-control")).toBeVisible();
+    const languageMenu = await applicationMenu(page);
+    await expect(languageMenu.locator(".interface-language-control")).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(languageMenu).toBeHidden();
+    await expect(page.locator('[data-atlas-action="toggle-menu"]')).toBeFocused();
     await testInfo.attach("canonical-pwa-collection-evidence", { body: JSON.stringify({
       localQaOnly: true, selectedBook: selected.searchParams.get("book"), coldOffline: true,
       singleCanvasPerDocument: true, sameCanvasRendererCameraSceneAcrossCollectionAndLocale: true,
@@ -656,7 +704,7 @@ test("recent writer opens outside the active country filter without replacing th
     await filter.click();
     await expect(filter).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator('[data-atlas-country="albania"]')).toHaveCount(0);
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await openApplicationCollection(page);
     const recent = page.locator("[data-recent-history]");
     await recent.locator("summary").click();
     const writer = recent.locator("[data-recent-entry]").filter({ hasText: "Кадаре" }).filter({ has: page.locator("span", { hasText: "Автор" }) });
@@ -770,7 +818,7 @@ test("canonical 429 preserves saved access through early recheck and a full offl
     const cold = await launch(true);expect(await cold.evaluate(() => navigator.onLine)).toBe(false);evidence.offlineBeforeFirstNavigation = true;
     await cold.goto(selection.href);await complete(cold);scene = await actualGlobe(cold);
     for (const [index, locale] of ["ru", "en", "ru"].entries()) {
-      if (index > 0) await cold.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      if (index > 0) await selectApplicationLocale(cold, locale);
       await expect(cold.locator("html")).toHaveAttribute("lang", locale);await expect.poll(() => new URL(cold.url()).pathname).toBe("/planet/" + locale + "/");
       const current = new URL(cold.url());expect(current.origin).toBe(selection.origin);expect(current.search).toBe(selection.search);expect(current.hash).toBe(selection.hash);
       await expect(cold.locator('.atlas-country-presentation[data-atlas-country="russia"]')).toBeVisible();

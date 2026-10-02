@@ -42,8 +42,34 @@ async function installed(page) {
   expect(result?.state).toBe("COMPLETE");
   return result;
 }
+// Only globe-root actions enter the real Menu; Collection/access controls stay direct.
+async function applicationMenu(page) {
+  const chrome = page.locator(".atlas-application-chrome");
+  const toggle = chrome.locator('[data-atlas-action="toggle-menu"]');
+  const panel = chrome.locator("[data-atlas-application-menu-panel]");
+  await expect(toggle).toBeVisible();
+  if (await toggle.getAttribute("aria-expanded") !== "true") await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await expect(panel).toBeVisible();
+  return panel;
+}
+
+async function openApplicationCollection(page) {
+  const menu = await applicationMenu(page);
+  await menu.locator('[data-atlas-action="open-collection"]').click();
+  await expect(menu).toBeHidden();
+  await expect(page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]')).toHaveAttribute("aria-expanded", "false");
+}
+
+async function selectApplicationLocale(page, locale) {
+  const menu = await applicationMenu(page);
+  await menu.locator('[data-interface-language="' + locale + '"]').click();
+  await expect(menu).toBeHidden();
+  await expect(page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]')).toHaveAttribute("aria-expanded", "false");
+}
+
 async function selectLocale(page, locale) {
-  await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+  await selectApplicationLocale(page, locale);
   await expect(page.locator("html")).toHaveAttribute("lang", locale);
   await expect.poll(() => new URL(page.url()).pathname).toBe("/planet/" + locale + "/");
 }
@@ -131,7 +157,7 @@ test("real signed access, locale and connectivity preserve the actual R3F scene"
     await expect(page.locator('.atlas-country-presentation[data-atlas-country="russia"]')).toBeVisible();
     expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
   };
-  await page.locator('[data-atlas-action="open-collection"]').click();
+  await openApplicationCollection(page);
   const collection = page.locator(".native-planet-panel");
   await expect(collection).toBeVisible();
   await expect(collection).toHaveAttribute("role", "dialog");
@@ -233,7 +259,7 @@ test("expanded portrait base installs and verifies real offline bytes with saved
     })() }))).toEqual({ dpr: 1.25, stars: [1600] });
   };
   const collection = page.locator(".native-planet-panel");
-  const openCollection = async () => { await page.locator('[data-atlas-action="open-collection"]').click(); await expect(collection).toBeVisible(); };
+  const openCollection = async () => { await openApplicationCollection(page); await expect(collection).toBeVisible(); };
   const closeCollection = async locale => { await collection.getByRole("button", { name: locale === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true }).click(); await expect(collection).toBeHidden(); };
   let scene = await capture();
   const worker = context.serviceWorkers().find(item => item.url() === qaOrigin + "/planet/sw.js");
@@ -459,7 +485,7 @@ test("device preparation restores real offline bytes and keeps simulated browser
     // Offer before opening Help; its later mount must not lose the deferred event.
     await page.evaluate(() => window.__pwaDeviceQa.offerPrompt());
     expect(await page.evaluate(() => window.__pwaDeviceQa.prompts.length)).toBe(0);
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await openApplicationCollection(page);
     const collection = page.locator(".native-planet-panel");
     const header = collection.locator(".native-planet-panel__header");
     const help = collection.locator(".pwa-help");
@@ -498,7 +524,7 @@ test("device preparation restores real offline bytes and keeps simulated browser
     await expect(globe).toHaveAttribute("data-globe-edition-transition", "idle");
     await expect(page.locator(".native-planet-app")).toHaveAttribute("data-planet-edition", "nasa-blue-marble");
     await compactEditionEvidence("earth", "nasa-blue-marble");
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await openApplicationCollection(page);
     await expect(device).toBeVisible();
     const earthColors = await helpColors();
     expect(earthColors.helpBackground).not.toBe(antiqueColors.helpBackground);
@@ -543,7 +569,7 @@ test("device preparation restores real offline bytes and keeps simulated browser
       evidence.headerBounds.push({ phase, locale, viewport: page.viewportSize(), bounds: await header.boundingBox() });
     };
     const locale = async value => {
-      await header.locator(".interface-language-control button").filter({ hasText: value.toUpperCase() }).click();
+      await header.locator('[data-interface-language="' + value + '"]').click();
       await expect(page.locator("html")).toHaveAttribute("lang", value);
     };
     const screenshot = async name => {
@@ -638,7 +664,7 @@ test("device preparation restores real offline bytes and keeps simulated browser
     evidence.simulatedDecisions = decisions;
     await header.getByRole("button", { name: "Вернуться к планете", exact: true }).click();
     await expect(collection).toBeHidden();
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await openApplicationCollection(page);
     await stable("ru", "collection-reopened");
     await expect(device.getByRole("status").filter({ hasText: "Запрос принят. Дождитесь завершения установки браузером." })).toBeVisible();
     await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", "complete");
@@ -739,13 +765,13 @@ test("a corrupt candidate preserves the active build; explicit update and rollba
   const collection = page.locator(".native-planet-panel");
   const closeCollection = collection.getByRole("button", { name: "Вернуться к планете", exact: true });
   const updateNodes = await captureNoticeNodes(page);
-  await page.locator('[data-atlas-action="open-collection"]').click();
+  await openApplicationCollection(page);
   await expect(collection).toBeVisible();
   await retainedNoticeNodes(page, updateNodes, "panel");
   await closeCollection.click();
   await expect(collection).toBeHidden();
   await retainedNoticeNodes(page, updateNodes, "root");
-  await page.locator('[data-atlas-action="open-collection"]').click();
+  await openApplicationCollection(page);
   await expect(collection).toBeVisible();
   await retainedNoticeNodes(page, updateNodes, "panel");
   await closeCollection.focus();
@@ -775,10 +801,13 @@ test("a corrupt candidate preserves the active build; explicit update and rollba
   await context.setOffline(true);
   try {
     const rollbackNodes = await captureNoticeNodes(page);
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await openApplicationCollection(page);
     await expect(collection).toBeVisible();
     await retainedNoticeNodes(page, rollbackNodes, "panel");
     await closeCollection.focus();
+    await page.keyboard.press("Tab");
+    // Offline status remains an accessible native disclosure before the action.
+    await expect(page.locator(".connectivity-status .pwa-status-card__details > summary")).toBeFocused();
     await page.keyboard.press("Tab");
     await expect(rollback).toBeFocused();
     await hitTarget(rollback);
@@ -928,7 +957,7 @@ test("verified offline sizes and runtime locale metadata follow real repair", as
     return new Intl.NumberFormat(language === "ru" ? "ru-RU" : "en-US", { maximumFractionDigits: 1 }).format(bytes / divisor) + " " + unit;
   };
   try {
-    await page.locator('[data-atlas-action="open-collection"]').click();
+    await openApplicationCollection(page);
     const collection = page.locator(".native-planet-panel");
     const header = collection.locator(".native-planet-panel__header");
     const help = collection.locator(".pwa-help");
@@ -953,7 +982,7 @@ test("verified offline sizes and runtime locale metadata follow real repair", as
       evidence.checks.push({ language, ...reply });
     };
     const locale = async language => {
-      await header.locator(".interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
+      await header.locator('[data-interface-language="' + language + '"]').click();
       await expect(page.locator("html")).toHaveAttribute("lang", language);
       await verifyHead(language);
     };

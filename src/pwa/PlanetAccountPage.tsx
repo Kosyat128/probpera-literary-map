@@ -209,7 +209,7 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
   return <main className="planet-account pwa-access" aria-labelledby={headingId} data-planet-account={mode} data-copy-review={planetAccountCopy.reviewStatus}>
     <header className="planet-account__header">
       <a href={`/${language}/`}><img src="/brand/probpera-logo.png" width="44" height="44" alt={t("Проба Пера")} /></a>
-      <InterfaceLanguageControl />
+      <InterfaceLanguageControl presentation="flags" />
     </header>
     <section className="planet-account__panel">
       <h1 id={headingId}>{mode === "access" ? copy.access : copy.deletion}</h1>

@@ -190,7 +190,7 @@ export default function PlanetSceneInspectionControls({ controller, markerRef, o
           <button ref={closeObjectRef} type="button" className="planet-scene-inspection__close"
             data-planet-scene-object-close="" aria-label={copy.closeObject} onClick={() => controller.closeObject()}>×</button>
         </header>
-        <div data-planet-scene-object-language=""><InterfaceLanguageControl /></div>
+        <div data-planet-scene-object-language=""><InterfaceLanguageControl presentation="flags" /></div>
         <svg className="planet-scene-inspection__sketch" data-planet-scene-sketch=""
           viewBox={`${-WRITER_STUDY_SKETCH.width / 2} ${-WRITER_STUDY_SKETCH.height / 2} ${WRITER_STUDY_SKETCH.width} ${WRITER_STUDY_SKETCH.height}`}
           role="img" aria-labelledby={`${id}-sketch-title`} focusable="false">

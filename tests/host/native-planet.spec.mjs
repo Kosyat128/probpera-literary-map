@@ -403,9 +403,21 @@ async function nativeMenuAction(page, action) {
   await expect(page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]')).toHaveAttribute("aria-expanded", "false");
 }
 
+async function nativeLanguageButton(page, scope, language) {
+  const button = scope.locator('.interface-language-control button[data-interface-language="' + language + '"]');
+  const currentLanguage = await page.locator("html").getAttribute("lang");
+  const label = currentLanguage === "ru"
+    ? language === "ru" ? "Русский язык" : "Английский язык"
+    : language === "ru" ? "Russian" : "English";
+  await expect(button).toHaveAccessibleName(label);
+  await expect(button).toHaveAttribute("title", label);
+  return button;
+}
+
 async function nativeLanguage(page, language, input = "click") {
   const panel = await nativeMenu(page, input);
-  await panel.locator(".interface-language-control button").filter({ hasText: language.toUpperCase() })[input]();
+  const button = await nativeLanguageButton(page, panel, language);
+  await button[input]();
   await expect(panel).toBeHidden();
   await expect(page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]')).toHaveAttribute("aria-expanded", "false");
 }
@@ -425,7 +437,7 @@ test("downloads live in the actual globe collection and retain the scene through
     // native capacity must stay unavailable, with no browser fallback.
     await expect(downloads.locator('[data-storage-space]')).toHaveAttribute("data-storage-space", "unavailable");
     await expect(downloads.getByRole("button", { name: "Проверить место", exact: true })).toBeFocused();
-    await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+    await (await nativeLanguageButton(page, panel, "en")).click();
     await expect(downloads.locator("summary")).toHaveText("Downloads");
     await expect(downloads).toContainText("There are no additional packages to download yet.");
     await expect(downloads).toContainText("Available space could not be determined.");
@@ -789,7 +801,7 @@ test("native application defaults to rich graphics under low-resource hints whil
       await expect(checkedProfile(tier)).toBeChecked();
       await expect.poll(() => fixture.preferenceMemory.get(preferenceKey)).toBe(tier);
       if (tier === "economy") {
-        await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+        await (await nativeLanguageButton(page, panel, "en")).click();
         language = "en";
         await expect(page.locator("html")).toHaveAttribute("lang", "en");
         await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe("en");
@@ -846,7 +858,7 @@ test("native application defaults to rich graphics under low-resource hints whil
     await openSettings("en");
     await expect(checkedProfile("balanced")).toBeChecked();
     expect(fixture.preferenceMemory.get(preferenceKey)).toBe("balanced");
-    await panel.locator(".interface-language-control button").filter({ hasText: "RU" }).click();
+    await (await nativeLanguageButton(page, panel, "ru")).click();
     await expect(page.locator("html")).toHaveAttribute("lang", "ru");
     await expect(settings.locator("summary")).toHaveText("Настройки графики");
     await expect(checkedProfile("balanced")).toBeChecked();
@@ -867,7 +879,7 @@ test("native application defaults to rich graphics under low-resource hints whil
     await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
     for (const language of ["ru", "en"]) {
       if (language === "en") {
-        await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+        await (await nativeLanguageButton(page, panel, "en")).click();
         await expect(page.locator("html")).toHaveAttribute("lang", "en");
         await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe("en");
       }
@@ -1647,10 +1659,12 @@ async function welcomeLanguageAccess(page, safeArea) {
     return hit === element || element.contains(hit);
   })).toBe(true);
   const panel = await nativeMenu(page);
-  const buttons = panel.locator(".interface-language-control button");
-  await expect(buttons).toHaveText(["RU", "EN"]);
+  const buttons = panel.locator(".interface-language-control button[data-interface-language]");
+  await expect(buttons).toHaveCount(2);
+  expect(await buttons.evaluateAll(elements => elements.map(element => element.dataset.interfaceLanguage))).toEqual(["ru", "en"]);
   const observations = [];
-  for (const button of await buttons.all()) {
+  for (const language of ["ru", "en"]) {
+    const button = await nativeLanguageButton(page, panel, language);
     await expect(button).toBeVisible();
     const observation = await button.evaluate(element => {
       const rect = element.getBoundingClientRect();
@@ -1667,7 +1681,8 @@ async function welcomeLanguageAccess(page, safeArea) {
             borderTopWidth: style.borderTopWidth, borderBottomWidth: style.borderBottomWidth });
         }
       }
-      const result = { language: element.textContent, bounds: rect.toJSON(), effectiveOpacity,
+      const result = { language: element.dataset.interfaceLanguage, accessibleName: element.getAttribute("aria-label"),
+        bounds: rect.toJSON(), effectiveOpacity,
         hitTarget: hit === element || element.contains(hit), clippingAncestors };
       (window.__nativePlanetQuietLanguageAccess ??= []).push({ viewport: { width: innerWidth, height: innerHeight }, ...result });
       return result;
@@ -2330,7 +2345,7 @@ test("native recent history persists canonical writer and work across RU and EN 
 
     const pose = await settledCameraPose(scene);
     const beforeLocale = fixture.preferenceMemory.get(storageKey);
-    await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+    await (await nativeLanguageButton(page, panel, "en")).click();
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(recent.locator("summary")).toHaveText("Recently opened");
     await expect(writerRow).toContainText("Dostoevsky");
@@ -2499,7 +2514,7 @@ test("native collections disclose session-only favorites and smart shelves when 
       sameCanvasRendererCameraScene: true });
 
     const pose = await settledCameraPose(scene);
-    await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+    await (await nativeLanguageButton(page, panel, "en")).click();
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(shelf).toHaveValue(smartShelfId);
     await expect(status).toHaveText("Smart shelf is available in this session; saving on this device is unavailable.");
@@ -2614,6 +2629,34 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
     await retained(page, original);
     expect(selection()).toEqual(canonicalSelection);
   }
+  async function selectedMenuLanguage(language) {
+    const buttons = popup.locator(".interface-language-control button[data-interface-language]");
+    await expect(buttons).toHaveCount(2);
+    await expect(popup.locator('.interface-language-control button[data-interface-language][aria-pressed="true"]')).toHaveCount(1);
+    for (const locale of ["ru", "en"]) {
+      await expect(popup.locator('[data-interface-language="' + locale + '"]'))
+        .toHaveAttribute("aria-pressed", String(locale === language));
+    }
+  }
+  async function menuLanguageFlags() {
+    await selectedMenuLanguage(await page.locator("html").getAttribute("lang"));
+    const flags = [];
+    for (const locale of ["ru", "en"]) {
+      const button = await nativeLanguageButton(page, popup, locale);
+      const target = await exposed(button, "submenu " + locale + " flag");
+      const image = button.locator("img");
+      const code = locale === "ru" ? "ru" : "gb";
+      await expect(image).toHaveCount(1);
+      await expect(image).toBeVisible();
+      await expect(image).toHaveAttribute("src", new RegExp("/assets/country-flags/" + code + "\\.svg$", "u"));
+      await expect(image).toHaveAttribute("alt", "");
+      await expect.poll(() => image.evaluate(element => element.complete && element.naturalWidth > 0)).toBe(true);
+      const flag = await image.evaluate(element => ({ src: element.getAttribute("src"),
+        naturalWidth: element.naturalWidth, naturalHeight: element.naturalHeight }));
+      flags.push({ locale, target, flag });
+    }
+    return flags;
+  }
 
   try {
     for (const viewport of [{ width: 330, height: 844 }, { width: 390, height: 844 },
@@ -2640,6 +2683,11 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
 
       await openMenu();
+      const languageFlags = await menuLanguageFlags();
+      if (viewport.width === 390 && viewport.height === 844) {
+        await evidence(fixture, testInfo, "compact-mobile-flags-menu-390x844", { viewport, safeArea, languageFlags,
+          submenuOpen: true, selectedLanguage: "ru", canonicalSelection, nativeDeviceObserved: false });
+      }
       await exposed(popup.locator('[data-atlas-action="open-collection"]'), "submenu Collection");
       await page.keyboard.press("Escape");
       await expect(popup).toBeHidden();
@@ -2667,11 +2715,12 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
       const locales = [];
       for (const locale of ["en", "ru"]) {
         await openMenu();
-        const language = popup.locator(".interface-language-control button").filter({ hasText: new RegExp("^" + locale.toUpperCase() + "$", "u") });
+        const language = await nativeLanguageButton(page, popup, locale);
         locales.push({ locale, target: await exposed(language, "submenu " + locale.toUpperCase()) });
         await language.tap();
         await expect(page.locator("html")).toHaveAttribute("lang", locale);
         await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe(locale);
+        await selectedMenuLanguage(locale);
         await expect(popup).toBeHidden();
         await expect(menu).toHaveAttribute("aria-expanded", "false");
         await expect(menu).toBeFocused();
@@ -2754,7 +2803,7 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
       await expect(globe).toHaveAttribute("data-globe-auto-rotate", "reduced-motion");
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
       await preserved();
-      const observation = { viewport, safeArea, actions, locales, controls, editionControl, committedEdition: nextEdition,
+      const observation = { viewport, safeArea, actions, languageFlags, locales, controls, editionControl, committedEdition: nextEdition,
         selectedCountry: "russia", selectedWriter: "dostoevsky", sameCanvasRendererCameraScene: true,
         focusReturns: ["Menu Escape", "locale", "Search Escape", "Filters Escape", "Collection return", "Source Escape", ...(viewport.width === 330 ? ["Appearance Escape"] : [])],
         sheetPreparation: "Actual country toggle taps to collapsed; URL retained",

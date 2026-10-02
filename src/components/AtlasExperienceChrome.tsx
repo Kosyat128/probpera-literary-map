@@ -5,6 +5,7 @@ import Button from "../ui/Button";
 import IconButton from "../ui/IconButton";
 import BrandCloseIcon from "./BrandCloseIcon";
 import BrandBookIcon from "./BrandBookIcon";
+import BrandQuillIcon from "./BrandQuillIcon";
 import BrandFilterIcon from "./BrandFilterIcon";
 import BrandSearchIcon from "./BrandSearchIcon";
 import BrandSparkleIcon from "./BrandSparkleIcon";
@@ -36,7 +37,7 @@ export default function AtlasExperienceChrome({
   filtersOpen,
   immersive,
   applicationRoot = false,
-  languageControl = <InterfaceLanguageControl />,
+  languageControl = <InterfaceLanguageControl presentation={applicationRoot ? "flags" : "labels"} />,
   onAppearance,
   onSource,
   onCollection,
@@ -182,7 +183,7 @@ export default function AtlasExperienceChrome({
             <div ref={menuPanelRef} id={menuId} className="atlas-application-menu-panel"
               data-atlas-application-menu-panel="" role="group" aria-label={menuLabel} hidden={!menuOpen}>
               <p className="atlas-application-menu-heading">{t("Литературная планета")}</p>
-              {onAppearance && <Button size="md" surface="dark" variant="secondary" startIcon={<BrandSparkleIcon />}
+              {onAppearance && <Button size="md" surface="dark" variant="secondary" startIcon={<BrandQuillIcon />}
                 data-atlas-action="open-appearance" onClick={() => runMenuAction(onAppearance)}>
                 {language === "ru" ? "Оформление" : "Appearance"}
               </Button>}
@@ -196,7 +197,10 @@ export default function AtlasExperienceChrome({
                 onClick={() => runMenuAction(onRandomJourney)}>
                 {t("Случайное путешествие")}
               </Button>
-              {onSource && <Button size="md" surface="dark" variant="secondary" startIcon={<BrandBookIcon />}
+              {onSource && <Button size="md" surface="dark" variant="secondary" startIcon={<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.6" />
+                <path d="M12 11v6M12 7.3v.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>}
                 data-atlas-action="globe-source" onClick={() => runMenuAction(onSource)}>
                 {language === "ru" ? "Источник и права" : "Source and rights"}
               </Button>}
