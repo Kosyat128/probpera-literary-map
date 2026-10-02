@@ -3,7 +3,7 @@ import { load } from "cheerio";
 
 test.use({ serviceWorkers: "block" });
 
-test("built canonical account routes remain private, bilingual and outside the globe runtime", async ({ page, request }) => {
+test("built canonical account routes remain private, bilingual and outside the globe runtime", async ({ page, request }, testInfo) => {
   const errors = [], requests = [];
   page.on("pageerror", error => errors.push(error.message));
   page.on("request", value => requests.push(value.url()));
@@ -27,6 +27,16 @@ test("built canonical account routes remain private, bilingual and outside the g
       expect(new URL(page.url()).hash).toBe("#account-state");
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `https://probpera.ru/${locale}/${name}/`);
       expect(await page.locator("main[data-planet-account]").evaluate((node, previous) => node === previous, original)).toBe(true);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+      for (const flag of await page.locator(".planet-account__header [data-interface-language]").all()) {
+        const box = await flag.boundingBox(); expect(box).not.toBeNull();
+        expect(box.width).toBeGreaterThanOrEqual(44); expect(box.height).toBeGreaterThanOrEqual(44);
+      }
+      if (process.env.PLANET_ACCOUNT_CAPTURES === "1") {
+        const capture = testInfo.outputPath(`${name}-${locale}.png`);
+        await page.screenshot({ path: capture, fullPage: true });
+        await testInfo.attach(`${name}-${locale}`, { path: capture, contentType: "image/png" });
+      }
     }
     await original.dispose();
     await expect(page.locator('a[href="mailto:probperasite@yandex.ru"]')).toBeVisible();
