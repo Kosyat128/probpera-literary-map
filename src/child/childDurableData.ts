@@ -214,7 +214,7 @@ export function createChildDurableData(options: ChildDurableDataOptions) {
     const captured = capture(original, purpose);
     if (!captured || !revision(expectedRevision) || expectedRevision >= Number.MAX_SAFE_INTEGER - 1 || signal.aborted) return false;
     const { request, context } = captured, copied = envelope(input, request);if (copied === null) return false;
-    const result = await bounded(signal, () => currentRequest(original, request, context), async (childSignal, valid) => {
+    const result = await bounded<boolean>(signal, () => currentRequest(original, request, context), async (childSignal, valid) => {
       const record = nextRecord(request, expectedRevision + 1, copied);let checked = false;
       if (new TextEncoder().encode(JSON.stringify(record)).byteLength > CHILD_PACKAGE_MAX_BYTES) return false;
       const committed = await transact(tx => tx.get("search", controlKey, marker => {
@@ -251,7 +251,7 @@ export function createChildDurableData(options: ChildDurableDataOptions) {
     const { previous, ticket } = invalidate();if (closeAfter) disposed = true;
     if (!previous || brokenClock || generation !== ticket) { if (closeAfter) close();return previous === null; }
     const fresh = nonce();if (!fresh) { if (closeAfter) close();return false; }
-    const cleared = await bounded(null, () => generation === ticket, async (signal, valid) => {
+    const cleared = await bounded<boolean>(null, () => generation === ticket, async (signal, valid) => {
       let checked = false;
       const committed = await transact(tx => tx.get("search", controlKey, marker => {
         const decoded = control(marker);
@@ -284,7 +284,7 @@ export function createChildDurableData(options: ChildDurableDataOptions) {
       const { ticket } = invalidate(), scope = decodeChildDataScope(input), fresh = nonce();
       if (!scope || !fresh || disposed || brokenClock || generation !== ticket) return false;
       const context: Context = { scope, nonce: fresh, generation: ticket, lease: null };
-      const result = await bounded(null, () => !disposed && generation === ticket, async (signal, valid) => {
+      const result = await bounded<boolean>(null, () => !disposed && generation === ticket, async (signal, valid) => {
         let checked = false;
         const committed = await transact(tx => tx.get("search", controlKey, previous => {
           if (!valid() || previous !== undefined && !control(previous) || control(previous)?.nonce === fresh) { tx.abort();return; }
