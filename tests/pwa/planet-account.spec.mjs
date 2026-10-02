@@ -16,6 +16,53 @@ const config = { v: 1, audience: "browser-fixture", product: "fixture-base", del
 } };
 let browser, bundle, stylesheet;
 const flagAssets = new Map();
+const accountAssets = new Map();
+const productionStylesheets = [
+  "src/pwa/pwa.css",
+  "src/styles/editorial-fonts.css",
+  "src/index.css",
+  "src/community/community-accessibility.css",
+  "src/styles/stage5-home-art-direction.css",
+  "src/styles/stage5-home-layout.css",
+  "src/styles/stage5-book-shelf.css",
+  "src/styles/stage5f-responsive-accessibility.css",
+  "src/styles/book-dossier.css",
+  "src/styles/book-shelf-controls.css",
+  "src/styles/book-reader-refinement.css",
+  "src/styles/editorial-card-layout.css",
+  "src/styles/community-editorial-layout.css",
+  "src/styles/calendar-layout.css",
+  "src/styles/navigation-panels.css",
+  "src/styles/atlas-intro-layout.css",
+  "src/styles/site-typography.css",
+  "src/styles/article-reading-layout.css",
+  "src/styles/search-account-layout.css",
+  "src/styles/community-layout.css",
+  "src/styles/header-preserved.css",
+  "src/host/host.css",
+  "src/pwa/account.css"
+];
+const productionAssets = [
+  ["/brand/probpera-logo.png","image/png"],
+  ["/fonts/editorial/onest-cyrillic-ext-variable.woff2","font/woff2"],
+  ["/fonts/editorial/onest-cyrillic-variable.woff2","font/woff2"],
+  ["/fonts/editorial/onest-latin-ext-variable.woff2","font/woff2"],
+  ["/fonts/editorial/onest-latin-variable.woff2","font/woff2"],
+  ["/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-sans-3-latin-400-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-sans-3-latin-600-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-sans-3-latin-700-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-serif-4-latin-400-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2","font/woff2"],
+  ["/fonts/editorial/source-serif-4-latin-400-italic.woff2","font/woff2"],
+  ["/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-serif-4-latin-600-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2","font/woff2"],
+  ["/fonts/editorial/source-serif-4-latin-700-normal.woff2","font/woff2"],
+];
 
 test.beforeAll(async () => {
   const authFixture = `
@@ -59,10 +106,13 @@ test.beforeAll(async () => {
     } }],
   });
   bundle = result.outputFiles[0].text;
-  stylesheet = (await Promise.all(["src/pwa/pwa.css", "src/host/host.css", "src/pwa/account.css"].map(file => readFile(new URL("../../" + file, import.meta.url), "utf8")))).join("\n");
+  stylesheet = (await Promise.all(productionStylesheets.map(file => readFile(new URL("../../" + file, import.meta.url), "utf8")))).join("\n");
   for (const code of ["ru", "gb"]) {
     const pathname = "/assets/country-flags/" + code + ".svg";
     flagAssets.set(pathname, await readFile(new URL("../../public" + pathname, import.meta.url)));
+  }
+  for (const [pathname, contentType] of productionAssets) {
+    accountAssets.set(pathname, { contentType, body: await readFile(new URL("../../public" + pathname, import.meta.url)) });
   }
   browser = await chromium.launch({ channel: "chrome", headless: true });
 });
@@ -91,6 +141,7 @@ async function open(options = {}) {
     if (Object.hasOwn(entries, file)) return route.fulfill({ contentType: "text/html", body: entries[file].replace("</head>", `<style>${stylesheet}</style></head>`) });
     if (url.pathname === "/assets/fixture.js") return route.fulfill({ contentType: "text/javascript", body: bundle });
     if (flagAssets.has(url.pathname)) return route.fulfill({ contentType: "image/svg+xml", body: flagAssets.get(url.pathname) });
+    if (accountAssets.has(url.pathname)) return route.fulfill(accountAssets.get(url.pathname));
     if (url.pathname.startsWith("/planet/api/")) {
       const body = route.request().postDataJSON(); calls.push({ route: url.pathname, body, headers: route.request().headers() });
       if (url.pathname.endsWith("configuration")) return route.fulfill({ json: state.config });
@@ -125,6 +176,30 @@ async function open(options = {}) {
   return { page, errors, calls, state };
 }
 
+async function productionAccountAppearance(page, locale) {
+  const logo = page.locator('.planet-account__header > a img[src="/brand/probpera-logo.png"]');
+  await expect.poll(() => logo.evaluate(node => node.complete && node.naturalWidth > 0)).toBe(true);
+  const fonts = await page.evaluate(async language => {
+    const text = language === "ru" ? "Удаление аккаунта" : "Account deletion";
+    const loaded = await Promise.all([document.fonts.load('400 16px "Onest Local"', text), document.fonts.load('600 28px "Source Serif 4 Local"', text)]);
+    await document.fonts.ready;
+    return loaded.map(faces => faces.map(face => ({ family: face.family, status: face.status })));
+  }, locale);
+  expect(fonts.every(faces => faces.length > 0 && faces.every(face => face.status === "loaded"))).toBe(true);
+  const panel = page.locator(".planet-account__panel");
+  expect(await panel.evaluate(node => getComputedStyle(node).fontFamily)).toContain("Onest Local");
+  expect(await panel.locator("h1").evaluate(node => getComputedStyle(node).fontFamily)).toContain("Source Serif 4 Local");
+  for (const button of await panel.locator("button").all()) {
+    await button.scrollIntoViewIfNeeded();
+    const target = await button.boundingBox();
+    expect(target).not.toBeNull();
+    expect(target.width).toBeGreaterThanOrEqual(44); expect(target.height).toBeGreaterThanOrEqual(44);
+    expect(await button.evaluate(node => { const r = node.getBoundingClientRect(); return node.contains(document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2)); })).toBe(true);
+    expect(await button.evaluate(node => getComputedStyle(node).fontFamily)).toContain("Onest Local");
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.evaluate(() => scrollTo({ top: 0, left: 0, behavior: "instant" }));
+}
 async function loadedLanguageFlags(page, locale) {
   const control = page.locator('.planet-account__header [data-interface-language-presentation="flags"]');
   await expect(control).toHaveCount(1);
@@ -162,11 +237,11 @@ for (const mobile of [false, true]) test(`deletion remains the same bilingual fo
     expect(await page.evaluate(() => history.state)).toEqual({ retained: "navigation-state" });
     await expect(page.locator('.planet-account__disclosure')).toHaveText(config.deletionDisclosure.ru);
     await loadedLanguageFlags(page, "ru");
-    if (mobile) await page.screenshot({ path: testInfo.outputPath("planet-account-deletion-flags-ru.png"), fullPage: false });
+    if (mobile) { await productionAccountAppearance(page, "ru"); await page.screenshot({ path: testInfo.outputPath("planet-account-deletion-flags-ru.png"), fullPage: false }); }
     await page.locator('[data-interface-language="en"]').click();
     await expect(page.locator('.planet-account__disclosure')).toHaveText(config.deletionDisclosure.en);
     await loadedLanguageFlags(page, "en");
-    if (mobile) await page.screenshot({ path: testInfo.outputPath("planet-account-deletion-flags-en.png"), fullPage: false });
+    if (mobile) { await productionAccountAppearance(page, "en"); await page.screenshot({ path: testInfo.outputPath("planet-account-deletion-flags-en.png"), fullPage: false }); }
     expect(await page.evaluate(() => window.bad)).toBeUndefined();
     await expect(page.locator('canvas,iframe,.site-header')).toHaveCount(0);
     await expect(page.locator('.interface-language-control')).toHaveCount(1);

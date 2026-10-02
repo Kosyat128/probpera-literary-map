@@ -1,17 +1,55 @@
-.planet-account__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; max-width: 52rem; margin: 0 auto 2rem; }
-.planet-account__header img { display: block; width: 44px; height: 44px; object-fit: contain; }
-.planet-account__panel { max-width: 44rem; margin: auto; line-height: 1.65; }
-.planet-account__panel h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.15; }
-.planet-account__disclosure { white-space: pre-wrap; overflow-wrap: break-word; border-left: 3px solid #f67518; padding-left: 1rem; }
-.planet-account__consent { display: flex; gap: .75rem; align-items: flex-start; margin: 1.5rem 0; }
-.planet-account__consent input { flex: 0 0 auto; width: 24px; height: 24px; margin-top: .2rem; accent-color: #4b087c; }
-.planet-account__links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 2rem; }
-.planet-account__links a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; }
-.planet-account__receipt { border: 2px solid #4b087c; padding: 1rem; margin-top: 1rem; overflow-wrap: break-word; }
-.planet-account [data-password-recovery] { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid currentColor; }
+/* Account-only presentation; authentication, consent and server states stay in the component. */
+.planet-account.pwa-access {
+  --account-surface: #fffcf6; --account-line: #d9cebd; --account-muted: #695a49;
+  --account-accent: #875e3c; --account-focus: #4b087c;
+  padding: max(1.25rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1.5rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  background: #f6f0e5; color: #362c22;
+  font-family: var(--font-ui, var(--sans, system-ui)); font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+.planet-account__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; max-width: 44rem; margin: 0 auto 1.25rem; }
+.planet-account__header > a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border-radius: .75rem; }
+.planet-account__header > a img { display: block; width: 44px; height: 44px; object-fit: contain; }
+.planet-account__panel {
+  box-sizing: border-box; min-width: 0; max-width: 44rem; margin: auto; padding: clamp(1rem, 4vw, 1.75rem);
+  border: 1px solid var(--account-line); border-radius: 1.25rem; background: var(--account-surface);
+  box-shadow: 0 10px 28px #392b1a0a; line-height: 1.65;
+}
+.planet-account__panel h1 { margin: 0 0 .75rem; font-family: "Source Serif 4 Local", var(--font-editorial, Georgia), serif; font-size: clamp(1.75rem, 4vw, 2.2rem); font-weight: 600; line-height: 1.2; }
+.planet-account__panel > p { margin: .75rem 0; }
+.planet-account__panel > [role="status"] { color: var(--account-muted); }
+.planet-account__disclosure { white-space: pre-wrap; overflow-wrap: anywhere; border-left: 2px solid var(--account-line); padding-left: .875rem; }
+.planet-account__consent { display: flex; gap: .75rem; align-items: flex-start; min-height: 44px; margin: 1.25rem 0; cursor: pointer; }
+.planet-account__consent input { flex: 0 0 auto; width: 24px; height: 24px; margin-top: .2rem; accent-color: var(--account-accent); }
+.planet-account .pwa-access__actions { gap: .625rem; }
+.planet-account__panel button {
+  display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
+  min-width: 44px; min-height: 44px; max-width: 100%; padding: .625rem .875rem;
+  border: 1px solid var(--account-line); border-radius: .875rem; background: #f4ecdf; color: #493827;
+  font: inherit; font-weight: 600; line-height: 1.35; text-align: center; white-space: normal; overflow-wrap: anywhere;
+  cursor: pointer; transition: background-color 120ms ease, border-color 120ms ease;
+}
+.planet-account .pwa-access__actions > button:first-child { border-color: var(--account-accent); background: var(--account-accent); color: #fffaf2; }
+.planet-account__panel > button { margin: .25rem 0 .75rem; }
+.planet-account__panel button:not(:disabled):hover { background: #e9dfce; border-color: #b9a88d; }
+.planet-account .pwa-access__actions > button:first-child:not(:disabled):hover { background: #714b2d; border-color: #714b2d; }
+.planet-account__panel button:disabled { opacity: .6; cursor: not-allowed; }
+.planet-account__links { display: flex; flex-wrap: wrap; gap: .25rem .875rem; margin-top: 1.25rem; padding-top: .875rem; border-top: 1px solid var(--account-line); }
+.planet-account__links a { display: inline-flex; align-items: center; min-height: 44px; min-width: 0; color: #60482e; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.planet-account__receipt { border: 1px solid var(--account-line); border-radius: .875rem; background: #f6f1e8; padding: 1rem; margin-top: 1rem; overflow-wrap: anywhere; }
+.planet-account [data-password-recovery] { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--account-line); }
 .planet-account [data-password-recovery] :is(form, label) { display: grid; gap: .5rem; }
 .planet-account [data-password-recovery] form { gap: 1rem; margin: 1rem 0; }
-.planet-account [data-password-recovery] input { box-sizing: border-box; max-width: 100%; min-width: 0; min-height: 44px; padding: .5rem .75rem; font: inherit; color: inherit; background: #fffdf5; border: 1px solid #4b087c; border-radius: .5rem; }
-.planet-account [data-password-recovery] button { min-height: 44px; padding: .5rem .75rem; font: inherit; cursor: pointer; }
-.planet-account :is(a, button, input):focus-visible { outline: 3px solid #4b087c; outline-offset: 3px; }
-@media (forced-colors: active) { .planet-account__disclosure, .planet-account__receipt { border-color: CanvasText; } }
+.planet-account [data-password-recovery] input { box-sizing: border-box; max-width: 100%; min-width: 0; min-height: 44px; padding: .5rem .75rem; font: inherit; color: inherit; background: #fffdf5; border: 1px solid var(--account-line); border-radius: .625rem; }
+.planet-account :is(a, button, input):focus-visible { outline: 3px solid var(--account-focus); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .planet-account__panel button { transition: none; } }
+@media (forced-colors: active) {
+  .planet-account.pwa-access, .planet-account__panel, .planet-account__receipt { color: CanvasText; background: Canvas; box-shadow: none; }
+  .planet-account__panel, .planet-account__disclosure, .planet-account__receipt, .planet-account__links { border-color: CanvasText; }
+  .planet-account__panel button, .planet-account .pwa-access__actions > button:first-child { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+  .planet-account__panel button:not(:disabled):hover, .planet-account .pwa-access__actions > button:first-child:not(:disabled):hover { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+  .planet-account__panel button:disabled, .planet-account .pwa-access__actions > button:first-child:disabled { color: GrayText; opacity: 1; }
+  .planet-account__links a { color: LinkText; }
+  .planet-account__panel > [role="status"] { color: CanvasText; }
+  .planet-account :is(a, button, input):focus-visible { outline-color: Highlight; }
+}
