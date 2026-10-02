@@ -107,7 +107,7 @@ const navigationControls = ".native-planet-app .globe-controls, .native-planet-a
   + ".native-planet-app .archive-book-actions, "
   + ".native-planet-app .atlas-country-presentation .panel-close, "
   + ".native-planet-app .book-detail-page-navigation, .native-planet-app [data-planet-stand-toggle], "
-  + '.native-planet-app [data-atlas-search-combobox][data-open="true"], .native-planet-app [data-atlas-search-listbox]';
+  + '.native-planet-app [data-atlas-search-combobox][data-open="true"], .native-planet-app [data-atlas-search-listbox], .native-planet-app .product-notice-host';
 function companionViewport(): Rect {
   const view = viewport();
   let top = view.top;

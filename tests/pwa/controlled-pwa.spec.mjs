@@ -1465,6 +1465,7 @@ test("saved Booky size survives a full persistent browser restart offline throug
       if (["data:", "blob:"].includes(url.protocol) || url.origin === qaOrigin) return route.continue();
       blockedRequests.push({ origin: url.origin, pathname: url.pathname }); return route.abort();
     });
+    context.setDefaultTimeout(15_000);
     evidence.persistentLaunches++; if (evidence.persistentLaunches > 1) evidence.restarts++;
     const page = context.pages()[0] ?? await context.newPage();
     expect(context.pages()).toHaveLength(1); expect(page.url()).toBe("about:blank");
@@ -1489,7 +1490,16 @@ test("saved Booky size survives a full persistent browser restart offline throug
     }
     await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "collapsed");
     const pet = companion(page); await expect(pet).toHaveCount(1);
-    if (await pet.getAttribute("data-planet-mascot-active") !== "true") await pet.locator('[data-planet-mascot-toggle]').tap();
+    if (await pet.getAttribute("data-planet-mascot-active") !== "true") {
+      const toggle = pet.locator('[data-planet-mascot-toggle]');
+      await expect(toggle).toBeVisible();
+      await expect.poll(() => toggle.evaluate(element => {
+        const bounds = element.getBoundingClientRect();
+        const hit = document.elementFromPoint(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
+        return Boolean(hit && element.contains(hit));
+      })).toBe(true);
+      await toggle.tap();
+    }
     await expect(pet).toHaveAttribute("data-planet-mascot-active", "true");
     if (await pet.locator('[data-planet-mascot-collapse]').isVisible()) await pet.locator('[data-planet-mascot-collapse]').tap();
     await expect(pet).toHaveAttribute("data-planet-mascot-panel-state", "closed");
