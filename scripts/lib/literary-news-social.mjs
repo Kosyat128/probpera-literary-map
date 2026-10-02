@@ -517,7 +517,7 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
     if (outcome.kind === "accepted") return { ...current, remoteId: outcome.remoteId, remoteUrl: outcome.remoteUrl,
       remoteMediaKind:outcome.remoteMediaKind || (job.prepared.media ? "photo" : "text"),
       mediaCache:outcome.mediaCache || current.mediaCache || null,
-      acknowledgedRevision: job.desiredRevision, acknowledgedAt,
+      acknowledgedRevision: job.desiredRevision, acknowledgedAt, acknowledgedUnchanged: outcome.unchanged === true,
       // Editing an old remote ID cannot prove its original publication date.
       firstAcknowledgedAt: current.firstAcknowledgedAt || (!job.remoteId ? acknowledgedAt : null),
       status: current.status === "blocked" && current.lastError === "post_preparation_invalid" ? "blocked"
@@ -535,7 +535,8 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
   if (["retry", "auth"].includes(outcome.scope)) await transition(store, destinationKey, (current) => ({ ...current,
     ...(outcome.scope === "auth" ? { paused: true, pauseReason: outcome.code }
       : { nextDueAt: new Date(now().getTime() + outcome.retryAfterSeconds * 1000).toISOString() }) }));
-  return { status: receipt.state?.status || "ambiguous", remoteId: receipt.state?.remoteId || null, dispatchAttempted: true };
+  return { status: receipt.state?.status || "ambiguous", remoteId: receipt.state?.remoteId || null, dispatchAttempted: true,
+    ...(outcome.kind === "accepted" && outcome.unchanged === true ? { unchanged: true } : {}) };
 }
 
 /** Inspect at most the captured row count; unavailable destinations consume no send slots.

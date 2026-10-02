@@ -42,6 +42,33 @@ async function setup(records = [item]) {
 const accepted = { kind: "accepted", remoteId: "17", remoteUrl: "https://t.me/c/123/17" };
 
 describe("durable agenda delivery state machine (isolated, no live writes)", () => {
+  it.each([null, "2026-09-25T09:00:00Z"])("records an unchanged existing-message acknowledgement without creating a publication timestamp (%s)", async firstAcknowledgedAt => {
+    const { store, key } = await setup();
+    const prior = (await store.read(key)).state;
+    await store.seed(key, { ...prior, status: "correction_pending", remoteId: "17", remoteMediaKind: "text",
+      remoteUrl: "https://t.me/c/123/17", acknowledgedRevision: "b".repeat(64),
+      acknowledgedAt: "2026-09-25T10:00:00Z", firstAcknowledgedAt });
+    const description = "Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message";
+    const fetchImpl = vi.fn(async () => Response.json({ ok: false, error_code: 400, description }, { status: 400 }));
+    const native = createNewsSocialTransport({ mode: "live", telegramToken: "fixture", fetchImpl });
+    const transport = { ...native, preflight: async () => ({ ok: true }) };
+    const result = await dispatchNewsJob({ store, key, transport, now: () => now });
+    expect(result).toEqual({ status: "sent_current", remoteId: "17", dispatchAttempted: true, unchanged: true });
+    const receipt = (await store.read(key)).state;
+    expect(receipt.remoteId).toBe("17");
+    expect(receipt.firstAcknowledgedAt).toBe(firstAcknowledgedAt);
+    expect(receipt.acknowledgedAt).toBe(now.toISOString()); // Local acknowledgement time, never remote creation.
+    expect(receipt.acknowledgedRevision).toBe(prior.desiredRevision);
+    expect(receipt.acknowledgedUnchanged).toBe(true);
+    expect(receipt.lastError).toBeNull();
+    expect(await store.list("history:pacing:")).toHaveLength(0);
+    expect(await store.list("pacing:")).toHaveLength(0);
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+    expect(new URL(fetchImpl.mock.calls[0][0]).pathname.endsWith("/editMessageText")).toBe(true);
+    await dispatchNewsJob({ store, key, transport, now: () => now });
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+  });
+
   it("holds an absent admitted news item with pending media and restores the identical record when it returns",async()=>{
     const store=memoryStore(),target=destinations[0],key=newsPostKey(item.id,target);
     const pendingOptions={mediaOptions:{registry:{assets:[],downloadHosts:[]},resolutions:{[item.id]:{status:"pending",reason:"budget"}},deferBytes:true}};
