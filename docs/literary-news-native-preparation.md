@@ -75,6 +75,13 @@ remains disabled. Bootstrap cannot silently perform that transfer.
 
 ## Verification limits
 
+Activation checks both unpublished fixture protocols through an isolated remote
+AI binding using the explicitly supplied GitHub deployment token. It does not read
+local Wrangler OAuth, install another credential, or use production KV, queues,
+coordinators or Telegram. The same `env.AI.run` adapter, models and response parser
+used by preparation are checked. A refused preview or AI request blocks activation;
+successful fixture responses do not establish any actual news publication.
+
 Local tests use fake AI/storage and do not establish account quota, deployment,
 delivery or a daily supply guarantee. Wrangler dry-run proves bundling only.
 SQLite Durable Objects have a documented default 30-second CPU budget even on Free;
