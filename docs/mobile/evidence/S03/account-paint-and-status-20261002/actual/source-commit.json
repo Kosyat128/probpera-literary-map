@@ -1,0 +1,27 @@
+{
+  "sourceCommit": "516efd60f2eee02d2e71fd61948683ba647511ec",
+  "parent": "20b62b22e61ebbd74bd1ecdd80ac0fd93089a231",
+  "decisions": [
+    "D263",
+    "D264"
+  ],
+  "testsPending": true,
+  "changes": [
+    {
+      "path": "tests/pwa/planet-account.spec.mjs",
+      "originalSha256": "c6b774feae465a4412590f3bd59d52c961450125f0a4c2b69be72349ba8d9e8d",
+      "sha256": "b012806995dc12bdc3a8e8c135d3af00848095e32d22363e688efbe0e8cb355b"
+    },
+    {
+      "path": "src/pwa/PlanetAccountPage.tsx",
+      "originalSha256": "f05d5b4cf7b690c9df768d10ae82428cb0604fc837e906f12f4d40a6c0136af0",
+      "sha256": "711b82e114529daba72ee6304d67422eef7062d253b70b8cc058c27128b488fc"
+    },
+    {
+      "path": "tests/e2e/planet-account-pages.spec.mjs",
+      "originalSha256": "5e93ae9ea51164094f9c6436842e2b0942330daacc6dbdab0d7774940f1672cc",
+      "sha256": "072f6be4f98375250704009183891faa72ace92ad385c05f03e728a34221571e"
+    }
+  ],
+  "productScope": "One existing account live status includes unavailable Auth fallback; duplicate paragraph removed. Existing consent semantics and native input CSS untouched."
+}

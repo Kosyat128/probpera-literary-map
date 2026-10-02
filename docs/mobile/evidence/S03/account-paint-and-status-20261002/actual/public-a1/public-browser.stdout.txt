@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1/1] [current-public-mobile] › ..\..\..\..\..\..\..\..\..\..\CodexProjects\Работа по сайту\literary-planet-v12-work\tests\e2e\planet-account-pages.spec.mjs:6:1 › built canonical account routes remain private, bilingual and outside the globe runtime
+  1 passed (3.2s)

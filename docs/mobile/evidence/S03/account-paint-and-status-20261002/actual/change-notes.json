@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "d263-account-checkbox-observation-proposal",
+  "status": "prepared-not-executed",
+  "sourceCommit": "82e04e6e8b1787a06d53898fff28a22e943ad854",
+  "owner": "tests/pwa/planet-account.spec.mjs",
+  "original": {
+    "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/planet-account.spec.mjs",
+    "sha256": "c6b774feae465a4412590f3bd59d52c961450125f0a4c2b69be72349ba8d9e8d"
+  },
+  "proposed": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-account-checkbox-d263/proposed/spec.mjs",
+    "sha256": "b012806995dc12bdc3a8e8c135d3af00848095e32d22363e688efbe0e8cb355b"
+  },
+  "selectedCase": "deletion remains the same bilingual form, plaintext disclosure and stable retry ID (mobile)",
+  "expectedSelectedCaseCount": 1,
+  "newTestCases": 0,
+  "changes": [
+    "In the existing mobile-only EN branch, require the same original checkbox DOM node to remain checked, enabled and visible after switching from RU.",
+    "Use instant scroll followed by two requestAnimationFrame callbacks before each EN page capture.",
+    "Record native computed appearance, accent/color scheme, visibility, input/label bounds, center hit results, language, checkbox state and viewport geometry; assert label height at least 44px and successful center hit tests.",
+    "Use real label.click calls to uncheck and recheck; assert state, visibility, enabled status and original DOM identity after each click.",
+    "Capture EN initial checked, clicked unchecked, clicked checked and the final real input locator crop; attach images and observational JSON through testInfo.",
+    "Restore and assert checked state before the unchanged original submit, service-failure and stable-ID retry assertions."
+  ],
+  "outputs": {
+    "retainedRuCapture": "planet-account-deletion-flags-ru.png",
+    "retainedEnCapture": "planet-account-deletion-flags-en.png",
+    "newCaptures": [
+      "planet-account-consent-en-unchecked.png",
+      "planet-account-consent-en-checked.png",
+      "planet-account-consent-en-native-input.png"
+    ],
+    "observationalJson": "planet-account-consent-en-observations.json",
+    "observationStates": ["checked-after-en-switch", "unchecked-after-label-click", "checked-after-label-click"],
+    "excludes": ["tokens", "Auth data", "cookies", "headers", "API request content"]
+  },
+  "environment": {
+    "changed": false,
+    "mobileViewport": { "width": 390, "height": 844 },
+    "desktopViewport": { "width": 1280, "height": 900 },
+    "qualification": "Existing Chromium viewport React fixture with controlled Auth/API ports. browser.newPage options are unchanged; no hasTouch/isMobile, device/OS profile, public-built-page or provider proof is added."
+  },
+  "preserved": [
+    "All original assertions and original RU capture behavior",
+    "Desktop branch behavior",
+    "Fixture setup, production-style witness helper and controlled Auth/API responses",
+    "Functional submit/retry behavior, request contents and stable deletion request ID",
+    "Public account fallback/e2e case, product checkbox CSS and account page implementation",
+    "Acceptance status, approvals and caches"
+  ],
+  "historicalEvidence": {
+    "review": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-d255-d256-checkpoint-review/root-capture-review.json",
+    "ruCaptureSha256": "bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976",
+    "enCaptureSha256": "a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2",
+    "qualification": "Earlier EN native-checkbox still-frame painting was inconclusive; stale paint after scrolling remains a hypothesis. Historical artifacts are not modified."
+  },
+  "verification": {
+    "method": "Read-only full proposal diff and source hashes",
+    "testsRun": false,
+    "buildsRun": false,
+    "browserRun": false,
+    "canonicalEdits": false,
+    "pixelsValidated": false,
+    "next": "ROOT review/apply, one anchored existing mobile-case invocation and direct review of actual checked/unchecked/input captures; do not infer stage or full visual acceptance."
+  }
+}

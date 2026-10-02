@@ -1,0 +1,12 @@
+{
+  "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "args": [
+    "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\compile.mjs",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\d264-public-account-a1",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\cache",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\compile-report.json"
+  ],
+  "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\cache",
+  "exitCode": 0
+}

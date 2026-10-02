@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "c45e72a8b90382f1ac604180888955f709d03113",
+  "pass": true,
+  "actualBrowserCases": 1,
+  "sourceBeforeAfterEqual": true,
+  "typeScriptRerun": false,
+  "publicCompileRerun": false,
+  "qualification": "Only account CSS and the existing mobile fixture forced-colors observation changed after previous TypeScript/public PASS; same existing real checkbox mobile case repeated for the actual visual fix. No OS/touch/provider/legal/full visual acceptance.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

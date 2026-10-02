@@ -1,0 +1,34 @@
+{
+  "sourceCommit": "1a548cf9861672665319525852e7954403b2e31c",
+  "globals": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "baba8a191134d8952dbba90b271531ad4a4180aa148160f48b9326de3943bfa6"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "c4f333bc5f205f9fcd1ea9e76a74e33938a2fe47c68f1081ede136ea3733c3c7"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "cd3c101326be1457775cc710a00a9baf0f08c2dc49c9caf59a96330e41b2369a"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "69cb34379f6f41271ce4e62d33bb149d150c59f9463552d855e790bd847d3dc0"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "06a02803660453d5ca72c21eb05e680a421b7174cb7d2e131d8e71f304e9388c"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "aa870b53a94ac189d25263347ce3c1e5c9e19b767725de90752b357b301ec3af"
+    }
+  ],
+  "protectedSourceChanges": [
+    "src/pwa/account.css",
+    "tests/pwa/planet-account.spec.mjs"
+  ],
+  "previousNextAction": "Continue S03.acceptance with the existing mobile account fixture EN checked-consent paint gap: verify the same real input after RU/EN, settle its actual scroll/paint, capture genuine checked/unchecked states and retain plaintext disclosure/stable retry. Then remove the directly observed duplicated unavailable-service notice in current public access/deletion while retaining one live status, retry and unavailable guards. Do not substitute disabled public fallback for configured Auth/API consent behavior. Preserve passed D262 source-bound public compilation/mobile oracle without repetition solely for documentation; preserve all previous Booky/native/offline/update evidence. All11 routed criteria, approvals/cache and installed-device/provider/legal/editorial/stage/release gates remain unchanged."
+}

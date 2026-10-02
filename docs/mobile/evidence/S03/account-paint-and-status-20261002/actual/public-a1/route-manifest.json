@@ -1,0 +1,37 @@
+{
+  "routes": [
+    {
+      "locale": "ru",
+      "mode": "access",
+      "pathname": "/ru/planet-account/",
+      "file": "ru/planet-account/index.html",
+      "canonical": "https://probpera.ru/ru/planet-account/",
+      "indexable": false
+    },
+    {
+      "locale": "ru",
+      "mode": "deletion",
+      "pathname": "/ru/delete-account/",
+      "file": "ru/delete-account/index.html",
+      "canonical": "https://probpera.ru/ru/delete-account/",
+      "indexable": false
+    },
+    {
+      "locale": "en",
+      "mode": "access",
+      "pathname": "/en/planet-account/",
+      "file": "en/planet-account/index.html",
+      "canonical": "https://probpera.ru/en/planet-account/",
+      "indexable": false
+    },
+    {
+      "locale": "en",
+      "mode": "deletion",
+      "pathname": "/en/delete-account/",
+      "file": "en/delete-account/index.html",
+      "canonical": "https://probpera.ru/en/delete-account/",
+      "indexable": false
+    }
+  ],
+  "releaseReady": false
+}

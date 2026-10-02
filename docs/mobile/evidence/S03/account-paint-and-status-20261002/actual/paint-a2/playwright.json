@@ -1,0 +1,148 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint.config.mjs",
+    "rootDir": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-account-checkbox-d263/paint-a2/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "account-checkbox-viewport-fixture",
+        "name": "account-checkbox-viewport-fixture",
+        "testDir": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "planet-account.spec.mjs"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "planet-account.spec.mjs",
+      "file": "planet-account.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "deletion remains the same bilingual form, plaintext disclosure and stable retry ID (mobile)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "account-checkbox-viewport-fixture",
+              "projectName": "account-checkbox-viewport-fixture",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1605,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T04:43:59.507Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "planet-account-deletion-flags-en.png",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\attachments\\planet-account-deletion-flags-en-png-209c5f14dcf6fe75b79d700d839c428da8d0cd60.png"
+                    },
+                    {
+                      "name": "planet-account-consent-en-unchecked.png",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\attachments\\planet-account-consent-en-unchecked-png-e4a498f4b76a93585518969c0a2a765b45c63e20.png"
+                    },
+                    {
+                      "name": "planet-account-consent-en-checked.png",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\attachments\\planet-account-consent-en-checked-png-04123caeedf220e9566e453027f9b2bc8daddc0e.png"
+                    },
+                    {
+                      "name": "planet-account-consent-en-native-input.png",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\attachments\\planet-account-consent-en-native-input-png-398fc412935829bfbdce3feef28d3744218ad1f2.png"
+                    },
+                    {
+                      "name": "planet-account-consent-en-forced-colors.png",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\attachments\\planet-account-consent-en-forced-colors-png-ba3b260ef1983f8d5d313c84a5efa1cdcc243941.png"
+                    },
+                    {
+                      "name": "EN native checkbox observations",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\attachments\\EN-native-checkbox-observations-f081072d201a6bc2a4c409ba0d56fe8108f480be.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9eb3a7953e443d01d124-74dcda0f3fe40de0acd3",
+          "file": "planet-account.spec.mjs",
+          "line": 224,
+          "column": 37
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T04:43:58.443Z",
+    "duration": 3299.218,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

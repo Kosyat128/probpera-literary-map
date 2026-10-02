@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "c45e72a8b90382f1ac604180888955f709d03113",
+  "parent": "516efd60f2eee02d2e71fd61948683ba647511ec",
+  "testsPending": true,
+  "changes": [
+    {
+      "path": "src/pwa/account.css",
+      "originalSha256": "12fb3818995f21bab6630c776452f69437cdd9a0ba3c1097e02e93ae9461ccf7",
+      "sha256": "356d81ebccca129606bfa4cd422434607716b653148026e3620a84469097275a"
+    },
+    {
+      "path": "tests/pwa/planet-account.spec.mjs",
+      "originalSha256": "b012806995dc12bdc3a8e8c135d3af00848095e32d22363e688efbe0e8cb355b",
+      "sha256": "4d67caabcce2cf905bf3cf213876b2f9edd0cb31977c4db325ebc30dd0d82f56"
+    }
+  ],
+  "qualification": "Real existing checkbox state/disabled/change/label remains owned by React. CSS draws the checked state in normal colors and restores native system appearance in forced colors. The first EN frame failed visual review despite passing native state/hit tests; exact failing original retained."
+}

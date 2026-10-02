@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "kind": "account-native-checkbox-paint-observations",
+  "language": "en",
+  "environmentChanged": false,
+  "interaction": "actual label.click",
+  "observations": [
+    {
+      "state": "checked-after-en-switch",
+      "language": "en",
+      "checked": true,
+      "disabled": false,
+      "inputBounds": {
+        "x": 37,
+        "y": 348.125,
+        "width": 24,
+        "height": 24
+      },
+      "labelBounds": {
+        "x": 33,
+        "y": 344.9375,
+        "width": 324,
+        "height": 79.171875
+      },
+      "inputHit": true,
+      "labelHit": true,
+      "style": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "appearance": "auto",
+        "webkitAppearance": "auto",
+        "accentColor": "rgb(135, 94, 60)",
+        "colorScheme": "normal"
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "scrollX": 0,
+        "scrollY": 0
+      }
+    },
+    {
+      "state": "unchecked-after-label-click",
+      "language": "en",
+      "checked": false,
+      "disabled": false,
+      "inputBounds": {
+        "x": 37,
+        "y": 348.125,
+        "width": 24,
+        "height": 24
+      },
+      "labelBounds": {
+        "x": 33,
+        "y": 344.9375,
+        "width": 324,
+        "height": 79.171875
+      },
+      "inputHit": true,
+      "labelHit": true,
+      "style": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "appearance": "auto",
+        "webkitAppearance": "auto",
+        "accentColor": "rgb(135, 94, 60)",
+        "colorScheme": "normal"
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "scrollX": 0,
+        "scrollY": 0
+      }
+    },
+    {
+      "state": "checked-after-label-click",
+      "language": "en",
+      "checked": true,
+      "disabled": false,
+      "inputBounds": {
+        "x": 37,
+        "y": 348.125,
+        "width": 24,
+        "height": 24
+      },
+      "labelBounds": {
+        "x": 33,
+        "y": 344.9375,
+        "width": 324,
+        "height": 79.171875
+      },
+      "inputHit": true,
+      "labelHit": true,
+      "style": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "appearance": "auto",
+        "webkitAppearance": "auto",
+        "accentColor": "rgb(135, 94, 60)",
+        "colorScheme": "normal"
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "scrollX": 0,
+        "scrollY": 0
+      }
+    }
+  ],
+  "captures": [
+    "planet-account-deletion-flags-en.png",
+    "planet-account-consent-en-unchecked.png",
+    "planet-account-consent-en-checked.png",
+    "planet-account-consent-en-native-input.png"
+  ],
+  "pixelsValidated": false,
+  "paintVerdict": "requires direct capture review",
+  "scope": "390x844 viewport React fixture with controlled Auth/API ports; no touch, OS, public-build or full visual acceptance"
+}

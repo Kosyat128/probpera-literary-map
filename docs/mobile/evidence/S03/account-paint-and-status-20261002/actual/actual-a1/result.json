@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "decisions": [
+    "D263",
+    "D264"
+  ],
+  "sourceCommit": "516efd60f2eee02d2e71fd61948683ba647511ec",
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "checks": {
+    "typeScriptInvocations": 1,
+    "existingCheckboxCases": 1,
+    "freshPublicCompilations": 1,
+    "existingPublicMobileCases": 1,
+    "sourceBeforeAfterEqual": true,
+    "outputBeforeAfterEqual": true
+  },
+  "publicBuildSha256": "a405d7bba96f56ba2434758e70fa5aa770afd309645b2faef6dacc84905c7194",
+  "scope": {
+    "nativeCheckedPaint": "pending ROOT direct capture review",
+    "consentFunctionalFixture": true,
+    "publicFallback": true,
+    "fullVisualAcceptance": false,
+    "providerValidated": false,
+    "legalAccepted": false,
+    "actualOsInstallation": false,
+    "productionActionsPerformed": false
+  },
+  "qualification": "D263 existing 390x844 viewport React/Auth/API fixture is preserved without hasTouch/isMobile changes. Genuine input label clicks and direct native crop provide paint observations, not pixel verdict. D264 exact canonical public site compile/pure account generator verifies one live unavailable notice per locale and original private/noindex/stable locale guards. Full CMS/article/SEO pipeline, provider, installation and stage acceptance remain outside this proof."
+}

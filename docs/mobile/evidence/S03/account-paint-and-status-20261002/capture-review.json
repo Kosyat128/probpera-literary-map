@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "1a548cf9861672665319525852e7954403b2e31c",
+  "reviewer": "ROOT direct actual image inspection",
+  "recordedAt": "2026-10-02T04:49:44.820Z",
+  "initialVisualVerdict": "actual-a1 initial EN checkbox absent; failure retained although functional case passed",
+  "firstCssVisualVerdict": "paint-a2 initial EN checkbox still absent; failure retained although functional case passed",
+  "finalVisualVerdict": "paint-a3 initial EN checked, clicked unchecked/checked and forced-color checkbox visible; genuine crop/real input state retained",
+  "rootCauseQualification": "Observed locale/scroll-related paint omission and successful compositor isolation; low-level browser root cause not established.",
+  "fullVisualAcceptance": false,
+  "captures": [
+    {
+      "run": "actual-a1",
+      "name": "planet-account-deletion-flags-ru",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-ru.png",
+      "sha256": "bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976"
+    },
+    {
+      "run": "actual-a1",
+      "name": "planet-account-deletion-flags-en",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-en.png",
+      "sha256": "a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2"
+    },
+    {
+      "run": "actual-a1",
+      "name": "planet-account-consent-en-unchecked",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-unchecked.png",
+      "sha256": "0f3f0eed5a470d5583c2292a9a05365889591acebcadb46583e354ad3c62c3f5"
+    },
+    {
+      "run": "actual-a1",
+      "name": "planet-account-consent-en-checked",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-checked.png",
+      "sha256": "aa047287801fe85f40db2d845c6b7727642f580931602071dc575766017db4f2"
+    },
+    {
+      "run": "actual-a1",
+      "name": "planet-account-consent-en-native-input",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-native-input.png",
+      "sha256": "de0356b01b07e2eeb35a3c8d80b6658f6b1c6dd88dae2cf049d2602bcf2b120a"
+    },
+    {
+      "run": "paint-a2",
+      "name": "planet-account-deletion-flags-ru",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-ru.png",
+      "sha256": "1000aa02a42e0ae5f728f9e88b322fda686491d3ea781942592a2872a8f16f83"
+    },
+    {
+      "run": "paint-a2",
+      "name": "planet-account-deletion-flags-en",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-en.png",
+      "sha256": "cbce7c107b9d8f938c2ae6c92eec86c28362c668a2b49d9e9a5c14605d8688f9"
+    },
+    {
+      "run": "paint-a2",
+      "name": "planet-account-consent-en-unchecked",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-unchecked.png",
+      "sha256": "79ca9d51b6ed23cee7f8662f0c9ec683bfa62b83fa9ed85e30cb430ba41c0620"
+    },
+    {
+      "run": "paint-a2",
+      "name": "planet-account-consent-en-checked",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-checked.png",
+      "sha256": "cbce7c107b9d8f938c2ae6c92eec86c28362c668a2b49d9e9a5c14605d8688f9"
+    },
+    {
+      "run": "paint-a2",
+      "name": "planet-account-consent-en-native-input",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-native-input.png",
+      "sha256": "ad1826bf3119716cd38879ba287a635b3d8189b211bc841f3d1a9eccdbc9b7f8"
+    },
+    {
+      "run": "paint-a2",
+      "name": "planet-account-consent-en-forced-colors",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-forced-colors.png",
+      "sha256": "b29c398c56ed49953c41ee0f7d00fdf154c09476022873bf393b5ae80ed77e6e"
+    },
+    {
+      "run": "paint-a3",
+      "name": "planet-account-deletion-flags-ru",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-ru.png",
+      "sha256": "69a954f3549f73a28e5f7ecf506445d313a0abcf2e5dd4b44a0f893a45a38c7e"
+    },
+    {
+      "run": "paint-a3",
+      "name": "planet-account-deletion-flags-en",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-en.png",
+      "sha256": "0f37f349a6aa0d68391e3f3f5d1647e2d164037d3c13544b6307ba62dfecf51b"
+    },
+    {
+      "run": "paint-a3",
+      "name": "planet-account-consent-en-unchecked",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-unchecked.png",
+      "sha256": "33eb187bc00f4d9e99beebe48dd738d511eb519fc3299c1e59344c37359c61ba"
+    },
+    {
+      "run": "paint-a3",
+      "name": "planet-account-consent-en-checked",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-checked.png",
+      "sha256": "0f37f349a6aa0d68391e3f3f5d1647e2d164037d3c13544b6307ba62dfecf51b"
+    },
+    {
+      "run": "paint-a3",
+      "name": "planet-account-consent-en-native-input",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-native-input.png",
+      "sha256": "e93d57b155b0676ea182bf48bdf6e6b646d7e4a404dd9439d560dd012054e878"
+    },
+    {
+      "run": "paint-a3",
+      "name": "planet-account-consent-en-forced-colors",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-forced-colors.png",
+      "sha256": "cf06664892db5224244232dcb2a051933aff39dc71afb23271035d42bbf2c32f"
+    },
+    {
+      "run": "public-a1",
+      "name": "planet-account-ru",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-ru.png",
+      "sha256": "6ca62c0b09702ca6363dcc13546c72b4dc9afc14adcc4e8fa0a1c6debe60cfa0"
+    },
+    {
+      "run": "public-a1",
+      "name": "planet-account-en",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-en.png",
+      "sha256": "a51b19f0bad96a2b2b9df1d698769d8ce6ad268fdfb18ae6f5104eece39e12b5"
+    },
+    {
+      "run": "public-a1",
+      "name": "delete-account-ru",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-ru.png",
+      "sha256": "476be0a63a58e0b0b447ee7a60405e9d974d9e63526c33d6a42731f6209dd0b8"
+    },
+    {
+      "run": "public-a1",
+      "name": "delete-account-en",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-en.png",
+      "sha256": "12fd402230ffa3639180004f10c3b6bb45dc127d4ae1a64e4b44fc51fe612994"
+    }
+  ]
+}

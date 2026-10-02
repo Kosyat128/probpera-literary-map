@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] [account-checkbox-viewport-fixture] › tests\pwa\planet-account.spec.mjs:224:37 › deletion remains the same bilingual form, plaintext disclosure and stable retry ID (mobile)
+  1 passed (3.3s)

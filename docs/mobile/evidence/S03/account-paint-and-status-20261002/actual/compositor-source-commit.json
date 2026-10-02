@@ -1,0 +1,13 @@
+{
+  "sourceCommit": "1a548cf9861672665319525852e7954403b2e31c",
+  "parent": "c45e72a8b90382f1ac604180888955f709d03113",
+  "testsPending": true,
+  "changes": [
+    {
+      "path": "src/pwa/account.css",
+      "originalSha256": "356d81ebccca129606bfa4cd422434607716b653148026e3620a84469097275a",
+      "sha256": "d6cfc6362e80052c83408c33b7dca1173f2da0766d624b5a4dd0f83f507e09b8"
+    }
+  ],
+  "qualification": "Normal-color styling alone did not resolve initial EN frame. Promote the existing24px input to its own compositor layer with identity transform; preserve native form semantics, dimensions and state, plus forced-color system appearance. Prior failed visual frames retained."
+}

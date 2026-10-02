@@ -1,0 +1,709 @@
+{
+  "schemaVersion": 1,
+  "decision": "D264",
+  "relatedDecisions": [
+    "D263"
+  ],
+  "kind": "focused-account-consent-paint-and-status-working-evidence",
+  "sourceCommit": "1a548cf9861672665319525852e7954403b2e31c",
+  "recordedAt": "2026-10-02T04:49:44.820Z",
+  "pass": true,
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "publicSourceCommit": "516efd60f2eee02d2e71fd61948683ba647511ec",
+  "publicBuildSha256": "a405d7bba96f56ba2434758e70fa5aa770afd309645b2faef6dacc84905c7194",
+  "checks": {
+    "typeScriptInvocations": 1,
+    "publicCompilations": 1,
+    "publicMobileCases": 1,
+    "existingCheckboxCaseInvocations": 3,
+    "sourceBeforeAfterEqual": true,
+    "finalInitialEnCheckedFrameReviewed": true,
+    "configuredConsentRetained": true,
+    "forcedColorsReviewed": true,
+    "captures": 21
+  },
+  "qualification": "D263/D264: account pages now show unavailable Auth/service information once in the existing live status; retry, consent guards and receipt handling remain. One TypeScript, one fresh canonical public compilation and one existing mobile public case passed at516efd60; four actual public frames confirm the duplicate is removed. Existing390x844 configured React/Auth/API account case passed in three bounded attempts: initial and CSS-only paint attempts still lacked the initial EN checked frame despite correct state/hits. Final identity compositor transform on the same24px real input makes the initial EN checked frame visible; explicit uncheck/recheck and forced-color system appearance passed and were directly reviewed. No consent reset/fake input/provider/legal/OS or full visual acceptance. Only CSS and fixture forced-color observation changed after516efd, preserving its TypeScript/public functional evidence without repetition; that retained public artifact does not contain the final CSS.",
+  "scope": {
+    "publicFallback": true,
+    "configuredFixture": true,
+    "finalPublicCssCompiled": false,
+    "fullVisualAcceptance": false,
+    "fullAccessibility": false,
+    "providerValidated": false,
+    "legalAccepted": false,
+    "actualOsInstallation": false,
+    "productionActionsPerformed": false
+  },
+  "evidence": [
+    {
+      "name": "apply.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\apply.mjs",
+      "sha256": "22b9d32d22c70eefa95d54a6c92b58ded4f1581adf93a754e41deba0504e8083",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/apply.mjs",
+        "sha256": "22b9d32d22c70eefa95d54a6c92b58ded4f1581adf93a754e41deba0504e8083"
+      }
+    },
+    {
+      "name": "source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\source-commit.json",
+      "sha256": "2487caa8a84bc4c6dc25cfca698450e690ed2787bf8fd96802987a3593e913de",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/source-commit.json",
+        "sha256": "2487caa8a84bc4c6dc25cfca698450e690ed2787bf8fd96802987a3593e913de"
+      }
+    },
+    {
+      "name": "change-notes.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\change-notes.json",
+      "sha256": "7e46b463e04df423da52d2e8b7209227ff4887c9b5dbab7bb55152a1413fab55",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/change-notes.json",
+        "sha256": "7e46b463e04df423da52d2e8b7209227ff4887c9b5dbab7bb55152a1413fab55"
+      }
+    },
+    {
+      "name": "run.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\run.mjs",
+      "sha256": "487a00fd8815154e43a2a85307e5ae7a12d16606ba05268efb5ebba1f7bc2204",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/run.mjs",
+        "sha256": "487a00fd8815154e43a2a85307e5ae7a12d16606ba05268efb5ebba1f7bc2204"
+      }
+    },
+    {
+      "name": "account.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\account.config.mjs",
+      "sha256": "e313623ac13d8656b3fdd65c8a99bd28549a664e476944284c348acf6963448f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/account.config.mjs",
+        "sha256": "e313623ac13d8656b3fdd65c8a99bd28549a664e476944284c348acf6963448f"
+      }
+    },
+    {
+      "name": "paint-fix.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-fix.mjs",
+      "sha256": "cadcdb01e8693dbab3033ecc057c6dd70997680ac425ac8f0246bfe33fd9bb50",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-fix.mjs",
+        "sha256": "cadcdb01e8693dbab3033ecc057c6dd70997680ac425ac8f0246bfe33fd9bb50"
+      }
+    },
+    {
+      "name": "paint-source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-source-commit.json",
+      "sha256": "33a7b8efcb89461524d746bf088646f651391419bef5c5f99313cfcb06bda4c5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-source-commit.json",
+        "sha256": "33a7b8efcb89461524d746bf088646f651391419bef5c5f99313cfcb06bda4c5"
+      }
+    },
+    {
+      "name": "paint.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint.config.mjs",
+      "sha256": "16e3621dadbc01b0e21ad5fad0ed17270e89d175b6465fa2eaccb60ca67579e0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint.config.mjs",
+        "sha256": "16e3621dadbc01b0e21ad5fad0ed17270e89d175b6465fa2eaccb60ca67579e0"
+      }
+    },
+    {
+      "name": "paint-run.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-run.mjs",
+      "sha256": "634930ab5b808d021affece1c7f1404222055213904cb7b69c59c681e5090dec",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-run.mjs",
+        "sha256": "634930ab5b808d021affece1c7f1404222055213904cb7b69c59c681e5090dec"
+      }
+    },
+    {
+      "name": "compositor-fix.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\compositor-fix.mjs",
+      "sha256": "3dc3ddee74b988ecd38c65d560b4b59821a2843cafbaa8656ebd8f0a78f044e3",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/compositor-fix.mjs",
+        "sha256": "3dc3ddee74b988ecd38c65d560b4b59821a2843cafbaa8656ebd8f0a78f044e3"
+      }
+    },
+    {
+      "name": "compositor-source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\compositor-source-commit.json",
+      "sha256": "0befb310ef0df79c89e9d0cb7d38b1dec400d4a2e9c6da03665b0b1cb7cee499",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/compositor-source-commit.json",
+        "sha256": "0befb310ef0df79c89e9d0cb7d38b1dec400d4a2e9c6da03665b0b1cb7cee499"
+      }
+    },
+    {
+      "name": "compositor.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\compositor.config.mjs",
+      "sha256": "7e235e32b22a98eb80bdeca8dc00c025bff0032b76235552c51679e30bbcce80",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/compositor.config.mjs",
+        "sha256": "7e235e32b22a98eb80bdeca8dc00c025bff0032b76235552c51679e30bbcce80"
+      }
+    },
+    {
+      "name": "compositor-run.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\compositor-run.mjs",
+      "sha256": "a1e269ce54ebcd5e08d3367dab51b436738eb1af1727f0cdfb790b144f611147",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/compositor-run.mjs",
+        "sha256": "a1e269ce54ebcd5e08d3367dab51b436738eb1af1727f0cdfb790b144f611147"
+      }
+    },
+    {
+      "name": "actual-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\result.json",
+      "sha256": "e896d1d30e024b61d9cff640d87a91225d5acab4ce09cffc36eac34e2af351cb",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/result.json",
+        "sha256": "e896d1d30e024b61d9cff640d87a91225d5acab4ce09cffc36eac34e2af351cb"
+      }
+    },
+    {
+      "name": "actual-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\source-before.json",
+      "sha256": "25e1f5523dcf6468717fb2d18c0de054d353485bfc9599c41dab748f1df8274d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/source-before.json",
+        "sha256": "25e1f5523dcf6468717fb2d18c0de054d353485bfc9599c41dab748f1df8274d"
+      }
+    },
+    {
+      "name": "actual-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\source-after.json",
+      "sha256": "25e1f5523dcf6468717fb2d18c0de054d353485bfc9599c41dab748f1df8274d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/source-after.json",
+        "sha256": "25e1f5523dcf6468717fb2d18c0de054d353485bfc9599c41dab748f1df8274d"
+      }
+    },
+    {
+      "name": "actual-a1/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\playwright.json",
+      "sha256": "a443131b3b23aa3f1436cc9c5d770eb7c40919e31d2102c71920254a338592b1",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/playwright.json",
+        "sha256": "a443131b3b23aa3f1436cc9c5d770eb7c40919e31d2102c71920254a338592b1"
+      }
+    },
+    {
+      "name": "actual-a1/typescript.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\typescript.execution.json",
+      "sha256": "602924b44792d1305c172b97e646192d4291aead6d3caa44974ddab1018585c3",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/typescript.execution.json",
+        "sha256": "602924b44792d1305c172b97e646192d4291aead6d3caa44974ddab1018585c3"
+      }
+    },
+    {
+      "name": "actual-a1/typescript.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\typescript.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/typescript.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "actual-a1/typescript.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\typescript.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/typescript.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "actual-a1/checkbox-browser.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\checkbox-browser.execution.json",
+      "sha256": "26880c621e619fc78f155d686399489cf4ab4b3ae42de84233927f614943d767",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/checkbox-browser.execution.json",
+        "sha256": "26880c621e619fc78f155d686399489cf4ab4b3ae42de84233927f614943d767"
+      }
+    },
+    {
+      "name": "actual-a1/checkbox-browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\checkbox-browser.stdout.txt",
+      "sha256": "f57962f931a41b4ad51d03673f1d00802df9dac5418ba28b99c875ebfe35b2ee",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/checkbox-browser.stdout.txt",
+        "sha256": "f57962f931a41b4ad51d03673f1d00802df9dac5418ba28b99c875ebfe35b2ee"
+      }
+    },
+    {
+      "name": "actual-a1/checkbox-browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\checkbox-browser.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/checkbox-browser.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "paint-a2/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\result.json",
+      "sha256": "b6a637f9eb469f9818794a8bbdf6240176b1cc565ce7d465e129c134b5308816",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a2/result.json",
+        "sha256": "b6a637f9eb469f9818794a8bbdf6240176b1cc565ce7d465e129c134b5308816"
+      }
+    },
+    {
+      "name": "paint-a2/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\source-before.json",
+      "sha256": "b692b959504af03e891e921fbfd9c0e6c4d39f571d9f590d7454b0033b53a461",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a2/source-before.json",
+        "sha256": "b692b959504af03e891e921fbfd9c0e6c4d39f571d9f590d7454b0033b53a461"
+      }
+    },
+    {
+      "name": "paint-a2/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\source-after.json",
+      "sha256": "b692b959504af03e891e921fbfd9c0e6c4d39f571d9f590d7454b0033b53a461",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a2/source-after.json",
+        "sha256": "b692b959504af03e891e921fbfd9c0e6c4d39f571d9f590d7454b0033b53a461"
+      }
+    },
+    {
+      "name": "paint-a2/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\playwright.json",
+      "sha256": "03b29e8226d9f1c21582c77e9ce1d9ce06b53884ea43a46d65eb04a27b145b82",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a2/playwright.json",
+        "sha256": "03b29e8226d9f1c21582c77e9ce1d9ce06b53884ea43a46d65eb04a27b145b82"
+      }
+    },
+    {
+      "name": "paint-a2/execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\execution.json",
+      "sha256": "fb24fde3cb7952f1f9dffa017a8226ff9b23ab538058aa4107e9f244d9d8b00d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a2/execution.json",
+        "sha256": "fb24fde3cb7952f1f9dffa017a8226ff9b23ab538058aa4107e9f244d9d8b00d"
+      }
+    },
+    {
+      "name": "paint-a2/stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\stdout.txt",
+      "sha256": "3d9ada72fef231452624d4944cc7fcb2f943c53e3733dab3fd1fdea28a143dae",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a2/stdout.txt",
+        "sha256": "3d9ada72fef231452624d4944cc7fcb2f943c53e3733dab3fd1fdea28a143dae"
+      }
+    },
+    {
+      "name": "paint-a2/stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\stderr.txt",
+      "sha256": "bb9b3e4f5a85ea770b70fb9a9cec722225d926f1dd50292c8f3450fb167740b0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a2/stderr.txt",
+        "sha256": "bb9b3e4f5a85ea770b70fb9a9cec722225d926f1dd50292c8f3450fb167740b0"
+      }
+    },
+    {
+      "name": "paint-a3/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\result.json",
+      "sha256": "934177294950c24a0f3b37588a24747032a7cbdf4817fd93e20b3568c9a0da8a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a3/result.json",
+        "sha256": "934177294950c24a0f3b37588a24747032a7cbdf4817fd93e20b3568c9a0da8a"
+      }
+    },
+    {
+      "name": "paint-a3/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\source-before.json",
+      "sha256": "2e921fff5ce3101420479d6fc95e8772e137a337ce90cd69856cf2fc643f54e9",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a3/source-before.json",
+        "sha256": "2e921fff5ce3101420479d6fc95e8772e137a337ce90cd69856cf2fc643f54e9"
+      }
+    },
+    {
+      "name": "paint-a3/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\source-after.json",
+      "sha256": "2e921fff5ce3101420479d6fc95e8772e137a337ce90cd69856cf2fc643f54e9",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a3/source-after.json",
+        "sha256": "2e921fff5ce3101420479d6fc95e8772e137a337ce90cd69856cf2fc643f54e9"
+      }
+    },
+    {
+      "name": "paint-a3/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\playwright.json",
+      "sha256": "7ebd222b98da7be67055b3b1a62148a38205b45b4a771b5524cf6d5d4c437c83",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a3/playwright.json",
+        "sha256": "7ebd222b98da7be67055b3b1a62148a38205b45b4a771b5524cf6d5d4c437c83"
+      }
+    },
+    {
+      "name": "paint-a3/execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\execution.json",
+      "sha256": "c95a8a1a6b91a8ec7333bd4f4adaaa791171b5e8d1ff17854b54658c404793e0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a3/execution.json",
+        "sha256": "c95a8a1a6b91a8ec7333bd4f4adaaa791171b5e8d1ff17854b54658c404793e0"
+      }
+    },
+    {
+      "name": "paint-a3/stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\stdout.txt",
+      "sha256": "20dcb680366617a9131b9999c837f009bda1b3b82244d319c4000734d5b3cac5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a3/stdout.txt",
+        "sha256": "20dcb680366617a9131b9999c837f009bda1b3b82244d319c4000734d5b3cac5"
+      }
+    },
+    {
+      "name": "paint-a3/stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\stderr.txt",
+      "sha256": "23310e74711514fe1b6ff47a5c39e316065f3114ff0303cf91baa38887995686",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a3/stderr.txt",
+        "sha256": "23310e74711514fe1b6ff47a5c39e316065f3114ff0303cf91baa38887995686"
+      }
+    },
+    {
+      "name": "public-a1/compile-report.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\compile-report.json",
+      "sha256": "04b1133fce266f7196d716bcdd4a9ba363b528442e5ed3a897272d860f0e00c3",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/compile-report.json",
+        "sha256": "04b1133fce266f7196d716bcdd4a9ba363b528442e5ed3a897272d860f0e00c3"
+      }
+    },
+    {
+      "name": "public-a1/compile.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\compile.execution.json",
+      "sha256": "ba1c047a168cf93f05cd8b12da2ba7bac0d73d8fac79a03f934ba4262765d510",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/compile.execution.json",
+        "sha256": "ba1c047a168cf93f05cd8b12da2ba7bac0d73d8fac79a03f934ba4262765d510"
+      }
+    },
+    {
+      "name": "public-a1/compile.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\compile.stdout.txt",
+      "sha256": "4e3996818527204d23de881af70ae5cb87bdde6ace5bd9ef42d9efe6ffe3fe8b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/compile.stdout.txt",
+        "sha256": "4e3996818527204d23de881af70ae5cb87bdde6ace5bd9ef42d9efe6ffe3fe8b"
+      }
+    },
+    {
+      "name": "public-a1/compile.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\compile.stderr.txt",
+      "sha256": "aa9b7207d2d2d42fbf4e013331ee76fc39b9b042505b38551893c1f60f35b63a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/compile.stderr.txt",
+        "sha256": "aa9b7207d2d2d42fbf4e013331ee76fc39b9b042505b38551893c1f60f35b63a"
+      }
+    },
+    {
+      "name": "public-a1/observed-modules.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\observed-modules.json",
+      "sha256": "2e91501b4d35d0e1d222b6ecaaabdebde8ec2baa51b1a9789aeb55594994707e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/observed-modules.json",
+        "sha256": "2e91501b4d35d0e1d222b6ecaaabdebde8ec2baa51b1a9789aeb55594994707e"
+      }
+    },
+    {
+      "name": "public-a1/compiled-snapshot.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\compiled-snapshot.json",
+      "sha256": "cee49c836da16bafd9adad6551f808c4d25dd0cbee2efbb350e3611afd7300a9",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/compiled-snapshot.json",
+        "sha256": "cee49c836da16bafd9adad6551f808c4d25dd0cbee2efbb350e3611afd7300a9"
+      }
+    },
+    {
+      "name": "public-a1/route-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\route-manifest.json",
+      "sha256": "58733bf417d5c0ede7a6ab4a1a6f3e40a9f1a90c4678484293385c9854dd7a51",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/route-manifest.json",
+        "sha256": "58733bf417d5c0ede7a6ab4a1a6f3e40a9f1a90c4678484293385c9854dd7a51"
+      }
+    },
+    {
+      "name": "public-a1/output-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\output-before.json",
+      "sha256": "a405d7bba96f56ba2434758e70fa5aa770afd309645b2faef6dacc84905c7194",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/output-before.json",
+        "sha256": "a405d7bba96f56ba2434758e70fa5aa770afd309645b2faef6dacc84905c7194"
+      }
+    },
+    {
+      "name": "public-a1/output-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\output-after.json",
+      "sha256": "a405d7bba96f56ba2434758e70fa5aa770afd309645b2faef6dacc84905c7194",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/output-after.json",
+        "sha256": "a405d7bba96f56ba2434758e70fa5aa770afd309645b2faef6dacc84905c7194"
+      }
+    },
+    {
+      "name": "public-a1/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\playwright.json",
+      "sha256": "d7f087c1ce93ac8f7ce44ffce3580ad8d5a11f3e8dd46d558659979ac4bfd124",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/playwright.json",
+        "sha256": "d7f087c1ce93ac8f7ce44ffce3580ad8d5a11f3e8dd46d558659979ac4bfd124"
+      }
+    },
+    {
+      "name": "public-a1/public-browser.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\public-browser.execution.json",
+      "sha256": "54e10b7c1d7abacb07f3649fb65dba8d23e1c3b436660f5aa1e4aba6ab712b74",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/public-browser.execution.json",
+        "sha256": "54e10b7c1d7abacb07f3649fb65dba8d23e1c3b436660f5aa1e4aba6ab712b74"
+      }
+    },
+    {
+      "name": "public-a1/public-browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\public-browser.stdout.txt",
+      "sha256": "e7938b04303596f085741fc66818f669393065b581d7b389757c529f2b80385c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/public-browser.stdout.txt",
+        "sha256": "e7938b04303596f085741fc66818f669393065b581d7b389757c529f2b80385c"
+      }
+    },
+    {
+      "name": "public-a1/public-browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\public-browser.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/public-a1/public-browser.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "captures/actual-a1/planet-account-deletion-flags-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-ru.png",
+      "sha256": "bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/actual-a1/planet-account-deletion-flags-ru.png",
+        "sha256": "bdee2048f0b8f163b3870543f25d0be144ab64756aa9a37bb1acf8c9db508976"
+      }
+    },
+    {
+      "name": "captures/actual-a1/planet-account-deletion-flags-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-en.png",
+      "sha256": "a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/actual-a1/planet-account-deletion-flags-en.png",
+        "sha256": "a8c5c34c20d0d12f9a1d9f641140db3c4dc59b90f341078ab887d94a7571bdd2"
+      }
+    },
+    {
+      "name": "captures/actual-a1/planet-account-consent-en-unchecked.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-unchecked.png",
+      "sha256": "0f3f0eed5a470d5583c2292a9a05365889591acebcadb46583e354ad3c62c3f5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/actual-a1/planet-account-consent-en-unchecked.png",
+        "sha256": "0f3f0eed5a470d5583c2292a9a05365889591acebcadb46583e354ad3c62c3f5"
+      }
+    },
+    {
+      "name": "captures/actual-a1/planet-account-consent-en-checked.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-checked.png",
+      "sha256": "aa047287801fe85f40db2d845c6b7727642f580931602071dc575766017db4f2",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/actual-a1/planet-account-consent-en-checked.png",
+        "sha256": "aa047287801fe85f40db2d845c6b7727642f580931602071dc575766017db4f2"
+      }
+    },
+    {
+      "name": "captures/actual-a1/planet-account-consent-en-native-input.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-native-input.png",
+      "sha256": "de0356b01b07e2eeb35a3c8d80b6658f6b1c6dd88dae2cf049d2602bcf2b120a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/actual-a1/planet-account-consent-en-native-input.png",
+        "sha256": "de0356b01b07e2eeb35a3c8d80b6658f6b1c6dd88dae2cf049d2602bcf2b120a"
+      }
+    },
+    {
+      "name": "actual-a1/consent-observations.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\actual-a1\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-observations.json",
+      "sha256": "0ab538e6d613bc38acc419ec6bdccbe07cc3d3665b567bad462189b314d23133",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/actual-a1/consent-observations.json",
+        "sha256": "0ab538e6d613bc38acc419ec6bdccbe07cc3d3665b567bad462189b314d23133"
+      }
+    },
+    {
+      "name": "captures/paint-a2/planet-account-deletion-flags-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-ru.png",
+      "sha256": "1000aa02a42e0ae5f728f9e88b322fda686491d3ea781942592a2872a8f16f83",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a2/planet-account-deletion-flags-ru.png",
+        "sha256": "1000aa02a42e0ae5f728f9e88b322fda686491d3ea781942592a2872a8f16f83"
+      }
+    },
+    {
+      "name": "captures/paint-a2/planet-account-deletion-flags-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-en.png",
+      "sha256": "cbce7c107b9d8f938c2ae6c92eec86c28362c668a2b49d9e9a5c14605d8688f9",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a2/planet-account-deletion-flags-en.png",
+        "sha256": "cbce7c107b9d8f938c2ae6c92eec86c28362c668a2b49d9e9a5c14605d8688f9"
+      }
+    },
+    {
+      "name": "captures/paint-a2/planet-account-consent-en-unchecked.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-unchecked.png",
+      "sha256": "79ca9d51b6ed23cee7f8662f0c9ec683bfa62b83fa9ed85e30cb430ba41c0620",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a2/planet-account-consent-en-unchecked.png",
+        "sha256": "79ca9d51b6ed23cee7f8662f0c9ec683bfa62b83fa9ed85e30cb430ba41c0620"
+      }
+    },
+    {
+      "name": "captures/paint-a2/planet-account-consent-en-checked.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-checked.png",
+      "sha256": "cbce7c107b9d8f938c2ae6c92eec86c28362c668a2b49d9e9a5c14605d8688f9",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a2/planet-account-consent-en-checked.png",
+        "sha256": "cbce7c107b9d8f938c2ae6c92eec86c28362c668a2b49d9e9a5c14605d8688f9"
+      }
+    },
+    {
+      "name": "captures/paint-a2/planet-account-consent-en-native-input.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-native-input.png",
+      "sha256": "ad1826bf3119716cd38879ba287a635b3d8189b211bc841f3d1a9eccdbc9b7f8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a2/planet-account-consent-en-native-input.png",
+        "sha256": "ad1826bf3119716cd38879ba287a635b3d8189b211bc841f3d1a9eccdbc9b7f8"
+      }
+    },
+    {
+      "name": "captures/paint-a2/planet-account-consent-en-forced-colors.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-forced-colors.png",
+      "sha256": "b29c398c56ed49953c41ee0f7d00fdf154c09476022873bf393b5ae80ed77e6e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a2/planet-account-consent-en-forced-colors.png",
+        "sha256": "b29c398c56ed49953c41ee0f7d00fdf154c09476022873bf393b5ae80ed77e6e"
+      }
+    },
+    {
+      "name": "paint-a2/consent-observations.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a2\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-observations.json",
+      "sha256": "80c8006ec919d9ee94d859a2b1e9a2c7e024798464298cf4feae428a93980033",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a2/consent-observations.json",
+        "sha256": "80c8006ec919d9ee94d859a2b1e9a2c7e024798464298cf4feae428a93980033"
+      }
+    },
+    {
+      "name": "captures/paint-a3/planet-account-deletion-flags-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-ru.png",
+      "sha256": "69a954f3549f73a28e5f7ecf506445d313a0abcf2e5dd4b44a0f893a45a38c7e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a3/planet-account-deletion-flags-ru.png",
+        "sha256": "69a954f3549f73a28e5f7ecf506445d313a0abcf2e5dd4b44a0f893a45a38c7e"
+      }
+    },
+    {
+      "name": "captures/paint-a3/planet-account-deletion-flags-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-deletion-flags-en.png",
+      "sha256": "0f37f349a6aa0d68391e3f3f5d1647e2d164037d3c13544b6307ba62dfecf51b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a3/planet-account-deletion-flags-en.png",
+        "sha256": "0f37f349a6aa0d68391e3f3f5d1647e2d164037d3c13544b6307ba62dfecf51b"
+      }
+    },
+    {
+      "name": "captures/paint-a3/planet-account-consent-en-unchecked.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-unchecked.png",
+      "sha256": "33eb187bc00f4d9e99beebe48dd738d511eb519fc3299c1e59344c37359c61ba",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a3/planet-account-consent-en-unchecked.png",
+        "sha256": "33eb187bc00f4d9e99beebe48dd738d511eb519fc3299c1e59344c37359c61ba"
+      }
+    },
+    {
+      "name": "captures/paint-a3/planet-account-consent-en-checked.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-checked.png",
+      "sha256": "0f37f349a6aa0d68391e3f3f5d1647e2d164037d3c13544b6307ba62dfecf51b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a3/planet-account-consent-en-checked.png",
+        "sha256": "0f37f349a6aa0d68391e3f3f5d1647e2d164037d3c13544b6307ba62dfecf51b"
+      }
+    },
+    {
+      "name": "captures/paint-a3/planet-account-consent-en-native-input.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-native-input.png",
+      "sha256": "e93d57b155b0676ea182bf48bdf6e6b646d7e4a404dd9439d560dd012054e878",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a3/planet-account-consent-en-native-input.png",
+        "sha256": "e93d57b155b0676ea182bf48bdf6e6b646d7e4a404dd9439d560dd012054e878"
+      }
+    },
+    {
+      "name": "captures/paint-a3/planet-account-consent-en-forced-colors.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-forced-colors.png",
+      "sha256": "cf06664892db5224244232dcb2a051933aff39dc71afb23271035d42bbf2c32f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/paint-a3/planet-account-consent-en-forced-colors.png",
+        "sha256": "cf06664892db5224244232dcb2a051933aff39dc71afb23271035d42bbf2c32f"
+      }
+    },
+    {
+      "name": "paint-a3/consent-observations.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\paint-a3\\browser\\planet-account-deletion-re-65051-and-stable-retry-ID-mobile--account-checkbox-viewport-fixture\\planet-account-consent-en-observations.json",
+      "sha256": "80c8006ec919d9ee94d859a2b1e9a2c7e024798464298cf4feae428a93980033",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/paint-a3/consent-observations.json",
+        "sha256": "80c8006ec919d9ee94d859a2b1e9a2c7e024798464298cf4feae428a93980033"
+      }
+    },
+    {
+      "name": "captures/public-a1/planet-account-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-ru.png",
+      "sha256": "6ca62c0b09702ca6363dcc13546c72b4dc9afc14adcc4e8fa0a1c6debe60cfa0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/public-a1/planet-account-ru.png",
+        "sha256": "6ca62c0b09702ca6363dcc13546c72b4dc9afc14adcc4e8fa0a1c6debe60cfa0"
+      }
+    },
+    {
+      "name": "captures/public-a1/planet-account-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-en.png",
+      "sha256": "a51b19f0bad96a2b2b9df1d698769d8ce6ad268fdfb18ae6f5104eece39e12b5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/public-a1/planet-account-en.png",
+        "sha256": "a51b19f0bad96a2b2b9df1d698769d8ce6ad268fdfb18ae6f5104eece39e12b5"
+      }
+    },
+    {
+      "name": "captures/public-a1/delete-account-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-ru.png",
+      "sha256": "476be0a63a58e0b0b447ee7a60405e9d974d9e63526c33d6a42731f6209dd0b8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/public-a1/delete-account-ru.png",
+        "sha256": "476be0a63a58e0b0b447ee7a60405e9d974d9e63526c33d6a42731f6209dd0b8"
+      }
+    },
+    {
+      "name": "captures/public-a1/delete-account-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-checkbox-d263\\public-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-en.png",
+      "sha256": "12fd402230ffa3639180004f10c3b6bb45dc127d4ae1a64e4b44fc51fe612994",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/account-paint-and-status-20261002/actual/captures/public-a1/delete-account-en.png",
+        "sha256": "12fd402230ffa3639180004f10c3b6bb45dc127d4ae1a64e4b44fc51fe612994"
+      }
+    }
+  ]
+}
