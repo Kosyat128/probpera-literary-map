@@ -33,6 +33,8 @@ The common pacing and CAS history remain intact; public HTTP routes return 404.
 Real SDK tests measure 22 capture requests, 42 for a new photo plus a correction,
 and exactly 50 on a safely deferred capture with a genuine failure checkpoint.
 Worker/admissions/operations/budget tests: 84 passed. Bundle dry-run passed.
+Measured isolated request counts are retained in
+`native-delivery-request-budget-20261002.json`.
 
 During repair, native delivery was disabled through the intended deployment
 workflow and the existing GitHub fallback was enabled. Run `37039939941`
@@ -42,6 +44,13 @@ completed successfully and acknowledged a new Telegram post at
 their original remote IDs. This receipt proves fallback delivery, not yet the
 new native Cron. VK remains deferred. Preparation AI stays paused until the
 scheduled conditional quota check; this repair makes no AI request.
+
+The owner's final Telegram example requires visible full addresses. Text and
+photo posts use `Источник: <source name>`, the complete source URL on the next
+line, then a blank line, `Литературная повестка «Пробы пера»` and the complete
+site URL. Native URL entities keep those addresses clickable. Photo attribution
+remains complete before the footer. Telegram format revision v3 queues updates
+at existing remote IDs; VK retains its earlier format revision.
 
 Source collection also rejected held records after reviewed path grammars became
 stricter. Versioned code-owned previous grammars now apply only to retained held

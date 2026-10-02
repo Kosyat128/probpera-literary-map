@@ -55,15 +55,17 @@ export async function newsSemanticRevision(item) {
   const { id, title, summary, source, category, kind, eventDate, publishedAt, eventKey } = item;
   return newsSocialPayloadDigest({ id, title, summary, source, category, kind, eventDate, publishedAt, eventKey });
 }
-function telegramPhotoCaption({ title, summary, dateLine, source, credit }, visibleUrls = true) {
-  let caption = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}\n\nИсточник: `;
-  const entities = [{ type: "bold", offset: 0, length: title.length },
-    { type: "text_link", offset: caption.length, length: source.name.length, url: source.url }];
-  caption += `${source.name}${visibleUrls ? `\n${source.url}` : ""}\n\n`;
-  const brand = "Литературная повестка «Пробы пера»";
-  entities.push({ type: "text_link", offset: caption.length, length: brand.length, url: NEWS_SECTION_URL });
-  caption += `${brand}${visibleUrls ? `\n${NEWS_SECTION_URL}` : ""}\n\nИзображение: ${credit}`;
-  return { caption, caption_entities: entities };
+function telegramPostText({ title, summary, dateLine, source, credit }) {
+  let text = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}`;
+  const entities = [{ type: "bold", offset: 0, length: title.length }];
+  const visibleUrl = url => {
+    entities.push({ type: "url", offset: text.length, length: url.length });
+    text += url;
+  };
+  if (credit) text += `\n\nИзображение: ${credit}`;
+  text += `\n\nИсточник: ${source.name}\n`; visibleUrl(source.url);
+  text += "\n\nЛитературная повестка «Пробы пера»\n"; visibleUrl(NEWS_SECTION_URL);
+  return { text, entities };
 }
 /** Exact native payload shared by preview and dispatch. No source HTML or invented details. */
 export async function prepareNewsPost(item, snapshot, platform, { destination, mediaOptions } = {}) {
@@ -73,32 +75,30 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
   const dateLabel = item.kind === "announcement" ? "Запланировано" : item.kind === "calendar" ? "Памятная дата" : null;
   const dateLine = dateLabel ? `${dateLabel}: ${new Intl.DateTimeFormat("ru-RU", { timeZone: "UTC", dateStyle: "long" })
     .format(new Date(`${item.eventDate}T12:00:00Z`))}` : null;
-  const text = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\n${NEWS_SECTION_URL}`;
+  const vkText = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\n${NEWS_SECTION_URL}`;
+  const telegram = platform === "telegram" ? telegramPostText({ title, summary, dateLine, source: item.source }) : null;
+  const text = telegram?.text || vkText;
   // Never cut a title, negation, attribution or URL. An oversized record is isolated.
   if (text.length > (platform === "telegram" ? 4096 : 16000)) throw new Error("post_text_too_long");
   let payload = platform === "telegram"
-    ? { text, entities: [{ type: "bold", offset: 0, length: title.length }], link_preview_options: { is_disabled: true } }
+    ? { ...telegram, link_preview_options: { is_disabled: true } }
     : { message: text, attachments: "", from_group: 1, close_comments: 0 };
   let { media, reason: fallbackReason } = await selectNewsMedia(item.id, destination, mediaOptions);
   const resolution = mediaOptions?.resolutions?.[item.id];
   const mediaPending = !media && resolution && resolution.status !== "held";
   if (!media && resolution) fallbackReason = `media_discovery_${resolution.status}:${resolution.reason || "asset_unavailable"}`;
   if (media) {
-    const captionInput = { title, summary, dateLine, source: item.source, credit: media.credit };
-    let telegram = telegramPhotoCaption(captionInput);
-    // Native clickable labels preserve both links and all facts when a long
-    // article URL would otherwise exceed Telegram's photo-caption limit.
-    if (telegram.caption.length > 1024) telegram = telegramPhotoCaption(captionInput, false);
-    const caption = platform === "telegram" ? telegram.caption : `${text}\n\nИзображение: ${media.credit}`;
+    const photo = platform === "telegram" ? telegramPostText({ title, summary, dateLine, source: item.source, credit: media.credit }) : null;
+    const caption = platform === "telegram" ? photo.text : `${text}\n\nИзображение: ${media.credit}`;
     if (caption.length > (platform === "telegram" ? 1024 : 16000)) {
       media = null; fallbackReason = "required_credit_or_caption_exceeds_limit";
     } else payload = platform === "telegram"
-      ? { photo: "attach://news_photo", ...telegram, show_caption_above_media: false }
+      ? { photo: "attach://news_photo", caption, caption_entities: photo.entities, show_caption_above_media: false }
       : { ...payload, message: caption, attachments: "prepared://news_photo" };
   }
   const textRevision = await newsSemanticRevision(item);
   // A template edit must update an already sent post at its existing remote ID.
-  const formatRevision = "source-then-site-visible-links-v2";
+  const formatRevision = platform === "telegram" ? "source-then-site-visible-urls-footer-v3" : "source-then-site-visible-links-v2";
   const messageRevision = formatRevision ? await newsSocialPayloadDigest({ textRevision, formatRevision }) : textRevision;
   // The durable identity is unchanged. A new asset or credit creates an edit revision.
   const revision = media ? await newsSocialPayloadDigest({ textRevision: messageRevision, media: {

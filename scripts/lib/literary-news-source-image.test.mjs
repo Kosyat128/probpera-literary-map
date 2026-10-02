@@ -67,7 +67,8 @@ describe('exact licensed image used by the news source', () => {
     expect(prepared.payload.show_caption_above_media).toBe(false);
     expect(prepared.payload.caption).toContain(f.item.title.ru); expect(prepared.payload.caption).toContain(f.item.summary.ru);
     expect(prepared.payload.caption).toContain('Photo Author');
-    expect(prepared.payload.caption_entities.filter(row => row.type === 'text_link').map(row => row.url)).toEqual([f.item.source.url, NEWS_SECTION_URL]);
+    expect(prepared.payload.caption_entities.filter(row => row.type === 'url')
+      .map(row => prepared.payload.caption.slice(row.offset, row.offset + row.length))).toEqual([f.item.source.url, NEWS_SECTION_URL]);
     await validatePreparedNewsMedia(prepared, destination, { ...result.mediaOptions, readBytes: readNewsMediaBytes });
     const replay = await resolveNewsMediaBatch([f.item], [destination], { ...f.options, store, fetchImpl: vi.fn(() => { throw Error('no refetch'); }) });
     expect(replay.report.cached).toBe(1); expect(replay.report.requests).toBe(0);

@@ -383,7 +383,7 @@ describe("native prepared text and validated transport receipts", () => {
   it("canonical payload checks ignore JSON object ordering but reject changed values", async () => {
     const prepared=await prepareNewsPost(item,(await completeFeed()).snapshot,"telegram");
     const reordered={link_preview_options:prepared.payload.link_preview_options,
-      entities:prepared.payload.entities.map(({type,length,offset})=>({offset,length,type})),text:prepared.payload.text};
+      entities:prepared.payload.entities.map(({type,length,offset,...rest})=>({...rest,offset,length,type})),text:prepared.payload.text};
     expect(await newsSocialPayloadDigest(reordered)).toBe(prepared.payloadSha256);
     const fetchImpl=vi.fn();
     const transport=createNewsSocialTransport({mode:"live",telegramToken:"fixture",fetchImpl});
@@ -391,14 +391,23 @@ describe("native prepared text and validated transport receipts", () => {
     expect((await transport.send({destination:destinations[0],prepared:changed,remoteId:null})).code).toBe("prepared_bytes_changed");
     expect(fetchImpl).not.toHaveBeenCalled();
   });
-  it("uses exact UTF-16 title offsets and disables Telegram preview without truncating attribution", async () => {
+  it("uses the exact source/site footer with full visible URLs and UTF-16 URL entity offsets", async () => {
     const prepared = await prepareNewsPost({ ...item, title: { ru: "📚 A & B: «Часть 10»", en: "A & B" } }, (await completeFeed()).snapshot, "telegram");
     expect(prepared.payload.entities[0].length).toBe("📚 A & B: «Часть 10»".length);
     expect(prepared.payload.link_preview_options.is_disabled).toBe(true);
-    expect(prepared.payload.text).toContain(item.source.url);
-    expect(prepared.payload.text).toContain("https://probpera.ru/#literary-news");
-    expect(prepared.payload.text.indexOf(item.source.url))
-      .toBeLessThan(prepared.payload.text.indexOf("https://probpera.ru/#literary-news"));
+    expect(prepared.payload.text).toBe(`📚 A & B: «Часть 10»\n\n${item.summary.ru}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\nhttps://probpera.ru/#literary-news`);
+    const links = prepared.payload.entities.filter(entity => entity.type === "url");
+    expect(links.map(entity => prepared.payload.text.slice(entity.offset, entity.offset + entity.length)))
+      .toEqual([item.source.url, "https://probpera.ru/#literary-news"]);
+    expect(prepared.payload.entities.some(entity => entity.type === 'text_link')).toBe(false);
+    expect(prepared.formatRevision).toBe("source-then-site-visible-urls-footer-v3");
+  });
+  it("keeps full URLs without bypassing the text limit and preserves the existing VK formatter", async () => {
+    const longSource = { ...item, source: { ...item.source, url: "https://publisher.example/" + "x".repeat(4100) } };
+    await expect(prepareNewsPost(longSource, (await completeFeed()).snapshot, "telegram")).rejects.toThrow('post_text_too_long');
+    const vk = await prepareNewsPost(item, (await completeFeed()).snapshot, "vk");
+    expect(vk.formatRevision).toBe("source-then-site-visible-links-v2");
+    expect(vk.payload.message).toBe(`${item.title.ru}\n\n${item.summary.ru}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\nhttps://probpera.ru/#literary-news`);
   });
   it("shadow cannot call any external write method", async () => {
     const fetchImpl = vi.fn();
