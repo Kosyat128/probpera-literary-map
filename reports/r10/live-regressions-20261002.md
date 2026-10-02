@@ -13,6 +13,13 @@ The local QA uses the real public 174-article snapshot explicitly injected for
 testing, including unchanged article bodies. It is not production acceptance.
 See `showcase/live-regression-20261002/focused-qa.json` and its screenshots.
 
+The final owner-selected appearance adds 20px vertical and 24px horizontal
+header padding, an 8px kicker/title gap, 20px card padding and 10px text gaps.
+The lead photo and 1+6 selection are unchanged. Local checks at 1440x900,
+1280x720 and 1280x600 confirm no horizontal overflow and a reachable footer;
+the exact final CSS is pinned in the current independent UI packet. The focused
+governance checks after this final spacing adjustment passed all 67 tests.
+
 The 190 events are October 2026's monthly count. The canonical country runtime
 contains 2340 annual unique dates, of which 2338 occur in the non-leap year 2026.
 The new year view exposes all 12 months, a searchable list and 117 pages of

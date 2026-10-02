@@ -10,7 +10,7 @@ const historical = path => execFileSync('git', ['-c', `safe.directory=${process.
 
 describe('User-requested showcase and calendar UI repair preserves historical acceptance', () => {
   it('pins an independent exact delta without granting release acceptance', () => {
-    expect(sha(JSON.stringify(packet))).toBe('82ac563fed729d6fd3c218785c373e15c179609b7ca7979d0347c33b31ffa573');
+    expect(sha(JSON.stringify(packet))).toBe('36e0b0d7ae8c6fde040d28aa9419384b9221bb7a888f47987f2507ee35792cd2');
     expect(packet).toMatchObject({id: 'R10-LIVE-UI-FOLLOWUP-20261002',
       baselineCommitSha: '4e4e1e1dff6425083154f0cf67ff01eb88e95b25', historicalPinsChanged: false,
       articleBodyChanged: false, canonicalGlobeChanged: false,
