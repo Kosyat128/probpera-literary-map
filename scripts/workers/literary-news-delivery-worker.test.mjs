@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { Buffer } from 'node:buffer';
 import worker,{runDeliveryTick,DELIVERY_WINDOW,checkedDeliveryDueRows,checkedDeliveryDayStatus,
   createDeliverySupabaseFetch,boundedDeliveryResponse,LiteraryNewsDeliveryCoordinator,
-  scheduleNativeNewsDelivery} from './literary-news-delivery-worker.mjs';
+  scheduleNativeNewsDelivery,runDeliveryCaptureTick} from './literary-news-delivery-worker.mjs';
 import {makeDeliveryMediaIndex,DELIVERY_MEDIA_INDEX_KEY,DELIVERY_MEDIA_BYTES_PREFIX} from '../lib/literary-news-delivery-media-profile.mjs';
 import {prepareNewsPost,newsPostKey,newsSemanticRevision} from '../lib/literary-news-social.mjs';
 import {mediaByteHash} from '../lib/literary-news-media-policy.mjs';
@@ -37,8 +37,9 @@ async function fixture({rows=[],status=day(),control={mode:'on',paused:false,his
  const dispatch=vi.fn(async()=>[]);
  const representativeFeed=await buildPublishedNewsFeed({records:rows.map(value=>({...item(value.metadata.newsId),...value.metadata.prepared.temporal})),
    withdrawals:[],state:pendingNewsSourceState(),current:now,release:'a'.repeat(40)});
- const run=()=>runDeliveryTick({env,now:()=>now,createClientImpl:()=>client,storeFactory:()=>store,dispatchImpl:dispatch,fetchFeedImpl:async()=>representativeFeed});
- return{env,store,client,dispatch,run,state};
+ const options={env,now:()=>now,createClientImpl:()=>client,storeFactory:()=>store,dispatchImpl:dispatch,fetchFeedImpl:async()=>representativeFeed};
+ const run=()=>runDeliveryTick(options),capture=()=>runDeliveryCaptureTick(options);
+ return{env,store,client,dispatch,run,capture,state};
 }
 
 describe('Private native delivery cron boundary',()=>{
@@ -46,11 +47,14 @@ describe('Private native delivery cron boundary',()=>{
    const coordinator=new LiteraryNewsDeliveryCoordinator({storage:{}},{});
    for(const [method,url] of [['GET','https://coordinator.internal/run'],['POST','https://coordinator.internal/send']])
      expect((await coordinator.fetch(new Request(url,{method}))).status).toBe(404);
-   const response=await coordinator.fetch(new Request('https://coordinator.internal/run',{method:'POST'}));
-   expect(response.status).toBe(200);expect(await response.json()).toMatchObject({status:'disabled',deliveredThisRun:0});
-   expect((await worker.fetch(new Request('https://public.example/run',{method:'POST'}))).status).toBe(404);
+   expect((await coordinator.fetch(new Request('https://coordinator.internal/run',{method:'POST'}))).status).toBe(404);
+   for(const path of ['/capture','/dispatch']){
+     const response=await coordinator.fetch(new Request('https://coordinator.internal'+path,{method:'POST'}));
+     expect(response.status).toBe(200);expect(await response.json()).toMatchObject({status:'disabled',deliveredThisRun:0});
+     expect((await worker.fetch(new Request('https://public.example'+path,{method:'POST'}))).status).toBe(404);
+   }
  });
- it('uses one private coordinator call per enabled Cron and reports its factual result',async()=>{
+ it('uses separate private capture and dispatch calls per enabled Cron and reports their factual results',async()=>{
    const report={status:'daily_target_deficit',deliveredThisRun:0,dayStatus:day()};
    const stub={fetch:vi.fn(async()=>Response.json(report))};
    const coordinator={idFromName:vi.fn(name=>name),get:vi.fn(()=>stub)};
@@ -59,8 +63,11 @@ describe('Private native delivery cron boundary',()=>{
    expect(coordinator.get).not.toHaveBeenCalled();
    expect(await scheduleNativeNewsDelivery(controller,{NEWS_DELIVERY_ENABLED:'true',DELIVERY_COORDINATOR:coordinator},{log})).toEqual(report);
    expect(coordinator.idFromName).toHaveBeenCalledWith('literary-news-delivery');
-   expect(stub.fetch).toHaveBeenCalledExactlyOnceWith('https://coordinator.internal/run',{method:'POST'});
-   expect(log).toHaveBeenCalledExactlyOnceWith(JSON.stringify(report));expect(controller.noRetry).not.toHaveBeenCalled();
+   expect(stub.fetch).toHaveBeenCalledTimes(2);
+   expect(stub.fetch).toHaveBeenNthCalledWith(1,'https://coordinator.internal/capture',{method:'POST'});
+   expect(stub.fetch).toHaveBeenNthCalledWith(2,'https://coordinator.internal/dispatch',{method:'POST'});
+   expect(log).toHaveBeenCalledTimes(2);expect(log.mock.calls.every(([value])=>value===JSON.stringify(report))).toBe(true);
+   expect(controller.noRetry).not.toHaveBeenCalled();
  });
  it('never automatically retries a blocked coordinator quota result',async()=>{
    const report={status:'blocked',code:'runtime_quota_exceeded',deliveredThisRun:null};
@@ -77,7 +84,8 @@ describe('Private native delivery cron boundary',()=>{
  it('uses the exact inclusive/exclusive Moscow year window',async()=>{
    const env={NEWS_DELIVERY_ENABLED:'true'};
    expect((await runDeliveryTick({env,now:()=>new Date(Date.parse(DELIVERY_WINDOW.start)-1)})).status).toBe('outside_authorized_window');
-   expect((await runDeliveryTick({env,now:()=>new Date(DELIVERY_WINDOW.start)})).code).toBe('delivery_credentials_missing');
+   expect((await runDeliveryTick({env,now:()=>new Date(DELIVERY_WINDOW.start)})).status).toBe('outside_publication_hours');
+   expect((await runDeliveryTick({env,now:()=>new Date(Date.parse(DELIVERY_WINDOW.start)+8*3600000)})).code).toBe('delivery_credentials_missing');
    expect((await runDeliveryTick({env,now:()=>new Date(DELIVERY_WINDOW.end)})).status).toBe('outside_authorized_window');
  });
  it.each([{mode:'off',historyReconciled:true},{mode:'on',historyReconciled:false},{mode:'on',paused:true,historyReconciled:true}])('preserves existing control and never changes activation: %j',async control=>{
@@ -105,15 +113,16 @@ describe('Private native delivery cron boundary',()=>{
    const f=await fixture({rows:[row('fresh-text',{prepared})],status:{...day(),freshCreates:10,deficitToMinimum:0}});
    const result=await f.run();expect(result.status).toBe('daily_minimum_reached');expect(result.selectedJobs).toBe(1);
    expect(f.dispatch.mock.calls[0][0].jobs[0].prepared.payload.text).toContain('https://probpera.ru/#literary-news');
-   expect(f.env.NEWS_STATE.get).toHaveBeenCalledTimes(1);
+   expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();
  });
  it('a missing photo index permits current verified creates as text after bounded admission capture',async()=>{
    const prepared=await prepareNewsPost(item('fresh-text'),{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
    const f=await fixture({rows:[row('photo-without-admission'),row('fresh-text',{prepared})]});
    f.env.NEWS_STATE.get.mockResolvedValue(null);
+   const capture=await f.capture();expect(capture.newAdmissions).toBe(2);
    const result=await f.run();expect(result.status).toBe('daily_target_deficit');expect(result.selectedJobs).toBe(2);
    expect(f.dispatch.mock.calls[0][0].jobs[0].prepared.payload).toEqual(prepared.payload);
-   expect(result.mediaUnavailable).toBe(0);expect(result.textFallbacks).toBe(0);expect(result.newAdmissions).toBe(2);
+   expect(result.mediaUnavailable).toBe(0);expect(result.textFallbacks).toBe(0);expect(result.newAdmissions).toBe(0);
  });
  it('corrupt media index data fails closed instead of fabricating approved rights',async()=>{
    const prepared=await prepareNewsPost(item('fresh-text'),{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
@@ -145,8 +154,9 @@ describe('Private native delivery cron boundary',()=>{
    const good=row('good',{prepared}),text=await prepareNewsPost(item('fresh-text'),{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
    const f=await fixture({rows:[row('fresh-text',{prepared:text}),row('unready'),good],index});
    f.env.NEWS_STATE.get.mockImplementation(async(key,type)=>key===DELIVERY_MEDIA_INDEX_KEY?JSON.stringify(index):key===DELIVERY_MEDIA_BYTES_PREFIX+descriptor.sha256?bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength):null);
+   await f.capture();
    f.dispatch.mockImplementation(async({jobs,transport})=>{
-     expect(jobs.map(job=>job.newsId)).toEqual(['good','fresh-text','unready']);
+     expect(jobs).toHaveLength(1);expect(['good','fresh-text']).toContain(jobs[0].newsId);
      expect(await transport.preflight({platform:'vk',id:'-123'})).toEqual({ok:false,reason:'vk_disabled'});
      expect(await transport.send({destination:{platform:'vk',id:'-123'}})).toEqual({kind:'blocked',code:'vk_disabled'});
      vi.useFakeTimers();vi.setSystemTime(new Date('2026-10-11T00:00:00Z'));
@@ -154,7 +164,8 @@ describe('Private native delivery cron boundary',()=>{
      finally{vi.useRealTimers();}
      return[];
    });
-   const result=await f.run();expect(result.selectedJobs).toBe(3);expect(result.mediaUnavailable).toBe(0);
+   const result=await f.run();expect(result.selectedJobs).toBe(2);expect(result.mediaUnavailable).toBe(0);
+   expect(f.dispatch.mock.calls.map(([args])=>args.jobs[0].newsId)).toEqual(['good','fresh-text']);
    expect(f.env.NEWS_STATE.get.mock.calls.filter(([key])=>key.startsWith(DELIVERY_MEDIA_BYTES_PREFIX))).toHaveLength(1);
  });
  it('latches actual SDK HTTP402 without another request or credential diagnostics',async()=>{

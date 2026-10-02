@@ -470,6 +470,20 @@ function freezeSource(value) {
 // Keep existing IDs and destinations when their latest upstream probe is blocked.
 // Only successfully tested, code-reviewed R10 profiles add or update destinations.
 export const LEGACY_LITERARY_NEWS_SOURCES = freezeSource(approvedSources);
+
+/** Historical code-reviewed path grammars are for retaining held evidence only.
+ * They never configure discovery endpoints or accept a policy supplied by queue JSON. */
+export const RETAINED_NEWS_SOURCE_GRAMMARS = freezeSource({
+  version: "legacy-and-r10-pre-stream-v1",
+  profiles: [...approvedSources, ...R10_SOURCE_PROFILES]
+    .filter(source => source.linkPattern instanceof RegExp)
+    .map(source => ({
+      id: source.id,
+      origins: [...new Set([new URL(source.url).origin, ...(source.articleOrigins || [])])],
+      linkPattern: new RegExp(source.linkPattern.source, source.linkPattern.flags),
+    })),
+});
+
 const verifiedById = new Map(R10_SOURCE_PROFILES.map(applyStreamSourceDiscoveryOverride).map((source) => [source.id, source]));
 const existingIds = new Set(approvedSources.map((source) => source.id));
 export const LITERARY_NEWS_SOURCES = freezeSource([

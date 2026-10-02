@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-02T17:09:54.324Z",
+  "environment": "checked-in public corpus and actual App calendar input",
+  "countries": 200,
+  "writerRecords": 1684,
+  "annual": {
+    "uniqueEvents": 2340,
+    "birthdays": 1287,
+    "memorials": 1053
+  },
+  "display2026": {
+    "visibleEvents": 2338,
+    "months": [
+      {
+        "month": 1,
+        "events": 222
+      },
+      {
+        "month": 2,
+        "events": 195
+      },
+      {
+        "month": 3,
+        "events": 191
+      },
+      {
+        "month": 4,
+        "events": 200
+      },
+      {
+        "month": 5,
+        "events": 195
+      },
+      {
+        "month": 6,
+        "events": 173
+      },
+      {
+        "month": 7,
+        "events": 189
+      },
+      {
+        "month": 8,
+        "events": 181
+      },
+      {
+        "month": 9,
+        "events": 185
+      },
+      {
+        "month": 10,
+        "events": 190
+      },
+      {
+        "month": 11,
+        "events": 208
+      },
+      {
+        "month": 12,
+        "events": 209
+      }
+    ]
+  },
+  "display2028": {
+    "visibleEvents": 2340,
+    "months": [
+      {
+        "month": 1,
+        "events": 222
+      },
+      {
+        "month": 2,
+        "events": 197
+      },
+      {
+        "month": 3,
+        "events": 191
+      },
+      {
+        "month": 4,
+        "events": 200
+      },
+      {
+        "month": 5,
+        "events": 195
+      },
+      {
+        "month": 6,
+        "events": 173
+      },
+      {
+        "month": 7,
+        "events": 189
+      },
+      {
+        "month": 8,
+        "events": 181
+      },
+      {
+        "month": 9,
+        "events": 185
+      },
+      {
+        "month": 10,
+        "events": 190
+      },
+      {
+        "month": 11,
+        "events": 208
+      },
+      {
+        "month": 12,
+        "events": 209
+      }
+    ]
+  },
+  "february29": [
+    {
+      "identity": "writer:montenegro:stefan_ljubisa:birth",
+      "writerKey": "montenegro:stefan_ljubisa",
+      "name": "Стефан Митров Любиша",
+      "date": "1824-02-29"
+    },
+    {
+      "identity": "wikidata:Q363810:birth",
+      "writerKey": "usa:tim_powers",
+      "name": "Тим Пауэрс",
+      "date": "1952-02-29"
+    }
+  ],
+  "observed190": {
+    "scope": "October 2026",
+    "cause": "month summary label omitted its scope; no runtime event cap"
+  },
+  "ui": {
+    "monthlyScopeExplicit": true,
+    "annualCountDerivedFromActualEvents": true,
+    "directMonthNavigation": 12,
+    "yearSearch": "writer, country or DD.MM",
+    "yearPageSize": 20,
+    "yearNavigation": true
+  },
+  "checks": {
+    "publicWriterCardForEveryEvent": true,
+    "uniqueAnnualIdentities": true,
+    "ruEnIdentityParity": true,
+    "fullPublicCountryArchivePassedByApp": true,
+    "nonLeapYearDoesNotShiftFebruary29": true
+  },
+  "additional1000": {
+    "baselineAnnualEvents": 2237,
+    "netGrowth": 103,
+    "requiredGrowth": 1000,
+    "complete": false
+  },
+  "deployment": false,
+  "productionAcceptance": false
+}

@@ -1248,6 +1248,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Вид календаря",
+    "group": "Весь интерфейс",
+    "label": "Вид календаря",
+    "defaultRu": "Вид календаря",
+    "defaultEn": "Calendar view",
+    "multiline": false
+  },
+  {
     "key": "interface.Включить автоматическое вращение",
     "group": "Весь интерфейс",
     "label": "Включить автоматическое вращение",
@@ -1765,6 +1773,14 @@
     "label": "Говорилка - форум «Проба Пера»",
     "defaultRu": "Говорилка - форум «Проба Пера»",
     "defaultEn": "The Proba Pera forum",
+    "multiline": false
+  },
+  {
+    "key": "interface.Годовой охват календаря",
+    "group": "Весь интерфейс",
+    "label": "Годовой охват календаря",
+    "defaultRu": "Годовой охват календаря",
+    "defaultEn": "Calendar year coverage",
     "multiline": false
   },
   {
@@ -2709,6 +2725,14 @@
     "label": "Имя или никнейм",
     "defaultRu": "Имя или никнейм",
     "defaultEn": "Name or nickname",
+    "multiline": false
+  },
+  {
+    "key": "interface.Имя, страна или ДД.ММ",
+    "group": "Весь интерфейс",
+    "label": "Имя, страна или ДД.ММ",
+    "defaultRu": "Имя, страна или ДД.ММ",
+    "defaultEn": "Name, country or DD.MM",
     "multiline": false
   },
   {
@@ -7552,6 +7576,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Предыдущий год",
+    "group": "Весь интерфейс",
+    "label": "Предыдущий год",
+    "defaultRu": "Предыдущий год",
+    "defaultEn": "Previous year",
+    "multiline": false
+  },
+  {
     "key": "interface.Предыдущий материал",
     "group": "Весь интерфейс",
     "label": "Предыдущий материал",
@@ -9168,6 +9200,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Следующий год",
+    "group": "Весь интерфейс",
+    "label": "Следующий год",
+    "defaultRu": "Следующий год",
+    "defaultEn": "Next year",
+    "multiline": false
+  },
+  {
     "key": "interface.Следующий материал",
     "group": "Весь интерфейс",
     "label": "Следующий материал",
@@ -9989,6 +10029,14 @@
     "label": "Страница столкнулась с ошибкой",
     "defaultRu": "Страница столкнулась с ошибкой",
     "defaultEn": "This page encountered an error",
+    "multiline": false
+  },
+  {
+    "key": "interface.Страницы годового списка",
+    "group": "Весь интерфейс",
+    "label": "Страницы годового списка",
+    "defaultRu": "Страницы годового списка",
+    "defaultEn": "Year list pages",
     "multiline": false
   },
   {

@@ -1,0 +1,44 @@
+{
+  "environment": "local Vite runtime",
+  "browser": "Chrome",
+  "checkedAt": "2026-10-02T17:14:26.338Z",
+  "report": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "geometry": {
+        "viewport": 1440,
+        "pageWidth": 1440,
+        "rows": 20,
+        "months": 12,
+        "dates": "2 340 ежегодных дат · В 2026 году: 2 338 дат. Даты 29 февраля доступны в високосные годы."
+      },
+      "englishLeapNames": [
+        "Stefan Mitrov Ljubiša",
+        "Writer"
+      ],
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": 390,
+        "pageWidth": 390,
+        "rows": 20,
+        "months": 12,
+        "dates": "2 340 ежегодных дат · В 2026 году: 2 338 дат. Даты 29 февраля доступны в високосные годы."
+      },
+      "englishLeapNames": [
+        "Stefan Mitrov Ljubiša",
+        "Writer"
+      ],
+      "errors": []
+    }
+  ],
+  "productionAcceptance": false
+}

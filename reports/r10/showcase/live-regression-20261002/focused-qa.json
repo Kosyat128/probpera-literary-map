@@ -1,0 +1,661 @@
+{
+  "checkedAt": "2026-10-02T17:24:07.575Z",
+  "source": "Current local source with the unchanged canonical public CMS snapshot injected for QA",
+  "snapshot": {
+    "url": "https://probpera.ru/cms/published-content.json",
+    "generatedAt": "2026-10-02T04:30:44.320Z",
+    "count": 174,
+    "sha256": "7494b52cfaedb1c368d014be6a8a0cf47cbb91068f66647849182d2150e2cb6a"
+  },
+  "mediaTransport": "Node fetch forwards the original public image bytes because direct Chrome requests reset in this environment",
+  "humanReview": false,
+  "desktop": [
+    {
+      "width": 1440,
+      "height": 900,
+      "panel": {
+        "x": 160,
+        "y": 152,
+        "width": 1120,
+        "height": 736,
+        "top": 152,
+        "right": 1280,
+        "bottom": 888,
+        "left": 160
+      },
+      "lead": {
+        "x": 161,
+        "y": 237.390625,
+        "width": 447.1875,
+        "height": 537.4375,
+        "top": 237.390625,
+        "right": 608.1875,
+        "bottom": 774.828125,
+        "left": 161
+      },
+      "image": {
+        "x": 161,
+        "y": 237.390625,
+        "width": 446.1875,
+        "height": 297.453125,
+        "top": 237.390625,
+        "right": 607.1875,
+        "bottom": 534.84375,
+        "left": 161
+      },
+      "ratio": 1.5,
+      "imageFit": "contain",
+      "scroll": 66,
+      "documentOverflow": 0,
+      "nestedOverflow": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "cards": [
+        {
+          "bounds": {
+            "x": 608.1875,
+            "y": 237.390625,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 237.390625,
+            "right": 943.59375,
+            "bottom": 458.25,
+            "left": 608.1875
+          },
+          "title": "Книга и экранизация. «Двенадцать стульев»",
+          "excerpt": "Сегодня мы сопоставим грандиозный роман Ильфа и Петрова с двухсерийным фильмом Гайдая «Двенадцать стульев» и решим,…",
+          "href": "/probpera-literary-map/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-dvenadtsat-stulev/",
+          "image": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/09/b66c7a06-ea22-4c95-acc4-324c0ae77662.webp",
+          "imageNatural": 1536
+        },
+        {
+          "bounds": {
+            "x": 943.59375,
+            "y": 237.390625,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 237.390625,
+            "right": 1279,
+            "bottom": 458.25,
+            "left": 943.59375
+          },
+          "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 10)",
+          "excerpt": "В арсенале самых именитых писателей, всегда имеются такие произведения, о существовании которых знают только…",
+          "href": "/probpera-literary-map/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-10/",
+          "image": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/09/d9bfb586-9e8e-49fb-aec1-9ba8e404177f.webp",
+          "imageNatural": 1672
+        },
+        {
+          "bounds": {
+            "x": 608.1875,
+            "y": 458.25,
+            "width": 335.40625,
+            "height": 208.484375,
+            "top": 458.25,
+            "right": 943.59375,
+            "bottom": 666.734375,
+            "left": 608.1875
+          },
+          "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
+          "excerpt": "История создания произведения, краткое раскрытие сюжета и заключительное мнение о прочитанном",
+          "href": "/probpera-literary-map/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
+          "image": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/09/ee020726-037e-479b-87b9-3dcdda1c082e.webp",
+          "imageNatural": 599
+        },
+        {
+          "bounds": {
+            "x": 943.59375,
+            "y": 458.25,
+            "width": 335.40625,
+            "height": 208.484375,
+            "top": 458.25,
+            "right": 1279,
+            "bottom": 666.734375,
+            "left": 943.59375
+          },
+          "title": "15 крылатых выражений, пришедших к нам из Библии",
+          "excerpt": "Происхождение и современное значение пятнадцати выражений из Ветхого и Нового Завета",
+          "href": "/probpera-literary-map/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+          "image": "http://127.0.0.1:5193/probpera-literary-map/media/optimized/757a1bfd4ed17366cbe59a14-640w.webp",
+          "imageNatural": 48
+        },
+        {
+          "bounds": {
+            "x": 608.1875,
+            "y": 666.734375,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 666.734375,
+            "right": 943.59375,
+            "bottom": 887.59375,
+            "left": 608.1875
+          },
+          "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+          "excerpt": "В четвёртой части нашей подборки мы приведём пятнадцать зарубежных классиков литературы и их профессии, которыми они…",
+          "href": "/probpera-literary-map/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+          "image": "http://127.0.0.1:5193/probpera-literary-map/media/optimized/fe0a6504f40a03af35f23326-640w.webp",
+          "imageNatural": 48
+        },
+        {
+          "bounds": {
+            "x": 943.59375,
+            "y": 666.734375,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 666.734375,
+            "right": 1279,
+            "bottom": 887.59375,
+            "left": 943.59375
+          },
+          "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+          "excerpt": "Авторская подборка произведений братьев Гримм, многие из которых заставят вас трепетать от страха",
+          "href": "/probpera-literary-map/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+          "image": "http://127.0.0.1:5193/probpera-literary-map/media/optimized/ca341a6fe587ee30eec10b92-640w.webp",
+          "imageNatural": 48
+        }
+      ],
+      "leadTitle": "1924 год. Владислав Реймонт - лауреат Нобелевской премии по литературе",
+      "leadDescription": "Краткая биография лауреата, несколько слов о его творчестве и номинации в целом.",
+      "count": "174 материала в архиве",
+      "titleFont": "24px",
+      "leadBackground": "rgb(255, 248, 237)",
+      "footerReachable": true,
+      "keyboardAndMouse": true
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "panel": {
+        "x": 80,
+        "y": 152,
+        "width": 1120,
+        "height": 556,
+        "top": 152,
+        "right": 1200,
+        "bottom": 708,
+        "left": 80
+      },
+      "lead": {
+        "x": 81,
+        "y": 213.390625,
+        "width": 447.1875,
+        "height": 497.4375,
+        "top": 213.390625,
+        "right": 528.1875,
+        "bottom": 710.828125,
+        "left": 81
+      },
+      "image": {
+        "x": 81,
+        "y": 213.390625,
+        "width": 446.1875,
+        "height": 297.453125,
+        "top": 213.390625,
+        "right": 527.1875,
+        "bottom": 510.84375,
+        "left": 81
+      },
+      "ratio": 1.5,
+      "imageFit": "contain",
+      "scroll": 222,
+      "documentOverflow": 0,
+      "nestedOverflow": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "cards": [
+        {
+          "bounds": {
+            "x": 528.1875,
+            "y": 213.390625,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 213.390625,
+            "right": 863.59375,
+            "bottom": 434.25,
+            "left": 528.1875
+          },
+          "title": "Книга и экранизация. «Двенадцать стульев»",
+          "excerpt": "Сегодня мы сопоставим грандиозный роман Ильфа и Петрова с двухсерийным фильмом Гайдая «Двенадцать стульев» и решим,…",
+          "href": "/probpera-literary-map/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-dvenadtsat-stulev/",
+          "image": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/09/b66c7a06-ea22-4c95-acc4-324c0ae77662.webp",
+          "imageNatural": 1536
+        },
+        {
+          "bounds": {
+            "x": 863.59375,
+            "y": 213.390625,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 213.390625,
+            "right": 1199,
+            "bottom": 434.25,
+            "left": 863.59375
+          },
+          "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 10)",
+          "excerpt": "В арсенале самых именитых писателей, всегда имеются такие произведения, о существовании которых знают только…",
+          "href": "/probpera-literary-map/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-10/",
+          "image": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/09/d9bfb586-9e8e-49fb-aec1-9ba8e404177f.webp",
+          "imageNatural": 1672
+        },
+        {
+          "bounds": {
+            "x": 528.1875,
+            "y": 434.25,
+            "width": 335.40625,
+            "height": 208.484375,
+            "top": 434.25,
+            "right": 863.59375,
+            "bottom": 642.734375,
+            "left": 528.1875
+          },
+          "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
+          "excerpt": "История создания произведения, краткое раскрытие сюжета и заключительное мнение о прочитанном",
+          "href": "/probpera-literary-map/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
+          "image": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/09/ee020726-037e-479b-87b9-3dcdda1c082e.webp",
+          "imageNatural": 599
+        },
+        {
+          "bounds": {
+            "x": 863.59375,
+            "y": 434.25,
+            "width": 335.40625,
+            "height": 208.484375,
+            "top": 434.25,
+            "right": 1199,
+            "bottom": 642.734375,
+            "left": 863.59375
+          },
+          "title": "15 крылатых выражений, пришедших к нам из Библии",
+          "excerpt": "Происхождение и современное значение пятнадцати выражений из Ветхого и Нового Завета",
+          "href": "/probpera-literary-map/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+          "image": "http://127.0.0.1:5193/probpera-literary-map/media/optimized/757a1bfd4ed17366cbe59a14-640w.webp",
+          "imageNatural": 48
+        },
+        {
+          "bounds": {
+            "x": 528.1875,
+            "y": 642.734375,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 642.734375,
+            "right": 863.59375,
+            "bottom": 863.59375,
+            "left": 528.1875
+          },
+          "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+          "excerpt": "В четвёртой части нашей подборки мы приведём пятнадцать зарубежных классиков литературы и их профессии, которыми они…",
+          "href": "/probpera-literary-map/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+          "image": "http://127.0.0.1:5193/probpera-literary-map/media/optimized/fe0a6504f40a03af35f23326-640w.webp",
+          "imageNatural": 48
+        },
+        {
+          "bounds": {
+            "x": 863.59375,
+            "y": 642.734375,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 642.734375,
+            "right": 1199,
+            "bottom": 863.59375,
+            "left": 863.59375
+          },
+          "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+          "excerpt": "Авторская подборка произведений братьев Гримм, многие из которых заставят вас трепетать от страха",
+          "href": "/probpera-literary-map/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+          "image": "http://127.0.0.1:5193/probpera-literary-map/media/optimized/ca341a6fe587ee30eec10b92-640w.webp",
+          "imageNatural": 48
+        }
+      ],
+      "leadTitle": "1924 год. Владислав Реймонт - лауреат Нобелевской премии по литературе",
+      "leadDescription": "Краткая биография лауреата, несколько слов о его творчестве и номинации в целом.",
+      "count": "174 материала в архиве",
+      "titleFont": "20px",
+      "leadBackground": "rgb(255, 248, 237)",
+      "footerReachable": true,
+      "keyboardAndMouse": true
+    },
+    {
+      "width": 1280,
+      "height": 600,
+      "panel": {
+        "x": 80,
+        "y": 152,
+        "width": 1120,
+        "height": 436,
+        "top": 152,
+        "right": 1200,
+        "bottom": 588,
+        "left": 80
+      },
+      "lead": {
+        "x": 81,
+        "y": 213.390625,
+        "width": 447.1875,
+        "height": 497.4375,
+        "top": 213.390625,
+        "right": 528.1875,
+        "bottom": 710.828125,
+        "left": 81
+      },
+      "image": {
+        "x": 81,
+        "y": 213.390625,
+        "width": 446.1875,
+        "height": 297.453125,
+        "top": 213.390625,
+        "right": 527.1875,
+        "bottom": 510.84375,
+        "left": 81
+      },
+      "ratio": 1.5,
+      "imageFit": "contain",
+      "scroll": 342,
+      "documentOverflow": 0,
+      "nestedOverflow": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "cards": [
+        {
+          "bounds": {
+            "x": 528.1875,
+            "y": 213.390625,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 213.390625,
+            "right": 863.59375,
+            "bottom": 434.25,
+            "left": 528.1875
+          },
+          "title": "Книга и экранизация. «Двенадцать стульев»",
+          "excerpt": "Сегодня мы сопоставим грандиозный роман Ильфа и Петрова с двухсерийным фильмом Гайдая «Двенадцать стульев» и решим,…",
+          "href": "/probpera-literary-map/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-dvenadtsat-stulev/",
+          "image": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/09/b66c7a06-ea22-4c95-acc4-324c0ae77662.webp",
+          "imageNatural": 1536
+        },
+        {
+          "bounds": {
+            "x": 863.59375,
+            "y": 213.390625,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 213.390625,
+            "right": 1199,
+            "bottom": 434.25,
+            "left": 863.59375
+          },
+          "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 10)",
+          "excerpt": "В арсенале самых именитых писателей, всегда имеются такие произведения, о существовании которых знают только…",
+          "href": "/probpera-literary-map/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-10/",
+          "image": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/09/d9bfb586-9e8e-49fb-aec1-9ba8e404177f.webp",
+          "imageNatural": 1672
+        },
+        {
+          "bounds": {
+            "x": 528.1875,
+            "y": 434.25,
+            "width": 335.40625,
+            "height": 208.484375,
+            "top": 434.25,
+            "right": 863.59375,
+            "bottom": 642.734375,
+            "left": 528.1875
+          },
+          "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
+          "excerpt": "История создания произведения, краткое раскрытие сюжета и заключительное мнение о прочитанном",
+          "href": "/probpera-literary-map/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
+          "image": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/09/ee020726-037e-479b-87b9-3dcdda1c082e.webp",
+          "imageNatural": 599
+        },
+        {
+          "bounds": {
+            "x": 863.59375,
+            "y": 434.25,
+            "width": 335.40625,
+            "height": 208.484375,
+            "top": 434.25,
+            "right": 1199,
+            "bottom": 642.734375,
+            "left": 863.59375
+          },
+          "title": "15 крылатых выражений, пришедших к нам из Библии",
+          "excerpt": "Происхождение и современное значение пятнадцати выражений из Ветхого и Нового Завета",
+          "href": "/probpera-literary-map/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+          "image": "http://127.0.0.1:5193/probpera-literary-map/media/optimized/757a1bfd4ed17366cbe59a14-640w.webp",
+          "imageNatural": 48
+        },
+        {
+          "bounds": {
+            "x": 528.1875,
+            "y": 642.734375,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 642.734375,
+            "right": 863.59375,
+            "bottom": 863.59375,
+            "left": 528.1875
+          },
+          "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+          "excerpt": "В четвёртой части нашей подборки мы приведём пятнадцать зарубежных классиков литературы и их профессии, которыми они…",
+          "href": "/probpera-literary-map/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+          "image": "http://127.0.0.1:5193/probpera-literary-map/media/optimized/fe0a6504f40a03af35f23326-640w.webp",
+          "imageNatural": 48
+        },
+        {
+          "bounds": {
+            "x": 863.59375,
+            "y": 642.734375,
+            "width": 335.40625,
+            "height": 220.859375,
+            "top": 642.734375,
+            "right": 1199,
+            "bottom": 863.59375,
+            "left": 863.59375
+          },
+          "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+          "excerpt": "Авторская подборка произведений братьев Гримм, многие из которых заставят вас трепетать от страха",
+          "href": "/probpera-literary-map/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+          "image": "http://127.0.0.1:5193/probpera-literary-map/media/optimized/ca341a6fe587ee30eec10b92-640w.webp",
+          "imageNatural": 48
+        }
+      ],
+      "leadTitle": "1924 год. Владислав Реймонт - лауреат Нобелевской премии по литературе",
+      "leadDescription": "Краткая биография лауреата, несколько слов о его творчестве и номинации в целом.",
+      "count": "174 материала в архиве",
+      "titleFont": "20px",
+      "leadBackground": "rgb(255, 248, 237)",
+      "footerReachable": true,
+      "keyboardAndMouse": true
+    }
+  ],
+  "mobile": [
+    {
+      "width": 320,
+      "railVisible": true,
+      "overflow": 0,
+      "articleLink": "#journal"
+    },
+    {
+      "width": 390,
+      "railVisible": true,
+      "overflow": 0,
+      "articleLink": "#journal"
+    },
+    {
+      "width": 430,
+      "railVisible": true,
+      "overflow": 0,
+      "articleLink": "#journal"
+    },
+    {
+      "width": 1259,
+      "railVisible": true,
+      "overflow": 0,
+      "articleLink": "#journal"
+    },
+    {
+      "width": 1260,
+      "railVisible": true,
+      "overflow": 0,
+      "articleLink": "#journal"
+    },
+    {
+      "width": 1261,
+      "railVisible": false,
+      "overflow": 0,
+      "articleLink": null
+    }
+  ],
+  "navigation": [
+    {
+      "id": "cms-209d9dc2-a496-4780-a921-1132572bed8b",
+      "href": "/probpera-literary-map/stati/literaturnye-premii/1924-god-vladislav-reymont-laureat-nobelevskoy-premii-po-literature/",
+      "title": "1924 год. Владислав Реймонт - лауреат Нобелевской премии по литературе",
+      "readerOpened": true
+    },
+    {
+      "id": "cms-5f4d3ad1-9061-47f3-8fa3-e4bafbd491b1",
+      "href": "/probpera-literary-map/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-dvenadtsat-stulev/",
+      "title": "Книга и экранизация. «Двенадцать стульев»",
+      "readerOpened": true
+    },
+    {
+      "id": "cms-c9896133-a8ff-4755-b283-95275188073d",
+      "href": "/probpera-literary-map/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-10/",
+      "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 10)",
+      "readerOpened": true
+    },
+    {
+      "id": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
+      "href": "/probpera-literary-map/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
+      "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
+      "readerOpened": true
+    },
+    {
+      "id": "cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a",
+      "href": "/probpera-literary-map/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+      "title": "15 крылатых выражений, пришедших к нам из Библии",
+      "readerOpened": true
+    },
+    {
+      "id": "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+      "href": "/probpera-literary-map/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+      "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+      "readerOpened": true
+    },
+    {
+      "id": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+      "href": "/probpera-literary-map/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+      "readerOpened": true
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "404 full-width lead fallback",
+      "width": 446.1875,
+      "leadWidth": 447.1875,
+      "passed": true
+    },
+    {
+      "name": "Long ru titles, portrait, 200 percent text and spacing",
+      "documentOverflow": 0,
+      "scroll": 5449,
+      "fullTitle": true,
+      "footerReachable": true
+    },
+    {
+      "name": "Long en titles, portrait, 200 percent text and spacing",
+      "documentOverflow": 0,
+      "scroll": 4221,
+      "fullTitle": true,
+      "footerReachable": true
+    }
+  ],
+  "browser": "154.0.8037.95",
+  "status": "passed",
+  "sourceHashes": {
+    "src/components/HeaderArticlesMenu.tsx": "fed1650dace6a316fd9ccbf4052b69f7c878c5e89c384c90dc5a4a0e39a5476f",
+    "src/styles/header-showcase-r10.css": "6bb1ebf81bb951fcac865780dde07ca92a5ecc3e814ee4a6b069f6fe7de90c0b"
+  }
+}

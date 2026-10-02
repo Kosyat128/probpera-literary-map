@@ -5,6 +5,125 @@
     --calendar-row-gap: 8px;
   }
 
+  .calendar-card .calendar-year-summary {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 16px;
+    color: var(--type-muted-light);
+    font: 400 var(--type-card-meta)/var(--type-leading-copy) var(--font-ui);
+  }
+
+  .calendar-card .calendar-year-summary strong {
+    color: var(--violet-800);
+    font-weight: 600;
+  }
+
+  .calendar-card .calendar-view-switch {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 8px;
+    margin-block-end: 20px;
+  }
+
+  .calendar-card .calendar-view-switch button,
+  .calendar-card .calendar-year-months button,
+  .calendar-card .calendar-year-pagination button {
+    min-block-size: var(--ui-control-md);
+    padding: 8px 14px;
+    color: var(--violet-700);
+    font: 600 var(--type-action)/var(--type-leading-ui) var(--font-ui);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: var(--ui-radius-control);
+    cursor: pointer;
+  }
+
+  .calendar-card .calendar-view-switch button[aria-pressed="true"] {
+    color: var(--cream);
+    background: var(--violet-700);
+    border-color: var(--violet-700);
+  }
+
+  .calendar-card .calendar-year-view {
+    position: relative;
+    z-index: 1;
+    min-inline-size: 0;
+  }
+
+  .calendar-card .calendar-year-months {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-block-end: 24px;
+  }
+
+  .calendar-card .calendar-year-months button {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    text-align: start;
+  }
+
+  .calendar-card .calendar-year-search {
+    display: grid;
+    gap: 8px;
+    font: 400 var(--type-card-meta)/var(--type-leading-copy) var(--font-ui);
+  }
+
+  .calendar-card .calendar-year-search input {
+    box-sizing: border-box;
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size: var(--ui-control-md);
+    padding: 10px 14px;
+    color: var(--ink);
+    font: 400 var(--type-body)/var(--type-leading-ui) var(--font-ui);
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--ui-radius-control);
+  }
+
+  .calendar-card .calendar-year-results,
+  .calendar-card .calendar-year-pagination span {
+    color: var(--type-muted-light);
+    font: 400 var(--type-card-meta)/var(--type-leading-copy) var(--font-ui);
+  }
+
+  .calendar-card .calendar-year-agenda {
+    display: grid;
+    gap: 16px;
+    max-block-size: clamp(280px, 60dvh, 520px);
+    padding-inline: 4px 8px;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-gutter: stable;
+  }
+
+  .calendar-card .calendar-year-agenda:focus-visible,
+  .calendar-card .calendar-year-search input:focus-visible,
+  .calendar-card .calendar-year-view button:focus-visible,
+  .calendar-card .calendar-view-switch button:focus-visible {
+    outline: 2px solid var(--violet-700);
+    outline-offset: 2px;
+  }
+
+  .calendar-card .calendar-year-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-start: 20px;
+  }
+
+  .calendar-card .calendar-year-pagination button:disabled,
+  .calendar-card .calendar-year-months button:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
   .calendar-card .weekday,
   .calendar-card .calendar-summary > div > span,
   .calendar-card .calendar-agenda > header span,
@@ -210,6 +329,21 @@
   }
 
   @media (max-width: 560px) {
+    .calendar-card .calendar-year-months {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .calendar-card .calendar-year-pagination span {
+      order: -1;
+      inline-size: 100%;
+      text-align: center;
+    }
+
+    .calendar-card .calendar-year-pagination button {
+      flex: 1 1 120px;
+      font-size: var(--type-card-meta);
+    }
+
     .calendar-card .calendar-summary > div {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;

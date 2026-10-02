@@ -104,6 +104,10 @@ export function calendarEventsForMonth(events: CalendarEvent[], year: number, mo
   return events.filter(event => event.month === month && event.day <= days);
 }
 
+export function calendarEventsForYear(events: CalendarEvent[], year: number) {
+  return Array.from({ length: 12 }, (_, month) => calendarEventsForMonth(events, year, month)).flat();
+}
+
 export function visibleCalendarAgendaDays<T>(
   entries: readonly (readonly [number, T])[],
   expanded: boolean,
@@ -126,7 +130,11 @@ export default function LiteraryCalendar({
   );
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [showFullAgenda, setShowFullAgenda] = useState(false);
+  const [calendarView, setCalendarView] = useState<"month" | "year">("month");
+  const [yearSearch, setYearSearch] = useState("");
+  const [yearPage, setYearPage] = useState(0);
   const agendaRef = useRef<HTMLDivElement>(null);
+  const yearAgendaRef = useRef<HTMLDivElement>(null);
   const focusAgendaAfterUpdate = useRef(false);
   const month = visibleDate.getMonth();
   const year = visibleDate.getFullYear();
@@ -168,6 +176,32 @@ export default function LiteraryCalendar({
       : ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
   const monthEvents = useMemo(() => calendarEventsForMonth(events, year, month), [events, year, month]);
+  const yearEvents = useMemo(() => calendarEventsForYear(events, year), [events, year]);
+  const yearMonths = useMemo(() => Array.from({ length: 12 }, (_, index) => ({
+    month: index,
+    label: new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", { month: "long" })
+      .format(new Date(year, index, 1)),
+    count: calendarEventsForMonth(yearEvents, year, index).length,
+  })), [language, year, yearEvents]);
+  const filteredYearEvents = useMemo(() => {
+    const query = yearSearch.trim().toLocaleLowerCase(language);
+    if (!query) return yearEvents;
+    return yearEvents.filter(event => [
+      event.title,
+      countryName(event.country.code, event.country.name),
+      `${String(event.day).padStart(2, "0")}.${String(event.month + 1).padStart(2, "0")}`,
+      `${event.day} ${yearMonths[event.month].label}`,
+    ].join(" ").toLocaleLowerCase(language).includes(query));
+  }, [countryName, language, yearEvents, yearMonths, yearSearch]);
+  const yearPageSize = 20;
+  const yearPageCount = Math.max(1, Math.ceil(filteredYearEvents.length / yearPageSize));
+  const currentYearPage = Math.min(yearPage, yearPageCount - 1);
+  const yearPageEvents = filteredYearEvents.slice(currentYearPage * yearPageSize, (currentYearPage + 1) * yearPageSize);
+
+  useEffect(() => { setYearPage(0); }, [language, year, yearSearch]);
+  useEffect(() => {
+    if (yearAgendaRef.current) yearAgendaRef.current.scrollTop = 0;
+  }, [calendarView, currentYearPage, year, yearSearch]);
   const eventsByDay = useMemo(() => {
     const grouped = new Map<number, CalendarEvent[]>();
     monthEvents.forEach((event) => {
@@ -217,7 +251,20 @@ export default function LiteraryCalendar({
     setVisibleDate((current) => new Date(current.getFullYear(), current.getMonth() + direction, 1));
   };
 
+  const moveYear = (direction: number) => {
+    setYearPage(0);
+    setVisibleDate(current => new Date(current.getFullYear() + direction, current.getMonth(), 1));
+  };
+
+  const openYearMonth = (targetMonth: number) => {
+    setSelectedDay(null);
+    setShowFullAgenda(false);
+    setVisibleDate(new Date(year, targetMonth, 1));
+    setCalendarView("month");
+  };
+
   const returnToToday = () => {
+    setCalendarView("month");
     setShowFullAgenda(false);
     setVisibleDate(new Date(today.getFullYear(), today.getMonth(), 1));
     setSelectedDay(
@@ -275,20 +322,20 @@ export default function LiteraryCalendar({
         <div className="calendar-navigation">
           <button
             type="button"
-            onClick={() => moveMonth(-1)}
-            aria-label={t("Предыдущий месяц")}
+            onClick={() => calendarView === "year" ? moveYear(-1) : moveMonth(-1)}
+          aria-label={calendarView === "year" ? t("Предыдущий год") : t("Предыдущий месяц")}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="m14.5 6-6 6 6 6" />
             </svg>
           </button>
           <strong aria-live="polite" aria-atomic="true">
-            {monthLabel} {year}
+            {calendarView === "year" ? year : `${monthLabel} ${year}`}
           </strong>
           <button
             type="button"
-            onClick={() => moveMonth(1)}
-            aria-label={t("Следующий месяц")}
+            onClick={() => calendarView === "year" ? moveYear(1) : moveMonth(1)}
+          aria-label={calendarView === "year" ? t("Следующий год") : t("Следующий месяц")}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="m9.5 6 6 6-6 6" />
@@ -300,10 +347,88 @@ export default function LiteraryCalendar({
         </div>
       </header>
 
+      <p className="calendar-year-summary" aria-label={t("Годовой охват календаря")}>
+        <span>
+          <strong>{number(events.length)}</strong>{" "}
+          {language === "en" ? "annual dates" : "ежегодных дат"}
+        </span>
+        {" · "}
+        <span>
+          {language === "en" ? `In ${year}: ` : `В ${year} году: `}
+          <strong>{number(yearEvents.length)}</strong>{" "}
+          {language === "en" ? "dates" : "дат"}.
+        </span>
+        {yearEvents.length < events.length && <span>{" "}
+          {language === "en"
+            ? "29 February dates are available in leap years."
+            : "Даты 29 февраля доступны в високосные годы."}
+        </span>}
+      </p>
+
+      <div className="calendar-view-switch" role="group" aria-label={t("Вид календаря")}>
+        {(["month", "year"] as const).map(view => <button
+          key={view}
+          type="button"
+          aria-pressed={calendarView === view}
+          onClick={() => setCalendarView(view)}
+        >{view === "month" ? language === "en" ? "Month" : "Месяц" : language === "en" ? "Year" : "Год"}</button>)}
+      </div>
+
+      {calendarView === "year" ? <div className="calendar-year-view">
+        <nav className="calendar-year-months" aria-label={language === "en" ? `Months in ${year}` : `Месяцы ${year} года`}>
+          {yearMonths.map(item => <button key={item.month} type="button" disabled={!item.count} onClick={() => openYearMonth(item.month)}>
+            <span>{item.label}</span><strong>{number(item.count)}</strong>
+          </button>)}
+        </nav>
+        <label className="calendar-year-search">
+          <span>{language === "en" ? "Search by writer, country or date" : "Поиск по писателю, стране или дате"}</span>
+          <input type="search" value={yearSearch} onChange={event => setYearSearch(event.target.value)}
+            placeholder={t("Имя, страна или ДД.ММ")} />
+        </label>
+        <p className="calendar-year-results" role="status">
+          {language === "en" ? "Dates found: " : "Найдено дат: "}{number(filteredYearEvents.length)}
+        </p>
+        <div className="calendar-year-agenda calendar-agenda" ref={yearAgendaRef} role="region" tabIndex={0}
+          aria-label={language === "en" ? `Dates in ${year}` : `Даты ${year} года`}>
+          {yearPageEvents.map(event => <article className="calendar-agenda-day" key={`${calendarWriterIdentity(event.writer, event.country.id)}:${event.kind}`}>
+            <time dateTime={`${year}-${String(event.month + 1).padStart(2, "0")}-${String(event.day).padStart(2, "0")}`}>
+              <strong>{String(event.day).padStart(2, "0")}</strong>
+              <small>{new Intl.DateTimeFormat(language === "ru" ? "ru-RU" : "en-GB", { month: "short" })
+                .format(new Date(year, event.month, 1)).replace(".", "")}</small>
+            </time>
+            <div>
+              <div className="calendar-agenda-event" data-calendar-event={`${calendarWriterIdentity(event.writer, event.country.id)}:${event.kind}`}>
+                <button type="button" className={`calendar-agenda-writer is-${event.kind}`}
+                  aria-label={`${t("Писатель")}: ${event.title}`} onClick={() => onCountrySelect?.(event.country, event.writer)}>
+                  <i aria-hidden="true" /><strong>{event.title}</strong><small>{event.detail}</small>
+                </button>
+                <button type="button" className="calendar-agenda-country"
+                  aria-label={`${t("Страна")}: ${countryName(event.country.code, event.country.name)}`}
+                  title={countryName(event.country.code, event.country.name)} onClick={() => onCountrySelect?.(event.country)}>
+                  <CountryFlagIcon code={event.country.code} countryName={countryName(event.country.code, event.country.name)}
+                    className="calendar-country-flag country-flag-icon--round" size={28} decorative />
+                </button>
+              </div>
+            </div>
+          </article>)}
+          {!yearPageEvents.length && <p className="calendar-empty">
+            {language === "en" ? "No dates match your search in this year." : "В этом году нет дат по вашему запросу."}
+          </p>}
+        </div>
+        {yearPageCount > 1 && <nav className="calendar-year-pagination" aria-label={t("Страницы годового списка")}>
+          <button type="button" disabled={currentYearPage === 0} onClick={() => setYearPage(currentYearPage - 1)}>
+            {language === "en" ? "Previous page" : "Предыдущая страница"}
+          </button>
+          <span>{language === "en" ? "Page " : "Страница "}{number(currentYearPage + 1)}{language === "en" ? " of " : " из "}{number(yearPageCount)}</span>
+          <button type="button" disabled={currentYearPage === yearPageCount - 1} onClick={() => setYearPage(currentYearPage + 1)}>
+            {language === "en" ? "Next page" : "Следующая страница"}
+          </button>
+        </nav>}
+      </div> : <>
       <div className="calendar-summary" aria-label={t("Сводка месяца")}>
         <div>
           <strong>{number(monthEvents.length)}</strong>
-          <span>{t("точных дат")}</span>
+          <span>{language === "en" ? "dates this month" : "дат за месяц"}</span>
         </div>
         <div>
           <strong>{number(birthCount)}</strong>
@@ -423,6 +548,7 @@ export default function LiteraryCalendar({
                     <div
                       key={`${event.country.id}-${event.writer.id}-${event.kind}`}
                       className="calendar-agenda-event"
+                      data-calendar-event={`${calendarWriterIdentity(event.writer, event.country.id)}:${event.kind}`}
                     >
                       <button
                         type="button"
@@ -510,6 +636,7 @@ export default function LiteraryCalendar({
               )}
         </div>
       </div>
+      </>}
     </section>
   );
 }

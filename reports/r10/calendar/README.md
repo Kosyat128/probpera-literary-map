@@ -37,3 +37,13 @@ The existing calendar UI, route, callbacks and styles remain unchanged. The date
 C01-C03, C05-C07, C09-C14 have local evidence above. C04 remains partial because +1,000 was not established. C08 browser/visual evidence is recorded separately in `browser-check.json` and PNGs after the local runtime check; it is not production acceptance or a deployment claim.
 
 Browser PASS: local Chrome, 1280x1000, Europe/Moscow, fixed 2026-01-05; January shows 223 events and all nine confirmed 1 January birthdays, February shows 191 with no day 29, September shows 182 and Agatha Christie opens `?country=england&writer=agatha_christie#calendar`. EN February shows the same 191 events. No page errors. The three PNGs were opened and visually inspected: original calendar layout, date states, country flags, writer rows and language switch remain intact. This verifies local runtime, not live production.
+
+## Runtime coverage and discoverability, 2026-10-02
+
+The current public corpus has 2,340 unique annual events (1,287 birthdays and 1,053 memorials). In 2026, 2,338 are available; both documented 29 February birthdays are available in 2028. **190 is the October 2026 total**, not an event cap or partial data load. App imports the complete public `countries` export and passes its unfiltered `countryArchive` to the calendar.
+
+The monthly summary now says "дат за месяц" / "dates this month". A derived annual coverage line states the actual corpus and the available display-year total. The Month/Year switch provides direct access to all twelve months, a paginated year list with twenty real events per page, and search by displayed writer name, country or DD.MM. Year navigation retains the search and filters the actual events for the selected year. Existing month selection, compact agenda and writer/country callbacks are preserved.
+
+`node scripts/audit-calendar-runtime-coverage-r10.mjs --write` checks the current App input, unique events, public writer references, RU/EN identity parity and leap/non-leap totals. Its report is `runtime-coverage-20261002.json`. The browser regression `tests/e2e/calendar-runtime-coverage.spec.mjs` traverses all 117 pages and verifies 2,338 unique reachable writer controls, every month total, February search in 2026/2027/2028 and the Christie writer URL. `runtime-ui-20261002.json` records separate local Chrome RU/EN geometry and page errors. These are local runtime checks; production acceptance is recorded by the release owner.
+
+The known baseline remains 2,237 annual events. Net growth is 103, so the original additional-1,000 requirement is still incomplete. This UI correction adds no writer records or dates and does not change canonical profiles, CMS precedence, database services or the globe renderer.

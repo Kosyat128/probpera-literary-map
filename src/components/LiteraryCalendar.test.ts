@@ -2,15 +2,17 @@ import { readFileSync } from "node:fs";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { load } from "cheerio";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import type { Country, Writer } from "../data/countries";
+import { countries } from "../data/countries";
 import { InterfaceLanguageProvider } from "../i18n/InterfaceLanguage";
 import LiteraryCalendar, {
   calendarWriterIdentity,
   dateParts,
   selectCalendarEvents,
   calendarEventsForMonth,
+  calendarEventsForYear,
   visibleCalendarAgendaDays,
 } from "./LiteraryCalendar";
 
@@ -189,5 +191,51 @@ describe("R10 date and identity regressions on the calendar selector", () => {
     expect(calendarEventsForMonth(events, 2026, 1)).toHaveLength(0);
     expect(calendarEventsForMonth(events, 2026, 2)).toHaveLength(0);
     expect(calendarEventsForMonth(events, 2028, 1)).toHaveLength(1);
+  });
+});
+
+describe("real public calendar coverage", () => {
+  it("retains all public writer events across twelve months without treating October's 190 as the corpus", () => {
+    const events = selectCalendarEvents(countries);
+    expect(events).toHaveLength(2340);
+    expect(events.filter(event => event.kind === "birth")).toHaveLength(1287);
+    expect(events.filter(event => event.kind === "memory")).toHaveLength(1053);
+    expect(Array.from({ length: 12 }, (_, month) => calendarEventsForMonth(events, 2026, month).length))
+      .toEqual([222, 195, 191, 200, 195, 173, 189, 181, 185, 190, 208, 209]);
+    expect(calendarEventsForYear(events, 2026)).toHaveLength(2338);
+    expect(calendarEventsForYear(events, 2028)).toHaveLength(2340);
+    expect(events.filter(event => event.month === 1 && event.day === 29).map(event => event.writer.id).sort())
+      .toEqual(["stefan_ljubisa", "tim_powers"]);
+    for (const event of events) {
+      expect(countries.find(country => country.id === event.country.id)?.writers.some(writer => writer.id === event.writer.id)).toBe(true);
+    }
+  });
+
+  it("states the current Russian month and annual coverage using the same available events", () => {
+    vi.useFakeTimers();
+    try {
+      for (const [date, annual, monthly, februaryNotice] of [
+        ["2026-10-02T12:00:00+03:00", "2 338", "190", true],
+        ["2026-02-02T12:00:00+03:00", "2 338", "195", true],
+        ["2028-02-02T12:00:00+03:00", "2 340", "197", false],
+      ] as const) {
+        vi.setSystemTime(new Date(date));
+        const $ = load(renderToStaticMarkup(createElement(InterfaceLanguageProvider, null,
+          createElement(LiteraryCalendar, { countries }))));
+        const normalized = $(".calendar-year-summary").text().replace(/\s+/gu, " ");
+        expect(normalized).toContain("2 340 ежегодных дат");
+        expect(normalized).toContain(`году: ${annual} дат`);
+        expect(normalized.includes("29 февраля")).toBe(februaryNotice);
+        expect($(".calendar-summary > div").first().find("strong").text()).toBe(monthly);
+        expect($(".calendar-summary > div").first().find("span").text()).toBe("дат за месяц");
+        const gridCount = $(".calendar-day.has-event small").toArray()
+          .reduce((sum, element) => sum + Number($(element).text()), 0);
+        expect(gridCount).toBe(Number(monthly));
+        expect($(".calendar-day").filter((_, element) => $(element).children("span").text() === "29").length)
+          .toBe(date.includes("2026-02") ? 0 : 1);
+      }
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

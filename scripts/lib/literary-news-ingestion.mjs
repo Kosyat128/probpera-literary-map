@@ -1,4 +1,4 @@
-import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
+import { LITERARY_NEWS_SOURCES, RETAINED_NEWS_SOURCE_GRAMMARS } from "./literary-news-sources.mjs";
 import { canonicalUrl, validDate, validTimestamp } from "./literary-news-reviewed.mjs";
 import {
   NEWS_HELD_QUEUE_KEY, NEWS_SOURCE_STATE_KEY, NEWS_QUEUE_MAX_BYTES, NEWS_QUEUE_MAX_ITEMS,
@@ -8,8 +8,12 @@ import {
 const plain = (value, max) => typeof value === "string" && value.trim().length > 0
   && value.length <= max && !/[<>\u0000-\u0008\u000b\u000c\u000e-\u001f]/u.test(value);
 const REASONS = ["missing_event_date", "bilingual_review_required", "topic_review_required"];
+const retainedGrammars = new Map();
+for (const profile of RETAINED_NEWS_SOURCE_GRAMMARS.profiles) {
+  retainedGrammars.set(profile.id, [...(retainedGrammars.get(profile.id) || []), profile]);
+}
 
-function candidateRecord(value, configured, current) {
+function candidateRecord(value, configured, current, retained = false) {
   const source = configured.get(value?.sourceId);
   const url = canonicalUrl(value?.source?.url);
   if (!source || !url || url.href.length > 2048 || value?.verification !== "held"
@@ -18,7 +22,10 @@ function candidateRecord(value, configured, current) {
     || !(value.publishedAt === null || validDate(value.publishedAt) || validTimestamp(value.publishedAt))
     || !(value.description === null || plain(value.description, 400))) return null;
   const origins = new Set([new URL(source.url).origin, ...(source.articleOrigins || [])]);
-  if (!origins.has(url.origin) || (source.linkPattern && !source.linkPattern.test(url.pathname))) return null;
+  if (!origins.has(url.origin)) return null;
+  if (source.linkPattern && !source.linkPattern.test(url.pathname)
+    && !(retained && (retainedGrammars.get(source.id) || []).some(profile =>
+      profile.origins.includes(url.origin) && profile.linkPattern.test(url.pathname)))) return null;
   return {
     sourceId: source.id, source: { name: source.name, url: url.href, language: source.language },
     region: source.region || "global", topics: [...(source.topics || [])],
@@ -45,10 +52,15 @@ function readPreviousQueue(value, configured, current) {
         || item.verification !== "held" || !validTimestamp(item.discoveredAt)) throw new Error("previous_candidate_invalid");
       return [{...item,archived:true,reasons:[...new Set([...(item.reasons || []),"source_inactive"])]}];
     }
-    const candidate = candidateRecord(item, configured, current);
+    const candidate = candidateRecord(item, configured, current, true);
     if (!candidate) throw new Error("previous_candidate_invalid");
-    return [{...candidate, ...(item.decision && typeof item.decision === "object"
-      && Buffer.byteLength(JSON.stringify(item.decision)) <= 2048 ? {decision:item.decision} : {})}];
+    if (item.reasons !== undefined && (!Array.isArray(item.reasons) || item.reasons.some(reason => !plain(reason, 120)))
+      || item.decision !== undefined && item.decision !== null && (typeof item.decision !== "object" || Array.isArray(item.decision)
+        || Buffer.byteLength(JSON.stringify(item.decision)) > 2048)) throw new Error("previous_candidate_invalid");
+    // Keep private review metadata and evidence. Trusted current source identity
+    // and held status remain authoritative; compatibility grants no publication.
+    return [{ ...item, ...candidate, source: { ...item.source, ...candidate.source },
+      reasons: [...new Set([...(item.reasons || []), ...candidate.reasons])] }];
   });
 }
 
@@ -82,7 +94,9 @@ export function buildNewsIngestion({ feed, candidates, previousState = null, pre
       if (approved.has(candidate.source.url) || seen.has(candidate.source.url)) continue;
       seen.add(candidate.source.url);
       const old = priorByUrl.get(candidate.source.url);
-      merged.push({ ...candidate, discoveredAt: old?.discoveredAt || candidate.discoveredAt,
+      merged.push({ ...old, ...candidate, source: { ...old?.source, ...candidate.source },
+        reasons: [...new Set([...(old?.reasons || []), ...candidate.reasons])],
+        discoveredAt: old?.discoveredAt || candidate.discoveredAt,
         ...(old?.decision ? {decision:old.decision} : {}) });
       count += 1;
     }
@@ -117,4 +131,22 @@ export function buildNewsIngestion({ feed, candidates, previousState = null, pre
       { key: NEWS_HELD_QUEUE_KEY, value: JSON.stringify(queue) },
     ],
   };
+}
+
+const SAFE_REFRESH_FAILURE_REASONS = new Set([
+  "previous_snapshot_incomplete", "previous_snapshot_invalid", "previous_snapshot_too_large",
+  "previous_state_invalid", "previous_queue_invalid", "previous_candidate_invalid",
+  "approved_queue_urls_invalid", "collection_result_invalid", "collection_incomplete",
+  "held_queue_too_large", "collection_state_invalid", "snapshot_limit_invalid",
+  "daily_queue_profile_reader_required", "daily_queue_profile_invalid", "daily_profile_invalid",
+  "daily_profile_duplicate", "daily_profile_daily_limit", "daily_record_invalid",
+  "daily_thumbnail_invalid", "daily_record_proof_invalid",
+]);
+
+/** Only fixed bounded codes cross the CLI diagnostic boundary, never raw errors. */
+export function safeNewsRefreshFailureReason(error) {
+  if (SAFE_REFRESH_FAILURE_REASONS.has(error?.message)) return error.message;
+  if (error?.code === "ENOENT") return "snapshot_file_missing";
+  if (error?.code === "EACCES" || error?.code === "EPERM") return "file_access_denied";
+  return "unexpected_error";
 }
