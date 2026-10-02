@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-02T00:32:50.122Z",
+  "checkedAt": "2026-10-02T00:45:11.542Z",
   "scope": "Native hourly fresh admissions and existing paced Telegram dispatch; no production activation claim",
   "previousGap": "Native preparation published the feed, while Telegram admissions depended on a GitHub workflow scheduled only three times per day.",
   "fix": {
@@ -32,7 +32,18 @@
       "skipped": 11,
       "testFiles": 660
     },
-    "priorAttempt": "Windows Git rejected the checkout owner; the complete rerun sets safe.directory only for this exact repository."
+    "priorAttempt": "Windows Git rejected the checkout owner; the complete rerun sets safe.directory only for this exact repository.",
+    "codeQLFixtureFollowup": {
+      "alerts": [
+        315,
+        316
+      ],
+      "change": "Two test assertions now compare parsed URL hostname exactly instead of searching a domain substring.",
+      "productionCodeChanged": false,
+      "passed": 25,
+      "failed": 0
+    },
+    "fullSuiteBaseCommit": "89d0963a1f6f86715615899e31392e3127df9e41"
   },
   "files": [
     {
@@ -53,7 +64,7 @@
     },
     {
       "path": "scripts/workers/literary-news-delivery-admissions.test.mjs",
-      "sha256": "5617ff4d78fad95a5299ac415e4036196160cddad5d8db55084d3e64881ebde9"
+      "sha256": "7cfb8ac3b34fb65ccc97849cbf90fab65a9a2c1d8f3dad6bacc92ff69560cfa7"
     }
   ],
   "productionApplied": false,

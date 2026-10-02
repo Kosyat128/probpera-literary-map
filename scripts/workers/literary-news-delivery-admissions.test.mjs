@@ -104,7 +104,7 @@ describe('native hourly capture uses the genuine complete public snapshot and ex
     const before = structuredClone(store.rows.get(key)), f = await tickFixture(await completeFeed(), { store });
     expect(await f.run()).toMatchObject({ capturedCandidates: 0, newAdmissions: 0, selectedJobs: 0, deliveredThisRun: 0 });
     expect(store.rows.get(key)).toEqual(before); expect(store.list).not.toHaveBeenCalled();
-    expect(f.fetchImpl.mock.calls.some(([url]) => String(url).includes('api.telegram.org'))).toBe(false);
+    expect(f.fetchImpl.mock.calls.some(([url]) => new URL(String(url)).hostname === 'api.telegram.org')).toBe(false);
   });
   it('withdrawn, expired absent and mismatched queued creates are withheld while remote corrections keep their IDs', async () => {
     const latest = item('updated', '2026-10-01T12:00:00Z'), old = { ...latest,
@@ -241,7 +241,7 @@ describe('public response trust and stream bounds fail before any native queue w
     expect(result).toMatchObject({ status: 'blocked', code: 'runtime_quota_exceeded', deliveredThisRun: null });
     expect(network.mock.calls.filter(([input]) => String(input).includes('compare_append_literary_news_runtime'))).toHaveLength(1);
     expect(network.mock.calls.filter(([input]) => String(input).includes('read_due_literary_news_runtime_posts'))).toHaveLength(1);
-    expect(network.mock.calls.some(([input]) => String(input).includes('api.telegram.org'))).toBe(false);
+    expect(network.mock.calls.some(([input]) => new URL(String(input)).hostname === 'api.telegram.org')).toBe(false);
     expect(JSON.stringify(result)).not.toMatch(/PRIVATE|isolated-key|isolated-token/);
   });
 });
