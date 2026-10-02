@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import { bindXctestrun, xctestPassed, instrumentationPassed, nativeRuntimeCommandContext, parseAndroidCertificate, parseAndroidPackage, runNativeInstallRuntime,
+import { bindXctestrun, xctestPassed, instrumentationPassed, nativeRuntimeCommandContext, parseAndroidCertificate, parseAndroidPackage, parseAndroidInstrumentationPackage, runNativeInstallRuntime,
   validateOwnedAndroidTarget, validateRuntimeReceipt } from './native-install-runtime.mjs';
 
 const hash = value => createHash('sha256').update(value).digest('hex');
@@ -76,6 +76,36 @@ describe('exact-package local native runner gates', () => {
       .toEqual({ applicationId: 'ru.probpera.literaryplanet.dev', versionCode: 1, versionName: '1.0-dev', debuggable: true });
     expect(parseAndroidPackage("package: name='ru.probpera.literaryplanet' versionCode='1' versionName='1.0'\n").debuggable).toBe(false);
     expect(() => parseAndroidPackage('android dev configured')).toThrow();
+  });
+  describe('actual Android instrumentation package parser', () => {
+    const badging = "package: name='ru.probpera.literaryplanet.dev.test' versionCode='' versionName='' platformBuildVersionCode='36'\nminSdkVersion:'24'\ntargetSdkVersion:'36'\napplication-debuggable\n";
+    const manifest = 'E: instrumentation\n A: android:name(0x01010003)="androidx.test.runner.AndroidJUnitRunner"\n A: android:targetPackage(0x01010021)="ru.probpera.literaryplanet.dev"\n';
+    it('accepts versionless actual test APK identity while preserving strict main package versions', () => {
+      expect(parseAndroidInstrumentationPackage(badging, manifest)).toEqual({ applicationId: 'ru.probpera.literaryplanet.dev.test', versionCode: null, versionName: null, debuggable: true, minSdkVersion: 24, targetSdkVersion: 36 });
+      expect(() => parseAndroidPackage(badging)).toThrow();
+      expect(() => parseAndroidPackage(badging.replace('.dev.test', '.dev'))).toThrow();
+    });
+    it('retains optional positive test versions without borrowing main authority', () => {
+      expect(parseAndroidInstrumentationPackage(badging.replace("versionCode='' versionName=''", "versionCode='1' versionName='1.0-test'"), manifest).versionCode).toBe(1);
+    });
+    it.each([
+      ['main application', badging.replace('.dev.test', '.dev'), manifest],
+      ['other test application', badging.replace('ru.probpera', 'other'), manifest],
+      ['nondebuggable', badging.replace('application-debuggable\n', ''), manifest],
+      ['wrong minimum SDK', badging.replace("minSdkVersion:'24'", "minSdkVersion:'23'"), manifest],
+      ['wrong target SDK', badging.replace("targetSdkVersion:'36'", "targetSdkVersion:'35'"), manifest],
+      ['missing minimum SDK', badging.replace("minSdkVersion:'24'\n", ''), manifest],
+      ['wrong runner', badging, manifest.replace('AndroidJUnitRunner', 'OtherRunner')],
+      ['wrong target application', badging, manifest.replace('"ru.probpera.literaryplanet.dev"', '"other.app"')],
+      ['ambiguous package lines', badging + badging, manifest],
+      ['ambiguous target', badging, manifest + 'A: android:targetPackage="other.app"\n'],
+      ['zero optional version', badging.replace("versionCode=''", "versionCode='0'"), manifest],
+      ['unsafe optional version', badging.replace("versionCode=''", "versionCode='9007199254740992'"), manifest],
+      ['malformed optional version', badging.replace("versionCode=''", "versionCode='1a'"), manifest],
+      ['missing manifest', badging, null],
+    ])('denies %s', (_label, text, xml) => {
+      expect(() => parseAndroidInstrumentationPackage(text, xml)).toThrow();
+    });
   });
   it('requires one actual verified signing certificate and rejects ambiguous signers', () => {
     const line = 'Signer #1 certificate SHA-256 digest: ' + 'a'.repeat(64) + '\n';

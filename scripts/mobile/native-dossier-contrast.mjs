@@ -24,7 +24,7 @@ const report = {
 const editions = ['behaim-1492', 'hondius-1615', 'coronelli-1697', 'scherer-1700', 'cassini-1790',
   'rand-mcnally-1887', 'us-army-general-reference-1943', 'nasa-blue-marble', 'natural-earth-2026'];
 const origin = 'https://local-native-dossier.test', workKey = 'russia:dostoevsky:crime-and-punishment';
-let browser, context;
+let browser, context, page;
 try {
   report.audit = await verifyNativeArtifact({ rootDir: root });
   if (!report.audit.pass) throw new Error('Current native artifact integrity/source audit failed.');
@@ -102,13 +102,13 @@ try {
     if (!bytes) { report.errors.push('MISSING_BUNDLED_RESOURCE:' + name); await route.fulfill({ status: 404, body: '' }); return; }
     await route.fulfill({ status: 200, body: bytes, contentType: mime[path.extname(name)] ?? 'application/octet-stream' });
   });
-  const page = await context.newPage();
+  page = await context.newPage();
   page.on('pageerror', error => report.errors.push('PAGE_ERROR:' + error.message));
   page.setDefaultTimeout(12000);
   const app = page.locator('.native-planet-app'), panel = page.locator('.native-planet-panel');
   const detail = panel.locator('#book-archive-detail'), reader = detail.locator('.book-dossier-reader');
-  const menuToggle = page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]');
-  const menu = page.locator('.atlas-application-chrome [data-atlas-application-menu-panel]');
+  const searchToggle = page.locator('.atlas-application-chrome [data-atlas-action="toggle-search"]');
+  const localizedWorkTitles = new Map([['ru', 'Преступление и наказание']]);
   const pager = reader.locator('.book-dossier-reader__pager > span');
   const record = (id, details) => report.cases.push({ id, status: 'PASS', ...details });
   const capture = async name => {
@@ -123,16 +123,37 @@ try {
     }
   };
   const openPanel = async () => {
-    if (!await panel.isVisible()) {
-      if (await menuToggle.getAttribute('aria-expanded') !== 'true') await menuToggle.click();
-      await menu.locator('[data-atlas-action="open-collection"]').click(); await expect(panel).toBeVisible();
-    }
+    // Return closes the work detail. Reopen the same canonical work through
+    // the actual atlas search instead of opening the collection landing page.
+    await expect(panel).toBeHidden();
+    const locale = await page.locator('html').getAttribute('lang');
+    const title = localizedWorkTitles.get(locale);
+    if (!['ru', 'en'].includes(locale) || typeof title !== 'string' || !title.trim() || title.length > 300)
+      throw new Error('Current localized canonical work title unavailable.');
+    await expect(searchToggle).toBeVisible();
+    if (await searchToggle.getAttribute('aria-expanded') !== 'true') await searchToggle.click();
+    else await page.locator('#country-search').click();
+    await expect(page.locator('#country-search')).toBeFocused();
+    await page.locator('#country-search').fill(title);
+    await page.locator('#country-results [data-option-key="book:' + workKey + '"]').click();
+    await expect(panel).toBeVisible(); await expect(detail).toBeVisible();
+    await expect(detail).toHaveAccessibleName(title);
+    await expect.poll(() => new URL(page.url()).searchParams.get('book')).toBe(workKey);
+    const read = detail.locator('.book-detail-read-dossier');
+    await expect(read).toBeVisible(); await read.click();
+    await expect(reader).toBeVisible(); await expect(reader).toHaveAttribute('lang', locale);
   };
   const language = async locale => {
     if (await page.locator('html').getAttribute('lang') !== locale)
       await panel.locator('[data-interface-language="' + locale + '"]').click();
     await expect(page.locator('html')).toHaveAttribute('lang', locale);
     await expect(reader).toHaveAttribute('lang', locale);
+    // Cache only the visible canonical detail's actual current localized title.
+    // The EN title is observed after the first real RU→EN control change.
+    const title = await detail.getAttribute('aria-label');
+    if (typeof title !== 'string' || !title.trim() || title.length > 300)
+      throw new Error('Actual localized canonical work title unavailable.');
+    localizedWorkTitles.set(locale, title.trim());
   };
   await page.goto(origin + '/#atlas', { waitUntil: 'domcontentloaded', timeout: 20000 });
   await expect(app).toBeVisible({ timeout: 20000 });
@@ -238,6 +259,20 @@ try {
     && report.errors.length === 0 && report.externalRequests.length === 0;
 } catch (error) {
   report.errors.push(error.message);
+  // A failed run gets one bounded viewport diagnostic in its new own output.
+  // It is separate from the six acceptance captures and never adds a PASS.
+  if (page && !page.isClosed()) {
+    try {
+      const filename = 'failure-page.png';
+      await page.screenshot({ path: path.join(out, filename), fullPage: false, timeout: 5000, animations: 'disabled' });
+      const bytes = await fs.readFile(path.join(out, filename));
+      if (bytes.length > 4 * 1024 * 1024) throw new Error('Diagnostic viewport size exceeded.');
+      report.failureDiagnostic = { status: 'CAPTURED', path: filename, bytes: bytes.length,
+        sha256: sha256(bytes), scope: 'Failure-only viewport; no visual PASS or acceptance claim.' };
+    } catch {
+      report.failureDiagnostic = { status: 'NOT_CAPTURED', reason: 'DIAGNOSTIC_SCREENSHOT_UNAVAILABLE' };
+    }
+  }
 } finally {
   await context?.close(); await browser?.close();
 }

@@ -189,6 +189,19 @@ export function parseAndroidPackage(text) {
   check(packageLine && Number.isSafeInteger(Number(packageLine[2])), 'aapt2 did not identify a single canonical package.');
   return { applicationId: packageLine[1], versionCode: Number(packageLine[2]), versionName: packageLine[3], debuggable: /^application-debuggable\s*$/mu.test(text) };
 }
+export function parseAndroidInstrumentationPackage(text, manifest) {
+  check(typeof text === 'string' && text.length <= 1024 * 1024 && typeof manifest === 'string' && manifest.length <= 1024 * 1024, 'Bounded actual test badging and manifest are required.');
+  const rows = [...text.matchAll(/^package: name='([^']+)' versionCode='([0-9]*)' versionName='([^']*)'[^\r\n]*$/gmu)];
+  const minimum = [...text.matchAll(/^minSdkVersion:'([0-9]+)'\s*$/gmu)], target = [...text.matchAll(/^targetSdkVersion:'([0-9]+)'\s*$/gmu)];
+  check(rows.length === 1 && rows[0][1] === 'ru.probpera.literaryplanet.dev.test' && /^application-debuggable\s*$/mu.test(text)
+    && minimum.length === 1 && minimum[0][1] === '24' && target.length === 1 && target[0][1] === '36', 'Wrong actual debug instrumentation package or SDK boundary.');
+  const targets = [...manifest.matchAll(/android:targetPackage[^"\r\n]*"([^"]+)"/gu)];
+  const runners = [...manifest.matchAll(/android:name[^"\r\n]*"([^"]+)"/gu)].filter(row => row[1] === 'androidx.test.runner.AndroidJUnitRunner');
+  check(targets.length === 1 && targets[0][1] === 'ru.probpera.literaryplanet.dev' && runners.length === 1, 'Instrumentation does not target this dev application with its one canonical runner.');
+  const versionCode = rows[0][2] === '' ? null : Number(rows[0][2]);
+  check(versionCode === null || Number.isSafeInteger(versionCode) && versionCode >= 1, 'Malformed optional instrumentation version.');
+  return { applicationId: rows[0][1], versionCode, versionName: rows[0][3] || null, debuggable: true, minSdkVersion: 24, targetSdkVersion: 36 };
+}
 export function parseAndroidCertificate(text) {
   const certificates = [...text.matchAll(/^Signer #[0-9]+ certificate SHA-256 digest: ([a-f0-9]{64})\s*$/gmu)].map(match => match[1]);
   check(certificates.length === 1, 'Exactly one verified signing certificate is required.'); return certificates[0];
@@ -368,10 +381,9 @@ export async function runNativeInstallRuntime(options = {}) {
       report.toolchain = { java: await command(tools.java, [...commandContext.javaArgs, '-version']), aapt: await command(tools.aapt, ['version']), node: process.version };
       const metadata = parseAndroidPackage(await command(tools.aapt, ['dump', 'badging', binary]));
       check(metadata.applicationId === receipt.applicationId && metadata.versionCode === receipt.versionCode && metadata.versionName === receipt.versionName && metadata.debuggable, 'Actual APK version/application/debug channel differs from the receipt.');
-      const test = path.resolve(root, receipt.testArtifactPath), testMetadata = parseAndroidPackage(await command(tools.aapt, ['dump', 'badging', test]));
-      check(testMetadata.applicationId === 'ru.probpera.literaryplanet.dev.test' && testMetadata.debuggable, 'Wrong debug instrumentation package.');
+      const test = path.resolve(root, receipt.testArtifactPath), testBadging = await command(tools.aapt, ['dump', 'badging', test]);
       const testManifest = await command(tools.aapt, ['dump', 'xmltree', '--file', 'AndroidManifest.xml', test]);
-      check(testManifest.includes('androidx.test.runner.AndroidJUnitRunner') && /android:targetPackage[^\n]*"ru\.probpera\.literaryplanet\.dev"/u.test(testManifest), 'Instrumentation does not target this dev application.');
+      const testMetadata = parseAndroidInstrumentationPackage(testBadging, testManifest);
       const certificate = parseAndroidCertificate(await command(tools.java, [...commandContext.javaArgs, '-jar', tools.signer, 'verify', '--verbose', '--print-certs', binary]));
       check(certificate === parseAndroidCertificate(await command(tools.java, [...commandContext.javaArgs, '-jar', tools.signer, 'verify', '--verbose', '--print-certs', test])), 'Instrumentation signing identity does not match the main APK.');
       report.signing = { certificateSha256: certificate, productionSigning: false };
