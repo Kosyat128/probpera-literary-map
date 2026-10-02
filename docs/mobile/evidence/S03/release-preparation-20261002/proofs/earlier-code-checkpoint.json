@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "f2d851451b7bd3d30c4881f9bdbaafde45a5fa33",
+  "previousHead": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "files": [
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "sha256": "db0a92a53777a985116dd8878619b58707dad63b92b6608a62302ad821754c71"
+    },
+    {
+      "path": "docs/mobile/RELEASE_DECISIONS.json",
+      "sha256": "4df337471787e66b8dea536eb9ae6fc145bfc14706b5924501934801b6f04e74"
+    },
+    {
+      "path": "scripts/mobile/native-bundle-smoke.mjs",
+      "sha256": "eb3ca15bcad3c95fea462816320f997824a59c521d2d831f13b54d5c42061e65"
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "sha256": "1f97dd2e6eaea4f264caeaa838feecaaef1aaeba9c9a1c9eecc86b0a5bfc4a87"
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.test.mjs",
+      "sha256": "28b81b7ce39837aec20e1cbbeffb4ef84aa52534862b1b8d42cbb441af5db0ef"
+    },
+    {
+      "path": "scripts/mobile/prepare-local-release.mjs",
+      "sha256": "315f6b65068fba74df29819c2d19627046383a58daebd68aec00f3c9b65336d1"
+    },
+    {
+      "path": "scripts/mobile/release-readiness-files.test.mjs",
+      "sha256": "03f6405a074fcf2f1ef6d68601e793ad18fefcd781a03f062ead757e0b989196"
+    },
+    {
+      "path": "scripts/mobile/release-readiness.mjs",
+      "sha256": "cff0f810771861027bd4ec0097938aa387b4cd36bf142f5a58cab89172c9d83c"
+    },
+    {
+      "path": "scripts/mobile/sync-release-decisions.mjs",
+      "sha256": "12c16f73cef1383a6d67b0b2f42bcf253cfb1a3d3d5f50863b851019e2ec4368"
+    },
+    {
+      "path": "src/host/planetAppearance.css",
+      "sha256": "958fde1eab6df1603f9bcacf6a6b661c9479968b019940badc18cf555188e802"
+    },
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetPreviousPreferencesRuntimeTest.java",
+      "sha256": "ba7c22cffe0e82c708eb410bb4c528279e305111afedddfad49c82862bda233a"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "a7cd425c3aaff59db0feef761badec8995b7bf6d3823a5f2bd106b4742c83758"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sha256": "954cfa7d42922d74c9a36188ef89525fdf205774167f9f96bc25658389411395"
+    },
+    {
+      "path": "scripts/mobile/native-dossier-contrast.mjs",
+      "sha256": "8f024d65b6b7bf06c518054569c7026a21f9f70d8d6bf5d37befc25ef397241d"
+    },
+    {
+      "path": "scripts/mobile/native-previous-update.test.mjs",
+      "sha256": "62120a0ef4cf4ddc177d85d9deebea156d4a10c15c423787b910e821afacfdea"
+    },
+    {
+      "path": "src/child/childIndex.test.ts",
+      "sha256": "b82b7243b33ec966bf36992ab3b24ddb7cbbe462a58524a21680e12aa4ec7408"
+    },
+    {
+      "path": "src/child/childIndex.ts",
+      "sha256": "9a59977420c10f3eb17333dea8ea038a1c1378aa93696857f197cf8adab0903c"
+    },
+    {
+      "path": "src/child/childMedia.test.ts",
+      "sha256": "aa0e3ad1408d12af4196d8e6efca5451711988ec054fd41d9edc64eeb687e5d8"
+    },
+    {
+      "path": "src/child/childMedia.ts",
+      "sha256": "a95f3c57c3a2e81b496c020f6adb4d74e3871df16d53152fedd8f41dfae8e2b2"
+    },
+    {
+      "path": "src/child/childPackage.ts",
+      "sha256": "e7ebba5afcf9bc1d7b6c6fc545f5ad47518d5b7cfc24482b4d4f8b8c7c3c2326"
+    },
+    {
+      "path": "src/child/childProtectedState.test.ts",
+      "sha256": "03c40f46eeb31f2ad22e9f9f2b94d01827f522d77b818380401c4c87a42ba144"
+    },
+    {
+      "path": "src/child/childProtectedState.ts",
+      "sha256": "4446d7e2833ecd0648fc3e80cb940c0a31521901d87e399b93f9f9aafcb8e78d"
+    }
+  ],
+  "protectedContent": {
+    "schemaVersion": 1,
+    "kind": "protected-content-preservation",
+    "checkedAt": "2026-10-02T20:07:35.884Z",
+    "baselineHead": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+    "checkedCount": 6820,
+    "changed": [],
+    "missing": [],
+    "changedCount": 0,
+    "missingCount": 0,
+    "pass": true
+  },
+  "scriptChecks": [
+    {
+      "path": "scripts/mobile/native-bundle-smoke.mjs",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/mobile/prepare-local-release.mjs",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/mobile/release-readiness-files.test.mjs",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/mobile/release-readiness.mjs",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/mobile/sync-release-decisions.mjs",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/mobile/native-dossier-contrast.mjs",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/mobile/native-previous-update.test.mjs",
+      "status": "PASS"
+    }
+  ],
+  "remoteOperations": 0
+}

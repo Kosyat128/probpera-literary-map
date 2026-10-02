@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-final-preservation",
+  "generatedAt": "2026-10-02T21:30:33.825Z",
+  "status": "PASS",
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "repositoryHead": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+  "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+  "sourceFileCount": 1755,
+  "toolVersions": {
+    "node": "v24.19.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.6",
+    "vitest": "4.1.10",
+    "@capacitor/core": "8.5.1",
+    "@capacitor/cli": "8.5.1",
+    "@capacitor/android": "8.5.1",
+    "@capacitor/ios": "8.5.1",
+    "@supabase/supabase-js": "2.112.3"
+  },
+  "helperSha256": "f68d23d1f31563a22bbde28d0825772287350e9513578056ccff0d2c8f5d8823",
+  "inputSha256": "22022b65b76def113a074bd0a0829966667acbcc3de7dabcb6794b632b74741e",
+  "baselineSha256": "ce96f2d569a043cb1aaffd91550e14393a844d4e58622cb80e58ea1745954457",
+  "baselineHead": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+  "guard": {
+    "root": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+    "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+    "initialAndFinalHeadMatched": true,
+    "worktreeClean": true
+  },
+  "changedCount": 0,
+  "missingCount": 0,
+  "unreadableCount": 0,
+  "protected": {
+    "expected": 6820,
+    "checked": 6820,
+    "bytesStreamed": 749895319,
+    "changed": {
+      "count": 0,
+      "items": [],
+      "truncated": false
+    },
+    "missing": {
+      "count": 0,
+      "items": [],
+      "truncated": false
+    },
+    "unreadable": {
+      "count": 0,
+      "items": [],
+      "truncated": false
+    }
+  },
+  "environment": {
+    "baselineFileCount": 1,
+    "unchanged": true,
+    "addedFileCount": 0,
+    "valuesReadSemantically": false,
+    "valuesPrinted": false
+  },
+  "historicalEvidence": {
+    "baselineTrackedFileCount": 10156,
+    "checked": 10156,
+    "unchanged": true,
+    "normalization": "Exact raw original baseline Git object first; otherwise historical Windows clean conversion with process-local core.autocrlf=true; original baseline Git blob IDs preserved; no -w/no input rewrite",
+    "matchedBy": {
+      "exactRawGitObject": 9901,
+      "historicalCleanGitObject": 255
+    },
+    "changed": {
+      "count": 0,
+      "items": [],
+      "truncated": false
+    },
+    "missing": {
+      "count": 0,
+      "items": [],
+      "truncated": false
+    },
+    "unreadable": {
+      "count": 0,
+      "items": [],
+      "truncated": false
+    }
+  },
+  "newEvidence": {
+    "allowedFamily": "docs/mobile/evidence/S03/release-preparation-20261002/",
+    "allowedFileCount": 0,
+    "unexpected": {
+      "count": 0,
+      "items": [],
+      "truncated": false
+    },
+    "newFamilyAcceptanceClaimed": false
+  },
+  "errors": [],
+  "releaseReady": false,
+  "acceptanceChanged": false
+}

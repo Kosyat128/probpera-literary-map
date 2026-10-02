@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "generatedAt": "2026-10-02T21:36:37.050Z",
+  "releaseReady": false,
+  "stageAccepted": false,
+  "productionActionsAuthorized": false,
+  "kind": "literary-planet-release-remaining-gates",
+  "S03": {
+    "acceptance": "IN_PROGRESS",
+    "openCriteria": 11
+  },
+  "decisionRegistry": {
+    "path": "docs/mobile/RELEASE_DECISIONS.json",
+    "sha256": "31e66c5d6d6658fd06f92601b7dfc100e54f9ad46fa2a9efcf43dea27e300289"
+  },
+  "gates": [
+    {
+      "ownerId": "DEVICE-ANDROID",
+      "status": "NOT_RUN",
+      "decisionRegistryItem": "DEVICE-ANDROID",
+      "programmingAfterInputs": "Codex"
+    },
+    {
+      "ownerId": "DEVICE-IOS",
+      "status": "NOT_RUN",
+      "decisionRegistryItem": "DEVICE-IOS",
+      "programmingAfterInputs": "Codex"
+    },
+    {
+      "ownerId": "PSP-DECISION",
+      "status": "BLOCKED_EXTERNAL",
+      "decisionRegistryItem": "PSP-DECISION",
+      "programmingAfterInputs": "Codex"
+    },
+    {
+      "ownerId": "EDITORIAL-LEGAL",
+      "status": "BLOCKED_EXTERNAL",
+      "decisionRegistryItem": "EDITORIAL-LEGAL",
+      "programmingAfterInputs": "Codex"
+    },
+    {
+      "ownerId": "AUTH-ENVIRONMENT",
+      "status": "BLOCKED_EXTERNAL",
+      "decisionRegistryItem": "AUTH-ENVIRONMENT",
+      "programmingAfterInputs": "Codex"
+    },
+    {
+      "ownerId": "REMOTE-GRANT",
+      "status": "BLOCKED_EXTERNAL",
+      "decisionRegistryItem": "REMOTE-GRANT",
+      "programmingAfterInputs": "Codex"
+    },
+    {
+      "ownerId": "STORE-SIGNING",
+      "status": "BLOCKED_EXTERNAL",
+      "decisionRegistryItem": "STORE-SIGNING",
+      "programmingAfterInputs": "Codex"
+    }
+  ],
+  "remoteOperations": 0
+}

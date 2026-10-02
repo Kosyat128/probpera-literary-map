@@ -1,0 +1,29 @@
+{
+  "startedAt": "2026-10-02T18:28:35.464Z",
+  "finishedAt": "2026-10-02T18:28:39.528Z",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+    "--reporter=json",
+    "--outputFile",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-unit-a1\\vitest.json",
+    "src/community/authSession.test.ts",
+    "src/community/authAction.test.ts",
+    "src/community/readerPrivacy.test.ts",
+    "src/hooks/readerSubscriptions.test.ts",
+    "src/hooks/useReadingLibrary.test.ts",
+    "src/hooks/useReadingProgress.test.ts",
+    "src/hooks/useBookCollections.test.ts",
+    "src/lib/supabaseLazyBoundary.source.test.ts",
+    "src/pwa/PlanetAccountPage.test.mjs",
+    "src/pwa/accountAccess.test.ts",
+    "src/pwa/passwordRecovery.test.ts"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "isolatedEnv": true
+}

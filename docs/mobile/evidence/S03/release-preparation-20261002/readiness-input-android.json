@@ -1,0 +1,220 @@
+{
+  "binding": {
+    "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+    "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+    "platform": "android",
+    "channel": "dev",
+    "environment": "local",
+    "artifactSha256": "85d613a9770b48bb17b7112a4134a0bae9c86e937d930213755141a709a11198"
+  },
+  "artifactPath": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/app-dev-debug.apk",
+  "artifactMetadataPath": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/binary.json",
+  "gates": [
+    {
+      "id": "local-tests",
+      "status": "NOT_RUN",
+      "reason": "Retained scoped identities, current TypeScript closure or actual test proof is insufficient."
+    },
+    {
+      "id": "content-preservation",
+      "status": "PASS",
+      "reason": "Actual 6820 protected items, environment files and historical evidence unchanged; original final proof retained.",
+      "binding": {
+        "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+        "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "android",
+        "channel": "dev",
+        "environment": "local",
+        "artifactSha256": "85d613a9770b48bb17b7112a4134a0bae9c86e937d930213755141a709a11198"
+      },
+      "finishedAt": "2026-10-02T21:30:33.825Z",
+      "facts": {
+        "completed": true,
+        "changedCount": 0,
+        "missingCount": 0,
+        "checkedCount": 6820
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/protected-content-preservation.json",
+          "sha256": "f763f5afe380d2e2b222ab106744359f0c9771b0f63ebbe01777b67f458ca47d"
+        }
+      ]
+    },
+    {
+      "id": "ru-en-runtime",
+      "status": "NOT_RUN",
+      "reason": "Fresh focused emitted RU/EN reader/dossier review passes; full Auth/payment/error product matrix remains unverified."
+    },
+    {
+      "id": "auth-deletion-local",
+      "status": "NOT_RUN",
+      "reason": "Retained Auth unit/browser identity or unchanged critical source closure is insufficient."
+    },
+    {
+      "id": "auth-deletion-remote",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Configured real service, two ordinary users, revocation and durable deletion remain unverified."
+    },
+    {
+      "id": "editorial-legal",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Five exact RU/EN registry items remain PENDING human review."
+    },
+    {
+      "id": "psp-commercial-decision",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "PSP has not been selected by the owner."
+    },
+    {
+      "id": "payment-sandbox",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Local candidate/fixture contracts do not prove real sandbox purchase/refund/restore/reconcile."
+    },
+    {
+      "id": "remote-authorization",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "No separate exact-environment grant supplied; remote operations remain zero."
+    },
+    {
+      "id": "package-integrity",
+      "status": "PASS",
+      "reason": "Exact retained preparation audit, inventory, metadata and current raw source closure verified.",
+      "binding": {
+        "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+        "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "android",
+        "channel": "dev",
+        "environment": "local",
+        "artifactSha256": "85d613a9770b48bb17b7112a4134a0bae9c86e937d930213755141a709a11198"
+      },
+      "finishedAt": "2026-10-02T21:04:39.475Z",
+      "facts": {
+        "completed": true,
+        "scope": "Local unreleased preparation only"
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android.json",
+          "sha256": "a8dd881204472043970338a5ab9c4dacca33a690eb57014075ce1a29153af127"
+        },
+        {
+          "path": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/native-bundle/artifact.json",
+          "sha256": "b9e1a02d24431829f4e6cd517641e8574f9e447e34197dce8d96e124f707ca6b"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/native-audit.stdout.txt",
+          "sha256": "3809762e268a9ff3fd197643be0eb88492e039492a8133e65b0feef65e57d8fb"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/native-audit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-assemble.stdout.txt",
+          "sha256": "6cc09bc650f72b14e25f057a9a84d9248e31001c309ef0096ec2b77451d9f4a3"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-assemble.stderr.txt",
+          "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-instrumentation-assemble.stdout.txt",
+          "sha256": "bbab6b1b5446a8206b15be1305af6ad5f2f9e2b9aab2a8be52064f576c4c39e8"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-instrumentation-assemble.stderr.txt",
+          "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d"
+        },
+        {
+          "path": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/binary.json",
+          "sha256": "b75a1bd80fbe860d22aece9b865a6d686f586c1a01df59f38e83c0ffb04c874f"
+        }
+      ]
+    },
+    {
+      "id": "native-binary",
+      "status": "PASS",
+      "reason": "Actual dev main/test APK compiled and byte/signature metadata bound; no installation claim.",
+      "binding": {
+        "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+        "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "android",
+        "channel": "dev",
+        "environment": "local",
+        "artifactSha256": "85d613a9770b48bb17b7112a4134a0bae9c86e937d930213755141a709a11198"
+      },
+      "finishedAt": "2026-10-02T21:04:39.475Z",
+      "facts": {
+        "completed": true,
+        "scope": "Local Android compilation only"
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android.json",
+          "sha256": "a8dd881204472043970338a5ab9c4dacca33a690eb57014075ce1a29153af127"
+        },
+        {
+          "path": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/native-bundle/artifact.json",
+          "sha256": "b9e1a02d24431829f4e6cd517641e8574f9e447e34197dce8d96e124f707ca6b"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/native-audit.stdout.txt",
+          "sha256": "3809762e268a9ff3fd197643be0eb88492e039492a8133e65b0feef65e57d8fb"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/native-audit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-assemble.stdout.txt",
+          "sha256": "6cc09bc650f72b14e25f057a9a84d9248e31001c309ef0096ec2b77451d9f4a3"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-assemble.stderr.txt",
+          "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-instrumentation-assemble.stdout.txt",
+          "sha256": "bbab6b1b5446a8206b15be1305af6ad5f2f9e2b9aab2a8be52064f576c4c39e8"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-instrumentation-assemble.stderr.txt",
+          "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d"
+        },
+        {
+          "path": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/binary.json",
+          "sha256": "b75a1bd80fbe860d22aece9b865a6d686f586c1a01df59f38e83c0ffb04c874f"
+        }
+      ]
+    },
+    {
+      "id": "installed-runtime",
+      "status": "NOT_RUN",
+      "reason": "No installed OS/runtime/lifecycle/PWA installation acceptance exists; local builds and simulations do not satisfy this gate."
+    },
+    {
+      "id": "os-preferences",
+      "status": "NOT_RUN",
+      "reason": "No installed OS/runtime/lifecycle/PWA installation acceptance exists; local builds and simulations do not satisfy this gate."
+    },
+    {
+      "id": "os-secret-storage",
+      "status": "NOT_RUN",
+      "reason": "No installed OS/runtime/lifecycle/PWA installation acceptance exists; local builds and simulations do not satisfy this gate."
+    },
+    {
+      "id": "lifecycle-update",
+      "status": "NOT_RUN",
+      "reason": "No installed OS/runtime/lifecycle/PWA installation acceptance exists; local builds and simulations do not satisfy this gate."
+    }
+  ]
+}

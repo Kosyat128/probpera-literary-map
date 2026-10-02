@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-retained-scoped-local-checks",
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "generatedAt": "2026-10-02T21:36:29.338Z",
+  "groups": [
+    {
+      "name": "authUnits",
+      "status": "NOT_RUN",
+      "uniqueObservedCases": 218,
+      "interpretation": "Raw assertion PASS counts and distinct reporter names are recorded separately, with duplicate titles disclosed. No real Auth environment acceptance."
+    },
+    {
+      "name": "paymentSqlApi",
+      "status": "NOT_RUN",
+      "uniqueObservedCases": 282,
+      "interpretation": "Raw baseline assertions, actual distinct names, duplicate titles, failed-name repairs and already-green focused overlap are separate. No real PSP transaction."
+    }
+  ],
+  "nativeUnitHistory": {
+    "observedStatus": "PASS",
+    "scope": "Historical native unit observations; operator script changes are separately checked and full native cohort is not inferred to have run again."
+  },
+  "typescript": {
+    "historicalObservedStatus": "PASS",
+    "historicalRunId": "app-tsc-a5",
+    "historicalExecutionBinding": "NOT_RUN",
+    "currentStatus": "PASS",
+    "currentScope": "Actual --noEmit App tsconfig/src check at the final code checkpoint",
+    "proof": {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/final-local-typecheck.json",
+      "sha256": "5e084bde86aed975f570c19afc9dd14e77c66af9bc06471b4614673517eb8ee0"
+    }
+  },
+  "proofs": [
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/check-history-summary.json",
+      "sha256": "00218cb395be62db02743bb013495d5312bc00dc7c7c2d46929416474fdeda44"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/critical-source-retention.json",
+      "sha256": "85d5b8fc0ddc5131f797f8d4bc62f4e0ddaf2719cfd202f152398bce2aef908a"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-unit-a1/execution.json",
+      "sha256": "644021149bd15df1ccc5d1237706db01fa5e15eb99c985783cf2f940d057bb8d"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-api-a1/execution.json",
+      "sha256": "2c89df26fe33b673d6e77fe55171bf41543ef14940f4d400e91a26dcdd5def17"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-sql-a2/execution.json",
+      "sha256": "0b8014d8b582dc74f32dc21d6a0f0930101e6abc6e371c3510dd60c2e1ff6990"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-a2/execution.json",
+      "sha256": "787f3832e083a5031d23a061b391e3f49068c1138cbb2cf64d58dd861294be8b"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/app-tsc-a5/execution.json",
+      "sha256": "5cf7845db7678031008338fd88d9eddb9e55b962f924e0c2aee357d1e1371f96"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/final-local-typecheck.json",
+      "sha256": "5e084bde86aed975f570c19afc9dd14e77c66af9bc06471b4614673517eb8ee0"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/final-local-typecheck.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/final-local-typecheck.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "retainedUnitExecutionAtFinalSourceCommitClaimed": false,
+  "releaseReady": false
+}

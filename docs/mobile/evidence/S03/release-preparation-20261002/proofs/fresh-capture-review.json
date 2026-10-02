@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-dossier-capture-review",
+  "status": "PASS",
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "recordedCaptureCheckpoint": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+  "artifactSha256": "b9e1a02d24431829f4e6cd517641e8574f9e447e34197dce8d96e124f707ca6b",
+  "resultPath": ".tmp/mobile-native-dossier-contrast-eb5d2c94-0627-4499-aef9-7ce5b40349a6/result.json",
+  "resultSha256": "dea125402280d1239911e6d18a4305123105374a74449b4c0acdbb0f658f959b",
+  "reviewedAt": "2026-10-02T21:11:59.683Z",
+  "reviewMethod": "Root directly inspected all six actual PNGs through view_image.",
+  "rows": [
+    {
+      "path": "dossier-disabled-ru.png",
+      "sha256": "4b527f1f71460f201857342d0902f7426f3ba4d24b8807e37a8a32f7d1b75496",
+      "locale": "ru",
+      "status": "PASS",
+      "visuallyReviewed": true,
+      "notes": "Previous arrow remains visible and visually disabled; Contents/next labels legible."
+    },
+    {
+      "path": "dossier-hover-ru.png",
+      "sha256": "e98331202df0b82da2c10ab216cf9a0a9a1bf8d8ba9dbeb6f8499337c9cac0a3",
+      "locale": "ru",
+      "status": "PASS",
+      "visuallyReviewed": true,
+      "notes": "Arrow and text remain legible under the captured interaction."
+    },
+    {
+      "path": "dossier-focus-ru.png",
+      "sha256": "30b5161ad6fa5f17c6e62ee4b05dbba11fb0ada6be17e28151ac9b50a348e89b",
+      "locale": "ru",
+      "status": "PASS",
+      "visuallyReviewed": true,
+      "notes": "Contents label and focus outline visible; capture covers the current reader element and viewport scroll position."
+    },
+    {
+      "path": "dossier-disabled-en.png",
+      "sha256": "5ed4b5fe81454b5ffe292ac3f27f607a159d1d902d784cd30d341d8419e9ca4e",
+      "locale": "en",
+      "status": "PASS",
+      "visuallyReviewed": true,
+      "notes": "Previous arrow remains visible and visually disabled; Contents/next labels legible."
+    },
+    {
+      "path": "dossier-hover-en.png",
+      "sha256": "cfdb70a13bb6ea127421f6bf3ba739cc2b8da20a6576fef2aff164eea686e699",
+      "locale": "en",
+      "status": "PASS",
+      "visuallyReviewed": true,
+      "notes": "Arrow and text remain legible under the captured interaction."
+    },
+    {
+      "path": "dossier-focus-en.png",
+      "sha256": "3b191cdbd02b3e7e663deaf2f177c8670f97c33b377873ad08fb1bd60399c498",
+      "locale": "en",
+      "status": "PASS",
+      "visuallyReviewed": true,
+      "notes": "Contents label and focus outline visible; capture covers the current reader element and viewport scroll position."
+    }
+  ],
+  "errors": [],
+  "scope": "Captured dossier control legibility in RU/EN only; computed controls separately checked across nine palettes.",
+  "fullProductAcceptance": false,
+  "installed": false,
+  "osStorageObserved": false,
+  "releaseReady": false
+}

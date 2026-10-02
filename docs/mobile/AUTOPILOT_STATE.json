@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "9dc4028b1eb00c846fdf88b2f61b69ff2a482969",
+  "headSha": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-02T17:09:46.069Z",
+  "updatedAt": "2026-10-02T22:14:35.424Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1537,7 +1537,16 @@
         "docs/mobile/evidence/S03/booky-size-persistence-20261002/remaining-gates.json",
         "docs/mobile/evidence/S03/booky-size-persistence-20261002/README.md",
         "docs/mobile/evidence/S03/booky-size-persistence-20261002/checkpoint-inputs.json",
-        "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/checkpoint.mjs"
+        "docs/mobile/evidence/S03/booky-size-persistence-20261002/actual/checkpoint.mjs",
+        "docs/mobile/evidence/S03/release-preparation-20261002/assembly-manifest.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/assembly-qualified-manifest.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/four-original-conditions.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/channels.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/remaining-gates.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/readiness-android-final.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/readiness-pwa-final.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/readiness-ios-final.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/focused-dossier-review.json"
       ],
       "externalBlockers": []
     },
@@ -5163,7 +5172,9 @@
         "docs/mobile/evidence/S16/parent-gate-foundation-20261002/remaining-gates.json",
         "docs/mobile/evidence/S16/sealed-child-startup-20261002/entry.json",
         "docs/mobile/evidence/S16/sealed-child-startup-20261002/result.json",
-        "docs/mobile/evidence/S16/sealed-child-startup-20261002/remaining-gates.json"
+        "docs/mobile/evidence/S16/sealed-child-startup-20261002/remaining-gates.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/raw-critical-retention-final.json",
+        "docs/mobile/evidence/S03/release-preparation-20261002/scoped-local-checks-final.json"
       ],
       "externalBlockers": []
     },
@@ -13228,7 +13239,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "S03.acceptance remains first unresolved with11 OPEN requirements; installed test device/VM is absent, PSP is unchosen and real payment/refund, RU/EN editorial/legal, Auth/deletion and authorized remote gates remain unchanged. Continue documented parallel-safe S16 from tested profile/access, Parent Gate and sealed startup/namespace foundations: implement a verified child-only package/index adapter with per-entity exact-age/locale/current rights review, separate query/history/cache/offline ports and atomic scope retirement; implement actual protected native mode/profile/PIN storage, restart-stable trusted time, enrollment/recovery and host lifecycle/route wiring as Codex programming. Do not activate child content or claim a frame/device/storage guarantee from mocked ports, namespace metadata, signatures or UI booleans. Preserve previous222 and96 case evidence plus the new focused checks without report-only repeats. No deploy/push/merge/store actions.",
+    "nextAction": "S03.acceptance remains IN_PROGRESS with11 OPEN criteria: installed-device/OS evidence, unchosen PSP and real purchase/refund/reconciliation, reviewed RU/EN editorial/legal materials, configured real Auth/deletion and separately authorized remote validation remain pending. Continue the independent S16 programming dependencies with36 OPEN criteria: implement durable isolated child query/history/cache/offline data ports and reviewed media decode/renderer integration before admission-dependent enrollment/recovery/lifecycle/route/UI wiring. Current package/index/media foundations are sealed and in-memory; native encrypted candidate CAS is not admitted protected PIN authority, restart/rollback protection or actual child persistence. Preserve RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat qualified passing scopes solely for reporting, create D stages, invent approval/trusted time, activate child content, publish/deploy/push/merge or rewrite historical FAIL evidence.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -13609,7 +13620,7 @@
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
   "verificationCache": {
-    "headShaMeaning": "Last accepted atomic source/evidence checkpoint; state-only follow-up commits do not self-reference.",
+    "headShaMeaning": "Final source checkpoint is the Node operator/test provenance commit 6c6c8f8cb66bf1d102b8a10ce13088499c503d63. Actual compiled Android application source is 5534ad4d1595d9419d17f93825eee160e32a97f2; retained PWA/iOS preparation checkpoints and ancestor execution identities remain recorded in docs/mobile/evidence/S03/release-preparation-20261002/channels.json. This state/report follow-up does not self-reference or imply installed OS, provider, whole-stage or release acceptance.",
     "requirementCount": 342,
     "bilingualRequirementCount": 107,
     "sourceMain": "0a348bd4202e3fa1558d88183549f7576a361c4b",

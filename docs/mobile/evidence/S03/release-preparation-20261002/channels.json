@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "generatedAt": "2026-10-02T21:36:37.050Z",
+  "releaseReady": false,
+  "stageAccepted": false,
+  "productionActionsAuthorized": false,
+  "kind": "literary-planet-release-channels",
+  "channels": [
+    {
+      "platform": "android",
+      "channel": "dev",
+      "status": "PREPARED",
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+      "preparationSourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+      "preparationSourceFingerprint": "76776d62869c9b364893e37745a4d27ef72dbe4ce513347fcb9cd8952b61ff34",
+      "preparedSourceInputsSha256": "c6c62a6ed37f400d904519bfe1682617f4d8f65dea8a497164cebacb94a6c63e",
+      "artifactSha256": "85d613a9770b48bb17b7112a4134a0bae9c86e937d930213755141a709a11198",
+      "metadataPath": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/binary.json",
+      "nativeCompiled": true,
+      "storeArtifact": false,
+      "installed": false,
+      "applicationId": "ru.probpera.literaryplanet.dev",
+      "versionCode": 1,
+      "versionName": "1.0-dev",
+      "certificateSha256": "6bfe3a9c59ce2b28eeb7c4d0d7d085beff790b87295ccbadeb2a5c8ee9d6d9d9"
+    },
+    {
+      "platform": "pwa",
+      "channel": "web-direct",
+      "status": "PREPARED",
+      "sourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+      "preparationSourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+      "preparationSourceFingerprint": "52014153f998cee1405a2f16b472f2c71ba34268472ab1a224866814fc36d958",
+      "preparedSourceInputsSha256": "a570f3d30efda22607236c10d356512b07cbdcaf5c56ab3012f1b0dff6072161",
+      "artifactSha256": "e6ae5160d5ffa089627be6040a64fefc55a46c3ff0af496d3f56523c1ebeb4ce",
+      "metadataPath": ".tmp/mobile-release-pwa-88f2124a-4307-40fa-8851-cb719a449e20/pwa-bundle/artifact.json",
+      "nativeCompiled": false,
+      "storeArtifact": false,
+      "installed": false
+    },
+    {
+      "platform": "ios",
+      "channel": "dev",
+      "status": "PREPARED_BUNDLE_ONLY",
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "preparationSourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "preparationSourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+      "preparedSourceInputsSha256": "c6c62a6ed37f400d904519bfe1682617f4d8f65dea8a497164cebacb94a6c63e",
+      "artifactSha256": "ed250fe50a6bd72870ee88ea819aff1f5f3a954ff903095bd3fceb43737621b2",
+      "metadataPath": ".tmp/mobile-release-ios-bundle-7be1d5ab-cfba-488f-9fb0-3afc79c21e30/native-bundle/artifact.json",
+      "nativeCompiled": false,
+      "storeArtifact": false,
+      "installed": false
+    },
+    {
+      "platform": "android",
+      "channel": "googlePlay",
+      "status": "NOT_PREPARED"
+    },
+    {
+      "platform": "android",
+      "channel": "ruStore",
+      "status": "NOT_PREPARED"
+    },
+    {
+      "platform": "ios",
+      "channel": "appStore",
+      "status": "NOT_PREPARED"
+    }
+  ]
+}

@@ -1,3 +1,11 @@
+<!-- release-preparation-20261002-final:begin -->
+Final source checkpoint: 6c6c8f8cb66bf1d102b8a10ce13088499c503d63. Compiled Android application checkpoint: 5534ad4d1595d9419d17f93825eee160e32a97f2.
+Evidence: docs/mobile/evidence/S03/release-preparation-20261002/assembly-manifest.json; docs/mobile/evidence/S03/release-preparation-20261002/channels.json; docs/mobile/evidence/S03/release-preparation-20261002/remaining-gates.json.
+Portable packet: literary-planet-release-preparation-20261002.zip; SHA256 52bb0c3a597ca9dd934e0af4148b384c3ccbfdaf1f361eb6fb5e434b2e4d92b5. Assembly integrity PASS; product/stage/release acceptance remains incomplete.
+Local checks, six reviewed dossier captures and preserved historical failures keep their recorded source/scope. No installed OS/native PIN authority or live provider/editorial/legal approval is inferred.
+Next: S03.acceptance remains IN_PROGRESS with11 OPEN criteria: installed-device/OS evidence, unchosen PSP and real purchase/refund/reconciliation, reviewed RU/EN editorial/legal materials, configured real Auth/deletion and separately authorized remote validation remain pending. Continue the independent S16 programming dependencies with36 OPEN criteria: implement durable isolated child query/history/cache/offline data ports and reviewed media decode/renderer integration before admission-dependent enrollment/recovery/lifecycle/route/UI wiring. Current package/index/media foundations are sealed and in-memory; native encrypted candidate CAS is not admitted protected PIN authority, restart/rollback protection or actual child persistence. Preserve RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat qualified passing scopes solely for reporting, create D stages, invent approval/trusted time, activate child content, publish/deploy/push/merge or rewrite historical FAIL evidence.
+<!-- release-preparation-20261002-final:end -->
+
 # Literary Planet V12 execution
 
 The active task is the user's V12 bilingual product request, based on canonical

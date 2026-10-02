@@ -1,0 +1,3294 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "generatedAt": "2026-10-02T21:14:25.926Z",
+  "sourceAttribution": "Declared final checking checkpoint only; retained commands ran earlier and have no recorded execution commit.",
+  "historicalCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+  "executionAtFinalSourceCommitClaimed": false,
+  "releaseReady": false,
+  "actualAuth": "NOT_RUN",
+  "actualPsp": "NOT_RUN",
+  "installedOsRuntime": "NOT_RUN",
+  "runtimeBoundary": "local-synthetic",
+  "redactionNeeded": false,
+  "occurrences": {
+    "jwtShaped": 0,
+    "affectedFiles": []
+  },
+  "rawEvidenceModified": false,
+  "kind": "literary-planet-local-check-history-summary",
+  "historyPath": "check-history.json",
+  "groups": {
+    "authUnits": {
+      "groupId": "authUnits",
+      "runIds": [
+        "auth-unit-a1"
+      ],
+      "actualDistinctNames": 218,
+      "expectedUniqueCases": 218,
+      "countBasis": "actual-baseline-reporter-names",
+      "catalogueSize": 222,
+      "retainedAssertionOccurrences": 222,
+      "duplicateTitleOccurrences": 4,
+      "status": "RESOLVED",
+      "baselineCounts": {
+        "total": 222,
+        "passed": 222,
+        "failed": 0,
+        "skipped": 0
+      },
+      "focusedCounts": [],
+      "reconciliation": {
+        "method": "vitest-fullNames",
+        "initialFailedNames": 0,
+        "repairedFailures": 0,
+        "alreadyPassingOverlap": 0,
+        "unresolvedFailures": 0,
+        "latestObservedPassed": 218,
+        "unmatchedFollowupNames": 0,
+        "unmatchedFollowupProofs": [],
+        "failedNameProofs": []
+      },
+      "interpretation": "Raw assertion PASS counts and distinct reporter names are recorded separately, with duplicate titles disclosed. No real Auth environment acceptance."
+    },
+    "nativeUnits": {
+      "groupId": "nativeUnits",
+      "runIds": [
+        "native-unit-a1",
+        "native-unit-a2"
+      ],
+      "actualDistinctNames": 248,
+      "expectedUniqueCases": 248,
+      "countBasis": "actual-baseline-reporter-names",
+      "catalogueSize": 248,
+      "retainedAssertionOccurrences": 248,
+      "duplicateTitleOccurrences": 0,
+      "status": "RESOLVED",
+      "baselineCounts": {
+        "total": 248,
+        "passed": 247,
+        "failed": 1,
+        "skipped": 0
+      },
+      "focusedCounts": [
+        {
+          "runId": "native-unit-a2",
+          "total": 27,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 26
+        }
+      ],
+      "reconciliation": {
+        "method": "vitest-fullNames",
+        "initialFailedNames": 1,
+        "repairedFailures": 1,
+        "alreadyPassingOverlap": 0,
+        "unresolvedFailures": 0,
+        "latestObservedPassed": 248,
+        "unmatchedFollowupNames": 0,
+        "unmatchedFollowupProofs": [],
+        "failedNameProofs": [
+          {
+            "identitySha256": "8f566493264b56e2f1fb3d401509a615b68ae9d68c2822bf56c9dc9c15faa6f1",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "native-unit-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "native-unit-a2",
+                "status": "passed"
+              }
+            ]
+          }
+        ]
+      },
+      "interpretation": "Retained baseline and focused repair are matched by actual reporter names. Native ports use synthetic boundaries."
+    },
+    "paymentSqlApi": {
+      "groupId": "paymentSqlApi",
+      "runIds": [
+        "payment-sql-api-a1",
+        "auth-sql-a2",
+        "payment-sql-a2"
+      ],
+      "actualDistinctNames": 282,
+      "expectedUniqueCases": 282,
+      "countBasis": "actual-baseline-reporter-names",
+      "catalogueSize": 285,
+      "retainedAssertionOccurrences": 285,
+      "duplicateTitleOccurrences": 3,
+      "status": "RESOLVED",
+      "baselineCounts": {
+        "total": 285,
+        "passed": 261,
+        "failed": 24,
+        "skipped": 0
+      },
+      "focusedCounts": [
+        {
+          "runId": "auth-sql-a2",
+          "total": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "runId": "payment-sql-a2",
+          "total": 19,
+          "passed": 19,
+          "failed": 0,
+          "skipped": 0
+        }
+      ],
+      "reconciliation": {
+        "method": "vitest-fullNames",
+        "initialFailedNames": 24,
+        "repairedFailures": 24,
+        "alreadyPassingOverlap": 2,
+        "unresolvedFailures": 0,
+        "latestObservedPassed": 282,
+        "unmatchedFollowupNames": 0,
+        "unmatchedFollowupProofs": [],
+        "failedNameProofs": [
+          {
+            "identitySha256": "870cec0a40be7712b9ac04b2cbd46128056b1265c89bd61cdd8e94bb0400cf3e",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "7e953a1423ab231cbe424fed7cd34373b32d0a2052c7c87b63a1003a4ed6691e",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "fa266ec6c7a0ae6e250a6f8db4faa0ce53c5f66867beece21c96bbd34a83776f",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "076cbe6f3fcfe1ccfa452197aa80ad604aad9bfd97319345eb2c48d6d2b2aa22",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "0ad93ab4cb064b1c9602a2982ceb4dbc5c4ed4d16812d5cf23a23aa43fb52d78",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "e1884af03e6378260a82b4c2a3c7e5ddf02ec5bb6ae693421d936d18989f8dc7",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "06ed97cb0431ea562d822bbb2ddabca27accffc192e3095f32614bf69d83b2f5",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "a7e191598f71013cffa3990756d9469cf11c5112bcf06b7955b6d35608753348",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "b362c41ec23c070f0f079e4dbce7ec7c853db5a4320d5d8546bda4ef1802a31f",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "7363f3d511ea539bdba764681cc6929f61e8275047b181599bdc8944f553ae21",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "47a12415ad17b09ea3f306490cf291666d02f9404bb7bed858a9fbb5dc067d8c",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "88ee193c8b177749d39891bf35222141eef1443b1f9edb8a5ce3104ea3686a4d",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "41d9209ca7eae912a20d4d7f689928bb7bd7c07b540f710320ed94863bbe6b0c",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "ab953c787436195c204daaee3596204bd4d01d6c35fbea2e048f72aed794f97a",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "ae013e3954c4214882b1545dfd35d20a3d4ec3400bc98ce2b134d2ee74a42bb9",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "115c9dfc5b7de2d99f31fd6ba70a0a0a6d04b05a7a50c6c1a45d6eb05e2d3bb1",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "7c61d97926417c1204ad32735c9195afc9135137775c99e48c859213acadcd82",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "e533ebbaddbfc6fb1bdd49b0bfed18764b9a94746e27af2d1553eceedf26c23c",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "payment-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "24c0fedd5814f722ce1fcee0c7b8fde82d9d482e8bebc0de9c35a599eeaa72a4",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "auth-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "ac55c705748df49efbbc26839d62a7188eba27d1ff7c7330efb821dea9b5ddb4",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "auth-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "0bcd9f5510e1868943afc5a00c1a7dce1fea114e1f5a5291c8253e79e26807cf",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "auth-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "85b3091bd6a190f24db43fe16cba88b4e835f8d9444a4c3e529f65f6c3373a52",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "auth-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "2f0b92414279954896174784296dcbe3f3d3f92488bf3f0435fc1e5cabdc0e21",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "auth-sql-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "44cb3110b6f20fa9b0dc53943a3c60afc62f57fcfa3aed93781afd200bce744e",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "payment-sql-api-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "auth-sql-a2",
+                "status": "passed"
+              }
+            ]
+          }
+        ]
+      },
+      "interpretation": "Raw baseline assertions, actual distinct names, duplicate titles, failed-name repairs and already-green focused overlap are separate. No real PSP transaction."
+    },
+    "authBrowser": {
+      "groupId": "authBrowser",
+      "runIds": [
+        "auth-browser-a1",
+        "auth-browser-a2"
+      ],
+      "actualDistinctNames": 19,
+      "expectedUniqueCases": 19,
+      "countBasis": "actual-baseline-reporter-names",
+      "catalogueSize": 19,
+      "retainedAssertionOccurrences": 19,
+      "duplicateTitleOccurrences": 0,
+      "status": "RESOLVED",
+      "baselineCounts": {
+        "total": 19,
+        "passed": 17,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "focusedCounts": [
+        {
+          "runId": "auth-browser-a2",
+          "total": 2,
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "flaky": 0
+        }
+      ],
+      "reconciliation": {
+        "method": "playwright-case-identities",
+        "initialFailedNames": 2,
+        "repairedFailures": 2,
+        "alreadyPassingOverlap": 0,
+        "unresolvedFailures": 0,
+        "latestObservedPassed": 19,
+        "unmatchedFollowupNames": 0,
+        "unmatchedFollowupProofs": [],
+        "failedNameProofs": [
+          {
+            "identitySha256": "3ad6b57650876e4bf19fcf3b51eb44d540ec20ca6f2f9ad0c5a598c631670eab",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "auth-browser-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "auth-browser-a2",
+                "status": "passed"
+              }
+            ]
+          },
+          {
+            "identitySha256": "15b9cba392017f701457a4532ed0efdd745e058c2f61baf008fd52df19c9bd1f",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "auth-browser-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "auth-browser-a2",
+                "status": "passed"
+              }
+            ]
+          }
+        ]
+      },
+      "interpretation": "Baseline and focused browser outcomes are matched by actual Playwright case identities. Synthetic SDK/server fixtures."
+    },
+    "childIndex": {
+      "groupId": "childIndex",
+      "runIds": [
+        "child-index-a1",
+        "child-index-a2"
+      ],
+      "actualDistinctNames": null,
+      "expectedUniqueCases": null,
+      "countBasis": "retained-text-assertions-no-unique-name-proof",
+      "catalogueSize": 37,
+      "retainedAssertionOccurrences": 37,
+      "duplicateTitleOccurrences": null,
+      "status": "RESOLVED",
+      "baselineCounts": {
+        "total": 37,
+        "passed": 36,
+        "failed": 1,
+        "skipped": 0
+      },
+      "focusedCounts": [
+        {
+          "runId": "child-index-a2",
+          "total": 37,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 36
+        }
+      ],
+      "reconciliation": {
+        "method": "retained-text-failed-title-and-focused-command",
+        "initialFailedNames": 1,
+        "repairedFailures": 1,
+        "alreadyPassingOverlap": 0,
+        "unresolvedFailures": 0,
+        "unmatchedFollowupNames": 0,
+        "latestObservedPassed": 37,
+        "failedNameProofs": [
+          {
+            "identitySha256": "c3ee5c54c9710c791ed4e45459af43ebbfb8b00e84064312886ccdc4f2e478b3",
+            "latestStatus": "passed",
+            "observations": [
+              {
+                "runId": "child-index-a1",
+                "status": "failed"
+              },
+              {
+                "runId": "child-index-a2",
+                "status": "passed",
+                "matchedBy": "retained-title-and-focused-command"
+              }
+            ]
+          }
+        ],
+        "countQualification": "Retained assertion catalogue and one matched failed title; distinct passing names are unavailable."
+      },
+      "interpretation": "Retained text records assertion catalogue counts; focused -t links the initial failed title. Passing title uniqueness is not recorded."
+    },
+    "childMedia": {
+      "groupId": "childMedia",
+      "runIds": [
+        "child-media-a1"
+      ],
+      "actualDistinctNames": null,
+      "expectedUniqueCases": null,
+      "countBasis": "retained-text-assertions-no-unique-name-proof",
+      "catalogueSize": 28,
+      "retainedAssertionOccurrences": 28,
+      "duplicateTitleOccurrences": null,
+      "status": "RESOLVED",
+      "baselineCounts": {
+        "total": 28,
+        "passed": 28,
+        "failed": 0,
+        "skipped": 0
+      },
+      "focusedCounts": [],
+      "reconciliation": {
+        "method": "complete-retained-text-catalogue",
+        "initialFailedNames": null,
+        "repairedFailures": 0,
+        "alreadyPassingOverlap": null,
+        "unresolvedFailures": 0,
+        "unmatchedFollowupNames": null,
+        "latestObservedPassed": 28,
+        "failedNameProofs": [],
+        "countQualification": "Assertion outcomes from the complete retained text catalogue; distinct passing names are unavailable."
+      },
+      "interpretation": "Complete retained synthetic media assertion catalogue; unique reporter names are not recorded. No approved production media or decoder/render acceptance."
+    },
+    "childProtected": {
+      "groupId": "childProtected",
+      "runIds": [
+        "child-protected-a1",
+        "child-protected-copy-a2"
+      ],
+      "actualDistinctNames": null,
+      "expectedUniqueCases": null,
+      "countBasis": "retained-text-assertions-no-unique-name-proof",
+      "catalogueSize": 27,
+      "retainedAssertionOccurrences": 27,
+      "duplicateTitleOccurrences": null,
+      "status": "RESOLVED",
+      "baselineCounts": {
+        "total": 27,
+        "passed": 27,
+        "failed": 0,
+        "skipped": 0
+      },
+      "focusedCounts": [
+        {
+          "runId": "child-protected-copy-a2",
+          "total": 27,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 24
+        }
+      ],
+      "reconciliation": {
+        "method": "complete-retained-text-catalogue",
+        "initialFailedNames": null,
+        "repairedFailures": 0,
+        "alreadyPassingOverlap": null,
+        "unresolvedFailures": 0,
+        "unmatchedFollowupNames": null,
+        "latestObservedPassed": 27,
+        "failedNameProofs": [],
+        "countQualification": "Assertion outcomes from the complete retained text catalogue; distinct passing names are unavailable."
+      },
+      "interpretation": "Complete baseline text catalogue and focused repeated subset are separate; no assertion total is added across runs and unique names are not guessed."
+    },
+    "targetedTooling": {
+      "runIds": [
+        "baseline-tests",
+        "native-update-a1",
+        "decision-registry-a1",
+        "decision-registry-a2",
+        "typescript-server-a1",
+        "typescript-server-a2",
+        "typescript-app-a1",
+        "typescript-app-a2",
+        "app-tsc-a3",
+        "app-tsc-a4",
+        "app-tsc-a5",
+        "android-prepare-validator-a1",
+        "readiness-ancestry-a1",
+        "readiness-a1",
+        "readiness-a3",
+        "readiness-a4",
+        "native-env-a1",
+        "native-env-a2",
+        "native-retained-a1",
+        "readiness-retained-a1",
+        "readiness-files-a1",
+        "environment-a2",
+        "cli-entry-a1"
+      ],
+      "expectedUniqueCases": null,
+      "interpretation": "Separate historical command outcomes. app-tsc-a3 and native-env-a1 retain real setup FAILs. App TypeScript final scoped check is app-tsc-a5. No combined test total.",
+      "outcomes": [
+        {
+          "runId": "baseline-tests",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "vitest-json",
+          "counts": {
+            "total": 472,
+            "passed": 472,
+            "failed": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "runId": "native-update-a1",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "vitest-text",
+          "counts": {
+            "total": 17,
+            "passed": 17,
+            "failed": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "runId": "decision-registry-a1",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "decision-registry-a2",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "typescript-server-a1",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "typescript-server-a2",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "typescript-app-a1",
+          "status": "FAIL",
+          "exitCode": 2,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "typescript-app-a2",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "app-tsc-a3",
+          "status": "FAIL",
+          "exitCode": 1,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "app-tsc-a4",
+          "status": "FAIL",
+          "exitCode": 2,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "app-tsc-a5",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "android-prepare-validator-a1",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "readiness-ancestry-a1",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "readiness-a1",
+          "status": "FAIL",
+          "exitCode": 1,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "readiness-a3",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "readiness-a4",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "native-env-a1",
+          "status": "FAIL",
+          "exitCode": 1,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "native-env-a2",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "vitest-text",
+          "counts": {
+            "total": 32,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 31
+          }
+        },
+        {
+          "runId": "native-retained-a1",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "vitest-json",
+          "counts": {
+            "total": 31,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 30
+          }
+        },
+        {
+          "runId": "readiness-retained-a1",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "readiness-files-a1",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "environment-a2",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "command",
+          "counts": null
+        },
+        {
+          "runId": "cli-entry-a1",
+          "status": "PASS",
+          "exitCode": 0,
+          "framework": "vitest-text",
+          "counts": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0
+          }
+        }
+      ]
+    }
+  },
+  "runs": [
+    {
+      "id": "baseline-tests",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T17:23:44.768Z",
+      "finishedAt": "2026-10-02T17:23:49.410Z",
+      "commandRecorded": false,
+      "command": null,
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": null,
+      "baselineReferences": {
+        "files": [
+          "server/planet/api.test.ts",
+          "server/planet/worker.test.ts",
+          "server/planet/supabase.test.ts",
+          "server/planet/paymentRetry.test.ts",
+          "src/lib/supabaseLazyBoundary.source.test.ts",
+          "src/lib/supabaseTurnstile.test.ts",
+          "src/pwa/passwordRecovery.test.ts",
+          "src/pwa/PlanetAccountPage.test.mjs",
+          "src/pwa/accountAccess.test.ts",
+          "server/planet/deletionProcessor.test.ts",
+          "src/host/HostPlatformServices.test.ts",
+          "src/platform/PlatformServices.test.tsx"
+        ],
+        "logs": [
+          "stdout.txt",
+          "stderr.txt",
+          "vitest.json"
+        ],
+        "tests": {
+          "passed": 472,
+          "failed": 0,
+          "total": 472,
+          "success": true
+        },
+        "reportSha256": "80c75deff987b257967d8bf7e858daa4426343cad196ecab132d5abafecb87a4"
+      },
+      "framework": "vitest-json",
+      "counts": {
+        "total": 472,
+        "passed": 472,
+        "failed": 0,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/baseline-tests/execution.json",
+          "role": "historical-result",
+          "sha256": "cc365f4bbd6a0217c0694221c5963d18485ee9c9db54b870669f5031eb42daae",
+          "bytes": 933,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\baseline-tests\\execution.json",
+          "runId": "baseline-tests",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/baseline-tests/stdout.txt",
+          "role": "historical-log",
+          "sha256": "650b67145cde8251d13bcf3b49037143f3a1cd11bd15b81ee5c9dfc915b0ec6b",
+          "bytes": 152,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\baseline-tests\\stdout.txt",
+          "runId": "baseline-tests",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/baseline-tests/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\baseline-tests\\stderr.txt",
+          "runId": "baseline-tests",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/baseline-tests/vitest.json",
+          "role": "historical-result",
+          "sha256": "80c75deff987b257967d8bf7e858daa4426343cad196ecab132d5abafecb87a4",
+          "bytes": 181271,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\baseline-tests\\vitest.json",
+          "runId": "baseline-tests",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "auth-unit-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:28:35.464Z",
+      "finishedAt": "2026-10-02T18:28:39.528Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+        "--reporter=json",
+        "--outputFile",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-unit-a1\\vitest.json",
+        "src/community/authSession.test.ts",
+        "src/community/authAction.test.ts",
+        "src/community/readerPrivacy.test.ts",
+        "src/hooks/readerSubscriptions.test.ts",
+        "src/hooks/useReadingLibrary.test.ts",
+        "src/hooks/useReadingProgress.test.ts",
+        "src/hooks/useBookCollections.test.ts",
+        "src/lib/supabaseLazyBoundary.source.test.ts",
+        "src/pwa/PlanetAccountPage.test.mjs",
+        "src/pwa/accountAccess.test.ts",
+        "src/pwa/passwordRecovery.test.ts"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "7f3ff37ace82a51cfc5fc0f39440554933002ee69e4eb955cb618daaa9dfae27",
+      "framework": "vitest-json",
+      "counts": {
+        "total": 222,
+        "passed": 222,
+        "failed": 0,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/auth-unit-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "644021149bd15df1ccc5d1237706db01fa5e15eb99c985783cf2f940d057bb8d",
+          "bytes": 1151,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-unit-a1\\execution.json",
+          "runId": "auth-unit-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-unit-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "5c2416cb85e40620ded39c8ace8a0f06fc5c211e56a222e9a51c7ad6ebea515e",
+          "bytes": 150,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-unit-a1\\stdout.txt",
+          "runId": "auth-unit-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-unit-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-unit-a1\\stderr.txt",
+          "runId": "auth-unit-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-unit-a1/vitest.json",
+          "role": "historical-result",
+          "sha256": "23b292e2a2821a8082445d4790259671ff3bf426eb0a7b75d2cb99b6584c265d",
+          "bytes": 83041,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-unit-a1\\vitest.json",
+          "runId": "auth-unit-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "auth-sql-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:34:21.413Z",
+      "finishedAt": "2026-10-02T18:34:24.845Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+        "--reporter=json",
+        "--outputFile",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-sql-a2\\vitest.json",
+        "server/planet/readerSessionFence.integration.test.ts"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "bb17917b5572583ccbfadad823ba68ddec4e3de940286141a7a36ecf29004e3b",
+      "framework": "vitest-json",
+      "counts": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/auth-sql-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "0b8014d8b582dc74f32dc21d6a0f0930101e6abc6e371c3510dd60c2e1ff6990",
+          "bytes": 740,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-sql-a2\\execution.json",
+          "runId": "auth-sql-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-sql-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "d95716cd7528adaa73b8307c44204fe1bcc65b1e0908d72edc6191ae203e9258",
+          "bytes": 149,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-sql-a2\\stdout.txt",
+          "runId": "auth-sql-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-sql-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-sql-a2\\stderr.txt",
+          "runId": "auth-sql-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-sql-a2/vitest.json",
+          "role": "historical-result",
+          "sha256": "2df8db937e4282ef89a42f0c242d94b63b499f68256c666cf03e18167e8ad431",
+          "bytes": 3439,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-sql-a2\\vitest.json",
+          "runId": "auth-sql-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "auth-browser-a1",
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:37:14.278Z",
+      "finishedAt": "2026-10-02T18:37:38.058Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config=playwright.planet-account.config.mjs",
+        "--reporter=json",
+        "--output=.tmp/mobile-release-auth-browser-a1"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "b75ed47c837288571f85891847e255aeb93f9f6d08f254409a06f5a183a2a3cc",
+      "framework": "playwright-json",
+      "counts": {
+        "total": 19,
+        "passed": 17,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/auth-browser-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "51464288704d9f35df1f5954c41b253855390d06ef1029745c2943dd27e0a69e",
+          "bytes": 477,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-browser-a1\\execution.json",
+          "runId": "auth-browser-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-browser-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "894ebfbab009c7f53298685d7175fe4cda29a972212f3b1735ccae4ebb230bda",
+          "bytes": 39934,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-browser-a1\\stdout.txt",
+          "runId": "auth-browser-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-browser-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-browser-a1\\stderr.txt",
+          "runId": "auth-browser-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "auth-browser-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:42:49.175Z",
+      "finishedAt": "2026-10-02T18:42:54.959Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config=playwright.planet-account.config.mjs",
+        "--reporter=json",
+        "--output=.tmp/mobile-release-auth-browser-a2",
+        "--grep=cached account cannot|optional sandbox purchase"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "15ea8624165bd6bf43c394ad763c8e4d5b4c1633c504366668be3b6eb16e080e",
+      "framework": "playwright-json",
+      "counts": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/auth-browser-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "af01328237cd6c1ab3c99cf8f781764e496f93a954f633263dd0c67ef160dd44",
+          "bytes": 539,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-browser-a2\\execution.json",
+          "runId": "auth-browser-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-browser-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "18d1912adf0031d1adc1211c3088de600269b8152cd5c8834d1aaa49ec3c53cc",
+          "bytes": 4424,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-browser-a2\\stdout.txt",
+          "runId": "auth-browser-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/auth-browser-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-browser-a2\\stderr.txt",
+          "runId": "auth-browser-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "payment-sql-api-a1",
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:31:35.736Z",
+      "finishedAt": "2026-10-02T18:31:45.213Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+        "--reporter=json",
+        "--outputFile",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-api-a1\\vitest.json",
+        "server/planet/api.test.ts",
+        "server/planet/worker.test.ts",
+        "server/planet/yookassa.test.ts",
+        "server/planet/paymentOrders.test.ts",
+        "server/planet/readerSessionFence.integration.test.ts",
+        "server/planet/integration.test.ts",
+        "src/pwa/sandboxPaymentClient.test.ts"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "bb2347cc3af0003a0c9ac13c4bbbfcea883ce767d68901f3f0978162e7064f71",
+      "framework": "vitest-json",
+      "counts": {
+        "total": 285,
+        "passed": 261,
+        "failed": 24,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/payment-sql-api-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "2c89df26fe33b673d6e77fe55171bf41543ef14940f4d400e91a26dcdd5def17",
+          "bytes": 982,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-api-a1\\execution.json",
+          "runId": "payment-sql-api-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/payment-sql-api-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "492fa274278c15589d4d99ab1bd16a567faa73e525f83646fa7e939d1fc034fb",
+          "bytes": 156,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-api-a1\\stdout.txt",
+          "runId": "payment-sql-api-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/payment-sql-api-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-api-a1\\stderr.txt",
+          "runId": "payment-sql-api-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/payment-sql-api-a1/vitest.json",
+          "role": "historical-result",
+          "sha256": "e39af0b3f85472e3acd1bc08a963e01dbe399bd4f600c7eb34b76981d4992e4a",
+          "bytes": 131799,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-api-a1\\vitest.json",
+          "runId": "payment-sql-api-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "payment-sql-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:36:26.110Z",
+      "finishedAt": "2026-10-02T18:36:29.978Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+        "--reporter=json",
+        "--outputFile",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-a2\\vitest.json",
+        "server/planet/paymentOrders.test.ts"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "9c50ae75cbacfe88a088b3f7074f1b699675ad6eec47a2dcc83c9a3e1f3b95c2",
+      "framework": "vitest-json",
+      "counts": {
+        "total": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/payment-sql-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "787f3832e083a5031d23a061b391e3f49068c1138cbb2cf64d58dd861294be8b",
+          "bytes": 726,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-a2\\execution.json",
+          "runId": "payment-sql-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/payment-sql-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "23c5bce98b2955e4b2e4e282db71b5c2ede4e8b1fe390754cfe3cfce38ad75b7",
+          "bytes": 152,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-a2\\stdout.txt",
+          "runId": "payment-sql-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/payment-sql-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-a2\\stderr.txt",
+          "runId": "payment-sql-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/payment-sql-a2/vitest.json",
+          "role": "historical-result",
+          "sha256": "41bf1855e20bfb429e6eb8cf2ff4ae58517d6b4b0078866e309eb747cf298ad4",
+          "bytes": 9089,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\payment-sql-a2\\vitest.json",
+          "runId": "payment-sql-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "native-unit-a1",
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:15:45.402Z",
+      "finishedAt": "2026-10-02T18:15:49.213Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+        "--reporter=json",
+        "--outputFile",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a1\\vitest.json",
+        "src/host/nativeSecureStorage.test.ts",
+        "src/host/nativePreferenceDiagnostics.test.ts",
+        "src/host/HostPlatformServices.test.ts",
+        "src/platform/adapters/android/AndroidPlatformAdapter.test.ts",
+        "src/platform/adapters/ios/IosPlatformAdapter.test.ts",
+        "scripts/mobile/native-install-runtime.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "812bf6bd1cb8440b7dad07ea8ed4c06f38ac7123797022554248a503ba91b986",
+      "framework": "vitest-json",
+      "counts": {
+        "total": 248,
+        "passed": 247,
+        "failed": 1,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/native-unit-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "fad628479b3b76b3559fb2d621dd7d7ed48192e81373adff4228ee9463ce8c03",
+          "bytes": 1006,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a1\\execution.json",
+          "runId": "native-unit-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-unit-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "dcb8bba8ccd67f7234b2df920c5c9b44f202a66c8775d80d9bc9b0f56d89039b",
+          "bytes": 152,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a1\\stdout.txt",
+          "runId": "native-unit-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-unit-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a1\\stderr.txt",
+          "runId": "native-unit-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-unit-a1/vitest.json",
+          "role": "historical-result",
+          "sha256": "2d12144cb34ffc2d752ad136c5ba6e60a849686f347bed46e41496ae1ee65dfa",
+          "bytes": 94798,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a1\\vitest.json",
+          "runId": "native-unit-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "native-unit-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:17:54.634Z",
+      "finishedAt": "2026-10-02T18:17:56.013Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+        "--reporter=json",
+        "--outputFile",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a2\\vitest.json",
+        "src/host/nativeSecureStorage.test.ts",
+        "-t",
+        "fails logout truthfully while attempting all remaining private keys"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "0d3ed0a9877a3d09a679d806b2bdf9584e35e5f3f1aa515313281fbb495adda2",
+      "framework": "vitest-json",
+      "counts": {
+        "total": 27,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 26
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/native-unit-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "a60bf535656886f82650254a31eac0a9acec02d2b34b2f154cac0ff44dd569d6",
+          "bytes": 812,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a2\\execution.json",
+          "runId": "native-unit-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-unit-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "2365b2d891859234e85a346b663eee94604e2f36d9c4b936814d2e7b12456012",
+          "bytes": 152,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a2\\stdout.txt",
+          "runId": "native-unit-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-unit-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a2\\stderr.txt",
+          "runId": "native-unit-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-unit-a2/vitest.json",
+          "role": "historical-result",
+          "sha256": "50ed4c5e977187840d6134232e737cf32529dfc7f0aa0a9978b3cd55db037a5e",
+          "bytes": 9503,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-unit-a2\\vitest.json",
+          "runId": "native-unit-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "child-index-a1",
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T19:05:47.510Z",
+      "finishedAt": "2026-10-02T19:05:48.969Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/scoped.config.mjs",
+        "src/child/childIndex.test.ts"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "01be2e6f0ea6aaad98db27f00d5a2e4e3c06721e73b615caa43c72b1b6e08fe4",
+      "framework": "vitest-text",
+      "counts": {
+        "total": 37,
+        "passed": 36,
+        "failed": 1,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/child-index-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "3ecd31b4c4691434d3368339d6cc9832fc5d3621d8fc9ef174413114f6b48435",
+          "bytes": 521,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-index-a1\\execution.json",
+          "runId": "child-index-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-index-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "8efa8db1752c1a13b394521fd53a81b5a6b42287982693922cdda86021e03b51",
+          "bytes": 460,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-index-a1\\stdout.txt",
+          "runId": "child-index-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-index-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "32816becf397f311567e597c31cd11ccb1bdf715bc38ce7913b9f54956862963",
+          "bytes": 1041,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-index-a1\\stderr.txt",
+          "runId": "child-index-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "child-index-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T19:08:08.635Z",
+      "finishedAt": "2026-10-02T19:08:09.988Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/scoped.config.mjs",
+        "src/child/childIndex.test.ts",
+        "-t",
+        "supplies real compilation and route admission"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "8efa6d3c96e12ac06e1fbdaf5366fa8fc8319a5aa170c6235ea0275af6ad515b",
+      "framework": "vitest-text",
+      "counts": {
+        "total": 37,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 36
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/child-index-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "3a0dc0a5defbc7383ee2e660d530437a56d1160c61edd4c262990ebf6ee31ebd",
+          "bytes": 584,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-index-a2\\execution.json",
+          "runId": "child-index-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-index-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "a5d04c9777a37bff706d66b7dcc6f71d23ae6bd39c0a243f44f9c47ba5014cf1",
+          "bytes": 268,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-index-a2\\stdout.txt",
+          "runId": "child-index-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-index-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-index-a2\\stderr.txt",
+          "runId": "child-index-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "child-media-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T19:43:14.161Z",
+      "finishedAt": "2026-10-02T19:43:15.690Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/scoped.config.mjs",
+        "src/child/childMedia.test.ts"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "90692fb6b40a2134cdbdee81000e11ea6eacbd2c16ded4af86f97b6ab240781f",
+      "framework": "vitest-text",
+      "counts": {
+        "total": 28,
+        "passed": 28,
+        "failed": 0,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/child-media-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "8eef7b84458e5b02055586af95ba104dfcc2d902ace9b4d3e66de10fc1221c50",
+          "bytes": 521,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-media-a1\\execution.json",
+          "runId": "child-media-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-media-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "66856ffe01687687711a75f4096768107eca55b928186c8eb3936cbf1082545c",
+          "bytes": 257,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-media-a1\\stdout.txt",
+          "runId": "child-media-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-media-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-media-a1\\stderr.txt",
+          "runId": "child-media-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "child-protected-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T19:55:29.854Z",
+      "finishedAt": "2026-10-02T19:55:31.236Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/child/childProtectedState.test.ts",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "70c64bfe600c74b4e3917d8dff0581c2d67856f85d96e9b6225708549143313f",
+      "framework": "vitest-text",
+      "counts": {
+        "total": 27,
+        "passed": 27,
+        "failed": 0,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/child-protected-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "441229b2376661c5cffb7f4b3e50188b0724d1a0cd9d93244587a8b2eec01c58",
+          "bytes": 539,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-protected-a1\\execution.json",
+          "runId": "child-protected-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-protected-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "cb1616fa37bcc1b3d501e5ed89ecbbb67ce2464c81dbcb2aa6096fb08eaa7ab1",
+          "bytes": 256,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-protected-a1\\stdout.txt",
+          "runId": "child-protected-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-protected-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-protected-a1\\stderr.txt",
+          "runId": "child-protected-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "child-protected-copy-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T20:01:07.454Z",
+      "finishedAt": "2026-10-02T20:01:08.705Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/child/childProtectedState.test.ts",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+        "-t",
+        "complete-record and registry hashes|captures immutable native sample and bytes|mutable CAS byte buffers"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "e7ebe3efb3cfc1415d2726728898d4737c8092ca41fdff9d037b308605591966",
+      "framework": "vitest-text",
+      "counts": {
+        "total": 27,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 24
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/child-protected-copy-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "d00bdef1f000717e80d98cbced968ffa163e3a4b43d146e8539842711eabdb41",
+          "bytes": 660,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-protected-copy-a2\\execution.json",
+          "runId": "child-protected-copy-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-protected-copy-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "5e753b2d0e938f176e29256fec663dc2fa175972a64d2a93496286fa79d106d6",
+          "bytes": 268,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-protected-copy-a2\\stdout.txt",
+          "runId": "child-protected-copy-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/child-protected-copy-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-protected-copy-a2\\stderr.txt",
+          "runId": "child-protected-copy-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "native-update-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T20:06:15.769Z",
+      "finishedAt": "2026-10-02T20:06:17.577Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "scripts/mobile/native-previous-update.test.mjs",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "6747c84500fe01715d3c545ef55190038e4e18efa968b8bacc187c5bb863d98d",
+      "framework": "vitest-text",
+      "counts": {
+        "total": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/native-update-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "d7ff3edef876da8036563008354c0c8217bfe77f3cceeaa5663a80d0c840f6c6",
+          "bytes": 548,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-update-a1\\execution.json",
+          "runId": "native-update-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-update-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "26afdb81b7eb9ea304df704a55653f4fd0f66fabebce8d32265733bdb3854924",
+          "bytes": 256,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-update-a1\\stdout.txt",
+          "runId": "native-update-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-update-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-update-a1\\stderr.txt",
+          "runId": "native-update-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "decision-registry-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:42:51.815Z",
+      "finishedAt": "2026-10-02T18:42:53.658Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "scripts/mobile/sync-release-decisions.mjs",
+        "--write"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "2f6da092faae0d54dece28c9f4214e86551dde516682f9b21a117bc8d81d0b2e",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/decision-registry-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "1c5cb98e5126b53936de41b91ddf441ad0ce956ad360082990238f0c33c2f1ab",
+          "bytes": 357,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\decision-registry-a1\\execution.json",
+          "runId": "decision-registry-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/decision-registry-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "e82fde4411fd15b05dfc0d8ec08693daefb7037aff302feb03297acf68f8b201",
+          "bytes": 94,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\decision-registry-a1\\stdout.txt",
+          "runId": "decision-registry-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/decision-registry-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\decision-registry-a1\\stderr.txt",
+          "runId": "decision-registry-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "decision-registry-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T20:06:21.551Z",
+      "finishedAt": "2026-10-02T20:06:23.297Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "scripts/mobile/sync-release-decisions.mjs",
+        "--write"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "2f6da092faae0d54dece28c9f4214e86551dde516682f9b21a117bc8d81d0b2e",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/decision-registry-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "10044dd9931d36ef85c52172f55cdede6f322841558f1e1704c3faf446d281b0",
+          "bytes": 357,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\decision-registry-a2\\execution.json",
+          "runId": "decision-registry-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/decision-registry-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "e82fde4411fd15b05dfc0d8ec08693daefb7037aff302feb03297acf68f8b201",
+          "bytes": 94,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\decision-registry-a2\\stdout.txt",
+          "runId": "decision-registry-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/decision-registry-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\decision-registry-a2\\stderr.txt",
+          "runId": "decision-registry-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "typescript-server-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:31:36.452Z",
+      "finishedAt": "2026-10-02T18:31:38.770Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "server/planet/tsconfig.json"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "cb0667abbca69183f6ca4b7ed4956edc36eb9f8d913588f7e502fa65fa13cc5b",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/typescript-server-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "74476ee7fc0953ab7435f398a882fedd1c494746be8b43486a573d210629dcba",
+          "bytes": 377,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-server-a1\\execution.json",
+          "runId": "typescript-server-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/typescript-server-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-server-a1\\stdout.txt",
+          "runId": "typescript-server-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/typescript-server-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-server-a1\\stderr.txt",
+          "runId": "typescript-server-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "typescript-server-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:47:18.082Z",
+      "finishedAt": "2026-10-02T18:47:19.731Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "server/planet/tsconfig.json"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "cb0667abbca69183f6ca4b7ed4956edc36eb9f8d913588f7e502fa65fa13cc5b",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/typescript-server-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "1a33bffb1149c1f3ba15d1e00a4ba2b3faf883ff01f6a7c36159887ff87ce89c",
+          "bytes": 377,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-server-a2\\execution.json",
+          "runId": "typescript-server-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/typescript-server-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-server-a2\\stdout.txt",
+          "runId": "typescript-server-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/typescript-server-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-server-a2\\stderr.txt",
+          "runId": "typescript-server-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "typescript-app-a1",
+      "status": "FAIL",
+      "exitCode": 2,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:28:36.924Z",
+      "finishedAt": "2026-10-02T18:28:59.866Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "be3ee4bc6a7e13ebcc2f0b67d880f1c716a8df2430ca541890d7027fe1db002c",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/typescript-app-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "ca6d7cff15061dcafe7febea187bb38fae762d0509baae710687960d06a011e3",
+          "bytes": 348,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-app-a1\\execution.json",
+          "runId": "typescript-app-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/typescript-app-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "9e2e31f417970e730657c49e6d8b24474a714b6758b2f9f7895d7e33e94d331d",
+          "bytes": 10419,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-app-a1\\stdout.txt",
+          "runId": "typescript-app-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/typescript-app-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-app-a1\\stderr.txt",
+          "runId": "typescript-app-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "typescript-app-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:36:27.041Z",
+      "finishedAt": "2026-10-02T18:36:50.016Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "be3ee4bc6a7e13ebcc2f0b67d880f1c716a8df2430ca541890d7027fe1db002c",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/typescript-app-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "51728320b84e6136bf13ab2d357aebe99d74e18f36db3a5916f05b4b3c5b74c2",
+          "bytes": 348,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-app-a2\\execution.json",
+          "runId": "typescript-app-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/typescript-app-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-app-a2\\stdout.txt",
+          "runId": "typescript-app-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/typescript-app-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\typescript-app-a2\\stderr.txt",
+          "runId": "typescript-app-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "app-tsc-a3",
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T19:55:30.270Z",
+      "finishedAt": "2026-10-02T19:55:30.408Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "tsconfig.app.json"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "70149e3de40adf7fe05fd61ea8a930edb1d8ff1e0b10c47ab9716cc5cb3cbdc0",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/app-tsc-a3/execution.json",
+          "role": "historical-result",
+          "sha256": "9c0302f3d56b7cf77b54762f728493277969554ceed9d37b5756e2ff32c1a87d",
+          "bytes": 383,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\app-tsc-a3\\execution.json",
+          "runId": "app-tsc-a3",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/app-tsc-a3/stdout.txt",
+          "role": "historical-log",
+          "sha256": "9eb1f39692de263a1934503dab90639da115c827b9e7fe15adeac9253c26649d",
+          "bytes": 71,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\app-tsc-a3\\stdout.txt",
+          "runId": "app-tsc-a3",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/app-tsc-a3/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\app-tsc-a3\\stderr.txt",
+          "runId": "app-tsc-a3",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "app-tsc-a4",
+      "status": "FAIL",
+      "exitCode": 2,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T19:56:14.079Z",
+      "finishedAt": "2026-10-02T19:56:37.584Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "tsconfig.json"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "abb5c8587c7b16917b6d5e3539bf24373ba498221a1d21a9d0a1408f5700719d",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/app-tsc-a4/execution.json",
+          "role": "historical-result",
+          "sha256": "9a3ef6fb9bf8b35ff800965778c1c54227e3236ae4cdea7fb78d467046ccb960",
+          "bytes": 379,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\app-tsc-a4\\execution.json",
+          "runId": "app-tsc-a4",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/app-tsc-a4/stdout.txt",
+          "role": "historical-log",
+          "sha256": "67cdc1f17946874f60ab3f31d9dfe7d774e3d9d634899311f9a337bd153e00a1",
+          "bytes": 1453,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\app-tsc-a4\\stdout.txt",
+          "runId": "app-tsc-a4",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/app-tsc-a4/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\app-tsc-a4\\stderr.txt",
+          "runId": "app-tsc-a4",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "app-tsc-a5",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T20:00:42.135Z",
+      "finishedAt": "2026-10-02T20:01:04.510Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "tsconfig.json"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "abb5c8587c7b16917b6d5e3539bf24373ba498221a1d21a9d0a1408f5700719d",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/app-tsc-a5/execution.json",
+          "role": "historical-result",
+          "sha256": "5cf7845db7678031008338fd88d9eddb9e55b962f924e0c2aee357d1e1371f96",
+          "bytes": 379,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\app-tsc-a5\\execution.json",
+          "runId": "app-tsc-a5",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/app-tsc-a5/stdout.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\app-tsc-a5\\stdout.txt",
+          "runId": "app-tsc-a5",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/app-tsc-a5/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\app-tsc-a5\\stderr.txt",
+          "runId": "app-tsc-a5",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "android-prepare-validator-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T19:08:08.595Z",
+      "finishedAt": "2026-10-02T19:08:09.331Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/root-repair-a13/resume-validation.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "fc4c10805cef802f6aa8570654c36aac2cd84213225356760baeb46d3081be90",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/android-prepare-validator-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "644b7d6d9d6859dfb5cd2b77cc60f0dd4532b05f5fb9f122d1e4b92f236fec74",
+          "bytes": 459,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\android-prepare-validator-a1\\execution.json",
+          "runId": "android-prepare-validator-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/android-prepare-validator-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "bc705ab7576ff190c1f6e36304ec87e51bd35b27e80fc0d00527cf276aa5e7e4",
+          "bytes": 1773,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\android-prepare-validator-a1\\stdout.txt",
+          "runId": "android-prepare-validator-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/android-prepare-validator-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\android-prepare-validator-a1\\stderr.txt",
+          "runId": "android-prepare-validator-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "readiness-ancestry-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:52:42.258Z",
+      "finishedAt": "2026-10-02T18:52:47.980Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "--test-name-pattern=operator-only commit|outside current checkout history|same HEAD|source edits",
+        "scripts/mobile/release-readiness-files.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "818cafa8d84d276b62407bf7f652ef78f5d8f11a475764e16d84395b65d28407",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/readiness-ancestry-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "a272a4c3c9c78cd3cd3c8460c5b9dab73353c5ca02f5003bd0f342c6ba5b4d79",
+          "bytes": 466,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-ancestry-a1\\execution.json",
+          "runId": "readiness-ancestry-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-ancestry-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "1aacf9b2023334a28ff6c9afa6820c81cfde5d777608f542c878ed99beec4dc9",
+          "bytes": 505,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-ancestry-a1\\stdout.txt",
+          "runId": "readiness-ancestry-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-ancestry-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-ancestry-a1\\stderr.txt",
+          "runId": "readiness-ancestry-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "readiness-a1",
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T17:32:52.870Z",
+      "finishedAt": "2026-10-02T17:32:53.496Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "scripts/mobile/release-readiness.test.mjs",
+        "scripts/mobile/remote-preflight.test.mjs",
+        "scripts/mobile/mobile-build-environment.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "2161899715e60b320e7ce3781d085a7d53be98932636e773c891f3a8672433ff",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/readiness-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "6925bc86f4fcf91131e1339206cf53322ad48e9188394a4cf5a7af82b1fadf94",
+          "bytes": 460,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-a1\\execution.json",
+          "runId": "readiness-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "9819d1ef937c9406aca8a6ba2947a6e50491ac2df16beeeaa3a6c7fc8f737a8b",
+          "bytes": 2796,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-a1\\stdout.txt",
+          "runId": "readiness-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-a1\\stderr.txt",
+          "runId": "readiness-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "readiness-a3",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:07:44.638Z",
+      "finishedAt": "2026-10-02T18:07:44.850Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "scripts/mobile/release-readiness.test.mjs",
+        "scripts/mobile/remote-preflight.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "e3fdb5d9a06a33d210d342bc9b2dd4ca4e383d69701ae349d7d1fb5492730339",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/readiness-a3/execution.json",
+          "role": "historical-result",
+          "sha256": "b87b8cb94f2abc2d8a70e73f4125e2bbff07d88002da7c759cef921f19b66abb",
+          "bytes": 404,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-a3\\execution.json",
+          "runId": "readiness-a3",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-a3/stdout.txt",
+          "role": "historical-log",
+          "sha256": "f5b5e44beb8a98c93b8c5335deceb048c1dd2787692e44557f73d8e48e518856",
+          "bytes": 2291,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-a3\\stdout.txt",
+          "runId": "readiness-a3",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-a3/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-a3\\stderr.txt",
+          "runId": "readiness-a3",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "readiness-a4",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:34:25.115Z",
+      "finishedAt": "2026-10-02T18:34:41.324Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "scripts/mobile/release-readiness.test.mjs",
+        "scripts/mobile/release-readiness-files.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "1160fde892603480970435b23e62e88ca402916e5fbd3ce89f106d7c2f804bd1",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/readiness-a4/execution.json",
+          "role": "historical-result",
+          "sha256": "04a10c4567396b2a0a32de56912c6e8742b5b0081325b9053b90ce08b1dd55f9",
+          "bytes": 411,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-a4\\execution.json",
+          "runId": "readiness-a4",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-a4/stdout.txt",
+          "role": "historical-log",
+          "sha256": "7403d84ffd9deaed1df9285b8b9b0adbada3265e2ecc8fa1120f5f7e1edbbbce",
+          "bytes": 6219,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-a4\\stdout.txt",
+          "runId": "readiness-a4",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-a4/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-a4\\stderr.txt",
+          "runId": "readiness-a4",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "native-env-a1",
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T19:55:29.992Z",
+      "finishedAt": "2026-10-02T19:55:30.842Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "--test-name-pattern=removes ambient credential/JVM injection",
+        "scripts/mobile/native-install-runtime.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "62021ec8468544927995cee61fbe181c16e27629f3be05a6ffb9be0bb77daf22",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/native-env-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "857c8f58a8e939a7538ec45dcdd209fbd126e4d7e2a8eaed4560cab8ff8e7ad9",
+          "bytes": 429,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-env-a1\\execution.json",
+          "runId": "native-env-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-env-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "238b4f2cb79526fbbe18ead4c42d72d684825a9c625cf5c63b7bdaa798068692",
+          "bytes": 2320,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-env-a1\\stdout.txt",
+          "runId": "native-env-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-env-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-env-a1\\stderr.txt",
+          "runId": "native-env-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "native-env-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T19:56:15.245Z",
+      "finishedAt": "2026-10-02T19:56:17.280Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "scripts/mobile/native-install-runtime.test.mjs",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+        "-t",
+        "removes ambient credential/JVM injection"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "ad7e60ac8e612b3b2644b1617f7ab9f951a480fad1a549e40621f284c21baba1",
+      "framework": "vitest-text",
+      "counts": {
+        "total": 32,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 31
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/native-env-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "ba7b17072af66d1ccb56b58d4500012d32e0e8e8a506a3b23cc4728b3c2710c8",
+          "bytes": 606,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-env-a2\\execution.json",
+          "runId": "native-env-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-env-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "f8acd285e6f41ce726128f0413a49ff490afb3bde99296fe8f53d44f05176594",
+          "bytes": 267,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-env-a2\\stdout.txt",
+          "runId": "native-env-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-env-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-env-a2\\stderr.txt",
+          "runId": "native-env-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "native-retained-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:41:40.828Z",
+      "finishedAt": "2026-10-02T18:41:42.641Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+        "--reporter=json",
+        "--outputFile",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-retained-a1\\vitest.json",
+        "scripts/mobile/native-install-runtime.test.mjs",
+        "-t",
+        "retained bundle"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "9e9ca6f5a83976381d91894923dbdc2686bb68ffc2cb31a0ada74cb75a525cfb",
+      "framework": "vitest-json",
+      "counts": {
+        "total": 31,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 30
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/native-retained-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "e3cbfcfd0d8d8b1ff023cf35b73ad71c44d98337aba87fa1808df8ef29170a29",
+          "bytes": 774,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-retained-a1\\execution.json",
+          "runId": "native-retained-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-retained-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "38f3b8fc04118e5e852f09af18aa3f2e17b5b75e3d2da1dabfd182bee103363c",
+          "bytes": 156,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-retained-a1\\stdout.txt",
+          "runId": "native-retained-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-retained-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-retained-a1\\stderr.txt",
+          "runId": "native-retained-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/native-retained-a1/vitest.json",
+          "role": "historical-result",
+          "sha256": "4989b927f66b29117b11a64e7eac7dee08dbb33538227e5470a54957cd1394d0",
+          "bytes": 11847,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-retained-a1\\vitest.json",
+          "runId": "native-retained-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "readiness-retained-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:41:39.297Z",
+      "finishedAt": "2026-10-02T18:41:41.175Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "--test-name-pattern=retained Android",
+        "scripts/mobile/release-readiness-files.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "4fddca18d87b1668836840acffd35231c5fc7b7586687b34122d87c9706790ba",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/readiness-retained-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "05747c86492aab9b6f66dd494e8abbddb07f6d8ad436ec520f39a324d36d8a91",
+          "bytes": 406,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-retained-a1\\execution.json",
+          "runId": "readiness-retained-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-retained-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "d40e2335ef28c9bced5bfb4085108ffa54ebdfc655e0b27c1c7986e40ee8ac79",
+          "bytes": 222,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-retained-a1\\stdout.txt",
+          "runId": "readiness-retained-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-retained-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-retained-a1\\stderr.txt",
+          "runId": "readiness-retained-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "readiness-files-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T18:15:46.067Z",
+      "finishedAt": "2026-10-02T18:15:52.232Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "scripts/mobile/release-readiness-files.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "dd544d5f2257eeb5e59e5f6d3f13507de20adceb2e4df9a16166de23b5697a39",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/readiness-files-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "fed2ea50b56c6aa328b11989265c3dfe1564a4fcf77ae79a5adc62e2a897586b",
+          "bytes": 362,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-files-a1\\execution.json",
+          "runId": "readiness-files-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-files-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "7c1a40584db174fd910a5a7e6a3cf161183ed6c9c800bc73ff11b49bd72638c9",
+          "bytes": 557,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-files-a1\\stdout.txt",
+          "runId": "readiness-files-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/readiness-files-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\readiness-files-a1\\stderr.txt",
+          "runId": "readiness-files-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "environment-a2",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T17:34:31.100Z",
+      "finishedAt": "2026-10-02T17:34:34.036Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "--test",
+        "scripts/mobile/mobile-build-environment.test.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "29567a2a6a85fa6c668eb5f3be8304c29ad303c35b06bf10772fbb5d5c6e315b",
+      "framework": "command",
+      "counts": null,
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/environment-a2/execution.json",
+          "role": "historical-result",
+          "sha256": "898f19836333d296c5bca24ce909e195769f764fbcee61975acbc1d28972aaaa",
+          "bytes": 363,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\environment-a2\\execution.json",
+          "runId": "environment-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/environment-a2/stdout.txt",
+          "role": "historical-log",
+          "sha256": "32542c2cdc15af6cef4aa89fb16bf07c3fbc595ab11059592797a0c8445a5bde",
+          "bytes": 204,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\environment-a2\\stdout.txt",
+          "runId": "environment-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/environment-a2/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\environment-a2\\stderr.txt",
+          "runId": "environment-a2",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    },
+    {
+      "id": "cli-entry-a1",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "startedAt": "2026-10-02T20:15:07.794Z",
+      "finishedAt": "2026-10-02T20:15:08.935Z",
+      "commandRecorded": true,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "scripts/mobile/local-cli-entry.test.mjs",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs"
+      ],
+      "commandWithheldForFixtureToken": false,
+      "commandSha256": "5cd742a56e428c0cbafbae66327187181f6c61d4751a96ad8b062987c222f7f1",
+      "framework": "vitest-text",
+      "counts": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0
+      },
+      "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "recordedExecutionCommit": null,
+      "executionAtFinalSourceCommitClaimed": false,
+      "evidence": [
+        {
+          "path": "runs/cli-entry-a1/execution.json",
+          "role": "historical-result",
+          "sha256": "744ba04f0b7131edb11d373c90a5cdc70998abadb2e6df0d8af1b1085da85170",
+          "bytes": 541,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\cli-entry-a1\\execution.json",
+          "runId": "cli-entry-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/cli-entry-a1/stdout.txt",
+          "role": "historical-log",
+          "sha256": "ea7f773d6520f4c4651ca977988cf5bb6d493c3b13d5fe73c0cfd3be57a8becd",
+          "bytes": 252,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\cli-entry-a1\\stdout.txt",
+          "runId": "cli-entry-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        },
+        {
+          "path": "runs/cli-entry-a1/stderr.txt",
+          "role": "historical-log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\cli-entry-a1\\stderr.txt",
+          "runId": "cli-entry-a1",
+          "associatedCheckingCheckpoint": "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+          "recordedExecutionCommit": null,
+          "executionAtFinalSourceCommitClaimed": false
+        }
+      ]
+    }
+  ],
+  "qualification": "Retained scoped observations only. Historical FAILs remain FAIL. Current-source closure must be independently supplied by the packet builder. No aggregate unique test total or release acceptance."
+}

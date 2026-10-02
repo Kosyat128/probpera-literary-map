@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-sdk-source-change",
+  "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+  "baselineSourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+  "currentSourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "baselineSha256": "a7cd425c3aaff59db0feef761badec8995b7bf6d3823a5f2bd106b4742c83758",
+  "currentSha256": "f9f5b1b21901cd6fd9f6f53f0020aa8fea7913237e14fad6a223529b4fb51882",
+  "changed": true,
+  "scope": "Java is excluded from retained Auth/host unit and PWA source claims; actual current Android compile proof is bound separately.",
+  "compilationProofs": [
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android.json",
+      "sha256": "a8dd881204472043970338a5ab9c4dacca33a690eb57014075ce1a29153af127"
+    },
+    {
+      "path": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/native-bundle/artifact.json",
+      "sha256": "b9e1a02d24431829f4e6cd517641e8574f9e447e34197dce8d96e124f707ca6b"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/native-audit.stdout.txt",
+      "sha256": "3809762e268a9ff3fd197643be0eb88492e039492a8133e65b0feef65e57d8fb"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/native-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-assemble.stdout.txt",
+      "sha256": "6cc09bc650f72b14e25f057a9a84d9248e31001c309ef0096ec2b77451d9f4a3"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-assemble.stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-instrumentation-assemble.stdout.txt",
+      "sha256": "bbab6b1b5446a8206b15be1305af6ad5f2f9e2b9aab2a8be52064f576c4c39e8"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-instrumentation-assemble.stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d"
+    },
+    {
+      "path": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/binary.json",
+      "sha256": "b75a1bd80fbe860d22aece9b865a6d686f586c1a01df59f38e83c0ffb04c874f"
+    }
+  ],
+  "hardwareProtectionTested": false,
+  "releaseReady": false
+}

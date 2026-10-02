@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "generatedAt": "2026-10-02T21:36:37.050Z",
+  "releaseReady": false,
+  "stageAccepted": false,
+  "productionActionsAuthorized": false,
+  "kind": "literary-planet-focused-dossier-result",
+  "status": "PASS",
+  "scope": "Actual emitted nine-palette RU/EN dossier regression and six separately reviewed frames only",
+  "recordedCaptureCheckpoint": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+  "recordedVisualReviewCheckpoint": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "compiledArtifactSourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+  "unchangedRawOperatorFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+  "operatorSha256": "55cd932dfe2e95af9cdd88f38c832efb8f973130bde04299e1eb9a9565997a35",
+  "executionAtFinalOperatorCommitClaimed": false,
+  "automatedProof": {
+    "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/fresh-dossier-result.json",
+    "sha256": "dea125402280d1239911e6d18a4305123105374a74449b4c0acdbb0f658f959b"
+  },
+  "visualProof": {
+    "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/fresh-capture-review.json",
+    "sha256": "7aee1adae6d9b60b7c85079b65a77171fe6e6c98013c9e2c98b0241b2a70c7a6"
+  },
+  "fullProductAcceptance": false,
+  "installed": false,
+  "osStorageObserved": false
+}

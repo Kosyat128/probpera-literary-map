@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-10-02T18:34:21.413Z",
+  "finishedAt": "2026-10-02T18:34:24.845Z",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+    "--reporter=json",
+    "--outputFile",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\auth-sql-a2\\vitest.json",
+    "server/planet/readerSessionFence.integration.test.ts"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "isolatedEnv": true
+}

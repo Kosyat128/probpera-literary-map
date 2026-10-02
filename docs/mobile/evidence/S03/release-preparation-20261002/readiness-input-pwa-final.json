@@ -1,0 +1,127 @@
+{
+  "binding": {
+    "sourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+    "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+    "platform": "pwa",
+    "channel": "web-direct",
+    "environment": "local",
+    "artifactSha256": "e6ae5160d5ffa089627be6040a64fefc55a46c3ff0af496d3f56523c1ebeb4ce"
+  },
+  "artifactPath": ".tmp/mobile-release-pwa-88f2124a-4307-40fa-8851-cb719a449e20/pwa-bundle/artifact.json",
+  "artifactMetadataPath": ".tmp/mobile-release-pwa-88f2124a-4307-40fa-8851-cb719a449e20/pwa-bundle/artifact.json",
+  "gates": [
+    {
+      "id": "local-tests",
+      "status": "NOT_RUN",
+      "reason": "Retained scoped identities, current TypeScript closure or actual test proof is insufficient."
+    },
+    {
+      "id": "content-preservation",
+      "status": "PASS",
+      "reason": "Actual 6820 protected items, environment files and historical evidence unchanged; original final proof retained.",
+      "binding": {
+        "sourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+        "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "pwa",
+        "channel": "web-direct",
+        "environment": "local",
+        "artifactSha256": "e6ae5160d5ffa089627be6040a64fefc55a46c3ff0af496d3f56523c1ebeb4ce"
+      },
+      "finishedAt": "2026-10-02T21:30:33.825Z",
+      "facts": {
+        "completed": true,
+        "changedCount": 0,
+        "missingCount": 0,
+        "checkedCount": 6820
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/protected-content-preservation.json",
+          "sha256": "f763f5afe380d2e2b222ab106744359f0c9771b0f63ebbe01777b67f458ca47d"
+        }
+      ]
+    },
+    {
+      "id": "ru-en-runtime",
+      "status": "NOT_RUN",
+      "reason": "Fresh focused emitted RU/EN reader/dossier review passes; full Auth/payment/error product matrix remains unverified."
+    },
+    {
+      "id": "auth-deletion-local",
+      "status": "NOT_RUN",
+      "reason": "Retained Auth unit/browser identity or unchanged critical source closure is insufficient."
+    },
+    {
+      "id": "auth-deletion-remote",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Configured real service, two ordinary users, revocation and durable deletion remain unverified."
+    },
+    {
+      "id": "editorial-legal",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Five exact RU/EN registry items remain PENDING human review."
+    },
+    {
+      "id": "psp-commercial-decision",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "PSP has not been selected by the owner."
+    },
+    {
+      "id": "payment-sandbox",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Local candidate/fixture contracts do not prove real sandbox purchase/refund/restore/reconcile."
+    },
+    {
+      "id": "remote-authorization",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "No separate exact-environment grant supplied; remote operations remain zero."
+    },
+    {
+      "id": "package-integrity",
+      "status": "PASS",
+      "reason": "Exact retained preparation audit, inventory, metadata and current raw source closure verified.",
+      "binding": {
+        "sourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+        "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "pwa",
+        "channel": "web-direct",
+        "environment": "local",
+        "artifactSha256": "e6ae5160d5ffa089627be6040a64fefc55a46c3ff0af496d3f56523c1ebeb4ce"
+      },
+      "finishedAt": "2026-10-02T20:18:49.966Z",
+      "facts": {
+        "completed": true,
+        "scope": "Local unreleased preparation only"
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-pwa.json",
+          "sha256": "73a2508ac3ccae38b25b188fdbea11269d48c32cb6186f09cf335fa85e5ae4ff"
+        },
+        {
+          "path": ".tmp/mobile-release-pwa-88f2124a-4307-40fa-8851-cb719a449e20/pwa-bundle/artifact.json",
+          "sha256": "e6ae5160d5ffa089627be6040a64fefc55a46c3ff0af496d3f56523c1ebeb4ce"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-pwa/pwa-audit.stdout.txt",
+          "sha256": "f7d9ac29c7971d550a2c96888081182b1489ec37d6f7271cf52fae7a940bf92e"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-pwa/pwa-audit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "id": "pwa-install-offline-update",
+      "status": "NOT_RUN",
+      "reason": "No installed OS/runtime/lifecycle/PWA installation acceptance exists; local builds and simulations do not satisfy this gate."
+    }
+  ]
+}

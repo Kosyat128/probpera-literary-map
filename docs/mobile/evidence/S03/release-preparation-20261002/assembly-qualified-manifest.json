@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+  "generatedAt": "2026-10-02T21:55:48.163Z",
+  "releaseReady": false,
+  "stageAccepted": false,
+  "productionActionsAuthorized": false,
+  "kind": "literary-planet-release-gates-qualified-assembly",
+  "scope": "Additive exact raw checking-checkpoint retention qualification; original FAIL and NOT_RUN reports remain immutable.",
+  "originalAssembly": {
+    "path": "docs/mobile/evidence/S03/release-preparation-20261002/assembly-manifest.json",
+    "sha256": "8c59e54202fedb29b73c783aa49eb9b0d3433bae4eb42516d638534a812e5e07"
+  },
+  "originalFilesPreserved": [
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/assembly-manifest.json",
+      "sha256": "8c59e54202fedb29b73c783aa49eb9b0d3433bae4eb42516d638534a812e5e07",
+      "bytes": 12061
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/check-history-summary.json",
+      "sha256": "00218cb395be62db02743bb013495d5312bc00dc7c7c2d46929416474fdeda44",
+      "bytes": 138991
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/protected-content-preservation.json",
+      "sha256": "f763f5afe380d2e2b222ab106744359f0c9771b0f63ebbe01777b67f458ca47d",
+      "bytes": 3017
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/earlier-code-checkpoint.json",
+      "sha256": "8e9fb3f6ed1c38114e13b239bdd1d939f2d19481eb4c55cfb47b8647872a72ce",
+      "bytes": 4918
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/critical-source-retention.json",
+      "sha256": "85d5b8fc0ddc5131f797f8d4bc62f4e0ddaf2719cfd202f152398bce2aef908a",
+      "bytes": 494863
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/final-local-typecheck.json",
+      "sha256": "5e084bde86aed975f570c19afc9dd14e77c66af9bc06471b4614673517eb8ee0",
+      "bytes": 228836
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/final-local-typecheck.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/final-local-typecheck.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-unit-a1/execution.json",
+      "sha256": "644021149bd15df1ccc5d1237706db01fa5e15eb99c985783cf2f940d057bb8d",
+      "bytes": 1151
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-unit-a1/stdout.txt",
+      "sha256": "5c2416cb85e40620ded39c8ace8a0f06fc5c211e56a222e9a51c7ad6ebea515e",
+      "bytes": 150
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-unit-a1/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-unit-a1/vitest.json",
+      "sha256": "23b292e2a2821a8082445d4790259671ff3bf426eb0a7b75d2cb99b6584c265d",
+      "bytes": 83041
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-api-a1/execution.json",
+      "sha256": "2c89df26fe33b673d6e77fe55171bf41543ef14940f4d400e91a26dcdd5def17",
+      "bytes": 982
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-api-a1/stdout.txt",
+      "sha256": "492fa274278c15589d4d99ab1bd16a567faa73e525f83646fa7e939d1fc034fb",
+      "bytes": 156
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-api-a1/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-api-a1/vitest.json",
+      "sha256": "e39af0b3f85472e3acd1bc08a963e01dbe399bd4f600c7eb34b76981d4992e4a",
+      "bytes": 131799
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-sql-a2/execution.json",
+      "sha256": "0b8014d8b582dc74f32dc21d6a0f0930101e6abc6e371c3510dd60c2e1ff6990",
+      "bytes": 740
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-sql-a2/stdout.txt",
+      "sha256": "d95716cd7528adaa73b8307c44204fe1bcc65b1e0908d72edc6191ae203e9258",
+      "bytes": 149
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-sql-a2/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/auth-sql-a2/vitest.json",
+      "sha256": "2df8db937e4282ef89a42f0c242d94b63b499f68256c666cf03e18167e8ad431",
+      "bytes": 3439
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-a2/execution.json",
+      "sha256": "787f3832e083a5031d23a061b391e3f49068c1138cbb2cf64d58dd861294be8b",
+      "bytes": 726
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-a2/stdout.txt",
+      "sha256": "23c5bce98b2955e4b2e4e282db71b5c2ede4e8b1fe390754cfe3cfce38ad75b7",
+      "bytes": 152
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-a2/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/payment-sql-a2/vitest.json",
+      "sha256": "41bf1855e20bfb429e6eb8cf2ff4ae58517d6b4b0078866e309eb747cf298ad4",
+      "bytes": 9089
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/app-tsc-a5/execution.json",
+      "sha256": "5cf7845db7678031008338fd88d9eddb9e55b962f924e0c2aee357d1e1371f96",
+      "bytes": 379
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/app-tsc-a5/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/checks/runs/app-tsc-a5/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/scoped-local-checks.json",
+      "sha256": "49eea2179b2d438fe4cc890bdf4ad16128d975169a49e2b0d5f818daa0830273",
+      "bytes": 3657
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/native-audit.stdout.txt",
+      "sha256": "3809762e268a9ff3fd197643be0eb88492e039492a8133e65b0feef65e57d8fb",
+      "bytes": 1045
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/native-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-assemble.stdout.txt",
+      "sha256": "6cc09bc650f72b14e25f057a9a84d9248e31001c309ef0096ec2b77451d9f4a3",
+      "bytes": 13114
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-assemble.stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "bytes": 343
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-instrumentation-assemble.stdout.txt",
+      "sha256": "bbab6b1b5446a8206b15be1305af6ad5f2f9e2b9aab2a8be52064f576c4c39e8",
+      "bytes": 14634
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android/android-instrumentation-assemble.stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "bytes": 343
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-android.json",
+      "sha256": "a8dd881204472043970338a5ab9c4dacca33a690eb57014075ce1a29153af127",
+      "bytes": 309965
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-pwa/pwa-audit.stdout.txt",
+      "sha256": "f7d9ac29c7971d550a2c96888081182b1489ec37d6f7271cf52fae7a940bf92e",
+      "bytes": 797
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-pwa/pwa-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-pwa.json",
+      "sha256": "73a2508ac3ccae38b25b188fdbea11269d48c32cb6186f09cf335fa85e5ae4ff",
+      "bytes": 284618
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-ios-bundle/native-audit.stdout.txt",
+      "sha256": "194d7abadee0c63309332de3b3effb3dd408f688b9e6174c4850337388002fe4",
+      "bytes": 1041
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-ios-bundle/native-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/preparation-ios-bundle.json",
+      "sha256": "07cfbae836ffd189d40e735f4a88027ce82a7d33d141c20c332034c54e45e130",
+      "bytes": 284808
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/native-sdk-source-change.json",
+      "sha256": "14b1208eb1fbee404bd7cf1d396f3805c169d7926e07b28fc5bd988a7ecb7c8b",
+      "bytes": 2695
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/fresh-dossier-result.json",
+      "sha256": "dea125402280d1239911e6d18a4305123105374a74449b4c0acdbb0f658f959b",
+      "bytes": 376651
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/fresh-capture-review.json",
+      "sha256": "7aee1adae6d9b60b7c85079b65a77171fe6e6c98013c9e2c98b0241b2a70c7a6",
+      "bytes": 2821
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/default-native-runtime.json",
+      "sha256": "6bad08c25fb9940e90a3a7e63cf6f611e36ac68e6f9f188d539a1ecc500f4bf7",
+      "bytes": 32318
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/four-original-conditions.json",
+      "sha256": "6377d7065c5d49d0ea5be46d220ded91bb7180215e4d2856c907ffa31c8b223e",
+      "bytes": 5962
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/channels.json",
+      "sha256": "ed48be68a53e914f89ef5c6c5133d465c570f6ddc96465ee70583f9827689b82",
+      "bytes": 3019
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/remaining-gates.json",
+      "sha256": "7e55db1d88261d704535f2f3acca5b64dd271c7712ef332b7f5336ce1a1eeba2",
+      "bytes": 1724
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-input-android.json",
+      "sha256": "d1ad8605ed7f66a1d71284a396f4197ee8e6b20e0fc5cb88ce5f9c2a3fdf9210",
+      "bytes": 10279
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-input-pwa.json",
+      "sha256": "0047f749bf9e1456212a8a07536bfa58e8a658b2b6f4bc6d560f070dd55de044",
+      "bytes": 5442
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-input-ios.json",
+      "sha256": "86ced8e8de261b5793778c7243c032c97ab99cdaa1801cc8bcf79bf5e800dc8b",
+      "bytes": 6260
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/focused-dossier-review.json",
+      "sha256": "8a88fbcef4764d1e73d40f8a85d5daf9bee5e970f815b11acf0d23f0b9c7d541",
+      "bytes": 1381
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-android.json",
+      "sha256": "ae2a7b004b523c97306b1539dd29efc66aa91ff8e3d04b3fdb90e73eefc4e80b",
+      "bytes": 291417
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-pwa.json",
+      "sha256": "25c30e1616ec11095d8e1aa127ff948beafd5bbeb2731186dc3acbda091bc21a",
+      "bytes": 287088
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-ios.json",
+      "sha256": "48ee116f0ac677378f5c88d5b7f18ba26f7d0c9fe8bed3a6e62da8ddd6106fbc",
+      "bytes": 288115
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/proofs/raw-critical-baseline-failed-preparation.json",
+      "sha256": "6fdde0e63a19b3af463e5b232f12f2c82591ee95a9a8bf6de179913f500dcf00",
+      "bytes": 284832
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/raw-critical-retention-final.json",
+      "sha256": "0b2c200fd53d78ecdfd900d44ca310c14f2943947a884d53344063d904dc605a",
+      "bytes": 85218
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/scoped-local-checks-final.json",
+      "sha256": "9f0599faa3535ba56270dc900f7ee2f038b5e0db7ed4a771e815419304af5208",
+      "bytes": 3524
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-input-android-final.json",
+      "sha256": "d1ad8605ed7f66a1d71284a396f4197ee8e6b20e0fc5cb88ce5f9c2a3fdf9210",
+      "bytes": 10279
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-input-pwa-final.json",
+      "sha256": "0047f749bf9e1456212a8a07536bfa58e8a658b2b6f4bc6d560f070dd55de044",
+      "bytes": 5442
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-input-ios-final.json",
+      "sha256": "86ced8e8de261b5793778c7243c032c97ab99cdaa1801cc8bcf79bf5e800dc8b",
+      "bytes": 6260
+    }
+  ],
+  "newReadinessInputs": [
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-input-android-final.json",
+      "sha256": "d1ad8605ed7f66a1d71284a396f4197ee8e6b20e0fc5cb88ce5f9c2a3fdf9210"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-input-pwa-final.json",
+      "sha256": "0047f749bf9e1456212a8a07536bfa58e8a658b2b6f4bc6d560f070dd55de044"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/release-preparation-20261002/readiness-input-ios-final.json",
+      "sha256": "86ced8e8de261b5793778c7243c032c97ab99cdaa1801cc8bcf79bf5e800dc8b"
+    }
+  ],
+  "rawCriticalStatus": "NOT_RUN",
+  "localTestsStatus": "NOT_RUN",
+  "authDeletionLocalStatus": "NOT_RUN",
+  "originalProofsUnmodified": true,
+  "retainedUnitExecutionAtFinalSourceCommitClaimed": false
+}

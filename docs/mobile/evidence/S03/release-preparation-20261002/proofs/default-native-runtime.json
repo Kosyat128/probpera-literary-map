@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-install-runtime",
+  "platform": "android",
+  "channel": "dev",
+  "runId": "d40d787093224f42bbcae2fbd6239ad0",
+  "startedAt": "2026-10-02T21:12:55.183Z",
+  "status": "NOT_RUN",
+  "releaseReady": false,
+  "installed": false,
+  "hardwareProtectionTested": false,
+  "checks": [
+    {
+      "id": "previous-version-secure-storage-update",
+      "status": "NOT_RUN",
+      "reason": "The historical binary has no admitted compatible secure-store migration fixture; nonsecret Preferences cannot attest secret update."
+    },
+    {
+      "id": "previous-version-parent-pin-update",
+      "status": "NOT_RUN",
+      "reason": "Protected child PIN/full-record update and actual checkpoint admission remain unavailable."
+    },
+    {
+      "id": "previous-version-update",
+      "status": "NOT_RUN",
+      "reason": "Verified preserved predecessor is available; an explicitly owned fresh Android target and --execute are required."
+    },
+    {
+      "id": "exact-binary-preflight",
+      "status": "PASS"
+    },
+    {
+      "id": "installed-runtime",
+      "status": "NOT_RUN",
+      "reason": "Preflight performs no device access. Supply --execute with the explicitly owned target."
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platform-tools\\adb.exe",
+      "present": true
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "present": true
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "present": true
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\lib\\apksigner.jar",
+      "present": true
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-user",
+      "present": true
+    }
+  ],
+  "commands": [
+    {
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "args": [
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-preflight-82c130cb-6fce-4ff8-afd7-905d3373b3a4\\command-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-preflight-82c130cb-6fce-4ff8-afd7-905d3373b3a4\\command-temp",
+        "-version"
+      ],
+      "startedAt": "2026-10-02T21:13:00.356Z",
+      "timeoutMs": 30000,
+      "exitCode": 0,
+      "errorCode": null,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\r\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\r\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)\r\n",
+      "finishedAt": "2026-10-02T21:13:00.452Z"
+    },
+    {
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "args": [
+        "version"
+      ],
+      "startedAt": "2026-10-02T21:13:00.452Z",
+      "timeoutMs": 30000,
+      "exitCode": 0,
+      "errorCode": null,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": "Android Asset Packaging Tool (aapt) 2.20-13193326\r\n",
+      "finishedAt": "2026-10-02T21:13:00.476Z"
+    },
+    {
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "args": [
+        "dump",
+        "badging",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86\\app-dev-debug.apk"
+      ],
+      "startedAt": "2026-10-02T21:13:00.477Z",
+      "timeoutMs": 30000,
+      "exitCode": 0,
+      "errorCode": null,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "package: name='ru.probpera.literaryplanet.dev' versionCode='1' versionName='1.0-dev' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'\r\nminSdkVersion:'24'\r\ntargetSdkVersion:'36'\r\nuses-permission: name='android.permission.INTERNET'\r\nuses-permission: name='android.permission.ACCESS_NETWORK_STATE'\r\nuses-permission: name='ru.probpera.literaryplanet.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'\r\napplication-label:'Literary Planet'\r\napplication-label-af:'Literary Planet'\r\napplication-label-am:'Literary Planet'\r\napplication-label-ar:'Literary Planet'\r\napplication-label-as:'Literary Planet'\r\napplication-label-az:'Literary Planet'\r\napplication-label-be:'Literary Planet'\r\napplication-label-bg:'Literary Planet'\r\napplication-label-bn:'Literary Planet'\r\napplication-label-bs:'Literary Planet'\r\napplication-label-ca:'Literary Planet'\r\napplication-label-cs:'Literary Planet'\r\napplication-label-da:'Literary Planet'\r\napplication-label-de:'Literary Planet'\r\napplication-label-el:'Literary Planet'\r\napplication-label-en-AU:'Literary Planet'\r\napplication-label-en-CA:'Literary Planet'\r\napplication-label-en-GB:'Literary Planet'\r\napplication-label-en-IN:'Literary Planet'\r\napplication-label-en-XC:'Literary Planet'\r\napplication-label-es:'Literary Planet'\r\napplication-label-es-US:'Literary Planet'\r\napplication-label-et:'Literary Planet'\r\napplication-label-eu:'Literary Planet'\r\napplication-label-fa:'Literary Planet'\r\napplication-label-fi:'Literary Planet'\r\napplication-label-fr:'Literary Planet'\r\napplication-label-fr-CA:'Literary Planet'\r\napplication-label-gl:'Literary Planet'\r\napplication-label-gu:'Literary Planet'\r\napplication-label-hi:'Literary Planet'\r\napplication-label-hr:'Literary Planet'\r\napplication-label-hu:'Literary Planet'\r\napplication-label-hy:'Literary Planet'\r\napplication-label-in:'Literary Planet'\r\napplication-label-is:'Literary Planet'\r\napplication-label-it:'Literary Planet'\r\napplication-label-iw:'Literary Planet'\r\napplication-label-ja:'Literary Planet'\r\napplication-label-ka:'Literary Planet'\r\napplication-label-kk:'Literary Planet'\r\napplication-label-km:'Literary Planet'\r\napplication-label-kn:'Literary Planet'\r\napplication-label-ko:'Literary Planet'\r\napplication-label-ky:'Literary Planet'\r\napplication-label-lo:'Literary Planet'\r\napplication-label-lt:'Literary Planet'\r\napplication-label-lv:'Literary Planet'\r\napplication-label-mk:'Literary Planet'\r\napplication-label-ml:'Literary Planet'\r\napplication-label-mn:'Literary Planet'\r\napplication-label-mr:'Literary Planet'\r\napplication-label-ms:'Literary Planet'\r\napplication-label-my:'Literary Planet'\r\napplication-label-nb:'Literary Planet'\r\napplication-label-ne:'Literary Planet'\r\napplication-label-nl:'Literary Planet'\r\napplication-label-or:'Literary Planet'\r\napplication-label-pa:'Literary Planet'\r\napplication-label-pl:'Literary Planet'\r\napplication-label-pt:'Literary Planet'\r\napplication-label-pt-BR:'Literary Planet'\r\napplication-label-pt-PT:'Literary Planet'\r\napplication-label-ro:'Literary Planet'\r\napplication-label-ru:'Литературная планета'\r\napplication-label-si:'Literary Planet'\r\napplication-label-sk:'Literary Planet'\r\napplication-label-sl:'Literary Planet'\r\napplication-label-sq:'Literary Planet'\r\napplication-label-sr:'Literary Planet'\r\napplication-label-sr-Latn:'Literary Planet'\r\napplication-label-sv:'Literary Planet'\r\napplication-label-sw:'Literary Planet'\r\napplication-label-ta:'Literary Planet'\r\napplication-label-te:'Literary Planet'\r\napplication-label-th:'Literary Planet'\r\napplication-label-tl:'Literary Planet'\r\napplication-label-tr:'Literary Planet'\r\napplication-label-uk:'Literary Planet'\r\napplication-label-ur:'Literary Planet'\r\napplication-label-uz:'Literary Planet'\r\napplication-label-vi:'Literary Planet'\r\napplication-label-zh-CN:'Literary Planet'\r\napplication-label-zh-HK:'Literary Planet'\r\napplication-label-zh-TW:'Literary Planet'\r\napplication-label-zu:'Literary Planet'\r\napplication-icon-160:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-240:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-320:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-480:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-640:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-65534:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication: label='Literary Planet' icon='res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-debuggable\r\nlaunchable-activity: name='ru.probpera.literaryplanet.MainActivity'  label='Literary Planet' icon=''\r\nfeature-group: label=''\r\n  uses-feature: name='android.hardware.faketouch'\r\n  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'\r\nmain\r\nother-activities\r\nother-receivers\r\nsupports-screens: 'small' 'normal' 'large' 'xlarge'\r\nsupports-any-density: 'true'\r\nlocales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'\r\ndensities: '160' '240' '320' '480' '640' '65534'\r\n",
+      "stderr": "",
+      "finishedAt": "2026-10-02T21:13:00.523Z"
+    },
+    {
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "args": [
+        "dump",
+        "badging",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86\\app-dev-debug-androidTest.apk"
+      ],
+      "startedAt": "2026-10-02T21:13:00.523Z",
+      "timeoutMs": 30000,
+      "exitCode": 0,
+      "errorCode": null,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "package: name='ru.probpera.literaryplanet.dev.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'\r\nminSdkVersion:'24'\r\ntargetSdkVersion:'36'\r\nuses-permission: name='android.permission.REORDER_TASKS'\r\napplication: label='' icon=''\r\napplication-debuggable\r\nuses-library:'android.test.runner'\r\nfeature-group: label=''\r\n  uses-feature: name='android.hardware.faketouch'\r\n  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'\r\nother-activities\r\nsupports-screens: 'small' 'normal' 'large' 'xlarge'\r\nsupports-any-density: 'true'\r\nlocales: '--_--'\r\ndensities: '160'\r\n",
+      "stderr": "",
+      "finishedAt": "2026-10-02T21:13:00.543Z"
+    },
+    {
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "args": [
+        "dump",
+        "xmltree",
+        "--file",
+        "AndroidManifest.xml",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86\\app-dev-debug-androidTest.apk"
+      ],
+      "startedAt": "2026-10-02T21:13:00.543Z",
+      "timeoutMs": 30000,
+      "exitCode": 0,
+      "errorCode": null,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "N: android=http://schemas.android.com/apk/res/android (line=2)\r\n  E: manifest (line=2)\r\n    A: http://schemas.android.com/apk/res/android:compileSdkVersion(0x01010572)=36\r\n    A: http://schemas.android.com/apk/res/android:compileSdkVersionCodename(0x01010573)=\"16\" (Raw: \"16\")\r\n    A: package=\"ru.probpera.literaryplanet.dev.test\" (Raw: \"ru.probpera.literaryplanet.dev.test\")\r\n    A: platformBuildVersionCode=36\r\n    A: platformBuildVersionName=16\r\n      E: uses-sdk (line=5)\r\n        A: http://schemas.android.com/apk/res/android:minSdkVersion(0x0101020c)=24\r\n        A: http://schemas.android.com/apk/res/android:targetSdkVersion(0x01010270)=36\r\n      E: instrumentation (line=9)\r\n        A: http://schemas.android.com/apk/res/android:label(0x01010001)=\"Tests for ru.probpera.literaryplanet.dev\" (Raw: \"Tests for ru.probpera.literaryplanet.dev\")\r\n        A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"androidx.test.runner.AndroidJUnitRunner\" (Raw: \"androidx.test.runner.AndroidJUnitRunner\")\r\n        A: http://schemas.android.com/apk/res/android:targetPackage(0x01010021)=\"ru.probpera.literaryplanet.dev\" (Raw: \"ru.probpera.literaryplanet.dev\")\r\n        A: http://schemas.android.com/apk/res/android:handleProfiling(0x01010022)=false\r\n        A: http://schemas.android.com/apk/res/android:functionalTest(0x01010023)=false\r\n      E: queries (line=16)\r\n          E: package (line=17)\r\n            A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"androidx.test.orchestrator\" (Raw: \"androidx.test.orchestrator\")\r\n          E: package (line=18)\r\n            A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"androidx.test.services\" (Raw: \"androidx.test.services\")\r\n          E: package (line=19)\r\n            A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"com.google.android.apps.common.testing.services\" (Raw: \"com.google.android.apps.common.testing.services\")\r\n      E: uses-permission (line=22)\r\n        A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"android.permission.REORDER_TASKS\" (Raw: \"android.permission.REORDER_TASKS\")\r\n      E: application (line=24)\r\n        A: http://schemas.android.com/apk/res/android:debuggable(0x0101000f)=true\r\n        A: http://schemas.android.com/apk/res/android:extractNativeLibs(0x010104ea)=false\r\n          E: uses-library (line=27)\r\n            A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"android.test.runner\" (Raw: \"android.test.runner\")\r\n          E: activity (line=29)\r\n            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f010001\r\n            A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity\" (Raw: \"androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity\")\r\n            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true\r\n              E: intent-filter (line=33)\r\n                A: http://schemas.android.com/apk/res/android:priority(0x0101001c)=-100\r\n                  E: category (line=34)\r\n                    A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"android.intent.category.LAUNCHER\" (Raw: \"android.intent.category.LAUNCHER\")\r\n          E: activity (line=37)\r\n            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f010001\r\n            A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity\" (Raw: \"androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity\")\r\n            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true\r\n              E: intent-filter (line=41)\r\n                A: http://schemas.android.com/apk/res/android:priority(0x0101001c)=-100\r\n                  E: category (line=42)\r\n                    A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"android.intent.category.LAUNCHER\" (Raw: \"android.intent.category.LAUNCHER\")\r\n          E: activity (line=45)\r\n            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f010000\r\n            A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity\" (Raw: \"androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity\")\r\n            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true\r\n              E: intent-filter (line=49)\r\n                A: http://schemas.android.com/apk/res/android:priority(0x0101001c)=-100\r\n                  E: category (line=50)\r\n                    A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"android.intent.category.LAUNCHER\" (Raw: \"android.intent.category.LAUNCHER\")\r\n",
+      "stderr": "",
+      "finishedAt": "2026-10-02T21:13:00.562Z"
+    },
+    {
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "args": [
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-preflight-82c130cb-6fce-4ff8-afd7-905d3373b3a4\\command-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-preflight-82c130cb-6fce-4ff8-afd7-905d3373b3a4\\command-temp",
+        "-jar",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\lib\\apksigner.jar",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86\\app-dev-debug.apk"
+      ],
+      "startedAt": "2026-10-02T21:13:00.562Z",
+      "timeoutMs": 30000,
+      "exitCode": 0,
+      "errorCode": null,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "Verifies\r\nVerified using v1 scheme (JAR signing): false\r\nVerified using v2 scheme (APK Signature Scheme v2): true\r\nVerified using v3 scheme (APK Signature Scheme v3): false\r\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\r\nVerified using v4 scheme (APK Signature Scheme v4): false\r\nVerified for SourceStamp: false\r\nNumber of signers: 1\r\nSigner #1 certificate DN: CN=Android Debug, O=Android, C=US\r\nSigner #1 certificate SHA-256 digest: 6bfe3a9c59ce2b28eeb7c4d0d7d085beff790b87295ccbadeb2a5c8ee9d6d9d9\r\nSigner #1 certificate SHA-1 digest: 474e8a41a51e236e4432eb996f8c218291186e19\r\nSigner #1 certificate MD5 digest: 9411fcf5c4a40287b44e9e8fc8c58611\r\nSigner #1 key algorithm: RSA\r\nSigner #1 key size (bits): 2048\r\nSigner #1 public key SHA-256 digest: f589b90aee87b6b4a3912aeabdfe9a0864dea51c15c629e0efcb03b566e1b230\r\nSigner #1 public key SHA-1 digest: 1eb53c4712ca653ce87619e419d475e9d9b7fb52\r\nSigner #1 public key MD5 digest: 289aa7a974b6b08f3085917eee4f413c\r\n",
+      "stderr": "",
+      "finishedAt": "2026-10-02T21:13:00.977Z"
+    },
+    {
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "args": [
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-preflight-82c130cb-6fce-4ff8-afd7-905d3373b3a4\\command-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-preflight-82c130cb-6fce-4ff8-afd7-905d3373b3a4\\command-temp",
+        "-jar",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\lib\\apksigner.jar",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86\\app-dev-debug-androidTest.apk"
+      ],
+      "startedAt": "2026-10-02T21:13:00.977Z",
+      "timeoutMs": 30000,
+      "exitCode": 0,
+      "errorCode": null,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "Verifies\r\nVerified using v1 scheme (JAR signing): false\r\nVerified using v2 scheme (APK Signature Scheme v2): true\r\nVerified using v3 scheme (APK Signature Scheme v3): false\r\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\r\nVerified using v4 scheme (APK Signature Scheme v4): false\r\nVerified for SourceStamp: false\r\nNumber of signers: 1\r\nSigner #1 certificate DN: CN=Android Debug, O=Android, C=US\r\nSigner #1 certificate SHA-256 digest: 6bfe3a9c59ce2b28eeb7c4d0d7d085beff790b87295ccbadeb2a5c8ee9d6d9d9\r\nSigner #1 certificate SHA-1 digest: 474e8a41a51e236e4432eb996f8c218291186e19\r\nSigner #1 certificate MD5 digest: 9411fcf5c4a40287b44e9e8fc8c58611\r\nSigner #1 key algorithm: RSA\r\nSigner #1 key size (bits): 2048\r\nSigner #1 public key SHA-256 digest: f589b90aee87b6b4a3912aeabdfe9a0864dea51c15c629e0efcb03b566e1b230\r\nSigner #1 public key SHA-1 digest: 1eb53c4712ca653ce87619e419d475e9d9b7fb52\r\nSigner #1 public key MD5 digest: 289aa7a974b6b08f3085917eee4f413c\r\n",
+      "stderr": "",
+      "finishedAt": "2026-10-02T21:13:01.239Z"
+    },
+    {
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "args": [
+        "dump",
+        "badging",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86\\previous-dev-debug.apk"
+      ],
+      "startedAt": "2026-10-02T21:13:01.430Z",
+      "timeoutMs": 30000,
+      "exitCode": 0,
+      "errorCode": null,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "package: name='ru.probpera.literaryplanet.dev' versionCode='1' versionName='1.0-dev' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'\r\nminSdkVersion:'24'\r\ntargetSdkVersion:'36'\r\nuses-permission: name='android.permission.INTERNET'\r\nuses-permission: name='android.permission.ACCESS_NETWORK_STATE'\r\nuses-permission: name='ru.probpera.literaryplanet.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'\r\napplication-label:'Literary Planet'\r\napplication-label-af:'Literary Planet'\r\napplication-label-am:'Literary Planet'\r\napplication-label-ar:'Literary Planet'\r\napplication-label-as:'Literary Planet'\r\napplication-label-az:'Literary Planet'\r\napplication-label-be:'Literary Planet'\r\napplication-label-bg:'Literary Planet'\r\napplication-label-bn:'Literary Planet'\r\napplication-label-bs:'Literary Planet'\r\napplication-label-ca:'Literary Planet'\r\napplication-label-cs:'Literary Planet'\r\napplication-label-da:'Literary Planet'\r\napplication-label-de:'Literary Planet'\r\napplication-label-el:'Literary Planet'\r\napplication-label-en-AU:'Literary Planet'\r\napplication-label-en-CA:'Literary Planet'\r\napplication-label-en-GB:'Literary Planet'\r\napplication-label-en-IN:'Literary Planet'\r\napplication-label-en-XC:'Literary Planet'\r\napplication-label-es:'Literary Planet'\r\napplication-label-es-US:'Literary Planet'\r\napplication-label-et:'Literary Planet'\r\napplication-label-eu:'Literary Planet'\r\napplication-label-fa:'Literary Planet'\r\napplication-label-fi:'Literary Planet'\r\napplication-label-fr:'Literary Planet'\r\napplication-label-fr-CA:'Literary Planet'\r\napplication-label-gl:'Literary Planet'\r\napplication-label-gu:'Literary Planet'\r\napplication-label-hi:'Literary Planet'\r\napplication-label-hr:'Literary Planet'\r\napplication-label-hu:'Literary Planet'\r\napplication-label-hy:'Literary Planet'\r\napplication-label-in:'Literary Planet'\r\napplication-label-is:'Literary Planet'\r\napplication-label-it:'Literary Planet'\r\napplication-label-iw:'Literary Planet'\r\napplication-label-ja:'Literary Planet'\r\napplication-label-ka:'Literary Planet'\r\napplication-label-kk:'Literary Planet'\r\napplication-label-km:'Literary Planet'\r\napplication-label-kn:'Literary Planet'\r\napplication-label-ko:'Literary Planet'\r\napplication-label-ky:'Literary Planet'\r\napplication-label-lo:'Literary Planet'\r\napplication-label-lt:'Literary Planet'\r\napplication-label-lv:'Literary Planet'\r\napplication-label-mk:'Literary Planet'\r\napplication-label-ml:'Literary Planet'\r\napplication-label-mn:'Literary Planet'\r\napplication-label-mr:'Literary Planet'\r\napplication-label-ms:'Literary Planet'\r\napplication-label-my:'Literary Planet'\r\napplication-label-nb:'Literary Planet'\r\napplication-label-ne:'Literary Planet'\r\napplication-label-nl:'Literary Planet'\r\napplication-label-or:'Literary Planet'\r\napplication-label-pa:'Literary Planet'\r\napplication-label-pl:'Literary Planet'\r\napplication-label-pt:'Literary Planet'\r\napplication-label-pt-BR:'Literary Planet'\r\napplication-label-pt-PT:'Literary Planet'\r\napplication-label-ro:'Literary Planet'\r\napplication-label-ru:'Литературная планета'\r\napplication-label-si:'Literary Planet'\r\napplication-label-sk:'Literary Planet'\r\napplication-label-sl:'Literary Planet'\r\napplication-label-sq:'Literary Planet'\r\napplication-label-sr:'Literary Planet'\r\napplication-label-sr-Latn:'Literary Planet'\r\napplication-label-sv:'Literary Planet'\r\napplication-label-sw:'Literary Planet'\r\napplication-label-ta:'Literary Planet'\r\napplication-label-te:'Literary Planet'\r\napplication-label-th:'Literary Planet'\r\napplication-label-tl:'Literary Planet'\r\napplication-label-tr:'Literary Planet'\r\napplication-label-uk:'Literary Planet'\r\napplication-label-ur:'Literary Planet'\r\napplication-label-uz:'Literary Planet'\r\napplication-label-vi:'Literary Planet'\r\napplication-label-zh-CN:'Literary Planet'\r\napplication-label-zh-HK:'Literary Planet'\r\napplication-label-zh-TW:'Literary Planet'\r\napplication-label-zu:'Literary Planet'\r\napplication-icon-160:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-240:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-320:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-480:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-640:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-icon-65534:'res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication: label='Literary Planet' icon='res/mipmap-anydpi-v26/ic_launcher.xml'\r\napplication-debuggable\r\nlaunchable-activity: name='ru.probpera.literaryplanet.MainActivity'  label='Literary Planet' icon=''\r\nfeature-group: label=''\r\n  uses-feature: name='android.hardware.faketouch'\r\n  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'\r\nmain\r\nother-activities\r\nother-receivers\r\nsupports-screens: 'small' 'normal' 'large' 'xlarge'\r\nsupports-any-density: 'true'\r\nlocales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'\r\ndensities: '160' '240' '320' '480' '640' '65534'\r\n",
+      "stderr": "",
+      "finishedAt": "2026-10-02T21:13:01.476Z"
+    },
+    {
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "args": [
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-preflight-82c130cb-6fce-4ff8-afd7-905d3373b3a4\\command-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-preflight-82c130cb-6fce-4ff8-afd7-905d3373b3a4\\command-temp",
+        "-jar",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\lib\\apksigner.jar",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86\\previous-dev-debug.apk"
+      ],
+      "startedAt": "2026-10-02T21:13:01.477Z",
+      "timeoutMs": 30000,
+      "exitCode": 0,
+      "errorCode": null,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "Verifies\r\nVerified using v1 scheme (JAR signing): false\r\nVerified using v2 scheme (APK Signature Scheme v2): true\r\nVerified using v3 scheme (APK Signature Scheme v3): false\r\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\r\nVerified using v4 scheme (APK Signature Scheme v4): false\r\nVerified for SourceStamp: false\r\nNumber of signers: 1\r\nSigner #1 certificate DN: CN=Android Debug, O=Android, C=US\r\nSigner #1 certificate SHA-256 digest: 6bfe3a9c59ce2b28eeb7c4d0d7d085beff790b87295ccbadeb2a5c8ee9d6d9d9\r\nSigner #1 certificate SHA-1 digest: 474e8a41a51e236e4432eb996f8c218291186e19\r\nSigner #1 certificate MD5 digest: 9411fcf5c4a40287b44e9e8fc8c58611\r\nSigner #1 key algorithm: RSA\r\nSigner #1 key size (bits): 2048\r\nSigner #1 public key SHA-256 digest: f589b90aee87b6b4a3912aeabdfe9a0864dea51c15c629e0efcb03b566e1b230\r\nSigner #1 public key SHA-1 digest: 1eb53c4712ca653ce87619e419d475e9d9b7fb52\r\nSigner #1 public key MD5 digest: 289aa7a974b6b08f3085917eee4f413c\r\n",
+      "stderr": "",
+      "finishedAt": "2026-10-02T21:13:01.849Z"
+    }
+  ],
+  "captures": [],
+  "cleanup": {},
+  "limits": [
+    "No production/remote/store/payment authorization.",
+    "Emulator/simulator observations do not establish hardware protection.",
+    "Screenshots and process liveness require UI review; neither proves full product/native acceptance."
+  ],
+  "identity": {
+    "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+    "sourceFingerprint": "41ce74df130e5105f3eaace8cbf0e56cd6aba1a3ff84416f3272e5e556cdb513",
+    "artifactSha256": "85d613a9770b48bb17b7112a4134a0bae9c86e937d930213755141a709a11198",
+    "webArtifactSha256": "b9e1a02d24431829f4e6cd517641e8574f9e447e34197dce8d96e124f707ca6b",
+    "applicationId": "ru.probpera.literaryplanet.dev",
+    "versionName": "1.0-dev",
+    "versionCode": 1
+  },
+  "toolchain": {
+    "java": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\r\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\r\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)\r\n",
+    "aapt": "Android Asset Packaging Tool (aapt) 2.20-13193326\r\n",
+    "node": "v24.19.0"
+  },
+  "signing": {
+    "certificateSha256": "6bfe3a9c59ce2b28eeb7c4d0d7d085beff790b87295ccbadeb2a5c8ee9d6d9d9",
+    "productionSigning": false
+  },
+  "previousArtifact": {
+    "schemaVersion": 1,
+    "artifactPath": ".tmp/mobile-release-android-8061aa99-fc62-4a4b-96a6-c985efcfee86/previous-dev-debug.apk",
+    "artifactSha256": "d37536566878a53403872702fd1a3e54f16273ac9c94614dbc1c1da90aa84c28",
+    "artifactBytes": 70289893,
+    "applicationId": "ru.probpera.literaryplanet.dev",
+    "versionCode": 1,
+    "versionName": "1.0-dev",
+    "debuggable": true,
+    "certificateSha256": "6bfe3a9c59ce2b28eeb7c4d0d7d085beff790b87295ccbadeb2a5c8ee9d6d9d9",
+    "webArtifactSha256": "e593db9bd315ab6ef651c100ddb37f13832a1c47f92b62a707f3602aa21b46ba",
+    "sourceCommit": "aba461a774c125f9c38ea4c10aac9b3cc8024d2d",
+    "platform": "android",
+    "channel": "dev",
+    "metadataStatus": "valid",
+    "preferencesProtocol": "capacitor-preferences-v1-reflection",
+    "compatible": true,
+    "dependency": null,
+    "scope": "nonsecret-preferences-update-only",
+    "runtimeTested": false
+  },
+  "finishedAt": "2026-10-02T21:13:01.885Z"
+}
