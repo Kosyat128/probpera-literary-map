@@ -15,6 +15,7 @@ const config = { v: 1, audience: "browser-fixture", product: "fixture-base", del
   en: "Controlled fixture <script>window.bad=1</script>\nNot a legal document.",
 } };
 let browser, bundle, stylesheet;
+const flagAssets = new Map();
 
 test.beforeAll(async () => {
   const authFixture = `
@@ -58,7 +59,11 @@ test.beforeAll(async () => {
     } }],
   });
   bundle = result.outputFiles[0].text;
-  stylesheet = (await Promise.all(["src/pwa/pwa.css", "src/pwa/account.css"].map(file => readFile(new URL("../../" + file, import.meta.url), "utf8")))).join("\n");
+  stylesheet = (await Promise.all(["src/pwa/pwa.css", "src/host/host.css", "src/pwa/account.css"].map(file => readFile(new URL("../../" + file, import.meta.url), "utf8")))).join("\n");
+  for (const code of ["ru", "gb"]) {
+    const pathname = "/assets/country-flags/" + code + ".svg";
+    flagAssets.set(pathname, await readFile(new URL("../../public" + pathname, import.meta.url)));
+  }
   browser = await chromium.launch({ channel: "chrome", headless: true });
 });
 test.afterAll(async () => { await browser?.close(); });
@@ -85,6 +90,7 @@ async function open(options = {}) {
     const file = url.pathname.replace(/^\//u, "") + "index.html";
     if (Object.hasOwn(entries, file)) return route.fulfill({ contentType: "text/html", body: entries[file].replace("</head>", `<style>${stylesheet}</style></head>`) });
     if (url.pathname === "/assets/fixture.js") return route.fulfill({ contentType: "text/javascript", body: bundle });
+    if (flagAssets.has(url.pathname)) return route.fulfill({ contentType: "image/svg+xml", body: flagAssets.get(url.pathname) });
     if (url.pathname.startsWith("/planet/api/")) {
       const body = route.request().postDataJSON(); calls.push({ route: url.pathname, body, headers: route.request().headers() });
       if (url.pathname.endsWith("configuration")) return route.fulfill({ json: state.config });
@@ -119,12 +125,34 @@ async function open(options = {}) {
   return { page, errors, calls, state };
 }
 
-for (const mobile of [false, true]) test(`deletion remains the same bilingual form, plaintext disclosure and stable retry ID (${mobile ? "mobile" : "desktop"})`, async () => {
+async function loadedLanguageFlags(page, locale) {
+  const control = page.locator('.planet-account__header [data-interface-language-presentation="flags"]');
+  await expect(control).toHaveCount(1);
+  for (const [language, code] of [["ru", "ru"], ["en", "gb"]]) {
+    const button = control.locator('[data-interface-language="' + language + '"]');
+    await expect(button).toHaveAccessibleName(locale === "ru"
+      ? (language === "ru" ? "Русский язык" : "Английский язык")
+      : (language === "ru" ? "Russian" : "English"));
+    await expect(button).toHaveAttribute("aria-pressed", String(language === locale));
+    const image = button.locator("img.interface-language-control__flag.country-flag-icon--round");
+    await expect(image).toHaveCount(1);
+    await expect(image).toHaveAttribute("alt", "");
+    await expect(image).toHaveAttribute("src", "/assets/country-flags/" + code + ".svg");
+    await expect.poll(() => image.evaluate(node => node.complete && node.naturalWidth > 0)).toBe(true);
+    await expect(button.locator(".country-flag-icon--fallback")).toHaveCount(0);
+    await expect(button.locator(".interface-language-control__selected")).toHaveCount(language === locale ? 1 : 0);
+    const target = await button.boundingBox();
+    expect(target).not.toBeNull();
+    expect(target.width).toBeGreaterThanOrEqual(44); expect(target.height).toBeGreaterThanOrEqual(44);
+  }
+}
+for (const mobile of [false, true]) test(`deletion remains the same bilingual form, plaintext disclosure and stable retry ID (${mobile ? "mobile" : "desktop"})`, async ({}, testInfo) => {
   const { page, calls, errors } = await open({ mode: "deletion", failFirstDeletion: true, mobile });
   try {
+    await loadedLanguageFlags(page, "en");
     const consent = page.locator('.planet-account__consent input'); const original = await consent.elementHandle();
     await consent.check();
-    await page.locator('.interface-language-control button').filter({ hasText: "RU" }).click();
+    await page.locator('[data-interface-language="ru"]').click();
     await expect(page.locator('html')).toHaveAttribute("lang", "ru");
     await expect(consent).toBeChecked();
     expect(await consent.evaluate((node, previous) => node === previous, original)).toBe(true);
@@ -133,8 +161,12 @@ for (const mobile of [false, true]) test(`deletion remains the same bilingual fo
     expect(new URL(page.url()).searchParams.get("returnTo")).toBe("/planet/ru/?country=russia&writer=Q123#atlas");
     expect(await page.evaluate(() => history.state)).toEqual({ retained: "navigation-state" });
     await expect(page.locator('.planet-account__disclosure')).toHaveText(config.deletionDisclosure.ru);
-    await page.locator('.interface-language-control button').filter({ hasText: "EN" }).click();
+    await loadedLanguageFlags(page, "ru");
+    if (mobile) await page.screenshot({ path: testInfo.outputPath("planet-account-deletion-flags-ru.png"), fullPage: false });
+    await page.locator('[data-interface-language="en"]').click();
     await expect(page.locator('.planet-account__disclosure')).toHaveText(config.deletionDisclosure.en);
+    await loadedLanguageFlags(page, "en");
+    if (mobile) await page.screenshot({ path: testInfo.outputPath("planet-account-deletion-flags-en.png"), fullPage: false });
     expect(await page.evaluate(() => window.bad)).toBeUndefined();
     await expect(page.locator('canvas,iframe,.site-header')).toHaveCount(0);
     await expect(page.locator('.interface-language-control')).toHaveCount(1);
