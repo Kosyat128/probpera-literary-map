@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import { useAuth } from "../community/AuthContext";
+import { readerPrivacy } from "../community/readerPrivacy";
 import { supabase } from "../lib/supabase";
 import { parseBookDossierProgress, sameBookDossierLocation, type BookDossierProgress } from "../books/bookDossierProgress";
 import {
@@ -61,14 +62,14 @@ export function createReadingLibraryController(options: {
 }) {
   const initial = options.storage.read(), account = options.queueRemote ?? !!options.remote;
   let envelope = initial.envelope, persistence = initial.persistence, blocked = initial.blocked ?? false;
-  let lifetime = 0, revision = 0, sequence = 0, attempt = 0;
+  let lifetime = 0, revision = 0, sequence = 0, attempt = 0, sealed = false;
   let abort = new AbortController(), detach: (() => void) | undefined;
   let sending: Promise<void> | null = null, reading: Promise<void> | null = null;
   let requestOwner: { token: string; key: string; abort: AbortController } | null = null;
   const prefix = typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
     ? crypto.randomUUID() : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
   const listeners = new Set<() => void>(), leases = new Set<() => boolean>();
-  const current = (epoch = lifetime) => epoch === lifetime && leases.size > 0
+  const current = (epoch = lifetime) => !sealed && epoch === lifetime && leases.size > 0
     && (options.isCurrent?.() ?? true) && [...leases].some(lease => lease());
   const online = () => options.isOnline?.() ?? true;
   let sync: ReadingLibrarySyncSnapshot = Object.freeze({ status: account ? envelope.pending.length ? "pending" : "idle" : "local",
@@ -220,7 +221,13 @@ export function createReadingLibraryController(options: {
     getSnapshot: () => envelope.items,
     getSyncSnapshot: () => sync,
     subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener); }; },
+    forget() {
+      sealed = true; lifetime++; abort.abort(); requestOwner?.abort.abort(); requestOwner = null;
+      detach?.(); detach = undefined; leases.clear(); sending = null; reading = null;
+      envelope = { schemaVersion: 1, items: [], pending: [] }; notify();
+    },
     activate(owns: () => boolean = () => true) {
+      if (sealed) return () => {};
       const lease = () => owns(); leases.add(lease);
       if (leases.size === 1) {
         const epoch = ++lifetime; abort = new AbortController();
@@ -299,7 +306,9 @@ function sharedController(userId: string | null, configured: boolean): Controlle
         .eq("user_id", userId).eq("item_type", kind).eq("item_id", id).abortSignal(signal),
     } : null,
   });
-  cache?.set(cacheKey, controller); return controller;
+  cache?.set(cacheKey, controller);
+  if (userId) readerPrivacy.register(userId, () => { controller.forget(); if (cache?.get(cacheKey) === controller) cache.delete(cacheKey); });
+  return controller;
 }
 
 export function useReadingLibrary() {

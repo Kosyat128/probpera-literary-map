@@ -1,13 +1,13 @@
 import { defineConfig, mergeConfig } from "vite";
-import canonicalSiteConfig from "./vite.config";
+import { createCanonicalSiteConfig } from "./vite.config";
 import { scopeCanonicalCssUrls } from "./scripts/mobile/pwa-artifact.mjs";
 
 /** The same product entry and chunk ownership, with a separate local artifact. */
 export default defineConfig(async (environment) => {
-  const site = await (typeof canonicalSiteConfig === "function"
-    ? canonicalSiteConfig(environment)
-    : canonicalSiteConfig);
+  const site = createCanonicalSiteConfig(environment, true);
   return mergeConfig(site, {
+    // Local mobile preparation never reads .env files or exposes ambient VITE_* values.
+    envDir: false, envPrefix: [],
     base: "/planet/",
     // The artifact builder copies explicitly selected canonical public assets.
     publicDir: false,

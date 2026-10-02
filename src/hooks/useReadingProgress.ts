@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import { useAuth } from "../community/AuthContext";
+import { readerPrivacy } from "../community/readerPrivacy";
 import { supabase } from "../lib/supabase";
 
 type ReadingKind = "article" | "book";
@@ -92,13 +93,13 @@ export function createReadingProgressController(options: {
     if (persisted) observedStorage = persisted;
   };
   let pending = options.remote && local?.syncPending ? local : null;
-  let active = false, lifetime = 0, revision = 0, needsHydration = !!options.remote;
+  let active = false, sealed = false, lifetime = 0, revision = 0, needsHydration = !!options.remote;
   let timer: ReturnType<typeof setTimeout> | undefined;
   let abort: AbortController | undefined;
   let sending: { epoch: number; promise: Promise<void> } | undefined;
   let reading: { epoch: number; promise: Promise<void> } | undefined;
   const listeners = new Set<() => void>();
-  const current = (epoch: number) => active && lifetime === epoch && (options.isCurrent?.() ?? true);
+  const current = (epoch: number) => !sealed && active && lifetime === epoch && (options.isCurrent?.() ?? true);
   const clearTimer = () => { if (timer !== undefined) clearTimeout(timer); timer = undefined; };
   function publish(value: number | null) {
     if (restored === value) return;
@@ -185,7 +186,12 @@ export function createReadingProgressController(options: {
   return Object.freeze({
     getSnapshot: () => restored,
     subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener); }; },
+    forget() {
+      sealed = true; active = false; lifetime++; clearTimer(); abort?.abort(); abort = undefined;
+      local = null; observedStorage = null; pending = null; sending = undefined; reading = undefined; publish(null);
+    },
     activate() {
+      if (sealed) return () => {};
       active = true;
       const epoch = ++lifetime;
       abort = new AbortController();
@@ -234,8 +240,9 @@ export function useReadingProgress(kind: ReadingKind, id: string) {
   }, [configured, userId, kind, id]);
   useLayoutEffect(() => {
     current.current = controller;
-    return () => { if (current.current === controller) current.current = undefined; };
-  }, [controller]);
+    const unregister = userId ? readerPrivacy.register(userId, controller.forget) : () => {};
+    return () => { unregister(); if (current.current === controller) current.current = undefined; };
+  }, [controller, userId]);
   const restoredProgress = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot);
   useEffect(() => {
     const deactivate = controller.activate();

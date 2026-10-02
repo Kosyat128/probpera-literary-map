@@ -8,6 +8,7 @@ import { createHostPlatformServices } from "../../../host/HostPlatformServices";
 import { createNativeNavigationBridge } from "../../../host/NativeNavigationBridge";
 import { createNativeContentDownloads } from "../../../host/createNativeContentDownloads";
 import type { NativeContentStoreBridge } from "../../../host/nativeContentStorage";
+import { createNativeSecureStorage, type NativeSecureStoreBridge } from "../../../host/nativeSecureStorage";
 import {
   assertNativeHostBindings, initializeHostPlatform,
   type InitializedHostPlatform, type NativeHostAdapterOptions,
@@ -24,6 +25,7 @@ export async function createAndroidPlatformAdapter(options: AndroidPlatformAdapt
   const bindings = options.bindings ?? {
     core: Capacitor, app: App, network: Network, preferences: Preferences, browser: Browser, appLauncher: AppLauncher,
     contentStore: registerPlugin<NativeContentStoreBridge>("PlanetContentStore"),
+    secureStore: registerPlugin<NativeSecureStoreBridge>("PlanetSecureStore"),
   };
   assertNativeHostBindings(bindings, "android");
   const initialization = await initializeHostPlatform({
@@ -46,5 +48,7 @@ export async function createAndroidPlatformAdapter(options: AndroidPlatformAdapt
     timeoutMs: options.timeoutMs, onFailure: options.onNavigationFailure,
   });
   const downloads = createNativeContentDownloads(bindings.contentStore && bindings.core.isPluginAvailable("PlanetContentStore") ? bindings.contentStore : null, { lifecycle: services, preferences: services.preferences });
-  return Object.freeze({ services: Object.freeze({ ...services, navigation, downloads }), initialization });
+  const secureStorage = createNativeSecureStorage(bindings.secureStore && bindings.core.isPluginAvailable("PlanetSecureStore")
+    ? bindings.secureStore : null, options.timeoutMs);
+  return Object.freeze({ services: Object.freeze({ ...services, navigation, downloads, secureStorage }), initialization });
 }

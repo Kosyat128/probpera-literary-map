@@ -278,3 +278,13 @@ describe("reader progress ownership and recovery", () => {
     stop();
   });
 });
+
+
+it("privacy cleanup cancels queued progress and rejects a late remote value or reactivation", async () => {
+  const env = fixture(record(10)), late = deferred<{ data: unknown; error: unknown }>(); env.read.mockReturnValue(late.promise);
+  const stop = env.controller.activate(); env.controller.saveProgress(65); const writes = env.writeLocal.mock.calls.length;
+  env.controller.forget(); late.resolve({ data: { progress_percent: 99, updated_at: future }, error: null });
+  const old = env.controller.activate(); await vi.advanceTimersByTimeAsync(READING_PROGRESS_REMOTE_DELAY_MS + 1);
+  env.controller.markCompleted(); expect(env.controller.getSnapshot()).toBeNull(); expect(env.write).not.toHaveBeenCalled();
+  expect(env.writeLocal).toHaveBeenCalledTimes(writes); stop(); old();
+});

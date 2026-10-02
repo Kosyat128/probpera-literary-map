@@ -33,6 +33,7 @@ export async function createPaymentRetryTestDatabase() {
       create schema auth; create schema storage; grant usage on schema public,auth to anon,authenticated,service_role;
       create table auth.users(id uuid primary key); create table auth.sessions(id uuid primary key,user_id uuid references auth.users(id) on delete cascade);
       create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
+      create function auth.jwt() returns jsonb language sql stable as $$ select coalesce(nullif(current_setting('request.jwt.claims',true),'')::jsonb,'{}'::jsonb) $$;
       create table storage.objects(id uuid primary key,bucket_id text not null,name text not null,owner_id text,owner uuid,unique(bucket_id,name));
       create type public.community_role as enum ('reader','moderator','editor','admin');
       create type public.publication_status as enum ('published','hidden','pending');`);

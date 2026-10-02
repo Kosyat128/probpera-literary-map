@@ -2,6 +2,9 @@ import { createPlanetApi } from "./api";
 import { createCookieCodec, createGrantSigner } from "./crypto";
 import { createCanonicalSupabaseServices } from "./supabase";
 import { createCanonicalLicenseRateLimiter } from "./licenseRateLimiterSupabase";
+import { createCanonicalPaymentOrderStore } from "./paymentOrdersSupabase";
+import { createSandboxPaymentOrders } from "./paymentOrders";
+import { createYooKassaSandboxGateway } from "./yookassa";
 
 /** The standard Request/Response subset of the Cloudflare ASSETS Fetcher. */
 export interface PlanetAssets { fetch(request: Request): Promise<Response> }
@@ -17,6 +20,9 @@ type PlanetEnvKey = (typeof PLANET_API_ENV_KEYS)[number] | (typeof PLANET_LICENS
 export type PlanetWorkerBindings = Partial<Record<PlanetEnvKey, string>> & {
   ASSETS?: PlanetAssets;
   PLANET_DELETION_DISCLOSURE_JSON?: string;
+  /** Explicit server-only candidate configuration. Never a production/store PSP. */
+  PLANET_YOOKASSA_SANDBOX_JSON?: string;
+  PLANET_YOOKASSA_SANDBOX_SECRET?: string;
 };
 type ApiHandler = (request: Request) => Promise<Response>;
 export interface PlanetWorkerOptions {
@@ -131,6 +137,30 @@ export async function createConfiguredPlanetApi(bindings: PlanetWorkerBindings):
     publishableKey: config.SUPABASE_PUBLISHABLE_KEY, serviceRoleKey: config.SUPABASE_SERVICE_ROLE_KEY,
     recentAuthenticationSeconds: seconds(config, "PLANET_RECENT_AUTH_SECONDS") };
   const services = createCanonicalSupabaseServices(canonical);
+  let sandboxOrders: ReturnType<typeof createSandboxPaymentOrders> | undefined;
+  if (bindings.PLANET_YOOKASSA_SANDBOX_JSON !== undefined || bindings.PLANET_YOOKASSA_SANDBOX_SECRET !== undefined) {
+    try {
+      const source = bindings.PLANET_YOOKASSA_SANDBOX_JSON;
+      if (typeof source !== "string" || new TextEncoder().encode(source).length > 8192) throw new Error("Invalid sandbox configuration size");
+      const candidate: unknown = JSON.parse(source);
+      if (!candidate || typeof candidate !== "object" || Array.isArray(candidate)) throw new Error("Invalid sandbox configuration");
+      const value = candidate as Record<string, unknown>;
+      if (Object.keys(value).sort().join(",") !== "amountMinor,catalogVersion,channel,mode,returnUrl,shopId" || value.mode !== "sandbox" || value.channel !== "web-direct"
+        || !/^sandbox\.[A-Za-z0-9][A-Za-z0-9._-]{0,111}$/u.test(config.PLANET_LICENSE_PRODUCT)
+        || typeof value.shopId !== "string" || typeof value.catalogVersion !== "string" || typeof value.returnUrl !== "string" || typeof value.amountMinor !== "number"
+        || typeof bindings.PLANET_YOOKASSA_SANDBOX_SECRET !== "string") throw new Error("Sandbox candidate unavailable");
+      const returnRoute = new URL(value.returnUrl);
+      if (returnRoute.origin !== config.PLANET_ORIGIN || !["/planet/ru/", "/planet/en/"].includes(returnRoute.pathname)
+        || returnRoute.search || returnRoute.hash || returnRoute.username || returnRoute.password) throw new Error("Invalid sandbox return route");
+      sandboxOrders = createSandboxPaymentOrders({ catalog: [{ product: config.PLANET_LICENSE_PRODUCT, version: value.catalogVersion,
+        amountMinor: value.amountMinor, currency: "RUB" }], returnUrl: value.returnUrl, leaseSeconds: 60,
+        gateway: createYooKassaSandboxGateway({ mode: "sandbox", shopId: value.shopId, secretKey: bindings.PLANET_YOOKASSA_SANDBOX_SECRET }),
+        store: createCanonicalPaymentOrderStore(canonical), ledger: services.ledger });
+    } catch {
+      // Invalid/incomplete candidate inputs leave only payments unavailable.
+      // No key, default price, commercial approval or native channel is inferred.
+    }
+  }
   let licenseRateLimiter: ReturnType<typeof createCanonicalLicenseRateLimiter> | undefined;
   try {
     licenseRateLimiter = createCanonicalLicenseRateLimiter(canonical, {
@@ -145,11 +175,13 @@ export async function createConfiguredPlanetApi(bindings: PlanetWorkerBindings):
     deletionDisclosure: disclosure,
     services: { ...services,
       licenseRateLimiter,
+      ...(sandboxOrders ? { paymentOrders: sandboxOrders, payments: sandboxOrders.verification } : {}),
       cookies: createCookieCodec({ key: cookieKey, origin: config.PLANET_ORIGIN, cookieName: config.PLANET_COOKIE_NAME }),
       signer: createGrantSigner({ privateKey: signingKey, kid, issuer: config.PLANET_LICENSE_ISSUER,
         audience: config.PLANET_LICENSE_AUDIENCE, product: config.PLANET_LICENSE_PRODUCT,
         grantSeconds: seconds(config, "PLANET_GRANT_SECONDS"), offlineSeconds: seconds(config, "PLANET_OFFLINE_SECONDS") }),
-      // No provider is configured in this draft. Webhooks therefore return 503.
+      // The default draft has no provider. Candidate wiring above makes no call
+      // on construction and never accepts production keys/products/channels.
     },
   });
 }

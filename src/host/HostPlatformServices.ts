@@ -42,6 +42,8 @@ interface HostPlatformCapabilities {
   readonly app?: HostAppBridge;
   readonly network?: HostNetworkBridge;
   readonly preferences?: HostPreferenceBridge;
+  /** Public preference deadline; raw same-key native work remains ordered. */
+  readonly preferenceTimeoutMs?: number;
   readonly openBrowser?: (options: { url: string }) => Promise<void>;
   readonly openMail?: (options: { url: string }) => Promise<{ completed: boolean }>;
   /** Evaluated at dispatch. Only literal true permits a link; omitted denies all. */
@@ -106,6 +108,10 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     : options.kind === "ios" ? ["dev", "appStore"] : [];
   if (!channels.includes(options.channel)) throw new Error("Invalid native platform distribution");
   const languageTimeoutMs = options.languageTimeoutMs ?? 1500;
+  const preferenceTimeoutMs = options.preferenceTimeoutMs ?? 1500;
+  if (!Number.isInteger(preferenceTimeoutMs) || preferenceTimeoutMs < 1 || preferenceTimeoutMs > 10_000) {
+    throw new RangeError("Native preference timeout must be 1-10000 ms");
+  }
   if (!Number.isInteger(languageTimeoutMs) || languageTimeoutMs < 1 || languageTimeoutMs > 10_000) {
     throw new RangeError("Native language timeout must be 1-10000 ms");
   }
@@ -132,14 +138,18 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
 
   const preferenceTails = new Map<string, Promise<void>>();
   function serialPreference<T>(key: string, operation: HostPlatformFailure["operation"], fallback: T, work: () => Promise<T>): Promise<T> {
+    let timedOut = false;
     const result = (preferenceTails.get(key) ?? Promise.resolve()).then(work).catch(() => {
-      report(operation, "unavailable");
+      if (!timedOut) report(operation, "unavailable");
       return fallback;
     });
     const tail = result.then(() => undefined);
     preferenceTails.set(key, tail);
     void tail.then(() => { if (preferenceTails.get(key) === tail) preferenceTails.delete(key); });
-    return result;
+    return new Promise<T>(resolve => {
+      const timer = setTimeout(() => { timedOut = true; report(operation, "unavailable"); resolve(fallback); }, preferenceTimeoutMs);
+      void result.then(value => { clearTimeout(timer); resolve(value); });
+    });
   }
   async function readPreference(key: string, operation: HostPlatformFailure["operation"]): Promise<{ valid: boolean; value: string | null; unsupported?: boolean }> {
     if (!options.preferences) { report(operation, "unavailable"); return { valid: false, value: null }; }

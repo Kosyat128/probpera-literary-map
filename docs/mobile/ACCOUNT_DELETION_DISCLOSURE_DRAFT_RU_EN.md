@@ -2,7 +2,7 @@
 
 Статус: **DRAFT - не для production**. Оба текста подготовлены с помощью AI по текущему коду S03. Это материал для редакционного, юридического и владельческого рассмотрения, не утверждённая политика. Тексты не установлены в `PLANET_DELETION_DISCLOSURE_JSON`; production policy instance не создан. Никакое требование или Stage этим документом не закрывается.
 
-Область: существующий аккаунт «Пробы Пера» и текущий Web/PWA-процессор удаления обычного читателя. Применение к будущим native-редакциям, сроки хранения, юридические основания и правила платёжных провайдеров здесь не утверждаются. Код и формулировки нужно повторно сопоставить при изменении указанных исходников. Версия пары для рассмотрения: `s03-deletion-technical-draft-1`.
+Область: существующий аккаунт «Пробы Пера» и текущий Web/PWA-процессор удаления обычного читателя. Применение к будущим native-редакциям, сроки хранения, юридические основания и правила платёжных провайдеров здесь не утверждаются. Код и формулировки нужно повторно сопоставить при изменении указанных исходников. Версия пары для рассмотрения: `s03-deletion-technical-draft-2`.
 
 ## Русский текст для рассмотрения
 
@@ -11,7 +11,7 @@
 
 Принятый запрос ещё не означает, что аккаунт удалён. После принятия запроса доступ к защищённой Web/PWA-редакции блокируется при проверке на сервере. Ранее подтверждённый доступ без сети может сохраняться до срока, указанного в последнем подтверждении.
 
-Когда обработка завершена, удаляются аккаунт для входа, профиль читателя, сохранённые на сервере избранное, книжные подборки и их содержимое, прогресс чтения, подписки на страны, писателей и разделы, уведомления и записи о просмотрах, прямо связанные с этим аккаунтом. Записи другого пользователя и гостевые просмотры не удаляются только из-за совпадения браузерной сессии.
+Когда обработка завершена, удаляются аккаунт для входа, профиль читателя, сохранённые на сервере избранное, книжные подборки и их содержимое, прогресс чтения, подписки на страны, писателей и разделы, уведомления и записи о просмотрах, прямо связанные с этим аккаунтом. Закрытые записи заказов тестовой платёжной песочницы также удаляются вместе с аккаунтом. Записи другого пользователя и гостевые просмотры не удаляются только из-за совпадения браузерной сессии.
 
 При обработке также удаляются принадлежащие вам файлы стандартного аватара. Если обнаружен другой связанный файл или его принадлежность не подтверждена, обработка приостанавливается. Часть файлов аватара может быть удалена до завершения удаления самого аккаунта.
 
@@ -21,7 +21,7 @@
 
 Сохраняется запись о запросе: его номер, статус, даты, служебные сведения о ходе обработки и контрольные хеши. Её прямая связь с удалённым аккаунтом также убирается. Номер запроса остаётся номером обращения, поэтому сохраните его для поддержки.
 
-Удаление на сервере не очищает автоматически данные на всех ваших устройствах. Язык, настройки, локальное избранное, недавние материалы и файлы для работы без сети могут оставаться в хранилище браузера. Очистка данных сайта в браузере - отдельное действие.
+В текущем браузере после выхода или принятия запроса закрывается доступ к локальным данным этого аккаунта и выполняется их отдельная очистка. Ошибка очистки требует повторной попытки; данные другого аккаунта и гостевые настройки не очищаются. Удаление на сервере не очищает автоматически данные на всех ваших устройствах. Язык, настройки, локальное избранное, недавние материалы и файлы для работы без сети могут оставаться в хранилище браузера. Очистка данных сайта в браузере - отдельное действие.
 
 Статусы «Запрос принят» и «Запрос обрабатывается» означают, что удаление ещё не завершено. Статус «Обработка приостановлена» требует обращения в поддержку. Проверить статус можно после входа в тот же аккаунт. Если войти уже нельзя или статус не удаётся получить, напишите на probperasite@yandex.ru и укажите сохранённый номер запроса. Ошибка входа сама по себе не подтверждает удаление.
 ```
@@ -33,7 +33,7 @@ Deletion applies to your existing Proba Pera account, which you use with Literar
 
 An accepted request does not mean that the account has been deleted. Once the request is accepted, access to the protected Web/PWA edition is blocked when checked with the server. Previously verified offline access may remain available until the deadline in the latest verification.
 
-Once processing is complete, we remove the account used for sign-in, your reader profile, server-stored favorites, book collections and their contents, reading progress, subscriptions to countries, writers and sections, notifications, and view records directly linked to that account. Another user's records and guest views are not deleted simply because they share a browser session.
+Once processing is complete, we remove the account used for sign-in, your reader profile, server-stored favorites, book collections and their contents, reading progress, subscriptions to countries, writers and sections, notifications, and view records directly linked to that account. Private sandbox payment order records are also deleted with the account. Another user's records and guest views are not deleted simply because they share a browser session.
 
 Processing also removes the standard avatar files that belong to you. If another linked file is found or ownership cannot be confirmed, processing is put on hold. Some avatar files may be removed before deletion of the account itself is complete.
 
@@ -43,7 +43,7 @@ Payment event and purchase records are retained, with their direct link to the d
 
 The deletion request record is retained, including its number, status, dates, processing details and verification hashes. Its direct link to the deleted account is also removed. The request number remains a reference for your case, so keep it for support.
 
-Server-side deletion does not automatically clear data from all your devices. Your language, settings, local favorites, recently opened items and offline files may remain in browser storage. Clearing the site's browser data is a separate action.
+In the current browser, signing out or accepting a deletion request blocks this account’s local data and starts its separate cleanup. Failed cleanup needs a retry; another account’s data and guest settings are not cleared. Server-side deletion does not automatically clear data from all your devices. Your language, settings, local favorites, recently opened items and offline files may remain in browser storage. Clearing the site's browser data is a separate action.
 
 The statuses “Request received” and “Request being processed” mean that deletion is not yet complete. A request that is “On hold” requires contacting support. You can check its status after signing in to the same account. If you can no longer sign in or cannot retrieve the status, email probperasite@yandex.ru with your saved request number. A sign-in error alone does not confirm deletion.
 ```
@@ -86,3 +86,7 @@ The statuses “Request received” and “Request being processed” mean that 
 ## Проверка и доказательства
 
 Техническая семантическая карта и SHA находятся в [account-deletion-disclosure-draft.json](evidence/S03/account-deletion-disclosure-draft.json). Независимая проверка выполнения текущего кода находится в [deletion-processor-independent-review.json](evidence/S03/deletion-processor-independent-review.json). Последний документ проверяет локальные SQL/CLI сценарии, а не утверждает эти тексты или production policy. Новых binding-документов будущих Stage при подготовке не загружалось.
+
+## Technical draft 2 delta / Изменения технического черновика 2
+
+The two review texts now include account-bound browser cache cleanup and deletion of private sandbox order records. Эти два факта относятся к текущей локальной реализации: `src/community/readerPrivacy.ts` и `supabase/migrations/20261002172514_planet_yookassa_sandbox_orders.sql`. Историческая semantic/source map ниже и в прежнем evidence остаётся доказательством версии 1; SHA текущей пары и полный data-flow inventory находятся в `RELEASE_DECISIONS.json`. Все DD-01..DD-06 и human review остаются PENDING.

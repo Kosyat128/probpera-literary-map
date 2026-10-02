@@ -3,6 +3,7 @@ import { createPlanetApi, type PlanetApiServices, type PlanetAccess, type Planet
 import { createCookieCodec, createGrantSigner } from "./crypto";
 import { verifyWebLicenseGrant } from "../../src/platform/adapters/web/WebLicense";
 import { createPwaLicenseRuntime } from "../../src/pwa/PwaLicenseRuntime";
+import { PaymentOrderError, normalizedPaymentHash, type PaymentOrderSummary } from "./paymentOrders";
 
 const origin = "https://probpera.ru";
 const audience = "literary-planet-web";
@@ -510,5 +511,109 @@ describe("controlled Planet HTTP API with real crypto", () => {
       expect(response.status).toBe(405); expect(response.headers.get("allow")).toBe("POST");
       expect(response.headers.get("access-control-allow-origin")).toBeNull();
     }
+  });
+});
+
+function sandboxHttpFixture() {
+  const f = fixture(), sandboxProduct = "sandbox.literary-planet-base";
+  const summary: PaymentOrderSummary = { orderId: crypto.randomUUID(), product: sandboxProduct, catalogVersion: "fixture-v1", status: "pending", amountMinor: 12345,
+    currency: "RUB", environment: "sandbox", refundStatus: null, confirmationUrl: "https://yoomoney.ru/api-pages/v2/payment-confirm/epl?orderId=synthetic" };
+  const orders = { catalog: () => [{ product: sandboxProduct, version: "fixture-v1", amountMinor: summary.amountMinor, currency: "RUB" as const }],
+    create: vi.fn(async (_subject: string, _request: string, _product: string) => summary),
+    status: vi.fn(async (_subject: string, _order: string) => summary), restore: vi.fn(async (_subject: string, _product: string): Promise<PaymentOrderSummary | null> => summary) };
+  f.services.paymentOrders = orders;
+  const api = createPlanetApi({ origin, audience, product: sandboxProduct, cookieName, services: f.services, now: f.clock });
+  const body = { v: 1, audience, product: sandboxProduct };
+  const request = (route: string, data: object = body, cookie?: string, headers: Record<string, string> = {}) => new Request(`${origin}/planet/api/${route}`, {
+    method: "POST", headers: { origin, "content-type": "application/json", "sec-fetch-site": "same-origin", ...(cookie ? { cookie } : {}), ...headers }, body: JSON.stringify(data) });
+  const cookie = async () => cookieName + "=" + await f.cookies.seal({ accessToken: token, subject: f.principal.subject,
+    sessionId: f.principal.sessionId, sessionEpoch: f.state.sessionEpoch, expiresAt: f.principal.expiresAt });
+  return { ...f, api, orders, summary, body, request, cookie, sandboxProduct };
+}
+describe("authenticated sandbox order HTTP and provider-specific acknowledgement", () => {
+  it("holds a stale consented catalog before reserve and preserves old-order restore with its truthful price/version", async () => {
+    const f = sandboxHttpFixture(), cookie = await f.cookie(), requestId = crypto.randomUUID();
+    f.orders.catalog = () => [{ product: f.sandboxProduct, version: "fixture-v2", amountMinor: 23456, currency: "RUB" }];
+    const held = await f.api(f.request("payments/order", { ...f.body, requestId, catalogVersion: "fixture-v1" }, cookie));
+    expect(held.status).toBe(409); expect(await held.json()).toEqual({ error: "payment-catalog-changed" }); expect(f.orders.create).not.toHaveBeenCalled();
+    const restored = await f.api(f.request("payments/restore", f.body, cookie));
+    expect(await restored.json()).toEqual({ order: f.summary }); expect(f.summary.catalogVersion).toBe("fixture-v1"); expect(f.summary.amountMinor).toBe(12345);
+    const reviewed = await f.api(f.request("payments/order", { ...f.body, requestId, catalogVersion: "fixture-v2" }, cookie));
+    expect(reviewed.status).toBe(200); expect(f.orders.create).toHaveBeenCalledWith(f.principal.subject, requestId, f.sandboxProduct, expect.any(AbortSignal));
+    expect(await reviewed.json()).toEqual({ order: f.summary });
+  });
+  it("publishes only the configured server test catalog, without an account, shop secret or entitlement", async () => {
+    const f = sandboxHttpFixture();
+    const result = await f.api(f.request("payments/catalog", { v: 1 }));
+    expect(result.status).toBe(200); expect(result.headers.get("cache-control")).toBe("no-store");
+    expect(await result.json()).toEqual({ catalog: { v: 1, audience, product: f.sandboxProduct, catalogVersion: "fixture-v1",
+      amountMinor: 12345, currency: "RUB", mode: "sandbox", channel: "web-direct" } });
+    expect(f.orders.create).not.toHaveBeenCalled(); expect(f.auth.verify).not.toHaveBeenCalled();
+    delete f.services.paymentOrders;
+    expect(await (await f.api(f.request("payments/catalog", { v: 1 }))).json()).toEqual({ catalog: null });
+    const absent = fixture();
+    expect(await (await absent.api(absent.request("payments/catalog", { v: 1 }))).json()).toEqual({ catalog: null });
+    expect((await f.api(f.request("payments/catalog", { v: 1, product: "sandbox.client-price" }))).status).toBe(400);
+  });
+  it("allows an unpaid canonical reader to create a server-priced order, status and restore through their own identity", async () => {
+    const f = sandboxHttpFixture(); f.state.active = false; f.state.activeReceiptCount = 0; const cookie = await f.cookie(), intent = crypto.randomUUID();
+    const created = await f.api(f.request("payments/order", { ...f.body, requestId: intent, catalogVersion: "fixture-v1" }, cookie));
+    expect(created.status).toBe(200); expect(await created.json()).toEqual({ order: f.summary });
+    expect(f.orders.create).toHaveBeenCalledWith(f.principal.subject, intent, f.sandboxProduct, expect.any(AbortSignal));
+    expect((await f.api(f.request("payments/status", { ...f.body, orderId: f.summary.orderId }, cookie))).status).toBe(200);
+    expect(f.orders.status).toHaveBeenCalledWith(f.principal.subject, f.summary.orderId, expect.any(AbortSignal));
+    expect((await f.api(f.request("payments/restore", f.body, cookie))).status).toBe(200);
+    expect(f.orders.restore).toHaveBeenCalledWith(f.principal.subject, f.sandboxProduct, expect.any(AbortSignal));
+  });
+  it("rejects unauthenticated, cross-origin, client amount/account/channel fields and unconfigured candidate before order mutation", async () => {
+    const f = sandboxHttpFixture(), cookie = await f.cookie(), data = { ...f.body, requestId: crypto.randomUUID(), catalogVersion: "fixture-v1" };
+    expect((await f.api(f.request("payments/order", data))).status).toBe(401);
+    expect((await f.api(f.request("payments/order", data, cookie, { origin: "https://foreign.invalid" }))).status).toBe(403);
+    for (const extra of [{ amountMinor: 1 }, { subject: crypto.randomUUID() }, { channel: "app-store" }, { premium: true }]) {
+      expect((await f.api(f.request("payments/order", { ...data, ...extra }, cookie))).status).toBe(400);
+    }
+    expect(f.orders.create).not.toHaveBeenCalled(); delete f.services.paymentOrders;
+    expect((await f.api(f.request("payments/order", data, cookie))).status).toBe(503);
+  });
+  it("hides a foreign or missing order and rechecks logout/deletion after a delayed order operation", async () => {
+    const f = sandboxHttpFixture(), cookie = await f.cookie();
+    f.orders.status.mockRejectedValue(new PaymentOrderError("payment-order-not-found"));
+    const missing = await f.api(f.request("payments/status", { ...f.body, orderId: crypto.randomUUID() }, cookie));
+    expect(missing.status).toBe(404); expect(await missing.json()).toEqual({ error: "payment-order-not-found" });
+    f.orders.create.mockImplementation(async () => { f.removeSession(); return f.summary; });
+    expect((await f.api(f.request("payments/order", { ...f.body, requestId: crypto.randomUUID(), catalogVersion: "fixture-v1" }, cookie))).status).toBe(401);
+    const deletion = sandboxHttpFixture(), deletionCookie = await deletion.cookie();
+    deletion.orders.restore.mockImplementation(async () => { deletion.state.accessBlocked = true; deletion.state.active = false; return deletion.summary; });
+    expect((await deletion.api(deletion.request("payments/restore", deletion.body, deletionCookie))).status).toBe(403);
+  });
+  it("returns no entitlement receipt or secret from malformed/failed order capability", async () => {
+    const f = sandboxHttpFixture(), cookie = await f.cookie();
+    f.orders.restore.mockResolvedValue({ ...f.summary, environment: "production", secret: "private-provider-secret" } as unknown as PaymentOrderSummary);
+    const malformed = await f.api(f.request("payments/restore", f.body, cookie)); expect(malformed.status).toBe(503); expect(await malformed.text()).not.toContain("secret");
+    f.orders.restore.mockRejectedValue(new Error("private-service-key"));
+    expect(await (await f.api(f.request("payments/restore", f.body, cookie))).json()).toEqual({ error: "service-unavailable" });
+  });
+  it("acknowledges YooKassa with HTTP200 only after durable enqueue/apply and normalized event identity", async () => {
+    const f = sandboxHttpFixture();
+    const event: VerifiedPayment = { eventId: "payment.fixture.active", transactionId: "fixture-payment", subject: f.principal.subject,
+      product: f.sandboxProduct, status: "active", occurredAt: "2026-10-02T12:00:00Z" };
+    f.services.payments = { provider: "yookassa-sandbox", acknowledgementStatus: 200, eventHashMode: "normalized", verify: async () => event };
+    for (const body of ["first-notification-shape", "second-notification-shape"]) {
+      const result = await f.api(new Request(origin + "/planet/api/payments/webhook/yookassa-sandbox", { method: "POST", body })); expect(result.status).toBe(200);
+    }
+    const hash = await normalizedPaymentHash(event);
+    expect(f.ledger.enqueueVerifiedEvent).toHaveBeenNthCalledWith(1, "yookassa-sandbox", event, hash);
+    expect(f.ledger.enqueueVerifiedEvent).toHaveBeenNthCalledWith(2, "yookassa-sandbox", event, hash);
+    f.ledger.enqueueVerifiedEvent.mockRejectedValueOnce(Error("private-durable-failure"));
+    const failed = await f.api(new Request(origin + "/planet/api/payments/webhook/yookassa-sandbox", { method: "POST", body: "third" }));
+    expect(failed.status).toBe(503); expect(await failed.text()).not.toContain("private"); expect(f.ledger.applyPayment).toHaveBeenCalledTimes(2);
+  });
+  it("accepts only the strict trusted non-entitling durable acknowledgement shape", async () => {
+    const f = sandboxHttpFixture(); f.services.payments = { provider: "yookassa-sandbox", acknowledgementStatus: 200,
+      verify: async () => ({ acknowledgeOnly: true }) };
+    const request = () => new Request(origin + "/planet/api/payments/webhook/yookassa-sandbox", { method: "POST", body: "untrusted-hint" });
+    expect((await f.api(request())).status).toBe(200); expect(f.ledger.enqueueVerifiedEvent).not.toHaveBeenCalled(); expect(f.ledger.applyPayment).not.toHaveBeenCalled();
+    f.services.payments.verify = async () => ({ acknowledgeOnly: true, unauthorized: "secret" });
+    expect((await f.api(request())).status).toBe(503);
   });
 });

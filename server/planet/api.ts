@@ -1,4 +1,5 @@
 import type { CookiePayload } from "./crypto";
+import { PaymentOrderError, normalizedPaymentHash, type PlanetPaymentOrders } from "./paymentOrders";
 
 export interface PlanetPrincipal {
   subject: string;
@@ -51,8 +52,13 @@ export interface PlanetApiServices {
   licenseRateLimiter?: { consume(subject: string, product: string): Promise<PlanetLicenseRateLimitDecision> };
   payments?: {
     provider: string;
-    verify(request: Request, bytes: Uint8Array): Promise<VerifiedPayment | null>;
+    /** Only a trusted provider may acknowledge a durably stored non-entitling
+     * observation. The notification body cannot select this branch. */
+    verify(request: Request, bytes: Uint8Array): Promise<VerifiedPayment | { acknowledgeOnly: true } | null>;
+    acknowledgementStatus?: 200 | 204;
+    eventHashMode?: "normalized" | "raw";
   };
+  paymentOrders?: PlanetPaymentOrders;
 }
 export interface PlanetApiOptions {
   origin: string;
@@ -211,7 +217,8 @@ export function createPlanetApi(options: PlanetApiOptions): (request: Request) =
       if (url.origin !== options.origin || url.search || url.hash || !url.pathname.startsWith(ROOT)) return response(404, { error: "not-found" });
       const route = url.pathname.slice(ROOT.length);
       const isWebhook = route.startsWith("payments/webhook/");
-      if (!["configuration", "license/bridge", "license/identity", "license/session", "license/sign-out", "account/deletion-request", "account/deletion-status"].includes(route) && !isWebhook) return response(404, { error: "not-found" });
+      if (!["configuration", "license/bridge", "license/identity", "license/session", "license/sign-out", "account/deletion-request", "account/deletion-status",
+        "payments/catalog", "payments/order", "payments/status", "payments/restore"].includes(route) && !isWebhook) return response(404, { error: "not-found" });
       if (request.method !== "POST") return response(405, { error: "method-not-allowed" });
       if (isWebhook) {
         const provider = services.payments;
@@ -219,11 +226,19 @@ export function createPlanetApi(options: PlanetApiOptions): (request: Request) =
         if (!provider || typeof providerName !== "string" || route !== "payments/webhook/" + providerName) return response(503, { error: "payment-provider-unconfigured" });
         const bytes = await boundedBody(request, 262_144);
         const digest = await crypto.subtle.digest("SHA-256", bytes);
-        const hash = [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
+        let hash = [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, "0")).join("");
         // Provider verification receives the original bytes and signature headers.
         // It must validate its real provider protocol before returning any event.
         const verified = await provider.verify(request, bytes);
         if (!verified) return response(401, { error: "invalid-payment-signature" });
+        const acknowledgement = provider.acknowledgementStatus ?? 204;
+        if (![200, 204].includes(acknowledgement) || ![undefined, "raw", "normalized"].includes(provider.eventHashMode)) throw new Error("Invalid provider acknowledgement policy");
+        if ("acknowledgeOnly" in verified) {
+          const descriptors = Object.getOwnPropertyDescriptors(verified);
+          if (Reflect.ownKeys(descriptors).join(",") !== "acknowledgeOnly" || descriptors.acknowledgeOnly?.value !== true
+            || !descriptors.acknowledgeOnly.enumerable || !Object.hasOwn(descriptors.acknowledgeOnly, "value")) throw new Error("Invalid durable acknowledgement");
+          return response(acknowledgement, null);
+        }
         // Snapshot only normalized fields before any ledger await. Raw payload,
         // headers and extra provider fields never become retry-job data.
         const event = Object.freeze({ eventId: verified.eventId, transactionId: verified.transactionId,
@@ -231,11 +246,12 @@ export function createPlanetApi(options: PlanetApiOptions): (request: Request) =
         if (![event.eventId, event.transactionId].every(value => typeof value === "string" && /^[A-Za-z0-9:._/-]{1,240}$/u.test(value))
           || !UUID.test(event.subject) || event.product !== options.product || !["active", "refunded", "revoked"].includes(event.status)
           || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z$/u.test(event.occurredAt) || !Number.isFinite(Date.parse(event.occurredAt))) throw new Error("Invalid verified payment event");
+        if (provider.eventHashMode === "normalized") hash = await normalizedPaymentHash(event);
         await services.ledger.enqueueVerifiedEvent(providerName, event, hash);
         // Preserve the existing 204 contract: durable enqueue alone is not an
         // applied payment. Only the separate internal processor completes jobs.
         await services.ledger.applyPayment(providerName, event, hash);
-        return response(204, null);
+        return response(acknowledgement, null);
       }
       if (request.headers.get("origin") !== options.origin || ![null, "same-origin"].includes(request.headers.get("sec-fetch-site"))) return response(403, { error: "origin-denied" });
       if (!/^application\/json(?:\s*;\s*charset=utf-8)?$/iu.test(request.headers.get("content-type") ?? "")) return response(415, { error: "json-required" });
@@ -247,7 +263,19 @@ export function createPlanetApi(options: PlanetApiOptions): (request: Request) =
         if (Object.keys(body).join(",") !== "v" || body.v !== 1) return response(400, { error: "invalid-request" });
         return response(200, { v: 1, audience: options.audience, product: options.product, deletionDisclosure: disclosure });
       }
-      const fields = ["v", "audience", "product", ...(route === "license/session" ? ["subject"] : []), ...(route === "account/deletion-request" ? ["requestId", "reauthToken"] : [])];
+      if (route === "payments/catalog") {
+        if (Object.keys(body).join(",") !== "v" || body.v !== 1) return response(400, { error: "invalid-request" });
+        if (!services.paymentOrders || !options.product.startsWith("sandbox.")) return response(200, { catalog: null });
+        const entry = services.paymentOrders.catalog().find(value => value.product === options.product);
+        if (!entry) return response(200, { catalog: null });
+        if (Object.keys(entry).sort().join(",") !== "amountMinor,currency,product,version"
+          || typeof entry.version !== "string" || !/^[A-Za-z0-9._-]{1,80}$/u.test(entry.version)
+          || entry.currency !== "RUB" || !Number.isSafeInteger(entry.amountMinor) || entry.amountMinor <= 0) throw new Error("Invalid sandbox catalog");
+        return response(200, { catalog: { v: 1, audience: options.audience, product: options.product,
+          catalogVersion: entry.version, amountMinor: entry.amountMinor, currency: "RUB", mode: "sandbox", channel: "web-direct" } });
+      }
+      const fields = ["v", "audience", "product", ...(route === "license/session" ? ["subject"] : []), ...(route === "account/deletion-request" ? ["requestId", "reauthToken"] : []),
+        ...(route === "payments/order" ? ["requestId", "catalogVersion"] : []), ...(route === "payments/status" ? ["orderId"] : [])];
       if (Object.keys(body).sort().join(",") !== fields.sort().join(",") || body.v !== 1 || body.audience !== options.audience || body.product !== options.product) return response(400, { error: "invalid-request" });
       if (route === "account/deletion-status") {
         // A deletion request blocks paid access and clears its cookie. The same
@@ -274,6 +302,34 @@ export function createPlanetApi(options: PlanetApiOptions): (request: Request) =
         return response(200, { subject: principal.subject }, cookie(encoded, principal.expiresAt - now()));
       }
       const { principal, session, state } = await authenticate(request);
+      if (route.startsWith("payments/")) {
+        if (!services.paymentOrders) return response(503, { error: "payment-provider-unconfigured" });
+        if ((route === "payments/order" && (typeof body.requestId !== "string" || !UUID.test(body.requestId)
+          || typeof body.catalogVersion !== "string" || !/^[A-Za-z0-9._-]{1,80}$/u.test(body.catalogVersion)))
+          || (route === "payments/status" && (typeof body.orderId !== "string" || !UUID.test(body.orderId)))) return response(400, { error: "invalid-request" });
+        // A stale consented test catalog never reserves an intent or creates a
+        // provider operation. The reader can explicitly restore its older durable
+        // order, or review the new catalog and retry its unchanged uncertain UUID.
+        if (route === "payments/order" && services.paymentOrders.catalog().find(entry => entry.product === options.product)?.version !== body.catalogVersion)
+          return response(409, { error: "payment-catalog-changed" });
+        const order = route === "payments/order" ? await services.paymentOrders.create(principal.subject, body.requestId as string, options.product, request.signal)
+          : route === "payments/status" ? await services.paymentOrders.status(principal.subject, body.orderId as string, request.signal)
+          : await services.paymentOrders.restore(principal.subject, options.product, request.signal);
+        // Entitlement application can intentionally change session_epoch. Recheck
+        // canonical identity and the deletion block before returning any result;
+        // a grant still requires the existing bridge/session flow to refresh.
+        const confirmed = await services.auth.verify(session.accessToken);
+        if (!validPrincipal(confirmed, now()) || !samePrincipal(confirmed, principal)) return response(401, { error: "authentication-required" }, cookie("", 0));
+        if ((await access(principal.subject)).accessBlocked) return response(403, { error: "access-denied" }, cookie("", 0));
+        if (order !== null && (Object.keys(order).sort().join(",") !== "amountMinor,catalogVersion,confirmationUrl,currency,environment,orderId,product,refundStatus,status"
+          || !UUID.test(order.orderId) || order.product !== options.product || order.environment !== "sandbox" || !options.product.startsWith("sandbox.")
+          || typeof order.catalogVersion !== "string" || !/^[A-Za-z0-9._-]{1,80}$/u.test(order.catalogVersion)
+          || order.currency !== "RUB" || !Number.isSafeInteger(order.amountMinor) || order.amountMinor <= 0
+          || !["new", "pending", "waiting_for_capture", "succeeded", "canceled", "refunded", "refund-review-required", "reconcile-required"].includes(order.status)
+          || (order.refundStatus !== null && !["pending", "succeeded", "canceled"].includes(order.refundStatus))
+          || (order.confirmationUrl !== null && typeof order.confirmationUrl !== "string"))) throw new Error("Invalid payment order summary");
+        return response(200, { order });
+      }
       if (route === "license/identity") return response(200, { subject: principal.subject });
       if (route === "license/sign-out") {
         await services.auth.signOut(session.accessToken);
@@ -310,6 +366,8 @@ export function createPlanetApi(options: PlanetApiOptions): (request: Request) =
       if (!freshState.active) return response(402, { error: "purchase-required" });
       return response(200, { grant });
     } catch (error) {
+      if (error instanceof PaymentOrderError) return response(error.code === "payment-order-not-found" ? 404
+        : error.code === "invalid-payment-request" ? 400 : 409, { error: error.code });
       // No credential, password, webhook body or upstream exception is reflected.
       return error instanceof RequestError ? response(error.status, { error: error.code }) : response(503, { error: "service-unavailable" });
     }

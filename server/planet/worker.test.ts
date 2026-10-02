@@ -273,3 +273,37 @@ describe("local draft Worker packaging", () => {
     expect(inputs.some(name => /(?:^|\/)src\/components\//u.test(name))).toBe(false);
   });
 });
+
+describe("explicit web/direct sandbox candidate Worker wiring", () => {
+  const candidate = { mode: "sandbox", channel: "web-direct", shopId: "100500", catalogVersion: "synthetic-v1", amountMinor: 12345, returnUrl: origin + "/planet/ru/" };
+  const webhook = () => request("/planet/api/payments/webhook/yookassa-sandbox", { method: "POST", body: JSON.stringify({ type: "untrusted-hint" }) });
+  it("constructs and wires only explicit sandbox inputs without network or client checkout activation", async () => {
+    const network = vi.fn<typeof fetch>(async () => { throw Error("No network permitted in fixture"); }); vi.stubGlobal("fetch", network);
+    try {
+      const api = await createConfiguredPlanetApi({ ...configured, PLANET_LICENSE_PRODUCT: "sandbox.base-v1", PLANET_YOOKASSA_SANDBOX_JSON: JSON.stringify(candidate),
+        PLANET_YOOKASSA_SANDBOX_SECRET: "test_synthetic_not_a_key" });
+      const configuration = await api(request("/planet/api/configuration", { method: "POST", headers: { origin, "content-type": "application/json" }, body: '{"v":1}' }));
+      expect(configuration.status).toBe(200); const body = await configuration.json(); expect(body.product).toBe("sandbox.base-v1");
+      expect(body).not.toHaveProperty("checkoutEnabled"); expect(body).not.toHaveProperty("secret");
+      expect((await api(webhook())).status).toBe(401); expect(network).not.toHaveBeenCalled();
+    } finally { vi.unstubAllGlobals(); }
+  });
+  it.each([{ mode: "production" }, { channel: "app-store" }, { channel: "google-play" }, { amountMinor: 1.5 }, { amountMinor: 0 },
+    { shopId: "../shop" }, { returnUrl: "https://foreign.invalid/planet/ru/" }, { returnUrl: origin + "/admin/" },
+    { returnUrl: origin + "/planet/ru/?redirect=foreign" }, { commercialApproval: true }])("leaves candidate unavailable for invalid inputs %o without disabling configuration", async change => {
+    const network = vi.fn<typeof fetch>(async () => { throw Error("No network permitted in fixture"); }); vi.stubGlobal("fetch", network);
+    try {
+      const api = await createConfiguredPlanetApi({ ...configured, PLANET_LICENSE_PRODUCT: "sandbox.base-v1", PLANET_YOOKASSA_SANDBOX_JSON: JSON.stringify({ ...candidate, ...change }),
+        PLANET_YOOKASSA_SANDBOX_SECRET: "test_synthetic_not_a_key" });
+      expect((await api(webhook())).status).toBe(503);
+      expect((await api(request("/planet/api/configuration", { method: "POST", headers: { origin, "content-type": "application/json" }, body: '{"v":1}' }))).status).toBe(200);
+      expect(network).not.toHaveBeenCalled();
+    } finally { vi.unstubAllGlobals(); }
+  });
+  it.each([{ PLANET_LICENSE_PRODUCT: "base-v1", PLANET_YOOKASSA_SANDBOX_SECRET: "test_synthetic_not_a_key" },
+    { PLANET_LICENSE_PRODUCT: "sandbox.base-v1", PLANET_YOOKASSA_SANDBOX_SECRET: "live_synthetic_not_a_key" },
+    { PLANET_LICENSE_PRODUCT: "sandbox.base-v1", PLANET_YOOKASSA_SANDBOX_SECRET: undefined }])("never connects production product/live or missing secret %o", async change => {
+    const api = await createConfiguredPlanetApi({ ...configured, PLANET_YOOKASSA_SANDBOX_JSON: JSON.stringify(candidate), ...change });
+    expect((await api(webhook())).status).toBe(503);
+  });
+});

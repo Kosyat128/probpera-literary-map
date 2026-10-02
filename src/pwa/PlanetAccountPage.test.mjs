@@ -152,3 +152,20 @@ describe("account route ownership and bilingual metadata", () => {
     for (const component of ["SiteTypographyRuntime", "SiteDesignRuntime"]) expect(source).toContain(`{!accountMode && <${component} />}`);
   });
 });
+
+
+it("an equal-value A to B to A status read cannot borrow a new generation's receipt", async () => {
+  const original = { ...identity, scope: {} }; let current = original;
+  const client = { deletionStatus: vi.fn(async () => {
+    current = { subject: OTHER, token: "other", scope: {} }; current = { ...identity, scope: {} };
+    return { requestId: REQUEST, status: "requested" };
+  }) };
+  await expect(readPlanetAccountDeletionStatus(client, config, original, () => current, new AbortController().signal)).rejects.toMatchObject({ reason: "authentication" });
+  expect(client.deletionStatus).toHaveBeenCalledTimes(1);
+});
+it("the dedicated status identity reads only an existing server receipt, without a license bridge or mutation", async () => {
+  const statusOnly = Object.freeze({ ...identity, scope: Object.freeze({}) });
+  const client = { deletionStatus: vi.fn(async () => ({ requestId: REQUEST, status: "requested" })), bridge: vi.fn(), requestDeletion: vi.fn() };
+  expect(await readPlanetAccountDeletionStatus(client, config, statusOnly, () => statusOnly, new AbortController().signal)).toEqual({ requestId: REQUEST, status: "requested" });
+  expect(client.bridge).not.toHaveBeenCalled(); expect(client.requestDeletion).not.toHaveBeenCalled();
+});

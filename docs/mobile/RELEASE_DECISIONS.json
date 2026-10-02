@@ -1,0 +1,1612 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-release-decision-registry",
+  "dataFlowFingerprint": "3a084bd6cefbda6bc1c375e7b8bcd266dd3d2fb66d3c6ee72666c2d15b9bcf94",
+  "sources": [
+    {
+      "path": "apps/mobile/android/.gitignore",
+      "sha256": "fe8c4e9acdf5a457081e492148a7bc1ba345cb3fda95a6a2bbb1d211533ece90"
+    },
+    {
+      "path": "apps/mobile/android/app/.gitignore",
+      "sha256": "99c54e51ee601a60fbde8016b2cbf717483bc2e92773be86c9247d02a7fa6ea4"
+    },
+    {
+      "path": "apps/mobile/android/app/build.gradle",
+      "sha256": "8d2c79e36aeacd77e2cc3068fd5dbf09389291c970e0c37179ef4791841e845c"
+    },
+    {
+      "path": "apps/mobile/android/app/capacitor.build.gradle",
+      "sha256": "00d3eb174206a523420609a3235fd739c6c45b12ebc6f6dda31687b53944c87d"
+    },
+    {
+      "path": "apps/mobile/android/app/proguard-rules.pro",
+      "sha256": "1cf8c57e8f79c250b0af9c1a5a4edad71a5c348a79ab70243b6bae086c150ad2"
+    },
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetPreferencesRuntimeTest.java",
+      "sha256": "bdeeb9f437ace2e654ea121a7dcac17b9c29bcdf591cd6b2aba9f5899c623469"
+    },
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetSecureStoreRuntimeTest.java",
+      "sha256": "6e0c37786445232c800cac8a4885d6f080d2ca8f2f2024d60c588dda239ba78e"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/AndroidManifest.xml",
+      "sha256": "d45bf5a64a8e771105b5b1a2184b196aee46e0d7c2935d79d6b71bebc6c20caf"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+      "sha256": "af77529e8dddb8c99fd3f42bb688671f3a181c9e31002af389c31c7e81617e8b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetContentStorePlugin.java",
+      "sha256": "f5a63ea10aa67204895920e6a0b8de00a194f040160367178d6839e49bf41b7b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetSecureStore.java",
+      "sha256": "bdab0d2cc7adfc29209996127e95e945901344e32d15723b9a7702d829b1160b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetSecureStorePlugin.java",
+      "sha256": "07c9413fd22e9c48f48f8cc020a5a9ea12782ac3780631ee69e3b121162d3b8c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-hdpi/splash.png",
+      "sha256": "41cbbc568bb360a84681d1ef4ba470c09993c18547f4b7f09f42de8d039059d5"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-mdpi/splash.png",
+      "sha256": "4feccc0dd7ee03ed57d1ab4d3bc97b23e05d93e9ec55cde44135bd7fa2c7d06c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-xhdpi/splash.png",
+      "sha256": "51555e88ad31c4ac9ad8a1ca6e971d948332a907f107e0957bc69828d010325a"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-xxhdpi/splash.png",
+      "sha256": "ff1130bd95a9d3cae479c6e9d0ef294a4803f2cc9d0d757861b1a575a5fe5e40"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-xxxhdpi/splash.png",
+      "sha256": "54598cf67943455e55cf3d9dec0b1a6dcf455b99efe6227b9d868f58418dd465"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-hdpi/splash.png",
+      "sha256": "78a0de5069b2b0c21f71406f508dcf6329873cebfcfd2becd20d53e673d27b46"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-mdpi/splash.png",
+      "sha256": "6aa888101a497078614f668f09c7b705e62f8b2d5df0c8263e5593df5f9dd348"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-xhdpi/splash.png",
+      "sha256": "03e5339f0ef1edcc013ddcc2360dd97e4926485aeee3e6593bfcec729f7a0fde"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-xxhdpi/splash.png",
+      "sha256": "7bc2485cff17cf3b293fede8f343ee6e5a9b1c77a0ddb1b712dd7a16bdc5d0a9"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-xxxhdpi/splash.png",
+      "sha256": "1f330daeb98706e0939185b972e370a90a5afec07ebd75498dbe73701d47a270"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "sha256": "8cd775ca03b52c7f6ac2a97689c8da4ed07e8092270f039fa3febce7a98864a3"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "sha256": "bc02ce505d0fb9aeddb8ee7d051fde3519f56637c1f2b86e6812b0dd8714c9a9"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable/splash.png",
+      "sha256": "4feccc0dd7ee03ed57d1ab4d3bc97b23e05d93e9ec55cde44135bd7fa2c7d06c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/layout/activity_main.xml",
+      "sha256": "5d770feb791313b947020cbfc57e5c733c556dac5e9e49261a1190e527073253"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "sha256": "429a4798e1eb0ace1d02311088dc95e3dc4b098de1910ed405c7632f19a002b6"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+      "sha256": "3ee46031b42e469e3932ea71aa64e55f05a290db02b326c39f7ec3c6383b8e41"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+      "sha256": "429a4798e1eb0ace1d02311088dc95e3dc4b098de1910ed405c7632f19a002b6"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+      "sha256": "ca35947d9144b858e03cfa72f4ecc50b89cbfd776fc63d819e5f8e799d3d12a1"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+      "sha256": "0cb8c1d2700dd28a5dbd7c7a615f348942f47e3d0bc27696c59fd4aacb1bc51d"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+      "sha256": "ca35947d9144b858e03cfa72f4ecc50b89cbfd776fc63d819e5f8e799d3d12a1"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+      "sha256": "4c9d5dc6413d1d4b9c15e32c0c556a7b213fb04f237279714e8b08daf5d29958"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+      "sha256": "5a1106df21364ff942eecabb8ff8e7c795f922b63cf3227cbd8b89fa6e37541b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+      "sha256": "4c9d5dc6413d1d4b9c15e32c0c556a7b213fb04f237279714e8b08daf5d29958"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+      "sha256": "31ba5a377d1412005e75cb94e9ed59f488aa66d107c5a56dff004f8970f6a81b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+      "sha256": "973be00f28c78f7c985276f715a82863f85a63920eda57e7bfec24caf1487978"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+      "sha256": "31ba5a377d1412005e75cb94e9ed59f488aa66d107c5a56dff004f8970f6a81b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "sha256": "682d42a97553720be3cdfcf20c43d57dfd46c28f924efdb48d59f7aa76013824"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+      "sha256": "9d15dc51d13e869de8b44d3a1769c8d6e9e6003b9c2a73bbeac22626b302846c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+      "sha256": "682d42a97553720be3cdfcf20c43d57dfd46c28f924efdb48d59f7aa76013824"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "sha256": "64ba7cf671ba7580727746eb9172dae4e5ad05ff3e7ba5f8abc696a58af3b6a6"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/ic_launcher_background.xml",
+      "sha256": "51c58896188ff626f1254e711b1f1caa1247ca67b1c338ca9bb1840ac9617764"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+      "sha256": "43ed1f0d14296b866760427d24dbfe7d3368892e0156bb4e952b1f4f12403195"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/styles.xml",
+      "sha256": "18ebba36575e9461347ee67361b23caf095f158ee85dbefe1b83a4669ba5bd6c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/xml/file_paths.xml",
+      "sha256": "a46ed43ef65c90cb6778f4581decf3556e3f0055aad8f36d69dae16f9a0e99aa"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/xml/locales_config.xml",
+      "sha256": "80236fcd00f908a5e93f2e395ccd5c23654b8940379a063515dcd2eb638ac75f"
+    },
+    {
+      "path": "apps/mobile/android/build.gradle",
+      "sha256": "e2aa5075e1fcfd5e77c63eb8d662932b3c8586c927376b88a4986365af3b635f"
+    },
+    {
+      "path": "apps/mobile/android/capacitor.settings.gradle",
+      "sha256": "e05879a12085274c107a8006b33ada4e73e1592fd0fb79a9b70c24e069eb8ea5"
+    },
+    {
+      "path": "apps/mobile/android/gradle.properties",
+      "sha256": "bf36e92164e136e02c13728d219f9af8e8a386d491e61b9b66bf7d19df593488"
+    },
+    {
+      "path": "apps/mobile/android/gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+    },
+    {
+      "path": "apps/mobile/android/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "05fcb55a155233ee632da57149d1ba3cd39a001701ae00e0c20782fbaf6c378b"
+    },
+    {
+      "path": "apps/mobile/android/gradlew",
+      "sha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409"
+    },
+    {
+      "path": "apps/mobile/android/gradlew.bat",
+      "sha256": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b"
+    },
+    {
+      "path": "apps/mobile/android/settings.gradle",
+      "sha256": "6ce098d15ebd69b44c4ecd786bca1bdc366340d2459b2af4d7bb0ab317aa9669"
+    },
+    {
+      "path": "apps/mobile/android/variables.gradle",
+      "sha256": "83d502c9ed8fcf1dd4791482067abeedbebae49fafe9cd14a8a1f5891deb0d88"
+    },
+    {
+      "path": "apps/mobile/ios/.gitignore",
+      "sha256": "04121fd467254b5afd0be9fc62a0b4ae28ac2288769b9d9b218fddca3cd7fd80"
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "sha256": "28f6f55b8a26d36899bdd1bd76addfcfacf26d8b3b39d9cdc334acc5a9a6e0e0"
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "sha256": "dfa0f9bb85b95ccba9c6811adadf8cb407fb5d52088e89db83ebc308ec448542"
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/xcshareddata/xcschemes/NativeSecureStorage.xcscheme",
+      "sha256": "10030e1746d62127472e80a19c7ae57115cfaf1025544a22c48d7b07072b2ba9"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/AppDelegate.swift",
+      "sha256": "481e2ad8672b14acbd3e3df65acdc6d046526ae542b7bec903cf842fc68d9e49"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+      "sha256": "0468ec2c05dcf9ff2b071aafed86381127f6e45a230cadeae9810191ad5997e7"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "sha256": "5c09bec6eede599b14fa9e4c44b03e7febebc930615a0cd70f02981c09dfe48a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Contents.json",
+      "sha256": "972ec1fd42325872438eb085ac29e94f51c10788ec18ec5549439950866c541d"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/Contents.json",
+      "sha256": "041481917eb249533ac6dd63d283bc6190b2d0642a93deda11b2ed0f6f7b605a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png",
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png",
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png",
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Base.lproj/LaunchScreen.storyboard",
+      "sha256": "87a42e842164d75f39cca56a2cf743652f4d8e858f2eba12ae21a8ddcd9a21c6"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Base.lproj/Main.storyboard",
+      "sha256": "f572ef2cc7e5db5e8d3b93e1d8966a99a79fd537bf7377fad75e118e2067b151"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Info.plist",
+      "sha256": "9c791e794d5a4f8849d7ceb4d282f2623fab79c1ccf28165f66ab3f82ffbfa51"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetContentStorePlugin.swift",
+      "sha256": "88bfe45f49a47c65ed9790b0a198e98789bd06a9b847dc09ddef5eee46dc570a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetSecureStorePlugin.swift",
+      "sha256": "03e87dd49a4b003f00333d626f3c84d635f82f527a744e61d518defe020e9590"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PrivacyInfo.xcprivacy",
+      "sha256": "6a95fd5fb438c8ca481ddebdb3e18457d4df52c1eee41008a1fe7e60042b4810"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/SceneDelegate.swift",
+      "sha256": "6180342bc6040735840b87d8df8fc09194742fcfb609e37224ceb37f7bd87cd8"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/en.lproj/InfoPlist.strings",
+      "sha256": "0c24ed31dbe052a9198992fb0330d6af98de85d771a0fd831ff57c8c7ca23f60"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/ru.lproj/InfoPlist.strings",
+      "sha256": "8eae58cbbe72a70cb8ba63ea171949d9e4251f9803ecb42b1cc5eeb2a070fe7f"
+    },
+    {
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetSecureStoreRuntimeTests.swift",
+      "sha256": "7035d6fcd084c82589fd56799695849334a9f58d5b124ee0fdafc579b11b20b8"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/.gitignore",
+      "sha256": "4b958e2b4dd57319aadef2551153c74b9cb5ffe9f89d6e3e491122a94913f016"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/Package.swift",
+      "sha256": "2770201ccb936e1c7855836a7793c5de73e3b7ec4ac03e53250cb0da8119fe78"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/README.md",
+      "sha256": "42c535861f4a866e35f85764ed6af1ea046d6a409bf9852ecb00e5d292a1626e"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift",
+      "sha256": "70bf9dafddc35e3877dfb133a996f5be7ccd1e132897a98fdbf4869ff605ece9"
+    },
+    {
+      "path": "apps/mobile/ios/debug.xcconfig",
+      "sha256": "4838938a72b913b99cfda54a43bbe73f05893071dc6e3702b0adc44794b64272"
+    },
+    {
+      "path": "native.html",
+      "sha256": "5de2e345efe2d9289a5c7ca2a028f453f7693eb0490010c708cb90e0058fea15"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "server/planet/api.ts",
+      "sha256": "b4a2e6a7043cc3e10a9f1fe2fc9ed49bf3f29bbe87537b7029ebda235cc5e833"
+    },
+    {
+      "path": "server/planet/crypto.ts",
+      "sha256": "b7d252732ceab884a39f9cd31f23b6991298176d4aedf9860e4bc45f5cbaa8b0"
+    },
+    {
+      "path": "server/planet/deletionProcessor.ts",
+      "sha256": "0cf31f84f958fc54484d594392dde3fa5436346981c4376fddd115d9677c25a4"
+    },
+    {
+      "path": "server/planet/deletionProcessorCli.ts",
+      "sha256": "cec4ec5d09b831c2a0e78cce5effb56f4c86d42828fbf05a56ea5fb97a5e6387"
+    },
+    {
+      "path": "server/planet/deletionProcessorSupabase.ts",
+      "sha256": "8aa5280842f16e02f59e4873d454cdef4dbaca89522870f615537bc90de3c0d9"
+    },
+    {
+      "path": "server/planet/licenseRateLimiterSupabase.ts",
+      "sha256": "4a14337495d98064197521c7d83a24f19ab78576ccf17810cf5e6c75947bc2a8"
+    },
+    {
+      "path": "server/planet/paymentOrders.ts",
+      "sha256": "7f32e565ef0da433b1fd0d3dcec5297f4dec441895618aa6442c28392b2721e6"
+    },
+    {
+      "path": "server/planet/paymentOrdersSupabase.ts",
+      "sha256": "ef6d505cab476f8f9094520b5b9f39b5dc22bf044a70abea7219290c2c19eaa8"
+    },
+    {
+      "path": "server/planet/paymentRetry.ts",
+      "sha256": "b7b3117472a0ae9f067db985d083d23eabe3fa70e93a51f9cd2143fb55382c19"
+    },
+    {
+      "path": "server/planet/supabase.ts",
+      "sha256": "80782d90421472aa8c31bc2bb3336bd1afd086eb6a97953bfcd806610c4bb264"
+    },
+    {
+      "path": "server/planet/tsconfig.json",
+      "sha256": "32b506ef684ed09d50d7f9f1fbc26507e5178babe1bcd439a68d291a373639d5"
+    },
+    {
+      "path": "server/planet/worker.ts",
+      "sha256": "d4fdf0f28763b72cbd71fc2db2411be0a6316c836f1dd5429537d3872455af8e"
+    },
+    {
+      "path": "server/planet/wrangler.draft.jsonc",
+      "sha256": "109f526c56b7e614a1fa4fb80c7fd9c8fa36bb0e955065e7b44f4c3ae8338c3a"
+    },
+    {
+      "path": "server/planet/yookassa.ts",
+      "sha256": "d3394e75c9ed55e69c3c7540b01f94d6b8dd8e94c2bf8f747e5f8638d789dbad"
+    },
+    {
+      "path": "src/community/ActivityTracker.tsx",
+      "sha256": "eea5b9543d2e401faa1f184ee2ee2b9277460b4cba672f6dc5011fb566d47e36"
+    },
+    {
+      "path": "src/community/ArticleEngagement.tsx",
+      "sha256": "35fe5ef1ea89aff53913434f9513653a97336c400c41eba1937efed3bcbab2a9"
+    },
+    {
+      "path": "src/community/ArticleViewCount.tsx",
+      "sha256": "6360e17cf2812138e87328072484efd5ad1446c00bd6e363f67cdf5f7e7e7698"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "sha256": "95edfb8d89645cead07aaa12a09c23541fbe6322d0b54bf5497a6dfa5c980974"
+    },
+    {
+      "path": "src/community/AuthTurnstileGate.tsx",
+      "sha256": "25189693de33edf6297a65de9f7e20029a4ddd1a1b68bc7abb4a7fd2cae3c8e3"
+    },
+    {
+      "path": "src/community/ClientDiagnostics.tsx",
+      "sha256": "426b4ea7b6d80b8ad24c2997c740e9100b298cc47fdb15146cc66068d43ed544"
+    },
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "sha256": "645807a701c0eaabe7bc21b1186ae6d4004177dc2b125d5d4fe86f2137194be9"
+    },
+    {
+      "path": "src/community/EditorialWorkbench.tsx",
+      "sha256": "b7a1d91231e2e3736eef809cd57819167d8d89739c31957b082adde58788d992"
+    },
+    {
+      "path": "src/community/authAction.ts",
+      "sha256": "0a8ffdc404569f3f8f91e0dc33da0cf495d0c940c03e18ed4c30587a3b9fd6c5"
+    },
+    {
+      "path": "src/community/authSession.ts",
+      "sha256": "38903de0e3f5ee3f1ba9478802774d7e2e77c5611431a188fa9eba7e8b6a9696"
+    },
+    {
+      "path": "src/community/authTurnstileToken.ts",
+      "sha256": "3ea015880596925068b532c875746da256247724cb02ded2b05f418e608d5984"
+    },
+    {
+      "path": "src/community/community-accessibility.css",
+      "sha256": "0511aa9695398fbec58f331f615ca87f51bb3acf9a933e6fa5739c646a9176ae"
+    },
+    {
+      "path": "src/community/diagnosticsReporter.ts",
+      "sha256": "50fea0bdc59de2fba95046eabfe52d0e13fa5c104602070e6a66fe78d1c2af1b"
+    },
+    {
+      "path": "src/community/readerPrivacy.ts",
+      "sha256": "ad8f93c0d53728f6d4111f70f58dd1e754c9d7e07b9ee71af398acdb58f7d8fa"
+    },
+    {
+      "path": "src/community/sessionIdentity.ts",
+      "sha256": "3fb36c2b23f66fe2c736443bdf7ca8f35c27e2953df736ec31860d2c619d48f4"
+    },
+    {
+      "path": "src/hooks/readerSubscriptions.ts",
+      "sha256": "0bc280932bfacd4edd4c806ba6ae019747f9071caa0852b4e25fb3dd5639ef60"
+    },
+    {
+      "path": "src/hooks/readingLibraryStorage.ts",
+      "sha256": "fe7b8d950f80cba0d7e76d45e850ba3c0e02420d44250605329baa2c085376d3"
+    },
+    {
+      "path": "src/hooks/useBookCollections.ts",
+      "sha256": "46e29113bad64e82384ab28c22cfae4347c3facd6ac35bdc60d408df0e135efe"
+    },
+    {
+      "path": "src/hooks/useDisplayMode.ts",
+      "sha256": "4f8b5f6979398f72581c31323bd4144e79682ff78b689a6cd7d292f6e1a05d4a"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "sha256": "d029ca689c44d911cbef3fc6630efe6e6911daee994790aa17d6ebb1d2762d0d"
+    },
+    {
+      "path": "src/hooks/useReadingProgress.ts",
+      "sha256": "57c4d2572c673b621f916f623154232353b3a8dbe142e5235ef3f5646883dff7"
+    },
+    {
+      "path": "src/hooks/useSubscriptions.ts",
+      "sha256": "58db9ea9e5d61b4a019e9abfac42a613058a4f7b9ec55568e25a24db436e0058"
+    },
+    {
+      "path": "src/host/BookyJourneyActivityControls.tsx",
+      "sha256": "5748a672da5fa70e425cf9ac95dbf812fc4f9ea9825c32472449b6a459bc75d8"
+    },
+    {
+      "path": "src/host/BookyJourneyControls.css",
+      "sha256": "f9df942b8db65493f4ae91319e46a4c48956485b79705203b281c9c8955c667c"
+    },
+    {
+      "path": "src/host/BookyJourneyControls.tsx",
+      "sha256": "474e4fc774d0036b027ff8b463684d8116431c920dc40aa8f71462c55a7fae89"
+    },
+    {
+      "path": "src/host/BookyJourneyFactSources.css",
+      "sha256": "f8c8aa5603e7c80226cc44e1ddb618ccde36a862aa12f6b1ceb1f310211ab757"
+    },
+    {
+      "path": "src/host/BookyJourneyFactSources.tsx",
+      "sha256": "e4afd1e19f3a72490331b2dfae7d3dd5447d3f1026cbed8223a51e4d163a1b0a"
+    },
+    {
+      "path": "src/host/BookyJourneyHistoryControls.tsx",
+      "sha256": "178c157d4636e6455e15d09516332a5f662938a9fc840216e833c419cf914e2e"
+    },
+    {
+      "path": "src/host/BookyJourneyMigrationControls.tsx",
+      "sha256": "8d5e21accd46daf0210f6ce12766ab0fc3c13a5fea592d847492359b6f78d8bc"
+    },
+    {
+      "path": "src/host/BookyJourneyPassportControls.css",
+      "sha256": "ba2f70995d2e17fcf0a2fd2920c7af7801766e34df5beb93f5cb2328a5bb4e42"
+    },
+    {
+      "path": "src/host/BookyJourneyPassportControls.tsx",
+      "sha256": "bd33199a969e48907cc69693823a7888bce5747d08a2698c263d9a0603ad9c96"
+    },
+    {
+      "path": "src/host/BookyJourneyStorageControls.tsx",
+      "sha256": "37075acbedb179c31732a4bbd954c0b4355c9b30c8a36efa921da19162f30b94"
+    },
+    {
+      "path": "src/host/BookyReaderSettings.css",
+      "sha256": "89ebec54e33c3effc09edc785f6c2123072dc5569cb9d4e4852a8d79908bcb83"
+    },
+    {
+      "path": "src/host/BookyReaderSettings.tsx",
+      "sha256": "d977ae799ef988af6dd6cc2823c5835b770e43c60deba0ef37381ae5db015648"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "5671a41285e8394e79b056f3b221fb02d1ef700d1f60c1cdd6cdca059dd4f098"
+    },
+    {
+      "path": "src/host/HostRecentHistory.ts",
+      "sha256": "6c7d7ed3378334bf49f49327a86128d2fbac925df6a1c5b2b79d847990a76d01"
+    },
+    {
+      "path": "src/host/HostRuntimeStatus.tsx",
+      "sha256": "bd100bd0e9d4eb8eba8772799de106f04c5de154d0dd9298f7340abe26100d91"
+    },
+    {
+      "path": "src/host/NativeNavigation.ts",
+      "sha256": "c23265bfe05c0e97eedb226af1c3cf5e7adb650f5b87b20bf5b4fb899e62a3c7"
+    },
+    {
+      "path": "src/host/NativeNavigationBridge.ts",
+      "sha256": "2e0a86d26843cfdcc6db5ab9d890115a747686a022a1cb7935972c29fb8ad4ab"
+    },
+    {
+      "path": "src/host/NativePlanetLaunch.tsx",
+      "sha256": "42fa6de0af7552b2bd6b819fa34c06cb21d5164f75576fb92f33a432aac17680"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "b130c0f573da47efa8fe04f12d8eee47adfcd10c3e9c26d9026bfa6180ebe69e"
+    },
+    {
+      "path": "src/host/PlanetDownloadsPanel.css",
+      "sha256": "733b2acfdf936fbab366baf4a5248a9783e2f01b25ec7a02dd425b84e8112dd9"
+    },
+    {
+      "path": "src/host/PlanetDownloadsPanel.tsx",
+      "sha256": "bf13cbfd84a267fb00c28a0f62b17ac880fc7770acf965b10b980ddd06fc1d08"
+    },
+    {
+      "path": "src/host/PlanetEditionPreferenceStatus.css",
+      "sha256": "536d6ffcd603edeaf4b5cebc01c75411292d853b2e62055e4137c55c7f2540bd"
+    },
+    {
+      "path": "src/host/PlanetEditionPreferenceStatus.tsx",
+      "sha256": "c4eb85f88a369b299a4cf164d3dc4cf34bdcf9ddc2629793e5a59bb1498c7104"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.css",
+      "sha256": "0c25285a50ba8f097ef867748c57cab270df6406f8a9a2454808b9a197207699"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.css",
+      "sha256": "de93c23ad52a384efff38c1546b80021940d418c1a77fdbe0baa8430e664421a"
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.tsx",
+      "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "ad1763da617e252ce83d9a9ad96ac9694afe6a608269fe9634ff3bb0db2fe840"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "c67ee7dd8adb1a49041e3fccbc8283b17d1a1afc70427c5f4bdf549db0d2597f"
+    },
+    {
+      "path": "src/host/PlanetSceneInspectionControls.css",
+      "sha256": "a9fff7adeaf9ab54d697dca383632ed27ac6acba6017918aa4ba9f30eb3a9d20"
+    },
+    {
+      "path": "src/host/PlanetSceneInspectionControls.tsx",
+      "sha256": "aca0a7e0bb934d4c5dd335141b2f217e6612a993ec98287212daec7e587951d2"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "21b7adcd19e1344d78a20f59b20e84840749b91878a6c20babe61a2e21447224"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    },
+    {
+      "path": "src/host/PlanetWelcome.tsx",
+      "sha256": "cc9d0df6a3f9f99023affbb3b39842e64935c3aaf30abe9c0ba468b6d30d76ba"
+    },
+    {
+      "path": "src/host/ProductNoticeHost.tsx",
+      "sha256": "10e1832212274636b8b6b35b3e97accd5f9eb80ea16ff6d9298879442753d8fd"
+    },
+    {
+      "path": "src/host/bookyAnimation.ts",
+      "sha256": "01ca74a68a7aed307b114e9f20b90d0b3624f98e175aa033c6b9d2a592ade2a6"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "9e48051043b4cf58fc5f89c916b443e881df6bbebf96d6e1764134232d5fd321"
+    },
+    {
+      "path": "src/host/bookyDialogueRegistry.ts",
+      "sha256": "3329ed944937ef8f7b9b892641ed40285a166c3944d6817ddda0bc145daffa65"
+    },
+    {
+      "path": "src/host/bookyDossierCharacter.ts",
+      "sha256": "746ed791967c25d656cb603a61b518c611e6875e868b5fa06595d8b7dec00d87"
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.ts",
+      "sha256": "dba9f5489ab0d515548776dc342479ddd7359a780d809f5a440717393f5141e1"
+    },
+    {
+      "path": "src/host/bookyJourney.ts",
+      "sha256": "eda587e3611f86a0ff03b1c16aea88a16b0ca4120182a3f2f9952d1c128f3d5a"
+    },
+    {
+      "path": "src/host/bookyJourneyActivity.ts",
+      "sha256": "600d057407eb8eff106d98c83f3e3fe16c63f026befff90edf6aaae519096e6b"
+    },
+    {
+      "path": "src/host/bookyJourneyCatalog.ts",
+      "sha256": "c9365a751c1910ca6368bebf1dadbf18930b12e28acbff3ed6e9413265bf6095"
+    },
+    {
+      "path": "src/host/bookyJourneyCharacter.ts",
+      "sha256": "09e90c63b1c19364c8f137c2ead35227427af03edad9fa03015bfc4c42927fb6"
+    },
+    {
+      "path": "src/host/bookyJourneyCharacterSession.ts",
+      "sha256": "074e330198ef3c9a2d7ad8fa02b39290c245859626a6f817ed44e74e2e7b3e27"
+    },
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyFact.ts",
+      "sha256": "5ba00294bba82bf1dc2a3d85891116565afc39859f1b94fcadfa49ad767ebcd7"
+    },
+    {
+      "path": "src/host/bookyJourneyHost.ts",
+      "sha256": "23f0660756bb5555d900fc418fa996feee84557c64aef3ea16bc3d1fa101099a"
+    },
+    {
+      "path": "src/host/bookyJourneyMigration.ts",
+      "sha256": "c1ca36c3eeb03573a4cda3803e58ea4ceba055a3099ce7a09dec143a0f64775a"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationRegistry.ts",
+      "sha256": "bf0e726d07e23a88e3a9056a98fba3ddbacadf0e12deaf87cadc5b822757dd16"
+    },
+    {
+      "path": "src/host/bookyJourneyPassport.ts",
+      "sha256": "92990074a8bbbd06d651dcbad8a0fc55a80faef8d3999dae2feb400632fea276"
+    },
+    {
+      "path": "src/host/bookyJourneyPersistence.ts",
+      "sha256": "326aa13a5445aaa7b39d33b6d68f215b0e20affe785dc465359e062b73b15a32"
+    },
+    {
+      "path": "src/host/bookyJourneyPrerequisites.ts",
+      "sha256": "2249047305276e5c0f979285615e3142d15caebd6337745faeb5b7ebb02954d1"
+    },
+    {
+      "path": "src/host/bookyJourneyProgress.ts",
+      "sha256": "b786a3ad3233480ba0a78a40ba19230a5afefb2c1476821b229c20d3024a735a"
+    },
+    {
+      "path": "src/host/bookyJourneyProgressStore.ts",
+      "sha256": "d59f052c38d998c356b079d52a9711181d2eb109d13c278d3378a19ab0bddf9e"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.ts",
+      "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362"
+    },
+    {
+      "path": "src/host/bookyModel.ts",
+      "sha256": "517330f6898751e706988d72ee03be300476d6ef91b66e4fcf4637965cd76812"
+    },
+    {
+      "path": "src/host/bookyMotionPreference.ts",
+      "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "2e14577bd27adef01ec4dfc55d5cc5f3bc6da99323b59387114041942676006c"
+    },
+    {
+      "path": "src/host/bookyPlacement.ts",
+      "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+    },
+    {
+      "path": "src/host/bookyReaderPolicy.ts",
+      "sha256": "e660c074374e84301a7ce8f5cc8ac7a2b21a6beab38ac303d52937ccfcdc5539"
+    },
+    {
+      "path": "src/host/bookyReaderPolicyStore.ts",
+      "sha256": "16b5eb03187f65d94c1987b0a06f4c20cd16a761da99d37a17207cd685b0e1b2"
+    },
+    {
+      "path": "src/host/bookySizePreference.ts",
+      "sha256": "a987baf02892dd611a78a3757092f5623219ef8653591f97a0ad9be2d0f85107"
+    },
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "d75cb24a1a593ac778788c972511849fc5b0d4c8030d7f864448b1a0b29b2ff8"
+    },
+    {
+      "path": "src/host/bookySurprise.ts",
+      "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+    },
+    {
+      "path": "src/host/bookyTourProgress.ts",
+      "sha256": "35016d6465a4917db6d09bfc3949110306c06e9f44134c29cfac5e692d4614e6"
+    },
+    {
+      "path": "src/host/bookyWalk.ts",
+      "sha256": "f5205b36bf9625f30ba01324b223cff7ee1cbcc277f042a6db92e420afc59e02"
+    },
+    {
+      "path": "src/host/createNativeContentDownloads.ts",
+      "sha256": "d1a2e889b329126a9f73411444ff6877354ee0704d00fd912d93d7e19aa43e08"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "d10c5442798df82bcf87006507ba3ac63ffcd1dd35fea454fe7380af70e0c261"
+    },
+    {
+      "path": "src/host/hostInert.ts",
+      "sha256": "788247dcb6781e80bae1d97aeebfa7cffcc4421cd3c082675a222a287cd6258b"
+    },
+    {
+      "path": "src/host/initializeHostPlatform.ts",
+      "sha256": "2b29e89193a83a2b50ac935b7f9afe5eb454cd2dec5f43ce8a9a19e1184d536c"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "e21aa15479a81c5c3847b571d5d3d7e7b9c25d1c55b4aa3aa2ac94c6677fe8af"
+    },
+    {
+      "path": "src/host/nativeContentStorage.ts",
+      "sha256": "430c432d05affb84d192e1598f2a5f08ded1638c0be8e377390562c32e9c72fa"
+    },
+    {
+      "path": "src/host/nativeNavigationTarget.ts",
+      "sha256": "c35ed174eee96ac9559bf7de0a4f9f0e1574e85af302067fe5e157b2f3e8d7a0"
+    },
+    {
+      "path": "src/host/nativePreferenceDiagnostics.ts",
+      "sha256": "6e9f8edd0ba5986b4e2a80be7e24aa46e1f6f0fd6de363de525e04fdcb60507e"
+    },
+    {
+      "path": "src/host/nativeSecureStorage.ts",
+      "sha256": "c98f529e0f156cb5c13ae95fb510f3ea1ea9aa0c51191d946c1414dfd95f5dc9"
+    },
+    {
+      "path": "src/host/planetAppearance.css",
+      "sha256": "57c46af2e0704da55e2054e9d09f2b8d408c4428c002e8faf2fe60663e066329"
+    },
+    {
+      "path": "src/host/planetAppearance.ts",
+      "sha256": "a6b00fce26fdcf5d73ea847ded3fb265d10f023997f3f7bac08da9c1c1b0df10"
+    },
+    {
+      "path": "src/host/planetBackgroundCustomization.ts",
+      "sha256": "1787806ebfcd0c69bf308ba38f27ace7c754a86e3d670924c262e84f0b47892d"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "e13f2d376567c65a5b051bfd651a14f1bbb18f3bdf01f09cf97ebb2e3cf92305"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/host/planetCustomization.ts",
+      "sha256": "9737f7b2206149df0b47591185c3faaeb1f8f843b218077471ab59bde0f714bc"
+    },
+    {
+      "path": "src/host/planetEditionPreference.ts",
+      "sha256": "63796cbb1fb9486dd1acb88cf632916549416703c250669c9ca41e6286a933a6"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/host/planetLaunch.css",
+      "sha256": "81f368d7643a9e21ffb83f0dab41d2dd3fddbe1b88d67ee0b0ebd494cc02426a"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "00e8c8319d6a5143e07f1210e754d990a9f7deb4d7f389be2cebcd90d90e8673"
+    },
+    {
+      "path": "src/host/planetMascotPersistence.ts",
+      "sha256": "acecf21b7b73339a027b91e094f39e3ddb4a2d6b8d448ad3f272dc41716d3eb2"
+    },
+    {
+      "path": "src/host/planetMascotPreference.ts",
+      "sha256": "a9a302d026f4dcb1ebc60a1cb86729a05f25fe23c98628529756c0d782086964"
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+    },
+    {
+      "path": "src/host/planetSceneInspection.ts",
+      "sha256": "8c49aec2e4955d4b691e8b856304976eb35207b244179d493f1f134a0d032a10"
+    },
+    {
+      "path": "src/host/planetSceneInspectionBridge.ts",
+      "sha256": "3df3d617e9b090e4a5af73b14e1f61daa085d316638e4232f75379765cf91968"
+    },
+    {
+      "path": "src/host/planetStandCustomization.ts",
+      "sha256": "325c8595aefb9660c86725837ce3b0bcb4e63f137156b86e570254e84dd3f2ff"
+    },
+    {
+      "path": "src/host/planetStandInspection.ts",
+      "sha256": "ee5a5dd46f75877a34c297ce122e4c3ab0c09d8ebd439a0258589c5a3baab0f8"
+    },
+    {
+      "path": "src/host/planetWelcome.css",
+      "sha256": "8d5c161b827d506bdc8dd7e2db6d38b7138c52426eb6048a68e2f8308e24f7ca"
+    },
+    {
+      "path": "src/host/useBookyJourney.ts",
+      "sha256": "94eac416210897bfeb6261437d4c30e35804d94a0dcaa6e730dc9a85827c3238"
+    },
+    {
+      "path": "src/host/useBookyRenderer.ts",
+      "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f"
+    },
+    {
+      "path": "src/host/useBookyWalk.ts",
+      "sha256": "9b224ed74095a6ea70b8e9ec880dbaee1548b36676d9c060bfd0da6285af9506"
+    },
+    {
+      "path": "src/host/useNativeNavigation.ts",
+      "sha256": "7e261d298362b65ebf58833210c379a8164e456d4cc4e17105776baa0fba6861"
+    },
+    {
+      "path": "src/lib/loadSupabaseClient.ts",
+      "sha256": "406c41fab955a9d7ce1193ec45fbdaabece8c08329363a46a494db2b91a329d3"
+    },
+    {
+      "path": "src/lib/supabase.ts",
+      "sha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd"
+    },
+    {
+      "path": "src/lib/supabaseConfig.ts",
+      "sha256": "db7d2cf3611232e5e9c16839ff4aa91807bfff71757d2c792184f9149674f9b9"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "038eb536f1e30dbdf62a9dc2d07335b457da03c7eca39c0158033582983deac5"
+    },
+    {
+      "path": "src/platform/adapters/android/entry.ts",
+      "sha256": "0c9386976caf5679c56f8a5045f543df55f6e33ccb7006866bb95fe21fd98f18"
+    },
+    {
+      "path": "src/platform/adapters/ios/IosPlatformAdapter.ts",
+      "sha256": "d8eaaa5730489210633b0a8fa2cfeecf24ca4e5355d317f7ae895fa0f4746f5c"
+    },
+    {
+      "path": "src/platform/adapters/ios/entry.ts",
+      "sha256": "0fa8efc8357133412c9a740def812a796ff07ffb44a91724b6688584fc0a137b"
+    },
+    {
+      "path": "src/platform/adapters/web/WebContentDownloads.ts",
+      "sha256": "028067f2dcd351254b1c765545a3deffbd4325856ab2146e326e3121929b7c9a"
+    },
+    {
+      "path": "src/platform/adapters/web/WebLicense.ts",
+      "sha256": "ba6e6e0652943d35a1f04800509659f6686fbe7f8d1db26c7f98795032079a70"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "488a4ddc2b3116c724987e132f0fe1c3482ffa7a4c1dbc7d4487c5777b1ae267"
+    },
+    {
+      "path": "src/platform/adapters/web/WebRecentHistory.ts",
+      "sha256": "3789da467959003ccc7ad67f4d5c771d334abd6f55b27a065c6c29188ed9200b"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "sha256": "c2947a4631d4b72392de12ab35dd8b30254ad3f612396507739067b1a1d6cf0b"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "cb44c4701ee7ff9b284ca632f583978c4cc6db861a465716094234999544cfd1"
+    },
+    {
+      "path": "src/platform/productPolicy.ts",
+      "sha256": "a43622ca8b7ef85bb0b1df2d9dbb1268d4a5e1ce2ca9d1f00a97387250fca480"
+    },
+    {
+      "path": "src/pwa/PlanetAccountPage.tsx",
+      "sha256": "050e8ad717182aadf3b0da50f1db7256605630b61645728c314b397c731a52dd"
+    },
+    {
+      "path": "src/pwa/PlanetPasswordRecovery.tsx",
+      "sha256": "7c9be94ec641cae68f81f2b64abd73784c7b4fdb1fb17161026bf53fc48cb461"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "sha256": "6fa64085319acd9b2f10d4cd3564b6a9138f7f5e6c3cc2b641b2be8f7f652df3"
+    },
+    {
+      "path": "src/pwa/PwaConnectivity.tsx",
+      "sha256": "4ed2018dfbabf654266672422d7030bd9af4e4baf43c800a479a9ac06ba78ed2"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "b7fc6ad3a9561a9c9d8a0240642fd4edfb6252b5f53fa883621347e7e522e503"
+    },
+    {
+      "path": "src/pwa/PwaEdition.tsx",
+      "sha256": "f79388cae2b0556ecc572ebe190021ed0a21610be38746732205c3f94f510e9d"
+    },
+    {
+      "path": "src/pwa/PwaHelp.tsx",
+      "sha256": "a2adc1f81f55a9cf820fb1859efdbb90376eb44a4a6ce2056f96e5b9efb1a093"
+    },
+    {
+      "path": "src/pwa/PwaInstallController.ts",
+      "sha256": "108b64464e4b1c3d420099be92a30c9949994677b3c83c24c55db3c3ef8087cb"
+    },
+    {
+      "path": "src/pwa/PwaLicenseRuntime.ts",
+      "sha256": "02abe28132731ce592e2f18e6792d8a3240c391eceba88b0dd0049cf1bb16fb4"
+    },
+    {
+      "path": "src/pwa/PwaLocaleMetadata.tsx",
+      "sha256": "17c10128dea5be84014e17bf3f0ae27df16b06667c40247d3a0007946198ef6d"
+    },
+    {
+      "path": "src/pwa/PwaStorageStatus.ts",
+      "sha256": "662c1cf4bf3a0cc060720aa6338e940c6d03b0cb6ac8e5b5444b32883245f885"
+    },
+    {
+      "path": "src/pwa/SandboxPaymentPanel.tsx",
+      "sha256": "50ee38058de9c4e1ba9ea11fc830b6fc26dcbb568cf6149c513fe21e075a41d6"
+    },
+    {
+      "path": "src/pwa/account.css",
+      "sha256": "d6cfc6362e80052c83408c33b7dca1173f2da0766d624b5a4dd0f83f507e09b8"
+    },
+    {
+      "path": "src/pwa/accountAccess.ts",
+      "sha256": "b38a88bac60ac595bd6282ace0d574ea41692e276fe4fff617cebe66cb8916cf"
+    },
+    {
+      "path": "src/pwa/accountCopy.ts",
+      "sha256": "73eb68802468efec0c65f33e1df2c44c8466603c1da37b93de8ce11a533fe914"
+    },
+    {
+      "path": "src/pwa/accountRoutes.ts",
+      "sha256": "6e8424a6d87e72b36bc6be1b5963a2a524825ba4b1913877d51bd48d04513d41"
+    },
+    {
+      "path": "src/pwa/passwordRecovery.ts",
+      "sha256": "5275cb1f0c92cfc398d957276b5bc14301a647594f45d79480ae3a890e8a838f"
+    },
+    {
+      "path": "src/pwa/passwordRecoveryCopy.ts",
+      "sha256": "92e7337dea56ba7a882a169932be2a8f9c606830b8edb3c77033614e15e8708c"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "sha256": "9693b2caff710fc89f58dadb6d0e3391506fc03fc98cab2001645cec42a8716a"
+    },
+    {
+      "path": "src/pwa/pwaBootstrapBudgets.ts",
+      "sha256": "f3977c4f1b1ec2b167ee987da65d6bb793308c649dbe1efe7d6c5cc66ce76afa"
+    },
+    {
+      "path": "src/pwa/pwaCopy.ts",
+      "sha256": "3d82503a9035eef1d7e35fc248bb65e0f95c1e50032e39efdb291718143bf2e1"
+    },
+    {
+      "path": "src/pwa/qaSceneProbe.ts",
+      "sha256": "3af4dad00be34e8e4aa29f59c9e7251609ae1473cc96e9d37663c2711d47ce26"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "sha256": "cb5c95b8abafd82ed25bde899420007bb81a87014ba2bf04a87efd4a1df6ea41"
+    },
+    {
+      "path": "src/pwa/sandboxPaymentClient.ts",
+      "sha256": "71e0efeb455864e04a069bb6a1474c643f4883676231f66ff208db55501d007a"
+    },
+    {
+      "path": "src/pwa/sandboxPaymentCopy.ts",
+      "sha256": "a9d528eeaddff5f4d2e8bd0a2c942a7c7236dea1f387fa5e7158e89421abbf9a"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "109b9f59b4c6de3d760cc728d7fdfceafa189cb2ace6b5f93b6e9f6b26696fbc"
+    },
+    {
+      "path": "supabase/migrations/20260727_community_safety.sql",
+      "sha256": "afb7b5113bb13c0e79c1abe9066c7bfc4033fa20bf84b8342ef693517c04b313"
+    },
+    {
+      "path": "supabase/migrations/20260728_cms_foundation.sql",
+      "sha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22"
+    },
+    {
+      "path": "supabase/migrations/20260728_reader_favorites.sql",
+      "sha256": "c7ed0f31d8c12e190396de616cdfbe0cd48e0be8714ccde849dec8045533f1fc"
+    },
+    {
+      "path": "supabase/migrations/20260730_literary_archive.sql",
+      "sha256": "61efd3ae702719a9f8c915a4c2716aa8bb7b4c9072f4c37a01d0a0417fb387c7"
+    },
+    {
+      "path": "supabase/migrations/20260730_page_revision_history.sql",
+      "sha256": "64a6d3ee5e94a3adca1e419f5f9d9be89d92f17d6703db5f1987a45e8cafc91e"
+    },
+    {
+      "path": "supabase/migrations/20260730_staff_management.sql",
+      "sha256": "c2203867f8f0068fdefd6b4ecd0f2f3c4bf747263414402758fac0c3fa180a40"
+    },
+    {
+      "path": "supabase/migrations/20260801_forum_reports.sql",
+      "sha256": "af9e3d73945ed7ab3b291aece547fe91299edd73f3f410c0ea8158e3ef653d25"
+    },
+    {
+      "path": "supabase/migrations/20260801_reader_profiles_and_forum_votes.sql",
+      "sha256": "1c0143b6f25e9686c24a44646779caa6a0ff2e74f256d81a72ab1b03125480b5"
+    },
+    {
+      "path": "supabase/migrations/20260802_client_errors.sql",
+      "sha256": "264acbeb7aab20dc8ad06f9625f3a3fbfc7c55cd5b73c9de741bca5311ea6d16"
+    },
+    {
+      "path": "supabase/migrations/20260802_editor_templates.sql",
+      "sha256": "7b86a942cafea4c519d8285369ff6625b86d4463aaeea411d0219ff269cbfdfb"
+    },
+    {
+      "path": "supabase/migrations/20260802_reader_journey.sql",
+      "sha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5"
+    },
+    {
+      "path": "supabase/migrations/20260803_public_article_view_counts.sql",
+      "sha256": "0c65d55e3ef135f976ed5bcbb818a8539f550b6897244875f7cd1cfdd4fe6e50"
+    },
+    {
+      "path": "supabase/migrations/20260804_content_analytics.sql",
+      "sha256": "a3d07617051f68df4ad07a26411453510220b695a18c9985ca13e5f305f935da"
+    },
+    {
+      "path": "supabase/migrations/20260808_article_translations.sql",
+      "sha256": "daf65baf551218d7c0d4c3e045d6f95c3393f2f3709a2a26cf077d1e3fcd921e"
+    },
+    {
+      "path": "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+      "sha256": "357871b2cc57bd534acb8c91d194b16b59e46ad0d4e2f38bd1fe63df0f20ef7c"
+    },
+    {
+      "path": "supabase/migrations/20260812_homepage_block_revisions.sql",
+      "sha256": "eaa188a8f0f185cafc787b7d356cca54c65d19647447fdf52dc96804f95b4b20"
+    },
+    {
+      "path": "supabase/migrations/20260812_writer_and_work_revisions.sql",
+      "sha256": "ea800be1c968aad3a59c3b0287ad0380074641142aa0930c2e2761f9165f78b0"
+    },
+    {
+      "path": "supabase/migrations/20260813_editorial_database_admin.sql",
+      "sha256": "339c1e87580f4ddd3a82a1e98beb82dc2a1c2a79983c29a7e348e3e62931f53e"
+    },
+    {
+      "path": "supabase/migrations/20260813_homepage_atomic_move.sql",
+      "sha256": "7bdd781bfec7c3f1f55aac8b5b7e670ab0b97ae574b47e9b671ab041d2e87484"
+    },
+    {
+      "path": "supabase/migrations/20260813_tags_updated_at.sql",
+      "sha256": "b9517ee519ae181955074346c71839029eca46b52e1f44eaa3d2a6fd816e7cc6"
+    },
+    {
+      "path": "supabase/migrations/20260813_unified_revision_history.sql",
+      "sha256": "94c2f7bb9a85e664ceea73f70679557cb862e7afc362539f35c0aa5c99850e8a"
+    },
+    {
+      "path": "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+      "sha256": "7c2a143fe3f6d011c5d196d79c6a611c3b3d18b4ce823df277b6b49677c543c0"
+    },
+    {
+      "path": "supabase/migrations/20260820_homepage_book_month_editorial_choice.sql",
+      "sha256": "982b7cf6f38b1016ee7fc9da96223f1c6400b292a58dcec262fbc7015dd88917"
+    },
+    {
+      "path": "supabase/migrations/20260820_literary_work_cover_artworks.sql",
+      "sha256": "9c07f74693406071b99e1bc5f0e80c323a85cc6ce72b1bdf3434643b7b16ba90"
+    },
+    {
+      "path": "supabase/migrations/20260822_staff_editorial_read_rls.sql",
+      "sha256": "e43a6f937e86b7a6fe00093b1b97ef29c878d78d39ce275229bbfba139bc92f5"
+    },
+    {
+      "path": "supabase/migrations/20260822_zz_atomic_article_bundle.sql",
+      "sha256": "a8c6f6213fcf6de10ae87e8b74f46724f62e536cdcf37e0836ed7de107eed257"
+    },
+    {
+      "path": "supabase/migrations/20260823_premium_machine_translation.sql",
+      "sha256": "5a7c422b2d04d8c2bac8981584bcc862e03d30ef561cfbf113ddc62567b8ac8d"
+    },
+    {
+      "path": "supabase/migrations/20260827_reader_book_collections.sql",
+      "sha256": "b139d5454251553ce2805d6f55f81908dd11075c1377cae247b83e9202ca4892"
+    },
+    {
+      "path": "supabase/migrations/20260828_reader_book_collection_icons.sql",
+      "sha256": "26d2cab4315241426c0beedf8bf3d281449e54094767378072fff83db7f233d1"
+    },
+    {
+      "path": "supabase/migrations/20260828_zz_editor_autosaves.sql",
+      "sha256": "f7b80e69501450f3c67be54dd047a62c3a1794dcb256068f2b780b3dce41a895"
+    },
+    {
+      "path": "supabase/migrations/20260830_media_studio_lifecycle.sql",
+      "sha256": "f0deaa81d23cf103b4614a1a016c6ce562dffd295216b3179e51c550747d2a3d"
+    },
+    {
+      "path": "supabase/migrations/20260830_zz_site_typography_engine.sql",
+      "sha256": "761f6767c56334fb053e2ad7e0aa85d8dd5d0511dc0d006161507dc2dcf49ba0"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_admin_analytics_reporting.sql",
+      "sha256": "01f1f81f45e196298c083437527ee87c2f627541058b2eda794560e087674182"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_data_studio_integrity.sql",
+      "sha256": "fa772aef4e0f9db1f2122b7fb9ea4592bebb73fa625ddbe5b326e5e3ff40be71"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_site_studio_engine.sql",
+      "sha256": "8af7942b3a2aaa2040c09bea252c270e64b590518fe41e48071c7ba8d6b75615"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_staff_owner_invariant.sql",
+      "sha256": "b991a3842e66c3002112f4160aa9f37e07c7f70e5266215bd91ea0a45489e8d1"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations.sql",
+      "sha256": "eaf187bc760e49dd31977e28d673597245e1adc17aad78ef2c1266574b4fd7aa"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+      "sha256": "cf11fe672cc80bece79a9c7bd6ebe2300bc8d7626ccee8f350be37436e80b8f8"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_visual_direct_edit_v2.sql",
+      "sha256": "c823e673bbef15f196b6110352c5b26aa85eb443a208d1299cfbdc61a4e2c624"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzz_admin_mutation_guards.sql",
+      "sha256": "47ba449f1980a7c2e87e28355bf9bf8c2cd9a772b10886dbc5d1e3339445c9f2"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzz_admin_ops_observability.sql",
+      "sha256": "5ad002fd8ab27e0f6ff62cd73081d3eec8f0b387915d54bef42f30ec3209b252"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzzzz_admin_completion_health.sql",
+      "sha256": "502b5016dc065f0b3cb95b93993778578dfd4c37845cfbc3963b7d1449213261"
+    },
+    {
+      "path": "supabase/migrations/20260902_article_working_drafts.sql",
+      "sha256": "d83fec40a992068146741e77e7337e7cdf1c50f8fb290c424d41a9240d5323d8"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_authorship.sql",
+      "sha256": "1c72ffc82b7455a1af95ac868c8c6c30bcf820a44d7b02ce47a4baff1bd644df"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql",
+      "sha256": "68240311e96435803f62aa63cbc3061dae4a20eb15ac00fcd9eee4f835f8f805"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_article_working_drafts_health.sql",
+      "sha256": "8b9accd2e547a8e718e695839dd86564faa8327533e3445272d3bfc58658221f"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_literary_archive_atomic_release.sql",
+      "sha256": "8db0297f22629b3db270eeab24622981ac75f3dd9dd659218b8bab7ee695b9ab"
+    },
+    {
+      "path": "supabase/migrations/20260905_article_publication_permissions.sql",
+      "sha256": "508ab243ebf6f38df8af11f3f30846103b277d59d4ee715149206716e365d7bd"
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_layout_v4.sql",
+      "sha256": "88430424d6754471862896b47cc748658817a50025c7473b6d1c155725b8e2e8"
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+      "sha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418"
+    },
+    {
+      "path": "supabase/migrations/20260905_literary_planet_web_license.sql",
+      "sha256": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2"
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276"
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce"
+    },
+    {
+      "path": "supabase/migrations/20261001194458_planet_license_rate_limits.sql",
+      "sha256": "4d9ff9da155b9e1016c6c2b39f220bb1f36e61742d8c29fc99b90f0fdccdef82"
+    },
+    {
+      "path": "supabase/migrations/20261002172514_planet_yookassa_sandbox_orders.sql",
+      "sha256": "82b282c48441d79615082ca4b1771ece3f1bcc42245a85d426356f18ca9e9ee7"
+    },
+    {
+      "path": "supabase/migrations/20261002173942_planet_reader_live_session_fence.sql",
+      "sha256": "cb3d13a692ea427d916d7ae504413d95b658ac8c0541124e25f7c6b6c5b26227"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "912e5480a54a9a5017cd8c051b7fdc1631420993dff6708e0b398f4fe520a13c"
+    },
+    {
+      "path": "vite.native.config.ts",
+      "sha256": "9a2a8d822fa079a8f711afd6304760d213890556f7fd5aa749347603cf382162"
+    },
+    {
+      "path": "vite.pwa.config.ts",
+      "sha256": "531880a0187da3ed87e65465dc139d8839bc8cafccd398c8bf541bd76b772860"
+    }
+  ],
+  "items": [
+    {
+      "id": "account-service-copy",
+      "source": "src/pwa/accountCopy.ts",
+      "sourceSha256": "73eb68802468efec0c65f33e1df2c44c8466603c1da37b93de8ce11a533fe914",
+      "locales": {
+        "ru": {
+          "version": "source-648ff0900f3fd16f",
+          "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+          "representation": "typescript-object-source"
+        },
+        "en": {
+          "version": "source-f71f331c26e7ced8",
+          "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+          "representation": "typescript-object-source"
+        }
+      },
+      "sourceAndRights": {
+        "source": "Current application service copy",
+        "rightsStatus": "OWNER_REVIEW_REQUIRED",
+        "translationStatus": "DRAFT",
+        "publicationApproval": "PENDING"
+      },
+      "automaticChecks": [
+        "Both localized object sources exist",
+        "Exact source SHA256 recorded"
+      ],
+      "ownerDecision": "Review actual RU/EN service wording and approve this exact pair; this inventory does not approve it.",
+      "humanReview": {
+        "status": "PENDING",
+        "approved": false,
+        "evidenceReference": null,
+        "reason": "No exact-version human approval provided."
+      }
+    },
+    {
+      "id": "password-recovery-copy",
+      "source": "src/pwa/passwordRecoveryCopy.ts",
+      "sourceSha256": "92e7337dea56ba7a882a169932be2a8f9c606830b8edb3c77033614e15e8708c",
+      "locales": {
+        "ru": {
+          "version": "source-ad116fa67cbf2f80",
+          "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+          "representation": "typescript-object-source"
+        },
+        "en": {
+          "version": "source-0ac226f6dc2fd10c",
+          "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+          "representation": "typescript-object-source"
+        }
+      },
+      "sourceAndRights": {
+        "source": "Current application service copy",
+        "rightsStatus": "OWNER_REVIEW_REQUIRED",
+        "translationStatus": "DRAFT",
+        "publicationApproval": "PENDING"
+      },
+      "automaticChecks": [
+        "Both localized object sources exist",
+        "Exact source SHA256 recorded"
+      ],
+      "ownerDecision": "Review actual RU/EN service wording and approve this exact pair; this inventory does not approve it.",
+      "humanReview": {
+        "status": "PENDING",
+        "approved": false,
+        "evidenceReference": null,
+        "reason": "No exact-version human approval provided."
+      }
+    },
+    {
+      "id": "auth-errors-copy",
+      "source": "src/community/authAction.ts",
+      "sourceSha256": "0a8ffdc404569f3f8f91e0dc33da0cf495d0c940c03e18ed4c30587a3b9fd6c5",
+      "locales": {
+        "ru": {
+          "version": "source-ec772f41b057aff3",
+          "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+          "representation": "typescript-object-source"
+        },
+        "en": {
+          "version": "source-36a957fa9cd5979e",
+          "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+          "representation": "typescript-object-source"
+        }
+      },
+      "sourceAndRights": {
+        "source": "Current application service copy",
+        "rightsStatus": "OWNER_REVIEW_REQUIRED",
+        "translationStatus": "DRAFT",
+        "publicationApproval": "PENDING"
+      },
+      "automaticChecks": [
+        "Both localized object sources exist",
+        "Exact source SHA256 recorded"
+      ],
+      "ownerDecision": "Review actual RU/EN service wording and approve this exact pair; this inventory does not approve it.",
+      "humanReview": {
+        "status": "PENDING",
+        "approved": false,
+        "evidenceReference": null,
+        "reason": "No exact-version human approval provided."
+      }
+    },
+    {
+      "id": "sandbox-payment-copy",
+      "source": "src/pwa/sandboxPaymentCopy.ts",
+      "sourceSha256": "a9d528eeaddff5f4d2e8bd0a2c942a7c7236dea1f387fa5e7158e89421abbf9a",
+      "locales": {
+        "ru": {
+          "version": "source-16f4d31500f2df98",
+          "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+          "representation": "typescript-object-source"
+        },
+        "en": {
+          "version": "source-cb958b6a410ce26d",
+          "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+          "representation": "typescript-object-source"
+        }
+      },
+      "sourceAndRights": {
+        "source": "Current application service copy",
+        "rightsStatus": "OWNER_REVIEW_REQUIRED",
+        "translationStatus": "DRAFT",
+        "publicationApproval": "PENDING"
+      },
+      "automaticChecks": [
+        "Both localized object sources exist",
+        "Exact source SHA256 recorded"
+      ],
+      "ownerDecision": "Review actual RU/EN service wording and approve this exact pair; this inventory does not approve it.",
+      "humanReview": {
+        "status": "PENDING",
+        "approved": false,
+        "evidenceReference": null,
+        "reason": "No exact-version human approval provided."
+      }
+    },
+    {
+      "id": "account-deletion-disclosure",
+      "source": "docs/mobile/ACCOUNT_DELETION_DISCLOSURE_DRAFT_RU_EN.md",
+      "sourceSha256": "9683b0b766bdd5ae77a4491624c3b225e0cde224d14f691b02e13a59bb971670",
+      "locales": {
+        "ru": {
+          "version": "draft-ad5e930404c20802",
+          "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+          "representation": "plaintext-draft"
+        },
+        "en": {
+          "version": "draft-6a33158124526fb6",
+          "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+          "representation": "plaintext-draft"
+        }
+      },
+      "sourceAndRights": {
+        "rightsStatus": "LEGAL_REVIEW_REQUIRED",
+        "translationStatus": "DRAFT",
+        "publicationApproval": "PENDING"
+      },
+      "automaticChecks": [
+        "Two actual localized draft blocks",
+        "Existing DD-01 through DD-06 remain human decisions"
+      ],
+      "ownerDecision": "Resolve DD-01..DD-06 against the current data-flow inventory, including private sandbox orders; then agent updates both drafts and validates the exact approved version.",
+      "humanReview": {
+        "status": "PENDING",
+        "approved": false,
+        "evidenceReference": null,
+        "reason": "No exact-version human approval provided."
+      }
+    }
+  ],
+  "dataInventory": [
+    {
+      "area": "Web account",
+      "data": [
+        "Email identity",
+        "Browser SDK session and refresh token",
+        "Private profile, subscriptions, progress and collections"
+      ],
+      "storage": "Canonical Supabase Auth/Data API; browser SDK persistence is JavaScript storage, not OS protection",
+      "network": "Configured Web only; no endpoint or credentials loaded by mobile preparation"
+    },
+    {
+      "area": "Native local reader",
+      "data": [
+        "RU/EN, theme, Booky and globe preferences",
+        "Local content caches"
+      ],
+      "storage": "Capacitor Preferences and app-owned native content files",
+      "network": "Local audited bundle; accountless reader and self-only CSP retained"
+    },
+    {
+      "area": "Native secrets capability",
+      "data": [
+        "Project-scoped session, PKCE verifier and private user record when explicitly integrated"
+      ],
+      "storage": "iOS WhenUnlockedThisDeviceOnly Keychain; AndroidKeystore AES-GCM no-backup ciphertext",
+      "network": "No Auth activation; no plaintext fallback or child PIN authority"
+    },
+    {
+      "area": "Sandbox candidate payments",
+      "data": [
+        "Account-bound private order, immutable sandbox product and price, provider references and idempotency keys",
+        "Verified canonical license receipts"
+      ],
+      "storage": "Service-only private order table; cascade on account deletion; existing terminal license and retry ledger rules remain",
+      "network": "YooKassa sandbox candidate web-direct only; test shop/keys and explicit remote authorization required"
+    },
+    {
+      "area": "Deletion",
+      "data": [
+        "Verified request, durable processor steps and exact-owned avatar files",
+        "Operational request/retention categories"
+      ],
+      "storage": "Current durable processor; server session and private-RLS deletion fences",
+      "network": "Auth/Storage service operations require configured approved environment; no automatic refund"
+    },
+    {
+      "area": "SDKs",
+      "data": [
+        "Capacitor app/network/preferences/browser/app-launcher",
+        "Supabase JS on configured canonical Web",
+        "Metrika canonical site only when configured"
+      ],
+      "storage": "Pinned package-lock.json",
+      "network": "Mobile prepared bundles compile Auth endpoint/captcha/analytics empty and expose no ambient VITE values"
+    }
+  ],
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, APK preparation and bounded runtime runner",
+      "required": "Provide an owned eligible target and exact runner binding; emulator SDK/AVD unavailable in checked project paths",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_* license/deletion policy fields"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "releaseReady": false,
+  "productionActionsAuthorized": false
+}

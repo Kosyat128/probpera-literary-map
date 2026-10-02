@@ -12,6 +12,7 @@ import BrandCloseIcon from "../components/BrandCloseIcon";
 import ReadingLibrarySyncNotice from "../components/ReadingLibrarySyncNotice";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useAuth } from "./AuthContext";
+import { authActionCopy, createCommunityAuthActions } from "./authAction";
 import EditorialWorkbench from "./EditorialWorkbench";
 
 export type CommunityView = "account" | "forum" | "admin";
@@ -203,9 +204,16 @@ export default function CommunityHub({
     configured,
     loading,
     user,
+    session,
     role,
     displayName: profileDisplayName,
+    error: authError,
+    retry: retryAuth,
+    privacyError, retryPrivacy,
   } = useAuth();
+  const authCopy = authActionCopy[language];
+  const authActions = useMemo(() => supabase ? createCommunityAuthActions(supabase.auth) : null, []);
+  const authPending = useRef(false);
   const [view, setView] = useState<CommunityView>(initialView);
   const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
   const [displayName, setDisplayName] = useState("");
@@ -227,11 +235,16 @@ export default function CommunityHub({
   const [forumSort, setForumSort] = useState<"new" | "popular" | "active">("new");
   const [replyBody, setReplyBody] = useState("");
   const [composeOpen, setComposeOpen] = useState(false);
-  const [profileBio, setProfileBio] = useState("");
-  const [profileAvatarUrl, setProfileAvatarUrl] = useState("");
-  const [profileReputation, setProfileReputation] = useState(0);
-  const [favoriteCountryCodes, setFavoriteCountryCodes] = useState<string[]>([]);
-  const [favoriteWriterIds, setFavoriteWriterIds] = useState<string[]>([]);
+  const [storedProfileBio, setProfileBio] = useState("");
+  const [storedProfileAvatarUrl, setProfileAvatarUrl] = useState("");
+  const [storedProfileReputation, setProfileReputation] = useState(0);
+  const [storedFavoriteCountryCodes, setFavoriteCountryCodes] = useState<string[]>([]);
+  const [storedFavoriteWriterIds, setFavoriteWriterIds] = useState<string[]>([]);
+  const [profileOwner, setProfileOwner] = useState<{ session: typeof session; subject: string; token: string } | null>(null);
+  const ownsProfile = profileOwner?.session === session && profileOwner?.subject === user?.id && profileOwner?.token === session?.access_token;
+  const profileBio = ownsProfile ? storedProfileBio : "", profileAvatarUrl = ownsProfile ? storedProfileAvatarUrl : "";
+  const profileReputation = ownsProfile ? storedProfileReputation : 0;
+  const favoriteCountryCodes = ownsProfile ? storedFavoriteCountryCodes : [], favoriteWriterIds = ownsProfile ? storedFavoriteWriterIds : [];
   const [favoriteCountryDraft, setFavoriteCountryDraft] = useState("");
   const [favoriteWriterDraft, setFavoriteWriterDraft] = useState("");
   const [dashboardCounts, setDashboardCounts] = useState<DashboardCounts>({
@@ -260,42 +273,29 @@ export default function CommunityHub({
   const isModerator = ["moderator", "editor", "admin"].includes(role);
 
   useEffect(() => {
+    setProfileBio(""); setProfileAvatarUrl(""); setProfileReputation(0);
+    setFavoriteCountryCodes([]); setFavoriteWriterIds([]); setFavoriteCountryDraft(""); setFavoriteWriterDraft("");
+    setProfileOwner(null);
     const client = supabase;
-    if (!client || !user) {
-      setProfileBio("");
-      setProfileAvatarUrl("");
-      setProfileReputation(0);
-      setFavoriteCountryCodes([]);
-      setFavoriteWriterIds([]);
-      return;
-    }
-
-    let active = true;
+    if (!client || !user || !session) return;
+    const identity = { session, subject: user.id, token: session.access_token };
+    setProfileOwner(identity);
+    const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 10_000);
     const loadProfile = async () => {
-      const basic = await client
-        .from("profiles")
-        .select("avatar_url,bio")
-        .eq("id", user.id)
-        .single();
-      if (!active) return;
-      setProfileAvatarUrl(basic.data?.avatar_url || "");
-      setProfileBio(basic.data?.bio || "");
-
-      const extended = await client
-        .from("profiles")
-        .select("reputation,favorite_country_codes,favorite_writer_ids")
-        .eq("id", user.id)
-        .single();
-      if (!active || extended.error || !extended.data) return;
+      const basic = await client.from("profiles").select("avatar_url,bio").eq("id", identity.subject).abortSignal(controller.signal).single();
+      if (controller.signal.aborted) return;
+      setProfileAvatarUrl(typeof basic.data?.avatar_url === "string" ? basic.data.avatar_url : "");
+      setProfileBio(typeof basic.data?.bio === "string" ? basic.data.bio.slice(0, 1000) : "");
+      const extended = await client.from("profiles").select("reputation,favorite_country_codes,favorite_writer_ids")
+        .eq("id", identity.subject).abortSignal(controller.signal).single();
+      if (controller.signal.aborted || extended.error || !extended.data) return;
       setProfileReputation(Number(extended.data.reputation || 0));
-      setFavoriteCountryCodes(extended.data.favorite_country_codes || []);
-      setFavoriteWriterIds(extended.data.favorite_writer_ids || []);
+      setFavoriteCountryCodes(Array.isArray(extended.data.favorite_country_codes) ? extended.data.favorite_country_codes.filter((value: unknown): value is string => typeof value === "string").slice(0, 8) : []);
+      setFavoriteWriterIds(Array.isArray(extended.data.favorite_writer_ids) ? extended.data.favorite_writer_ids.filter((value: unknown): value is string => typeof value === "string").slice(0, 24) : []);
     };
-    void loadProfile();
-    return () => {
-      active = false;
-    };
-  }, [user]);
+    void loadProfile().catch(() => {}).finally(() => clearTimeout(timer));
+    return () => { clearTimeout(timer); controller.abort(); };
+  }, [session]);
 
   useEffect(() => {
     if (!open) return;
@@ -663,7 +663,8 @@ export default function CommunityHub({
   if (!open) return null;
 
   const submitAuth = async () => {
-    if (!supabase) {
+    if (authPending.current) return;
+    if (!supabase || !authActions) {
       setMessage(t("Сервер сообщества ещё не подключён к этой сборке сайта."));
       return;
     }
@@ -694,13 +695,14 @@ export default function CommunityHub({
       setMessage(t("Подтвердите согласие с правилами сообщества."));
       return;
     }
+    authPending.current = true;
     setBusy(true);
     setMessage("");
 
     try {
-      const result =
+      const failure =
         authMode === "signup"
-          ? await supabase.auth.signUp({
+          ? await authActions.signUp({
               email: email.trim(),
               password,
               options: {
@@ -708,27 +710,12 @@ export default function CommunityHub({
                 emailRedirectTo: `${window.location.origin}${import.meta.env.BASE_URL}`,
               },
             })
-          : await supabase.auth.signInWithPassword({
+          : await authActions.signIn({
               email: email.trim(),
               password,
             });
 
-      if (result.error) {
-        const normalized = result.error.message.toLocaleLowerCase("en");
-        setMessage(
-          normalized.includes("already registered") ||
-            normalized.includes("already been registered")
-            ? t("Этот адрес уже зарегистрирован. Переключитесь на вход.")
-            : normalized.includes("invalid login credentials")
-              ? t("Почта или пароль указаны неверно.")
-              : normalized.includes("email rate limit")
-                ? t("Письмо уже отправлялось недавно. Подождите немного и повторите попытку.")
-                : normalized.includes("password")
-                  ? t("Пароль не соответствует требованиям безопасности.")
-                  : `${t("Не удалось выполнить запрос")}: ${result.error.message}`
-        );
-        return;
-      }
+      if (failure) { setMessage(authCopy[failure]); return; }
 
       setPassword("");
       setConfirmPassword("");
@@ -742,8 +729,19 @@ export default function CommunityHub({
         t("Не удалось связаться с сервером. Проверьте интернет и повторите попытку.")
       );
     } finally {
+      authPending.current = false;
+      setPassword(""); setConfirmPassword("");
       setBusy(false);
     }
+  };
+
+  const submitSignOut = async () => {
+    if (authPending.current || !authActions) return;
+    authPending.current = true; setBusy(true); setMessage("");
+    try {
+      const failure = await authActions.signOut();
+      if (failure) setMessage(authCopy.signoutFailed);
+    } finally { authPending.current = false; setBusy(false); }
   };
 
   const createTopic = async () => {
@@ -1401,6 +1399,8 @@ export default function CommunityHub({
             </aside>
 
             <div className="account-panel">
+              {authError ? <div role="alert"><p>{authCopy[authError]}</p><button type="button" onClick={retryAuth}>{authCopy.retry}</button></div> : null}
+              {privacyError ? <div role="alert"><p>{authCopy.privacyFailed}</p><button type="button" onClick={retryPrivacy}>{authCopy.privacyRetry}</button></div> : null}
               {user ? (
                 <>
                 <span className="section-kicker">{t("Личный кабинет")}</span>
@@ -1580,7 +1580,8 @@ export default function CommunityHub({
                   </button>
                   <button
                     type="button"
-                    onClick={() => void supabase?.auth.signOut()}
+                    disabled={busy}
+                    onClick={() => void submitSignOut()}
                   >
                     {t("Выйти")}
                   </button>

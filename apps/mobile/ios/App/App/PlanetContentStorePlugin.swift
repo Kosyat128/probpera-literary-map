@@ -223,5 +223,8 @@ public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
 
 @objc(PlanetBridgeViewController)
 class PlanetBridgeViewController: CAPBridgeViewController {
-    override func capacitorDidLoad() { bridge?.registerPluginInstance(PlanetContentStorePlugin()) }
+    override func capacitorDidLoad() {
+        bridge?.registerPluginInstance(PlanetContentStorePlugin())
+        bridge?.registerPluginInstance(PlanetSecureStorePlugin())
+    }
 }

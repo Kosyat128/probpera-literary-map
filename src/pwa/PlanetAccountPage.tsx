@@ -1,5 +1,7 @@
-import { lazy, Suspense, useEffect, useId, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { useAuth } from "../community/AuthContext";
+import { readerPrivacy } from "../community/readerPrivacy";
+import { authActionCopy } from "../community/authAction";
 import InterfaceLanguageControl from "../components/InterfaceLanguageControl";
 import { useInterfaceLanguage, type InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { setHeadMetadataValue, setMetadataAttribute } from "../i18n/headMetadata";
@@ -9,12 +11,13 @@ import { createPlanetAccountClient, PlanetAccountError, safePwaReturnPath, type 
 import { planetAccountCopy } from "./accountCopy";
 import { planetAccountRoute, type PlanetAccountMode } from "./accountRoutes";
 import { PlanetPasswordRecovery } from "./PlanetPasswordRecovery";
+import { SandboxPaymentPanel } from "./SandboxPaymentPanel";
 import "./account.css";
 
 const CommunityHub = lazy(() => import("../community/CommunityHub"));
 export { planetAccountRoute } from "./accountRoutes";
 export type { PlanetAccountMode } from "./accountRoutes";
-type AccountIdentity = { subject: string; token: string };
+type AccountIdentity = { subject: string; token: string; scope?: object };
 type AccountClient = ReturnType<typeof createPlanetAccountClient>;
 type IdentityReader = () => AccountIdentity | null;
 type DeletionView = { identity: AccountIdentity; phase: "loading" | "ready" | "error"; request: PlanetAccountDeletionStatus | null };
@@ -22,7 +25,7 @@ type DeletionView = { identity: AccountIdentity; phase: "loading" | "ready" | "e
 function routeName(mode: PlanetAccountMode) { return mode === "access" ? "planet-account" : "delete-account"; }
 function assertCurrent(identity: AccountIdentity, current: IdentityReader, signal: AbortSignal) {
   const latest = current();
-  if (signal.aborted || !latest || latest.subject !== identity.subject || latest.token !== identity.token) {
+  if (signal.aborted || !latest || latest.subject !== identity.subject || latest.token !== identity.token || latest.scope !== identity.scope) {
     throw new PlanetAccountError("authentication");
   }
 }
@@ -89,11 +92,14 @@ export function syncPlanetAccountMetadata(language: InterfaceLanguage, mode: Pla
 export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode }) {
   const auth = useAuth(); const { language, t } = useInterfaceLanguage(); const copy = planetAccountCopy.locales[language];
   const authRef = useRef(auth); authRef.current = auth;
+  const sandboxSession = auth.session;
+  const sandboxCurrent = useCallback(() => authRef.current.session === sandboxSession, [sandboxSession]);
   const languageRef = useRef(language); languageRef.current = language;
   const currentIdentity: IdentityReader = () => {
     const { user, session } = authRef.current;
-    return user && session?.access_token && session.user.id === user.id ? { subject: user.id, token: session.access_token } : null;
+    return user && session?.access_token && session.user.id === user.id ? { subject: user.id, token: session.access_token, scope: session } : null;
   };
+  const currentStatusIdentity: IdentityReader = () => currentIdentity() ?? authRef.current.deletionStatusIdentity;
   const client = useMemo(() => {
     if (typeof window === "undefined") return null;
     try { return createPlanetAccountClient({ origin: window.location.origin,
@@ -125,27 +131,27 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
     pending.current?.abort(); pending.current = null; setBusy(false); setConsent(false); requestId.current = null;
   }, [auth.user?.id]);
   useEffect(() => {
-    const identity = currentIdentity(); const controller = new AbortController(); statusPending.current = controller;
+    const identity = currentStatusIdentity(); const controller = new AbortController(); statusPending.current = controller;
     if (mode !== "deletion" || !client || !config || !identity) { setDeletionView(null); return () => controller.abort(); }
     setDeletionView({ identity, phase: "loading", request: null });
-    void readPlanetAccountDeletionStatus(client, config, identity, currentIdentity, controller.signal).then(request => {
-      if (!controller.signal.aborted) setDeletionView({ identity, phase: "ready", request });
+    void readPlanetAccountDeletionStatus(client, config, identity, currentStatusIdentity, controller.signal).then(request => {
+      if (!controller.signal.aborted) { setDeletionView({ identity, phase: "ready", request }); if (request) void readerPrivacy.clear(identity.subject, true); }
     }).catch(() => {
       if (!controller.signal.aborted) setDeletionView({ identity, phase: "error", request: null });
     });
     return () => controller.abort();
     // A refreshed token is rechecked by the same canonical AuthProvider.
-  }, [client, config, mode, auth.user?.id, auth.session?.access_token, statusReload]);
+  }, [client, config, mode, auth.session, auth.deletionStatusIdentity, statusReload]);
   useEffect(() => { mounted.current = true; return () => { mounted.current = false; pending.current?.abort(); }; }, []);
   useEffect(() => {
     if (modalOpen && auth.session?.access_token && auth.session.access_token !== modalPreviousToken.current) setModalOpen(false);
   }, [modalOpen, auth.session?.access_token]);
-  const visibleIdentity = currentIdentity();
+  const visibleIdentity = currentStatusIdentity();
   const matchingStatus = visibleIdentity && deletionView?.identity.subject === visibleIdentity.subject
-    && deletionView.identity.token === visibleIdentity.token ? deletionView : null;
+    && deletionView.identity.token === visibleIdentity.token && deletionView.identity.scope === visibleIdentity.scope ? deletionView : null;
   const receipt = matchingStatus?.phase === "ready" ? matchingStatus.request : null;
   const statusReady = matchingStatus?.phase === "ready";
-  const statusChecking = mode === "deletion" && !!auth.user && (!matchingStatus || matchingStatus.phase === "loading");
+  const statusChecking = mode === "deletion" && !!visibleIdentity && (!matchingStatus || matchingStatus.phase === "loading");
   const statusUnknown = mode === "deletion" && matchingStatus?.phase === "error";
 
   function showSignIn() {
@@ -180,7 +186,7 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
       if (mode === "deletion") {
         requestId.current ??= crypto.randomUUID();
         const result = await requestPlanetAccountDeletion(client, config, identity, currentIdentity, requestId.current, consent, controller.signal);
-        if (!controller.signal.aborted) setDeletionView({ identity, phase: "ready", request: result });
+        if (!controller.signal.aborted) { setDeletionView({ identity, phase: "ready", request: result }); void readerPrivacy.clear(identity.subject, true); }
       } else {
         await bridgePlanetAccount(client, config, identity, currentIdentity, controller.signal);
         const target = safePwaReturnPath(new URLSearchParams(window.location.search).get("returnTo"), languageRef.current);
@@ -193,7 +199,7 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
         try {
           const request = await readPlanetAccountDeletionStatus(client, config, identity, currentIdentity, controller.signal);
           if (!controller.signal.aborted) {
-            setDeletionView({ identity, phase: "ready", request });
+            setDeletionView({ identity, phase: "ready", request }); if (request) void readerPrivacy.clear(identity.subject, true);
             if (!request) setError(failure instanceof PlanetAccountError ? failure.reason : "unavailable");
           }
         } catch {
@@ -202,7 +208,7 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
       } else if (!controller.signal.aborted) setError(failure instanceof PlanetAccountError ? failure.reason : "unavailable");
     } finally { if (pending.current === controller) { pending.current = null; setBusy(false); } }
   }
-  const status = statusUnknown || error === "status-unknown" ? copy.statusUnknown : error === "authentication" ? copy.authentication : error === "reauthentication" ? copy.reauthentication
+  const status = auth.error && !(mode === "deletion" && auth.deletionStatusIdentity) ? copy.unavailable : statusUnknown || error === "status-unknown" ? copy.statusUnknown : error === "authentication" ? copy.authentication : error === "reauthentication" ? copy.reauthentication
     : error === "denied" ? copy.denied : error ? copy.unavailable : loading || auth.loading || statusChecking ? copy.busy : !auth.configured ? copy.unavailable : "";
   const disclosure = config?.deletionDisclosure;
   const returnQuery = typeof window === "undefined" ? "" : window.location.search;
@@ -215,6 +221,7 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
       <h1 id={headingId}>{mode === "access" ? copy.access : copy.deletion}</h1>
       <p>{mode === "access" ? copy.intro : copy.deletionIntro}</p>
       <p role="status" aria-live="polite" aria-atomic="true">{status}</p>
+      {auth.privacyError ? <div role="alert"><p>{authActionCopy[language].privacyFailed}</p><button type="button" onClick={auth.retryPrivacy}>{authActionCopy[language].privacyRetry}</button></div> : null}
       {mode === "deletion" && !receipt ? <>
         <p id={disclosureId} className="planet-account__disclosure">{disclosure ? disclosure[language] : copy.disclosureUnavailable}</p>
         <label className="planet-account__consent"><input type="checkbox" checked={consent} disabled={!disclosure || busy || loading || !statusReady}
@@ -227,13 +234,16 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
               {busy ? copy.busy : mode === "access" ? copy.restore : copy.submitDeletion}</button>
             {mode === "deletion" ? <button type="button" disabled={busy} onClick={() => void signInAgain()}>{copy.signInAgain}</button> : null}
           </>}
+          {auth.error ? <button type="button" disabled={auth.loading || busy} onClick={auth.retry}>{copy.retry}</button> : null}
           {!config && !loading ? <button type="button" disabled={busy} onClick={() => setReload(value => value + 1)}>{copy.retry}</button> : null}
         </div>}
       {mode === "deletion" ? <>
         <p>{copy.statusInfo}</p>
-        {auth.user && config ? <button type="button" disabled={busy || statusChecking} onClick={() => { setError(null); setStatusReload(value => value + 1); }}>{copy.checkStatus}</button> : null}
+        {visibleIdentity && config ? <button type="button" disabled={busy || statusChecking} onClick={() => { setError(null); setStatusReload(value => value + 1); }}>{copy.checkStatus}</button> : null}
       </> : null}
       {mode === "access" && !modalOpen && !receipt ? <PlanetPasswordRecovery onSignIn={() => void signInAgain()} /> : null}
+      {mode === "access" && config && sandboxSession && !receipt ? <SandboxPaymentPanel language={language} config={config}
+        subject={sandboxSession.user.id} token={sandboxSession.access_token} isCurrent={sandboxCurrent} /> : null}
       <nav className="planet-account__links" aria-label={t("Основная навигация")}>
         <a href={`/${language}/${mode === "access" ? "delete-account" : "planet-account"}/${returnQuery}`}>{mode === "access" ? copy.deleteLink : copy.accessLink}</a>
         <a href="/stati/">{copy.journal}</a><a href="mailto:probperasite@yandex.ru">{copy.support}</a>

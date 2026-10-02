@@ -1,13 +1,13 @@
 import { fileURLToPath } from 'node:url';
-import { loadEnv } from 'vite';
+import { loadEnv, type UserConfig } from 'vite';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ mode }) => {
-  const environment = loadEnv(mode, process.cwd(), "");
+export function createCanonicalSiteConfig({ mode }: { mode: string }, isolatedEnvironment = false): UserConfig {
+  const environment: Record<string, string> = isolatedEnvironment ? {} : loadEnv(mode, process.cwd(), "");
   const configuredBase = environment.PUBLIC_SITE_BASE_PATH || "/probpera-literary-map/";
   const base = configuredBase === "/" ? "/" : `/${configuredBase.replace(/^\/+|\/+$/g, "")}/`;
-  const rawMetrikaCounterId = (
+  const rawMetrikaCounterId = isolatedEnvironment ? "" : (
     process.env.YANDEX_METRIKA_COUNTER_ID ||
     environment.YANDEX_METRIKA_COUNTER_ID ||
     ""
@@ -98,4 +98,6 @@ export default defineConfig(({ mode }) => {
       open: true
     }
   };
-});
+}
+
+export default defineConfig(environment => createCanonicalSiteConfig(environment));

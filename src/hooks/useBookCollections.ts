@@ -28,6 +28,7 @@ import {
   type BookCollectionStorage,
 } from "../books/bookCollectionStorage";
 import { useAuth } from "../community/AuthContext";
+import { readerPrivacy } from "../community/readerPrivacy";
 import { supabase } from "../lib/supabase";
 
 export type BookCollectionSyncStatus =
@@ -402,6 +403,23 @@ const legacySmartCollection = (
 const errorMessage = (error: unknown) =>
   error instanceof Error ? error.message : "book-collection-sync-failed";
 
+/** Keep a completed old account request from acknowledging or sending more work. */
+export async function flushBookCollectionMutations(options: {
+  storage: Pick<BookCollectionStorage, "pendingMutations" | "acknowledgeMutations">;
+  send: (mutation: BookCollectionMutation) => Promise<void>;
+  isScopeCurrent: () => boolean;
+}): Promise<boolean> {
+  if (!options.isScopeCurrent()) return false;
+  const mutations = await options.storage.pendingMutations();
+  for (const mutation of mutations) {
+    if (!options.isScopeCurrent()) return false;
+    await options.send(mutation);
+    if (!options.isScopeCurrent()) return false;
+    await options.storage.acknowledgeMutations([mutation.id]);
+  }
+  return options.isScopeCurrent();
+}
+
 export function useBookCollections() {
   const { configured, user } = useAuth();
   const storageScope = user ? `user:${user.id}` : "anonymous";
@@ -473,11 +491,16 @@ export function useBookCollections() {
 
   useEffect(() => {
     operationScope.active = true;
+    const unregister = user ? readerPrivacy.register(user.id, () => {
+      operationScope.active = false; storage.close();
+      setScopedSnapshot({ scope: operationScope, value: emptySnapshot });
+      setScopedPersistence({ scope: operationScope, value: "unknown" });
+    }) : () => {};
     return () => {
-      operationScope.active = false;
+      unregister(); operationScope.active = false;
       if (storage !== bookCollectionStorage) storage.close();
     };
-  }, [operationScope, storage]);
+  }, [operationScope, storage, emptySnapshot, user?.id]);
 
   const publishSnapshot = useCallback((next: BookCollectionSnapshot) => {
     if (!isScopeCurrent()) return;
@@ -506,11 +529,8 @@ export function useBookCollections() {
     const revision = operationScope.revision;
     setStatus("syncing");
     const operation = (async () => {
-      const mutations = await storage.pendingMutations();
-      for (const mutation of mutations) {
-        await sendMutation(client, userId, mutation);
-        await storage.acknowledgeMutations([mutation.id]);
-      }
+      await flushBookCollectionMutations({ storage, isScopeCurrent,
+        send: mutation => sendMutation(client, userId, mutation) });
       if (isScopeCurrent() && operationScope.revision === revision) {
         setError(null);
         setStatus("synced");

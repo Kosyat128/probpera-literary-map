@@ -25,14 +25,14 @@ describe("Supabase lazy boundary", () => {
     expect(loader).toContain("clientPromise ??=");
   });
 
-  it("always settles authentication loading after session lookup", () => {
+  it("connects the canonical bounded session observer and keeps native reading accountless", () => {
     const authContext = readSource("../community/AuthContext.tsx");
-
-    expect(authContext).toContain(
-      "const sessionPromise = client.auth.getSession()"
-    );
-    expect(authContext).toMatch(
-      /const \{ data \} = await sessionPromise;[\s\S]*?finally \{[\s\S]*?setLoading\(false\)/u
-    );
+    const observer = readSource("../community/authSession.ts");
+    expect(authContext).toContain("observeCanonicalAuthSession({ loadClient: loadSupabaseClient");
+    expect(authContext).toContain("return observer.dispose");
+    expect(observer).toContain("auth.getUser(token)");
+    expect(observer).not.toMatch(/^import\s+(?!type\b).*@supabase\/supabase-js/mu);
+    const accountless = authContext.slice(authContext.indexOf("export function AccountlessReaderProvider"));
+    expect(accountless).not.toMatch(/loadSupabaseClient|observeCanonicalAuthSession/u);
   });
 });

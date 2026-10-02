@@ -15,6 +15,7 @@ import {
   findBookCollectionConflicts,
   commitBookCollectionUpdate,
   loadBookCollectionPersistence,
+  flushBookCollectionMutations,
   type BookCollectionPersistenceStatus,
 } from "./useBookCollections";
 
@@ -261,4 +262,42 @@ test("actual unavailable-IndexedDB storage retains a usable session edit and nev
   } finally {
     storage.close();
   }
+});
+
+
+test("account switching during a pending outbox read sends and acknowledges nothing", async () => {
+  const mutation = createBookCollectionMutation({ kind: "collection-upsert", value: manualCollection("Private A") });
+  const pending = deferred<readonly typeof mutation[]>(), send = vi.fn(), acknowledgeMutations = vi.fn();
+  let current = true;
+  const operation = flushBookCollectionMutations({ storage: { pendingMutations: () => pending.promise, acknowledgeMutations },
+    send, isScopeCurrent: () => current });
+  current = false; pending.resolve([mutation]);
+  assert.equal(await operation, false);
+  assert.equal(send.mock.calls.length, 0); assert.equal(acknowledgeMutations.mock.calls.length, 0);
+});
+
+test("A to B to A rejects the old generation after its first remote write", async () => {
+  const first = createBookCollectionMutation({ kind: "collection-upsert", value: manualCollection("Private A") });
+  const second = createBookCollectionMutation({ kind: "favorite-delete", bookKey: "synthetic-private-book" });
+  const remote = deferred<void>(), acknowledgeMutations = vi.fn(), send = vi.fn(() => remote.promise);
+  const original = {}; let active = original;
+  const operation = flushBookCollectionMutations({ storage: { pendingMutations: async () => [first, second], acknowledgeMutations },
+    send, isScopeCurrent: () => active === original });
+  await Promise.resolve(); assert.equal(send.mock.calls.length, 1);
+  active = {}; active = {}; remote.resolve();
+  assert.equal(await operation, false);
+  assert.equal(send.mock.calls.length, 1); assert.equal(acknowledgeMutations.mock.calls.length, 0);
+});
+
+test("a switch while acknowledging cannot send the remaining old account mutations", async () => {
+  const first = createBookCollectionMutation({ kind: "collection-upsert", value: manualCollection("Private A") });
+  const second = createBookCollectionMutation({ kind: "favorite-delete", bookKey: "synthetic-private-book" });
+  const acknowledgement = deferred<void>(), send = vi.fn(async () => {}), acknowledgeMutations = vi.fn(() => acknowledgement.promise);
+  let current = true;
+  const operation = flushBookCollectionMutations({ storage: { pendingMutations: async () => [first, second], acknowledgeMutations },
+    send, isScopeCurrent: () => current });
+  await Promise.resolve(); await Promise.resolve();
+  assert.equal(acknowledgeMutations.mock.calls.length, 1);
+  current = false; acknowledgement.resolve();
+  assert.equal(await operation, false); assert.equal(send.mock.calls.length, 1);
 });

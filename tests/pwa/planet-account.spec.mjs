@@ -66,26 +66,38 @@ const productionAssets = [
 
 test.beforeAll(async () => {
   const authFixture = `
-    const listeners=new Set(); const calls=[];
+    const listeners=new Set(); const calls=[]; const heldProfiles=new Set(); const pendingProfiles=new Map();
     let session=window.__accountInitial.signedIn ? {access_token:'${TOKEN}',user:{id:'${SUBJECT}',email:'fixture@example.test'}} : null;
     function publish(next){session=next;for(const fn of listeners)fn(next?'SIGNED_IN':'SIGNED_OUT',next)}
     const auth={
       async getSession(){return {data:{session},error:null}},
+      async getUser(token){return session?.access_token===token?{data:{user:session.user},error:null}:{data:{user:null},error:{status:401,message:"Synthetic revoked session"}}},
       onAuthStateChange(fn){listeners.add(fn);return{data:{subscription:{unsubscribe(){listeners.delete(fn)}}}}},
       async signOut(options){calls.push({method:'signOut',options});publish(null);return{error:null}},
       async signInWithPassword(credentials){calls.push({method:'signInWithPassword',credentials});publish({access_token:'fixture-new-session',user:{id:'${SUBJECT}',email:credentials.email}});return{data:{session},error:null}},
       async signUp(credentials){calls.push({method:'signUp',credentials});return{data:{user:null,session:null},error:null}}
     };
-    function query(){let proxy;proxy=new Proxy({}, {get(_,key){
-      if(key==='then')return (resolve,reject)=>Promise.resolve({data:[],error:null,count:0}).then(resolve,reject);
+    function query(table){let selection='',subject=null,proxy;const execute=()=>{
+      const row=table==='profiles' && subject ? {display_name:subject==='${SUBJECT}'?'Synthetic Reader A':'Synthetic Reader B',role:'reader',
+        avatar_url:'',bio:subject==='${SUBJECT}'?'Synthetic A private bio':'Synthetic B private bio',reputation:0,favorite_country_codes:[],favorite_writer_ids:[]} : null;
+      const result={data:row??[],error:null,count:0};
+      if(table==='profiles' && heldProfiles.has(subject))return new Promise(resolve=>{const set=pendingProfiles.get(subject)??new Set();set.add(()=>resolve(result));pendingProfiles.set(subject,set)});
+      return Promise.resolve(result);
+    };
+    proxy=new Proxy({}, {get(_,key){
+      if(key==='then')return (resolve,reject)=>execute().then(resolve,reject);
+      if(key==='select')return value=>{selection=value;return proxy};
+      if(key==='eq')return (key,value)=>{if(key==='id')subject=value;return proxy};
       return ()=>proxy;
     }});return proxy}
-    export const supabase={auth,from:()=>query()};
+    function rpc(name,args){let headers={},signal,proxy;proxy={setHeader(key,value){headers[key]=value;return proxy},abortSignal(value){signal=value;return proxy},
+      then(done,fail){return fetch('/fixture/live-session',{method:'POST',headers,signal}).then(value=>value.json()).then(done,fail)}};return proxy}
+    export const supabase={auth,rpc,from:table=>query(table)};
     export const isCommunityConfigured=true;
     export const isAuthTurnstileConfigured=false;
     export const supabaseConnection={url:'https://fixture.supabase.invalid',publishableKey:'fixture-public-key'};
     export async function loadSupabaseClient(){return supabase}
-    window.__accountAuth={calls:()=>JSON.parse(JSON.stringify(calls)),setIdentity(subject,token){publish(subject?{access_token:token,user:{id:subject,email:'fixture@example.test'}}:null)}};
+    window.__accountAuth={calls:()=>JSON.parse(JSON.stringify(calls)),holdProfile(subject){heldProfiles.add(subject)},releaseProfile(subject){heldProfiles.delete(subject);for(const resolve of pendingProfiles.get(subject)??[])resolve();pendingProfiles.delete(subject)},setIdentity(subject,token){publish(subject?{access_token:token,user:{id:subject,email:subject==='${SUBJECT}'?'fixture@example.test':'other@example.test'}}:null)}};
   `;
   const result = await build({
     stdin: { resolveDir: fileURLToPath(new URL("../../", import.meta.url)), loader: "jsx", contents: `
@@ -93,7 +105,9 @@ test.beforeAll(async () => {
       import{AuthProvider}from'./src/community/AuthContext';
       import{InterfaceLanguageProvider}from'./src/i18n/InterfaceLanguage';
       import PlanetAccountPage from'./src/pwa/PlanetAccountPage';
-      createRoot(document.getElementById('root')).render(<React.StrictMode><InterfaceLanguageProvider><AuthProvider><PlanetAccountPage mode={window.__accountInitial.mode}/></AuthProvider></InterfaceLanguageProvider></React.StrictMode>);
+      import CommunityHub from'./src/community/CommunityHub';
+      function AccountFixture(){const[profileOpen,setProfileOpen]=React.useState(window.__accountInitial.profileView===true);return <AuthProvider><PlanetAccountPage mode={window.__accountInitial.mode}/>{profileOpen?<CommunityHub open initialView="account" onClose={()=>setProfileOpen(false)}/>:null}</AuthProvider>}
+      createRoot(document.getElementById('root')).render(<React.StrictMode><InterfaceLanguageProvider><AccountFixture/></InterfaceLanguageProvider></React.StrictMode>);
     ` },
     bundle: true, write: false, format: "iife", platform: "browser", target: "es2020", jsx: "automatic",
     define: { "process.env.NODE_ENV": '"development"', "import.meta.env": JSON.stringify({ BASE_URL: "/", DEV: false }),
@@ -129,11 +143,13 @@ async function open(options = {}) {
   const state = { config: options.disclosure === false ? { ...config, deletionDisclosure: null } : config,
     bridgeSubject: options.bridgeSubject ?? SUBJECT, failFirstDeletion: options.failFirstDeletion ?? false,
     bridgePending: options.bridgePending ?? false, releaseBridge: null, request: options.request ?? null,
-    statusFailure: options.statusFailure ?? false, dropFirstDeletion: options.dropFirstDeletion ?? false };
+    statusFailure: options.statusFailure ?? false, dropFirstDeletion: options.dropFirstDeletion ?? false, sessionRevoked: false, liveSessionUnavailable: false,
+    sandbox: options.sandbox ?? false, dropFirstPayment: options.dropFirstPayment ?? false, order: null };
+  if (state.sandbox) state.config = { ...state.config, product: "sandbox.fixture-base" };
   const entries = generatePlanetAccountPages({ builtHtml: '<!doctype html><html><head><title>Fixture</title><script type="module" src="/assets/fixture.js"></script><link rel="manifest" href="/site.webmanifest"></head><body><div id="root"></div></body></html>' }).files;
   await page.addInitScript(initial => {
     window.__accountInitial = initial; history.replaceState({ retained: "navigation-state" }, "", location.href);
-  }, { mode, signedIn: options.signedIn !== false });
+  }, { mode, signedIn: options.signedIn !== false, profileView: options.profileView === true });
   await page.route("**/*", async route => {
     const url = new URL(route.request().url());
     if (url.origin !== "https://account-ui.test") return route.abort();
@@ -142,10 +158,22 @@ async function open(options = {}) {
     if (url.pathname === "/assets/fixture.js") return route.fulfill({ contentType: "text/javascript", body: bundle });
     if (flagAssets.has(url.pathname)) return route.fulfill({ contentType: "image/svg+xml", body: flagAssets.get(url.pathname) });
     if (accountAssets.has(url.pathname)) return route.fulfill(accountAssets.get(url.pathname));
+    if (url.pathname === "/fixture/live-session") return route.fulfill({ json: { data: !state.sessionRevoked && !state.request,
+      error: state.liveSessionUnavailable ? { code: "PGRST202" } : null } });
     if (url.pathname.startsWith("/planet/api/")) {
       const body = route.request().postDataJSON(); calls.push({ route: url.pathname, body, headers: route.request().headers() });
       if (url.pathname.endsWith("configuration")) return route.fulfill({ json: state.config });
-      if (url.pathname.endsWith("account/deletion-status")) return state.statusFailure
+      if (url.pathname.endsWith("payments/catalog")) return route.fulfill({ json: { catalog: state.sandbox ? {
+        v: 1, audience: state.config.audience, product: state.config.product, catalogVersion: "fixture-v1", amountMinor: 12345,
+        currency: "RUB", mode: "sandbox", channel: "web-direct" } : null } });
+      if (url.pathname.endsWith("payments/order")) {
+        state.order ??= { orderId: "55555555-5555-4555-8555-555555555555", product: state.config.product, catalogVersion: "fixture-v1", status: "pending", amountMinor: 12345,
+          currency: "RUB", environment: "sandbox", refundStatus: null, confirmationUrl: "https://yoomoney.ru/api-pages/v2/payment-confirm/test?orderId=synthetic" };
+        if (state.dropFirstPayment) { state.dropFirstPayment = false; return route.abort("failed"); }
+        return route.fulfill({ json: { order: state.order } });
+      }
+      if (url.pathname.endsWith("payments/status") || url.pathname.endsWith("payments/restore")) return route.fulfill({ json: { order: state.order } });
+      if (url.pathname.endsWith("account/deletion-status")) return state.sessionRevoked ? route.fulfill({ status: 401, json: { error: "fixture-session-revoked" } }) : state.statusFailure
         ? route.fulfill({ status: 503, json: { error: "fixture-status-unavailable" } }) : route.fulfill({ json: { request: state.request } });
       if (url.pathname.endsWith("license/bridge")) {
         if (state.request) return route.fulfill({ status: 403, json: { error: "access-denied" } });
@@ -459,5 +487,96 @@ test("deletion reauthentication signs out only the canonical local session befor
     expect(await page.evaluate(() => window.__accountAuth.calls())).toEqual([{ method: "signOut", options: { scope: "local" } }]);
     await expect(page.locator('[data-password-recovery]')).toHaveCount(0); await expect(page.locator('form.auth-form')).toHaveCount(1);
     expect(errors).toEqual([]);
+  } finally { await page.close(); }
+});
+
+
+for (const locale of ["ru", "en"]) test(`verified A to B hides A's profile and clears only A's local private caches (${locale})`, async () => {
+  const { page, errors } = await open({ locale, profileView: true });
+  try {
+    const hub = page.locator('.community-hub'), bio = hub.locator('.reader-profile-editor textarea');
+    await expect(bio).toHaveValue("Synthetic A private bio");
+    await page.evaluate(({ a, b }) => {
+      for (const prefix of ["probpera-reading-library", "probpera-reading-progress", "probpera-reader-subscriptions"]) {
+        localStorage.setItem(prefix + ":user:" + a, "Synthetic A private cache");
+        localStorage.setItem(prefix + ":user:" + b, "Synthetic B private cache");
+      }
+      localStorage.setItem("booky-size", "large"); localStorage.setItem("probpera-reading-library", "Synthetic guest cache");
+      window.__accountAuth.holdProfile(a); window.__accountAuth.holdProfile(b);
+      window.__accountAuth.setIdentity(a, "fixture-refreshed-A");
+    }, { a: SUBJECT, b: OTHER });
+    await expect(bio).toHaveValue("");
+    await page.evaluate(b => window.__accountAuth.setIdentity(b, "fixture-other-session"), OTHER);
+    await expect(hub).toContainText("other@example.test"); await expect(bio).toHaveValue("");
+    await page.evaluate(a => window.__accountAuth.releaseProfile(a), SUBJECT);
+    await expect(hub).not.toContainText("Synthetic Reader A"); await expect(bio).toHaveValue("");
+    await expect.poll(() => page.evaluate(a => ["probpera-reading-library", "probpera-reading-progress", "probpera-reader-subscriptions"].every(prefix => localStorage.getItem(prefix + ":user:" + a) === null), SUBJECT)).toBe(true);
+    expect(await page.evaluate(b => ["probpera-reading-library", "probpera-reading-progress", "probpera-reader-subscriptions"].every(prefix => localStorage.getItem(prefix + ":user:" + b) === "Synthetic B private cache"), OTHER)).toBe(true);
+    expect(await page.evaluate(() => localStorage.getItem("booky-size"))).toBe("large");
+    expect(await page.evaluate(() => localStorage.getItem("probpera-reading-library"))).toBe("Synthetic guest cache");
+    await page.evaluate(b => window.__accountAuth.releaseProfile(b), OTHER);
+    await expect(bio).toHaveValue("Synthetic B private bio"); expect(errors).toEqual([]);
+  } finally { await page.close(); }
+});
+
+
+test("a cached account cannot publish private data after an external session revoke and actual browser reload", async () => {
+  const { page, state, errors } = await open({ profileView: true });
+  try {
+    await expect(page.locator('.reader-profile-editor textarea')).toHaveValue("Synthetic A private bio");
+    await page.evaluate(a => {
+      for (const prefix of ["probpera-reading-library", "probpera-reading-progress", "probpera-reader-subscriptions"]) localStorage.setItem(prefix + ":user:" + a, "Synthetic revoked private cache");
+      localStorage.setItem("probpera-reading-library", "Synthetic guest cache");
+    }, SUBJECT);
+    state.sessionRevoked = true; await page.reload();
+    const hub = page.locator('.community-hub');
+    await expect(hub.locator('[role="alert"]')).toContainText("no longer verified");
+    await expect(hub.locator('.reader-profile-editor')).toHaveCount(0);
+    await expect(hub).not.toContainText("Synthetic A private bio");
+    await expect(page.getByRole("button", { name: "Restore access", exact: true })).toHaveCount(0);
+    await expect.poll(() => page.evaluate(a => ["probpera-reading-library", "probpera-reading-progress", "probpera-reader-subscriptions"].every(prefix => localStorage.getItem(prefix + ":user:" + a) === null), SUBJECT)).toBe(true);
+    expect(await page.evaluate(() => localStorage.getItem("probpera-reading-library"))).toBe("Synthetic guest cache");
+    await hub.getByRole("button", { name: "Close", exact: true }).click();
+    await expect(hub).toHaveCount(0);
+    await page.locator('.planet-account__header [data-interface-language="ru"]').click();
+    await page.getByRole("button", { name: "Войти в аккаунт", exact: true }).click();
+    await expect(hub.locator('[role="alert"]')).toContainText("Сессия аккаунта больше не подтверждена");
+    state.sessionRevoked = false;
+    await hub.getByRole("button", { name: "Повторить проверку аккаунта", exact: true }).click();
+    // The real account page closes its sign-in dialog after verified admission.
+    await expect(hub).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Восстановить доступ", exact: true })).toBeEnabled(); expect(errors).toEqual([]);
+  } finally { await page.close(); }
+});
+
+
+test("optional sandbox purchase preserves uncertain request identity and both locales through refund display", async () => {
+  const { page, state, calls, errors } = await open({ sandbox: true, dropFirstPayment: true });
+  try {
+    const panel = page.locator('[data-sandbox-payment="web-direct"]'); await expect(panel).toBeVisible();
+    await expect(panel).toContainText("RUB 123.45");
+    await panel.getByRole("button", { name: "Start test purchase", exact: true }).click();
+    await expect(panel.getByRole("status")).toContainText("No response yet");
+    await page.locator('.planet-account__header [data-interface-language="ru"]').click();
+    await expect(panel).toContainText("123,45 ₽");
+    await panel.getByRole("button", { name: "Повторить с тем же запросом", exact: true }).click();
+    await expect(panel.getByRole("status")).toContainText("ожидает подтверждения");
+    await expect(panel.getByRole("button", { name: "Продолжить тестовый платёж", exact: true })).toBeVisible();
+    const orders = calls.filter(call => call.route.endsWith("payments/order")); expect(orders).toHaveLength(2);
+    expect(orders[0].body.requestId).toMatch(/^[0-9a-f-]{36}$/u); expect(orders[1].body.requestId).toBe(orders[0].body.requestId); expect(orders.every(order => order.body.catalogVersion === "fixture-v1")).toBe(true);
+    for (const order of orders) { expect(order.body).not.toHaveProperty("amount"); expect(order.body).not.toHaveProperty("amountMinor"); expect(order.body).not.toHaveProperty("subject"); expect(JSON.stringify(order.body)).not.toContain("secret"); }
+    await page.locator('.planet-account__header [data-interface-language="en"]').click();
+    state.order = { ...state.order, status: "succeeded", confirmationUrl: null };
+    await panel.getByRole("button", { name: "Check payment", exact: true }).click();
+    await expect(panel.getByRole("status")).toContainText("test payment is confirmed");
+    await expect(panel.getByRole("button", { name: "Continue test payment", exact: true })).toHaveCount(0);
+    await panel.getByRole("button", { name: "Find test purchase", exact: true }).click();
+    await expect.poll(() => calls.filter(call => call.route.endsWith("payments/restore")).length).toBe(1);
+    await expect(panel.getByRole("button", { name: "Check payment", exact: true })).toBeEnabled();
+    await expect(panel.getByRole("status")).toContainText("test payment is confirmed");
+    state.order = { ...state.order, status: "refunded", refundStatus: "succeeded" };
+    await panel.getByRole("button", { name: "Check payment", exact: true }).click();
+    await expect(panel.getByRole("status")).toContainText("Access from this purchase is closed");
+    expect(calls.filter(call => call.route.endsWith("account/deletion-request"))).toHaveLength(0); expect(errors).toEqual([]);
   } finally { await page.close(); }
 });

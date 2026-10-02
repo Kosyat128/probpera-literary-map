@@ -1,5 +1,6 @@
 import type { RecentHistoryStore } from "../planet/RecentHistory";
 import type { ContentDownloads } from "../planet/ContentDownloads";
+import type { NativeSecretStore } from "../host/nativeSecureStorage";
 
 /** Platform capabilities; canonical selection, locale and scene state live elsewhere. */
 export type PlatformKind = "web" | "android" | "ios";
@@ -39,6 +40,8 @@ export interface PlatformServices {
   readonly kind: PlatformKind;
   readonly channel: DistributionChannel;
   readonly preferences: PreferenceStore;
+  /** Native OS session storage only. Absent in Web; never child authority/CAS. */
+  readonly secureStorage?: NativeSecretStore;
   /** Local adult references only; never a catalog, child store or entitlement. */
   readonly recentHistory?: RecentHistoryStore;
   /** Platform-lifetime transfers; never an entitlement or catalog activation. */

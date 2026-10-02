@@ -1,5 +1,5 @@
 import { defineConfig, mergeConfig } from "vite";
-import canonicalSiteConfig from "./vite.config";
+import { createCanonicalSiteConfig } from "./vite.config";
 
 export default defineConfig(async environment => {
   const platform = process.env.LITERARY_PLANET_NATIVE_PLATFORM;
@@ -7,8 +7,10 @@ export default defineConfig(async environment => {
   if (platform !== "android" && platform !== "ios") throw new Error("Select an explicit native platform.");
   const permitted = platform === "android" ? ["dev", "googlePlay", "ruStore"] : ["dev", "appStore"];
   if (!channel || !permitted.includes(channel)) throw new Error("Select a compatible native distribution channel.");
-  const site = await (typeof canonicalSiteConfig === "function" ? canonicalSiteConfig(environment) : canonicalSiteConfig);
+  const site = createCanonicalSiteConfig(environment, true);
   return mergeConfig(site, {
+    // Local mobile preparation never reads .env files or exposes ambient VITE_* values.
+    envDir: false, envPrefix: [],
     base: "/", publicDir: false,
     plugins: [{
       name: "literary-planet-native-entry",

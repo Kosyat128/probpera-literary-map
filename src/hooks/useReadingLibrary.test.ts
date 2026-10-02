@@ -223,3 +223,15 @@ describe("offline reading library ownership and durable intent", () => {
     expect(next.remote.save).not.toHaveBeenCalled(); expect(next.persisted().pending).toHaveLength(1); unsubscribe(); stopNext();
   });
 });
+
+
+it("privacy cleanup permanently seals cached library and rejects its late hydration/acknowledgement", async () => {
+  const env = fixture([book("private-a")]), late = deferred<{ data: unknown; error: unknown }>();
+  env.remote.read.mockReturnValue(late.promise);
+  const stop = env.controller.activate(); await flush();
+  env.controller.forget(); const writes = env.port.setItem.mock.calls.length;
+  late.resolve({ data: [remoteRow(book("late-private-a"))], error: null }); await flush();
+  const old = env.controller.activate();
+  expect(env.controller.getSnapshot()).toEqual([]); expect(await env.controller.save(book("forbidden-after-logout"))).toBe(false);
+  expect(env.port.setItem).toHaveBeenCalledTimes(writes); stop(); old();
+});
