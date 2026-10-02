@@ -1,3 +1,4 @@
+import { isLocalCliEntry } from "./local-cli-entry.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { mkdir, readFile, writeFile, readdir, lstat, realpath, rename } from "node:fs/promises";
@@ -293,4 +294,4 @@ catch (error) { if (movedPrevious) await rename(previous, output); throw error; 
 console.log(json({ output, previous: movedPrevious ? previous : null, buildId, essentialFiles: files.length, essentialBytes: totalBytes, releaseReady: false }));
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await buildPwa();
+if (isLocalCliEntry(import.meta.url)) await buildPwa();

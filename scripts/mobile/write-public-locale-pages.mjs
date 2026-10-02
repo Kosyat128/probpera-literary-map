@@ -1,3 +1,4 @@
+import { isLocalCliEntry } from "./local-cli-entry.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { mkdir, writeFile, realpath, readdir, lstat } from "node:fs/promises";
@@ -210,7 +211,7 @@ export async function writePublicLocalePages({ directory = path.join(root, "dist
   return manifest;
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   const args = process.argv.slice(2);
   let options = {};
   if (args.length === 1 && args[0] === "--snapshot-only") {

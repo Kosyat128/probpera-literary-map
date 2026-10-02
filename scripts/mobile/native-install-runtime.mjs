@@ -2,6 +2,7 @@
  * enumerate devices, install, launch, reboot or call project services. A real
  * run is opt-in and remains separate from hardware/store/release acceptance. */
 import { execFile, execFileSync } from 'node:child_process';
+import { isLocalCliEntry } from './local-cli-entry.mjs';
 import { createHash, randomUUID } from 'node:crypto';
 import { lstat, mkdir, readFile, readdir, realpath, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -542,7 +543,7 @@ export async function runNativeInstallRuntime(options = {}) {
   }
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   const args = process.argv.slice(2), values = {};
   for (let index = 0; index < args.length; index++) {
     const name = args[index];

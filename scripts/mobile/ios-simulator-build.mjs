@@ -1,3 +1,4 @@
+import { isLocalCliEntry } from "./local-cli-entry.mjs";
 /** CI evidence gates and an explicit, bounded Simulator smoke command.
  * No signing, upload or remote dispatch. A captured screen is not UI approval.
  * Public-copy checks are not a native binary audit. */
@@ -283,7 +284,7 @@ export async function runGate(step, { root, runnerTemp, expectedCommit, develope
   }
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   try {
     check(process.argv.length === 3, 'Use one explicit iOS CI evidence gate.');
     await runGate(process.argv[2], { root: fileURLToPath(new URL('../../', import.meta.url)), runnerTemp: process.env.RUNNER_TEMP, expectedCommit: process.env.GITHUB_SHA, developerDir: process.env.DEVELOPER_DIR });

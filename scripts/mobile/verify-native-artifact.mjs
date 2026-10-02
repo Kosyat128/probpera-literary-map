@@ -1,3 +1,4 @@
+import { isLocalCliEntry } from "./local-cli-entry.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readdir, readFile, realpath, lstat } from "node:fs/promises";
@@ -267,7 +268,7 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
   return report();
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   const args = process.argv.slice(2); let artifactDir = "dist-native", checkSourceFreshness = true;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--dir" && args[i + 1]) artifactDir = args[++i];

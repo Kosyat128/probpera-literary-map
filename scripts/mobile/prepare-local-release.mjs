@@ -1,6 +1,7 @@
 /** Explicit local preparation; never exports CMS, installs or contacts services. */
 import fs from 'node:fs/promises';import path from 'node:path';import {spawn}from'node:child_process';import {randomUUID}from'node:crypto';import {fileURLToPath}from'node:url';import {captureReleaseInputs,sha256}from'./release-readiness.mjs';import {nativeRuntimeSources,parseAndroidPackage,parseAndroidCertificate,inspectPreviousAndroidApk,createPreviousAndroidArtifact,validatePreviousAndroidArtifact}from'./native-install-runtime.mjs';
 import {verifyNativeArtifact} from './verify-native-artifact.mjs';
+import {isLocalCliEntry} from './local-cli-entry.mjs';
 import {verifyCopiedPublic} from './ios-simulator-build.mjs';
 const hash=value=>typeof value==='string'&&/^[a-f0-9]{64}$/u.test(value);
 const commit=value=>typeof value==='string'&&/^[a-f0-9]{40}$/u.test(value);
@@ -174,4 +175,4 @@ try{
 report.finishedAt=new Date().toISOString();await fs.writeFile(path.join(out,'preparation.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({output:relative(out),pass:report.pass,error:report.error,outputs:report.outputs,releaseReady:false,deviceTested:false}));
 return report;
 }
-if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))await prepareLocalRelease();
+if(isLocalCliEntry(import.meta.url))await prepareLocalRelease();

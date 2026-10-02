@@ -1,3 +1,4 @@
+import { isLocalCliEntry } from "./local-cli-entry.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -411,7 +412,7 @@ export function runPlatformBoundaryAudit(options = {}) {
   return { pass: unique.length === 0, sourceFileCount: files.size, webReachableFileCount: webFiles.size, auditedRuntimeFileCount: runtimeFiles.size, importCount: edges.length, webEntries: entryPoints, adapterRoots, canonicalSceneFiles, canvasOwnerFiles, canvasSites, nativeConfigs, findings: unique, limitations: ["Static source ownership does not prove a single active globe/Canvas/renderer or preserved runtime identity; browser and native tests must verify those invariants.", "Third-party package contents, bundler plugins, generated artifacts, injected scripts and installed native binaries require separate build/artifact audits.", "Dependency resolution/loader enforcement covers reachable web and native-adapter runtime graphs; inactive source is still scanned for native SDK imports and duplicate scene ownership.", "Computed module loaders and non-static native runtime configuration fail closed; this is not a general JavaScript data-flow proof."] };
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   try {
     const options = {};
     for (const argument of process.argv.slice(2)) {

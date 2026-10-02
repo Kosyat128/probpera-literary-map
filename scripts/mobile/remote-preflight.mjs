@@ -1,5 +1,6 @@
 /** Offline permission matching only: no credentials, SDK imports or requests. */
 import fs from 'node:fs/promises';
+import { isLocalCliEntry } from './local-cli-entry.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sha256 } from './release-readiness.mjs';
@@ -25,7 +26,7 @@ export function validateCleanupObjects(grant, request, ledger) {
  if (!request?.operations?.includes('cleanup-exact-objects')||!Array.isArray(ledger)||!ledger.length||ledger.some(item=>item.runId!==request.runId||!request?.testAccountIds?.includes(item.ownerId)||!UUID.test(item.id)||!['profile','order','deletion-request','avatar','auth-fixture'].includes(item.kind))||new Set(ledger.map(item=>`${item.kind}:${item.id}`)).size!==ledger.length) result.errors.push('CLEANUP_REQUIRES_EXACT_OWNED_OBJECT_IDS');
  result.status=result.errors.length?'BLOCKED_EXTERNAL':'PASS';return result;
 }
-if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
+if(isLocalCliEntry(import.meta.url)){
  const args=process.argv.slice(2);
  try{
   if(args.length!==4||args[0]!=='--plan'||args[2]!=='--authorization')throw new Error('Use --plan <request.json> --authorization <owner-grant.json>; this command is entirely offline.');

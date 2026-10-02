@@ -1,3 +1,4 @@
+import { isLocalCliEntry } from "./local-cli-entry.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFile, writeFile, mkdir, realpath, lstat, readdir, rename, unlink } from "node:fs/promises";
@@ -117,7 +118,7 @@ export async function preparePublicNotFoundArtifact({ publicDirectory = path.joi
   return manifest;
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   const result = await preparePublicNotFoundArtifact();
   console.log(JSON.stringify({ kind: result.kind, worker: result.worker, deployed: result.deployed, activeRoutes: result.activeRoutes }));
 }

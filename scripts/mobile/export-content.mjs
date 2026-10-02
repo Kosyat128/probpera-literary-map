@@ -1,3 +1,4 @@
+import { isLocalCliEntry } from "./local-cli-entry.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -161,7 +162,7 @@ export async function runContentExport({ output, sourceCommit, version = 1, prev
   return result;
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   try {
     const args = process.argv.slice(2), options = {};
     for (let index = 0; index < args.length; index++) {

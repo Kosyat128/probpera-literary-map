@@ -1,3 +1,4 @@
+import { isLocalCliEntry } from "./local-cli-entry.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readdir, readFile, realpath, lstat } from "node:fs/promises";
@@ -486,7 +487,7 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
   return report();
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   try {
     let artifactDir = "dist-pwa", allowQa = false;
     const args = process.argv.slice(2);

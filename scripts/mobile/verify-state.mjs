@@ -1,3 +1,4 @@
+import { isLocalCliEntry } from "./local-cli-entry.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseCsv, formatCsv } from "./csv.mjs";
@@ -81,7 +82,7 @@ export function projectTraceabilityCsv(traceability, sources) {
       tests: (item.tests ?? []).join(";"), evidence: (item.evidence ?? []).join(";"), commit: item.commit ?? "" };
   }), ["requirement_id", "category", "priority", "platforms", "summary", "binding_source", "status", "implementation", "tests", "evidence", "commit"]);
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   try {
     const result = await verifyExecutionFiles(fileURLToPath(new URL("../../", import.meta.url)));
     console.log(JSON.stringify(result, null, 2));

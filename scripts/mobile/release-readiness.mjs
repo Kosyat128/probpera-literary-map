@@ -1,5 +1,6 @@
 /** Local, read-only evidence validation. Never builds, deploys or contacts a service. */
 import path from 'node:path';
+import { isLocalCliEntry } from './local-cli-entry.mjs';
 import fs from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -175,7 +176,7 @@ export async function checkReleaseEvidence(rootDir, input) {
   } catch { result.errors.push('ARTIFACT_MISSING_OR_DIGEST_MISMATCH'); result.releaseReady=false; }
   return result;
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isLocalCliEntry(import.meta.url)) {
   const args = process.argv.slice(2); let report;
   try {
     if (args.length !== 4 || args[0] !== '--evidence' || args[2] !== '--report') throw new Error('Use --evidence <local-json> --report <new-local-json>');
