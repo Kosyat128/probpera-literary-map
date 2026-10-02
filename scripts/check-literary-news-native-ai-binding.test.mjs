@@ -3,7 +3,9 @@ import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { convertV4MiniflareOptions } from 'miniflare';
 import { checkNativeNewsAiBinding as check, nativeAiProbeRuntimeOptions,
-  startNativeAiProbeSession } from './check-literary-news-native-ai-binding.mjs';
+  startNativeAiProbeSession, buildNativeAiProbeWorker } from './check-literary-news-native-ai-binding.mjs';
+import { createNativeAiProbeWorker } from './workers/literary-news-native-ai-probe-worker.mjs';
+import { NATIVE_AI_PROBE_URL, nativeAiProbeReport } from './lib/literary-news-native-ai-probe-fixture.mjs';
 import { DAILY_NEWS_DRAFT_SCHEMA, DAILY_NEWS_REVIEW_SCHEMA } from './lib/literary-news-daily-automation.mjs';
 import { DAILY_NEWS_MODELS } from './lib/literary-news-daily-profile.mjs';
 
@@ -19,7 +21,8 @@ function fixture() {
     { type: 'message', role: 'assistant', content: [{ type: 'output_text', text: JSON.stringify(held) }] }] })
     .mockResolvedValueOnce({ response: JSON.stringify(rejected) });
   const session = { ready: Promise.resolve(), remoteProxyConnectionString: 'PRIVATE_PREVIEW_CONNECTION', dispose: vi.fn() };
-  const runtime = { getBindings: vi.fn(async () => ({ AI: { run } })), dispose: vi.fn() };
+  const worker = createNativeAiProbeWorker();
+  const runtime = { dispatchFetch: vi.fn(async (url, options) => worker.fetch(new Request(url, options), { AI: { run } })), dispose: vi.fn() };
   return { run, session, runtime, startSession: vi.fn(async () => session), createRuntime: vi.fn(async () => runtime) };
 }
 
@@ -66,6 +69,7 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     const f = fixture(), report = await check({ ...credentials, ...f });
     expect(f.startSession).toHaveBeenCalledExactlyOnceWith(credentials);
     expect(f.createRuntime).toHaveBeenCalledExactlyOnceWith('PRIVATE_PREVIEW_CONNECTION');
+    expect(f.runtime.dispatchFetch).toHaveBeenCalledExactlyOnceWith(NATIVE_AI_PROBE_URL, { method: 'POST' });
     expect(f.run).toHaveBeenCalledTimes(2);
     const [[draftModel, draftInput, draftOptions], [reviewModel, reviewInput]] = f.run.mock.calls;
     expect(draftModel).toBe(DAILY_NEWS_MODELS.draft);
@@ -119,8 +123,8 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     await expect(check({ ...credentials, ...f })).rejects.toThrow('native_ai_probe_remote_binding_unavailable');
     expect(f.session.dispose).toHaveBeenCalledTimes(1); expect(f.run).not.toHaveBeenCalled();
   });
-  it('disposes both resources if binding discovery fails, including a failing first cleanup', async () => {
-    const f = fixture(); f.runtime.getBindings.mockRejectedValue(Error('PRIVATE_PROVIDER_TEXT'));
+  it('disposes both resources if private Worker dispatch fails, including a failing first cleanup', async () => {
+    const f = fixture(); f.runtime.dispatchFetch.mockRejectedValue(Error('PRIVATE_PROVIDER_TEXT'));
     f.runtime.dispose.mockRejectedValue(Error('PRIVATE_CLEANUP_TEXT'));
     await expect(check({ ...credentials, ...f })).rejects.toThrow('native_ai_probe_remote_binding_unavailable');
     expect(f.runtime.dispose).toHaveBeenCalledTimes(1); expect(f.session.dispose).toHaveBeenCalledTimes(1);
@@ -133,7 +137,8 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
   it('validates the pinned Miniflare AI-only fixture and contains no publication or credential bindings', () => {
     const options = nativeAiProbeRuntimeOptions('http://localhost:19291');
     const converted = convertV4MiniflareOptions(options);
-    expect(Object.keys(options).sort()).toEqual(['ai', 'cf', 'compatibilityDate', 'modules', 'name', 'script']);
+    expect(Object.keys(options).sort()).toEqual(['ai', 'cf', 'compatibilityDate', 'compatibilityFlags', 'modules', 'name', 'script']);
+    expect(options.compatibilityFlags).toEqual(['nodejs_compat']);
     expect(options.cf).toBe(false);
     expect(converted.cf).toBe(false);
     expect(options.ai).toEqual({ binding: 'AI', remoteProxyConnectionString: 'http://localhost:19291' });
@@ -144,6 +149,8 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     expect(source).toContain("startRemoteProxySession({ AI: { type: 'ai', remote: true } }");
     expect(source).not.toContain('getPlatformProxy(');
     expect(source).not.toContain('wrangler.json');
+    expect(source).not.toContain('runtime.getBindings(');
+    expect(source).not.toContain('createPreparationBindingAi(');
   });
   it('uses a fixture date supported by the installed local runtime instead of the newer production date', () => {
     const runtimeVersion = createRequire(import.meta.url)('workerd/package.json').version;
@@ -153,5 +160,58 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     expect(nativeAiProbeRuntimeOptions('http://127.0.0.1:19291').compatibilityDate <= releaseDate).toBe(true);
     // The formerly used production date could pass schema validation and fail workerd startup.
     expect('2026-09-30' > releaseDate).toBe(true);
+  });
+  it('bundles the real adapter into the local Worker entirely in memory with no Node RPC model arguments', async () => {
+    const script = await buildNativeAiProbeWorker();
+    expect(script).toContain('function createPreparationBindingAi');
+    expect(script).toContain('AbortSignal.timeout(timeoutMs)');
+    expect(script).toContain('native-ai-probe.invalid/protocols');
+    expect(script).not.toContain('startRemoteProxySession');
+    expect(script).not.toContain('getPlatformProxy');
+    expect(script).not.toContain('wrangler/dist');
+    expect(script).not.toContain('INTENDED_GITHUB_TOKEN');
+    expect(convertV4MiniflareOptions(nativeAiProbeRuntimeOptions('http://127.0.0.1:19291', script)).workers).toHaveLength(1);
+  });
+  it.each([
+    new Request(NATIVE_AI_PROBE_URL),
+    new Request(NATIVE_AI_PROBE_URL, { method: 'POST', body: JSON.stringify({ prompt: 'arbitrary' }) }),
+    new Request(`${NATIVE_AI_PROBE_URL}?model=caller`, { method: 'POST' }),
+    new Request('https://another.invalid/protocols', { method: 'POST' }),
+  ])('refuses caller inputs and other routes before any production adapter invocation', async request => {
+    const f = fixture(), worker = createNativeAiProbeWorker();
+    expect((await worker.fetch(request, { AI: { run: f.run } })).status).toBe(404);
+    expect(f.run).not.toHaveBeenCalled();
+  });
+  it('consumes the private fixture once, preventing retry requests from exceeding two inference calls', async () => {
+    const f = fixture(), worker = createNativeAiProbeWorker(), env = { AI: { run: f.run } };
+    expect((await worker.fetch(new Request(NATIVE_AI_PROBE_URL, { method: 'POST' }), env)).status).toBe(200);
+    expect((await worker.fetch(new Request(NATIVE_AI_PROBE_URL, { method: 'POST' }), env)).status).toBe(409);
+    expect(f.run).toHaveBeenCalledTimes(2);
+  });
+  it('allows the empty HTTP body stream without accepting arbitrary body bytes', async () => {
+    const f = fixture(), worker = createNativeAiProbeWorker();
+    const request = new Request(NATIVE_AI_PROBE_URL, { method: 'POST', duplex: 'half',
+      body: new ReadableStream({ start(controller) { controller.close(); } }) });
+    expect((await worker.fetch(request, { AI: { run: f.run } })).status).toBe(200);
+    expect(f.run).toHaveBeenCalledTimes(2);
+  });
+  it.each([
+    { ...nativeAiProbeReport(), calls: 3 },
+    { ...nativeAiProbeReport(), published: true },
+    { ...nativeAiProbeReport(), publicationBindings: 1 },
+    { ...nativeAiProbeReport(), private: 'UNTRUSTED_PRIVATE_TEXT' },
+    { ...nativeAiProbeReport(), phases: [{ phase: 'draft', protocolConfirmed: true, published: false }] },
+  ])('refuses forged or unsafe Worker reports and disposes both resources', async report => {
+    const f = fixture(); f.runtime.dispatchFetch.mockResolvedValue(Response.json(report));
+    await expect(check({ ...credentials, ...f })).rejects.toThrow('native_ai_probe_report_unconfirmed');
+    expect(f.runtime.dispose).toHaveBeenCalledTimes(1); expect(f.session.dispose).toHaveBeenCalledTimes(1);
+  });
+  it('bounds and cancels a streamed Worker report before decoding an oversized chunk', async () => {
+    const f = fixture(), cancel = vi.fn();
+    const stream = new ReadableStream({ start(controller) { controller.enqueue(new Uint8Array(2049)); }, cancel });
+    f.runtime.dispatchFetch.mockResolvedValue(new Response(stream, { headers: { 'content-length': '1' } }));
+    await expect(check({ ...credentials, ...f })).rejects.toThrow('native_ai_probe_report_unconfirmed');
+    expect(cancel).toHaveBeenCalledTimes(1); expect(stream.locked).toBe(false);
+    expect(f.session.dispose).toHaveBeenCalledTimes(1);
   });
 });
