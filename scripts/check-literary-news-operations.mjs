@@ -24,13 +24,18 @@ const safeTime = value => validTimestamp(value) ? value : null;
 const safeCode = value => typeof value === 'string'
   && /^(?:operations_|native_check_|daily_|ai_|provider_|runtime_)[a-z0-9_]+$/.test(value) ? value : 'operations_check_failed';
 const disabledPreparationReason = value => value === 'ai_quota_exceeded' ? value : 'disabled_by_configuration';
+const safeResumeTime = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value)
+  && validTimestamp(value) && new Date(value).toISOString() === value ? value : null;
 
 // Only an explicit configuration flag may remove preparation checks. Missing configuration stays strict.
 function preparationConfiguration(env) {
   const value = env.LITERARY_NEWS_NATIVE_PREPARATION_ENABLED;
   if (value !== undefined && value !== '' && value !== 'true' && value !== 'false') fail('operations_configuration_invalid');
+  const autoResume = env.LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME;
+  if (autoResume !== undefined && autoResume !== '' && autoResume !== 'true' && autoResume !== 'false') fail('operations_configuration_invalid');
   const enabled = value !== 'false';
-  return { preparationEnabled: enabled,
+  return { preparationEnabled: enabled, autoResumeEnabled: autoResume === 'true',
+    resumeScheduledAt: autoResume === 'true' ? safeResumeTime(env.LITERARY_NEWS_NATIVE_PREPARATION_RESUME_AFTER) : null,
     preparationBlockReason: enabled ? null : disabledPreparationReason(env.LITERARY_NEWS_NATIVE_PREPARATION_BLOCK_REASON) };
 }
 
@@ -76,9 +81,9 @@ export function createNewsOperationsReportReader({ accountId, apiToken, fetchImp
 /** Raw sources, article bodies, credentials, model text and remote identifiers never enter this projection. */
 export async function summarizeNewsOperations({ feed, profile, ledger, owner, preparationReport, workers, control,
   dayStatus, recentDayStatuses = [], dueRows, deliveryHeartbeat, destination, current = new Date(), expectedHead = null,
-  preparationEnabled = true, preparationBlockReason = null }) {
+  preparationEnabled = true, preparationBlockReason = null, autoResumeEnabled = false, resumeScheduledAt = null }) {
   if (!Number.isFinite(current.getTime())) fail('operations_clock_invalid');
-  if (typeof preparationEnabled !== 'boolean') fail('operations_configuration_invalid');
+  if (typeof preparationEnabled !== 'boolean' || typeof autoResumeEnabled !== 'boolean') fail('operations_configuration_invalid');
   const failures = [], add = code => { if (!failures.includes(code)) failures.push(code); };
   const day = dailyNewsDay(current), inWindow = day >= DAILY_NEWS_WINDOW.start && day < DAILY_NEWS_WINDOW.endExclusive;
   const mode = preparationEnabled ? 'enabled' : 'delivery-only';
@@ -149,6 +154,8 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
     sourceIntake[key] = safeCount(sourceCounts?.[key]);
   return { schemaVersion: 1, readonly: true, externalWrites: 0, checkedAt: current.toISOString(), day,
     timeZone: DAILY_NEWS_WINDOW.timeZone, window: DAILY_NEWS_WINDOW, mode, enabledVerified: !failures.includes('operations_workers_not_enabled'),
+    requestedMode: workers?.requestedExpected === 'auto-resume' ? 'auto-resume' : mode,
+    autoResumeEnabled, resumeScheduledAt: autoResumeEnabled ? safeResumeTime(resumeScheduledAt) : null,
     status: failures.length ? 'failed' : !inWindow ? 'outside_authorized_window' : !preparationEnabled ? 'preparation_disabled'
       : admittedToday < DAILY_NEWS_LIMITS.minimum ? 'supply_degraded' : 'operational',
     failures, scope: 'Verified schedules describe the configured mode only. Disabled preparation is not operational preparation. Actual accepted news and acknowledged Telegram creates remain separate; the daily target is not a guaranteed supply.',
@@ -181,8 +188,14 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
 
 export async function checkNewsOperations({ env = process.env, fetchImpl = fetch, now = () => new Date(), expectedHead = null } = {}) {
   const preparation = preparationConfiguration(env);
+  const expected = preparation.preparationEnabled ? 'enabled' : preparation.autoResumeEnabled ? 'auto-resume' : 'delivery-only';
   const workers = await verifyNativeNewsWorkers({ accountId: env.CLOUDFLARE_ACCOUNT_ID, apiToken: env.CLOUDFLARE_API_TOKEN,
-    expected: preparation.preparationEnabled ? 'enabled' : 'delivery-only', fetchImpl });
+    expected, fetchImpl });
+  if (expected === 'auto-resume') {
+    if (workers.requestedExpected !== expected || !['enabled', 'delivery-only'].includes(workers.expected)) fail('operations_workers_not_enabled');
+    preparation.preparationEnabled = workers.expected === 'enabled';
+    if (preparation.preparationEnabled) preparation.preparationBlockReason = null;
+  }
   const current = now(), destination = configuration.destinations.find(row => row.platform === 'telegram');
   if (!destination || !env.SUPABASE_SERVICE_ROLE_KEY) fail('operations_credentials_missing');
   const origin = trustedSupabaseOrigin(env.SUPABASE_URL), storage = preparation.preparationEnabled ? createDailyNewsStorageClient({

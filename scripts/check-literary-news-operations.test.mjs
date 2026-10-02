@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { checkNewsOperations, createNewsOperationsReportReader, newsDeliveryCheckpointAge, summarizeNewsOperations } from './check-literary-news-operations.mjs';
-import { makeDailyApprovedPayload, DAILY_NEWS_WINDOW } from './lib/literary-news-daily-profile.mjs';
+import { makeDailyApprovedPayload, DAILY_NEWS_WINDOW, DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY,
+  DAILY_NEWS_OWNER_KEY } from './lib/literary-news-daily-profile.mjs';
 import { emptyDailyLedger } from './lib/literary-news-daily-automation.mjs';
 import { buildPublishedNewsFeed } from './lib/literary-news-publication.mjs';
 import { pendingNewsSourceState } from './lib/literary-news-state.mjs';
@@ -133,6 +134,12 @@ describe('bounded read-only news operations projection', () => {
       expect(report.status).toBe('failed'); expect(report.failures).toContain(codes[boundary]);
       expect(report.preparation.status).toBe('preparation_disabled');
     });
+  it.each(['2026-10-03T00:00:00Z', '2026-10-03T03:00:00.000+03:00', '2026-02-30T00:00:00.000Z', privateMarker])(
+    'does not expose a noncanonical resume timestamp: %s', async timestamp => {
+      const value = disablePreparation(await input()); value.autoResumeEnabled = true; value.resumeScheduledAt = timestamp;
+      const report = await summarizeNewsOperations(value);
+      expect(report.resumeScheduledAt).toBeNull(); expect(JSON.stringify(report)).not.toContain(privateMarker);
+    });
 });
 
 describe('read-only operations report network boundaries', () => {
@@ -147,12 +154,18 @@ describe('read-only operations report network boundaries', () => {
     await expect(createNewsOperationsReportReader({ accountId: 'a'.repeat(32), apiToken: 'isolated-token',
       fetchImpl: async () => new Response('x'.repeat(65537)) })()).rejects.toThrow('operations_report_too_large');
   });
-  it('stops before private KV or Supabase reads when expected-enabled verification finds disabled Workers', async () => {
+  it.each([
+    { label: 'default full mode' },
+    { label: 'auto-resume without an explicit preparation false flag', autoResume: 'true' },
+    { label: 'explicit full mode with auto-resume', preparation: 'true', autoResume: 'true' },
+  ])('keeps $label strict before private KV or Supabase reads', async scenario => {
     const fetchImpl = vi.fn(async () => Response.json({ success: true, result: { bindings: [
       { name: 'NEWS_AUTOMATION_ENABLED', type: 'plain_text', text: 'false' },
       { name: 'NEWS_AUTOMATION_BOOTSTRAP', type: 'plain_text', text: 'false' },
       { name: 'NEWS_AUTOMATION_WRITER', type: 'plain_text', text: 'native' }] } }));
-    await expect(checkNewsOperations({ env: { CLOUDFLARE_ACCOUNT_ID: 'a'.repeat(32), CLOUDFLARE_API_TOKEN: 'isolated-token' }, fetchImpl }))
+    await expect(checkNewsOperations({ env: { CLOUDFLARE_ACCOUNT_ID: 'a'.repeat(32), CLOUDFLARE_API_TOKEN: 'isolated-token',
+      LITERARY_NEWS_NATIVE_PREPARATION_ENABLED: scenario.preparation,
+      LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME: scenario.autoResume }, fetchImpl }))
       .rejects.toThrow('native_check_flag_mismatch');
     expect(fetchImpl).toHaveBeenCalledTimes(1); expect(fetchImpl.mock.calls[0][1].method).toBe('GET');
   });
@@ -164,8 +177,15 @@ describe('read-only operations report network boundaries', () => {
       fetchImpl: async () => Response.json({ errors: [{ code: 10000, message: privateMarker }] }, { status: 404 }) })())
       .rejects.toThrow('operations_report_missing_unconfirmed');
   });
-  it('checks delivery-only through four real Worker GETs and preserves all read-only delivery metrics without private preparation KV', async () => {
+  it.each([
+    { label: 'explicit delivery-only', autoResume: false, actualPreparation: false },
+    { label: 'auto-resume before preparation starts', autoResume: true, actualPreparation: false },
+    { label: 'auto-resume after preparation starts despite the original false repository flag', autoResume: true, actualPreparation: true },
+    { label: 'auto-resume with missing actual preparation checkpoints', autoResume: true, actualPreparation: true, missingPreparation: true },
+    { label: 'auto-resume with an actual preparation quota failure', autoResume: true, actualPreparation: true, providerStop: 'ai_quota_exceeded' },
+  ])('checks $label through four real Worker GETs and keeps actual read-only metrics', async scenario => {
     const value = await input(), calls = [], origin = 'https://isolated-test.supabase.co';
+    if (scenario.providerStop) value.preparationReport.stoppedReason = scenario.providerStop;
     const fetchImpl = vi.fn(async (request, options = {}) => {
       const url = new URL(request instanceof URL ? request.href : typeof request === 'string' ? request : request.url);
       const method = options.method || 'GET'; calls.push({ url, method, body: options.body });
@@ -173,13 +193,20 @@ describe('read-only operations report network boundaries', () => {
         if (url.pathname.endsWith('/settings')) {
           const preparation = url.pathname.includes('/probpera-literary-news-preparation/');
           return Response.json({ success: true, result: { bindings: preparation ? [
-            { name: 'NEWS_AUTOMATION_ENABLED', type: 'plain_text', text: 'false' },
-            { name: 'NEWS_AUTOMATION_BOOTSTRAP', type: 'plain_text', text: 'false' },
+            { name: 'NEWS_AUTOMATION_ENABLED', type: 'plain_text', text: String(scenario.actualPreparation) },
+            { name: 'NEWS_AUTOMATION_BOOTSTRAP', type: 'plain_text', text: String(scenario.actualPreparation) },
             { name: 'NEWS_AUTOMATION_WRITER', type: 'plain_text', text: 'native' }]
             : [{ name: 'NEWS_DELIVERY_ENABLED', type: 'plain_text', text: 'true' }] } });
         }
         if (url.pathname.endsWith('/schedules')) return Response.json({ success: true, result: { schedules: [{
           cron: url.pathname.includes('/probpera-literary-news-preparation/') ? '17 */2 * * *' : '0 5-19 * * *' }] } });
+        if (scenario.actualPreparation && url.pathname.includes('/storage/kv/')) {
+          const documents = new Map([[DAILY_NEWS_PROFILE_KEY, value.profile], [DAILY_NEWS_LEDGER_KEY, value.ledger],
+            [DAILY_NEWS_OWNER_KEY, value.owner], ['literary-news:v1:daily-automation:native-report', value.preparationReport]]);
+          const key = decodeURIComponent(url.pathname.split('/').at(-1));
+          if (documents.has(key)) return scenario.missingPreparation
+            ? Response.json({ errors: [{ code: 10009 }] }, { status: 404 }) : Response.json(documents.get(key));
+        }
         throw Error('Unexpected private Cloudflare request');
       }
       if (url.origin === 'https://news.probpera.ru') return Response.json(value.feed, { headers: { 'x-probpera-news-release': release } });
@@ -198,23 +225,40 @@ describe('read-only operations report network boundaries', () => {
     const report = await checkNewsOperations({ fetchImpl, now: () => current, expectedHead: release,
       env: { CLOUDFLARE_ACCOUNT_ID: 'a'.repeat(32), CLOUDFLARE_API_TOKEN: 'isolated-token',
         SUPABASE_URL: origin, SUPABASE_SERVICE_ROLE_KEY: 'isolated-service-key',
-        LITERARY_NEWS_NATIVE_PREPARATION_ENABLED: 'false', LITERARY_NEWS_NATIVE_PREPARATION_BLOCK_REASON: 'ai_quota_exceeded' } });
-    expect(report.status).toBe('preparation_disabled'); expect(report.failures).toEqual([]);
-    const cloudflare = calls.filter(row => row.url.origin === 'https://api.cloudflare.com');
+        LITERARY_NEWS_NATIVE_PREPARATION_ENABLED: 'false', LITERARY_NEWS_NATIVE_PREPARATION_BLOCK_REASON: 'ai_quota_exceeded',
+        LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME: String(scenario.autoResume),
+        LITERARY_NEWS_NATIVE_PREPARATION_RESUME_AFTER: '2026-10-03T00:00:00.000Z' } });
+    expect(report.mode).toBe(scenario.actualPreparation ? 'enabled' : 'delivery-only');
+    expect(report.requestedMode).toBe(scenario.autoResume ? 'auto-resume' : 'delivery-only');
+    expect(report.resumeScheduledAt).toBe(scenario.autoResume ? '2026-10-03T00:00:00.000Z' : null);
+    if (scenario.missingPreparation || scenario.providerStop) {
+      expect(report.status).toBe('failed'); expect(report.preparation.enabled).toBe(true); expect(report.preparation.reason).toBeNull();
+      expect(report.failures).toContain(scenario.providerStop ? 'operations_preparation_degraded' : 'operations_preparation_checkpoint_missing');
+    } else {
+      expect(report.status).toBe(scenario.actualPreparation ? 'supply_degraded' : 'preparation_disabled'); expect(report.failures).toEqual([]);
+    }
+    const cloudflare = calls.filter(row => row.url.origin === 'https://api.cloudflare.com' && row.url.pathname.includes('/workers/scripts/'));
     expect(cloudflare).toHaveLength(4); expect(cloudflare.every(row => row.method === 'GET')).toBe(true);
     expect(cloudflare.map(row => row.url.pathname.split('/').at(-1))).toEqual(['settings', 'schedules', 'settings', 'schedules']);
-    expect(calls.some(row => row.url.pathname.includes('/storage/kv/'))).toBe(false);
+    const privateKv = calls.filter(row => row.url.pathname.includes('/storage/kv/'));
+    expect(privateKv).toHaveLength(scenario.actualPreparation ? 4 : 0); expect(privateKv.every(row => row.method === 'GET')).toBe(true);
     const rpcs = calls.filter(row => row.method === 'POST');
     expect(rpcs).toHaveLength(8); expect(rpcs.filter(row => row.url.pathname.endsWith('/literary_news_delivery_day_status'))).toHaveLength(7);
     expect(rpcs.every(row => ['/rest/v1/rpc/literary_news_delivery_day_status', '/rest/v1/rpc/read_due_literary_news_runtime_posts'].includes(row.url.pathname))).toBe(true);
     expect(report.public.release).toBe(release); expect(report.telegram.lastRunAt).toBe(current.toISOString());
     expect(report.telegram.acknowledgedPerDay).toHaveLength(7); expect(report.telegram.freshAcknowledgedCreatesToday).toBe(3);
-    expect(report.preparation.lastRunAt).toBeNull(); expect(report.preparation.admittedToday).toBeNull();
+    if (!scenario.actualPreparation) {
+      expect(report.preparation.lastRunAt).toBeNull(); expect(report.preparation.admittedToday).toBeNull();
+    } else if (!scenario.missingPreparation) {
+      expect(report.preparation.lastRunAt).toBe(current.toISOString()); expect(report.preparation.admittedToday).toBe(0);
+      expect(report.preparation.reason).toBeNull(); expect(report.preparation.providerStop).toBe(scenario.providerStop || null);
+    }
     expect(JSON.stringify(report)).not.toContain(privateMarker); expect(JSON.stringify(report)).not.toContain('isolated-service-key');
   });
-  it('requires a literal false flag before skipping preparation checks', async () => {
+  it.each(['LITERARY_NEWS_NATIVE_PREPARATION_ENABLED', 'LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME'])(
+    'rejects an unknown literal %s flag before any network request', async flag => {
     const fetchImpl = vi.fn();
-    await expect(checkNewsOperations({ env: { LITERARY_NEWS_NATIVE_PREPARATION_ENABLED: 'False' }, fetchImpl }))
+    await expect(checkNewsOperations({ env: { [flag]: 'False' }, fetchImpl }))
       .rejects.toThrow('operations_configuration_invalid');
     expect(fetchImpl).not.toHaveBeenCalled();
   });

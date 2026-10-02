@@ -25,6 +25,13 @@ function fixture(){const values=new Map(),storage=storageFixture();
       value instanceof ReadableStream?await new Response(value).text():value))}};
   const collect=vi.fn(async()=>({details:[],counts:{checkedSources:32}}));
   return{env,values,storage,collect,run:extra=>runNativeNewsPreparation(env,storage,{now:()=>current,collect,waitImpl:async()=>{},...extra})};}
+function quotaProbeExecution(){return vi.fn(async({previous,ai,current:at})=>{
+  let stoppedReason=null;try{await ai.request({phase:'review',messages:[]});}catch(error){stoppedReason=error.message;}
+  const state={...previous,providerStop:stoppedReason==='ai_quota_exceeded'?{reason:stoppedReason,httpStatus:null,
+    retryAfterAt:new Date(Date.UTC(at.getUTCFullYear(),at.getUTCMonth(),at.getUTCDate()+1)).toISOString()}:null};
+  return{state,profile:await makeDailyApprovedPayload(state.accepted,at),report:{schemaVersion:1,checkedAt:at.toISOString(),
+    status:stoppedReason?'provider_degraded':'supply_degraded',stoppedReason,newlyAccepted:0,minimumDeficit:10}};
+});}
 
 describe('Private native daily preparation and bounded public source adapter',()=>{
   it('disabled scheduling/public requests do no storage, inference or network work',async()=>{
@@ -32,6 +39,73 @@ describe('Private native daily preparation and bounded public source adapter',()
     expect((await f.run()).status).toBe('disabled');expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();expect(f.collect).not.toHaveBeenCalled();
     expect((await worker.fetch(new Request('https://public.example/run',{method:'POST'}))).status).toBe(404);
     expect(f.env.AI.run).not.toHaveBeenCalled();
+  });
+  it('same-UTC-day quota cooldown leaves the original report, ledger, profile, owner and lease untouched',async()=>{
+    const f=fixture();await f.run();
+    const checkedAt='2026-09-30T08:00:00Z';f.values.set(PREPARATION_REPORT_KEY,JSON.stringify({checkedAt,stoppedReason:'ai_quota_exceeded'}));
+    const before=structuredClone(f.values),fence=await f.storage.get(NEWS_PREPARATION_FENCE_KEY),execute=quotaProbeExecution();
+    const transactions=vi.spyOn(f.storage,'transaction');f.env.NEWS_STATE.get.mockClear();f.env.NEWS_STATE.put.mockClear();f.collect.mockClear();
+    expect(await f.run({execute})).toEqual({status:'provider_quota_cooldown',stoppedReason:'ai_quota_exceeded',checkedAt,
+      retryAfterAt:'2026-10-01T00:00:00.000Z',publicationConfirmed:false,deliveryConfirmed:false});
+    expect(f.env.NEWS_STATE.get.mock.calls).toEqual([[DAILY_NEWS_OWNER_KEY,'text'],[PREPARATION_REPORT_KEY,'stream']]);
+    expect(f.values).toEqual(before);expect(await f.storage.get(NEWS_PREPARATION_FENCE_KEY)).toEqual(fence);
+    expect(transactions).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+    expect(f.collect).not.toHaveBeenCalled();expect(execute).not.toHaveBeenCalled();expect(f.env.AI.run).not.toHaveBeenCalled();
+  });
+  it.each([
+    ['2026-09-30T20:59:50Z','2026-09-30T21:01:00Z',true], // Moscow midnight does not reset UTC quota.
+    ['2026-09-30T23:59:50Z','2026-10-01T00:00:00Z',false], // Same Moscow date, next UTC day.
+    ['2026-10-01T02:59:50+03:00','2026-10-01T00:00:00Z',false], // Normalize an offset before comparing UTC dates.
+  ])('uses UTC quota boundary for report %s and tick %s',async(checkedAt,tick,cooling)=>{
+    const f=fixture(),execute=quotaProbeExecution();f.env.AI.run.mockResolvedValue({response:'{"status":"held"}'});
+    f.values.set(PREPARATION_REPORT_KEY,JSON.stringify({checkedAt,stoppedReason:'ai_quota_exceeded'}));
+    const report=await f.run({now:()=>new Date(tick),execute});
+    expect(report.status).toBe(cooling?'provider_quota_cooldown':'supply_degraded');
+    expect(f.env.AI.run).toHaveBeenCalledTimes(cooling?0:1);expect(execute).toHaveBeenCalledTimes(cooling?0:1);
+  });
+  it('next UTC day retries the actual binding once; repeated quota persists today and blocks further same-day ticks',async()=>{
+    const f=fixture(),execute=quotaProbeExecution();f.env.AI.run.mockResolvedValue({errors:[{code:4006}]});
+    f.values.set(PREPARATION_REPORT_KEY,JSON.stringify({checkedAt:'2026-09-30T23:50:00Z',stoppedReason:'ai_quota_exceeded'}));
+    const first=await f.run({now:()=>new Date('2026-10-01T00:07:00Z'),execute});
+    expect(first.stoppedReason).toBe('ai_quota_exceeded');expect(f.env.AI.run).toHaveBeenCalledTimes(1);
+    const saved=f.values.get(PREPARATION_REPORT_KEY),fence=await f.storage.get(NEWS_PREPARATION_FENCE_KEY);
+    expect(JSON.parse(saved).checkedAt).toBe('2026-10-01T00:07:00.000Z');
+    const second=await f.run({now:()=>new Date('2026-10-01T22:00:00Z'),execute});
+    expect(second.status).toBe('provider_quota_cooldown');expect(f.values.get(PREPARATION_REPORT_KEY)).toBe(saved);
+    expect(await f.storage.get(NEWS_PREPARATION_FENCE_KEY)).toEqual(fence);expect(f.env.AI.run).toHaveBeenCalledTimes(1);
+    f.env.AI.run.mockResolvedValue({response:'{"status":"held"}'});
+    expect((await f.run({now:()=>new Date('2026-10-02T00:07:00Z'),execute})).status).toBe('supply_degraded');
+    expect(f.env.AI.run).toHaveBeenCalledTimes(2);expect(JSON.parse(f.values.get(DAILY_NEWS_LEDGER_KEY)).providerStop).toBeNull();
+  });
+  it('records the actual stop day when an inference run crosses UTC midnight',async()=>{
+    const f=fixture(),probe=quotaProbeExecution(),started=new Date('2026-09-30T23:59:58Z'),stopped=new Date('2026-10-01T00:00:02Z');
+    f.env.AI.run.mockResolvedValue({errors:[{code:4006}]});let ticks=0;
+    const execute=async args=>{const result=await probe(args);result.report.checkedAt=started.toISOString();return result;};
+    const report=await f.run({now:()=>ticks++===0?started:stopped,execute});
+    expect(report.checkedAt).toBe(stopped.toISOString());expect(report.stoppedReason).toBe('ai_quota_exceeded');
+    expect((await f.run({now:()=>new Date('2026-10-01T01:00:00Z'),execute})).status).toBe('provider_quota_cooldown');
+    expect(f.env.AI.run).toHaveBeenCalledTimes(1);
+  });
+  it.each([undefined,null,'2026-09-30','invalid','2026-10-01T00:00:00Z'])('invalid or future quota timestamp %s fails closed without touching the fence',async checkedAt=>{
+    const f=fixture(),execute=quotaProbeExecution();f.values.set(PREPARATION_REPORT_KEY,JSON.stringify({checkedAt,stoppedReason:'ai_quota_exceeded'}));
+    await expect(f.run({execute})).rejects.toThrow('daily_provider_quota_checkpoint_uncertain');
+    expect(f.env.AI.run).not.toHaveBeenCalled();expect(execute).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+    expect(await f.storage.get(NEWS_PREPARATION_FENCE_KEY)).toBeUndefined();
+  });
+  it('retained non-quota errors do not bypass the next actual attempt or authorize a competing owner',async()=>{
+    const f=fixture(),execute=quotaProbeExecution();f.env.AI.run.mockResolvedValue({response:'{"status":"held"}'});
+    f.values.set(PREPARATION_REPORT_KEY,JSON.stringify({checkedAt:current.toISOString(),stoppedReason:'ai_http_401'}));
+    expect((await f.run({execute})).status).toBe('supply_degraded');expect(f.env.AI.run).toHaveBeenCalledTimes(1);
+    f.values.set(PREPARATION_REPORT_KEY,JSON.stringify({checkedAt:current.toISOString(),stoppedReason:'ai_quota_exceeded'}));
+    f.values.set(DAILY_NEWS_OWNER_KEY,JSON.stringify({schemaVersion:1,owner:'node-fallback',nativeEnabled:false,drained:true}));
+    await expect(f.run({execute})).rejects.toThrow('daily_native_owner_not_authorized');expect(f.env.AI.run).toHaveBeenCalledTimes(1);
+  });
+  it('bounds the one report read and keeps disabled mode free of report reads',async()=>{
+    const f=fixture();f.values.set(PREPARATION_REPORT_KEY,' '.repeat(65537));
+    await expect(f.run()).rejects.toThrow('daily_storage_capacity');expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+    expect(f.env.NEWS_STATE.get.mock.calls.filter(([key])=>key===PREPARATION_REPORT_KEY)).toHaveLength(1);
+    f.env.NEWS_STATE.get.mockClear();f.env.NEWS_AUTOMATION_ENABLED='false';
+    expect((await f.run()).status).toBe('disabled');expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();expect(f.env.AI.run).not.toHaveBeenCalled();
   });
   it('uses the shared Moscow annual boundary and requires native owner or explicit bootstrap',async()=>{
     const f=fixture();expect((await f.run({now:()=>new Date(DAILY_NEWS_WINDOW.endExclusive+'T00:00:00+03:00')})).status).toBe('outside_admission_window');

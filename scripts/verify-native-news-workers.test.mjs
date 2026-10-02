@@ -138,7 +138,8 @@ describe("native worker activation read-only postflight", () => {
     }
   });
   it("parses exactly one explicit mode and rejects conflicting, duplicate or coerced arguments", () => {
-    const modes = [["--expect-enabled", "enabled"], ["--expect-disabled", "disabled"], ["--expect-delivery-only", "delivery-only"]];
+    const modes = [["--expect-enabled", "enabled"], ["--expect-disabled", "disabled"], ["--expect-delivery-only", "delivery-only"],
+      ["--expect-auto-resume", "auto-resume"]];
     for (const [arg, expected] of modes) expect(parseNativeNewsWorkerArgs([arg])).toBe(expected);
     for (const [first] of modes) for (const [second] of modes) {
       expect(() => parseNativeNewsWorkerArgs([first, second])).toThrow("native_check_configuration_invalid");
@@ -148,6 +149,54 @@ describe("native worker activation read-only postflight", () => {
       expect(() => parseNativeNewsWorkerArgs(args)).toThrow("native_check_configuration_invalid");
     }
     expect(coercion.toString).not.toHaveBeenCalled();
+  });
+  it.each(["enabled", "delivery-only"])("auto-resume reports the validated actual %s state with four unchanged GETs", async actual => {
+    const fixture = providerFixture(actual), result = await run(fixture, "auto-resume");
+    expect(fixture.calls).toHaveLength(4);
+    expect(result).toMatchObject({ readonly: true, externalWrites: 0, providerRequests: 4,
+      expected: actual, requestedExpected: "auto-resume", deliveryConfirmed: false });
+    expect(result.workers[0].flags).toEqual({ NEWS_AUTOMATION_ENABLED: String(actual === "enabled"),
+      NEWS_AUTOMATION_BOOTSTRAP: String(actual === "enabled"), NEWS_AUTOMATION_WRITER: "native" });
+    expect(result.workers[1].flags).toEqual({ NEWS_DELIVERY_ENABLED: "true" });
+    expect(result.workers.map(row => row.cronUtc)).toEqual(["17 */2 * * *", "0 5-19 * * *"]);
+    for (const { url, options } of fixture.calls) {
+      expect(options.method).toBe("GET"); expect(options.redirect).toBe("error"); expect(options.body).toBeUndefined();
+      expect(url.origin).toBe("https://api.cloudflare.com");
+    }
+    expect(JSON.stringify(result)).not.toMatch(/provider_private|test_only_private_token_marker/);
+  });
+  it.each([
+    ["true", "false"], ["false", "true"], [true, true], [false, false], ["TRUE", "TRUE"],
+    ["true ", "true "], [null, null], ["1", "1"],
+  ])("auto-resume refuses mixed or noncanonical preparation/bootstrap values %j %j", async (active, bootstrap) => {
+    const fixture = providerFixture("delivery-only", (index, value) => index === 0 ? json({ bindings: value.bindings.map(row =>
+      row.name === "NEWS_AUTOMATION_ENABLED" ? { ...row, text: active }
+        : row.name === "NEWS_AUTOMATION_BOOTSTRAP" ? { ...row, text: bootstrap } : row) }) : null);
+    await expect(run(fixture, "auto-resume")).rejects.toThrow("native_check_flag_mismatch");
+    expect(fixture.fetchImpl).toHaveBeenCalledTimes(1);
+  });
+  it("auto-resume refuses inactive delivery or changed writer instead of claiming successful recovery", async () => {
+    for (const [name, text, index] of [["NEWS_AUTOMATION_WRITER", "github", 0], ["NEWS_DELIVERY_ENABLED", "false", 2]]) {
+      const fixture = providerFixture("delivery-only", (at, value) => at === index ? json({ bindings: value.bindings.map(row =>
+        row.name === name ? { ...row, text } : row) }) : null);
+      await expect(run(fixture, "auto-resume")).rejects.toThrow("native_check_flag_mismatch");
+      expect(fixture.fetchImpl).toHaveBeenCalledTimes(index + 1);
+    }
+  });
+  it("auto-resume refuses missing, duplicate and secret preparation flags and schedule drift", async () => {
+    for (const transform of [
+      bindings => bindings.filter(row => row.name !== "NEWS_AUTOMATION_BOOTSTRAP"),
+      bindings => [...bindings, { ...bindings[1] }],
+      bindings => bindings.map(row => row.name === "NEWS_AUTOMATION_BOOTSTRAP" ? { ...row, type: "secret_text" } : row),
+    ]) {
+      const fixture = providerFixture("delivery-only", (index, value) => index === 0 ? json({ bindings: transform(value.bindings) }) : null);
+      await expect(run(fixture, "auto-resume")).rejects.toThrow("native_check_flag_mismatch");
+      expect(fixture.fetchImpl).toHaveBeenCalledTimes(1);
+    }
+    for (const index of [1, 3]) {
+      const fixture = providerFixture("enabled", at => at === index ? json({ schedules: [{ cron: "*/5 * * * *" }] }) : null);
+      await expect(run(fixture, "auto-resume")).rejects.toThrow("native_check_schedule_mismatch");
+    }
   });
 
   it("stops on quota 402 after one GET and cancels the unread private provider body", async () => {
@@ -211,7 +260,8 @@ describe("native worker activation read-only postflight", () => {
     const script = fileURLToPath(new URL("./verify-native-news-workers.mjs", import.meta.url));
     for (const args of [[], ["--send"], ["--expect-enabled", "--send"], ["--expect-disabled"], ["--expect-delivery-only"],
       ["--expect-delivery-only", "--expect-enabled"], ["--expect-disabled", "--expect-delivery-only"],
-      ["--expect-delivery-only", "--expect-delivery-only"]]) {
+      ["--expect-delivery-only", "--expect-delivery-only"], ["--expect-auto-resume"],
+      ["--expect-auto-resume", "--expect-delivery-only"]]) {
       let failure;
       try {
         execFileSync(process.execPath, [script, ...args], { encoding: "utf8", windowsHide: true,

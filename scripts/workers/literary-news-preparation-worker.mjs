@@ -1,7 +1,7 @@
 import {Buffer} from 'node:buffer';
 import {collectDailyNewsReview} from '../lib/literary-news-daily-intake.mjs';
 import {LITERARY_NEWS_SOURCES} from '../lib/literary-news-sources.mjs';
-import {canonicalUrl} from '../lib/literary-news-reviewed.mjs';
+import {canonicalUrl,validTimestamp} from '../lib/literary-news-reviewed.mjs';
 import {newsJsonStream} from '../lib/literary-news-json.mjs';
 import {readNewsJsonArray} from '../lib/literary-news-json-reader.mjs';
 import {runDailyNewsAutomation,mergeDailyLedgers,validateDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
@@ -129,6 +129,15 @@ export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),c
   const owner=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_OWNER_KEY,4096);
   if(owner!==null&&!(owner.schemaVersion===1&&owner.owner==='native'&&owner.nativeEnabled===true&&owner.drained===false))fail('daily_native_owner_not_authorized');
   if(owner===null&&!bootstrap)fail('daily_native_owner_not_authorized');
+  const previousReport=await readJsonBinding(env.NEWS_STATE,PREPARATION_REPORT_KEY,65536);
+  if(previousReport?.stoppedReason==='ai_quota_exceeded'){
+    if(!validTimestamp(previousReport.checkedAt)||Date.parse(previousReport.checkedAt)>started.getTime())
+      fail('daily_provider_quota_checkpoint_uncertain');
+    const stoppedDay=new Date(previousReport.checkedAt).toISOString().slice(0,10);
+    if(stoppedDay===started.toISOString().slice(0,10))return{status:'provider_quota_cooldown',stoppedReason:'ai_quota_exceeded',
+      checkedAt:previousReport.checkedAt,retryAfterAt:new Date(Date.UTC(started.getUTCFullYear(),started.getUTCMonth(),started.getUTCDate()+1)).toISOString(),
+      publicationConfirmed:false,deliveryConfirmed:false};
+  }
   const previous=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_LIMITS.ledgerBytes,{onEntry:async record=>{
     await validateDailyNewsRecord(record,started);return record;
   }});
@@ -176,6 +185,8 @@ export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),c
     result.report.native={window:DAILY_NEWS_WINDOW,writer:'native',sourceCounts:intake.counts||null,
       maximumCandidateAttempts:bounded.maximum,maximumAiCalls:bounded.maximum*2,deadlineMinutes:6,deterministicHeld:bounded.held,
       ownerFence:'durable-object-lease-and-staged-ledger-hash'};
+    // A quota result belongs to the UTC day when it was observed, including a run crossing midnight.
+    if(result.report.stoppedReason==='ai_quota_exceeded')result.report.checkedAt=now().toISOString();
     await env.NEWS_STATE.put(PREPARATION_REPORT_KEY,JSON.stringify(result.report));
     return result.report;
   }finally{await releaseNewsPreparationLease(storage,lease.leaseId);}
