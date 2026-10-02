@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "environment": "local Vite development runtime and checked-in public data",
+  "focusedTests": {
+    "result": "PASS",
+    "files": 3,
+    "tests": 21,
+    "command": "node node_modules/vitest/vitest.mjs run src/components/LiteraryCalendar.test.ts src/data/countries/calendarWriterDatePatches.test.ts src/data/countries/writerCalendarIdentities.test.ts --configLoader runner --cache=false"
+  },
+  "typescript": "PASS",
+  "diffWhitespace": "PASS",
+  "runtimeAudit": "PASS",
+  "browser": {
+    "browser": "Chrome",
+    "devices": ["desktop-chromium", "mobile-chromium"],
+    "runtimeCoverageAfterVisualRepair": "PASS",
+    "existingMonthDesignAndReachabilityRuEn": "PASS",
+    "yearPagesTraversedPerDevice": 117,
+    "unique2026EventsReachedPerDevice": 2338,
+    "maximumYearEventRowsInDom": 20,
+    "monthCountsCheckedPerDevice": 12,
+    "searchAndYearNavigation2026_2027_2028": "PASS",
+    "yearWriterContrast": "PASS",
+    "christieWriterUrl": "PASS",
+    "desktopMobilePageErrors": [],
+    "desktopMobileHorizontalOverflow": 0,
+    "command": "$env:PLAYWRIGHT_PORT='5175'; $env:PLAYWRIGHT_REUSE_SERVER='true'; node node_modules/@playwright/test/cli.js test tests/e2e/calendar-runtime-coverage.spec.mjs tests/e2e/calendar-design-quality.spec.mjs --config playwright.config.mjs --workers 1"
+  },
+  "noNewDatesOrWriterRecords": true,
+  "canonicalGlobeRendererUnchanged": true,
+  "appBootstrapUnchanged": true,
+  "deployment": false,
+  "productionAcceptance": false
+}

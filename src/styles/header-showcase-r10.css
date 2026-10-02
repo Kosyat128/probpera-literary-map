@@ -1,7 +1,7 @@
-/* R10 accessibility delta for the preserved 1+6 composition. */
+/* The complete 1+6 editorial showcase has one scroll area at short heights. */
 
   .articles-menu .articles-mega-menu {
-    width: min(1040px, calc(100vw - 36px));
+    width: min(1120px, calc(100vw - 36px));
     max-height: var(--showcase-available-height, calc(100dvh - 164px));
     overflow-y: auto;
     overflow-x: hidden;
@@ -15,6 +15,12 @@
     visibility: hidden;
     pointer-events: none;
   }
+  .articles-menu .articles-mega-menu > header {
+    gap: 14px 32px;
+    align-items: center;
+    padding: 20px 24px;
+  }
+  .articles-menu .articles-mega-menu > header > div { gap: 8px; }
   .articles-menu .articles-mega-content {
     grid-template-columns: minmax(0, .4fr) minmax(0, .6fr);
   }
@@ -22,15 +28,29 @@
     --type-menu-lead-title: 1.5rem;
     --type-menu-copy: .9375rem;
     align-content: start;
+    align-self: start;
     grid-template-rows: auto auto;
+    color: var(--ink);
+    background: #fff8ed;
+    border-right: 1px solid var(--line);
   }
-  .articles-menu .articles-mega-lead p { line-height: 1.4; }
+  .articles-menu .articles-mega-lead > div {
+    gap: 10px;
+    padding: 20px;
+  }
+  .articles-menu .articles-mega-lead p {
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .articles-menu .articles-mega-lead small { color: var(--orange-deep); }
+  .articles-menu .articles-mega-lead em { color: var(--muted); }
   .articles-menu .articles-mega-menu :is(strong, p, small, em, a) { overflow-wrap: break-word; }
   .articles-menu .articles-mega-lead > div,
   .articles-menu .articles-mega-content > section > a { grid-template-columns: minmax(0, 1fr); }
   .articles-menu .articles-mega-lead > div > *,
   .articles-menu .articles-mega-content > section > a > * { min-width: 0; }
   .articles-menu .articles-mega-lead-media {
+    width: 100%;
     background: #f3ede5;
   }
   .articles-menu .articles-mega-lead-media:has(> img) {
@@ -55,9 +75,63 @@
   .articles-menu > summary:focus-visible,
   .articles-menu .articles-mega-loading button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
   .articles-menu .articles-mega-content > section:has(> a:only-child) { grid-template-columns: minmax(0, 1fr); }
+  .articles-menu .articles-mega-content > section {
+    align-content: start;
+    grid-auto-rows: auto;
+  }
+  .articles-menu .articles-mega-content > section > .articles-mega-card {
+    grid-row: auto;
+    grid-template-columns: minmax(0, 1fr) 48px;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 10px 14px;
+    align-items: start;
+    padding: 20px;
+  }
+  .articles-menu .articles-mega-card-label {
+    display: contents;
+  }
+  .articles-menu .articles-mega-card-label > small { grid-area: 1 / 1 / 2 / -1; }
+  .articles-menu .articles-mega-card strong {
+    grid-area: 2 / 1 / 3 / 2;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+  .articles-menu .articles-mega-card p {
+    grid-area: 3 / 1 / 4 / -1;
+    margin: 0;
+    color: var(--muted);
+    font-size: .875rem;
+    line-height: 1.45;
+  }
+  .articles-menu .articles-mega-card-media {
+    grid-area: 2 / 2 / 3 / 3;
+    position: static;
+    display: block;
+    flex: 0 0 48px;
+    width: 48px;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 3px;
+  }
+  .articles-menu .articles-mega-card-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .articles-menu .articles-mega-card-media img:not([width]) {
+    aspect-ratio: auto 3 / 2;
+  }
+  .articles-menu .articles-mega-card-media-fallback {
+    display: grid;
+    min-height: 32px;
+    place-items: center;
+    background: #f3ede5;
+  }
+  .articles-menu .articles-mega-card-meta { grid-area: 4 / 1 / 5 / -1; align-self: end; }
+  .articles-menu .articles-mega-menu > footer { padding: 10px 20px; }
   @media (max-height: 740px) {
     .articles-menu .articles-mega-lead { --type-menu-lead-title: 1.25rem; }
-    .articles-menu .articles-mega-lead-media { width: min(100%, 14rem); }
   }
   @media (max-width: 1040px) {
     .articles-menu .articles-mega-content { grid-template-columns: minmax(0, 1fr); }
@@ -70,6 +144,9 @@
     height: auto;
     object-fit: contain;
     transform: none;
+  }
+  .articles-menu .articles-mega-lead-media > img:not([width]) {
+    aspect-ratio: auto 16 / 9;
   }
 
   .articles-menu .articles-mega-content:has(> section:empty) { grid-template-columns: minmax(0, 1fr); }

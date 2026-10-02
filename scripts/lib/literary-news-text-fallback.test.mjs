@@ -25,8 +25,10 @@ describe('Verified text fallback after one bounded media preparation attempt',()
     const expected=await prepareNewsPost(record,{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
     expect(result.applied).toBe(true);expect(result.state.prepared.payload).toEqual(expected.payload);
     expect(result.state.prepared.media).toBeNull();expect(result.state.key).toBe(f.row.state.key);
-    expect(result.state.prepared.payload.text).toContain(record.source.url);
-    expect(result.state.prepared.payload.text).toContain('https://probpera.ru/#literary-news');
+    expect(result.state.prepared.payload.text).toContain(`Источник: ${record.source.name}\n${record.source.url}`);
+    expect(result.state.prepared.payload.entities.filter(entity=>entity.type==='url')
+      .map(entity=>result.state.prepared.payload.text.slice(entity.offset,entity.offset+entity.length)))
+      .toEqual([record.source.url,'https://probpera.ru/#literary-news']);
     expect(f.store.read).toHaveBeenCalledExactlyOnceWith('admission:news:fixture-story');
     expect(f.store.compareAppend).toHaveBeenCalledWith(f.row.state.key,3,result.state);
   });

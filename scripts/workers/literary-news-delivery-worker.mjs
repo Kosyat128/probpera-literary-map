@@ -2,11 +2,11 @@ import { Buffer } from 'node:buffer';
 import { randomUUID } from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 import configuration from '../../data/news/social-destinations.json' with { type: 'json' };
-import { createNewsRuntimeStore, dispatchNewsBatch, newsPostKey,reconcileNewsSnapshot,scheduleNewsJobs } from '../lib/literary-news-social.mjs';
+import { createNewsRuntimeStore, dispatchNewsJob, newsPostKey,reconcileNewsSnapshot,scheduleNewsJobs } from '../lib/literary-news-social.mjs';
 import { currentNativeNewsDueRows, fetchNativeNewsAdmissionFeed, selectNativeNewsAdmissionIds } from '../lib/literary-news-native-admissions.mjs';
 import { fallbackUnsentNewsPhoto } from '../lib/literary-news-text-fallback.mjs';
 import { createNewsSocialTransport } from '../lib/literary-news-social-transport-core.mjs';
-import { newsDeliveryPacingKey } from '../lib/literary-news-pacing.mjs';
+import { newsDeliveryPacingKey, newsDeliveryPublicationWindow } from '../lib/literary-news-pacing.mjs';
 import { newsAnnouncementEligible } from '../lib/literary-news-reviewed.mjs';
 import { DAILY_NEWS_WINDOW, dailyPublicationEpoch } from '../lib/literary-news-daily-profile.mjs';
 import { trustedSupabaseOrigin } from '../lib/trusted-server-url.mjs';
@@ -24,7 +24,64 @@ const safeCodes = new Set(['runtime_quota_exceeded','runtime_due_rpc_required','
   'delivery_request_timeout','delivery_registry_binding_missing','delivery_runtime_failed',
   'delivery_public_feed_invalid','delivery_public_feed_unavailable','delivery_public_feed_origin_invalid',
   'delivery_public_feed_too_large','delivery_public_feed_release_mismatch','delivery_public_feed_not_current','bounded_capture_invalid']);
+safeCodes.add('delivery_request_budget_exhausted');
 const safeCode = error => safeCodes.has(error?.message) ? error.message : 'delivery_runtime_failed';
+
+export const DELIVERY_EXTERNAL_REQUEST_LIMIT = 50;
+export const DELIVERY_CAPTURE_LIMIT = 4;
+export const DELIVERY_DISPATCH_LIMIT = 2;
+// Five receipt CAS attempts need at most ten requests. Keep a day-status read
+// and the two-request heartbeat after them, including the provider request itself.
+const PROVIDER_ACKNOWLEDGEMENT_RESERVE = 14;
+const HEARTBEAT_RESERVE = 2;
+
+/** One invocation-local counter covers the SDK, public feed and provider alike.
+ * Redirects cannot silently multiply requests; HTTP402 latches every route. */
+export function createDeliveryRequestBudget(fetchImpl=fetch) {
+  let requests=0,providerWrites=0,quota=false,exhausted=false,heartbeat=false;
+  const budget={
+    get requests(){return requests;},get remaining(){return DELIVERY_EXTERNAL_REQUEST_LIMIT-requests;},
+    get providerWrites(){return providerWrites;},
+    get quota(){return quota;},get exhausted(){return exhausted;},
+    canStartJob(job){
+      // Includes fresh rights checks (twice for photos), the dispatch marker,
+      // worst-case acknowledgement CAS and the final heartbeat.
+      const beforeProvider=job.prepared?.media?(job.remoteId?16:18):(job.remoteId?9:11);
+      return !quota && budget.remaining>=beforeProvider+PROVIDER_ACKNOWLEDGEMENT_RESERVE;
+    },
+    canWriteProvider(){return !quota && budget.remaining>=PROVIDER_ACKNOWLEDGEMENT_RESERVE;},
+    beginHeartbeat(){heartbeat=true;},
+    fetch:async(input,options={})=>{
+      if(quota)fail('runtime_quota_exceeded');
+      if(requests>=DELIVERY_EXTERNAL_REQUEST_LIMIT-(heartbeat?0:HEARTBEAT_RESERVE)){
+        exhausted=true;fail('delivery_request_budget_exhausted');
+      }
+      requests++;
+      const target=new URL(input instanceof URL?input.href:typeof input==='string'?input:input.url);
+      if(target.origin==='https://api.telegram.org'&&/\/(?:sendMessage|sendPhoto|editMessageText|editMessageMedia)$/.test(target.pathname))providerWrites++;
+      const response=await fetchImpl(input,{...options,redirect:'error'});
+      if(response.status===402)quota=true;
+      return response;
+    },
+  };
+  return budget;
+}
+
+/** A complete feed retains its original proof. Rotation changes only the four
+ * explicit IDs reconciled this hour, covering all 24 within six hourly ticks. */
+export function rotatingNativeNewsCaptureIds(feed,current) {
+  const ids=selectNativeNewsAdmissionIds(feed,current),groups=Math.ceil(ids.length/DELIVERY_CAPTURE_LIMIT);
+  if(!groups)return [];
+  const group=Math.floor(current.getTime()/3600000)%groups;
+  return ids.slice(group*DELIVERY_CAPTURE_LIMIT,(group+1)*DELIVERY_CAPTURE_LIMIT);
+}
+
+/** Preserve each group's existing photo/age order, while giving a new create
+ * and a durable correction one slot each when both are available. */
+export function mixedNativeNewsJobs(jobs) {
+  const ordered=scheduleNewsJobs(jobs),creates=ordered.filter(job=>!job.remoteId),corrections=ordered.filter(job=>job.remoteId);
+  return creates.length&&corrections.length?[creates[0],corrections[0]]:ordered.slice(0,DELIVERY_DISPATCH_LIMIT);
+}
 
 export async function boundedDeliveryResponse(response, maximum = 2 * 1024 * 1024) {
   const declared=Number(response.headers.get('content-length'));
@@ -113,49 +170,73 @@ async function readMediaOptions(binding,current) {
 }
 
 export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,createClientImpl=createClient,
-  storeFactory=createNewsRuntimeStore,dispatchImpl=dispatchNewsBatch,fetchFeedImpl=fetchNativeNewsAdmissionFeed}={}) {
-  const current=now(),runId=randomUUID(),base={runner:'native-cron',runId,startedAt:current.toISOString()};
+  storeFactory=createNewsRuntimeStore,dispatchImpl=dispatchNativeNewsJob,fetchFeedImpl=fetchNativeNewsAdmissionFeed,
+  invocation='dispatch'}={}) {
+  const current=now(),runId=randomUUID(),base={runner:'native-cron',invocation,runId,startedAt:current.toISOString()};
+  if(!['capture','dispatch'].includes(invocation))fail('delivery_runtime_failed');
   if(env?.NEWS_DELIVERY_ENABLED!=='true')return {...base,status:'disabled',deliveredThisRun:0};
   if(current.getTime()<Date.parse(DELIVERY_WINDOW.start)||current.getTime()>=Date.parse(DELIVERY_WINDOW.end))
     return {...base,status:'outside_authorized_window',deliveredThisRun:0};
+  if(!newsDeliveryPublicationWindow(current).open)
+    return {...base,status:'outside_publication_hours',deliveredThisRun:0};
+  const budget=createDeliveryRequestBudget(fetchImpl),heartbeatKey=invocation==='capture'?'heartbeat:native-delivery-capture':'heartbeat:native-delivery';
+  let store,storeValid=false,phase='configuration',outcomes=[];
+  const heartbeat=async summary=>{
+    if(!storeValid||budget.quota||budget.remaining<HEARTBEAT_RESERVE)return {...summary,externalRequests:budget.requests,heartbeatRecorded:false};
+    budget.beginHeartbeat();
+    const prior=await store.read(heartbeatKey);
+    const record={...summary,externalRequests:budget.requests+1,heartbeatRecorded:true};
+    const written=await store.compareAppend(heartbeatKey,prior.id,record);
+    return {...record,externalRequests:budget.requests,heartbeatRecorded:written.applied===true};
+  };
   try {
     if(!env.SUPABASE_URL||!env.SUPABASE_SERVICE_ROLE_KEY||!env.TELEGRAM_BOT_TOKEN)fail('delivery_credentials_missing');
     let origin;try{origin=trustedSupabaseOrigin(env.SUPABASE_URL);}catch{fail('delivery_supabase_origin_invalid');}
-    const client=createClientImpl(origin,env.SUPABASE_SERVICE_ROLE_KEY,{auth:{persistSession:false,autoRefreshToken:false},
-      global:{fetch:createDeliverySupabaseFetch(origin,fetchImpl)}});
-    const store=storeFactory(client);
+    const client=createClientImpl(origin,env.SUPABASE_SERVICE_ROLE_KEY,{auth:{persistSession:false,autoRefreshToken:false},db:{retry:false},
+      global:{fetch:createDeliverySupabaseFetch(origin,budget.fetch)}});
+    store=storeFactory(client);
     const destination=configuration.destinations.find(row=>row.platform==='telegram');
     if(!destination)fail('delivery_runtime_failed');
+    phase='destination';
     const control=(await store.read(`destination:telegram:${destination.id}`)).state;
+    storeValid=true;
     if(control?.mode!=='on'||control.paused||control.historyReconciled!==true)
-      return {...base,status:'destination_not_enabled_or_history_gap',deliveredThisRun:0};
+      return {...base,phase,externalRequests:budget.requests,status:'destination_not_enabled_or_history_gap',deliveredThisRun:0};
     // Prove that the metrics prerequisite exists before any external provider write.
+    phase='day_status';
     let dayStatus=checkedDeliveryDayStatus(await requiredRpc(client,'literary_news_delivery_day_status',
       {p_destination_id:destination.id,p_now:current.toISOString()}),current);
-    let rawDue=await requiredRpc(client,'read_due_literary_news_runtime_posts',
+    phase='due_queue';
+    const rawDue=await requiredRpc(client,'read_due_literary_news_runtime_posts',
       {p_destination_id:destination.id,p_now:current.toISOString(),p_limit:20});
     let candidates=checkedDeliveryDueRows(rawDue,destination,current);
-    const feed=await fetchFeedImpl({fetchImpl,current}),captureIds=selectNativeNewsAdmissionIds(feed,current);
+    phase='public_feed';
+    const feed=await fetchFeedImpl({fetchImpl:budget.fetch,current});
+    const captureIds=invocation==='capture'?rotatingNativeNewsCaptureIds(feed,current):[];
     let mediaOptions={registry:{assets:[]},now:current,deferBytes:true},mediaIndexUnavailable=false;
     if(captureIds.length||candidates.some(row=>row.state.prepared?.media)){
+      phase='media_index';
       try{mediaOptions=await readMediaOptions(env.NEWS_STATE,current);}
       catch(error){if(error.message!=='delivery_media_index_unavailable')throw error;mediaIndexUnavailable=true;}
     }
-    const capture=await reconcileNewsSnapshot(store,feed,[destination],current,{mediaOptions,boundedCaptureIds:captureIds});
-    if(captureIds.length){
-      rawDue=await requiredRpc(client,'read_due_literary_news_runtime_posts',
-        {p_destination_id:destination.id,p_now:current.toISOString(),p_limit:20});
-      candidates=checkedDeliveryDueRows(rawDue,destination,current);
+    if(invocation==='capture'){
+      phase='capture';
+      const capture=await reconcileNewsSnapshot(store,feed,[destination],current,{mediaOptions,boundedCaptureIds:captureIds});
+      phase='heartbeat';
+      return await heartbeat({...base,phase,finishedAt:now().toISOString(),status:'admissions_captured',
+        capturedCandidates:captureIds.length,newAdmissions:capture.newAdmissions,deliveredThisRun:0});
     }
+    phase='current_queue';
     candidates=await currentNativeNewsDueRows(candidates,feed);
+    phase='pacing';
     const pacing=(await store.read(newsDeliveryPacingKey(destination))).state;
     const selected=[];let mediaUnavailable=0,textFallbacks=0;
     const rowsByKey=new Map(candidates.map(row=>[row.key,row]));
-    for(const original of scheduleNewsJobs(candidates.map(row=>row.state))){
-      if(selected.length>=8)break;
+    const ready=candidates.filter(row=>row.state.remoteId||!(control.nextDueAt&&Date.parse(control.nextDueAt)>current.getTime()
+      ||Date.parse(pacing?.nextDueAt)>current.getTime()));
+    phase='select_media';
+    for(const original of mixedNativeNewsJobs(ready.map(row=>row.state))){
       const row=rowsByKey.get(original.key);let job=original;
-      if(!job.remoteId&&(control.nextDueAt&&Date.parse(control.nextDueAt)>current.getTime()
-        ||Date.parse(pacing?.nextDueAt)>current.getTime()))continue;
       if(job.prepared?.media){try{
         if(mediaIndexUnavailable)throw Error('delivery_media_index_unavailable');
         await validatePreparedNewsMedia(job.prepared,job.destination,mediaOptions);
@@ -168,28 +249,68 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
       selected.push(job);
     }
     // This same CAS/lease/control/pacing path is shared with the Node fallback.
-    const live=createNewsSocialTransport({mode:'live',telegramToken:env.TELEGRAM_BOT_TOKEN,fetchImpl,
+    const live=createNewsSocialTransport({mode:'live',telegramToken:env.TELEGRAM_BOT_TOKEN,fetchImpl:budget.fetch,
       mediaOptions:{...mediaOptions,now:undefined}});
+    let providerBudgetStopped=false;
     const transport={
       preflight:async(destination,options)=>destination?.platform==='telegram'?live.preflight(destination,options):{ok:false,reason:'vk_disabled'},
       prepareDelivery:async(args)=>args.destination?.platform==='telegram'?live.prepareDelivery(args):{kind:'blocked',code:'vk_disabled'},
-      send:async(args)=>args.destination?.platform==='telegram'?live.send(args):{kind:'blocked',code:'vk_disabled'},
+      send:async(args)=>{
+        if(args.destination?.platform!=='telegram')return {kind:'blocked',code:'vk_disabled'};
+        if(!budget.canWriteProvider()){
+          providerBudgetStopped=true;
+          return {kind:'retry',code:'delivery_request_budget_exhausted',retryAfterSeconds:3600};
+        }
+        return live.send(args);
+      },
     };
-    const outcomes=await dispatchImpl({store,jobs:scheduleNewsJobs(selected),transport,now,limit:8});
-    if(outcomes.some(row=>row.dispatchAttempted)){
-      const countedAt=now();dayStatus=checkedDeliveryDayStatus(await requiredRpc(client,'literary_news_delivery_day_status',
+    let budgetStopped=false,attemptedJobs=0;
+    phase='dispatch';
+    for(const job of selected){
+      if(!budget.canStartJob(job)){budgetStopped=true;break;}
+      const result=await dispatchImpl({store,jobs:[job],transport,now,limit:1});
+      attemptedJobs++;outcomes.push(...result);
+      if(budget.quota)fail('runtime_quota_exceeded');
+      if(providerBudgetStopped||budget.exhausted){budgetStopped=true;break;}
+      if(result.some(row=>row.status==='ambiguous'||row.reason==='destination_rights_unverified'
+        ||row.reason==='destination_rate_limit'||row.reason==='destination_not_enabled_or_history_gap'))break;
+    }
+    if(outcomes.some(row=>row.dispatchAttempted)&&budget.remaining>HEARTBEAT_RESERVE){
+      phase='postflight';const countedAt=now();
+      dayStatus=checkedDeliveryDayStatus(await requiredRpc(client,'literary_news_delivery_day_status',
         {p_destination_id:destination.id,p_now:countedAt.toISOString()}),countedAt);
     }
-    const summary={...base,finishedAt:now().toISOString(),status:outcomes.some(row=>row.status==='ambiguous')?'dispatch_reconciliation_required'
-        :dayStatus.deficitToMinimum?'daily_target_deficit':'daily_minimum_reached',
-      inspectedJobs:rawDue.length,eligibleJobs:candidates.length,selectedJobs:selected.length,mediaUnavailable,textFallbacks,
-      capturedCandidates:captureIds.length,newAdmissions:capture.newAdmissions,
+    phase='heartbeat';
+    const summary={...base,phase,finishedAt:now().toISOString(),status:outcomes.some(row=>row.status==='ambiguous')?'dispatch_reconciliation_required'
+        :budgetStopped?'request_budget_deferred':dayStatus.deficitToMinimum?'daily_target_deficit':'daily_minimum_reached',
+      inspectedJobs:rawDue.length,eligibleJobs:candidates.length,selectedJobs:selected.length,attemptedJobs,mediaUnavailable,textFallbacks,
+      capturedCandidates:0,newAdmissions:0,budgetStopped,
+      providerWriteAttempts:budget.providerWrites,
+      acknowledgedCreatesThisRun:outcomes.filter(row=>row.status==='sent_current'&&row.dispatchAttempted&&!rowsByKey.get(row.key)?.state.remoteId).length,
+      acknowledgedCorrectionsThisRun:outcomes.filter(row=>row.status==='sent_current'&&row.dispatchAttempted&&rowsByKey.get(row.key)?.state.remoteId).length,
       deliveredThisRun:outcomes.filter(row=>row.status==='sent_current'&&row.dispatchAttempted).length,
       ambiguousThisRun:outcomes.filter(row=>row.status==='ambiguous').length,dayStatus};
-    const heartbeat=await store.read('heartbeat:native-delivery');
-    await store.compareAppend('heartbeat:native-delivery',heartbeat.id,summary);
-    return summary;
-  } catch(error){return {...base,status:'blocked',code:safeCode(error),finishedAt:now().toISOString(),deliveredThisRun:null};}
+    return await heartbeat(summary);
+  } catch(error){
+    const summary={...base,phase,status:'blocked',code:budget.quota?'runtime_quota_exceeded'
+      :budget.exhausted?'delivery_request_budget_exhausted':safeCode(error),finishedAt:now().toISOString(),
+      externalRequests:budget.requests,providerWriteAttempts:budget.providerWrites,deliveredThisRun:null,heartbeatRecorded:false};
+    if(summary.code==='runtime_quota_exceeded')return summary;
+    try{return await heartbeat(summary);}catch{return {...summary,externalRequests:budget.requests};}
+  }
+}
+
+export const runDeliveryCaptureTick=options=>runDeliveryTick({...options,invocation:'capture'});
+
+/** The shared job path rechecks control/lease/pacing and the atomic SQL guard.
+ * Avoid a redundant batch-control read for each of the two explicit jobs. */
+async function dispatchNativeNewsJob({store,jobs,transport,now}){
+  const job=jobs[0];
+  try{return [{key:job.key,...await dispatchNewsJob({store,key:job.key,transport,now})}];}
+  catch(error){
+    if(error?.message==='runtime_quota_exceeded')throw error;
+    return [{key:job.key,status:'ambiguous',reason:'runtime_failure_requires_reconciliation'}];
+  }
 }
 
 /** SDK, JSON/hash validation and dispatch run under the Durable Object CPU budget.
@@ -197,22 +318,31 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
 export class LiteraryNewsDeliveryCoordinator {
   constructor(state,env){this.env=env;}
   async fetch(request){
-    if(request.method!=='POST'||new URL(request.url).pathname!=='/run')
+    const path=new URL(request.url).pathname;
+    if(request.method!=='POST'||!['/capture','/dispatch'].includes(path))
       return new Response(null,{status:404});
-    const summary=await runDeliveryTick({env:this.env});
+    const summary=await runDeliveryTick({env:this.env,invocation:path==='/capture'?'capture':'dispatch'});
     return Response.json(summary,{status:summary.status==='blocked'?503:200});
   }
 }
 
-/** Free-plan Cron stays small: one private DO call and a bounded factual summary. */
+/** Each private DO POST has a fresh 50-external-request budget. Cron itself
+ * performs only the two internal binding calls and logs their safe summaries. */
 export async function scheduleNativeNewsDelivery(controller,env,{log=console.log}={}) {
   if(env.NEWS_DELIVERY_ENABLED!=='true')return;
   if(!env.DELIVERY_COORDINATOR)fail('delivery_coordinator_missing');
   const stub=env.DELIVERY_COORDINATOR.get(env.DELIVERY_COORDINATOR.idFromName('literary-news-delivery'));
-  const response=await stub.fetch('https://coordinator.internal/run',{method:'POST'});
+  const captureResponse=await stub.fetch('https://coordinator.internal/capture',{method:'POST'});
+  const capture=await captureResponse.json();
+  log(JSON.stringify(capture));
+  if(!captureResponse.ok||capture.status==='blocked'){
+    controller.noRetry();
+    if(capture.code!=='delivery_request_budget_exhausted')return capture;
+  }
+  const response=await stub.fetch('https://coordinator.internal/dispatch',{method:'POST'});
   const summary=await response.json();
   // A retry of an ambiguous dispatch or a quota failure must be operator-reviewed.
-  if(!response.ok||summary.status==='blocked')controller.noRetry();
+  if(!response.ok||summary.status==='blocked'||summary.status==='dispatch_reconciliation_required')controller.noRetry();
   log(JSON.stringify(summary));
   return summary;
 }

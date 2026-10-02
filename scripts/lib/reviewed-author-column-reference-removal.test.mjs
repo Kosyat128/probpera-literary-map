@@ -1,11 +1,12 @@
 import {readFileSync} from 'node:fs';
+import {projectReviewedLiveUiFollowup} from './reviewed-live-ui-followup.mjs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {describe,it,expect} from 'vitest';
 import {authorColumnReferenceRemovalAttestation as packet,authorColumnReferenceRemovalSha256 as sha,
  projectReviewedAuthorColumnReferenceRemoval as project} from './reviewed-author-column-reference-removal.mjs';
 
-const read=path=>readFileSync(path,'utf8').replace(/\r\n?/gu,'\n');
+const read=path=>projectReviewedLiveUiFollowup(path,readFileSync(path,'utf8'));
 const historical=path=>execFileSync('git',['-c',`safe.directory=${process.cwd()}`,'show',`${packet.baselineCommitSha}:${path}`],
  {encoding:'utf8',maxBuffer:5*1024*1024}).replace(/\r\n?/gu,'\n');
 

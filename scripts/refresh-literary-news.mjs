@@ -6,6 +6,7 @@ import { buildDailyAwareNewsIngestion } from "./lib/literary-news-approved-queue
 import { DAILY_NEWS_LIMITS, validateDailyApprovedPayload } from "./lib/literary-news-daily-profile.mjs";
 import { readNewsSnapshot } from "./lib/literary-news-snapshot.mjs";
 import { NEWS_QUEUE_MAX_BYTES, NEWS_STATE_MAX_BYTES } from "./lib/literary-news-state.mjs";
+import { safeNewsRefreshFailureReason } from "./lib/literary-news-ingestion.mjs";
 
 const { values } = parseArgs({
   options: {
@@ -41,9 +42,9 @@ try {
   await mkdir(dirname(output), { recursive: true });
   await writeFile(output, `${JSON.stringify(result.bulk, null, 2)}\n`, "utf8");
   console.log(`Literary news: ${result.state.sources.filter((source) => source.status === "ok").length}/${result.state.sources.length} sources available; ${result.queue.items.length} held for review; approved daily records are omitted from this queue.`);
-} catch {
+} catch (error) {
   // File paths, HTTP errors and child environments are never printed as diagnostics.
-  console.error("literary_news_refresh_failed: existing remote state has not been changed");
+  console.error(`literary_news_refresh_failed: ${safeNewsRefreshFailureReason(error)}; existing remote state has not been changed`);
   process.exitCode = 1;
 } finally {
   service?.close();

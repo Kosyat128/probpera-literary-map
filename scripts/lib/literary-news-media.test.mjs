@@ -5,7 +5,7 @@ import { PassThrough } from "node:stream";
 import { checkedNewsMediaAsset, downloadNewsMediaAsset, mediaByteHash, normalizeNewsMedia, selectNewsMedia,
   validatePreparedNewsMedia } from "./literary-news-media.mjs";
 import { checkedVkNewsUploadUrl, createPinnedVkNewsUpload } from "./literary-news-media-upload.mjs";
-import { prepareNewsPost, reconcileNewsSnapshot, dispatchNewsJob, newsNewPostRequiresPhoto, newsPostKey } from "./literary-news-social.mjs";
+import { prepareNewsPost, reconcileNewsSnapshot, dispatchNewsJob, newsNewPostRequiresPhoto, newsPostKey, newsSocialPayloadDigest } from "./literary-news-social.mjs";
 import { createNewsSocialTransport } from "./literary-news-social-transport.mjs";
 import { buildPublishedNewsFeed } from "./literary-news-publication.mjs";
 import { pendingNewsSourceState } from "./literary-news-state.mjs";
@@ -82,10 +82,10 @@ describe("bounded media and destination rights",()=>{
   });
   it("preserves exact caption/UTF16 bold; long mandatory credit falls back to one complete text",async()=>{
     const f=await prepared();expect(f.prepared.payload.caption_entities[0].length).toBe(item.title.ru.length);expect(f.prepared.payload.caption).toContain(f.asset.credit);
-    expect(f.prepared.payload.caption).toContain(item.source.url);
-    expect(f.prepared.payload.caption).toContain("https://probpera.ru/#literary-news");
-    expect(f.prepared.payload.caption.indexOf(item.source.url))
-      .toBeLessThan(f.prepared.payload.caption.indexOf("https://probpera.ru/#literary-news"));
+    expect(f.prepared.payload.caption).toBe(`${item.title.ru}\n\n${item.summary.ru}\n\nИзображение: ${f.asset.credit}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\nhttps://probpera.ru/#literary-news`);
+    const footerLinks=f.prepared.payload.caption_entities.filter(e=>e.type==='url');
+    expect(footerLinks.map(e=>f.prepared.payload.caption.slice(e.offset,e.offset+e.length)))
+      .toEqual([item.source.url,'https://probpera.ru/#literary-news']);
     expect(f.prepared.payload.caption).not.toContain("Дата события");
     expect(f.prepared.payload.caption).not.toContain("25 сентября 2026 г.");
     f.asset.credit="Автор "+"длинная атрибуция ".repeat(65);
@@ -93,19 +93,17 @@ describe("bounded media and destination rights",()=>{
     expect(overflow.media).toBeNull();expect(overflow.fallbackReason).toBe("required_credit_or_caption_exceeds_limit");
     expect(overflow.payload.text).toContain(item.summary.ru);expect(overflow.payload.text).toContain(item.source.url);
   });
-  it("keeps full facts with native source/brand links when verbose URLs would overflow a photo caption",async()=>{
+  it("falls back to full visible text when verbose URLs would overflow a photo caption",async()=>{
     const f=await fixture();
     const news={...item,title:{...item.title,ru:"📚 Книга: полное название"},summary:{...item.summary,ru:"Проверенное предложение. ".repeat(15).trim()},
       source:{...item.source,url:"https://publisher.example/news/"+"long-path-".repeat(60)}};
     const p=await prepareNewsPost(news,snapshot,"telegram",{destination:telegram,mediaOptions:f.mediaOptions});
-    expect(p.media).not.toBeNull();expect(p.payload.caption.length).toBeLessThanOrEqual(1024);
-    expect(p.payload.caption).toContain(news.title.ru);expect(p.payload.caption).toContain(news.summary.ru);
-    expect(p.payload.caption).toContain(f.asset.credit);expect(p.payload.show_caption_above_media).toBe(false);
-    const links=p.payload.caption_entities.filter(e=>e.type==="text_link");
-    expect(links.map(e=>e.url)).toEqual([news.source.url,"https://probpera.ru/#literary-news"]);
-    expect(p.payload.caption.slice(links[0].offset,links[0].offset+links[0].length)).toBe(news.source.name);
-    expect(p.payload.caption_entities[0].length).toBe(news.title.ru.length);
-    await validatePreparedNewsMedia(p,telegram,f.mediaOptions);
+    expect(p.media).toBeNull();expect(p.fallbackReason).toBe('required_credit_or_caption_exceeds_limit');
+    expect(p.payload.text).toContain(news.title.ru);expect(p.payload.text).toContain(news.summary.ru);
+    expect(p.payload.text).toContain(news.source.url);expect(p.payload.text).toContain('https://probpera.ru/#literary-news');
+    const links=p.payload.entities.filter(e=>e.type==='url');
+    expect(links.map(e=>p.payload.text.slice(e.offset,e.offset+e.length))).toEqual([news.source.url,'https://probpera.ru/#literary-news']);
+    expect(p.payload.entities[0].length).toBe(news.title.ru.length);
   });
   it("validates the latest rights and exact cached bytes again at delivery",async()=>{
     const f=await prepared();f.asset.status="revoked";await expect(validatePreparedNewsMedia(f.prepared,telegram,f.mediaOptions)).rejects.toThrow();
@@ -115,12 +113,49 @@ describe("bounded media and destination rights",()=>{
   it("CC BY includes the creator, license URL and modification notice in the actual native caption",async()=>{
     const f=await fixture();f.asset.license="CC-BY-4.0";f.asset.author="Exact Creator";f.asset.credit="Архивное изображение.";
     const p=await prepareNewsPost(item,snapshot,"telegram",{destination:telegram,mediaOptions:f.mediaOptions});
-    expect(p.payload.caption).toContain("Exact Creator");expect(p.payload.caption).toContain("https://creativecommons.org/licenses/by/4.0/");
+    expect(p.payload.caption).toContain("Exact Creator");expect(p.payload.caption).toContain('https://creativecommons.org/licenses/by/4.0/');
+    expect(p.media.credit).toContain('https://creativecommons.org/licenses/by/4.0/');
     expect(p.payload.caption).toContain("без кадрирования");await validatePreparedNewsMedia(p,telegram,f.mediaOptions);
+  });
+  it('keeps the complete visible attribution, URLs and punctuation before the source/site footer',async()=>{
+    const f=await fixture();f.asset.credit='Фото 😀 автора. Wikimedia: https://commons.wikimedia.org/?curid=123. Материал (https://publisher.example/work_(book));';
+    const p=await prepareNewsPost(item,snapshot,'telegram',{destination:telegram,mediaOptions:f.mediaOptions});
+    expect(p.media.credit).toBe(f.asset.credit);
+    expect(p.payload.caption).toContain(`Изображение: ${f.asset.credit}`);
+    const links=p.payload.caption_entities.filter(e=>e.type==='url');
+    expect(links.map(e=>p.payload.caption.slice(e.offset,e.offset+e.length))).toEqual([item.source.url,'https://probpera.ru/#literary-news']);
+    expect(p.payload.caption.endsWith(`Источник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\nhttps://probpera.ru/#literary-news`)).toBe(true);
+    await validatePreparedNewsMedia(p,telegram,f.mediaOptions);
   });
 });
 
 describe("native photo delivery without duplicate creates",()=>{
+  it('reconciles the legacy photo footer and edits remote 431 once through the guarded dispatch',async()=>{
+    const f=await setup(),original=(await f.store.read(f.key)).state;
+    const formatRevision='source-then-site-visible-links-v2';
+    const messageRevision=await newsSocialPayloadDigest({textRevision:original.prepared.textRevision,formatRevision});
+    const m=original.prepared.media;
+    const revision=await newsSocialPayloadDigest({textRevision:messageRevision,media:{assetId:m.assetId,sha256:m.sha256,
+      profile:m.profile,credit:m.credit,licenseEvidenceSha256:m.licenseEvidenceSha256,destination:m.destination}});
+    const payload={...original.prepared.payload,caption:`${item.title.ru}\n\n${item.summary.ru}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\nhttps://probpera.ru/#literary-news\n\nИзображение: ${m.credit}`};
+    const firstAcknowledgedAt='2026-09-25T12:00:00Z';
+    await f.store.seed(f.key,{...original,status:'sent_current',remoteId:'431',remoteMediaKind:'photo',firstAcknowledgedAt,
+      desiredRevision:revision,acknowledgedRevision:revision,prepared:{...original.prepared,formatRevision,revision,payload,payloadSha256:await newsSocialPayloadDigest(payload)}});
+    await reconcileNewsSnapshot(f.store,await feed(),[telegram],now,{mediaOptions:f.mediaOptions});
+    const corrected=(await f.store.read(f.key)).state;
+    expect(corrected).toMatchObject({status:'correction_pending',remoteId:'431',firstAcknowledgedAt});
+    expect(corrected.desiredRevision).not.toBe(revision);expect(corrected.prepared.media).toEqual(m);
+    const fetchImpl=vi.fn(async()=>Response.json({ok:true,result:{message_id:431,chat:{id:-100123},photo:[{file_id:'fixture-photo'}]}}));
+    const native=createNewsSocialTransport({mode:'live',telegramToken:'fixture',fetchImpl,mediaOptions:f.mediaOptions});
+    const transport={...native,preflight:async()=>({ok:true,providerAccountId:'42'})};
+    expect(await dispatchNewsJob({store:f.store,key:f.key,transport,now:()=>now})).toMatchObject({status:'sent_current',remoteId:'431'});
+    expect(fetchImpl).toHaveBeenCalledTimes(1);expect(fetchImpl.mock.calls[0][0]).toContain('/editMessageMedia');
+    const body=fetchImpl.mock.calls[0][1].body,media=JSON.parse(body.get('media'));
+    expect(body.get('message_id')).toBe('431');expect(media.caption).toBe(corrected.prepared.payload.caption);
+    expect(media.caption_entities).toEqual(corrected.prepared.payload.caption_entities);
+    expect((await f.store.read(f.key)).state).toMatchObject({remoteId:'431',firstAcknowledgedAt,acknowledgedRevision:corrected.desiredRevision});
+    await dispatchNewsJob({store:f.store,key:f.key,transport,now:()=>now});expect(fetchImpl).toHaveBeenCalledTimes(1);
+  });
   it("allows text when a photo is unavailable and preserves the deferred VK policy",async()=>{
     expect(socialConfiguration.destinations).toHaveLength(2);
     for(const configured of socialConfiguration.destinations){

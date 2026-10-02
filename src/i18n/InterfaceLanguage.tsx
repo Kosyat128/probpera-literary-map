@@ -21,6 +21,12 @@ export function isObservedInterfaceSourceText(value: string) {
 }
 
 const englishInterfaceText: Record<string, string> = {
+  "Предыдущий год": "Previous year",
+  "Следующий год": "Next year",
+  "Годовой охват календаря": "Calendar year coverage",
+  "Вид календаря": "Calendar view",
+  "Имя, страна или ДД.ММ": "Name, country or DD.MM",
+  "Страницы годового списка": "Year list pages",
   "Чтение становится событием, когда мысль продолжается в разговоре.":
     "Reading becomes an event when an idea continues through conversation.",
   "Редакционный принцип клуба": "The club's editorial principle",

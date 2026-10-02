@@ -21,6 +21,7 @@ const webglRegressionSpecs = [
   "**/article-book-pagination.spec.mjs",
   "**/archive-search-calendar.spec.mjs",
   "**/calendar-design-quality.spec.mjs",
+  "**/calendar-runtime-coverage.spec.mjs",
   "**/article-book-reading.spec.mjs",
   "**/article-book-zoom.spec.mjs",
   "**/image-delivery.spec.mjs",

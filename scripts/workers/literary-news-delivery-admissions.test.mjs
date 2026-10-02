@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import configuration from '../../data/news/social-destinations.json' with { type: 'json' };
 import limits from '../../data/news/contract.json' with { type: 'json' };
-import { runDeliveryTick } from './literary-news-delivery-worker.mjs';
+import { runDeliveryTick, runDeliveryCaptureTick } from './literary-news-delivery-worker.mjs';
 import { buildPublishedNewsFeed, newsDigest, newsSnapshotPayload } from '../lib/literary-news-publication.mjs';
 import { pendingNewsSourceState } from '../lib/literary-news-state.mjs';
 import { newsPostKey, prepareNewsPost, reconcileNewsSnapshot } from '../lib/literary-news-social.mjs';
@@ -64,8 +64,13 @@ async function tickFixture(feed, { store = memoryStore(), response = () => publi
     if (method === 'sendMessage') return Response.json({ ok: true, result: { message_id: ++creates, chat: { id: Number(destination.id) } } });
     throw Error('unexpected_provider_method');
   });
-  return { store, client, env, fetchImpl, run: () => runDeliveryTick({ env, now: () => current, fetchImpl,
-    createClientImpl: () => client, storeFactory: () => store }) };
+  const options={ env, now: () => current, fetchImpl,createClientImpl: () => client, storeFactory: () => store };
+  return { store, client, env, fetchImpl, run: async () => {
+    const capture=await runDeliveryCaptureTick(options);
+    if(capture.status!=='admissions_captured')return capture;
+    const delivery=await runDeliveryTick(options);
+    return {...delivery,capturedCandidates:capture.capturedCandidates,newAdmissions:capture.newAdmissions};
+  } };
 }
 
 describe('native hourly capture uses the genuine complete public snapshot and existing dispatch fences', () => {
@@ -74,7 +79,7 @@ describe('native hourly capture uses the genuine complete public snapshot and ex
     records.push(item('archive', '2026-09-01', { eventDate: '2026-09-01' }));
     const feed = await completeFeed(records), original = JSON.stringify(feed), f = await tickFixture(feed);
     const first = await f.run();
-    expect(first).toMatchObject({ capturedCandidates: 24, newAdmissions: 24, deliveredThisRun: 1 });
+    expect(first).toMatchObject({ capturedCandidates: 4, newAdmissions: 4, deliveredThisRun: 1 });
     expect(f.store.list).not.toHaveBeenCalled(); expect(f.env.NEWS_STATE.get).toHaveBeenCalledTimes(1);
     expect(f.client.rpc.mock.calls.filter(([name]) => name === 'read_due_literary_news_runtime_posts')).toHaveLength(2);
     expect(f.store.rows.has('admission:news:archive')).toBe(false);
@@ -138,10 +143,11 @@ describe('native hourly capture uses the genuine complete public snapshot and ex
     f.client.rpc.mockResolvedValueOnce({ data: dayStatus(0), error: null })
       .mockResolvedValueOnce({ error: { code: 'PGRST202' }, status: 404 });
     expect(await f.run()).toMatchObject({ status: 'blocked', code: 'runtime_due_rpc_required' });
-    expect(f.fetchImpl).not.toHaveBeenCalled(); expect(f.store.compareAppend).not.toHaveBeenCalled();
+    expect(f.fetchImpl).not.toHaveBeenCalled();
+    expect(f.store.compareAppend.mock.calls.every(([key])=>key==='heartbeat:native-delivery-capture')).toBe(true);
     f.store.seed(controlKey, { mode: 'on', paused: true, historyReconciled: true });
     expect(await f.run()).toMatchObject({ status: 'destination_not_enabled_or_history_gap' });
-    expect(f.fetchImpl).not.toHaveBeenCalled(); expect(f.store.compareAppend).not.toHaveBeenCalled();
+    expect(f.fetchImpl).not.toHaveBeenCalled(); expect(f.store.compareAppend).toHaveBeenCalledOnce();
   });
   it('selects stable newest explicit dates with a strict 24 item bound and Moscow date-only semantics', () => {
     const rows = [item('calendar', '2026-10-02', { kind: 'calendar' }), item('unknown', null),
@@ -197,7 +203,7 @@ describe('bounded reconciliation validates the full original first and never int
 
 describe('public response trust and stream bounds fail before any native queue write', () => {
   it.each(['origin', 'stale', 'json', 'digest', 'release', 'future-publication', 'incomplete', 'content-type'])
-    ('rejects %s evidence before admissions, heartbeat or Telegram writes', async kind => {
+    ('rejects %s evidence before admissions or Telegram writes and retains a safe failure heartbeat', async kind => {
       const feed = await completeFeed([item('fresh')]);
       let response;
       if (kind === 'origin') response = () => publicResponse(feed, { url: 'https://attacker.example/feed' });
@@ -210,7 +216,9 @@ describe('public response trust and stream bounds fail before any native queue w
       if (kind === 'content-type') response = () => publicResponse(feed, { headers: { 'content-type': 'text/html' } });
       const f = await tickFixture(feed, { response }), result = await f.run();
       expect(result.status).toBe('blocked'); expect(result.code).toMatch(/^delivery_public_feed_/);
-      expect(f.store.compareAppend).not.toHaveBeenCalled(); expect(f.store.list).not.toHaveBeenCalled();
+      expect(f.store.compareAppend).toHaveBeenCalledOnce();
+      expect(f.store.compareAppend.mock.calls[0][0]).toBe('heartbeat:native-delivery-capture');
+      expect(result.heartbeatRecorded).toBe(true);expect(f.store.list).not.toHaveBeenCalled();
       expect(f.fetchImpl).toHaveBeenCalledTimes(1); expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();
       expect(JSON.stringify(result)).not.toMatch(/PRIVATE|isolated-key|isolated-token|Tampered/);
     });
@@ -222,7 +230,9 @@ describe('public response trust and stream bounds fail before any native queue w
     const f = await tickFixture(feed, { response: () => publicResponse(feed, { raw: new ReadableStream({ start(controller) {
       controller.enqueue(new Uint8Array(limits.maxFeedBytes + 1)); controller.close(); } }), headers: { 'content-length': '10' } }) });
     expect(await f.run()).toMatchObject({ status: 'blocked', code: 'delivery_public_feed_too_large' });
-    expect(f.store.compareAppend).not.toHaveBeenCalled(); expect(f.fetchImpl).toHaveBeenCalledTimes(1);
+    expect(f.store.compareAppend).toHaveBeenCalledOnce();
+    expect(f.store.compareAppend.mock.calls[0][0]).toBe('heartbeat:native-delivery-capture');
+    expect(f.fetchImpl).toHaveBeenCalledTimes(1);
   });
   it('latches actual SDK HTTP402 during admission CAS and stops all subsequent DB/provider work', async () => {
     const feed = await completeFeed([item('quota')]), f = await tickFixture(feed);
@@ -237,7 +247,7 @@ describe('public response trust and stream bounds fail before any native queue w
       if (url.pathname.endsWith('/compare_append_literary_news_runtime')) return Response.json({ message: 'PRIVATE_PROVIDER_DIAGNOSTIC' }, { status: 402 });
       throw Error(`unexpected_request_${options.method}`);
     });
-    const result = await runDeliveryTick({ env: f.env, now: () => current, fetchImpl: network });
+    const result = await runDeliveryCaptureTick({ env: f.env, now: () => current, fetchImpl: network });
     expect(result).toMatchObject({ status: 'blocked', code: 'runtime_quota_exceeded', deliveredThisRun: null });
     expect(network.mock.calls.filter(([input]) => String(input).includes('compare_append_literary_news_runtime'))).toHaveLength(1);
     expect(network.mock.calls.filter(([input]) => String(input).includes('read_due_literary_news_runtime_posts'))).toHaveLength(1);

@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import {projectReviewedLiveUiFollowup} from './reviewed-live-ui-followup.mjs';
 import {readFileSync} from 'node:fs';
 
 // Owner-requested author-column refinement; prior authority remains unchanged.
@@ -9,7 +10,7 @@ export const authorColumnReferenceRemovalSha256=source=>createHash('sha256')
 
 /** Reverse only the five exact owner-requested removal/browser/read fragments. */
 export function projectReviewedAuthorColumnReferenceRemoval(relativePath,source){
- let projected=source.replace(/\r\n?/gu,'\n');
+ let projected=projectReviewedLiveUiFollowup(relativePath,source);
  const deltas=authorColumnReferenceRemovalAttestation.projections.filter(d=>d.path===relativePath);
  if(!deltas.length)return projected;
  if(deltas.every(d=>!projected.includes(d.after)&&d.before&&projected.split(d.before).length===2))return projected;

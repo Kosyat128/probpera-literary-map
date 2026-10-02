@@ -1,4 +1,5 @@
 import { execFileSync, spawnSync } from "node:child_process";
+import { projectReviewedLiveUiFollowup } from "./reviewed-live-ui-followup.mjs";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -135,7 +136,7 @@ describe("parallel browser quality contract", () => {
     expect(diagnostics.with.name).toBe("browser-quality-report-${{ matrix.id }}");
     expect(diagnostics.with.path).toBe("playwright-report\ntest-results\n");
     expect(diagnostics.with["retention-days"]).toBe(14);
-    expect(readFileSync(path.join(root, "playwright.config.mjs"), "utf8").replaceAll("\r\n", "\n"))
+    expect(projectReviewedLiveUiFollowup("playwright.config.mjs", readFileSync(path.join(root, "playwright.config.mjs"), "utf8")))
       .toBe(execFileSync("git", ["show", "cfbd444b279c4aa7a5abe44a661cf16815253b5d:playwright.config.mjs"], { cwd: root, encoding: "utf8" }));
   });
 
